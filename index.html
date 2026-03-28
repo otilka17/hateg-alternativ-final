@@ -5,56 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hațeg Alternativ | Signature</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
     <style>
         :root { --verde: #1b3022; --auriu: #c5a059; --crem: #fdfcf8; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
         body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--verde); overflow-x: hidden; }
 
-        /* Header Alb - Curat */
         header { background: #ffffff; padding: 30px 20px; text-align: center; border-bottom: 1px solid #eee; }
-        .brand { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--verde); text-decoration: none; line-height: 1.1; display: block; }
-        .est { font-size: 0.65rem; color: var(--auriu); letter-spacing: 4px; font-weight: 800; margin-top: 8px; display: block; }
+        .brand { text-decoration: none; color: var(--verde); font-family: 'Playfair Display', serif; font-size: 1.8rem; line-height: 1.1; display: block; font-weight: 700; }
+        .est { font-size: 0.7rem; color: var(--auriu); letter-spacing: 4px; font-weight: 800; margin-top: 10px; display: block; text-transform: uppercase; }
 
-        /* Navigație */
-        nav { display: flex; justify-content: center; gap: 30px; padding: 20px 0; background: #ffffff; }
-        nav a { text-decoration: none; color: #444; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
+        nav { display: flex; justify-content: center; gap: 30px; padding: 25px 0; background: #ffffff; border-bottom: 1px solid #f9f9f9; }
+        nav a { text-decoration: none; color: #444; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
 
-        /* HERO - REPARAT FUNDALUL */
+        /* MUNTELE TĂU */
         .hero {
-            width: 90%;
-            max-width: 1200px;
-            height: 70vh;
-            margin: 20px auto;
-            border-radius: 4px;
-            /* Am pus 3 variante de linkuri sa fiu sigur ca unul merge */
-            background-color: #e5e5e5; /* In caz de orice, sa nu fie gri inchis */
-            background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.1)), 
-                              url('hero-camp-munti.jpg'), /* Varianta locala */
-                              url('images/hero-camp-munti.jpg'), /* Varianta in folder images */
-                              url('https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/hero-camp-munti.jpg'); /* Varianta Directa */
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
+            width: 95%; max-width: 1400px; height: 70vh; margin: 15px auto; border-radius: 4px;
+            background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.15)), 
+                        url('https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/hero-camp-munti.jpg') center/cover no-repeat;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: white;
         }
+        .hero h1 { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(2.5rem, 8vw, 4.5rem); text-shadow: 0 10px 30px rgba(0,0,0,0.2); }
 
-        .hero h1 { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(2.5rem, 8vw, 5rem); }
-        .hero p { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.3rem; opacity: 0.9; margin-top: 10px; }
+        /* SECȚIUNEA VIP - VARIANTA WHATSAPP DIRECT */
+        .vip-section { background: var(--verde); padding: 70px 20px; color: white; text-align: center; }
+        .vip-card { max-width: 500px; margin: 0 auto; }
+        .vip-card h2 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 2.8rem; margin-bottom: 15px; }
+        .btn-gold { background: var(--auriu); color: white; padding: 15px 40px; border-radius: 50px; border: none; font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem; cursor: pointer; display: inline-block; text-decoration: none; margin-top: 20px; }
 
-        /* JURNAL LIVE */
-        #live-journal { max-width: 1000px; margin: 80px auto; padding: 0 20px; }
-        .post-card { background: white; border-radius: 20px; overflow: hidden; margin-bottom: 50px; box-shadow: 0 15px 40px rgba(0,0,0,0.03); border: 1px solid #f0f0f0; }
-        .post-img { width: 100%; height: 400px; object-fit: cover; }
-        .post-body { padding: 40px; text-align: center; }
-
-        /* CONTACT FIXE */
-        .wa-btn { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; padding: 14px 28px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 9999; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 9999; box-shadow: 0 10px 20px rgba(0,0,0,0.1); font-size: 0.85rem; }
     </style>
 </head>
 <body>
@@ -72,51 +50,43 @@
 
 <section class="hero">
     <h1>Simte tăcerea.</h1>
-    <p>O selecție exclusivă în inima Transilvaniei</p>
 </section>
 
-<div id="live-journal">
-    <h2 style="text-align: center; font-family: 'Playfair Display', serif; font-style: italic; font-size: 2.5rem; margin-bottom: 50px;">Metanoia Live</h2>
-    <div id="posts">
-        <p style="text-align: center; font-style: italic;">Se încarcă noutățile...</p>
+<section class="vip-section">
+    <div class="vip-card">
+        <span style="color: var(--auriu); letter-spacing: 5px; font-weight: 800; font-size: 0.7rem; display: block; margin-bottom: 20px;">MEMBER ACCESS</span>
+        <h2>Devino membru</h2>
+        <p style="margin-bottom: 20px; opacity: 0.8;">Înscrie-te pentru acces prioritar la retreat-uri și cine secrete.</p>
+        
+        <input type="email" id="vip-email" placeholder="Email-ul tău" style="padding: 15px; border-radius: 50px; border: none; width: 100%; max-width: 300px; text-align: center; margin-bottom: 10px;">
+        <br>
+        <button onclick="sendVIP()" class="btn-gold">Înscrie-te prin WhatsApp</button>
     </div>
-</div>
+</section>
 
-<a href="https://wa.me/40749229686" class="wa-btn">Chat WhatsApp</a>
+<a href="https://wa.me/40749229686" class="wa-float">WhatsApp Direct</a>
 
-<script type="text/javascript">
+<script>
+    // TAWK TO IN STANGA
     var Tawk_API=Tawk_API||{};
     Tawk_API.customStyle = { visibility : { desktop : { xOffset : '30', yOffset : '30', position : 'bottom-left' }, mobile : { xOffset : '20', yOffset : '20', position : 'bottom-left' } } };
     (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true; s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
-    s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true; s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
+        s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
     })();
-</script>
 
-<script>
-    const SHEETS_URL = "https://script.google.com/macros/s/AKfycbz1b5qQajTQQH6QdJDb1ov5qIAhguAqdm1jjmk5uF0q7F-zq85eGE-ua_VAcgopzDtP/exec?action=getLive";
-    async function load() {
-        try {
-            const r = await fetch(SHEETS_URL);
-            const data = await r.json();
-            const box = document.getElementById('posts');
-            box.innerHTML = "";
-            data.reverse().forEach(p => {
-                box.innerHTML += `
-                    <div class="post-card">
-                        <img src="${p.Imagine_URL}" class="post-img" onerror="this.src='https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/hero-camp-munti.jpg'">
-                        <div class="post-body">
-                            <span style="color:var(--auriu); font-style:italic;">${p.Data}</span>
-                            <h3 style="font-family:'Playfair Display',serif; font-style:italic; font-size:2rem; margin:15px 0;">${p.Mesaj}</h3>
-                            <div style="font-size:1.5rem; color:#eee; cursor:pointer;" onclick="this.style.color='#c5a059'">♡</div>
-                        </div>
-                    </div>`;
-            });
-        } catch(e) { }
+    // FUNCTIA VIP WHATSAPP
+    function sendVIP() {
+        const email = document.getElementById('vip-email').value;
+        if(email.includes('@')) {
+            const text = encodeURIComponent("Bună! Vreau să devin membru VIP Hațeg Alternativ. Email-ul meu este: " + email);
+            window.open("https://wa.me/40749229686?text=" + text, "_blank");
+        } else {
+            alert("Te rugăm să introduci un email valid.");
+        }
     }
-    load();
 </script>
 
 </body>
