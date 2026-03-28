@@ -1,0 +1,171 @@
+<style>
+    /* 1. CONFIGURARE CORE & CULORI */
+    :root { 
+        --verde: #1b3022; 
+        --auriu: #c5a059; 
+        --crem: #fdfcf8; 
+        --alb: #ffffff;
+        --gri-text: #64748b;
+    }
+
+    /* Resetare pentru un control total */
+    * { 
+        margin: 0; 
+        padding: 0; 
+        box-sizing: border-box; 
+    }
+    
+    body { 
+        font-family: 'Inter', sans-serif; 
+        background: var(--crem); 
+        color: var(--verde); 
+        line-height: 1.6; 
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    /* 2. STIL TITLURI (Playfair Display) */
+    h1, h2, h3, h4, .metanoia-title, .brand { 
+        font-family: 'Playfair Display', serif; 
+        font-weight: 700;
+        letter-spacing: -0.02em;
+    }
+
+    /* 3. NAVIGAȚIE PREMIUM */
+    .site-header { 
+        background: var(--alb); 
+        padding: 20px 0; 
+        border-bottom: 1px solid #eee; 
+        position: sticky; 
+        top: 0; 
+        z-index: 1000; 
+    }
+    .nav-wrap { 
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center; 
+        max-width: 1100px; 
+        margin: 0 auto; 
+        padding: 0 20px; 
+    }
+    .brand { 
+        text-decoration: none; 
+        color: var(--verde); 
+        font-size: 1.4rem; 
+    }
+    .main-nav a { 
+        text-decoration: none; 
+        color: #444; 
+        font-size: 0.9rem; 
+        margin-left: 20px; 
+        font-weight: 500; 
+        transition: color 0.3s ease; 
+    }
+    .main-nav a:hover, .main-nav a.active { color: var(--auriu); }
+
+    /* 4. HERO SECTION - ASPECT DE REVISTĂ */
+    .hero { 
+        height: 75vh; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center; 
+        text-align: center; 
+        color: var(--alb);
+        background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), 
+                    url('https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/hero-camp-munti.jpg') center/cover no-repeat;
+    }
+    .hero h1 { 
+        font-size: clamp(2.5rem, 8vw, 4.5rem); 
+        margin-bottom: 20px; 
+    }
+
+    /* 5. GRID ȘI CARDURI (Pensiuni, Obiective, Gastro) */
+    .section-padding { padding: 90px 0; }
+    .grid-3 { 
+        display: grid; 
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+        gap: 35px; 
+    }
+    .card, .obj-card { 
+        background: var(--alb); 
+        border-radius: 24px; 
+        overflow: hidden; 
+        box-shadow: 0 12px 45px rgba(0,0,0,0.04); 
+        border: 1px solid #f1f1f1; 
+        transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); 
+    }
+    .card:hover, .obj-card:hover { transform: translateY(-12px); }
+    .card img, .obj-img { width: 100%; height: 280px; object-fit: cover; }
+    .card-body, .obj-content { padding: 35px; }
+    .card h3, .obj-content h3 { font-size: 1.7rem; margin-bottom: 15px; }
+    .card p, .obj-content p { color: var(--gri-text); font-size: 0.95rem; font-weight: 300; }
+
+    /* 6. BUTOANE ROTUNJITE */
+    .btn { 
+        padding: 14px 35px; 
+        border-radius: 50px; 
+        text-decoration: none; 
+        font-weight: 600; 
+        font-size: 0.85rem; 
+        display: inline-block; 
+        transition: all 0.3s ease; 
+        cursor: pointer;
+        border: none;
+    }
+    .btn-gold { background: var(--auriu); color: var(--alb); }
+    .btn-gold:hover { background: #b08e4d; box-shadow: 0 8px 20px rgba(197, 160, 89, 0.3); }
+    .btn-outline { border: 1.5px solid var(--verde); color: var(--verde); background: transparent; }
+    .btn-outline:hover { background: var(--verde); color: var(--alb); }
+
+    /* 7. HARTA INTERACTIVĂ */
+    #map { 
+        height: 500px; 
+        width: 100%; 
+        border-radius: 30px; 
+        margin-bottom: 60px; 
+        border: 1px solid #eee; 
+        z-index: 1; 
+    }
+
+    /* 8. FORUM ȘI FEEDBACK */
+    .input-box { background: var(--alb); padding: 40px; border-radius: 24px; border: 1px solid #eee; margin-bottom: 40px; }
+    textarea { 
+        width: 100%; 
+        height: 130px; 
+        border: 1px solid #f0f0f0; 
+        border-radius: 15px; 
+        padding: 20px; 
+        font-family: 'Inter'; 
+        background: #fafafa; 
+        outline: none; 
+        resize: none; 
+        transition: border 0.3s;
+    }
+    textarea:focus { border-color: var(--auriu); }
+
+    /* 9. WHATSAPP & TAWK.TO POSITIONING */
+    .wa-btn { 
+        position: fixed; 
+        bottom: 30px; 
+        left: 30px; /* Poziționat opus față de chat-ul Tawk.to */
+        background: #25d366; 
+        color: var(--alb); 
+        padding: 15px 30px; 
+        border-radius: 50px; 
+        text-decoration: none; 
+        font-weight: 700; 
+        z-index: 999; 
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15); 
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    /* RESPONSIVITATE */
+    @media (max-width: 768px) {
+        .nav-wrap { flex-direction: column; gap: 15px; text-align: center; }
+        .hero h1 { font-size: 2.8rem; }
+        .grid-3 { grid-template-columns: 1fr; }
+        .card-body { padding: 25px; }
+    }
+</style>
