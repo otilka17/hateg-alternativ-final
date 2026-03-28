@@ -3,100 +3,98 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Retreats | Slow Living în Țara Hațegului</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css" />
+    <title>Metanoia Retreats | Hațeg Alternativ</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        body { margin-top: 80px; background: #fdfcf8; color: #1b3022; }
-        .retreat-hero { 
-            height: 80vh; 
-            background: linear-gradient(rgba(27,48,34,0.6), rgba(27,48,34,0.3)), url('images/retreat-main.jpg') center/cover;
-            display: flex; align-items: center; justify-content: center; text-align: center; color: white;
-        }
-        .event-card {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 0; background: white; 
-            border-radius: 20px; overflow: hidden; margin-bottom: 80px; box-shadow: 0 15px 45px rgba(0,0,0,0.05);
-        }
-        .event-info { padding: 60px; display: flex; flex-direction: column; justify-content: center; }
-        .event-image { height: 500px; background-size: cover; background-position: center; }
-        .status-badge {
-            display: inline-block; padding: 5px 15px; border-radius: 50px; font-size: 0.7rem;
-            font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px;
-        }
-        @media (max-width: 900px) { .event-card { grid-template-columns: 1fr; } .event-image { height: 300px; } }
+        /* Ajustări specifice pentru pagina de Retreat */
+        .retreat-intro { padding: 120px 20px 60px; text-align: center; max-width: 800px; margin: 0 auto; }
+        .retreat-intro h1 { font-size: clamp(2.5rem, 7vw, 4.5rem); font-style: italic; margin-bottom: 20px; }
+        
+        .retreat-grid { display: grid; grid-template-columns: 1fr; gap: 80px; padding: 40px 20px 100px; max-width: 1000px; margin: 0 auto; }
+        
+        .retreat-card { display: flex; flex-direction: column; align-items: center; text-align: center; }
+        .retreat-img { width: 100%; height: 500px; object-fit: cover; border-radius: 4px; margin-bottom: 35px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        
+        .retreat-card h2 { font-size: 2.2rem; font-style: italic; margin-bottom: 15px; color: var(--verde); }
+        .retreat-tagline { color: var(--auriu); text-transform: uppercase; letter-spacing: 4px; font-weight: 800; font-size: 0.75rem; margin-bottom: 20px; display: block; }
+        .retreat-card p { font-weight: 300; color: var(--text-light); max-width: 700px; margin-bottom: 30px; font-size: 1.1rem; }
+        
+        .retreat-details { display: flex; justify-content: center; gap: 30px; margin-bottom: 35px; border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 15px 0; width: 100%; }
+        .retreat-details span { font-size: 0.85rem; font-weight: 600; color: var(--verde); }
+
+        @media (max-width: 768px) { .retreat-img { height: 350px; } }
     </style>
 </head>
 <body>
 
-<header class="site-header" style="position: fixed; top: 0; width: 100%; z-index: 1500; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #eee;">
-    <div class="container nav-wrap" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0;">
-        <a href="index.html" class="brand" style="text-decoration: none; color: #1b3022; font-weight: 800; font-size: 1.2rem; letter-spacing: 1px;">
-            <span style="font-weight: 300;">HAȚEG</span> ALTERNATIV
-        </a>
-        <nav class="main-nav" style="display: flex; gap: 35px;">
-            <a href="pensiuni.html" style="text-decoration: none; color: #333; font-weight: 600; font-size: 0.8rem; text-transform: uppercase;">Pensiuni</a>
-            <a href="retreat.html" style="text-decoration: none; color: #c5a059; font-weight: 800; font-size: 0.8rem; text-transform: uppercase;">Retreat</a>
-            <a href="gastronomic.html" style="text-decoration: none; color: #333; font-weight: 600; font-size: 0.8rem; text-transform: uppercase;">Gastronomic</a>
+<header class="site-header">
+    <div class="header-container">
+        <a href="index.html" class="brand italic">Hațeg <br>Alternativ</a>
+        <span class="est">EST. 2026</span>
+        <nav class="main-nav">
+            <a href="pensiuni.html">Pensiuni</a>
+            <a href="retreat.html" style="color: var(--auriu);">Retreat</a>
+            <a href="gastronomic.html">Punct Gastronomic</a>
         </nav>
-        <div style="width: 120px; text-align: right;">
-            <span style="font-size: 0.6rem; letter-spacing: 2px; color: #c5a059; font-weight: 800;">RECOVERY</span>
-        </div>
     </div>
 </header>
 
-<section class="retreat-hero">
-    <div class="container">
-        <span style="letter-spacing: 5px; text-transform: uppercase; font-size: 0.8rem; font-weight: 800;">Recovery & Connection</span>
-        <h1 class="metanoia-title" style="font-size: clamp(3rem, 7vw, 5rem); margin: 20px 0;">The Slow Living Series.</h1>
-        <p style="font-weight: 300; letter-spacing: 1px; max-width: 600px; margin: 0 auto;">Evenimente curate pentru cei care caută să se reconecteze cu sinele în peisajul arhaic al Hațegului.</p>
+<main>
+    <section class="retreat-intro">
+        <span class="retreat-tagline" style="margin-bottom: 10px;">Metanoia Journey</span>
+        <h1>Trei căi către regăsire.</h1>
+        <p>Programe curatoriate pentru cei care caută să schimbe ritmul cotidian cu cel al naturii.</p>
+    </section>
+
+    <div class="retreat-grid">
+        <article class="retreat-card">
+            <img src="images/retreat-adventure.jpg" class="retreat-img" alt="Explorare Retezat" onerror="this.src='https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/hero-camp-munti.jpg'">
+            <span class="retreat-tagline">Activ & Explorare</span>
+            <h2>Cărarea Munților</h2>
+            <div class="retreat-details">
+                <span>3 Zile</span> <span>•</span> <span>Ghid Inclus</span> <span>•</span> <span>E-Bike</span>
+            </div>
+            <p>Descoperă potecile ascunse ale Retezatului. Tururi ghidate pe jos sau pe bicicletă, gândite să îți testeze limitele și să îți umple privirea de sălbăticie.</p>
+            <a href="https://wa.me/40749229686?text=Vreau detalii despre Retreat-ul Cărarea Munților" class="btn-gold">Cere Programul</a>
+        </article>
+
+        <article class="retreat-card">
+            <img src="images/retreat-gastro.jpg" class="retreat-img" alt="Gastronomie" onerror="this.src='https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/hero-camp-munti.jpg'">
+            <span class="retreat-tagline">Creație & Gust</span>
+            <h2>Rădăcini și Gust</h2>
+            <div class="retreat-details">
+                <span>Weekend</span> <span>•</span> <span>Workshop Gastronomic</span> <span>•</span> <span>Atelier Creație</span>
+            </div>
+            <p>Întoarce-te la esență prin gătit tradițional și ateliere de meșteșug. Învață tainele Punctului Gastronomic Local și dă formă lutului sau lemnului în curtea pensiunii.</p>
+            <a href="https://wa.me/40749229686?text=Vreau detalii despre Retreat-ul Rădăcini și Gust" class="btn-gold">Cere Programul</a>
+        </article>
+
+        <article class="retreat-card">
+            <img src="images/retreat-spiritual.jpg" class="retreat-img" alt="Spiritualitate" onerror="this.src='https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/hero-camp-munti.jpg'">
+            <span class="retreat-tagline">Liniște & Spirit</span>
+            <h2>Metanoia: Tăcerea Inimii</h2>
+            <div class="retreat-details">
+                <span>4 Zile</span> <span>•</span> <span>Yoga & Meditație</span> <span>•</span> <span>Digital Detox</span>
+            </div>
+            <p>Un refugiu pentru suflet. Practici de prezență conștientă sub cerul liber, sesiuni de stargazing și tăcere deplină pentru a auzi din nou vocea interioară.</p>
+            <a href="https://wa.me/40749229686?text=Vreau detalii despre Retreat-ul Spiritual Metanoia" class="btn-gold">Cere Programul</a>
+        </article>
     </div>
-</section>
+</main>
 
-<section class="container" style="padding: 100px 0;">
-    
-    <article class="event-card">
-        <div class="event-image" style="background-image: url('images/retreat-yoga.jpg');"></div>
-        <div class="event-info">
-            <span class="status-badge" style="background: #e2e8f0; color: #64748b;">MAI 2026 — COMING SOON</span>
-            <h2 class="metanoia-title" style="font-size: 2.5rem; margin-bottom: 20px;">Breath & Fire</h2>
-            <p style="color: #64748b; font-weight: 300; line-height: 1.8; margin-bottom: 30px;">
-                Un weekend dedicat revitalizării la 1000m altitudine. Yoga la răsărit pe Domeniile La Buligă, urmată de o cină ritualică pregătită la foc deschis de echipa <strong>Metanoia Gastro</strong>.
-            </p>
-            <ul style="list-style: none; padding: 0; margin-bottom: 40px; font-size: 0.9rem;">
-                <li style="margin-bottom: 10px;">✨ Sesiuni de Pranayama și Meditație</li>
-                <li style="margin-bottom: 10px;">🔥 Cină "Fire-to-Table" în pădure</li>
-                <li style="margin-bottom: 10px;">🛌 Cazare premium (Single sau Double)</li>
-            </ul>
-            <a href="https://wa.me/40749229686?text=Interesat%20Retreat%20Mai" class="btn" style="border: 1px solid #1b3022; color: #1b3022; text-decoration: none; padding: 15px 30px; border-radius: 50px; font-weight: 800; text-align: center; font-size: 0.7rem;">SOLICITĂ INVITAȚIE</a>
-        </div>
-    </article>
+<a href="https://wa.me/40749229686" class="wa-btn">WhatsApp Direct</a>
 
-    <article class="event-card" style="direction: rtl;">
-        <div class="event-image" style="background-image: url('images/retreat-gastro.jpg');" style="direction: ltr;"></div>
-        <div class="event-info" style="direction: ltr;">
-            <span class="status-badge" style="background: #1b3022; color: #fff;">IUNIE 2026 — LIMITED</span>
-            <h2 class="metanoia-title" style="font-size: 2.5rem; margin-bottom: 20px;">Roots & Flavors</h2>
-            <p style="color: #64748b; font-weight: 300; line-height: 1.8; margin-bottom: 30px;">
-                O incursiune în antropologia culinară a zonei. Învățăm să recunoaștem ierburile sălbatice, vizităm producătorii locali și încheiem cu un workshop de gătit artizanal la SelAva Estate.
-            </p>
-            <ul style="list-style: none; padding: 0; margin-bottom: 40px; font-size: 0.9rem;">
-                <li style="margin-bottom: 10px;">🌿 Foraging tour cu ghid botanist</li>
-                <li style="margin-bottom: 10px;">🍷 Degustare de vinuri transilvănene</li>
-                <li style="margin-bottom: 10px;">🍽️ Workshop gastronomic Metanoia</li>
-            </ul>
-            <a href="https://wa.me/40749229686?text=Interesat%20Retreat%20Iunie" class="btn" style="border: 1px solid #1b3022; color: #1b3022; text-decoration: none; padding: 15px 30px; border-radius: 50px; font-weight: 800; text-align: center; font-size: 0.7rem;">SOLICITĂ INVITAȚIE</a>
-        </div>
-    </article>
-
-</section>
-
-<footer style="background: #122118; color: white; padding: 80px 0; text-align: center;">
-    <div class="container">
-        <h3 class="metanoia-title" style="color: white; margin-bottom: 20px;">Vrei să organizăm un retreat privat?</h3>
-        <p style="font-weight: 300; opacity: 0.7; margin-bottom: 40px;">Pentru grupuri corporate sau private, creăm itinerarii personalizate.</p>
-        <a href="mailto:contact@hateg-alternativ.ro" style="color: #c5a059; text-decoration: none; font-weight: 800; letter-spacing: 2px;">CONTACTEAZĂ-NE</a>
-    </div>
-</footer>
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{};
+    Tawk_API.customStyle = { visibility : { desktop : { xOffset : '30', yOffset : '30', position : 'bottom-left' }, mobile : { xOffset : '20', yOffset : '20', position : 'bottom-left' } } };
+    (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true; s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
+        s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+    })();
+</script>
 
 </body>
 </html>
