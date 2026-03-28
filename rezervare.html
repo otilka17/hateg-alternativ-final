@@ -1,198 +1,373 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rezervare | Hațeg Alternativ</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Colecția Signature | Hațeg Alternativ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     
     <style>
-        /* DESIGN SIGNATURE - REGLAT PENTRU REZERVARE */
-        :root { --verde: #1b3022; --auriu: #c5a059; --crem: #fdfcf8; --alb: #ffffff; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--verde); line-height: 1.6; padding-top: 80px; }
-        
-        h1, h2, h3, .metanoia-title, .brand { font-family: 'Playfair Display', serif; font-weight: 700; text-transform: none; }
-        .italic-style { font-style: italic; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-
-        /* Header Fix & Blur */
-        .site-header { position: fixed; top: 0; width: 100%; z-index: 1500; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.03); }
-        .nav-wrap { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; }
-        .brand { text-decoration: none; color: var(--verde); font-size: 1.3rem; }
-        .main-nav a { text-decoration: none; color: var(--verde); font-size: 1rem; font-family: 'Playfair Display', serif; font-style: italic; margin-left: 25px; }
-
-        /* Hero Rezervare */
-        .booking-hero {
-            min-height: 40vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-                        url('https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/images/feed-4.jpg') center/cover no-repeat;
+        :root { 
+            --verde: #1b3022; 
+            --auriu: #c5a059; 
+            --roz-crem: #fdfcf8;
+            --alb: #ffffff;
+            --text-light: #64748b;
         }
-        .booking-hero h1 { font-size: clamp(3rem, 8vw, 5rem); font-style: italic; }
-
-        /* Formularul Metanoia */
-        .booking-section { transform: translateY(-60px); }
-        .booking-box { background: var(--alb); padding: 80px 60px; border-radius: 40px; box-shadow: 0 40px 100px rgba(0,0,0,0.05); max-width: 900px; margin: 0 auto; }
         
-        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 30px; }
-        label { display: block; font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.1rem; margin-bottom: 10px; color: var(--verde); }
-        input, select, textarea { width: 100%; padding: 15px 20px; border: 1px solid #eee; border-radius: 12px; font-family: 'Inter', sans-serif; font-size: 1rem; background: #fafafa; transition: 0.3s; }
-        input:focus { border-color: var(--auriu); outline: none; background: #fff; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        /* Experiențe Checkboxes */
-        .exp-section { margin: 50px 0; padding-top: 40px; border-top: 1px solid #f0f0f0; }
-        .check-group { display: block; position: relative; padding: 12px 0; cursor: pointer; font-size: 1rem; font-weight: 400; color: #555; }
-        .check-group input { width: auto; margin-right: 15px; accent-color: var(--auriu); }
-
-        /* Preț & Buton */
-        .price-display { display: flex; justify-content: space-between; align-items: center; margin-top: 50px; padding-top: 40px; border-top: 2px solid var(--crem); }
-        #total-val { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--auriu); font-style: italic; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--roz-crem);
+            color: var(--verde);
+            line-height: 1.6;
+        }
         
-        .btn-gold { background: var(--auriu); color: white; padding: 18px 45px; border-radius: 60px; text-decoration: none; font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem; border: none; cursor: pointer; transition: 0.4s; }
-        .btn-gold:hover { transform: translateY(-4px); box-shadow: 0 15px 30px rgba(197,160,89,0.25); }
+        h1, h2, h3, .metanoia-title, .brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
 
-        .wa-btn { position: fixed; bottom: 30px; left: 30px; background: #25d366; color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 2000; box-shadow: 0 10px 20px rgba(0,0,0,0.1); font-family: 'Playfair Display', serif; font-style: italic; }
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-        @media (max-width: 768px) { .form-grid { grid-template-columns: 1fr; } .booking-box { padding: 40px 20px; } .price-display { flex-direction: column; gap: 30px; } }
+        .site-header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1500;
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .nav-wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            padding: 15px 0;
+        }
+
+        .brand {
+            text-decoration: none;
+            color: var(--verde);
+            font-weight: 800;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .main-nav {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .main-nav a {
+            text-decoration: none;
+            color: #444;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .main-nav a.active {
+            color: var(--auriu);
+        }
+
+        .est {
+            font-size: 0.6rem;
+            color: var(--auriu);
+            font-weight: 800;
+            letter-spacing: 2px;
+            white-space: nowrap;
+        }
+
+        .page-header {
+            padding: 120px 0 60px;
+            text-align: center;
+        }
+
+        .page-kicker {
+            color: var(--auriu);
+            letter-spacing: 5px;
+            font-weight: 800;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 14px;
+        }
+
+        .page-header h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-style: italic;
+            margin-bottom: 15px;
+            line-height: 1;
+        }
+
+        .page-header p {
+            color: var(--text-light);
+            font-weight: 300;
+            letter-spacing: 1px;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        .pensiuni-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 40px;
+            margin-bottom: 100px;
+        }
+        
+        .pensiune-card { 
+            background: var(--alb);
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.03);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            border: 1px solid #f1f1f1;
+        }
+
+        .pensiune-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 24px 70px rgba(0,0,0,0.06);
+        }
+        
+        .card-img-wrap {
+            height: 400px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .pensiune-card:hover .card-img-wrap img {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 40px;
+            text-align: center;
+        }
+
+        .card-kicker {
+            color: var(--auriu);
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .card-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .card-content p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        .btn-gold { 
+            background: var(--auriu);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: inline-block;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn-gold:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(197,160,89,0.3);
+        }
+
+        .wa-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: #25d366;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            z-index: 2000;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            font-size: 0.8rem;
+            transition: transform 0.2s ease;
+        }
+
+        .wa-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        footer {
+            background: #122118;
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .main-nav {
+                display: none;
+            }
+
+            .page-header {
+                padding: 105px 0 45px;
+            }
+
+            .pensiuni-grid {
+                grid-template-columns: 1fr;
+                gap: 28px;
+                margin-bottom: 80px;
+            }
+
+            .card-img-wrap {
+                height: 300px;
+            }
+
+            .card-content {
+                padding: 28px 22px;
+            }
+
+            .card-content h3 {
+                font-size: 1.55rem;
+            }
+
+            .wa-btn {
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: 14px;
+                padding: 12px 22px;
+                font-size: 0.76rem;
+            }
+
+            .wa-btn:hover {
+                transform: translateX(-50%) translateY(-2px);
+            }
+        }
     </style>
 </head>
 <body>
 
 <header class="site-header">
     <div class="container nav-wrap">
-        <a href="index.html" class="brand italic-style">Hațeg Alternativ</a>
-        <nav class="main-nav">
-            <a href="pensiuni.html">Pensiuni</a>
-            <a href="experiente.html">Experiențe</a>
-            <a href="rezervare.html" style="color: var(--auriu);">Rezervă</a>
-        </nav>
-        <div style="font-family: 'Playfair Display', serif; font-style: italic; color: var(--auriu);">Est. 2026</div>
+        <a href="index.html" class="brand">HAȚEG <strong>ALTERNATIV</strong></a>
+
+        <div class="header-right">
+            <nav class="main-nav">
+                <a href="index.html">Acasă</a>
+                <a href="pensiuni.html" class="active">Pensiuni</a>
+                <a href="retreat.html">Retreat</a>
+                <a href="gastronomic.html">Gastronomic</a>
+                <a href="forum.html">Forum</a>
+            </nav>
+
+            <span class="est">EST. 2026</span>
+        </div>
     </div>
 </header>
 
-<section class="booking-hero">
-    <div class="container">
-        <h1 class="italic-style">Creează-ți sejurul.</h1>
-        <p style="font-family: 'Playfair Display', serif; font-style: italic;">O experiență croită pe sufletul tău.</p>
+<main class="container">
+    <div class="page-header">
+        <span class="page-kicker">The Collection</span>
+        <h1>Locuri cu suflet.</h1>
+        <p>O selecție curatoriată de refugii unde liniștea este cel mai mare lux.</p>
     </div>
-</section>
 
-<section class="booking-section container">
-    <div class="booking-box">
-        <h2 class="metanoia-title italic-style" style="text-align: center; font-size: 2.5rem; margin-bottom: 50px;">Detalii Rezervare</h2>
-        
-        <form id="booking-form">
-            <div class="form-grid">
-                <div><label>Nume complet</label><input type="text" id="nume" required></div>
-                <div><label>Telefon</label><input type="tel" id="telefon" required></div>
+    <div class="pensiuni-grid">
+        <article class="pensiune-card">
+            <div class="card-img-wrap">
+                <img src="images/selava-pensiune.jpg" alt="SELAva Estate">
             </div>
+            <div class="card-content">
+                <span class="card-kicker">Design & Gastro</span>
+                <h3>SELAva Estate</h3>
+                <p>Unde minimalismul modern întâlnește gustul autentic. O destinație pentru esteticieni și pasionații de fine-dining rural.</p>
+                <a href="rezervare.html?loc=selava" class="btn-gold">Rezervă acum</a>
+            </div>
+        </article>
 
-            <div class="form-grid">
-                <div><label>Email</label><input type="email" id="email" required></div>
-                <div>
-                    <label>Locație</label>
-                    <select id="locatie" required>
-                        <option value="Domeniile La Buligă">Domeniile La Buligă (2800 lei/noapte)</option>
-                        <option value="SELAva">SELAva (550 lei/persoană)</option>
-                        <option value="Pensiunea Natalia">Pensiunea Natalia (250 lei/persoană)</option>
-                    </select>
-                </div>
+        <article class="pensiune-card">
+            <div class="card-img-wrap">
+                <img src="images/la-buliga-pensiune.jpg" alt="Domeniile La Buligă">
             </div>
+            <div class="card-content">
+                <span class="card-kicker">Mountain Retreat</span>
+                <h3>Domeniile La Buligă</h3>
+                <p>O experiență rară la peste 1000m altitudine. Izolare totală deasupra norilor pentru grupuri care caută regăsirea.</p>
+                <a href="rezervare.html?loc=buliga" class="btn-gold">Rezervă acum</a>
+            </div>
+        </article>
 
-            <div class="form-grid">
-                <div><label>Check-in</label><input type="date" id="checkin" required></div>
-                <div><label>Check-out</label><input type="date" id="checkout" required></div>
+        <article class="pensiune-card">
+            <div class="card-img-wrap">
+                <img src="images/natalia-pensiune.jpg" alt="Pensiunea Natalia">
             </div>
-
-            <div class="form-grid">
-                <div><label>Oaspeți</label><input type="number" id="persoane" value="1" min="1" required></div>
-                <div><label>Nopți</label><input type="text" id="nightsDisplay" value="1" readonly style="opacity: 0.6; cursor: not-allowed;"></div>
+            <div class="card-content">
+                <span class="card-kicker">Authentic Stay</span>
+                <h3>Pensiunea Natalia</h3>
+                <p>Locul unde ospitalitatea Țării Hațegului prinde viață. Mic dejun legendar și căldura unei case de munte adevărate.</p>
+                <a href="rezervare.html?loc=natalia" class="btn-gold">Rezervă acum</a>
             </div>
-
-            <div style="margin-top: 30px;">
-                <label>Mesaj pentru gazdă</label>
-                <textarea id="mesaj" rows="4" placeholder="Cerințe speciale sau gânduri..."></textarea>
-            </div>
-
-            <div class="exp-section">
-                <h3 class="metanoia-title italic-style">Adaugă Experiențe</h3>
-                <label class="check-group"><input type="checkbox" class="exp-item" data-name="Cină" value="120"> Cină Tradițională (+120 lei/pers)</label>
-                <label class="check-group"><input type="checkbox" class="exp-item" data-name="Tur" value="150"> Tur Ghidat (+150 lei/pers)</label>
-                <label class="check-group"><input type="checkbox" class="exp-item" data-name="Stână" value="120"> Masă la Stână (+120 lei/pers)</label>
-            </div>
-
-            <div class="price-display">
-                <div>
-                    <span style="font-family: 'Playfair Display', serif; font-style: italic; opacity: 0.6;">Total estimat</span>
-                    <h2 id="total-val">0 lei</h2>
-                </div>
-                <button type="submit" class="btn-gold" id="submit-btn">Trimite solicitarea</button>
-            </div>
-            <div id="form-msg" style="text-align: center; margin-top: 20px;"></div>
-        </form>
+        </article>
     </div>
-</section>
+</main>
 
-<a href="https://wa.me/40749229686" class="wa-btn">WhatsApp Direct</a>
+<a href="https://wa.me/40749229686" class="wa-btn" target="_blank" rel="noopener noreferrer">WhatsApp Direct</a>
 
-<script>
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzsI6M2Pvyn5giR8H6nWBs1RfnmBjq2rr3jSN_vEwYKfjXbcFWaJy-6TQpgSfdrmqss/exec";
-    const basePrices = { "Domeniile La Buligă": 2800, "SELAva": 550, "Pensiunea Natalia": 250 };
+<footer>
+    © 2026 HAȚEG ALTERNATIV | SIGNATURE COLLECTION
+</footer>
 
-    function calculateTotal() {
-        const checkin = new Date(document.getElementById('checkin').value);
-        const checkout = new Date(document.getElementById('checkout').value);
-        const nights = Math.ceil((checkout - checkin) / (1000 * 60 * 60 * 24)) || 1;
-        document.getElementById('nightsDisplay').value = nights > 0 ? nights : 1;
-
-        const locatie = document.getElementById('locatie').value;
-        const persoane = parseInt(document.getElementById('persoane').value) || 1;
-        
-        let total = 0;
-        if (locatie === "Domeniile La Buligă") total = basePrices[locatie] * (nights > 0 ? nights : 1);
-        else total = basePrices[locatie] * (nights > 0 ? nights : 1) * persoane;
-
-        document.querySelectorAll('.exp-item:checked').forEach(item => {
-            total += parseInt(item.value) * persoane;
-        });
-
-        document.getElementById('total-val').innerText = total.toLocaleString('ro-RO') + " lei";
-        return total;
-    }
-
-    document.querySelectorAll('#locatie, #persoane, #checkin, #checkout, .exp-item').forEach(el => {
-        el.addEventListener('change', calculateTotal);
-    });
-
-    document.getElementById('booking-form').addEventListener('submit', async function(e) {
-        e.preventDefault();
-        const btn = document.getElementById('submit-btn');
-        const msg = document.getElementById('form-msg');
-        btn.innerText = "Se trimite..."; btn.disabled = true;
-
-        const payload = {
-            nume: document.getElementById('nume').value,
-            telefon: document.getElementById('telefon').value,
-            email: document.getElementById('email').value,
-            locatie: document.getElementById('locatie').value,
-            checkin: document.getElementById('checkin').value,
-            checkout: document.getElementById('checkout').value,
-            persoane: document.getElementById('persoane').value,
-            total: `[TOTAL: ${calculateTotal()} lei]`
-        };
-
-        try {
-            const response = await fetch(SCRIPT_URL, { method: "POST", body: JSON.stringify(payload) });
-            msg.innerHTML = "✨ Solicitarea a fost trimisă. Revenim curând!";
-            msg.style.color = "var(--auriu)";
-            this.reset();
-        } catch (error) {
-            msg.innerHTML = "A apărut o eroare. Reîncearcă sau contactează-ne pe WhatsApp.";
-            msg.style.color = "#ff6b6b";
-        } finally {
-            btn.innerText = "Trimite solicitarea"; btn.disabled = false;
-        }
-    });
+<script type="text/javascript">
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+    (function(){
+        var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+        s1.async = true;
+        s1.src = 'https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
+        s1.charset = 'UTF-8';
+        s1.setAttribute('crossorigin', '*');
+        s0.parentNode.insertBefore(s1, s0);
+    })();
 </script>
 
 </body>
