@@ -6,70 +6,83 @@
     <title>Hațeg Alternativ | Experiențe Premium</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css" />
+    <style>
+        /* Fix pentru Header și Spacing */
+        body { margin-top: 80px; background: #fdfcf8; }
+        .whatsapp-float {
+            position: fixed; bottom: 30px; right: 30px;
+            background: #25d366; color: white;
+            padding: 15px 25px; border-radius: 50px;
+            text-decoration: none; font-weight: 800;
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+            z-index: 2000; transition: 0.3s;
+            display: flex; align-items: center; gap: 10px;
+        }
+        .whatsapp-float:hover { transform: translateY(-5px); background: #128c7e; }
+    </style>
 </head>
 <body>
-    <header class="site-header">
-        <div class="container nav-wrap">
-            <a href="index.html" class="brand">
-                <span style="font-weight: 300; letter-spacing: 2px;">HAȚEG</span>
-                <span style="font-weight: 800;">ALTERNATIV</span>
-            </a>
-            <nav class="main-nav">
-                <a href="pensiuni.html">Pensiuni</a>
-                <a href="retreat.html">Retreat</a>
-                <a href="gastronomic.html">Gastronomic</a>
-            </nav>
-            <div class="nav-actions">
-                <a href="#join" class="btn btn-gold" style="padding: 10px 20px; font-size: 0.8rem;">Cont Membru</a>
-            </div>
-        </div>
-    </header>
 
-    <section class="hero-premium" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('images/hero-premium.jpg') center/cover;">
-        <div class="container">
-            <h1 class="metanoia-title" style="color: white; font-size: clamp(3rem, 8vw, 5rem);">Acolo unde tăcerea are voce.</h1>
-            <p style="color: white; max-width: 600px; margin: 30px auto; font-size: 1.2rem; font-weight: 300;">O platformă curatoriată pentru călătorul modern care caută luxul în simplitate.</p>
-            <a href="pensiuni.html" class="btn btn-gold">Descoperă Colecția</a>
-        </div>
-    </section>
+<header class="site-header" style="position: fixed; top: 0; width: 100%; z-index: 1500; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #eee;">
+    <div class="container nav-wrap" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0;">
+        <a href="index.html" class="brand" style="text-decoration: none; color: #1b3022; font-weight: 800; font-size: 1.2rem; letter-spacing: 1px;">
+            <span style="font-weight: 300;">HAȚEG</span> ALTERNATIV
+        </a>
+        <nav class="main-nav" style="display: flex; gap: 25px;">
+            <a href="pensiuni.html" style="text-decoration: none; color: #333; font-weight: 600;">Pensiuni</a>
+            <a href="retreat.html" style="text-decoration: none; color: #333; font-weight: 600;">Retreat</a>
+            <a href="gastronomic.html" style="text-decoration: none; color: #333; font-weight: 600;">Gastronomic</a>
+        </nav>
+        <a href="#join" style="text-decoration: none; color: #c5a059; font-weight: 800; font-size: 0.8rem; text-transform: uppercase;">Cont Membru</a>
+    </div>
+</header>
 
-    <section class="container" style="padding: 100px 0;">
-        <div class="section-intro" style="text-align: center; margin-bottom: 60px;">
-            <h2 class="metanoia-title" style="font-size: 3rem;">Vibe-ul Locului</h2>
-        </div>
-        <div class="feed-grid">
-            <div class="feed-item"><img src="images/feed-1.jpg"></div>
-            <div class="feed-item"><img src="images/feed-2.jpg"></div>
-            <div class="feed-item"><img src="images/feed-3.jpg"></div>
-            <div class="feed-item"><img src="images/feed-4.jpg"></div>
-        </div>
-    </section>
+<section class="hero-premium" style="height: 80vh; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('images/hero-premium.jpg') center/cover; display: flex; align-items: center; justify-content: center; text-align: center; color: white;">
+    <div class="container">
+        <h1 class="metanoia-title" style="font-size: clamp(3rem, 7vw, 5rem); color: white;">Simte tăcerea munților.</h1>
+        <p style="font-size: 1.2rem; font-weight: 300; margin: 20px 0 40px;">O selecție exclusivă de domenii private în Țara Hațegului.</p>
+        <a href="pensiuni.html" class="btn btn-gold" style="background: #c5a059; color: white; padding: 15px 40px; border-radius: 50px; text-decoration: none; font-weight: 800;">VEZI COLECȚIA</a>
+    </div>
+</section>
 
-    <section id="join" class="container" style="margin-bottom: 100px;">
-        <div class="membership-card" style="background: var(--primary); color: white; padding: 60px; border-radius: 20px; display: flex; align-items: center; gap: 40px;">
-            <div style="flex: 1;">
-                <h2 class="metanoia-title" style="color: white; font-size: 2.5rem;">Devino membru</h2>
-                <p style="margin: 20px 0 40px; font-weight: 300; opacity: 0.8;">Acces prioritar la retreat-uri și cine secrete.</p>
-                <form id="membership-form" style="display: flex; gap: 10px;">
-                    <input type="email" id="member-email" placeholder="Email-ul tău" required style="flex: 1; padding: 15px; border-radius: 10px; border: none;">
-                    <button type="submit" class="btn btn-gold">Creează Cont</button>
-                </form>
-                <p id="form-msg" style="margin-top: 15px; font-size: 0.9rem; color: #c5a059;"></p>
-            </div>
-            <div style="flex: 0.6;"><img src="images/membership-key.png" style="width: 100%; border-radius: 15px;"></div>
-        </div>
-    </section>
+<section style="padding: 100px 0; background: white; text-align: center;">
+    <div class="container">
+        <span class="eyebrow" style="color: #c5a059; letter-spacing: 3px; font-weight: 800;">REZERVARE RAPIDĂ</span>
+        <h2 class="metanoia-title" style="font-size: 3rem; margin: 20px 0;">Preferi să discutăm pe WhatsApp?</h2>
+        <p style="max-width: 600px; margin: 0 auto 40px; color: #666;">Suntem aici pentru a-ți planifica sejurul ideal. Trimite-ne un mesaj și revenim cu o ofertă personalizată în cel mai scurt timp.</p>
+        
+        <a href="https://wa.me/40749229686?text=Bună%20ziua!%20Doresc%20să%20solicit%20o%20ofertă%20de%20rezervare%20pentru%20Hațeg%20Alternativ." 
+           target="_blank" 
+           class="btn-forest" 
+           style="background: #25d366; color: white; padding: 20px 50px; border-radius: 50px; text-decoration: none; font-weight: 800; display: inline-flex; align-items: center; gap: 10px; font-size: 1.1rem;">
+           RESERVĂ PE WHATSAPP
+        </a>
+    </div>
+</section>
 
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script>
-        (function(){ emailjs.init("YOUR_PUBLIC_KEY"); })();
-        document.getElementById('membership-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const msg = document.getElementById('form-msg');
-            msg.innerText = "Se trimite...";
-            emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", { new_member_email: document.getElementById('member-email').value })
-                .then(() => { msg.innerText = "✨ Bun venit în comunitate!"; document.getElementById('membership-form').reset(); });
-        });
-    </script>
+<section id="join" class="container" style="margin-bottom: 100px;">
+    <div class="membership-card" style="background: #1b3022; border-radius: 20px; padding: 60px; display: flex; align-items: center; gap: 40px; color: white; overflow: hidden;">
+        <div style="flex: 1;">
+            <h2 class="metanoia-title" style="font-size: 3rem; color: white; margin-bottom: 20px;">Devino membru</h2>
+            <p style="margin-bottom: 40px; opacity: 0.8;">Primești acces prioritar la retreat-uri și cine gastronomice secrete.</p>
+            <form id="membership-form" style="display: flex; gap: 15px;">
+                <input type="email" id="member-email" placeholder="Email-ul tău" required style="padding: 15px; border-radius: 10px; border: none; flex: 1;">
+                <button type="submit" style="padding: 15px 30px; border-radius: 10px; border: none; background: #c5a059; color: white; font-weight: 800; cursor: pointer;">ÎNSCRIE-TE</button>
+            </form>
+        </div>
+        <div style="flex: 0.7;">
+            <img src="images/membership-key.png" style="width: 100%; border-radius: 15px; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.5));">
+        </div>
+    </div>
+</section>
+
+<a href="https://wa.me/40749229686" class="whatsapp-float" target="_blank">
+    <span>Chat WhatsApp</span>
+</a>
+
+<footer style="background: #122118; color: white; padding: 60px 0; text-align: center;">
+    <p>© 2026 Hațeg Alternativ — Signature Collection</p>
+</footer>
+
 </body>
 </html>
