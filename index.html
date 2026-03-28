@@ -1,151 +1,120 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hațeg Alternativ | Simte tăcerea</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hațeg Alternativ | Signature</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --verde: #1b3022; --auriu: #c5a059; --crem: #fdfcf8; --alb: #ffffff; }
-        
+        :root { --verde: #1b3022; --auriu: #c5a059; --crem: #fdfcf8; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background: var(--verde); /* Fundal închis pentru contrast cu muntele */
-            color: var(--alb); 
-            overflow-x: hidden;
-        }
+        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--verde); overflow-x: hidden; }
+        
+        /* HEADER SIMPLU */
+        header { padding: 40px 20px; text-align: center; background: white; }
+        .brand { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--verde); text-decoration: none; display: block; line-height: 1; }
+        .est { font-size: 0.7rem; letter-spacing: 3px; color: var(--auriu); margin-top: 10px; display: block; font-weight: 600; }
+        
+        nav { margin-top: 30px; display: flex; justify-content: center; gap: 20px; border-top: 1px solid #f0f0f0; padding-top: 20px; }
+        nav a { text-decoration: none; color: var(--verde); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
 
-        /* MUNTELE ÎN FUNDAL PE TOT ECRANUL */
-        .hero-bg {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), 
-                        url('https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/hero-camp-munti.jpg') center/cover no-repeat;
-            z-index: -1;
-        }
+        /* HERO CU MUNTELE IN CASETĂ (Ca in poza ta) */
+        .hero { position: relative; width: 100%; height: 70vh; margin-top: 10px; overflow: hidden; }
+        .hero img { width: 100%; height: 100%; object-fit: cover; }
+        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.2); display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px; color: white; }
+        
+        h1 { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(2.5rem, 8vw, 4.5rem); line-height: 1.1; margin-bottom: 20px; }
 
-        header { padding: 30px; display: flex; justify-content: space-between; align-items: center; position: absolute; width: 100%; top: 0; }
-        .brand { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.5rem; text-decoration: none; color: white; }
-        .main-nav a { font-family: 'Playfair Display', serif; font-style: italic; color: white; text-decoration: none; margin-left: 20px; font-size: 1.1rem; }
+        /* CARD VIP MIC */
+        .vip-section { padding: 60px 20px; background: var(--verde); color: white; text-align: center; }
+        .vip-card { max-width: 400px; margin: 0 auto; }
+        .vip-card h2 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 2.2rem; margin-bottom: 15px; }
+        .vip-card p { font-weight: 300; opacity: 0.8; margin-bottom: 25px; font-size: 0.9rem; }
+        
+        input { padding: 12px 20px; border-radius: 50px; border: none; width: 220px; margin-bottom: 10px; }
+        .btn-gold { background: var(--auriu); color: white; padding: 12px 30px; border-radius: 50px; border: none; font-family: 'Playfair Display', serif; font-style: italic; cursor: pointer; }
 
-        .hero-content {
-            height: 90vh;
-            display: flex; flex-direction: column;
-            justify-content: center; align-items: center;
-            text-align: center; padding: 0 20px;
-        }
+        /* BUTOANE CONTACT */
+        .wa-btn { position: fixed; bottom: 25px; right: 25px; background: #25d366; color: white; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 9999; box-shadow: 0 5px 15px rgba(0,0,0,0.1); font-size: 0.8rem; }
+        
+        /* JURNAL LIVE */
+        #journal { padding: 60px 20px; text-align: center; }
+        .post { max-width: 500px; margin: 40px auto; background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); color: var(--verde); }
+        .post img { width: 100%; height: 300px; object-fit: cover; }
+        .post-body { padding: 30px; }
 
-        h1 { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(3.5rem, 10vw, 6rem); margin-bottom: 10px; }
-        .hero-p { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.5rem; margin-bottom: 40px; opacity: 0.9; }
-
-        /* CARDUL VIP - ACUM MIC ȘI ELEGANT */
-        .vip-mini-card {
-            background: rgba(27, 48, 34, 0.85);
-            backdrop-filter: blur(10px);
-            padding: 30px;
-            border-radius: 20px;
-            max-width: 500px;
-            margin: 0 auto 100px;
-            border: 1px solid rgba(197, 160, 89, 0.3);
-            display: flex; align-items: center; gap: 20px;
-            text-align: left;
-        }
-        .vip-mini-card h2 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.8rem; margin-bottom: 5px; }
-        .vip-mini-card p { font-size: 0.9rem; opacity: 0.8; margin-bottom: 15px; }
-        .vip-img { width: 80px; height: auto; }
-
-        input { padding: 10px 15px; border-radius: 50px; border: none; font-size: 0.8rem; width: 160px; }
-        .btn-gold { 
-            background: var(--auriu); color: white; padding: 10px 25px; 
-            border-radius: 50px; text-decoration: none; font-family: 'Playfair Display', serif; 
-            font-style: italic; border: none; cursor: pointer;
-        }
-
-        /* WHATSAPP DREAPTA */
-        .wa-float {
-            position: fixed; bottom: 30px; right: 30px;
-            background: #25d366; color: white; padding: 12px 25px;
-            border-radius: 50px; text-decoration: none; font-weight: 700;
-            z-index: 9999; box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        /* JURNALUL LIVE */
-        .journal { padding: 50px 20px; background: var(--crem); color: var(--verde); }
-        .post-card { max-width: 600px; margin: 40px auto; background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .post-img { width: 100%; height: 300px; object-fit: cover; }
-        .post-info { padding: 30px; text-align: center; }
+        /* TAWK TO IN STANGA */
+        iframe#chat-widget { left: 20px !important; right: auto !important; }
     </style>
 </head>
 <body>
 
-<div class="hero-bg"></div>
-
 <header>
-    <a href="#" class="brand">Hațeg Alternativ</a>
-    <nav class="main-nav">
+    <a href="index.html" class="brand">HAȚEG<br>ALTERNATIV</a>
+    <span class="est">EST. 2026</span>
+    <nav>
         <a href="pensiuni.html">Pensiuni</a>
         <a href="retreat.html">Retreat</a>
+        <a href="rezervare.html">Rezervă</a>
     </nav>
 </header>
 
-<section class="hero-content">
-    <h1>Simte tăcerea.</h1>
-    <p class="hero-p">O selecție de refugii în inima Transilvaniei</p>
-    
-    <div class="vip-mini-card">
-        <div style="flex: 1;">
-            <h2>Devino membru</h2>
-            <p>Invitații la cine secrete și retreat-uri.</p>
-            <form id="membership-form">
-                <input type="email" id="member-email" placeholder="Email" required>
-                <button type="submit" class="btn-gold">Ok</button>
-            </form>
-        </div>
-        <img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/images/membership-key.png" class="vip-img" alt="VIP">
+<section class="hero">
+    <img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/hero-camp-munti.jpg" alt="Munte">
+    <div class="hero-overlay">
+        <h1>Simte tăcerea.<br>O selecție exclusivă.</h1>
     </div>
 </section>
 
-<main class="journal" id="journal-container">
-    <h2 style="text-align: center; font-family: 'Playfair Display', serif; font-style: italic; font-size: 2.5rem;">Jurnal Live</h2>
+<section class="vip-section">
+    <div class="vip-card">
+        <h2>Devino membru</h2>
+        <p>Acces prioritar la retreat-uri private.</p>
+        <form>
+            <input type="email" placeholder="Email-ul tău" required>
+            <button type="submit" class="btn-gold">Ok</button>
+        </form>
+    </div>
+</section>
+
+<main id="journal">
     </main>
 
-<a href="https://wa.me/40749229686" class="wa-float">WhatsApp</a>
+<a href="https://wa.me/40749229686" class="wa-btn">WhatsApp</a>
 
 <script type="text/javascript">
-var Tawk_API=Tawk_API||{};
-Tawk_API.customStyle = { visibility : { desktop : { xOffset : '30', yOffset : '30', position : 'bottom-left' }, mobile : { xOffset : '20', yOffset : '20', position : 'bottom-left' } } };
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true; s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
-s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
+    // TAWK TO IN STANGA
+    var Tawk_API=Tawk_API||{};
+    Tawk_API.customStyle = { visibility : { desktop : { xOffset : '20', yOffset : '20', position : 'bottom-left' }, mobile : { xOffset : '20', yOffset : '20', position : 'bottom-left' } } };
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true; s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
+    s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
 
-<script>
+    // JURNAL LIVE
     const SHEETS_URL = "https://script.google.com/macros/s/AKfycbz1b5qQajTQQH6QdJDb1ov5qIAhguAqdm1jjmk5uF0q7F-zq85eGE-ua_VAcgopzDtP/exec?action=getLive";
-    async function loadJournal() {
+    async function load() {
         try {
-            const response = await fetch(SHEETS_URL);
-            const data = await response.json();
-            const container = document.getElementById('journal-container');
-            data.reverse().forEach(post => {
+            const res = await fetch(SHEETS_URL);
+            const data = await res.json();
+            const container = document.getElementById('journal');
+            data.reverse().forEach(p => {
                 container.innerHTML += `
-                    <div class="post-card">
-                        <img src="${post.Imagine_URL}" class="post-img" onerror="this.src='https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/images/hero-camp-munti.jpg'">
-                        <div class="post-info">
-                            <span style="color: #c5a059; font-style: italic;">${post.Data}</span>
-                            <h3 style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.8rem; margin: 10px 0;">${post.Mesaj}</h3>
+                    <div class="post">
+                        <img src="${p.Imagine_URL}" onerror="this.src='https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/hero-camp-munti.jpg'">
+                        <div class="post-body">
+                            <span style="color:var(--auriu); font-style:italic;">${p.Data}</span>
+                            <h3 style="font-family:'Playfair Display',serif; font-style:italic; font-size:1.8rem; margin:15px 0;">${p.Mesaj}</h3>
+                            <div style="color:var(--auriu); cursor:pointer;">Apreciază ♡</div>
                         </div>
                     </div>`;
             });
-        } catch (e) { console.log(e); }
+        } catch(e) {}
     }
-    loadJournal();
+    load();
 </script>
 
 </body>
