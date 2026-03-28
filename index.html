@@ -78,10 +78,11 @@ s0.parentNode.insertBefore(s1,s0);
 <a href="https://wa.me/40749229686?text=Bună%20ziua!%20Doresc%20să%20solicit%20o%20ofertă%20pentru%20Hațeg%20Alternativ." class="whatsapp-float" target="_blank">
     Chat WhatsApp
 </a>
-
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script type="text/javascript">
-    (function() { emailjs.init("KfAXAcZDiuFeeFZzj"); })();
+    (function() { 
+        emailjs.init("KfAXAcZDiuFeeFZzj"); 
+    })();
 
     document.getElementById('membership-form').addEventListener('submit', function(e) {
         e.preventDefault();
@@ -94,13 +95,14 @@ s0.parentNode.insertBefore(s1,s0);
 
         const templateParams = {
             name: emailInput.value,
-            email: emailInput.value, // Adaugat pentru a evita eroarea in Reply-To din EmailJS
+            email: emailInput.value,
             time: new Date().toLocaleString('ro-RO'),
             message: "Solicitare nouă de înscriere în comunitatea Premium Hațeg Alternativ.",
             title: "Membru Nou"
         };
 
-        emailjs.send("service_iqnbicr", "template_58x2s1c", templateParams)
+        // AM ACTUALIZAT ID-ul TEMPLATE-ULUI AICI:
+        emailjs.send("service_iqnbicr", "template_0j0ygug", templateParams)
             .then(function() {
                 msg.innerHTML = "✨ Bun venit în comunitate!";
                 msg.style.color = "#c5a059";
@@ -108,7 +110,7 @@ s0.parentNode.insertBefore(s1,s0);
                 btn.style.display = "none";
             }, function(error) {
                 console.error('FAILED...', error);
-                msg.innerHTML = "Eroare la trimitere. Te rugăm să încerci din nou.";
+                msg.innerHTML = "Eroare: " + JSON.stringify(error.text);
                 msg.style.color = "#ff6b6b";
                 btn.disabled = false;
                 btn.innerText = "ÎNSCRIE-TE";
