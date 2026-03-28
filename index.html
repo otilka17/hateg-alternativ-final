@@ -3,128 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hațeg alternativ | Simte tăcerea</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <title>Hațeg Alternativ | Simte tăcerea</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS SIGNATURE - STABIL ȘI LUXOS */
+        :root { --verde: #1b3022; --auriu: #c5a059; --crem: #fdfcf8; --alb: #ffffff; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--verde); line-height: 1.6; }
+        
+        h1, h2, h3, .metanoia-title { font-family: 'Playfair Display', serif; font-weight: 700; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        /* Navigație Curată - Cele 4 pagini */
+        .site-header { background: var(--alb); padding: 25px 0; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 1000; }
+        .nav-wrap { display: flex; justify-content: space-between; align-items: center; }
+        .brand { text-decoration: none; color: var(--verde); font-size: 1.1rem; letter-spacing: 2px; }
+        .main-nav a { text-decoration: none; color: #444; font-size: 0.8rem; margin-left: 30px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+        .main-nav a:hover { color: var(--auriu); }
+
+        /* Hero Image - Poza Superbă cu Muntele */
+        .hero-image { 
+            height: 65vh; 
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.1)), 
+                        url('https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/hero-camp-munti.jpg') center/cover no-repeat;
+        }
+
+        /* Panel Central (La fel ca la Buligă) */
+        .main-panel { 
+            transform: translateY(-100px); 
+            background: var(--alb); 
+            padding: 80px 60px; 
+            max-width: 1000px; 
+            margin: 0 auto; 
+            box-shadow: 0 40px 100px rgba(0,0,0,0.05);
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .kicker { color: var(--auriu); letter-spacing: 5px; font-size: 0.8rem; font-weight: 800; display: block; margin-bottom: 20px; text-transform: uppercase; }
+        .metanoia-title { font-size: clamp(2.5rem, 6vw, 4.5rem); margin-bottom: 30px; line-height: 1.1; color: var(--verde); }
+        .description { font-weight: 300; line-height: 2; font-size: 1.2rem; color: #444; max-width: 700px; margin: 0 auto 40px; }
+
+        /* Butonul de Aur */
+        .btn-gold { 
+            background: var(--auriu); 
+            color: var(--alb); 
+            padding: 20px 50px; 
+            text-decoration: none; 
+            display: inline-block; 
+            font-weight: 700; 
+            font-size: 0.85rem; 
+            text-transform: uppercase; 
+            letter-spacing: 3px;
+            border-radius: 50px;
+            transition: 0.4s;
+        }
+        .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(197,160,89,0.3); }
+
+        /* Contact Fix */
+        .wa-btn { position: fixed; bottom: 30px; left: 30px; background: #25d366; color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 999; box-shadow: 0 10px 20px rgba(0,0,0,0.1); font-size: 0.8rem; letter-spacing: 1px; }
+
+        @media (max-width: 768px) { 
+            .main-panel { padding: 50px 20px; transform: translateY(-50px); } 
+            .main-nav { display: none; }
+        }
+    </style>
 </head>
 <body>
 
-<header class="site-header">
-    <div class="container nav-wrap">
-        <a href="index.html" class="brand">Hațeg alternativ</a>
-        <nav class="main-nav">
-            <a href="pensiuni.html">Pensiuni</a>
-            <a href="retreat.html">Retreat</a>
-            <a href="gastronomic.html">Gastro</a>
-        </nav>
-    </div>
-</header>
+    <header class="site-header">
+        <div class="container nav-wrap">
+            <a href="index.html" class="brand">HAȚEG <strong>ALTERNATIV</strong></a>
+            <nav class="main-nav">
+                <a href="pensiuni.html">Pensiuni</a>
+                <a href="experiente.html">Experiențe</a>
+                <a href="obiective.html">Obiective</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+    </header>
 
-<section class="hero-premium">
-    <div class="container">
-        <h1 class="metanoia-title hero-main">Simte tăcerea.</h1>
-        <p class="hero-subtitle">Deschiderea sezonului la 1 mai 2026</p>
-        <a href="pensiuni.html" class="btn-gold">Explorați colecția</a>
-    </div>
-</section>
+    <section class="hero-image"></section>
 
-<main class="container">
-    <div class="cards-container">
-        <div class="card-preview">
-            <div class="card-image"><img src="selava-pensiune.jpg" alt="SelAva estate"></div>
-            <div class="card-info">
-                <h3 class="metanoia-title">SelAva estate</h3>
-                <p class="card-tagline">Design & fine dining.</p>
-                <div class="card-buttons">
-                    <a href="pensiuni.html" class="btn-outline">Detalii</a>
-                    <a href="rezervare.html" class="btn-gold">Rezervă</a>
-                </div>
+    <main class="container">
+        <div class="main-panel">
+            <span class="kicker">Simte tăcerea</span>
+            <h1 class="metanoia-title">Trăiește <br>Hațegul Real</h1>
+            
+            <p class="description">
+                O colecție curatoriată de spații și momente autentice, creată pentru cei care caută să se reconecteze cu natura și tradiția. Mai mult decât o vizită, o stare de spirit.
+            </p>
+
+            <a href="pensiuni.html" class="btn-gold">Descoperă Colecția</a>
+
+            <div style="margin-top: 60px; border-top: 1px solid #eee; padding-top: 40px; display: flex; justify-content: center; gap: 40px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--verde); font-weight: 800; opacity: 0.8;">
+                <span>✦ Pensiuni de caracter</span>
+                <span>✦ Retreat-uri private</span>
+                <span>✦ Gastronomie locală</span>
             </div>
         </div>
+    </main>
 
-        <div class="card-preview">
-            <div class="card-image"><img src="la-buliga-pensiune.jpg" alt="Domeniile la Buligă"></div>
-            <div class="card-info">
-                <h3 class="metanoia-title">La Buligă</h3>
-                <p class="card-tagline">Izolare la 1000m.</p>
-                <div class="card-buttons">
-                    <a href="pensiuni.html" class="btn-outline">Detalii</a>
-                    <a href="rezervare.html" class="btn-gold">Rezervă</a>
-                </div>
-            </div>
-        </div>
+    <a href="https://wa.me/40749229686" class="wa-btn">WHATSAPP DIRECT</a>
 
-        <div class="card-preview">
-            <div class="card-image"><img src="natalia-pensiune.jpg" alt="Pensiunea Natalia"></div>
-            <div class="card-info">
-                <h3 class="metanoia-title">Natalia</h3>
-                <p class="card-tagline">Tradiție & suflet.</p>
-                <div class="card-buttons">
-                    <a href="pensiuni.html" class="btn-outline">Detalii</a>
-                    <a href="rezervare.html" class="btn-gold">Rezervă</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</main>
-
-<section class="journal-section">
-    <div class="container">
-        <div class="section-intro">
-            <span class="subtitle">Comunitate și momente</span>
-            <h2 class="metanoia-title section-title">Hațeg journal</h2>
-        </div>
-
-        <div class="journal-grid">
-            <div class="journal-item large">
-                <img src="feed-1.jpg" alt="Deschidere sezon">
-                <div class="journal-overlay">
-                    <span class="date-tag">1 mai 2026</span>
-                    <h3>Marea deschidere de sezon. Te așteptăm acasă.</h3>
-                </div>
-            </div>
-            <div class="journal-item"><img src="feed-2.jpg" alt="Moment Hațeg"></div>
-            <div class="journal-item"><img src="feed-3.jpg" alt="Moment Hațeg"></div>
-            <div class="journal-item"><img src="feed-4.jpg" alt="Moment Hațeg"></div>
-            <div class="journal-item"><img src="feed-5.jpg" alt="Moment Hațeg"></div>
-            <div class="journal-item"><img src="feed-6.jpg" alt="Moment Hațeg"></div>
-            <div class="journal-item"><img src="feed-7.jpg" alt="Moment Hațeg"></div>
-            <div class="journal-item"><img src="feed-8.jpg" alt="Moment Hațeg"></div>
-        </div>
-    </div>
-</section>
-
-<a href="https://wa.me/40749229686" class="whatsapp-float" target="_blank">WhatsApp</a>
-
-<footer class="site-footer">
-    <p>Hațeg alternativ — 2026</p>
-</footer>
-<header class="site-header">
-    <div class="container nav-wrap">
-        <a href="index.html" class="brand">Hațeg alternativ</a>
-        
-        <button class="menu-toggle" aria-label="Deschide meniul">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-
-        <nav class="main-nav">
-            <a href="pensiuni.html">Pensiuni</a>
-            <a href="retreat.html">Retreat</a>
-            <a href="gastronomic.html">Gastro</a>
-        </nav>
-    </div>
-</header>
-
-<script>
-    const menuToggle = document.querySelector('.menu-toggle');
-    const mainNav = document.querySelector('.main-nav');
-
-    menuToggle.addEventListener('click', () => {
-        mainNav.classList.toggle('active');
-        menuToggle.classList.toggle('open');
-    });
-</script>
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true; s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
+    s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
 </body>
 </html>
