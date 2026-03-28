@@ -3,129 +3,120 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hațeg Alternativ | Simte tăcerea</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <title>Hațeg Alternativ | Signature</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <style>
-        :root { --verde: #1b3022; --auriu: #c5a059; --crem: #fdfcf8; --alb: #ffffff; }
+        :root { --verde: #1b3022; --auriu: #c5a059; --crem: #fdfcf8; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
-        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--verde); line-height: 1.6; overflow-x: hidden; }
+        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--verde); overflow-x: hidden; }
 
-        /* Header Alb - Stilul tău preferat */
-        .site-header { background: var(--alb); padding: 35px 0; text-align: center; border-bottom: 1px solid #f0f0f0; }
-        .brand { text-decoration: none; color: var(--verde); font-family: 'Playfair Display', serif; font-size: 1.8rem; line-height: 1.1; display: block; font-weight: 700; }
-        .est-text { font-size: 0.7rem; color: var(--auriu); font-weight: 800; letter-spacing: 4px; text-transform: uppercase; margin-top: 10px; display: block; }
+        /* Header Alb - Curat */
+        header { background: #ffffff; padding: 30px 20px; text-align: center; border-bottom: 1px solid #eee; }
+        .brand { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--verde); text-decoration: none; line-height: 1.1; display: block; }
+        .est { font-size: 0.65rem; color: var(--auriu); letter-spacing: 4px; font-weight: 800; margin-top: 8px; display: block; }
 
-        /* Meniu actualizat: Pensiuni, Retreat, Punct Gastronomic */
-        .main-nav { display: flex; justify-content: center; gap: 30px; padding: 25px 0; background: var(--alb); }
-        .main-nav a { text-decoration: none; color: #444; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; }
-        .main-nav a:hover { color: var(--auriu); }
+        /* Navigație */
+        nav { display: flex; justify-content: center; gap: 30px; padding: 20px 0; background: #ffffff; }
+        nav a { text-decoration: none; color: #444; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
 
-        /* HERO CU MUNTELE TĂU */
-        .hero-caseta {
-            width: 95%; 
-            max-width: 1400px;
-            height: 75vh;
-            margin: 15px auto;
-            background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.15)), 
-                        url('https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/hero-camp-munti.jpg') center/cover no-repeat;
-            display: flex; 
-            flex-direction: column;
-            align-items: center; 
-            justify-content: center; 
-            text-align: center; 
-            color: white;
+        /* HERO - REPARAT FUNDALUL */
+        .hero {
+            width: 90%;
+            max-width: 1200px;
+            height: 70vh;
+            margin: 20px auto;
             border-radius: 4px;
-        }
-        .hero-caseta h1 { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(3rem, 10vw, 5.5rem); margin-bottom: 10px; text-shadow: 0 10px 30px rgba(0,0,0,0.2); }
-        .hero-caseta p { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.4rem; opacity: 0.9; }
-
-        /* SECȚIUNEA LIVE (Journal) */
-        .live-section { padding: 100px 0; max-width: 1100px; margin: 0 auto; padding: 100px 20px; }
-        .section-title { text-align: center; font-family: 'Playfair Display', serif; font-style: italic; font-size: 3rem; margin-bottom: 60px; }
-        
-        #journal-container { display: flex; flex-direction: column; gap: 60px; }
-        .post-card { background: var(--alb); border-radius: 30px; overflow: hidden; border: 1px solid #f0f0f0; box-shadow: 0 20px 50px rgba(0,0,0,0.03); }
-        .post-img { width: 100%; height: 450px; object-fit: cover; }
-        .post-content { padding: 50px; text-align: center; }
-
-        /* BUTOANE CONTACT - STÂNGA (Tawk) / DREAPTA (WhatsApp) */
-        .wa-btn { 
-            position: fixed; bottom: 30px; right: 30px; /* DREAPTA */
-            background: #25d366; color: white; padding: 15px 30px; 
-            border-radius: 50px; text-decoration: none; font-weight: 700; 
-            z-index: 2000; box-shadow: 0 10px 20px rgba(0,0,0,0.1); font-size: 0.85rem; 
+            /* Am pus 3 variante de linkuri sa fiu sigur ca unul merge */
+            background-color: #e5e5e5; /* In caz de orice, sa nu fie gri inchis */
+            background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.1)), 
+                              url('hero-camp-munti.jpg'), /* Varianta locala */
+                              url('images/hero-camp-munti.jpg'), /* Varianta in folder images */
+                              url('https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/hero-camp-munti.jpg'); /* Varianta Directa */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
         }
 
-        /* Forțare Tawk în STÂNGA prin script mai jos */
+        .hero h1 { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(2.5rem, 8vw, 5rem); }
+        .hero p { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.3rem; opacity: 0.9; margin-top: 10px; }
 
-        @media (max-width: 768px) {
-            .main-nav { gap: 15px; flex-wrap: wrap; }
-            .hero-caseta { height: 60vh; width: 100%; margin: 0; border-radius: 0; }
-        }
+        /* JURNAL LIVE */
+        #live-journal { max-width: 1000px; margin: 80px auto; padding: 0 20px; }
+        .post-card { background: white; border-radius: 20px; overflow: hidden; margin-bottom: 50px; box-shadow: 0 15px 40px rgba(0,0,0,0.03); border: 1px solid #f0f0f0; }
+        .post-img { width: 100%; height: 400px; object-fit: cover; }
+        .post-body { padding: 40px; text-align: center; }
+
+        /* CONTACT FIXE */
+        .wa-btn { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; padding: 14px 28px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 9999; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
     </style>
 </head>
 <body>
 
-<header class="site-header">
-    <a href="index.html" class="brand">HAȚEG<br><strong>ALTERNATIV</strong></a>
-    <span class="est-text">EST. 2026</span>
+<header>
+    <a href="index.html" class="brand">HAȚEG<br>ALTERNATIV</a>
+    <span class="est">EST. 2026</span>
 </header>
 
-<nav class="main-nav">
+<nav>
     <a href="pensiuni.html">Pensiuni</a>
     <a href="retreat.html">Retreat</a>
     <a href="gastronomic.html">Punct Gastronomic</a>
 </nav>
 
-<section class="hero-caseta">
+<section class="hero">
     <h1>Simte tăcerea.</h1>
     <p>O selecție exclusivă în inima Transilvaniei</p>
 </section>
 
-<main class="live-section">
-    <h2 class="section-title">Metanoia Live</h2>
-    <div id="journal-container">
-        <p style="text-align: center; font-style: italic;">Se încarcă momentele...</p>
+<div id="live-journal">
+    <h2 style="text-align: center; font-family: 'Playfair Display', serif; font-style: italic; font-size: 2.5rem; margin-bottom: 50px;">Metanoia Live</h2>
+    <div id="posts">
+        <p style="text-align: center; font-style: italic;">Se încarcă noutățile...</p>
     </div>
-</main>
+</div>
 
 <a href="https://wa.me/40749229686" class="wa-btn">Chat WhatsApp</a>
 
 <script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-Tawk_API.customStyle = { visibility : { desktop : { xOffset : '30', yOffset : '30', position : 'bottom-left' }, mobile : { xOffset : '20', yOffset : '20', position : 'bottom-left' } } };
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true; s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
-s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
+    var Tawk_API=Tawk_API||{};
+    Tawk_API.customStyle = { visibility : { desktop : { xOffset : '30', yOffset : '30', position : 'bottom-left' }, mobile : { xOffset : '20', yOffset : '20', position : 'bottom-left' } } };
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true; s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
+    s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
 </script>
 
 <script>
     const SHEETS_URL = "https://script.google.com/macros/s/AKfycbz1b5qQajTQQH6QdJDb1ov5qIAhguAqdm1jjmk5uF0q7F-zq85eGE-ua_VAcgopzDtP/exec?action=getLive";
-    async function loadJournal() {
+    async function load() {
         try {
-            const response = await fetch(SHEETS_URL);
-            const data = await response.json();
-            const container = document.getElementById('journal-container');
-            container.innerHTML = "";
-            data.reverse().forEach(post => {
-                container.innerHTML += `
-                    <article class="post-card">
-                        <img src="${post.Imagine_URL}" class="post-img" onerror="this.src='https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/hero-camp-munti.jpg'">
-                        <div class="post-content">
-                            <span style="color:var(--auriu); font-style:italic;">${post.Data} — ${post.Autor}</span>
-                            <h3 style="font-family:'Playfair Display',serif; font-style:italic; font-size:2rem; margin:15px 0;">${post.Mesaj}</h3>
-                            <div style="color:#eee; cursor:pointer; font-size:1.5rem;" onclick="this.style.color='#c5a059'">♡</div>
+            const r = await fetch(SHEETS_URL);
+            const data = await r.json();
+            const box = document.getElementById('posts');
+            box.innerHTML = "";
+            data.reverse().forEach(p => {
+                box.innerHTML += `
+                    <div class="post-card">
+                        <img src="${p.Imagine_URL}" class="post-img" onerror="this.src='https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/hero-camp-munti.jpg'">
+                        <div class="post-body">
+                            <span style="color:var(--auriu); font-style:italic;">${p.Data}</span>
+                            <h3 style="font-family:'Playfair Display',serif; font-style:italic; font-size:2rem; margin:15px 0;">${p.Mesaj}</h3>
+                            <div style="font-size:1.5rem; color:#eee; cursor:pointer;" onclick="this.style.color='#c5a059'">♡</div>
                         </div>
-                    </article>`;
+                    </div>`;
             });
-        } catch (e) { console.log("Eroare incarcare"); }
+        } catch(e) { }
     }
-    loadJournal();
+    load();
 </script>
 
 </body>
