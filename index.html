@@ -99,6 +99,32 @@
 <footer class="site-footer">
     <p>Hațeg alternativ — 2026</p>
 </footer>
+<header class="site-header">
+    <div class="container nav-wrap">
+        <a href="index.html" class="brand">Hațeg alternativ</a>
+        
+        <button class="menu-toggle" aria-label="Deschide meniul">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
 
+        <nav class="main-nav">
+            <a href="pensiuni.html">Pensiuni</a>
+            <a href="retreat.html">Retreat</a>
+            <a href="gastronomic.html">Gastro</a>
+        </nav>
+    </div>
+</header>
+
+<script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mainNav = document.querySelector('.main-nav');
+
+    menuToggle.addEventListener('click', () => {
+        mainNav.classList.toggle('active');
+        menuToggle.classList.toggle('open');
+    });
+</script>
 </body>
 </html>
