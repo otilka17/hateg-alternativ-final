@@ -1,0 +1,88 @@
+/* --- FUNDAMENTE --- */
+:root {
+    --forest: #1b3022;
+    --gold: #c5a059;
+    --cream: #fdfcf8;
+    --white: #ffffff;
+    --text-dark: #333333;
+    --text-light: #64748b;
+    --shadow: 0 10px 30px rgba(27,48,34,0.05);
+}
+
+* { margin: 0; padding: 0; box-box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--text-dark); overflow-x: hidden; line-height: 1.6; }
+
+/* --- TIPOGRAFIE --- */
+.metanoia-title { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--forest); }
+a { text-decoration: none; color: inherit; transition: 0.3s ease; }
+ul { list-style: none; }
+
+/* --- UTILITIES --- */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.btn { display: inline-block; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; text-align: center; cursor: pointer; border-radius: 50px; }
+.btn-gold { background: var(--gold); color: var(--white); transition: 0.3s; }
+.btn-gold:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(197,160,89,0.3); }
+
+/* --- HEADER (Desktop) --- */
+.site-header { width: 100%; position: absolute; top: 0; left: 0; z-index: 1000; padding: 20px 0; background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(5px); }
+.nav-wrap { display: flex; justify-content: space-between; align-items: center; }
+.brand { font-weight: 800; font-size: 1.3rem; letter-spacing: 1px; color: var(--forest); text-transform: uppercase; }
+.main-nav { display: flex; gap: 30px; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; }
+.main-nav a:hover, .main-nav a.active { color: var(--gold); }
+
+/* --- HERO SECTION --- */
+.hero-premium { height: 90vh; display: flex; align-items: center; justify-content: center; text-align: center; color: var(--white); position: relative; }
+.metanoia-title.hero-main { font-size: 5rem; color: var(--white); margin-bottom: 20px; }
+.hero-premium p { font-size: 1.2rem; font-weight: 300; opacity: 0.9; margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; }
+
+/* --- PREVIEW PREMISES --- */
+.card-preview { border-radius: 15px; overflow: hidden; background: var(--white); border: 1px solid #f1f5f9; transition: 0.4s ease; box-shadow: var(--shadow); }
+.card-preview:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0,0,0,0.08); }
+.card-image { height: 300px; overflow: hidden; }
+.card-image img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s ease; }
+.card-preview:hover .card-image img { transform: scale(1.08); }
+.card-info { padding: 30px; }
+
+/* --- MEMBERSHIP --- */
+.membership-card { background: var(--forest); border-radius: 20px; padding: 60px; display: flex; align-items: center; gap: 40px; color: var(--white); position: relative; overflow: hidden; }
+#membership-form input { padding: 15px; border-radius: 10px; border: none; flex: 1; color: #333; }
+#membership-form button { padding: 15px 30px; border-radius: 10px; border: none; background: var(--gold); color: var(--white); font-weight: 800; cursor: pointer; }
+
+/* --- FLOAT ELEMENTS --- */
+.whatsapp-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; padding: 12px 25px; border-radius: 50px; box-shadow: 0 10px 25px rgba(37,211,102,0.3); z-index: 2000; display: flex; align-items: center; gap: 10px; font-size: 0.8rem; font-weight: 800; }
+
+/* --- FOOTER --- */
+footer { background: #122118; color: rgba(255,255,255,0.7); padding: 50px 0; text-align: center; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; }
+
+/* ==========================================================
+   --- MEDIA QUERY: MOBIL (Ecrane < 768px) ---
+   Repară bug-urile vizuale semnalate în imagini
+============================================================= */
+@media (max-width: 768px) {
+    
+    /* 1. Header & Navigarea (Fix Overlap) */
+    .site-header { position: absolute !important; padding: 15px 0; background: transparent; } /* Header-ul nu stă fix la scroll, ci se ascunde */
+    .nav-wrap { flex-direction: column; gap: 10px; }
+    .brand { font-size: 1rem !important; margin-bottom: 5px; }
+    .main-nav { flex-direction: row !important; justify-content: center; flex-wrap: wrap; gap: 12px !important; font-size: 0.65rem !important; } /* Meniu pe o singură linie, text discret */
+    .btn-gold.header-btn { display: none; } /* Ascundem butonul mare de rezervare pe mobil */
+
+    /* 2. Hero Section */
+    .hero-premium { height: auto; min-height: 70vh; padding: 100px 20px; }
+    .metanoia-title.hero-main { font-size: 2.5rem !important; margin-top: 20px; } /* Micșorăm titlul gigantic de pe mobil */
+    .hero-premium p { font-size: 1rem; margin-bottom: 30px; }
+    .hero-premium .btn { padding: 15px 30px; font-size: 0.7rem; }
+
+    /* 3. Previewpremises (Grid) */
+    .card-grid { grid-template-columns: 1fr !important; }
+    .card-image { height: 220px; }
+
+    /* 4. Membership (Membru) */
+    .membership-card { flex-direction: column-reverse; padding: 40px 20px; text-align: center; } /* Text sus, cheie jos */
+    .membership-card h2 { font-size: 2rem !important; }
+    #membership-form { flex-direction: column; gap: 10px; width: 100%; }
+    #membership-form input, #membership-form button { width: 100% !important; border-radius: 10px; } /* Input și buton ocupă toată lățimea, nu mai sunt tăiate */
+
+    /* 5. WhatsApp Float */
+    .whatsapp-float { bottom: 20px; right: 20px; padding: 10px 15px; font-size: 0.7rem; }
+}
