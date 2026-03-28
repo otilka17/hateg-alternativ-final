@@ -3,192 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Metanoia Hub | Hațeg Alternativ</title>
+    <title>Hațeg Alternativ | Simte tăcerea</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-
     <style>
-        :root {
-            --primary-dark: #1c1e21;
-            --metanoia-green: #198754;
-            --bg-light: #f0f2f5;
+        :root { --verde: #1b3022; --auriu: #c5a059; --crem: #fdfcf8; --alb: #ffffff; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--verde); line-height: 1.6; overflow-x: hidden; }
+        h1, h2, h3, .brand { font-family: 'Playfair Display', serif; font-weight: 700; }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        .site-header { background: var(--alb); padding: 20px 0; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 1000; }
+        .nav-wrap { display: flex; justify-content: space-between; align-items: center; }
+        .brand { text-decoration: none; color: var(--verde); font-size: 1.4rem; }
+        .main-nav a { text-decoration: none; color: #444; font-size: 0.9rem; margin-left: 20px; font-weight: 500; transition: 0.3s; }
+        .main-nav a:hover { color: var(--auriu); }
+
+        /* Hero */
+        .hero { 
+            height: 70vh; display: flex; align-items: center; justify-content: center; text-align: center; color: var(--alb);
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), 
+                        url('https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/hero-camp-munti.jpg') center/cover no-repeat;
         }
+        .hero h1 { font-size: clamp(2.5rem, 8vw, 4rem); margin-bottom: 15px; }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-light);
-            color: var(--primary-dark);
-        }
+        /* Section Styling */
+        .section-padding { padding: 80px 0; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .card { background: var(--alb); border-radius: 24px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.03); border: 1px solid #f1f1f1; transition: 0.4s; }
+        .card:hover { transform: translateY(-8px); }
+        .card img { width: 100%; height: 250px; object-fit: cover; }
+        .card-body { padding: 25px; }
 
-        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        /* Live Stream Metanoia Style */
+        .live-stream-section { background: #f4f1ea; padding: 80px 0; border-radius: 50px 50px 0 0; }
+        .stream-card { background: var(--alb); border-radius: 24px; padding: 30px; max-width: 700px; margin: 0 auto; border: 1px solid #e8e4d9; box-shadow: 0 15px 45px rgba(0,0,0,0.02); }
+        .user-info { display: flex; align-items: center; margin-bottom: 20px; }
+        .avatar { width: 45px; height: 45px; background: var(--verde); border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; margin-right: 15px; }
+        .post-content { font-size: 1.2rem; color: var(--verde); margin-bottom: 15px; font-style: italic; }
+        .post-date { font-size: 0.8rem; color: var(--auriu); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* HERO SECTION */
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
-                        url('https://i.postimg.cc/T1cwPS07/la-buliga-pensiune.jpg'); /* Aici poți pune linkul de la imaginea generată */
-            background-size: cover;
-            background-position: center;
-            height: 70vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-        }
-
-        /* FEED CARDS CSS */
-        .feed-card {
-            background: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-            border: none;
-            margin-bottom: 25px;
-            transition: transform 0.2s;
-            max-width: 550px;
-            margin-left: auto;
-            margin-right: auto;
-            overflow: hidden;
-        }
-
-        .feed-header {
-            padding: 15px;
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid #f0f2f5;
-        }
-
-        .feed-avatar {
-            width: 45px;
-            height: 45px;
-            background-color: var(--metanoia-green);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            margin-right: 12px;
-        }
-
-        .feed-image {
-            width: 100%;
-            max-height: 450px;
-            object-fit: cover;
-        }
-
-        .feed-body { padding: 15px; }
-        
-        .feed-button {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            margin-top: 15px;
-            background-color: #f0f2f5;
-            color: #050505;
-            text-align: center;
-            text-decoration: none;
-            font-weight: 600;
-            border-radius: 8px;
-        }
-
-        .feed-button:hover { background-color: #e4e6eb; }
-
-        .navbar { background: rgba(255,255,255,0.95) !important; backdrop-filter: blur(10px); }
+        /* Buttons */
+        .btn-gold { padding: 14px 35px; border-radius: 50px; text-decoration: none; font-weight: 600; background: var(--auriu); color: var(--alb); display: inline-block; transition: 0.3s; }
+        .wa-btn { position: fixed; bottom: 30px; left: 30px; background: #25d366; color: var(--alb); padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 999; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
     </style>
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light sticky-top shadow-sm">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="#">METANOIA HUB</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="#concept">Concept</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#feed">Noutăți</a></li>
-                    <li class="nav-item"><a class="nav-link btn btn-success text-white px-4 ms-lg-3" href="#">Cere Ofertă</a></li>
-                </ul>
+<header class="site-header">
+    <div class="container nav-wrap">
+        <a href="index.html" class="brand">Hațeg Alternativ</a>
+        <nav class="main-nav">
+            <a href="obiective.html">Obiective</a>
+            <a href="retreat.html">Retreat</a>
+            <a href="forum.html">Forum</a>
+            <a href="rezervare.html">Rezervă</a>
+        </nav>
+    </div>
+</header>
+
+<section class="hero">
+    <div class="container">
+        <h1>Simte tăcerea.</h1>
+        <p style="font-weight: 300; font-size: 1.1rem; margin-bottom: 25px;">O experiență de viață în Țara Hațegului</p>
+        <a href="obiective.html" class="btn-gold">Descoperă locurile</a>
+    </div>
+</section>
+
+<section class="section-padding container">
+    <h2 style="text-align: center; margin-bottom: 40px; font-size: 2.2rem;">Momente Autentice</h2>
+    <div class="grid-3">
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/images/gast-cafea-inima.jpg">
+            <div class="card-body">
+                <h3>Gastro Local</h3>
+                <p>Mic dejun artizanal cu produse din satele vecine.</p>
             </div>
         </div>
-    </nav>
-
-    <header class="hero">
-        <div class="container">
-            <h1 class="display-3 fw-bold mb-3">Metanoia Retreat</h1>
-            <p class="lead mb-4">Portal spre transformare în inima Retezatului.</p>
-        </div>
-    </header>
-
-    <section id="feed" class="py-5">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h2 class="fw-bold">Metanoia Live Stream</h2>
-                <p class="text-muted">Momente, arome și acorduri din Totești</p>
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/images/feed-6.jpg">
+            <div class="card-body">
+                <h3>Expediții 4x4</h3>
+                <p>Descoperă ruinele dacice și potecile neștiute.</p>
             </div>
-            
-            <div id="metanoia-feed">
-                <div class="text-center py-5" id="loader">
-                    <div class="spinner-grow text-success" role="status"></div>
+        </div>
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/images/exp-zapada.jpg">
+            <div class="card-body">
+                <h3>Mindful Retreat</h3>
+                <p>Liniște absolută și yoga sub cerul liber.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="live-stream-section">
+    <div class="container">
+        <h2 style="text-align: center; margin-bottom: 10px;">Metanoia Live Stream</h2>
+        <p style="text-align: center; color: #64748b; margin-bottom: 40px;">Momente, arome și acorduri din Totești.</p>
+        
+        <div class="stream-card">
+            <div class="user-info">
+                <div class="avatar">O</div>
+                <div>
+                    <strong style="display: block;">Otilia</strong>
+                    <span style="font-size: 0.8rem; color: #94a3b8;">Gazda ta</span>
                 </div>
             </div>
+            <p class="post-content">"Pregătiri intense pentru 1 Mai. Metanoia prinde viață sub soarele de primăvară!"</p>
+            <span class="post-date">Afișat: 01 Aprilie 2026</span>
         </div>
-    </section>
+        
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="forum.html" style="color: var(--auriu); font-weight: 600; text-decoration: none;">Vezi toate noutățile din comunitate →</a>
+        </div>
+    </div>
+</section>
 
-    <footer class="bg-white py-4 border-top text-center text-muted">
-        <p>© 2026 Metanoia Hub - Hațeg Alternativ. Toate drepturile rezervate.</p>
-    </footer>
+<a href="https://wa.me/40749229686" class="wa-btn">WhatsApp</a>
 
-    <script>
-        const tsvURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRxemlkMdIB7S2NwCO4dbsNUpThHA388goatoSLGOzGDy4ZktNizTl9Eo9_QcbfYx2kuK1G-aG_kW9K/pub?gid=1405914163&single=true&output=tsv';
+<footer style="padding: 60px 0; text-align: center; opacity: 0.5; font-size: 0.8rem;">
+    Hațeg Alternativ — 2026
+</footer>
 
-        async function loadFeed() {
-            try {
-                const response = await fetch(tsvURL);
-                const text = await response.text();
-                const rows = text.split('\n').slice(1);
-                const feedContainer = document.getElementById('metanoia-feed');
-                let htmlContent = '';
-
-                rows.forEach(row => {
-                    const columns = row.split('\t');
-                    if(columns.length >= 3) {
-                        const [dataP, autor, mesaj, img, link] = columns;
-                        htmlContent += `
-                            <div class="feed-card">
-                                <div class="feed-header">
-                                    <div class="feed-avatar">${autor.trim().charAt(0)}</div>
-                                    <div><h6 class="mb-0 fw-bold">${autor}</h6><small class="text-muted">${dataP}</small></div>
-                                </div>
-                                ${img && img.trim() !== "" ? `<img src="${img.trim()}" class="feed-image" onerror="this.style.display='none'">` : ''}
-                                <div class="feed-body">
-                                    <p class="feed-text">${mesaj}</p>
-                                    ${link && link.trim() !== "" ? `<a href="${link.trim()}" class="feed-button">Descoperă</a>` : ''}
-                                </div>
-                            </div>
-                        `;
-                    }
-                });
-                document.getElementById('loader').style.display = 'none';
-                feedContainer.innerHTML = htmlContent;
-            } catch (e) { console.error(e); }
-        }
-        window.onload = loadFeed;
-    </script>
-
-    <script type="text/javascript">
-        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-        (function(){
-        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-        s1.async=true;
-        s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
-        s1.charset='UTF-8';
-        s1.setAttribute('crossorigin','*');
-        s0.parentNode.insertBefore(s1,s0);
-        })();
-    </script>
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true; s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
+s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
 
 </body>
 </html>
