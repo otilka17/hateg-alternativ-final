@@ -8,31 +8,25 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     
     <style>
-        /* CSS SIGNATURE STABIL */
+        /* CSS GOLDEN PREMIUM */
         :root { --verde: #1b3022; --auriu: #c5a059; --crem: #fdfcf8; --alb: #ffffff; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--verde); line-height: 1.6; }
-        
         h1, h2, h3, .brand { font-family: 'Playfair Display', serif; font-weight: 700; }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-
         .site-header { background: var(--alb); padding: 20px 0; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 1000; }
         .nav-wrap { display: flex; justify-content: space-between; align-items: center; }
         .brand { text-decoration: none; color: var(--verde); font-size: 1.4rem; }
         .main-nav a { text-decoration: none; color: #444; font-size: 0.9rem; margin-left: 20px; font-weight: 500; }
-
+        .main-nav a:hover { color: var(--auriu); }
         .section-head { padding: 80px 0 40px; text-align: center; }
         h1 { font-size: 3rem; margin-bottom: 15px; }
-
-        #map { height: 500px; width: 100%; border-radius: 30px; margin-bottom: 60px; border: 1px solid #eee; z-index: 1; }
-
+        #map { height: 450px; width: 100%; border-radius: 30px; margin-bottom: 60px; border: 1px solid #eee; z-index: 1; }
         .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding-bottom: 80px; }
         .card { background: var(--alb); border-radius: 24px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.03); border: 1px solid #f0f0f0; transition: 0.4s; }
         .card:hover { transform: translateY(-10px); }
         .card img { width: 100%; height: 260px; object-fit: cover; }
         .card-body { padding: 30px; }
-
-        /* WhatsApp la STÂNGA pentru a lăsa Chat-ul la DREAPTA */
         .wa-btn { position: fixed; bottom: 30px; left: 30px; background: #25d366; color: var(--alb); padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 999; box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
     </style>
 </head>
@@ -44,7 +38,6 @@
         <nav class="main-nav">
             <a href="index.html">Acasă</a>
             <a href="obiective.html" style="color: var(--auriu);">Obiective</a>
-            <a href="pensiuni.html">Pensiuni</a>
             <a href="rezervare.html">Rezervare</a>
         </nav>
     </div>
@@ -60,23 +53,21 @@
 
     <div class="cards-grid">
         <div class="card">
-            <img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/exp-biserica-ext.jpg">
+            <img src="images/exp-biserica-ext.jpg" alt="Biserica Densuș">
             <div class="card-body">
                 <h3>Biserica Densuș</h3>
                 <p>Unul dintre cele mai vechi lăcașuri de piatră din România, construită cu fragmente din Sarmizegetusa.</p>
             </div>
         </div>
-
         <div class="card">
-            <img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/feed-6.jpg">
+            <img src="images/feed-6.jpg" alt="Cetatea Colț">
             <div class="card-body">
                 <h3>Cetatea Colț</h3>
                 <p>Ruinele care l-au inspirat pe Jules Verne. Un drum spectaculos prin istorie și legendă.</p>
             </div>
         </div>
-
         <div class="card">
-            <img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/exp-lac.jpg">
+            <img src="images/exp-lac.jpg" alt="Lacuri Retezat">
             <div class="card-body">
                 <h3>Lacuri din Retezat</h3>
                 <p>Ochiurile albastre ale munților, unde liniștea devine o experiență în sine.</p>
@@ -85,33 +76,14 @@
     </div>
 </div>
 
-<a href="https://wa.me/40749229686" class="wa-btn">Discută pe WhatsApp</a>
+<a href="https://wa.me/40749229686" class="wa-btn">WhatsApp</a>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
     var map = L.map('map').setView([45.5564, 22.8878], 11);
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { attribution: '&copy; Hațeg Alternativ' }).addTo(map);
-
-    var points = [
-        { name: "Biserica Densuș", lat: 45.5822, lng: 22.7917 },
-        { name: "Cetatea Colț", lat: 45.4800, lng: 22.8731 },
-        { name: "Sarmizegetusa Regia", lat: 45.6231, lng: 23.3123 },
-        { name: "Zimbrii Slivuț", lat: 45.6267, lng: 22.9556 }
-    ];
-
-    points.forEach(function(p) {
-        L.marker([p.lat, p.lng]).addTo(map).bindPopup("<b>" + p.name + "</b>");
-    });
-</script>
-
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true; s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
-s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
+    var points = [ { name: "Biserica Densuș", lat: 45.5822, lng: 22.7917 }, { name: "Cetatea Colț", lat: 45.4800, lng: 22.8731 }, { name: "Zimbrii Slivuț", lat: 45.6267, lng: 22.9556 } ];
+    points.forEach(function(p) { L.marker([p.lat, p.lng]).addTo(map).bindPopup("<b>" + p.name + "</b>"); });
 </script>
 
 </body>
