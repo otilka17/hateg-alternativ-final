@@ -3,32 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gastro | Hațeg Alternativ</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>experiențe gastronomice | hațeg alternativ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --verde: #1b3022; --auriu: #c5a059; --crem: #fdfcf8; }
+        * { margin: 0; padding: 0; box-sizing: border-box; text-transform: none !important; }
+        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--verde); line-height: 1.6; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        
+        .site-header { background: white; padding: 15px 0; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 1000; }
+        .nav-wrap { display: flex; justify-content: space-between; align-items: center; }
+        .brand { font-weight: 700; text-decoration: none; color: var(--verde); font-size: 1.2rem; }
+        .main-nav a { text-decoration: none; color: #444; font-size: 0.9rem; margin-left: 20px; font-weight: 500; }
+
+        .hero-small { height: 40vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url('gast-masa-traditionala.jpg') center/cover; }
+        .metanoia-title { font-family: 'Playfair Display', serif; font-size: 2.5rem; }
+
+        .gastro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding: 80px 0; align-items: center; }
+        .gastro-img { width: 100%; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        
+        .btn-gold { background: var(--auriu); color: white; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: 600; display: inline-block; margin-top: 20px; }
+        .wa-btn { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; padding: 14px 28px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 999; }
+    </style>
 </head>
 <body>
+
 <header class="site-header">
     <div class="container nav-wrap">
-        <a href="index.html" class="brand">HAȚEG ALTERNATIV</a>
+        <a href="index.html" class="brand">hațeg alternativ</a>
         <nav class="main-nav">
-            <a href="pensiuni.html">Pensiuni</a>
-            <a href="retreat.html">Retreat</a>
-            <a href="gastronomic.html" style="color: #c5a059;">Gastro</a>
+            <a href="pensiuni.html">pensiuni</a>
+            <a href="retreat.html">retreat</a>
+            <a href="gastronomic.html" style="color: var(--auriu);">gastro</a>
         </nav>
     </div>
 </header>
 
-<section class="hero-premium" style="background: url('gast masa traditionala.jpg') center/cover;">
-    <h1 class="metanoia-title hero-main">Metanoia Gastro.</h1>
+<section class="hero-small">
+    <h1 class="metanoia-title">gustul locului.</h1>
 </section>
 
-<div class="container" style="padding: 60px 0; text-align: center;">
-    <h2 class="metanoia-title" style="font-size: 2.5rem; margin-bottom: 40px;">Gustul Slivuțului</h2>
-    <div class="cards-container">
-        <img src="gast supa2.jpg" style="width: 100%; border-radius: 15px;">
-        <img src="gast cafea inima.jpg" style="width: 100%; border-radius: 15px;">
-        <img src="gast panou.png" style="width: 100%; border-radius: 15px;">
+<div class="container">
+    <div class="gastro-grid">
+        <div>
+            <h2 class="metanoia-title" style="font-size: 2rem; margin-bottom: 20px;">mic dejun artizanal</h2>
+            <p style="color: #64748b;">începe ziua cu miros de pâine caldă, brânzeturi de la stânele din retezat și dulceață făcută în livada proprie. totul este produs local, fără grabă.</p>
+            <a href="rezervare.html" class="btn-gold">rezervă o masă</a>
+        </div>
+        <img src="gast-cafea-inima.jpg" class="gastro-img">
+    </div>
+
+    <div class="gastro-grid" style="direction: rtl;">
+        <div style="direction: ltr;">
+            <h2 class="metanoia-title" style="font-size: 2rem; margin-bottom: 20px;">tradiția virșlilor</h2>
+            <p style="color: #64748b;">te invităm la cuptorul cu lemne pentru a descoperi secretul virșlilor de sălătruc. o experiență gastronomică ce îmbină istoria cu gustul autentic al țării hațegului.</p>
+        </div>
+        <img src="gast-panou.png" class="gastro-img">
     </div>
 </div>
+
+<a href="https://wa.me/40749229686" class="wa-btn">discută pe whatsapp</a>
+
 </body>
 </html>
