@@ -3,60 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Domeniile La Buligă | Exclusive Stay</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <title>Domeniile La Buligă | Colecția Hațeg Alternativ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS SIGNATURE - STABIL ȘI LUXOS */
+        :root { --verde: #1b3022; --auriu: #c5a059; --crem: #fdfcf8; --alb: #ffffff; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--verde); line-height: 1.6; }
+        
+        h1, h2, h3, .metanoia-title { font-family: 'Playfair Display', serif; font-weight: 700; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        /* Navigație Curată */
+        .site-header { background: var(--alb); padding: 25px 0; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 1000; }
+        .nav-wrap { display: flex; justify-content: space-between; align-items: center; }
+        .brand { text-decoration: none; color: var(--verde); font-size: 1.1rem; letter-spacing: 2px; }
+        .back-link { text-decoration: none; color: var(--verde); font-size: 0.7rem; letter-spacing: 2px; font-weight: 800; }
+
+        /* Hero Image - Poza Superbă */
+        .hero-image { 
+            height: 65vh; 
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.1)), 
+                        url('https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/images/la-buliga-pensiune.jpg') center/cover no-repeat;
+        }
+
+        /* Panel Rezervare */
+        .booking-panel { 
+            transform: translateY(-100px); 
+            background: var(--alb); 
+            padding: 80px 60px; 
+            max-width: 1000px; 
+            margin: 0 auto; 
+            box-shadow: 0 40px 100px rgba(0,0,0,0.05);
+            border-radius: 4px;
+        }
+
+        /* Cele 3 Tipuri de Retreat */
+        .retreat-options { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 30px; 
+            margin-top: 60px; 
+            border-top: 1px solid #eee; 
+            padding-top: 50px; 
+        }
+        .option-card { padding: 30px; border: 1px solid #f0f0f0; border-radius: 15px; transition: 0.3s; }
+        .option-card:hover { border-color: var(--auriu); background: #fdfcf8; }
+        .option-card h3 { font-size: 1.4rem; margin-bottom: 15px; color: var(--auriu); }
+        .option-card p { font-size: 0.9rem; color: #64748b; margin-bottom: 15px; }
+
+        /* Butoane */
+        .btn-gold { 
+            background: var(--auriu); 
+            color: var(--alb); 
+            padding: 18px 30px; 
+            text-decoration: none; 
+            display: inline-block; 
+            font-weight: 700; 
+            font-size: 0.8rem; 
+            text-transform: uppercase; 
+            letter-spacing: 2px;
+            border-radius: 50px;
+            transition: 0.3s;
+            text-align: center;
+        }
+        .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(197,160,89,0.2); }
+
+        /* Fix Contact */
+        .wa-btn { position: fixed; bottom: 30px; left: 30px; background: #25d366; color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 999; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+
+        @media (max-width: 768px) { .booking-panel { padding: 40px 20px; transform: translateY(-50px); } }
+    </style>
 </head>
-<body style="background: #fdfcf8;">
+<body>
+
     <header class="site-header">
         <div class="container nav-wrap">
-            <a href="index.html" class="brand"><span>HAȚEG</span> <strong>ALTERNATIV</strong></a>
-            <a href="pensiuni.html" style="text-decoration: none; color: #1b3022; font-size: 0.7rem; letter-spacing: 2px; font-weight: 800;">← COLECȚIE</a>
+            <a href="index.html" class="brand">HAȚEG <strong>ALTERNATIV</strong></a>
+            <a href="pensiuni.html" class="back-link">← COLECȚIE</a>
         </div>
     </header>
 
-    <section style="height: 65vh; background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('images/la-buliga-pensiune.jpg') center/cover;"></section>
+    <section class="hero-image"></section>
 
-    <main class="container" style="transform: translateY(-100px);">
-        <div class="booking-form-panel" style="padding: 80px 60px; max-width: 1100px; margin: 0 auto; background: white; box-shadow: 0 40px 100px rgba(0,0,0,0.05); border-radius: 20px;">
-            <div style="text-align: center; margin-bottom: 50px;">
-                <span style="color: #c5a059; letter-spacing: 6px; font-size: 0.8rem; font-weight: 800; display: block; margin-bottom: 20px;">EXPERIENȚĂ PRIVATĂ — EXCLUSIVE USE</span>
-                <h1 class="metanoia-title" style="font-size: clamp(3rem, 6vw, 5rem); line-height: 1;">Domeniile La Buligă</h1>
-            </div>
+    <main class="container">
+        <div class="booking-panel">
+            <span style="color: var(--auriu); letter-spacing: 5px; font-size: 0.8rem; font-weight: 800; display: block; margin-bottom: 20px;">NO. 01 — VADU DOBRII</span>
+            <h1 class="metanoia-title" style="font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 40px; line-height: 1;">Domeniile <br>La Buligă</h1>
             
-            <div style="display: grid; grid-template-columns: 1.4fr 1fr; gap: 80px; align-items: start;">
+            <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 60px; align-items: start;">
                 <div>
-                    <h3 style="font-family: 'Playfair Display'; font-size: 1.8rem; margin-bottom: 20px; font-style: italic;">Întreaga locație, doar pentru tine.</h3>
-                    <p style="font-weight: 300; line-height: 2.2; font-size: 1.2rem; color: #444;">
-                        La Buligă nu este doar o pensiune, ci un domeniu privat la peste 1000m altitudine. Oferim locația spre închiriere **integrală**, garantând intimitate absolută pentru grupul tău. 
-                        <br><br>
-                        Fie că plănuiești un retreat corporate, o reuniune de familie sau pur și simplu vrei să stăpânești muntele în liniște, aici porțile se închid pentru restul lumii.
+                    <p style="font-weight: 300; line-height: 2; font-size: 1.15rem; color: #444;">
+                        O experiență rară la peste 1000m altitudine. Aici, luxul nu este despre opulență, ci despre aerul rece al dimineții, sunetul lemnului vechi și tăcerea munților. Un refugiu creat pentru cei care au nevoie de un „digital detox” veritabil.
                     </p>
-                    <div style="margin-top: 50px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; font-size: 0.85rem; color: #1b3022; font-weight: 600;">
-                        <span>✦ Capacitate: 10-14 Persoane</span>
-                        <span>✦ Acces exclusiv bucătărie & foișor</span>
-                        <span>✦ Staff dedicat la cerere</span>
-                        <span>✦ Foc de tabără privat</span>
+                    <div style="margin-top: 40px; border-top: 1px solid #eee; padding-top: 30px; display: flex; flex-wrap: wrap; gap: 20px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #1b3022; font-weight: 700;">
+                        <span>✦ Mic dejun montan</span>
+                        <span>✦ Vedere panoramică</span>
+                        <span>✦ Fără semnal GSM</span>
                     </div>
                 </div>
+                <div style="background: #f9f9f7; padding: 40px; border-radius: 15px; text-align: center;">
+                    <span style="font-size: 0.8rem; color: #888; text-transform: uppercase;">Tarif de la</span>
+                    <div style="font-family: 'Playfair Display'; font-size: 2.5rem; margin: 10px 0 30px; color: #1b3022;">450 RON</div>
+                    <a href="rezervare.html?locatie=buliga" class="btn-gold" style="width: 100%;">Solicită Rezervare</a>
+                </div>
+            </div>
 
-                <div style="background: #1b3022; padding: 50px; border-radius: 15px; text-align: center; color: white;">
-                    <span style="font-size: 0.8rem; color: #c5a059; text-transform: uppercase; letter-spacing: 2px;">Preț Întreaga Locație</span>
-                    <div style="font-family: 'Playfair Display'; font-size: 3rem; margin: 15px 0; color: #fff;">2.800 RON</div>
-                    <span style="display: block; margin-bottom: 40px; opacity: 0.7; font-size: 0.9rem;">per noapte / minim 2 nopți</span>
-                    
-                    <a href="rezervare.html?locatie=buliga_integral" class="btn btn-gold" style="width: 100%; padding: 20px; background: #c5a059; color: #1b3022;">Rezervă Domeniul</a>
-                    
-                    <p style="margin-top: 25px; font-size: 0.75rem; opacity: 0.6; font-style: italic;">
-                        *Pentru perioade mai lungi de 4 nopți, solicită o ofertă personalizată.
-                    </p>
+            <div class="retreat-options">
+                <div class="option-card">
+                    <h3>Mindful & Yoga</h3>
+                    <p>Sesiuni matinale pe coama dealului pentru regăsirea echilibrului interior.</p>
+                </div>
+                <div class="option-card">
+                    <h3>Digital Detox</h3>
+                    <p>Predă telefonul la sosire și reconectează-te cu realitatea munților.</p>
+                </div>
+                <div class="option-card">
+                    <h3>Gastro Retreat</h3>
+                    <p>Degustări de brânzeturi locale și ateliere de pâine artizanală la cuptor.</p>
                 </div>
             </div>
         </div>
     </main>
 
-    <footer style="text-align: center; padding: 40px; color: #888; font-size: 0.8rem;">
-        © 2026 Hațeg Alternativ — Signature Collection
-    </footer>
+    <a href="https://wa.me/40749229686" class="wa-btn">WhatsApp</a>
+
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true; s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
+    s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
 </body>
 </html>
