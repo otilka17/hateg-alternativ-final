@@ -1,714 +1,156 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pensiuni | Hațeg Alternativ</title>
-
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #f5f7fb;
-      color: #1f2937;
-    }
-
-    a {
-      text-decoration: none;
-    }
-
-    .container {
-      width: min(1180px, 92%);
-      margin: 0 auto;
-    }
-
-    /* HEADER */
-    .site-header {
-      background: #fff;
-      border-bottom: 1px solid #e5e7eb;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .nav-wrap {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 0;
-      gap: 20px;
-    }
-
-    .brand {
-      font-size: 1.15rem;
-      font-weight: 800;
-      color: #183024;
-      letter-spacing: 1px;
-      white-space: nowrap;
-    }
-
-    .brand span {
-      font-weight: 300;
-    }
-
-    .main-nav {
-      display: flex;
-      gap: 28px;
-      flex-wrap: wrap;
-    }
-
-    .main-nav a {
-      color: #374151;
-      font-weight: 700;
-      font-size: 0.95rem;
-    }
-
-    .main-nav a.active {
-      color: #c59d4f;
-    }
-
-    /* HERO */
-    .page-hero {
-      background: #fff;
-      padding: 42px 0 26px;
-      border-bottom: 1px solid #e5e7eb;
-    }
-
-    .page-hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2.3rem, 5vw, 4.6rem);
-      line-height: 1.05;
-      margin-bottom: 14px;
-      color: #111827;
-    }
-
-    .page-hero p {
-      font-size: 1.1rem;
-      color: #64748b;
-      max-width: 760px;
-      line-height: 1.7;
-    }
-
-    /* SEARCH BAR */
-    .search-section {
-      padding: 22px 0;
-      background: #f5f7fb;
-      position: sticky;
-      top: 73px;
-      z-index: 999;
-    }
-
-    .search-bar {
-      background: #febb02;
-      border-radius: 16px;
-      padding: 6px;
-      display: grid;
-      grid-template-columns: 2fr 1.2fr 1.2fr auto;
-      gap: 6px;
-      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
-    }
-
-    .search-box {
-      background: #fff;
-      border-radius: 12px;
-      padding: 14px 16px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      min-height: 64px;
-    }
-
-    .search-box label {
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      color: #64748b;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-
-    .search-box input,
-    .search-box select {
-      border: none;
-      outline: none;
-      font-size: 0.98rem;
-      color: #111827;
-      background: transparent;
-      width: 100%;
-    }
-
-    .search-btn {
-      border: none;
-      background: #0071c2;
-      color: #fff;
-      border-radius: 12px;
-      padding: 0 26px;
-      font-size: 1rem;
-      font-weight: 800;
-      cursor: pointer;
-      min-height: 64px;
-    }
-
-    .search-btn:hover {
-      background: #005fa3;
-    }
-
-    /* MAIN LAYOUT */
-    .results-area {
-      padding: 28px 0 70px;
-    }
-
-    .results-layout {
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      gap: 24px;
-      align-items: start;
-    }
-
-    /* SIDEBAR */
-    .filters {
-      background: #fff;
-      border: 1px solid #e5e7eb;
-      border-radius: 18px;
-      padding: 22px;
-      position: sticky;
-      top: 180px;
-    }
-
-    .filters h3 {
-      font-size: 1.05rem;
-      margin-bottom: 18px;
-      color: #111827;
-    }
-
-    .filter-group {
-      margin-bottom: 24px;
-    }
-
-    .filter-group h4 {
-      font-size: 0.95rem;
-      margin-bottom: 12px;
-      color: #111827;
-    }
-
-    .filter-option {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 10px;
-      font-size: 0.95rem;
-      color: #475569;
-    }
-
-    /* RESULTS */
-    .results-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 18px;
-      margin-bottom: 18px;
-      flex-wrap: wrap;
-    }
-
-    .results-count {
-      color: #475569;
-      font-size: 0.96rem;
-    }
-
-    .sort-box {
-      background: #fff;
-      border: 1px solid #e5e7eb;
-      border-radius: 12px;
-      padding: 12px 14px;
-      font-size: 0.92rem;
-      color: #334155;
-    }
-
-    .hotel-card {
-      display: grid;
-      grid-template-columns: 320px 1fr;
-      gap: 18px;
-      background: #fff;
-      border: 1px solid #dbe2ea;
-      border-radius: 18px;
-      overflow: hidden;
-      margin-bottom: 18px;
-      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
-    }
-
-    .hotel-image {
-      position: relative;
-      min-height: 250px;
-    }
-
-    .hotel-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .badge {
-      position: absolute;
-      top: 14px;
-      left: 14px;
-      background: #1b4332;
-      color: #fff;
-      font-size: 0.76rem;
-      font-weight: 800;
-      padding: 8px 12px;
-      border-radius: 999px;
-      letter-spacing: 0.5px;
-    }
-
-    .hotel-body {
-      padding: 18px 18px 18px 0;
-      display: grid;
-      grid-template-columns: 1fr 190px;
-      gap: 18px;
-    }
-
-    .hotel-main h2 {
-      font-size: 1.45rem;
-      color: #0f172a;
-      margin-bottom: 6px;
-    }
-
-    .location {
-      font-size: 0.92rem;
-      color: #0071c2;
-      margin-bottom: 10px;
-      display: inline-block;
-      font-weight: 600;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 14px;
-    }
-
-    .tag {
-      background: #f1f5f9;
-      color: #334155;
-      font-size: 0.8rem;
-      padding: 7px 10px;
-      border-radius: 999px;
-      font-weight: 600;
-    }
-
-    .hotel-main p {
-      color: #475569;
-      line-height: 1.7;
-      font-size: 0.95rem;
-      margin-bottom: 14px;
-    }
-
-    .hotel-features {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      color: #166534;
-      font-size: 0.88rem;
-      font-weight: 600;
-    }
-
-    .hotel-side {
-      border-left: 1px solid #eef2f7;
-      padding-left: 18px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: flex-end;
-      text-align: right;
-    }
-
-    .rating-box {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      justify-content: flex-end;
-      margin-bottom: 18px;
-    }
-
-    .rating-text {
-      font-size: 0.88rem;
-      color: #334155;
-      font-weight: 700;
-    }
-
-    .rating-score {
-      background: #003b95;
-      color: #fff;
-      padding: 10px 12px;
-      border-radius: 10px 10px 10px 0;
-      font-weight: 800;
-      min-width: 48px;
-      text-align: center;
-    }
-
-    .price-box small {
-      display: block;
-      color: #64748b;
-      font-size: 0.8rem;
-      margin-bottom: 4px;
-    }
-
-    .price {
-      font-size: 1.7rem;
-      font-weight: 800;
-      color: #111827;
-      margin-bottom: 4px;
-    }
-
-    .price-note {
-      color: #64748b;
-      font-size: 0.8rem;
-      margin-bottom: 14px;
-    }
-
-    .cta-btn {
-      display: inline-block;
-      background: #0071c2;
-      color: #fff;
-      padding: 13px 18px;
-      border-radius: 10px;
-      font-weight: 800;
-      font-size: 0.92rem;
-      text-align: center;
-      min-width: 160px;
-    }
-
-    .cta-btn:hover {
-      background: #005fa3;
-    }
-
-    .map-btn {
-      display: inline-block;
-      margin-top: 10px;
-      color: #0071c2;
-      font-weight: 700;
-      font-size: 0.9rem;
-    }
-
-    @media (max-width: 992px) {
-      .results-layout {
-        grid-template-columns: 1fr;
-      }
-
-      .filters {
-        position: static;
-      }
-
-      .search-bar {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .search-btn {
-        grid-column: span 2;
-      }
-
-      .hotel-card {
-        grid-template-columns: 1fr;
-      }
-
-      .hotel-body {
-        grid-template-columns: 1fr;
-        padding: 18px;
-      }
-
-      .hotel-side {
-        border-left: none;
-        border-top: 1px solid #eef2f7;
-        padding-left: 0;
-        padding-top: 16px;
-        align-items: flex-start;
-        text-align: left;
-      }
-
-      .rating-box {
-        justify-content: flex-start;
-      }
-
-      .search-section {
-        top: 69px;
-      }
-    }
-
-    @media (max-width: 640px) {
-      .nav-wrap {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .main-nav {
-        gap: 18px;
-      }
-
-      .page-hero {
-        padding: 30px 0 18px;
-      }
-
-      .search-bar {
-        grid-template-columns: 1fr;
-      }
-
-      .search-btn {
-        grid-column: span 1;
-      }
-
-      .hotel-image {
-        min-height: 220px;
-      }
-
-      .hotel-main h2 {
-        font-size: 1.2rem;
-      }
-
-      .price {
-        font-size: 1.45rem;
-      }
-
-      .search-section {
-        position: static;
-      }
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Colecția Signature | Hațeg Alternativ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* DESIGN SIGNATURE: ROZ-CREM-AURIU (Integrat) */
+        :root { 
+            --verde: #1b3022; 
+            --auriu: #c5a059; 
+            --roz-crem: #fdfcf8; /* Fundalul tău bej-crem curat */
+            --alb: #ffffff; 
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--roz-crem); color: var(--verde); line-height: 1.6; }
+        
+        h1, h2, h3, .metanoia-title { font-family: 'Playfair Display', serif; font-weight: 700; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        /* Navigație Fixă & Transparentă la scroll */
+        .site-header { position: fixed; top: 0; width: 100%; z-index: 1500; background: rgba(255,255,255,0.9); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .nav-wrap { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; }
+        .brand { text-decoration: none; color: var(--verde); font-weight: 800; font-size: 1.1rem; letter-spacing: 1px; }
+        .main-nav a { text-decoration: none; color: #444; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-left: 20px; }
+
+        /* Titlu Pagină */
+        .page-header { padding: 120px 0 60px; text-align: center; }
+        .page-header h1 { font-size: clamp(2.5rem, 6vw, 4rem); font-style: italic; margin-bottom: 15px; }
+        .page-header p { color: #64748b; font-weight: 300; letter-spacing: 1px; }
+
+        /* Grid Pensiuni - Varianta Clasică cu Carduri Verticale Mari */
+        .pensiuni-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 40px; margin-bottom: 100px; }
+        
+        .pensiune-card { 
+            background: var(--alb); 
+            border-radius: 4px; /* Stilul tău cu colțuri mai ascuțite, elegant */
+            overflow: hidden; 
+            box-shadow: 0 20px 60px rgba(0,0,0,0.03); 
+            transition: 0.4s;
+            border: 1px solid #f1f1f1;
+        }
+        .pensiune-card:hover { transform: translateY(-10px); }
+        
+        .card-img-wrap { height: 400px; overflow: hidden; position: relative; }
+        .card-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
+        .pensiune-card:hover .card-img-wrap img { transform: scale(1.05); }
+
+        .card-content { padding: 40px; text-align: center; }
+        .card-kicker { color: var(--auriu); font-size: 0.7rem; font-weight: 800; letter-spacing: 4px; text-transform: uppercase; display: block; margin-bottom: 15px; }
+        .card-content h3 { font-size: 1.8rem; margin-bottom: 20px; }
+        .card-content p { color: #64748b; font-size: 0.95rem; margin-bottom: 30px; font-weight: 300; line-height: 1.8; }
+
+        .btn-gold { 
+            background: var(--auriu); 
+            color: white; 
+            padding: 15px 35px; 
+            border-radius: 50px; 
+            text-decoration: none; 
+            font-weight: 800; 
+            font-size: 0.75rem; 
+            text-transform: uppercase; 
+            letter-spacing: 2px;
+            display: inline-block;
+            transition: 0.3s;
+        }
+        .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(197,160,89,0.3); }
+
+        /* WhatsApp la stânga */
+        .wa-btn { position: fixed; bottom: 30px; left: 30px; background: #25d366; color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 2000; box-shadow: 0 10px 20px rgba(0,0,0,0.1); font-size: 0.8rem; }
+
+        @media (max-width: 768px) { .main-nav { display: none; } }
+    </style>
 </head>
 <body>
 
-  <header class="site-header">
+<header class="site-header">
     <div class="container nav-wrap">
-      <a href="index.html" class="brand"><span>HAȚEG</span> ALTERNATIV</a>
-      <nav class="main-nav">
-        <a href="index.html">Acasă</a>
-        <a href="pensiuni.html" class="active">Pensiuni</a>
-        <a href="retreat.html">Retreat</a>
-      </nav>
+        <a href="index.html" class="brand">HAȚEG <strong>ALTERNATIV</strong></a>
+        <nav class="main-nav">
+            <a href="pensiuni.html" style="color: var(--auriu);">Pensiuni</a>
+            <a href="retreat.html">Retreat</a>
+            <a href="gastronomic.html">Gastronomic</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <span style="font-size: 0.6rem; color: var(--auriu); font-weight: 800; letter-spacing: 2px;">EST. 2026</span>
     </div>
-  </header>
+</header>
 
-  <section class="page-hero">
-    <div class="container">
-      <h1>Colecția Signature</h1>
-      <p>3 proprietăți exclusiviste în Țara Hațegului filtrate pentru tine.</p>
+<main class="container">
+    <div class="page-header">
+        <span style="color: var(--auriu); letter-spacing: 5px; font-weight: 800; font-size: 0.8rem; text-transform: uppercase;">The Collection</span>
+        <h1>Locuri cu suflet.</h1>
+        <p>O selecție curatoriată de refugii unde liniștea este cel mai mare lux.</p>
     </div>
-  </section>
 
-  <section class="search-section">
-    <div class="container">
-      <div class="search-bar">
-        <div class="search-box">
-          <label>Destinație</label>
-          <input type="text" placeholder="Hațeg, Hunedoara">
-        </div>
-        <div class="search-box">
-          <label>Check-in</label>
-          <input type="date">
-        </div>
-        <div class="search-box">
-          <label>Oaspeți</label>
-          <select>
-            <option>2 adulți</option>
-            <option>2 adulți, 1 copil</option>
-            <option>4 adulți</option>
-          </select>
-        </div>
-        <button class="search-btn">Caută</button>
-      </div>
-    </div>
-  </section>
-
-  <main class="results-area">
-    <div class="container results-layout">
-
-      <aside class="filters">
-        <h3>Filtre</h3>
-
-        <div class="filter-group">
-          <h4>Tip proprietate</h4>
-          <label class="filter-option"><input type="checkbox" checked> Pensiune</label>
-          <label class="filter-option"><input type="checkbox"> Boutique stay</label>
-          <label class="filter-option"><input type="checkbox"> Cabină</label>
-        </div>
-
-        <div class="filter-group">
-          <h4>Facilități</h4>
-          <label class="filter-option"><input type="checkbox"> Mic dejun inclus</label>
-          <label class="filter-option"><input type="checkbox" checked> Parcare</label>
-          <label class="filter-option"><input type="checkbox" checked> Wi-Fi gratuit</label>
-          <label class="filter-option"><input type="checkbox"> Restaurant</label>
-        </div>
-
-        <div class="filter-group">
-          <h4>Experiență</h4>
-          <label class="filter-option"><input type="checkbox"> Romantic</label>
-          <label class="filter-option"><input type="checkbox"> Familie</label>
-          <label class="filter-option"><input type="checkbox"> Relaxare</label>
-        </div>
-      </aside>
-
-      <section>
-        <div class="results-top">
-          <div class="results-count">Am găsit 3 proprietăți potrivite pentru tine</div>
-          <div class="sort-box">Sortare: Recomandate</div>
-        </div>
-
-        <article class="hotel-card">
-          <div class="hotel-image">
-            <img src="images/selava-pensiune.jpg" alt="SelAva Estate">
-            <div class="badge">Signature Pick</div>
-          </div>
-
-          <div class="hotel-body">
-            <div class="hotel-main">
-              <h2>SelAva Estate</h2>
-              <a class="location" href="https://www.google.com/maps" target="_blank">Sălașu de Sus • Vezi pe hartă</a>
-
-              <div class="tags">
-                <span class="tag">Fine Dining</span>
-                <span class="tag">Design minimalist</span>
-                <span class="tag">Mic dejun excelent</span>
-              </div>
-
-              <p>
-                Un refugiu elegant pentru cei care caută liniște, design curat și o experiență premium aproape de natură.
-                Potrivit pentru escapade romantice și sejururi de relaxare.
-              </p>
-
-              <div class="hotel-features">
-                <span>Wi-Fi gratuit</span>
-                <span>Parcare inclusă</span>
-                <span>Anulare flexibilă</span>
-              </div>
+    <div class="pensiuni-grid">
+        <article class="pensiune-card">
+            <div class="card-img-wrap">
+                <img src="images/selava-pensiune.jpg" alt="SeLaVa Estate">
             </div>
-
-            <div class="hotel-side">
-              <div class="rating-box">
-                <div class="rating-text">Superb<br><small>24 evaluări</small></div>
-                <div class="rating-score">9.4</div>
-              </div>
-
-              <div>
-                <div class="price-box">
-                  <small>1 noapte / 2 adulți</small>
-                  <div class="price">540 lei</div>
-                  <div class="price-note">Include taxe și comisioane</div>
-                </div>
-                <a href="#" class="cta-btn">Vezi disponibilitatea</a>
-                <a href="https://www.google.com/maps" target="_blank" class="map-btn">Vezi locația</a>
-              </div>
+            <div class="card-content">
+                <span class="card-kicker">Design & Gastro</span>
+                <h3>SeLaVa Estate</h3>
+                <p>Unde minimalismul modern întâlnește gustul autentic. O destinație pentru esteticieni și pasionații de fine-dining rural.</p>
+                <a href="pensiune-selava.html" class="btn-gold">Vezi detalii</a>
             </div>
-          </div>
         </article>
 
-        <article class="hotel-card">
-          <div class="hotel-image">
-            <img src="images/la-buliga-pensiune.jpg" alt="Domeniile La Buligă">
-            <div class="badge">Panoramic View</div>
-          </div>
-
-          <div class="hotel-body">
-            <div class="hotel-main">
-              <h2>Domeniile La Buligă</h2>
-              <a class="location" href="https://www.google.com/maps" target="_blank">Râu de Mori • Vezi pe hartă</a>
-
-              <div class="tags">
-                <span class="tag">Panoramă</span>
-                <span class="tag">Liniște totală</span>
-                <span class="tag">Natură</span>
-              </div>
-
-              <p>
-                O experiență retrasă, cu aer curat, peisaj amplu și o atmosferă perfectă pentru deconectare.
-                Ideal pentru cei care vor munte, intimitate și ritm lent.
-              </p>
-
-              <div class="hotel-features">
-                <span>Parcare gratuită</span>
-                <span>Camere spațioase</span>
-                <span>Perfect pentru cupluri</span>
-              </div>
+        <article class="pensiune-card">
+            <div class="card-img-wrap">
+                <img src="images/la-buliga-pensiune.jpg" alt="La Buliga">
             </div>
-
-            <div class="hotel-side">
-              <div class="rating-box">
-                <div class="rating-text">Excepțional<br><small>18 evaluări</small></div>
-                <div class="rating-score">9.7</div>
-              </div>
-
-              <div>
-                <div class="price-box">
-                  <small>1 noapte / 2 adulți</small>
-                  <div class="price">490 lei</div>
-                  <div class="price-note">Include taxe și comisioane</div>
-                </div>
-                <a href="#" class="cta-btn">Vezi disponibilitatea</a>
-                <a href="https://www.google.com/maps" target="_blank" class="map-btn">Vezi locația</a>
-              </div>
+            <div class="card-content">
+                <span class="card-kicker">Mountain Retreat</span>
+                <h3>Domeniile La Buligă</h3>
+                <p>O experiență rară la peste 1000m altitudine. Izolare totală deasupra norilor pentru grupuri care caută regăsirea.</p>
+                <a href="pensiune-buliga.html" class="btn-gold">Vezi detalii</a>
             </div>
-          </div>
         </article>
 
-        <article class="hotel-card">
-          <div class="hotel-image">
-            <img src="images/natalia-pensiune.jpg" alt="Pensiunea Natalia">
-            <div class="badge">Tradiție locală</div>
-          </div>
-
-          <div class="hotel-body">
-            <div class="hotel-main">
-              <h2>Pensiunea Natalia</h2>
-              <a class="location" href="https://www.google.com/maps" target="_blank">Hațeg • Vezi pe hartă</a>
-
-              <div class="tags">
-                <span class="tag">Autentic</span>
-                <span class="tag">Familie</span>
-                <span class="tag">Ospitalitate</span>
-              </div>
-
-              <p>
-                O alegere caldă și autentică, cu accent pe confort, atmosferă primitoare și apropiere de obiectivele
-                importante din zonă. Foarte bună pentru familii și turiști activi.
-              </p>
-
-              <div class="hotel-features">
-                <span>Gazde primitoare</span>
-                <span>Locație bună</span>
-                <span>Mic dejun disponibil</span>
-              </div>
+        <article class="pensiune-card">
+            <div class="card-img-wrap">
+                <img src="images/natalia-pensiune.jpg" alt="Pensiunea Natalia">
             </div>
-
-            <div class="hotel-side">
-              <div class="rating-box">
-                <div class="rating-text">Foarte bine<br><small>31 evaluări</small></div>
-                <div class="rating-score">8.9</div>
-              </div>
-
-              <div>
-                <div class="price-box">
-                  <small>1 noapte / 2 adulți</small>
-                  <div class="price">360 lei</div>
-                  <div class="price-note">Include taxe și comisioane</div>
-                </div>
-                <a href="#" class="cta-btn">Vezi disponibilitatea</a>
-                <a href="https://www.google.com/maps" target="_blank" class="map-btn">Vezi locația</a>
-              </div>
+            <div class="card-content">
+                <span class="card-kicker">Authentic Stay</span>
+                <h3>Pensiunea Natalia</h3>
+                <p>Locul unde ospitalitatea Țării Hațegului prinde viață. Mic dejun legendar și căldura unei case de munte adevărate.</p>
+                <a href="pensiune-natalia.html" class="btn-gold">Vezi detalii</a>
             </div>
-          </div>
         </article>
-
-      </section>
     </div>
-  </main>
+</main>
+
+<a href="https://wa.me/40749229686" class="wa-btn">WhatsApp Direct</a>
+
+<footer style="background: #122118; color: white; padding: 60px 0; text-align: center; font-size: 0.7rem; letter-spacing: 2px; opacity: 0.5;">
+    © 2026 HAȚEG ALTERNATIV | SIGNATURE COLLECTION
+</footer>
+
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true; s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
+    s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+</script>
 
 </body>
 </html>
