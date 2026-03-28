@@ -9,50 +9,124 @@
     <style>
         :root { --verde: #1b3022; --auriu: #c5a059; --crem: #fdfcf8; --alb: #ffffff; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--verde); line-height: 1.6; }
-        h1, .brand { font-family: 'Playfair Display', serif; }
+        body, html { height: 100%; margin: 0; font-family: 'Inter', sans-serif; background: var(--verde); }
 
-        /* Navigație Minimalistă - Cele 4 pagini cheie */
-        .site-header { position: absolute; top: 0; left: 0; width: 100%; padding: 30px 0; z-index: 100; background: transparent; }
-        .nav-wrap { display: flex; justify-content: space-between; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 40px; }
-        .brand { text-decoration: none; color: var(--alb); font-size: 1.5rem; letter-spacing: 2px; font-weight: 700; }
-        .main-nav a { text-decoration: none; color: var(--alb); font-size: 0.85rem; margin-left: 35px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; opacity: 0.9; }
+        /* NAVIGATIE TRANSPARENTĂ (Stilul de lux) */
+        .site-header { 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            padding: 40px 0; 
+            z-index: 1000; 
+            background: transparent; 
+        }
+        .nav-wrap { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            max-width: 1200px; 
+            margin: 0 auto; 
+            padding: 0 40px; 
+        }
+        .brand { 
+            font-family: 'Playfair Display', serif; 
+            text-decoration: none; 
+            color: white; 
+            font-size: 1.6rem; 
+            letter-spacing: 2px; 
+            font-weight: 700; 
+        }
+        .main-nav a { 
+            text-decoration: none; 
+            color: white; 
+            font-size: 0.8rem; 
+            margin-left: 35px; 
+            font-weight: 600; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            transition: 0.3s; 
+            opacity: 0.8;
+        }
         .main-nav a:hover { opacity: 1; color: var(--auriu); }
 
-        /* Hero Superb - Imaginea care vinde totul */
+        /* HERO FULL SCREEN CU MUNTELE FIXAT */
         .hero { 
+            position: relative;
             height: 100vh; 
+            width: 100%;
             display: flex; 
             align-items: center; 
             justify-content: center; 
             text-align: center; 
-            color: var(--alb);
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), 
-                        url('https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/hero-camp-munti.jpg') center/cover no-repeat;
+            color: white;
+            /* LINK RAW VERIFICAT PENTRU IMAGINEA CU MUNTELE */
+            background-image: linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.25)), 
+                              url('https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/hero-camp-munti.jpg');
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
         }
-        .hero-content { max-width: 800px; padding: 0 20px; }
-        .hero h1 { font-size: clamp(3rem, 10vw, 5.5rem); margin-bottom: 10px; line-height: 1.1; }
-        .hero p { font-size: 1.2rem; font-weight: 300; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 40px; opacity: 0.9; }
 
-        /* Butonul de Call to Action */
-        .btn-premium { 
-            padding: 18px 45px; 
-            border: 1px solid var(--alb); 
-            color: var(--alb); 
+        .hero-content { z-index: 2; max-width: 900px; }
+        .hero-content p { 
+            font-size: 1.1rem; 
+            font-weight: 300; 
+            letter-spacing: 6px; 
+            text-transform: uppercase; 
+            margin-bottom: 20px; 
+            display: block;
+        }
+        .hero h1 { 
+            font-family: 'Playfair Display', serif; 
+            font-size: clamp(3.5rem, 12vw, 6rem); 
+            line-height: 1; 
+            margin-bottom: 40px; 
+            font-style: italic;
+        }
+
+        /* BUTONUL MINIMALIST */
+        .btn-luxury { 
+            padding: 20px 50px; 
+            border: 1px solid rgba(255,255,255,0.4); 
+            color: white; 
             text-decoration: none; 
             font-weight: 600; 
-            font-size: 0.9rem; 
-            letter-spacing: 2px; 
+            font-size: 0.8rem; 
+            letter-spacing: 3px; 
             text-transform: uppercase; 
-            transition: 0.4s;
-            border-radius: 2px;
+            transition: 0.5s;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(5px);
         }
-        .btn-premium:hover { background: var(--alb); color: var(--verde); }
+        .btn-luxury:hover { 
+            background: white; 
+            color: var(--verde); 
+            border-color: white;
+        }
 
-        /* WhatsApp Minimalist */
-        .wa-link { position: fixed; bottom: 40px; left: 40px; color: var(--alb); text-decoration: none; font-size: 0.8rem; letter-spacing: 2px; font-weight: 700; z-index: 100; text-transform: uppercase; border-bottom: 1px solid var(--auriu); padding-bottom: 5px; }
+        /* WHATSAPP DISCRET */
+        .wa-contact { 
+            position: absolute; 
+            bottom: 50px; 
+            left: 50px; 
+            color: white; 
+            text-decoration: none; 
+            font-size: 0.75rem; 
+            letter-spacing: 3px; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            border-bottom: 1px solid var(--auriu); 
+            padding-bottom: 8px;
+            opacity: 0.7;
+            transition: 0.3s;
+        }
+        .wa-contact:hover { opacity: 1; }
 
-        @media (max-width: 768px) { .main-nav { display: none; } }
+        @media (max-width: 768px) { 
+            .main-nav { display: none; } 
+            .hero h1 { font-size: 4rem; }
+        }
     </style>
 </head>
 <body>
@@ -71,15 +145,15 @@
 
 <section class="hero">
     <div class="hero-content">
-        <p>Simte tăcerea.</p>
+        <p>Simte tăcerea</p>
         <h1>Trăiește real.</h1>
-        <div style="margin-top: 50px;">
-            <a href="pensiuni.html" class="btn-premium">Descoperă Colecția</a>
+        <div style="margin-top: 60px;">
+            <a href="pensiuni.html" class="btn-luxury">Colecția noastră</a>
         </div>
     </div>
 </section>
 
-<a href="https://wa.me/40749229686" class="wa-link">WhatsApp / Direct Line</a>
+<a href="https://wa.me/40749229686" class="wa-contact">WhatsApp Line</a>
 
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
