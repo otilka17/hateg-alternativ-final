@@ -1,256 +1,714 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Colecția Signature | Hațeg Alternativ</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css" />
-    <style>
-        /* Ajustări specifice stilului Booking/Luxury */
-        body { margin-top: 90px; background: #fdfcf8; }
-        
-        .booking-card {
-            display: flex;
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(27, 48, 34, 0.05);
-            border: 1px solid #eee;
-            margin-bottom: 40px;
-            transition: transform 0.3s ease;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pensiuni | Hațeg Alternativ</title>
 
-        .booking-card:hover { transform: translateY(-5px); }
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-        .card-badge {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            color: white;
-            padding: 6px 15px;
-            border-radius: 6px;
-            font-size: 0.7rem;
-            font-weight: 800;
-            letter-spacing: 1px;
-            z-index: 10;
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        .rating-box {
-            background: #1b3022;
-            color: white;
-            padding: 8px 12px;
-            border-radius: 8px;
-            font-weight: 800;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f5f7fb;
+      color: #1f2937;
+    }
 
-        .amenity-tag {
-            border: 1px solid #e2e8f0;
-            padding: 5px 12px;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            color: #64748b;
-            background: #f8fafc;
-        }
+    a {
+      text-decoration: none;
+    }
 
-        @media (max-width: 900px) {
-            .booking-card { flex-direction: column; }
-            .card-image { height: 250px !important; }
-        }
-    </style>
+    .container {
+      width: min(1180px, 92%);
+      margin: 0 auto;
+    }
+
+    /* HEADER */
+    .site-header {
+      background: #fff;
+      border-bottom: 1px solid #e5e7eb;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+      gap: 20px;
+    }
+
+    .brand {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #183024;
+      letter-spacing: 1px;
+      white-space: nowrap;
+    }
+
+    .brand span {
+      font-weight: 300;
+    }
+
+    .main-nav {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+
+    .main-nav a {
+      color: #374151;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .main-nav a.active {
+      color: #c59d4f;
+    }
+
+    /* HERO */
+    .page-hero {
+      background: #fff;
+      padding: 42px 0 26px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .page-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.3rem, 5vw, 4.6rem);
+      line-height: 1.05;
+      margin-bottom: 14px;
+      color: #111827;
+    }
+
+    .page-hero p {
+      font-size: 1.1rem;
+      color: #64748b;
+      max-width: 760px;
+      line-height: 1.7;
+    }
+
+    /* SEARCH BAR */
+    .search-section {
+      padding: 22px 0;
+      background: #f5f7fb;
+      position: sticky;
+      top: 73px;
+      z-index: 999;
+    }
+
+    .search-bar {
+      background: #febb02;
+      border-radius: 16px;
+      padding: 6px;
+      display: grid;
+      grid-template-columns: 2fr 1.2fr 1.2fr auto;
+      gap: 6px;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+    }
+
+    .search-box {
+      background: #fff;
+      border-radius: 12px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 64px;
+    }
+
+    .search-box label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #64748b;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .search-box input,
+    .search-box select {
+      border: none;
+      outline: none;
+      font-size: 0.98rem;
+      color: #111827;
+      background: transparent;
+      width: 100%;
+    }
+
+    .search-btn {
+      border: none;
+      background: #0071c2;
+      color: #fff;
+      border-radius: 12px;
+      padding: 0 26px;
+      font-size: 1rem;
+      font-weight: 800;
+      cursor: pointer;
+      min-height: 64px;
+    }
+
+    .search-btn:hover {
+      background: #005fa3;
+    }
+
+    /* MAIN LAYOUT */
+    .results-area {
+      padding: 28px 0 70px;
+    }
+
+    .results-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    /* SIDEBAR */
+    .filters {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 18px;
+      padding: 22px;
+      position: sticky;
+      top: 180px;
+    }
+
+    .filters h3 {
+      font-size: 1.05rem;
+      margin-bottom: 18px;
+      color: #111827;
+    }
+
+    .filter-group {
+      margin-bottom: 24px;
+    }
+
+    .filter-group h4 {
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+      color: #111827;
+    }
+
+    .filter-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+      color: #475569;
+    }
+
+    /* RESULTS */
+    .results-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .results-count {
+      color: #475569;
+      font-size: 0.96rem;
+    }
+
+    .sort-box {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 0.92rem;
+      color: #334155;
+    }
+
+    .hotel-card {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 18px;
+      background: #fff;
+      border: 1px solid #dbe2ea;
+      border-radius: 18px;
+      overflow: hidden;
+      margin-bottom: 18px;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+    }
+
+    .hotel-image {
+      position: relative;
+      min-height: 250px;
+    }
+
+    .hotel-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: #1b4332;
+      color: #fff;
+      font-size: 0.76rem;
+      font-weight: 800;
+      padding: 8px 12px;
+      border-radius: 999px;
+      letter-spacing: 0.5px;
+    }
+
+    .hotel-body {
+      padding: 18px 18px 18px 0;
+      display: grid;
+      grid-template-columns: 1fr 190px;
+      gap: 18px;
+    }
+
+    .hotel-main h2 {
+      font-size: 1.45rem;
+      color: #0f172a;
+      margin-bottom: 6px;
+    }
+
+    .location {
+      font-size: 0.92rem;
+      color: #0071c2;
+      margin-bottom: 10px;
+      display: inline-block;
+      font-weight: 600;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .tag {
+      background: #f1f5f9;
+      color: #334155;
+      font-size: 0.8rem;
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-weight: 600;
+    }
+
+    .hotel-main p {
+      color: #475569;
+      line-height: 1.7;
+      font-size: 0.95rem;
+      margin-bottom: 14px;
+    }
+
+    .hotel-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      color: #166534;
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .hotel-side {
+      border-left: 1px solid #eef2f7;
+      padding-left: 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-end;
+      text-align: right;
+    }
+
+    .rating-box {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: flex-end;
+      margin-bottom: 18px;
+    }
+
+    .rating-text {
+      font-size: 0.88rem;
+      color: #334155;
+      font-weight: 700;
+    }
+
+    .rating-score {
+      background: #003b95;
+      color: #fff;
+      padding: 10px 12px;
+      border-radius: 10px 10px 10px 0;
+      font-weight: 800;
+      min-width: 48px;
+      text-align: center;
+    }
+
+    .price-box small {
+      display: block;
+      color: #64748b;
+      font-size: 0.8rem;
+      margin-bottom: 4px;
+    }
+
+    .price {
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: #111827;
+      margin-bottom: 4px;
+    }
+
+    .price-note {
+      color: #64748b;
+      font-size: 0.8rem;
+      margin-bottom: 14px;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: #0071c2;
+      color: #fff;
+      padding: 13px 18px;
+      border-radius: 10px;
+      font-weight: 800;
+      font-size: 0.92rem;
+      text-align: center;
+      min-width: 160px;
+    }
+
+    .cta-btn:hover {
+      background: #005fa3;
+    }
+
+    .map-btn {
+      display: inline-block;
+      margin-top: 10px;
+      color: #0071c2;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 992px) {
+      .results-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .filters {
+        position: static;
+      }
+
+      .search-bar {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .search-btn {
+        grid-column: span 2;
+      }
+
+      .hotel-card {
+        grid-template-columns: 1fr;
+      }
+
+      .hotel-body {
+        grid-template-columns: 1fr;
+        padding: 18px;
+      }
+
+      .hotel-side {
+        border-left: none;
+        border-top: 1px solid #eef2f7;
+        padding-left: 0;
+        padding-top: 16px;
+        align-items: flex-start;
+        text-align: left;
+      }
+
+      .rating-box {
+        justify-content: flex-start;
+      }
+
+      .search-section {
+        top: 69px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-wrap {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .main-nav {
+        gap: 18px;
+      }
+
+      .page-hero {
+        padding: 30px 0 18px;
+      }
+
+      .search-bar {
+        grid-template-columns: 1fr;
+      }
+
+      .search-btn {
+        grid-column: span 1;
+      }
+
+      .hotel-image {
+        min-height: 220px;
+      }
+
+      .hotel-main h2 {
+        font-size: 1.2rem;
+      }
+
+      .price {
+        font-size: 1.45rem;
+      }
+
+      .search-section {
+        position: static;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<header class="site-header" style="position: fixed; top: 0; width: 100%; z-index: 1500; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #eee;">
-    <div class="container nav-wrap" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0;">
-        <a href="index.html" class="brand" style="text-decoration: none; color: #1b3022; font-weight: 800; font-size: 1.2rem; letter-spacing: 1px;">
-            <span style="font-weight: 300;">HAȚEG</span> ALTERNATIV
-        </a>
-        <nav class="main-nav" style="display: flex; gap: 25px;">
-            <a href="index.html" style="text-decoration: none; color: #333; font-weight: 600;">Acasă</a>
-            <a href="pensiuni.html" style="text-decoration: none; color: #c5a059; font-weight: 800;">Pensiuni</a>
-            <a href="retreat.html" style="text-decoration: none; color: #333; font-weight: 600;">Retreat</a>
-        </nav>
-        <a href="rezervare.html" class="btn btn-gold" style="padding: 10px 20px; font-size: 0.7rem; text-decoration: none; background: #c5a059; color: white; border-radius: 50px; font-weight: 800;">REZERVARE RAPIDĂ</a>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="index.html" class="brand"><span>HAȚEG</span> ALTERNATIV</a>
+      <nav class="main-nav">
+        <a href="index.html">Acasă</a>
+        <a href="pensiuni.html" class="active">Pensiuni</a>
+        <a href="retreat.html">Retreat</a>
+      </nav>
     </div>
-</header>
+  </header>
 
-<div class="container" style="margin-top: 50px;">
-    
-    <div class="booking-header" style="margin-bottom: 40px;">
-        <h1 class="metanoia-title" style="font-size: 3.5rem; margin-bottom: 10px;">Colecția Signature</h1>
-        <p style="color: #64748b; font-size: 1.1rem;">3 proprietăți exclusiviste în Țara Hațegului filtrate pentru tine.</p>
+  <section class="page-hero">
+    <div class="container">
+      <h1>Colecția Signature</h1>
+      <p>3 proprietăți exclusiviste în Țara Hațegului filtrate pentru tine.</p>
     </div>
+  </section>
 
-    <div class="map-container" style="width: 100%; height: 400px; border-radius: 20px; overflow: hidden; margin-bottom: 60px; box-shadow: var(--shadow); border: 1px solid #eee;">
-        <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m13!1m3!1d179536.81844074212!2d22.82285149638426!3d45.57245974641328!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sDomeniile%20La%20Buliga%2C%20SelAva%20Hateg%2C%20Pensiunea%20Natalia!5e0!3m2!1sro!2sro!4v1711640000000!5m2!1sro!2sro" 
-            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
-        </iframe>
+  <section class="search-section">
+    <div class="container">
+      <div class="search-bar">
+        <div class="search-box">
+          <label>Destinație</label>
+          <input type="text" placeholder="Hațeg, Hunedoara">
+        </div>
+        <div class="search-box">
+          <label>Check-in</label>
+          <input type="date">
+        </div>
+        <div class="search-box">
+          <label>Oaspeți</label>
+          <select>
+            <option>2 adulți</option>
+            <option>2 adulți, 1 copil</option>
+            <option>4 adulți</option>
+          </select>
+        </div>
+        <button class="search-btn">Caută</button>
+      </div>
     </div>
+  </section>
 
-    <div class="booking-list" style="display: flex; flex-direction: column; gap: 40px; margin-bottom: 100px;">
+  <main class="results-area">
+    <div class="container results-layout">
 
-        <article class="booking-card" style="display: flex; background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eee;">
-            <div style="flex: 1; position: relative;">
-                <img src="images/selava-pensiune.jpg" alt="SelAva" style="width: 100%; height: 100%; object-fit: cover;">
-                <span style="position: absolute; top: 20px; left: 20px; background: #c5a059; color: white; padding: 5px 15px; border-radius: 5px; font-size: 0.7rem; font-weight: 800;">TOP RATED</span>
+      <aside class="filters">
+        <h3>Filtre</h3>
+
+        <div class="filter-group">
+          <h4>Tip proprietate</h4>
+          <label class="filter-option"><input type="checkbox" checked> Pensiune</label>
+          <label class="filter-option"><input type="checkbox"> Boutique stay</label>
+          <label class="filter-option"><input type="checkbox"> Cabină</label>
+        </div>
+
+        <div class="filter-group">
+          <h4>Facilități</h4>
+          <label class="filter-option"><input type="checkbox"> Mic dejun inclus</label>
+          <label class="filter-option"><input type="checkbox" checked> Parcare</label>
+          <label class="filter-option"><input type="checkbox" checked> Wi-Fi gratuit</label>
+          <label class="filter-option"><input type="checkbox"> Restaurant</label>
+        </div>
+
+        <div class="filter-group">
+          <h4>Experiență</h4>
+          <label class="filter-option"><input type="checkbox"> Romantic</label>
+          <label class="filter-option"><input type="checkbox"> Familie</label>
+          <label class="filter-option"><input type="checkbox"> Relaxare</label>
+        </div>
+      </aside>
+
+      <section>
+        <div class="results-top">
+          <div class="results-count">Am găsit 3 proprietăți potrivite pentru tine</div>
+          <div class="sort-box">Sortare: Recomandate</div>
+        </div>
+
+        <article class="hotel-card">
+          <div class="hotel-image">
+            <img src="images/selava-pensiune.jpg" alt="SelAva Estate">
+            <div class="badge">Signature Pick</div>
+          </div>
+
+          <div class="hotel-body">
+            <div class="hotel-main">
+              <h2>SelAva Estate</h2>
+              <a class="location" href="https://www.google.com/maps" target="_blank">Sălașu de Sus • Vezi pe hartă</a>
+
+              <div class="tags">
+                <span class="tag">Fine Dining</span>
+                <span class="tag">Design minimalist</span>
+                <span class="tag">Mic dejun excelent</span>
+              </div>
+
+              <p>
+                Un refugiu elegant pentru cei care caută liniște, design curat și o experiență premium aproape de natură.
+                Potrivit pentru escapade romantice și sejururi de relaxare.
+              </p>
+
+              <div class="hotel-features">
+                <span>Wi-Fi gratuit</span>
+                <span>Parcare inclusă</span>
+                <span>Anulare flexibilă</span>
+              </div>
             </div>
-            <div style="flex: 1.5; padding: 40px; display: flex; flex-direction: column; justify-content: space-between;">
-                <div>
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                        <h2 class="metanoia-title" style="font-size: 2rem; margin: 0;">SelAva Estate & Gastro</h2>
-                        <div style="background: #1b3022; color: white; padding: 8px 12px; border-radius: 8px; font-weight: 800; font-size: 1.1rem;">5.0</div>
-                    </div>
-                    <p style="color: #c5a059; font-size: 0.8rem; font-weight: 700; margin-bottom: 15px;">📍 Hațeg, Str. Decebal 20</p>
-                    <p style="color: #64748b; font-size: 0.95rem; margin-bottom: 20px;">Design minimalist, restaurant gourmet și o experiență urbană de lux în inima Țării Hațegului.</p>
-                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                        <span style="border: 1px solid #ddd; padding: 5px 12px; border-radius: 5px; font-size: 0.75rem;">Mic dejun inclus</span>
-                        <span style="border: 1px solid #ddd; padding: 5px 12px; border-radius: 5px; font-size: 0.75rem;">WiFi Gratuit</span>
-                        <span style="border: 1px solid #ddd; padding: 5px 12px; border-radius: 5px; font-size: 0.75rem;">Fine Dining</span>
-                    </div>
+
+            <div class="hotel-side">
+              <div class="rating-box">
+                <div class="rating-text">Superb<br><small>24 evaluări</small></div>
+                <div class="rating-score">9.4</div>
+              </div>
+
+              <div>
+                <div class="price-box">
+                  <small>1 noapte / 2 adulți</small>
+                  <div class="price">540 lei</div>
+                  <div class="price-note">Include taxe și comisioane</div>
                 </div>
-                <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 30px; border-top: 1px solid #f5f5f5; padding-top: 20px;">
-                    <div>
-                        <span style="display: block; font-size: 0.8rem; color: #64748b;">Preț de la</span>
-                        <span style="font-size: 1.8rem; font-weight: 800; color: #1b3022;">550 RON <small style="font-size: 0.8rem; font-weight: 300;">/noapte</small></span>
-                    </div>
-                    <a href="pensiune-selava.html" class="btn btn-gold" style="padding: 12px 25px;">Vezi disponibilitate</a>
-                </div>
+                <a href="#" class="cta-btn">Vezi disponibilitatea</a>
+                <a href="https://www.google.com/maps" target="_blank" class="map-btn">Vezi locația</a>
+              </div>
             </div>
+          </div>
         </article>
 
-        <article class="booking-card" style="display: flex; background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eee;">
-            <div style="flex: 1; position: relative;">
-                <img src="images/la-buliga-pensiune.jpg" alt="La Buliga" style="width: 100%; height: 100%; object-fit: cover;">
-                <span style="position: absolute; top: 20px; left: 20px; background: #1b3022; color: white; padding: 5px 15px; border-radius: 5px; font-size: 0.7rem; font-weight: 800;">IZOLARE TOTALĂ</span>
+        <article class="hotel-card">
+          <div class="hotel-image">
+            <img src="images/la-buliga-pensiune.jpg" alt="Domeniile La Buligă">
+            <div class="badge">Panoramic View</div>
+          </div>
+
+          <div class="hotel-body">
+            <div class="hotel-main">
+              <h2>Domeniile La Buligă</h2>
+              <a class="location" href="https://www.google.com/maps" target="_blank">Râu de Mori • Vezi pe hartă</a>
+
+              <div class="tags">
+                <span class="tag">Panoramă</span>
+                <span class="tag">Liniște totală</span>
+                <span class="tag">Natură</span>
+              </div>
+
+              <p>
+                O experiență retrasă, cu aer curat, peisaj amplu și o atmosferă perfectă pentru deconectare.
+                Ideal pentru cei care vor munte, intimitate și ritm lent.
+              </p>
+
+              <div class="hotel-features">
+                <span>Parcare gratuită</span>
+                <span>Camere spațioase</span>
+                <span>Perfect pentru cupluri</span>
+              </div>
             </div>
-            <div style="flex: 1.5; padding: 40px; display: flex; flex-direction: column; justify-content: space-between;">
-                <div>
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                        <h2 class="metanoia-title" style="font-size: 2rem; margin: 0;">Domeniile La Buligă</h2>
-                        <div style="background: #1b3022; color: white; padding: 8px 12px; border-radius: 8px; font-weight: 800; font-size: 1.1rem;">4.9</div>
-                    </div>
-                    <p style="color: #c5a059; font-size: 0.8rem; font-weight: 700; margin-bottom: 15px;">📍 Vadu Dobrii (Altitudine 1000m+)</p>
-                    <p style="color: #64748b; font-size: 0.95rem; margin-bottom: 20px;">Cabană premium pentru închiriere integrală. Ideală pentru grupuri care caută liniște și peisaje montane.</p>
-                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                        <span style="border: 1px solid #ddd; padding: 5px 12px; border-radius: 5px; font-size: 0.75rem;">Mountain View</span>
-                        <span style="border: 1px solid #ddd; padding: 5px 12px; border-radius: 5px; font-size: 0.75rem;">Digital Detox</span>
-                        <span style="border: 1px solid #ddd; padding: 5px 12px; border-radius: 5px; font-size: 0.75rem;">Pet Friendly</span>
-                    </div>
+
+            <div class="hotel-side">
+              <div class="rating-box">
+                <div class="rating-text">Excepțional<br><small>18 evaluări</small></div>
+                <div class="rating-score">9.7</div>
+              </div>
+
+              <div>
+                <div class="price-box">
+                  <small>1 noapte / 2 adulți</small>
+                  <div class="price">490 lei</div>
+                  <div class="price-note">Include taxe și comisioane</div>
                 </div>
-                <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 30px; border-top: 1px solid #f5f5f5; padding-top: 20px;">
-                    <div>
-                        <span style="display: block; font-size: 0.8rem; color: #64748b;">Preț de la</span>
-                        <span style="font-size: 1.8rem; font-weight: 800; color: #1b3022;">2.800 RON <small style="font-size: 0.8rem; font-weight: 300;">/locație</small></span>
-                    </div>
-                    <a href="pensiune-buliga.html" class="btn btn-gold" style="padding: 12px 25px;">Vezi disponibilitate</a>
-                </div>
+                <a href="#" class="cta-btn">Vezi disponibilitatea</a>
+                <a href="https://www.google.com/maps" target="_blank" class="map-btn">Vezi locația</a>
+              </div>
             </div>
+          </div>
         </article>
 
-        <article class="booking-card" style="display: flex; background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #eee;">
-            <div style="flex: 1; position: relative;">
-                <img src="images/natalia-pensiune.jpg" alt="Pensiunea Natalia" style="width: 100%; height: 100%; object-fit: cover;">
-                <span style="position: absolute; top: 20px; left: 20px; background: #718355; color: white; padding: 5px 15px; border-radius: 5px; font-size: 0.7rem; font-weight: 800;">LOCAL SOUL</span>
+        <article class="hotel-card">
+          <div class="hotel-image">
+            <img src="images/natalia-pensiune.jpg" alt="Pensiunea Natalia">
+            <div class="badge">Tradiție locală</div>
+          </div>
+
+          <div class="hotel-body">
+            <div class="hotel-main">
+              <h2>Pensiunea Natalia</h2>
+              <a class="location" href="https://www.google.com/maps" target="_blank">Hațeg • Vezi pe hartă</a>
+
+              <div class="tags">
+                <span class="tag">Autentic</span>
+                <span class="tag">Familie</span>
+                <span class="tag">Ospitalitate</span>
+              </div>
+
+              <p>
+                O alegere caldă și autentică, cu accent pe confort, atmosferă primitoare și apropiere de obiectivele
+                importante din zonă. Foarte bună pentru familii și turiști activi.
+              </p>
+
+              <div class="hotel-features">
+                <span>Gazde primitoare</span>
+                <span>Locație bună</span>
+                <span>Mic dejun disponibil</span>
+              </div>
             </div>
-            <div style="flex: 1.5; padding: 40px; display: flex; flex-direction: column; justify-content: space-between;">
-                <div>
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                        <h2 class="metanoia-title" style="font-size: 2rem; margin: 0;">Pensiunea Natalia</h2>
-                        <div style="background: #1b3022; color: white; padding: 8px 12px; border-radius: 8px; font-weight: 800; font-size: 1.1rem;">4.8</div>
-                    </div>
-                    <p style="color: #c5a059; font-size: 0.8rem; font-weight: 700; margin-bottom: 15px;">📍 Totești (Lângă Hațeg)</p>
-                    <p style="color: #64748b; font-size: 0.95rem; margin-bottom: 20px;">Ospitalitate tradițională veritabilă, produse bio din gospodărie și o grădină relaxantă.</p>
-                    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-                        <span style="border: 1px solid #ddd; padding: 5px 12px; border-radius: 5px; font-size: 0.75rem;">Piscină</span>
-                        <span style="border: 1px solid #ddd; padding: 5px 12px; border-radius: 5px; font-size: 0.75rem;">Grădină</span>
-                        <span style="border: 1px solid #ddd; padding: 5px 12px; border-radius: 5px; font-size: 0.75rem;">Mic Dejun Bio</span>
-                    </div>
+
+            <div class="hotel-side">
+              <div class="rating-box">
+                <div class="rating-text">Foarte bine<br><small>31 evaluări</small></div>
+                <div class="rating-score">8.9</div>
+              </div>
+
+              <div>
+                <div class="price-box">
+                  <small>1 noapte / 2 adulți</small>
+                  <div class="price">360 lei</div>
+                  <div class="price-note">Include taxe și comisioane</div>
                 </div>
-                <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 30px; border-top: 1px solid #f5f5f5; padding-top: 20px;">
-                    <div>
-                        <span style="display: block; font-size: 0.8rem; color: #64748b;">Preț de la</span>
-                        <span style="font-size: 1.8rem; font-weight: 800; color: #1b3022;">300 RON <small style="font-size: 0.8rem; font-weight: 300;">/noapte</small></span>
-                    </div>
-                    <a href="pensiune-natalia.html" class="btn btn-gold" style="padding: 12px 25px;">Vezi disponibilitate</a>
-                </div>
+                <a href="#" class="cta-btn">Vezi disponibilitatea</a>
+                <a href="https://www.google.com/maps" target="_blank" class="map-btn">Vezi locația</a>
+              </div>
             </div>
+          </div>
         </article>
 
+      </section>
     </div>
-</div>
-        </article>
+  </main>
 
-        <article class="booking-card">
-            <div class="card-image" style="flex: 1; position: relative; min-height: 350px;">
-                <img src="images/la-buliga-pensiune.jpg" alt="La Buliga" style="width: 100%; height: 100%; object-fit: cover;">
-                <span class="card-badge" style="background: #1b3022;">MOUNTAIN RETREAT</span>
-            </div>
-            <div style="flex: 1.4; padding: 40px; display: flex; flex-direction: column; justify-content: space-between;">
-                <div>
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                        <h2 class="metanoia-title" style="font-size: 2.2rem; margin: 0;">Domeniile La Buligă</h2>
-                        <div class="rating-box">4.9 <span>★</span></div>
-                    </div>
-                    <p style="color: #c5a059; font-size: 0.85rem; font-weight: 700; margin: 10px 0 20px;">📍 Vadu Dobrii (Altitudine 1000m+)</p>
-                    <p style="color: #444; font-weight: 300; line-height: 1.8; margin-bottom: 25px;">O experiență exclusivă deasupra norilor. Închiriere integrală pentru grupuri care caută liniștea absolută și digital detox.</p>
-                    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-                        <span class="amenity-tag">Închiriere Integrală</span>
-                        <span class="amenity-tag">Vedere Montană</span>
-                        <span class="amenity-tag">Pet Friendly</span>
-                    </div>
-                </div>
-                <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 40px; border-top: 1px solid #f1f5f9; padding-top: 25px;">
-                    <div>
-                        <span style="display: block; font-size: 0.75rem; color: #64748b; text-transform: uppercase;">Tarif locație</span>
-                        <span style="font-size: 1.8rem; font-weight: 800; color: #1b3022;">2.800 RON <small style="font-size: 0.8rem; font-weight: 400; opacity: 0.6;">/ noapte</small></span>
-                    </div>
-                    <a href="pensiune-buliga.html" class="btn btn-forest" style="background: #1b3022; color: white; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 800; font-size: 0.75rem;">VEZI DETALII</a>
-                </div>
-            </div>
-        </article>
-
-        <article class="booking-card">
-            <div class="card-image" style="flex: 1; position: relative; min-height: 350px;">
-                <img src="images/natalia-pensiune.jpg" alt="Pensiunea Natalia" style="width: 100%; height: 100%; object-fit: cover;">
-                <span class="card-badge" style="background: #718355;">AUTHENTIC STAY</span>
-            </div>
-            <div style="flex: 1.4; padding: 40px; display: flex; flex-direction: column; justify-content: space-between;">
-                <div>
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                        <h2 class="metanoia-title" style="font-size: 2.2rem; margin: 0;">Pensiunea Natalia</h2>
-                        <div class="rating-box">4.8 <span>★</span></div>
-                    </div>
-                    <p style="color: #c5a059; font-size: 0.85rem; font-weight: 700; margin: 10px 0 20px;">📍 Totești (Lângă Hațeg)</p>
-                    <p style="color: #444; font-weight: 300; line-height: 1.8; margin-bottom: 25px;">Locul unde ospitalitatea Țării Hațegului prinde viață. Mic dejun legendar preparat din produse din curtea proprie.</p>
-                    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-                        <span class="amenity-tag">Mic Dejun Bio</span>
-                        <span class="amenity-tag">Grădină</span>
-                        <span class="amenity-tag">Piscină</span>
-                    </div>
-                </div>
-                <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 40px; border-top: 1px solid #f1f5f9; padding-top: 25px;">
-                    <div>
-                        <span style="display: block; font-size: 0.75rem; color: #64748b; text-transform: uppercase;">Tarif cameră</span>
-                        <span style="font-size: 1.8rem; font-weight: 800; color: #1b3022;">350 RON <small style="font-size: 0.8rem; font-weight: 400; opacity: 0.6;">/ noapte</small></span>
-                    </div>
-                    <a href="pensiune-natalia.html" class="btn btn-forest" style="background: #1b3022; color: white; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 800; font-size: 0.75rem;">VEZI DETALII</a>
-                </div>
-            </div>
-        </article>
-
-    </div>
-</div>
-
-<footer style="background: #122118; color: white; padding: 60px 0; text-align: center;">
-    <p style="font-size: 0.8rem; letter-spacing: 2px; opacity: 0.6;">HAȚEG ALTERNATIV | 2026 SIGNATURE COLLECTION</p>
-</footer>
-
-<script src="js/translations.js"></script>
 </body>
 </html>
