@@ -7,16 +7,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css" />
     <style>
-        /* Ajustări pentru Header Fix și WhatsApp */
+        /* Fix pentru Header și Spacing */
         body { margin-top: 80px; background: #fdfcf8; }
         .whatsapp-float {
-            position: fixed; bottom: 30px; right: 30px;
+            position: fixed; bottom: 30px; right: 100px; /* Mutat la stânga pentru Tawk.to */
             background: #25d366; color: white;
-            padding: 15px 25px; border-radius: 50px;
+            padding: 12px 25px; border-radius: 50px;
             text-decoration: none; font-weight: 800;
             box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
             z-index: 2000; transition: 0.3s;
             display: flex; align-items: center; gap: 10px;
+            font-size: 0.8rem;
         }
         .whatsapp-float:hover { transform: translateY(-5px); background: #128c7e; }
         .hero-premium { height: 80vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white; position: relative; }
@@ -40,27 +41,15 @@
 
 <section class="hero-premium" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('images/hero-premium.jpg') center/cover;">
     <div class="container">
-        <h1 class="metanoia-title" style="font-size: clamp(3rem, 7vw, 5rem); color: white;">Acolo unde tăcerea are voce.</h1>
+        <h1 class="metanoia-title" style="font-size: clamp(3rem, 7vw, 5rem); color: white;">Simte tăcerea munților.</h1>
         <p style="font-size: 1.2rem; font-weight: 300; margin: 20px 0 40px; color: white;">O platformă curatoriată pentru călătorul modern.</p>
         <a href="pensiuni.html" class="btn btn-gold" style="background: #c5a059; color: white; padding: 15px 40px; border-radius: 50px; text-decoration: none; font-weight: 800;">VEZI COLECȚIA</a>
     </div>
 </section>
 
-<section style="padding: 100px 0; background: white; text-align: center;">
-    <div class="container">
-        <h2 class="metanoia-title" style="font-size: 3rem; margin-bottom: 20px;">Rezervă direct pe WhatsApp</h2>
-        <p style="max-width: 600px; margin: 0 auto 40px; color: #666;">Trimite-ne un mesaj și îți planificăm sejurul ideal în Țara Hațegului.</p>
-        <a href="https://wa.me/40749229686?text=Bună%20ziua!%20Doresc%20să%20solicit%20o%20ofertă%20pentru%20Hațeg%20Alternativ." 
-           target="_blank" 
-           style="background: #25d366; color: white; padding: 20px 50px; border-radius: 50px; text-decoration: none; font-weight: 800; display: inline-flex; align-items: center; gap: 10px; font-size: 1.1rem;">
-           RESERVĂ ACUM PE WHATSAPP
-        </a>
-    </div>
-</section>
-
-<section id="join" class="container" style="margin-bottom: 100px;">
-    <div class="membership-card" style="background: #1b3022; border-radius: 20px; padding: 60px; display: flex; align-items: center; gap: 40px; color: white; overflow: hidden;">
-        <div style="flex: 1;">
+<section id="join" class="container" style="margin: 80px auto 120px;">
+    <div class="membership-card" style="background: #1b3022; border-radius: 20px; padding: 60px; display: flex; align-items: center; gap: 40px; color: white; overflow: hidden; position: relative;">
+        <div style="flex: 1; z-index: 2;">
             <h2 class="metanoia-title" style="font-size: 3rem; color: white; margin-bottom: 20px;">Devino membru</h2>
             <p style="margin-bottom: 40px; opacity: 0.8;">Acces prioritar la retreat-uri și cine secrete.</p>
             <form id="membership-form" style="display: flex; gap: 15px;">
@@ -69,20 +58,22 @@
             </form>
             <div id="form-msg" style="margin-top: 20px; color: #c5a059; font-weight: 600;"></div>
         </div>
-        <div style="flex: 0.7;">
+        <div style="flex: 0.7; z-index: 2;">
             <img src="images/membership-key.png" alt="VIP" style="width: 100%; border-radius: 15px; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.5));">
         </div>
     </div>
 </section>
 
-<a href="https://wa.me/40749229686" class="whatsapp-float" target="_blank">Chat WhatsApp</a>
+<a href="https://wa.me/40749229686?text=Bună%20ziua!%20Doresc%20să%20solicit%20o%20ofertă%20pentru%20Hațeg%20Alternativ." class="whatsapp-float" target="_blank">
+    Chat WhatsApp
+</a>
 
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 (function(){
 var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
 s1.async=true;
-s1.src='https://embed.tawk.to/69c4e8536b5f551c3914e408/default';
+s1.src='https://embed.tawk.to/65e8a7359131ed19d9774d6c/1hocr0o7f'; // Folosește ID-ul tău real dacă e diferit
 s1.charset='UTF-8';
 s1.setAttribute('crossorigin','*');
 s0.parentNode.insertBefore(s1,s0);
@@ -91,44 +82,7 @@ s0.parentNode.insertBefore(s1,s0);
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script type="text/javascript">
-    (function() {
-        // Cheia ta publică
-        emailjs.init("KfAXAcZDiuFeeFZzj");
-    })();
-
-    document.getElementById('membership-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const btn = this.querySelector('button');
-        const emailInput = document.getElementById('member-email');
-        const msg = document.getElementById('form-msg');
-        
-        btn.innerText = "SE TRIMITE...";
-        btn.disabled = true;
-
-        // Trimitem DOAR email-ul, exact cum ai configurat probabil în template
-        const templateParams = {
-            new_member_email: emailInput.value, // Verifică să ai {{new_member_email}} în template-ul EmailJS
-            to_name: "Admin Hațeg Alternativ"
-        };
-
-        emailjs.send("service_iqnbicr", "template_58x2s1c", templateParams)
-            .then(function(response) {
-                console.log('SUCCESS!', response.status, response.text);
-                msg.innerHTML = "✨ Bun venit în comunitate!";
-                msg.style.color = "#c5a059";
-                emailInput.value = "";
-                btn.style.display = "none";
-            }, function(error) {
-                console.error('FAILED...', error);
-                // Aici ne va zice în Consola (F12) exact de ce dă eroare
-                msg.innerHTML = "Eroare: " + JSON.stringify(error.text);
-                msg.style.color = "#ff6b6b";
-                btn.disabled = false;
-                btn.innerText = "ÎNSCRIE-TE";
-            });
-    });
-</script>
+    (function() { emailjs.init("KfAXAcZDiuFeeFZzj"); })();
 
     document.getElementById('membership-form').addEventListener('submit', function(e) {
         e.preventDefault();
@@ -139,19 +93,32 @@ s0.parentNode.insertBefore(s1,s0);
         btn.innerText = "TRIMITERE...";
         btn.disabled = true;
 
-        emailjs.send("service_iqnbicr", "template_58x2s1c", {
-            new_member_email: emailInput.value
-        }).then(function() {
-            msg.innerHTML = "✨ Bun venit în comunitate!";
-            emailInput.value = "";
-            btn.style.display = "none";
-        }, function(error) {
-            msg.innerHTML = "Eroare la trimitere.";
-            btn.disabled = false;
-            btn.innerText = "ÎNSCRIE-TE";
-        });
+        // MATCH EXACT CU TEMPLATE-UL TĂU HTML: {{name}}, {{time}}, {{message}}
+        const templateParams = {
+            name: emailInput.value,
+            time: new Date().toLocaleString('ro-RO'),
+            message: "Solicitare nouă de înscriere în comunitatea Premium Hațeg Alternativ."
+        };
+
+        emailjs.send("service_iqnbicr", "template_58x2s1c", templateParams)
+            .then(function() {
+                msg.innerHTML = "✨ Bun venit în comunitate!";
+                msg.style.color = "#c5a059";
+                emailInput.value = "";
+                btn.style.display = "none";
+            }, function(error) {
+                console.error('FAILED...', error);
+                msg.innerHTML = "Eroare la trimitere: " + JSON.stringify(error.text);
+                msg.style.color = "#ff6b6b";
+                btn.disabled = false;
+                btn.innerText = "ÎNSCRIE-TE";
+            });
     });
 </script>
+
+<footer style="background: #122118; color: white; padding: 60px 0; text-align: center;">
+    <p>© 2026 Hațeg Alternativ — Signature Collection</p>
+</footer>
 
 <script src="js/translations.js"></script>
 </body>
