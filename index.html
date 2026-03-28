@@ -3,67 +3,35 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hațeg Alternativ | Metanoia</title>
+    <title>Hațeg Alternativ | Acasă</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    
-    <style>
-        /* CSS INTEGRAT - REPARĂ TOTUL INSTANT */
-        :root { --primary: #1b3022; --m-leaf: #718355; --bg: #fdfcf8; --text: #1e293b; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
-        .container { width: min(92%, 1200px); margin: 0 auto; }
-        
-        /* Header */
-        .site-header { background: white; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 1000; padding: 15px 0; }
-        .nav-wrap { display: flex; justify-content: space-between; align-items: center; }
-        .brand { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--primary); font-size: 1.4rem; text-decoration: none; }
-        .main-nav a { text-decoration: none; color: var(--text); font-weight: 600; margin-left: 20px; font-size: 0.9rem; }
-        .main-nav a:hover { color: var(--m-leaf); }
-
-        /* Hero */
-        .hero { 
-            padding: 120px 0; 
-            background: linear-gradient(rgba(27, 48, 34, 0.6), rgba(27, 48, 34, 0.7)), url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80') center/cover;
-            color: white; 
-            text-align: center;
-        }
-        .metanoia-title { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(2.5rem, 6vw, 4rem); margin-bottom: 20px; }
-        .btn { display: inline-block; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: 700; text-transform: uppercase; font-size: 0.8rem; transition: 0.3s; margin: 10px; }
-        .btn-forest { background: var(--primary); color: white; }
-        .btn-outline { border: 2px solid white; color: white; }
-        .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
-
-        /* Banner Demo */
-        .test-banner { background: #2c3e50; color: white; text-align: center; padding: 5px; font-size: 0.7rem; font-weight: 800; }
-    </style>
+    <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-
-<div class="test-banner">VARIANTĂ DEMO ACTIVĂ</div>
-
-<header class="site-header">
-    <div class="container nav-wrap">
-        <a href="index.html" class="brand">Hațeg Alternativ</a>
-        <nav class="main-nav">
-            <a href="index.html">Acasă</a>
-            <a href="pensiuni.html">Pensiuni</a>
-            <a href="retreat.html">Retreat</a>
-            <a href="experiente.html">Experiențe</a>
-            <a href="rezervare.html">Rezervare</a>
-        </nav>
-    </div>
-</header>
-
-<section class="hero">
-    <div class="container">
-        <h1 class="metanoia-title">Intri într-un tărâm de basm.</h1>
-        <p style="font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9;">Cazare, experiențe autentice și liniște absolută.</p>
-        <div class="hero-actions">
-            <a href="rezervare.html" class="btn btn-forest">Rezervă Acum</a>
-            <a href="pensiuni.html" class="btn btn-outline">Vezi Pensiunile</a>
+    <div class="test-banner">VARIANTĂ DEMO ACTIVĂ</div>
+    <header class="site-header">
+        <div class="container nav-wrap">
+            <a href="index.html" class="brand"><span data-i18n="nav_brand">Hațeg Alternativ</span></a>
+            <nav class="main-nav">
+                <a href="index.html" class="active-link" data-i18n="nav_home">Acasă</a>
+                <a href="pensiuni.html" data-i18n="nav_pensiuni">Pensiuni</a>
+                <a href="retreat.html" data-i18n="nav_retreat">Retreat</a>
+                <a href="experiente.html" data-i18n="nav_experiente">Experiențe</a>
+                <a href="rezervare.html" data-i18n="nav_rezervare">Rezervare</a>
+            </nav>
+            <div class="lang-switcher">
+                <button onclick="changeLanguage('ro')" class="lang-btn">RO</button>
+                <button onclick="changeLanguage('en')" class="lang-btn">EN</button>
+                <button onclick="changeLanguage('de')" class="lang-btn">DE</button>
+            </div>
         </div>
-    </div>
-</section>
-
+    </header>
+    <section class="hero" style="background: linear-gradient(rgba(27, 48, 34, 0.6), rgba(27, 48, 34, 0.7)), url('images/hero-lac.jpg') center/cover;">
+        <div class="container">
+            <h1 class="metanoia-title" data-i18n="hero_title">Intri într-un tărâm de basm.</h1>
+            <a href="rezervare.html" class="btn btn-forest" data-i18n="btn_stay">Rezervă Acum</a>
+        </div>
+    </section>
+    <script src="js/translations.js"></script>
 </body>
 </html>
