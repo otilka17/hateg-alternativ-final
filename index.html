@@ -7,114 +7,104 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* CSS SIGNATURE - STABIL ȘI LUXOS */
+        /* CSS INTEGRAT - NU SE MAI POATE PIERDE */
         :root { --verde: #1b3022; --auriu: #c5a059; --crem: #fdfcf8; --alb: #ffffff; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--verde); line-height: 1.6; }
         
-        h1, h2, h3, .metanoia-title { font-family: 'Playfair Display', serif; font-weight: 700; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        h1, h2, h3, .brand { font-family: 'Playfair Display', serif; }
 
-        /* Navigație Curată - Cele 4 pagini */
+        /* Navigație Premium */
         .site-header { background: var(--alb); padding: 25px 0; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 1000; }
-        .nav-wrap { display: flex; justify-content: space-between; align-items: center; }
-        .brand { text-decoration: none; color: var(--verde); font-size: 1.1rem; letter-spacing: 2px; }
-        .main-nav a { text-decoration: none; color: #444; font-size: 0.8rem; margin-left: 30px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
-        .main-nav a:hover { color: var(--auriu); }
+        .nav-wrap { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        .brand { text-decoration: none; color: var(--verde); font-size: 1.1rem; letter-spacing: 2px; font-weight: 700; }
+        .main-nav a { text-decoration: none; color: #444; font-size: 0.8rem; margin-left: 25px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* Hero Image - Poza Superbă cu Muntele */
+        /* Hero Image - MUNTELE */
         .hero-image { 
             height: 65vh; 
             background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.1)), 
                         url('https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/hero-camp-munti.jpg') center/cover no-repeat;
         }
 
-        /* Panel Central (La fel ca la Buligă) */
+        /* Panel Central care plutește */
         .main-panel { 
-            transform: translateY(-100px); 
+            transform: translateY(-80px); 
             background: var(--alb); 
-            padding: 80px 60px; 
-            max-width: 1000px; 
+            padding: 80px 40px; 
+            max-width: 900px; 
             margin: 0 auto; 
             box-shadow: 0 40px 100px rgba(0,0,0,0.05);
-            border-radius: 4px;
             text-align: center;
         }
-
         .kicker { color: var(--auriu); letter-spacing: 5px; font-size: 0.8rem; font-weight: 800; display: block; margin-bottom: 20px; text-transform: uppercase; }
-        .metanoia-title { font-size: clamp(2.5rem, 6vw, 4.5rem); margin-bottom: 30px; line-height: 1.1; color: var(--verde); }
-        .description { font-weight: 300; line-height: 2; font-size: 1.2rem; color: #444; max-width: 700px; margin: 0 auto 40px; }
+        .metanoia-title { font-size: clamp(2.5rem, 6vw, 4rem); margin-bottom: 30px; line-height: 1.1; }
+        
+        /* Grid Pensiuni în Index */
+        .preview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 50px; }
+        .mini-card { background: var(--crem); padding: 30px; border-radius: 4px; border: 1px solid #eee; text-decoration: none; color: inherit; transition: 0.3s; }
+        .mini-card:hover { border-color: var(--auriu); transform: translateY(-5px); }
+        .mini-card h3 { font-size: 1.2rem; margin-bottom: 10px; color: var(--auriu); }
 
-        /* Butonul de Aur */
-        .btn-gold { 
-            background: var(--auriu); 
-            color: var(--alb); 
-            padding: 20px 50px; 
-            text-decoration: none; 
-            display: inline-block; 
-            font-weight: 700; 
-            font-size: 0.85rem; 
-            text-transform: uppercase; 
-            letter-spacing: 3px;
-            border-radius: 50px;
-            transition: 0.4s;
-        }
-        .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(197,160,89,0.3); }
+        /* Butoane */
+        .btn-gold { background: var(--auriu); color: var(--alb); padding: 18px 40px; text-decoration: none; display: inline-block; font-weight: 700; border-radius: 50px; margin-top: 30px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
 
-        /* Contact Fix */
-        .wa-btn { position: fixed; bottom: 30px; left: 30px; background: #25d366; color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 999; box-shadow: 0 10px 20px rgba(0,0,0,0.1); font-size: 0.8rem; letter-spacing: 1px; }
-
-        @media (max-width: 768px) { 
-            .main-panel { padding: 50px 20px; transform: translateY(-50px); } 
-            .main-nav { display: none; }
-        }
+        /* WhatsApp Fix */
+        .wa-btn { position: fixed; bottom: 30px; left: 30px; background: #25d366; color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 999; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
     </style>
 </head>
 <body>
 
-    <header class="site-header">
-        <div class="container nav-wrap">
-            <a href="index.html" class="brand">HAȚEG <strong>ALTERNATIV</strong></a>
-            <nav class="main-nav">
-                <a href="pensiuni.html">Pensiuni</a>
-                <a href="experiente.html">Experiențe</a>
-                <a href="obiective.html">Obiective</a>
-                <a href="contact.html">Contact</a>
-            </nav>
+<header class="site-header">
+    <div class="nav-wrap">
+        <a href="index.html" class="brand">HAȚEG <strong>ALTERNATIV</strong></a>
+        <nav class="main-nav">
+            <a href="pensiuni.html">Pensiuni</a>
+            <a href="experiente.html">Experiențe</a>
+            <a href="obiective.html">Obiective</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </div>
+</header>
+
+<section class="hero-image"></section>
+
+<main class="container">
+    <div class="main-panel">
+        <span class="kicker">Simte tăcerea</span>
+        <h1 class="metanoia-title">Trăiește real.</h1>
+        <p style="font-weight: 300; font-size: 1.1rem; color: #64748b; margin-bottom: 40px;">O colecție de spații autentice pentru reconectare.</p>
+        
+        <div class="preview-grid">
+            <a href="pensiune-buliga.html" class="mini-card">
+                <h3>La Buligă</h3>
+                <p>Izolare la 1000m.</p>
+            </a>
+            <a href="pensiune-natalia.html" class="mini-card">
+                <h3>Natalia</h3>
+                <p>Tradiție & suflet.</p>
+            </a>
+            <a href="pensiune-selava.html" class="mini-card">
+                <h3>SeLaVa estate</h3>
+                <p>Design & fine dining.</p>
+            </a>
         </div>
-    </header>
 
-    <section class="hero-image"></section>
+        <a href="pensiuni.html" class="btn-gold">Vezi Colecția</a>
+    </div>
+</main>
 
-    <main class="container">
-        <div class="main-panel">
-            <span class="kicker">Simte tăcerea</span>
-            <h1 class="metanoia-title">Trăiește <br>Hațegul Real</h1>
-            
-            <p class="description">
-                O colecție curatoriată de spații și momente autentice, creată pentru cei care caută să se reconecteze cu natura și tradiția. Mai mult decât o vizită, o stare de spirit.
-            </p>
+<a href="https://wa.me/40749229686" class="wa-btn">WHATSAPP</a>
 
-            <a href="pensiuni.html" class="btn-gold">Descoperă Colecția</a>
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true; s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
+s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
 
-            <div style="margin-top: 60px; border-top: 1px solid #eee; padding-top: 40px; display: flex; justify-content: center; gap: 40px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--verde); font-weight: 800; opacity: 0.8;">
-                <span>✦ Pensiuni de caracter</span>
-                <span>✦ Retreat-uri private</span>
-                <span>✦ Gastronomie locală</span>
-            </div>
-        </div>
-    </main>
-
-    <a href="https://wa.me/40749229686" class="wa-btn">WHATSAPP DIRECT</a>
-
-    <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true; s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
-    s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
-    </script>
 </body>
 </html>
