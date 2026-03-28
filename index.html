@@ -3,85 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hațeg alternativ | Simte tăcerea</title>
+    <title>hațeg alternativ | simte tăcerea</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    
+    <style>
+        /* CSS INTEGRAT CA SĂ NU MAI EXISTE ERORI */
+        * { margin: 0; padding: 0; box-sizing: border-box; text-transform: none !important; }
+        body { font-family: 'Inter', sans-serif; background: #fdfcf8; color: #1b3022; line-height: 1.6; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Header */
+        .site-header { background: white; padding: 20px 0; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 1000; }
+        .nav-wrap { display: flex; justify-content: space-between; align-items: center; }
+        .brand { font-weight: 700; text-decoration: none; color: #1b3022; font-size: 1.2rem; }
+        .main-nav a { text-decoration: none; color: #333; font-size: 0.9rem; margin-left: 20px; font-weight: 500; }
+
+        /* Hero */
+        .hero-premium { 
+            height: 70vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.2)), url('hero-camp-munti.jpg') center/cover;
+        }
+        .metanoia-title { font-family: 'Playfair Display', serif; }
+        .hero-main { font-size: clamp(2.5rem, 8vw, 4rem); margin-bottom: 10px; }
+
+        /* Carduri Pensiuni */
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 60px 0; }
+        .card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border: 1px solid #eee; }
+        .card img { width: 100%; height: 250px; object-fit: cover; }
+        .card-info { padding: 25px; }
+
+        /* Butoane */
+        .btn-gold { background: #c5a059; color: white; padding: 12px 25px; border-radius: 50px; text-decoration: none; display: inline-block; font-weight: 600; font-size: 0.85rem; border: none; }
+        .btn-outline { border: 1px solid #1b3022; color: #1b3022; padding: 12px 25px; border-radius: 50px; text-decoration: none; display: inline-block; font-weight: 600; font-size: 0.85rem; }
+
+        /* Journal / Feed (Cele 8 poze) */
+        .journal-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
+        .journal-item { height: 250px; border-radius: 10px; overflow: hidden; position: relative; }
+        .journal-item.large { grid-column: span 2; grid-row: span 2; height: 510px; }
+        .journal-item img { width: 100%; height: 100%; object-fit: cover; }
+        .journal-overlay { position: absolute; bottom: 0; background: rgba(0,0,0,0.5); color: white; width: 100%; padding: 20px; opacity: 0; transition: 0.3s; }
+        .journal-item:hover .journal-overlay { opacity: 1; }
+
+        /* WhatsApp Float */
+        .wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: 700; box-shadow: 0 10px 20px rgba(0,0,0,0.1); z-index: 999; display: flex; align-items: center; gap: 10px; }
+
+        @media (max-width: 768px) { .journal-grid { grid-template-columns: repeat(2, 1fr); } .journal-item.large { grid-column: span 2; grid-row: span 1; height: 250px; } }
+    </style>
 </head>
 <body>
 
 <header class="site-header">
     <div class="container nav-wrap">
-        <a href="index.html" class="brand" style="text-transform: none;">Hațeg alternativ</a>
+        <a href="index.html" class="brand">hațeg alternativ</a>
         <nav class="main-nav">
-            <a href="pensiuni.html" style="text-transform: none;">Pensiuni</a>
-            <a href="retreat.html" style="text-transform: none;">Retreat</a>
-            <a href="gastronomic.html" style="text-transform: none;">Gastro</a>
+            <a href="pensiuni.html">pensiuni</a>
+            <a href="retreat.html">retreat</a>
+            <a href="gastronomic.html">gastro</a>
         </nav>
     </div>
 </header>
 
-<section class="hero-premium" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.2)), url('hero-camp-munti.jpg') center/cover;">
+<section class="hero-premium">
     <div class="container">
-        <h1 class="metanoia-title hero-main" style="text-transform: none; font-size: 3.5rem;">Simte tăcerea.</h1>
-        <p style="margin-bottom: 30px; font-weight: 300; font-size: 1.1rem; text-transform: none;">Deschiderea sezonului la 1 mai 2026</p>
-        <a href="pensiuni.html" class="btn-gold" style="text-transform: none; padding: 15px 40px;">Explorați colecția</a>
+        <h1 class="metanoia-title hero-main">simte tăcerea.</h1>
+        <p style="font-weight: 300; font-size: 1.1rem;">deschiderea sezonului la 1 mai 2026</p>
+        <br>
+        <a href="pensiuni.html" class="btn-gold">explorați colecția</a>
     </div>
 </section>
 
-<main class="container">
-    <div class="cards-container">
-        <div class="card-preview">
-            <div class="card-image"><img src="selava-pensiune.jpg" alt="SelAva estate"></div>
+<div class="container">
+    <div class="cards-grid">
+        <div class="card">
+            <img src="selava-pensiune.jpg">
             <div class="card-info">
-                <h3 class="metanoia-title" style="text-transform: none; font-size: 1.8rem;">SelAva estate</h3>
-                <p style="color: #64748b; font-size: 0.9rem; margin: 10px 0 20px;">Design & fine dining.</p>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                    <a href="pensiuni.html" class="btn-outline" style="text-transform: none;">Detalii</a>
-                    <a href="rezervare.html" class="btn-gold" style="text-transform: none;">Rezervă</a>
+                <h3 class="metanoia-title">selava estate</h3>
+                <p style="color: #667; font-size: 0.9rem; margin-bottom: 20px;">design & fine dining.</p>
+                <div style="display: flex; gap: 10px;">
+                    <a href="pensiuni.html" class="btn-outline">detalii</a>
+                    <a href="rezervare.html" class="btn-gold">rezervă</a>
                 </div>
             </div>
         </div>
-
-        <div class="card-preview">
-            <div class="card-image"><img src="la-buliga-pensiune.jpg" alt="Domeniile la Buligă"></div>
+        <div class="card">
+            <img src="la-buliga-pensiune.jpg">
             <div class="card-info">
-                <h3 class="metanoia-title" style="text-transform: none; font-size: 1.8rem;">La Buligă</h3>
-                <p style="color: #64748b; font-size: 0.9rem; margin: 10px 0 20px;">Izolare la 1000m.</p>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                    <a href="pensiuni.html" class="btn-outline" style="text-transform: none;">Detalii</a>
-                    <a href="rezervare.html" class="btn-gold" style="text-transform: none;">Rezervă</a>
+                <h3 class="metanoia-title">la buligă</h3>
+                <p style="color: #667; font-size: 0.9rem; margin-bottom: 20px;">izolare la 1000m.</p>
+                <div style="display: flex; gap: 10px;">
+                    <a href="pensiuni.html" class="btn-outline">detalii</a>
+                    <a href="rezervare.html" class="btn-gold">rezervă</a>
                 </div>
             </div>
         </div>
-
-        <div class="card-preview">
-            <div class="card-image"><img src="natalia-pensiune.jpg" alt="Pensiunea Natalia"></div>
+        <div class="card">
+            <img src="natalia-pensiune.jpg">
             <div class="card-info">
-                <h3 class="metanoia-title" style="text-transform: none; font-size: 1.8rem;">Natalia</h3>
-                <p style="color: #64748b; font-size: 0.9rem; margin: 10px 0 20px;">Tradiție & suflet.</p>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                    <a href="pensiuni.html" class="btn-outline" style="text-transform: none;">Detalii</a>
-                    <a href="rezervare.html" class="btn-gold" style="text-transform: none;">Rezervă</a>
+                <h3 class="metanoia-title">natalia</h3>
+                <p style="color: #667; font-size: 0.9rem; margin-bottom: 20px;">tradiție & suflet.</p>
+                <div style="display: flex; gap: 10px;">
+                    <a href="pensiuni.html" class="btn-outline">detalii</a>
+                    <a href="rezervare.html" class="btn-gold">rezervă</a>
                 </div>
             </div>
         </div>
     </div>
-</main>
+</div>
 
-<section style="padding: 100px 0; background: #fff;">
-    <div class="container">
-        <div style="text-align: center; margin-bottom: 60px;">
-            <span style="color: #c5a059; font-weight: 600; font-size: 0.9rem; text-transform: none;">Comunitate și momente</span>
-            <h2 class="metanoia-title" style="font-size: 2.8rem; margin-top: 10px; text-transform: none;">Hațeg journal</h2>
+<section style="background: #fdfcf8; padding: 80px 0; border-top: 1px solid #eee;">
+    <div class="container" style="text-align: center;">
+        <h2 class="metanoia-title" style="margin-bottom: 40px;">oameni reali, momente autentice</h2>
+        <div class="cards-grid" style="padding: 0;">
+            <div style="background: white; padding: 30px; border-radius: 15px; text-align: left; border: 1px solid #f1f5f9;">
+                <p style="font-style: italic; margin-bottom: 20px;">"am ales pachetul gonomad la la buligă și a fost revelator. tăcere, foc de tabără și reconectare."</p>
+                <strong>andrei m.</strong>
+            </div>
+            <div style="background: white; padding: 30px; border-radius: 15px; text-align: left; border: 1px solid #f1f5f9;">
+                <p style="font-style: italic; margin-bottom: 20px;">"selava este despre minimalism și gusturi fine. cina în grădină a fost momentul nostru preferat."</p>
+                <strong>elena r.</strong>
+            </div>
         </div>
+    </div>
+</section>
 
+<section style="padding: 80px 0; background: white;">
+    <div class="container">
+        <h2 class="metanoia-title" style="text-align: center; margin-bottom: 40px;">hațeg journal</h2>
         <div class="journal-grid">
             <div class="journal-item large">
                 <img src="feed-1.jpg">
-                <div class="journal-overlay">
-                    <span class="date-tag" style="text-transform: none;">1 mai 2026</span>
-                    <h3 style="text-transform: none;">Marea deschidere de sezon. te așteptăm acasă.</h3>
-                </div>
+                <div class="journal-overlay"><h3>marea deschidere. 1 mai 2026.</h3></div>
             </div>
             <div class="journal-item"><img src="feed-2.jpg"></div>
             <div class="journal-item"><img src="feed-3.jpg"></div>
@@ -94,11 +145,25 @@
     </div>
 </section>
 
-<a href="https://wa.me/40749229686" class="whatsapp-float" style="text-transform: none;">WhatsApp</a>
+<a href="https://wa.me/40749229686" class="wa-float">
+    <span>discută pe whatsapp</span>
+</a>
 
-<footer style="padding: 60px 0; text-align: center; background: #fdfcf8; border-top: 1px solid #eee;">
-    <p style="font-size: 0.8rem; opacity: 0.6;">Hațeg alternativ — 2026</p>
+<footer style="padding: 60px 0; text-align: center; opacity: 0.6; font-size: 0.8rem;">
+    hațeg alternativ — 2026
 </footer>
+
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/67978d38825083258e0be22f/1iiirv4n4';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
 
 </body>
 </html>
