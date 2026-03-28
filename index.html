@@ -7,10 +7,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css" />
     <style>
-        /* Fix pentru Header și Spacing */
         body { margin-top: 80px; background: #fdfcf8; }
         .whatsapp-float {
-            position: fixed; bottom: 30px; right: 100px; /* Mutat la stânga pentru Tawk.to */
+            position: fixed; bottom: 30px; right: 100px; 
             background: #25d366; color: white;
             padding: 12px 25px; border-radius: 50px;
             text-decoration: none; font-weight: 800;
@@ -24,6 +23,18 @@
     </style>
 </head>
 <body>
+
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/65e8a7359131ed19d9774d6c/1hocr0o7f';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
 
 <header class="site-header" style="position: fixed; top: 0; width: 100%; z-index: 1500; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #eee;">
     <div class="container nav-wrap" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0;">
@@ -68,18 +79,6 @@
     Chat WhatsApp
 </a>
 
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/65e8a7359131ed19d9774d6c/1hocr0o7f'; // Folosește ID-ul tău real dacă e diferit
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script type="text/javascript">
     (function() { emailjs.init("KfAXAcZDiuFeeFZzj"); })();
@@ -93,11 +92,12 @@ s0.parentNode.insertBefore(s1,s0);
         btn.innerText = "TRIMITERE...";
         btn.disabled = true;
 
-        // MATCH EXACT CU TEMPLATE-UL TĂU HTML: {{name}}, {{time}}, {{message}}
         const templateParams = {
             name: emailInput.value,
+            email: emailInput.value, // Adaugat pentru a evita eroarea in Reply-To din EmailJS
             time: new Date().toLocaleString('ro-RO'),
-            message: "Solicitare nouă de înscriere în comunitatea Premium Hațeg Alternativ."
+            message: "Solicitare nouă de înscriere în comunitatea Premium Hațeg Alternativ.",
+            title: "Membru Nou"
         };
 
         emailjs.send("service_iqnbicr", "template_58x2s1c", templateParams)
@@ -108,7 +108,7 @@ s0.parentNode.insertBefore(s1,s0);
                 btn.style.display = "none";
             }, function(error) {
                 console.error('FAILED...', error);
-                msg.innerHTML = "Eroare la trimitere: " + JSON.stringify(error.text);
+                msg.innerHTML = "Eroare la trimitere. Te rugăm să încerci din nou.";
                 msg.style.color = "#ff6b6b";
                 btn.disabled = false;
                 btn.innerText = "ÎNSCRIE-TE";
