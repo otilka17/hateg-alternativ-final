@@ -7,19 +7,50 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* CSS GOLDEN PREMIUM - STABIL ȘI ELEGANT */
+        /* CSS SIGNATURE - STABIL ȘI ELEGANT */
         :root { --verde: #1b3022; --auriu: #c5a059; --crem: #fdfcf8; --alb: #ffffff; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--verde); line-height: 1.6; overflow-x: hidden; }
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: var(--crem); 
+            color: var(--verde); 
+            line-height: 1.6; 
+            overflow-x: hidden; 
+        }
         
         /* Titluri cu fontul de revistă */
-        h1, h2, h3, .brand { font-family: 'Playfair Display', serif; font-weight: 700; }
+        h1, h2, h3, .brand { 
+            font-family: 'Playfair Display', serif; 
+            font-weight: 700; 
+        }
 
         /* Navigație */
-        .site-header { background: var(--alb); padding: 20px 0; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 1000; }
-        .nav-wrap { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        .site-header { 
+            background: var(--alb); 
+            padding: 20px 0; 
+            border-bottom: 1px solid #eee; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+        }
+        .nav-wrap { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            max-width: 1100px; 
+            margin: 0 auto; 
+            padding: 0 20px; 
+        }
         .brand { text-decoration: none; color: var(--verde); font-size: 1.4rem; }
-        .main-nav a { text-decoration: none; color: #444; font-size: 0.9rem; margin-left: 20px; font-weight: 500; transition: 0.3s; }
+        .main-nav a { 
+            text-decoration: none; 
+            color: #444; 
+            font-size: 0.9rem; 
+            margin-left: 20px; 
+            font-weight: 500; 
+            transition: 0.3s; 
+        }
         .main-nav a:hover { color: var(--auriu); }
 
         /* Hero Section cu imagine RAW GitHub */
@@ -38,7 +69,14 @@
         /* Grid Experiențe */
         .section-padding { padding: 90px 0; }
         .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 35px; }
-        .card { background: var(--alb); border-radius: 24px; overflow: hidden; box-shadow: 0 12px 45px rgba(0,0,0,0.04); border: 1px solid #f1f1f1; transition: 0.4s; }
+        .card { 
+            background: var(--alb); 
+            border-radius: 24px; 
+            overflow: hidden; 
+            box-shadow: 0 12px 45px rgba(0,0,0,0.04); 
+            border: 1px solid #f1f1f1; 
+            transition: 0.4s; 
+        }
         .card:hover { transform: translateY(-10px); }
         .card img { width: 100%; height: 280px; object-fit: cover; }
         .card-body { padding: 30px; }
@@ -48,8 +86,20 @@
         .btn-gold { background: var(--auriu); color: var(--alb); }
         .btn-outline { border: 1.5px solid var(--verde); color: var(--verde); }
 
-        /* Separare Butoane Contact: WhatsApp la stânga */
-        .wa-btn { position: fixed; bottom: 30px; left: 30px; background: #25d366; color: var(--alb); padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 999; box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+        /* WhatsApp la stânga pentru a nu acoperi Chat-ul */
+        .wa-btn { 
+            position: fixed; 
+            bottom: 30px; 
+            left: 30px; 
+            background: #25d366; 
+            color: var(--alb); 
+            padding: 15px 30px; 
+            border-radius: 50px; 
+            text-decoration: none; 
+            font-weight: 700; 
+            z-index: 999; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15); 
+        }
 
         @media (max-width: 768px) { .nav-wrap { flex-direction: column; gap: 15px; } }
     </style>
@@ -80,21 +130,21 @@
     <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 50px;">Experiențe Premium</h2>
     <div class="grid-3">
         <div class="card">
-            <img src="images/gast-cafea-inima.jpg" alt="Mic Dejun">
+            <img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/images/gast-cafea-inima.jpg" alt="Mic Dejun">
             <div class="card-body">
                 <h3>Mic Dejun Artizanal</h3>
                 <p style="color: #64748b;">Produse locale și liniște. Inclus în pachetele de cazare.</p>
             </div>
         </div>
         <div class="card">
-            <img src="images/feed-6.jpg" alt="Aventură">
+            <img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/images/feed-6.jpg" alt="Aventură">
             <div class="card-body">
                 <h3>GoNomad Expedition</h3>
                 <p style="color: #64748b;">Explorare 4x4 în locuri neștiute din Retezat. 150 RON / pers.</p>
             </div>
         </div>
         <div class="card">
-            <img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/exp-zapada.jpg" alt="Relaxare">
+            <img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/images/exp-zapada.jpg" alt="Relaxare">
             <div class="card-body">
                 <h3>Mindful Retreat</h3>
                 <p style="color: #64748b;">Yoga și deconectare digitală totală în inima naturii.</p>
@@ -105,12 +155,18 @@
 
 <a href="https://wa.me/40749229686" class="wa-btn">WhatsApp</a>
 
+<footer style="padding: 60px 0; text-align: center; opacity: 0.5; font-size: 0.8rem;">
+    Hațeg Alternativ — 2026
+</footer>
+
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 (function(){
 var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true; s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
-s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
+s1.async=true;
+s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
 s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
