@@ -1,48 +1,110 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pensiunea Selava | Colecția Hațeg Alternativ</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pensiunea Selava | Hațeg Alternativ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root { --verde: #1b3022; --auriu: #c5a059; --crem: #fdfcf8; --alb: #ffffff; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--verde); line-height: 1.6; }
-        h1, h2, h3, .metanoia-title { font-family: 'Playfair Display', serif; font-weight: 700; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-        .site-header { background: var(--alb); padding: 25px 0; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 1000; }
-        .nav-wrap { display: flex; justify-content: space-between; align-items: center; }
-        .hero-image { height: 60vh; background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.1)), url('images/pensiune-placeholder-2.jpg') center/cover no-repeat; }
-        .booking-panel { transform: translateY(-80px); background: var(--alb); padding: 70px 50px; max-width: 1000px; margin: 0 auto; box-shadow: 0 40px 100px rgba(0,0,0,0.05); border-radius: 4px; }
-        .retreat-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 50px; border-top: 1px solid #eee; padding-top: 40px; }
-        .option-card { padding: 25px; border: 1px solid #f0f0f0; border-radius: 15px; }
-        .btn-gold { background: var(--auriu); color: var(--alb); padding: 18px 30px; text-decoration: none; display: inline-block; font-weight: 700; border-radius: 50px; text-align: center; width: 100%; }
-        .wa-btn { position: fixed; bottom: 30px; left: 30px; background: #25d366; color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 999; }
+        
+        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--verde); overflow-x: hidden; }
+
+        /* Header & Nav Signature */
+        header { background: #ffffff; padding: 35px 20px; text-align: center; border-bottom: 1px solid #eee; }
+        .brand { text-decoration: none; color: var(--verde); font-family: 'Playfair Display', serif; font-size: 1.8rem; line-height: 1.1; display: block; font-weight: 700; }
+        .est { font-size: 0.7rem; color: var(--auriu); letter-spacing: 4px; font-weight: 800; margin-top: 10px; display: block; text-transform: uppercase; }
+
+        nav { display: flex; justify-content: center; gap: 30px; padding: 25px 0; background: #ffffff; border-bottom: 1px solid #f9f9f9; }
+        nav a { text-decoration: none; color: #444; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* Hero Pensiune */
+        .pensiune-hero {
+            width: 100%; height: 60vh;
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.1)), 
+                        url('images/selava-main.jpg') center/cover no-repeat; /* Pune poza ta principala aici */
+            display: flex; align-items: center; justify-content: center; text-align: center; color: white;
+        }
+        .pensiune-hero h1 { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(3rem, 10vw, 5rem); }
+
+        /* Continut Pensiune */
+        .content-section { max-width: 900px; margin: 80px auto; padding: 0 20px; text-align: center; }
+        .tagline { color: var(--auriu); font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.5rem; margin-bottom: 30px; }
+        .description { font-size: 1.1rem; font-weight: 300; line-height: 1.8; color: #444; margin-bottom: 50px; }
+
+        /* Galerie Simpla */
+        .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 80px; }
+        .gallery img { width: 100%; height: 400px; object-fit: cover; border-radius: 4px; }
+
+        /* Facilitati */
+        .features { display: flex; justify-content: center; gap: 40px; margin-bottom: 80px; flex-wrap: wrap; }
+        .feature-item { font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--auriu); }
+
+        /* Buton Rezervare */
+        .btn-reserve { 
+            background: var(--verde); color: white; padding: 20px 50px; 
+            border-radius: 50px; text-decoration: none; font-family: 'Playfair Display', serif; 
+            font-style: italic; font-size: 1.3rem; display: inline-block; transition: 0.3s;
+        }
+        .btn-reserve:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(27,48,34,0.2); }
+
+        .wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 9999; }
+
+        @media (max-width: 768px) { .gallery { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
-    <header class="site-header"><div class="container nav-wrap"><a href="index.html" style="text-decoration:none; color:var(--verde); letter-spacing:2px;">HAȚEG <strong>ALTERNATIV</strong></a><a href="pensiuni.html" style="text-decoration:none; font-size:0.7rem; font-weight:800; color:var(--verde);">← COLECȚIE</a></div></header>
-    <section class="hero-image"></section>
-    <main class="container">
-        <div class="booking-panel">
-            <span style="color:var(--auriu); letter-spacing:5px; font-size:0.8rem; font-weight:800; display:block; margin-bottom:20px;">NO. 03 — SĂLAȘU DE SUS</span>
-            <h1 class="metanoia-title" style="font-size:3.5rem; margin-bottom:30px;">Pensiunea <br>Selava</h1>
-            <div style="display:grid; grid-template-columns: 1.5fr 1fr; gap:50px;">
-                <p style="font-weight:300; line-height:2; font-size:1.1rem;">La poalele Retezatului, Selava este destinația celor care vor să se trezească cu muntele în fereastră. O locație modernă dar caldă, gândită special pentru grupuri de retreat și iubitori de drumeții montane.</p>
-                <div style="background:#f9f9f7; padding:40px; border-radius:15px; text-align:center;">
-                    <span style="font-size:0.8rem; color:#888;">Tarif de la</span>
-                    <div style="font-family:'Playfair Display'; font-size:2.5rem; margin:10px 0 25px;">300 RON</div>
-                    <a href="rezervare.html?locatie=selava" class="btn-gold">Rezervă acum</a>
-                </div>
-            </div>
-            <div class="retreat-options">
-                <div class="option-card"><h3>Mountain Yoga</h3><p>Sesiuni matinale cu vedere spre vârfurile înzăpezite ale Retezatului.</p></div>
-                <div class="option-card"><h3>Digital Detox</h3><p>Drumeții ghidate în zone fără semnal pentru o reconectare reală.</p></div>
-                <div class="option-card"><h3>Nature Therapy</h3><p>Ateliere de recunoaștere a plantelor medicinale din flora locală.</p></div>
-            </div>
-        </div>
-    </main>
-    <a href="https://wa.me/40749229686" class="wa-btn">WhatsApp</a>
+
+<header>
+    <a href="index.html" class="brand">HAȚEG<br>ALTERNATIV</a>
+    <span class="est">EST. 2026</span>
+</header>
+
+<nav>
+    <a href="pensiuni.html">Pensiuni</a>
+    <a href="retreat.html">Retreat</a>
+    <a href="gastronomic.html">Punct Gastronomic</a>
+</nav>
+
+<section class="pensiune-hero">
+    <h1>Selava.</h1>
+</section>
+
+<main class="content-section">
+    <p class="tagline">Liniștea pe care o căutai, aproape de munte.</p>
+    <p class="description">
+        Pensiunea Selava este locul unde timpul pare să stea pe loc. Situată într-un cadru idilic, 
+        vă oferă confortul modern împletit cu ospitalitatea tradițională a Țării Hațegului. 
+        Este refugiul perfect pentru cei care doresc să se reconecteze cu natura.
+    </p>
+
+    <div class="features">
+        <span class="feature-item">Mic dejun inclus</span>
+        <span class="feature-item">Grădină privată</span>
+        <span class="feature-item">Vedere la munte</span>
+    </div>
+
+    <div class="gallery">
+        <img src="images/selava-1.jpg" alt="Interior Selava" onerror="this.src='https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/hero-camp-munti.jpg'">
+        <img src="images/selava-2.jpg" alt="Exterior Selava" onerror="this.src='https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/hero-camp-munti.jpg'">
+    </div>
+
+    <a href="https://wa.me/40749229686?text=Bună! Aș dori să fac o rezervare la Pensiunea Selava." class="btn-reserve">Rezervă experiența</a>
+</main>
+
+<a href="https://wa.me/40749229686" class="wa-float">WhatsApp Direct</a>
+
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{};
+    Tawk_API.customStyle = { visibility : { desktop : { xOffset : '30', yOffset : '30', position : 'bottom-left' }, mobile : { xOffset : '20', yOffset : '20', position : 'bottom-left' } } };
+    (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true; s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
+        s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+    })();
+</script>
+
 </body>
 </html>
