@@ -3,46 +3,62 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hațeg Alternativ | Jurnal Live</title>
+    <title>Hațeg Alternativ | Simte tăcerea</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <style>
-        :root { --verde: #1b3022; --auriu: #c5a059; --roz-pal: #fdf2f0; --alb: #ffffff; }
+        :root { --verde: #1b3022; --auriu: #c5a059; --crem: #fdfcf8; --alb: #ffffff; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--roz-pal); color: var(--verde); line-height: 1.6; padding-top: 80px; }
+        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--verde); line-height: 1.6; padding-top: 80px; overflow-x: hidden; }
         
-        h1, h2, h3, .brand-text { font-family: 'Playfair Display', serif; text-transform: none; }
-        .italic-style { font-style: italic; font-weight: 700; }
+        h1, h2, h3, .brand-text { font-family: 'Playfair Display', serif; font-weight: 700; text-transform: none; }
+        .italic-style { font-style: italic; }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
-        .site-header { position: fixed; top: 0; width: 100%; z-index: 1500; background: rgba(255,255,255,0.9); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); }
-        .nav-wrap { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; }
+        /* Header Aerisit */
+        .site-header { position: fixed; top: 0; width: 100%; z-index: 1500; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.03); }
+        .nav-wrap { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; }
         .brand { text-decoration: none; color: var(--verde); font-size: 1.3rem; }
+        .main-nav a { text-decoration: none; color: var(--verde); font-size: 1.05rem; font-family: 'Playfair Display', serif; font-style: italic; margin-left: 25px; transition: 0.3s; }
 
+        /* Hero - MUNTELE TĂU SUPERB */
         .hero-image {
-            min-height: 70vh; display: flex; align-items: center; justify-content: center; text-align: center; color: var(--alb);
-            background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.15)), 
+            min-height: 85vh;
+            background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.15)),
                         url('https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/hero-camp-munti.jpg') center/cover no-repeat;
+            display: flex; align-items: center; justify-content: center; text-align: center; color: var(--alb);
+        }
+        .hero-image h1 { font-size: clamp(3.8rem, 12vw, 6.5rem); margin-bottom: 15px; }
+        .hero-image p { font-size: 1.5rem; font-family: 'Playfair Display', serif; font-style: italic; margin-bottom: 45px; }
+
+        .btn-gold { 
+            display: inline-block; background: var(--auriu); color: white; padding: 18px 45px; 
+            border-radius: 60px; text-decoration: none; font-family: 'Playfair Display', serif; 
+            font-style: italic; font-size: 1.2rem; transition: 0.4s; 
         }
 
-        /* JURNAL LIVE DIN GOOGLE SHEETS */
-        .journal-section { padding: 100px 0; background: var(--alb); border-radius: 60px 60px 0 0; margin-top: -60px; }
-        #journal-container { display: flex; flex-direction: column; gap: 60px; }
-        
+        /* Jurnal din Google Sheets */
+        .journal-section { padding: 120px 0; background: var(--alb); border-radius: 60px 60px 0 0; margin-top: -60px; position: relative; }
         .post-card { 
-            background: var(--roz-pal); border-radius: 30px; overflow: hidden; 
-            display: flex; flex-direction: column; align-items: center; 
-            text-align: center; padding-bottom: 40px; border: 1px solid rgba(0,0,0,0.03);
-            animation: fadeIn 1s ease;
+            background: var(--crem); border-radius: 30px; overflow: hidden; 
+            margin-bottom: 80px; display: flex; flex-direction: column; align-items: center; 
+            text-align: center; padding-bottom: 50px; border: 1px solid rgba(0,0,0,0.03);
         }
-        .post-img { width: 100%; height: 500px; object-fit: cover; margin-bottom: 30px; background: #eee; }
-        .post-content { max-width: 700px; padding: 0 20px; }
-        .post-meta { font-family: 'Playfair Display', serif; font-style: italic; color: var(--auriu); font-size: 0.9rem; margin-bottom: 10px; display: block; }
-        
-        .btn-gold { background: var(--auriu); color: white; padding: 14px 35px; border-radius: 50px; text-decoration: none; font-family: 'Playfair Display', serif; font-style: italic; display: inline-block; margin-top: 20px; transition: 0.3s; }
+        .post-img { width: 100%; height: 500px; object-fit: cover; margin-bottom: 35px; }
+        .post-content { max-width: 750px; padding: 0 25px; }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        @media (max-width: 768px) { .post-img { height: 350px; } }
+        /* BUTOANE CONTACT - REGLATE STÂNGA/DREAPTA */
+        .wa-btn-fixed { 
+            position: fixed; bottom: 30px; right: 30px; /* DREAPTA */
+            background: #25d366; color: white; padding: 15px 30px; 
+            border-radius: 50px; text-decoration: none; font-weight: 700; 
+            z-index: 2000; box-shadow: 0 10px 20px rgba(0,0,0,0.1); font-size: 0.8rem;
+        }
+
+        /* Ajustare Tawk.to pentru stânga (via CSS) */
+        #tawk-chat-container { left: 30px !important; right: auto !important; }
+
+        @media (max-width: 768px) { .main-nav { display: none; } .hero-image h1 { font-size: 4.5rem; } .post-img { height: 350px; } }
     </style>
 </head>
 <body>
@@ -50,27 +66,48 @@
 <header class="site-header">
     <div class="container nav-wrap">
         <a href="index.html" class="brand brand-text italic-style">Hațeg Alternativ</a>
-        <div style="font-family: 'Playfair Display', serif; font-style: italic; color: var(--auriu);">Journal Live</div>
+        <nav class="main-nav">
+            <a href="pensiuni.html">Pensiuni</a>
+            <a href="retreat.html">Retreat</a>
+            <a href="rezervare.html">Rezervă</a>
+        </nav>
+        <div style="font-family: 'Playfair Display', serif; font-style: italic; color: var(--auriu);">Est. 2026</div>
     </div>
 </header>
 
 <section class="hero-image">
     <div class="container">
-        <h1 class="italic-style" style="font-size: 4rem;">Simte tăcerea.</h1>
+        <h1 class="italic-style">Simte tăcerea.</h1>
+        <p>O selecție de refugii în inima Transilvaniei</p>
+        <a href="pensiuni.html" class="btn-gold">Explorează Colecția</a>
     </div>
 </section>
 
 <main class="journal-section">
     <div class="container">
+        <h2 class="italic-style" style="text-align: center; font-size: 3rem; margin-bottom: 60px;">Journal Live</h2>
         <div id="journal-container">
-            <p style="text-align:center; font-style:italic; color:#999;">Se încarcă noutățile...</p>
+            <p style="text-align:center; font-style:italic;">Se încarcă momentele...</p>
         </div>
     </div>
 </main>
 
+<a href="https://wa.me/40749229686" class="wa-btn-fixed">WhatsApp / Direct</a>
+
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+Tawk_API.customStyle = { visibility : { desktop : { xOffset : '30px', yOffset : '30px', position : 'bottom-left' }, mobile : { xOffset : '20px', yOffset : '20px', position : 'bottom-left' } } };
+
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true; s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
+s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+
 <script>
-    // URL-UL SCRIPTULUI TĂU GOOGLE APPS (Același ca la rezervări)
-    const SHEETS_URL = "https://script.google.com/macros/s/AKfycbzsI6M2Pvyn5giR8H6nWBs1RfnmBjq2rr3jSN_vEwYKfjXbcFWaJy-6TQpgSfdrmqss/exec?action=getLive";
+    const SHEETS_URL = "https://script.google.com/macros/s/AKfycbz1b5qQajTQQH6QdJDb1ov5qIAhguAqdm1jjmk5uF0q7F-zq85eGE-ua_VAcgopzDtP/exec?action=getLive";
 
     async function loadJournal() {
         try {
@@ -79,24 +116,23 @@
             const container = document.getElementById('journal-container');
             container.innerHTML = "";
 
-            data.reverse().forEach(post => { // Cele mai noi sus
+            data.reverse().forEach(post => {
                 const postHTML = `
                     <article class="post-card">
-                        <img src="${post.Imagine_URL}" class="post-img" onerror="this.src='https://placehold.co/600x400?text=Imagine+Live'">
+                        <img src="${post.Imagine_URL}" class="post-img" onerror="this.src='https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/hero-camp-munti.jpg'">
                         <div class="post-content">
-                            <span class="post-meta">${post.Data} — ${post.Autor}</span>
-                            <h3 style="font-size: 2rem; margin-bottom: 15px;" class="italic-style">${post.Mesaj}</h3>
-                            ${post.Link_Buton ? `<a href="${post.Link_Buton}" class="btn-gold">Vezi detalii</a>` : ''}
+                            <span style="font-family: 'Playfair Display', serif; font-style: italic; color: #c5a059;">${post.Data} — ${post.Autor}</span>
+                            <h3 style="font-size: 2.2rem; margin: 15px 0;" class="italic-style">${post.Mesaj}</h3>
+                            ${post.Link_Buton ? `<a href="${post.Link_Buton}" class="btn-gold" style="font-size: 1rem; padding: 12px 30px;">Vezi detalii</a>` : ''}
                         </div>
                     </article>
                 `;
                 container.innerHTML += postHTML;
             });
         } catch (e) {
-            document.getElementById('journal-container').innerHTML = "<p>Nu am putut încărca postările momentan.</p>";
+            document.getElementById('journal-container').innerHTML = "<p style='text-align:center;'>Momentan nu sunt postări noi.</p>";
         }
     }
-
     loadJournal();
 </script>
 
