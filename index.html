@@ -522,70 +522,59 @@
 </section>
 
 <div class="container membership-wrap">
-    <section class="membership-card">
-        <div class="membership-left">
-            <span class="membership-label">Member Access</span>
-            <h2>Devino membru</h2>
-            <p>Acces prioritar la retreat-uri private și experiențe curatoriate.</p>
+   <section class="membership-card" style="background: #1b3022; padding: 60px; border-radius: 24px; color: white;">
+    <span style="color: #c5a059; letter-spacing: 5px; font-weight: 800; font-size: 0.7rem; display: block; margin-bottom: 20px;">MEMBER ACCESS</span>
+    <h2 style="font-family: 'Playfair Display', serif; font-size: 3.5rem; font-style: italic; margin-bottom: 20px;">Devino membru</h2>
+    <p style="margin-bottom: 40px; opacity: 0.9; font-weight: 300;">Acces prioritar la retreat-uri private și experiențe curatoriate.</p>
 
-            <form id="membership-form">
-                <input type="email" id="member-email" placeholder="Email-ul tău" required>
-                <button type="submit" class="btn-gold" id="membershipBtn">Înscrie-te</button>
-            </form>
+    <form id="membership-form" style="display: flex; gap: 15px; flex-wrap: wrap;">
+        <input type="email" id="member-email" placeholder="email@exemplu.com" required 
+               style="padding: 18px 25px; border-radius: 50px; border: 2px solid white; background: white; color: #1b3022; flex: 1; min-width: 280px; font-weight: 600;">
+        
+        <button type="submit" id="submit-btn" 
+                style="background: #c5a059; color: white; padding: 18px 40px; border-radius: 50px; border: none; font-weight: 800; cursor: pointer; text-transform: uppercase; letter-spacing: 2px;">
+            Înscrie-te
+        </button>
+    </form>
+    
+    <div id="form-msg" style="margin-top: 25px; font-weight: 600; min-height: 24px;"></div>
+</section>
 
-            <div id="form-msg"></div>
-        </div>
-
-        <div class="membership-right">
-            <img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/images/membership-key.png" alt="Acces membru premium">
-        </div>
-    </section>
-</div>
-
-<a href="https://wa.me/40749229686" class="wa-btn" target="_blank" rel="noopener noreferrer">WhatsApp Direct</a>
-
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-<script>
-    (function () {
-        emailjs.init("KfAXAcZDiuFeeFZzj");
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script type="text/javascript">
+    (function() {
+        // !!! ÎNLOCUIEȘTE KfAXAcZDiuFeeFZzj CU PUBLIC KEY-UL TĂU DIN EMAILJS !!!
+        emailjs.init("KfAXAcZDiuFeeFZzj"); 
     })();
 
-    const menuToggle = document.getElementById('menuToggle');
-    const mobileMenu = document.getElementById('mobileMenu');
-
-    menuToggle.addEventListener('click', function () {
-        mobileMenu.classList.toggle('open');
-    });
-
-    document.getElementById('membership-form').addEventListener('submit', function (e) {
-        e.preventDefault();
-
-        const emailInput = document.getElementById('member-email');
+    document.getElementById('membership-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const btn = document.getElementById('submit-btn');
         const msg = document.getElementById('form-msg');
-        const button = document.getElementById('membershipBtn');
+        const email = document.getElementById('member-email').value;
 
-        button.disabled = true;
-        button.innerText = "Se trimite...";
+        btn.innerText = "SE TRIMITE...";
+        btn.disabled = true;
 
-        emailjs.send("service_iqnbicr", "template_58x2s1c", {
-            name: emailInput.value,
-            email: emailInput.value,
+        const templateParams = {
+            name: email,
             time: new Date().toLocaleString('ro-RO'),
-            message: "Înscriere nouă în comunitatea Hațeg Alternativ"
-        })
-        .then(() => {
-            msg.innerText = "✨ Bine ai venit în comunitate!";
-            msg.style.color = "#c5a059";
-            emailInput.value = "";
-            button.disabled = false;
-            button.innerText = "Înscrie-te";
-        })
-        .catch(() => {
-            msg.innerText = "A apărut o eroare. Încearcă din nou.";
-            msg.style.color = "#ff6b6b";
-            button.disabled = false;
-            button.innerText = "Înscrie-te";
-        });
+            message: "Solicitare nouă de înscriere membru de pe Hațeg Alternativ"
+        };
+
+        emailjs.send("service_iqnbicr", "template_58x2s1c", templateParams)
+            .then(function() {
+                msg.style.color = "#c5a059";
+                msg.innerHTML = "✨ Bun venit! Verifică-ți email-ul în curând.";
+                btn.style.display = "none";
+                document.getElementById('member-email').value = "";
+            }, function(error) {
+                console.error('EmailJS Error:', error);
+                msg.style.color = "#ff6b6b";
+                msg.innerHTML = "A apărut o eroare de conexiune. Reîncearcă în 2 minute.";
+                btn.innerText = "ÎNSCRIE-TE";
+                btn.disabled = false;
+            });
     });
 </script>
 <!--Start of Tawk.to Script-->
