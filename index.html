@@ -6,62 +6,8 @@
     <title>Hațeg Alternativ | Experiențe Premium</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css" />
-    <style>
-        /* Extra Premium Styles direct în Head pentru viteză */
-        .hero-premium {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        .hero-video-bg {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            object-fit: cover;
-            z-index: -1;
-        }
-        .membership-card {
-            background: var(--primary);
-            color: white;
-            padding: 60px;
-            border-radius: var(--radius);
-            display: flex;
-            align-items: center;
-            gap: 40px;
-            margin: 80px 0;
-            box-shadow: 0 30px 60px rgba(27, 48, 34, 0.2);
-        }
-        .feed-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-            margin-top: 40px;
-        }
-        .feed-item {
-            aspect-ratio: 1/1;
-            overflow: hidden;
-            border-radius: 12px;
-            position: relative;
-            cursor: pointer;
-        }
-        .feed-item img {
-            width: 100%; height: 100%; object-fit: cover;
-            transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
-        }
-        .feed-item:hover img { transform: scale(1.1); }
-        .btn-gold {
-            background: #c5a059;
-            color: white;
-            border: none;
-        }
-    </style>
 </head>
 <body>
-    <div class="test-banner">EXPERIENȚĂ EXCLUSIVĂ • HAȚEG ALTERNATIV</div>
-    
     <header class="site-header">
         <div class="container nav-wrap">
             <a href="index.html" class="brand">
@@ -69,77 +15,61 @@
                 <span style="font-weight: 800;">ALTERNATIV</span>
             </a>
             <nav class="main-nav">
-                <a href="pensiuni.html" data-i18n="nav_pensiuni">Pensiuni</a>
-                <a href="retreat.html" data-i18n="nav_retreat">Retreat</a>
-                <a href="experiente.html" data-i18n="nav_experiente">Experiențe</a>
+                <a href="pensiuni.html">Pensiuni</a>
+                <a href="retreat.html">Retreat</a>
+                <a href="gastronomic.html">Gastronomic</a>
             </nav>
-            <div style="display: flex; align-items: center; gap: 20px;">
-                <div class="lang-switcher">
-                    <button onclick="changeLanguage('ro')" class="lang-btn">RO</button>
-                    <button onclick="changeLanguage('en')" class="lang-btn">EN</button>
-                </div>
-                <a href="#join" class="btn btn-forest" style="padding: 10px 20px; font-size: 0.7rem;">Cont Membru</a>
+            <div class="nav-actions">
+                <a href="#join" class="btn btn-gold" style="padding: 10px 20px; font-size: 0.8rem;">Cont Membru</a>
             </div>
         </div>
     </header>
 
     <section class="hero-premium" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('images/hero-premium.jpg') center/cover;">
         <div class="container">
-            <span class="eyebrow" style="background: rgba(255,255,255,0.2); color: white;">Colecția 2026</span>
-            <h1 class="metanoia-title" style="color: white; font-size: 5rem; line-height: 1;">Acolo unde tăcerea <br>are voce.</h1>
-            <p style="color: white; max-width: 600px; margin: 30px auto; font-size: 1.2rem; font-weight: 300;">
-                O platformă curatoriată pentru călătorul modern care caută luxul în simplitate și adevărul în tradiție.
-            </p>
-            <div class="hero-actions">
-                <a href="rezervare.html" class="btn btn-gold">Rezervă un Sejur</a>
-                <a href="pensiuni.html" class="btn btn-outline" style="border-color: white; color: white;">Descoperă Colecția</a>
-            </div>
+            <h1 class="metanoia-title" style="color: white; font-size: clamp(3rem, 8vw, 5rem);">Acolo unde tăcerea are voce.</h1>
+            <p style="color: white; max-width: 600px; margin: 30px auto; font-size: 1.2rem; font-weight: 300;">O platformă curatoriată pentru călătorul modern care caută luxul în simplitate.</p>
+            <a href="pensiuni.html" class="btn btn-gold">Descoperă Colecția</a>
         </div>
     </section>
 
     <section class="container" style="padding: 100px 0;">
-        <div style="text-align: center; margin-bottom: 60px;">
+        <div class="section-intro" style="text-align: center; margin-bottom: 60px;">
             <h2 class="metanoia-title" style="font-size: 3rem;">Vibe-ul Locului</h2>
-            <p style="color: var(--muted);">Impresii din Țara Hațegului prin ochii oaspeților noștri.</p>
         </div>
         <div class="feed-grid">
-            <div class="feed-item"><img src="images/feed-1.jpg" alt="Nature"></div>
-            <div class="feed-item"><img src="images/feed-2.jpg" alt="Breakfast"></div>
-            <div class="feed-item"><img src="images/feed-3.jpg" alt="Mountain View"></div>
-            <div class="feed-item"><img src="images/feed-4.jpg" alt="Tradition"></div>
-            <div class="feed-item"><img src="images/feed-5.jpg" alt="Quiet"></div>
-            <div class="feed-item"><img src="images/feed-6.jpg" alt="Fireplace"></div>
-            <div class="feed-item"><img src="images/feed-7.jpg" alt="Forest path"></div>
-            <div class="feed-item"><img src="images/feed-8.jpg" alt="Local table"></div>
+            <div class="feed-item"><img src="images/feed-1.jpg"></div>
+            <div class="feed-item"><img src="images/feed-2.jpg"></div>
+            <div class="feed-item"><img src="images/feed-3.jpg"></div>
+            <div class="feed-item"><img src="images/feed-4.jpg"></div>
         </div>
     </section>
 
-    <section id="join" class="container">
-        <div class="membership-card">
+    <section id="join" class="container" style="margin-bottom: 100px;">
+        <div class="membership-card" style="background: var(--primary); color: white; padding: 60px; border-radius: 20px; display: flex; align-items: center; gap: 40px;">
             <div style="flex: 1;">
-                <span style="text-transform: uppercase; font-size: 0.8rem; letter-spacing: 3px; opacity: 0.8;">Privilegii Exclusive</span>
-                <h2 class="metanoia-title" style="color: white; font-size: 3rem; margin: 20px 0;">Devino membru al comunității</h2>
-                <p style="margin-bottom: 30px; font-weight: 300; opacity: 0.9;">
-                    Membrii Hațeg Alternativ primesc acces prioritar la retreat-urile Metanoia, tarife preferențiale și invitații la cinele gastronomice secrete.
-                </p>
-                <form style="display: flex; gap: 10px;">
-                    <input type="email" placeholder="Adresa ta de email" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 15px 20px; flex: 1;">
+                <h2 class="metanoia-title" style="color: white; font-size: 2.5rem;">Devino membru</h2>
+                <p style="margin: 20px 0 40px; font-weight: 300; opacity: 0.8;">Acces prioritar la retreat-uri și cine secrete.</p>
+                <form id="membership-form" style="display: flex; gap: 10px;">
+                    <input type="email" id="member-email" placeholder="Email-ul tău" required style="flex: 1; padding: 15px; border-radius: 10px; border: none;">
                     <button type="submit" class="btn btn-gold">Creează Cont</button>
                 </form>
+                <p id="form-msg" style="margin-top: 15px; font-size: 0.9rem; color: #c5a059;"></p>
             </div>
-            <div style="flex: 0.8; text-align: right;">
-                <img src="images/membership-key.png" alt="Membru" style="max-width: 100%; border-radius: 20px;">
-            </div>
+            <div style="flex: 0.6;"><img src="images/membership-key.png" style="width: 100%; border-radius: 15px;"></div>
         </div>
     </section>
 
-    <footer style="background: var(--primary-dark); color: white; padding: 80px 0; text-align: center;">
-        <div class="container">
-            <h3 class="metanoia-title" style="color: white; font-size: 2rem;">Hațeg Alternativ</h3>
-            <p style="opacity: 0.5; margin-top: 20px;">© 2026. Curatoriat cu dragoste în Țara Hațegului.</p>
-        </div>
-    </footer>
-
-    <script src="js/translations.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        (function(){ emailjs.init("YOUR_PUBLIC_KEY"); })();
+        document.getElementById('membership-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const msg = document.getElementById('form-msg');
+            msg.innerText = "Se trimite...";
+            emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", { new_member_email: document.getElementById('member-email').value })
+                .then(() => { msg.innerText = "✨ Bun venit în comunitate!"; document.getElementById('membership-form').reset(); });
+        });
+    </script>
 </body>
 </html>
