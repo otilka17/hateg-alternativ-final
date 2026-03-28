@@ -3,168 +3,125 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Experiențe autentice în Hațeg | Hațeg Alternativ</title>
-    <meta name="description" content="Descoperă experiențe autentice în Hațeg: vizite la stână, gastronomie locală, tururi de patrimoniu și activități ghidate în natură." />
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css" />
+    <title>Experiențe Autentice | Hațeg Alternativ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS SIGNATURE PREMIUM - INTEGRAT */
+        :root { --verde: #1b3022; --auriu: #c5a059; --crem: #fdfcf8; --alb: #ffffff; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--verde); line-height: 1.6; }
+        
+        h1, h2, h3, .brand { font-family: 'Playfair Display', serif; font-weight: 700; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        /* Header & Nav */
+        .site-header { background: var(--alb); padding: 20px 0; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 1000; }
+        .nav-wrap { display: flex; justify-content: space-between; align-items: center; }
+        .brand { text-decoration: none; color: var(--verde); font-size: 1.4rem; }
+        .main-nav a { text-decoration: none; color: #444; font-size: 0.9rem; margin-left: 20px; font-weight: 500; }
+        .active-link { color: var(--auriu) !important; }
+
+        /* Hero Small */
+        .hero-small { padding: 80px 0; text-align: center; background: var(--alb); border-bottom: 1px solid #eee; margin-bottom: 60px; }
+        .hero-small h1 { font-size: 3rem; margin-bottom: 15px; }
+        .hero-small p { color: #64748b; max-width: 700px; margin: 0 auto; }
+
+        /* Experience Cards */
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; margin-bottom: 80px; }
+        .experience-card { background: var(--alb); border-radius: 24px; overflow: hidden; box-shadow: 0 12px 40px rgba(0,0,0,0.04); border: 1px solid #f1f1f1; transition: 0.4s; }
+        .experience-card:hover { transform: translateY(-10px); }
+        .experience-image { width: 100%; height: 280px; object-fit: cover; }
+        .experience-content { padding: 30px; }
+        
+        .card-badge { display: inline-block; padding: 5px 12px; background: var(--crem); color: var(--auriu); font-size: 0.75rem; font-weight: 700; border-radius: 50px; margin-bottom: 15px; }
+        .card-meta { display: flex; gap: 15px; font-size: 0.8rem; color: #94a3b8; margin-bottom: 15px; font-weight: 600; }
+        
+        .btn { padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.85rem; display: inline-block; transition: 0.3s; border: none; cursor: pointer; }
+        .btn-primary { background: var(--verde); color: var(--alb); margin-top: 20px; }
+        .btn-dark { background: var(--auriu); color: var(--alb); }
+
+        /* CTA Panel */
+        .cta-panel { background: var(--verde); color: var(--alb); padding: 60px; border-radius: 40px; text-align: center; margin-bottom: 80px; }
+        .cta-panel h2 { font-size: 2rem; margin-bottom: 20px; }
+        .cta-panel p { margin-bottom: 30px; opacity: 0.9; }
+
+        .wa-btn { position: fixed; bottom: 30px; left: 30px; background: #25d366; color: var(--alb); padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 999; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+    </style>
 </head>
 <body>
 
-<div class="test-banner">
-    <span data-i18n="test_version">
-        Această platformă este în varianta Demo (optimizată prin testare live). Toate solicitările sunt preluate oficial.
-    </span>
-</div>
-
 <header class="site-header">
     <div class="container nav-wrap">
-        <a href="index.html" class="brand">
-            <img src="images/logo-hateg.png" alt="Logo Hațeg Alternativ" height="42">
-            <span>HAȚEG ALTERNATIV</span>
-        </a>
-
+        <a href="index.html" class="brand">Hațeg Alternativ</a>
         <nav class="main-nav">
-            <a href="index.html" data-i18n="nav_home">Acasă</a>
-            <a href="pensiuni.html" data-i18n="nav_pensiuni">Pensiuni</a>
-            <a href="retreat.html" data-i18n="nav_retreat">Retreat Metanoia</a>
-            <a href="experiente.html" class="active-link" data-i18n="nav_experiente">Experiențe</a>
-            <a href="contact.html" data-i18n="nav_rezervare">Contact</a>
+            <a href="index.html">Acasă</a>
+            <a href="pensiuni.html">Pensiuni</a>
+            <a href="retreat.html">Retreat</a>
+            <a href="experiente.html" class="active-link">Experiențe</a>
+            <a href="contact.html">Contact</a>
         </nav>
-
-        <div class="lang-switcher">
-            <button onclick="changeLanguage('ro')" class="lang-btn">RO</button>
-            <button onclick="changeLanguage('en')" class="lang-btn">EN</button>
-            <button onclick="changeLanguage('de')" class="lang-btn">DE</button>
-        </div>
     </div>
 </header>
 
-<main>
-    <section class="hero-small hero-experiente">
-        <div class="container hero-content">
-            <span class="hero-kicker">Hațeg Alternativ</span>
-            <h1 class="page-title" data-i18n="exp_hero_title">Trăiește Hațegul Autentic</h1>
-            <p class="page-subtitle">
-                Descoperă experiențe locale create pentru oameni care vor mai mult decât o simplă vizită:
-                tradiții, patrimoniu, gastronomie și întâlniri reale cu spiritul locului.
-            </p>
-        </div>
+<main class="container">
+    <section class="hero-small">
+        <h1 data-i18n="exp_hero_title">Trăiește Hațegul Autentic</h1>
+        <p>Descoperă tradiții, patrimoniu și gastronomie locală create pentru oameni care vor mai mult decât o simplă vizită.</p>
     </section>
 
-    <section class="section section-intro">
-        <div class="container narrow">
-            <div class="section-heading center">
-                <span class="section-label">Experiențe locale</span>
-                <h2>Mai aproape de oameni, natură și tradiție</h2>
-                <p>
-                    Fiecare activitate este gândită ca o experiență memorabilă, nu doar ca o oprire în program.
-                    Aici descoperi Hațegul prin povești, gusturi, locuri și oameni.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <div class="card-grid">
-
-                <article class="experience-card">
-                    <div class="experience-image-wrap">
-                        <img src="images/exp-stana.jpg" class="experience-image" alt="Vizită la stână în munții din Hațeg">
-                    </div>
-                    <div class="experience-content">
-                        <span class="card-badge" data-i18n="exp_tag_tradition">Tradiție Vie</span>
-                        <h3 class="card-title" data-i18n="exp_title_stana">O zi la stâna din munte</h3>
-
-                        <div class="card-meta">
-                            <span>Durată: 4-5 ore</span>
-                            <span>La cerere</span>
-                            <span>de la 150 lei / pers</span>
-                        </div>
-
-                        <p data-i18n="exp_desc_stana">
-                            Descoperă viața aspră dar frumoasă a ciobanilor. Participă la mulsul oilor și gustă balmoșul proaspăt făcut la ceaun.
-                        </p>
-
-                        <a href="contact.html?exp=stana" class="btn btn-primary" data-i18n="btn_reserve_exp">
-                            Solicită experiența
-                        </a>
-                    </div>
-                </article>
-
-                <article class="experience-card featured-card">
-                    <div class="experience-image-wrap">
-                        <img src="images/exp-biserica-ext.jpg" class="experience-image" alt="Tur de patrimoniu în Hațeg">
-                    </div>
-                    <div class="experience-content">
-                        <span class="card-badge" data-i18n="exp_tag_history">Istorie & Patrimoniu</span>
-                        <h3 class="card-title" data-i18n="exp_title_history">Turul Bisericilor de Piatră</h3>
-
-                        <div class="card-meta">
-                            <span>Durată: 5-6 ore</span>
-                            <span>Ghid local inclus</span>
-                            <span>de la 180 lei / pers</span>
-                        </div>
-
-                        <p data-i18n="exp_desc_history">
-                            Vizitează Densuș, Sântămăria Orlea și cetatea Colț alături de un ghid local care cunoaște legendele ascunse ale locului.
-                        </p>
-
-                        <a href="contact.html?exp=history" class="btn btn-primary" data-i18n="btn_reserve_exp">
-                            Solicită experiența
-                        </a>
-                    </div>
-                </article>
-
-                <article class="experience-card">
-                    <div class="experience-image-wrap">
-                        <img src="images/gast-masa-traditionala.jpg" class="experience-image" alt="Atelier de gătit tradițional în Hațeg">
-                    </div>
-                    <div class="experience-content">
-                        <span class="card-badge" data-i18n="exp_tag_gastronomy">Gastronomie Locală</span>
-                        <h3 class="card-title" data-i18n="exp_title_food">Atelier de Gătit „Ca la noi”</h3>
-
-                        <div class="card-meta">
-                            <span>Durată: 3-4 ore</span>
-                            <span>Grup mic</span>
-                            <span>de la 140 lei / pers</span>
-                        </div>
-
-                        <p data-i18n="exp_desc_food">
-                            Învață să prepari plăcinte pădurenești sau virșli de Sălaș sub îndrumarea gospodinelor din sat.
-                        </p>
-
-                        <a href="contact.html?exp=food" class="btn btn-primary" data-i18n="btn_reserve_exp">
-                            Solicită experiența
-                        </a>
-                    </div>
-                </article>
-
-            </div>
-        </div>
-    </section>
-
-    <section class="section section-soft">
-        <div class="container">
-            <div class="cta-panel">
-                <div>
-                    <span class="section-label">Experiență personalizată</span>
-                    <h2>Vrei un program făcut special pentru grupul tău?</h2>
-                    <p>
-                        Putem construi un traseu personalizat pentru cupluri, familii, grupuri restrânse sau retreat-uri tematice.
-                    </p>
+    <section class="card-grid">
+        <article class="experience-card">
+            <img src="images/exp-stana.jpg" class="experience-image" alt="Stână">
+            <div class="experience-content">
+                <span class="card-badge">Tradiție Vie</span>
+                <h3>O zi la stâna din munte</h3>
+                <div class="card-meta">
+                    <span>4-5 ore</span>
+                    <span>De la 150 lei</span>
                 </div>
-                <a href="contact.html" class="btn btn-dark">Cere detalii</a>
+                <p>Participă la mulsul oilor și gustă balmoșul proaspăt făcut la ceaun.</p>
+                <a href="contact.html?exp=stana" class="btn btn-primary">Solicită experiența</a>
             </div>
-        </div>
+        </article>
+
+        <article class="experience-card">
+            <img src="images/exp-biserica-ext.jpg" class="experience-image" alt="Biserici">
+            <div class="experience-content">
+                <span class="card-badge">Istorie</span>
+                <h3>Turul Bisericilor de Piatră</h3>
+                <div class="card-meta">
+                    <span>5-6 ore</span>
+                    <span>De la 180 lei</span>
+                </div>
+                <p>Vizitează Densuș și Cetatea Colț alături de un ghid care cunoaște legendele locului.</p>
+                <a href="contact.html?exp=history" class="btn btn-primary">Solicită experiența</a>
+            </div>
+        </article>
+
+        <article class="experience-card">
+            <img src="images/gast-masa-traditionala.jpg" class="experience-image" alt="Gastronomie">
+            <div class="experience-content">
+                <span class="card-badge">Gastronomie</span>
+                <h3>Atelier de Gătit „Ca la noi”</h3>
+                <div class="card-meta">
+                    <span>3-4 ore</span>
+                    <span>De la 140 lei</span>
+                </div>
+                <p>Învață să prepari plăcinte pădurenești sub îndrumarea gospodinelor din sat.</p>
+                <a href="contact.html?exp=food" class="btn btn-primary">Solicită experiența</a>
+            </div>
+        </article>
+    </section>
+
+    <section class="cta-panel">
+        <h2>Vrei un program personalizat?</h2>
+        <p>Putem construi un traseu special pentru grupuri restrânse sau retreat-uri tematice.</p>
+        <a href="contact.html" class="btn btn-dark">Cere detalii</a>
     </section>
 </main>
 
-<footer class="site-footer">
-    <div class="container footer-wrap">
-        <p>© 2026 Hațeg Alternativ | Experiențe Reale</p>
-    </div>
-</footer>
+<a href="https://wa.me/40749229686" class="wa-btn">WhatsApp</a>
 
 <script src="js/translations.js"></script>
 </body>
