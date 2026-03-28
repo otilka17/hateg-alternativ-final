@@ -6,38 +6,25 @@
     <title>Forum Comunitate | Hațeg Alternativ</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        /* CSS SIGNATURE STABIL */
+        /* CSS GOLDEN PREMIUM */
         :root { --verde: #1b3022; --auriu: #c5a059; --crem: #fdfcf8; --alb: #ffffff; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
         body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--verde); line-height: 1.6; }
-        
-        /* Titluri cu Playfair */
-        h1, h2, .brand { font-family: 'Playfair Display', serif; font-weight: 700; }
-        
+        h1, .brand { font-family: 'Playfair Display', serif; font-weight: 700; }
         .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
-        
         .site-header { background: var(--alb); padding: 20px 0; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 1000; }
         .nav-wrap { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
         .brand { text-decoration: none; color: var(--verde); font-size: 1.4rem; }
         .main-nav a { text-decoration: none; color: #444; font-size: 0.9rem; margin-left: 20px; font-weight: 500; }
-
+        .main-nav a:hover { color: var(--auriu); }
         .forum-header { padding: 80px 0 40px; text-align: center; }
         h1 { font-size: 3rem; margin-bottom: 10px; }
-        
         .input-box { background: var(--alb); padding: 40px; border-radius: 24px; border: 1px solid #eee; box-shadow: 0 10px 40px rgba(0,0,0,0.03); margin-bottom: 40px; }
         textarea { width: 100%; height: 130px; border: 1px solid #f0f0f0; border-radius: 15px; padding: 20px; font-family: 'Inter'; font-size: 1rem; background: #fafafa; outline: none; margin-bottom: 15px; resize: none; }
-        
         .btn-gold { background: var(--auriu); color: var(--alb); padding: 14px 35px; border-radius: 50px; border: none; font-weight: 600; cursor: pointer; transition: 0.3s; }
-        .btn-gold:hover { transform: scale(1.03); }
-
-        .post-card { background: var(--alb); padding: 30px; border-radius: 20px; border: 1px solid #eee; margin-bottom: 25px; animation: slideUp 0.5s ease; }
+        .post-card { background: var(--alb); padding: 30px; border-radius: 20px; border: 1px solid #eee; margin-bottom: 25px; }
         .post-card p { font-size: 1.05rem; color: #334155; font-style: italic; }
         .post-meta { font-size: 0.8rem; color: var(--auriu); font-weight: 700; margin-top: 15px; display: block; }
-
-        @keyframes slideUp { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-        
-        /* WhatsApp la STÂNGA */
         .wa-btn { position: fixed; bottom: 30px; left: 30px; background: #25d366; color: var(--alb); padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 999; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
     </style>
 </head>
@@ -69,7 +56,7 @@
     <div id="lista">
         <div class="post-card">
             <p>"Apusul văzut de la La Buligă este ceva ce nu voi uita niciodată. Liniștea e aproape ireală."</p>
-            <span class="post-meta">Oaspete anonim — 28.03.2026</span>
+            <span class="post-meta">Oaspete anonim — acum 2 ore</span>
         </div>
     </div>
 </div>
@@ -80,29 +67,13 @@
 function posteaza(){
     const msg = document.getElementById("mesajForum").value;
     if(!msg) return;
-
     const div = document.createElement("div");
     div.className = "post-card";
     const data = new Date().toLocaleDateString('ro-RO');
-    
-    div.innerHTML = `
-        <p>"${msg}"</p>
-        <span class="post-meta">Oaspete anonim — ${data}</span>
-    `;
-
+    div.innerHTML = `<p>"${msg}"</p><span class="post-meta">Oaspete anonim — ${data}</span>`;
     document.getElementById("lista").prepend(div);
     document.getElementById("mesajForum").value = "";
 }
-</script>
-
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true; s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
-s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
 </script>
 
 </body>
