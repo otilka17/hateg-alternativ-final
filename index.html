@@ -7,47 +7,65 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
-        /* CSS INTEGRAT CA SĂ NU MAI EXISTE ERORI */
+        /* CSS INTEGRAT - NU MAI DEPINDEM DE ALT FISIER */
+        :root { --verde: #1b3022; --auriu: #c5a059; --crem: #fdfcf8; }
         * { margin: 0; padding: 0; box-sizing: border-box; text-transform: none !important; }
-        body { font-family: 'Inter', sans-serif; background: #fdfcf8; color: #1b3022; line-height: 1.6; }
+        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--verde); line-height: 1.6; }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
         
-        /* Header */
-        .site-header { background: white; padding: 20px 0; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 1000; }
+        /* Navigatie */
+        .site-header { background: white; padding: 15px 0; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 1000; }
         .nav-wrap { display: flex; justify-content: space-between; align-items: center; }
-        .brand { font-weight: 700; text-decoration: none; color: #1b3022; font-size: 1.2rem; }
-        .main-nav a { text-decoration: none; color: #333; font-size: 0.9rem; margin-left: 20px; font-weight: 500; }
+        .brand { font-weight: 700; text-decoration: none; color: var(--verde); font-size: 1.2rem; }
+        .main-nav a { text-decoration: none; color: #444; font-size: 0.9rem; margin-left: 20px; font-weight: 500; transition: 0.3s; }
+        .main-nav a:hover { color: var(--auriu); }
 
-        /* Hero */
-        .hero-premium { 
-            height: 70vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.2)), url('hero-camp-munti.jpg') center/cover;
+        /* Hero Section */
+        .hero { 
+            height: 75vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url('hero-camp-munti.jpg') center/cover no-repeat;
         }
-        .metanoia-title { font-family: 'Playfair Display', serif; }
-        .hero-main { font-size: clamp(2.5rem, 8vw, 4rem); margin-bottom: 10px; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 8vw, 4.5rem); margin-bottom: 15px; }
+        .hero p { font-weight: 300; font-size: 1.2rem; margin-bottom: 30px; letter-spacing: 1px; }
 
         /* Carduri Pensiuni */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 60px 0; }
-        .card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border: 1px solid #eee; }
-        .card img { width: 100%; height: 250px; object-fit: cover; }
-        .card-info { padding: 25px; }
+        .section-padding { padding: 80px 0; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.03); border: 1px solid #f0f0f0; transition: 0.3s; }
+        .card:hover { transform: translateY(-5px); }
+        .card img { width: 100%; height: 260px; object-fit: cover; }
+        .card-body { padding: 30px; }
+        .card h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 10px; }
+        .card p { color: #667; font-size: 0.95rem; margin-bottom: 25px; }
 
         /* Butoane */
-        .btn-gold { background: #c5a059; color: white; padding: 12px 25px; border-radius: 50px; text-decoration: none; display: inline-block; font-weight: 600; font-size: 0.85rem; border: none; }
-        .btn-outline { border: 1px solid #1b3022; color: #1b3022; padding: 12px 25px; border-radius: 50px; text-decoration: none; display: inline-block; font-weight: 600; font-size: 0.85rem; }
+        .btn { padding: 12px 24px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.85rem; display: inline-block; transition: 0.3s; text-align: center; }
+        .btn-gold { background: var(--auriu); color: white; border: none; }
+        .btn-gold:hover { background: #b08e4d; }
+        .btn-outline { border: 1px solid var(--verde); color: var(--verde); }
+        .btn-outline:hover { background: var(--verde); color: white; }
 
-        /* Journal / Feed (Cele 8 poze) */
-        .journal-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 30px; }
-        .journal-item { height: 250px; border-radius: 10px; overflow: hidden; position: relative; }
-        .journal-item.large { grid-column: span 2; grid-row: span 2; height: 510px; }
-        .journal-item img { width: 100%; height: 100%; object-fit: cover; }
-        .journal-overlay { position: absolute; bottom: 0; background: rgba(0,0,0,0.5); color: white; width: 100%; padding: 20px; opacity: 0; transition: 0.3s; }
-        .journal-item:hover .journal-overlay { opacity: 1; }
+        /* Testimoniale */
+        .reviews { background: #f9f7f2; border-top: 1px solid #eee; border-bottom: 1px solid #eee; }
+        .review-card { background: white; padding: 40px; border-radius: 20px; border: 1px solid #f1f5f9; }
+        .stars { color: var(--auriu); margin-bottom: 15px; }
 
-        /* WhatsApp Float */
-        .wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: 700; box-shadow: 0 10px 20px rgba(0,0,0,0.1); z-index: 999; display: flex; align-items: center; gap: 10px; }
+        /* Journal Grid */
+        .journal-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+        .j-item { height: 250px; border-radius: 12px; overflow: hidden; position: relative; }
+        .j-item.big { grid-column: span 2; grid-row: span 2; height: 512px; }
+        .j-item img { width: 100%; height: 100%; object-fit: cover; }
+        .j-overlay { position: absolute; inset: 0; background: rgba(27,48,34,0.7); color: white; display: flex; flex-direction: column; justify-content: flex-end; padding: 25px; opacity: 0; transition: 0.4s; }
+        .j-item:hover .j-overlay { opacity: 1; }
 
-        @media (max-width: 768px) { .journal-grid { grid-template-columns: repeat(2, 1fr); } .journal-item.large { grid-column: span 2; grid-row: span 1; height: 250px; } }
+        /* WhatsApp */
+        .wa-btn { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; padding: 14px 28px; border-radius: 50px; text-decoration: none; font-weight: 700; box-shadow: 0 10px 25px rgba(0,0,0,0.15); z-index: 999; }
+
+        @media (max-width: 768px) { 
+            .nav-wrap { flex-direction: column; gap: 10px; }
+            .journal-grid { grid-template-columns: repeat(2, 1fr); }
+            .j-item.big { grid-column: span 2; grid-row: span 1; height: 250px; }
+        }
     </style>
 </head>
 <body>
@@ -63,93 +81,100 @@
     </div>
 </header>
 
-<section class="hero-premium">
+<section class="hero">
     <div class="container">
-        <h1 class="metanoia-title hero-main">simte tăcerea.</h1>
-        <p style="font-weight: 300; font-size: 1.1rem;">deschiderea sezonului la 1 mai 2026</p>
-        <br>
-        <a href="pensiuni.html" class="btn-gold">explorați colecția</a>
+        <h1 class="metanoia-title">simte tăcerea.</h1>
+        <p>deschiderea sezonului la 1 mai 2026</p>
+        <a href="pensiuni.html" class="btn btn-gold">explorați colecția</a>
     </div>
 </section>
 
-<div class="container">
-    <div class="cards-grid">
+<div class="container section-padding">
+    <div class="grid-3">
         <div class="card">
-            <img src="selava-pensiune.jpg">
-            <div class="card-info">
-                <h3 class="metanoia-title">selava estate</h3>
-                <p style="color: #667; font-size: 0.9rem; margin-bottom: 20px;">design & fine dining.</p>
+            <img src="selava-pensiune.jpg" alt="selava">
+            <div class="card-body">
+                <h3>selava estate</h3>
+                <p>design & fine dining la poalele munților.</p>
                 <div style="display: flex; gap: 10px;">
-                    <a href="pensiuni.html" class="btn-outline">detalii</a>
-                    <a href="rezervare.html" class="btn-gold">rezervă</a>
+                    <a href="pensiuni.html" class="btn btn-outline">detalii</a>
+                    <a href="rezervare.html" class="btn btn-gold">rezervă</a>
                 </div>
             </div>
         </div>
         <div class="card">
-            <img src="la-buliga-pensiune.jpg">
-            <div class="card-info">
-                <h3 class="metanoia-title">la buligă</h3>
-                <p style="color: #667; font-size: 0.9rem; margin-bottom: 20px;">izolare la 1000m.</p>
+            <img src="la-buliga-pensiune.jpg" alt="buliga">
+            <div class="card-body">
+                <h3>la buligă</h3>
+                <p>izolare totală și liniște la 1000m altitudine.</p>
                 <div style="display: flex; gap: 10px;">
-                    <a href="pensiuni.html" class="btn-outline">detalii</a>
-                    <a href="rezervare.html" class="btn-gold">rezervă</a>
+                    <a href="pensiuni.html" class="btn btn-outline">detalii</a>
+                    <a href="rezervare.html" class="btn btn-gold">rezervă</a>
                 </div>
             </div>
         </div>
         <div class="card">
-            <img src="natalia-pensiune.jpg">
-            <div class="card-info">
-                <h3 class="metanoia-title">natalia</h3>
-                <p style="color: #667; font-size: 0.9rem; margin-bottom: 20px;">tradiție & suflet.</p>
+            <img src="natalia-pensiune.jpg" alt="natalia">
+            <div class="card-body">
+                <h3>natalia</h3>
+                <p>tradiție, livadă și ospitalitate autentică.</p>
                 <div style="display: flex; gap: 10px;">
-                    <a href="pensiuni.html" class="btn-outline">detalii</a>
-                    <a href="rezervare.html" class="btn-gold">rezervă</a>
+                    <a href="pensiuni.html" class="btn btn-outline">detalii</a>
+                    <a href="rezervare.html" class="btn btn-gold">rezervă</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<section style="background: #fdfcf8; padding: 80px 0; border-top: 1px solid #eee;">
-    <div class="container" style="text-align: center;">
-        <h2 class="metanoia-title" style="margin-bottom: 40px;">oameni reali, momente autentice</h2>
-        <div class="cards-grid" style="padding: 0;">
-            <div style="background: white; padding: 30px; border-radius: 15px; text-align: left; border: 1px solid #f1f5f9;">
-                <p style="font-style: italic; margin-bottom: 20px;">"am ales pachetul gonomad la la buligă și a fost revelator. tăcere, foc de tabără și reconectare."</p>
+<section class="section-padding reviews">
+    <div class="container">
+        <h2 class="metanoia-title" style="text-align: center; margin-bottom: 50px; font-size: 2.2rem;">oameni reali, momente autentice</h2>
+        <div class="grid-3">
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p style="font-style: italic; margin-bottom: 20px;">"am ales pachetul gonomad la la buligă și a fost revelator. tăcere, foc de tabără și o reconectare totală cu muntele."</p>
                 <strong>andrei m.</strong>
             </div>
-            <div style="background: white; padding: 30px; border-radius: 15px; text-align: left; border: 1px solid #f1f5f9;">
-                <p style="font-style: italic; margin-bottom: 20px;">"selava este despre minimalism și gusturi fine. cina în grădină a fost momentul nostru preferat."</p>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p style="font-style: italic; margin-bottom: 20px;">"selava este despre minimalism și gusturi fine. cina în grădină a fost momentul nostru preferat din tot sejurul."</p>
                 <strong>elena r.</strong>
             </div>
-        </div>
-    </div>
-</section>
-
-<section style="padding: 80px 0; background: white;">
-    <div class="container">
-        <h2 class="metanoia-title" style="text-align: center; margin-bottom: 40px;">hațeg journal</h2>
-        <div class="journal-grid">
-            <div class="journal-item large">
-                <img src="feed-1.jpg">
-                <div class="journal-overlay"><h3>marea deschidere. 1 mai 2026.</h3></div>
+            <div class="review-card">
+                <div class="stars">★★★★★</div>
+                <p style="font-style: italic; margin-bottom: 20px;">"la natalia ne-am simțit ca în vizită la bunici, dar cu un confort modern. copiii au adorat livada și micul dejun."</p>
+                <strong>familia ionescu</strong>
             </div>
-            <div class="journal-item"><img src="feed-2.jpg"></div>
-            <div class="journal-item"><img src="feed-3.jpg"></div>
-            <div class="journal-item"><img src="feed-4.jpg"></div>
-            <div class="journal-item"><img src="feed-5.jpg"></div>
-            <div class="journal-item"><img src="feed-6.jpg"></div>
-            <div class="journal-item"><img src="feed-7.jpg"></div>
-            <div class="journal-item"><img src="feed-8.jpg"></div>
         </div>
     </div>
 </section>
 
-<a href="https://wa.me/40749229686" class="wa-float">
-    <span>discută pe whatsapp</span>
-</a>
+<section class="section-padding" style="background: white;">
+    <div class="container">
+        <h2 class="metanoia-title" style="text-align: center; margin-bottom: 40px; font-size: 2.2rem;">hațeg journal</h2>
+        <div class="journal-grid">
+            <div class="j-item big">
+                <img src="feed-1.jpg">
+                <div class="j-overlay">
+                    <span style="font-size: 0.7rem; font-weight: 800; background: var(--auriu); padding: 5px 10px; border-radius: 50px; align-self: flex-start; margin-bottom: 10px;">1 mai 2026</span>
+                    <h3>marea deschidere de sezon. te așteptăm acasă.</h3>
+                </div>
+            </div>
+            <div class="j-item"><img src="feed-2.jpg"></div>
+            <div class="j-item"><img src="feed-3.jpg"></div>
+            <div class="j-item"><img src="feed-4.jpg"></div>
+            <div class="j-item"><img src="feed-5.jpg"></div>
+            <div class="j-item"><img src="feed-6.jpg"></div>
+            <div class="j-item"><img src="feed-7.jpg"></div>
+            <div class="j-item"><img src="feed-8.jpg"></div>
+        </div>
+    </div>
+</section>
 
-<footer style="padding: 60px 0; text-align: center; opacity: 0.6; font-size: 0.8rem;">
+<a href="https://wa.me/40749229686" class="wa-btn">discută pe whatsapp</a>
+
+<footer style="padding: 60px 0; text-align: center; opacity: 0.5; font-size: 0.8rem;">
     hațeg alternativ — 2026
 </footer>
 
@@ -157,10 +182,8 @@
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 (function(){
 var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/67978d38825083258e0be22f/1iiirv4n4';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
+s1.async=true; s1.src='https://embed.tawk.to/67978d38825083258e0be22f/1iiirv4n4';
+s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
 s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
