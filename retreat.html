@@ -1,92 +1,60 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Retreats | Slow Living în Țara Hațegului</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=1.4" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>retreat & relaxare | hațeg alternativ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body { margin-top: 80px; background: #fdfcf8; color: #1b3022; }
-        .retreat-hero { 
-            height: 70vh; 
-            background: linear-gradient(rgba(27,48,34,0.6), rgba(27,48,34,0.3)), url('images/retreat-main.jpg') center/cover;
-            display: flex; align-items: center; justify-content: center; text-align: center; color: white;
-        }
-        .event-card {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 0; background: white; 
-            border-radius: 20px; overflow: hidden; margin-bottom: 80px; box-shadow: 0 15px 45px rgba(0,0,0,0.05);
-        }
-        .event-info { padding: 60px; display: flex; flex-direction: column; justify-content: center; }
-        .event-image { height: 500px; background-size: cover; background-position: center; }
-        .status-badge {
-            display: inline-block; padding: 5px 15px; border-radius: 50px; font-size: 0.7rem;
-            font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px;
-        }
-        @media (max-width: 900px) { 
-            .event-card { grid-template-columns: 1fr; } 
-            .event-image { height: 300px; } 
-            .event-info { padding: 30px; }
-        }
+        :root { --verde: #1b3022; --auriu: #c5a059; --crem: #fdfcf8; }
+        * { margin: 0; padding: 0; box-sizing: border-box; text-transform: none !important; }
+        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--verde); line-height: 1.6; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        
+        .site-header { background: white; padding: 15px 0; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 1000; }
+        .nav-wrap { display: flex; justify-content: space-between; align-items: center; }
+        .brand { font-weight: 700; text-decoration: none; color: var(--verde); font-size: 1.2rem; }
+        .main-nav a { text-decoration: none; color: #444; font-size: 0.9rem; margin-left: 20px; font-weight: 500; }
+
+        .hero-small { height: 45vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('exp-zapada.jpg') center/cover; }
+        .metanoia-title { font-family: 'Playfair Display', serif; font-size: 2.8rem; }
+
+        .content-box { max-width: 700px; margin: -60px auto 80px; background: white; padding: 50px; border-radius: 25px; box-shadow: 0 20px 50px rgba(0,0,0,0.05); text-align: center; position: relative; z-index: 10; }
+        .wa-btn { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; padding: 14px 28px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 999; }
     </style>
 </head>
 <body>
 
 <header class="site-header">
     <div class="container nav-wrap">
-        <a href="index.html" class="brand">HAȚEG <span>ALTERNATIV</span></a>
+        <a href="index.html" class="brand">hațeg alternativ</a>
         <nav class="main-nav">
-            <a href="pensiuni.html">Pensiuni</a>
-            <a href="retreat.html" style="color: #c5a059;">Retreat</a>
-            <a href="gastronomic.html">Gastro</a>
+            <a href="pensiuni.html">pensiuni</a>
+            <a href="retreat.html" style="color: var(--auriu);">retreat</a>
+            <a href="gastronomic.html">gastro</a>
         </nav>
     </div>
 </header>
 
-<section class="retreat-hero">
-    <div class="container">
-        <span style="letter-spacing: 5px; text-transform: uppercase; font-size: 0.8rem; font-weight: 800;">Recovery & Connection</span>
-        <h1 class="metanoia-title" style="font-size: clamp(2.5rem, 6vw, 5rem); margin: 20px 0; color: white;">The Slow Living Series.</h1>
+<section class="hero-small">
+    <h1 class="metanoia-title">liniște profundă.</h1>
+</section>
+
+<div class="container">
+    <div class="content-box">
+        <h2 class="metanoia-title" style="font-size: 1.8rem; margin-bottom: 25px;">timp pentru tine</h2>
+        <p style="color: #64748b; margin-bottom: 30px;">la hațeg alternativ, retreat-ul nu este doar o vacanță, ci o deconectare digitală. organizăm sesiuni de yoga la răsărit, plimbări prin pădure și seri de lectură lângă șemineu.</p>
+        <p style="font-weight: 600; color: var(--auriu); letter-spacing: 1px;">următorul retreat de grup: iunie 2026</p>
     </div>
-</section>
+</div>
 
-<section class="container" style="padding: 100px 0;">
-    
-    <article class="event-card">
-        <div class="event-image" style="background-image: url('images/retreat-yoga.jpg');"></div>
-        <div class="event-info">
-            <span class="status-badge" style="background: #e2e8f0; color: #64748b;">MAI 2026 — YOGA & BREATH</span>
-            <h2 class="metanoia-title" style="font-size: 2.2rem; margin-bottom: 20px;">Breath & Fire</h2>
-            <p style="color: #64748b; font-weight: 300; line-height: 1.8; margin-bottom: 30px;">Yoga la răsărit pe Domeniile La Buligă, meditație ghidată și cine ritualice la foc deschis. Un weekend de reset total.</p>
-            <a href="rezervare.html?tip=yoga" class="btn-gold" style="padding: 12px 25px; font-size: 0.7rem; text-decoration: none; align-self: flex-start;">DETALII RETREAT</a>
-        </div>
-    </article>
+<div class="container" style="padding-bottom: 80px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;">
+    <img src="feed-4.jpg" style="width: 100%; border-radius: 15px;">
+    <img src="feed-5.jpg" style="width: 100%; border-radius: 15px;">
+    <img src="feed-1.jpg" style="width: 100%; border-radius: 15px;">
+</div>
 
-    <article class="event-card" style="direction: rtl;">
-        <div class="event-image" style="background-image: url('images/retreat-gastro.jpg');"></div>
-        <div class="event-info" style="direction: ltr;">
-            <span class="status-badge" style="background: #1b3022; color: #fff;">IUNIE 2026 — CUISINE ARCHAIC</span>
-            <h2 class="metanoia-title" style="font-size: 2.2rem; margin-bottom: 20px;">Roots & Flavors</h2>
-            <p style="color: #64748b; font-weight: 300; line-height: 1.8; margin-bottom: 30px;">Foraging în pădure, degustări de vinuri vechi și workshop-uri de gătit artizanal cu echipa Metanoia Gastro.</p>
-            <a href="rezervare.html?tip=gastro" class="btn-gold" style="padding: 12px 25px; font-size: 0.7rem; text-decoration: none; align-self: flex-start;">DETALII RETREAT</a>
-        </div>
-    </article>
-
-    <article class="event-card">
-        <div class="event-image" style="background-image: url('images/retreat-nomad.jpg');"></div>
-        <div class="event-info">
-            <span class="status-badge" style="background: #c5a059; color: #fff;">SEPTEMBRIE 2026 — WORK & RELAX</span>
-            <h2 class="metanoia-title" style="font-size: 2.2rem; margin-bottom: 20px;">The Nomad Sanctuary</h2>
-            <p style="color: #64748b; font-weight: 300; line-height: 1.8; margin-bottom: 30px;">Pentru cei care pot lucra de oriunde. Sejururi de 7+ zile la SelAva Estate cu spațiu dedicat de lucru, internet de mare viteză și liniște absolută.</p>
-            <a href="rezervare.html?tip=nomad" class="btn-gold" style="padding: 12px 25px; font-size: 0.7rem; text-decoration: none; align-self: flex-start;">DETALII PROGRAM</a>
-        </div>
-    </article>
-
-</section>
-
-<footer style="background: #122118; color: white; padding: 60px 0; text-align: center;">
-    <p style="font-size: 0.75rem; letter-spacing: 2px; opacity: 0.6;">© 2026 Hațeg Alternativ | Retreat Series</p>
-</footer>
+<a href="https://wa.me/40749229686" class="wa-btn">discută pe whatsapp</a>
 
 </body>
 </html>
