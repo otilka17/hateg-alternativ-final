@@ -1,54 +1,125 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rezervare | Hațeg Alternativ</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body { background: #fdfcf8; margin-top: 100px; }
+        .booking-form-container { max-width: 800px; margin: 0 auto; background: white; padding: 60px; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.05); }
+        .form-group { margin-bottom: 25px; }
+        label { display: block; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: #1b3022; margin-bottom: 8px; }
+        input, select, textarea { width: 100%; padding: 15px; border: 1px solid #eee; border-radius: 10px; font-family: 'Inter', sans-serif; font-size: 1rem; background: #fafafa; transition: 0.3s; }
+        input:focus, select:focus, textarea:focus { outline: none; border-color: #c5a059; background: white; }
+        .grid-form { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .submit-btn { width: 100%; background: #1b3022; color: white; padding: 20px; border: none; border-radius: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; transition: 0.3s; margin-top: 20px; }
+        .submit-btn:hover { background: #c5a059; transform: translateY(-3px); }
+        .benefits-list { margin-top: 40px; padding-top: 40px; border-top: 1px solid #eee; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+        .benefit-item { font-size: 0.85rem; color: #64748b; font-weight: 400; }
+        
+        @media (max-width: 768px) {
+            .booking-form-container { padding: 30px 20px; border-radius: 0; }
+            .grid-form { grid-template-columns: 1fr; }
+            .benefits-list { grid-template-columns: 1fr; gap: 10px; }
+            body { margin-top: 80px; }
+        }
+    </style>
 </head>
 <body>
+
 <header class="site-header">
     <div class="container nav-wrap">
-        <a href="index.html" class="brand">Hațeg Alternativ</a>
+        <a href="index.html" class="brand">HAȚEG <span>ALTERNATIV</span></a>
         <nav class="main-nav">
             <a href="index.html">Acasă</a>
             <a href="pensiuni.html">Pensiuni</a>
-            <a href="rezervare.html" class="active-link">Rezervare</a>
+            <a href="rezervare.html" style="color: #c5a059; font-weight: 800;">Rezervare</a>
         </nav>
     </div>
 </header>
 
-<main class="container" style="padding: 80px 0;">
-    <div class="booking-grid">
-        <div class="booking-form-panel">
-            <h2 class="metanoia-title" style="margin-bottom: 30px;">Cere o ofertă</h2>
-            <form class="form-grid-complex">
-                <div class="full"><input type="text" placeholder="Nume Complet" required></div>
-                <input type="email" placeholder="Email" required>
-                <input type="tel" placeholder="Telefon" required>
-                <select class="full">
-                    <option>Alege locația...</option>
-                    <option>Domeniile La Buligă</option>
-                    <option>SELAva</option>
-                    <option>Pensiunea Natalia</option>
-                </select>
-                <textarea class="full" rows="4" placeholder="Mesajul tău sau cerințe speciale"></textarea>
-                <button type="submit" class="btn btn-forest full">Trimite Solicitarea</button>
-            </form>
-        </div>
+<div class="container">
+    <div class="booking-form-container">
+        <h1 class="metanoia-title" style="font-size: 2.5rem; margin-bottom: 10px;">Cere o ofertă</h1>
+        <p style="color: #64748b; margin-bottom: 40px; font-weight: 300;">Fiecare rezervare este procesată manual pentru a-ți oferi o experiență 1 la 1.</p>
 
-        <div style="padding: 20px;">
-            <h3 class="metanoia-title">De ce Hațeg Alternativ?</h3>
-            <p style="margin: 20px 0; color: var(--muted);">Fiecare rezervare este procesată manual pentru a-ți oferi o experiență personalizată 1 la 1.</p>
-            <ul style="list-style: none; color: var(--primary); font-weight: 600;">
-                <li style="margin-bottom: 10px;">✓ Confirmare în 24h</li>
-                <li style="margin-bottom: 10px;">✓ Fără avans obligatoriu</li>
-                <li>✓ Suport local non-stop</li>
-            </ul>
+        <form id="booking-form">
+            <div class="form-group">
+                <label>Nume Complet</label>
+                <input type="text" id="from_name" name="from_name" placeholder="Ex: Popescu Ion" required>
+            </div>
+
+            <div class="grid-form">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="reply_to" name="reply_to" placeholder="email@exemplu.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Telefon</label>
+                    <input type="tel" id="user_phone" name="user_phone" placeholder="07xx xxx xxx" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Alege locația...</label>
+                <select id="location" name="location">
+                    <option value="buliga_integral">Domeniile La Buligă (Integral)</option>
+                    <option value="selava_estate">SelAva Estate & Gastro</option>
+                    <option value="pensiunea_natalia">Pensiunea Natalia</option>
+                    <option value="retreat_custom">Retreat Personalizat</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Mesajul tău sau cerințe speciale</label>
+                <textarea id="message" name="message" rows="4" placeholder="Detalii despre perioada dorită, număr de persoane..."></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submit-btn">Trimite Solicitarea</button>
+            <p id="status-msg" style="margin-top: 20px; text-align: center; font-weight: 600;"></p>
+        </form>
+
+        <div class="benefits-list">
+            <div class="benefit-item">✓ Confirmare în 24h</div>
+            <div class="benefit-item">✓ Fără avans obligatoriu</div>
+            <div class="benefit-item">✓ Suport local non-stop</div>
         </div>
     </div>
-</main>
-<script src="js/translations.js"></script>
+</div>
+
+<footer style="background: #122118; color: white; padding: 40px 0; text-align: center; margin-top: 80px;">
+    <p style="font-size: 0.7rem; opacity: 0.6; letter-spacing: 2px;">HAȚEG ALTERNATIV | SIGNATURE SERVICES</p>
+</footer>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script type="text/javascript">
+    (function() { emailjs.init("KfAXAcZDiuFeeFZzj"); })();
+
+    document.getElementById('booking-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const btn = document.getElementById('submit-btn');
+        const status = document.getElementById('status-msg');
+
+        btn.innerText = "SE TRIMITE...";
+        btn.disabled = true;
+
+        emailjs.sendForm('service_iqnbicr', 'template_0j0ygug', this)
+            .then(function() {
+                status.style.color = "#c5a059";
+                status.innerText = "✨ Solicitarea a fost trimisă cu succes!";
+                document.getElementById('booking-form').reset();
+                btn.innerText = "TRIMITE SOLICITAREA";
+                btn.disabled = false;
+            }, function(error) {
+                status.style.color = "red";
+                status.innerText = "A apărut o eroare. Încearcă din nou.";
+                btn.disabled = false;
+                btn.innerText = "TRIMITE SOLICITAREA";
+            });
+    });
+</script>
+
 </body>
 </html>
