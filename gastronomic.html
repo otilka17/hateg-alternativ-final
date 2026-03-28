@@ -11,19 +11,40 @@
         body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--verde); line-height: 1.6; }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
         
-        .site-header { background: white; padding: 15px 0; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 1000; }
+        /* Navigatie */
+        .site-header { background: white; padding: 20px 0; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 1000; }
         .nav-wrap { display: flex; justify-content: space-between; align-items: center; }
         .brand { font-weight: 700; text-decoration: none; color: var(--verde); font-size: 1.2rem; }
         .main-nav a { text-decoration: none; color: #444; font-size: 0.9rem; margin-left: 20px; font-weight: 500; }
 
-        .hero-small { height: 40vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url('gast-masa-traditionala.jpg') center/cover; }
-        .metanoia-title { font-family: 'Playfair Display', serif; font-size: 2.5rem; }
+        /* Hero */
+        .hero-gastro { 
+            height: 50vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.2)), url('https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/gast-masa-traditionala.jpg') center/cover no-repeat;
+        }
+        .metanoia-title { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 6vw, 3.5rem); }
 
-        .gastro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding: 80px 0; align-items: center; }
-        .gastro-img { width: 100%; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        /* Content Sections */
+        .section-padding { padding: 80px 0; }
+        .gastro-row { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; margin-bottom: 80px; }
+        .gastro-text h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 20px; color: var(--verde); }
+        .gastro-text p { color: #64748b; font-size: 1rem; margin-bottom: 25px; font-weight: 300; }
+        .price-tag { display: inline-block; padding: 8px 18px; background: #f1f5f9; border-radius: 50px; font-size: 0.8rem; font-weight: 600; color: var(--auriu); }
         
-        .btn-gold { background: var(--auriu); color: white; padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: 600; display: inline-block; margin-top: 20px; }
-        .wa-btn { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; padding: 14px 28px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 999; }
+        .gastro-img-wrap { border-radius: 25px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.05); }
+        .gastro-img-wrap img { width: 100%; height: 450px; object-fit: cover; display: block; }
+
+        /* CTA */
+        .cta-box { background: white; padding: 60px; border-radius: 30px; text-align: center; border: 1px solid #eee; margin-top: 40px; }
+        .btn-gold { background: var(--auriu); color: white; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: 600; display: inline-block; transition: 0.3s; }
+        
+        .wa-btn { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; padding: 14px 28px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 999; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+
+        @media (max-width: 768px) {
+            .gastro-row { grid-template-columns: 1fr; gap: 30px; text-align: center; }
+            .gastro-row.reverse { direction: ltr; }
+            .gastro-img-wrap img { height: 300px; }
+        }
     </style>
 </head>
 <body>
@@ -35,34 +56,54 @@
             <a href="pensiuni.html">pensiuni</a>
             <a href="retreat.html">retreat</a>
             <a href="gastronomic.html" style="color: var(--auriu);">gastro</a>
+            <a href="rezervare.html">rezervă</a>
         </nav>
     </div>
 </header>
 
-<section class="hero-small">
-    <h1 class="metanoia-title">gustul locului.</h1>
+<section class="hero-gastro">
+    <h1 class="metanoia-title">gustul autentic.</h1>
 </section>
 
-<div class="container">
-    <div class="gastro-grid">
-        <div>
-            <h2 class="metanoia-title" style="font-size: 2rem; margin-bottom: 20px;">mic dejun artizanal</h2>
-            <p style="color: #64748b;">începe ziua cu miros de pâine caldă, brânzeturi de la stânele din retezat și dulceață făcută în livada proprie. totul este produs local, fără grabă.</p>
-            <a href="rezervare.html" class="btn-gold">rezervă o masă</a>
+<main class="container section-padding">
+    
+    <div class="gastro-row">
+        <div class="gastro-text">
+            <span style="font-size: 0.7rem; color: var(--auriu); font-weight: 800; letter-spacing: 2px;">proaspăt & local</span>
+            <h2>mic dejun artizanal</h2>
+            <p>începe ziua cu aromele grădinii. brânzeturi de la stânele din retezat, zacuscă făcută la ceaun, ouă de la fermă și pâine coaptă în cuptor cu lemne. totul servit în liniștea dimineții.</p>
+            <div class="price-tag">inclus în pachetele de cazare</div>
         </div>
-        <img src="gast-cafea-inima.jpg" class="gastro-img">
+        <div class="gastro-img-wrap">
+            <img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/gast-cafea-inima.jpg" alt="mic dejun">
+        </div>
     </div>
 
-    <div class="gastro-grid" style="direction: rtl;">
-        <div style="direction: ltr;">
-            <h2 class="metanoia-title" style="font-size: 2rem; margin-bottom: 20px;">tradiția virșlilor</h2>
-            <p style="color: #64748b;">te invităm la cuptorul cu lemne pentru a descoperi secretul virșlilor de sălătruc. o experiență gastronomică ce îmbină istoria cu gustul autentic al țării hațegului.</p>
+    <div class="gastro-row reverse" style="direction: rtl;">
+        <div class="gastro-text" style="direction: ltr;">
+            <span style="font-size: 0.7rem; color: var(--auriu); font-weight: 800; letter-spacing: 2px;">tradiție seculară</span>
+            <h2>secretele virșlilor</h2>
+            <p>te invităm la o experiență interactivă la cuptorul tradițional. descoperă istoria virșlilor de sălătruc, procesul de afumare și gustul lor inconfundabil, direct de la sursă.</p>
+            <div class="price-tag">experiență opțională: 80 ron / persoană</div>
         </div>
-        <img src="gast-panou.png" class="gastro-img">
+        <div class="gastro-img-wrap">
+            <img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/gast-panou.png" alt="virsli">
+        </div>
     </div>
-</div>
+
+    <div class="cta-box">
+        <h2 class="metanoia-title" style="font-size: 1.8rem; margin-bottom: 20px;">vrei să guști țara hațegului?</h2>
+        <p style="color: #64748b; margin-bottom: 30px;">rezervă un pachet complet care include și experiențele noastre gastronomice.</p>
+        <a href="rezervare.html" class="btn-gold">configurează sejurul</a>
+    </div>
+
+</main>
 
 <a href="https://wa.me/40749229686" class="wa-btn">discută pe whatsapp</a>
+
+<footer style="padding: 60px 0; text-align: center; opacity: 0.5; font-size: 0.8rem; background: #fff; border-top: 1px solid #eee;">
+    hațeg alternativ — 2026
+</footer>
 
 </body>
 </html>
