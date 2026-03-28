@@ -3,173 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hațeg Alternativ | Simte tăcerea</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Metanoia Hub | Hațeg Alternativ</title>
     
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
     <style>
-        /* CSS SIGNATURE - STABIL ȘI ELEGANT */
-        :root { --verde: #1b3022; --auriu: #c5a059; --crem: #fdfcf8; --alb: #ffffff; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary-dark: #1c1e21;
+            --metanoia-green: #198754;
+            --bg-light: #f0f2f5;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--primary-dark);
+        }
+
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('https://i.postimg.cc/T1cwPS07/la-buliga-pensiune.jpg'); /* Aici poți pune linkul de la imaginea generată */
+            background-size: cover;
+            background-position: center;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        /* FEED CARDS CSS */
+        .feed-card {
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+            border: none;
+            margin-bottom: 25px;
+            transition: transform 0.2s;
+            max-width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+            overflow: hidden;
+        }
+
+        .feed-header {
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #f0f2f5;
+        }
+
+        .feed-avatar {
+            width: 45px;
+            height: 45px;
+            background-color: var(--metanoia-green);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 12px;
+        }
+
+        .feed-image {
+            width: 100%;
+            max-height: 450px;
+            object-fit: cover;
+        }
+
+        .feed-body { padding: 15px; }
         
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background: var(--crem); 
-            color: var(--verde); 
-            line-height: 1.6; 
-            overflow-x: hidden; 
-        }
-        
-        /* Titluri cu fontul de revistă */
-        h1, h2, h3, .brand { 
-            font-family: 'Playfair Display', serif; 
-            font-weight: 700; 
-        }
-
-        /* Navigație */
-        .site-header { 
-            background: var(--alb); 
-            padding: 20px 0; 
-            border-bottom: 1px solid #eee; 
-            position: sticky; 
-            top: 0; 
-            z-index: 1000; 
-        }
-        .nav-wrap { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            max-width: 1100px; 
-            margin: 0 auto; 
-            padding: 0 20px; 
-        }
-        .brand { text-decoration: none; color: var(--verde); font-size: 1.4rem; }
-        .main-nav a { 
-            text-decoration: none; 
-            color: #444; 
-            font-size: 0.9rem; 
-            margin-left: 20px; 
-            font-weight: 500; 
-            transition: 0.3s; 
-        }
-        .main-nav a:hover { color: var(--auriu); }
-
-        /* Hero Section cu imagine RAW GitHub */
-        .hero { 
-            height: 75vh; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            text-align: center; 
-            color: var(--alb);
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), 
-                        url('https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/hero-camp-munti.jpg') center/cover no-repeat;
-        }
-        .hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); margin-bottom: 20px; }
-
-        /* Grid Experiențe */
-        .section-padding { padding: 90px 0; }
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 35px; }
-        .card { 
-            background: var(--alb); 
-            border-radius: 24px; 
-            overflow: hidden; 
-            box-shadow: 0 12px 45px rgba(0,0,0,0.04); 
-            border: 1px solid #f1f1f1; 
-            transition: 0.4s; 
-        }
-        .card:hover { transform: translateY(-10px); }
-        .card img { width: 100%; height: 280px; object-fit: cover; }
-        .card-body { padding: 30px; }
-
-        /* Butoane */
-        .btn { padding: 14px 35px; border-radius: 50px; text-decoration: none; font-weight: 600; display: inline-block; transition: 0.3s; }
-        .btn-gold { background: var(--auriu); color: var(--alb); }
-        .btn-outline { border: 1.5px solid var(--verde); color: var(--verde); }
-
-        /* WhatsApp la stânga pentru a nu acoperi Chat-ul */
-        .wa-btn { 
-            position: fixed; 
-            bottom: 30px; 
-            left: 30px; 
-            background: #25d366; 
-            color: var(--alb); 
-            padding: 15px 30px; 
-            border-radius: 50px; 
-            text-decoration: none; 
-            font-weight: 700; 
-            z-index: 999; 
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15); 
+        .feed-button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 15px;
+            background-color: #f0f2f5;
+            color: #050505;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 8px;
         }
 
-        @media (max-width: 768px) { .nav-wrap { flex-direction: column; gap: 15px; } }
+        .feed-button:hover { background-color: #e4e6eb; }
+
+        .navbar { background: rgba(255,255,255,0.95) !important; backdrop-filter: blur(10px); }
     </style>
 </head>
 <body>
 
-<header class="site-header">
-    <div class="container nav-wrap">
-        <a href="index.html" class="brand">Hațeg Alternativ</a>
-        <nav class="main-nav">
-            <a href="obiective.html">Obiective</a>
-            <a href="gastronomic.html">Gastro</a>
-            <a href="forum.html">Forum</a>
-            <a href="rezervare.html">Rezervă</a>
-        </nav>
-    </div>
-</header>
-
-<section class="hero">
-    <div class="container">
-        <h1>Simte tăcerea.</h1>
-        <p style="font-weight: 300; font-size: 1.2rem; margin-bottom: 30px;">Deschiderea sezonului la 1 Mai 2026</p>
-        <a href="obiective.html" class="btn btn-gold">Explorați colecția</a>
-    </div>
-</section>
-
-<section class="section-padding container">
-    <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 50px;">Experiențe Premium</h2>
-    <div class="grid-3">
-        <div class="card">
-            <img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/images/gast-cafea-inima.jpg" alt="Mic Dejun">
-            <div class="card-body">
-                <h3>Mic Dejun Artizanal</h3>
-                <p style="color: #64748b;">Produse locale și liniște. Inclus în pachetele de cazare.</p>
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">METANOIA HUB</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#concept">Concept</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#feed">Noutăți</a></li>
+                    <li class="nav-item"><a class="nav-link btn btn-success text-white px-4 ms-lg-3" href="#">Cere Ofertă</a></li>
+                </ul>
             </div>
         </div>
-        <div class="card">
-            <img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/images/feed-6.jpg" alt="Aventură">
-            <div class="card-body">
-                <h3>GoNomad Expedition</h3>
-                <p style="color: #64748b;">Explorare 4x4 în locuri neștiute din Retezat. 150 RON / pers.</p>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <h1 class="display-3 fw-bold mb-3">Metanoia Retreat</h1>
+            <p class="lead mb-4">Portal spre transformare în inima Retezatului.</p>
+        </div>
+    </header>
+
+    <section id="feed" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Metanoia Live Stream</h2>
+                <p class="text-muted">Momente, arome și acorduri din Totești</p>
+            </div>
+            
+            <div id="metanoia-feed">
+                <div class="text-center py-5" id="loader">
+                    <div class="spinner-grow text-success" role="status"></div>
+                </div>
             </div>
         </div>
-        <div class="card">
-            <img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/images/exp-zapada.jpg" alt="Relaxare">
-            <div class="card-body">
-                <h3>Mindful Retreat</h3>
-                <p style="color: #64748b;">Yoga și deconectare digitală totală în inima naturii.</p>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
-<a href="https://wa.me/40749229686" class="wa-btn">WhatsApp</a>
+    <footer class="bg-white py-4 border-top text-center text-muted">
+        <p>© 2026 Metanoia Hub - Hațeg Alternativ. Toate drepturile rezervate.</p>
+    </footer>
 
-<footer style="padding: 60px 0; text-align: center; opacity: 0.5; font-size: 0.8rem;">
-    Hațeg Alternativ — 2026
-</footer>
+    <script>
+        const tsvURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRxemlkMdIB7S2NwCO4dbsNUpThHA388goatoSLGOzGDy4ZktNizTl9Eo9_QcbfYx2kuK1G-aG_kW9K/pub?gid=1405914163&single=true&output=tsv';
 
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
+        async function loadFeed() {
+            try {
+                const response = await fetch(tsvURL);
+                const text = await response.text();
+                const rows = text.split('\n').slice(1);
+                const feedContainer = document.getElementById('metanoia-feed');
+                let htmlContent = '';
+
+                rows.forEach(row => {
+                    const columns = row.split('\t');
+                    if(columns.length >= 3) {
+                        const [dataP, autor, mesaj, img, link] = columns;
+                        htmlContent += `
+                            <div class="feed-card">
+                                <div class="feed-header">
+                                    <div class="feed-avatar">${autor.trim().charAt(0)}</div>
+                                    <div><h6 class="mb-0 fw-bold">${autor}</h6><small class="text-muted">${dataP}</small></div>
+                                </div>
+                                ${img && img.trim() !== "" ? `<img src="${img.trim()}" class="feed-image" onerror="this.style.display='none'">` : ''}
+                                <div class="feed-body">
+                                    <p class="feed-text">${mesaj}</p>
+                                    ${link && link.trim() !== "" ? `<a href="${link.trim()}" class="feed-button">Descoperă</a>` : ''}
+                                </div>
+                            </div>
+                        `;
+                    }
+                });
+                document.getElementById('loader').style.display = 'none';
+                feedContainer.innerHTML = htmlContent;
+            } catch (e) { console.error(e); }
+        }
+        window.onload = loadFeed;
+    </script>
+
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
 
 </body>
 </html>
