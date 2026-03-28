@@ -1,67 +1,227 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hațeg Alternativ | Simte tăcerea</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        /* ACEST COD REPARĂ TOTUL INSTANT */
-        :root { --verde: #1b3022; --auriu: #c5a059; --roz-crem: #fdf2f0; --alb: #ffffff; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--roz-crem); color: var(--verde); line-height: 1.6; }
-        
-        /* Header curat, nu listă albastră */
-        .site-header { background: var(--alb); padding: 25px 0; border-bottom: 1px solid rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
-        .nav-wrap { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-        .brand { text-decoration: none; color: var(--verde); font-weight: 700; font-size: 1.2rem; letter-spacing: 2px; font-family: 'Playfair Display'; }
-        .main-nav a { text-decoration: none; color: #444; font-size: 0.8rem; margin-left: 25px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hațeg Alternativ</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        /* Muntele superb, nu banda aia gri */
-        .hero-image { 
-            height: 65vh; 
-            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.1)), 
-                        url('https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/hero-camp-munti.jpg') center/cover no-repeat;
-        }
+    body {
+      background: #f7f7f7;
+      color: #222;
+      font-family: Arial, sans-serif;
+    }
 
-        /* Panelul alb "Metanoia" */
-        .main-panel { 
-            transform: translateY(-80px); 
-            background: var(--alb); 
-            padding: 80px 40px; 
-            max-width: 900px; 
-            margin: 0 auto; 
-            box-shadow: 0 40px 100px rgba(0,0,0,0.05);
-            text-align: center;
-        }
-        .kicker { color: var(--auriu); letter-spacing: 5px; font-size: 0.7rem; font-weight: 800; display: block; margin-bottom: 20px; text-transform: uppercase; }
-        .metanoia-title { font-family: 'Playfair Display'; font-size: clamp(2.5rem, 6vw, 4rem); margin-bottom: 30px; line-height: 1.1; font-style: italic; }
-    </style>
+    header {
+      background: #f7f7f7;
+      padding: 20px 18px 14px;
+      border-bottom: 1px solid #ececec;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #1f2f28;
+    }
+
+    .logo span {
+      color: #1f2f28;
+      font-weight: 800;
+    }
+
+    .est {
+      font-size: 12px;
+      letter-spacing: 3px;
+      color: #c5a257;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    nav {
+      background: #fafafa;
+      text-align: center;
+      padding: 22px 0 18px;
+    }
+
+    nav ul {
+      list-style: none;
+    }
+
+    nav ul li {
+      margin: 24px 0;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #444;
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 520px;
+      background:
+        linear-gradient(rgba(0,0,0,0.22), rgba(0,0,0,0.32)),
+        url('https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1200&q=80');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .hero-content {
+      max-width: 360px;
+    }
+
+    .hero h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 64px;
+      line-height: 0.92;
+      color: #ffffff;
+      font-style: italic;
+      font-weight: 700;
+      margin-bottom: 28px;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.18);
+    }
+
+    .hero p {
+      font-size: 18px;
+      line-height: 1.55;
+      color: rgba(255,255,255,0.95);
+      margin-bottom: 34px;
+    }
+
+    .btn-main,
+    .btn-whatsapp {
+      display: inline-block;
+      text-decoration: none;
+      border-radius: 999px;
+      font-weight: 700;
+      text-align: center;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .btn-main:hover,
+    .btn-whatsapp:hover {
+      transform: translateY(-2px);
+      opacity: 0.95;
+    }
+
+    .btn-main {
+      background: #c8a257;
+      color: white;
+      padding: 22px 28px;
+      width: 100%;
+      max-width: 350px;
+      font-size: 15px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    .btn-whatsapp {
+      background: #25d366;
+      color: white;
+      padding: 18px 26px;
+      font-size: 15px;
+      min-width: 225px;
+    }
+
+    @media (min-width: 768px) {
+      header {
+        padding: 22px 40px 18px;
+      }
+
+      .logo {
+        font-size: 28px;
+      }
+
+      nav {
+        padding: 16px 40px;
+      }
+
+      nav ul {
+        display: flex;
+        justify-content: flex-end;
+        gap: 30px;
+      }
+
+      nav ul li {
+        margin: 0;
+      }
+
+      nav ul li a {
+        font-size: 13px;
+      }
+
+      .hero {
+        min-height: 78vh;
+      }
+
+      .hero-content {
+        max-width: 700px;
+      }
+
+      .hero h1 {
+        font-size: 76px;
+      }
+
+      .hero p {
+        font-size: 20px;
+      }
+
+      .btn-main {
+        width: auto;
+        padding: 18px 34px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<header class="site-header">
-    <div class="nav-wrap">
-        <a href="index.html" class="brand">HAȚEG <strong>ALTERNATIV</strong></a>
-        <nav class="main-nav">
-            <a href="pensiuni.html">Pensiuni</a>
-            <a href="retreat.html">Retreat</a>
-            <a href="gastronomic.html">Gastronomic</a>
-            <a href="contact.html">Contact</a>
-        </nav>
+  <header>
+    <div class="topbar">
+      <div class="logo">HAȚEG <span>ALTERNATIV</span></div>
+      <div class="est">EST. 2026</div>
     </div>
-</header>
+  </header>
 
-<section class="hero-image"></section>
+  <nav>
+    <ul>
+      <li><a href="#">Pensiuni</a></li>
+      <li><a href="#">Retreat</a></li>
+      <li><a href="#">Gastronomic</a></li>
+    </ul>
+  </nav>
 
-<main class="container">
-    <div class="main-panel">
-        <span class="kicker">The Metanoia Concept</span>
-        <h1 class="metanoia-title">Nu e doar o cazare. <br>E o regăsire.</h1>
-        <p style="font-weight: 300; font-size: 1.1rem; color: #64748b;">Am căutat și curatoriat locuri unde arhitectura se pleacă în fața naturii și unde liniștea este cel mai mare lux.</p>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Simte<br>tăcerea.</h1>
+      <p>O selecție exclusivă de refugii în inima Transilvaniei.</p>
+      <a href="#" class="btn-main">Explorează colecția</a><br>
+      <a href="https://wa.me/40700000000" class="btn-whatsapp">Chat WhatsApp</a>
     </div>
-</main>
+  </section>
 
 </body>
 </html>
