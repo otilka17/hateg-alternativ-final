@@ -7,26 +7,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <style>
-        /* CSS SIGNATURE: ROZ-CREM-AURIU (Integrat) */
-        :root { --verde: #1b3022; --auriu: #c5a059; --roz-pal: #fdf2f0; --alb: #ffffff; }
+        :root { --verde: #1b3022; --auriu: #c5a059; --crem: #fdfcf8; --alb: #ffffff; --text-deschis: #64748b; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--roz-pal); color: var(--verde); line-height: 1.6; padding-top: 80px; overflow-x: hidden; }
+        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--verde); line-height: 1.6; padding-top: 80px; overflow-x: hidden; }
         
         h1, h2, h3, .brand-text { font-family: 'Playfair Display', serif; font-weight: 700; text-transform: none; }
         .italic-style { font-style: italic; }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
-        /* Header Fix & Blur */
+        /* Header Aerisit & Blur (Mobile-Style) */
         .site-header { position: fixed; top: 0; width: 100%; z-index: 1500; background: rgba(255,255,255,0.9); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); }
-        .nav-wrap { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; }
-        .brand { text-decoration: none; color: var(--verde); font-size: 1.3rem; }
-        .main-nav a { text-decoration: none; color: var(--verde); font-size: 1.05rem; font-family: 'Playfair Display', serif; font-style: italic; margin-left: 25px; transition: 0.3s; }
-        .main-nav a:hover { color: var(--auriu); }
+        .nav-wrap { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; }
+        .brand { text-decoration: none; color: var(--verde); font-weight: 800; font-size: 1.1rem; letter-spacing: 1px; }
+        .main-nav { display: flex; gap: 20px; }
+        .main-nav a { text-decoration: none; color: #444; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* Hero Image - MUNTELE TĂU SUPERB */
+        /* Hero Image - MUNTELE TĂU SUPERB ÎN FUNDAL */
         .hero-image {
-            min-height: 85vh;
+            min-height: 80vh;
             display: flex; align-items: center; justify-content: center; text-align: center; color: var(--alb);
+            /* AICI PUNE POZA CU MUNTELE TĂU SUPERB */
             background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.15)), 
                         url('https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/hero-camp-munti.jpg') center/cover no-repeat;
         }
@@ -40,23 +40,19 @@
         .feed-item { border-radius: 15px; overflow: hidden; aspect-ratio: 1; border: 1px solid #eee; transition: 0.3s; }
         .feed-item img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* CARDUL VIP (L-am refăcut să plutească) */
-        .membership-card { 
-            background: var(--verde); border-radius: 30px; padding: 80px 60px; 
-            display: flex; align-items: center; gap: 40px; color: white; 
-            margin: 100px auto; box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+        /* BUTOANE CONTACT STÂNGA/DREAPTA */
+        /* WhatsApp la DREAPTA */
+        .wa-btn-fixed { 
+            position: fixed; bottom: 30px; right: 30px; 
+            background: #25d366; color: white; padding: 15px 30px; 
+            border-radius: 50px; text-decoration: none; font-weight: 700; 
+            z-index: 2000; box-shadow: 0 10px 20px rgba(0,0,0,0.1); font-size: 0.8rem;
         }
-        .membership-card h2 { font-size: 4rem; margin-bottom: 25px; font-style: italic; }
-        .membership-card p { font-size: 1.2rem; opacity: 0.85; max-width: 600px; }
-        
-        #membership-form { display: flex; justify-content: center; gap: 15px; margin-top: 50px; }
-        #member-email { padding: 20px 30px; border-radius: 50px; border: none; width: 100%; max-width: 350px; font-size: 1.1rem; }
-        
-        /* Butoane */
-        .btn-gold { background: var(--auriu); color: white; padding: 18px 45px; border-radius: 60px; text-decoration: none; font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem; transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); }
-        .btn-gold:hover { transform: translateY(-4px); box-shadow: 0 15px 30px rgba(197,160,89,0.25); }
 
-        @media (max-width: 768px) { .main-nav { display: none; } .hero-image h1 { font-size: 4.5rem; } .membership-card { flex-direction: column; padding: 60px 20px; text-align: center; } }
+        /* Tawk.to la STÂNGA (via customStyle) */
+        #tawk-chat-container { left: 30px !important; right: auto !important; }
+
+        @media (max-width: 768px) { .main-nav { display: none; } .hero-image h1 { font-size: 4.5rem; } }
     </style>
 </head>
 <body>
@@ -90,31 +86,17 @@
         </div>
 
         <div class="feed-grid" id="journal-container">
-            <p style="text-align: center; color: #999; font-style: italic;">Se încarcă noutățile...</p>
+            <p style="text-align: center; color: #999; font-style: italic;">Se încarcă momentele...</p>
         </div>
     </div>
 </section>
 
-<div class="container membership-wrap">
-    <section class="membership-card">
-        <div style="flex: 1;">
-            <span style="color: var(--auriu); letter-spacing: 5px; font-weight: 800; font-size: 0.7rem; display: block; margin-bottom: 20px;">MEMBER ACCESS</span>
-            <h2>Devino membru</h2>
-            <p>Înscrie-te pentru a primi invitații la cine secrete, retreat-uri private și acces prioritar în colecția noastră.</p>
-            <form id="membership-form" style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 40px;">
-                <input type="email" id="member-email" placeholder="Adresa ta de email" required style="flex: 1;">
-                <button type="submit" class="btn-gold" style="border: none; cursor: pointer;">Înscrie-te</button>
-            </form>
-            <div id="form-msg" style="margin-top: 20px;"></div>
-        </div>
-        <div style="flex: 0.6;">
-            <img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/images/membership-key.png" alt="VIP" style="width: 100%; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.3));">
-        </div>
-    </section>
-</div>
+<a href="https://wa.me/40749229686" class="wa-btn-fixed">WhatsApp / Direct</a>
 
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+Tawk_API.customStyle = { visibility : { desktop : { xOffset : '30px', yOffset : '30px', position : 'bottom-left' }, mobile : { xOffset : '20px', yOffset : '20px', position : 'bottom-left' } } };
+
 (function(){
 var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
 s1.async=true; s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
