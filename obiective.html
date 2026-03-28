@@ -1,66 +1,132 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Obiective | Hațeg Alternativ</title>
-<link rel="stylesheet" href="css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>obiective autentice | hațeg alternativ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <style>
+        :root { --verde: #1b3022; --auriu: #c5a059; --crem: #fdfcf8; }
+        * { margin: 0; padding: 0; box-sizing: border-box; text-transform: none !important; }
+        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--verde); line-height: 1.6; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        
+        .site-header { background: white; padding: 20px 0; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 1000; }
+        .nav-wrap { display: flex; justify-content: space-between; align-items: center; }
+        .brand { font-weight: 700; text-decoration: none; color: var(--verde); font-size: 1.1rem; }
+        .main-nav a { text-decoration: none; color: #444; font-size: 0.85rem; margin-left: 20px; font-weight: 500; }
+
+        .page-head { padding: 80px 0 40px; text-align: center; }
+        h1 { font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 15px; }
+        
+        /* Harta */
+        #map { height: 500px; width: 100%; border-radius: 30px; margin-bottom: 60px; border: 1px solid #eee; box-shadow: 0 20px 50px rgba(0,0,0,0.05); z-index: 1; }
+
+        /* Grid Obiective */
+        .obiective-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 80px; }
+        .obj-card { background: white; border-radius: 20px; overflow: hidden; border: 1px solid #eee; transition: 0.3s; }
+        .obj-card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0,0,0,0.05); }
+        .obj-img { width: 100%; height: 220px; object-fit: cover; }
+        .obj-content { padding: 25px; }
+        .obj-content h3 { font-family: 'Playfair Display', serif; margin-bottom: 10px; font-size: 1.4rem; }
+        .obj-content p { font-size: 0.9rem; color: #64748b; margin-bottom: 15px; }
+        .tag { font-size: 0.7rem; font-weight: 800; color: var(--auriu); text-transform: uppercase !important; letter-spacing: 1px; }
+
+        .wa-btn { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; padding: 14px 28px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 999; }
+    </style>
 </head>
 <body>
 
 <header class="site-header">
-<div class="container nav-wrap">
-<a href="index.html" class="brand">
-<img src="images/logo-hateg.png">
-<span>Hațeg Alternativ</span>
-</a>
-
-<nav class="main-nav">
-<a href="index.html">Acasă</a>
-<a href="obiective.html" class="active-link">Obiective</a>
-<a href="experiente.html">Experiențe</a>
-<a href="pachete.html">Pachete</a>
-<a href="rezervare.html">Rezervare</a>
-</nav>
-</div>
+    <div class="container nav-wrap">
+        <a href="index.html" class="brand">hațeg alternativ</a>
+        <nav class="main-nav">
+            <a href="pensiuni.html">pensiuni</a>
+            <a href="obiective.html" style="color: var(--auriu);">obiective</a>
+            <a href="gastronomic.html">gastro</a>
+            <a href="rezervare.html">rezervă</a>
+        </nav>
+    </div>
 </header>
 
-<section class="page-hero small-page-hero">
-<div class="container section-head">
-<h1>Obiective autentice</h1>
-<p>Locuri reale, fără filtrul turistic artificial.</p>
-</div>
-</section>
+<main class="container">
+    <div class="page-head">
+        <span class="tag">explorare alternativă</span>
+        <h1>locuri cu suflet.</h1>
+        <p style="color: #64748b; max-width: 600px; margin: 0 auto;">am selectat pentru tine acele puncte de pe hartă unde timpul încă are răbdare. descoperă-le pe rând.</p>
+    </div>
 
-<section>
-<div class="container cards-grid">
+    <div id="map"></div>
 
-<div class="card">
-<img src="images/exp-biserica-ext.jpg">
-<div class="card-body">
-<h3>Biserica Densuș</h3>
-<p>Unul dintre cele mai vechi lăcașuri din România.</p>
-</div>
-</div>
+    <div class="obiective-grid">
+        <div class="obj-card">
+            <img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/exp-biserica-ext.jpg" class="obj-img">
+            <div class="obj-content">
+                <span class="tag">spiritualitate / sec. XIII</span>
+                <h3>biserica densuș</h3>
+                <p>construită din pietre romane aduse de la sarmizegetusa, este cea mai ciudată și fascinantă biserică de piatră din țară.</p>
+            </div>
+        </div>
 
-<div class="card">
-<img src="images/sarmisegetusaregia.jpg">
-<div class="card-body">
-<h3>Sarmizegetusa Regia</h3>
-<p>Inima civilizației dacice.</p>
-</div>
-</div>
+        <div class="obj-card">
+            <img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/feed-6.jpg" class="obj-img">
+            <div class="obj-content">
+                <span class="tag">istorie / jules verne</span>
+                <h3>cetatea colț</h3>
+                <p>ruinele spectaculoase care l-au inspirat pe jules verne să scrie "castelul din carpați". o urcare scurtă dar plină de mister.</p>
+            </div>
+        </div>
 
-<div class="card">
-<img src="images/exp-lac.jpg">
-<div class="card-body">
-<h3>Lacul din Retezat</h3>
-<p>Un loc unde liniștea devine experiență.</p>
-</div>
-</div>
+        <div class="obj-card">
+            <img src="https://images.unsplash.com/photo-1589118949245-7d38baf380d6?q=80&w=1000&auto=format&fit=crop" class="obj-img" alt="zimbri">
+            <div class="obj-content">
+                <span class="tag">natură / rezervație</span>
+                <h3>zimbrii de la slivuț</h3>
+                <p>o plimbare liniștită prin pădure pentru a vedea cei mai impunători locuitori ai țării hațegului în habitatul lor natural.</p>
+            </div>
+        </div>
 
-</div>
-</section>
+        <div class="obj-card">
+            <img src="https://images.unsplash.com/photo-1599395159021-3ba79603503a?q=80&w=1000&auto=format&fit=crop" class="obj-img" alt="ruine romane">
+            <div class="obj-content">
+                <span class="tag">arheologie / capitală</span>
+                <h3>ulpia traiana sarmizegetusa</h3>
+                <p>amfiteatrul și ruinele vechii capitale a daciei romane. locul unde poți păși pe istorie, la propriu.</p>
+            </div>
+        </div>
+    </div>
+</main>
+
+<a href="https://wa.me/40749229686" class="wa-btn">întreabă-ne pe whatsapp</a>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+    // Inițializare hartă centrată pe Hațeg
+    var map = L.map('map').setView([45.5564, 22.8878], 11);
+
+    // Adăugare stil hartă (CartoDB Positron - curat și minimalist)
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; Hațeg Alternativ'
+    }).addTo(map);
+
+    // Definire locații
+    var locations = [
+        { name: "Biserica Densuș", lat: 45.5822, lng: 22.7917, desc: "Cea mai veche biserică de piatră." },
+        { name: "Cetatea Colț", lat: 45.4800, lng: 22.8731, desc: "Inspirația lui Jules Verne." },
+        { name: "Rezervația de Zimbri", lat: 45.6267, lng: 22.9556, desc: "Zimbri în pădurea Slivuț." },
+        { name: "Ulpia Traiana Sarmizegetusa", lat: 45.5158, lng: 22.7871, desc: "Ruinele capitalei romane." },
+        { name: "Mănăstirea Prislop", lat: 45.6269, lng: 22.8506, desc: "Loc de pelerinaj și liniște." }
+    ];
+
+    // Adăugare pini pe hartă
+    locations.forEach(function(loc) {
+        L.marker([loc.lat, loc.lng])
+            .addTo(map)
+            .bindPopup("<b>" + loc.name + "</b><br>" + loc.desc);
+    });
+</script>
 
 </body>
 </html>
