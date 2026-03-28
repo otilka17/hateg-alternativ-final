@@ -3,102 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>hațeg alternativ | simte tăcerea</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Hațeg Alternativ | Simte tăcerea</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <style>
-        :root { --verde: #1b3022; --auriu: #c5a059; --crem: #fdfcf8; }
-        * { margin: 0; padding: 0; box-sizing: border-box; text-transform: none !important; }
-        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--verde); line-height: 1.6; overflow-x: hidden;}
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        /* CSS INTEGRAT SIGUR - Stilul tău premium */
+        :root { --verde: #1b3022; --auriu: #c5a059; --crem: #fdfcf8; --alb: #ffffff; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--verde); line-height: 1.6; overflow-x: hidden; }
         
-        /* Navigatie */
-        .site-header { background: white; padding: 20px 0; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 1000; }
-        .nav-wrap { display: flex; justify-content: space-between; align-items: center; }
-        .brand { font-weight: 700; text-decoration: none; color: var(--verde); font-size: 1.2rem; }
+        /* Titluri cu Playfair */
+        h1, h2, h3, .brand { font-family: 'Playfair Display', serif; font-weight: 700; }
+
+        /* Navigație */
+        .site-header { background: var(--alb); padding: 20px 0; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 1000; }
+        .nav-wrap { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        .brand { text-decoration: none; color: var(--verde); font-size: 1.4rem; }
         .main-nav a { text-decoration: none; color: #444; font-size: 0.9rem; margin-left: 20px; font-weight: 500; transition: 0.3s; }
         .main-nav a:hover { color: var(--auriu); }
 
-        /* Hero */
+        /* Hero Section */
         .hero { 
-            height: 75vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white;
+            height: 75vh; display: flex; align-items: center; justify-content: center; text-align: center; color: var(--alb);
             background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), url('https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/hero-camp-munti.jpg') center/cover no-repeat;
         }
-        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 8vw, 4.5rem); margin-bottom: 15px; }
+        .hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); margin-bottom: 20px; }
 
-        /* Carduri & Sectiuni */
+        /* Grid Experiențe */
         .section-padding { padding: 90px 0; }
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.03); border: 1px solid #f0f0f0; transition: 0.3s; }
-        .card img { width: 100%; height: 260px; object-fit: cover; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 35px; }
+        .card { background: var(--alb); border-radius: 24px; overflow: hidden; box-shadow: 0 12px 45px rgba(0,0,0,0.04); border: 1px solid #f1f1f1; transition: 0.4s; }
+        .card:hover { transform: translateY(-10px); }
+        .card img { width: 100%; height: 280px; object-fit: cover; }
         .card-body { padding: 30px; }
-        .card h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 15px; }
 
         /* Butoane */
-        .btn { padding: 14px 28px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.85rem; display: inline-block; transition: 0.3s; }
-        .btn-gold { background: var(--auriu); color: white; }
-        .btn-outline { border: 1px solid var(--verde); color: var(--verde); }
+        .btn { padding: 14px 35px; border-radius: 50px; text-decoration: none; font-weight: 600; display: inline-block; transition: 0.3s; }
+        .btn-gold { background: var(--auriu); color: var(--alb); }
+        .btn-outline { border: 1.5px solid var(--verde); color: var(--verde); }
 
-        /* Journal Grid */
-        .journal-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-        .j-item { height: 250px; border-radius: 12px; overflow: hidden; position: relative; }
-        .j-item img { width: 100%; height: 100%; object-fit: cover; }
-        
-        .wa-btn { position: fixed; bottom: 30px; left: 30px; background: #25d366; color: white; padding: 14px 28px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 999; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        /* WhatsApp la stânga pentru a lăsa Chat-ul la dreapta */
+        .wa-btn { position: fixed; bottom: 30px; left: 30px; background: #25d366; color: var(--alb); padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 999; box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
 
-        @media (max-width: 768px) { .journal-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) { .nav-wrap { flex-direction: column; gap: 15px; } }
     </style>
 </head>
 <body>
 
 <header class="site-header">
     <div class="container nav-wrap">
-        <a href="index.html" class="brand">hațeg alternativ</a>
+        <a href="index.html" class="brand">Hațeg Alternativ</a>
         <nav class="main-nav">
-            <a href="pensiuni.html">pensiuni</a>
-            <a href="obiective.html">obiective</a>
-            <a href="gastronomic.html">gastro</a>
-            <a href="forum.html">forum</a>
-            <a href="rezervare.html">rezervă</a>
+            <a href="pensiuni.html">Pensiuni</a>
+            <a href="obiective.html">Obiective</a>
+            <a href="gastronomic.html">Gastro</a>
+            <a href="forum.html">Forum</a>
+            <a href="rezervare.html">Rezervă</a>
         </nav>
     </div>
 </header>
 
 <section class="hero">
     <div class="container">
-        <h1>simte tăcerea.</h1>
-        <p style="font-weight: 300; font-size: 1.2rem; margin-bottom: 30px;">deschiderea sezonului la 1 mai 2026</p>
-        <a href="pensiuni.html" class="btn btn-gold">explorați colecția</a>
+        <h1>Simte tăcerea.</h1>
+        <p style="font-weight: 300; font-size: 1.2rem; margin-bottom: 30px;">Deschiderea sezonului la 1 Mai 2026</p>
+        <a href="pensiuni.html" class="btn btn-gold">Explorați colecția</a>
     </div>
 </section>
 
-<section class="section-padding">
-    <div class="container">
-        <h2 style="text-align: center; font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 50px;">experiențe & pachete</h2>
-        <div class="grid-3">
-            <div class="card">
-                <img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/gast-cafea-inima.jpg">
-                <div class="card-body">
-                    <h3>mic dejun artizanal</h3>
-                    <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 15px;">produse locale din inima retezatului.</p>
-                    <span style="color: var(--auriu); font-weight: 700;">inclus în cazare</span>
-                </div>
+<section class="section-padding container">
+    <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 50px;">Pachete & Experiențe Premium</h2>
+    <div class="grid-3">
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/gast-cafea-inima.jpg" alt="gastro">
+            <div class="card-body">
+                <h3>Mic Dejun Artizanal</h3>
+                <p style="color: #64748b;">Produse locale și liniște. Inclus în cazare.</p>
             </div>
-            <div class="card">
-                <img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/feed-6.jpg">
-                <div class="card-body">
-                    <h3>gonomad expedition</h3>
-                    <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 15px;">tururi 4x4 în locuri neștiute.</p>
-                    <span style="color: var(--auriu); font-weight: 700;">150 ron / pers</span>
-                </div>
+        </div>
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/feed-6.jpg" alt="aventura">
+            <div class="card-body">
+                <h3>GoNomad Expedition</h3>
+                <p style="color: #64748b;">Explorare 4x4 în Retezat. 150 RON / pers.</p>
             </div>
-            <div class="card">
-                <img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/exp-zapada.jpg">
-                <div class="card-body">
-                    <h3>mindful retreat</h3>
-                    <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 15px;">yoga și deconectare digitală.</p>
-                    <span style="color: var(--auriu); font-weight: 700;">la cerere</span>
-                </div>
+        </div>
+        <div class="card">
+            <img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/exp-zapada.jpg" alt="relaxare">
+            <div class="card-body">
+                <h3>Mindful Retreat</h3>
+                <p style="color: #64748b;">Yoga și deconectare totală în natură.</p>
             </div>
         </div>
     </div>
@@ -106,28 +100,16 @@
 
 <section style="padding: 60px 0; text-align: center; background: white; border-top: 1px solid #eee;">
     <div class="container">
-        <h2 style="font-family: 'Playfair Display', serif; margin-bottom: 15px;">comunitatea noastră</h2>
-        <p style="color: #64748b; margin-bottom: 30px;">citește gândurile oaspeților noștri sau împărtășește-l pe al tău.</p>
-        <a href="forum.html" class="btn btn-outline">intră pe forum</a>
+        <h2 style="margin-bottom: 20px;">Comunitatea noastră</h2>
+        <p style="color: #64748b; margin-bottom: 30px;">Citește poveștile oaspeților sau lasă un gând pe forum.</p>
+        <a href="forum.html" class="btn btn-outline">Vizitează forumul</a>
     </div>
 </section>
 
-<section class="section-padding">
-    <div class="container">
-        <h2 style="text-align: center; font-family: 'Playfair Display', serif; margin-bottom: 40px;">hațeg journal</h2>
-        <div class="journal-grid">
-            <div class="j-item"><img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/feed-1.jpg"></div>
-            <div class="j-item"><img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/feed-2.jpg"></div>
-            <div class="j-item"><img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/feed-4.jpg"></div>
-            <div class="j-item"><img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/feed-5.jpg"></div>
-        </div>
-    </div>
-</section>
-
-<a href="https://wa.me/40749229686" class="wa-btn">discută pe whatsapp</a>
+<a href="https://wa.me/40749229686" class="wa-btn">WhatsApp</a>
 
 <footer style="padding: 60px 0; text-align: center; opacity: 0.5; font-size: 0.8rem;">
-    hațeg alternativ — 2026
+    Hațeg Alternativ — 2026
 </footer>
 
 <script type="text/javascript">
