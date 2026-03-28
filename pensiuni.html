@@ -1,42 +1,3 @@
-<!DOCTYPE html>
-<html lang="ro">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Colecția de Cazări | Hațeg Alternativ Premium</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css" />
-    <style>
-        .collection-header { padding: 120px 0 60px; text-align: center; }
-        .serial-number { font-size: 0.8rem; letter-spacing: 4px; color: #c5a059; display: block; margin-bottom: 10px; }
-        .premium-card { 
-            display: flex; align-items: stretch; margin-bottom: 100px; gap: 0; 
-            background: white; border-radius: 0; box-shadow: none; border: 1px solid #f0f0f0;
-        }
-        .premium-card:nth-child(even) { flex-direction: row-reverse; }
-        .premium-card-img { flex: 1.2; min-height: 500px; overflow: hidden; }
-        .premium-card-img img { width: 100%; height: 100%; object-fit: cover; transition: 1.5s; }
-        .premium-card:hover img { transform: scale(1.05); }
-        .premium-card-info { flex: 1; padding: 80px; display: flex; flex-direction: column; justify-content: center; }
-    </style>
-</head>
-<body style="background: #fafafa;">
-
-<header class="site-header">
-    <div class="container nav-wrap">
-        <a href="index.html" class="brand">
-            <span style="font-weight: 300; letter-spacing: 2px;">HAȚEG</span>
-            <span style="font-weight: 800;">ALTERNATIV</span>
-        </a>
-        <nav class="main-nav">
-            <a href="index.html">Acasă</a>
-            <a href="pensiuni.html" class="active-link">Pensiuni</a>
-            <a href="retreat.html">Retreat</a>
-        </nav>
-        <a href="rezervare.html" class="btn btn-gold" style="padding: 10px 25px; font-size: 0.7rem;">Book Now</a>
-    </div>
-</header>
-
 <div class="container">
     <div class="collection-header">
         <span class="eyebrow">The Stay Collection</span>
@@ -47,28 +8,35 @@
     </div>
 
     <article class="premium-card">
-        <div class="premium-card-img"><img src="images/la-buliga-pensiune.jpg" alt="La Buliga"></div>
+        <div class="premium-card-img"><img src="images/la-buliga-pensiune.jpg" alt="Domeniile La Buligă"></div>
         <div class="premium-card-info">
             <span class="serial-number">NO. 01 — ALTITUDINE</span>
             <h2 class="metanoia-title" style="font-size: 2.5rem; margin-bottom: 20px;">Domeniile La Buligă</h2>
-            <p style="margin-bottom: 30px; font-weight: 300;">O experiență deasupra norilor. Aici, luxul nu înseamnă opulență, ci aerul rece al dimineții și tăcerea munților Vadu Dobrii.</p>
+            <p style="margin-bottom: 30px; font-weight: 300;">O experiență deasupra norilor. Aici, luxul înseamnă aerul rece al dimineții și tăcerea munților Vadu Dobrii.</p>
             <div style="font-size: 1.5rem; color: var(--primary); margin-bottom: 30px; font-family: 'Playfair Display';">de la 450 RON</div>
-            <a href="rezervare.html?locatie=buliga" class="btn btn-forest">Verifică Disponibilitate</a>
+            <a href="pensiune-buliga.html" class="btn btn-forest">Descoperă Povestea</a>
         </div>
     </article>
 
     <article class="premium-card">
-        <div class="premium-card-img"><img src="images/selava-pensiune.jpg" alt="SELAva"></div>
+        <div class="premium-card-img"><img src="images/selava-pensiune.jpg" alt="SELAva Estate"></div>
         <div class="premium-card-info">
-            <span class="serial-number">NO. 02 — DESIGN</span>
+            <span class="serial-number">NO. 02 — DESIGN & TASTE</span>
             <h2 class="metanoia-title" style="font-size: 2.5rem; margin-bottom: 20px;">SELAva Estate</h2>
             <p style="margin-bottom: 30px; font-weight: 300;">Unde minimalismul modern întâlnește gustul pământului. O destinație pentru cei care apreciază arhitectura și fine-dining-ul rural.</p>
             <div style="font-size: 1.5rem; color: var(--primary); margin-bottom: 30px; font-family: 'Playfair Display';">de la 550 RON</div>
-            <a href="rezervare.html?locatie=selava" class="btn btn-forest">Verifică Disponibilitate</a>
+            <a href="pensiune-selava.html" class="btn btn-forest">Descoperă Povestea</a>
+        </div>
+    </article>
+
+    <article class="premium-card">
+        <div class="premium-card-img"><img src="images/natalia-pensiune.jpg" alt="Pensiunea Natalia"></div>
+        <div class="premium-card-info">
+            <span class="serial-number">NO. 03 — HERITAGE & HEART</span>
+            <h2 class="metanoia-title" style="font-size: 2.5rem; margin-bottom: 20px;">Pensiunea Natalia</h2>
+            <p style="margin-bottom: 30px; font-weight: 300;">Locul unde ospitalitatea Țării Hațegului prinde viață. O familie care te primește ca oaspete și te conduce ca prieten.</p>
+            <div style="font-size: 1.5rem; color: var(--primary); margin-bottom: 30px; font-family: 'Playfair Display';">de la 350 RON</div>
+            <a href="pensiune-natalia.html" class="btn btn-forest">Descoperă Povestea</a>
         </div>
     </article>
 </div>
-
-<script src="js/translations.js"></script>
-</body>
-</html>
