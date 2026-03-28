@@ -1,108 +1,122 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>experiențe gastronomice | hațeg alternativ</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Metanoia Gastro | Gustul Pământului</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
     <style>
-        :root { --verde: #1b3022; --auriu: #c5a059; --crem: #fdfcf8; }
-        * { margin: 0; padding: 0; box-sizing: border-box; text-transform: none !important; }
-        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--verde); line-height: 1.6; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-        
-        /* Navigatie */
-        .site-header { background: white; padding: 20px 0; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 1000; }
-        .nav-wrap { display: flex; justify-content: space-between; align-items: center; }
-        .brand { font-weight: 700; text-decoration: none; color: var(--verde); font-size: 1.2rem; }
-        .main-nav a { text-decoration: none; color: #444; font-size: 0.9rem; margin-left: 20px; font-weight: 500; }
-
-        /* Hero */
-        .hero-gastro { 
-            height: 50vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.2)), url('https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/gast-masa-traditionala.jpg') center/cover no-repeat;
+        body { margin-top: 80px; background: #fdfcf8; color: #1b3022; }
+        .gastro-hero { 
+            height: 70vh; 
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('images/gastro-hero.jpg') center/cover;
+            display: flex; align-items: center; justify-content: center; text-align: center; color: white;
         }
-        .metanoia-title { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 6vw, 3.5rem); }
-
-        /* Content Sections */
-        .section-padding { padding: 80px 0; }
-        .gastro-row { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; margin-bottom: 80px; }
-        .gastro-text h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 20px; color: var(--verde); }
-        .gastro-text p { color: #64748b; font-size: 1rem; margin-bottom: 25px; font-weight: 300; }
-        .price-tag { display: inline-block; padding: 8px 18px; background: #f1f5f9; border-radius: 50px; font-size: 0.8rem; font-weight: 600; color: var(--auriu); }
-        
-        .gastro-img-wrap { border-radius: 25px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.05); }
-        .gastro-img-wrap img { width: 100%; height: 450px; object-fit: cover; display: block; }
-
-        /* CTA */
-        .cta-box { background: white; padding: 60px; border-radius: 30px; text-align: center; border: 1px solid #eee; margin-top: 40px; }
-        .btn-gold { background: var(--auriu); color: white; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: 600; display: inline-block; transition: 0.3s; }
-        
-        .wa-btn { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; padding: 14px 28px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 999; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-
-        @media (max-width: 768px) {
-            .gastro-row { grid-template-columns: 1fr; gap: 30px; text-align: center; }
-            .gastro-row.reverse { direction: ltr; }
-            .gastro-img-wrap img { height: 300px; }
+        .menu-section { padding: 100px 0; background: #fff; }
+        .menu-item { 
+            display: flex; justify-content: space-between; align-items: baseline; 
+            margin-bottom: 30px; border-bottom: 1px dotted #ccc; padding-bottom: 10px;
         }
+        .ingredient-tag {
+            font-size: 0.7rem; color: #c5a059; text-transform: uppercase; letter-spacing: 2px; font-weight: 800;
+        }
+        .philosophy-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; padding: 100px 0;
+        }
+        @media (max-width: 768px) { .philosophy-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
-<header class="site-header">
-    <div class="container nav-wrap">
-        <a href="index.html" class="brand">hațeg alternativ</a>
-        <nav class="main-nav">
-            <a href="pensiuni.html">pensiuni</a>
-            <a href="retreat.html">retreat</a>
-            <a href="gastronomic.html" style="color: var(--auriu);">gastro</a>
-            <a href="rezervare.html">rezervă</a>
+<header class="site-header" style="position: fixed; top: 0; width: 100%; z-index: 1500; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #eee;">
+    <div class="container nav-wrap" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0;">
+        <a href="index.html" class="brand" style="text-decoration: none; color: #1b3022; font-weight: 800; font-size: 1.2rem; letter-spacing: 1px;">
+            <span style="font-weight: 300;">HAȚEG</span> ALTERNATIV
+        </a>
+        <nav class="main-nav" style="display: flex; gap: 35px;">
+            <a href="pensiuni.html" style="text-decoration: none; color: #333; font-weight: 600; font-size: 0.8rem; text-transform: uppercase;">Pensiuni</a>
+            <a href="retreat.html" style="text-decoration: none; color: #333; font-weight: 600; font-size: 0.8rem; text-transform: uppercase;">Retreat</a>
+            <a href="gastronomic.html" style="text-decoration: none; color: #c5a059; font-weight: 800; font-size: 0.8rem; text-transform: uppercase;">Gastronomic</a>
         </nav>
+        <div style="width: 120px; text-align: right;">
+            <span style="font-size: 0.6rem; letter-spacing: 2px; color: #c5a059; font-weight: 800;">METANOIA GASTRO</span>
+        </div>
     </div>
 </header>
 
-<section class="hero-gastro">
-    <h1 class="metanoia-title">gustul autentic.</h1>
+<section class="gastro-hero">
+    <div class="container">
+        <span style="letter-spacing: 5px; text-transform: uppercase; font-size: 0.8rem; font-weight: 800;">Concept Gastronomic</span>
+        <h1 class="metanoia-title" style="font-size: clamp(3rem, 7vw, 5rem); margin: 20px 0;">De la pământ, în farfurie.</h1>
+        <p style="font-weight: 300; letter-spacing: 1px;">Ingrediente locale. Tehnici arhaice. Estetică modernă.</p>
+    </div>
 </section>
 
-<main class="container section-padding">
-    
-    <div class="gastro-row">
-        <div class="gastro-text">
-            <span style="font-size: 0.7rem; color: var(--auriu); font-weight: 800; letter-spacing: 2px;">proaspăt & local</span>
-            <h2>mic dejun artizanal</h2>
-            <p>începe ziua cu aromele grădinii. brânzeturi de la stânele din retezat, zacuscă făcută la ceaun, ouă de la fermă și pâine coaptă în cuptor cu lemne. totul servit în liniștea dimineții.</p>
-            <div class="price-tag">inclus în pachetele de cazare</div>
-        </div>
-        <div class="gastro-img-wrap">
-            <img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/gast-cafea-inima.jpg" alt="mic dejun">
+<section class="container philosophy-grid">
+    <div>
+        <img src="images/chef-table.jpg" alt="Dining Experience" style="width: 100%; border-radius: 15px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
+    </div>
+    <div>
+        <span class="ingredient-tag">Filozofia noastră</span>
+        <h2 class="metanoia-title" style="font-size: 2.5rem; margin: 20px 0;">Metanoia Gastro nu este un restaurant.</h2>
+        <p style="line-height: 1.8; color: #64748b; font-weight: 300;">
+            Este un punct gastronomic local unde meniul se scrie în funcție de ce ne oferă grădina și pădurea în fiecare dimineață. Gătim lent, cu foc de lemne, onorând tradiția Țării Hațegului printr-o prezentare minimalistă.
+        </p>
+        <div style="margin-top: 30px;">
+            <div style="margin-bottom: 15px;"><strong>📍 Locație:</strong> Grădina SelAva, Hațeg</div>
+            <div style="margin-bottom: 15px;"><strong>👨‍🍳 Experiență:</strong> Doar pe bază de rezervare (max. 12 persoane)</div>
         </div>
     </div>
+</section>
 
-    <div class="gastro-row reverse" style="direction: rtl;">
-        <div class="gastro-text" style="direction: ltr;">
-            <span style="font-size: 0.7rem; color: var(--auriu); font-weight: 800; letter-spacing: 2px;">tradiție seculară</span>
-            <h2>secretele virșlilor</h2>
-            <p>te invităm la o experiență interactivă la cuptorul tradițional. descoperă istoria virșlilor de sălătruc, procesul de afumare și gustul lor inconfundabil, direct de la sursă.</p>
-            <div class="price-tag">experiență opțională: 80 ron / persoană</div>
+<section class="menu-section">
+    <div class="container" style="max-width: 700px;">
+        <div style="text-align: center; margin-bottom: 60px;">
+            <span class="ingredient-tag">Meniu de Primăvară</span>
+            <h2 class="metanoia-title" style="font-size: 2.5rem;">Selecția Sezonului</h2>
         </div>
-        <div class="gastro-img-wrap">
-            <img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/gast-panou.png" alt="virsli">
+
+        <div class="menu-item">
+            <div>
+                <h4 style="margin: 0;">Pâine artizanală cu maia și unt de fân</h4>
+                <p style="font-size: 0.8rem; color: #64748b;">Sare de mină, ierburi sălbatice de primăvară</p>
+            </div>
+            <div style="font-weight: 800;">25 RON</div>
+        </div>
+
+        <div class="menu-item">
+            <div>
+                <h4 style="margin: 0;">Ciorbă de verdețuri cu smântână de munte</h4>
+                <p style="font-size: 0.8rem; color: #64748b;">Leurda culeasă din pădurea Slivuț, ou de țară</p>
+            </div>
+            <div style="font-weight: 800;">35 RON</div>
+        </div>
+
+        <div class="menu-item">
+            <div>
+                <h4 style="margin: 0;">Obraz de vită gătit 12 ore</h4>
+                <p style="font-size: 0.8rem; color: #64748b;">Piure de rădăcinoase coapte, sos de hribi</p>
+            </div>
+            <div style="font-weight: 800;">85 RON</div>
+        </div>
+
+        <div class="menu-item">
+            <div>
+                <h4 style="margin: 0;">Mousse de brânză de burduf și miere</h4>
+                <p style="font-size: 0.8rem; color: #64748b;">Polen crud, nuci caramelizate</p>
+            </div>
+            <div style="font-weight: 800;">30 RON</div>
+        </div>
+
+        <div style="text-align: center; margin-top: 50px;">
+            <a href="https://wa.me/40749229686?text=Rezervare%20Masa%20Metanoia%20Gastro" class="btn btn-gold" style="background: #1b3022; color: white; padding: 15px 40px; border-radius: 50px; text-decoration: none; font-weight: 800;">RESERVĂ O MASĂ</a>
         </div>
     </div>
+</section>
 
-    <div class="cta-box">
-        <h2 class="metanoia-title" style="font-size: 1.8rem; margin-bottom: 20px;">vrei să guști țara hațegului?</h2>
-        <p style="color: #64748b; margin-bottom: 30px;">rezervă un pachet complet care include și experiențele noastre gastronomice.</p>
-        <a href="rezervare.html" class="btn-gold">configurează sejurul</a>
-    </div>
-
-</main>
-
-<a href="https://wa.me/40749229686" class="wa-btn">discută pe whatsapp</a>
-
-<footer style="padding: 60px 0; text-align: center; opacity: 0.5; font-size: 0.8rem; background: #fff; border-top: 1px solid #eee;">
-    hațeg alternativ — 2026
+<footer style="background: #122118; color: white; padding: 60px 0; text-align: center;">
+    <p style="font-size: 0.8rem; letter-spacing: 2px; opacity: 0.6;">METANOIA GASTRO | SIGNATURE TASTE</p>
 </footer>
 
 </body>
