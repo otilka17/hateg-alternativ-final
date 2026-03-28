@@ -1,131 +1,206 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pensiuni | Hațeg Alternativ Signature Collection</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        body { background: #fdfcf8; padding-top: 80px; }
-        .section-title { text-align: center; margin-bottom: 60px; }
-        .info-strip { background: #1b3022; color: white; padding: 15px 0; font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase; text-align: center; margin-bottom: 50px; }
-        
-        .pensiune-card { 
-            display: grid; grid-template-columns: 1.2fr 1fr; background: white; 
-            border-radius: 25px; overflow: hidden; margin-bottom: 80px; 
-            box-shadow: 0 20px 60px rgba(0,0,0,0.05); border: 1px solid #eee;
-        }
-        .card-content { padding: 50px; display: flex; flex-direction: column; justify-content: center; }
-        .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 25px 0; border-top: 1px solid #f1f5f9; padding-top: 25px; }
-        .feature-item { font-size: 0.8rem; color: #64748b; display: flex; align-items: center; gap: 8px; }
-        .map-section { height: 450px; border-radius: 25px; overflow: hidden; margin: 60px 0; border: 1px solid #ddd; }
-        
-        @media (max-width: 900px) { 
-            .pensiune-card { grid-template-columns: 1fr; } 
-            .card-content { padding: 30px; }
-        }
-    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pensiuni în Hațeg | Hațeg Alternativ</title>
+    <meta name="description" content="Descoperă pensiuni atent selectate în Hațeg, potrivite pentru relaxare, retreaturi și experiențe autentice în natură." />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
 
+<div class="test-banner">
+    <span data-i18n="test_version">
+        Această platformă este în varianta Demo (optimizată prin testare live). Toate solicitările sunt preluate oficial.
+    </span>
+</div>
+
 <header class="site-header">
     <div class="container nav-wrap">
-        <a href="index.html" class="brand">HAȚEG ALTERNATIV</a>
+        <a href="index.html" class="brand">
+            <img src="images/logo-hateg.png" alt="Logo Hațeg Alternativ" height="42">
+            <span>HAȚEG ALTERNATIV</span>
+        </a>
+
         <nav class="main-nav">
-            <a href="pensiuni.html" style="color: #c5a059;">Pensiuni</a>
-            <a href="retreat.html">Retreat</a>
-            <a href="gastronomic.html">Gastro</a>
+            <a href="index.html" data-i18n="nav_home">Acasă</a>
+            <a href="pensiuni.html" class="active-link" data-i18n="nav_pensiuni">Pensiuni</a>
+            <a href="retreat.html" data-i18n="nav_retreat">Retreat Metanoia</a>
+            <a href="experiente.html" data-i18n="nav_experiente">Experiențe</a>
+            <a href="contact.html" data-i18n="nav_rezervare">Contact</a>
         </nav>
+
+        <div class="lang-switcher">
+            <button onclick="changeLanguage('ro')" class="lang-btn">RO</button>
+            <button onclick="changeLanguage('en')" class="lang-btn">EN</button>
+            <button onclick="changeLanguage('de')" class="lang-btn">DE</button>
+        </div>
     </div>
 </header>
 
-<div class="info-strip">📍 Țara Hațegului — Retezat — Țara Luncanilor</div>
+<main>
+    <section class="hero-small" style="background: linear-gradient(rgba(24, 44, 32, 0.58), rgba(24, 44, 32, 0.72)), url('images/pensiuni-hero.jpg') center/cover no-repeat;">
+        <div class="container hero-content">
+            <span class="hero-kicker">Cazare selectată</span>
+            <h1 class="page-title">Pensiuni cu atmosferă, liniște și potențial pentru experiențe reale</h1>
+            <p class="page-subtitle">
+                Alegem locații care oferă mai mult decât cazare: spațiu, autenticitate, natură și contextul potrivit pentru retreaturi, grupuri și sejururi cu sens.
+            </p>
+        </div>
+    </section>
 
-<section class="container">
-    <div class="section-title">
-        <span style="color: #c5a059; font-weight: 800; font-size: 0.7rem; letter-spacing: 3px;">SIGNATURE COLLECTION</span>
-        <h1 class="metanoia-title" style="font-size: 3rem; margin-top: 10px;">Locuri cu Suflet.</h1>
-    </div>
-
-    <article class="pensiune-card">
-        <div style="height: 100%;"><img src="selava%20pensiune.jpg" style="width: 100%; height: 100%; object-fit: cover;"></div>
-        <div class="card-content">
-            <h2 class="metanoia-title" style="font-size: 2.2rem;">SelAva Estate</h2>
-            <p style="color: #c5a059; font-weight: 800; font-size: 0.75rem; margin-bottom: 20px;">DESIGN • GASTRO • POOL</p>
-            <p style="color: #64748b; font-weight: 300;">O reinterpretare modernă a conacului transilvănean. Minimalism, piscină cu apă sărată și o grădină unde cina devine un ritual.</p>
-            
-            <div class="feature-grid">
-                <div class="feature-item">🛏️ 6 Camere Duble</div>
-                <div class="feature-item">🏊 Piscină Infinity</div>
-                <div class="feature-item">🍳 Mic Dejun Artizanal</div>
-                <div class="feature-item">🍷 Wine Cellar</div>
-            </div>
-
-            <div style="display: flex; gap: 15px; margin-top: 20px;">
-                <a href="rezervare.html?loc=selava" class="btn-gold" style="flex: 1;">REZERVĂ SEJUR</a>
-                <a href="https://wa.me/40749229686" class="btn-outline" style="flex: 1;">DETALII WHATSAPP</a>
+    <section class="section">
+        <div class="container narrow">
+            <div class="section-heading center">
+                <span class="section-label">Selecția noastră</span>
+                <h2>Locuri potrivite pentru relaxare, grupuri și retreaturi</h2>
+                <p>
+                    Fiecare locație inclusă în platformă este aleasă pentru caracter, poziționare și experiența pe care o poate susține. 
+                    Nu listăm doar camere, ci spații care pot găzdui momente memorabile.
+                </p>
             </div>
         </div>
-    </article>
+    </section>
 
-    <article class="pensiune-card" style="direction: rtl;">
-        <div style="height: 100%;"><img src="la%20buliga%20pensiune.jpg" style="width: 100%; height: 100%; object-fit: cover;"></div>
-        <div class="card-content" style="direction: ltr;">
-            <h2 class="metanoia-title" style="font-size: 2.2rem;">Domeniile La Buligă</h2>
-            <p style="color: #c5a059; font-weight: 800; font-size: 0.75rem; margin-bottom: 20px;">ISOLATION • PEAK • OFF-GRID</p>
-            <p style="color: #64748b; font-weight: 300;">Situată la 1000m altitudine, în Vadu Dobrii. Locul unde semnalul la telefon dispare, lăsând loc conexiunii cu muntele și focul.</p>
-            
-            <div class="feature-grid">
-                <div class="feature-item">🏠 Cabană Integrală</div>
-                <div class="feature-item">🔥 Foc de Tabără</div>
-                <div class="feature-item">🏔️ Vedere Retezat</div>
-                <div class="feature-item">🛁 Ciubăr Extern</div>
-            </div>
+    <section class="section section-soft">
+        <div class="container">
+            <div class="card-grid">
 
-            <div style="display: flex; gap: 15px; margin-top: 20px;">
-                <a href="rezervare.html?loc=buliga" class="btn-gold" style="flex: 1;">REZERVĂ INTEGRAL</a>
-                <a href="https://wa.me/40749229686" class="btn-outline" style="flex: 1;">ÎNTREABĂ DISPONIBILITATE</a>
+                <article class="experience-card featured-card">
+                    <div class="experience-image-wrap">
+                        <img src="images/domeniile-buliga.jpg" class="experience-image" alt="Domeniile Buliga în Hațeg">
+                    </div>
+                    <div class="experience-content">
+                        <span class="card-badge">Pensiune recomandată</span>
+                        <h3 class="card-title">Domeniile Buliga</h3>
+
+                        <div class="card-meta">
+                            <span>Preț: 4000 lei</span>
+                            <span>Capacitate: 10 locuri</span>
+                            <span>Hațeg</span>
+                        </div>
+
+                        <p>
+                            O locație potrivită pentru grupuri restrânse, retreaturi și experiențe construite în jurul naturii, atmosferei și reconectării.
+                        </p>
+
+                        <a href="contact.html?pensiune=buliga" class="btn btn-primary">
+                            Cere detalii
+                        </a>
+                    </div>
+                </article>
+
+                <article class="experience-card">
+                    <div class="experience-image-wrap">
+                        <img src="images/pensiune-placeholder-1.jpg" class="experience-image" alt="Pensiune tradițională în Hațeg">
+                    </div>
+                    <div class="experience-content">
+                        <span class="card-badge">Spațiu tradițional</span>
+                        <h3 class="card-title">Pensiune cu specific local</h3>
+
+                        <div class="card-meta">
+                            <span>Disponibilă la cerere</span>
+                            <span>Grupuri mici</span>
+                            <span>Relaxare</span>
+                        </div>
+
+                        <p>
+                            O opțiune potrivită pentru cei care caută o atmosferă caldă, apropiată de tradițiile locului și de ritmul natural al zonei.
+                        </p>
+
+                        <a href="contact.html?pensiune=traditionala" class="btn btn-primary">
+                            Solicită ofertă
+                        </a>
+                    </div>
+                </article>
+
+                <article class="experience-card">
+                    <div class="experience-image-wrap">
+                        <img src="images/pensiune-placeholder-2.jpg" class="experience-image" alt="Pensiune pentru retreat în natură">
+                    </div>
+                    <div class="experience-content">
+                        <span class="card-badge">Pentru retreaturi</span>
+                        <h3 class="card-title">Locație pentru grupuri și experiențe private</h3>
+
+                        <div class="card-meta">
+                            <span>Program personalizat</span>
+                            <span>Experiențe incluse</span>
+                            <span>Rezervare directă</span>
+                        </div>
+
+                        <p>
+                            Ideală pentru sejururi tematice, grupuri restrânse, întâlniri de reconectare și programe construite în jurul unei experiențe complete.
+                        </p>
+
+                        <a href="contact.html?pensiune=grupuri" class="btn btn-primary">
+                            Cere informații
+                        </a>
+                    </div>
+                </article>
+
             </div>
         </div>
-    </article>
+    </section>
 
-    <article class="pensiune-card">
-        <div style="height: 100%;"><img src="natalia%20pensiune.jpg" style="width: 100%; height: 100%; object-fit: cover;"></div>
-        <div class="card-content">
-            <h2 class="metanoia-title" style="font-size: 2.2rem;">Pensiunea Natalia</h2>
-            <p style="color: #c5a059; font-weight: 800; font-size: 0.75rem; margin-bottom: 20px;">HERITAGE • GARDEN • FAMILY</p>
-            <p style="color: #64748b; font-weight: 300;">Ospitalitatea de altădată, într-un decor rustic-șic. Perfectă pentru familiile care vor să le arate copiilor gustul merelor din livadă.</p>
-            
-            <div class="feature-grid">
-                <div class="feature-item">🍎 Livadă Proprie</div>
-                <div class="feature-item">🧺 Picnic în Natură</div>
-                <div class="feature-item">🏺 Workshop Olărit</div>
-                <div class="feature-item">☕ Cafea la Nisip</div>
-            </div>
+    <section class="section">
+        <div class="container">
+            <div class="grid-3">
+                <div class="content-card" style="padding: 28px;">
+                    <span class="section-label">01</span>
+                    <h3 style="font-family:'Playfair Display', serif; font-size:1.6rem; color:var(--primary); margin-bottom:12px;">
+                        Spații alese cu grijă
+                    </h3>
+                    <p style="color:var(--muted);">
+                        Ne orientăm spre locații care oferă confort, atmosferă și o legătură firească cu natura și identitatea zonei.
+                    </p>
+                </div>
 
-            <div style="display: flex; gap: 15px; margin-top: 20px;">
-                <a href="rezervare.html?loc=natalia" class="btn-gold" style="flex: 1;">REZERVĂ ACUM</a>
-                <a href="https://wa.me/40749229686" class="btn-outline" style="flex: 1;">CONTACT DIRECT</a>
+                <div class="content-card" style="padding: 28px;">
+                    <span class="section-label">02</span>
+                    <h3 style="font-family:'Playfair Display', serif; font-size:1.6rem; color:var(--primary); margin-bottom:12px;">
+                        Potrivite pentru experiențe
+                    </h3>
+                    <p style="color:var(--muted);">
+                        Punem accent pe locații care pot susține retreaturi, grupuri restrânse și programe personalizate, nu doar șederi standard.
+                    </p>
+                </div>
+
+                <div class="content-card" style="padding: 28px;">
+                    <span class="section-label">03</span>
+                    <h3 style="font-family:'Playfair Display', serif; font-size:1.6rem; color:var(--primary); margin-bottom:12px;">
+                        Contact direct și clar
+                    </h3>
+                    <p style="color:var(--muted);">
+                        Poți solicita rapid detalii, disponibilitate și variante de program adaptate nevoilor tale sau ale grupului tău.
+                    </p>
+                </div>
             </div>
         </div>
-    </article>
+    </section>
 
-    <div class="section-title" style="margin-top: 100px;">
-        <h2 class="metanoia-title">Explorează Regiunea</h2>
-        <p style="color: #64748b; font-size: 0.9rem;">Toate locațiile noastre sunt la maxim 45 min de condus una de alta.</p>
-    </div>
-    
-    <div class="map-section">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11234.34892309832!2d22.88!3d45.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x474e899999999999%3A0x999999999999999!2sTara%20Ha%C5%A3egului!5e0!3m2!1sro!2sro!4v1700000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-    </div>
-</section>
+    <section class="section section-soft">
+        <div class="container">
+            <div class="cta-panel">
+                <div>
+                    <span class="section-label">Ai nevoie de o recomandare?</span>
+                    <h2>Spune-ne ce tip de locație cauți</h2>
+                    <p>
+                        Dacă vrei o pensiune pentru relaxare, retreat, grup privat sau experiență personalizată, îți putem recomanda varianta potrivită.
+                    </p>
+                </div>
+                <a href="contact.html" class="btn btn-dark">Contactează-ne</a>
+            </div>
+        </div>
+    </section>
+</main>
 
-<footer style="background: #122118; color: white; padding: 60px 0; text-align: center; margin-top: 100px;">
-    <p style="font-size: 0.7rem; opacity: 0.5; letter-spacing: 2px;">HAȚEG ALTERNATIV | SIGNATURE COLLECTION</p>
+<footer class="site-footer">
+    <div class="container footer-wrap">
+        <p>© 2026 Hațeg Alternativ | Cazare cu sens în Țara Hațegului</p>
+    </div>
 </footer>
 
-<a href="https://wa.me/40749229686" class="whatsapp-float">Chat WhatsApp</a>
-
+<script src="js/translations.js"></script>
 </body>
 </html>
