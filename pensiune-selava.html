@@ -3,43 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SELAva Estate | Colecția Hațeg Alternativ</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <title>Pensiunea Selava | Colecția Hațeg Alternativ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --verde: #1b3022; --auriu: #c5a059; --crem: #fdfcf8; --alb: #ffffff; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--verde); line-height: 1.6; }
+        h1, h2, h3, .metanoia-title { font-family: 'Playfair Display', serif; font-weight: 700; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        .site-header { background: var(--alb); padding: 25px 0; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 1000; }
+        .nav-wrap { display: flex; justify-content: space-between; align-items: center; }
+        .hero-image { height: 60vh; background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.1)), url('images/pensiune-placeholder-2.jpg') center/cover no-repeat; }
+        .booking-panel { transform: translateY(-80px); background: var(--alb); padding: 70px 50px; max-width: 1000px; margin: 0 auto; box-shadow: 0 40px 100px rgba(0,0,0,0.05); border-radius: 4px; }
+        .retreat-options { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 50px; border-top: 1px solid #eee; padding-top: 40px; }
+        .option-card { padding: 25px; border: 1px solid #f0f0f0; border-radius: 15px; }
+        .btn-gold { background: var(--auriu); color: var(--alb); padding: 18px 30px; text-decoration: none; display: inline-block; font-weight: 700; border-radius: 50px; text-align: center; width: 100%; }
+        .wa-btn { position: fixed; bottom: 30px; left: 30px; background: #25d366; color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 999; }
+    </style>
 </head>
-<body style="background: #fdfcf8;">
-    <header class="site-header">
-        <div class="container nav-wrap">
-            <a href="index.html" class="brand"><span>HAȚEG</span> <strong>ALTERNATIV</strong></a>
-            <a href="pensiuni.html" style="text-decoration: none; color: #1b3022; font-size: 0.7rem; letter-spacing: 2px; font-weight: 800;">← COLECȚIE</a>
-        </div>
-    </header>
-
-    <section style="height: 60vh; background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('images/selava-pensiune.jpg') center/cover;"></section>
-
-    <main class="container" style="transform: translateY(-80px);">
-        <div class="booking-form-panel" style="padding: 80px 60px; max-width: 1000px; margin: 0 auto; background: white; box-shadow: 0 40px 100px rgba(0,0,0,0.05);">
-            <span style="color: #c5a059; letter-spacing: 5px; font-size: 0.8rem; font-weight: 800; display: block; margin-bottom: 20px;">NO. 02 — DESIGN & TASTE</span>
-            <h1 class="metanoia-title" style="font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 40px; line-height: 1;">SELAva <br>Estate</h1>
-            
-            <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 60px; align-items: start;">
-                <div>
-                    <p style="font-weight: 300; line-height: 2; font-size: 1.15rem; color: #444;">
-                        Unde minimalismul scandinav întâlnește sufletul Țării Hațegului. SELAva este o destinație pentru esteticieni, oferind un amestec fin între arhitectură modernă și experiențe gastronomice curatoriate, folosind doar ingrediente de la micii producători locali.
-                    </p>
-                    <div style="margin-top: 40px; border-top: 1px solid #eee; padding-top: 30px; display: flex; gap: 30px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #1b3022; font-weight: 700;">
-                        <span>✦ Fine Dining Rural</span>
-                        <span>✦ Arhitectură Minimală</span>
-                        <span>✦ Wine Tasting</span>
-                    </div>
+<body>
+    <header class="site-header"><div class="container nav-wrap"><a href="index.html" style="text-decoration:none; color:var(--verde); letter-spacing:2px;">HAȚEG <strong>ALTERNATIV</strong></a><a href="pensiuni.html" style="text-decoration:none; font-size:0.7rem; font-weight:800; color:var(--verde);">← COLECȚIE</a></div></header>
+    <section class="hero-image"></section>
+    <main class="container">
+        <div class="booking-panel">
+            <span style="color:var(--auriu); letter-spacing:5px; font-size:0.8rem; font-weight:800; display:block; margin-bottom:20px;">NO. 03 — SĂLAȘU DE SUS</span>
+            <h1 class="metanoia-title" style="font-size:3.5rem; margin-bottom:30px;">Pensiunea <br>Selava</h1>
+            <div style="display:grid; grid-template-columns: 1.5fr 1fr; gap:50px;">
+                <p style="font-weight:300; line-height:2; font-size:1.1rem;">La poalele Retezatului, Selava este destinația celor care vor să se trezească cu muntele în fereastră. O locație modernă dar caldă, gândită special pentru grupuri de retreat și iubitori de drumeții montane.</p>
+                <div style="background:#f9f9f7; padding:40px; border-radius:15px; text-align:center;">
+                    <span style="font-size:0.8rem; color:#888;">Tarif de la</span>
+                    <div style="font-family:'Playfair Display'; font-size:2.5rem; margin:10px 0 25px;">300 RON</div>
+                    <a href="rezervare.html?locatie=selava" class="btn-gold">Rezervă acum</a>
                 </div>
-                <div style="background: #f9f9f7; padding: 40px; border-radius: 15px; text-align: center;">
-                    <span style="font-size: 0.8rem; color: #888; text-transform: uppercase;">Tarif de la</span>
-                    <div style="font-family: 'Playfair Display'; font-size: 2.5rem; margin: 10px 0 30px; color: #1b3022;">550 RON</div>
-                    <a href="rezervare.html?locatie=selava" class="btn btn-gold" style="width: 100%;">Solicită Rezervare</a>
-                </div>
+            </div>
+            <div class="retreat-options">
+                <div class="option-card"><h3>Mountain Yoga</h3><p>Sesiuni matinale cu vedere spre vârfurile înzăpezite ale Retezatului.</p></div>
+                <div class="option-card"><h3>Digital Detox</h3><p>Drumeții ghidate în zone fără semnal pentru o reconectare reală.</p></div>
+                <div class="option-card"><h3>Nature Therapy</h3><p>Ateliere de recunoaștere a plantelor medicinale din flora locală.</p></div>
             </div>
         </div>
     </main>
+    <a href="https://wa.me/40749229686" class="wa-btn">WhatsApp</a>
 </body>
 </html>
