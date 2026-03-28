@@ -37,7 +37,7 @@ h1, h2, h3, .metanoia-title {
 }
 
 .container { width: min(92%, 1200px); margin: 0 auto; }
-a { text-decoration: none; transition: 0.3s; }
+a { text-decoration: none; transition: 0.3s ease; }
 
 /* =========================================
    HEADER & NAVIGATION
@@ -66,13 +66,23 @@ a { text-decoration: none; transition: 0.3s; }
     letter-spacing: 1px; 
 }
 
-.main-nav { display: flex; gap: 25px; }
+.main-nav { display: flex; gap: 25px; align-items: center; }
 .main-nav a { 
     color: var(--text); 
     font-weight: 600; 
     font-size: 0.9rem; 
 }
-.main-nav a.active-link { color: var(--gold); }
+.main-nav a:hover, .main-nav a.active-link { color: var(--gold); }
+
+/* Meniu Toggle (Hamburger) - Ascuns pe Desktop */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--primary);
+    cursor: pointer;
+}
 
 /* =========================================
    BUTOANE PREMIUM
@@ -81,33 +91,27 @@ a { text-decoration: none; transition: 0.3s; }
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 15px 35px;
+    padding: 14px 32px;
     border-radius: 50px;
     font-weight: 800;
     text-transform: uppercase;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     border: none;
     cursor: pointer;
     transition: 0.4s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
-.btn-gold {
-    background: var(--gold);
-    color: white;
-}
-
+.btn-gold { background: var(--gold); color: white; }
 .btn-gold:hover {
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(197, 160, 89, 0.3);
 }
 
-.btn-forest {
-    background: var(--primary);
-    color: white;
-}
+.btn-forest { background: var(--primary); color: white; }
+.btn-forest:hover { transform: translateY(-3px); opacity: 0.9; }
 
 /* =========================================
-   PREMIUM CARDS (Revistă Look)
+   PREMIUM CARDS & FEED
    ========================================= */
 .premium-card {
     display: flex;
@@ -119,18 +123,30 @@ a { text-decoration: none; transition: 0.3s; }
     box-shadow: var(--shadow);
 }
 
-.premium-card-img { flex: 1.2; min-height: 400px; }
-.premium-card-img img { width: 100%; height: 100%; object-fit: cover; }
+.premium-card-img { flex: 1.2; min-height: 450px; overflow: hidden; }
+.premium-card-img img { width: 100%; height: 100%; object-fit: cover; transition: 1.2s ease; }
+.premium-card:hover .premium-card-img img { transform: scale(1.05); }
+
 .premium-card-info { flex: 1; padding: 60px; display: flex; flex-direction: column; justify-content: center; }
 
 .serial-number {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     letter-spacing: 4px;
     color: var(--gold);
     font-weight: 800;
     margin-bottom: 15px;
     display: block;
 }
+
+.feed-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.feed-item { aspect-ratio: 1/1; overflow: hidden; border-radius: 18px; }
+.feed-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s ease; }
+.feed-item:hover img { transform: scale(1.1); }
 
 /* =========================================
    WHATSAPP & UTILS
@@ -146,43 +162,45 @@ a { text-decoration: none; transition: 0.3s; }
     font-weight: 800;
     box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
     z-index: 2000;
+    transition: 0.3s;
 }
+.whatsapp-float:hover { transform: translateY(-5px); background: #128c7e; }
 
-/* Grila de Feed (Instagram Style) */
-.feed-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 15px;
-}
-
-.feed-item {
-    aspect-ratio: 1/1;
-    overflow: hidden;
-    border-radius: 15px;
-}
-
-.feed-item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.6s ease;
-}
-
-.feed-item:hover img { transform: scale(1.05); }
-
-/* Bannerul de Test */
-.test-banner {
-    background: var(--primary-dark);
-    color: white;
-    text-align: center;
-    padding: 8px 0;
-    font-size: 0.65rem;
-    font-weight: 800;
-    letter-spacing: 2px;
-}
-
+/* =========================================
+   RESPONSIVE DESIGN (MOBILE)
+   ========================================= */
 @media (max-width: 900px) {
+    .menu-toggle { display: block; }
+
+    .main-nav {
+        display: none; /* Ascuns pentru JS toggle */
+        flex-direction: column;
+        width: 100%;
+        background: var(--white);
+        position: absolute;
+        top: 70px;
+        left: 0;
+        padding: 30px;
+        border-bottom: 1px solid var(--border);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        gap: 20px;
+        text-align: center;
+    }
+
+    /* Clasa activată de translations.js */
+    .main-nav.open { 
+        display: flex; 
+        animation: fadeInDown 0.4s ease forwards;
+    }
+
     .premium-card { flex-direction: column; }
-    .nav-wrap { flex-direction: column; gap: 15px; }
-    .main-nav { gap: 15px; }
+    .premium-card-img { min-height: 300px; }
+    .premium-card-info { padding: 40px 30px; }
+    
+    .nav-wrap { padding: 10px 0; }
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
