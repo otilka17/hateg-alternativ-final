@@ -91,7 +91,44 @@ s0.parentNode.insertBefore(s1,s0);
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script type="text/javascript">
-    (function() { emailjs.init("KfAXAcZDiuFeeFZzj"); })();
+    (function() {
+        // Cheia ta publică
+        emailjs.init("KfAXAcZDiuFeeFZzj");
+    })();
+
+    document.getElementById('membership-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const btn = this.querySelector('button');
+        const emailInput = document.getElementById('member-email');
+        const msg = document.getElementById('form-msg');
+        
+        btn.innerText = "SE TRIMITE...";
+        btn.disabled = true;
+
+        // Trimitem DOAR email-ul, exact cum ai configurat probabil în template
+        const templateParams = {
+            new_member_email: emailInput.value, // Verifică să ai {{new_member_email}} în template-ul EmailJS
+            to_name: "Admin Hațeg Alternativ"
+        };
+
+        emailjs.send("service_iqnbicr", "template_58x2s1c", templateParams)
+            .then(function(response) {
+                console.log('SUCCESS!', response.status, response.text);
+                msg.innerHTML = "✨ Bun venit în comunitate!";
+                msg.style.color = "#c5a059";
+                emailInput.value = "";
+                btn.style.display = "none";
+            }, function(error) {
+                console.error('FAILED...', error);
+                // Aici ne va zice în Consola (F12) exact de ce dă eroare
+                msg.innerHTML = "Eroare: " + JSON.stringify(error.text);
+                msg.style.color = "#ff6b6b";
+                btn.disabled = false;
+                btn.innerText = "ÎNSCRIE-TE";
+            });
+    });
+</script>
 
     document.getElementById('membership-form').addEventListener('submit', function(e) {
         e.preventDefault();
