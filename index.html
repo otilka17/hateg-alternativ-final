@@ -18,107 +18,97 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--verde); line-height: 1.6; padding-top: 80px; }
 
-        /* Stilul elegant "Simte tăcerea" aplicat la titluri */
-        h1, h2, h3, .metanoia-title, .brand-text {
+        h1, h2, h3, .brand-text {
             font-family: 'Playfair Display', serif;
             font-weight: 700;
-            text-transform: none; /* SCOATE LITERELE DE TIPAR */
+            text-transform: none; 
         }
 
         .italic-style { font-style: italic; }
-
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
 
-        /* Header */
-        .site-header { position: fixed; top: 0; width: 100%; z-index: 1500; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); }
-        .nav-wrap { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; }
+        /* Header Aerisit */
+        .site-header { position: fixed; top: 0; width: 100%; z-index: 1500; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,0,0,0.03); }
+        .nav-wrap { display: flex; justify-content: space-between; align-items: center; padding: 18px 0; }
         
-        .brand { text-decoration: none; color: var(--verde); font-size: 1.4rem; }
+        .brand { text-decoration: none; color: var(--verde); font-size: 1.3rem; }
         
-        /* Meniu Soft - Fără majuscule agresive */
-        .main-nav { display: flex; gap: 30px; align-items: center; }
+        .main-nav { display: flex; gap: 35px; align-items: center; }
         .main-nav a { 
             text-decoration: none; 
             color: var(--verde); 
-            font-size: 1rem; 
-            font-weight: 500; 
-            font-family: 'Playfair Display', serif; /* Stilul cerut */
+            font-size: 1.05rem; 
+            font-family: 'Playfair Display', serif; 
             font-style: italic;
             transition: 0.3s;
         }
         .main-nav a:hover { color: var(--auriu); }
 
-        /* Hero Section */
+        /* Hero - Primul impact vizual */
         .hero-image {
-            min-height: 80vh;
-            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.1)),
+            min-height: 85vh;
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.15)),
                         url('https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/hero-camp-munti.jpg') center/cover no-repeat;
             display: flex; align-items: center; justify-content: center; text-align: center; color: var(--alb);
         }
 
-        .hero-image h1 {
-            font-size: clamp(3.5rem, 10vw, 6rem);
-            line-height: 1;
-            margin-bottom: 20px;
-        }
+        .hero-image h1 { font-size: clamp(3.8rem, 12vw, 6.5rem); margin-bottom: 15px; text-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+        .hero-image p { font-size: 1.5rem; font-family: 'Playfair Display', serif; font-style: italic; margin-bottom: 45px; opacity: 0.95; }
 
-        .hero-image p {
-            font-size: 1.4rem;
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            margin-bottom: 40px;
-        }
-
-        /* Buton Elegant - Fără majuscule */
         .btn-gold {
             display: inline-block;
             background: var(--auriu);
             color: white;
-            padding: 16px 40px;
-            border-radius: 50px;
+            padding: 18px 45px;
+            border-radius: 60px;
             text-decoration: none;
             font-family: 'Playfair Display', serif;
             font-style: italic;
-            font-size: 1.1rem;
-            transition: 0.3s;
+            font-size: 1.2rem;
+            transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
+        .btn-gold:hover { transform: translateY(-4px); box-shadow: 0 15px 30px rgba(197,160,89,0.25); }
 
-        .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(197,160,89,0.2); }
+        /* Live Stream - Validarea realității */
+        .live-stream-section { padding: 120px 0; background: var(--alb); border-radius: 60px 60px 0 0; margin-top: -60px; position: relative; }
+        .section-heading h2 { font-size: 3.2rem; margin-bottom: 10px; }
 
-        /* Live Stream Section */
-        .live-stream-section { padding: 100px 0; background: var(--alb); border-radius: 50px 50px 0 0; margin-top: -40px; }
-        .section-heading h2 { font-size: 3rem; margin-bottom: 15px; }
-
-        .feed-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; }
-        .feed-item { border-radius: 20px; overflow: hidden; aspect-ratio: 1; transition: 0.4s; }
+        .feed-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; margin-top: 50px; }
+        .feed-item { border-radius: 24px; overflow: hidden; aspect-ratio: 1; transition: 0.5s; cursor: pointer; }
+        .feed-item:hover { transform: scale(1.03); }
         .feed-item img { width: 100%; height: 100%; object-fit: cover; }
 
-        /* Membership Card */
+        /* Membership - Chemarea la Comunitate */
         .membership-card {
             background: var(--verde);
-            border-radius: 30px;
-            padding: 80px 60px;
+            border-radius: 40px;
+            padding: 100px 40px;
             color: white;
             margin: 100px auto;
             text-align: center;
+            background-image: radial-gradient(circle at top right, rgba(197,160,89,0.1), transparent);
         }
-
-        .membership-card h2 { font-size: 4rem; margin-bottom: 20px; }
+        .membership-card h2 { font-size: 4.5rem; margin-bottom: 25px; }
+        .membership-card p { font-size: 1.2rem; opacity: 0.85; max-width: 600px; margin: 0 auto; }
         
-        #membership-form { display: flex; justify-content: center; gap: 15px; margin-top: 40px; }
+        #membership-form { display: flex; justify-content: center; gap: 15px; margin-top: 50px; }
         #member-email { 
-            padding: 18px 30px; 
-            border-radius: 50px; 
-            border: none; 
-            width: 350px; 
-            font-size: 1rem;
+            padding: 20px 35px; 
+            border-radius: 60px; 
+            border: 1px solid rgba(255,255,255,0.2); 
+            background: rgba(255,255,255,0.05);
+            width: 380px; 
+            font-size: 1.1rem;
+            color: white;
+            backdrop-filter: blur(5px);
         }
+        #member-email::placeholder { color: rgba(255,255,255,0.4); }
 
-        footer { padding: 60px; text-align: center; font-family: 'Playfair Display', serif; font-style: italic; font-size: 1rem; color: #999; }
+        footer { padding: 80px; text-align: center; font-family: 'Playfair Display', serif; font-style: italic; color: #b2b2b2; }
 
         @media (max-width: 768px) {
             .main-nav { display: none; }
-            .hero-image h1 { font-size: 4rem; }
+            .hero-image h1 { font-size: 4.5rem; }
             #membership-form { flex-direction: column; align-items: center; }
             #member-email { width: 100%; }
         }
@@ -132,52 +122,48 @@
         <nav class="main-nav">
             <a href="pensiuni.html">Pensiuni</a>
             <a href="retreat.html">Retreat</a>
-            <a href="gastronomic.html">Gastronomic</a>
-            <a href="forum.html">Forum</a>
+            <a href="forum.html">Comunitate</a>
         </nav>
-        <div style="font-family: 'Playfair Display', serif; font-style: italic; color: var(--auriu);">Est. 2026</div>
+        <div style="font-family: 'Playfair Display', serif; font-style: italic; color: var(--auriu); font-size: 0.9rem;">Est. 2026</div>
     </div>
 </header>
 
 <section class="hero-image">
     <div class="container">
         <h1 class="italic-style">Simte tăcerea.</h1>
-        <p>O selecție exclusivă în inima Transilvaniei</p>
-        <a href="pensiuni.html" class="btn-gold">Explorează colecția</a>
+        <p>O selecție de refugii și puncte gastronomice</p>
+        <a href="pensiuni.html" class="btn-gold">Explorează Colecția</a>
     </div>
 </section>
 
 <section class="live-stream-section">
     <div class="container">
-        <div class="section-heading" style="text-align: center; margin-bottom: 60px;">
-            <h2 class="italic-style">Metanoia Live Stream</h2>
-            <p style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem;">Momente, arome și acorduri din Totești.</p>
+        <div class="section-heading">
+            <h2 class="italic-style">Metanoia Live</h2>
+            <p style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.3rem;">Momente neregizate din inima locului.</p>
         </div>
 
         <div class="feed-grid">
-            <div class="feed-item"><img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/images/feed-1.jpg"></div>
             <div class="feed-item"><img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/images/gast-cafea-inima.jpg"></div>
-            <div class="feed-item"><img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/images/feed-3.jpg"></div>
+            <div class="feed-item"><img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/images/feed-1.jpg"></div>
+            <div class="feed-item"><img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/images/exp-zapada.jpg"></div>
             <div class="feed-item"><img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/images/feed-4.jpg"></div>
-            <div class="feed-item"><img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/images/feed-5.jpg"></div>
             <div class="feed-item"><img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/images/feed-6.jpg"></div>
             <div class="feed-item"><img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/images/feed-7.jpg"></div>
-            <div class="feed-item"><img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/images/exp-zapada.jpg"></div>
         </div>
     </div>
 </section>
 
 <div class="container">
     <section class="membership-card">
-        <span style="color: var(--auriu); font-family: 'Playfair Display', serif; font-style: italic; letter-spacing: 2px;">Member Access</span>
+        <span style="color: var(--auriu); font-family: 'Playfair Display', serif; font-style: italic; letter-spacing: 3px;">The Signature Club</span>
         <h2 class="italic-style">Devino membru</h2>
-        <p style="font-size: 1.1rem; opacity: 0.8;">Acces prioritar la retreat-uri private și experiențe curatoriate.</p>
+        <p>Înscrie-te pentru a primi invitații la cine secrete, retreat-uri private și acces prioritar în colecția noastră.</p>
 
         <form id="membership-form">
-            <input type="email" id="member-email" placeholder="Email-ul tău" required>
-            <button type="submit" class="btn-gold" id="submit-btn" style="border: none; cursor: pointer;">Înscrie-te</button>
+            <input type="email" id="member-email" placeholder="Adresa ta de email" required>
+            <button type="submit" class="btn-gold" style="border: none; cursor: pointer;">Înscrie-te</button>
         </form>
-        <div id="form-msg" style="margin-top: 20px;"></div>
     </section>
 </div>
 
@@ -192,7 +178,7 @@ s0.parentNode.insertBefore(s1,s0);
 </script>
 
 <footer>
-    <div class="italic-style">Hațeg Alternativ — 2026 Signature</div>
+    <div class="italic-style">Hațeg Alternativ Signature — 2026</div>
 </footer>
 
 </body>
