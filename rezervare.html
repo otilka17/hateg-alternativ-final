@@ -125,18 +125,18 @@
         });
 
         // Obiectul de date trimis catre EmailJS (Trebuie sa se potriveasca cu {{parantezele}} din template-ul tau)
-        const templateParams = {
-            from_name: document.getElementById('from_name').value,
-            reply_to: document.getElementById('reply_to').value,
-            user_phone: document.getElementById('user_phone').value,
-            location: document.getElementById('location').value,
-            nights: document.getElementById('nights').value,
-            guests: document.getElementById('guests').value,
-            experience: selectedExperiences.length > 0 ? selectedExperiences.join(", ") : "Fără experiențe extra",
-            message: document.getElementById('message').value,
-            total_price: document.getElementById('total-val').innerText
-        };
-
+        // În interiorul funcției de submit din rezervare.html:
+const templateParams = {
+    from_name: document.getElementById('from_name').value,    // se pupă cu {{from_name}}
+    user_phone: document.getElementById('user_phone').value,  // se pupă cu {{user_phone}}
+    reply_to: document.getElementById('reply_to').value,      // se pupă cu {{reply_to}}
+    location: document.getElementById('location').value,      // se pupă cu {{location}}
+    nights: document.getElementById('nights').value,          // se pupă cu {{nights}}
+    guests: document.getElementById('guests').value,          // se pupă cu {{guests}}
+    experience: selectedExperiences.join(", "),               // se pupă cu {{experience}}
+    total_price: document.getElementById('total-val').innerText, // se pupă cu {{total_price}}
+    message: document.getElementById('message').value         // se pupă cu {{message}}
+};
         emailjs.send('service_iqnbicr', 'template_0j0ygug', templateParams)
             .then(() => {
                 alert("Mulțumim! Solicitarea a fost trimisă. Vei fi contactat în scurt timp.");
