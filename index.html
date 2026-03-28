@@ -1,127 +1,97 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hațeg Alternativ | Simte tăcerea</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Metanoia Gastro | Gustul Pământului</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=1.5" />
     <style>
-        /* CSS SIGNATURE: ROZ-CREM-AURIU-ALB (Integrat) */
-        :root { 
-            --verde-inchis: #1b3022; /* Pentru text și contrast */
-            --auriu: #c5a059; /* Accente */
-            --roz-pal: #fdf2f0; /* Fundalul general (Roz Crem) */
-            --alb-pur: #ffffff; /* Paneluri care plutesc */
-            --crem-inchis: #f9f4e9; /* Carduri secundare */
+        body { margin-top: 80px; background: #fdfcf8; color: #1b3022; }
+        .gastro-hero { 
+            height: 60vh; 
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url('images/gastro-hero.jpg') center/cover;
+            display: flex; align-items: center; justify-content: center; text-align: center; color: white;
         }
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--roz-pal); color: var(--verde-inchis); line-height: 1.6; overflow-x: hidden; }
-        
-        h1, h2, h3, .brand { font-family: 'Playfair Display', serif; font-weight: 700; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-
-        /* Navigație Curată pe fundal Alb */
-        .site-header { background: var(--alb-pur); padding: 25px 0; border-bottom: 1px solid rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
-        .nav-wrap { display: flex; justify-content: space-between; align-items: center; }
-        .brand { text-decoration: none; color: var(--verde-inchis); font-size: 1.1rem; letter-spacing: 2px; text-transform: uppercase; }
-        .main-nav a { text-decoration: none; color: #444; font-size: 0.8rem; margin-left: 30px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
-        .main-nav a:hover { color: var(--auriu); }
-
-        /* Hero Image - MUNȚII NENOROCIȚI ȘI SUPERBI */
-        .hero-image { 
-            height: 70vh; 
-            background: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.1)), 
-                        url('https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/hero-camp-munti.jpg') center/cover no-repeat;
+        .menu-section { padding: 80px 0; background: #fff; }
+        .menu-item { 
+            display: flex; justify-content: space-between; align-items: baseline; 
+            margin-bottom: 25px; border-bottom: 1px dotted #ddd; padding-bottom: 10px;
         }
-
-        /* Panelul alb care plutește (Stilul de lux) */
-        .main-panel { 
-            transform: translateY(-100px); 
-            background: var(--alb-pur); 
-            padding: 80px 60px; 
-            max-width: 1000px; 
-            margin: 0 auto; 
-            box-shadow: 0 40px 100px rgba(0,0,0,0.05);
-            border-radius: 4px;
-            text-align: center;
-        }
-        .kicker { color: var(--auriu); letter-spacing: 5px; font-size: 0.8rem; font-weight: 800; display: block; margin-bottom: 20px; text-transform: uppercase; }
-        .metanoia-title { font-size: clamp(2.5rem, 6vw, 4.5rem); margin-bottom: 30px; line-height: 1.1; color: var(--verde-inchis); }
-        .description { font-weight: 300; line-height: 2; font-size: 1.2rem; color: #64748b; max-width: 750px; margin: 0 auto 40px; }
-
-        /* Grid Pensiuni (Mini Preview) pe fundal Crem */
-        .preview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 50px; border-top: 1px solid #f0f0f0; padding-top: 50px; }
-        .mini-card { text-decoration: none; color: inherit; padding: 25px; border-radius: 4px; background: var(--crem-inchis); border: 1px solid #eee; transition: 0.3s; }
-        .mini-card:hover { transform: translateY(-5px); border-color: var(--auriu); }
-        .mini-card h3 { font-size: 1.3rem; color: var(--verde-inchis); margin-bottom: 10px; }
-        .mini-card p { font-size: 0.9rem; color: #888; }
-
-        /* Butonul de Aur */
-        .btn-gold { background: var(--auriu); color: var(--alb-pur); padding: 20px 50px; text-decoration: none; display: inline-block; font-weight: 700; border-radius: 50px; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 3px; transition: 0.4s; }
-        .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(197,160,89,0.3); }
-
-        /* WhatsApp Discret */
-        .wa-btn { position: fixed; bottom: 30px; left: 30px; background: #25d366; color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 999; box-shadow: 0 10px 20px rgba(0,0,0,0.1); font-size: 0.8rem; letter-spacing: 1px; }
-
-        @media (max-width: 768px) { .main-panel { padding: 50px 20px; transform: translateY(-50px); } .main-nav { display: none; } }
+        .ingredient-note { font-size: 0.8rem; color: #64748b; font-style: italic; }
+        @media (max-width: 768px) { .menu-item { flex-direction: column; gap: 5px; } }
     </style>
 </head>
 <body>
 
-    <header class="site-header">
-        <div class="container nav-wrap">
-            <a href="index.html" class="brand">HAȚEG <strong>ALTERNATIV</strong></a>
-            <nav class="main-nav">
-                <a href="pensiuni.html">Pensiuni</a>
-                <a href="experiente.html">Experiențe</a>
-                <a href="obiective.html">Obiective</a>
-                <a href="contact.html">Contact</a>
-            </nav>
+<header class="site-header">
+    <div class="container nav-wrap">
+        <a href="index.html" class="brand">HAȚEG <span>ALTERNATIV</span></a>
+        <nav class="main-nav">
+            <a href="pensiuni.html">Pensiuni</a>
+            <a href="retreat.html">Retreat</a>
+            <a href="gastronomic.html" style="color: #c5a059;">Gastro</a>
+        </nav>
+    </div>
+</header>
+
+<section class="gastro-hero">
+    <div class="container">
+        <h1 class="metanoia-title" style="font-size: clamp(2.5rem, 6vw, 4.5rem); color: white;">Metanoia Gastro.</h1>
+        <p style="letter-spacing: 2px; font-weight: 300; opacity: 0.9;">Simplitate ridicată la rang de artă.</p>
+    </div>
+</section>
+
+<section class="menu-section">
+    <div class="container" style="max-width: 800px;">
+        <div style="text-align: center; margin-bottom: 60px;">
+            <span style="color: #c5a059; font-weight: 800; letter-spacing: 3px; font-size: 0.7rem;">MENIU DE SEZON</span>
+            <h2 class="metanoia-title" style="font-size: 2.5rem; margin-top: 10px;">Aromele Slivuțului</h2>
         </div>
-    </header>
 
-    <section class="hero-image"></section>
-
-    <main class="container">
-        <div class="main-panel">
-            <span class="kicker">Simte tăcerea</span>
-            <h1 class="metanoia-title">Trăiește <br>Hațegul Real</h1>
-            
-            <p class="description">
-                O colecție curatoriată de spații autentice, creată pentru cei care caută să se reconecteze cu natura și tradiția.
-            </p>
-
-            <a href="pensiuni.html" class="btn-gold">Descoperă Colecția</a>
-
-            <div class="preview-grid">
-                <a href="pensiune-buliga.html" class="mini-card">
-                    <h3>La Buligă</h3>
-                    <p>Izolare la 1000m.</p>
-                </a>
-                <a href="pensiune-natalia.html" class="mini-card">
-                    <h3>Natalia</h3>
-                    <p>Tradiție & suflet.</p>
-                </a>
-                <a href="pensiune-selava.html" class="mini-card">
-                    <h3>SeLaVa estate</h3>
-                    <p>Design & fine dining.</p>
-                </a>
+        <div class="menu-item">
+            <div>
+                <h4 style="margin: 0;">Platoul Culegătorului</h4>
+                <p class="ingredient-note">Brânzeturi locale, zacuscă de ghebe, pâine cu maia coaptă pe vatră.</p>
             </div>
+            <div style="font-weight: 800; color: #c5a059;">45 RON</div>
         </div>
-    </main>
 
-    <a href="https://wa.me/40749229686" class="wa-btn">WHATSAPP DIRECT</a>
+        <div class="menu-item">
+            <div>
+                <h4 style="margin: 0;">Balmoș Hațegan "Metanoia"</h4>
+                <p class="ingredient-note">Gătit lent cu smântână grasă și servit cu brânză de burduf iute.</p>
+            </div>
+            <div style="font-weight: 800; color: #c5a059;">55 RON</div>
+        </div>
 
-    <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true; s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
-    s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
-    </script>
+        <div class="menu-item">
+            <div>
+                <h4 style="margin: 0;">Tocăniță de Hribi cu Usturoi Verde</h4>
+                <p class="ingredient-note">Hribi culeși din pădurile Retezatului, serviți cu mămăliguță caldă.</p>
+            </div>
+            <div style="font-weight: 800; color: #c5a059;">65 RON</div>
+        </div>
+
+        <div class="menu-item">
+            <div>
+                <h4 style="margin: 0;">Plăcintă Pădureancă</h4>
+                <p class="ingredient-note">Umplută cu brânză dulce și stafide, coaptă în cuptor cu lemne.</p>
+            </div>
+            <div style="font-weight: 800; color: #c5a059;">30 RON</div>
+        </div>
+
+        <div style="text-align: center; margin-top: 60px; padding: 40px; border: 1px solid #f1f5f9; border-radius: 20px; background: #fafafa;">
+            <h3 class="metanoia-title">Vrei o experiență privată?</h3>
+            <p style="font-size: 0.9rem; color: #64748b; margin: 15px 0 30px;">Organizăm cine private de tip "Chef's Table" pentru grupuri de maxim 10 persoane.</p>
+            <a href="https://wa.me/40749229686" class="btn-gold" style="text-decoration: none; padding: 15px 40px;">REZERVĂ O MASĂ</a>
+        </div>
+    </div>
+</section>
+
+<footer style="background: #122118; color: white; padding: 60px 0; text-align: center;">
+    <p style="font-size: 0.75rem; letter-spacing: 2px; opacity: 0.6;">METANOIA GASTRO | SLOW FOOD ROMANIA</p>
+</footer>
+
 </body>
 </html>
