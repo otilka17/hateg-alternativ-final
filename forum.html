@@ -1,54 +1,90 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Forum</title>
-<link rel="stylesheet" href="css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>forum comunitate | hațeg alternativ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --verde: #1b3022; --auriu: #c5a059; --crem: #fdfcf8; }
+        * { margin: 0; padding: 0; box-sizing: border-box; text-transform: none !important; }
+        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--verde); line-height: 1.6; }
+        .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+        
+        .site-header { background: white; padding: 20px 0; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 1000; }
+        .nav-wrap { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        .brand { font-weight: 700; text-decoration: none; color: var(--verde); font-size: 1.1rem; }
+        .main-nav a { text-decoration: none; color: #444; font-size: 0.9rem; margin-left: 20px; font-weight: 500; }
+
+        .forum-header { padding: 80px 0 40px; text-align: center; }
+        h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 10px; }
+        
+        .input-box { background: white; padding: 30px; border-radius: 20px; border: 1px solid #eee; box-shadow: 0 10px 30px rgba(0,0,0,0.02); margin-bottom: 40px; }
+        textarea { width: 100%; height: 120px; border: 1px solid #f0f0f0; border-radius: 12px; padding: 15px; font-family: 'Inter'; font-size: 0.95rem; background: #fafafa; outline: none; margin-bottom: 15px; resize: none; }
+        
+        .btn-gold { background: var(--auriu); color: white; padding: 12px 30px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.85rem; border: none; cursor: pointer; transition: 0.3s; }
+        .btn-gold:hover { transform: scale(1.03); opacity: 0.9; }
+
+        .post-card { background: white; padding: 25px; border-radius: 15px; border: 1px solid #eee; margin-bottom: 20px; animation: slideUp 0.4s ease; }
+        .post-card p { font-size: 0.95rem; color: #444; }
+        .post-meta { font-size: 0.75rem; color: var(--auriu); font-weight: 700; margin-top: 15px; display: block; }
+
+        @keyframes slideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .wa-btn { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; padding: 14px 28px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 999; }
+    </style>
 </head>
 <body>
 
 <header class="site-header">
-<div class="container nav-wrap">
-<a href="index.html" class="brand">
-<img src="images/logo-hateg.png">
-<span>Hațeg Alternativ</span>
-</a>
-
-<nav class="main-nav">
-<a href="index.html">Acasă</a>
-<a href="forum.html" class="active-link">Forum</a>
-<a href="rezervare.html">Rezervare</a>
-</nav>
-</div>
+    <div class="container nav-wrap">
+        <a href="index.html" class="brand">hațeg alternativ</a>
+        <nav class="main-nav">
+            <a href="pensiuni.html">pensiuni</a>
+            <a href="forum.html" style="color: var(--auriu);">forum</a>
+            <a href="rezervare.html">rezervă</a>
+        </nav>
+    </div>
 </header>
 
-<section>
 <div class="container">
+    <div class="forum-header">
+        <h1>gânduri de călător</h1>
+        <p style="color: #64748b;">împărtășește experiența ta în țara hațegului.</p>
+    </div>
 
-<h1>Forum comunitate</h1>
+    <div class="input-box">
+        <textarea id="mesajForum" placeholder="scrie un gând, o recomandare sau o întrebare..."></textarea>
+        <button onclick="posteaza()" class="btn-gold">postează pe forum</button>
+    </div>
 
-<textarea id="mesajForum" placeholder="Scrie ceva..." style="width:100%;height:100px;"></textarea>
-<button onclick="posteaza()">Postează</button>
-
-<div id="lista"></div>
-
+    <div id="lista">
+        <div class="post-card">
+            <p>"apusul văzut de la la buligă este ceva ce nu voi uita niciodată. liniștea e aproape ireală."</p>
+            <span class="post-meta">oaspete anonim — acum 2 ore</span>
+        </div>
+    </div>
 </div>
-</section>
+
+<a href="https://wa.me/40749229686" class="wa-btn">discută pe whatsapp</a>
 
 <script>
 function posteaza(){
-const msg=document.getElementById("mesajForum").value;
-if(!msg) return;
+    const msg = document.getElementById("mesajForum").value;
+    if(!msg) return;
 
-const div=document.createElement("div");
-div.style.marginTop="10px";
-div.style.padding="10px";
-div.style.background="#fff";
-div.innerText=msg;
+    const div = document.createElement("div");
+    div.className = "post-card";
+    
+    // Obținem data curentă pentru un aspect real
+    const data = new Date().toLocaleDateString('ro-RO');
+    
+    div.innerHTML = `
+        <p>"${msg}"</p>
+        <span class="post-meta">oaspete anonim — ${data}</span>
+    `;
 
-document.getElementById("lista").prepend(div);
-document.getElementById("mesajForum").value="";
+    document.getElementById("lista").prepend(div);
+    document.getElementById("mesajForum").value = "";
 }
 </script>
 
