@@ -4,41 +4,86 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pensiuni | Hațeg Alternativ</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <header class="site-header">
-        <div class="container nav-wrap">
-            <a href="index.html" class="brand">Hațeg Alternativ</a>
-            <nav class="main-nav">
-                <a href="index.html" data-i18n="nav_home">Acasă</a>
-                <a href="pensiuni.html" class="active-link" data-i18n="nav_pensiuni">Pensiuni</a>
-                <a href="rezervare.html" data-i18n="nav_rezervare">Rezervare</a>
-            </nav>
+
+<div class="test-banner">VARIANTĂ DEMO ACTIVĂ</div>
+
+<header class="site-header">
+    <div class="container nav-wrap">
+        <a href="index.html" class="brand">
+            <span data-i18n="nav_brand">Hațeg Alternativ</span>
+        </a>
+
+        <nav class="main-nav">
+            <a href="index.html" data-i18n="nav_home">Acasă</a>
+            <a href="pensiuni.html" class="active-link" data-i18n="nav_pensiuni">Pensiuni</a>
+            <a href="retreat.html" data-i18n="nav_retreat">Retreat Metanoia</a>
+            <a href="experiente.html" data-i18n="nav_experiente">Experiențe</a>
+            <a href="rezervare.html" data-i18n="nav_rezervare">Rezervare</a>
+        </nav>
+
+        <div class="lang-switcher">
+            <button onclick="changeLanguage('ro')" class="lang-btn">RO</button>
+            <button onclick="changeLanguage('en')" class="lang-btn">EN</button>
+            <button onclick="changeLanguage('de')" class="lang-btn">DE</button>
         </div>
+    </div>
+</header>
+
+<main class="container" style="padding: 60px 0;">
+    <header style="text-align: center; margin-bottom: 60px;">
+        <h2 class="metanoia-title" style="font-size: 3rem;" data-i18n="pensiuni_title">Locuri unde timpul stă în loc</h2>
+        <p style="color: var(--muted);" data-i18n="pensiuni_subtitle">Alege refugiul care ți se potrivește în Țara Hațegului.</p>
     </header>
-    <main class="container" style="padding: 60px 0;">
-        <h2 class="metanoia-title" style="text-align: center; margin-bottom: 40px;">Locuri de vis</h2>
-        <div class="stay-list">
-            <div class="stay-card">
-                <div class="stay-image-wrap"><img src="images/la-buliga-pensiune.jpg" class="stay-image"></div>
-                <div class="stay-content">
-                    <h3 class="metanoia-title">Domeniile La Buligă</h3>
-                    <p>Liniște absolută la 1100m altitudine.</p>
-                    <a href="pensiune-buliga.html" class="btn btn-forest">Detalii</a>
-                </div>
+
+    <div class="stay-list">
+        <div class="stay-card">
+            <div class="stay-image-wrap">
+                <img src="images/la-buliga-pensiune.jpg" alt="La Buliga" class="stay-image">
             </div>
-            <div class="stay-card">
-                <div class="stay-image-wrap"><img src="images/selava-pensiune.jpg" class="stay-image"></div>
-                <div class="stay-content">
-                    <h3 class="metanoia-title">SELAva</h3>
-                    <p>Design modern și experiență culinară.</p>
-                    <a href="pensiune-selava.html" class="btn btn-forest">Detalii</a>
-                </div>
+            <div class="stay-content">
+                <span class="badge-forest">Munte & Liniște</span>
+                <h3 class="metanoia-title" style="font-size: 2rem;">Domeniile La Buligă</h3>
+                <p data-i18n="buliga_desc">O oază de liniște la 1100m altitudine, unde tradiția întâlnește confortul absolut.</p>
+                <div class="price-tag-large">280 RON <small>/ noapte</small></div>
+                <a href="pensiune-buliga.html" class="btn btn-forest" data-i18n="btn_details">Vezi Detalii</a>
             </div>
         </div>
-    </main>
-    <script src="js/translations.js"></script>
+
+        <div class="stay-card">
+            <div class="stay-image-wrap">
+                <img src="images/selava-pensiune.jpg" alt="SELAva" class="stay-image">
+            </div>
+            <div class="stay-content">
+                <span class="badge-forest" style="background: #2c3e50;">Design & Gastronomie</span>
+                <h3 class="metanoia-title" style="font-size: 2rem;">SELAva</h3>
+                <p data-i18n="selava_desc">Experiență culinară de excepție și un design modern integrat perfect în natură.</p>
+                <div class="price-tag-large">350 RON <small>/ noapte</small></div>
+                <a href="pensiune-selava.html" class="btn btn-forest" data-i18n="btn_details">Vezi Detalii</a>
+            </div>
+        </div>
+
+        <div class="stay-card">
+            <div class="stay-image-wrap">
+                <img src="images/natalia-pensiune.jpg" alt="Natalia" class="stay-image">
+            </div>
+            <div class="stay-content">
+                <span class="badge-forest" style="background: #718355;">Tradiție & Căldură</span>
+                <h3 class="metanoia-title" style="font-size: 2rem;">Pensiunea Natalia</h3>
+                <p data-i18n="natalia_desc">Simte căldura unei familii autentice și gustul bucatelor de altădată.</p>
+                <div class="price-tag-large">220 RON <small>/ noapte</small></div>
+                <a href="pensiune-natalia.html" class="btn btn-forest" data-i18n="btn_details">Vezi Detalii</a>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script src="js/translations.js"></script>
+
 </body>
 </html>
