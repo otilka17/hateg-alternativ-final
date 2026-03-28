@@ -1,144 +1,67 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hațeg Alternativ | Signature Premises Collection</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hațeg Alternativ | Simte tăcerea</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ACEST COD REPARĂ TOTUL INSTANT */
+        :root { --verde: #1b3022; --auriu: #c5a059; --roz-crem: #fdf2f0; --alb: #ffffff; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--roz-crem); color: var(--verde); line-height: 1.6; }
+        
+        /* Header curat, nu listă albastră */
+        .site-header { background: var(--alb); padding: 25px 0; border-bottom: 1px solid rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        .nav-wrap { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        .brand { text-decoration: none; color: var(--verde); font-weight: 700; font-size: 1.2rem; letter-spacing: 2px; font-family: 'Playfair Display'; }
+        .main-nav a { text-decoration: none; color: #444; font-size: 0.8rem; margin-left: 25px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Muntele superb, nu banda aia gri */
+        .hero-image { 
+            height: 65vh; 
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.1)), 
+                        url('https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/hero-camp-munti.jpg') center/cover no-repeat;
+        }
+
+        /* Panelul alb "Metanoia" */
+        .main-panel { 
+            transform: translateY(-80px); 
+            background: var(--alb); 
+            padding: 80px 40px; 
+            max-width: 900px; 
+            margin: 0 auto; 
+            box-shadow: 0 40px 100px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        .kicker { color: var(--auriu); letter-spacing: 5px; font-size: 0.7rem; font-weight: 800; display: block; margin-bottom: 20px; text-transform: uppercase; }
+        .metanoia-title { font-family: 'Playfair Display'; font-size: clamp(2.5rem, 6vw, 4rem); margin-bottom: 30px; line-height: 1.1; font-style: italic; }
+    </style>
 </head>
 <body>
 
-<script type="text/javascript">
-var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-(function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/65e8a7359131ed19d9774d6c/1hocr0o7f';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
-})();
-</script>
-
 <header class="site-header">
-    <div class="container nav-wrap">
-        <a href="index.html" class="brand">
-            <span style="font-weight: 300;">HAȚEG</span> ALTERNATIV
-        </a>
+    <div class="nav-wrap">
+        <a href="index.html" class="brand">HAȚEG <strong>ALTERNATIV</strong></a>
         <nav class="main-nav">
             <a href="pensiuni.html">Pensiuni</a>
             <a href="retreat.html">Retreat</a>
             <a href="gastronomic.html">Gastronomic</a>
+            <a href="contact.html">Contact</a>
         </nav>
-        <a href="mailto:otilia.ioana96@gmail.com" class="btn btn-gold header-btn" style="padding: 10px 20px; font-size: 0.7rem; text-decoration: none;">CONTACT</a>
     </div>
 </header>
 
-<section class="hero-premium" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('images/hero-premium.jpg') center/cover;">
-    <div class="container">
-        <h1 class="metanoia-title hero-main">Simte tăcerea.</h1>
-        <p>O selecție exclusivă de refugii și puncte gastronomice curate în inima Transilvaniei.</p>
-        <a href="pensiuni.html" class="btn btn-gold" style="padding: 18px 45px; font-size: 0.8rem;">EXPLOREAZĂ COLECȚIA</a>
+<section class="hero-image"></section>
+
+<main class="container">
+    <div class="main-panel">
+        <span class="kicker">The Metanoia Concept</span>
+        <h1 class="metanoia-title">Nu e doar o cazare. <br>E o regăsire.</h1>
+        <p style="font-weight: 300; font-size: 1.1rem; color: #64748b;">Am căutat și curatoriat locuri unde arhitectura se pleacă în fața naturii și unde liniștea este cel mai mare lux.</p>
     </div>
-</section>
-
-<section style="padding: 120px 0; background: #fff; text-align: center;">
-    <div class="container" style="max-width: 800px;">
-        <span style="color: var(--gold); font-weight: 800; letter-spacing: 5px; font-size: 0.7rem; text-transform: uppercase;">The Metanoia Concept</span>
-        <h2 class="metanoia-title" style="font-size: clamp(2rem, 4vw, 3.5rem); margin: 20px 0; line-height: 1.2;">Nu e doar o cazare. <br>E o regăsire.</h2>
-        <p style="font-size: 1.1rem; color: var(--text-light); font-weight: 300; line-height: 2;">
-            Am căutat și curatoriat locuri unde arhitectura se pleacă în fața naturii și unde liniștea este cel mai mare lux. O experiență de slow living veritabilă.
-        </p>
-    </div>
-</section>
-
-<section style="padding-bottom: 120px; background: #fff;">
-    <div class="container">
-        <div class="card-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px;">
-            <div class="card-preview">
-                <div class="card-image"><img src="images/selava-pensiune.jpg" alt="SelAva"></div>
-                <div class="card-info">
-                    <h3 class="metanoia-title" style="font-size: 1.8rem;">SelAva Estate</h3>
-                    <p style="font-size: 0.9rem; color: var(--text-light); margin: 5px 0 20px;">Design minimalist & Fine Dining.</p>
-                    <a href="pensiuni.html" style="color: var(--forest); font-weight: 800; font-size: 0.7rem; letter-spacing: 2px; border-bottom: 1px solid var(--gold);">DESCOPERĂ</a>
-                </div>
-            </div>
-            <div class="card-preview">
-                <div class="card-image"><img src="images/la-buliga-pensiune.jpg" alt="Buliga"></div>
-                <div class="card-info">
-                    <h3 class="metanoia-title" style="font-size: 1.8rem;">Domeniile La Buligă</h3>
-                    <p style="font-size: 0.9rem; color: var(--text-light); margin: 5px 0 20px;">Izolare totală deasupra norilor.</p>
-                    <a href="pensiuni.html" style="color: var(--forest); font-weight: 800; font-size: 0.7rem; letter-spacing: 2px; border-bottom: 1px solid var(--gold);">DESCOPERĂ</a>
-                </div>
-            </div>
-            <div class="card-preview">
-                <div class="card-image"><img src="images/natalia-pensiune.jpg" alt="Natalia"></div>
-                <div class="card-info">
-                    <h3 class="metanoia-title" style="font-size: 1.8rem;">Pensiunea Natalia</h3>
-                    <p style="font-size: 0.9rem; color: var(--text-light); margin: 5px 0 20px;">Ospitalitate & Tradiție locală.</p>
-                    <a href="pensiuni.html" style="color: var(--forest); font-weight: 800; font-size: 0.7rem; letter-spacing: 2px; border-bottom: 1px solid var(--gold);">DESCOPERĂ</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="join" class="container" style="margin: 0 auto 120px;">
-    <div class="membership-card">
-        <div style="flex: 1; z-index: 2;">
-            <span style="color: var(--gold); font-weight: 800; letter-spacing: 3px; font-size: 0.7rem;">THE COMMUNITY</span>
-            <h2 class="metanoia-title" style="font-size: 3rem; color: var(--white); margin: 15px 0 20px;">Devino membru.</h2>
-            <p style="margin-bottom: 40px; opacity: 0.8; font-weight: 300;">Acces prioritar la retreat-uri și cinele noastre secrete organizate de Metanoia Gastro.</p>
-            <form id="membership-form" style="display: flex; gap: 15px;">
-                <input type="email" id="member-email" placeholder="Email-ul tău" required>
-                <button type="submit">ÎNSCRIE-TE</button>
-            </form>
-            <div id="form-msg" style="margin-top: 20px; color: var(--gold); font-weight: 600; font-size: 0.9rem;"></div>
-        </div>
-        <div style="flex: 0.7; z-index: 2;">
-            <img src="images/membership-key.png" alt="VIP Key" style="width: 100%; border-radius: 15px; filter: drop-shadow(0 20px 30px rgba(0,0,0,0.5));">
-        </div>
-    </div>
-</section>
-
-<a href="https://wa.me/40749229686?text=Bună%20ziua!%20Doresc%20să%20solicit%20o%20ofertă." class="whatsapp-float" target="_blank">Chat WhatsApp</a>
-
-<footer>
-    <p>© 2026 Hațeg Alternativ — Signature premises COLLECTION</p>
-</footer>
-
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-<script type="text/javascript">
-    (function() { emailjs.init("KfAXAcZDiuFeeFZzj"); })(); // Public Key
-    document.getElementById('membership-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const btn = this.querySelector('button');
-        const emailInput = document.getElementById('member-email');
-        const msg = document.getElementById('form-msg');
-        btn.innerText = "TRIMITERE...";
-        btn.disabled = true;
-        
-        // Parametrii pentru template-ul EmailJS optimizat (care trimite către {{to_email}})
-        const templateParams = {
-            to_email: emailInput.value, // Adresa clientului (se înlocuiește în To Email din Template)
-            from_name: "Hațeg Alternativ",
-            reply_to: "otilia.ioana96@gmail.com", // Adresa ta de admin
-            message: "Bine ai venit în comunitatea noastră premium! Vei primi în curând primele detalii despre retreat-urile și cinele secrete din Țara Hațegului."
-        };
-        
-        emailjs.send("service_iqnbicr", "template_0j0ygug", templateParams)
-            .then(function() {
-                msg.innerHTML = "✨ Bun venit în comunitate!";
-                emailInput.value = "";
-                btn.style.display = "none";
-            }, function() {
-                msg.innerHTML = "Eroare la trimitere. Te rugăm să încerci mai târziu.";
-                btn.disabled = false;
-                btn.innerText = "ÎNSCRIE-TE";
-            });
-    });
-</script>
+</main>
 
 </body>
 </html>
