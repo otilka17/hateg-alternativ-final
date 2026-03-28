@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Retreat Metanoia | Hațeg Alternativ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css" />
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){ emailjs.init("KfAXAcZDiuFeeFZzj"); })();
+    </script>
+</head>
+<body>
+
+<div id="success-overlay">
+    <div class="success-card">
+        <h2 class="metanoia-title">Locul tău a fost solicitat!</h2>
+        <p>Te vom contacta în maxim 24h pentru a pune la punct detaliile sejurului tău.</p>
+        <button onclick="closeSuccess()" class="btn btn-forest">Închide</button>
+    </div>
+</div>
+
+<header class="site-header">
+    <div class="container nav-wrap">
+        <a href="index.html" class="brand">METANOIA</a>
+        <nav class="main-nav">
+            <a href="index.html">Acasă</a>
+            <a href="pensiuni.html">Pensiuni</a>
+            <a href="retreat.html" class="active-link">Retreat</a>
+        </nav>
+        <div class="lang-switcher">
+            <button onclick="changeLanguage('ro')" class="lang-btn">RO</button>
+            <button onclick="changeLanguage('en')" class="lang-btn">EN</button>
+            <button onclick="changeLanguage('de')" class="lang-btn">DE</button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="hero-small" style="background: linear-gradient(rgba(27, 48, 34, 0.7), rgba(27, 48, 34, 0.8)), url('images/hero-lac.jpg') center/cover;">
+        <div class="container">
+            <h1 class="metanoia-title" style="color: white; font-size: 3.5rem;">Alege-ți calea spre Metanoia</h1>
+            <p style="color: rgba(255,255,255,0.9); font-size: 1.2rem; max-width: 600px; margin: 20px auto;">
+                Trei moduri diferite de a experimenta liniștea, gustul și natura în Munții Poiana Ruscă.
+            </p>
+        </div>
+    </section>
+
+    <section class="container" style="padding: 80px 0;">
+        <div class="stay-list">
+            
+            <article class="stay-card featured-forest">
+                <div class="stay-image-wrap">
+                    <img src="images/hero-camp-munti.jpg" class="stay-image" alt="Retreat Liniște">
+                </div>
+                <div class="stay-content">
+                    <span class="badge-forest">Digital Detox</span>
+                    <h2 class="metanoia-title">Retreat de Liniște & Reconectare</h2>
+                    <p>Un weekend dedicat exclusiv introspecției. Fără telefoane, doar sunetul pădurii și cărți alese.</p>
+                    <ul class="forest-list" style="margin: 20px 0;">
+                        <li>✓ 2 nopți cazare premium</li>
+                        <li>✓ Toate mesele incluse (Slow Food)</li>
+                        <li>✓ Ghid de meditație și jurnal personal</li>
+                    </ul>
+                    <div class="price-tag-large">850 lei <small>/ persoană</small></div>
+                    <button onclick="selectRetreat('Retreat Liniște')" class="btn btn-forest">Selectează acest pachet</button>
+                </div>
+            </article>
+
+            <article class="stay-card">
+                <div class="stay-image-wrap">
+                    <img src="images/gast-masa-traditionala.jpg" class="stay-image" alt="Retreat Gastronomic">
+                </div>
+                <div class="stay-content">
+                    <span class="badge-forest" style="background: #718355;">Gourmet Rural</span>
+                    <h2 class="metanoia-title">Expediție Gastronomică</h2>
+                    <p>Învață secretele bucătăriei hațegane direct de la localnici și bucură-te de cine fine-dining la SELAva.</p>
+                    <ul class="forest-list" style="margin: 20px 0;">
+                        <li>✓ Atelier de gătit la stână</li>
+                        <li>✓ Cină de degustare 5 cursuri</li>
+                        <li>✓ Vizită la producători locali de brânzeturi</li>
+                    </ul>
+                    <div class="price-tag-large">1.200 lei <small>/ persoană</small></div>
+                    <button onclick="selectRetreat('Expediție Gastronomică')" class="btn btn-forest">Selectează acest pachet</button>
+                </div>
+            </article>
+
+            <article class="stay-card featured-forest">
+                <div class="stay-image-wrap">
+                    <img src="images/la-buliga-pensiune.jpg" class="stay-image" alt="Retreat de Grup">
+                </div>
+                <div class="stay-content">
+                    <span class="badge-forest">Grupuri & Corporate</span>
+                    <h2 class="metanoia-title">Metanoia Full House (Exclusiv)</h2>
+                    <p>Întreaga locație „La Buligă” doar pentru grupul tău. Intimitate totală la 1.100m altitudine.</p>
+                    <ul class="forest-list" style="margin: 20px 0;">
+                        <li>✓ 10 camere (până la 20 persoane)</li>
+                        <li>✓ Transfer 4x4 dedicat</li>
+                        <li>✓ Acces total la spațiul de retreat și bucătărie</li>
+                    </ul>
+                    <div class="price-tag-large">6.000 lei <small>/ noapte</small></div>
+                    <button onclick="selectRetreat('Metanoia Full House')" class="btn btn-forest">Solicită Rezervare Grup</button>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <section id="formular-booking" style="background: var(--m-mist); padding: 80px 0;">
+        <div class="container" style="max-width: 800px;">
+            <div class="metanoia-pricing-box" style="background: white; padding: 50px; border-radius: 30px; box-shadow: var(--shadow);">
+                <h2 class="metanoia-title" id="form-heading">Rezervă experiența</h2>
+                <p style="margin-bottom: 30px; color: var(--muted);">Completează datele și revenim cu confirmarea disponibilității.</p>
+                
+                <form id="retreatForm" class="form-grid" style="display: grid; gap: 20px;">
+                    <div class="field">
+                        <label>Pachetul ales</label>
+                        <select name="interest" id="retreat-select" required style="width: 100%; padding: 15px; border-radius: 12px; border: 1px solid var(--border);">
+                            <option value="">Alege tipul de retreat...</option>
+                            <option value="Retreat Liniște">Retreat de Liniște & Reconectare</option>
+                            <option value="Expediție Gastronomică">Expediție Gastronomică</option>
+                            <option value="Metanoia Full House">Metanoia Full House (Grup)</option>
+                        </select>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <input type="text" name="user_name" placeholder="Nume" required style="padding: 15px; border-radius: 12px; border: 1px solid var(--border);">
+                        <input type="email" name="user_email" placeholder="Email" required style="padding: 15px; border-radius: 12px; border: 1px solid var(--border);">
+                    </div>
+
+                    <textarea name="message" rows="4" placeholder="Detalii suplimentare (perioadă, număr persoane)..." style="width: 100%; padding: 15px; border-radius: 12px; border: 1px solid var(--border);"></textarea>
+                    
+                    <button type="submit" id="submitBtn" class="btn btn-forest" style="width: 100%; padding: 20px; font-size: 1.1rem;">Trimite Solicitarea Oficială</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script>
+    // Funcția care selectează pachetul și dă scroll la formular
+    function selectRetreat(pachet) {
+        document.getElementById('retreat-select').value = pachet;
+        document.getElementById('formular-booking').scrollIntoView({ behavior: 'smooth' });
+        // Mic efect vizual pe titlul formularului
+        document.getElementById('form-heading').innerText = "Rezervă: " + pachet;
+    }
+
+    // Logica EmailJS
+    document.getElementById('retreatForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const btn = document.getElementById('submitBtn');
+        btn.innerText = "Se trimite...";
+        btn.disabled = true;
+
+        emailjs.sendForm('service_iqnbicr', 'template_ilz806s', this)
+            .then(function() {
+                document.getElementById('success-overlay').style.display = 'flex';
+                setTimeout(() => { document.getElementById('success-overlay').style.opacity = '1'; }, 10);
+                document.getElementById('retreatForm').reset();
+                btn.innerText = "Trimite Solicitarea Oficială";
+                btn.disabled = false;
+            }, function(error) {
+                alert("Eroare la trimitere. Te rugăm să ne suni.");
+                btn.disabled = false;
+            });
+    });
+
+    function closeSuccess() {
+        const overlay = document.getElementById('success-overlay');
+        overlay.style.opacity = '0';
+        setTimeout(() => { overlay.style.display = 'none'; }, 500);
+    }
+</script>
+
+<script src="js/translations.js"></script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hațeg Alternativ | Metanoia Retreat</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<div class="test-banner">
+    <span data-i18n="test_version">Această platformă este în varianta Demo (optimizată prin testare live). Toate solicitările sunt preluate oficial.</span>
+</div>
+
+<header class="site-header">
+    <div class="container nav-wrap">
+        <a href="index.html" class="brand">
+            <img src="images/logo-hateg.png" alt="Logo" height="40">
+            <span data-i18n="nav_brand">HAȚEG ALTERNATIV</span>
+        </a>
+
+        <nav class="main-nav">
+            <a href="index.html" class="active-link" data-i18n="nav_home">Acasă</a>
+            <a href="pensiuni.html" data-i18n="nav_pensiuni">Pensiuni</a>
+            <a href="retreat.html" data-i18n="nav_retreat">Retreat Metanoia</a>
+            <a href="experiente.html" data-i18n="nav_experiente">Experiențe</a>
+            <a href="rezervare.html" data-i18n="nav_rezervare">Rezervare</a>
+        </nav>
+
+        <div class="lang-switcher">
+            <button onclick="changeLanguage('ro')" class="lang-btn">RO</button>
+            <button onclick="changeLanguage('en')" class="lang-btn">EN</button>
+            <button onclick="changeLanguage('de')" class="lang-btn">DE</button>
+        </div>
+    </div>
+</header>
+
+<section class="hero" style="background: linear-gradient(rgba(27, 48, 34, 0.6), rgba(27, 48, 34, 0.7)), url('images/hero-lac.jpg') center/cover no-repeat;">
+    <div class="container">
+        <div class="hero-content">
+            <span class="eyebrow" data-i18n="hero_eyebrow">Țara Hațegului • Retezat • Vadu Dobrii</span>
+            <h1 class="metanoia-title" style="color: white; font-size: clamp(2.5rem, 6vw, 4.5rem);" data-i18n="hero_title">Nu intri pe un simplu site turistic. <br>Intri într-un tărâm de basm.</h1>
+            <p style="color: rgba(255,255,255,0.9); font-size: 1.2rem; margin-bottom: 30px;" data-i18n="hero_desc">
+                Hațeg Alternativ adună cazare, experiențe autentice și liniște absolută într-o platformă construită pentru cei care caută sens și adevăr.
+            </p>
+
+            <div class="hero-actions">
+                <a href="rezervare.html" class="btn btn-light" data-i18n="btn_stay">Construiește-ți sejurul</a>
+                <a href="retreat.html" class="btn btn-outline-forest" style="border-color: white; color: white;" data-i18n="btn_retreat">Descoperă Metanoia</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="js/translations.js"></script>
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/69c4e8536b5f551c3914e408/default';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+</script>
+    <script src="js/translations.js"></script>
+</body>
+</html>

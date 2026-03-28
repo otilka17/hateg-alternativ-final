@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forum</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+<div class="container nav-wrap">
+<a href="index.html" class="brand">
+<img src="images/logo-hateg.png">
+<span>Hațeg Alternativ</span>
+</a>
+
+<nav class="main-nav">
+<a href="index.html">Acasă</a>
+<a href="forum.html" class="active-link">Forum</a>
+<a href="rezervare.html">Rezervare</a>
+</nav>
+</div>
+</header>
+
+<section>
+<div class="container">
+
+<h1>Forum comunitate</h1>
+
+<textarea id="mesajForum" placeholder="Scrie ceva..." style="width:100%;height:100px;"></textarea>
+<button onclick="posteaza()">Postează</button>
+
+<div id="lista"></div>
+
+</div>
+</section>
+
+<script>
+function posteaza(){
+const msg=document.getElementById("mesajForum").value;
+if(!msg) return;
+
+const div=document.createElement("div");
+div.style.marginTop="10px";
+div.style.padding="10px";
+div.style.background="#fff";
+div.innerText=msg;
+
+document.getElementById("lista").prepend(div);
+document.getElementById("mesajForum").value="";
+}
+</script>
+
+</body>
+</html>

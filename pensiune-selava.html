@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SELAva | Hațeg Alternativ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){ emailjs.init("KfAXAcZDiuFeeFZzj"); })();
+    </script>
+</head>
+<body style="background: var(--bg);">
+
+<div id="success-overlay">
+    <div class="success-card">
+        <h2 class="metanoia-title" data-i18n="success_title">Solicitarea a fost trimisă!</h2>
+        <p data-i18n="success_desc">Pregătim o masă de neuitat și un somn odihnitor pentru tine.</p>
+        <button onclick="closeSuccess()" class="btn btn-forest" data-i18n="btn_close">Închide</button>
+    </div>
+</div>
+
+<header class="site-header">
+    <div class="container nav-wrap">
+        <a href="index.html" class="brand">HAȚEG ALTERNATIV</a>
+        <nav class="main-nav">
+            <a href="index.html" data-i18n="nav_home">Acasă</a>
+            <a href="pensiuni.html" data-i18n="nav_pensiuni">Pensiuni</a>
+            <a href="experiente.html" data-i18n="nav_experiente">Experiențe</a>
+        </nav>
+        <div class="lang-switcher">
+            <button onclick="changeLanguage('ro')" class="lang-btn">RO</button>
+            <button onclick="changeLanguage('en')" class="lang-btn">EN</button>
+            <button onclick="changeLanguage('de')" class="lang-btn">DE</button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="hero-small" style="background: linear-gradient(rgba(27, 48, 34, 0.4), rgba(27, 48, 34, 0.6)), url('images/selava-pensiune.jpg') center/cover;">
+        <div class="container">
+            <span class="badge-forest" style="background: var(--primary); color: white;">Premium Gastronomic • Hațeg</span>
+            <h1 class="metanoia-title" style="color: white; font-size: clamp(2.5rem, 6vw, 4rem);">SELAva</h1>
+        </div>
+    </section>
+
+    <section class="container" style="padding: 60px 0;">
+        <div class="booking-grid">
+            
+            <div class="stay-details">
+                <h2 class="metanoia-title" style="margin-bottom: 20px;">Rafinament și Gust Autentic</h2>
+                <p style="font-size: 1.15rem; line-height: 1.8; color: var(--muted); margin-bottom: 30px;">
+                    SELAva redefinește ospitalitatea în Țara Hațegului printr-un concept ce îmbină designul minimalist cu o bucătărie de înaltă clasă. Este locul ideal pentru călătorul modern care caută o experiență senzorială completă, de la confortul premium al camerelor până la aromele surprinzătoare din farfurie.
+                </p>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 40px;">
+                    <img src="images/gast-masa-traditionala.jpg" style="width:100%; border-radius: 15px; height: 250px; object-fit: cover;" alt="Dining">
+                    <img src="images/hero-lac.jpg" style="width:100%; border-radius: 15px; height: 250px; object-fit: cover;" alt="Ambient">
+                </div>
+
+                <div class="features-list">
+                    <h3 class="metanoia-title" style="font-size: 1.5rem; margin-bottom: 20px;">Puncte forte:</h3>
+                    <ul class="forest-list">
+                        <li>🍽️ Restaurant Fine-Dining cu ingrediente locale</li>
+                        <li>🛏️ Camere elegante cu finisaje naturale</li>
+                        <li>🍷 Selecție curatoriată de vinuri românești</li>
+                        <li>🌿 Terasă exterioară pentru seri relaxate</li>
+                    </ul>
+                </div>
+            </div>
+
+            <aside class="booking-form-panel" style="position: sticky; top: 100px;">
+                <h3 class="metanoia-title" style="margin-bottom: 10px;" data-i18n="res_title">Rezervă o Experiență</h3>
+                <div class="price-tag-large" style="margin-bottom: 25px; color: var(--primary);">de la 450 lei <small>/ noapte</small></div>
+                
+                <form id="selavaForm" class="form-grid-complex" style="grid-template-columns: 1fr;">
+                    <input type="hidden" name="interest" value="Rezervare SELAva">
+                    
+                    <div class="field">
+                        <label data-i18n="label_name">Nume</label>
+                        <input type="text" name="user_name" required>
+                    </div>
+                    
+                    <div class="field">
+                        <label data-i18n="label_email">Email</label>
+                        <input type="email" name="user_email" required>
+                    </div>
+
+                    <div class="field">
+                        <label data-i18n="label_people">Persoane</label>
+                        <input type="number" name="people_count" value="2" min="1">
+                    </div>
+
+                    <div class="field">
+                        <label data-i18n="label_message">Detalii (Dată, Masă/Cazare)</label>
+                        <textarea name="message" rows="3" placeholder="Ex: Rezervare masă pentru 4 persoane, ora 19:00..."></textarea>
+                    </div>
+
+                    <button type="submit" id="submitBtn" class="btn btn-forest" style="width: 100%; padding: 18px;">Trimite Solicitarea</button>
+                </form>
+            </aside>
+
+        </div>
+    </section>
+</main>
+
+<script src="js/translations.js"></script>
+<script>
+    document.getElementById('selavaForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const btn = document.getElementById('submitBtn');
+        btn.innerText = "Se trimite...";
+        btn.disabled = true;
+
+        emailjs.sendForm('service_iqnbicr', 'template_ilz806s', this)
+            .then(function() {
+                document.getElementById('success-overlay').style.display = 'flex';
+                setTimeout(() => { document.getElementById('success-overlay').style.opacity = '1'; }, 10);
+                document.getElementById('selavaForm').reset();
+                btn.innerText = "Trimite Solicitarea";
+                btn.disabled = false;
+            }, function() {
+                alert("Eroare la trimitere.");
+                btn.innerText = "Trimite Solicitarea";
+                btn.disabled = false;
+            });
+    });
+
+    function closeSuccess() {
+        const overlay = document.getElementById('success-overlay');
+        overlay.style.opacity = '0';
+        setTimeout(() => { overlay.style.display = 'none'; }, 500);
+    }
+</script>
+</body>
+</html>

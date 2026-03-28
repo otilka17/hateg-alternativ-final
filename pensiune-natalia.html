@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pensiunea Natalia | Hațeg Alternativ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){ emailjs.init("KfAXAcZDiuFeeFZzj"); })();
+    </script>
+</head>
+<body style="background: var(--bg);">
+
+<div id="success-overlay">
+    <div class="success-card">
+        <h2 class="metanoia-title" data-i18n="success_title">Solicitarea a fost trimisă!</h2>
+        <p data-i18n="success_desc">Te vom contacta în curând pentru a-ți confirma disponibilitatea.</p>
+        <button onclick="closeSuccess()" class="btn btn-forest" data-i18n="btn_close">Închide</button>
+    </div>
+</div>
+
+<header class="site-header">
+    <div class="container nav-wrap">
+        <a href="index.html" class="brand">HAȚEG ALTERNATIV</a>
+        <nav class="main-nav">
+            <a href="index.html" data-i18n="nav_home">Acasă</a>
+            <a href="pensiuni.html" data-i18n="nav_pensiuni">Pensiuni</a>
+            <a href="experiente.html" data-i18n="nav_experiente">Experiențe</a>
+        </nav>
+        <div class="lang-switcher">
+            <button onclick="changeLanguage('ro')" class="lang-btn">RO</button>
+            <button onclick="changeLanguage('en')" class="lang-btn">EN</button>
+            <button onclick="changeLanguage('de')" class="lang-btn">DE</button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="hero-small" style="background: linear-gradient(rgba(27, 48, 34, 0.4), rgba(27, 48, 34, 0.6)), url('images/natalia-pensiune.jpg') center/cover;">
+        <div class="container">
+            <span class="badge-forest" style="background: #34495e; color: white;">Confort & Acces • Totești</span>
+            <h1 class="metanoia-title" style="color: white; font-size: clamp(2.5rem, 6vw, 4rem);">Pensiunea Natalia</h1>
+        </div>
+    </section>

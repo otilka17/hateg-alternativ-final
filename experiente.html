@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Experiențe | Hațeg Alternativ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<div class="test-banner">
+    <span data-i18n="test_version">Această platformă este în varianta Demo (optimizată prin testare live). Toate solicitările sunt preluate oficial.</span>
+</div>
+
+<header class="site-header">
+    <div class="container nav-wrap">
+        <a href="index.html" class="brand">
+            <img src="images/logo-hateg.png" alt="Logo" height="40">
+            <span>HAȚEG ALTERNATIV</span>
+        </a>
+
+        <nav class="main-nav">
+            <a href="index.html" data-i18n="nav_home">Acasă</a>
+            <a href="pensiuni.html" data-i18n="nav_pensiuni">Pensiuni</a>
+            <a href="retreat.html" data-i18n="nav_retreat">Retreat Metanoia</a>
+            <a href="experiente.html" class="active-link" data-i18n="nav_experiente">Experiențe</a>
+            <a href="contact.html" data-i18n="nav_rezervare">Contact</a>
+        </nav>
+
+        <div class="lang-switcher">
+            <button onclick="changeLanguage('ro')" class="lang-btn">RO</button>
+            <button onclick="changeLanguage('en')" class="lang-btn">EN</button>
+            <button onclick="changeLanguage('de')" class="lang-btn">DE</button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="hero-small" style="background: linear-gradient(rgba(27, 48, 34, 0.7), rgba(27, 48, 34, 0.8)), url('images/hero-camp-munti.jpg') center/cover;">
+        <div class="container">
+            <h1 class="metanoia-title" style="color: white; font-size: 3rem;" data-i18n="exp_hero_title">Trăiește Hațegul Autentic</h1>
+        </div>
+    </section>
+
+    <section class="container" style="padding: 80px 0;">
+        <div class="stay-list">
+            
+            <article class="stay-card">
+                <div class="stay-image-wrap">
+                    <img src="images/exp-stana.jpg" class="stay-image" alt="Vizită la stână">
+                </div>
+                <div class="stay-content">
+                    <span class="badge-forest" data-i18n="exp_tag_tradition">Tradiție Vie</span>
+                    <h2 class="metanoia-title" data-i18n="exp_title_stana">O zi la stâna din munte</h2>
+                    <p data-i18n="exp_desc_stana">Descoperă viața aspră dar frumoasă a ciobanilor. Participă la mulsul oilor și gustă balmoșul proaspăt făcut la ceaun.</p>
+                    <a href="contact.html?exp=stana" class="btn btn-forest" data-i18n="btn_reserve_exp">Solicită Experiența</a>
+                </div>
+            </article>
+
+            <article class="stay-card featured-forest">
+                <div class="stay-image-wrap">
+                    <img src="images/exp-biserica-ext.jpg" class="stay-image" alt="Tur Patrimoniu">
+                </div>
+                <div class="stay-content">
+                    <span class="badge-forest" data-i18n="exp_tag_history">Istorie & Patrimoniu</span>
+                    <h2 class="metanoia-title" data-i18n="exp_title_history">Turul Bisericilor de Piatră</h2>
+                    <p data-i18n="exp_desc_history">Vizitează Densuș, Sântămăria Orlea și cetatea Colț alături de un ghid local care cunoaște legendele ascunse ale locului.</p>
+                    <a href="contact.html?exp=history" class="btn btn-forest" data-i18n="btn_reserve_exp">Solicită Experiența</a>
+                </div>
+            </article>
+
+            <article class="stay-card">
+                <div class="stay-image-wrap">
+                    <img src="images/gast-masa-traditionala.jpg" class="stay-image" alt="Gastronomie">
+                </div>
+                <div class="stay-content">
+                    <span class="badge-forest" data-i18n="exp_tag_gastronomy">Gastronomie Locală</span>
+                    <h2 class="metanoia-title" data-i18n="exp_title_food">Atelier de Gătit „Ca la noi”</h2>
+                    <p data-i18n="exp_desc_food">Învață să prepari plăcinte pădurenești sau virșli de Sălaș sub îndrumarea gospodinelor din sat.</p>
+                    <a href="contact.html?exp=food" class="btn btn-forest" data-i18n="btn_reserve_exp">Solicită Experiența</a>
+                </div>
+            </article>
+
+        </div>
+    </section>
+</main>
+
+<footer style="background: var(--primary); color: white; padding: 40px 0;">
+    <div class="container text-center">
+        <p>© 2026 Hațeg Alternativ | Experiențe Reale</p>
+    </div>
+</footer>
+
+<script src="js/translations.js"></script>
+</body>
+</html>

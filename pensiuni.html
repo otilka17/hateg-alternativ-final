@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pensiuni | Hațeg Alternativ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body style="background: var(--bg);">
+
+<div class="test-banner">
+    <span data-i18n="test_version">Această platformă este în varianta Demo (optimizată prin testare live). Toate solicitările de rezervare sunt preluate oficial.</span>
+</div>
+
+<header class="site-header">
+    <div class="container nav-wrap">
+        <a href="index.html" class="brand">
+            <img src="images/logo-hateg.png" alt="Logo" height="40">
+            <span data-i18n="nav_brand">HAȚEG ALTERNATIV</span>
+        </a>
+
+        <nav class="main-nav">
+            <a href="index.html" data-i18n="nav_home">Acasă</a>
+            <a href="pensiuni.html" class="active-link" data-i18n="nav_pensiuni">Pensiuni</a>
+            <a href="retreat.html" data-i18n="nav_retreat">Retreat Metanoia</a>
+            <a href="experiente.html" data-i18n="nav_experiente">Experiențe</a>
+            <a href="rezervare.html" data-i18n="nav_rezervare">Rezervare</a>
+        </nav>
+
+        <div class="lang-switcher">
+            <button onclick="changeLanguage('ro')" class="lang-btn">RO</button>
+            <button onclick="changeLanguage('en')" class="lang-btn">EN</button>
+            <button onclick="changeLanguage('de')" class="lang-btn">DE</button>
+        </div>
+    </div>
+</header>
+
+<main>
+    <section class="hero-small" style="background: linear-gradient(rgba(27, 48, 34, 0.6), rgba(27, 48, 34, 0.7)), url('images/hero-lac.jpg') center/cover;">
+        <div class="container">
+            <h1 class="metanoia-title" style="color: white; font-size: 3.5rem;" data-i18n="nav_pensiuni">Pensiuni & Stays</h1>
+        </div>
+    </section>
+
+    <section class="container" style="padding: 80px 0;">
+        <div class="stay-list" style="display: grid; gap: 50px;">
+            
+            <article class="stay-card">
+                <div class="stay-image-wrap">
+                    <img src="images/la-buliga-pensiune.jpg" class="stay-image" alt="Domeniile La Buligă">
+                </div>
+                <div class="stay-content">
+                    <span class="badge-forest">Vadu Dobrii • 1100m</span>
+                    <h2 class="metanoia-title">Domeniile La Buligă</h2>
+                    <p>Izolare nobilă și liniște absolută deasupra norilor. Ideal pentru retreat-uri de grup și deconectare totală în Munții Poiana Ruscă.</p>
+                    <div class="price-tag-large">de la 6.000 lei <small>/ noapte (Integral)</small></div>
+                    <div class="stay-actions">
+                        <a href="pensiune-buliga.html" class="btn btn-forest" data-i18n="btn_check">VEZI DETALII & REZERVĂ</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="stay-card featured-forest">
+                <div class="stay-image-wrap">
+                    <img src="images/selava-pensiune.jpg" class="stay-image" alt="SELAva">
+                </div>
+                <div class="stay-content">
+                    <span class="badge-forest">Premium Gastronomic • Hațeg</span>
+                    <h2 class="metanoia-title">SELAva</h2>
+                    <p>Rafinament modern și experiențe culinare de tip fine-dining, într-un decor minimalist, în inima Țării Hațegului.</p>
+                    <div class="price-tag-large">de la 450 lei <small>/ noapte</small></div>
+                    <div class="stay-actions">
+                        <a href="pensiune-selava.html" class="btn btn-forest" data-i18n="btn_check">VEZI DETALII & REZERVĂ</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="stay-card">
+                <div class="stay-image-wrap">
+                    <img src="images/natalia-pensiune.jpg" class="stay-image" alt="Pensiunea Natalia">
+                </div>
+                <div class="stay-content">
+                    <span class="badge-forest" style="background: #34495e;">Confort & Acces • Totești</span>
+                    <h2 class="metanoia-title">Pensiunea Natalia</h2>
+                    <p>Ospitalitate caldă de familie și baza perfectă pentru a explora Parcul Național Retezat și Biserica Densuș.</p>
+                    <div class="price-tag-large">de la 300 lei <small>/ noapte</small></div>
+                    <div class="stay-actions">
+                        <a href="pensiune-natalia.html" class="btn btn-forest" data-i18n="btn_check">VEZI DETALII & REZERVĂ</a>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+    </section>
+</main>
+
+<footer style="background: var(--primary); color: white; padding: 60px 0 30px; margin-top: 40px;">
+    <div class="container text-center">
+        <img src="images/logo-hateg.png" alt="Logo" height="40" style="margin-bottom: 20px; filter: brightness(0) invert(1);">
+        <p style="opacity: 0.6; font-size: 0.9rem;">© 2026 Hațeg Alternativ | Descoperă autenticul.</p>
+    </div>
+</footer>
+
+<script src="js/translations.js"></script>
+</body>
+</html>

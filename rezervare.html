@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rezervare Completă | Hațeg Alternativ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("KfAXAcZDiuFeeFZzj"); 
+        })();
+    </script>
+</head>
+<body style="background: var(--bg);">
+
+<div id="success-overlay">
+    <div class="success-card">
+        <h2 class="metanoia-title" data-i18n="success_title">Solicitarea a fost trimisă!</h2>
+        <p data-i18n="success_desc">Revenim cu o ofertă personalizată în maxim 24 de ore.</p>
+        <button onclick="closeSuccess()" class="btn btn-forest" data-i18n="btn_close">Închide</button>
+    </div>
+</div>
+
+<div class="test-banner">
+    <span data-i18n="test_version">Această platformă este în varianta Demo. Toate rezervările sunt oficiale.</span>
+</div>
+
+<header class="site-header">
+    <div class="container nav-wrap">
+        <a href="index.html" class="brand">Hațeg Alternativ</a>
+        <nav class="main-nav">
+            <a href="index.html" data-i18n="nav_home">Acasă</a>
+            <a href="pensiuni.html" data-i18n="nav_pensiuni">Pensiuni</a>
+            <a href="experiente.html" data-i18n="nav_experiente">Experiențe</a>
+            <a href="rezervare.html" class="active-link" data-i18n="nav_rezervare">Rezervare</a>
+        </nav>
+        <div class="lang-switcher">
+            <button onclick="changeLanguage('ro')" class="lang-btn">RO</button>
+            <button onclick="changeLanguage('en')" class="lang-btn">EN</button>
+            <button onclick="changeLanguage('de')" class="lang-btn">DE</button>
+        </div>
+    </div>
+</header>
+
+<main class="container" style="padding: 60px 0;">
+    <div class="booking-grid">
+        
+        <div class="booking-form-panel">
+            <h1 class="metanoia-title" data-i18n="res_title">Solicită o Rezervare</h1>
+            <p style="margin-bottom: 30px; color: var(--muted);" data-i18n="res_desc">Completează detaliile sejurului tău ideal.</p>
+
+            <form id="complexBookingForm" class="form-grid-complex">
+                <div style="display:none;"><input type="text" id="honeypot" name="honeypot"></div>
+
+                <div class="field">
+                    <label data-i18n="label_name">Nume Complet</label>
+                    <input type="text" name="user_name" placeholder="Numele tău" required>
+                </div>
+
+                <div class="field">
+                    <label data-i18n="label_phone">Telefon</label>
+                    <input type="text" name="user_phone" placeholder="07xx xxx xxx">
+                </div>
+
+                <div class="field">
+                    <label data-i18n="label_email">Email</label>
+                    <input type="email" name="user_email" placeholder="adresa@email.com" required>
+                </div>
+
+                <div class="field">
+                    <label data-i18n="label_people">Număr persoane</label>
+                    <input type="number" name="people_count" min="1" value="2">
+                </div>
+
+                <div class="field">
+                    <label data-i18n="label_stay">Pensiune</label>
+                    <select name="pension_choice">
+                        <option value="Neselectat">Alege o pensiune...</option>
+                        <option value="Domeniile La Buligă">Domeniile La Buligă</option>
+                        <option value="SELAva">SELAva</option>
+                        <option value="Pensiunea Natalia">Pensiunea Natalia</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label data-i18n="label_package">Pachet special</label>
+                    <select name="package_choice">
+                        <option value="Neselectat">Alege un pachet...</option>
+                        <option value="Weekend în Hațeg">Weekend în Hațeg</option>
+                        <option value="Hațeg Autentic">Hațeg Autentic</option>
+                        <option value="Refugiu complet">Refugiu complet</option>

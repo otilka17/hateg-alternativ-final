@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gastronomic | Hațeg Alternativ</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a href="index.html" class="logo">
+        <img src="images/logo-hateg.png" alt="Logo Hațeg Alternativ" class="logo-img" />
+        <span class="logo-text">Hațeg Alternativ</span>
+      </a>
+
+      <nav class="main-nav">
+        <a href="index.html">Acasă</a>
+        <a href="pensiuni.html">Pensiuni</a>
+        <a href="experiente.html">Experiențe</a>
+        <a href="pachete.html">Pachete</a>
+        <a href="rezervare.html">Rezervare</a>
+        <a href="galerie.html">Galerie</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="decor-band"></div>
+
+  <main>
+    <section class="page-hero small-page-hero">
+      <div class="container">
+        <div class="section-head decorative-panel hero-centered">
+          <span class="eyebrow">Gastronomic</span>
+          <h1>Gusturi locale care completează firesc experiența locului</h1>
+          <p>
+            Gastronomia este una dintre cele mai autentice forme de a descoperi
+            Țara Hațegului: mese calde, produse locale și preparate care spun
+            povestea zonei prin gust.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt-bg">
+      <div class="container">
+        <div class="cards-grid three-cols">
+          <article class="card service-card decorative-panel">
+            <div class="service-icon">🍲</div>
+            <h3>Meniu tradițional</h3>
+            <p>
+              Preparate locale servite într-o atmosferă caldă, potrivite pentru
+              o experiență autentică și relaxată.
+            </p>
+          </article>
+
+          <article class="card service-card decorative-panel">
+            <div class="service-icon">🥖</div>
+            <h3>Produse locale</h3>
+            <p>
+              Ingrediente simple și gustoase, inspirate din ritmul și specificul
+              locului.
+            </p>
+          </article>
+
+          <article class="card service-card decorative-panel">
+            <div class="service-icon">🍷</div>
+            <h3>Momente memorabile</h3>
+            <p>
+              O masă bună poate deveni una dintre cele mai frumoase amintiri ale
+              sejurului tău.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="decor-band decor-band-light"></div>
+
+    <section class="section alt-bg">
+      <div class="container">
+        <div class="section-head decorative-panel hero-centered">
+          <span class="eyebrow">Meniu gastronomic</span>
+          <h1>Meniu local, gândit pe zile</h1>
+          <p>
+            Preparatele sunt inspirate din gusturile locului și pot varia în funcție de sezon,
+            disponibilitate și specificul fiecărei zile.
+          </p>
+        </div>
+
+        <div class="menu-premium-wrap decorative-panel">
+          <div class="menu-toolbar">
+            <div class="menu-toolbar-text">
+              <h2>Meniul zilei</h2>
+              <p>Alege ziua sau lasă sistemul să afișeze automat ziua curentă.</p>
+            </div>
+
+            <div class="menu-day-picker">
+              <label for="menuDaySelect">Ziua</label>
+              <select id="menuDaySelect">
+                <option value="">Azi</option>
+                <option value="luni">Luni</option>
+                <option value="marti">Marți</option>
+                <option value="miercuri">Miercuri</option>
+                <option value="joi">Joi</option>
+                <option value="vineri">Vineri</option>
+                <option value="sambata">Sâmbătă</option>
+                <option value="duminica">Duminică</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="menu-day-hero">
+            <div>
+              <span class="menu-day-label">Zi selectată</span>
+              <h3 id="menuDayTitle">Luni</h3>
+            </div>
+            <div class="menu-day-badge" id="menuDayBadge">Meniu local</div>
+          </div>
+
+          <div class="menu-premium-grid">
+            <article class="menu-premium-card">
+              <span class="menu-card-tag">Starter</span>
+              <h4>Aperitiv</h4>
+              <p id="menuStarter">Platou tradițional cu brânzeturi, mezeluri și zacuscă de casă.</p>
+            </article>
+
+            <article class="menu-premium-card">
+              <span class="menu-card-tag">Felul 1</span>
+              <h4>Supă / Ciorbă</h4>
+              <p id="menuFel1">Ciorbă țărănească de legume.</p>
+            </article>
+
+            <article class="menu-premium-card">
+              <span class="menu-card-tag">Felul 2</span>
+              <h4>Preparat principal</h4>
+              <p id="menuFel2">Pui la cuptor cu cartofi și salată de sezon.</p>
+            </article>
+
+            <article class="menu-premium-card">
+              <span class="menu-card-tag">Desert</span>
+              <h4>Dulce de casă</h4>
+              <p id="menuDesert">Clătite de casă cu dulceață.</p>
+            </article>
+          </div>
+
+          <div class="menu-extra-wrap">
+            <article class="menu-extra-card decorative-panel">
+              <h4>Preparate la cerere</h4>
+              <ul id="menuOnDemand" class="menu-extra-list">
+                <li>Balmoș</li>
+                <li>Bulz ciobănesc</li>
+                <li>Grătar tradițional</li>
+              </ul>
+            </article>
+
+            <article class="menu-extra-card decorative-panel">
+              <h4>Detalii utile</h4>
+              <ul class="menu-extra-list">
+                <li>Preparatele pot varia în funcție de sezon</li>
+                <li>Unele feluri se pregătesc doar la comandă</li>
+                <li>Meniul poate fi adaptat pentru grupuri</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="menu-cta-row">
+            <a href="rezervare.html?experienta=Experiență%20gastronomică" class="btn btn-primary">
+              Rezervă experiența
+            </a>
+            <a
+              href="https://wa.me/40749229686?text=Bun%C4%83%2C%20a%C8%99%20dori%20mai%20multe%20detalii%20despre%20experien%C8%9Ba%20gastronomic%C4%83."
+              class="btn btn-secondary"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Întreabă pe WhatsApp
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© Hațeg Alternativ</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
