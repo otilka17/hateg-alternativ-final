@@ -3,39 +3,73 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Retreat Metanoia | Hațeg Alternativ</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>Retreat Metanoia | Premium Experience</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css" />
+    <style>
+        .retreat-hero { height: 60vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white; margin-bottom: 80px; }
+        .pachet-premium {
+            text-align: center; padding: 100px 20px; border-bottom: 1px solid #eee;
+        }
+        .pachet-premium:last-child { border: none; }
+        .feature-box { display: flex; justify-content: center; gap: 50px; margin: 40px 0; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; }
+    </style>
 </head>
 <body>
-<div class="test-banner">VARIANTĂ DEMO ACTIVĂ</div>
+
 <header class="site-header">
     <div class="container nav-wrap">
-        <a href="index.html" class="brand">Hațeg Alternativ</a>
+        <a href="index.html" class="brand">
+            <span style="font-weight: 300; letter-spacing: 2px;">METANOIA</span>
+            <span style="font-weight: 800;">RETREAT</span>
+        </a>
         <nav class="main-nav">
             <a href="index.html">Acasă</a>
             <a href="pensiuni.html">Pensiuni</a>
-            <a href="retreat.html" class="active-link">Retreat Metanoia</a>
             <a href="rezervare.html">Rezervare</a>
         </nav>
     </div>
 </header>
 
-<main class="container" style="padding: 60px 0;">
-    <h2 class="metanoia-title" style="text-align: center; font-size: 3rem; margin-bottom: 40px;">Pachete Metanoia</h2>
-    <div class="stay-list">
-        <div class="stay-card">
-            <div class="stay-content" style="padding: 60px;">
-                <span class="badge-forest">Liniște & Meditație</span>
-                <h3 class="metanoia-title">Pachetul Gânduri Libere</h3>
-                <p>3 nopți de cazare, mic dejun local și acces la zona de meditație din pădure.</p>
-                <div class="price-tag-large">850 RON <small>/ persoană</small></div>
-                <a href="rezervare.html" class="btn btn-forest">Rezervă Pachetul</a>
-            </div>
-            <div class="stay-image-wrap"><img src="images/retreat-1.jpg" class="stay-image"></div>
-        </div>
+<section class="retreat-hero" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/hero-retreat.jpg') center/cover;">
+    <div class="container">
+        <h1 class="metanoia-title" style="color: white; font-size: 4rem;">Restart. Reconnect.</h1>
+        <p style="letter-spacing: 5px; text-transform: uppercase; font-size: 0.9rem;">Experiențe de transformare în Țara Hațegului</p>
     </div>
+</section>
+
+<main class="container">
+    <section class="pachet-premium">
+        <span class="serial-number">THE EXPERIENCE</span>
+        <h2 class="metanoia-title" style="font-size: 3.5rem;">Cina în Pădure</h2>
+        <p style="max-width: 700px; margin: 0 auto; font-weight: 300; line-height: 2;">
+            O masă lungă, lumânări, sunetul greierilor și un meniu creat exclusiv din ingrediente găsite în flora locală. 
+            Nu este doar o masă, este o comuniune.
+        </p>
+        <div class="feature-box">
+            <span>Gastronomie Vie</span>
+            <span>Max 10 Persoane</span>
+            <span>Sunetul Naturii</span>
+        </div>
+        <a href="rezervare.html?pachet=cina-padure" class="btn btn-gold">Rezervă un loc la masă</a>
+    </section>
+
+    <section class="pachet-premium">
+        <span class="serial-number">THE SPIRIT</span>
+        <h2 class="metanoia-title" style="font-size: 3.5rem;">Silent Retreat</h2>
+        <p style="max-width: 700px; margin: 0 auto; font-weight: 300; line-height: 2;">
+            48 de ore fără tehnologie. Doar tu, muntele și cărțile noastre curatoriate. 
+            Reînvață să asculți propriile gânduri în liniștea de la Domeniile La Buligă.
+        </p>
+        <div class="feature-box">
+            <span>Digital Detox</span>
+            <span>Bibliotecă Privată</span>
+            <span>Ghid de Meditație</span>
+        </div>
+        <a href="rezervare.html?pachet=silent" class="btn btn-gold">Începe Călătoria</a>
+    </section>
 </main>
+
 <script src="js/translations.js"></script>
 </body>
 </html>
