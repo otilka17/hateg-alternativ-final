@@ -1,32 +1,15 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Metanoia Gastro | Gustul Pământului</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=1.5" />
-    <style>
-        body { margin-top: 80px; background: #fdfcf8; color: #1b3022; }
-        .gastro-hero { 
-            height: 60vh; 
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.3)), url('images/gastro-hero.jpg') center/cover;
-            display: flex; align-items: center; justify-content: center; text-align: center; color: white;
-        }
-        .menu-section { padding: 80px 0; background: #fff; }
-        .menu-item { 
-            display: flex; justify-content: space-between; align-items: baseline; 
-            margin-bottom: 25px; border-bottom: 1px dotted #ddd; padding-bottom: 10px;
-        }
-        .ingredient-note { font-size: 0.8rem; color: #64748b; font-style: italic; }
-        @media (max-width: 768px) { .menu-item { flex-direction: column; gap: 5px; } }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gastro | Hațeg Alternativ</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
 <header class="site-header">
     <div class="container nav-wrap">
-        <a href="index.html" class="brand">HAȚEG <span>ALTERNATIV</span></a>
+        <a href="index.html" class="brand">HAȚEG ALTERNATIV</a>
         <nav class="main-nav">
             <a href="pensiuni.html">Pensiuni</a>
             <a href="retreat.html">Retreat</a>
@@ -35,63 +18,17 @@
     </div>
 </header>
 
-<section class="gastro-hero">
-    <div class="container">
-        <h1 class="metanoia-title" style="font-size: clamp(2.5rem, 6vw, 4.5rem); color: white;">Metanoia Gastro.</h1>
-        <p style="letter-spacing: 2px; font-weight: 300; opacity: 0.9;">Simplitate ridicată la rang de artă.</p>
-    </div>
+<section class="hero-premium" style="background: url('gast masa traditionala.jpg') center/cover;">
+    <h1 class="metanoia-title hero-main">Metanoia Gastro.</h1>
 </section>
 
-<section class="menu-section">
-    <div class="container" style="max-width: 800px;">
-        <div style="text-align: center; margin-bottom: 60px;">
-            <span style="color: #c5a059; font-weight: 800; letter-spacing: 3px; font-size: 0.7rem;">MENIU DE SEZON</span>
-            <h2 class="metanoia-title" style="font-size: 2.5rem; margin-top: 10px;">Aromele Slivuțului</h2>
-        </div>
-
-        <div class="menu-item">
-            <div>
-                <h4 style="margin: 0;">Platoul Culegătorului</h4>
-                <p class="ingredient-note">Brânzeturi locale, zacuscă de ghebe, pâine cu maia coaptă pe vatră.</p>
-            </div>
-            <div style="font-weight: 800; color: #c5a059;">45 RON</div>
-        </div>
-
-        <div class="menu-item">
-            <div>
-                <h4 style="margin: 0;">Balmoș Hațegan "Metanoia"</h4>
-                <p class="ingredient-note">Gătit lent cu smântână grasă și servit cu brânză de burduf iute.</p>
-            </div>
-            <div style="font-weight: 800; color: #c5a059;">55 RON</div>
-        </div>
-
-        <div class="menu-item">
-            <div>
-                <h4 style="margin: 0;">Tocăniță de Hribi cu Usturoi Verde</h4>
-                <p class="ingredient-note">Hribi culeși din pădurile Retezatului, serviți cu mămăliguță caldă.</p>
-            </div>
-            <div style="font-weight: 800; color: #c5a059;">65 RON</div>
-        </div>
-
-        <div class="menu-item">
-            <div>
-                <h4 style="margin: 0;">Plăcintă Pădureancă</h4>
-                <p class="ingredient-note">Umplută cu brânză dulce și stafide, coaptă în cuptor cu lemne.</p>
-            </div>
-            <div style="font-weight: 800; color: #c5a059;">30 RON</div>
-        </div>
-
-        <div style="text-align: center; margin-top: 60px; padding: 40px; border: 1px solid #f1f5f9; border-radius: 20px; background: #fafafa;">
-            <h3 class="metanoia-title">Vrei o experiență privată?</h3>
-            <p style="font-size: 0.9rem; color: #64748b; margin: 15px 0 30px;">Organizăm cine private de tip "Chef's Table" pentru grupuri de maxim 10 persoane.</p>
-            <a href="https://wa.me/40749229686" class="btn-gold" style="text-decoration: none; padding: 15px 40px;">REZERVĂ O MASĂ</a>
-        </div>
+<div class="container" style="padding: 60px 0; text-align: center;">
+    <h2 class="metanoia-title" style="font-size: 2.5rem; margin-bottom: 40px;">Gustul Slivuțului</h2>
+    <div class="cards-container">
+        <img src="gast supa2.jpg" style="width: 100%; border-radius: 15px;">
+        <img src="gast cafea inima.jpg" style="width: 100%; border-radius: 15px;">
+        <img src="gast panou.png" style="width: 100%; border-radius: 15px;">
     </div>
-</section>
-
-<footer style="background: #122118; color: white; padding: 60px 0; text-align: center;">
-    <p style="font-size: 0.75rem; letter-spacing: 2px; opacity: 0.6;">METANOIA GASTRO | SLOW FOOD ROMANIA</p>
-</footer>
-
+</div>
 </body>
 </html>
