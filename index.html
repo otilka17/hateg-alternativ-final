@@ -12,7 +12,7 @@
         body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--verde); line-height: 1.6; overflow-x: hidden;}
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
         
-        /* Header & Nav */
+        /* Navigatie */
         .site-header { background: white; padding: 20px 0; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 1000; }
         .nav-wrap { display: flex; justify-content: space-between; align-items: center; }
         .brand { font-weight: 700; text-decoration: none; color: var(--verde); font-size: 1.2rem; }
@@ -26,36 +26,25 @@
         }
         .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 8vw, 4.5rem); margin-bottom: 15px; }
 
-        /* Carduri & Sectiuni */
+        /* Sectiuni Carduri */
         .section-padding { padding: 90px 0; }
         .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.03); border: 1px solid #f0f0f0; transition: 0.3s; }
-        .card:hover { transform: translateY(-5px); }
         .card img { width: 100%; height: 260px; object-fit: cover; }
         .card-body { padding: 30px; }
-        .card h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 15px; }
-
-        /* Pachete & Experiente */
-        .badge { background: #f1f5f9; color: var(--verde); padding: 5px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 600; margin-bottom: 10px; display: inline-block; }
-        .price-tag { color: var(--auriu); font-weight: 700; font-size: 1.1rem; }
-
-        /* Journal Grid */
-        .journal-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-        .j-item { height: 250px; border-radius: 12px; overflow: hidden; position: relative; }
-        .j-item.big { grid-column: span 2; grid-row: span 2; height: 512px; }
-        .j-item img { width: 100%; height: 100%; object-fit: cover; }
-        .j-overlay { position: absolute; inset: 0; background: rgba(27,48,34,0.7); color: white; display: flex; flex-direction: column; justify-content: flex-end; padding: 25px; opacity: 0; transition: 0.4s; }
-        .j-item:hover .j-overlay { opacity: 1; }
+        .card h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 15px; }
 
         /* Butoane */
         .btn { padding: 14px 28px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.85rem; display: inline-block; transition: 0.3s; }
         .btn-gold { background: var(--auriu); color: white; }
         .btn-outline { border: 1px solid var(--verde); color: var(--verde); }
 
-        /* Chat & WA */
-        .wa-btn { position: fixed; bottom: 30px; left: 30px; background: #25d366; color: white; padding: 14px 28px; border-radius: 50px; text-decoration: none; font-weight: 700; box-shadow: 0 10px 25px rgba(0,0,0,0.15); z-index: 999; }
-
-        @media (max-width: 768px) { .journal-grid { grid-template-columns: repeat(2, 1fr); } .j-item.big { grid-column: span 2; grid-row: span 1; height: 250px; } }
+        /* Journal & Forum CTA */
+        .journal-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+        .j-item { height: 250px; border-radius: 12px; overflow: hidden; position: relative; }
+        .j-item img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .wa-btn { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; padding: 14px 28px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 999; }
     </style>
 </head>
 <body>
@@ -65,8 +54,8 @@
         <a href="index.html" class="brand">hațeg alternativ</a>
         <nav class="main-nav">
             <a href="pensiuni.html">pensiuni</a>
-            <a href="retreat.html">retreat</a>
             <a href="gastronomic.html">gastro</a>
+            <a href="forum.html">forum</a>
             <a href="rezervare.html">rezervă</a>
         </nav>
     </div>
@@ -82,80 +71,54 @@
 
 <section class="section-padding">
     <div class="container">
-        <h2 class="metanoia-title" style="text-align: center; font-size: 2.5rem; margin-bottom: 50px;">pachete & experiențe premium</h2>
+        <h2 style="text-align: center; font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 50px;">experiențe premium</h2>
         <div class="grid-3">
             <div class="card">
-                <img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/feed-3.jpg" alt="gastro">
+                <img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/gast-cafea-inima.jpg">
                 <div class="card-body">
-                    <span class="badge">gastronomie</span>
-                    <h3>turul virșlilor</h3>
-                    <p style="margin-bottom: 20px; font-size: 0.9rem;">vizită la cuptorul tradițional, degustare și secrete locale.</p>
-                    <span class="price-tag">80 ron / pers</span>
+                    <h3>mic dejun artizanal</h3>
+                    <p style="font-size: 0.9rem; color: #64748b;">produse locale, pâine caldă și liniște deplină.</p>
                 </div>
             </div>
             <div class="card">
-                <img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/feed-6.jpg" alt="gonomad">
+                <img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/feed-6.jpg">
                 <div class="card-body">
-                    <span class="badge">aventură</span>
                     <h3>gonomad expedition</h3>
-                    <p style="margin-bottom: 20px; font-size: 0.9rem;">tur ghidat 4x4 sau drumeție în locuri ascunse din retezat.</p>
-                    <span class="price-tag">150 ron / pers</span>
+                    <p style="font-size: 0.9rem; color: #64748b;">tururi ghidate în inima sălbatică a retezatului.</p>
                 </div>
             </div>
             <div class="card">
-                <img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/exp-zapada.jpg" alt="retreat">
+                <img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/exp-zapada.jpg">
                 <div class="card-body">
-                    <span class="badge">wellness</span>
                     <h3>mindful retreat</h3>
-                    <p style="margin-bottom: 20px; font-size: 0.9rem;">yoga, meditație și deconectare digitală totală.</p>
-                    <span class="price-tag">inclus în pachet</span>
+                    <p style="font-size: 0.9rem; color: #64748b;">yoga și meditație pentru reconectare totală.</p>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<section class="section-padding" style="background: #fdfcf8; border-top: 1px solid #eee;">
+<section style="padding: 60px 0; text-align: center; background: white; border-top: 1px solid #eee;">
     <div class="container">
-        <h2 class="metanoia-title" style="text-align: center; font-size: 2.5rem; margin-bottom: 50px;">obiective în țara hațegului</h2>
-        <div class="grid-3">
-            <div style="text-align: center;">
-                <h4 class="metanoia-title" style="font-size: 1.4rem; margin-bottom: 10px;">mănăstirea prislop</h4>
-                <p style="font-size: 0.85rem; color: #667;">un loc de liniște și rugăciune, la 15 minute distanță.</p>
-            </div>
-            <div style="text-align: center;">
-                <h4 class="metanoia-title" style="font-size: 1.4rem; margin-bottom: 10px;">sarmizegetusa regia</h4>
-                <p style="font-size: 0.85rem; color: #667;">istoria dacică vie, ascunsă sub coroanele fagilor seculari.</p>
-            </div>
-            <div style="text-align: center;">
-                <h4 class="metanoia-title" style="font-size: 1.4rem; margin-bottom: 10px;">parcul național retezat</h4>
-                <p style="font-size: 0.85rem; color: #667;">ochiul albastru al munților și trasee de o frumusețe rară.</p>
-            </div>
-        </div>
+        <h2 style="font-family: 'Playfair Display', serif; margin-bottom: 15px;">gânduri de călător</h2>
+        <p style="color: #64748b; margin-bottom: 30px;">vizitează forumul nostru pentru a citi poveștile comunității.</p>
+        <a href="forum.html" class="btn btn-outline">intră pe forum</a>
     </div>
 </section>
 
-<section class="section-padding" style="background: white;">
+<section class="section-padding">
     <div class="container">
-        <h2 class="metanoia-title" style="text-align: center; margin-bottom: 40px; font-size: 2.2rem;">hațeg journal</h2>
+        <h2 style="text-align: center; font-family: 'Playfair Display', serif; margin-bottom: 40px;">hațeg journal</h2>
         <div class="journal-grid">
-            <div class="j-item big">
-                <img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/feed-1.jpg">
-                <div class="j-overlay"><h3>marea deschidere. 1 mai 2026.</h3></div>
-            </div>
+            <div class="j-item"><img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/feed-1.jpg"></div>
             <div class="j-item"><img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/feed-2.jpg"></div>
             <div class="j-item"><img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/feed-4.jpg"></div>
             <div class="j-item"><img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/feed-5.jpg"></div>
-            <div class="j-item"><img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/feed-7.jpg"></div>
         </div>
     </div>
 </section>
 
 <a href="https://wa.me/40749229686" class="wa-btn">discută pe whatsapp</a>
-
-<footer style="padding: 60px 0; text-align: center; opacity: 0.5; font-size: 0.8rem;">
-    hațeg alternativ — 2026
-</footer>
 
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
