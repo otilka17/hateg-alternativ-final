@@ -1,47 +1,45 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pensiunea Natalia | Hațeg Alternativ</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css" />
-
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script type="text/javascript">
-        (function(){ emailjs.init("KfAXAcZDiuFeeFZzj"); })();
-    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pensiunea Natalia | Colecția Hațeg Alternativ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body style="background: var(--bg);">
-
-<div id="success-overlay">
-    <div class="success-card">
-        <h2 class="metanoia-title" data-i18n="success_title">Solicitarea a fost trimisă!</h2>
-        <p data-i18n="success_desc">Te vom contacta în curând pentru a-ți confirma disponibilitatea.</p>
-        <button onclick="closeSuccess()" class="btn btn-forest" data-i18n="btn_close">Închide</button>
-    </div>
-</div>
-
-<header class="site-header">
-    <div class="container nav-wrap">
-        <a href="index.html" class="brand">HAȚEG ALTERNATIV</a>
-        <nav class="main-nav">
-            <a href="index.html" data-i18n="nav_home">Acasă</a>
-            <a href="pensiuni.html" data-i18n="nav_pensiuni">Pensiuni</a>
-            <a href="experiente.html" data-i18n="nav_experiente">Experiențe</a>
-        </nav>
-        <div class="lang-switcher">
-            <button onclick="changeLanguage('ro')" class="lang-btn">RO</button>
-            <button onclick="changeLanguage('en')" class="lang-btn">EN</button>
-            <button onclick="changeLanguage('de')" class="lang-btn">DE</button>
+<body style="background: #fdfcf8;">
+    <header class="site-header">
+        <div class="container nav-wrap">
+            <a href="index.html" class="brand"><span>HAȚEG</span> <strong>ALTERNATIV</strong></a>
+            <a href="pensiuni.html" style="text-decoration: none; color: #1b3022; font-size: 0.7rem; letter-spacing: 2px; font-weight: 800;">← COLECȚIE</a>
         </div>
-    </div>
-</header>
+    </header>
 
-<main>
-    <section class="hero-small" style="background: linear-gradient(rgba(27, 48, 34, 0.4), rgba(27, 48, 34, 0.6)), url('images/natalia-pensiune.jpg') center/cover;">
-        <div class="container">
-            <span class="badge-forest" style="background: #34495e; color: white;">Confort & Acces • Totești</span>
-            <h1 class="metanoia-title" style="color: white; font-size: clamp(2.5rem, 6vw, 4rem);">Pensiunea Natalia</h1>
+    <section style="height: 60vh; background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('images/natalia-pensiune.jpg') center/cover;"></section>
+
+    <main class="container" style="transform: translateY(-80px);">
+        <div class="booking-form-panel" style="padding: 80px 60px; max-width: 1000px; margin: 0 auto; background: white; box-shadow: 0 40px 100px rgba(0,0,0,0.05);">
+            <span style="color: #c5a059; letter-spacing: 5px; font-size: 0.8rem; font-weight: 800; display: block; margin-bottom: 20px;">NO. 03 — HERITAGE & HEART</span>
+            <h1 class="metanoia-title" style="font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 40px; line-height: 1;">Pensiunea <br>Natalia</h1>
+            
+            <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 60px; align-items: start;">
+                <div>
+                    <p style="font-weight: 300; line-height: 2; font-size: 1.15rem; color: #444;">
+                        Locul unde ospitalitatea Țării Hațegului prinde viață. Pensiunea Natalia este despre căldura unei familii care te primește ca oaspete și te conduce ca prieten. Grădina generoasă și micul dejun legendar, cu produse din curtea proprie, definesc esența vacanței la sat.
+                    </p>
+                    <div style="margin-top: 40px; border-top: 1px solid #eee; padding-top: 30px; display: flex; gap: 30px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #1b3022; font-weight: 700;">
+                        <span>✦ Mic Dejun Legendar</span>
+                        <span>✦ Grădină Generoasă</span>
+                        <span>✦ Atmosferă Familială</span>
+                    </div>
+                </div>
+                <div style="background: #f9f9f7; padding: 40px; border-radius: 15px; text-align: center;">
+                    <span style="font-size: 0.8rem; color: #888; text-transform: uppercase;">Tarif de la</span>
+                    <div style="font-family: 'Playfair Display'; font-size: 2.5rem; margin: 10px 0 30px; color: #1b3022;">350 RON</div>
+                    <a href="rezervare.html?locatie=natalia" class="btn btn-gold" style="width: 100%;">Solicită Rezervare</a>
+                </div>
+            </div>
         </div>
-    </section>
+    </main>
+</body>
+</html>
