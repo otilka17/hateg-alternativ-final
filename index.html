@@ -26,7 +26,7 @@
         }
         .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 8vw, 4.5rem); margin-bottom: 15px; }
 
-        /* Sectiuni Carduri */
+        /* Carduri & Sectiuni */
         .section-padding { padding: 90px 0; }
         .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.03); border: 1px solid #f0f0f0; transition: 0.3s; }
@@ -39,12 +39,14 @@
         .btn-gold { background: var(--auriu); color: white; }
         .btn-outline { border: 1px solid var(--verde); color: var(--verde); }
 
-        /* Journal & Forum CTA */
+        /* Journal Grid */
         .journal-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
         .j-item { height: 250px; border-radius: 12px; overflow: hidden; position: relative; }
         .j-item img { width: 100%; height: 100%; object-fit: cover; }
         
-        .wa-btn { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; padding: 14px 28px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 999; }
+        .wa-btn { position: fixed; bottom: 30px; left: 30px; background: #25d366; color: white; padding: 14px 28px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 999; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+
+        @media (max-width: 768px) { .journal-grid { grid-template-columns: repeat(2, 1fr); } }
     </style>
 </head>
 <body>
@@ -54,6 +56,7 @@
         <a href="index.html" class="brand">hațeg alternativ</a>
         <nav class="main-nav">
             <a href="pensiuni.html">pensiuni</a>
+            <a href="obiective.html">obiective</a>
             <a href="gastronomic.html">gastro</a>
             <a href="forum.html">forum</a>
             <a href="rezervare.html">rezervă</a>
@@ -71,27 +74,30 @@
 
 <section class="section-padding">
     <div class="container">
-        <h2 style="text-align: center; font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 50px;">experiențe premium</h2>
+        <h2 style="text-align: center; font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 50px;">experiențe & pachete</h2>
         <div class="grid-3">
             <div class="card">
                 <img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/gast-cafea-inima.jpg">
                 <div class="card-body">
                     <h3>mic dejun artizanal</h3>
-                    <p style="font-size: 0.9rem; color: #64748b;">produse locale, pâine caldă și liniște deplină.</p>
+                    <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 15px;">produse locale din inima retezatului.</p>
+                    <span style="color: var(--auriu); font-weight: 700;">inclus în cazare</span>
                 </div>
             </div>
             <div class="card">
                 <img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/feed-6.jpg">
                 <div class="card-body">
                     <h3>gonomad expedition</h3>
-                    <p style="font-size: 0.9rem; color: #64748b;">tururi ghidate în inima sălbatică a retezatului.</p>
+                    <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 15px;">tururi 4x4 în locuri neștiute.</p>
+                    <span style="color: var(--auriu); font-weight: 700;">150 ron / pers</span>
                 </div>
             </div>
             <div class="card">
                 <img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/exp-zapada.jpg">
                 <div class="card-body">
                     <h3>mindful retreat</h3>
-                    <p style="font-size: 0.9rem; color: #64748b;">yoga și meditație pentru reconectare totală.</p>
+                    <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 15px;">yoga și deconectare digitală.</p>
+                    <span style="color: var(--auriu); font-weight: 700;">la cerere</span>
                 </div>
             </div>
         </div>
@@ -100,8 +106,8 @@
 
 <section style="padding: 60px 0; text-align: center; background: white; border-top: 1px solid #eee;">
     <div class="container">
-        <h2 style="font-family: 'Playfair Display', serif; margin-bottom: 15px;">gânduri de călător</h2>
-        <p style="color: #64748b; margin-bottom: 30px;">vizitează forumul nostru pentru a citi poveștile comunității.</p>
+        <h2 style="font-family: 'Playfair Display', serif; margin-bottom: 15px;">comunitatea noastră</h2>
+        <p style="color: #64748b; margin-bottom: 30px;">citește gândurile oaspeților noștri sau împărtășește-l pe al tău.</p>
         <a href="forum.html" class="btn btn-outline">intră pe forum</a>
     </div>
 </section>
@@ -120,12 +126,18 @@
 
 <a href="https://wa.me/40749229686" class="wa-btn">discută pe whatsapp</a>
 
+<footer style="padding: 60px 0; text-align: center; opacity: 0.5; font-size: 0.8rem;">
+    hațeg alternativ — 2026
+</footer>
+
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 (function(){
 var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true; s1.src='https://embed.tawk.to/67978d38825083258e0be22f/1iiirv4n4';
-s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
+s1.async=true;
+s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
 s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
