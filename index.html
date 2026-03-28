@@ -7,45 +7,49 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <style>
+        /* REȚETA PENTRU STABILITATE: CSS INTEGRAT */
         :root { --verde: #1b3022; --auriu: #c5a059; --crem: #fdfcf8; --alb: #ffffff; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--verde); line-height: 1.6; overflow-x: hidden; }
+        
         h1, h2, h3, .brand { font-family: 'Playfair Display', serif; font-weight: 700; }
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        /* Navigație */
         .site-header { background: var(--alb); padding: 20px 0; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 1000; }
-        .nav-wrap { display: flex; justify-content: space-between; align-items: center; }
+        .nav-wrap { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
         .brand { text-decoration: none; color: var(--verde); font-size: 1.4rem; }
         .main-nav a { text-decoration: none; color: #444; font-size: 0.9rem; margin-left: 20px; font-weight: 500; transition: 0.3s; }
         .main-nav a:hover { color: var(--auriu); }
 
-        /* Hero */
+        /* Imaginea Superbă din Top (Hero) */
         .hero { 
-            height: 70vh; display: flex; align-items: center; justify-content: center; text-align: center; color: var(--alb);
+            height: 80vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+            color: var(--alb);
             background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.3)), 
                         url('https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/hero-camp-munti.jpg') center/cover no-repeat;
         }
-        .hero h1 { font-size: clamp(2.5rem, 8vw, 4rem); margin-bottom: 15px; }
+        .hero h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); margin-bottom: 20px; text-shadow: 0 2px 10px rgba(0,0,0,0.2); }
 
-        /* Section Styling */
-        .section-padding { padding: 80px 0; }
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .card { background: var(--alb); border-radius: 24px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.03); border: 1px solid #f1f1f1; transition: 0.4s; }
-        .card:hover { transform: translateY(-8px); }
-        .card img { width: 100%; height: 250px; object-fit: cover; }
-        .card-body { padding: 25px; }
+        /* Secțiuni & Carduri */
+        .section-padding { padding: 90px 0; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 35px; }
+        .card { background: var(--alb); border-radius: 24px; overflow: hidden; box-shadow: 0 12px 45px rgba(0,0,0,0.04); border: 1px solid #f1f1f1; transition: 0.4s; }
+        .card:hover { transform: translateY(-10px); }
+        .card img { width: 100%; height: 280px; object-fit: cover; }
+        .card-body { padding: 30px; }
 
-        /* Live Stream Metanoia Style */
-        .live-stream-section { background: #f4f1ea; padding: 80px 0; border-radius: 50px 50px 0 0; }
-        .stream-card { background: var(--alb); border-radius: 24px; padding: 30px; max-width: 700px; margin: 0 auto; border: 1px solid #e8e4d9; box-shadow: 0 15px 45px rgba(0,0,0,0.02); }
-        .user-info { display: flex; align-items: center; margin-bottom: 20px; }
-        .avatar { width: 45px; height: 45px; background: var(--verde); border-radius: 50%; color: white; display: flex; align-items: center; justify-content: center; font-weight: 700; margin-right: 15px; }
-        .post-content { font-size: 1.2rem; color: var(--verde); margin-bottom: 15px; font-style: italic; }
-        .post-date { font-size: 0.8rem; color: var(--auriu); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+        /* Butoane Aurii */
+        .btn-gold { padding: 14px 35px; border-radius: 50px; text-decoration: none; font-weight: 600; background: var(--auriu); color: var(--alb); display: inline-block; transition: 0.3s; border: none; }
+        .btn-gold:hover { transform: scale(1.05); box-shadow: 0 10px 20px rgba(197, 160, 89, 0.2); }
 
-        /* Buttons */
-        .btn-gold { padding: 14px 35px; border-radius: 50px; text-decoration: none; font-weight: 600; background: var(--auriu); color: var(--alb); display: inline-block; transition: 0.3s; }
-        .wa-btn { position: fixed; bottom: 30px; left: 30px; background: #25d366; color: var(--alb); padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 999; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        /* WhatsApp & Chat */
+        .wa-btn { position: fixed; bottom: 30px; left: 30px; background: #25d366; color: var(--alb); padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 999; box-shadow: 0 10px 25px rgba(0,0,0,0.15); }
+
+        @media (max-width: 768px) { .nav-wrap { flex-direction: column; gap: 15px; } }
     </style>
 </head>
 <body>
@@ -55,8 +59,8 @@
         <a href="index.html" class="brand">Hațeg Alternativ</a>
         <nav class="main-nav">
             <a href="obiective.html">Obiective</a>
-            <a href="retreat.html">Retreat</a>
-            <a href="forum.html">Forum</a>
+            <a href="experiente.html">Experiențe</a>
+            <a href="forum.html">Comunitate</a>
             <a href="rezervare.html">Rezervă</a>
         </nav>
     </div>
@@ -65,57 +69,34 @@
 <section class="hero">
     <div class="container">
         <h1>Simte tăcerea.</h1>
-        <p style="font-weight: 300; font-size: 1.1rem; margin-bottom: 25px;">O experiență de viață în Țara Hațegului</p>
-        <a href="obiective.html" class="btn-gold">Descoperă locurile</a>
+        <p style="font-weight: 300; font-size: 1.2rem; margin-bottom: 30px; letter-spacing: 1px;">Deschiderea sezonului la 1 Mai 2026</p>
+        <a href="obiective.html" class="btn-gold">Începe explorarea</a>
     </div>
 </section>
 
 <section class="section-padding container">
-    <h2 style="text-align: center; margin-bottom: 40px; font-size: 2.2rem;">Momente Autentice</h2>
+    <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 50px;">Arome și Experiențe</h2>
     <div class="grid-3">
         <div class="card">
-            <img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/images/gast-cafea-inima.jpg">
+            <img src="images/gast-cafea-inima.jpg" alt="Mic Dejun">
             <div class="card-body">
-                <h3>Gastro Local</h3>
-                <p>Mic dejun artizanal cu produse din satele vecine.</p>
+                <h3>Mic Dejun Artizanal</h3>
+                <p style="color: #64748b;">Produse locale și liniște. Inclus în pachetele de cazare.</p>
             </div>
         </div>
         <div class="card">
-            <img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/images/feed-6.jpg">
+            <img src="images/feed-6.jpg" alt="Expediție">
             <div class="card-body">
-                <h3>Expediții 4x4</h3>
-                <p>Descoperă ruinele dacice și potecile neștiute.</p>
+                <h3>GoNomad Expedition</h3>
+                <p style="color: #64748b;">Explorare 4x4 în locuri neștiute. 150 RON / pers.</p>
             </div>
         </div>
         <div class="card">
-            <img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/images/exp-zapada.jpg">
+            <img src="https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/images/exp-zapada.jpg" alt="Mindful">
             <div class="card-body">
                 <h3>Mindful Retreat</h3>
-                <p>Liniște absolută și yoga sub cerul liber.</p>
+                <p style="color: #64748b;">Yoga și deconectare digitală sub cerul liber.</p>
             </div>
-        </div>
-    </div>
-</section>
-
-<section class="live-stream-section">
-    <div class="container">
-        <h2 style="text-align: center; margin-bottom: 10px;">Metanoia Live Stream</h2>
-        <p style="text-align: center; color: #64748b; margin-bottom: 40px;">Momente, arome și acorduri din Totești.</p>
-        
-        <div class="stream-card">
-            <div class="user-info">
-                <div class="avatar">O</div>
-                <div>
-                    <strong style="display: block;">Otilia</strong>
-                    <span style="font-size: 0.8rem; color: #94a3b8;">Gazda ta</span>
-                </div>
-            </div>
-            <p class="post-content">"Pregătiri intense pentru 1 Mai. Metanoia prinde viață sub soarele de primăvară!"</p>
-            <span class="post-date">Afișat: 01 Aprilie 2026</span>
-        </div>
-        
-        <div style="text-align: center; margin-top: 30px;">
-            <a href="forum.html" style="color: var(--auriu); font-weight: 600; text-decoration: none;">Vezi toate noutățile din comunitate →</a>
         </div>
     </div>
 </section>
@@ -130,8 +111,10 @@
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 (function(){
 var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true; s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
-s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
+s1.async=true;
+s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
 s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
