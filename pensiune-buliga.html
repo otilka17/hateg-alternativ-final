@@ -1,142 +1,45 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Domeniile La Buligă | Metanoia Retreat</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css" />
-
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script type="text/javascript">
-        (function(){ emailjs.init("KfAXAcZDiuFeeFZzj"); })();
-    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domeniile La Buligă | Colecția Hațeg Alternativ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body style="background: var(--bg);">
-
-<div id="success-overlay">
-    <div class="success-card">
-        <h2 class="metanoia-title" data-i18n="success_title">Solicitarea a fost trimisă!</h2>
-        <p data-i18n="success_desc">Pregătim detaliile pentru ascensiunea ta la 1100m.</p>
-        <button onclick="closeSuccess()" class="btn btn-forest" data-i18n="btn_close">Închide</button>
-    </div>
-</div>
-
-<header class="site-header">
-    <div class="container nav-wrap">
-        <a href="index.html" class="brand">METANOIA</a>
-        <nav class="main-nav">
-            <a href="index.html" data-i18n="nav_home">Acasă</a>
-            <a href="pensiuni.html" data-i18n="nav_pensiuni">Pensiuni</a>
-            <a href="retreat.html" data-i18n="nav_retreat">Retreat Metanoia</a>
-        </nav>
-        <div class="lang-switcher">
-            <button onclick="changeLanguage('ro')" class="lang-btn">RO</button>
-            <button onclick="changeLanguage('en')" class="lang-btn">EN</button>
-            <button onclick="changeLanguage('de')" class="lang-btn">DE</button>
+<body style="background: #fdfcf8;">
+    <header class="site-header">
+        <div class="container nav-wrap">
+            <a href="index.html" class="brand"><span>HAȚEG</span> <strong>ALTERNATIV</strong></a>
+            <a href="pensiuni.html" style="text-decoration: none; color: #1b3022; font-size: 0.7rem; letter-spacing: 2px; font-weight: 800;">← COLECȚIE</a>
         </div>
-    </div>
-</header>
+    </header>
 
-<main>
-    <section class="hero-small" style="background: linear-gradient(rgba(27, 48, 34, 0.4), rgba(27, 48, 34, 0.6)), url('images/la-buliga-pensiune.jpg') center/cover;">
-        <div class="container">
-            <span class="badge-forest" style="background: rgba(255,255,255,0.2); backdrop-filter: blur(5px);">Vadu Dobrii • 1100m</span>
-            <h1 class="metanoia-title" style="color: white; font-size: clamp(2.5rem, 6vw, 4rem);">Domeniile La Buligă</h1>
-        </div>
-    </section>
+    <section style="height: 60vh; background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('images/la-buliga-pensiune.jpg') center/cover;"></section>
 
-    <section class="container" style="padding: 60px 0;">
-        <div class="booking-grid">
+    <main class="container" style="transform: translateY(-80px);">
+        <div class="booking-form-panel" style="padding: 80px 60px; max-width: 1000px; margin: 0 auto; background: white; box-shadow: 0 40px 100px rgba(0,0,0,0.05);">
+            <span style="color: #c5a059; letter-spacing: 5px; font-size: 0.8rem; font-weight: 800; display: block; margin-bottom: 20px;">NO. 01 — VADU DOBRII</span>
+            <h1 class="metanoia-title" style="font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 40px; line-height: 1;">Domeniile <br>La Buligă</h1>
             
-            <div class="stay-details">
-                <h2 class="metanoia-title" style="margin-bottom: 20px;" data-i18n="buliga_subtitle">Izolare nobilă în Munții Poiana Ruscă</h2>
-                <p style="font-size: 1.15rem; line-height: 1.8; color: var(--muted); margin-bottom: 30px;" data-i18n="buliga_desc_long">
-                    Domeniile La Buligă reprezintă inima conceptului Metanoia. Aici, timpul se măsoară în răsărituri peste nori și liniște absolută. Satul Vadu Dobrii, aproape depopulat, oferă cadrul perfect pentru o deconectare totală de stresul urban.
-                </p>
-
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 40px;">
-                    <img src="images/hero-camp-munti.jpg" style="width:100%; border-radius: 15px; height: 250px; object-fit: cover;">
-                    <img src="images/exp-stana.jpg" style="width:100%; border-radius: 15px; height: 250px; object-fit: cover;">
+            <div style="display: grid; grid-template-columns: 1.5fr 1fr; gap: 60px; align-items: start;">
+                <div>
+                    <p style="font-weight: 300; line-height: 2; font-size: 1.15rem; color: #444;">
+                        O experiență rară la peste 1000m altitudine. Aici, luxul nu este despre opulență, ci despre aerul rece al dimineții, sunetul lemnului vechi și tăcerea munților. Un refugiu creat pentru cei care au nevoie de un „digital detox” veritabil.
+                    </p>
+                    <div style="margin-top: 40px; border-top: 1px solid #eee; padding-top: 30px; display: flex; gap: 30px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: #1b3022; font-weight: 700;">
+                        <span>✦ Mic dejun montan</span>
+                        <span>✦ Vedere panoramică</span>
+                        <span>✦ Fără semnal GSM</span>
+                    </div>
                 </div>
-
-                <div class="features-list">
-                    <h3 class="metanoia-title" style="font-size: 1.5rem; margin-bottom: 20px;">Facilități incluse:</h3>
-                    <ul class="forest-list">
-                        <li>🌲 10 camere duble (capacitate 20 persoane)</li>
-                        <li>🚜 Transfer 4x4 inclus din satul Bunila</li>
-                        <li>🔥 Terasa 'Deasupra Lumii' pentru foc de tabără</li>
-                        <li>🧀 Gastronomie pădurenească autentică</li>
-                    </ul>
+                <div style="background: #f9f9f7; padding: 40px; border-radius: 15px; text-align: center;">
+                    <span style="font-size: 0.8rem; color: #888; text-transform: uppercase;">Tarif de la</span>
+                    <div style="font-family: 'Playfair Display'; font-size: 2.5rem; margin: 10px 0 30px; color: #1b3022;">450 RON</div>
+                    <a href="rezervare.html?locatie=buliga" class="btn btn-gold" style="width: 100%;">Solicită Rezervare</a>
                 </div>
             </div>
-
-            <aside class="booking-form-panel" style="position: sticky; top: 100px;">
-                <h3 class="metanoia-title" style="margin-bottom: 10px;" data-i18n="res_title">Solicită Disponibilitate</h3>
-                <div class="price-tag-large" style="margin-bottom: 25px; color: var(--primary);">de la 6.000 lei <small>/ noapte (Integral)</small></div>
-                
-                <form id="buligaForm" class="form-grid-complex" style="grid-template-columns: 1fr;">
-                    <input type="hidden" name="interest" value="Rezervare Full House Buliga">
-                    
-                    <div class="field">
-                        <label data-i18n="label_name">Nume</label>
-                        <input type="text" name="user_name" required>
-                    </div>
-                    
-                    <div class="field">
-                        <label data-i18n="label_email">Email</label>
-                        <input type="email" name="user_email" required>
-                    </div>
-
-                    <div class="field">
-                        <label data-i18n="label_people">Persoane</label>
-                        <input type="number" name="people_count" value="10" min="1">
-                    </div>
-
-                    <div class="field">
-                        <label data-i18n="label_message">Perioada dorită</label>
-                        <textarea name="message" rows="3" placeholder="Ex: Iulie, weekend, 3 nopți..."></textarea>
-                    </div>
-
-                    <button type="submit" id="submitBtn" class="btn btn-forest" style="width: 100%; padding: 18px;">Trimite Cererea</button>
-                </form>
-
-                <p style="font-size: 0.8rem; margin-top: 20px; text-align: center; color: var(--muted);">
-                    * Această locație se închiriază doar în regim integral (Full House).
-                </p>
-            </aside>
-
         </div>
-    </section>
-</main>
-
-<script src="js/translations.js"></script>
-<script>
-    document.getElementById('buligaForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const btn = document.getElementById('submitBtn');
-        btn.innerText = "Se trimite...";
-        btn.disabled = true;
-
-        emailjs.sendForm('service_iqnbicr', 'template_ilz806s', this)
-            .then(function() {
-                document.getElementById('success-overlay').style.display = 'flex';
-                setTimeout(() => { document.getElementById('success-overlay').style.opacity = '1'; }, 10);
-                document.getElementById('buligaForm').reset();
-                btn.innerText = "Trimite Cererea";
-                btn.disabled = false;
-            }, function() {
-                alert("Eroare la trimitere.");
-                btn.innerText = "Trimite Cererea";
-                btn.disabled = false;
-            });
-    });
-
-    function closeSuccess() {
-        const overlay = document.getElementById('success-overlay');
-        overlay.style.opacity = '0';
-        setTimeout(() => { overlay.style.display = 'none'; }, 500);
-    }
-</script>
+    </main>
 </body>
 </html>
