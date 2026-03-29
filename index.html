@@ -7,27 +7,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root { 
-            --negru-mat: #242424; 
-            --auriu: #c5a059; 
-            --crem: #fdfcf8; 
-            --alb: #ffffff;
-            --text-soft: #555555;
+            --negru-mat: #242424; --auriu: #c5a059; --crem: #fdfcf8; --alb: #ffffff; --text-soft: #555555;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru-mat); line-height: 1.6; }
 
-        /* Header Alb - Logo pe 2 randuri */
+        /* Header Signature */
         .site-header { position: fixed; top: 0; width: 100%; z-index: 1500; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); }
         .header-container { display: flex; flex-direction: column; align-items: center; padding: 20px 0; }
-        .brand { text-decoration: none; color: var(--negru-mat); font-family: 'Playfair Display', serif; font-size: 1.5rem; line-height: 1; font-weight: 700; text-align: center; }
+        .brand { text-decoration: none; color: var(--negru-mat); font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; text-align: center; line-height: 1; }
         .est { font-size: 0.6rem; color: var(--auriu); letter-spacing: 4px; font-weight: 800; margin-top: 8px; text-transform: uppercase; }
-
-        /* Navbar Gri Inchis (Fara Verde) */
         .main-nav { background: var(--negru-mat); width: 100%; display: flex; justify-content: center; gap: 30px; padding: 15px 0; margin-top: 20px; }
         .main-nav a { text-decoration: none; color: #fff; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
 
-        /* Hero - Lacul Bucura */
+        /* Hero */
         .hero {
             width: 95%; max-width: 1300px; height: 75vh; margin: 180px auto 40px; border-radius: 4px;
             background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url('images/bucura.jpg') center/cover no-repeat;
@@ -35,33 +28,26 @@
         }
         .hero h1 { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(2.5rem, 8vw, 4.5rem); text-shadow: 0 10px 30px rgba(0,0,0,0.3); }
 
-        /* Grid Experiente */
-        .section-title { text-align: center; margin: 80px 0 50px; }
-        .section-title h2 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 2.8rem; }
+        /* Sections Title */
+        .section-title { text-align: center; margin: 100px 0 50px; }
+        .section-title span { color: var(--auriu); font-size: 0.7rem; font-weight: 800; letter-spacing: 5px; text-transform: uppercase; display: block; margin-bottom: 10px; }
+        .section-title h2 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 3rem; }
+
+        /* Grid Pachete & Experiente */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .card { background: var(--alb); border: 1px solid #eee; border-radius: 4px; overflow: hidden; transition: 0.4s; text-align: center; }
+        .card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        .card-img { height: 280px; background-size: cover; background-position: center; }
+        .card-body { padding: 40px; }
         
-        .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .card { background: var(--alb); border-radius: 4px; overflow: hidden; border: 1px solid #f0f0f0; transition: 0.4s; text-align: center; }
-        .card-img { height: 350px; background-size: cover; background-position: center; }
-        .card-content { padding: 35px; }
-        .card-tag { color: var(--auriu); font-size: 0.7rem; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 15px; display: block; }
+        /* Pachete Style (Background special) */
+        .pachete-section { background: #f9f7f2; padding: 100px 0; margin: 80px 0; border-top: 1px solid #eee; border-bottom: 1px solid #eee; }
+        .p-price { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--negru-mat); display: block; margin: 20px 0; border-top: 1px solid #eee; padding-top: 15px; }
 
-        /* Punct Gastronomic */
-        .gastro-box { max-width: 1100px; margin: 100px auto; background: var(--alb); border: 1px solid #eee; display: grid; grid-template-columns: 1fr 1fr; align-items: center; border-radius: 4px; overflow: hidden; }
-        .gastro-info { padding: 60px; }
-        .gastro-img { height: 500px; background: url('images/gast-panou.png') center/cover; }
-
-        /* Metanoia Live Grid */
-        .live-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-        .live-img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 4px; }
-
-        /* VIP Access */
-        .vip-access { background: #fff; border: 2px solid var(--auriu); max-width: 600px; margin: 80px auto; padding: 40px; text-align: center; }
-        
         /* Buttons */
-        .btn-gold { background: var(--auriu); color: white; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-family: 'Playfair Display', serif; font-style: italic; display: inline-block; margin-top: 20px; border: none; }
+        .btn-gold { background: var(--auriu); color: white; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-family: 'Playfair Display', serif; font-style: italic; display: inline-block; transition: 0.3s; border: none; }
         .wa-float { position: fixed; bottom: 30px; right: 30px; background: var(--auriu); color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 2000; font-size: 0.8rem; }
-
-        @media (max-width: 768px) { .gastro-box { grid-template-columns: 1fr; } .main-nav { display: none; } }
     </style>
 </head>
 <body>
@@ -84,62 +70,78 @@
 </section>
 
 <main>
-    <section class="section-title">
-        <h2>Regăsirea</h2>
-        <p style="color: var(--text-soft); font-style: italic;">Unde pământul întâlnește cerul</p>
-    </section>
-
-    <div class="grid-cards">
-        <article class="card">
-            <div class="card-img" style="background-image: url('images/exp-stana.jpg');"></div>
-            <div class="card-content">
-                <span class="card-tag">Tradiție Vie</span>
-                <h3>O zi la stână</h3>
-                <a href="rezervare.html?loc=stana" class="btn-gold">Solicită</a>
-            </div>
-        </article>
-
-        <article class="card">
-            <div class="card-img" style="background-image: url('images/exp-biserica-ext.jpg');"></div>
-            <div class="card-content">
-                <span class="card-tag">Patrimoniu</span>
-                <h3>Pășește în istorie</h3>
-                <a href="rezervare.html?loc=istorie" class="btn-gold">Solicită</a>
-            </div>
-        </article>
-
-        <article class="card">
-            <div class="card-img" style="background-image: url('images/exp-lac.jpg');"></div>
-            <div class="card-content">
-                <span class="card-tag">Natură Pură</span>
-                <h3>Bucura & Retezat</h3>
-                <a href="rezervare.html?loc=bucura" class="btn-gold">Solicită</a>
-            </div>
-        </article>
-    </div>
-
-    <section class="gastro-box">
-        <div class="gastro-info">
-            <span class="card-tag">Autentic</span>
-            <h2 style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 2.2rem; margin-bottom: 20px;">Punct Gastronomic Local</h2>
-            <a href="rezervare.html?loc=gastro" class="btn-gold">Rezervă o masă</a>
+    <section class="container">
+        <div class="section-title">
+            <span>The Journeys</span>
+            <h2>Regăsirea</h2>
         </div>
-        <div class="gastro-img"></div>
+        <div class="grid">
+            <article class="card">
+                <div class="card-img" style="background-image: url('images/exp-stana.jpg');"></div>
+                <div class="card-body">
+                    <h3 style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.8rem;">O zi la stână</h3>
+                    <p style="margin: 15px 0; color: var(--text-soft);">Gustul autentic al munților.</p>
+                    <a href="experiente.html" class="btn-gold" style="font-size: 0.9rem;">Detalii</a>
+                </div>
+            </article>
+            <article class="card">
+                <div class="card-img" style="background-image: url('images/exp-lac.jpg');"></div>
+                <div class="card-body">
+                    <h3 style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.8rem;">Bucura & Retezat</h3>
+                    <p style="margin: 15px 0; color: var(--text-soft);">Liniștea deasupra norilor.</p>
+                    <a href="experiente.html" class="btn-gold" style="font-size: 0.9rem;">Detalii</a>
+                </div>
+            </article>
+            <article class="card">
+                <div class="card-img" style="background-image: url('images/exp-biserica-ext.jpg');"></div>
+                <div class="card-body">
+                    <h3 style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.8rem;">Pășește în istorie</h3>
+                    <p style="margin: 15px 0; color: var(--text-soft);">Legende de piatră.</p>
+                    <a href="experiente.html" class="btn-gold" style="font-size: 0.9rem;">Detalii</a>
+                </div>
+            </article>
+        </div>
     </section>
 
-    <section class="section-title"><h2>Metanoia Live</h2></section>
-    <div class="live-grid">
-        <img src="images/feed-4.jpg" class="live-img" onerror="this.src='images/hero-camp-munti.jpg'">
-        <img src="images/feed-5.jpg" class="live-img" onerror="this.src='images/hero-camp-munti.jpg'">
-        <img src="images/feed-6.jpg" class="live-img" onerror="this.src='images/hero-camp-munti.jpg'">
-        <img src="images/feed-7.jpg" class="live-img" onerror="this.src='images/hero-camp-munti.jpg'">
-        <img src="images/feed-8.jpg" class="live-img" onerror="this.src='images/hero-camp-munti.jpg'">
-    </div>
-
-    <section class="vip-access">
-        <span style="font-size: 2rem; display: block; margin-bottom: 20px;">🔑</span>
-        <h2 style="font-size: 1.5rem; text-transform: uppercase;">Member Access</h2>
-        <a href="https://wa.me/40749229686" class="btn-gold">Înscrie-te</a>
+    <section class="pachete-section">
+        <div class="container">
+            <div class="section-title">
+                <span>All-Inclusive</span>
+                <h2>Pachete Signature</h2>
+            </div>
+            <div class="grid">
+                <article class="card">
+                    <div class="card-img" style="background-image: url('images/hero-premium.jpg');"></div>
+                    <div class="card-body">
+                        <span style="color: var(--auriu); font-weight: 800; font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase;">4 Camere • 3 Zile</span>
+                        <h3 style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.8rem; margin: 10px 0;">Metanoia: Tăcere</h3>
+                        <p style="font-size: 0.85rem; color: var(--text-soft);">Cazare, mese bio și digital detox.</p>
+                        <span class="p-price">4.500 RON</span>
+                        <a href="https://wa.me/40749229686?text=Vreau pachetul Metanoia Tacere" class="btn-gold">Rezervă</a>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-img" style="background-image: url('images/gast-masa-traditionala.jpg');"></div>
+                    <div class="card-body">
+                        <span style="color: var(--auriu); font-weight: 800; font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase;">10 Locuri • Weekend</span>
+                        <h3 style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.8rem; margin: 10px 0;">Gustul Munților</h3>
+                        <p style="font-size: 0.85rem; color: var(--text-soft);">Închiriere integrală și cină la stână.</p>
+                        <span class="p-price">8.500 RON</span>
+                        <a href="https://wa.me/40749229686?text=Vreau pachetul Gustul Muntilor" class="btn-gold">Rezervă</a>
+                    </div>
+                </article>
+                <article class="card">
+                    <div class="card-img" style="background-image: url('images/hero-lac.jpg');"></div>
+                    <div class="card-body">
+                        <span style="color: var(--auriu); font-weight: 800; font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase;">Explorer • Cuplu</span>
+                        <h3 style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.8rem; margin: 10px 0;">Hațeg pe Roți</h3>
+                        <p style="font-size: 0.85rem; color: var(--text-soft);">E-bikes, picnic și ghid local inclus.</p>
+                        <span class="p-price">1.800 RON</span>
+                        <a href="https://wa.me/40749229686?text=Vreau pachetul Hateg pe Roti" class="btn-gold">Rezervă</a>
+                    </div>
+                </article>
+            </div>
+        </div>
     </section>
 </main>
 
