@@ -1,126 +1,124 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiențe Curatoriate | Hațeg Alternativ</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-    
     <style>
-        /* CSS SIGNATURE PREMIUM - INTEGRAT */
-        :root { --verde: #1b3022; --auriu: #c5a059; --crem: #fdfcf8; --alb: #ffffff; }
+        :root { 
+            --negru-mat: #242424; 
+            --auriu: #c5a059; 
+            --crem: #fdfcf8; 
+            --alb: #ffffff;
+            --text-soft: #555555;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--verde); line-height: 1.6; }
+        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru-mat); line-height: 1.6; padding-top: 180px; }
+
+        /* Header Signature Unitar */
+        .site-header { position: fixed; top: 0; width: 100%; z-index: 1500; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .header-container { display: flex; flex-direction: column; align-items: center; padding: 20px 0; }
+        .brand { text-decoration: none; color: var(--negru-mat); font-family: 'Playfair Display', serif; font-size: 1.6rem; line-height: 1; font-weight: 700; text-align: center; }
+        .est { font-size: 0.6rem; color: var(--auriu); letter-spacing: 4px; font-weight: 800; margin-top: 8px; text-transform: uppercase; }
+
+        .main-nav { background: var(--negru-mat); width: 100%; display: flex; justify-content: center; gap: 30px; padding: 15px 0; margin-top: 20px; }
+        .main-nav a { text-decoration: none; color: #fff; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
+        .active { color: var(--auriu) !important; }
+
+        /* Page Intro */
+        .intro { text-align: center; max-width: 800px; margin: 0 auto 80px; padding: 0 20px; }
+        .intro span { color: var(--auriu); font-size: 0.7rem; font-weight: 800; letter-spacing: 5px; text-transform: uppercase; display: block; margin-bottom: 15px; }
+        .intro h1 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 3.5rem; line-height: 1.1; }
+
+        /* Experiente Sections - Alternating */
+        .exp-section { display: grid; grid-template-columns: 1fr 1fr; align-items: center; min-height: 600px; margin-bottom: 40px; background: var(--alb); overflow: hidden; }
+        .exp-section.reverse { direction: rtl; }
+        .exp-section.reverse .exp-info { direction: ltr; }
         
-        h1, h2, h3, .brand { font-family: 'Playfair Display', serif; font-weight: 700; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        .exp-img { width: 100%; height: 100%; min-height: 600px; background-size: cover; background-position: center; }
+        .exp-info { padding: 80px; }
+        .exp-tag { color: var(--auriu); font-size: 0.7rem; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; display: block; }
+        .exp-info h2 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 2.8rem; margin-bottom: 25px; line-height: 1.2; }
+        .exp-info p { color: var(--text-soft); font-size: 1.1rem; margin-bottom: 40px; font-weight: 300; }
 
-        /* Header & Nav */
-        .site-header { background: var(--alb); padding: 20px 0; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 1000; }
-        .nav-wrap { display: flex; justify-content: space-between; align-items: center; }
-        .brand { text-decoration: none; color: var(--verde); font-size: 1.4rem; }
-        .main-nav a { text-decoration: none; color: #444; font-size: 0.9rem; margin-left: 20px; font-weight: 500; }
-        .active-link { color: var(--auriu) !important; }
+        /* Buttons */
+        .btn-gold { background: var(--auriu); color: white; padding: 18px 45px; border-radius: 50px; text-decoration: none; font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem; display: inline-block; transition: 0.3s; }
+        .wa-float { position: fixed; bottom: 30px; right: 30px; background: var(--auriu); color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 2000; box-shadow: 0 10px 20px rgba(0,0,0,0.1); font-size: 0.8rem; }
 
-        /* Hero Small */
-        .hero-small { padding: 80px 0; text-align: center; background: var(--alb); border-bottom: 1px solid #eee; margin-bottom: 60px; }
-        .hero-small h1 { font-size: 3rem; margin-bottom: 15px; }
-        .hero-small p { color: #64748b; max-width: 700px; margin: 0 auto; }
-
-        /* Experience Cards */
-        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; margin-bottom: 80px; }
-        .experience-card { background: var(--alb); border-radius: 24px; overflow: hidden; box-shadow: 0 12px 40px rgba(0,0,0,0.04); border: 1px solid #f1f1f1; transition: 0.4s; }
-        .experience-card:hover { transform: translateY(-10px); }
-        .experience-image { width: 100%; height: 280px; object-fit: cover; }
-        .experience-content { padding: 30px; }
-        
-        .card-badge { display: inline-block; padding: 5px 12px; background: var(--crem); color: var(--auriu); font-size: 0.75rem; font-weight: 700; border-radius: 50px; margin-bottom: 15px; }
-        .card-meta { display: flex; gap: 15px; font-size: 0.8rem; color: #94a3b8; margin-bottom: 15px; font-weight: 600; }
-        
-        .btn { padding: 12px 25px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.85rem; display: inline-block; transition: 0.3s; border: none; cursor: pointer; }
-        .btn-primary { background: var(--verde); color: var(--alb); margin-top: 20px; }
-        .btn-dark { background: var(--auriu); color: var(--alb); }
-
-        /* CTA Panel */
-        .cta-panel { background: var(--verde); color: var(--alb); padding: 60px; border-radius: 40px; text-align: center; margin-bottom: 80px; }
-        .cta-panel h2 { font-size: 2rem; margin-bottom: 20px; }
-        .cta-panel p { margin-bottom: 30px; opacity: 0.9; }
-
-        .wa-btn { position: fixed; bottom: 30px; left: 30px; background: #25d366; color: var(--alb); padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 999; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        @media (max-width: 900px) {
+            .exp-section { grid-template-columns: 1fr; min-height: auto; }
+            .exp-section.reverse { direction: ltr; }
+            .exp-img { height: 400px; min-height: 400px; }
+            .exp-info { padding: 50px 30px; text-align: center; }
+            .main-nav { display: none; }
+        }
     </style>
 </head>
 <body>
 
 <header class="site-header">
-    <div class="container nav-wrap">
-        <a href="index.html" class="brand">Hațeg Alternativ</a>
+    <div class="header-container">
+        <a href="index.html" class="brand">HAȚEG<br>ALTERNATIV</a>
+        <span class="est">EST. 2026</span>
         <nav class="main-nav">
-            <a href="index.html">Acasă</a>
             <a href="pensiuni.html">Pensiuni</a>
             <a href="retreat.html">Retreat</a>
-            <a href="experiente.html" class="active-link">Experiențe</a>
-            <a href="contact.html">Contact</a>
+            <a href="experiente.html" class="active">Experiențe</a>
+            <a href="forum.html">Forum</a>
         </nav>
     </div>
 </header>
 
-<main class="container">
-    <section class="hero-small">
-        <h1 data-i18n="exp_hero_title">Trăiește Hațegul Autentic</h1>
-        <p>Descoperă tradiții, patrimoniu și gastronomie locală create pentru oameni care vor mai mult decât o simplă vizită.</p>
+<main>
+    <section class="intro">
+        <span>Curated Experiences</span>
+        <h1>Regăsirea prin simplitate.</h1>
     </section>
 
-    <section class="card-grid">
-        <article class="experience-card">
-            <img src="images/exp-stana.jpg" class="experience-image" alt="Stână">
-            <div class="experience-content">
-                <span class="card-badge">Tradiție Vie</span>
-                <h3>O zi la stâna din munte</h3>
-                <div class="card-meta">
-                    <span>4-5 ore</span>
-                    <span>De la 150 lei</span>
-                </div>
-                <p>Participă la mulsul oilor și gustă balmoșul proaspăt făcut la ceaun.</p>
-                <a href="contact.html?exp=stana" class="btn btn-primary">Solicită experiența</a>
-            </div>
-        </article>
-
-        <article class="experience-card">
-            <img src="images/exp-biserica-ext.jpg" class="experience-image" alt="Biserici">
-            <div class="experience-content">
-                <span class="card-badge">Istorie</span>
-                <h3>Turul Bisericilor de Piatră</h3>
-                <div class="card-meta">
-                    <span>5-6 ore</span>
-                    <span>De la 180 lei</span>
-                </div>
-                <p>Vizitează Densuș și Cetatea Colț alături de un ghid care cunoaște legendele locului.</p>
-                <a href="contact.html?exp=history" class="btn btn-primary">Solicită experiența</a>
-            </div>
-        </article>
-
-        <article class="experience-card">
-            <img src="images/gast-masa-traditionala.jpg" class="experience-image" alt="Gastronomie">
-            <div class="experience-content">
-                <span class="card-badge">Gastronomie</span>
-                <h3>Atelier de Gătit „Ca la noi”</h3>
-                <div class="card-meta">
-                    <span>3-4 ore</span>
-                    <span>De la 140 lei</span>
-                </div>
-                <p>Învață să prepari plăcinte pădurenești sub îndrumarea gospodinelor din sat.</p>
-                <a href="contact.html?exp=food" class="btn btn-primary">Solicită experiența</a>
-            </div>
-        </article>
+    <section class="exp-section">
+        <div class="exp-img" style="background-image: url('images/exp-stana.jpg');"></div>
+        <div class="exp-info">
+            <span class="exp-tag">Tradiție Vie</span>
+            <h2>O zi la stână</h2>
+            <p>Pășește într-o lume neregizată, unde timpul este măsurat de soare și de nevoile turmei. Gustă brânza proaspătă și ascultă poveștile ciobanilor la foc de lemne.</p>
+            <a href="https://wa.me/40749229686?text=Vreau detalii despre experienta la stana" class="btn-gold">Cere detalii</a>
+        </div>
     </section>
 
-    <section class="cta-panel">
-        <h2>Vrei un program personalizat?</h2>
-        <p>Putem construi un traseu special pentru grupuri restrânse sau retreat-uri tematice.</p>
-        <a href="contact.html" class="btn btn-dark">Cere detalii</a>
+    <section class="exp-section reverse">
+        <div class="exp-img" style="background-image: url('images/exp-biserica-ext.jpg');"></div>
+        <div class="exp-info">
+            <span class="exp-tag">Patrimoniu</span>
+            <h2>Pășește în istorie</h2>
+            <p>Descoperă bisericile de piatră unice în lume și legendele Țării Hațegului. Un drum inițiatic printre ruine și credințe care au supraviețuit mileniilor.</p>
+            <a href="https://wa.me/40749229686?text=Vreau detalii despre turul istoric" class="btn-gold">Cere detalii</a>
+        </div>
+    </section>
+
+    <section class="exp-section">
+        <div class="exp-img" style="background-image: url('images/exp-lac.jpg');"></div>
+        <div class="exp-info">
+            <span class="exp-tag">Natură Pură</span>
+            <h2>Bucura & Retezat</h2>
+            <p>Acolo unde pământul întâlnește cerul. Un tur ghidat către cele mai înalte lacuri glaciare, într-o liniște care îți permite să te auzi din nou.</p>
+            <a href="https://wa.me/40749229686?text=Vreau detalii despre turul la Bucura" class="btn-gold">Cere detalii</a>
+        </div>
+    </section>
+
+    <section class="exp-section reverse">
+        <div class="exp-img" style="background-image: url('images/gast-masa-traditionala.jpg');"></div>
+        <div class="exp-info">
+            <span class="exp-tag">Gust Autentic</span>
+            <h2>Punct Gastronomic</h2>
+            <p>O masă în tihnă, pregătită cu ingrediente din grădina proprie. Redescoperă aromele curate ale copilăriei într-o experiență gastronomică privată.</p>
+            <a href="https://wa.me/40749229686?text=Vreau o rezervare la masa traditionala" class="btn-gold">Rezervă o masă</a>
+        </div>
     </section>
 </main>
 
-<a href="https://wa.me/40749229686" class="wa-btn">WhatsApp</a>
+<a href="https://wa.me/40749229686" class="wa-float">WhatsApp Direct</a>
 
-<script src="js/translations.js"></script>
 </body>
 </html>
