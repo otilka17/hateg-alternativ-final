@@ -1,100 +1,80 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Metanoia Retreats | Hațeg Alternativ</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retreat | Hațeg Alternativ Signature</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* Ajustări specifice pentru pagina de Retreat */
-        .retreat-intro { padding: 120px 20px 60px; text-align: center; max-width: 800px; margin: 0 auto; }
-        .retreat-intro h1 { font-size: clamp(2.5rem, 7vw, 4.5rem); font-style: italic; margin-bottom: 20px; }
+        :root { --negru-mat: #242424; --auriu: #c5a059; --crem: #fdfcf8; --alb: #ffffff; --text-soft: #555555; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru-mat); line-height: 1.6; padding-top: 180px; }
         
-        .retreat-grid { display: grid; grid-template-columns: 1fr; gap: 80px; padding: 40px 20px 100px; max-width: 1000px; margin: 0 auto; }
-        
-        .retreat-card { display: flex; flex-direction: column; align-items: center; text-align: center; }
-        .retreat-img { width: 100%; height: 500px; object-fit: cover; border-radius: 4px; margin-bottom: 35px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
-        
-        .retreat-card h2 { font-size: 2.2rem; font-style: italic; margin-bottom: 15px; color: var(--verde); }
-        .retreat-tagline { color: var(--auriu); text-transform: uppercase; letter-spacing: 4px; font-weight: 800; font-size: 0.75rem; margin-bottom: 20px; display: block; }
-        .retreat-card p { font-weight: 300; color: var(--text-light); max-width: 700px; margin-bottom: 30px; font-size: 1.1rem; }
-        
-        .retreat-details { display: flex; justify-content: center; gap: 30px; margin-bottom: 35px; border-top: 1px solid #eee; border-bottom: 1px solid #eee; padding: 15px 0; width: 100%; }
-        .retreat-details span { font-size: 0.85rem; font-weight: 600; color: var(--verde); }
+        .site-header { position: fixed; top: 0; width: 100%; z-index: 1500; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .header-container { display: flex; flex-direction: column; align-items: center; padding: 20px 0; }
+        .brand { text-decoration: none; color: var(--negru-mat); font-family: 'Playfair Display', serif; font-size: 1.6rem; line-height: 1; font-weight: 700; text-align: center; }
+        .est { font-size: 0.6rem; color: var(--auriu); letter-spacing: 4px; font-weight: 800; margin-top: 8px; text-transform: uppercase; }
+        .main-nav { background: var(--negru-mat); width: 100%; display: flex; justify-content: center; gap: 30px; padding: 15px 0; margin-top: 20px; }
+        .main-nav a { text-decoration: none; color: #fff; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
+        .active { color: var(--auriu) !important; }
 
-        @media (max-width: 768px) { .retreat-img { height: 350px; } }
+        .retreat-section { max-width: 1000px; margin: 0 auto 100px; padding: 0 20px; text-align: center; }
+        .retreat-card { margin-bottom: 80px; }
+        .retreat-img { width: 100%; height: 500px; object-fit: cover; border-radius: 4px; margin-bottom: 30px; }
+        .retreat-tag { color: var(--auriu); font-size: 0.7rem; font-weight: 800; letter-spacing: 4px; text-transform: uppercase; }
+        .retreat-card h2 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 2.5rem; margin: 10px 0 20px; }
+        .retreat-card p { max-width: 700px; margin: 0 auto 30px; color: var(--text-soft); }
+        
+        .btn-gold { background: var(--auriu); color: white; padding: 18px 45px; border-radius: 50px; text-decoration: none; font-family: 'Playfair Display', serif; font-style: italic; display: inline-block; transition: 0.3s; }
+        .wa-float { position: fixed; bottom: 30px; right: 30px; background: var(--auriu); color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 2000; box-shadow: 0 10px 20px rgba(0,0,0,0.1); font-size: 0.8rem; }
     </style>
 </head>
 <body>
 
 <header class="site-header">
     <div class="header-container">
-        <a href="index.html" class="brand italic">Hațeg <br>Alternativ</a>
+        <a href="index.html" class="brand">HAȚEG<br>ALTERNATIV</a>
         <span class="est">EST. 2026</span>
         <nav class="main-nav">
             <a href="pensiuni.html">Pensiuni</a>
-            <a href="retreat.html" style="color: var(--auriu);">Retreat</a>
-            <a href="gastronomic.html">Punct Gastronomic</a>
+            <a href="retreat.html" class="active">Retreat</a>
+            <a href="experiente.html">Experiențe</a>
+            <a href="forum.html">Forum</a>
         </nav>
     </div>
 </header>
 
-<main>
-    <section class="retreat-intro">
-        <span class="retreat-tagline" style="margin-bottom: 10px;">Metanoia Journey</span>
-        <h1>Trei căi către regăsire.</h1>
-        <p>Programe curatoriate pentru cei care caută să schimbe ritmul cotidian cu cel al naturii.</p>
-    </section>
-
-    <div class="retreat-grid">
-        <article class="retreat-card">
-            <img src="images/retreat-adventure.jpg" class="retreat-img" alt="Explorare Retezat" onerror="this.src='https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/hero-camp-munti.jpg'">
-            <span class="retreat-tagline">Activ & Explorare</span>
-            <h2>Cărarea Munților</h2>
-            <div class="retreat-details">
-                <span>3 Zile</span> <span>•</span> <span>Ghid Inclus</span> <span>•</span> <span>E-Bike</span>
-            </div>
-            <p>Descoperă potecile ascunse ale Retezatului. Tururi ghidate pe jos sau pe bicicletă, gândite să îți testeze limitele și să îți umple privirea de sălbăticie.</p>
-            <a href="https://wa.me/40749229686?text=Vreau detalii despre Retreat-ul Cărarea Munților" class="btn-gold">Cere Programul</a>
-        </article>
-
-        <article class="retreat-card">
-            <img src="images/retreat-gastro.jpg" class="retreat-img" alt="Gastronomie" onerror="this.src='https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/hero-camp-munti.jpg'">
-            <span class="retreat-tagline">Creație & Gust</span>
-            <h2>Rădăcini și Gust</h2>
-            <div class="retreat-details">
-                <span>Weekend</span> <span>•</span> <span>Workshop Gastronomic</span> <span>•</span> <span>Atelier Creație</span>
-            </div>
-            <p>Întoarce-te la esență prin gătit tradițional și ateliere de creatie. Învață tainele Punctului Gastronomic Local și participa la activitati de relaxare prin lucru manual în curtea pensiunii.</p>
-            <a href="https://wa.me/40749229686?text=Vreau detalii despre Retreat-ul Rădăcini și Gust" class="btn-gold">Cere Programul</a>
-        </article>
-
-        <article class="retreat-card">
-            <img src="images/retreat-spiritual.jpg" class="retreat-img" alt="Spiritualitate" onerror="this.src='https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/hero-camp-munti.jpg'">
-            <span class="retreat-tagline">Liniște & Spirit</span>
-            <h2>Metanoia: Tăcerea Inimii</h2>
-            <div class="retreat-details">
-                <span>4 Zile</span> <span>•</span> <span>Yoga & Meditație</span> <span>•</span> <span>Digital Detox</span>
-            </div>
-            <p>Un refugiu pentru suflet. Practici de prezență conștientă sub cerul liber, sesiuni de stargazing și tăcere deplină pentru a auzi din nou vocea interioară.</p>
-            <a href="https://wa.me/40749229686?text=Vreau detalii despre Retreat-ul Spiritual Metanoia" class="btn-gold">Cere Programul</a>
-        </article>
+<main class="retreat-section">
+    <div style="margin-bottom: 80px;">
+        <span class="retreat-tag">Metanoia Journey</span>
+        <h1 style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 3.5rem;">Schimbă ritmul.</h1>
     </div>
+
+    <article class="retreat-card">
+        <img src="images/hero-lac.jpg" class="retreat-img" alt="Active">
+        <span class="retreat-tag">Activ & Explorare</span>
+        <h2>Cărarea Munților</h2>
+        <p>Tururi ghidate pe bicicletă sau la pas prin inima Retezatului. O experiență de reconectare prin efort și peisaje spectaculoase.</p>
+        <a href="https://wa.me/40749229686?text=Detalii Retreat Active" class="btn-gold">Cere Programul</a>
+    </article>
+
+    <article class="retreat-card">
+        <img src="images/gast-masa-traditionala.jpg" class="retreat-img" alt="Gastro">
+        <span class="retreat-tag">Creație & Gust</span>
+        <h2>Rădăcini și Gust</h2>
+        <p>Ateliere de gătit tradițional și meșteșug local. Întoarcerea la aromele de demult într-un cadru autentic.</p>
+        <a href="https://wa.me/40749229686?text=Detalii Retreat Gastro" class="btn-gold">Cere Programul</a>
+    </article>
+
+    <article class="retreat-card">
+        <img src="images/hero-premium.jpg" class="retreat-img" alt="Spiritual">
+        <span class="retreat-tag">Liniște & Spirit</span>
+        <h2>Metanoia: Tăcerea Inimii</h2>
+        <p>Un weekend dedicat liniștii interioare, meditației sub cerul liber și deconectării de la tehnologie.</p>
+        <a href="https://wa.me/40749229686?text=Detalii Retreat Spiritual" class="btn-gold">Cere Programul</a>
+    </article>
 </main>
 
-<a href="https://wa.me/40749229686" class="wa-btn">WhatsApp Direct</a>
-
-<script type="text/javascript">
-    var Tawk_API=Tawk_API||{};
-    Tawk_API.customStyle = { visibility : { desktop : { xOffset : '30', yOffset : '30', position : 'bottom-left' }, mobile : { xOffset : '20', yOffset : '20', position : 'bottom-left' } } };
-    (function(){
-        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-        s1.async=true; s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
-        s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
-        s0.parentNode.insertBefore(s1,s0);
-    })();
-</script>
-
+<a href="https://wa.me/40749229686" class="wa-float">WhatsApp Direct</a>
 </body>
 </html>
