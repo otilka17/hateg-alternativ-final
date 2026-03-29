@@ -4,102 +4,99 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pachete Signature | Hațeg Alternativ</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* DESIGN INTEGRAT - ROZ, CREM, AURIU */
-        :root { --verde: #1b3022; --auriu: #c5a059; --roz-crem: #fdfcf8; --alb: #ffffff; }
+        :root { --negru-mat: #242424; --auriu: #c5a059; --crem: #fdfcf8; --alb: #ffffff; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--roz-crem); color: var(--verde); line-height: 1.6; }
-        
-        h1, h2, h3, .brand { font-family: 'Playfair Display', serif; font-weight: 700; }
+        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru-mat); padding-top: 180px; }
+
+        /* Header Signature */
+        .site-header { position: fixed; top: 0; width: 100%; z-index: 1500; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); padding: 20px 0; }
+        .brand { text-decoration: none; color: var(--negru-mat); font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; text-align: center; display: block; line-height: 1; }
+        .est { font-size: 0.6rem; color: var(--auriu); letter-spacing: 4px; text-transform: uppercase; display: block; text-align: center; margin-top: 8px; }
+
+        /* Package Cards */
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-
-        /* Header Fix */
-        .site-header { background: var(--alb); padding: 25px 0; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 1000; }
-        .nav-wrap { display: flex; justify-content: space-between; align-items: center; }
-        .brand { text-decoration: none; color: var(--verde); font-size: 1.1rem; letter-spacing: 2px; }
-        .main-nav a { text-decoration: none; color: #444; font-size: 0.8rem; margin-left: 25px; font-weight: 700; text-transform: uppercase; }
-
-        /* Hero Pachete */
-        .hero-small { 
-            height: 50vh; display: flex; align-items: center; justify-content: center; text-align: center; color: white;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.2)), 
-                        url('https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/hero-camp-munti.jpg') center/cover no-repeat;
-        }
-
-        /* Grid Pachete */
-        .pachete-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; margin: -80px auto 80px; position: relative; z-index: 10; }
-        .pachet-card { background: var(--alb); border-radius: 4px; padding: 45px; box-shadow: 0 30px 60px rgba(0,0,0,0.05); text-align: center; border: 1px solid #f1f1f1; transition: 0.3s; }
-        .pachet-card:hover { transform: translateY(-10px); border-color: var(--auriu); }
+        .package-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; margin-bottom: 100px; }
         
-        .badge { color: var(--auriu); font-size: 0.7rem; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 15px; display: block; }
-        .price { font-size: 2rem; font-family: 'Playfair Display'; margin: 20px 0; color: var(--verde); }
-        .btn-gold { background: var(--auriu); color: white; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: 800; display: inline-block; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; }
-
-        .wa-btn { position: fixed; bottom: 30px; left: 30px; background: #25d366; color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 999; }
+        .p-card { background: var(--alb); border: 1px solid #eee; border-radius: 4px; overflow: hidden; transition: 0.4s; }
+        .p-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(0,0,0,0.05); }
+        .p-img { height: 250px; background-size: cover; background-position: center; }
+        
+        .p-content { padding: 40px; text-align: center; }
+        .p-tag { color: var(--auriu); font-size: 0.7rem; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 15px; display: block; }
+        .p-content h3 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 2rem; margin-bottom: 20px; }
+        
+        .p-features { list-style: none; margin-bottom: 30px; font-size: 0.9rem; color: #666; font-weight: 300; }
+        .p-features li { margin-bottom: 10px; border-bottom: 1px dashed #eee; padding-bottom: 5px; }
+        
+        .price { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--negru-mat); display: block; margin-bottom: 25px; }
+        .btn-gold { background: var(--auriu); color: white; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-family: 'Playfair Display', serif; font-style: italic; display: inline-block; }
     </style>
 </head>
 <body>
 
 <header class="site-header">
-    <div class="container nav-wrap">
-        <a href="index.html" class="brand">HAȚEG <strong>ALTERNATIV</strong></a>
-        <nav class="main-nav">
-            <a href="pensiuni.html">Pensiuni</a>
-            <a href="experiente.html">Experiențe</a>
-            <a href="pachete.html" style="color: var(--auriu);">Pachete</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    </div>
+    <a href="index.html" class="brand">HAȚEG<br>ALTERNATIV</a>
+    <span class="est">EST. 2026</span>
 </header>
 
-<section class="hero-small">
-    <div class="container">
-        <h1 style="font-size: 3.5rem; font-style: italic;">Sejururi cu sens.</h1>
-        <p style="letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem;">Simplu. Clar. Autentic.</p>
-    </div>
-</section>
-
 <main class="container">
-    <div class="pachete-grid">
-        <div class="pachet-card">
-            <span class="badge">Essential</span>
-            <h3>Weekend în Hațeg</h3>
-            <p style="color: #64748b; font-weight: 300; margin-top: 15px;">2 nopți de cazare premium și recomandări locale pentru explorare.</p>
-            <div class="price">690 RON</div>
-            <a href="rezervare.html?pachet=weekend" class="btn-gold">Rezervă</a>
-        </div>
+    <div style="text-align: center; margin-bottom: 80px;">
+        <h1 style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 3.5rem;">Pachete Exclusive</h1>
+        <p style="color: #666; font-style: italic;">Experiențe complete, curatoriate pentru regăsire.</p>
+    </div>
 
-        <div class="pachet-card">
-            <span class="badge">Bestseller</span>
-            <h3>Hațeg Autentic</h3>
-            <p style="color: #64748b; font-weight: 300; margin-top: 15px;">Cazare, cină tradițională la gura focului și o experiență locală surpriză.</p>
-            <div class="price">1.090 RON</div>
-            <a href="rezervare.html?pachet=autentic" class="btn-gold">Rezervă</a>
-        </div>
+    <div class="package-grid">
+        <article class="p-card">
+            <div class="p-img" style="background-image: url('images/hero-premium.jpg');"></div>
+            <div class="p-content">
+                <span class="p-tag">4 Camere • 3 Zile</span>
+                <h3>Metanoia: Tăcere</h3>
+                <ul class="p-features">
+                    <li>2 Nopți Cazare Premium</li>
+                    <li>Mese Bio (Farm to Table)</li>
+                    <li>Sesiune Meditație la Răsărit</li>
+                    <li>Digital Detox (Smartphone Safe)</li>
+                </ul>
+                <span class="price">4.500 RON / grup</span>
+                <a href="https://wa.me/40749229686?text=Vreau pachetul Metanoia Tacere" class="btn-gold">Rezervă Pachet</a>
+            </div>
+        </article>
 
-        <div class="pachet-card">
-            <span class="badge">Signature</span>
-            <h3>Refugiu Complet</h3>
-            <p style="color: #64748b; font-weight: 300; margin-top: 15px;">All-inclusive rural: cazare, mese gourmet și expediție 4x4 în munți.</p>
-            <div class="price">1.450 RON</div>
-            <a href="rezervare.html?pachet=premium" class="btn-gold">Rezervă</a>
-        </div>
+        <article class="p-card">
+            <div class="p-img" style="background-image: url('images/gast-masa-traditionala.jpg');"></div>
+            <div class="p-content">
+                <span class="p-tag">10 Locuri • Weekend</span>
+                <h3>Buliga: Gustul Munților</h3>
+                <ul class="p-features">
+                    <li>Închiriere Integrală Buliga</li>
+                    <li>Cioban pentru o zi la Stână</li>
+                    <li>Cină tradițională cu degustare</li>
+                    <li>Tur ghidat la Bucura</li>
+                </ul>
+                <span class="price">8.500 RON / pachet</span>
+                <a href="https://wa.me/40749229686?text=Vreau pachetul Gustul Muntilor" class="btn-gold">Rezervă Pachet</a>
+            </div>
+        </article>
+
+        <article class="p-card">
+            <div class="p-img" style="background-image: url('images/hero-lac.jpg');"></div>
+            <div class="p-content">
+                <span class="p-tag">Explorer • 2 Persoane</span>
+                <h3>Hațeg: Pe Roți</h3>
+                <ul class="p-features">
+                    <li>Cazare Pensiunea Natalia</li>
+                    <li>2 E-Bikes incluse 48h</li>
+                    <li>Pachet Picnic Gourmet</li>
+                    <li>Ghid local pentru istorie</li>
+                </ul>
+                <span class="price">1.800 RON / cuplu</span>
+                <a href="https://wa.me/40749229686?text=Vreau pachetul Hateg pe Roti" class="btn-gold">Rezervă Pachet</a>
+            </div>
+        </article>
     </div>
 </main>
-
-<a href="https://wa.me/40749229686" class="wa-btn">WhatsApp Direct</a>
-
-<script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true; s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
-    s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
-</script>
 
 </body>
 </html>
