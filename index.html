@@ -3,367 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hateg Alternativ - Layout</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <title>Hațeg Alternativ | Signature Collection</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg-color: #fff;
-            --text-color: #333;
-            --accent-color: #c5a059; /* Mustard yellow from language buttons */
-            --navbar-bg: #333; /* Dark grey instead of green */
-            --card-title-bg: #f9f9f9;
-            --font-family-serif: 'Playfair Display', serif;
-            --font-family-sans: 'Inter', sans-serif;
-            --spacer: 1.5rem;
+        :root { 
+            --negru-mat: #242424; 
+            --auriu: #c5a059; 
+            --crem: #fdfcf8; 
+            --alb: #ffffff;
+            --text-soft: #555555;
         }
 
-        body {
-            font-family: var(--font-family-sans);
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            line-height: 1.6;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru-mat); line-height: 1.6; }
 
-        a { text-decoration: none; color: inherit; }
-        ul { list-style: none; padding: 0; margin: 0; }
+        /* Header Alb - Brand pe 2 rânduri */
+        .site-header { position: fixed; top: 0; width: 100%; z-index: 1500; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .header-container { display: flex; flex-direction: column; align-items: center; padding: 20px 0; }
+        .brand { text-decoration: none; color: var(--negru-mat); font-family: 'Playfair Display', serif; font-size: 1.5rem; line-height: 1; font-weight: 700; text-align: center; }
+        .est { font-size: 0.6rem; color: var(--auriu); letter-spacing: 4px; font-weight: 800; margin-top: 8px; text-transform: uppercase; }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 var(--spacer);
-        }
+        /* Navbar Gri Închis (Fără Verde) */
+        .main-nav { background: var(--negru-mat); width: 100%; display: flex; justify-content: center; gap: 30px; padding: 15px 0; margin-top: 20px; }
+        .main-nav a { text-decoration: none; color: #fff; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; }
+        .main-nav a:hover { color: var(--auriu); }
 
-        /* Language Selector */
-        .lang-bar {
-            background-color: #f5f5f5;
-            padding: 0.5rem 0;
-            text-align: right;
+        /* Hero Section - Bucura Lake */
+        .hero {
+            width: 95%; max-width: 1300px; height: 70vh; margin: 160px auto 40px; border-radius: 4px;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url('bucura.jpg') center/cover no-repeat;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: white;
         }
-        .lang-selector {
-            display: inline-flex;
-            gap: 0.5rem;
-        }
-        .lang-btn {
-            background-color: #d8d8d8;
-            border: none;
-            padding: 0.5rem 1rem;
-            font-size: 0.8rem;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .lang-btn.active {
-            background-color: var(--accent-color);
-            color: #fff;
-        }
+        .hero h1 { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(2.2rem, 8vw, 4rem); text-shadow: 0 10px 30px rgba(0,0,0,0.3); }
 
-        /* Header */
-        header {
-            padding: 1.5rem 0;
-        }
-        .brand {
-            font-family: var(--font-family-serif);
-            font-style: italic;
-            font-size: 1.5rem;
-            color: #000;
-        }
-        .brand span {
-            font-size: 2rem;
-            color: var(--accent-color);
-        }
+        /* Regăsirea Section */
+        .section-title { text-align: center; margin: 80px 0 50px; }
+        .section-title h2 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 2.8rem; }
+        
+        .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .card { background: var(--alb); border-radius: 4px; overflow: hidden; border: 1px solid #f0f0f0; transition: 0.4s; }
+        .card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        .card-img { height: 250px; background-size: cover; background-position: center; }
+        .card-content { padding: 30px; text-align: center; }
+        .card-tag { background: var(--auriu); color: white; padding: 5px 15px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; display: inline-block; margin-bottom: 15px; }
 
-        /* Navbar */
-        .navbar {
-            background-color: var(--navbar-bg);
-            color: #fff;
-            padding: 0.8rem 0;
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-        }
-        .navbar ul {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-        }
+        /* Punct Gastronomic */
+        .gastro-section { max-width: 1100px; margin: 100px auto; padding: 0 20px; }
+        .gastro-box { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; background: #fff; padding: 40px; border-radius: 4px; border: 1px solid #eee; }
+        .gastro-img { width: 100%; height: 350px; border-radius: 4px; object-fit: cover; }
 
-        /* Page Content */
-        .content {
-            padding: var(--spacer) 0;
-        }
+        /* Metanoia Live Grid */
+        .live-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        .live-img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 4px; filter: grayscale(20%); transition: 0.5s; }
+        .live-img:hover { filter: grayscale(0%); transform: scale(1.02); }
 
-        /* Regasirea Section */
-        .regasirea h1 {
-            font-family: var(--font-family-serif);
-            font-style: italic;
-            font-size: 2.5rem;
-            margin-top: 0;
-            margin-bottom: 0.5rem;
-        }
-        .regasirea p {
-            font-style: italic;
-            color: #666;
-            margin-bottom: 2rem;
-        }
+        /* VIP Access */
+        .vip-access { background: #fff; border: 2px solid var(--auriu); max-width: 600px; margin: 80px auto; padding: 40px; text-align: center; border-radius: 4px; }
+        .vip-key { font-size: 2rem; color: var(--auriu); margin-bottom: 15px; display: block; }
 
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: var(--spacer);
-            margin-bottom: 3rem;
-        }
+        /* Buttons & WA */
+        .btn-gold { background: var(--auriu); color: white; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.1rem; display: inline-block; margin-top: 20px; transition: 0.3s; border: none; cursor: pointer; }
+        .btn-black { background: var(--negru-mat); color: white; padding: 12px 30px; border-radius: 4px; text-decoration: none; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; display: inline-block; }
+        
+        .wa-float { position: fixed; bottom: 30px; right: 30px; background: var(--auriu); color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 2000; box-shadow: 0 10px 20px rgba(0,0,0,0.1); font-size: 0.8rem; }
 
-        .card {
-            background: #fff;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            display: flex;
-            flex-direction: column;
-        }
-        .card-header {
-            height: 200px;
-            background-size: cover;
-            background-position: center;
-            color: #fff;
-            padding: 1rem;
-            font-family: var(--font-family-serif);
-            font-style: italic;
-            font-size: 1.2rem;
-        }
-        .card-body {
-            padding: 1rem;
-            text-align: center;
-            flex-grow: 1;
-        }
-        .card-title-strip {
-            background-color: var(--accent-color);
-            color: #fff;
-            padding: 0.5rem 0;
-            margin-bottom: 1rem;
-            font-weight: bold;
-            font-size: 0.9rem;
-        }
-        .card-text {
-            font-size: 0.9rem;
-            color: #555;
-            margin-bottom: 1.5rem;
-        }
-        .btn-card {
-            background-color: #333;
-            color: #fff;
-            border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.8rem;
-        }
-
-        /* Placeholders from images */
-        .stana-img { background-image: url('data:image/jpeg;base64,...'); /* Insert a placeholder or path */ }
-        .biserica-img { background-image: url('data:image/jpeg;base64,...'); }
-        .salbaticie-img { background-image: url('data:image/jpeg;base64,...'); }
-
-        /* Punct Gastronomic Section */
-        .gastro {
-            margin-bottom: 3rem;
-        }
-        .gastro h2 {
-            font-family: var(--font-family-serif);
-            font-style: italic;
-            color: var(--navbar-bg);
-            margin-bottom: 0.5rem;
-        }
-        .gastro-inset {
-            background-color: #f9f9f9;
-            border-radius: 8px;
-            display: flex;
-            gap: 1.5rem;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            align-items: center;
-        }
-        .gastro-inset img {
-            width: 200px;
-            height: 150px;
-            object-fit: cover;
-            border-radius: 4px;
-        }
-        .gastro-inset p {
-            flex-grow: 1;
-            font-size: 0.9rem;
-            color: #555;
-            margin: 0;
-        }
-        .btn-gastro {
-            background-color: var(--accent-color);
-            color: #fff;
-            border: none;
-            padding: 0.8rem 1.5rem;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.8rem;
-        }
-
-        /* Metanoia Live Section */
-        .metanoia h2 {
-            font-family: var(--font-family-sans);
-            font-weight: bold;
-            text-transform: uppercase;
-            font-size: 1rem;
-            margin-bottom: 1rem;
-        }
-        .metanoia-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-        }
-        .metanoia-grid img {
-            width: 100%;
-            height: 100px;
-            object-fit: cover;
-            border-radius: 4px;
-        }
-
-        /* Member Access */
-        .member-access {
-            background-color: #fff4e5;
-            border: 2px solid var(--accent-color);
-            border-radius: 8px;
-            padding: 1rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 3rem;
-            color: var(--text-color);
-        }
-        .key-icon {
-            font-size: 1.5rem;
-            color: var(--accent-color);
-        }
-
-        /* Floating WhatsApp Button */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background-color: #e67e22; /* Or keep a mustard variant */
-            color: #fff;
-            padding: 1rem;
-            border-radius: 50%;
-            cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-
+        @media (max-width: 768px) { .gastro-box { grid-template-columns: 1fr; } .main-nav { gap: 15px; font-size: 0.65rem; } }
     </style>
 </head>
 <body>
 
-<div class="lang-bar">
-    <div class="container lang-selector">
-        <button class="lang-btn active">RO</button>
-        <button class="lang-btn">EN</button>
-        <button class="lang-btn">DE</button>
-    </div>
-</div>
-
-<header>
-    <div class="container brand">
-        Hateg <br>
-        <span>Alternativ</span><br>
-        Curated. Authentic. Personal.
+<header class="site-header">
+    <div class="header-container">
+        <a href="index.html" class="brand">HAȚEG<br>ALTERNATIV</a>
+        <span class="est">EST. 2026</span>
+        <nav class="main-nav">
+            <a href="pensiuni.html">Pensiuni</a>
+            <a href="retreat.html">Retreat</a>
+            <a href="experiente.html">Experiențe</a>
+            <a href="forum.html">Forum</a>
+        </nav>
     </div>
 </header>
 
-<nav class="navbar">
-    <div class="container">
-        <ul>
-            <li><a href="#">Pensiuni</a></li>
-            <li><a href="#">Retreat</a></li>
-            <li><a href="#">Experiențe</a></li>
-            <li><a href="#">Forum</a></li>
-        </ul>
+<section class="hero">
+    <h1>Simte tăcerea. <br>Un refugiu pentru suflet.</h1>
+    <a href="rezervare.html" class="btn-gold" style="margin-top: 30px;">Solicită Experiența</a>
+</section>
+
+<main>
+    <section class="section-title">
+        <h2>Regăsirea</h2>
+        <p style="color: var(--text-soft); font-style: italic;">Când pământul întâlnește cerul</p>
+    </section>
+
+    <div class="grid-cards">
+        <article class="card">
+            <div class="card-img" style="background-image: url('exp-stana.jpg');"></div>
+            <div class="card-content">
+                <span class="card-tag">Tradiție Vie</span>
+                <h3>O zi la stână</h3>
+                <p style="margin: 15px 0; font-size: 0.9rem; color: var(--text-soft);">Gust autentic și tradiții vii la foc de lemne.</p>
+                <a href="rezervare.html?loc=stana" class="btn-black">Solicită</a>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="card-img" style="background-image: url('exp-biserica-ext.jpg');"></div>
+            <div class="card-content">
+                <span class="card-tag">Patrimoniu</span>
+                <h3>Pășește în istorie</h3>
+                <p style="margin: 15px 0; font-size: 0.9rem; color: var(--text-soft);">Istorie de piatră și legendele Țării Hațegului.</p>
+                <a href="rezervare.html?loc=istorie" class="btn-black">Solicită</a>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="card-img" style="background-image: url('exp-lac.jpg');"></div>
+            <div class="card-content">
+                <span class="card-tag">Natură Pură</span>
+                <h3>Bucura & Retezat</h3>
+                <p style="margin: 15px 0; font-size: 0.9rem; color: var(--text-soft);">Echilibru în inima celei mai mari rezervații.</p>
+                <a href="rezervare.html?loc=bucura" class="btn-black">Solicită</a>
+            </div>
+        </article>
     </div>
-</nav>
 
-<main class="content">
-    <div class="container">
-        
-        <section class="regasirea">
-            <h1>Regăsirea</h1>
-            <p>Când pământul întâlnește cerul</p>
-
-            <div class="card-grid">
-                <article class="card">
-                    <div class="card-header stana-img">
-                        O zi la stână
-                    </div>
-                    <div class="card-body">
-                        <div class="card-title-strip">Tradiție Vie</div>
-                        <p class="card-text">Pășiți în viața pastorală și gustați brânza de munte.</p>
-                        <button class="btn-card">Solicită Experiența</button>
-                    </div>
-                </article>
-
-                <article class="card">
-                    <div class="card-header biserica-img">
-                        Pășește în istorie
-                    </div>
-                    <div class="card-body">
-                        <div class="card-title-strip">Patrimoniu</div>
-                        <p class="card-text">Explorați biserici de piatră și legende locale.</p>
-                        <button class="btn-card">Solicită Experiența</button>
-                    </div>
-                </article>
-
-                <article class="card">
-                    <div class="card-header salbaticie-img">
-                        Sălbăticie Pură
-                    </div>
-                    <div class="card-body">
-                        <div class="card-title-strip">Natură</div>
-                        <p class="card-text">Tur ghidat prin Parcul Național Retezat.</p>
-                        <button class="btn-card">Solicită Experiența</button>
-                    </div>
-                </article>
+    <section class="gastro-section">
+        <div class="gastro-box">
+            <img src="gast-panou.jpg" class="gastro-img" alt="Gastro">
+            <div>
+                <h2 style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 2.2rem; margin-bottom: 20px;">Punct Gastronomic Local</h2>
+                <p style="margin-bottom: 25px; color: var(--text-soft);">Bucătăria noastră este o extensie a pământului. Vă invităm să descoperiți aromele autentice ale locului.</p>
+                <a href="rezervare.html?loc=gastro" class="btn-gold">Solicită Experiența</a>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="gastro">
-            <h2>Punct Gastronomic Local</h2>
-            <div class="gastro-inset">
-                <img src="..." alt="Inset Gastro"> <p>O incursiune în bucătăria personală, departe de turismul de masă. Încercați arome autentice.</p>
-            </div>
-            <button class="btn-gastro">Solicită Experiența</button>
-        </section>
-
-        <section class="metanoia">
-            <h2>Metanoia Live</h2>
-            <div class="metanoia-grid">
-                <img src="..." alt="Insta 1">
-                <img src="..." alt="Insta 2">
-                <img src="..." alt="Insta 3">
-                <img src="..." alt="Insta 4">
-                <img src="..." alt="Insta 5">
-                <img src="..." alt="Insta 6">
-                <img src="..." alt="Insta 7">
-                <img src="..." alt="Insta 8">
-            </div>
-        </section>
-
-        <section class="member-access">
-            <span class="key-icon">🔑</span>
-            <div>Solicită acces în secțiunea<br>
-            <strong>"Member Access"</strong></div>
-        </section>
-
+    <section class="section-title">
+        <h2 style="font-size: 1.5rem; text-transform: uppercase; letter-spacing: 2px;">Metanoia Live</h2>
+    </section>
+    
+    <div class="live-grid">
+        <img src="exp-fluturi.jpg" class="live-img">
+        <img src="gast-cafea-inima.jpg" class="live-img">
+        <img src="exp-biserica-veche.jpg" class="live-img">
+        <img src="exp-biserica-int.jpg" class="live-img">
     </div>
+
+    <section class="vip-access">
+        <span class="vip-key">🔑</span>
+        <p style="font-weight: 700; margin-bottom: 10px;">Solicită acces în secțiunea</p>
+        <h2 style="font-size: 1.5rem; text-transform: uppercase; letter-spacing: 1px;">"Member Access"</h2>
+    </section>
 </main>
 
-<div class="whatsapp-float">
-    WA
-</div>
+<a href="https://wa.me/40749229686" class="wa-float">Contact WhatsApp</a>
 
 </body>
 </html>
