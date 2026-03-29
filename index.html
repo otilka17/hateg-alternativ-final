@@ -17,57 +17,51 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru-mat); line-height: 1.6; }
 
-        /* Header Alb - Brand pe 2 rânduri */
+        /* Header Alb - Logo pe 2 randuri */
         .site-header { position: fixed; top: 0; width: 100%; z-index: 1500; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); }
         .header-container { display: flex; flex-direction: column; align-items: center; padding: 20px 0; }
         .brand { text-decoration: none; color: var(--negru-mat); font-family: 'Playfair Display', serif; font-size: 1.5rem; line-height: 1; font-weight: 700; text-align: center; }
         .est { font-size: 0.6rem; color: var(--auriu); letter-spacing: 4px; font-weight: 800; margin-top: 8px; text-transform: uppercase; }
 
-        /* Navbar Gri Închis (Fără Verde) */
+        /* Navbar Gri Inchis (Fara Verde) */
         .main-nav { background: var(--negru-mat); width: 100%; display: flex; justify-content: center; gap: 30px; padding: 15px 0; margin-top: 20px; }
-        .main-nav a { text-decoration: none; color: #fff; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; }
-        .main-nav a:hover { color: var(--auriu); }
+        .main-nav a { text-decoration: none; color: #fff; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
 
-        /* Hero Section - Bucura Lake */
+        /* Hero - Lacul Bucura */
         .hero {
-            width: 95%; max-width: 1300px; height: 70vh; margin: 160px auto 40px; border-radius: 4px;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url('bucura.jpg') center/cover no-repeat;
-            display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: white;
+            width: 95%; max-width: 1300px; height: 75vh; margin: 180px auto 40px; border-radius: 4px;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url('images/bucura.jpg') center/cover no-repeat;
+            display: flex; align-items: center; justify-content: center; text-align: center; color: white;
         }
-        .hero h1 { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(2.2rem, 8vw, 4rem); text-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .hero h1 { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(2.5rem, 8vw, 4.5rem); text-shadow: 0 10px 30px rgba(0,0,0,0.3); }
 
-        /* Regăsirea Section */
+        /* Grid Experiente */
         .section-title { text-align: center; margin: 80px 0 50px; }
         .section-title h2 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 2.8rem; }
         
         .grid-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .card { background: var(--alb); border-radius: 4px; overflow: hidden; border: 1px solid #f0f0f0; transition: 0.4s; }
-        .card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
-        .card-img { height: 250px; background-size: cover; background-position: center; }
-        .card-content { padding: 30px; text-align: center; }
-        .card-tag { background: var(--auriu); color: white; padding: 5px 15px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; display: inline-block; margin-bottom: 15px; }
+        .card { background: var(--alb); border-radius: 4px; overflow: hidden; border: 1px solid #f0f0f0; transition: 0.4s; text-align: center; }
+        .card-img { height: 350px; background-size: cover; background-position: center; }
+        .card-content { padding: 35px; }
+        .card-tag { color: var(--auriu); font-size: 0.7rem; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 15px; display: block; }
 
         /* Punct Gastronomic */
-        .gastro-section { max-width: 1100px; margin: 100px auto; padding: 0 20px; }
-        .gastro-box { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; background: #fff; padding: 40px; border-radius: 4px; border: 1px solid #eee; }
-        .gastro-img { width: 100%; height: 350px; border-radius: 4px; object-fit: cover; }
+        .gastro-box { max-width: 1100px; margin: 100px auto; background: var(--alb); border: 1px solid #eee; display: grid; grid-template-columns: 1fr 1fr; align-items: center; border-radius: 4px; overflow: hidden; }
+        .gastro-info { padding: 60px; }
+        .gastro-img { height: 500px; background: url('images/gast-panou.png') center/cover; }
 
         /* Metanoia Live Grid */
         .live-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-        .live-img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 4px; filter: grayscale(20%); transition: 0.5s; }
-        .live-img:hover { filter: grayscale(0%); transform: scale(1.02); }
+        .live-img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 4px; }
 
         /* VIP Access */
-        .vip-access { background: #fff; border: 2px solid var(--auriu); max-width: 600px; margin: 80px auto; padding: 40px; text-align: center; border-radius: 4px; }
-        .vip-key { font-size: 2rem; color: var(--auriu); margin-bottom: 15px; display: block; }
-
-        /* Buttons & WA */
-        .btn-gold { background: var(--auriu); color: white; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.1rem; display: inline-block; margin-top: 20px; transition: 0.3s; border: none; cursor: pointer; }
-        .btn-black { background: var(--negru-mat); color: white; padding: 12px 30px; border-radius: 4px; text-decoration: none; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; display: inline-block; }
+        .vip-access { background: #fff; border: 2px solid var(--auriu); max-width: 600px; margin: 80px auto; padding: 40px; text-align: center; }
         
-        .wa-float { position: fixed; bottom: 30px; right: 30px; background: var(--auriu); color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 2000; box-shadow: 0 10px 20px rgba(0,0,0,0.1); font-size: 0.8rem; }
+        /* Buttons */
+        .btn-gold { background: var(--auriu); color: white; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-family: 'Playfair Display', serif; font-style: italic; display: inline-block; margin-top: 20px; border: none; }
+        .wa-float { position: fixed; bottom: 30px; right: 30px; background: var(--auriu); color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 2000; font-size: 0.8rem; }
 
-        @media (max-width: 768px) { .gastro-box { grid-template-columns: 1fr; } .main-nav { gap: 15px; font-size: 0.65rem; } }
+        @media (max-width: 768px) { .gastro-box { grid-template-columns: 1fr; } .main-nav { display: none; } }
     </style>
 </head>
 <body>
@@ -86,74 +80,66 @@
 </header>
 
 <section class="hero">
-    <h1>Simte tăcerea. <br>Un refugiu pentru suflet.</h1>
-    <a href="rezervare.html" class="btn-gold" style="margin-top: 30px;">Solicită Experiența</a>
+    <h1>Simte tăcerea.</h1>
 </section>
 
 <main>
     <section class="section-title">
         <h2>Regăsirea</h2>
-        <p style="color: var(--text-soft); font-style: italic;">Când pământul întâlnește cerul</p>
+        <p style="color: var(--text-soft); font-style: italic;">Unde pământul întâlnește cerul</p>
     </section>
 
     <div class="grid-cards">
         <article class="card">
-            <div class="card-img" style="background-image: url('exp-stana.jpg');"></div>
+            <div class="card-img" style="background-image: url('images/exp-stana.jpg');"></div>
             <div class="card-content">
                 <span class="card-tag">Tradiție Vie</span>
                 <h3>O zi la stână</h3>
-                <p style="margin: 15px 0; font-size: 0.9rem; color: var(--text-soft);">Gust autentic și tradiții vii la foc de lemne.</p>
-                <a href="rezervare.html?loc=stana" class="btn-black">Solicită</a>
+                <a href="rezervare.html?loc=stana" class="btn-gold">Solicită</a>
             </div>
         </article>
 
         <article class="card">
-            <div class="card-img" style="background-image: url('exp-biserica-ext.jpg');"></div>
+            <div class="card-img" style="background-image: url('images/exp-biserica-ext.jpg');"></div>
             <div class="card-content">
                 <span class="card-tag">Patrimoniu</span>
                 <h3>Pășește în istorie</h3>
-                <p style="margin: 15px 0; font-size: 0.9rem; color: var(--text-soft);">Istorie de piatră și legendele Țării Hațegului.</p>
-                <a href="rezervare.html?loc=istorie" class="btn-black">Solicită</a>
+                <a href="rezervare.html?loc=istorie" class="btn-gold">Solicită</a>
             </div>
         </article>
 
         <article class="card">
-            <div class="card-img" style="background-image: url('exp-lac.jpg');"></div>
+            <div class="card-img" style="background-image: url('images/exp-lac.jpg');"></div>
             <div class="card-content">
                 <span class="card-tag">Natură Pură</span>
                 <h3>Bucura & Retezat</h3>
-                <p style="margin: 15px 0; font-size: 0.9rem; color: var(--text-soft);">Echilibru în inima celei mai mari rezervații.</p>
-                <a href="rezervare.html?loc=bucura" class="btn-black">Solicită</a>
+                <a href="rezervare.html?loc=bucura" class="btn-gold">Solicită</a>
             </div>
         </article>
     </div>
 
-    <section class="gastro-section">
-        <div class="gastro-box">
-            <img src="gast-panou.jpg" class="gastro-img" alt="Gastro">
-            <div>
-                <h2 style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 2.2rem; margin-bottom: 20px;">Punct Gastronomic Local</h2>
-                <p style="margin-bottom: 25px; color: var(--text-soft);">Bucătăria noastră este o extensie a pământului. Vă invităm să descoperiți aromele autentice ale locului.</p>
-                <a href="rezervare.html?loc=gastro" class="btn-gold">Solicită Experiența</a>
-            </div>
+    <section class="gastro-box">
+        <div class="gastro-info">
+            <span class="card-tag">Autentic</span>
+            <h2 style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 2.2rem; margin-bottom: 20px;">Punct Gastronomic Local</h2>
+            <a href="rezervare.html?loc=gastro" class="btn-gold">Rezervă o masă</a>
         </div>
+        <div class="gastro-img"></div>
     </section>
 
-    <section class="section-title">
-        <h2 style="font-size: 1.5rem; text-transform: uppercase; letter-spacing: 2px;">Metanoia Live</h2>
-    </section>
-    
+    <section class="section-title"><h2>Metanoia Live</h2></section>
     <div class="live-grid">
-        <img src="exp-fluturi.jpg" class="live-img">
-        <img src="gast-cafea-inima.jpg" class="live-img">
-        <img src="exp-biserica-veche.jpg" class="live-img">
-        <img src="exp-biserica-int.jpg" class="live-img">
+        <img src="images/feed-4.jpg" class="live-img" onerror="this.src='images/hero-camp-munti.jpg'">
+        <img src="images/feed-5.jpg" class="live-img" onerror="this.src='images/hero-camp-munti.jpg'">
+        <img src="images/feed-6.jpg" class="live-img" onerror="this.src='images/hero-camp-munti.jpg'">
+        <img src="images/feed-7.jpg" class="live-img" onerror="this.src='images/hero-camp-munti.jpg'">
+        <img src="images/feed-8.jpg" class="live-img" onerror="this.src='images/hero-camp-munti.jpg'">
     </div>
 
     <section class="vip-access">
-        <span class="vip-key">🔑</span>
-        <p style="font-weight: 700; margin-bottom: 10px;">Solicită acces în secțiunea</p>
-        <h2 style="font-size: 1.5rem; text-transform: uppercase; letter-spacing: 1px;">"Member Access"</h2>
+        <span style="font-size: 2rem; display: block; margin-bottom: 20px;">🔑</span>
+        <h2 style="font-size: 1.5rem; text-transform: uppercase;">Member Access</h2>
+        <a href="https://wa.me/40749229686" class="btn-gold">Înscrie-te</a>
     </section>
 </main>
 
