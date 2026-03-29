@@ -1,133 +1,93 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Colecția Signature | Hațeg Alternativ</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pensiuni | Hațeg Alternativ Signature</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    
     <style>
-        :root { --verde: #1b3022; --auriu: #c5a059; --roz-crem: #fdfcf8; --alb: #ffffff; }
+        :root { --negru-mat: #242424; --auriu: #c5a059; --crem: #fdfcf8; --alb: #ffffff; --text-soft: #555555; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru-mat); line-height: 1.6; padding-top: 180px; }
         
-        body { font-family: 'Inter', sans-serif; background: var(--roz-crem); color: var(--verde); line-height: 1.6; padding-top: 120px; }
-        h1, h2, h3, .brand { font-family: 'Playfair Display', serif; font-weight: 700; }
-        .italic-style { font-style: italic; }
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-
-        /* Header Signature - Brand pe 2 rânduri */
         .site-header { position: fixed; top: 0; width: 100%; z-index: 1500; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); }
-        .nav-wrap { display: flex; flex-direction: column; align-items: center; padding: 20px 0; }
-        
-        .brand { text-decoration: none; color: var(--verde); font-size: 1.5rem; text-align: center; line-height: 1; letter-spacing: 1px; }
-        .brand strong { font-weight: 800; }
-        .est { font-size: 0.6rem; color: var(--auriu); font-weight: 800; letter-spacing: 3px; text-transform: uppercase; margin-top: 8px; display: block; }
-
-        /* Meniu */
-        .main-nav { display: flex; gap: 25px; margin-top: 20px; }
-        .main-nav a { text-decoration: none; color: #444; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
+        .header-container { display: flex; flex-direction: column; align-items: center; padding: 20px 0; }
+        .brand { text-decoration: none; color: var(--negru-mat); font-family: 'Playfair Display', serif; font-size: 1.6rem; line-height: 1; font-weight: 700; text-align: center; }
+        .est { font-size: 0.6rem; color: var(--auriu); letter-spacing: 4px; font-weight: 800; margin-top: 8px; text-transform: uppercase; }
+        .main-nav { background: var(--negru-mat); width: 100%; display: flex; justify-content: center; gap: 30px; padding: 15px 0; margin-top: 20px; }
+        .main-nav a { text-decoration: none; color: #fff; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
         .active { color: var(--auriu) !important; }
 
-        /* Page Header */
-        .page-intro { text-align: center; padding: 60px 0; }
-        .kicker { color: var(--auriu); font-size: 0.7rem; font-weight: 800; letter-spacing: 5px; text-transform: uppercase; display: block; margin-bottom: 15px; }
-        .page-intro h1 { font-size: clamp(2.5rem, 6vw, 4rem); font-style: italic; margin-bottom: 20px; }
-        .page-intro p { max-width: 700px; margin: 0 auto; color: #64748b; font-weight: 300; }
+        .page-intro { text-align: center; margin-bottom: 60px; padding: 0 20px; }
+        .page-intro h1 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 3rem; margin-bottom: 15px; }
 
-        /* Pensiuni Grid */
-        .pensiuni-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 40px; margin-bottom: 100px; }
-        .card { background: var(--alb); border-radius: 4px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.03); border: 1px solid #f1f1f1; transition: 0.4s; }
-        .card:hover { transform: translateY(-10px); box-shadow: 0 24px 70px rgba(0,0,0,0.06); }
+        .grid-pensiuni { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 40px; max-width: 1200px; margin: 0 auto; padding: 0 20px 100px; }
+        .card { background: var(--alb); border-radius: 4px; overflow: hidden; border: 1px solid #f0f0f0; transition: 0.4s; }
+        .card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        .card-img { height: 400px; background-size: cover; background-position: center; }
+        .card-content { padding: 40px; text-align: center; }
         
-        .card-img { height: 400px; overflow: hidden; }
-        .card-img img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
-        .card:hover .card-img img { transform: scale(1.05); }
-
-        .card-body { padding: 40px; text-align: center; }
-        .card-body h3 { font-size: 1.8rem; margin-bottom: 15px; font-style: italic; }
-        .card-body p { color: #64748b; font-size: 0.95rem; margin-bottom: 30px; font-weight: 300; }
-
-        .btn-gold { background: var(--auriu); color: white; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-weight: 800; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; display: inline-block; transition: 0.3s; }
-        .btn-gold:hover { box-shadow: 0 10px 20px rgba(197,160,89,0.3); }
-
-        /* Contact Fixe */
-        .wa-btn { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 2000; box-shadow: 0 10px 20px rgba(0,0,0,0.1); font-size: 0.8rem; }
+        .card-tag { color: var(--auriu); font-size: 0.7rem; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 15px; display: block; }
+        .btn-gold { background: var(--auriu); color: white; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-family: 'Playfair Display', serif; font-style: italic; display: inline-block; margin-top: 20px; }
         
-        @media (max-width: 768px) { .main-nav { display: none; } .pensiuni-grid { grid-template-columns: 1fr; } }
+        .wa-float { position: fixed; bottom: 30px; right: 30px; background: var(--auriu); color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 2000; font-size: 0.8rem; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
     </style>
 </head>
 <body>
 
 <header class="site-header">
-    <div class="container nav-wrap">
-        <a href="index.html" class="brand">HAȚEG<br><strong>ALTERNATIV</strong></a>
+    <div class="header-container">
+        <a href="index.html" class="brand">HAȚEG<br>ALTERNATIV</a>
         <span class="est">EST. 2026</span>
         <nav class="main-nav">
             <a href="pensiuni.html" class="active">Pensiuni</a>
             <a href="retreat.html">Retreat</a>
-            <a href="gastronomic.html">Punct Gastronomic</a>
+            <a href="experiente.html">Experiențe</a>
+            <a href="forum.html">Forum</a>
         </nav>
     </div>
 </header>
 
-<main class="container">
+<main>
     <div class="page-intro">
-        <span class="kicker">The Collection</span>
+        <span class="card-tag">The Collection</span>
         <h1>Locuri cu suflet.</h1>
-        <p>O selecție curatoriată de refugii unde liniștea este cel mai mare lux.</p>
+        <p style="color: var(--text-soft); font-style: italic;">Refugii curatoriate pentru liniște deplină.</p>
     </div>
 
-    <div class="pensiuni-grid">
+    <div class="grid-pensiuni">
         <article class="card">
-            <div class="card-img">
-                <img src="images/selava-pensiune.jpg" alt="SELAva" onerror="this.src='https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/hero-camp-munti.jpg'">
-            </div>
-            <div class="card-body">
-                <span class="kicker" style="font-size: 0.6rem;">Design & Gastro</span>
+            <div class="card-img" style="background-image: url('images/selava-pensiune.jpg');"></div>
+            <div class="card-content">
+                <span class="card-tag">Design & Gastro</span>
                 <h3>SELAva Estate</h3>
-                <p>Unde minimalismul modern întâlnește gustul autentic. Destinația esteticienilor.</p>
+                <p style="margin: 15px 0; color: var(--text-soft); font-size: 0.9rem;">Unde minimalismul modern întâlnește gustul autentic.</p>
                 <a href="pensiune-selava.html" class="btn-gold">Vezi detalii</a>
             </div>
         </article>
 
         <article class="card">
-            <div class="card-img">
-                <img src="images/la-buliga-pensiune.jpg" alt="Buliga" onerror="this.src='https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/hero-camp-munti.jpg'">
-            </div>
-            <div class="card-body">
-                <span class="kicker" style="font-size: 0.6rem;">Mountain Retreat</span>
+            <div class="card-img" style="background-image: url('images/la-buliga-pensiune.jpg');"></div>
+            <div class="card-content">
+                <span class="card-tag">Mountain Retreat</span>
                 <h3>Domeniile La Buligă</h3>
-                <p>Izolare totală la peste 1000m altitudine. Reîntoarcerea la esență.</p>
+                <p style="margin: 15px 0; color: var(--text-soft); font-size: 0.9rem;">Izolare totală la peste 1000m altitudine. Liniște pură.</p>
                 <a href="pensiune-buliga.html" class="btn-gold">Vezi detalii</a>
             </div>
         </article>
 
         <article class="card">
-            <div class="card-img">
-                <img src="images/natalia-pensiune.jpg" alt="Natalia" onerror="this.src='https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/main/hero-camp-munti.jpg'">
-            </div>
-            <div class="card-body">
-                <span class="kicker" style="font-size: 0.6rem;">Authentic Stay</span>
+            <div class="card-img" style="background-image: url('images/natalia-pensiune.jpg');"></div>
+            <div class="card-content">
+                <span class="card-tag">Authentic Stay</span>
                 <h3>Pensiunea Natalia</h3>
-                <p>Căldura unei case de munte adevărate și un mic dejun legendar.</p>
+                <p style="margin: 15px 0; color: var(--text-soft); font-size: 0.9rem;">Ospitalitatea Țării Hațegului într-o casă de poveste.</p>
                 <a href="pensiune-natalia.html" class="btn-gold">Vezi detalii</a>
             </div>
         </article>
     </div>
 </main>
 
-<a href="https://wa.me/40749229686" class="wa-btn">WhatsApp Direct</a>
-
-<script type="text/javascript">
-    var Tawk_API=Tawk_API||{};
-    Tawk_API.customStyle = { visibility : { desktop : { xOffset : '30', yOffset : '30', position : 'bottom-left' }, mobile : { xOffset : '20', yOffset : '20', position : 'bottom-left' } } };
-    (function(){
-        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-        s1.async=true; s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
-        s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
-        s0.parentNode.insertBefore(s1,s0);
-    })();
-</script>
-
+<a href="https://wa.me/40749229686" class="wa-float">WhatsApp Direct</a>
 </body>
 </html>
