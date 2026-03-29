@@ -12,18 +12,17 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru-mat); line-height: 1.6; }
 
-        /* Header Signature - Logo pe 2 randuri */
+        /* Header Signature */
         .site-header { position: fixed; top: 0; width: 100%; z-index: 1500; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); }
         .header-container { display: flex; flex-direction: column; align-items: center; padding: 20px 0; }
         .brand { text-decoration: none; color: var(--negru-mat); font-family: 'Playfair Display', serif; font-size: 1.6rem; line-height: 1; font-weight: 700; text-align: center; }
         .est { font-size: 0.6rem; color: var(--auriu); letter-spacing: 4px; font-weight: 800; margin-top: 8px; text-transform: uppercase; }
 
-        /* Navbar Negru Mat */
         .main-nav { background: var(--negru-mat); width: 100%; display: flex; justify-content: center; gap: 30px; padding: 15px 0; margin-top: 20px; }
         .main-nav a { text-decoration: none; color: #fff; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; }
         .main-nav a:hover { color: var(--auriu); }
 
-        /* Hero - Bucura */
+        /* Hero - Lacul Bucura */
         .hero {
             width: 95%; max-width: 1300px; height: 75vh; margin: 180px auto 40px; border-radius: 4px;
             background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url('images/bucura.jpg') center/cover no-repeat;
@@ -39,8 +38,8 @@
         .card { background: var(--alb); border-radius: 4px; overflow: hidden; border: 1px solid #f0f0f0; transition: 0.4s; text-align: center; }
         .card:hover { transform: translateY(-10px); }
         .card-img { height: 350px; background-size: cover; background-position: center; }
-
-        /* Metanoia Live Grid */
+        
+        /* Metanoia Live */
         .live-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
         .live-img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 4px; }
 
@@ -61,7 +60,7 @@
         <a href="index.html" class="brand">HAȚEG<br>ALTERNATIV</a>
         <span class="est">EST. 2026</span>
         <nav class="main-nav">
-            <a href="pansiuni.html">Pensiuni</a>
+            <a href="pensiuni.html">Pensiuni</a>
             <a href="retreat.html">Retreat</a>
             <a href="experiente.html">Experiențe</a>
             <a href="contact.html">Contact</a>
@@ -87,6 +86,7 @@
                 <a href="experiente.html" class="btn-gold" style="font-size: 0.9rem; padding: 12px 30px; margin-top: 15px;">Detalii</a>
             </div>
         </article>
+        
         <article class="card">
             <div class="card-img" style="background-image: url('images/bucura.jpg');"></div>
             <div class="card-content" style="padding:30px;">
@@ -94,6 +94,7 @@
                 <a href="experiente.html" class="btn-gold" style="font-size: 0.9rem; padding: 12px 30px; margin-top: 15px;">Detalii</a>
             </div>
         </article>
+        
         <article class="card">
             <div class="card-img" style="background-image: url('images/image_40a322.jpg');"></div>
             <div class="card-content" style="padding:30px;">
@@ -115,8 +116,8 @@
     <section class="vip-access">
         <span style="font-size: 2.5rem; display: block; margin-bottom: 20px;">🔑</span>
         <h2 style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 2.2rem; margin-bottom: 15px;">Member Access</h2>
-        <p style="font-weight: 300; color: var(--text-soft); margin-bottom: 30px;">Solicită acces în secțiunea privată pentru pachete exclusive și experiențe curatoriate.</p>
-        <a href="mailto:hello@hateg-alternativ.ro?subject=Solicitare Acces VIP Member&body=Buna ziua,%0D%0A%0D%0ADoresc sa primesc mai multe detalii despre accesul VIP si pachetele exclusive Metanoia." class="btn-gold">Trimite Solicitarea</a>
+        <p style="font-weight: 300; color: var(--text-soft); margin-bottom: 30px;">Solicită acces în secțiunea privată pentru experiențe curatoriate.</p>
+        <a href="mailto:hello@hateg-alternativ.ro?subject=Solicitare Acces VIP Member&body=Buna ziua,%0D%0A%0D%0ADoresc sa primesc mai multe detalii despre accesul VIP." class="btn-gold">Trimite Solicitarea</a>
     </section>
 </main>
 
@@ -124,18 +125,16 @@
 
 <script type="text/javascript">
     var Tawk_API=Tawk_API||{};
-    // Mutam widget-ul pe stanga sa nu se suprapuna cu WhatsApp
     Tawk_API.customStyle = {
         visibility : {
             desktop : { xOffset : '30', yOffset : '30', position : 'bottom-left' },
             mobile : { xOffset : '20', yOffset : '20', position : 'bottom-left' }
         }
     };
-
     (function(){
         var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
         s1.async=true;
-        s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s'; // ID-ul tau din arhiva
+        s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
         s1.charset='UTF-8';
         s1.setAttribute('crossorigin','*');
         s0.parentNode.insertBefore(s1,s0);
