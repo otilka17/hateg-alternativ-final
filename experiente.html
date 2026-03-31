@@ -3,150 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Experiențe Autentice | Hațeg Alternativ</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <title>Personalizare Sejur | Domeniile la Buligă</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { 
-            --negru-mat: #242424; 
-            --auriu: #c5a059; 
-            --crem: #fdfcf8; 
-            --alb: #ffffff;
-            --text-soft: #555555;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru-mat); line-height: 1.6; padding-top: 180px; }
-
-        .site-header { position: fixed; top: 0; width: 100%; z-index: 1500; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); }
-        .header-container { display: flex; flex-direction: column; align-items: center; padding: 20px 0; }
-        .brand { text-decoration: none; color: var(--negru-mat); font-family: 'Playfair Display', serif; font-size: 1.6rem; line-height: 1; font-weight: 700; text-align: center; }
-        .est { font-size: 0.6rem; color: var(--auriu); letter-spacing: 4px; font-weight: 800; margin-top: 8px; text-transform: uppercase; }
-
-        .main-nav { background: var(--negru-mat); width: 100%; display: flex; justify-content: center; gap: 30px; padding: 15px 0; margin-top: 20px; }
-        .main-nav a { text-decoration: none; color: #fff; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
-        .active { color: var(--auriu) !important; }
-
-        .intro { text-align: center; max-width: 800px; margin: 0 auto 80px; padding: 0 20px; }
-        .intro span { color: var(--auriu); font-size: 0.7rem; font-weight: 800; letter-spacing: 5px; text-transform: uppercase; display: block; margin-bottom: 15px; }
-        .intro h1 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 3.5rem; line-height: 1.1; }
-
-        .exp-section { display: grid; grid-template-columns: 1fr 1fr; align-items: center; min-height: 600px; margin-bottom: 40px; background: var(--alb); overflow: hidden; }
-        .exp-section.reverse { direction: rtl; }
-        .exp-section.reverse .exp-info { direction: ltr; }
+        :root { --negru: #1a1a1a; --auriu: #c5a059; --crem: #fdfcf8; }
+        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru); margin: 0; padding: 40px 20px; }
         
-        .exp-img { 
-            width: 100%; 
-            height: 100%; 
-            min-height: 600px; 
-            background-size: cover; 
-            background-position: center; 
-            transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
-        }
-        .exp-section:hover .exp-img {
-            transform: scale(1.08);
-        }
+        .config-container { max-width: 800px; margin: 0 auto; background: white; padding: 40px; border: 1px solid #eee; box-shadow: 0 10px 30px rgba(0,0,0,0.02); }
+        h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-style: italic; text-align: center; margin-bottom: 10px; }
+        .subtitle { text-align: center; color: var(--auriu); letter-spacing: 2px; text-transform: uppercase; font-size: 0.75rem; font-weight: 700; margin-bottom: 40px; }
 
-        .exp-info { padding: 80px; }
-        .exp-tag { color: var(--auriu); font-size: 0.7rem; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; display: block; }
-        .exp-info h2 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 2.8rem; margin-bottom: 25px; line-height: 1.2; }
-        .exp-info p { color: var(--text-soft); font-size: 1.1rem; margin-bottom: 40px; font-weight: 300; }
+        .section-title { font-weight: 700; font-size: 1.1rem; margin: 30px 0 15px; border-bottom: 1px solid #f0f0f0; padding-bottom: 10px; }
 
-        .btn-gold { background: var(--auriu); color: white; padding: 18px 45px; border-radius: 50px; text-decoration: none; font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem; display: inline-block; transition: 0.3s; }
-        .btn-gold:hover { opacity: 0.9; transform: translateY(-2px); }
-        
-        .wa-float { position: fixed; bottom: 30px; right: 30px; background: var(--auriu); color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 2000; box-shadow: 0 10px 20px rgba(0,0,0,0.1); font-size: 0.8rem; }
+        /* Selector Nopți */
+        .nights-selector { display: flex; gap: 15px; margin-bottom: 30px; }
+        .night-opt { flex: 1; padding: 15px; border: 2px solid #eee; text-align: center; cursor: pointer; transition: 0.3s; font-weight: 600; }
+        .night-opt.active { border-color: var(--auriu); background: #fffcf5; }
 
-        @media (max-width: 900px) {
-            .exp-section { grid-template-columns: 1fr; min-height: auto; }
-            .exp-section.reverse { direction: ltr; }
-            .exp-img { height: 400px; min-height: 400px; }
-            .exp-info { padding: 50px 30px; text-align: center; }
-        }
+        /* Checkbox-uri pentru Ateliere */
+        .addon-item { display: flex; align-items: center; justify-content: space-between; padding: 15px; border: 1px solid #f9f9f9; margin-bottom: 10px; transition: 0.3s; cursor: pointer; }
+        .addon-item:hover { background: #fdfcf8; border-color: #eee; }
+        .addon-item input { width: 20px; height: 20px; accent-color: var(--auriu); cursor: pointer; }
+        .addon-info { flex-grow: 1; margin-left: 15px; }
+        .addon-price { font-weight: 700; color: var(--auriu); }
+
+        /* Sumar Final */
+        .total-box { background: var(--negru); color: white; padding: 30px; margin-top: 40px; text-align: center; }
+        .total-box span { font-size: 0.8rem; color: #aaa; text-transform: uppercase; letter-spacing: 1px; }
+        .total-box h2 { font-size: 2.5rem; margin: 10px 0; color: var(--auriu); }
+
+        .btn-send { display: block; background: var(--auriu); color: white; text-decoration: none; padding: 20px; font-weight: 700; margin-top: 20px; transition: 0.3s; }
+        .btn-send:hover { opacity: 0.9; transform: translateY(-2px); }
     </style>
 </head>
 <body>
 
-<header class="site-header">
-    <div class="header-container">
-        <a href="index.html" class="brand">HAȚEG<br>ALTERNATIV</a>
-        <span class="est">EST. 2026</span>
-        <nav class="main-nav">
-            <a href="pensiuni.html">Pensiuni</a>
-            <a href="retreat.html">Retreat</a>
-            <a href="experiente.html" class="active">Experiențe</a>
-            <a href="contact.html">Contact</a>
-        </nav>
+<div class="config-container">
+    <h1>Personalizează-ți Sejurul</h1>
+    <p class="subtitle">Domeniile la Buligă</p>
+
+    <div class="section-title">1. Câte nopți doriți să rămâneți?</div>
+    <div class="nights-selector">
+        <div class="night-opt active" onclick="setNights(this, 1)">1 Noapte</div>
+        <div class="night-opt" onclick="setNights(this, 2)">2 Nopți</div>
+        <div class="night-opt" onclick="setNights(this, 3)">3 Nopți</div>
     </div>
-</header>
 
-<main>
-    <section class="intro">
-        <span>Curated Journeys</span>
-        <h1>Simte. Explorează. Trăiește.</h1>
-    </section>
-
-    <section class="exp-section">
-        <div class="exp-img" style="background-image: url('images/bucura.jpg');"></div>
-        <div class="exp-info">
-            <span class="exp-tag">Natură Pură</span>
-            <h2>Lacul Bucura</h2>
-            <p>O incursiune către cel mai mare lac glaciar din România. Acolo unde liniștea este întreruptă doar de ecoul munților, iar cerul se oglindește perfect în apele reci ale Retezatului.</p>
-            <a href="https://wa.me/40749229686?text=Vreau detalii despre expeditia la Bucura" class="btn-gold">Solicită Turul</a>
+    <div class="section-title">2. Adăugați Ateliere & Experiențe (Opțional)</div>
+    
+    <label class="addon-item">
+        <input type="checkbox" class="addon-check" value="150" data-name="Atelier Gastronomic" onchange="calculate()">
+        <div class="addon-info">
+            <strong>Atelier Gastronomic</strong><br>
+            <small>Pâine, sarmale sau ruladă de post</small>
         </div>
-    </section>
+        <div class="addon-price">+150 RON / pers.</div>
+    </label>
 
-    <section class="exp-section reverse">
-        <div class="exp-img" style="background-image: url('images/retezat.jpg');"></div>
-        <div class="exp-info">
-            <span class="exp-tag">Aventură Ghidată</span>
-            <h2>Masivul Retezat</h2>
-            <p>Descoperă potecile ascunse și biodiversitatea unică a primului parc național din țară. Un drum inițiatic printre jnepeni, stânci și peisaje care îți taie respirația.</p>
-            <a href="https://wa.me/40749229686?text=Vreau sa explorez Retezatul" class="btn-gold">Explorează</a>
+    <label class="addon-item">
+        <input type="checkbox" class="addon-check" value="150" data-name="Terapie prin Artă" onchange="calculate()">
+        <div class="addon-info">
+            <strong>Terapie prin Artă</strong><br>
+            <small>Pictură sau Diamond Painting</small>
         </div>
-    </section>
+        <div class="addon-price">+150 RON / pers.</div>
+    </label>
 
-    <section class="exp-section">
-        <div class="exp-img" style="background-image: url('images/exp-biserica-veche.jpg');"></div>
-        <div class="exp-info">
-            <span class="exp-tag">Patrimoniu</span>
-            <h2>Densuș de Piatră</h2>
-            <p>Pășește în cea mai stranie și fascinantă biserică din România. O construcție milenară dăltuită din ruinele Sarmizegetusei, unde istoria se simte în fiecare piatră rece.</p>
-            <a href="https://wa.me/40749229686?text=Vreau turul istoric la Densus" class="btn-gold">Descoperă Misterul</a>
+    <label class="addon-item">
+        <input type="checkbox" class="addon-check" value="350" data-name="Tur Ghidat" onchange="calculate()">
+        <div class="addon-info">
+            <strong>Tur Ghidat GoNomad</strong><br>
+            <small>Explorare personalizată în Hațeg</small>
         </div>
-    </section>
+        <div class="addon-price">+350 RON / grup</div>
+    </label>
 
-    <section class="exp-section reverse">
-        <div class="exp-img" style="background-image: url('images/exp-stana.jpg');"></div>
-        <div class="exp-info">
-            <span class="exp-tag">Tradiție Vie</span>
-            <h2>O zi la stână</h2>
-            <p>Gustă viața simplă și onestă a ciobanilor. O experiență gastronomică și umană neregizată, cu brânză proaspătă, mămăligă la ceaun și povești de demult.</p>
-            <a href="https://wa.me/40749229686?text=Vreau experienta la stana" class="btn-gold">Cere detalii</a>
-        </div>
-    </section>
+    <div class="total-box">
+        <span>Estimare Totală:</span>
+        <h2 id="totalDisplay">2000 RON</h2>
+        <a href="#" id="waLink" class="btn-send">Trimite Configurația pe WhatsApp</a>
+    </div>
+</div>
 
-    <section class="exp-section">
-        <div class="exp-img" style="background-image: url('images/exp-atelier.jpg');"></div>
-        <div class="exp-info">
-            <span class="exp-tag">Slow Living</span>
-            <h2>Amprenta Timpului</h2>
-            <p>Eliberează-ți creativitatea într-un atelier de meșteșuguri locale. De la ceramică modelată manual la secretele țesutului vechi, învață să creezi cu mâinile tale un obiect cu suflet.</p>
-            <a href="https://wa.me/40749229686?text=Vreau detalii despre atelierul de creatie" class="btn-gold">Învață Meșteșugul</a>
-        </div>
-    </section>
+<script>
+    let nights = 1;
+    const pricePerNight = 2000;
 
-    <section class="exp-section reverse">
-        <div class="exp-img" style="background-image: url('images/exp-vin.jpg');"></div>
-        <div class="exp-info">
-            <span class="exp-tag">Experiență Senzorială</span>
-            <h2>Notele Hațegului</h2>
-            <p>O incursiune în lumea vinurilor nobile, acompaniată de brânzeturi artizanale și delicatese locale. Descoperă aromele pământului într-un cadru intim și relaxat, ideal pentru amurguri lungi.</p>
-            <a href="https://wa.me/40749229686?text=Vreau o degustare de vinuri" class="btn-gold">Rezervă Degustarea</a>
-        </div>
-    </section>
-</main>
+    function setNights(el, n) {
+        document.querySelectorAll('.night-opt').forEach(opt => opt.classList.remove('active'));
+        el.classList.add('active');
+        nights = n;
+        calculate();
+    }
 
-<a href="https://wa.me/40749229686" class="wa-float">WhatsApp Direct</a>
+    function calculate() {
+        let addonTotal = 0;
+        let selectedAddons = [];
+        
+        document.querySelectorAll('.addon-check:checked').forEach(check => {
+            addonTotal += parseInt(check.value);
+            selectedAddons.push(check.getAttribute('data-name'));
+        });
+
+        const total = (nights * pricePerNight) + addonTotal;
+        document.getElementById('totalDisplay').innerText = total + " RON";
+
+        // Update Link WhatsApp
+        const waBase = "https://wa.me/40749229686?text=";
+        const addonText = selectedAddons.length > 0 ? " + " + selectedAddons.join(", ") : "";
+        const message = `Bună ziua! Doresc o rezervare personalizată: Cazare ${nights} nopți${addonText}. Estimare totală: ${total} RON.`;
+        document.getElementById('waLink').href = waBase + encodeURIComponent(message);
+    }
+
+    calculate(); // Init
+</script>
 
 </body>
 </html>
