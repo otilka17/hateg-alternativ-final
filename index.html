@@ -3,148 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hațeg Alternativ | Signature Collection</title>
+    <title>Hațeg Alternativ | Simte. Explorează. Trăiește.</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        :root { 
-            --negru-mat: #242424; --auriu: #c5a059; --crem: #fdfcf8; --alb: #ffffff; --text-soft: #555555;
-        }
+        :root { --negru: #242424; --auriu: #c5a059; --crem: #fdfcf8; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru-mat); line-height: 1.6; }
-
-        /* Header Signature */
-        .site-header { position: fixed; top: 0; width: 100%; z-index: 1500; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); }
-        .header-container { display: flex; flex-direction: column; align-items: center; padding: 20px 0; }
-        .brand { text-decoration: none; color: var(--negru-mat); font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; text-align: center; line-height: 1; }
-        .est { font-size: 0.6rem; color: var(--auriu); letter-spacing: 4px; font-weight: 800; margin-top: 8px; text-transform: uppercase; }
-        .main-nav { background: var(--negru-mat); width: 100%; display: flex; justify-content: center; gap: 30px; padding: 15px 0; margin-top: 20px; }
+        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru); line-height: 1.6; }
+        
+        .site-header { position: fixed; top: 0; width: 100%; z-index: 1500; background: rgba(255,255,255,0.98); border-bottom: 1px solid rgba(0,0,0,0.05); padding: 20px 0; text-align: center; }
+        .brand { text-decoration: none; color: var(--negru); font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; }
+        .main-nav { background: var(--negru); width: 100%; display: flex; justify-content: center; gap: 30px; padding: 15px 0; margin-top: 20px; }
         .main-nav a { text-decoration: none; color: #fff; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
 
-        /* Sections */
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-        .section-title { text-align: center; margin: 100px 0 50px; }
-        .section-title span { color: var(--auriu); font-size: 0.7rem; font-weight: 800; letter-spacing: 5px; text-transform: uppercase; display: block; margin-bottom: 10px; }
-        .section-title h2 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 3rem; }
+        .hero { height: 80vh; background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('images/hero.jpg'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; color: white; text-align: center; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 4rem; font-style: italic; }
 
-        /* Hero */
-        .hero {
-            width: 95%; max-width: 1300px; height: 75vh; margin: 180px auto 40px; border-radius: 4px;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.1)), url('images/bucura.jpg') center/cover no-repeat;
-            display: flex; align-items: center; justify-content: center; text-align: center; color: white;
-        }
+        .blessing-section { padding: 100px 20px; text-align: center; }
+        .blessing-card { max-width: 700px; margin: 0 auto; border: 1px solid rgba(197, 160, 89, 0.3); padding: 50px; background: white; }
+        .blessing-img { width: 180px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .blessing-text { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem; color: #555; margin-bottom: 20px; }
 
-        /* Grid Cards */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-        .card { background: var(--alb); border: 1px solid #eee; border-radius: 4px; overflow: hidden; transition: 0.4s; text-align: center; }
-        .card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
-        .card-img { height: 350px; background-size: cover; background-position: center; }
-        .card-body { padding: 40px; }
-
-        /* Buttons */
-        .btn-gold { background: var(--auriu); color: white; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-family: 'Playfair Display', serif; font-style: italic; display: inline-block; transition: 0.3s; border: none; }
-        .wa-float { position: fixed; bottom: 30px; right: 30px; background: var(--auriu); color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 2000; font-size: 0.8rem; }
-
-        @media (max-width: 768px) { .main-nav { display: none; } }
+        .btn-gold { background: var(--auriu); color: white; padding: 15px 40px; border-radius: 50px; text-decoration: none; display: inline-block; margin-top: 30px; font-weight: 700; transition: 0.3s; }
     </style>
 </head>
 <body>
 
 <header class="site-header">
-    <div class="header-container">
-        <a href="index.html" class="brand">HAȚEG<br>ALTERNATIV</a>
-        <span class="est">EST. 2026</span>
-        <nav class="main-nav">
-            <a href="pensiuni.html">Pensiuni</a>
-            <a href="retreat.html">Retreat</a>
-            <a href="experiente.html">Experiențe</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    </div>
+    <a href="index.html" class="brand">HAȚEG ALTERNATIV</a>
+    <nav class="main-nav">
+        <a href="retreat.html">Retreat</a>
+        <a href="experiente.html">Experiențe</a>
+        <a href="evenimente.html">Evenimente</a>
+        <a href="rezervari.html">Rezervări</a>
+    </nav>
 </header>
 
 <section class="hero">
-    <h1 style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 4rem;">Simte tăcerea.</h1>
+    <h1>Simte. Explorează. Trăiește.</h1>
 </section>
 
-<main>
-    <section class="container">
-        <div class="section-title">
-            <span>The Collection</span>
-            <h2>Locuri cu suflet</h2>
-        </div>
-        <div class="grid">
-            <article class="card">
-                <div class="card-img" style="background-image: url('images/la-buliga-pensiune.jpg');"></div>
-                <div class="card-body">
-                    <h3 style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.8rem;">La Buligă</h3>
-                    <p style="margin: 15px 0; color: var(--text-soft);">Izolare totală deasupra norilor.</p>
-                    <a href="pensiune-buliga.html" class="btn-gold" style="font-size: 0.9rem;">Explorează</a>
-                </div>
-            </article>
-
-            <article class="card">
-                <div class="card-img" style="background-image: url('images/selava-pensiune.jpg');"></div>
-                <div class="card-body">
-                    <h3 style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.8rem;">SELAva Estate</h3>
-                    <p style="margin: 15px 0; color: var(--text-soft);">Minimalism modern și gust autentic.</p>
-                    <a href="pensiune-selava.html" class="btn-gold" style="font-size: 0.9rem;">Explorează</a>
-                </div>
-            </article>
-
-            <article class="card">
-                <div class="card-img" style="background-image: url('images/natalia-pensiune.jpg');"></div>
-                <div class="card-body">
-                    <h3 style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.8rem;">Pensiunea Natalia</h3>
-                    <p style="margin: 15px 0; color: var(--text-soft);">Căldura unei case de munte.</p>
-                    <a href="pensiune-natalia.html" class="btn-gold" style="font-size: 0.9rem;">Explorează</a>
-                </div>
-            </article>
-        </div>
-    </section>
-
-    <section class="container">
-        <div class="section-title" style="margin-top: 150px;">
-            <span>The Journeys</span>
-            <h2>Regăsirea</h2>
-        </div>
-        <div class="grid">
-            <article class="card">
-                <div class="card-img" style="background-image: url('images/exp-stana.jpg');"></div>
-                <div class="card-body">
-                    <h3 style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.5rem;">O zi la stână</h3>
-                    <a href="experiente.html" class="btn-gold" style="font-size: 0.8rem; padding: 10px 25px;">Detalii</a>
-                </div>
-            </article>
-            <article class="card">
-                <div class="card-img" style="background-image: url('images/bucura.jpg');"></div>
-                <div class="card-body">
-                    <h3 style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.5rem;">Bucura & Retezat</h3>
-                    <a href="experiente.html" class="btn-gold" style="font-size: 0.8rem; padding: 10px 25px;">Detalii</a>
-                </div>
-            </article>
-            <article class="card">
-                <div class="card-img" style="background-image: url('images/image_40a322.jpg');"></div>
-                <div class="card-body">
-                    <h3 style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.5rem;">Pășește în istorie</h3>
-                    <a href="experiente.html" class="btn-gold" style="font-size: 0.8rem; padding: 10px 25px;">Detalii</a>
-                </div>
-            </article>
-        </div>
-    </section>
-</main>
-
-<a href="https://wa.me/40749229686" class="wa-float">WhatsApp Direct</a>
-
-<script type="text/javascript">
-    var Tawk_API=Tawk_API||{};
-    Tawk_API.customStyle = { visibility : { desktop : { xOffset : '30', yOffset : '30', position : 'bottom-left' }, mobile : { xOffset : '20', yOffset : '20', position : 'bottom-left' } } };
-    (function(){
-        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-        s1.async=true; s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
-        s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
-        s0.parentNode.insertBefore(s1,s0);
-    })();
-</script>
+<section class="blessing-section">
+    <div class="blessing-card">
+        <img src="IMG20260331211251.jpg" class="blessing-img" alt="Binecuvantare">
+        <p class="blessing-text">
+            "Unde-i credință, acolo-i dragoste,<br>
+            Unde-i dragoste, acolo-i pace,<br>
+            Unde-i pace, acolo-i binecuvântare."
+        </p>
+        <div style="height: 1px; width: 60px; background: var(--auriu); margin: 20px auto;"></div>
+        <p style="font-size: 0.9rem; color: var(--auriu); font-weight: 800; letter-spacing: 3px;">BINE VENIȚI ÎN HAȚEG</p>
+        <a href="rezervari.html" class="btn-gold">Rezervă un Sejur</a>
+    </div>
+</section>
 
 </body>
 </html>
