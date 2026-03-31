@@ -1,120 +1,44 @@
-<!DOCTYPE html>
-<html lang="ro">
-<head>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-    <style>
-        body { margin-top: 80px; background: #fdfcf8; color: #1b3022; }
-        .gastro-hero { 
-            height: 70vh; 
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('images/gastro-hero.jpg') center/cover;
-            display: flex; align-items: center; justify-content: center; text-align: center; color: white;
-        }
-        .menu-section { padding: 100px 0; background: #fff; }
-        .menu-item { 
-            display: flex; justify-content: space-between; align-items: baseline; 
-            margin-bottom: 30px; border-bottom: 1px dotted #ccc; padding-bottom: 10px;
-        }
-        .ingredient-tag {
-            font-size: 0.7rem; color: #c5a059; text-transform: uppercase; letter-spacing: 2px; font-weight: 800;
-        }
-        .philosophy-grid {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; padding: 100px 0;
-        }
-        @media (max-width: 768px) { .philosophy-grid { grid-template-columns: 1fr; } }
-    </style>
-</head>
-<body>
+<section class="menu-section" style="padding: 100px 20px; background: #fdfcf8; text-align: center;">
+    <span class="card-tag">Bucătăria Casei</span>
+    <h1 style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 3.5rem; margin-bottom: 50px;">Ospăț la Domenii</h1>
 
-<header class="site-header" style="position: fixed; top: 0; width: 100%; z-index: 1500; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #eee;">
-    <div class="container nav-wrap" style="display: flex; justify-content: space-between; align-items: center; padding: 15px 0;">
-        <a href="index.html" class="brand" style="text-decoration: none; color: #1b3022; font-weight: 800; font-size: 1.2rem; letter-spacing: 1px;">
-            <span style="font-weight: 300;">HAȚEG</span> ALTERNATIV
+    <div style="max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; text-align: left;">
+        
+        <div style="border-left: 1px solid var(--auriu); padding-left: 30px;">
+            <h3 style="font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--auriu); margin-bottom: 20px;">I. Din Ceaun</h3>
+            <ul style="list-style: none; line-height: 2;">
+                <li>Ciorbă de văcuță</li>
+                <li>Ciorbă de cartofi / fasole cu afumătură</li>
+                <li>Ciorbă de burtă</li>
+                <li>Supă cu tăiței de casă</li>
+            </ul>
+        </div>
+
+        <div style="border-left: 1px solid var(--auriu); padding-left: 30px;">
+            <h3 style="font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--auriu); margin-bottom: 20px;">II. Fel Principal</h3>
+            <ul style="list-style: none; line-height: 2;">
+                <li>Tocană tradițională cu mămăliguță</li>
+                <li>Pulpe cu cartofi la cuptor</li>
+                <li>Paste la alegere (de casă)</li>
+            </ul>
+        </div>
+
+        <div style="border-left: 1px solid var(--auriu); padding-left: 30px;">
+            <h3 style="font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--auriu); margin-bottom: 20px;">III. Dulce de Casă</h3>
+            <ul style="list-style: none; line-height: 2;">
+                <li>Clătite pufoase</li>
+                <li>Plăcinte cu brânză sau măr</li>
+                <li>Prăjitura Albinuța</li>
+            </ul>
+        </div>
+    </div>
+
+    <div style="margin-top: 60px; padding: 40px; background: var(--negru); color: white; display: inline-block; border-radius: 2px;">
+        <p style="font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px;">Experiență Completă (2 Feluri + Desert)</p>
+        <h2 style="font-size: 2.5rem; color: var(--auriu);">de la 150 RON <span style="font-size: 1rem; color: white; font-weight: 400;">/ Persoană</span></h2>
+        <a href="https://wa.me/40749229686?text=Vreau sa rezerv o masa la Domeniile la Buliga" 
+           style="display: block; margin-top: 25px; color: white; text-decoration: underline; font-weight: 700; letter-spacing: 1px;">
+           REZERVĂ MASĂ
         </a>
-        <nav class="main-nav" style="display: flex; gap: 35px;">
-            <a href="pensiuni.html" style="text-decoration: none; color: #333; font-weight: 600; font-size: 0.8rem; text-transform: uppercase;">Pensiuni</a>
-            <a href="retreat.html" style="text-decoration: none; color: #333; font-weight: 600; font-size: 0.8rem; text-transform: uppercase;">Retreat</a>
-            <a href="gastronomic.html" style="text-decoration: none; color: #c5a059; font-weight: 800; font-size: 0.8rem; text-transform: uppercase;">Gastronomic</a>
-        </nav>
-        <div style="width: 120px; text-align: right;">
-            <span style="font-size: 0.6rem; letter-spacing: 2px; color: #c5a059; font-weight: 800;">METANOIA GASTRO</span>
-        </div>
-    </div>
-</header>
-
-<section class="gastro-hero">
-    <div class="container">
-        <span style="letter-spacing: 5px; text-transform: uppercase; font-size: 0.8rem; font-weight: 800;">Concept Gastronomic</span>
-        <h1 class="metanoia-title" style="font-size: clamp(3rem, 7vw, 5rem); margin: 20px 0;">De la pământ, în farfurie.</h1>
-        <p style="font-weight: 300; letter-spacing: 1px;">Ingrediente locale. Tehnici arhaice. Estetică modernă.</p>
     </div>
 </section>
-
-<section class="container philosophy-grid">
-    <div>
-        <img src="images/chef-table.jpg" alt="Dining Experience" style="width: 100%; border-radius: 15px; box-shadow: 0 20px 40px rgba(0,0,0,0.1);">
-    </div>
-    <div>
-        <span class="ingredient-tag">Filozofia noastră</span>
-        <h2 class="metanoia-title" style="font-size: 2.5rem; margin: 20px 0;">Metanoia Gastro nu este un restaurant.</h2>
-        <p style="line-height: 1.8; color: #64748b; font-weight: 300;">
-            Este un punct gastronomic local unde meniul se scrie în funcție de ce ne oferă grădina și pădurea în fiecare dimineață. Gătim lent, cu foc de lemne, onorând tradiția Țării Hațegului printr-o prezentare minimalistă.
-        </p>
-        <div style="margin-top: 30px;">
-            <div style="margin-bottom: 15px;"><strong>📍 Locație:</strong> Grădina SelAva, Hațeg</div>
-            <div style="margin-bottom: 15px;"><strong>👨‍🍳 Experiență:</strong> Doar pe bază de rezervare (max. 12 persoane)</div>
-        </div>
-    </div>
-</section>
-
-<section class="menu-section">
-    <div class="container" style="max-width: 700px;">
-        <div style="text-align: center; margin-bottom: 60px;">
-            <span class="ingredient-tag">Meniu de Primăvară</span>
-            <h2 class="metanoia-title" style="font-size: 2.5rem;">Selecția Sezonului</h2>
-        </div>
-
-        <div class="menu-item">
-            <div>
-                <h4 style="margin: 0;">Pâine artizanală cu maia și unt de fân</h4>
-                <p style="font-size: 0.8rem; color: #64748b;">Sare de mină, ierburi sălbatice de primăvară</p>
-            </div>
-            <div style="font-weight: 800;">25 RON</div>
-        </div>
-
-        <div class="menu-item">
-            <div>
-                <h4 style="margin: 0;">Ciorbă de verdețuri cu smântână de munte</h4>
-                <p style="font-size: 0.8rem; color: #64748b;">Leurda culeasă din pădurea Slivuț, ou de țară</p>
-            </div>
-            <div style="font-weight: 800;">35 RON</div>
-        </div>
-
-        <div class="menu-item">
-            <div>
-                <h4 style="margin: 0;">Obraz de vită gătit 12 ore</h4>
-                <p style="font-size: 0.8rem; color: #64748b;">Piure de rădăcinoase coapte, sos de hribi</p>
-            </div>
-            <div style="font-weight: 800;">85 RON</div>
-        </div>
-
-        <div class="menu-item">
-            <div>
-                <h4 style="margin: 0;">Mousse de brânză de burduf și miere</h4>
-                <p style="font-size: 0.8rem; color: #64748b;">Polen crud, nuci caramelizate</p>
-            </div>
-            <div style="font-weight: 800;">30 RON</div>
-        </div>
-
-        <div style="text-align: center; margin-top: 50px;">
-            <a href="https://wa.me/40749229686?text=Rezervare%20Masa%20Metanoia%20Gastro" class="btn btn-gold" style="background: #1b3022; color: white; padding: 15px 40px; border-radius: 50px; text-decoration: none; font-weight: 800;">RESERVĂ O MASĂ</a>
-        </div>
-    </div>
-</section>
-
-<footer style="background: #122118; color: white; padding: 60px 0; text-align: center;">
-    <p style="font-size: 0.8rem; letter-spacing: 2px; opacity: 0.6;">METANOIA GASTRO | SIGNATURE TASTE</p>
-</footer>
-
-</body>
-</html>
