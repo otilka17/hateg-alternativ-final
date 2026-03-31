@@ -37,7 +37,27 @@
         .exp-section.reverse { direction: rtl; }
         .exp-section.reverse .exp-info { direction: ltr; }
         
-        .exp-img { width: 100%; height: 100%; min-height: 600px; background-size: cover; background-position: center; }
+        /* Efect de hover pe imagini */
+        .exp-img-wrapper { 
+            width: 100%; 
+            height: 100%; 
+            min-height: 600px; 
+            overflow: hidden; 
+        }
+
+        .exp-img { 
+            width: 100%; 
+            height: 100%; 
+            background-size: cover; 
+            background-position: center; 
+            transition: transform 0.3s ease, box-shadow 0.3s ease; 
+        }
+
+        .exp-img-wrapper:hover .exp-img {
+            transform: scale(1.05); /* Se mărește puțin la hover */
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15); /* Adăugăm o umbră subtilă */
+        }
+
         .exp-info { padding: 80px; }
         .exp-tag { color: var(--auriu); font-size: 0.7rem; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; display: block; }
         .exp-info h2 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 2.8rem; margin-bottom: 25px; line-height: 1.2; }
@@ -50,7 +70,7 @@
         @media (max-width: 900px) {
             .exp-section { grid-template-columns: 1fr; min-height: auto; }
             .exp-section.reverse { direction: ltr; }
-            .exp-img { height: 400px; min-height: 400px; }
+            .exp-img-wrapper { height: 400px; min-height: 400px; }
             .exp-info { padding: 50px 30px; text-align: center; }
         }
     </style>
@@ -77,7 +97,7 @@
     </section>
 
     <section class="exp-section">
-        <div class="exp-img" style="background-image: url('images/bucura.jpg');"></div>
+        <div class="exp-img-wrapper"><div class="exp-img" style="background-image: url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0d/da/51/97/photo1jpg.jpg?w=1200&h=1200&s=1');"></div></div>
         <div class="exp-info">
             <span class="exp-tag">Natură Pură</span>
             <h2>Lacul Bucura</h2>
@@ -87,7 +107,7 @@
     </section>
 
     <section class="exp-section reverse">
-        <div class="exp-img" style="background-image: url('images/retezat.jpg');"></div>
+        <div class="exp-img-wrapper"><div class="exp-img" style="background-image: url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1c/9a/c0/f5/rhet-togo-national-park.jpg?w=1200&h=1200&s=1');"></div></div>
         <div class="exp-info">
             <span class="exp-tag">Aventură Ghidată</span>
             <h2>Masivul Retezat</h2>
@@ -97,27 +117,6 @@
     </section>
 
     <section class="exp-section">
-        <div class="exp-img" style="background-image: url('images/image_0.png');"></div>
+        <div class="exp-img-wrapper"><div class="exp-img" style="background-image: url('https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/50/be/a2/igreja-de-densus.jpg?w=1200&h=1200&s=1');"></div></div>
         <div class="exp-info">
             <span class="exp-tag">Patrimoniu</span>
-            <h2>Densuș de Piatră</h2>
-            <p>Pășește în cea mai stranie și fascinantă biserică din România. O construcție milenară dăltuită din ruinele Sarmizegetusei, unde istoria se simte în fiecare piatră rece.</p>
-            <a href="https://wa.me/40749229686?text=Vreau turul istoric la Densus" class="btn-gold">Cere detalii</a>
-        </div>
-    </section>
-
-    <section class="exp-section reverse">
-        <div class="exp-img" style="background-image: url('images/exp-stana.jpg');"></div>
-        <div class="exp-info">
-            <span class="exp-tag">Tradiție Vie</span>
-            <h2>O zi la stână</h2>
-            <p>Gustă viața simplă și onestă a ciobanilor. O experiență gastronomică și umană neregizată, cu brânză proaspătă, mămăligă la ceaun și povești de demult.</p>
-            <a href="https://wa.me/40749229686?text=Vreau experienta la stana" class="btn-gold">Cere detalii</a>
-        </div>
-    </section>
-</main>
-
-<a href="https://wa.me/40749229686" class="wa-float">WhatsApp Direct</a>
-
-</body>
-</html>
