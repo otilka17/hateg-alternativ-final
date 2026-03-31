@@ -3,66 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rezervare | Hațeg Alternativ</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <title>Rezervare | Domeniile la Buligă</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --negru: #242424; --auriu: #c5a059; --crem: #fdfcf8; }
-        body { font-family: 'Inter', sans-serif; background: var(--crem); padding: 40px 20px; }
-        .calc-container { max-width: 600px; margin: 100px auto; background: white; padding: 40px; border: 1px solid #eee; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
-        h1 { font-family: 'Playfair Display', serif; font-style: italic; margin-bottom: 30px; text-align: center; }
+        :root { --negru: #1a1a1a; --auriu: #c5a059; --crem: #fdfcf8; }
+        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru); margin: 0; padding: 40px 20px; }
         
-        .option-group { margin-bottom: 25px; }
-        label { display: block; margin-bottom: 10px; font-weight: 700; font-size: 0.9rem; color: #666; }
-        select { width: 100%; padding: 15px; border: 1px solid #ddd; font-size: 1rem; border-radius: 5px; }
+        .booking-header { text-align: center; margin-bottom: 50px; }
+        .booking-header h1 { font-family: 'Playfair Display', serif; font-size: 3rem; font-style: italic; margin: 0; }
+        .booking-header p { letter-spacing: 3px; text-transform: uppercase; font-size: 0.8rem; color: var(--auriu); font-weight: 700; }
 
-        .summary-box { background: var(--negru); color: white; padding: 30px; margin-top: 30px; border-radius: 5px; }
-        .total-row { display: flex; justify-content: space-between; align-items: center; }
-        .total-price { font-size: 2rem; font-weight: 800; color: var(--auriu); }
+        .options-container { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+        /* Cardurile de alegere */
+        .package-card { 
+            background: white; 
+            border: 2px solid #eee; 
+            padding: 40px; 
+            text-align: center; 
+            cursor: pointer; 
+            transition: 0.3s; 
+            position: relative;
+        }
+        .package-card:hover { border-color: var(--auriu); transform: translateY(-5px); }
+        .package-card.active { border-color: var(--auriu); background: #fffcf5; box-shadow: 0 15px 30px rgba(197, 160, 89, 0.1); }
         
-        .btn-whatsapp { display: block; text-align: center; background: var(--auriu); color: white; text-decoration: none; padding: 20px; margin-top: 20px; font-weight: 700; border-radius: 50px; transition: 0.3s; }
-        .btn-whatsapp:hover { transform: translateY(-3px); }
+        .package-card h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 10px; }
+        .package-card .nights { color: var(--auriu); font-weight: 700; font-size: 0.9rem; text-transform: uppercase; }
+        .package-card .price { font-size: 2.2rem; font-weight: 800; margin: 20px 0; display: block; }
+        
+        /* Sumarul stilizat sub carduri */
+        .final-step { max-width: 900px; margin: 40px auto; text-align: center; border-top: 1px solid #eee; padding-top: 40px; }
+        .total-info { margin-bottom: 30px; }
+        .total-info span { font-size: 1rem; color: #888; }
+        .total-info h2 { font-size: 2.5rem; margin: 5px 0; color: var(--negru); }
+
+        .btn-wa { 
+            background: var(--negru); 
+            color: white; 
+            text-decoration: none; 
+            padding: 20px 60px; 
+            border-radius: 50px; 
+            font-weight: 700; 
+            display: inline-block; 
+            transition: 0.3s;
+            font-size: 1.1rem;
+        }
+        .btn-wa:hover { background: var(--auriu); }
+
+        @media (max-width: 768px) { .options-container { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
-<div class="calc-container">
-    <h1>Rezervare Casa Buligă</h1>
-    <p style="text-align: center; color: #888; margin-bottom: 30px;">Capacitate integrală: 10 persoane</p>
-
-    <div class="option-group">
-        <label>Alege durata sejurului:</label>
-        <select id="period" onchange="updateTotal()">
-            <option value="2">Sejur 2 Nopți (Weekend / În timpul săptămânii)</option>
-            <option value="3">Sejur 3 Nopți (Pachet Relaxare)</option>
-        </select>
+    <div class="booking-header">
+        <p>Experiență Exclusivă</p>
+        <h1>Domeniile la Buligă</h1>
+        <p style="color: #888; margin-top: 10px;">Capacitate: 10 Persoane • Locație Integrală</p>
     </div>
 
-    <div class="summary-box">
-        <div class="total-row">
-            <span>TOTAL DE PLATĂ:</span>
-            <span class="total-price" id="displayTotal">4000 RON</span>
+    <div class="options-container">
+        <div class="package-card active" onclick="selectPackage(this, 2, 4000)">
+            <span class="nights">Sejur scurt</span>
+            <h3>Pachet 2 Nopți</h3>
+            <span class="price">4000 RON</span>
+            <p style="font-size: 0.8rem; color: #888;">Ideal pentru un weekend liniștit</p>
         </div>
-        <p style="font-size: 0.8rem; color: #aaa; margin-top: 10px;">*Include închirierea întregii locații. Atelierele se achită separat.</p>
+
+        <div class="package-card" onclick="selectPackage(this, 3, 6000)">
+            <span class="nights">Deconectare Totală</span>
+            <h3>Pachet 3 Nopți</h3>
+            <span class="price">6000 RON</span>
+            <p style="font-size: 0.8rem; color: #888;">Cel mai ales pachet de relaxare</p>
+        </div>
     </div>
 
-    <a href="#" id="waLink" class="btn-whatsapp">Confirmă pe WhatsApp</a>
-</div>
+    <div class="final-step">
+        <div class="total-info">
+            <span>Ați selectat un sejur de <b id="selectedNights">2</b> nopți</span>
+            <h2 id="finalPrice">4000 RON</h2>
+            <p style="font-size: 0.8rem; color: #aaa;">*Include închirierea întregii locații. Atelierele și masa se confirmă ulterior.</p>
+        </div>
+        
+        <a href="#" id="waButton" class="btn-wa">Confirmă Disponibilitatea</a>
+    </div>
 
 <script>
-    function updateTotal() {
-        const period = document.getElementById('period').value;
-        const pricePerNight = 2000;
-        const total = period * pricePerNight;
+    let currentNights = 2;
+    let currentPrice = 4000;
+
+    function selectPackage(element, nights, price) {
+        // Schimba vizual cardul activ
+        document.querySelectorAll('.package-card').forEach(card => card.classList.remove('active'));
+        element.classList.add('active');
+
+        // Update date
+        currentNights = nights;
+        currentPrice = price;
         
-        document.getElementById('displayTotal').innerText = total + " RON";
+        document.getElementById('selectedNights').innerText = nights;
+        document.getElementById('finalPrice').innerText = price + " RON";
         
-        // Update link WhatsApp automat
-        const baseWA = "https://wa.me/40749229686?text=";
-        const message = encodeURIComponent("Bună ziua! Doresc să rezerv Casa Buligă pentru un pachet de " + period + " nopți. Total calculat: " + total + " RON.");
-        document.getElementById('waLink').href = baseWA + message;
+        updateWhatsAppLink();
     }
-    // Initialize link la incarcare
-    updateTotal();
+
+    function updateWhatsAppLink() {
+        const phone = "40749229686";
+        const text = `Bună ziua! Doresc să rezerv Domeniile la Buligă pentru un pachet de ${currentNights} nopți (${currentPrice} RON). Vă rog să-mi confirmați disponibilitatea.`;
+        document.getElementById('waButton').href = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+    }
+
+    // Init la pornire
+    updateWhatsAppLink();
 </script>
 
 </body>
