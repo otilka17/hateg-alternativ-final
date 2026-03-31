@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evenimente & Plener | Hațeg Alternativ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root { --negru: #242424; --auriu: #c5a059; --crem: #fdfcf8; --alb: #ffffff; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru); line-height: 1.6; padding-top: 180px; }
+
+        .site-header { position: fixed; top: 0; width: 100%; z-index: 1500; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); padding: 20px 0; text-align: center; }
+        .brand { text-decoration: none; color: var(--negru); font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; }
+        .main-nav { background: var(--negru); width: 100%; display: flex; justify-content: center; gap: 30px; padding: 15px 0; margin-top: 20px; }
+        .main-nav a { text-decoration: none; color: #fff; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
+
+        .intro { text-align: center; max-width: 800px; margin: 0 auto 60px; padding: 0 20px; }
+        .intro span { color: var(--auriu); font-size: 0.7rem; font-weight: 800; letter-spacing: 5px; text-transform: uppercase; display: block; margin-bottom: 15px; }
+        .intro h1 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 3.5rem; margin-bottom: 20px; }
+
+        .grid-evenimente { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px; padding: 0 40px 80px; max-width: 1400px; margin: 0 auto; }
+        .card-ev { background: var(--alb); border: 1px solid rgba(0,0,0,0.05); transition: 0.4s; overflow: hidden; }
+        .card-ev:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        .card-img { width: 100%; height: 450px; background-size: cover; background-position: center; }
+
+        .card-content { padding: 40px; }
+        .card-tag { color: var(--auriu); font-size: 0.65rem; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; display: block; margin-bottom: 15px; }
+        .card-content h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 20px; font-style: italic; }
+        
+        .price-tag { display: block; font-size: 1.4rem; font-weight: 800; color: var(--auriu); margin-top: 20px; border-top: 1px solid #eee; padding-top: 20px; }
+        .btn-gold { background: var(--auriu); color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; display: block; text-align: center; margin-top: 30px; font-weight: 700; }
+    </style>
+</head>
+<body>
+
+<header class="site-header">
+    <a href="index.html" class="brand">HAȚEG ALTERNATIV</a>
+    <nav class="main-nav">
+        <a href="retreat.html">Retreat</a>
+        <a href="experiente.html">Experiențe</a>
+        <a href="evenimente.html" style="color: var(--auriu)">Evenimente</a>
+        <a href="rezervari.html">Rezervări</a>
+    </nav>
+</header>
+
+<main>
+    <section class="intro">
+        <span>Organizare & Locație</span>
+        <h1>Evenimente la Domenii</h1>
+        <p>Alegerea perfectă pentru momentele care merită un cadru deosebit.</p>
+    </section>
+
+    <div class="grid-evenimente">
+        <article class="card-ev">
+            <div class="card-img" style="background-image: url('IMG20260323101951.jpg');"></div>
+            <div class="card-content">
+                <span class="card-tag">Închiriere Spațiu</span>
+                <h2>Eveniment Privat (Simplu)</h2>
+                <p>Închiriază doar locația pentru reuniuni, zile de naștere sau întâlniri discrete. Tu te ocupi de restul, noi îți oferim liniștea și decorul autentic.</p>
+                <span class="price-tag">de la 1500 RON / Zi</span>
+                <a href="https://wa.me/40749229686?text=Vreau sa inchiriez locatia (1500 lei)" class="btn-gold">Rezervă Locația</a>
+            </div>
+        </article>
+
+        <article class="card-ev" style="border: 2px solid var(--auriu);">
+            <div class="card-img" style="background-image: url('IMG20260316153821.jpg');"></div>
+            <div class="card-content">
+                <span class="card-tag" style="background:var(--auriu); color:white; padding:2px 8px; border-radius:3px; display:inline-block;">Concept Premium</span>
+                <h2 style="margin-top:15px;">Plenerul de la Domenii</h2>
+                <p>O experiență artistică completă. Ne ocupăm de întreaga organizare, de la logistica pentru pictură până la atmosfera creativă, pentru ca tu să te poți concentra pe inspirație.</p>
+                <span class="price-tag" style="color:var(--negru)">Ofertă Personalizată</span>
+                <a href="https://wa.me/40749229686?text=Vreau oferta pentru Plenerul organizat" class="btn-gold" style="background:var(--negru)">Cere Ofertă Plener</a>
+            </div>
+        </article>
+    </div>
+</main>
+
+</body>
+</html>
