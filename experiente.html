@@ -34,17 +34,16 @@
         .exp-section.reverse { direction: rtl; }
         .exp-section.reverse .exp-info { direction: ltr; }
         
-        /* REPARAȚIE HOVER FĂRĂ SĂ STRICE STRUCTURA */
         .exp-img { 
             width: 100%; 
             height: 100%; 
             min-height: 600px; 
             background-size: cover; 
             background-position: center; 
-            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
         }
         .exp-section:hover .exp-img {
-            transform: scale(1.05);
+            transform: scale(1.08);
         }
 
         .exp-info { padding: 80px; }
@@ -53,6 +52,8 @@
         .exp-info p { color: var(--text-soft); font-size: 1.1rem; margin-bottom: 40px; font-weight: 300; }
 
         .btn-gold { background: var(--auriu); color: white; padding: 18px 45px; border-radius: 50px; text-decoration: none; font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem; display: inline-block; transition: 0.3s; }
+        .btn-gold:hover { opacity: 0.9; transform: translateY(-2px); }
+        
         .wa-float { position: fixed; bottom: 30px; right: 30px; background: var(--auriu); color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 2000; box-shadow: 0 10px 20px rgba(0,0,0,0.1); font-size: 0.8rem; }
 
         @media (max-width: 900px) {
@@ -110,22 +111,10 @@
             <span class="exp-tag">Patrimoniu</span>
             <h2>Densuș de Piatră</h2>
             <p>Pășește în cea mai stranie și fascinantă biserică din România. O construcție milenară dăltuită din ruinele Sarmizegetusei, unde istoria se simte în fiecare piatră rece.</p>
-            <a href="https://wa.me/40749229686?text=Vreau turul istoric la Densus" class="btn-gold">Cere detalii</a>
+            <a href="https://wa.me/40749229686?text=Vreau turul istoric la Densus" class="btn-gold">Descoperă Misterul</a>
         </div>
     </section>
 
     <section class="exp-section reverse">
         <div class="exp-img" style="background-image: url('images/exp-stana.jpg');"></div>
-        <div class="exp-info">
-            <span class="exp-tag">Tradiție Vie</span>
-            <h2>O zi la stână</h2>
-            <p>Gustă viața simplă și onestă a ciobanilor. O experiență gastronomică și umană neregizată, cu brânză proaspătă, mămăligă la ceaun și povești de demult.</p>
-            <a href="https://wa.me/40749229686?text=Vreau experienta la stana" class="btn-gold">Cere detalii</a>
-        </div>
-    </section>
-</main>
-
-<a href="https://wa.me/40749229686" class="wa-float">WhatsApp Direct</a>
-
-</body>
-</html>
+        <div class="
