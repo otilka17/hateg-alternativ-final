@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rezervare | Hațeg Alternativ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --negru: #242424; --auriu: #c5a059; --crem: #fdfcf8; }
+        body { font-family: 'Inter', sans-serif; background: var(--crem); padding: 40px 20px; }
+        .calc-container { max-width: 600px; margin: 100px auto; background: white; padding: 40px; border: 1px solid #eee; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        h1 { font-family: 'Playfair Display', serif; font-style: italic; margin-bottom: 30px; text-align: center; }
+        
+        .option-group { margin-bottom: 25px; }
+        label { display: block; margin-bottom: 10px; font-weight: 700; font-size: 0.9rem; color: #666; }
+        select { width: 100%; padding: 15px; border: 1px solid #ddd; font-size: 1rem; border-radius: 5px; }
+
+        .summary-box { background: var(--negru); color: white; padding: 30px; margin-top: 30px; border-radius: 5px; }
+        .total-row { display: flex; justify-content: space-between; align-items: center; }
+        .total-price { font-size: 2rem; font-weight: 800; color: var(--auriu); }
+        
+        .btn-whatsapp { display: block; text-align: center; background: var(--auriu); color: white; text-decoration: none; padding: 20px; margin-top: 20px; font-weight: 700; border-radius: 50px; transition: 0.3s; }
+        .btn-whatsapp:hover { transform: translateY(-3px); }
+    </style>
+</head>
+<body>
+
+<div class="calc-container">
+    <h1>Rezervare Casa Buligă</h1>
+    <p style="text-align: center; color: #888; margin-bottom: 30px;">Capacitate integrală: 10 persoane</p>
+
+    <div class="option-group">
+        <label>Alege durata sejurului:</label>
+        <select id="period" onchange="updateTotal()">
+            <option value="2">Sejur 2 Nopți (Weekend / În timpul săptămânii)</option>
+            <option value="3">Sejur 3 Nopți (Pachet Relaxare)</option>
+        </select>
+    </div>
+
+    <div class="summary-box">
+        <div class="total-row">
+            <span>TOTAL DE PLATĂ:</span>
+            <span class="total-price" id="displayTotal">4000 RON</span>
+        </div>
+        <p style="font-size: 0.8rem; color: #aaa; margin-top: 10px;">*Include închirierea întregii locații. Atelierele se achită separat.</p>
+    </div>
+
+    <a href="#" id="waLink" class="btn-whatsapp">Confirmă pe WhatsApp</a>
+</div>
+
+<script>
+    function updateTotal() {
+        const period = document.getElementById('period').value;
+        const pricePerNight = 2000;
+        const total = period * pricePerNight;
+        
+        document.getElementById('displayTotal').innerText = total + " RON";
+        
+        // Update link WhatsApp automat
+        const baseWA = "https://wa.me/40749229686?text=";
+        const message = encodeURIComponent("Bună ziua! Doresc să rezerv Casa Buligă pentru un pachet de " + period + " nopți. Total calculat: " + total + " RON.");
+        document.getElementById('waLink').href = baseWA + message;
+    }
+    // Initialize link la incarcare
+    updateTotal();
+</script>
+
+</body>
+</html>
