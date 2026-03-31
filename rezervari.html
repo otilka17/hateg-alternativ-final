@@ -3,118 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rezervare | Domeniile la Buligă</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Personalizare Sejur | Domeniile la Buligă</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root { --negru: #1a1a1a; --auriu: #c5a059; --crem: #fdfcf8; }
         body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru); margin: 0; padding: 40px 20px; }
         
-        .booking-header { text-align: center; margin-bottom: 50px; }
-        .booking-header h1 { font-family: 'Playfair Display', serif; font-size: 3rem; font-style: italic; margin: 0; }
-        .booking-header p { letter-spacing: 3px; text-transform: uppercase; font-size: 0.8rem; color: var(--auriu); font-weight: 700; }
+        .config-container { max-width: 800px; margin: 0 auto; background: white; padding: 40px; border: 1px solid #eee; box-shadow: 0 10px 30px rgba(0,0,0,0.02); }
+        h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-style: italic; text-align: center; margin-bottom: 10px; }
+        .subtitle { text-align: center; color: var(--auriu); letter-spacing: 2px; text-transform: uppercase; font-size: 0.75rem; font-weight: 700; margin-bottom: 40px; }
 
-        .options-container { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .section-title { font-weight: 700; font-size: 1.1rem; margin: 30px 0 15px; border-bottom: 1px solid #f0f0f0; padding-bottom: 10px; }
 
-        /* Cardurile de alegere */
-        .package-card { 
-            background: white; 
-            border: 2px solid #eee; 
-            padding: 40px; 
-            text-align: center; 
-            cursor: pointer; 
-            transition: 0.3s; 
-            position: relative;
-        }
-        .package-card:hover { border-color: var(--auriu); transform: translateY(-5px); }
-        .package-card.active { border-color: var(--auriu); background: #fffcf5; box-shadow: 0 15px 30px rgba(197, 160, 89, 0.1); }
-        
-        .package-card h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 10px; }
-        .package-card .nights { color: var(--auriu); font-weight: 700; font-size: 0.9rem; text-transform: uppercase; }
-        .package-card .price { font-size: 2.2rem; font-weight: 800; margin: 20px 0; display: block; }
-        
-        /* Sumarul stilizat sub carduri */
-        .final-step { max-width: 900px; margin: 40px auto; text-align: center; border-top: 1px solid #eee; padding-top: 40px; }
-        .total-info { margin-bottom: 30px; }
-        .total-info span { font-size: 1rem; color: #888; }
-        .total-info h2 { font-size: 2.5rem; margin: 5px 0; color: var(--negru); }
+        /* Selector Nopți */
+        .nights-selector { display: flex; gap: 15px; margin-bottom: 30px; }
+        .night-opt { flex: 1; padding: 15px; border: 2px solid #eee; text-align: center; cursor: pointer; transition: 0.3s; font-weight: 600; }
+        .night-opt.active { border-color: var(--auriu); background: #fffcf5; }
 
-        .btn-wa { 
-            background: var(--negru); 
-            color: white; 
-            text-decoration: none; 
-            padding: 20px 60px; 
-            border-radius: 50px; 
-            font-weight: 700; 
-            display: inline-block; 
-            transition: 0.3s;
-            font-size: 1.1rem;
-        }
-        .btn-wa:hover { background: var(--auriu); }
+        /* Checkbox-uri pentru Ateliere */
+        .addon-item { display: flex; align-items: center; justify-content: space-between; padding: 15px; border: 1px solid #f9f9f9; margin-bottom: 10px; transition: 0.3s; cursor: pointer; }
+        .addon-item:hover { background: #fdfcf8; border-color: #eee; }
+        .addon-item input { width: 20px; height: 20px; accent-color: var(--auriu); cursor: pointer; }
+        .addon-info { flex-grow: 1; margin-left: 15px; }
+        .addon-price { font-weight: 700; color: var(--auriu); }
 
-        @media (max-width: 768px) { .options-container { grid-template-columns: 1fr; } }
+        /* Sumar Final */
+        .total-box { background: var(--negru); color: white; padding: 30px; margin-top: 40px; text-align: center; }
+        .total-box span { font-size: 0.8rem; color: #aaa; text-transform: uppercase; letter-spacing: 1px; }
+        .total-box h2 { font-size: 2.5rem; margin: 10px 0; color: var(--auriu); }
+
+        .btn-send { display: block; background: var(--auriu); color: white; text-decoration: none; padding: 20px; font-weight: 700; margin-top: 20px; transition: 0.3s; }
+        .btn-send:hover { opacity: 0.9; transform: translateY(-2px); }
     </style>
 </head>
 <body>
 
-    <div class="booking-header">
-        <p>Experiență Exclusivă</p>
-        <h1>Domeniile la Buligă</h1>
-        <p style="color: #888; margin-top: 10px;">Capacitate: 10 Persoane • Locație Integrală</p>
+<div class="config-container">
+    <h1>Personalizează-ți Sejurul</h1>
+    <p class="subtitle">Domeniile la Buligă</p>
+
+    <div class="section-title">1. Câte nopți doriți să rămâneți?</div>
+    <div class="nights-selector">
+        <div class="night-opt active" onclick="setNights(this, 1)">1 Noapte</div>
+        <div class="night-opt" onclick="setNights(this, 2)">2 Nopți</div>
+        <div class="night-opt" onclick="setNights(this, 3)">3 Nopți</div>
     </div>
 
-    <div class="options-container">
-        <div class="package-card active" onclick="selectPackage(this, 2, 4000)">
-            <span class="nights">Sejur scurt</span>
-            <h3>Pachet 2 Nopți</h3>
-            <span class="price">4000 RON</span>
-            <p style="font-size: 0.8rem; color: #888;">Ideal pentru un weekend liniștit</p>
+    <div class="section-title">2. Adăugați Ateliere & Experiențe (Opțional)</div>
+    
+    <label class="addon-item">
+        <input type="checkbox" class="addon-check" value="150" data-name="Atelier Gastronomic" onchange="calculate()">
+        <div class="addon-info">
+            <strong>Atelier Gastronomic</strong><br>
+            <small>Pâine, sarmale sau ruladă de post</small>
         </div>
+        <div class="addon-price">+150 RON / pers.</div>
+    </label>
 
-        <div class="package-card" onclick="selectPackage(this, 3, 6000)">
-            <span class="nights">Deconectare Totală</span>
-            <h3>Pachet 3 Nopți</h3>
-            <span class="price">6000 RON</span>
-            <p style="font-size: 0.8rem; color: #888;">Cel mai ales pachet de relaxare</p>
+    <label class="addon-item">
+        <input type="checkbox" class="addon-check" value="150" data-name="Terapie prin Artă" onchange="calculate()">
+        <div class="addon-info">
+            <strong>Terapie prin Artă</strong><br>
+            <small>Pictură sau Diamond Painting</small>
         </div>
-    </div>
+        <div class="addon-price">+150 RON / pers.</div>
+    </label>
 
-    <div class="final-step">
-        <div class="total-info">
-            <span>Ați selectat un sejur de <b id="selectedNights">2</b> nopți</span>
-            <h2 id="finalPrice">4000 RON</h2>
-            <p style="font-size: 0.8rem; color: #aaa;">*Include închirierea întregii locații. Atelierele și masa se confirmă ulterior.</p>
+    <label class="addon-item">
+        <input type="checkbox" class="addon-check" value="350" data-name="Tur Ghidat" onchange="calculate()">
+        <div class="addon-info">
+            <strong>Tur Ghidat GoNomad</strong><br>
+            <small>Explorare personalizată în Hațeg</small>
         </div>
-        
-        <a href="#" id="waButton" class="btn-wa">Confirmă Disponibilitatea</a>
+        <div class="addon-price">+350 RON / grup</div>
+    </label>
+
+    <div class="total-box">
+        <span>Estimare Totală:</span>
+        <h2 id="totalDisplay">2000 RON</h2>
+        <a href="#" id="waLink" class="btn-send">Trimite Configurația pe WhatsApp</a>
     </div>
+</div>
 
 <script>
-    let currentNights = 2;
-    let currentPrice = 4000;
+    let nights = 1;
+    const pricePerNight = 2000;
 
-    function selectPackage(element, nights, price) {
-        // Schimba vizual cardul activ
-        document.querySelectorAll('.package-card').forEach(card => card.classList.remove('active'));
-        element.classList.add('active');
-
-        // Update date
-        currentNights = nights;
-        currentPrice = price;
-        
-        document.getElementById('selectedNights').innerText = nights;
-        document.getElementById('finalPrice').innerText = price + " RON";
-        
-        updateWhatsAppLink();
+    function setNights(el, n) {
+        document.querySelectorAll('.night-opt').forEach(opt => opt.classList.remove('active'));
+        el.classList.add('active');
+        nights = n;
+        calculate();
     }
 
-    function updateWhatsAppLink() {
-        const phone = "40749229686";
-        const text = `Bună ziua! Doresc să rezerv Domeniile la Buligă pentru un pachet de ${currentNights} nopți (${currentPrice} RON). Vă rog să-mi confirmați disponibilitatea.`;
-        document.getElementById('waButton').href = `https://wa.me/${phone}?text=${encodeURIComponent(text)}`;
+    function calculate() {
+        let addonTotal = 0;
+        let selectedAddons = [];
+        
+        document.querySelectorAll('.addon-check:checked').forEach(check => {
+            addonTotal += parseInt(check.value);
+            selectedAddons.push(check.getAttribute('data-name'));
+        });
+
+        const total = (nights * pricePerNight) + addonTotal;
+        document.getElementById('totalDisplay').innerText = total + " RON";
+
+        // Update Link WhatsApp
+        const waBase = "https://wa.me/40749229686?text=";
+        const addonText = selectedAddons.length > 0 ? " + " + selectedAddons.join(", ") : "";
+        const message = `Bună ziua! Doresc o rezervare personalizată: Cazare ${nights} nopți${addonText}. Estimare totală: ${total} RON.`;
+        document.getElementById('waLink').href = waBase + encodeURIComponent(message);
     }
 
-    // Init la pornire
-    updateWhatsAppLink();
+    calculate(); // Init
 </script>
 
 </body>
