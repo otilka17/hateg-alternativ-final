@@ -3,58 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hațeg Alternativ | Simte. Explorează. Trăiește.</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <title>Domeniile la Buligă | Acasă în Hațeg</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --negru: #242424; --auriu: #c5a059; --crem: #fdfcf8; }
+        :root { --negru: #1a1a1a; --auriu: #c5a059; --crem: #fdfcf8; --text: #444; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru); line-height: 1.6; }
+
+        /* HEADER */
+        .site-header { position: fixed; top: 0; width: 100%; z-index: 2000; background: rgba(255,255,255,0.98); border-bottom: 1px solid rgba(0,0,0,0.05); padding: 15px 0; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
+        .brand { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; text-decoration: none; color: var(--negru); }
+        .main-nav a { text-decoration: none; color: var(--negru); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-left: 25px; transition: 0.3s; }
+        .main-nav a:hover { color: var(--auriu); }
+
+        /* HERO SECTION */
+        .hero { height: 90vh; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('images/hero-bg.jpg'); background-size: cover; background-position: center; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; text-align: center; padding: 0 20px; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 4.5rem; font-style: italic; margin-bottom: 20px; }
+        .hero p { font-size: 1.1rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 40px; }
+
+        /* BLESSING SECTION */
+        .section-blessing { padding: 100px 20px; text-align: center; }
+        .blessing-box { max-width: 600px; margin: 0 auto; padding: 40px; border: 1px solid rgba(197,160,89,0.3); }
+        .blessing-img { width: 150px; margin-bottom: 30px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .blessing-quote { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.3rem; color: #555; margin-bottom: 20px; }
+
+        /* FEATURE SECTIONS (Stil Alternat) */
+        .feature { display: flex; align-items: center; flex-wrap: wrap; padding: 80px 0; max-width: 1200px; margin: 0 auto; }
+        .feature.reverse { flex-direction: row-reverse; }
+        .feature-img { flex: 1; min-width: 350px; height: 500px; background-size: cover; background-position: center; margin: 20px; }
+        .feature-text { flex: 1; min-width: 350px; padding: 40px; }
+        .feature-text span { color: var(--auriu); font-weight: 800; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; }
+        .feature-text h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin: 15px 0 25px; font-style: italic; }
         
-        .site-header { position: fixed; top: 0; width: 100%; z-index: 1500; background: rgba(255,255,255,0.98); border-bottom: 1px solid rgba(0,0,0,0.05); padding: 20px 0; text-align: center; }
-        .brand { text-decoration: none; color: var(--negru); font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; }
-        .main-nav { background: var(--negru); width: 100%; display: flex; justify-content: center; gap: 30px; padding: 15px 0; margin-top: 20px; }
-        .main-nav a { text-decoration: none; color: #fff; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
-
-        .hero { height: 80vh; background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('images/hero.jpg'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; color: white; text-align: center; }
-        .hero h1 { font-family: 'Playfair Display', serif; font-size: 4rem; font-style: italic; }
-
-        .blessing-section { padding: 100px 20px; text-align: center; }
-        .blessing-card { max-width: 700px; margin: 0 auto; border: 1px solid rgba(197, 160, 89, 0.3); padding: 50px; background: white; }
-        .blessing-img { width: 180px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        .blessing-text { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem; color: #555; margin-bottom: 20px; }
-
-        .btn-gold { background: var(--auriu); color: white; padding: 15px 40px; border-radius: 50px; text-decoration: none; display: inline-block; margin-top: 30px; font-weight: 700; transition: 0.3s; }
-    </style>
-</head>
-<body>
-
-<header class="site-header">
-    <a href="index.html" class="brand">HAȚEG ALTERNATIV</a>
-    <nav class="main-nav">
-        <a href="retreat.html">Retreat</a>
-        <a href="experiente.html">Experiențe</a>
-        <a href="evenimente.html">Evenimente</a>
-        <a href="rezervari.html">Rezervări</a>
-    </nav>
-</header>
-
-<section class="hero">
-    <h1>Simte. Explorează. Trăiește.</h1>
-</section>
-
-<section class="blessing-section">
-    <div class="blessing-card">
-        <img src="IMG20260331211251.jpg" class="blessing-img" alt="Binecuvantare">
-        <p class="blessing-text">
-            "Unde-i credință, acolo-i dragoste,<br>
-            Unde-i dragoste, acolo-i pace,<br>
-            Unde-i pace, acolo-i binecuvântare."
-        </p>
-        <div style="height: 1px; width: 60px; background: var(--auriu); margin: 20px auto;"></div>
-        <p style="font-size: 0.9rem; color: var(--auriu); font-weight: 800; letter-spacing: 3px;">BINE VENIȚI ÎN HAȚEG</p>
-        <a href="rezervari.html" class="btn-gold">Rezervă un Sejur</a>
-    </div>
-</section>
-
-</body>
-</html>
+        /* FOOTER CTA */
+        .cta-footer { background: var(--negru); color: white; padding: 100px 20px; text-align: center; }
