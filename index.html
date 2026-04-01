@@ -3,66 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hațeg Alternativ | Binecuvântarea Casei</title>
+    <title>Hațeg Alternativ | Acasă</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400;1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --negru: #0d0d0d; --auriu: #9d8665; --portocaliu: #ff4500; --alb: #ffffff; --gri-ultra-light: #fbfbfb; }
+        :root { --negru: #0d0d0d; --auriu: #9d8665; --portocaliu: #ff4500; --alb: #ffffff; --gri-soft: #fbfbfb; }
         
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         body { font-family: 'Inter', sans-serif; background: var(--alb); color: var(--negru); line-height: 1.7; overflow-x: hidden; }
 
-        /* HEADER ERMES */
+        /* HEADER UNITAR */
         .site-header { position: fixed; top: 0; width: 100%; z-index: 5000; background: rgba(255,255,255,0.98); border-bottom: 1px solid #eee; padding: 20px 0; }
         .nav-container { max-width: 1600px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 40px; }
-        .brand { font-weight: 700; font-size: 1.1rem; text-decoration: none; color: var(--negru); text-transform: uppercase; letter-spacing: 6px; }
+        .brand { font-weight: 700; font-size: 1.1rem; text-decoration: none; color: var(--negru); text-transform: uppercase; letter-spacing: 5px; }
         
-        /* Navigație Desktop */
         .desktop-nav { display: flex; gap: 30px; }
         .desktop-nav a { text-decoration: none; color: var(--negru); font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; opacity: 0.6; transition: 0.3s; }
         .desktop-nav a:hover { opacity: 1; color: var(--portocaliu); }
 
-        /* Meniu Mobile (Hamburger) */
         .menu-toggle { display: none; cursor: pointer; flex-direction: column; gap: 6px; z-index: 6000; }
         .menu-toggle span { width: 30px; height: 2px; background: var(--negru); transition: 0.3s; }
 
-        /* Full Screen Overlay */
-        .mobile-overlay { position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background: var(--alb); z-index: 5500; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: 0.5s ease-in-out; }
+        .mobile-overlay { position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background: var(--alb); z-index: 5500; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: 0.5s ease; }
         .mobile-overlay.active { right: 0; }
-        .mobile-overlay a { font-family: 'Playfair Display', serif; font-size: 2rem; text-decoration: none; color: var(--negru); margin: 15px 0; text-transform: uppercase; letter-spacing: 3px; }
+        .mobile-overlay a { font-family: 'Playfair Display', serif; font-size: 2rem; text-decoration: none; color: var(--negru); margin: 15px 0; text-transform: uppercase; }
 
         /* HERO */
         .hero { 
-            height: 80vh; width: 100%; display: flex; align-items: center; justify-content: center; 
+            height: 85vh; width: 100%; display: flex; align-items: center; justify-content: center; 
             background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.2)), url('images/IMG-20260326-WA0005.jpg') center/cover no-repeat;
             color: white; text-align: center;
         }
-        .hero-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 10vw, 7rem); font-style: italic; font-weight: 400; line-height: 1; }
+        .hero-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 10vw, 6rem); font-style: italic; font-weight: 400; line-height: 1.1; }
 
         /* CONTAINER */
-        .content-wrap { max-width: 1200px; margin: 0 auto; padding: 100px 25px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 100px 25px; }
 
-        /* COLAJUL TĂU */
+        .intro-text { text-align: center; max-width: 800px; margin: 0 auto 80px; }
+        .intro-text h2 { font-family: 'Playfair Display', serif; font-size: 3rem; font-style: italic; margin-bottom: 25px; font-weight: 400; }
+
+        /* COLLAGE SECTION */
         .collage-box { width: 100%; margin-bottom: 120px; }
         .collage-box img { width: 100%; height: auto; box-shadow: 0 30px 60px rgba(0,0,0,0.1); }
 
-        /* SECȚIUNEA BINECUVÂNTARE (Textul nou) */
-        .blessing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-bottom: 150px; }
-        
-        /* images/IMG20260331211251.jpg */
+        /* BUTON MARE EXPERIENȚE (PORTOCALIU) */
+        .cta-section { text-align: center; margin-bottom: 120px; }
+        .btn-ermes { display: inline-block; background: var(--portocaliu); color: white; text-decoration: none; padding: 20px 50px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; transition: 0.3s; border: none; cursor: pointer; }
+        .btn-ermes:hover { background: var(--negru); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+
+        /* BINECUVÂNTARE GRID */
+        .blessing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-bottom: 100px; }
         .img-blessing { width: 100%; height: 600px; background: url('images/IMG20260331211251.jpg') center/cover no-repeat; border-radius: 2px; }
         
         .text-blessing span { color: var(--portocaliu); font-size: 0.75rem; letter-spacing: 4px; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 25px; }
-        .text-blessing h2 { font-family: 'Playfair Display', serif; font-size: 3rem; font-style: italic; font-weight: 400; margin-bottom: 30px; line-height: 1.2; }
+        .text-blessing h2 { font-family: 'Playfair Display', serif; font-size: 3.2rem; font-style: italic; font-weight: 400; margin-bottom: 30px; line-height: 1.2; }
         
-        /* Stil special pentru citatul religios */
-        .quote-box { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: #444; font-style: italic; border-left: 3px solid var(--portocaliu); padding-left: 30px; margin-bottom: 40px; }
-        .quote-box p { margin-bottom: 5px; }
-
-        .btn-ermes { display: inline-block; background: var(--portocaliu); color: white; text-decoration: none; padding: 18px 45px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; transition: 0.3s; border: none; cursor: pointer; }
-        .btn-ermes:hover { background: var(--negru); transform: translateY(-3px); }
+        .quote-style { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: #444; font-style: italic; border-left: 3px solid var(--portocaliu); padding-left: 30px; margin-bottom: 40px; }
+        .quote-style p { margin-bottom: 5px; }
 
         /* FOOTER */
-        .site-footer { padding: 80px 20px; background: var(--gri-ultra-light); text-align: center; border-top: 1px solid #eee; }
+        .site-footer { padding: 80px 20px; background: var(--gri-soft); text-align: center; border-top: 1px solid #eee; }
         .site-footer p { font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; color: #aaa; }
 
         @media (max-width: 1024px) {
@@ -70,7 +69,8 @@
             .menu-toggle { display: flex; }
             .blessing-grid { grid-template-columns: 1fr; gap: 40px; }
             .img-blessing { height: 400px; }
-            .text-blessing h2 { font-size: 2.2rem; }
+            .text-blessing h2 { font-size: 2.5rem; }
+            .btn-ermes { padding: 18px 40px; width: 90%; }
         }
     </style>
 </head>
@@ -107,19 +107,28 @@
         </div>
     </section>
 
-    <div class="content-wrap">
+    <div class="container">
+        
+        <div class="intro-text">
+            <h2>Arhitectura Liniștii.</h2>
+            <p>O fuziune între patrimoniu, design și ospitalitate onestă în inima Transilvaniei.</p>
+        </div>
 
         <div class="collage-box">
             <img src="collage-final.png" alt="Hațeg Alternativ Collage">
+        </div>
+
+        <div class="cta-section">
+            <a href="experiente.html" class="btn-ermes">Descoperă Experiențele Noastre</a>
         </div>
 
         <div class="blessing-grid">
             <div class="img-blessing"></div>
             <div class="text-blessing">
                 <span>BINECUVÂNTAREA CASEI ȘI FAMILIEI</span>
-                <h2>Liniștea sufletului în<br>Domeniile la Buligă</h2>
+                <h2>Esența sufletului hațegan</h2>
                 
-                <div class="quote-box">
+                <div class="quote-style">
                     <p>Unde-i credință, acolo-i dragoste,</p>
                     <p>Unde-i dragoste, acolo-i pace,</p>
                     <p>Unde-i pace, acolo-i binecuvântare,</p>
@@ -148,5 +157,6 @@
             spans[2].style.transform = overlay.classList.contains('active') ? 'rotate(-45deg) translate(7px, -7px)' : 'none';
         });
     </script>
+
 </body>
 </html>
