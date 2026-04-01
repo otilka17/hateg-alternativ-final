@@ -3,67 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hațeg Alternativ | Descoperă Autenticul</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <title>Hațeg Alternativ | Domeniile la Buligă</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,700&family=Inter:wght@200;300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --negru: #000000; --auriu: #9d8665; --gri-light: #f4f4f4; }
+        :root { --negru: #000; --auriu: #9d8665; --gri-light: #f9f9f9; }
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        body { font-family: 'Inter', sans-serif; background: #fff; color: var(--negru); line-height: 1.6; overflow-x: hidden; }
+        
+        body { font-family: 'Inter', sans-serif; background: #fff; color: var(--negru); line-height: 1.6; }
 
-        /* HEADER ELEGANT (IDENTIC) */
-        .site-header { position: fixed; top: 0; width: 100%; z-index: 3000; background: rgba(255,255,255,0.95); backdrop-filter: blur(15px); border-bottom: 1px solid #f0f0f0; padding: 25px 0; }
+        /* HEADER COMPLET */
+        .site-header { position: fixed; top: 0; width: 100%; z-index: 3000; background: rgba(255,255,255,0.98); backdrop-filter: blur(10px); border-bottom: 1px solid #eee; padding: 20px 0; }
         .nav-container { max-width: 1600px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 40px; }
-        .brand { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.85rem; text-decoration: none; color: var(--negru); text-transform: uppercase; letter-spacing: 5px; }
+        .brand { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 0.85rem; text-decoration: none; color: #000; text-transform: uppercase; letter-spacing: 4px; }
         .main-nav { display: flex; gap: 20px; }
-        .main-nav a { text-decoration: none; color: var(--negru); font-size: 0.65rem; font-weight: 400; text-transform: uppercase; letter-spacing: 1px; transition: 0.4s; opacity: 0.6; }
+        .main-nav a { text-decoration: none; color: #000; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; opacity: 0.6; }
         .main-nav a:hover { opacity: 1; color: var(--auriu); }
 
-        /* HERO - SIMTE. EXPLOREAZA. TRAIESTE. */
+        /* HERO - APUSUL (WA0005) */
         .hero { 
-            height: 100vh; width: 100%; display: flex; align-items: center; justify-content: center; 
-            background: #111 url('images/IMG-20260326-WA0005.jpg') center/cover no-repeat;
-            position: relative;
+            height: 100vh; background: #111 url('images/IMG-20260326-WA0005.jpg') center/cover no-repeat;
+            display: flex; align-items: center; justify-content: center; text-align: center; color: #fff;
         }
-        .hero-content { text-align: center; color: white; z-index: 10; padding: 0 20px; }
-        .hero-content span { font-size: 0.7rem; letter-spacing: 8px; text-transform: uppercase; display: block; margin-bottom: 25px; font-weight: 300; }
-        .hero-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 10vw, 6rem); font-weight: 400; line-height: 1.1; font-style: italic; }
+        .hero-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 10vw, 6rem); font-style: italic; font-weight: 700; line-height: 1.1; }
 
-        /* CONTENT WRAPPER BOGAT */
-        .section-wrap { padding: 120px 40px; max-width: 1400px; margin: 0 auto; }
+        /* SECTIUNE BINECUVANTARE (211251) */
+        .blessing-wrap { padding: 120px 20px; background: var(--gri-light); text-align: center; }
+        .blessing-img { width: 180px; margin-bottom: 30px; border-radius: 2px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        .blessing-text { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-style: italic; max-width: 800px; margin: 0 auto 20px; color: #222; line-height: 1.4; }
+
+        /* GRID EDITORIAL */
+        .section-wrap { padding: 100px 40px; max-width: 1400px; margin: 0 auto; }
+        .grid-item { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 100px; align-items: center; margin-bottom: 150px; }
+        .grid-item.reverse { grid-template-columns: 0.9fr 1.1fr; }
+        .img-box { width: 100%; height: 700px; background-size: cover; background-position: center; border-radius: 2px; }
         
-        .intro-text { text-align: center; max-width: 800px; margin: 0 auto 100px; padding: 40px 0; }
-        .intro-text h2 { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-style: italic; font-weight: 400; margin-bottom: 30px; }
-        .intro-text p { font-size: 1.1rem; color: #666; font-weight: 300; }
-
-        /* SECTIUNE BINECUVÂNTARE (NOUĂ, STIL EDITORIAL) */
-        .blessing-editorial { padding: 80px 0; text-align: center; background: var(--gri-light); margin-bottom: 150px; border-radius: 2px; }
-        .blessing-img { width: 150px; margin-bottom: 30px; border-radius: 2px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
-        .blessing-quote { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.4rem; color: #333; margin-bottom: 20px; line-height: 1.5; font-weight: 400; }
-        .blessing-editorial span { color: var(--auriu); font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; font-weight: 600; display: block; }
-
-        /* GRID-URI EDITORIALE */
-        .grid-editorial { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; margin-bottom: 150px; }
-        .grid-editorial.reverse { grid-template-columns: 0.8fr 1.2fr; }
+        .text-box span { color: var(--auriu); font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 15px; }
+        .text-box h2 { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-style: italic; font-weight: 400; margin-bottom: 25px; line-height: 1.1; }
+        .text-box p { font-size: 1.05rem; color: #555; margin-bottom: 25px; font-weight: 300; }
+        .price-tag { font-size: 1.3rem; font-weight: 700; color: var(--auriu); margin-bottom: 30px; display: block; }
         
-        .img-box { width: 100%; height: 750px; background-size: cover; background-position: center; border-radius: 2px; }
-        .text-box span { color: var(--auriu); font-size: 0.6rem; letter-spacing: 4px; text-transform: uppercase; display: block; margin-bottom: 20px; font-weight: 600; }
-        .text-box h2 { font-family: 'Playfair Display', serif; font-size: 3.2rem; font-weight: 400; line-height: 1.1; margin-bottom: 30px; font-style: italic; }
-        .text-box p { font-size: 1rem; color: #555; margin-bottom: 40px; font-weight: 300; max-width: 450px; }
-
-        .btn-minimal { text-decoration: none; color: var(--negru); font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; border-bottom: 1px solid var(--auriu); padding-bottom: 8px; transition: 0.3s; }
-        .btn-minimal:hover { letter-spacing: 5px; color: var(--auriu); }
+        .btn-minimal { text-decoration: none; color: #000; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; border-bottom: 2px solid var(--auriu); padding-bottom: 5px; transition: 0.3s; }
+        .btn-minimal:hover { letter-spacing: 4px; }
 
         /* FOOTER */
-        .footer { padding: 100px 40px; border-top: 1px solid #f0f0f0; text-align: center; opacity: 0.4; font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; }
+        .main-footer { padding: 100px 40px; border-top: 1px solid #eee; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 60px; }
+        .footer-col h4 { font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 25px; color: var(--auriu); }
+        .footer-col p { font-size: 0.9rem; color: #666; margin-bottom: 10px; }
 
         @media (max-width: 1000px) {
-            .grid-editorial { grid-template-columns: 1fr !important; gap: 50px; margin-bottom: 80px; }
+            .grid-item { grid-template-columns: 1fr !important; gap: 50px; }
             .img-box { height: 400px; }
             .nav-container { padding: 0 20px; }
             .main-nav { display: none; }
-            .text-box h2 { font-size: 2.5rem; }
-            .blessing-editorial { padding: 50px 20px; }
-            .blessing-quote { font-size: 1.2rem; }
+            .text-box h2 { font-size: 2.8rem; }
         }
     </style>
 </head>
@@ -76,6 +68,7 @@
                 <a href="obiective.html">Obiective</a>
                 <a href="gastronomie.html">Gastronomie</a>
                 <a href="experiente.html">Experiențe</a>
+                <a href="evenimente.html">Evenimente</a>
                 <a href="forum.html">Forum</a>
                 <a href="rezervari.html">Rezervări</a>
             </nav>
@@ -84,86 +77,90 @@
 
     <section class="hero">
         <div class="hero-content">
-            <span>DESCOPERĂ AUTENTICUL</span>
-            <h1>Simte.<br>Explorează.<br>Trăiește.</h1>
+            <span style="letter-spacing: 10px;">Explore the Unseen</span>
+            <h1>Simte. Explorează. Trăiește.</h1>
         </div>
     </section>
 
+    <section class="blessing-wrap">
+        <img src="images/IMG20260331211251.jpg" class="blessing-img" alt="Spiritul Casei">
+        <p class="blessing-text">"Unde-i credință, acolo-i dragoste, unde-i dragoste, acolo-i pace, unde-i pace, acolo-i binecuvântare."</p>
+        <p style="font-size: 0.7rem; letter-spacing: 4px; color: var(--auriu); text-transform: uppercase; font-weight: 700;">Spiritul Casei</p>
+    </section>
+
     <div class="section-wrap">
-        
-        <div class="intro-text">
-            <h2>Arhitectura Liniștii.</h2>
-            <p>O platformă dedicată celor care prețuiesc patrimoniul viu, designul onest și experiențele curatoriate în afara traseelor turistice clasice.</p>
-        </div>
-
-        <div class="blessing-editorial">
-            <img src="images/IMG20260331211251.jpg" class="blessing-img" alt="Spiritul Casei">
-            <p class="blessing-quote">
-                "Unde-i credință, acolo-i dragoste,<br>
-                Unde-i dragoste, acolo-i pace,<br>
-                Unde-i pace, acolo-i binecuvântare."
-            </p>
-            <span>SPIRITUL CASEI</span>
-        </div>
-
-        <div class="grid-editorial">
+        <div class="grid-item">
             <div class="img-box" style="background-image: url('images/IMG-20260326-WA0020.jpg');"></div>
             <div class="text-box">
-                <span>DESTINAȚIE RECOMANDATĂ</span>
-                <h2>Domeniile<br>la Buligă</h2>
-                <p>Un retreat exclusiv creat pentru reconectare. Acolo unde minimalismul întâlnește spiritul autentic al casei.</p>
-                <a href="rezervari.html" class="btn-minimal">Vezi Locația</a>
+                <span>Destinație Premium</span>
+                <h2>Domeniile la Buligă</h2>
+                <p>Un retreat exclusiv creat pentru reconectare. Arhitectura simplității întâlnește liniștea sacră a naturii. Dispunem de 10 locuri de cazare în condiții de lux discret.</p>
+                <span class="price-tag">2000 RON / Noapte (Casă Integrală)</span>
+                <a href="rezervari.html" class="btn-minimal">Rezervă locația</a>
             </div>
         </div>
 
-        <div class="grid-editorial reverse">
+        <div class="grid-item reverse">
             <div class="text-box">
-                <span>EXPLORARE CURATORIATĂ</span>
-                <h2>Obiective<br>Autentice.</h2>
-                <p>Am mapat locurile care definesc identitatea reală a Hațegului. Explorează harta noastră interactivă.</p>
-                <a href="obiective.html" class="btn-minimal">Deschide Harta</a>
+                <span>Harta Curatoriată</span>
+                <h2>Obiective Autentice</h2>
+                <p>De la Biserica Densuș la Cetatea Colț, am mapat locurile care păstrează identitatea reală a Țării Hațegului, departe de zgomotul turistic.</p>
+                <a href="obiective.html" class="btn-minimal">Deschide harta</a>
             </div>
             <div class="img-box" style="background-image: url('images/exp-biserica-ext.jpg');"></div>
         </div>
 
-        <div class="grid-editorial">
+        <div class="grid-item">
             <div class="img-box" style="background-image: url('images/bucura.jpg');"></div>
             <div class="text-box">
-                <span>PUNCT GASTRONOMIC LOCAL</span>
-                <h2>Gustul<br>Simplității.</h2>
-                <p>Ospăț tradițional gătit lent, cu ingrediente din grădina proprie. De la specialitățile săptămânale la deliciile artizanale.</p>
-                <a href="gastronomie.html" class="btn-minimal">Vezi Meniul Săptămânii</a>
+                <span>Tradiție Onestă</span>
+                <h2>Punct Gastronomic</h2>
+                <p>Meniuri tradiționale pregătite lent, cu ingrediente proaspete din grădină. Specialități de post și rețete vechi transmise din generație în generație.</p>
+                <span class="price-tag">Meniu Degustare de la 90 RON / Persoană</span>
+                <a href="gastronomie.html" class="btn-minimal">Vezi meniul zilei</a>
             </div>
         </div>
 
+        <div class="grid-item reverse">
+            <div class="text-box">
+                <span>Timp pentru tine</span>
+                <h2>Evenimente & Ateliere</h2>
+                <p>Organizează evenimente private discrete sau participă la atelierele noastre de creație și pictură într-un cadru de poveste.</p>
+                <span class="price-tag">Închiriere Spațiu Evenimente de la 1500 RON</span>
+                <a href="evenimente.html" class="btn-minimal">Detalii evenimente</a>
+            </div>
+            <div class="img-box" style="background-image: url('images/feed-1.jpg');"></div>
+        </div>
     </div>
 
-    <footer class="footer">
-        © 2026 Hațeg Alternativ — Crafted for Silence
+    <footer class="main-footer">
+        <div class="footer-col">
+            <h4>Contact Direct</h4>
+            <p>+40 749 229 686</p>
+            <p>hateg.alternativ@gmail.com</p>
+        </div>
+        <div class="footer-col">
+            <h4>Locație</h4>
+            <p>Hațeg, Hunedoara</p>
+            <p>România</p>
+        </div>
+        <div class="footer-col">
+            <h4>Social Media</h4>
+            <p>Instagram: @hategalternativ</p>
+            <p>Facebook: Domeniile la Buliga</p>
+        </div>
     </footer>
 
     <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/65f973051ec1082f04d8fb8a/1hp8q4r8p';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
-    </script>
-
-</body>
-</html>    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/65f973051ec1082f04d8fb8a/1hp8q4r8p'; /* ID-ul tau Tawk.to */
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/65f973051ec1082f04d8fb8a/1hp8q4r8p';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
     </script>
 
 </body>
