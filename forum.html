@@ -1,78 +1,14 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-    <style>
-        /* CSS GOLDEN PREMIUM */
-        :root { --verde: #1b3022; --auriu: #c5a059; --crem: #fdfcf8; --alb: #ffffff; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--verde); line-height: 1.6; }
-        h1, .brand { font-family: 'Playfair Display', serif; font-weight: 700; }
-        .container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
-        .site-header { background: var(--alb); padding: 20px 0; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 1000; }
-        .nav-wrap { display: flex; justify-content: space-between; align-items: center; max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-        .brand { text-decoration: none; color: var(--verde); font-size: 1.4rem; }
-        .main-nav a { text-decoration: none; color: #444; font-size: 0.9rem; margin-left: 20px; font-weight: 500; }
-        .main-nav a:hover { color: var(--auriu); }
-        .forum-header { padding: 80px 0 40px; text-align: center; }
-        h1 { font-size: 3rem; margin-bottom: 10px; }
-        .input-box { background: var(--alb); padding: 40px; border-radius: 24px; border: 1px solid #eee; box-shadow: 0 10px 40px rgba(0,0,0,0.03); margin-bottom: 40px; }
-        textarea { width: 100%; height: 130px; border: 1px solid #f0f0f0; border-radius: 15px; padding: 20px; font-family: 'Inter'; font-size: 1rem; background: #fafafa; outline: none; margin-bottom: 15px; resize: none; }
-        .btn-gold { background: var(--auriu); color: var(--alb); padding: 14px 35px; border-radius: 50px; border: none; font-weight: 600; cursor: pointer; transition: 0.3s; }
-        .post-card { background: var(--alb); padding: 30px; border-radius: 20px; border: 1px solid #eee; margin-bottom: 25px; }
-        .post-card p { font-size: 1.05rem; color: #334155; font-style: italic; }
-        .post-meta { font-size: 0.8rem; color: var(--auriu); font-weight: 700; margin-top: 15px; display: block; }
-        .wa-btn { position: fixed; bottom: 30px; left: 30px; background: #25d366; color: var(--alb); padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 999; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forum | Hațeg Alternativ</title>
 </head>
-<body>
-
-<header class="site-header">
-    <div class="container nav-wrap">
-        <a href="index.html" class="brand">Hațeg Alternativ</a>
-        <nav class="main-nav">
-            <a href="index.html">Acasă</a>
-            <a href="obiective.html">Obiective</a>
-            <a href="forum.html" style="color: var(--auriu);">Forum</a>
-            <a href="rezervare.html">Rezervare</a>
-        </nav>
-    </div>
-</header>
-
-<div class="container">
-    <div class="forum-header">
-        <h1>Gânduri de călător</h1>
-        <p style="color: #64748b;">Împărtășește experiența ta autentică în Țara Hațegului.</p>
-    </div>
-
-    <div class="input-box">
-        <textarea id="mesajForum" placeholder="Scrie un gând sau o recomandare..."></textarea>
-        <button onclick="posteaza()" class="btn-gold">Postează pe forum</button>
-    </div>
-
-    <div id="lista">
-        <div class="post-card">
-            <p>"Apusul văzut de la La Buligă este ceva ce nu voi uita niciodată. Liniștea e aproape ireală."</p>
-            <span class="post-meta">Oaspete anonim — acum 2 ore</span>
-        </div>
-    </div>
-</div>
-
-<a href="https://wa.me/40749229686" class="wa-btn">WhatsApp</a>
-
-<script>
-function posteaza(){
-    const msg = document.getElementById("mesajForum").value;
-    if(!msg) return;
-    const div = document.createElement("div");
-    div.className = "post-card";
-    const data = new Date().toLocaleDateString('ro-RO');
-    div.innerHTML = `<p>"${msg}"</p><span class="post-meta">Oaspete anonim — ${data}</span>`;
-    document.getElementById("lista").prepend(div);
-    document.getElementById("mesajForum").value = "";
-}
-</script>
-
+<body style="font-family: sans-serif; text-align: center; padding-top: 100px; background: #fdfcf8;">
+    <h1 style="color: #c5a059; font-style: italic;">Forum Hațeg Alternativ</h1>
+    <p>Comunitatea noastră se construiește chiar acum.</p>
+    <br>
+    <a href="index.html" style="color: black; font-weight: 700;">Înapoi la site</a>
 </body>
 </html>
