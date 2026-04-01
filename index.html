@@ -10,34 +10,35 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru); line-height: 1.6; overflow-x: hidden; }
 
-        .site-header { position: fixed; top: 0; width: 100%; z-index: 2000; background: rgba(255,255,255,0.98); border-bottom: 1px solid rgba(0,0,0,0.05); padding: 15px 0; }
-        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
-        .brand { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; text-decoration: none; color: var(--negru); text-transform: uppercase; }
-        .main-nav a { text-decoration: none; color: var(--negru); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-left: 20px; transition: 0.3s; }
+        /* HEADER */
+        .site-header { position: fixed; top: 0; width: 100%; z-index: 2000; background: rgba(255,255,255,0.98); border-bottom: 1px solid rgba(0,0,0,0.05); padding: 10px 0; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 15px; }
+        .brand { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; text-decoration: none; color: var(--negru); text-transform: uppercase; }
+        .main-nav a { text-decoration: none; color: var(--negru); font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-left: 10px; transition: 0.3s; }
         .main-nav a:hover { color: var(--auriu); }
 
+        /* HERO */
         .hero { 
             height: 100vh; 
-            background: #1a1a1a linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('images/IMG-20260326-WA0005.jpg'); 
+            background: #1a1a1a linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('IMG-20260326-WA0005.jpg'); 
             background-size: cover; background-position: center; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; text-align: center; padding: 0 20px; 
         }
-        .hero h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-style: italic; margin-bottom: 20px; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-style: italic; margin-bottom: 20px; }
 
-        .section-blessing { padding: 80px 20px; text-align: center; }
-        .blessing-box { max-width: 600px; margin: 0 auto; padding: 40px; border: 1px solid rgba(197,160,89,0.3); }
-        .blessing-img { width: 130px; margin-bottom: 25px; border-radius: 2px; }
-
+        /* SECTIUNI */
         .feature { display: flex; align-items: center; flex-wrap: wrap; padding: 60px 0; max-width: 1200px; margin: 0 auto; }
-        .feature-img { flex: 1; min-width: 300px; height: 450px; background-size: cover; background-position: center; margin: 20px; }
-        .feature-text { flex: 1; min-width: 300px; padding: 40px; }
-
-        .btn-gold { background: var(--auriu); color: white; padding: 18px 45px; border-radius: 50px; text-decoration: none; display: inline-block; font-weight: 700; margin-top: 25px; transition: 0.3s; }
+        .feature.reverse { flex-direction: row-reverse; }
+        .feature-img { flex: 1; min-width: 300px; height: 400px; background-size: cover; background-position: center; margin: 15px; border-radius: 2px; }
+        .feature-text { flex: 1; min-width: 300px; padding: 30px; }
+        .feature-text h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 20px; font-style: italic; }
+        
+        .btn-link { display: inline-block; margin-top: 15px; color: var(--auriu); font-weight: 700; text-decoration: none; border-bottom: 1px solid var(--auriu); text-transform: uppercase; font-size: 0.8rem; }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .nav-container { flex-direction: column; gap: 10px; }
+            .nav-container { flex-direction: column; }
+            .main-nav { margin-top: 10px; display: flex; flex-wrap: wrap; justify-content: center; }
             .feature { flex-direction: column !important; }
-            .feature-img { width: 100%; height: 300px; margin: 0; }
+            .feature-img { width: 100%; height: 250px; }
         }
     </style>
 </head>
@@ -47,32 +48,37 @@
     <div class="nav-container">
         <a href="index.html" class="brand">Domeniile la Buligă</a>
         <nav class="main-nav">
+            <a href="gastronomie.html">Gastronomie</a>
             <a href="experiente.html">Experiențe</a>
             <a href="evenimente.html">Evenimente</a>
+            <a href="forum.html">Forum</a>
             <a href="rezervari.html">Rezervări</a>
         </nav>
     </div>
 </header>
 
 <section class="hero">
-    <p style="letter-spacing:5px; text-transform:uppercase; font-size:0.9rem;">Hațeg Alternativ</p>
+    <p style="letter-spacing: 3px; text-transform: uppercase; font-size: 0.8rem;">Hațeg Alternativ</p>
     <h1>Simte. Explorează. Trăiește.</h1>
-    <a href="rezervari.html" class="btn-gold">Planifică Sejurul</a>
-</section>
-
-<section class="section-blessing">
-    <div class="blessing-box">
-        <img src="images/IMG20260331211251.jpg" class="blessing-img" alt="Spirit">
-        <p style="font-family:'Playfair Display', serif; font-style:italic; font-size:1.3rem; margin-bottom:15px;">"Unde-i credință, acolo-i dragoste, unde-i pace, acolo-i binecuvântare."</p>
-    </div>
 </section>
 
 <section class="feature">
-    <div class="feature-img" style="background-image: url('images/IMG-20260326-WA0001.jpg');"></div>
+    <div class="feature-img" style="background-image: url('IMG-20260326-WA0020.jpg');"></div>
     <div class="feature-text">
-        <h2 style="font-family:'Playfair Display', serif; font-size:2.2rem; font-style:italic; margin-bottom:15px;">O casă întreagă doar pentru voi.</h2>
-        <p>Retreat exclusiv în Munții Poiana Ruscă. 10 locuri de cazare într-un decor de poveste.</p>
-        <a href="rezervari.html" class="btn-gold">Rezervă Acum</a>
+        <span style="color:var(--auriu); font-weight:800; font-size:0.7rem; letter-spacing:2px; text-transform:uppercase;">Punct Gastronic Local</span>
+        <h2>Gustul de odinioară.</h2>
+        <p>Descoperă meniul nostru de post și preparatele tradiționale făcute cu ingrediente din grădina proprie. O experiență culinară cinstită, specifică Țării Hațegului.</p>
+        <a href="gastronomie.html" class="btn-link">Vezi Meniul Gastronomic</a>
+    </div>
+</section>
+
+<section class="feature reverse">
+    <div class="feature-img" style="background-image: url('IMG20260316153821.jpg');"></div>
+    <div class="feature-text">
+        <span style="color:var(--auriu); font-weight:800; font-size:0.7rem; letter-spacing:2px; text-transform:uppercase;">Comunitate</span>
+        <h2>Forum Hațeg Alternativ</h2>
+        <p>Împărtășește experiența ta, află noutăți despre evenimentele viitoare și conectează-te cu alți călători pasionați de autentic.</p>
+        <a href="forum.html" class="btn-link">Intră în Comunitate</a>
     </div>
 </section>
 
