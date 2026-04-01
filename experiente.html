@@ -4,26 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Experiențe | Hațeg Alternativ</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --negru: #1a1a1a; --auriu: #c5a059; }
-        body { font-family: 'Inter', sans-serif; padding: 100px 20px; background: #fdfcf8; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; max-width: 1200px; margin: 0 auto; }
-        .card { background: white; overflow: hidden; border-radius: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        .card-img { height: 250px; background-size: cover; background-position: center; }
-        .card-body { padding: 20px; }
-        h1 { text-align: center; font-family: 'Playfair Display', serif; font-style: italic; font-size: 2.5rem; margin-bottom: 40px; color: var(--auriu); }
+        body { font-family: sans-serif; background: #fdfcf8; padding: 80px 15px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1200px; margin: 40px auto; }
+        .card { background: white; border-radius: 3px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .img { height: 200px; background-size: cover; background-position: center; }
+        h1 { text-align: center; font-family: serif; font-style: italic; font-size: 2.5rem; color: #c5a059; }
     </style>
 </head>
 <body>
-    <header style="position: fixed; top: 0; width: 100%; left:0; background: white; padding: 15px; text-align: center; border-bottom: 1px solid #eee;">
-        <a href="index.html" style="text-decoration: none; color: black; font-weight: 700;">DOMENIILE LA BULIGĂ</a>
-    </header>
-    <h1>Descoperă Țara Hațegului</h1>
+    <div style="text-align: center;"><a href="index.html" style="text-decoration: none; color: black; font-weight: 700;">DOMENIILE LA BULIGĂ</a></div>
+    <h1>Trăiește Autentic</h1>
     <div class="grid">
-        <div class="card"><div class="card-img" style="background-image: url('images/exp-lac.jpg');"></div><div class="card-body"><h3>Ochiul Albastru</h3><p>Lacuri montane de o frumusețe rară.</p></div></div>
-        <div class="card"><div class="card-img" style="background-image: url('images/exp-stana.jpg');"></div><div class="card-body"><h3>Viața la Stână</h3><p>Tradiții păstrate cu sfințenie.</p></div></div>
-        <div class="card"><div class="card-img" style="background-image: url('images/exp-biserica-ext.jpg');"></div><div class="card-body"><h3>Biserici de Piatră</h3><p>Istorie sculptată în munte.</p></div></div>
+        <div class="card"><div class="img" style="background-image: url('images/exp-lac.jpg');"></div><div style="padding: 15px;"><h3>Lacuri Montane</h3><p>Liniștea oglindită în apă.</p></div></div>
+        <div class="card"><div class="img" style="background-image: url('images/exp-biserica-ext.jpg');"></div><div style="padding: 15px;"><h3>Istorie în Piatră</h3><p>Biserici vechi de sute de ani.</p></div></div>
+        <div class="card"><div class="img" style="background-image: url('images/exp-stana.jpg');"></div><div style="padding: 15px;"><h3>Viața la munte</h3><p>Tradiții și peisaje arhaice.</p></div></div>
     </div>
 </body>
 </html>
