@@ -12,14 +12,14 @@
         .site-header { position: fixed; top: 0; width: 100%; z-index: 2000; background: rgba(255,255,255,0.98); border-bottom: 1px solid rgba(0,0,0,0.05); padding: 10px 0; }
         .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 15px; }
         .brand { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; text-decoration: none; color: var(--negru); text-transform: uppercase; }
-        .main-nav a { text-decoration: none; color: var(--negru); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-left: 15px; transition: 0.3s; }
+        .main-nav a { text-decoration: none; color: var(--negru); font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-left: 12px; transition: 0.3s; }
         .hero { height: 100vh; background: #1a1a1a linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('images/IMG-20260326-WA0005.jpg'); background-size: cover; background-position: center; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; text-align: center; padding: 0 20px; }
-        .hero h1 { font-family: 'Playfair Display', serif; font-size: 3rem; font-style: italic; margin-bottom: 20px; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 3rem; font-style: italic; margin-bottom: 20px; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
         .feature { display: flex; align-items: center; flex-wrap: wrap; padding: 60px 0; max-width: 1200px; margin: 0 auto; }
-        .feature-img { flex: 1; min-width: 300px; height: 450px; background-size: cover; background-position: center; margin: 15px; }
+        .feature-img { flex: 1; min-width: 300px; height: 450px; background-size: cover; background-position: center; margin: 15px; border-radius: 2px; }
         .feature-text { flex: 1; min-width: 300px; padding: 30px; }
-        .btn-gold { display: inline-block; margin-top: 20px; color: var(--auriu); font-weight: 700; text-decoration: none; border-bottom: 1px solid var(--auriu); text-transform: uppercase; font-size: 0.8rem; }
-        @media (max-width: 768px) { .nav-container { flex-direction: column; } .main-nav { margin-top: 10px; } .hero h1 { font-size: 2.2rem; } .feature { flex-direction: column !important; } }
+        .btn-link { display: inline-block; margin-top: 15px; color: var(--auriu); font-weight: 700; text-decoration: none; border-bottom: 1px solid var(--auriu); text-transform: uppercase; font-size: 0.8rem; }
+        @media (max-width: 768px) { .nav-container { flex-direction: column; gap: 10px; } .main-nav { display: flex; flex-wrap: wrap; justify-content: center; } .hero h1 { font-size: 2.2rem; } .feature { flex-direction: column !important; } }
     </style>
 </head>
 <body>
@@ -36,15 +36,15 @@
         </div>
     </header>
     <section class="hero">
-        <p style="letter-spacing: 3px; text-transform: uppercase; font-size: 0.8rem; margin-bottom: 10px;">Hațeg Alternativ</p>
+        <p style="letter-spacing: 4px; text-transform: uppercase; font-size: 0.8rem; margin-bottom: 10px;">Hațeg Alternativ</p>
         <h1>Simte. Explorează. Trăiește.</h1>
     </section>
     <section class="feature">
         <div class="feature-img" style="background-image: url('images/IMG-20260326-WA0020.jpg');"></div>
         <div class="feature-text">
-            <h2 style="font-family: 'Playfair Display', serif; font-size: 2rem; font-style: italic; margin-bottom: 15px;">Gustul de odinioară.</h2>
-            <p>Descoperă Punctul Gastronomic Local. Gătim curat, cu ingrediente din grădina proprie și rețete lăsate din bătrâni.</p>
-            <a href="gastronomie.html" class="btn-gold">Vezi Meniul Nostru</a>
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 2rem; font-style: italic; margin-bottom: 15px;">Punct Gastronomic Local</h2>
+            <p>Descoperă gustul autentic de Hațeg. Gătim lent, cu ingrediente din grădină, pentru sufletele care caută simplitate.</p>
+            <a href="gastronomie.html" class="btn-link">Vezi Meniul Gastronomic</a>
         </div>
     </section>
 </body>
