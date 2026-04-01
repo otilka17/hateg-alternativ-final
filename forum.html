@@ -3,75 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forum | Hațeg Alternativ</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <title>Journal | Hațeg Alternativ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@200;400&display=swap" rel="stylesheet">
     <style>
-        :root { --negru: #1a1a1a; --auriu: #c5a059; --crem: #fdfcf8; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru); padding-top: 80px; }
-        
-        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
-        h1 { font-family: 'Playfair Display', serif; font-style: italic; color: var(--auriu); font-size: 2.5rem; text-align: center; margin-bottom: 30px; }
-
-        /* BUTON POSTEAZA */
-        .btn-new-post { display: block; width: fit-content; margin: 0 auto 40px; background: var(--auriu); color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; border: none; cursor: pointer; transition: 0.3s; }
-        .btn-new-post:hover { transform: scale(1.05); }
-
-        /* LISTA POSTARI */
-        .post-card { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 20px; border-left: 4px solid var(--auriu); }
-        .post-card h3 { font-family: 'Playfair Display', serif; margin-bottom: 10px; }
-        .post-meta { font-size: 0.75rem; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
-
-        /* FORMULAR (Ascuns initial) */
-        #form-container { display: none; background: white; padding: 30px; border-radius: 8px; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-        input, textarea { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px; font-family: inherit; }
-        .btn-submit { background: var(--negru); color: white; padding: 12px 25px; border: none; border-radius: 4px; cursor: pointer; font-weight: 700; }
-        
-        .back-home { display: block; text-align: center; margin-top: 40px; text-decoration: none; color: var(--negru); font-weight: 700; font-size: 0.8rem; }
+        body { font-family: 'Inter', sans-serif; background: #fff; padding: 80px 40px; }
+        .journal-header { text-align: center; margin-bottom: 100px; }
+        .journal-header h1 { font-family: 'Playfair Display', serif; font-size: 4rem; font-style: italic; font-weight: 400; }
+        .post-list { max-width: 800px; margin: 0 auto; }
+        .post { margin-bottom: 80px; border-bottom: 1px solid #eee; padding-bottom: 40px; }
+        .post span { font-size: 0.6rem; letter-spacing: 3px; color: #9d8665; text-transform: uppercase; }
+        .post h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin: 15px 0; font-weight: 400; font-style: italic; }
+        .post p { font-weight: 300; color: #666; line-height: 1.8; }
+        .btn-post { position: fixed; bottom: 40px; right: 40px; background: #000; color: #fff; padding: 20px 40px; text-decoration: none; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; border-radius: 50px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
     </style>
 </head>
 <body>
-
-    <div class="container">
-        <a href="index.html" class="back-home">← ÎNAPOI LA SITE</a>
-        <h1>Comunitatea Hațeg Alternativ</h1>
-        
-        <button class="btn-new-post" onclick="toggleForm()">+ ADAUGĂ O POVESTE</button>
-
-        <div id="form-container">
-            <h3>Împărtășește experiența ta</h3>
-            <form action="https://formspree.io/f/XXXXX" method="POST"> <input type="text" name="nume" placeholder="Numele tău" required>
-                <input type="text" name="subiect" placeholder="Titlul postării" required>
-                <textarea name="mesaj" rows="5" placeholder="Povestește-ne despre experiența ta în Țara Hațegului..." required></textarea>
-                <button type="submit" class="btn-submit">Publică pe Forum</button>
-                <button type="button" onclick="toggleForm()" style="background:none; border:none; color:red; margin-left:10px; cursor:pointer;">Anulează</button>
-            </form>
+    <div class="journal-header">
+        <a href="index.html" style="text-decoration:none; color:#000; font-size:0.7rem; letter-spacing:3px; text-transform:uppercase;">Hațeg Alternativ</a>
+        <h1 style="margin-top: 40px;">The Journal.</h1>
+    </div>
+    <div class="post-list">
+        <div class="post">
+            <span>April 1, 2026</span>
+            <h2>O dimineață la Vadul Dobrii.</h2>
+            <p>Când ceața se ridică peste Munții Poiana Ruscă, designul naturii devine cel mai bun arhitect...</p>
         </div>
-
-        <div class="post-list">
-            <div class="post-card">
-                <div class="post-meta">Postat de: Maria | 1 Aprilie 2026</div>
-                <h3>Weekend magic la Vadul Dobrii</h3>
-                <p>Am descoperit o liniște pe care nu am mai simțit-o de ani de zile. Drumul prin pădure este superb în perioada asta!</p>
-            </div>
-
-            <div class="post-card">
-                <div class="post-meta">Postat de: Ionuț | 28 Martie 2026</div>
-                <h3>Rulada de post - nota 10!</h3>
-                <p>Am trecut pe la Punctul Gastronic și am rămas impresionat de ospitalitate. Recomand tuturor!</p>
-            </div>
+        <div class="post">
+            <span>March 28, 2026</span>
+            <h2>Textura tăcerii.</h2>
+            <p>La Domeniile la Buligă, am învățat că tăcerea are o greutate și o textură aparte...</p>
         </div>
     </div>
-
-    <script>
-        function toggleForm() {
-            var form = document.getElementById("form-container");
-            if (form.style.display === "none" || form.style.display === "") {
-                form.style.display = "block";
-            } else {
-                form.style.display = "none";
-            }
-        }
-    </script>
+    <a href="#" class="btn-post">+ Write Story</a>
 </body>
 </html>
