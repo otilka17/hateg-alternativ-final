@@ -5,20 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Experiențe | Hațeg Alternativ</title>
     <style>
-        body { font-family: sans-serif; background: #fdfcf8; padding: 80px 15px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1200px; margin: 40px auto; }
-        .card { background: white; border-radius: 3px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        .img { height: 200px; background-size: cover; background-position: center; }
-        h1 { text-align: center; font-family: serif; font-style: italic; font-size: 2.5rem; color: #c5a059; }
+        body { font-family: sans-serif; background: #fdfcf8; padding: 80px 15px; text-align: center; }
+        h1 { font-family: serif; font-style: italic; font-size: 2.5rem; color: #c5a059; margin-bottom: 40px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; max-width: 1100px; margin: 0 auto; }
+        .card { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: 0.3s; }
+        .card:hover { transform: translateY(-5px); }
+        .img { height: 220px; background-size: cover; background-position: center; }
+        .card-info { padding: 20px; text-align: left; }
+        .card-info h3 { margin-bottom: 10px; font-family: serif; color: #1a1a1a; }
+        .card-info p { font-size: 0.9rem; color: #666; }
     </style>
 </head>
 <body>
-    <div style="text-align: center;"><a href="index.html" style="text-decoration: none; color: black; font-weight: 700;">DOMENIILE LA BULIGĂ</a></div>
+    <a href="index.html" style="text-decoration:none; color:#1a1a1a; font-weight:700; font-size:0.8rem;">DOMENIILE LA BULIGĂ</a>
     <h1>Trăiește Autentic</h1>
     <div class="grid">
-        <div class="card"><div class="img" style="background-image: url('images/exp-lac.jpg');"></div><div style="padding: 15px;"><h3>Lacuri Montane</h3><p>Liniștea oglindită în apă.</p></div></div>
-        <div class="card"><div class="img" style="background-image: url('images/exp-biserica-ext.jpg');"></div><div style="padding: 15px;"><h3>Istorie în Piatră</h3><p>Biserici vechi de sute de ani.</p></div></div>
-        <div class="card"><div class="img" style="background-image: url('images/exp-stana.jpg');"></div><div style="padding: 15px;"><h3>Viața la munte</h3><p>Tradiții și peisaje arhaice.</p></div></div>
+        <div class="card">
+            <div class="img" style="background-image: url('images/exp-lac.jpg');"></div>
+            <div class="card-info"><h3>Lacuri Montane</h3><p>Liniștea oglindită în apele limpezi ale Retezatului.</p></div>
+        </div>
+        <div class="card">
+            <div class="img" style="background-image: url('images/exp-biserica-ext.jpg');"></div>
+            <div class="card-info"><h3>Istorie în Piatră</h3><p>Biserici vechi de sute de ani, pline de mister.</p></div>
+        </div>
+        <div class="card">
+            <div class="img" style="background-image: url('images/exp-stana.jpg');"></div>
+            <div class="card-info"><h3>Viața la munte</h3><p>Tradiții și peisaje arhaice la Vadul Dobrii.</p></div>
+        </div>
     </div>
 </body>
 </html>
