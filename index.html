@@ -17,8 +17,8 @@
         .main-nav a { text-decoration: none; color: var(--negru); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-left: 25px; transition: 0.3s; }
         .main-nav a:hover { color: var(--auriu); }
 
-        /* HERO SECTION */
-        .hero { height: 90vh; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('images/hero-bg.jpg'); background-size: cover; background-position: center; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; text-align: center; padding: 0 20px; }
+        /* HERO SECTION - Folosim hero-premium.jpg */
+        .hero { height: 90vh; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('hero-premium.jpg'); background-size: cover; background-position: center; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; text-align: center; padding: 0 20px; }
         .hero h1 { font-family: 'Playfair Display', serif; font-size: 4.5rem; font-style: italic; margin-bottom: 20px; }
         .hero p { font-size: 1.1rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 40px; }
 
@@ -28,20 +28,21 @@
         .blessing-img { width: 150px; margin-bottom: 30px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
         .blessing-quote { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.3rem; color: #555; margin-bottom: 20px; }
 
-        /* FEATURE SECTIONS (Stil Alternat) */
+        /* FEATURE SECTIONS */
         .feature { display: flex; align-items: center; flex-wrap: wrap; padding: 80px 0; max-width: 1200px; margin: 0 auto; }
         .feature.reverse { flex-direction: row-reverse; }
-        .feature-img { flex: 1; min-width: 350px; height: 500px; background-size: cover; background-position: center; margin: 20px; }
+        /* Clasa pentru imagini */
+        .feature-img { flex: 1; min-width: 350px; height: 500px; background-size: cover; background-position: center; margin: 20px; border-radius: 2px; }
         .feature-text { flex: 1; min-width: 350px; padding: 40px; }
         .feature-text span { color: var(--auriu); font-weight: 800; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; }
         .feature-text h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin: 15px 0 25px; font-style: italic; }
         
-        /* FOOTER CTA */
+        /* FOOTER CTA - Folosim hero-sat.jpg ca fundal discret sau negru mat */
         .cta-footer { background: var(--negru); color: white; padding: 100px 20px; text-align: center; }
-        .btn-gold { background: var(--auriu); color: white; padding: 20px 50px; border-radius: 50px; text-decoration: none; display: inline-block; font-weight: 700; font-size: 1.1rem; transition: 0.3s; margin-top: 30px; }
-        .btn-gold:hover { transform: scale(1.05); }
+        .btn-gold { background: var(--auriu); color: white; padding: 20px 50px; border-radius: 50px; text-decoration: none; display: inline-block; font-weight: 700; font-size: 1.1rem; transition: 0.3s; margin-top: 30px; border: none; cursor: pointer; }
+        .btn-gold:hover { transform: scale(1.05); background: #b48e4d; }
 
-        @media (max-width: 768px) { .hero h1 { font-size: 2.8rem; } .feature { flex-direction: column !important; } }
+        @media (max-width: 768px) { .hero h1 { font-size: 2.8rem; } .feature { flex-direction: column !important; } .feature-img { width: 100%; height: 300px; margin: 0; } }
     </style>
 </head>
 <body>
@@ -76,22 +77,22 @@
 </section>
 
 <section class="feature">
-    <div class="feature-img" style="background-image: url('images/casa-buliga.jpg');"></div>
+    <div class="feature-img" style="background-image: url('la-buliga-pensiune.jpg');"></div>
     <div class="feature-text">
         <span>Retreat Exclusiv</span>
         <h2>O casă întreagă doar pentru voi.</h2>
-        <p>Închiriază integral Domeniile la Buligă pentru grupul tău. 10 locuri de cazare într-un spațiu unde timpul pare să stea în loc.</p>
-        <p style="margin-top: 20px; font-weight: 700; color: var(--auriu);">2000 RON / Noapte</p>
+        <p>Închiriază integral Domeniile la Buligă pentru grupul tău. 10 locuri de cazare într-un spațiu autentic, unde liniștea este singurul sunet pe care îl vei auzi.</p>
+        <p style="margin-top: 20px; font-weight: 700; color: var(--auriu); font-size: 1.2rem;">2000 RON / Noapte</p>
     </div>
 </section>
 
 <section class="feature reverse">
-    <div class="feature-img" style="background-image: url('IMG20260331214107.jpg');"></div>
+    <div class="feature-img" style="background-image: url('gast-masa-traditionala.jpg');"></div>
     <div class="feature-text">
         <span>Ospăț la Domenii</span>
         <h2>Gustul autentic de Hațeg.</h2>
-        <p>De la ciorba de văcuță la prăjitura Albinuța și celebra noastră ruladă de post. Gătim curat, cu ingrediente locale, pentru inima ta.</p>
-        <a href="experiente.html" style="color: var(--negru); font-weight: 800; font-size: 0.8rem; text-decoration: underline;">VEZI MENIUL ZILELOR</a>
+        <p>De la celebra noastră ruladă de post, la supa cu tăiței de casă și prăjitura Albinuța. Gătim totul lent, cu ingrediente proaspete, pentru a-ți hrăni nu doar corpul, ci și sufletul.</p>
+        <a href="experiente.html" style="color: var(--negru); font-weight: 800; font-size: 0.8rem; text-decoration: underline; display: block; margin-top: 20px;">CONSULTĂ MENIUL PE ZILE</a>
     </div>
 </section>
 
@@ -99,14 +100,15 @@
     <div class="feature-img" style="background-image: url('IMG20260316153821.jpg');"></div>
     <div class="feature-text">
         <span>Artă & Terapie</span>
-        <h2>Plenerul de la Domenii</h2>
-        <p>Redescoperă liniștea prin pictură sau diamond painting. Organizăm tabere de creație sub cerul liber în Țara Hațegului.</p>
+        <h2>Timpul tău de creație.</h2>
+        <p>Redescoperă liniștea prin pictură sau diamond painting. Organizăm tabere de creație și ateliere de meșteșuguri într-o atmosferă de pace deplină.</p>
+        <p style="margin-top: 20px; font-weight: 700; color: var(--auriu);">Ateliere de la 150 RON</p>
     </div>
 </section>
 
 <section class="cta-footer">
     <h2 style="font-family: 'Playfair Display', serif; font-size: 3rem; font-style: italic;">Te așteptăm acasă.</h2>
-    <p>Alege-ți nopțile, atelierele și lasă restul în seama noastră.</p>
+    <p style="max-width: 600px; margin: 20px auto;">Fie că vii pentru o noapte sau un sejur complet, Domeniile la Buligă îți oferă experiența de care ai nevoie.</p>
     <a href="rezervari.html" class="btn-gold">Configurează-ți Sejurul</a>
 </section>
 
