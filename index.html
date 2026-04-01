@@ -3,48 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hațeg Alternativ</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Hațeg Alternativ | Descoperă Autenticul</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@200;300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --negru: #0a0a0a; --auriu: #9d8665; --gri: #eeeeee; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: #fff; color: var(--negru); }
+        :root { --negru: #0a0a0a; --auriu: #9d8665; --alb: #ffffff; }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        
+        body { font-family: 'Inter', sans-serif; background: var(--alb); color: var(--negru); line-height: 1.6; }
 
-        /* Meniu */
-        .site-header { position: fixed; top: 0; width: 100%; z-index: 3000; background: #fff; border-bottom: 1px solid #eee; padding: 15px 0; }
-        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
-        .brand { font-weight: 600; font-size: 0.8rem; text-decoration: none; color: #000; text-transform: uppercase; letter-spacing: 3px; }
-        .main-nav a { text-decoration: none; color: #000; font-size: 0.6rem; text-transform: uppercase; margin-left: 15px; opacity: 0.6; }
+        /* HEADER */
+        .site-header { position: fixed; top: 0; width: 100%; z-index: 3000; background: rgba(255,255,255,0.98); backdrop-filter: blur(10px); border-bottom: 1px solid #eee; padding: 20px 0; }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 40px; }
+        .brand { font-weight: 600; font-size: 0.9rem; text-decoration: none; color: var(--negru); text-transform: uppercase; letter-spacing: 4px; }
+        .main-nav { display: flex; gap: 25px; }
+        .main-nav a { text-decoration: none; color: var(--negru); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1.5px; opacity: 0.7; transition: 0.3s; }
+        .main-nav a:hover { opacity: 1; color: var(--auriu); }
 
-        /* Sectiunea de sus - Am facut-o mai mica (60% din ecran) sa nu mai fie doar alb */
+        /* HERO - Imaginea: images/IMG-20260326-WA0005.jpg */
         .hero { 
-            height: 60vh; width: 100%; display: flex; align-items: center; justify-content: center; 
-            background: var(--gri) url('IMG-20260326-WA0005.jpg') center/cover no-repeat;
-            margin-top: 50px;
+            height: 80vh; width: 100%; display: flex; align-items: center; justify-content: center; 
+            background: #1a1a1a linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('images/IMG-20260326-WA0005.jpg') center/cover no-repeat;
+            color: white; text-align: center; margin-top: 0;
         }
-        .hero-content { text-align: center; color: #000; }
-        .hero-content h1 { font-family: 'Playfair Display', serif; font-size: 3rem; font-style: italic; }
+        .hero-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 8vw, 5rem); font-style: italic; font-weight: 400; }
 
-        /* Container poze si text */
-        .content { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+        /* CONTAINER CENTRAL */
+        .container { max-width: 1200px; margin: 0 auto; padding: 80px 20px; }
 
-        .intro { text-align: center; margin-bottom: 50px; }
-        .intro h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 10px; }
+        .intro-text { text-align: center; max-width: 750px; margin: 0 auto 60px; }
+        .intro-text h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-style: italic; margin-bottom: 20px; }
 
-        /* COLAJUL TAU - Aici trebuie sa fie poza cu panoul */
-        .main-image { width: 100%; margin-bottom: 60px; border: 1px solid #ddd; }
-        .main-image img { width: 100%; height: auto; display: block; }
+        /* COLAJUL TĂU PRINCIPAL - Imaginea: 961c2090-bedc-45f8-a03a-0d7e41743008.jpeg */
+        .main-collage-box { width: 100%; margin-bottom: 100px; }
+        .main-collage-box img { width: 100%; height: auto; display: block; border-radius: 2px; box-shadow: 0 15px 45px rgba(0,0,0,0.1); }
 
-        /* Sectiuni editoriale */
-        .box { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; margin-bottom: 80px; }
-        .img-placeholder { width: 100%; height: 400px; background: var(--gri); background-size: cover; background-position: center; }
-        .text-box h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 15px; }
-        .btn { text-decoration: none; color: var(--auriu); font-weight: 600; border-bottom: 1px solid var(--auriu); font-size: 0.8rem; text-transform: uppercase; }
+        /* GRID SECȚIUNI */
+        .grid-editorial { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-bottom: 100px; }
+        .grid-editorial.reverse .img-box { order: 2; }
+        .grid-editorial.reverse .text-box { order: 1; }
+        
+        /* images/IMG-20260326-WA0020.jpg | images/exp-biserica-ext.jpg | images/bucura.jpg */
+        .img-box { width: 100%; height: 550px; background-size: cover; background-position: center; background-color: #f4f4f4; }
+        .text-box span { color: var(--auriu); font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; font-weight: 600; display: block; margin-bottom: 15px; }
+        .text-box h2 { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-style: italic; font-weight: 400; margin-bottom: 25px; line-height: 1.2; }
+        .text-box p { font-size: 1rem; color: #444; margin-bottom: 30px; }
+        .btn-minimal { text-decoration: none; color: var(--negru); font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; border-bottom: 1px solid var(--auriu); padding-bottom: 5px; transition: 0.3s; }
+        .btn-minimal:hover { color: var(--auriu); letter-spacing: 4px; }
 
-        @media (max-width: 768px) {
-            .box { grid-template-columns: 1fr; }
-            .nav-container { flex-direction: column; gap: 10px; }
-            .hero { height: 40vh; }
+        /* FOOTER */
+        .footer { padding: 60px 20px; border-top: 1px solid #eee; text-align: center; color: #aaa; font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; }
+
+        @media (max-width: 900px) {
+            .grid-editorial { grid-template-columns: 1fr; gap: 40px; }
+            .grid-editorial.reverse .img-box { order: 1; }
+            .grid-editorial.reverse .text-box { order: 2; }
+            .img-box { height: 400px; }
+            .nav-container { flex-direction: column; gap: 15px; }
+            .main-nav { flex-wrap: wrap; justify-content: center; gap: 10px; }
         }
     </style>
 </head>
@@ -52,10 +67,12 @@
 
     <header class="site-header">
         <div class="nav-container">
-            <a href="index.html" class="brand">HAȚEG ALTERNATIV</a>
+            <a href="index.html" class="brand">Hațeg Alternativ</a>
             <nav class="main-nav">
                 <a href="obiective.html">Obiective</a>
-                <a href="gastronomie.html">Mâncare</a>
+                <a href="gastronomie.html">Gastronomie</a>
+                <a href="experiente.html">Experiențe</a>
+                <a href="forum.html">Forum</a>
                 <a href="rezervari.html">Rezervări</a>
             </nav>
         </div>
@@ -63,30 +80,68 @@
 
     <section class="hero">
         <div class="hero-content">
-            <h1>Simte. Descoperă.</h1>
+            <h1>Simte. Explorează. Trăiește.</h1>
         </div>
     </section>
 
-    <div class="content">
-        <div class="intro">
-            <h2>Arhitectura Liniștii</h2>
-            <p>Domeniile la Buligă & Hațeg Alternativ</p>
+    <div class="container">
+        
+        <div class="intro-text">
+            <h2>Arhitectura Liniștii.</h2>
+            <p>O platformă dedicată celor care prețuiesc patrimoniul viu și experiențele autentice în Țara Hațegului.</p>
         </div>
 
-        <div class="main-image">
-            <img src="961c2090-bedc-45f8-a03a-0d7e41743008.jpeg" alt="Colaj principal">
+        <div class="main-collage-box">
+            <img src="961c2090-bedc-45f8-a03a-0d7e41743008.jpeg" alt="Colaj Panou Lemn Hațeg Alternativ">
         </div>
 
-        <div class="box">
-            <div class="img-placeholder" style="background-image: url('IMG-20260326-WA0020.jpg');"></div>
+        <div class="grid-editorial">
+            <div class="img-box" style="background-image: url('images/IMG-20260326-WA0020.jpg');"></div>
             <div class="text-box">
-                <span>RECOMANDARE</span>
-                <h2>Domeniile la Buligă</h2>
-                <p>Unde-i credință, acolo-i dragoste. Unde-i dragoste, acolo-i pace.</p><br>
-                <a href="rezervari.html" class="btn">Vezi detalii</a>
+                <span>RECOMANDAREA NOASTRĂ</span>
+                <h2>Domeniile<br>la Buligă</h2>
+                <p>Unde-i credință, acolo-i dragoste. Unde-i dragoste, acolo-i pace. Unde-i pace, acolo-i binecuvântare.</p>
+                <a href="rezervari.html" class="btn-minimal">Vezi Locația</a>
             </div>
         </div>
+
+        <div class="grid-editorial reverse">
+            <div class="img-box" style="background-image: url('images/exp-biserica-ext.jpg');"></div>
+            <div class="text-box">
+                <span>EXPLORARE</span>
+                <h2>Obiective<br>Autentice.</h2>
+                <p>Descoperă bisericile de piatră și poveștile nobilimii hațegane într-un ghid vizual unic.</p>
+                <a href="obiective.html" class="btn-minimal">Deschide Harta</a>
+            </div>
+        </div>
+
+        <div class="grid-editorial">
+            <div class="img-box" style="background-image: url('images/bucura.jpg');"></div>
+            <div class="text-box">
+                <span>GUST LOCAL</span>
+                <h2>Gastronomie<br>Onestă.</h2>
+                <p>Redescoperă plăcerea unei mese gătite lent, cu ingrediente din grădina proprie.</p>
+                <a href="gastronomie.html" class="btn-minimal">Vezi Meniul</a>
+            </div>
+        </div>
+
     </div>
+
+    <footer class="footer">
+        © 2026 Hațeg Alternativ — Creat pentru Liniște
+    </footer>
+
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/65f973051ec1082f04d8fb8a/1hp8q4r8p';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
 
 </body>
 </html>
