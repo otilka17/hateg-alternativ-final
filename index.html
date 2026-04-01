@@ -10,53 +10,34 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru); line-height: 1.6; overflow-x: hidden; }
 
-        /* HEADER */
-        .site-header { position: fixed; top: 0; width: 100%; z-index: 2000; background: rgba(255,255,255,0.98); border-bottom: 1px solid rgba(0,0,0,0.05); padding: 10px 0; }
-        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 15px; }
-        .brand { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; text-decoration: none; color: var(--negru); text-transform: uppercase; }
-        .main-nav a { text-decoration: none; color: var(--negru); font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-left: 12px; transition: 0.3s; }
+        .site-header { position: fixed; top: 0; width: 100%; z-index: 2000; background: rgba(255,255,255,0.98); border-bottom: 1px solid rgba(0,0,0,0.05); padding: 15px 0; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
+        .brand { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; text-decoration: none; color: var(--negru); text-transform: uppercase; }
+        .main-nav a { text-decoration: none; color: var(--negru); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-left: 20px; transition: 0.3s; }
+        .main-nav a:hover { color: var(--auriu); }
 
-        /* HERO SECTION */
         .hero { 
             height: 100vh; 
-            /* Am pus poza cu apusul și un fundal negru de rezervă ca să se vadă scrisul până se încarcă poza */
-            background: #1a1a1a linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('IMG-20260326-WA0005.jpg'); 
-            background-size: cover; 
-            background-position: center; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            justify-content: center; 
-            color: white; 
-            text-align: center; 
-            padding: 0 20px; 
+            background: #1a1a1a linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('images/IMG-20260326-WA0005.jpg'); 
+            background-size: cover; background-position: center; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; text-align: center; padding: 0 20px; 
         }
-        .hero h1 { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-style: italic; margin-bottom: 20px; text-shadow: 0 2px 10px rgba(0,0,0,0.3); }
-        .hero p { font-size: 0.8rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 30px; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-style: italic; margin-bottom: 20px; }
 
-        /* BLESSING SECTION */
-        .section-blessing { padding: 60px 20px; text-align: center; }
-        .blessing-box { max-width: 600px; margin: 0 auto; padding: 30px; border: 1px solid rgba(197,160,89,0.3); }
-        .blessing-img { width: 120px; margin-bottom: 20px; border-radius: 2px; }
-        .blessing-quote { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem; color: #555; margin-bottom: 15px; }
+        .section-blessing { padding: 80px 20px; text-align: center; }
+        .blessing-box { max-width: 600px; margin: 0 auto; padding: 40px; border: 1px solid rgba(197,160,89,0.3); }
+        .blessing-img { width: 130px; margin-bottom: 25px; border-radius: 2px; }
 
-        /* FEATURE SECTIONS */
-        .feature { display: flex; align-items: center; flex-wrap: wrap; padding: 40px 0; max-width: 1200px; margin: 0 auto; }
-        .feature.reverse { flex-direction: row-reverse; }
-        .feature-img { flex: 1; min-width: 300px; height: 400px; background-size: cover; background-position: center; margin: 15px; }
-        .feature-text { flex: 1; min-width: 300px; padding: 30px; }
-        .feature-text h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin: 10px 0 20px; font-style: italic; }
+        .feature { display: flex; align-items: center; flex-wrap: wrap; padding: 60px 0; max-width: 1200px; margin: 0 auto; }
+        .feature-img { flex: 1; min-width: 300px; height: 450px; background-size: cover; background-position: center; margin: 20px; }
+        .feature-text { flex: 1; min-width: 300px; padding: 40px; }
 
-        /* FOOTER CTA */
-        .cta-footer { background: var(--negru); color: white; padding: 80px 20px; text-align: center; }
-        .btn-gold { background: var(--auriu); color: white; padding: 18px 40px; border-radius: 50px; text-decoration: none; display: inline-block; font-weight: 700; transition: 0.3s; margin-top: 20px; border: none; }
+        .btn-gold { background: var(--auriu); color: white; padding: 18px 45px; border-radius: 50px; text-decoration: none; display: inline-block; font-weight: 700; margin-top: 25px; transition: 0.3s; }
 
-        /* MOBILE FIXES */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.2rem; }
+            .hero h1 { font-size: 2.5rem; }
+            .nav-container { flex-direction: column; gap: 10px; }
             .feature { flex-direction: column !important; }
-            .feature-img { width: 100%; min-width: 100%; height: 250px; margin: 0 0 20px 0; }
-            .feature-text { width: 100%; min-width: 100%; padding: 20px; text-align: center; }
+            .feature-img { width: 100%; height: 300px; margin: 0; }
         }
     </style>
 </head>
@@ -66,45 +47,33 @@
     <div class="nav-container">
         <a href="index.html" class="brand">Domeniile la Buligă</a>
         <nav class="main-nav">
-            <a href="experiente.html">Exp</a>
-            <a href="evenimente.html">Ev</a>
-            <a href="rezervari.html">Rez</a>
+            <a href="experiente.html">Experiențe</a>
+            <a href="evenimente.html">Evenimente</a>
+            <a href="rezervari.html">Rezervări</a>
         </nav>
     </div>
 </header>
 
 <section class="hero">
-    <p>Hațeg Alternativ</p>
+    <p style="letter-spacing:5px; text-transform:uppercase; font-size:0.9rem;">Hațeg Alternativ</p>
     <h1>Simte. Explorează. Trăiește.</h1>
     <a href="rezervari.html" class="btn-gold">Planifică Sejurul</a>
 </section>
 
 <section class="section-blessing">
     <div class="blessing-box">
-        <img src="IMG20260331211251.jpg" class="blessing-img" alt="Binecuvantare">
-        <p class="blessing-quote">
-            "Unde-i credință, acolo-i dragoste,<br>
-            Unde-i dragoste, acolo-i pace,<br>
-            Unde-i pace, acolo-i binecuvântare."
-        </p>
-        <p style="font-size: 0.7rem; letter-spacing: 2px; color: var(--auriu); font-weight: 700;">SPIRITUL CASEI</p>
+        <img src="images/IMG20260331211251.jpg" class="blessing-img" alt="Spirit">
+        <p style="font-family:'Playfair Display', serif; font-style:italic; font-size:1.3rem; margin-bottom:15px;">"Unde-i credință, acolo-i dragoste, unde-i pace, acolo-i binecuvântare."</p>
     </div>
 </section>
 
 <section class="feature">
-    <div class="feature-img" style="background-image: url('IMG-20260326-WA0020.jpg');"></div>
+    <div class="feature-img" style="background-image: url('images/IMG-20260326-WA0001.jpg');"></div>
     <div class="feature-text">
-        <span style="color:var(--auriu); font-weight:800; font-size:0.7rem; letter-spacing:2px; text-transform:uppercase;">Retreat Exclusiv</span>
-        <h2>O casă întreagă doar pentru voi.</h2>
-        <p>10 locuri de cazare într-un spațiu autentic din Țara Hațegului.</p>
-        <p style="margin-top: 15px; font-weight: 700; color: var(--auriu); font-size: 1.1rem;">2000 RON / Noapte</p>
-        <a href="rezervari.html" style="display:inline-block; margin-top:15px; color:var(--auriu); font-weight:700; text-decoration:none; border-bottom:1px solid var(--auriu);">Rezervă Casa Integral</a>
+        <h2 style="font-family:'Playfair Display', serif; font-size:2.2rem; font-style:italic; margin-bottom:15px;">O casă întreagă doar pentru voi.</h2>
+        <p>Retreat exclusiv în Munții Poiana Ruscă. 10 locuri de cazare într-un decor de poveste.</p>
+        <a href="rezervari.html" class="btn-gold">Rezervă Acum</a>
     </div>
-</section>
-
-<section class="cta-footer">
-    <h2 style="font-family: 'Playfair Display', serif; font-size: 2.2rem; font-style: italic;">Te așteptăm acasă.</h2>
-    <a href="rezervari.html" class="btn-gold">Configurează-ți Sejurul</a>
 </section>
 
 </body>
