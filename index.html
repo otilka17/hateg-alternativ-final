@@ -6,68 +6,42 @@
     <title>Hațeg Alternativ | Acasă</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400;1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --negru: #0d0d0d; --auriu: #9d8665; --portocaliu: #ff4500; --alb: #ffffff; --gri-soft: #f2f2f2; --gri-inchis: #1a1a1a; }
-        
+        :root { --negru: #0d0d0d; --auriu: #9d8665; --portocaliu: #ff4500; --alb: #ffffff; --gri-inchis: #1a1a1a; --gri-soft: #f4f4f4; }
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        body { font-family: 'Inter', sans-serif; background: var(--alb); color: var(--negru); line-height: 1.7; overflow-x: hidden; }
+        body { font-family: 'Inter', sans-serif; background: var(--alb); color: var(--negru); line-height: 1.7; }
 
-        /* HEADER UNITAR */
-        .site-header { position: fixed; top: 0; width: 100%; z-index: 5000; background: rgba(255,255,255,0.98); border-bottom: 1px solid #eee; padding: 20px 0; }
-        .nav-container { max-width: 1600px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 40px; }
-        .brand { font-weight: 700; font-size: 1.1rem; text-decoration: none; color: var(--negru); text-transform: uppercase; letter-spacing: 5px; }
-        
-        .desktop-nav { display: flex; gap: 25px; }
-        .desktop-nav a { text-decoration: none; color: var(--negru); font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; opacity: 0.6; transition: 0.3s; }
-        .desktop-nav a:hover { opacity: 1; color: var(--portocaliu); }
+        /* HEADER FIX */
+        .site-header { position: fixed; top: 0; width: 100%; z-index: 5000; background: #fff; border-bottom: 1px solid #eee; padding: 15px 0; }
+        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 30px; }
+        .brand { font-weight: 700; font-size: 1rem; text-decoration: none; color: #000; text-transform: uppercase; letter-spacing: 4px; }
+        .main-nav a { text-decoration: none; color: #000; font-size: 0.65rem; font-weight: 600; text-transform: uppercase; margin-left: 20px; opacity: 0.7; }
 
-        /* HAMBURGER */
-        .menu-toggle { display: none; cursor: pointer; flex-direction: column; gap: 6px; z-index: 6000; }
-        .menu-toggle span { width: 30px; height: 2px; background: var(--negru); transition: 0.3s; }
-
-        .mobile-overlay { position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background: var(--alb); z-index: 5500; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: 0.5s ease; }
-        .mobile-overlay.active { right: 0; }
-        .mobile-overlay a { font-family: 'Playfair Display', serif; font-size: 2rem; text-decoration: none; color: var(--negru); margin: 15px 0; text-transform: uppercase; }
-
-        /* HERO - Cu fundal închis de siguranță */
+        /* HERO - REPARAT (Fundal negru dacă imaginea lipsește) */
         .hero { 
             height: 80vh; width: 100%; display: flex; align-items: center; justify-content: center; 
-            background: var(--gri-inchis) linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.2)), url('images/IMG-20260326-WA0005.jpg') center/cover no-repeat;
-            color: white; text-align: center;
+            background: var(--gri-inchis) linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('images/IMG-20260326-WA0005.jpg') center/cover no-repeat;
+            color: white; text-align: center; margin-top: 50px;
         }
-        .hero-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 10vw, 6rem); font-style: italic; font-weight: 400; line-height: 1.1; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-style: italic; }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 100px 25px; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 80px 20px; }
 
-        /* COLAJUL FINAL - Cale fixată */
-        .collage-section { width: 100%; margin-bottom: 80px; text-align: center; background: var(--gri-soft); min-height: 300px; border-radius: 2px; }
-        .collage-section img { width: 100%; height: auto; box-shadow: 0 30px 60px rgba(0,0,0,0.1); display: block; }
+        /* COLAJ - Verifică dacă e collage-final.png sau .PNG */
+        .collage-box { width: 100%; margin-bottom: 80px; background: var(--gri-soft); min-height: 300px; display: flex; align-items: center; justify-content: center; border-radius: 4px; }
+        .collage-box img { width: 100%; height: auto; display: block; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
 
-        /* BUTON PORTOCALIU MARE */
-        .cta-section { text-align: center; margin-bottom: 120px; }
-        .btn-ermes { display: inline-block; background: var(--portocaliu); color: white; text-decoration: none; padding: 22px 60px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; transition: 0.3s; border: none; cursor: pointer; }
-        .btn-ermes:hover { background: var(--negru); transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        /* BUTON MARE PORTOCALIU */
+        .cta-box { text-align: center; margin-bottom: 100px; padding: 60px 20px; background: var(--gri-soft); }
+        .btn-ermes { display: inline-block; background: var(--portocaliu); color: white; text-decoration: none; padding: 20px 50px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; transition: 0.3s; }
+        .btn-ermes:hover { background: #000; transform: translateY(-3px); }
 
-        /* BINECUVÂNTARE GRID */
-        .blessing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-bottom: 150px; }
-        .img-blessing { width: 100%; height: 600px; background: var(--gri-soft) url('images/IMG20260331211251.jpg') center/cover no-repeat; border-radius: 2px; }
-        
-        .text-blessing span { color: var(--portocaliu); font-size: 0.75rem; letter-spacing: 4px; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 25px; }
-        .text-blessing h2 { font-family: 'Playfair Display', serif; font-size: 3.2rem; font-style: italic; font-weight: 400; margin-bottom: 30px; line-height: 1.2; }
-        
-        .quote-style { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: #444; font-style: italic; border-left: 3px solid var(--portocaliu); padding-left: 30px; margin-bottom: 40px; }
-        .quote-style p { margin-bottom: 5px; }
+        /* BINECUVÂNTARE */
+        .blessing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-bottom: 100px; }
+        .img-bless { width: 100%; height: 500px; background: var(--gri-inchis) url('images/IMG20260331211251.jpg') center/cover no-repeat; }
+        .text-bless h2 { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-style: italic; margin-bottom: 20px; }
+        .quote { border-left: 4px solid var(--portocaliu); padding-left: 25px; font-family: 'Playfair Display', serif; font-size: 1.2rem; font-style: italic; }
 
-        /* FOOTER */
-        .site-footer { padding: 80px 20px; background: var(--gri-soft); text-align: center; border-top: 1px solid #eee; }
-        .site-footer p { font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; color: #aaa; }
-
-        @media (max-width: 1024px) {
-            .desktop-nav { display: none; }
-            .menu-toggle { display: flex; }
-            .blessing-grid { grid-template-columns: 1fr; gap: 40px; }
-            .img-blessing { height: 400px; }
-            .btn-ermes { width: 100%; padding: 20px; }
-        }
+        @media (max-width: 768px) { .blessing-grid { grid-template-columns: 1fr; } .main-nav { display: none; } }
     </style>
 </head>
 <body>
@@ -75,84 +49,54 @@
     <header class="site-header">
         <div class="nav-container">
             <a href="index.html" class="brand">Hațeg Alternativ</a>
-            <nav class="desktop-nav">
+            <nav class="main-nav">
                 <a href="obiective.html">Obiective</a>
-                <a href="gastronomie.html">Gastronomie</a>
                 <a href="experiente.html">Experiențe</a>
-                <a href="forum.html">Forum</a>
                 <a href="rezervari.html">Rezervări</a>
             </nav>
-            <div class="menu-toggle" id="mobile-menu">
-                <span></span><span></span><span></span>
-            </div>
         </div>
     </header>
 
-    <div class="mobile-overlay" id="overlay">
-        <a href="index.html">Acasă</a>
-        <a href="obiective.html">Obiective</a>
-        <a href="gastronomie.html">Gastronomie</a>
-        <a href="experiente.html">Experiențe</a>
-        <a href="forum.html">Forum</a>
-        <a href="rezervari.html">Rezervări</a>
-    </div>
-
     <section class="hero">
         <div class="hero-content">
-            <h1>Simte.<br>Descoperă.<br>Trăiește.</h1>
+            <h1>Simte. Descoperă.</h1>
         </div>
     </section>
 
     <div class="container">
-        
-        <div class="intro-text">
-            <h2 style="text-align: center;">Arhitectura Liniștii.</h2>
-            <p style="text-align: center; max-width: 800px; margin: 0 auto;">O fuziune între patrimoniu, design și ospitalitate onestă în inima Țării Hațegului.</p>
+        <div style="text-align: center; margin-bottom: 50px;">
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; font-style: italic;">Arhitectura Liniștii.</h2>
+            <p>O fuziune între patrimoniu și design.</p>
         </div>
 
-        <div class="collage-section">
-            <img src="images/collage-final.png" alt="Hațeg Alternativ Collage">
+        <div class="collage-box">
+            <img src="images/collage-final.png" alt="Hațeg Alternativ Collage" onerror="this.src='images/collage-final.PNG'">
         </div>
 
-        <div class="cta-section">
-            <a href="experiente.html" class="btn-ermes">DESCOPERĂ EXPERIENȚELE NOASTRE</a>
+        <div class="cta-box">
+            <h2 style="font-family: 'Playfair Display', serif; margin-bottom: 30px; font-style: italic;">Trăiește autentic.</h2>
+            <a href="experiente.html" class="btn-ermes">VEZI EXPERIENȚELE NOASTRE</a>
         </div>
 
         <div class="blessing-grid">
-            <div class="img-blessing"></div>
-            <div class="text-blessing">
-                <span>BINECUVÂNTAREA CASEI ȘI FAMILIEI</span>
+            <div class="img-bless"></div>
+            <div class="text-bless">
+                <span>BINECUVÂNTARE</span>
                 <h2>Esența sufletului hațegan</h2>
-                
-                <div class="quote-style">
+                <div class="quote">
                     <p>Unde-i credință, acolo-i dragoste,</p>
                     <p>Unde-i dragoste, acolo-i pace,</p>
                     <p>Unde-i pace, acolo-i binecuvântare,</p>
                     <p>Unde-i binecuvântare, acolo-i Dumnezeu,</p>
                     <p>Unde-i Dumnezeu, acolo lipsă nu e!</p>
                 </div>
-
-                <a href="rezervari.html" class="btn-ermes" style="background: var(--negru);">Rezervă Acum</a>
             </div>
         </div>
-
     </div>
 
-    <footer class="site-footer">
-        <p>© 2026 HAȚEG ALTERNATIV — CURATED EXPERIENCES</p>
+    <footer style="padding: 60px; text-align: center; background: var(--gri-soft);">
+        <p style="font-size: 0.7rem; letter-spacing: 3px; color: #999;">© 2026 HAȚEG ALTERNATIV</p>
     </footer>
-
-    <script>
-        const menuToggle = document.getElementById('mobile-menu');
-        const overlay = document.getElementById('overlay');
-        menuToggle.addEventListener('click', () => {
-            overlay.classList.toggle('active');
-            const spans = menuToggle.getElementsByTagName('span');
-            spans[0].style.transform = overlay.classList.contains('active') ? 'rotate(45deg) translate(5px, 5px)' : 'none';
-            spans[1].style.opacity = overlay.classList.contains('active') ? '0' : '1';
-            spans[2].style.transform = overlay.classList.contains('active') ? 'rotate(-45deg) translate(7px, -7px)' : 'none';
-        });
-    </script>
 
 </body>
 </html>
