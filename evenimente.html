@@ -3,29 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Events | Hațeg Alternativ</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+    <title>Hațeg Alternativ | Arhitectura Liniștii</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@200;300;400;600&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; height: 100vh; display: flex; align-items: center; justify-content: center; background: #f9f9f9; }
-        .ev-container { display: flex; width: 90%; max-width: 1400px; background: #fff; height: 80vh; box-shadow: 0 50px 100px rgba(0,0,0,0.05); }
-        .ev-img { flex: 1.2; background: url('images/feed-1.jpg') center/cover; }
-        .ev-text { flex: 0.8; padding: 80px; display: flex; flex-direction: column; justify-content: center; }
-        .ev-text h1 { font-family: 'Playfair Display', serif; font-size: 3rem; font-style: italic; margin-bottom: 20px; font-weight: 400; }
-        .ev-text p { font-weight: 300; color: #666; margin-bottom: 40px; }
-        .btn { text-decoration: none; color: #000; border: 1px solid #000; padding: 15px 40px; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; transition: 0.3s; width: fit-content; }
-        .btn:hover { background: #000; color: #fff; }
-        @media (max-width: 900px) { .ev-container { flex-direction: column; height: auto; } .ev-img { height: 300px; } .ev-text { padding: 40px; } }
-    </style>
-</head>
-<body>
-    <div class="ev-container">
-        <div class="ev-img"></div>
-        <div class="ev-text">
-            <span>01 / EVENTS</span>
-            <h1>Retreats & Design.</h1>
-            <p>Spații curatoriate pentru ateliere de creație, reuniuni discrete și momente care necesită o estetică deosebită.</p>
-            <a href="rezervari.html" class="btn">Inquire Now</a>
-        </div>
-    </div>
-</body>
-</html>
+        :root { --negru: #0a0a0a; --auriu: #9d8665; --gri-light: #f9f9f9; --alb: #ffffff; }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background: var(--alb); color: var(--negru); line-height: 1.7; overflow-x: hidden; }
+
+        /* HEADER */
+        .site-header { position: fixed; top: 0; width: 100%; z-index: 3000; background: rgba(255,255,255,0.98); backdrop-filter: blur(10px); border-bottom: 1px solid #eee; padding: 20px 0; }
+        .nav-container { max-width: 1600px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 40px; }
+        
+        .brand { font-weight: 600; font-size: 0.9rem; text-decoration: none; color: var(--negru); text-transform: uppercase; letter-spacing: 4px; }
+        
+        .main-nav { display: flex; gap: 30px; }
+        .main-nav a { text-decoration: none; color: var(--negru); font-size: 0.7rem; font-weight: 400; text-transform: uppercase; letter-spacing: 1.5px; transition: 0.3s; opacity: 0.7; }
+        .main-nav a:hover { opacity: 1; color: var(--auriu); }
+
+        /* HERO SECTION */
+        .hero { 
+            height: 100vh; width: 100%; display: flex; align-items: center; justify-content: center; 
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/IMG-20260326-WA0005.jpg') center/cover no-repeat;
+            position: relative;
+        }
+        .hero-content { text-align: center; color: white; z-index: 10; animation: fadeIn 2s ease; }
+        .hero-content span { font-size: 0.75rem; letter-spacing: 10px; text-transform: uppercase; display: block; margin-bottom: 20px; font-weight: 300; }
+        .hero-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 8vw, 5.5rem); font-weight: 400; line-height: 1.1; font-style: italic; }
+
+        /* CONTENT WRAPPER */
+        .section-wrap { padding: 120px 5%; max-width: 1400px; margin: 0 auto; }
+        
+        .intro-text { text-align: center; max-width: 750px; margin: 0 auto 100px; opacity: 0; transform: translateY(20px); animation: reveal 1s forwards 0.5s; }
+        .intro-text h2 { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-style: italic; margin-bottom: 25px; font-weight: 40
