@@ -1,128 +1,105 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-    
+    <meta charset="UTF-8">
+    <title>Panou Control | Rezervări Live</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --verde: #1b3022; --auriu: #c5a059; --crem: #fdfcf8; --text-light: #64748b; }
-        * { margin: 0; padding: 0; box-sizing: border-box; text-transform: none !important; }
-        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--verde); line-height: 1.6; padding-bottom: 60px; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-
-        .site-header { background: white; padding: 20px 0; border-bottom: 1px solid #eee; margin-bottom: 40px; position: sticky; top: 0; z-index: 100; }
-        .nav-wrap { display: flex; justify-content: space-between; align-items: center; }
-        .brand { font-weight: 700; text-decoration: none; color: var(--verde); font-size: 1.1rem; }
-        .btn-site { text-decoration: none; color: var(--text-light); font-size: 0.8rem; border: 1px solid #eee; padding: 8px 18px; border-radius: 50px; transition: 0.3s; }
-        .btn-site:hover { background: var(--verde); color: white; }
-
-        h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--verde); margin-bottom: 8px; }
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 40px; }
-        .stat-card { background: white; padding: 30px; border-radius: 24px; border: 1px solid #eee; box-shadow: 0 10px 30px rgba(0,0,0,0.02); }
-        .stat-card span { display: block; font-size: 0.75rem; color: var(--text-light); margin-bottom: 12px; }
-        .stat-card strong { font-size: 2.2rem; font-weight: 800; display: block; }
-
-        .table-container { background: white; border-radius: 24px; border: 1px solid #eee; overflow: hidden; box-shadow: 0 15px 45px rgba(0,0,0,0.04); }
-        table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem; }
-        thead th { background: #fafafa; padding: 20px; font-weight: 700; border-bottom: 2px solid #f0f0f0; }
-        tbody td { padding: 20px; border-bottom: 1px solid #f8f8f8; vertical-align: middle; }
-        
-        .badge { padding: 6px 14px; border-radius: 50px; font-size: 0.7rem; font-weight: 700; display: inline-block; }
-        .status-new { background: #fff7ed; color: #c2410c; border: 1px solid #ffedd5; }
-        .status-confirmed { background: #f0fdf4; color: #15803d; border: 1px solid #dcfce7; }
-        
-        .loader { text-align: center; padding: 50px; color: var(--text-light); font-style: italic; }
+        :root { --verde: #1b3022; --auriu: #c5a059; --crem: #fdfcf8; }
+        body { font-family: 'Inter', sans-serif; background: var(--crem); padding: 40px; color: var(--verde); }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .header-admin { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 30px; }
+        .stat-card { background: white; padding: 25px; border-radius: 12px; border: 1px solid #eee; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
+        .stat-card span { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: #888; }
+        .stat-card strong { font-size: 2rem; display: block; margin-top: 10px; color: var(--verde); }
+        table { width: 100%; background: white; border-collapse: collapse; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        th { background: #fafafa; padding: 18px; border-bottom: 2px solid #eee; text-align: left; font-size: 0.9rem; }
+        td { padding: 18px; border-bottom: 1px solid #f8f8f8; font-size: 0.95rem; }
+        .badge { padding: 6px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; background: #fff7ed; color: #c2410c; border: 1px solid #ffedd5; }
+        .btn-refresh { background: var(--verde); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: 700; }
     </style>
 </head>
 <body>
-
-<header class="site-header">
-    <div class="container nav-wrap">
-        <a href="#" class="brand">panou administrator</a>
-        <a href="index.html" class="btn-site">înapoi la site</a>
-    </div>
-</header>
-
 <div class="container">
-    <div style="margin-bottom: 40px;">
-        <h1>rezervări live</h1>
-        <p style="color: var(--text-light);">date preluate automat din Google Sheets.</p>
+    <div class="header-admin">
+        <div>
+            <h1 style="font-family:'Playfair Display'; font-style:italic; font-size: 2.5rem;">Gestiune Rezervări</h1>
+            <p>Date sincronizate din Google Sheets</p>
+        </div>
+        <div style="text-align: right;">
+            <button onclick="loadAdminData()" class="btn-refresh">Actualizează Date</button><br><br>
+            <a href="index.html" style="text-decoration:none; color:var(--auriu); font-weight:700;">← Pagina Principală</a>
+        </div>
     </div>
 
     <div class="stats-grid">
-        <div class="stat-card"><span>total cereri</span><strong id="statTotal">...</strong></div>
-        <div class="stat-card"><span>noi</span><strong id="statNew" style="color: #c2410c;">...</strong></div>
-        <div class="stat-card"><span>confirmate</span><strong id="statConfirmed" style="color: #15803d;">...</strong></div>
-        <div class="stat-card"><span>estimat</span><strong id="statRevenue" style="color: var(--auriu);">...</strong></div>
+        <div class="stat-card"><span>Cereri înregistrate</span><strong id="statCount">0</strong></div>
+        <div class="stat-card"><span>Estimări Venituri</span><strong id="statMoney" style="color:var(--auriu)">0 RON</strong></div>
+        <div class="stat-card"><span>Status Conexiune</span><strong style="font-size:1.1rem; color: #15803d;" id="statStatus">Sincronizat</strong></div>
     </div>
 
-    <div class="table-container">
-        <table>
-            <thead>
-                <tr>
-                    <th>data</th>
-                    <th>oaspete</th>
-                    <th>locație</th>
-                    <th>sejur</th>
-                    <th>total</th>
-                    <th>status</th>
-                </tr>
-            </thead>
-            <tbody id="tableBody">
-                <tr><td colspan="6" class="loader">se conectează la tabel...</td></tr>
-            </tbody>
-        </table>
-    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Dată Cerere</th>
+                <th>Oaspete / Telefon</th>
+                <th>Sejur</th>
+                <th>Valoare</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody id="adminTableBody">
+            <tr><td colspan="5" style="text-align:center; padding:60px; color: #888;">Se conectează la baza de date...</td></tr>
+        </tbody>
+    </table>
 </div>
 
 <script>
-    // Link-ul tău furnizat
-    const API_URL = "https://script.google.com/macros/s/AKfycbzsI6M2Pvyn5giR8H6nWBs1RfnmBjq2rr3jSN_vEwYKfjXbcFWaJy-6TQpgSfdrmqss/exec";
+    const ADMIN_API_URL = "https://script.google.com/macros/s/AKfycbxzO-cS84CzBbtzYceD4JmsGvMjaprKMqtdnowAC_KYBZxqrbYv1I81winZjuIW2LhU/exec";
 
-    async function loadReservations() {
+    async function loadAdminData() {
         try {
-            // Adăugăm parametrul action=read cerut de scriptul tău
-            const response = await fetch(API_URL + "?action=read");
-            const data = await response.json();
+            document.getElementById('statStatus').innerText = "Se încarcă...";
+            const res = await fetch(ADMIN_API_URL + "?action=read"); // Sau doar URL-ul dacă doGet trimite direct datele
+            const data = await res.json();
             
-            const tbody = document.getElementById('tableBody');
+            const tbody = document.getElementById('adminTableBody');
             tbody.innerHTML = "";
-            
-            if (!data || data.length === 0) {
-                tbody.innerHTML = '<tr><td colspan="6" class="loader">Nu există date în tabel.</td></tr>';
-                return;
-            }
 
-            let revenue = 0;
+            let totalIncasari = 0;
+
             data.forEach(item => {
-                // Calculăm venitul din coloana 'total'
-                const rawPrice = item.total ? item.total.toString().replace(/[^0-9]/g, '') : "0";
-                revenue += parseInt(rawPrice) || 0;
-
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
                     <td><span style="opacity:0.6">${item.data || '-'}</span></td>
                     <td><strong>${item.nume || '-'}</strong><br><small>${item.telefon || '-'}</small></td>
-                    <td>${item.locatie || '-'}</td>
-                    <td>${item.nopți || '1'} n / ${item.persoane || '1'} p</td>
-                    <td><strong style="color: var(--verde)">${item.total || '0 ron'}</strong></td>
-                    <td><span class="badge ${item.status === 'Confirmată' ? 'status-confirmed' : 'status-new'}">${item.status || 'Nouă'}</span></td>
+                    <td>${item.sejur || '-'} / ${item.persoane || '10'} pers.</td>
+                    <td style="font-weight:700; color:var(--verde)">${item.total || '0 RON'}</td>
+                    <td><span class="badge">${item.status || 'Nouă'}</span></td>
                 `;
                 tbody.appendChild(tr);
+
+                // Calcul sumă (eliminăm " RON" pentru a aduna)
+                let valoareNumerică = item.total ? parseInt(item.total.replace(/[^0-9]/g, '')) : 0;
+                totalIncasari += valoareNumerică;
             });
 
-            document.getElementById('statTotal').innerText = data.length;
-            document.getElementById('statNew').innerText = data.filter(i => i.status !== 'Confirmată').length;
-            document.getElementById('statConfirmed').innerText = data.filter(i => i.status === 'Confirmată').length;
-            document.getElementById('statRevenue').innerText = revenue.toLocaleString() + " ron";
+            document.getElementById('statCount').innerText = data.length;
+            document.getElementById('statMoney').innerText = totalIncasari.toLocaleString() + " RON";
+            document.getElementById('statStatus').innerText = "Live";
 
-        } catch (error) {
-            document.getElementById('tableBody').innerHTML = '<tr><td colspan="6" class="loader" style="color:red">Eroare de conexiune. Verifică dacă Web App-ul este activ în Google Sheets.</td></tr>';
+        } catch (e) {
+            console.error(e);
+            document.getElementById('adminTableBody').innerHTML = "<tr><td colspan='5' style='color:red; text-align:center; padding: 40px;'>Eroare la preluarea datelor. Verifică scriptul Google.</td></tr>";
+            document.getElementById('statStatus').innerText = "Eroare";
         }
     }
 
-    loadReservations();
+    // Încarcă la pornire
+    loadAdminData();
+    // Reîmprospătare la fiecare 60 secunde
+    setInterval(loadAdminData, 60000);
 </script>
-
 </body>
 </html>
