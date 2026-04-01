@@ -4,11 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forum | Hațeg Alternativ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --negru: #1a1a1a; --auriu: #c5a059; --crem: #fdfcf8; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru); padding-top: 80px; }
+        
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+        h1 { font-family: 'Playfair Display', serif; font-style: italic; color: var(--auriu); font-size: 2.5rem; text-align: center; margin-bottom: 30px; }
+
+        /* BUTON POSTEAZA */
+        .btn-new-post { display: block; width: fit-content; margin: 0 auto 40px; background: var(--auriu); color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; border: none; cursor: pointer; transition: 0.3s; }
+        .btn-new-post:hover { transform: scale(1.05); }
+
+        /* LISTA POSTARI */
+        .post-card { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 20px; border-left: 4px solid var(--auriu); }
+        .post-card h3 { font-family: 'Playfair Display', serif; margin-bottom: 10px; }
+        .post-meta { font-size: 0.75rem; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; }
+
+        /* FORMULAR (Ascuns initial) */
+        #form-container { display: none; background: white; padding: 30px; border-radius: 8px; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+        input, textarea { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px; font-family: inherit; }
+        .btn-submit { background: var(--negru); color: white; padding: 12px 25px; border: none; border-radius: 4px; cursor: pointer; font-weight: 700; }
+        
+        .back-home { display: block; text-align: center; margin-top: 40px; text-decoration: none; color: var(--negru); font-weight: 700; font-size: 0.8rem; }
+    </style>
 </head>
-<body style="font-family: sans-serif; text-align: center; padding-top: 100px; background: #fdfcf8;">
-    <h1 style="color: #c5a059; font-style: italic;">Forum Hațeg Alternativ</h1>
-    <p>Comunitatea noastră se construiește chiar acum.</p>
-    <br>
-    <a href="index.html" style="color: black; font-weight: 700;">Înapoi la site</a>
+<body>
+
+    <div class="container">
+        <a href="index.html" class="back-home">← ÎNAPOI LA SITE</a>
+        <h1>Comunitatea Hațeg Alternativ</h1>
+        
+        <button class="btn-new-post" onclick="toggleForm()">+ ADAUGĂ O POVESTE</button>
+
+        <div id="form-container">
+            <h3>Împărtășește experiența ta</h3>
+            <form action="https://formspree.io/f/XXXXX" method="POST"> <input type="text" name="nume" placeholder="Numele tău" required>
+                <input type="text" name="subiect" placeholder="Titlul postării" required>
+                <textarea name="mesaj" rows="5" placeholder="Povestește-ne despre experiența ta în Țara Hațegului..." required></textarea>
+                <button type="submit" class="btn-submit">Publică pe Forum</button>
+                <button type="button" onclick="toggleForm()" style="background:none; border:none; color:red; margin-left:10px; cursor:pointer;">Anulează</button>
+            </form>
+        </div>
+
+        <div class="post-list">
+            <div class="post-card">
+                <div class="post-meta">Postat de: Maria | 1 Aprilie 2026</div>
+                <h3>Weekend magic la Vadul Dobrii</h3>
+                <p>Am descoperit o liniște pe care nu am mai simțit-o de ani de zile. Drumul prin pădure este superb în perioada asta!</p>
+            </div>
+
+            <div class="post-card">
+                <div class="post-meta">Postat de: Ionuț | 28 Martie 2026</div>
+                <h3>Rulada de post - nota 10!</h3>
+                <p>Am trecut pe la Punctul Gastronic și am rămas impresionat de ospitalitate. Recomand tuturor!</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleForm() {
+            var form = document.getElementById("form-container");
+            if (form.style.display === "none" || form.style.display === "") {
+                form.style.display = "block";
+            } else {
+                form.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>
