@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Experiențe Curatoriate | Hațeg Alternativ</title>
+    <title>Hațeg Alternativ | Arhitectura Liniștii</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400;1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root { --negru: #0d0d0d; --auriu: #9d8665; --portocaliu: #ff4500; --alb: #ffffff; --gri-soft: #fbfbfb; }
@@ -11,7 +11,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         body { font-family: 'Inter', sans-serif; background: var(--alb); color: var(--negru); line-height: 1.7; overflow-x: hidden; }
 
-        /* HEADER UNITAR (Identic cu Index) */
+        /* HEADER ERMES STYLE */
         .site-header { position: fixed; top: 0; width: 100%; z-index: 5000; background: rgba(255,255,255,0.98); border-bottom: 1px solid #eee; padding: 20px 0; }
         .nav-container { max-width: 1600px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 40px; }
         .brand { font-weight: 700; font-size: 1.1rem; text-decoration: none; color: var(--negru); text-transform: uppercase; letter-spacing: 5px; }
@@ -27,44 +27,48 @@
         .mobile-overlay.active { right: 0; }
         .mobile-overlay a { font-family: 'Playfair Display', serif; font-size: 2rem; text-decoration: none; color: var(--negru); margin: 15px 0; text-transform: uppercase; }
 
-        /* HERO PAGINĂ EXPERIENȚE */
-        .hero-small { 
-            height: 60vh; width: 100%; display: flex; align-items: center; justify-content: center; 
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('images/IMG-20260326-WA0005.jpg') center/cover no-repeat;
+        /* HERO */
+        .hero { 
+            height: 85vh; width: 100%; display: flex; align-items: center; justify-content: center; 
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.2)), url('images/IMG-20260326-WA0005.jpg') center/cover no-repeat;
             color: white; text-align: center;
         }
-        .hero-small h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 8vw, 5rem); font-style: italic; font-weight: 400; }
+        .hero-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 10vw, 6rem); font-style: italic; font-weight: 400; line-height: 1.1; }
 
         /* CONTENT */
-        .container { max-width: 1200px; margin: 0 auto; padding: 80px 25px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 100px 25px; }
 
-        .page-intro { text-align: center; max-width: 800px; margin: 0 auto 100px; }
-        .page-intro span { color: var(--portocaliu); font-size: 0.8rem; letter-spacing: 5px; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 20px; }
-        .page-intro h2 { font-family: 'Playfair Display', serif; font-size: 3rem; font-style: italic; font-weight: 400; margin-bottom: 30px; }
+        .intro-text { text-align: center; max-width: 800px; margin: 0 auto 80px; }
+        .intro-text h2 { font-family: 'Playfair Display', serif; font-size: 3rem; font-style: italic; margin-bottom: 25px; font-weight: 400; }
 
-        /* GRID EXPERIENȚE */
-        .exp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-bottom: 120px; }
+        /* COLLAGE SECTION */
+        .collage-box { width: 100%; margin-bottom: 120px; }
+        .collage-box img { width: 100%; height: auto; box-shadow: 0 30px 60px rgba(0,0,0,0.1); }
+
+        /* BINECUVÂNTARE GRID */
+        .blessing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-bottom: 150px; }
+        .img-blessing { width: 100%; height: 600px; background: url('images/IMG20260331211251.jpg') center/cover no-repeat; border-radius: 2px; }
         
-        .exp-card { text-decoration: none; color: var(--negru); }
-        .exp-img { width: 100%; height: 500px; background-size: cover; background-position: center; margin-bottom: 25px; transition: 0.5s; }
-        .exp-card:hover .exp-img { transform: scale(1.02); }
+        .text-blessing span { color: var(--portocaliu); font-size: 0.75rem; letter-spacing: 4px; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 25px; }
+        .text-blessing h2 { font-family: 'Playfair Display', serif; font-size: 3.2rem; font-style: italic; font-weight: 400; margin-bottom: 30px; line-height: 1.2; }
         
-        .exp-card h3 { font-family: 'Playfair Display', serif; font-size: 2rem; font-style: italic; margin-bottom: 15px; font-weight: 400; }
-        .exp-card p { font-size: 1rem; color: #555; font-weight: 300; margin-bottom: 20px; }
+        .quote-style { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: #444; font-style: italic; border-left: 3px solid var(--portocaliu); padding-left: 30px; margin-bottom: 40px; }
+        .quote-style p { margin-bottom: 5px; }
 
-        /* BUTON ERMES */
-        .btn-ermes { display: inline-block; background: var(--portocaliu); color: white; text-decoration: none; padding: 15px 35px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; }
-        .btn-ermes:hover { background: var(--negru); }
+        /* ERMES BUTTON */
+        .btn-ermes { display: inline-block; background: var(--portocaliu); color: white; text-decoration: none; padding: 18px 45px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; transition: 0.3s; }
+        .btn-ermes:hover { background: var(--negru); transform: translateY(-3px); }
 
-        /* FOOTER UNITAR */
+        /* FOOTER */
         .site-footer { padding: 80px 20px; background: var(--gri-soft); text-align: center; border-top: 1px solid #eee; }
         .site-footer p { font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; color: #aaa; }
 
-        @media (max-width: 900px) {
+        @media (max-width: 1024px) {
             .desktop-nav { display: none; }
             .menu-toggle { display: flex; }
-            .exp-grid { grid-template-columns: 1fr; }
-            .exp-img { height: 350px; }
+            .blessing-grid { grid-template-columns: 1fr; gap: 40px; }
+            .img-blessing { height: 400px; }
+            .text-blessing h2 { font-size: 2.5rem; }
         }
     </style>
 </head>
@@ -76,7 +80,7 @@
             <nav class="desktop-nav">
                 <a href="obiective.html">Obiective</a>
                 <a href="gastronomie.html">Gastronomie</a>
-                <a href="experiente.html" style="color: var(--portocaliu); opacity: 1;">Experiențe</a>
+                <a href="experiente.html">Experiențe</a>
                 <a href="forum.html">Forum</a>
                 <a href="rezervari.html">Rezervări</a>
             </nav>
@@ -95,40 +99,39 @@
         <a href="rezervari.html">Rezervări</a>
     </div>
 
-    <section class="hero-small">
+    <section class="hero">
         <div class="hero-content">
-            <h1>Explore the Unseen.</h1>
+            <h1>Simte.<br>Descoperă.</h1>
         </div>
     </section>
 
     <div class="container">
         
-        <div class="page-intro">
-            <span>CURATED EXPERIENCES</span>
-            <h2>Dincolo de orizont.</h2>
-            <p>Am selectat pentru tine momente de liniște și explorare care definesc spiritul Țării Hațegului. De la drumeții solitare la lacuri glaciare, până la ateliere de gastronomie tradițională.</p>
+        <div class="intro-text">
+            <h2>Arhitectura Liniștii.</h2>
+            <p>O fuziune între patrimoniu, design și ospitalitate onestă în inima Transilvaniei.</p>
         </div>
 
-        <div class="exp-grid">
-            <div class="exp-card">
-                <div class="exp-img" style="background-image: url('images/bucura.jpg');"></div>
-                <span>NATURE & SILENCE</span>
-                <h3>Liniștea lacurilor montane.</h3>
-                <p>O incursiune în inima masivului Retezat, unde timpul este măsurat în adâncimea apelor glaciare. Bucura te așteaptă.</p>
-                <a href="#" class="btn-minimal">Vezi Traseul</a>
-            </div>
-
-            <div class="exp-card">
-                <div class="exp-img" style="background-image: url('images/exp-biserica-ext.jpg');"></div>
-                <span>HERITAGE</span>
-                <h3>Istorie sculptată în piatră.</h3>
-                <p>Descoperă secretele Bisericii Densuș și ale cetăților nobiliare hațegane într-un tur ghidat privat.</p>
-                <a href="#" class="btn-minimal">Rezervă Turul</a>
-            </div>
+        <div class="collage-box">
+            <img src="collage-final.png" alt="Hațeg Alternativ Collage">
         </div>
 
-        <div class="page-intro" style="margin-top: 100px;">
-            <img src="collage-final.png" alt="Hațeg Collage" style="width: 100%; height: auto; box-shadow: 0 30px 60px rgba(0,0,0,0.1);">
+        <div class="blessing-grid">
+            <div class="img-blessing"></div>
+            <div class="text-blessing">
+                <span>BINECUVÂNTAREA CASEI ȘI FAMILIEI</span>
+                <h2>Esența sufletului hațegan</h2>
+                
+                <div class="quote-style">
+                    <p>Unde-i credință, acolo-i dragoste,</p>
+                    <p>Unde-i dragoste, acolo-i pace,</p>
+                    <p>Unde-i pace, acolo-i binecuvântare,</p>
+                    <p>Unde-i binecuvântare, acolo-i Dumnezeu,</p>
+                    <p>Unde-i Dumnezeu, acolo lipsă nu e!</p>
+                </div>
+
+                <a href="rezervari.html" class="btn-ermes">Vizitează-ne</a>
+            </div>
         </div>
 
     </div>
