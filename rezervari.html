@@ -3,93 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personalizare Sejur | Domeniile la Buligă</title>
+    <title>Rezervare | Domeniile la Buligă</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root { --negru: #1a1a1a; --auriu: #c5a059; --crem: #fdfcf8; }
-        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru); margin: 0; padding: 40px 20px; }
-        
-        .config-container { max-width: 800px; margin: 0 auto; background: white; padding: 40px; border: 1px solid #eee; box-shadow: 0 10px 30px rgba(0,0,0,0.02); }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru); line-height: 1.6; padding-top: 120px; }
+
+        /* HEADER */
+        .site-header { position: fixed; top: 0; width: 100%; z-index: 2000; background: rgba(255,255,255,0.98); border-bottom: 1px solid rgba(0,0,0,0.05); padding: 15px 0; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
+        .brand { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; text-decoration: none; color: var(--negru); }
+        .main-nav a { text-decoration: none; color: var(--negru); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-left: 25px; }
+
+        /* CONFIGURATOR */
+        .config-container { max-width: 800px; margin: 0 auto 80px; background: white; padding: 40px; border: 1px solid #eee; box-shadow: 0 10px 30px rgba(0,0,0,0.02); }
         h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-style: italic; text-align: center; margin-bottom: 10px; }
         .subtitle { text-align: center; color: var(--auriu); letter-spacing: 2px; text-transform: uppercase; font-size: 0.75rem; font-weight: 700; margin-bottom: 40px; }
-
+        
         .section-title { font-weight: 700; font-size: 1.1rem; margin: 30px 0 15px; border-bottom: 1px solid #f0f0f0; padding-bottom: 10px; }
 
-        /* Selector Nopți */
+        /* Nopti */
         .nights-selector { display: flex; gap: 15px; margin-bottom: 30px; }
-        .night-opt { flex: 1; padding: 15px; border: 2px solid #eee; text-align: center; cursor: pointer; transition: 0.3s; font-weight: 600; }
+        .night-opt { flex: 1; padding: 20px; border: 2px solid #eee; text-align: center; cursor: pointer; transition: 0.3s; font-weight: 700; }
         .night-opt.active { border-color: var(--auriu); background: #fffcf5; }
 
-        /* Checkbox-uri pentru Ateliere */
-        .addon-item { display: flex; align-items: center; justify-content: space-between; padding: 15px; border: 1px solid #f9f9f9; margin-bottom: 10px; transition: 0.3s; cursor: pointer; }
-        .addon-item:hover { background: #fdfcf8; border-color: #eee; }
-        .addon-item input { width: 20px; height: 20px; accent-color: var(--auriu); cursor: pointer; }
+        /* Ateliere */
+        .addon-item { display: flex; align-items: center; justify-content: space-between; padding: 20px; border: 1px solid #f9f9f9; margin-bottom: 10px; cursor: pointer; transition: 0.2s; }
+        .addon-item:hover { background: #fdfcf8; }
+        .addon-item input { width: 22px; height: 22px; accent-color: var(--auriu); }
         .addon-info { flex-grow: 1; margin-left: 15px; }
         .addon-price { font-weight: 700; color: var(--auriu); }
 
-        /* Sumar Final */
-        .total-box { background: var(--negru); color: white; padding: 30px; margin-top: 40px; text-align: center; }
-        .total-box span { font-size: 0.8rem; color: #aaa; text-transform: uppercase; letter-spacing: 1px; }
-        .total-box h2 { font-size: 2.5rem; margin: 10px 0; color: var(--auriu); }
+        /* Formular Date Client */
+        .input-group { margin-bottom: 15px; }
+        .input-group input { width: 100%; padding: 15px; border: 1px solid #ddd; font-family: 'Inter', sans-serif; border-radius: 4px; }
 
-        .btn-send { display: block; background: var(--auriu); color: white; text-decoration: none; padding: 20px; font-weight: 700; margin-top: 20px; transition: 0.3s; }
-        .btn-send:hover { opacity: 0.9; transform: translateY(-2px); }
+        /* Total Box */
+        .total-box { background: var(--negru); color: white; padding: 40px; margin-top: 40px; text-align: center; border-radius: 4px; }
+        .total-box h2 { font-size: 3rem; color: var(--auriu); margin: 10px 0; }
+        .btn-confirm { background: var(--auriu); color: white; border: none; padding: 20px 40px; font-weight: 800; width: 100%; font-size: 1.1rem; cursor: pointer; transition: 0.3s; margin-top: 20px; border-radius: 50px; }
+        .btn-confirm:hover { background: #b48e4d; transform: translateY(-2px); }
+        .loading { opacity: 0.5; pointer-events: none; }
     </style>
 </head>
 <body>
 
-<div class="config-container">
-    <h1>Personalizează-ți Sejurul</h1>
-    <p class="subtitle">Domeniile la Buligă</p>
+<header class="site-header">
+    <div class="nav-container">
+        <a href="index.html" class="brand">DOMENIILE LA BULIGĂ</a>
+        <nav class="main-nav">
+            <a href="experiente.html">Experiențe</a>
+            <a href="evenimente.html">Evenimente</a>
+            <a href="rezervari.html" style="color: var(--auriu)">Rezervări</a>
+        </nav>
+    </div>
+</header>
 
-    <div class="section-title">1. Câte nopți doriți să rămâneți?</div>
+<div class="config-container">
+    <h1>Planifică vizita</h1>
+    <p class="subtitle">Personalizare Sejur la Domenii</p>
+
+    <div class="section-title">1. Datele tale</div>
+    <div class="input-group"><input type="text" id="clientName" placeholder="Nume Complet" required></div>
+    <div class="input-group"><input type="tel" id="clientPhone" placeholder="Telefon (pentru WhatsApp)" required></div>
+
+    <div class="section-title">2. Durata șederii (Casa Integral)</div>
     <div class="nights-selector">
-        <div class="night-opt active" onclick="setNights(this, 1)">1 Noapte</div>
-        <div class="night-opt" onclick="setNights(this, 2)">2 Nopți</div>
-        <div class="night-opt" onclick="setNights(this, 3)">3 Nopți</div>
+        <div class="night-opt active" onclick="updateNights(this, 1)">1 Noapte</div>
+        <div class="night-opt" onclick="updateNights(this, 2)">2 Nopți</div>
+        <div class="night-opt" onclick="updateNights(this, 3)">3 Nopți</div>
     </div>
 
-    <div class="section-title">2. Adăugați Ateliere & Experiențe (Opțional)</div>
-    
+    <div class="section-title">3. Ateliere & Experiențe</div>
     <label class="addon-item">
         <input type="checkbox" class="addon-check" value="150" data-name="Atelier Gastronomic" onchange="calculate()">
-        <div class="addon-info">
-            <strong>Atelier Gastronomic</strong><br>
-            <small>Pâine, sarmale sau ruladă de post</small>
-        </div>
-        <div class="addon-price">+150 RON / pers.</div>
+        <div class="addon-info"><strong>Atelier Gastronomic</strong><br><small>Pâine, sarmale sau ruladă de post</small></div>
+        <div class="addon-price">+150 RON</div>
     </label>
 
     <label class="addon-item">
         <input type="checkbox" class="addon-check" value="150" data-name="Terapie prin Artă" onchange="calculate()">
-        <div class="addon-info">
-            <strong>Terapie prin Artă</strong><br>
-            <small>Pictură sau Diamond Painting</small>
-        </div>
-        <div class="addon-price">+150 RON / pers.</div>
-    </label>
-
-    <label class="addon-item">
-        <input type="checkbox" class="addon-check" value="350" data-name="Tur Ghidat" onchange="calculate()">
-        <div class="addon-info">
-            <strong>Tur Ghidat GoNomad</strong><br>
-            <small>Explorare personalizată în Hațeg</small>
-        </div>
-        <div class="addon-price">+350 RON / grup</div>
+        <div class="addon-info"><strong>Terapie prin Artă</strong><br><small>Pictură sau Diamond Painting</small></div>
+        <div class="addon-price">+150 RON</div>
     </label>
 
     <div class="total-box">
-        <span>Estimare Totală:</span>
+        <span>TOTAL ESTIMAT:</span>
         <h2 id="totalDisplay">2000 RON</h2>
-        <a href="#" id="waLink" class="btn-send">Trimite Configurația pe WhatsApp</a>
+        <button id="submitBtn" class="btn-confirm" onclick="finalizareRezervare()">TRIMITE CEREREA</button>
     </div>
 </div>
 
 <script>
     let nights = 1;
     const pricePerNight = 2000;
+    // PUNE AICI URL-ul TAU DE LA DEPLOY (Scriptul Google)
+    const SCRIPT_URL = "URL_TAU_DE_LA_GOOGLE_SCRIPT_DEPLOY/exec"; 
 
-    function setNights(el, n) {
+    function updateNights(el, n) {
         document.querySelectorAll('.night-opt').forEach(opt => opt.classList.remove('active'));
         el.classList.add('active');
         nights = n;
@@ -98,25 +110,33 @@
 
     function calculate() {
         let addonTotal = 0;
-        let selectedAddons = [];
-        
-        document.querySelectorAll('.addon-check:checked').forEach(check => {
-            addonTotal += parseInt(check.value);
-            selectedAddons.push(check.getAttribute('data-name'));
-        });
-
+        document.querySelectorAll('.addon-check:checked').forEach(c => addonTotal += parseInt(c.value));
         const total = (nights * pricePerNight) + addonTotal;
         document.getElementById('totalDisplay').innerText = total + " RON";
-
-        // Update Link WhatsApp
-        const waBase = "https://wa.me/40749229686?text=";
-        const addonText = selectedAddons.length > 0 ? " + " + selectedAddons.join(", ") : "";
-        const message = `Bună ziua! Doresc o rezervare personalizată: Cazare ${nights} nopți${addonText}. Estimare totală: ${total} RON.`;
-        document.getElementById('waLink').href = waBase + encodeURIComponent(message);
+        return total;
     }
 
-    calculate(); // Init
-</script>
+    async function finalizareRezervare() {
+        const name = document.getElementById('clientName').value;
+        const phone = document.getElementById('clientPhone').value;
+        const total = calculate();
 
-</body>
-</html>
+        if(!name || !phone) { alert("Te rugăm să completezi Numele și Telefonul."); return; }
+
+        const btn = document.getElementById('submitBtn');
+        btn.innerText = "Se trimite în sistem...";
+        btn.classList.add('loading');
+
+        let addons = [];
+        document.querySelectorAll('.addon-check:checked').forEach(c => addons.push(c.dataset.name));
+
+        const payload = {
+            nume: name,
+            telefon: phone,
+            email: "-",
+            locatie: "Domeniile la Buliga",
+            checkin: new Date().toLocaleDateString(),
+            checkout: nights + " nopti",
+            persoane: 10,
+            mesaj: "Extra: " + (addons.join(", ") || "Fără ateliere"),
+            total
