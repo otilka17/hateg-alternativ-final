@@ -3,36 +3,151 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Experiences | Hațeg Alternativ</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+    <title>Experiențe Curatoriate | Hațeg Alternativ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400;1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background: #fff; padding: 40px; }
-        h1 { font-family: 'Playfair Display', serif; font-size: 5vw; font-style: italic; font-weight: 400; margin: 100px 0; text-align: center; }
-        .exp-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 40px; max-width: 1600px; margin: 0 auto; }
-        .exp-card { margin-bottom: 100px; }
-        .exp-img { width: 100%; height: 600px; background-size: cover; background-position: center; filter: grayscale(20%); transition: 0.5s; }
-        .exp-img:hover { filter: grayscale(0%); }
-        .exp-info { padding: 30px 0; }
-        .exp-info span { font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; color: #9d8665; }
-        .exp-info h3 { font-family: 'Playfair Display', serif; font-size: 2rem; font-style: italic; margin-top: 10px; font-weight: 400; }
-        @media (max-width: 900px) { .exp-grid { grid-template-columns: 1fr; } .exp-img { height: 400px; } }
+        :root { --negru: #0d0d0d; --auriu: #9d8665; --portocaliu: #ff4500; --alb: #ffffff; --gri-soft: #fbfbfb; }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        body { font-family: 'Inter', sans-serif; background: var(--alb); color: var(--negru); line-height: 1.7; overflow-x: hidden; }
+
+        /* HEADER UNITAR (Identic cu Index) */
+        .site-header { position: fixed; top: 0; width: 100%; z-index: 5000; background: rgba(255,255,255,0.98); border-bottom: 1px solid #eee; padding: 20px 0; }
+        .nav-container { max-width: 1600px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 40px; }
+        .brand { font-weight: 700; font-size: 1.1rem; text-decoration: none; color: var(--negru); text-transform: uppercase; letter-spacing: 5px; }
+        
+        .desktop-nav { display: flex; gap: 30px; }
+        .desktop-nav a { text-decoration: none; color: var(--negru); font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; opacity: 0.6; transition: 0.3s; }
+        .desktop-nav a:hover { opacity: 1; color: var(--portocaliu); }
+
+        .menu-toggle { display: none; cursor: pointer; flex-direction: column; gap: 6px; z-index: 6000; }
+        .menu-toggle span { width: 30px; height: 2px; background: var(--negru); transition: 0.3s; }
+
+        .mobile-overlay { position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background: var(--alb); z-index: 5500; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: 0.5s ease; }
+        .mobile-overlay.active { right: 0; }
+        .mobile-overlay a { font-family: 'Playfair Display', serif; font-size: 2rem; text-decoration: none; color: var(--negru); margin: 15px 0; text-transform: uppercase; }
+
+        /* HERO PAGINĂ EXPERIENȚE */
+        .hero-small { 
+            height: 60vh; width: 100%; display: flex; align-items: center; justify-content: center; 
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('images/IMG-20260326-WA0005.jpg') center/cover no-repeat;
+            color: white; text-align: center;
+        }
+        .hero-small h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 8vw, 5rem); font-style: italic; font-weight: 400; }
+
+        /* CONTENT */
+        .container { max-width: 1200px; margin: 0 auto; padding: 80px 25px; }
+
+        .page-intro { text-align: center; max-width: 800px; margin: 0 auto 100px; }
+        .page-intro span { color: var(--portocaliu); font-size: 0.8rem; letter-spacing: 5px; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 20px; }
+        .page-intro h2 { font-family: 'Playfair Display', serif; font-size: 3rem; font-style: italic; font-weight: 400; margin-bottom: 30px; }
+
+        /* GRID EXPERIENȚE */
+        .exp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-bottom: 120px; }
+        
+        .exp-card { text-decoration: none; color: var(--negru); }
+        .exp-img { width: 100%; height: 500px; background-size: cover; background-position: center; margin-bottom: 25px; transition: 0.5s; }
+        .exp-card:hover .exp-img { transform: scale(1.02); }
+        
+        .exp-card h3 { font-family: 'Playfair Display', serif; font-size: 2rem; font-style: italic; margin-bottom: 15px; font-weight: 400; }
+        .exp-card p { font-size: 1rem; color: #555; font-weight: 300; margin-bottom: 20px; }
+
+        /* BUTON ERMES */
+        .btn-ermes { display: inline-block; background: var(--portocaliu); color: white; text-decoration: none; padding: 15px 35px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; }
+        .btn-ermes:hover { background: var(--negru); }
+
+        /* FOOTER UNITAR */
+        .site-footer { padding: 80px 20px; background: var(--gri-soft); text-align: center; border-top: 1px solid #eee; }
+        .site-footer p { font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; color: #aaa; }
+
+        @media (max-width: 900px) {
+            .desktop-nav { display: none; }
+            .menu-toggle { display: flex; }
+            .exp-grid { grid-template-columns: 1fr; }
+            .exp-img { height: 350px; }
+        }
     </style>
 </head>
 <body>
-    <div style="display:flex; justify-content:space-between; text-transform:uppercase; font-size:0.7rem; letter-spacing:3px;">
-        <a href="index.html" style="color:#000; text-decoration:none;">Hațeg Alternativ</a>
-        <span>Curated Experiences</span>
-    </div>
-    <h1>Explore the Unseen.</h1>
-    <div class="exp-grid">
-        <div class="exp-card">
-            <div class="exp-img" style="background-image: url('images/exp-lac.jpg');"></div>
-            <div class="exp-info"><span>Nature</span><h3>Liniștea lacurilor montane.</h3></div>
+
+    <header class="site-header">
+        <div class="nav-container">
+            <a href="index.html" class="brand">Hațeg Alternativ</a>
+            <nav class="desktop-nav">
+                <a href="obiective.html">Obiective</a>
+                <a href="gastronomie.html">Gastronomie</a>
+                <a href="experiente.html" style="color: var(--portocaliu); opacity: 1;">Experiențe</a>
+                <a href="forum.html">Forum</a>
+                <a href="rezervari.html">Rezervări</a>
+            </nav>
+            <div class="menu-toggle" id="mobile-menu">
+                <span></span><span></span><span></span>
+            </div>
         </div>
-        <div class="exp-card" style="margin-top: 100px;">
-            <div class="exp-img" style="background-image: url('images/exp-biserica-ext.jpg');"></div>
-            <div class="exp-info"><span>Heritage</span><h3>Istorie sculptată în piatră.</h3></div>
-        </div>
+    </header>
+
+    <div class="mobile-overlay" id="overlay">
+        <a href="index.html">Acasă</a>
+        <a href="obiective.html">Obiective</a>
+        <a href="gastronomie.html">Gastronomie</a>
+        <a href="experiente.html">Experiențe</a>
+        <a href="forum.html">Forum</a>
+        <a href="rezervari.html">Rezervări</a>
     </div>
+
+    <section class="hero-small">
+        <div class="hero-content">
+            <h1>Explore the Unseen.</h1>
+        </div>
+    </section>
+
+    <div class="container">
+        
+        <div class="page-intro">
+            <span>CURATED EXPERIENCES</span>
+            <h2>Dincolo de orizont.</h2>
+            <p>Am selectat pentru tine momente de liniște și explorare care definesc spiritul Țării Hațegului. De la drumeții solitare la lacuri glaciare, până la ateliere de gastronomie tradițională.</p>
+        </div>
+
+        <div class="exp-grid">
+            <div class="exp-card">
+                <div class="exp-img" style="background-image: url('images/bucura.jpg');"></div>
+                <span>NATURE & SILENCE</span>
+                <h3>Liniștea lacurilor montane.</h3>
+                <p>O incursiune în inima masivului Retezat, unde timpul este măsurat în adâncimea apelor glaciare. Bucura te așteaptă.</p>
+                <a href="#" class="btn-minimal">Vezi Traseul</a>
+            </div>
+
+            <div class="exp-card">
+                <div class="exp-img" style="background-image: url('images/exp-biserica-ext.jpg');"></div>
+                <span>HERITAGE</span>
+                <h3>Istorie sculptată în piatră.</h3>
+                <p>Descoperă secretele Bisericii Densuș și ale cetăților nobiliare hațegane într-un tur ghidat privat.</p>
+                <a href="#" class="btn-minimal">Rezervă Turul</a>
+            </div>
+        </div>
+
+        <div class="page-intro" style="margin-top: 100px;">
+            <img src="collage-final.png" alt="Hațeg Collage" style="width: 100%; height: auto; box-shadow: 0 30px 60px rgba(0,0,0,0.1);">
+        </div>
+
+    </div>
+
+    <footer class="site-footer">
+        <p>© 2026 HAȚEG ALTERNATIV — CURATED EXPERIENCES</p>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById('mobile-menu');
+        const overlay = document.getElementById('overlay');
+        menuToggle.addEventListener('click', () => {
+            overlay.classList.toggle('active');
+            const spans = menuToggle.getElementsByTagName('span');
+            spans[0].style.transform = overlay.classList.contains('active') ? 'rotate(45deg) translate(5px, 5px)' : 'none';
+            spans[1].style.opacity = overlay.classList.contains('active') ? '0' : '1';
+            spans[2].style.transform = overlay.classList.contains('active') ? 'rotate(-45deg) translate(7px, -7px)' : 'none';
+        });
+    </script>
+
 </body>
 </html>
