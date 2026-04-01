@@ -6,132 +6,53 @@
     <title>Experiențe | Domeniile la Buligă</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --negru: #1a1a1a; --auriu: #c5a059; --crem: #fdfcf8; --text: #444; }
+        :root { --negru: #1a1a1a; --auriu: #c5a059; --crem: #fdfcf8; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru); line-height: 1.6; padding-top: 100px; }
+        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru); line-height: 1.6; overflow-x: hidden; }
+        .site-header { position: fixed; top: 0; width: 100%; z-index: 2000; background: rgba(255,255,255,0.98); border-bottom: 1px solid rgba(0,0,0,0.05); padding: 10px 0; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 15px; }
+        .brand { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; text-decoration: none; color: var(--negru); text-transform: uppercase; }
+        .main-nav a { text-decoration: none; color: var(--negru); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-left: 15px; }
+        
+        .hero-sub { height: 60vh; background: #222 linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('IMG-20260326-WA0020.jpg'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; color: white; text-align: center; }
+        .hero-sub h1 { font-family: 'Playfair Display', serif; font-size: 3rem; font-style: italic; }
 
-        /* HEADER */
-        .site-header { position: fixed; top: 0; width: 100%; z-index: 2000; background: rgba(255,255,255,0.98); border-bottom: 1px solid rgba(0,0,0,0.05); padding: 15px 0; }
-        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
-        .brand { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; text-decoration: none; color: var(--negru); }
-        .main-nav a { text-decoration: none; color: var(--negru); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-left: 25px; transition: 0.3s; }
-        .main-nav a:hover { color: var(--auriu); }
-
-        /* CONFIGURATOR STYLE */
-        .config-container { max-width: 800px; margin: 40px auto; background: white; padding: 40px; border: 1px solid #eee; box-shadow: 0 10px 30px rgba(0,0,0,0.02); }
-        h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-style: italic; text-align: center; margin-bottom: 10px; }
-        .subtitle { text-align: center; color: var(--auriu); letter-spacing: 2px; text-transform: uppercase; font-size: 0.75rem; font-weight: 700; margin-bottom: 40px; }
-        .section-title { font-weight: 700; font-size: 1.1rem; margin: 30px 0 15px; border-bottom: 1px solid #f0f0f0; padding-bottom: 10px; }
-
-        .nights-selector { display: flex; gap: 15px; margin-bottom: 30px; }
-        .night-opt { flex: 1; padding: 15px; border: 2px solid #eee; text-align: center; cursor: pointer; transition: 0.3s; font-weight: 600; }
-        .night-opt.active { border-color: var(--auriu); background: #fffcf5; }
-
-        .addon-item { display: flex; align-items: center; justify-content: space-between; padding: 15px; border: 1px solid #f9f9f9; margin-bottom: 10px; transition: 0.3s; cursor: pointer; }
-        .addon-item input { width: 20px; height: 20px; accent-color: var(--auriu); }
-        .addon-info { flex-grow: 1; margin-left: 15px; }
-        .addon-price { font-weight: 700; color: var(--auriu); }
-
-        .total-box { background: var(--negru); color: white; padding: 30px; margin-top: 40px; text-align: center; }
-        .total-box h2 { font-size: 2.5rem; margin: 10px 0; color: var(--auriu); }
-        .btn-send { display: block; background: var(--auriu); color: white; text-decoration: none; padding: 20px; font-weight: 700; margin-top: 20px; transition: 0.3s; text-align: center; }
-        .btn-send:hover { opacity: 0.9; }
+        .content-section { max-width: 900px; margin: 60px auto; padding: 0 20px; }
+        .exp-item { margin-bottom: 50px; border-bottom: 1px solid rgba(197,160,89,0.2); padding-bottom: 30px; }
+        .exp-item h2 { font-family: 'Playfair Display', serif; color: var(--auriu); margin-bottom: 15px; font-style: italic; }
+        
+        @media (max-width: 768px) { .nav-container { flex-direction: column; } .hero-sub h1 { font-size: 2rem; } }
     </style>
 </head>
 <body>
-
-<header class="site-header">
-    <div class="nav-container">
-        <a href="index.html" class="brand">DOMENIILE LA BULIGĂ</a>
-        <nav class="main-nav">
-            <a href="experiente.html" style="color: var(--auriu)">Experiențe</a>
-            <a href="evenimente.html">Evenimente</a>
-            <a href="rezervari.html">Rezervări</a>
-        </nav>
-    </div>
-</header>
-
-<main>
-    <div class="config-container">
-        <h1>Compune-ți Experiența</h1>
-        <p class="subtitle">Ateliere & Sejur Personalizat</p>
-
-        <div class="section-title">1. Alege durata șederii</div>
-        <div class="nights-selector">
-            <div class="night-opt active" onclick="setNights(this, 1)">1 Noapte</div>
-            <div class="night-opt" onclick="setNights(this, 2)">2 Nopți</div>
-            <div class="night-opt" onclick="setNights(this, 3)">3 Nopți</div>
+    <header class="site-header">
+        <div class="nav-container">
+            <a href="index.html" class="brand">Domeniile la Buligă</a>
+            <nav class="main-nav">
+                <a href="experiente.html" style="color: var(--auriu);">Experiențe</a>
+                <a href="evenimente.html">Evenimente</a>
+                <a href="rezervari.html">Rezervări</a>
+            </nav>
         </div>
+    </header>
 
-        <div class="section-title">2. Adaugă Ateliere (Tarif per persoană)</div>
-        
-        <label class="addon-item">
-            <input type="checkbox" class="addon-check" value="150" data-name="Atelier Gastronomic" onchange="calculate()">
-            <div class="addon-info">
-                <strong>Atelier Gastronomic</strong><br>
-                <small>Pâine, sarmale sau ruladă de post</small>
-            </div>
-            <div class="addon-price">+150 RON</div>
-        </label>
+    <section class="hero-sub">
+        <h1>Gustul și Liniștea</h1>
+    </section>
 
-        <label class="addon-item">
-            <input type="checkbox" class="addon-check" value="150" data-name="Terapie prin Artă" onchange="calculate()">
-            <div class="addon-info">
-                <strong>Terapie prin Artă</strong><br>
-                <small>Pictură sau Diamond Painting</small>
-            </div>
-            <div class="addon-price">+150 RON</div>
-        </label>
-
-        <label class="addon-item">
-            <input type="checkbox" class="addon-check" value="350" data-name="Tur Ghidat" onchange="calculate()">
-            <div class="addon-info">
-                <strong>Tur Ghidat GoNomad</strong><br>
-                <small>Explorare personalizată în Hațeg (per grup)</small>
-            </div>
-            <div class="addon-price">+350 RON</div>
-        </label>
-
-        <div class="total-box">
-            <span>TOTAL ESTIMAT:</span>
-            <h2 id="totalDisplay">2000 RON</h2>
-            <p style="font-size: 0.7rem; color: #aaa;">*Include cazarea integrală (10 pers) + experiențele selectate</p>
-            <a href="#" id="waLink" class="btn-send">REZERVĂ PE WHATSAPP</a>
+    <div class="content-section">
+        <div class="exp-item">
+            <h2>Ospăț Tradițional</h2>
+            <p>De la celebra <strong>Ruladă de Post</strong> până la ciorbele gătite lent pe plită. Folosim doar ingrediente din grădina proprie și de la producătorii locali din Hațeg.</p>
+        </div>
+        <div class="exp-item">
+            <h2>Prăjitura Albinuța</h2>
+            <p>Un simbol al casei noastre. Rețeta transmisă din generație în generație, pregătită cu miere pură și multă răbdare.</p>
+        </div>
+        <div class="exp-item">
+            <h2>Retragere la Vadul Dobrii</h2>
+            <p>Explorați unul dintre cele mai izolate și frumoase sate din Munții Poiana Ruscă. O experiență de "digital detox" adevărată.</p>
         </div>
     </div>
-</main>
-
-<script>
-    let nights = 1;
-    const pricePerNight = 2000;
-
-    function setNights(el, n) {
-        document.querySelectorAll('.night-opt').forEach(opt => opt.classList.remove('active'));
-        el.classList.add('active');
-        nights = n;
-        calculate();
-    }
-
-    function calculate() {
-        let addonTotal = 0;
-        let selectedAddons = [];
-        
-        document.querySelectorAll('.addon-check:checked').forEach(check => {
-            addonTotal += parseInt(check.value);
-            selectedAddons.push(check.getAttribute('data-name'));
-        });
-
-        const total = (nights * pricePerNight) + addonTotal;
-        document.getElementById('totalDisplay').innerText = total + " RON";
-
-        const waBase = "https://wa.me/40749229686?text=";
-        const addonText = selectedAddons.length > 0 ? " cu " + selectedAddons.join(", ") : "";
-        const message = `Bună ziua! Doresc o rezervare la Domeniile la Buligă: Cazare ${nights} nopți${addonText}. Total estimat: ${total} RON.`;
-        document.getElementById('waLink').href = waBase + encodeURIComponent(message);
-    }
-
-    calculate();
-</script>
-
 </body>
 </html>
