@@ -3,23 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Evenimente | Domeniile la Buligă</title>
+    <title>Events | Hațeg Alternativ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
     <style>
-        body { font-family: sans-serif; text-align: center; padding: 80px 20px; background: #fdfcf8; }
-        .ev-card { max-width: 700px; margin: 40px auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
-        .ev-img { width: 100%; height: 350px; background: url('images/feed-1.jpg') center/cover; margin-bottom: 25px; border-radius: 4px; }
-        h1 { color: #c5a059; font-style: italic; font-size: 2.8rem; font-family: serif; }
-        .btn-rez { display: inline-block; background: #c5a059; color: white; padding: 15px 30px; text-decoration: none; border-radius: 50px; font-weight: 700; margin-top: 20px; }
+        body { font-family: 'Inter', sans-serif; height: 100vh; display: flex; align-items: center; justify-content: center; background: #f9f9f9; }
+        .ev-container { display: flex; width: 90%; max-width: 1400px; background: #fff; height: 80vh; box-shadow: 0 50px 100px rgba(0,0,0,0.05); }
+        .ev-img { flex: 1.2; background: url('images/feed-1.jpg') center/cover; }
+        .ev-text { flex: 0.8; padding: 80px; display: flex; flex-direction: column; justify-content: center; }
+        .ev-text h1 { font-family: 'Playfair Display', serif; font-size: 3rem; font-style: italic; margin-bottom: 20px; font-weight: 400; }
+        .ev-text p { font-weight: 300; color: #666; margin-bottom: 40px; }
+        .btn { text-decoration: none; color: #000; border: 1px solid #000; padding: 15px 40px; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; transition: 0.3s; width: fit-content; }
+        .btn:hover { background: #000; color: #fff; }
+        @media (max-width: 900px) { .ev-container { flex-direction: column; height: auto; } .ev-img { height: 300px; } .ev-text { padding: 40px; } }
     </style>
 </head>
 <body>
-    <a href="index.html" style="text-decoration:none; color:#1a1a1a; font-weight:700;">← ÎNAPOI</a>
-    <h1>Evenimente la Domenii</h1>
-    <div class="ev-card">
+    <div class="ev-container">
         <div class="ev-img"></div>
-        <h2 style="font-family: serif; font-style: italic; font-size: 1.8rem;">Retreat-uri & Ateliere</h2>
-        <p style="margin: 15px 0; color: #555;">Spațiul perfect pentru creație, reconectare și liniște absolută.</p>
-        <a href="rezervari.html" class="btn-rez">Rezervă Locația</a>
+        <div class="ev-text">
+            <span>01 / EVENTS</span>
+            <h1>Retreats & Design.</h1>
+            <p>Spații curatoriate pentru ateliere de creație, reuniuni discrete și momente care necesită o estetică deosebită.</p>
+            <a href="rezervari.html" class="btn">Inquire Now</a>
+        </div>
     </div>
 </body>
 </html>
