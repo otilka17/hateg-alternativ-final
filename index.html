@@ -3,54 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Domeniile la Buligă | Simte. Explorează. Trăiește.</title>
+    <title>Domeniile la Buligă | Experiență Premium în Hațeg</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --negru: #1a1a1a; --auriu: #c5a059; --crem: #fdfcf8; }
+        :root { --negru: #1a1a1a; --auriu: #c5a059; --crem: #fdfcf8; --alb: #ffffff; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru); line-height: 1.6; }
+        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru); line-height: 1.6; overflow-x: hidden; }
 
-        /* HEADER */
-        .site-header { position: fixed; top: 0; width: 100%; z-index: 2000; background: rgba(255,255,255,0.98); border-bottom: 1px solid rgba(0,0,0,0.05); padding: 15px 0; }
-        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
-        .brand { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; text-decoration: none; color: var(--negru); }
-        .main-nav a { text-decoration: none; color: var(--negru); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-left: 25px; transition: 0.3s; }
+        /* NAVIGATIE */
+        .site-header { position: fixed; top: 0; width: 100%; z-index: 2000; background: rgba(255,255,255,0.95); border-bottom: 1px solid rgba(0,0,0,0.05); padding: 20px 0; transition: 0.3s; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 30px; }
+        .brand { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; text-decoration: none; color: var(--negru); letter-spacing: 1px; }
+        .main-nav a { text-decoration: none; color: var(--negru); font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-left: 30px; transition: 0.3s; }
         .main-nav a:hover { color: var(--auriu); }
 
-        /* HERO SLIDER */
+        /* HERO SLIDER (Imbrăcat cu text și efecte) */
         #hero-slider { 
-            height: 90vh; 
+            height: 100vh; 
             background-size: cover; 
             background-position: center; 
             display: flex; 
-            flex-direction: column; 
             align-items: center; 
             justify-content: center; 
-            color: white; 
+            color: var(--alb); 
             text-align: center; 
-            transition: background-image 1.5s ease-in-out;
+            transition: background-image 1.2s ease-in-out;
             position: relative;
         }
-        #hero-slider::before {
+        #hero-slider::after {
             content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.3); z-index: 1;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.2), rgba(0,0,0,0.5)); z-index: 1;
         }
-        .hero-content { position: relative; z-index: 2; padding: 0 20px; }
-        .hero-content h1 { font-family: 'Playfair Display', serif; font-size: 4rem; font-style: italic; margin-bottom: 20px; }
-        .btn-gold { background: var(--auriu); color: white; padding: 18px 45px; border-radius: 50px; text-decoration: none; display: inline-block; font-weight: 700; transition: 0.3s; margin-top: 20px; }
+        .hero-content { position: relative; z-index: 2; max-width: 900px; padding: 0 20px; }
+        .hero-content span { text-transform: uppercase; letter-spacing: 6px; font-size: 0.9rem; font-weight: 400; display: block; margin-bottom: 20px; animation: fadeInUp 1s ease; }
+        .hero-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 8vw, 5rem); font-style: italic; line-height: 1.1; margin-bottom: 30px; animation: fadeInUp 1.2s ease; }
+        
+        .btn-gold { 
+            background: var(--auriu); color: white; padding: 20px 50px; border-radius: 50px; 
+            text-decoration: none; display: inline-block; font-weight: 700; text-transform: uppercase; 
+            font-size: 0.8rem; letter-spacing: 2px; transition: 0.4s; border: 2px solid var(--auriu);
+        }
+        .btn-gold:hover { background: transparent; color: white; backdrop-filter: blur(5px); }
 
-        /* BLESSING */
-        .section-blessing { padding: 100px 20px; text-align: center; }
-        .blessing-box { max-width: 600px; margin: 0 auto; padding: 40px; border: 1px solid rgba(197,160,89,0.3); }
-        .blessing-img { width: 150px; margin-bottom: 25px; }
+        /* SECTION INTRO */
+        .intro-section { padding: 120px 20px; text-align: center; background: var(--alb); }
+        .intro-container { max-width: 800px; margin: 0 auto; }
+        .intro-section h2 { font-family: 'Playfair Display', serif; font-size: 2.8rem; margin-bottom: 30px; font-style: italic; }
+        .divider { width: 60px; height: 2px; background: var(--auriu); margin: 30px auto; }
 
-        /* JURNAL LIVE */
-        #jurnal-live { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
-        .jurnal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; }
-        .post-card { background: white; border: 1px solid #eee; overflow: hidden; transition: 0.3s; }
-        .post-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        /* JURNAL LIVE GRID */
+        .jurnal-section { padding: 100px 20px; max-width: 1300px; margin: 0 auto; }
+        .jurnal-header { text-align: center; margin-bottom: 60px; }
+        .jurnal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
+        
+        .post-card { background: white; border-radius: 4px; overflow: hidden; transition: 0.5s; position: relative; border: 1px solid #eee; }
+        .post-card:hover { transform: translateY(-15px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        .post-img { width: 100%; height: 400px; object-fit: cover; }
+        .post-info { padding: 30px; }
+        .post-info small { color: var(--auriu); font-weight: 700; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; }
+        .post-info h3 { font-family: 'Playfair Display', serif; margin: 15px 0; font-size: 1.4rem; }
 
-        @media (max-width: 768px) { .hero-content h1 { font-size: 2.5rem; } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.8rem; }
+            .jurnal-grid { grid-template-columns: 1fr; }
+        }
     </style>
 </head>
 <body>
@@ -68,36 +86,106 @@
 
 <section id="hero-slider">
     <div class="hero-content">
-        <p style="letter-spacing: 5px; text-transform: uppercase; font-size: 0.8rem;">Hațeg Alternativ</p>
-        <h1>Simte. Explorează. Trăiește.</h1>
-        <a href="rezervari.html" class="btn-gold">Planifică Sejurul</a>
+        <span>Transilvania • Autentic • Premium</span>
+        <h1>Rafinament rustic în inima Hațegului.</h1>
+        <a href="rezervari.html" class="btn-gold">Rezervă Experiența</a>
     </div>
 </section>
 
-<section class="section-blessing">
-    <div class="blessing-box">
-        <img src="IMG20260331211251.jpg" class="blessing-img" alt="Binecuvantare">
-        <p style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.3rem; margin-bottom: 20px;">
-            "Unde-i credință, acolo-i dragoste,<br>
-            Unde-i dragoste, acolo-i pace,<br>
-            Unde-i pace, acolo-i binecuvântare."
+<section class="intro-section">
+    <div class="intro-container">
+        <img src="images/IMG20260331211251.jpg" style="width: 80px; margin-bottom: 40px;" alt="Simbol">
+        <h2>"Unde-i credință, acolo-i dragoste, unde-i dragoste, acolo-i pace."</h2>
+        <div class="divider"></div>
+        <p style="color: #666; font-size: 1.1rem; max-width: 600px; margin: 0 auto;">
+            Descoperă un loc unde timpul stă în loc, iar ospitalitatea bănățeană se întâlnește cu confortul modern. 
+            O poveste scrisă în piatră și lemn, special pentru tine.
         </p>
-        <p style="color: var(--auriu); font-weight: 700; letter-spacing: 2px;">SPIRITUL CASEI</p>
     </div>
 </section>
 
-<section id="jurnal-live">
-    <div style="text-align: center;">
-        <span style="color: var(--auriu); font-weight: 800; letter-spacing: 2px; text-transform: uppercase; font-size: 0.7rem;">Noutăți de la Domenii</span>
-        <h2 style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 2.5rem; margin-top: 10px;">Jurnal Live</h2>
+<section class="jurnal-section">
+    <div class="jurnal-header">
+        <span style="color: var(--auriu); font-weight: 700; letter-spacing: 3px; font-size: 0.8rem;">DIN JURNALUL NOSTRU</span>
+        <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; font-style: italic;">Noutăți și Evenimente</h2>
     </div>
     <div id="container-live" class="jurnal-grid">
-        <p style="text-align: center; grid-column: 1/-1;">Se încarcă jurnalul...</p>
+        <p style="text-align: center; grid-column: 1/-1;">Sincronizăm momentele live...</p>
     </div>
 </section>
 
+<footer style="background: var(--negru); color: white; padding: 60px 20px; text-align: center;">
+    <p style="font-family: 'Playfair Display'; font-style: italic; font-size: 1.5rem;">Domeniile la Buligă</p>
+    <p style="font-size: 0.8rem; margin-top: 20px; opacity: 0.5;">© 2024 • Toate drepturile rezervate</p>
+</footer>
+
 <script>
-    // 1. SLIDERUL DE IMAGINI (FEED 1-8)
-    const feedImages = ['feed-1.jpg', 'feed-2.jpg', 'feed-3.jpg', 'feed-4.jpg', 'feed-5.jpg', 'feed-6.jpg', 'feed-7.jpg', 'feed-8.jpg'];
+    // 1. SLIDERUL DE IMAGINI (Folosind calea images/...)
+    const feedImages = [
+        'images/feed-1.jpg', 
+        'images/feed-2.jpg', 
+        'images/feed-3.jpg', 
+        'images/feed-4.jpg', 
+        'images/feed-5.jpg', 
+        'images/feed-6.jpg', 
+        'images/feed-7.jpg', 
+        'images/feed-8.jpg'
+    ];
+    
     let currentIdx = 0;
-    const hero = document.
+    const hero = document.getElementById('hero-slider');
+
+    function rotateHero() {
+        // Schimbare cu fade
+        hero.style.backgroundImage = `url('${feedImages[currentIdx]}')`;
+        currentIdx = (currentIdx + 1) % feedImages.length;
+    }
+    
+    // Pornire slider
+    rotateHero();
+    setInterval(rotateHero, 5000);
+
+    // 2. JURNAL LIVE (Google Sheet)
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxzO-cS84CzBbtzYceD4JmsGvMjaprKMqtdnowAC_KYBZxqrbYv1I81winZjuIW2LhU/exec";
+
+    async function loadJurnal() {
+        try {
+            const res = await fetch(SCRIPT_URL + "?action=getLive");
+            const data = await res.json();
+            const container = document.getElementById('container-live');
+            container.innerHTML = "";
+            
+            data.forEach(p => {
+                container.innerHTML += `
+                    <div class="post-card">
+                        <img src="${p.Imagine_URL}" class="post-img">
+                        <div class="post-info">
+                            <small>${p.Data} | ${p.Autor}</small>
+                            <h3>${p.Mesaj.substring(0, 60)}...</h3>
+                            <p style="color: #666; font-size: 0.9rem; margin-bottom: 20px;">${p.Mesaj}</p>
+                            <a href="${p.Link_Buton}" target="_blank" style="color:var(--auriu); font-weight:700; text-decoration:none; font-size:0.8rem; letter-spacing:1px;">CITEȘTE MAI MULT →</a>
+                        </div>
+                    </div>
+                `;
+            });
+        } catch (e) {
+            document.getElementById('container-live').innerHTML = "<p>Jurnalul se actualizează...</p>";
+        }
+    }
+    loadJurnal();
+</script>
+
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+
+</body>
+</html>
