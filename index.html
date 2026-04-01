@@ -6,81 +6,46 @@
     <title>Domeniile la Buligă | Acasă în Hațeg</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --negru: #1a1a1a; --auriu: #c5a059; --crem: #fdfcf8; --text: #444; }
+        :root { --negru: #1a1a1a; --auriu: #c5a059; --crem: #fdfcf8; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru); line-height: 1.6; overflow-x: hidden; }
-
-        /* HEADER */
         .site-header { position: fixed; top: 0; width: 100%; z-index: 2000; background: rgba(255,255,255,0.98); border-bottom: 1px solid rgba(0,0,0,0.05); padding: 10px 0; }
         .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 15px; }
-        .brand { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; text-decoration: none; color: var(--negru); text-transform: uppercase; }
-        .main-nav a { text-decoration: none; color: var(--negru); font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-left: 10px; transition: 0.3s; }
-        .main-nav a:hover { color: var(--auriu); }
-
-        /* HERO */
-        .hero { 
-            height: 100vh; 
-            background: #1a1a1a linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('IMG-20260326-WA0005.jpg'); 
-            background-size: cover; background-position: center; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; text-align: center; padding: 0 20px; 
-        }
-        .hero h1 { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-style: italic; margin-bottom: 20px; }
-
-        /* SECTIUNI */
+        .brand { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; text-decoration: none; color: var(--negru); text-transform: uppercase; }
+        .main-nav a { text-decoration: none; color: var(--negru); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-left: 15px; transition: 0.3s; }
+        .hero { height: 100vh; background: #1a1a1a linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.4)), url('images/IMG-20260326-WA0005.jpg'); background-size: cover; background-position: center; display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; text-align: center; padding: 0 20px; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 3rem; font-style: italic; margin-bottom: 20px; }
         .feature { display: flex; align-items: center; flex-wrap: wrap; padding: 60px 0; max-width: 1200px; margin: 0 auto; }
-        .feature.reverse { flex-direction: row-reverse; }
-        .feature-img { flex: 1; min-width: 300px; height: 400px; background-size: cover; background-position: center; margin: 15px; border-radius: 2px; }
+        .feature-img { flex: 1; min-width: 300px; height: 450px; background-size: cover; background-position: center; margin: 15px; }
         .feature-text { flex: 1; min-width: 300px; padding: 30px; }
-        .feature-text h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 20px; font-style: italic; }
-        
-        .btn-link { display: inline-block; margin-top: 15px; color: var(--auriu); font-weight: 700; text-decoration: none; border-bottom: 1px solid var(--auriu); text-transform: uppercase; font-size: 0.8rem; }
-
-        @media (max-width: 768px) {
-            .nav-container { flex-direction: column; }
-            .main-nav { margin-top: 10px; display: flex; flex-wrap: wrap; justify-content: center; }
-            .feature { flex-direction: column !important; }
-            .feature-img { width: 100%; height: 250px; }
-        }
+        .btn-gold { display: inline-block; margin-top: 20px; color: var(--auriu); font-weight: 700; text-decoration: none; border-bottom: 1px solid var(--auriu); text-transform: uppercase; font-size: 0.8rem; }
+        @media (max-width: 768px) { .nav-container { flex-direction: column; } .main-nav { margin-top: 10px; } .hero h1 { font-size: 2.2rem; } .feature { flex-direction: column !important; } }
     </style>
 </head>
 <body>
-
-<header class="site-header">
-    <div class="nav-container">
-        <a href="index.html" class="brand">Domeniile la Buligă</a>
-        <nav class="main-nav">
-            <a href="gastronomie.html">Gastronomie</a>
-            <a href="experiente.html">Experiențe</a>
-            <a href="evenimente.html">Evenimente</a>
-            <a href="forum.html">Forum</a>
-            <a href="rezervari.html">Rezervări</a>
-        </nav>
-    </div>
-</header>
-
-<section class="hero">
-    <p style="letter-spacing: 3px; text-transform: uppercase; font-size: 0.8rem;">Hațeg Alternativ</p>
-    <h1>Simte. Explorează. Trăiește.</h1>
-</section>
-
-<section class="feature">
-    <div class="feature-img" style="background-image: url('IMG-20260326-WA0020.jpg');"></div>
-    <div class="feature-text">
-        <span style="color:var(--auriu); font-weight:800; font-size:0.7rem; letter-spacing:2px; text-transform:uppercase;">Punct Gastronic Local</span>
-        <h2>Gustul de odinioară.</h2>
-        <p>Descoperă meniul nostru de post și preparatele tradiționale făcute cu ingrediente din grădina proprie. O experiență culinară cinstită, specifică Țării Hațegului.</p>
-        <a href="gastronomie.html" class="btn-link">Vezi Meniul Gastronomic</a>
-    </div>
-</section>
-
-<section class="feature reverse">
-    <div class="feature-img" style="background-image: url('IMG20260316153821.jpg');"></div>
-    <div class="feature-text">
-        <span style="color:var(--auriu); font-weight:800; font-size:0.7rem; letter-spacing:2px; text-transform:uppercase;">Comunitate</span>
-        <h2>Forum Hațeg Alternativ</h2>
-        <p>Împărtășește experiența ta, află noutăți despre evenimentele viitoare și conectează-te cu alți călători pasionați de autentic.</p>
-        <a href="forum.html" class="btn-link">Intră în Comunitate</a>
-    </div>
-</section>
-
+    <header class="site-header">
+        <div class="nav-container">
+            <a href="index.html" class="brand">Domeniile la Buligă</a>
+            <nav class="main-nav">
+                <a href="gastronomie.html">Gastronomie</a>
+                <a href="experiente.html">Experiențe</a>
+                <a href="evenimente.html">Evenimente</a>
+                <a href="forum.html">Forum</a>
+                <a href="rezervari.html">Rezervări</a>
+            </nav>
+        </div>
+    </header>
+    <section class="hero">
+        <p style="letter-spacing: 3px; text-transform: uppercase; font-size: 0.8rem; margin-bottom: 10px;">Hațeg Alternativ</p>
+        <h1>Simte. Explorează. Trăiește.</h1>
+    </section>
+    <section class="feature">
+        <div class="feature-img" style="background-image: url('images/IMG-20260326-WA0020.jpg');"></div>
+        <div class="feature-text">
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 2rem; font-style: italic; margin-bottom: 15px;">Gustul de odinioară.</h2>
+            <p>Descoperă Punctul Gastronomic Local. Gătim curat, cu ingrediente din grădina proprie și rețete lăsate din bătrâni.</p>
+            <a href="gastronomie.html" class="btn-gold">Vezi Meniul Nostru</a>
+        </div>
+    </section>
 </body>
 </html>
