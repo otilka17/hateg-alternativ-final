@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Domeniile la Buligă | ManifestMetanoia</title>
+    <title>Hațeg Alternativ | Manifest Metanoia</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -15,31 +15,29 @@
         .site-header { position: fixed; top: 0; width: 100%; z-index: 9999; background: #fff; border-bottom: 1px solid #eee; }
         .top-announcement { background: var(--auriu); color: #fff; text-align: center; padding: 8px 0; font-size: 0.6rem; letter-spacing: 3px; font-weight: 700; text-transform: uppercase; }
         .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; }
-        .brand-logo { text-decoration: none; color: var(--negru); font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; }
-        .brand-logo span { display: block; font-size: 0.55rem; color: var(--auriu); letter-spacing: 2px; font-weight: 400; }
-        .main-nav a { text-decoration: none; color: var(--negru); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; margin-left: 25px; }
-        .cta-nav { border: 1px solid var(--negru); padding: 10px 18px; }
+        .brand-logo { text-decoration: none; color: var(--negru); font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; letter-spacing: 2px; }
+        .brand-logo span { display: block; font-size: 0.6rem; color: var(--auriu); letter-spacing: 3px; font-weight: 400; font-family: 'Inter', sans-serif; margin-top: 2px; }
+        
+        .main-nav a { text-decoration: none; color: var(--negru); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; margin-left: 25px; transition: 0.3s; }
+        .main-nav a:hover { color: var(--auriu); }
+        .cta-nav { border: 1px solid var(--negru); padding: 10px 18px; transition: 0.3s; }
+        .cta-nav:hover { background: var(--negru); color: #fff !important; }
 
-        /* HERO SLIDER (Calea corectă către folderul images) */
+        /* HERO SLIDER (DOAR LA BULIGA ȘI RETEZAT) */
         .hero { height: 75vh; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; color: #fff; text-align: center; }
         .hero-slider { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
         .slide { position: absolute; width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0; transition: opacity 1.5s ease-in-out; }
         .slide.active { opacity: 1; }
-        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.35); z-index: 2; }
+        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); z-index: 2; }
         .hero-content { position: relative; z-index: 3; }
-        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 8vw, 4rem); font-style: italic; }
-
-        /* SECTION CARTA */
-        .carta-section { padding: 80px 20px; display: flex; align-items: center; justify-content: center; gap: 60px; max-width: 1200px; margin: 0 auto; }
-        .carta-info { flex: 1; }
-        .carta-img { flex: 1; }
-        .carta-img img { width: 100%; border-radius: 2px; box-shadow: 20px 20px 0 var(--auriu); }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 8vw, 4.5rem); font-style: italic; }
+        .hero p { font-size: 0.8rem; letter-spacing: 5px; text-transform: uppercase; margin-top: 10px; }
 
         .whatsapp-float { position: fixed; bottom: 30px; left: 30px; background: #25d366; color: #fff; width: 60px; height: 60px; border-radius: 50px; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 10000; text-decoration: none; }
 
         @media (max-width: 992px) {
             .nav-container { flex-direction: column; gap: 15px; }
-            .carta-section { flex-direction: column-reverse; text-align: center; }
+            body { padding-top: 170px; }
         }
     </style>
 </head>
@@ -48,48 +46,37 @@
     <a href="https://wa.me/40749229686" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
     <header class="site-header">
-        <div class="top-announcement">1 MAI 2026: LANSAREA OFICIALĂ "MANIFEST METANOIA"</div>
+        <div class="top-announcement">1 MAI 2026: LANSAREA MANIFEST METANOIA | TRIBUT PATRICIA</div>
         <div class="nav-container">
-            <a href="index.html" class="brand-logo">DOMENIILE LA BULIGĂ<span>HAȚEG ALTERNATIV | SIGNATURE</span></a>
+            <a href="index.html" class="brand-logo">
+                HAȚEG ALTERNATIV
+                <span>METANOIA RETREAT @ LA BULIGĂ</span>
+            </a>
             <nav class="main-nav">
-                <a href="retreat.html">Retreat</a>
+                <a href="retreat.html">Metanoia</a>
                 <a href="evenimente.html">Serata</a>
                 <a href="obiective.html">Discover</a>
-                <a href="rezervari.html" class="cta-nav">BOOK NOW</a>
+                <a href="rezervari.html" class="cta-nav">RESERVATIONS</a>
             </nav>
         </div>
     </header>
 
     <section class="hero">
         <div class="hero-slider">
-            <div class="slide active" style="background-image: url('images/hero-premium.jpg');"></div>
+            <div class="slide active" style="background-image: url('images/la-buliga-pensiune.jpg');"></div>
             <div class="slide" style="background-image: url('images/retezat.jpg');"></div>
-            <div class="slide" style="background-image: url('images/hero-sat.jpg');"></div>
         </div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <p style="letter-spacing: 5px;">BUN VENIT LA</p>
-            <h1>Domeniile la Buligă</h1>
-            <p>DIN GOLGOTA SPRE ÎNVIERE</p>
-        </div>
-    </section>
-
-    <section class="carta-section">
-        <div class="carta-info">
-            <span style="color: var(--auriu); font-weight: 700; letter-spacing: 2px; font-size: 0.7rem;">PRODUS SIGNATURE</span>
-            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; margin: 20px 0; font-style: italic;">Carta Gândurilor</h2>
-            <p>Un jurnal creat cu onestitate în fabrica noastră din Hațeg. Legătură manuală și file dictando nostalgice.</p>
-            <br>
-            <a href="https://wa.me/40749229686" style="text-decoration: none; color: #1a1a1a; font-weight: 700; border-bottom: 2px solid var(--auriu);">RESERVĂ CARTA</a>
-        </div>
-        <div class="carta-img">
-            <img src="images/carta-jurnal.jpg" alt="Carta Jurnal">
+            <p>EXPERIENȚA</p>
+            <h1>Manifest Metanoia</h1>
+            <p>GĂZDUIȚI DE DOMENIILE LA BULIGĂ</p>
         </div>
     </section>
 
     <footer style="padding: 60px; text-align: center;">
-        <p style="font-family: 'Playfair Display', serif; font-style: italic;">"Tu vindeci orice suflet frânt"</p>
-        <p style="font-size: 0.6rem; letter-spacing: 3px; margin-top: 20px; opacity: 0.5;">HAȚEG | 2026</p>
+        <p style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem; margin-bottom: 20px;">"Tu vindeci orice suflet frânt"</p>
+        <div style="font-size: 0.6rem; letter-spacing: 3px; opacity: 0.5;">HAȚEG ALTERNATIV &copy; 2026</div>
     </footer>
 
     <script>
@@ -101,6 +88,18 @@
             slides[currentSlide].classList.add('active');
         }
         setInterval(nextSlide, 5000);
+    </script>
+
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/65fe76a5a0d6737bd4482595/default';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
     </script>
 
 </body>
