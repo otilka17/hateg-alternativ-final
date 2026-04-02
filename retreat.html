@@ -3,30 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Retreat | Hațeg Alternativ Signature</title>
+    <title>Retreat & Pachete Signature | Hațeg Alternativ</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root { --negru-mat: #242424; --auriu: #c5a059; --crem: #fdfcf8; --alb: #ffffff; --text-soft: #555555; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru-mat); line-height: 1.6; padding-top: 180px; }
+        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru-mat); line-height: 1.6; padding-top: 220px; }
         
+        /* Header Signature */
         .site-header { position: fixed; top: 0; width: 100%; z-index: 1500; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); }
         .header-container { display: flex; flex-direction: column; align-items: center; padding: 20px 0; }
         .brand { text-decoration: none; color: var(--negru-mat); font-family: 'Playfair Display', serif; font-size: 1.6rem; line-height: 1; font-weight: 700; text-align: center; }
         .est { font-size: 0.6rem; color: var(--auriu); letter-spacing: 4px; font-weight: 800; margin-top: 8px; text-transform: uppercase; }
+        
         .main-nav { background: var(--negru-mat); width: 100%; display: flex; justify-content: center; gap: 30px; padding: 15px 0; margin-top: 20px; }
-        .main-nav a { text-decoration: none; color: #fff; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
+        .main-nav a { text-decoration: none; color: #fff; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; }
+        .main-nav a:hover { color: var(--auriu); }
         .active { color: var(--auriu) !important; }
 
-        .retreat-section { max-width: 1000px; margin: 0 auto 100px; padding: 0 20px; text-align: center; }
-        .retreat-card { margin-bottom: 80px; }
-        .retreat-img { width: 100%; height: 500px; object-fit: cover; border-radius: 4px; margin-bottom: 30px; }
-        .retreat-tag { color: var(--auriu); font-size: 0.7rem; font-weight: 800; letter-spacing: 4px; text-transform: uppercase; }
-        .retreat-card h2 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 2.5rem; margin: 10px 0 20px; }
-        .retreat-card p { max-width: 700px; margin: 0 auto 30px; color: var(--text-soft); }
+        /* Intro Section */
+        .retreat-intro { max-width: 800px; margin: 0 auto 80px; text-align: center; padding: 0 20px; }
+        .retreat-tag-main { color: var(--auriu); font-size: 0.75rem; font-weight: 800; letter-spacing: 5px; text-transform: uppercase; display: block; margin-bottom: 15px; }
+        .retreat-intro h1 { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; }
+
+        /* Retreat Cards - Layout Imersiv */
+        .retreat-section { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        .retreat-card { background: var(--alb); margin-bottom: 120px; border-radius: 4px; overflow: hidden; border: 1px solid rgba(0,0,0,0.03); box-shadow: 0 20px 40px rgba(0,0,0,0.02); }
+        .retreat-img-wrap { width: 100%; height: 550px; overflow: hidden; position: relative; }
+        .retreat-img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.5s ease; }
+        .retreat-card:hover .retreat-img { transform: scale(1.05); }
+
+        .retreat-content { padding: 60px; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: start; }
         
-        .btn-gold { background: var(--auriu); color: white; padding: 18px 45px; border-radius: 50px; text-decoration: none; font-family: 'Playfair Display', serif; font-style: italic; display: inline-block; transition: 0.3s; }
-        .wa-float { position: fixed; bottom: 30px; right: 30px; background: var(--auriu); color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 2000; box-shadow: 0 10px 20px rgba(0,0,0,0.1); font-size: 0.8rem; }
+        .retreat-info h2 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 2.8rem; margin-bottom: 20px; line-height: 1.2; }
+        .retreat-info p { color: var(--text-soft); font-size: 1.05rem; margin-bottom: 30px; }
+        
+        /* Detalii Pachet (Din codul 1) */
+        .retreat-details { background: var(--crem); padding: 30px; border-radius: 4px; border-left: 3px solid var(--auriu); }
+        .p-features { list-style: none; margin-bottom: 25px; }
+        .p-features li { font-size: 0.85rem; margin-bottom: 8px; color: var(--negru-mat); border-bottom: 1px solid rgba(0,0,0,0.05); padding-bottom: 5px; font-weight: 500; }
+        
+        .price-wrap { display: flex; align-items: center; justify-content: space-between; margin-top: 20px; }
+        .price { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; color: var(--auriu); }
+
+        .btn-gold { background: var(--auriu); color: white; padding: 18px 35px; border-radius: 50px; text-decoration: none; font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700; transition: 0.3s; display: inline-block; }
+        .btn-gold:hover { background: var(--negru-mat); transform: translateY(-3px); }
+
+        /* Floating WA */
+        .wa-float { position: fixed; bottom: 30px; right: 30px; background: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; z-index: 2000; box-shadow: 0 10px 20px rgba(0,0,0,0.2); transition: 0.3s; }
+        .wa-float:hover { transform: scale(1.1); }
+
+        @media (max-width: 900px) {
+            .retreat-content { grid-template-columns: 1fr; padding: 40px 25px; }
+            .retreat-img-wrap { height: 350px; }
+            body { padding-top: 180px; }
+        }
     </style>
 </head>
 <body>
@@ -36,45 +67,18 @@
         <a href="index.html" class="brand">HAȚEG<br>ALTERNATIV</a>
         <span class="est">EST. 2026</span>
         <nav class="main-nav">
-            <a href="pensiuni.html">Pensiuni</a>
-            <a href="retreat.html" class="active">Retreat</a>
+            <a href="index.html">Acasă</a>
+            <a href="retreat.html" class="active">Pachete Signature</a>
             <a href="experiente.html">Experiențe</a>
-            <a href="forum.html">Forum</a>
+            <a href="rezervari.html">Rezervări</a>
         </nav>
     </div>
 </header>
 
-<main class="retreat-section">
-    <div style="margin-bottom: 80px;">
-        <span class="retreat-tag">Metanoia Journey</span>
-        <h1 style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 3.5rem;">Schimbă ritmul.</h1>
-    </div>
+<main>
+    <section class="retreat-intro">
+        <span class="retreat-tag-main">Metanoia Journey</span>
+        <h1>Curatoriem liniștea.<br>Descoperă pachetele noastre.</h1>
+    </section>
 
-    <article class="retreat-card">
-        <img src="images/hero-lac.jpg" class="retreat-img" alt="Active">
-        <span class="retreat-tag">Activ & Explorare</span>
-        <h2>Cărarea Munților</h2>
-        <p>Tururi ghidate pe bicicletă sau la pas prin inima Retezatului. O experiență de reconectare prin efort și peisaje spectaculoase.</p>
-        <a href="https://wa.me/40749229686?text=Detalii Retreat Active" class="btn-gold">Cere Programul</a>
-    </article>
-
-    <article class="retreat-card">
-        <img src="images/gast-masa-traditionala.jpg" class="retreat-img" alt="Gastro">
-        <span class="retreat-tag">Creație & Gust</span>
-        <h2>Rădăcini și Gust</h2>
-        <p>Ateliere de gătit tradițional și meșteșug local. Întoarcerea la aromele de demult într-un cadru autentic.</p>
-        <a href="https://wa.me/40749229686?text=Detalii Retreat Gastro" class="btn-gold">Cere Programul</a>
-    </article>
-
-    <article class="retreat-card">
-        <img src="images/hero-premium.jpg" class="retreat-img" alt="Spiritual">
-        <span class="retreat-tag">Liniște & Spirit</span>
-        <h2>Metanoia: Tăcerea Inimii</h2>
-        <p>Un weekend dedicat liniștii interioare, meditației sub cerul liber și deconectării de la tehnologie.</p>
-        <a href="https://wa.me/40749229686?text=Detalii Retreat Spiritual" class="btn-gold">Cere Programul</a>
-    </article>
-</main>
-
-<a href="https://wa.me/40749229686" class="wa-float">WhatsApp Direct</a>
-</body>
-</html>
+    <div class="retreat-section">
