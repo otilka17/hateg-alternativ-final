@@ -3,138 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hațeg Alternativ | ManifestMetanoia - Tribute to Patricia</title>
+    <title>Domeniile la Buligă | ManifestMetanoia - Tribute to Patricia</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --negru: #1a1a1a; --auriu: #c5a059; --crem: #fdfcf8; --alb: #ffffff; --gri-soft: #f4f4f4; }
+        :root { --negru: #1a1a1a; --auriu: #c5a059; --crem: #fdfcf8; --alb: #ffffff; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru); line-height: 1.6; overflow-x: hidden; }
+        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru); line-height: 1.6; padding-top: 110px; }
 
-        /* HEADER MINIMALIST */
-        .site-header { position: fixed; top: 0; width: 100%; z-index: 3000; background: rgba(255,255,255,0.98); border-bottom: 1px solid rgba(0,0,0,0.05); padding: 15px 0; }
-        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
-        .brand { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; text-decoration: none; color: var(--negru); text-transform: uppercase; letter-spacing: 2px; }
-        .brand span { font-size: 0.6rem; color: var(--auriu); display: block; letter-spacing: 4px; font-weight: 400; }
-        .main-nav a { text-decoration: none; color: var(--negru); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-left: 25px; transition: 0.3s; }
+        /* BARA DE SUS (HEADER) REFĂCUTĂ */
+        .site-header { position: fixed; top: 0; width: 100%; z-index: 9999; background: rgba(255, 255, 255, 0.98); box-shadow: 0 2px 15px rgba(0,0,0,0.05); }
+        .top-announcement { background: var(--auriu); color: #fff; text-align: center; padding: 8px 0; font-size: 0.6rem; letter-spacing: 3px; font-weight: 700; text-transform: uppercase; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; }
+        .brand-logo { text-decoration: none; color: var(--negru); font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; letter-spacing: 2px; }
+        .brand-logo span { display: block; font-size: 0.55rem; color: var(--auriu); font-family: 'Inter', sans-serif; letter-spacing: 3px; margin-top: 2px; font-weight: 400; }
+        .main-nav a { text-decoration: none; color: var(--negru); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-left: 30px; transition: 0.3s; }
         .main-nav a:hover { color: var(--auriu); }
+        .cta-nav { border: 1px solid var(--negru); padding: 10px 20px; }
+        .cta-nav:hover { background: var(--negru); color: #fff !important; }
 
-        /* HERO - METANOIA */
+        /* HERO SECTION */
         .hero { 
-            height: 100vh; 
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/casa-boiereasca.jpg') center/cover no-repeat; 
-            display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--alb); text-align: center; padding: 0 20px;
+            height: 80vh; 
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('images/casa-boiereasca.jpg') center/cover no-repeat; 
+            display: flex; flex-direction: column; align-items: center; justify-content: center; color: #fff; text-align: center; 
         }
-        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 8vw, 5rem); font-style: italic; font-weight: 400; margin-bottom: 10px; }
-        .hero p { font-size: 0.8rem; letter-spacing: 5px; text-transform: uppercase; opacity: 0.9; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 8vw, 4.5rem); font-style: italic; font-weight: 400; }
+        .hero p { font-size: 0.8rem; letter-spacing: 5px; text-transform: uppercase; margin-top: 10px; }
 
-        /* SECTION: MANIFEST METANOIA */
-        .manifest-section { padding: 120px 20px; background: var(--negru); color: var(--crem); text-align: center; }
-        .manifest-content { max-width: 850px; margin: 0 auto; border: 1px solid rgba(197, 160, 89, 0.3); padding: 80px 40px; position: relative; }
-        .metanoia-label { color: var(--auriu); font-size: 0.7rem; letter-spacing: 6px; font-weight: 700; display: block; margin-bottom: 30px; }
-        .manifest-content h2 { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-style: italic; margin-bottom: 40px; color: var(--alb); }
-        .manifest-text { font-size: 1.05rem; line-height: 2.2; font-weight: 300; opacity: 0.85; margin-bottom: 40px; }
-        .tribute-tag { font-family: 'Playfair Display', serif; color: var(--auriu); font-size: 1.2rem; font-style: italic; }
+        /* MANIFEST METANOIA */
+        .manifest-section { padding: 100px 20px; background: var(--negru); color: var(--crem); text-align: center; }
+        .manifest-content { max-width: 800px; margin: 0 auto; border: 1px solid rgba(197, 160, 89, 0.3); padding: 60px 30px; }
+        .metanoia-label { color: var(--auriu); font-size: 0.7rem; letter-spacing: 5px; font-weight: 700; display: block; margin-bottom: 25px; }
+        .manifest-content h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-style: italic; margin-bottom: 30px; }
+        .manifest-text { font-size: 1rem; line-height: 2; opacity: 0.8; margin-bottom: 30px; }
+        .tribute { font-family: 'Playfair Display', serif; color: var(--auriu); font-style: italic; font-size: 1.1rem; }
 
-        /* BOUTIQUE: JURNALUL ȘI PAPUCII */
-        .boutique-grid { max-width: 1200px; margin: 0 auto; padding: 100px 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
-        .product-card { background: var(--alb); border: 1px solid #eee; overflow: hidden; transition: 0.5s; }
-        .product-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
-        .product-img { height: 450px; background-size: cover; background-position: center; position: relative; }
-        .badge { position: absolute; top: 20px; left: 20px; background: var(--negru); color: #fff; padding: 8px 15px; font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; }
-        .product-info { padding: 40px; text-align: center; }
-        .product-info span { color: var(--auriu); font-size: 0.7rem; letter-spacing: 3px; font-weight: 700; }
-        .product-info h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin: 15px 0; font-weight: 400; }
-        .product-info p { font-size: 0.9rem; color: #666; margin-bottom: 25px; min-height: 80px; }
-        .btn-signature { display: inline-block; padding: 15px 40px; border: 1px solid var(--negru); text-decoration: none; color: var(--negru); font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; transition: 0.3s; }
-        .btn-signature:hover { background: var(--negru); color: var(--alb); }
+        /* CARTA SECTION (JURNALUL) */
+        .carta-section { padding: 100px 20px; display: flex; align-items: center; justify-content: center; gap: 60px; max-width: 1200px; margin: 0 auto; }
+        .carta-info { flex: 1; }
+        .carta-info h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin: 15px 0; font-style: italic; }
+        .carta-img { flex: 1; }
+        .carta-img img { width: 100%; border-radius: 2px; box-shadow: 15px 15px 0 var(--auriu); }
 
-        /* BLESSING FOOTER */
-        .footer-blessing { background: var(--crem); padding: 80px 20px; text-align: center; border-top: 1px solid #eee; }
-        .blessing-text { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-style: italic; color: var(--negru); margin-bottom: 20px; }
-        .social-links { margin-top: 30px; font-size: 1.2rem; }
-        .social-links a { color: var(--negru); margin: 0 15px; transition: 0.3s; }
-        .social-links a:hover { color: var(--auriu); }
-
+        /* FOOTER */
+        footer { padding: 60px 20px; text-align: center; border-top: 1px solid #eee; }
+        .blessing { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-style: italic; margin-bottom: 20px; }
+        
         @media (max-width: 768px) {
-            .boutique-grid { grid-template-columns: 1fr; }
-            .manifest-content { padding: 40px 20px; }
-            .manifest-content h2 { font-size: 2rem; }
-            .product-img { height: 300px; }
+            .nav-container { flex-direction: column; gap: 15px; }
+            .carta-section { flex-direction: column; text-align: center; }
+            .main-nav a { margin: 0 10px; font-size: 0.6rem; }
         }
     </style>
 </head>
 <body>
 
     <header class="site-header">
+        <div class="top-announcement">
+            1 MAI 2026: LANSAREA OFICIALĂ "MANIFEST METANOIA" - TRIBUT PENTRU PATRICIA
+        </div>
         <div class="nav-container">
-            <a href="index.html" class="brand">Domeniile la Buligă<span>Hațeg Alternativ</span></a>
+            <a href="index.html" class="brand-logo">
+                DOMENIILE LA BULIGĂ
+                <span>HAȚEG ALTERNATIV | SIGNATURE COLLECTION</span>
+            </a>
             <nav class="main-nav">
+                <a href="evenimente.html">Serata Româno-Italiană</a>
                 <a href="obiective.html">Discover</a>
-                <a href="evenimente.html">Events</a>
-                <a href="rezervari.html">Book Now</a>
+                <a href="rezervari.html" class="cta-nav">BOOK NOW</a>
             </nav>
         </div>
     </header>
 
     <section class="hero">
-        <p>Lansare Oficială: 1 Mai 2026</p>
         <h1>Manifest Metanoia</h1>
-        <p>O experiență născută din recunoștință</p>
+        <p>Din Golgota spre Înviere</p>
     </section>
 
     <section class="manifest-section">
         <div class="manifest-content">
-            <span class="metanoia-label">DIN GHETSIMANI SPRE ÎNVIERE</span>
+            <span class="metanoia-label">SCHIMBAREA MINȚII ȘI A SUFLETULUI</span>
             <h2>Vindecarea unui suflet frânt.</h2>
             <p class="manifest-text">
-                Am învățat că din mocirla bolii se ridică cele mai puternice fundații. **ManifestMetanoia** nu este o simplă destinație, ci transformarea durerii în excelență. 
-                Sarcina sub semnul temerilor, rugăciunea din Ghetsimani și prietenii vechi care nu ne-au uitat au clădit acest loc. 
-                Fiecare detaliu poartă amprenta acestei victorii.
+                Am transformat mocirla bolii în fundația unui vis. Domeniile la Buligă s-au ridicat din rugăciune și din loialitatea prietenilor vechi care nu ne-au uitat. Astăzi, oferim acest refugiu celor ce caută tihnă și sens.
             </p>
-            <p class="tribute-tag">In memoriam & tribute to Patricia</p>
+            <p class="tribute">In Memoriam & Tribute to Patricia</p>
         </div>
     </section>
 
-    <section class="boutique-grid">
-        
-        <div class="product-card">
-            <div class="product-img" style="background-image: url('images/jurnal-albastru.jpg');">
-                <div class="badge">Signature Edition</div>
-            </div>
-            <div class="product-info">
-                <span>MANUFACTURĂ | CALITATE EXCELENTĂ</span>
-                <h3>Jurnalul Gândurilor</h3>
-                <p>Hârtie premium legată în albastrul cerului senin. Un spațiu sacru pentru ideile tale, creat în fabrica unde spiritul excelenței prinde formă.</p>
-                <a href="https://wa.me/40749229686" class="btn-signature">RESERVĂ UN EXEMPLAR</a>
-            </div>
+    <section class="carta-section">
+        <div class="carta-info">
+            <span style="letter-spacing: 3px; font-size: 0.7rem; color: var(--auriu); font-weight: 700;">PRODUCȚIE SIGNATURE</span>
+            <h2>Carta Gândurilor</h2>
+            <p>Un jurnal artizanal creat în fabrica noastră, cu legătură manuală și file dictando nostalgice. Locul unde miracolele devin rânduri scrise.</p>
+            <br>
+            <a href="https://wa.me/40749229686" style="text-decoration: none; color: #1a1a1a; font-weight: 700; border-bottom: 2px solid var(--auriu); padding-bottom: 5px; font-size: 0.8rem; letter-spacing: 2px;">RESERVĂ EDIȚIA DE LUX</a>
         </div>
-
-        <div class="product-card">
-            <div class="product-img" style="background-image: url('images/papuci-vatra.jpg');">
-                <div class="badge">Artizanal Patricia</div>
-            </div>
-            <div class="product-info">
-                <span>VATRA HERITAGE | HANDMADE</span>
-                <h3>Pași în Tihnă</h3>
-                <p>Papuci artizanali din lână și piele, salvați de la uitare. Pentru pașii care au nevoie de confort după ce au urcat propria lor Golgotă.</p>
-                <a href="https://wa.me/40749229686" class="btn-signature">CERE DETALII</a>
-            </div>
+        <div class="carta-img">
+            <img src="images/carta-jurnal.jpg" alt="Carta Patricia">
         </div>
-
     </section>
 
-    <footer class="footer-blessing">
-        <p class="blessing-text">"Tu vindeci orice suflet frânt."</p>
-        <p style="font-size: 0.7rem; opacity: 0.6; letter-spacing: 2px; text-transform: uppercase;">Unde-i pace, acolo-i binecuvântare.</p>
-        
-        <div class="social-links">
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://wa.me/40749229686"><i class="fab fa-whatsapp"></i></a>
-        </div>
-        
-        <p style="margin-top: 50px; font-size: 0.6rem; opacity: 0.4;">&copy; 2026 Domeniile la Buligă | Managed by ManifestMetanoia</p>
+    <footer>
+        <p class="blessing">"Tu vindeci orice suflet frânt"</p>
+        <div style="font-size: 0.7rem; letter-spacing: 2px; opacity: 0.6; margin-bottom: 20px;">MANIFEST METANOIA | HAȚEG 2026</div>
+        <a href="https://wa.me/40749229686" style="color: #1a1a1a; margin: 0 10px;"><i class="fab fa-whatsapp"></i></a>
+        <a href="#" style="color: #1a1a1a; margin: 0 10px;"><i class="fab fa-instagram"></i></a>
     </footer>
 
 </body>
