@@ -3,110 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Obiective | Hațeg Alternativ</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@200;300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    
+    <title>Obiective Turistice | Domeniile la Buligă</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --negru: #000; --auriu: #9d8665; --gri: #f4f4f4; }
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        
-        body { font-family: 'Inter', sans-serif; background: #fff; color: var(--negru); line-height: 1.5; }
+        :root { --negru: #1a1a1a; --auriu: #c5a059; --crem: #fdfcf8; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru); line-height: 1.6; }
 
-        /* HEADER MINIMALIST (IDENTIC CU INDEX) */
-        .site-header { position: fixed; top: 0; width: 100%; z-index: 3000; background: rgba(255,255,255,0.9); backdrop-filter: blur(10px); border-bottom: 1px solid #eee; padding: 25px 0; }
-        .nav-container { max-width: 1600px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 40px; }
-        .brand { font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.85rem; text-decoration: none; color: #000; text-transform: uppercase; letter-spacing: 5px; }
+        /* HEADER (Identic cu restul site-ului) */
+        .site-header { position: fixed; top: 0; width: 100%; z-index: 2000; background: white; border-bottom: 1px solid #eee; padding: 15px 0; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
+        .brand { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; text-decoration: none; color: var(--negru); }
+        .main-nav a { text-decoration: none; color: var(--negru); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-left: 25px; }
 
-        .container { max-width: 1400px; margin: 0 auto; padding: 150px 40px 80px; }
-
-        /* TITLU EDITORIAL */
-        .section-head { text-align: left; margin-bottom: 60px; border-left: 1px solid var(--auriu); padding-left: 30px; }
-        h1 { font-family: 'Playfair Display', serif; font-size: 4rem; font-style: italic; font-weight: 400; margin-bottom: 10px; }
-        .section-head p { text-transform: uppercase; letter-spacing: 4px; font-size: 0.7rem; color: var(--auriu); }
-
-        /* HARTĂ - STILIZATĂ DREPT */
-        #map { height: 500px; width: 100%; border: 1px solid #eee; margin-bottom: 80px; filter: grayscale(1); transition: 0.5s; }
-        #map:hover { filter: grayscale(0); }
-
-        /* GRID DE CARDURI MINIMALISTE */
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px; }
-        .card { border-bottom: 1px solid #eee; padding-bottom: 40px; transition: 0.3s; }
-        .card img { width: 100%; height: 500px; object-fit: cover; filter: sepia(20%); transition: 0.5s; }
-        .card:hover img { filter: sepia(0%); }
-        .card-body { padding: 30px 0; }
-        .card-body h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-style: italic; font-weight: 400; margin-bottom: 15px; }
-        .card-body p { font-weight: 300; color: #666; font-size: 0.95rem; max-width: 90%; }
-
-        /* BUTON WHATSAPP DISCRET */
-        .wa-btn { position: fixed; bottom: 40px; left: 40px; background: #000; color: #fff; padding: 20px 30px; border-radius: 0; text-decoration: none; font-size: 0.6rem; letter-spacing: 3px; text-transform: uppercase; z-index: 999; transition: 0.3s; }
-        .wa-btn:hover { background: var(--auriu); }
-
-        @media (max-width: 900px) {
-            h1 { font-size: 2.5rem; }
-            .cards-grid { grid-template-columns: 1fr; }
-            .card img { height: 300px; }
-            .nav-container { padding: 0 20px; }
+        /* HERO OBIECTIVE */
+        .obj-hero { 
+            height: 60vh; 
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/exp-lac.jpg'); 
+            background-size: cover; background-position: center;
+            display: flex; align-items: center; justify-content: center; color: white; text-align: center;
+            margin-bottom: 80px; padding-top: 80px;
         }
+        .obj-hero h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-style: italic; }
+
+        /* GRID OBIECTIVE */
+        .obj-grid { max-width: 1200px; margin: 0 auto 100px; display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; padding: 0 20px; }
+        
+        .obj-card { background: white; border: 1px solid #eee; overflow: hidden; transition: 0.4s; }
+        .obj-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        .obj-img { width: 100%; height: 250px; background-size: cover; background-position: center; }
+        .obj-content { padding: 30px; }
+        .obj-content span { color: var(--auriu); font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+        .obj-content h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin: 10px 0 15px; }
+        .obj-content p { color: #666; font-size: 0.95rem; margin-bottom: 20px; }
+        .btn-link { color: var(--negru); text-decoration: none; font-weight: 700; font-size: 0.8rem; border-bottom: 2px solid var(--auriu); padding-bottom: 2px; }
+
+        @media (max-width: 768px) { .obj-hero h1 { font-size: 2.5rem; } }
     </style>
 </head>
 <body>
 
 <header class="site-header">
     <div class="nav-container">
-        <a href="index.html" class="brand">Hațeg Alternativ</a>
-        <nav style="display: flex; gap: 20px;">
-            <a href="index.html" style="text-decoration:none; color:#000; font-size:0.6rem; letter-spacing:2px; text-transform:uppercase;">Back</a>
+        <a href="index.html" class="brand">DOMENIILE LA BULIGĂ</a>
+        <nav class="main-nav">
+            <a href="experiente.html">Experiențe</a>
+            <a href="rezervari.html">Rezervări</a>
         </nav>
     </div>
 </header>
 
-<div class="container">
-    <section class="section-head">
-        <p>Curated Landmarks</p>
-        <h1>Obiective Autentice</h1>
-    </section>
+<section class="obj-hero">
+    <h1>Explorează Țara Hațegului</h1>
+</section>
 
-    <div id="map"></div>
+<div class="obj-grid">
+    <article class="obj-card">
+        <div class="obj-img" style="background-image: url('images/exp-biserica-ext.jpg');"></div>
+        <div class="obj-content">
+            <span>Istorie & Spiritualitate</span>
+            <h3>Biserica Densuș</h3>
+            <p>Cea mai veche biserică din piatră din România, un loc încărcat de mister și legende dacice.</p>
+            <a href="#" class="btn-link">Distanta: 15 min</a>
+        </div>
+    </article>
 
-    <div class="cards-grid">
-        <div class="card">
-            <img src="images/exp-biserica-ext.jpg" alt="Biserica Densuș">
-            <div class="card-body">
-                <h3>Biserica Densuș</h3>
-                <p>O construcție bizară și fascinantă, ridicată din resturi de temple romane. Un monument de arhitectură brută și sacră.</p>
-            </div>
+    <article class="obj-card">
+        <div class="obj-img" style="background-image: url('images/exp-stana.jpg');"></div>
+        <div class="obj-content">
+            <span>Natură Sălbatică</span>
+            <h3>Rezervația de Zimbri</h3>
+            <p>Întâlnește cel mai mare animal european în habitatul său natural, la doar câțiva kilometri de noi.</p>
+            <a href="#" class="btn-link">Distanta: 10 min</a>
         </div>
-        <div class="card">
-            <img src="images/feed-6.jpg" alt="Cetatea Colț">
-            <div class="card-body">
-                <h3>Cetatea Colț</h3>
-                <p>Izolată pe o stâncă abruptă, cetatea oferă o perspectivă asupra Hațegului pe care Jules Verne a numit-o legendară.</p>
-            </div>
+    </article>
+
+    <article class="obj-card">
+        <div class="obj-img" style="background-image: url('images/exp-lac.jpg');"></div>
+        <div class="obj-content">
+            <span>Aventură & Drumeție</span>
+            <h3>Parcul Național Retezat</h3>
+            <p>Poarta către crestele muntoase și celebrele lacuri glaciare. O experiență unică pentru iubitorii de munte.</p>
+            <a href="#" class="btn-link">Distanta: 45 min</a>
         </div>
-    </div>
+    </article>
+
+    <article class="obj-card">
+        <div class="obj-img" style="background-image: url('images/exp-biserica-veche.jpg');"></div>
+        <div class="obj-content">
+            <span>Arhitectură Gotică</span>
+            <h3>Castelul Corvinilor</h3>
+            <p>Unul dintre cele mai frumoase castele din lume, situat în apropiere, în orașul Hunedoara.</p>
+            <a href="#" class="btn-link">Distanta: 30 min</a>
+        </div>
+    </article>
 </div>
 
-<a href="https://wa.me/40749229686" class="wa-btn">Connect via WhatsApp</a>
-
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script>
-    var map = L.map('map', { scrollWheelZoom: false }).setView([45.5564, 22.8878], 11);
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', { 
-        attribution: '&copy; Hațeg Alternativ' 
-    }).addTo(map);
-
-    var points = [
-        { name: "Biserica Densuș", lat: 45.5822, lng: 22.7917 },
-        { name: "Cetatea Colț", lat: 45.4800, lng: 22.8731 },
-        { name: "Zimbrii Slivuț", lat: 45.6267, lng: 22.9556 }
-    ];
-
-    points.forEach(function(p) {
-        var customIcon = L.divIcon({className: 'custom-div-icon', html: "<div style='background-color:#9d8665; width:12px; height:12px; border-radius:50%;'></div>", iconSize: [12, 12]});
-        L.marker([p.lat, p.lng], {icon: customIcon}).addTo(map).bindPopup("<b>" + p.name + "</b>");
-    });
-</script>
+<footer style="background: var(--negru); color: white; padding: 60px 20px; text-align: center;">
+    <p>© 2026 Domeniile la Buligă</p>
+</footer>
 
 </body>
 </html>
