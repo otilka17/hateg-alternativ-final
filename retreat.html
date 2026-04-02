@@ -3,27 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Retreat Metanoia | Domeniile la Buligă</title>
+    <title>Retreat Metanoia | Cele 6 Trepte</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root { --negru: #1a1a1a; --auriu: #c5a059; --crem: #fdfcf8; }
-        body { font-family: 'Inter', sans-serif; background: var(--crem); padding-top: 130px; margin: 0; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru); padding-top: 130px; }
+
+        /* HEADER IDENTIC CU INDEX */
         .site-header { position: fixed; top: 0; width: 100%; z-index: 9999; background: #fff; border-bottom: 1px solid #eee; }
-        /* Stiluri Header identice cu Index */
         .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; }
-        .main-nav a { text-decoration: none; color: #000; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; margin-left: 20px; }
+        .main-nav a { text-decoration: none; color: var(--negru); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; margin-left: 25px; letter-spacing: 1px; }
+
+        /* HERO RETREAT */
+        .retreat-hero { height: 50vh; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('retezat.jpg') center/cover; display: flex; align-items: center; justify-content: center; color: #fff; text-align: center; }
+        .retreat-hero h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-style: italic; }
+
+        /* SCARA CELOR 6 TREPTE */
+        .scara-container { max-width: 900px; margin: -60px auto 100px; background: #fff; padding: 60px; box-shadow: 0 30px 60px rgba(0,0,0,0.05); }
+        .step-box { display: flex; margin-bottom: 50px; align-items: flex-start; border-bottom: 1px solid #f0f0f0; padding-bottom: 30px; }
+        .step-num { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--auriu); margin-right: 30px; font-weight: 700; min-width: 60px; }
+        .step-info h3 { font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px; color: var(--auriu); }
+        .step-info p { font-size: 1.1rem; line-height: 1.8; color: #444; font-weight: 300; }
         
-        .retreat-hero { height: 50vh; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('retezat.jpg') center/cover; display: flex; align-items: center; justify-content: center; color: #fff; }
-        .steps-container { max-width: 800px; margin: -50px auto 100px; background: #fff; padding: 60px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        .visual-break { width: 100%; height: 300px; background-size: cover; background-position: center; margin: 40px 0; border-radius: 2px; }
+
+        .whatsapp-float { position: fixed; bottom: 30px; left: 30px; background: #25d366; color: #fff; width: 60px; height: 60px; border-radius: 50px; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 10000; text-decoration: none; }
     </style>
 </head>
 <body>
+
     <header class="site-header">
         <div class="nav-container">
-            <a href="index.html" style="text-decoration:none; color:#000;">DOMENIILE LA BULIGĂ</a>
+            <a href="index.html" style="text-decoration:none; color:#000; font-family:'Playfair Display'; font-weight:700;">DOMENIILE LA BULIGĂ</a>
             <nav class="main-nav">
-                <a href="retreat.html">Retreat</a>
+                <a href="retreat.html" style="color:var(--auriu);">Retreat</a>
                 <a href="evenimente.html">Serata</a>
                 <a href="obiective.html">Discover</a>
                 <a href="rezervari.html">BOOK NOW</a>
@@ -31,13 +46,70 @@
         </div>
     </header>
 
+    <a href="https://wa.me/40749229686" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
+
     <section class="retreat-hero">
-        <h1 style="font-family:'Playfair Display'; font-style:italic; font-size: 3rem;">Cele 6 Trepte</h1>
+        <h1>Mini Scară Duhovnicească</h1>
     </section>
 
-    <section class="steps-container">
-        <img src="exp-lac.jpg" style="width:100%; margin-bottom:30px;">
-        <p>Scoală-te de jos și dă mărturie despre învierea ta...</p>
+    <section class="scara-container">
+        <div class="step-box">
+            <div class="step-num">01</div>
+            <div class="step-info">
+                <h3>Mărturia Învierii</h3>
+                <p>Scoală-te de jos și dă mărturie despre învierea ta celor deznădăjduiți! La Domeniile la Buligă, povestea ta devine lumină pentru alții.</p>
+            </div>
+        </div>
+
+        <div class="step-box">
+            <div class="step-num">02</div>
+            <div class="step-info">
+                <h3>Curajul de a Viza</h3>
+                <p>Îndrăznește să visezi și-i învață curajul pe cei în disperare! Folosește <strong>Carta Gândurilor</strong> pentru a-ți proiecta viitorul.</p>
+            </div>
+        </div>
+
+        <div class="visual-break" style="background-image: url('exp-lac.jpg');"></div>
+
+        <div class="step-box">
+            <div class="step-num">03</div>
+            <div class="step-info">
+                <h3>Bucuria Voioșiei</h3>
+                <p>Caută bucuria și împarte voioșie celor obosiți! Redescoperă plăcerea pașilor ușori în papucii artizanali pe potecile Hațegului.</p>
+            </div>
+        </div>
+
+        <div class="step-box">
+            <div class="step-num">04</div>
+            <div class="step-info">
+                <h3>Răspândirea Dragostei</h3>
+                <p>Învață să iubești și răspândește dragoste celor singuri! Retreat-ul nostru este despre reconectarea cu sufletul tău și cu cei dragi.</p>
+            </div>
+        </div>
+
+        <div class="visual-break" style="background-image: url('exp-fluturi.jpg');"></div>
+
+        <div class="step-box">
+            <div class="step-num">05</div>
+            <div class="step-info">
+                <h3>Gustul Frumosului</h3>
+                <p>Gustă frumosul și indică frumusețea celor care se simt murdari! Tot ce am creat, de la meniu la decor, este un tribut adus esteticii divine.</p>
+            </div>
+        </div>
+
+        <div class="step-box" style="border:none;">
+            <div class="step-num">06</div>
+            <div class="step-num" style="font-size:1.5rem; margin-left:-20px;">Lumină</div>
+            <div class="step-info">
+                <h3>Fii Pur și Simplu</h3>
+                <p>Fii pur și simplu, lumină! Aceasta este treapta finală a **Metanoiei** tale. Pleci de aici nu doar odihnit, ci transformat.</p>
+            </div>
+        </div>
     </section>
+
+    <footer style="text-align:center; padding:60px; opacity:0.6; font-size:0.8rem; letter-spacing:2px;">
+        MANIFEST METANOIA | TRIBUT PENTRU PATRICIA
+    </footer>
+
 </body>
 </html>
