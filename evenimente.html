@@ -3,72 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hațeg Alternativ | Arhitectura Liniștii</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400;1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Evenimente Signature | Domeniile la Buligă</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --negru: #0d0d0d; --auriu: #9d8665; --portocaliu: #ff4500; --alb: #ffffff; --gri-soft: #fbfbfb; }
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        body { font-family: 'Inter', sans-serif; background: var(--alb); color: var(--negru); line-height: 1.7; overflow-x: hidden; }
+        :root { --negru: #1a1a1a; --auriu: #c5a059; --crem: #fdfcf8; --alb: #ffffff; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru); line-height: 1.6; }
 
-        /* HEADER ERMES STYLE */
-        .site-header { position: fixed; top: 0; width: 100%; z-index: 5000; background: rgba(255,255,255,0.98); border-bottom: 1px solid #eee; padding: 20px 0; }
-        .nav-container { max-width: 1600px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 40px; }
-        .brand { font-weight: 700; font-size: 1.1rem; text-decoration: none; color: var(--negru); text-transform: uppercase; letter-spacing: 5px; }
-        
-        .desktop-nav { display: flex; gap: 30px; }
-        .desktop-nav a { text-decoration: none; color: var(--negru); font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; opacity: 0.6; transition: 0.3s; }
-        .desktop-nav a:hover { opacity: 1; color: var(--portocaliu); }
+        /* HEADER */
+        .site-header { position: fixed; top: 0; width: 100%; z-index: 3000; background: rgba(255,255,255,0.98); border-bottom: 1px solid rgba(0,0,0,0.05); padding: 12px 0; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 15px; }
+        .brand { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; text-decoration: none; color: var(--negru); text-transform: uppercase; letter-spacing: 1px; }
+        .main-nav a { text-decoration: none; color: var(--negru); font-size: 0.65rem; font-weight: 700; text-transform: uppercase; margin-left: 15px; letter-spacing: 1px; }
 
-        .menu-toggle { display: none; cursor: pointer; flex-direction: column; gap: 6px; z-index: 6000; }
-        .menu-toggle span { width: 30px; height: 2px; background: var(--negru); transition: 0.3s; }
-
-        .mobile-overlay { position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background: var(--alb); z-index: 5500; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: 0.5s ease; }
-        .mobile-overlay.active { right: 0; }
-        .mobile-overlay a { font-family: 'Playfair Display', serif; font-size: 2rem; text-decoration: none; color: var(--negru); margin: 15px 0; text-transform: uppercase; }
-
-        /* HERO */
-        .hero { 
-            height: 85vh; width: 100%; display: flex; align-items: center; justify-content: center; 
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.2)), url('images/IMG-20260326-WA0005.jpg') center/cover no-repeat;
-            color: white; text-align: center;
+        /* HERO EVENT */
+        .hero-events { 
+            height: 50vh; 
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/casa-boiereasca.jpg') center/cover; 
+            display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; text-align: center; 
         }
-        .hero-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 10vw, 6rem); font-style: italic; font-weight: 400; line-height: 1.1; }
+        .hero-events h1 { font-family: 'Playfair Display', serif; font-size: 3rem; font-style: italic; }
 
-        /* CONTENT */
-        .container { max-width: 1200px; margin: 0 auto; padding: 100px 25px; }
+        /* PLANIFICATOR SECTION */
+        .planner-badge { 
+            background: var(--auriu); color: white; padding: 40px 20px; text-align: center; 
+            max-width: 900px; margin: -50px auto 50px; position: relative; z-index: 10; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .planner-badge h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; letter-spacing: 2px; margin-bottom: 10px; }
 
-        .intro-text { text-align: center; max-width: 800px; margin: 0 auto 80px; }
-        .intro-text h2 { font-family: 'Playfair Display', serif; font-size: 3rem; font-style: italic; margin-bottom: 25px; font-weight: 400; }
-
-        /* COLLAGE SECTION */
-        .collage-box { width: 100%; margin-bottom: 120px; }
-        .collage-box img { width: 100%; height: auto; box-shadow: 0 30px 60px rgba(0,0,0,0.1); }
-
-        /* BINECUVÂNTARE GRID */
-        .blessing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-bottom: 150px; }
-        .img-blessing { width: 100%; height: 600px; background: url('images/IMG20260331211251.jpg') center/cover no-repeat; border-radius: 2px; }
+        /* EVENTS GRID */
+        .events-container { max-width: 1200px; margin: 0 auto; padding: 50px 15px; }
+        .event-card { 
+            display: flex; background: white; margin-bottom: 40px; border: 1px solid #eee; 
+            transition: 0.3s; overflow: hidden;
+        }
+        .event-card:hover { border-color: var(--auriu); box-shadow: 0 10px 40px rgba(0,0,0,0.05); }
+        .event-img { width: 40%; background-size: cover; background-position: center; min-height: 300px; }
+        .event-info { width: 60%; padding: 40px; display: flex; flex-direction: column; justify-content: center; }
         
-        .text-blessing span { color: var(--portocaliu); font-size: 0.75rem; letter-spacing: 4px; text-transform: uppercase; font-weight: 700; display: block; margin-bottom: 25px; }
-        .text-blessing h2 { font-family: 'Playfair Display', serif; font-size: 3.2rem; font-style: italic; font-weight: 400; margin-bottom: 30px; line-height: 1.2; }
-        
-        .quote-style { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: #444; font-style: italic; border-left: 3px solid var(--portocaliu); padding-left: 30px; margin-bottom: 40px; }
-        .quote-style p { margin-bottom: 5px; }
+        .event-price { color: var(--auriu); font-weight: 700; font-size: 1.2rem; margin: 15px 0; border-top: 1px solid #eee; padding-top: 15px; }
+        .event-details { font-size: 0.85rem; color: #666; margin-bottom: 20px; list-style: none; }
+        .event-details li::before { content: "— "; color: var(--auriu); }
 
-        /* ERMES BUTTON */
-        .btn-ermes { display: inline-block; background: var(--portocaliu); color: white; text-decoration: none; padding: 18px 45px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; transition: 0.3s; }
-        .btn-ermes:hover { background: var(--negru); transform: translateY(-3px); }
+        .btn-booking { 
+            align-self: flex-start; padding: 12px 30px; border: 1px solid var(--negru); 
+            text-decoration: none; color: var(--negru); font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; transition: 0.3s;
+        }
+        .btn-booking:hover { background: var(--negru); color: white; }
 
-        /* FOOTER */
-        .site-footer { padding: 80px 20px; background: var(--gri-soft); text-align: center; border-top: 1px solid #eee; }
-        .site-footer p { font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; color: #aaa; }
-
-        @media (max-width: 1024px) {
-            .desktop-nav { display: none; }
-            .menu-toggle { display: flex; }
-            .blessing-grid { grid-template-columns: 1fr; gap: 40px; }
-            .img-blessing { height: 400px; }
-            .text-blessing h2 { font-size: 2.5rem; }
+        @media (max-width: 768px) {
+            .event-card { flex-direction: column; }
+            .event-img, .event-info { width: 100%; }
         }
     </style>
 </head>
@@ -76,81 +61,57 @@
 
     <header class="site-header">
         <div class="nav-container">
-            <a href="index.html" class="brand">Hațeg Alternativ</a>
-            <nav class="desktop-nav">
-                <a href="obiective.html">Obiective</a>
-                <a href="gastronomie.html">Gastronomie</a>
-                <a href="experiente.html">Experiențe</a>
-                <a href="forum.html">Forum</a>
-                <a href="rezervari.html">Rezervări</a>
+            <a href="index.html" class="brand">Domeniile la Buligă</a>
+            <nav class="main-nav">
+                <a href="obiective.html">Discover</a>
+                <a href="rezervari.html">Book Now</a>
             </nav>
-            <div class="menu-toggle" id="mobile-menu">
-                <span></span><span></span><span></span>
-            </div>
         </div>
     </header>
 
-    <div class="mobile-overlay" id="overlay">
-        <a href="index.html">Acasă</a>
-        <a href="obiective.html">Obiective</a>
-        <a href="gastronomie.html">Gastronomie</a>
-        <a href="experiente.html">Experiențe</a>
-        <a href="forum.html">Forum</a>
-        <a href="rezervari.html">Rezervări</a>
-    </div>
-
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Simte.<br>Descoperă.</h1>
-        </div>
+    <section class="hero-events">
+        <h1>Momente de Colecție</h1>
+        <p style="letter-spacing: 3px; text-transform: uppercase; font-size: 0.7rem; margin-top: 10px;">Exclusivitate în Inima Hațegului</p>
     </section>
 
-    <div class="container">
+    <div class="planner-badge">
+        <h2>SOLUȚII COMPLETE</h2>
+        <p>Dispunem de <strong>Planificator de Evenimente Atestat</strong>. Ne ocupăm de fiecare detaliu, de la decoruri la meniuri personalizate, pentru ca tu să fii doar invitat la propriul tău eveniment.</p>
+    </div>
+
+    <section class="events-container">
         
-        <div class="intro-text">
-            <h2>Arhitectura Liniștii.</h2>
-            <p>O fuziune între patrimoniu, design și ospitalitate onestă în inima Transilvaniei.</p>
-        </div>
-
-        <div class="collage-box">
-            <img src="collage-final.png" alt="Hațeg Alternativ Collage">
-        </div>
-
-        <div class="blessing-grid">
-            <div class="img-blessing"></div>
-            <div class="text-blessing">
-                <span>BINECUVÂNTAREA CASEI ȘI FAMILIEI</span>
-                <h2>Esența sufletului hațegan</h2>
-                
-                <div class="quote-style">
-                    <p>Unde-i credință, acolo-i dragoste,</p>
-                    <p>Unde-i dragoste, acolo-i pace,</p>
-                    <p>Unde-i pace, acolo-i binecuvântare,</p>
-                    <p>Unde-i binecuvântare, acolo-i Dumnezeu,</p>
-                    <p>Unde-i Dumnezeu, acolo lipsă nu e!</p>
-                </div>
-
-                <a href="rezervari.html" class="btn-ermes">Vizitează-ne</a>
+        <div class="event-card">
+            <div class="event-img" style="background-image: url('images/baby-shower.jpg');"></div>
+            <div class="event-info">
+                <span style="color: var(--auriu); font-size: 0.7rem; letter-spacing: 3px; font-weight: 700;">PRIVATE CELEBRATION</span>
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; margin: 10px 0;">Botez & Baby Shower</h3>
+                <ul class="event-details">
+                    <li>Meniu gastronomic cu produse locale</li>
+                    <li>Decor floral și aranjamente Signature</li>
+                    <li>Cazare exclusivă pentru invitați</li>
+                </ul>
+                <div class="event-price">De la 350 RON / Persoană</div>
+                <a href="https://wa.me/40749229686" class="btn-booking">SOLICITĂ OFERTĂ</a>
             </div>
         </div>
 
-    </div>
+        <div class="event-card">
+            <div class="event-img" style="background-image: url('images/team-building.jpg');"></div>
+            <div class="event-info">
+                <span style="color: var(--auriu); font-size: 0.7rem; letter-spacing: 3px; font-weight: 700;">CORPORATE RETREAT</span>
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; margin: 10px 0;">Team Building & Workshop</h3>
+                <ul class="event-details">
+                    <li>Sesiuni de strategie în natură</li>
+                    <li>Expediții cu Jeep-ul în Retezat</li>
+                    <li>Degustări de vin "La Bunica" și foc de tabără</li>
+                </ul>
+                <div class="event-price">Pachete Personalizate</div>
+                <a href="https://wa.me/40749229686" class="btn-booking">DETALII CORPORATE</a>
+            </div>
+        </div>
 
-    <footer class="site-footer">
-        <p>© 2026 HAȚEG ALTERNATIV — CURATED EXPERIENCES</p>
-    </footer>
-
-    <script>
-        const menuToggle = document.getElementById('mobile-menu');
-        const overlay = document.getElementById('overlay');
-        menuToggle.addEventListener('click', () => {
-            overlay.classList.toggle('active');
-            const spans = menuToggle.getElementsByTagName('span');
-            spans[0].style.transform = overlay.classList.contains('active') ? 'rotate(45deg) translate(5px, 5px)' : 'none';
-            spans[1].style.opacity = overlay.classList.contains('active') ? '0' : '1';
-            spans[2].style.transform = overlay.classList.contains('active') ? 'rotate(-45deg) translate(7px, -7px)' : 'none';
-        });
-    </script>
+    </section>
 
 </body>
 </html>
