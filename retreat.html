@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Retreat Metanoia | Cele 6 Trepte</title>
+    <title>Retreat Metanoia | Mini Scara Duhovnicească</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -11,34 +11,49 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru); padding-top: 130px; }
 
-        /* HEADER IDENTIC CU INDEX */
+        /* HEADER IDENTIC CU INDEX PENTRU UNITATE DE BRAND */
         .site-header { position: fixed; top: 0; width: 100%; z-index: 9999; background: #fff; border-bottom: 1px solid #eee; }
+        .top-announcement { background: var(--auriu); color: #fff; text-align: center; padding: 8px 0; font-size: 0.6rem; letter-spacing: 3px; font-weight: 700; text-transform: uppercase; }
         .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; }
+        .brand-logo { text-decoration: none; color: var(--negru); font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; letter-spacing: 2px; }
+        .brand-logo span { display: block; font-size: 0.55rem; color: var(--auriu); letter-spacing: 3px; font-weight: 400; font-family: 'Inter', sans-serif; margin-top: 2px; }
         .main-nav a { text-decoration: none; color: var(--negru); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; margin-left: 25px; letter-spacing: 1px; }
 
-        /* HERO RETREAT */
+        /* HERO RETREAT (Imaginea autentică cu Muntele Retezat) */
         .retreat-hero { height: 50vh; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('retezat.jpg') center/cover; display: flex; align-items: center; justify-content: center; color: #fff; text-align: center; }
-        .retreat-hero h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-style: italic; }
+        .retreat-hero h1 { font-family: 'Playfair Display', serif; font-size: 3rem; font-style: italic; font-weight: 400; text-shadow: 2px 2px 10px rgba(0,0,0,0.2); }
 
         /* SCARA CELOR 6 TREPTE */
-        .scara-container { max-width: 900px; margin: -60px auto 100px; background: #fff; padding: 60px; box-shadow: 0 30px 60px rgba(0,0,0,0.05); }
-        .step-box { display: flex; margin-bottom: 50px; align-items: flex-start; border-bottom: 1px solid #f0f0f0; padding-bottom: 30px; }
-        .step-num { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--auriu); margin-right: 30px; font-weight: 700; min-width: 60px; }
-        .step-info h3 { font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 15px; color: var(--auriu); }
-        .step-info p { font-size: 1.1rem; line-height: 1.8; color: #444; font-weight: 300; }
-        
-        .visual-break { width: 100%; height: 300px; background-size: cover; background-position: center; margin: 40px 0; border-radius: 2px; }
+        .scara-container { max-width: 800px; margin: -60px auto 100px; background: #fff; padding: 60px; box-shadow: 0 30px 60px rgba(0,0,0,0.05); position: relative; z-index: 10; border: 1px solid #eee; }
+        .steps-header { text-align: center; margin-bottom: 50px; }
+        .steps-header span { color: var(--auriu); letter-spacing: 5px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; }
+        .steps-header h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-top: 10px; font-style: italic; }
+
+        .step-item { display: flex; align-items: flex-start; margin-bottom: 40px; padding-bottom: 30px; border-bottom: 1px solid #f9f9f9; }
+        .step-number { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--auriu); margin-right: 30px; font-weight: 700; min-width: 50px; }
+        .step-content h3 { font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; color: var(--negru); }
+        .step-content p { font-size: 1rem; color: #666; font-weight: 300; }
 
         .whatsapp-float { position: fixed; bottom: 30px; left: 30px; background: #25d366; color: #fff; width: 60px; height: 60px; border-radius: 50px; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 10000; text-decoration: none; }
+
+        @media (max-width: 768px) {
+            .steps-container { margin: 20px; padding: 30px; }
+            .step-item { flex-direction: column; }
+            .step-number { margin-bottom: 10px; }
+            body { padding-top: 170px; }
+        }
     </style>
 </head>
 <body>
 
+    <a href="https://wa.me/40749229686" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
+
     <header class="site-header">
+        <div class="top-announcement">1 MAI 2026: LANSAREA MANIFEST METANOIA | TRIBUT PENTRU PATRICIA</div>
         <div class="nav-container">
-            <a href="index.html" style="text-decoration:none; color:#000; font-family:'Playfair Display'; font-weight:700;">DOMENIILE LA BULIGĂ</a>
+            <a href="index.html" class="brand-logo">HAȚEG ALTERNATIV<span>METANOIA RETREAT @ LA BULIGĂ</span></a>
             <nav class="main-nav">
-                <a href="retreat.html" style="color:var(--auriu);">Retreat</a>
+                <a href="retreat.html" style="color:var(--auriu);">Metanoia</a>
                 <a href="evenimente.html">Serata</a>
                 <a href="obiective.html">Discover</a>
                 <a href="rezervari.html">BOOK NOW</a>
@@ -46,69 +61,72 @@
         </div>
     </header>
 
-    <a href="https://wa.me/40749229686" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
-
     <section class="retreat-hero">
         <h1>Mini Scară Duhovnicească</h1>
     </section>
 
     <section class="scara-container">
-        <div class="step-box">
-            <div class="step-num">01</div>
-            <div class="step-info">
+        <div class="steps-header">
+            <span>UN TRIBUT PENTRU PATRICIA</span>
+            <h2>6 Trepte spre Înviere</h2>
+            <p style="margin-top: 20px; font-style: italic; color: #888;">Inspirat de îndemnurile PS Benedict</p>
+        </div>
+
+        <div class="step-item">
+            <div class="step-number">01</div>
+            <div class="step-content">
                 <h3>Mărturia Învierii</h3>
-                <p>Scoală-te de jos și dă mărturie despre învierea ta celor deznădăjduiți! La Domeniile la Buligă, povestea ta devine lumină pentru alții.</p>
+                <p>Scoală-te de jos și dă mărturie despre biruința ta asupra "Golgotei" personale. La Domeniile la Buligă, tăcerea munților devine vocea ta.</p>
             </div>
         </div>
 
-        <div class="step-box">
-            <div class="step-num">02</div>
-            <div class="step-info">
-                <h3>Curajul de a Viza</h3>
-                <p>Îndrăznește să visezi și-i învață curajul pe cei în disperare! Folosește <strong>Carta Gândurilor</strong> pentru a-ți proiecta viitorul.</p>
+        <div class="step-box" style="margin-bottom:50px;">
+             <img src="carta-jurnal.jpg" style="width:100%; border-radius: 2px; box-shadow: 10px 10px 0 var(--auriu); margin: 30px 0;">
+        </div>
+
+        <div class="step-item">
+            <div class="step-number">02</div>
+            <div class="step-content">
+                <h3>Curajul de a Visa</h3>
+                <p>Învață curajul în fața disperării. Scrie-ți viitoarele victorii în **Carta Gândurilor** (jurnalul artizanal creat în fabrica noastră).</p>
             </div>
         </div>
 
-        <div class="visual-break" style="background-image: url('exp-lac.jpg');"></div>
-
-        <div class="step-box">
-            <div class="step-num">03</div>
-            <div class="step-info">
+        <div class="step-item">
+            <div class="step-number">03</div>
+            <div class="step-content">
                 <h3>Bucuria Voioșiei</h3>
-                <p>Caută bucuria și împarte voioșie celor obosiți! Redescoperă plăcerea pașilor ușori în papucii artizanali pe potecile Hațegului.</p>
+                <p>Caută bucuria simplă și împarte-o celor obosiți. O masă caldă, un pahar de vin și pași ușori prin iarba crudă în papucii artizanali.</p>
             </div>
         </div>
 
-        <div class="step-box">
-            <div class="step-num">04</div>
-            <div class="step-info">
+        <div class="step-item">
+            <div class="step-number">04</div>
+            <div class="step-content">
                 <h3>Răspândirea Dragostei</h3>
-                <p>Învață să iubești și răspândește dragoste celor singuri! Retreat-ul nostru este despre reconectarea cu sufletul tău și cu cei dragi.</p>
+                <p>Învățăm să iubim din nou timpul petrecut cu noi înșine și cu prietenii vechi care nu ne-au uitat în Ghetsimani.</p>
             </div>
         </div>
 
-        <div class="visual-break" style="background-image: url('exp-fluturi.jpg');"></div>
-
-        <div class="step-box">
-            <div class="step-num">05</div>
-            <div class="step-info">
+        <div class="step-item">
+            <div class="step-number">05</div>
+            <div class="step-content">
                 <h3>Gustul Frumosului</h3>
-                <p>Gustă frumosul și indică frumusețea celor care se simt murdari! Tot ce am creat, de la meniu la decor, este un tribut adus esteticii divine.</p>
+                <p>Gustă frumosul din Serata Româno-Italiană și redescoperă noblețea detaliului bine făcut, sub binecuvântarea Hațegului Alternativ.</p>
             </div>
         </div>
 
-        <div class="step-box" style="border:none;">
-            <div class="step-num">06</div>
-            <div class="step-num" style="font-size:1.5rem; margin-left:-20px;">Lumină</div>
-            <div class="step-info">
-                <h3>Fii Pur și Simplu</h3>
-                <p>Fii pur și simplu, lumină! Aceasta este treapta finală a **Metanoiei** tale. Pleci de aici nu doar odihnit, ci transformat.</p>
+        <div class="step-item" style="border:none;">
+            <div class="step-number">06</div>
+            <div class="step-content">
+                <h3>Simplitate și Lumină</h3>
+                <p>Fii pur și simplu, lumină! Finalul retreat-ului este clipa în care te întorci în lume vindecat, plin de speranță și gata de un nou început.</p>
             </div>
         </div>
     </section>
 
-    <footer style="text-align:center; padding:60px; opacity:0.6; font-size:0.8rem; letter-spacing:2px;">
-        MANIFEST METANOIA | TRIBUT PENTRU PATRICIA
+    <footer style="text-align:center; padding:60px; opacity:0.6; font-size:0.8rem; letter-spacing:2px; border-top:1px solid #eee;">
+        HAȚEG ALTERNATIV &copy; 2026 | TRIBUT PENTRU PATRICIA
     </footer>
 
 </body>
