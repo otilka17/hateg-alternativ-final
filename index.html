@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --negru: #1a1a1a; --auriu: #c5a059; --crem: #fdfcf8; --alb: #ffffff; }
+        :root { --negru: #1a1a1a; --auriu: #c5a059; --crem: #fdfcf8; --alb: #ffffff; --whatsapp: #25d366; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru); line-height: 1.6; padding-top: 130px; }
 
@@ -42,12 +42,27 @@
         .manifest-text { font-size: 1rem; line-height: 2; opacity: 0.8; margin-bottom: 30px; }
         .tribute { font-family: 'Playfair Display', serif; color: var(--auriu); font-style: italic; font-size: 1.1rem; }
 
-        /* CARTA SECTION */
-        .carta-section { padding: 100px 20px; display: flex; align-items: center; justify-content: center; gap: 60px; max-width: 1200px; margin: 0 auto; }
-        .carta-info { flex: 1; }
-        .carta-info h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; margin: 15px 0; font-style: italic; }
-        .carta-img { flex: 1; }
-        .carta-img img { width: 100%; border-radius: 2px; box-shadow: 15px 15px 0 var(--auriu); }
+        /* WHATSAPP FLOATING BUTTON */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background-color: var(--whatsapp);
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+            z-index: 10000;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); color: #fff; }
 
         /* FOOTER */
         footer { padding: 60px 20px; text-align: center; border-top: 1px solid #eee; background: #fff; }
@@ -58,11 +73,14 @@
             .nav-container { flex-direction: column; gap: 15px; }
             .main-nav { flex-wrap: wrap; justify-content: center; gap: 10px; }
             .main-nav a { margin: 0 10px; font-size: 0.65rem; }
-            .carta-section { flex-direction: column-reverse; text-align: center; }
         }
     </style>
 </head>
 <body>
+
+    <a href="https://wa.me/40749229686" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
     <header class="site-header">
         <div class="top-announcement">
@@ -101,45 +119,38 @@
             <span class="metanoia-label">MANIFEST METANOIA</span>
             <h2>Vindecarea unui suflet frânt.</h2>
             <p class="manifest-text">
-                Am învățat că din mocirla bolii se ridică cele mai puternice fundații. Domeniile la Buligă s-au construit din rugăciune și din loialitatea prietenilor vechi care nu ne-au uitat. Oferim acest refugiu celor ce caută tihnă și regenerare.
+                Am transformat mocirla bolii în fundația unui vis. Domeniile la Buligă s-au construit din rugăciune și din loialitatea prietenilor vechi care nu ne-au uitat. Oferim acest refugiu celor ce caută tihnă și regenerare.
             </p>
             <p class="tribute">In Memoriam & Tribute to Patricia</p>
-        </div>
-    </section>
-
-    <section class="carta-section">
-        <div class="carta-info">
-            <span style="letter-spacing: 3px; font-size: 0.7rem; color: var(--auriu); font-weight: 700;">EDIȚIE SIGNATURE</span>
-            <h2>Carta Gândurilor</h2>
-            <p>Un jurnal artizanal creat în fabrica unde lucrez, cu file dictando nostalgice și legătură manuală. Spațiul sacru unde miracolele tale devin rânduri scrise.</p>
-            <br>
-            <a href="https://wa.me/40749229686" style="text-decoration: none; color: #1a1a1a; font-weight: 700; border-bottom: 2px solid var(--auriu); padding-bottom: 5px; font-size: 0.8rem; letter-spacing: 2px;">RESERVĂ CARTA PATRICIA</a>
-        </div>
-        <div class="carta-img">
-            <img src="images/carta-jurnal.jpg" alt="Carta Jurnal Patricia">
         </div>
     </section>
 
     <footer>
         <p class="blessing">"Tu vindeci orice suflet frânt"</p>
         <div style="font-size: 0.7rem; letter-spacing: 2px; opacity: 0.6; margin-bottom: 20px;">MANIFEST METANOIA | HAȚEG 2026</div>
-        <div class="social-icons">
-            <a href="https://wa.me/40749229686" style="color: #1a1a1a; margin: 0 15px; font-size: 1.2rem;"><i class="fab fa-whatsapp"></i></a>
-            <a href="#" style="color: #1a1a1a; margin: 0 15px; font-size: 1.2rem;"><i class="fab fa-instagram"></i></a>
-        </div>
     </footer>
 
     <script>
+        // SLIDER
         const slides = document.querySelectorAll('.slide');
         let currentSlide = 0;
-
         function nextSlide() {
             slides[currentSlide].classList.remove('active');
             currentSlide = (currentSlide + 1) % slides.length;
             slides[currentSlide].classList.add('active');
         }
+        setInterval(nextSlide, 5000);
 
-        setInterval(nextSlide, 5000); // Schimbă la 5 secunde
+        // TAWK.TO SCRIPT (ASISTENȚA LIVE)
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/YOUR_ID_HERE/default'; // AICI PUI ID-UL TĂU CÂND ÎL AI
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
     </script>
 
 </body>
