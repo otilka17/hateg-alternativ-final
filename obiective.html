@@ -3,105 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Obiective Turistice | Domeniile la Buligă</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Discover Hațeg | Hațeg Alternativ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root { --negru: #1a1a1a; --auriu: #c5a059; --crem: #fdfcf8; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru); line-height: 1.6; }
+        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru); padding-top: 140px; }
 
-        /* HEADER (Identic cu restul site-ului) */
-        .site-header { position: fixed; top: 0; width: 100%; z-index: 2000; background: white; border-bottom: 1px solid #eee; padding: 15px 0; }
-        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
-        .brand { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; text-decoration: none; color: var(--negru); }
-        .main-nav a { text-decoration: none; color: var(--negru); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-left: 25px; }
-
-        /* HERO OBIECTIVE */
-        .obj-hero { 
-            height: 60vh; 
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/exp-lac.jpg'); 
-            background-size: cover; background-position: center;
-            display: flex; align-items: center; justify-content: center; color: white; text-align: center;
-            margin-bottom: 80px; padding-top: 80px;
-        }
-        .obj-hero h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-style: italic; }
-
-        /* GRID OBIECTIVE */
-        .obj-grid { max-width: 1200px; margin: 0 auto 100px; display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; padding: 0 20px; }
+        /* HEADER IDENTIC CU INDEX */
+        .site-header { position: fixed; top: 0; width: 100%; z-index: 9999; background: #fff; border-bottom: 1px solid #eee; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; }
+        .logo-wrapper { display: flex; align-items: center; text-decoration: none; color: var(--negru); }
+        .logo-wrapper img { height: 60px; margin-right: 15px; }
+        .brand-text h1 { font-family: 'Playfair Display', serif; font-size: 1.2rem; letter-spacing: 2px; text-transform: uppercase; margin: 0; }
         
-        .obj-card { background: white; border: 1px solid #eee; overflow: hidden; transition: 0.4s; }
-        .obj-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
-        .obj-img { width: 100%; height: 250px; background-size: cover; background-position: center; }
-        .obj-content { padding: 30px; }
-        .obj-content span { color: var(--auriu); font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
-        .obj-content h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin: 10px 0 15px; }
-        .obj-content p { color: #666; font-size: 0.95rem; margin-bottom: 20px; }
-        .btn-link { color: var(--negru); text-decoration: none; font-weight: 700; font-size: 0.8rem; border-bottom: 2px solid var(--auriu); padding-bottom: 2px; }
+        /* GRID OBIECTIVE */
+        .discover-container { max-width: 1200px; margin: 0 auto; padding: 40px 20px; }
+        .intro-text { text-align: center; margin-bottom: 60px; }
+        .intro-text h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-style: italic; margin-bottom: 15px; }
+        
+        .grid-discover { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+        .card-obiectiv { background: #fff; border-radius: 2px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: 0.3s; }
+        .card-obiectiv:hover { transform: translateY(-5px); }
+        .card-img { width: 100%; height: 300px; object-fit: cover; }
+        .card-content { padding: 25px; }
+        .card-content span { color: var(--auriu); font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+        .card-content h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin: 10px 0; }
+        .card-content p { font-size: 0.95rem; color: #666; line-height: 1.6; font-weight: 300; }
 
-        @media (max-width: 768px) { .obj-hero h1 { font-size: 2.5rem; } }
+        .whatsapp-float { position: fixed; bottom: 30px; left: 30px; background: #25d366; color: #fff; width: 60px; height: 60px; border-radius: 50px; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 10000; text-decoration: none; }
+        
+        @media (max-width: 768px) { body { padding-top: 180px; } .nav-container { flex-direction: column; } }
     </style>
 </head>
 <body>
 
-<header class="site-header">
-    <div class="nav-container">
-        <a href="index.html" class="brand">DOMENIILE LA BULIGĂ</a>
-        <nav class="main-nav">
-            <a href="experiente.html">Experiențe</a>
-            <a href="rezervari.html">Rezervări</a>
-        </nav>
-    </div>
-</header>
-
-<section class="obj-hero">
-    <h1>Explorează Țara Hațegului</h1>
-</section>
-
-<div class="obj-grid">
-    <article class="obj-card">
-        <div class="obj-img" style="background-image: url('images/exp-biserica-ext.jpg');"></div>
-        <div class="obj-content">
-            <span>Istorie & Spiritualitate</span>
-            <h3>Biserica Densuș</h3>
-            <p>Cea mai veche biserică din piatră din România, un loc încărcat de mister și legende dacice.</p>
-            <a href="#" class="btn-link">Distanta: 15 min</a>
+    <header class="site-header">
+        <div class="nav-container">
+            <a href="index.html" class="logo-wrapper">
+                <img src="images/logo-liniar-transparent.png" alt="Logo">
+                <div class="brand-text"><h1>Hațeg Alternativ</h1></div>
+            </a>
+            <nav style="display:flex; gap:20px;">
+                <a href="index.html" style="text-decoration:none; color:#000; font-weight:700; font-size:0.7rem; text-transform:uppercase;">Home</a>
+                <a href="retreat.html" style="text-decoration:none; color:#000; font-weight:700; font-size:0.7rem; text-transform:uppercase;">Metanoia</a>
+            </nav>
         </div>
-    </article>
+    </header>
 
-    <article class="obj-card">
-        <div class="obj-img" style="background-image: url('images/exp-stana.jpg');"></div>
-        <div class="obj-content">
-            <span>Natură Sălbatică</span>
-            <h3>Rezervația de Zimbri</h3>
-            <p>Întâlnește cel mai mare animal european în habitatul său natural, la doar câțiva kilometri de noi.</p>
-            <a href="#" class="btn-link">Distanta: 10 min</a>
+    <a href="https://wa.me/40749229686" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
+
+    <main class="discover-container">
+        <div class="intro-text">
+            <span>EXPLORARE</span>
+            <h2>Hațegul dincolo de orizont</h2>
+            <p>Descoperă locurile care ne definesc rădăcinile, de la pietrele dacice la liniștea stanelor.</p>
         </div>
-    </article>
 
-    <article class="obj-card">
-        <div class="obj-img" style="background-image: url('images/exp-lac.jpg');"></div>
-        <div class="obj-content">
-            <span>Aventură & Drumeție</span>
-            <h3>Parcul Național Retezat</h3>
-            <p>Poarta către crestele muntoase și celebrele lacuri glaciare. O experiență unică pentru iubitorii de munte.</p>
-            <a href="#" class="btn-link">Distanta: 45 min</a>
+        <div class="grid-discover">
+            <div class="card-obiectiv">
+                <img src="images/exp-biserica-densus.jpg" class="card-img" alt="Biserica Densus">
+                <div class="card-content">
+                    <span>SPIRITUALITATE</span>
+                    <h3>Biserica Sf. Nicolae</h3>
+                    <p>O minune construită din pietre romane, locul unde timpul pare să fi încremenit într-o rugăciune eternă.</p>
+                </div>
+            </div>
+
+            <div class="card-obiectiv">
+                <img src="images/sarmisegetusaregia.jpg" class="card-img" alt="Sarmizegetusa">
+                <div class="card-content">
+                    <span>ISTORIE</span>
+                    <h3>Ulpia Traiana Sarmizegetusa</h3>
+                    <p>Fosta capitală a Daciei Romane. Explorează forumul și amfiteatrul unde s-a scris istoria poporului nostru.</p>
+                </div>
+            </div>
+
+            <div class="card-obiectiv">
+                <img src="images/feed-cetate.jpg" class="card-img" alt="Cetate">
+                <div class="card-content">
+                    <span>ARHITECTURĂ</span>
+                    <h3>Cetatea Colț</h3>
+                    <p>Ruinele legendare care l-au inspirat pe Jules Verne. O urcare spectaculoasă pentru o priveliște de neuitat.</p>
+                </div>
+            </div>
+
+            <div class="card-obiectiv">
+                <img src="images/exp-stana.jpg" class="card-img" alt="Stana">
+                <div class="card-content">
+                    <span>TRADIȚIE</span>
+                    <h3>Viața la Stână</h3>
+                    <p>Gustă brânza proaspătă și ascultă poveștile baciului, departe de zgomotul lumii moderne.</p>
+                </div>
+            </div>
+
+            <div class="card-obiectiv">
+                <img src="images/retezat.jpg" class="card-img" alt="Retezat">
+                <div class="card-content">
+                    <span>NATURĂ</span>
+                    <h3>Parcul Național Retezat</h3>
+                    <p>Tărâmul celor peste 80 de lacuri glaciare. Un loc unde cerul se oglindește în apele cristaline.</p>
+                </div>
+            </div>
+
+            <div class="card-obiectiv">
+                <img src="images/exp-biserica-padureni.jpg" class="card-img" alt="Biserica Padureni">
+                <div class="card-content">
+                    <span>ASCUNS</span>
+                    <h3>Biserica din Pădureni</h3>
+                    <p>O bijuterie ascunsă în inima pădurii, oferind liniștea necesară pentru meditație și reculegere.</p>
+                </div>
+            </div>
         </div>
-    </article>
+    </main>
 
-    <article class="obj-card">
-        <div class="obj-img" style="background-image: url('images/exp-biserica-veche.jpg');"></div>
-        <div class="obj-content">
-            <span>Arhitectură Gotică</span>
-            <h3>Castelul Corvinilor</h3>
-            <p>Unul dintre cele mai frumoase castele din lume, situat în apropiere, în orașul Hunedoara.</p>
-            <a href="#" class="btn-link">Distanta: 30 min</a>
-        </div>
-    </article>
-</div>
-
-<footer style="background: var(--negru); color: white; padding: 60px 20px; text-align: center;">
-    <p>© 2026 Domeniile la Buligă</p>
-</footer>
+    <footer style="padding: 60px; text-align: center; border-top: 1px solid #eee;">
+        <p style="font-family: 'Playfair Display', serif; font-style: italic; opacity: 0.6;">Hațeg Alternativ &copy; 2026</p>
+    </footer>
 
 </body>
 </html>
