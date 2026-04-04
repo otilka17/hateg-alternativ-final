@@ -3,98 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Experiențe | Hațeg Alternativ</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Experiențe | Hațeg Alternativ Signature</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --negru: #1a1a1a; --auriu: #c5a059; --crem: #fdfcf8; }
+        :root { --auriu: #c5a059; --alb: #ffffff; --negru: #000000; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru); padding-top: 130px; }
+        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; padding-top: 100px; }
 
-        /* HEADER UNIFICAT */
-        .site-header { position: fixed; top: 0; width: 100%; z-index: 9999; background: #fff; border-bottom: 1px solid #eee; }
-        .top-announcement { background: var(--auriu); color: #fff; text-align: center; padding: 8px 0; font-size: 0.6rem; letter-spacing: 3px; font-weight: 700; text-transform: uppercase; }
-        .nav-container { max-width: 1240px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; height: 80px; }
-        .logo-wrapper img { height: 45px; margin-right: 12px; }
-        .brand-text h1 { font-family: 'Playfair Display', serif; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; margin: 0; }
-        .main-nav a { text-decoration: none; color: var(--negru); font-size: 0.65rem; font-weight: 700; text-transform: uppercase; margin-left: 20px; letter-spacing: 1px; }
+        /* HEADER ERMES */
+        .site-header { position: fixed; top: 0; width: 100%; z-index: 1000; padding: 25px 50px; background: rgba(0,0,0,0.9); border-bottom: 1px solid #1a1a1a; display: flex; justify-content: space-between; align-items: center; }
+        .brand { font-weight: 900; letter-spacing: 4px; text-transform: uppercase; font-size: 1rem; color: #fff; text-decoration: none; }
+        .main-nav a { text-decoration: none; color: #fff; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; margin-left: 20px; opacity: 0.7; }
 
-        /* CONTENT */
-        .intro-section { text-align: center; padding: 80px 20px; }
-        .intro-section h1 { font-family: 'Playfair Display', serif; font-size: 3rem; font-style: italic; margin-bottom: 10px; }
-        .intro-section p { font-size: 0.8rem; letter-spacing: 4px; text-transform: uppercase; color: var(--auriu); }
+        /* HERO SECTION */
+        .hero-exp { text-align: center; padding: 100px 20px; border-bottom: 1px solid #1a1a1a; }
+        .hero-exp span { color: var(--auriu); font-size: 0.7rem; font-weight: 800; letter-spacing: 8px; text-transform: uppercase; }
+        .hero-exp h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 8vw, 5rem); font-weight: 900; font-style: italic; line-height: 0.9; margin: 20px 0; }
 
-        .exp-container { max-width: 1100px; margin: 0 auto; padding-bottom: 100px; }
-        .exp-row { display: flex; align-items: center; gap: 60px; margin-bottom: 80px; }
+        /* CARDS EDITORIAL */
+        .container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
+        .exp-row { display: flex; align-items: center; gap: 80px; margin-bottom: 120px; }
         .exp-row:nth-child(even) { flex-direction: row-reverse; }
         
-        .exp-img { flex: 1; height: 450px; overflow: hidden; border-bottom: 5px solid var(--auriu); }
-        .exp-img img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .exp-img { flex: 1; height: 600px; position: relative; overflow: hidden; border: 1px solid #1a1a1a; }
+        .exp-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: 0.5s; }
+        .exp-img::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.8)); }
         
-        .exp-info { flex: 1; padding: 20px; }
-        .exp-info h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 20px; }
-        .price-tag { display: inline-block; padding: 8px 15px; background: var(--negru); color: #fff; font-size: 0.75rem; font-weight: 700; margin-bottom: 20px; }
-        
-        .btn-reserve { display: inline-block; margin-top: 30px; padding: 15px 40px; border: 1px solid var(--negru); text-decoration: none; color: var(--negru); font-weight: 700; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; }
-        .btn-reserve:hover { background: var(--negru); color: #fff; }
+        .exp-info { flex: 1; }
+        .exp-info h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-style: italic; margin-bottom: 20px; }
+        .exp-info p { font-weight: 300; color: #888; font-size: 1.1rem; margin-bottom: 30px; line-height: 1.8; }
+        .price-box { font-size: 1.5rem; font-weight: 900; color: var(--auriu); border-left: 3px solid var(--auriu); padding-left: 20px; }
 
-        @media (max-width: 850px) { .exp-row { flex-direction: column !important; gap: 30px; } .exp-img { height: 300px; width: 100%; } }
+        .wa-btn { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50px; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 2000; text-decoration: none; }
+
+        @media (max-width: 900px) { .exp-row { flex-direction: column !important; } .exp-img { height: 400px; width: 100%; } }
     </style>
 </head>
 <body>
 
-    <header class="site-header">
-        <div class="top-announcement">1 MAI 2026: LANSAREA MANIFEST METANOIA | TRIBUT PATRICIA</div>
-        <div class="nav-container">
-            <a href="index.html" class="logo-wrapper">
-                <img src="images/logo-liniar-transparent.png" alt="Logo">
-                <div class="brand-text"><h1>Hațeg Alternativ</h1></div>
-            </a>
-            <nav class="main-nav">
-                <a href="retreat.html">Metanoia</a>
-                <a href="gastronomie.html">Gastronomie</a>
-                <a href="experiente.html" style="color:var(--auriu)">Ateliere</a>
-                <a href="obiective.html">Obiective</a>
-                <a href="rezervari.html" style="border: 1px solid #000; padding: 8px 15px;">RESERVATIONS</a>
-            </nav>
+<header class="site-header">
+    <a href="index.html" class="brand">HAȚEG ALTERNATIV</a>
+    <nav class="main-nav">
+        <a href="index.html">Acasă</a>
+        <a href="gastronomie.html">Gastronomie</a>
+        <a href="rezervari.html">Rezervări</a>
+    </nav>
+</header>
+
+<section class="hero-exp">
+    <span>Signature Ateliers</span>
+    <h1>Investiția în<br>Amintiri.</h1>
+</section>
+
+<div class="container">
+    <div class="exp-row">
+        <div class="exp-img"><img src="images/gast-masa-traditionala.jpg" alt="Atelier"></div>
+        <div class="exp-info">
+            <h2>Atelier de Rânduială Gastronomică</h2>
+            <p>Descoperă taina pâinii pe lespede și a zamiei cu ochi de aur. O incursiune în bucătăria transgenerațională a Hațegului.</p>
+            <div class="price-box">150 RON / PERS.</div>
         </div>
-    </header>
+    </div>
 
-    <section class="intro-section">
-        <p>Terapie prin creație</p>
-        <h1>Investiția în amintiri</h1>
-    </section>
-
-    <main class="exp-container">
-        <div class="exp-row">
-            <div class="exp-img"><img src="images/gast-masa-traditionala.jpg" alt="Atelier Gastronomic"></div>
-            <div class="exp-info">
-                <div class="price-tag">150 RON / PERSOANĂ</div>
-                <h2>Atelier Gastronomic</h2>
-                <p>Învață rânduiala pâinii calde, taina sarmalelor hațegane și rulada "La Buligă". O experiență despre gustul care vindecă.</p>
-                <a href="rezervari.html" class="btn-reserve">SOLICITĂ LOC</a>
-            </div>
+    <div class="exp-row">
+        <div class="exp-img"><img src="images/exp-fluturi.jpg" alt="Arta"></div>
+        <div class="exp-info">
+            <h2>Terapie prin Artă & Isihie</h2>
+            <p>Pictură intuitivă și Diamond Painting sub cerul liber. Transformăm diamantele minții în realitate tactilă.</p>
+            <div class="price-box">150 RON / PERS.</div>
         </div>
+    </div>
+</div>
 
-        <div class="exp-row">
-            <div class="exp-img"><img src="images/exp-fluturi.jpg" alt="Terapie prin Arta"></div>
-            <div class="exp-info">
-                <div class="price-tag">150 RON / PERSOANĂ</div>
-                <h2>Terapie prin Artă</h2>
-                <p>Pictură intuitivă și Diamond Painting pentru reglarea sistemului nervos. Transformăm diamantele minții în obiecte de colecție.</p>
-                <a href="rezervari.html" class="btn-reserve">SOLICITĂ LOC</a>
-            </div>
-        </div>
+<a href="https://wa.me/40749229686" class="wa-btn"><i class="fab fa-whatsapp"></i></a>
 
-        <div class="exp-row">
-            <div class="exp-img"><img src="images/retezat.jpg" alt="Tur Ghidat"></div>
-            <div class="exp-info">
-                <div class="price-tag">350 RON / GRUP</div>
-                <h2>Tur Ghidat Gonomad</h2>
-                <p>Explorare personalizată a Țării Hațegului. Descoperim împreună locuri neștiute și isihia munților Retezat.</p>
-                <a href="rezervari.html" class="btn-reserve">SOLICITĂ LOC</a>
-            </div>
-        </div>
-    </main>
-
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{};
+    (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true; s1.src='https://embed.tawk.to/642944b54247f20fefea97df/1gsvek60a';
+        s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+    })();
+</script>
 </body>
 </html>
