@@ -3,66 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hațeg Alternativ | Moștenirea de Aur</title>
+    <title>Hațeg Alternativ | Signature Dark</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --auriu: #c5a059; --alb: #ffffff; --negru-profund: #0a0a0a; }
+        :root { --auriu: #c5a059; --alb: #ffffff; --negru: #050505; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
         body { background: #000; color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-        /* HEADER EDITORIAL */
+        /* HEADER */
         .site-header { 
             position: fixed; top: 0; width: 100%; z-index: 1000; 
-            padding: 25px 50px;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, transparent 100%);
+            padding: 20px 50px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, transparent 100%);
             display: flex; justify-content: space-between; align-items: center;
         }
         .brand { font-weight: 900; letter-spacing: 4px; text-transform: uppercase; font-size: 1rem; color: #fff; text-decoration: none; }
-        .main-nav a { text-decoration: none; color: #fff; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; margin-left: 20px; opacity: 0.8; transition: 0.3s; }
-        .main-nav a:hover { opacity: 1; color: var(--auriu); }
+        .main-nav a { text-decoration: none; color: #fff; font-size: 0.6rem; font-weight: 700; text-transform: uppercase; margin-left: 20px; opacity: 0.8; }
 
         /* HERO SLIDER */
-        .hero-slider { width: 100%; height: 100vh; position: relative; overflow: hidden; border-bottom: 1px solid #1a1a1a; }
+        .hero-slider { width: 100%; height: 100vh; position: relative; overflow: hidden; }
         .slider-track { display: flex; width: 400%; height: 100%; animation: slide-anim 24s infinite ease-in-out; }
-        .slide { width: 25%; height: 100%; background-size: cover; background-position: center; position: relative; display: flex; align-items: center; justify-content: center; }
-        .slide::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%); z-index: 1; }
-
-        .hero-content { position: relative; z-index: 2; text-align: center; max-width: 1000px; padding: 0 20px; }
-        .hero-content span { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 10px; color: var(--auriu); display: block; margin-bottom: 20px; font-weight: 800; }
-        .hero-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(3.5rem, 10vw, 7rem); font-weight: 900; font-style: italic; line-height: 0.85; margin-bottom: 30px; text-shadow: 0 10px 50px rgba(0,0,0,0.8); }
-
-        /* GRID EXPERIENTE & EVENIMENTE */
-        .section-dark { padding: 100px 50px; background: var(--negru-profund); }
-        .grid-container { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         
-        .grid-card { position: relative; height: 500px; overflow: hidden; border: 1px solid #1a1a1a; transition: 0.5s; }
-        .grid-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: 0.8s; }
-        .grid-card:hover img { transform: scale(1.1); opacity: 0.4; }
-        .grid-card:hover { border-color: var(--auriu); }
-        
-        .card-content { position: absolute; bottom: 0; left: 0; padding: 40px; z-index: 2; }
-        .card-content span { color: var(--auriu); font-size: 0.6rem; font-weight: 800; text-transform: uppercase; letter-spacing: 3px; }
-        .card-content h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-style: italic; margin-top: 10px; }
+        .slide { 
+            width: 25%; height: 100%; 
+            background-size: cover; 
+            background-position: center; 
+            position: relative; 
+            display: flex; align-items: center; justify-content: center; 
+        }
+
+        /* UMBRA ERMES (VIGNETTE) */
+        .slide::after {
+            content: '';
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%);
+            z-index: 1;
+        }
+
+        .hero-content { position: relative; z-index: 2; text-align: center; max-width: 900px; padding: 0 20px; }
+        .hero-content h1 { 
+            font-family: 'Playfair Display', serif; font-size: clamp(3.5rem, 10vw, 7rem); 
+            font-weight: 900; font-style: italic; line-height: 0.85; margin-bottom: 30px;
+        }
 
         /* SECTIUNE DOMENIU (CASA) */
-        .domeniu-section { padding: 100px 50px; display: flex; align-items: center; gap: 80px; max-width: 1400px; margin: 0 auto; flex-wrap: wrap; }
-        .domeniu-img { flex: 1; min-width: 350px; height: 600px; border: 1px solid #1a1a1a; padding: 15px; }
-        .domeniu-img img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(30%); }
-        .domeniu-text { flex: 1; min-width: 350px; }
-        .domeniu-text h2 { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-style: italic; margin-bottom: 30px; line-height: 1; }
-        .domeniu-text p { font-weight: 300; color: #888; margin-bottom: 30px; line-height: 1.8; font-size: 1.1rem; }
+        .domeniu-wrap { padding: 100px 50px; background: #000; display: flex; align-items: center; gap: 60px; max-width: 1400px; margin: 0 auto; flex-wrap: wrap; }
+        .domeniu-img { flex: 1; min-width: 350px; height: 550px; border: 1px solid #1a1a1a; padding: 10px; }
+        .domeniu-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
+        .domeniu-info { flex: 1; min-width: 350px; }
+        .domeniu-info h2 { font-family: 'Playfair Display', serif; font-size: 3rem; font-style: italic; margin-bottom: 20px; color: var(--auriu); }
+        .domeniu-info p { font-weight: 300; color: #888; font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px; }
 
-        /* WHATSAPP FLOAT */
-        .wa-float { 
+        /* FLOATING WHATSAPP */
+        .wa-button { 
             position: fixed; bottom: 30px; right: 30px; 
             background: #25d366; color: white; width: 60px; height: 60px; 
-            border-radius: 50px; display: flex; align-items: center; justify-content: center; 
-            font-size: 30px; z-index: 2000; text-decoration: none; box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            transition: 0.3s;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; 
+            font-size: 28px; z-index: 9999; text-decoration: none; box-shadow: 0 10px 25px rgba(0,0,0,0.3);
         }
-        .wa-float:hover { transform: scale(1.1); background: var(--auriu); }
 
         @keyframes slide-anim {
             0%, 20% { transform: translateX(0); }
@@ -72,11 +71,7 @@
             100% { transform: translateX(0); }
         }
 
-        @media (max-width: 992px) {
-            .site-header { padding: 20px; flex-direction: column; gap: 15px; }
-            .domeniu-section { flex-direction: column; gap: 40px; padding: 50px 20px; }
-            .domeniu-img { width: 100%; height: 400px; }
-        }
+        @media (max-width: 768px) { .domeniu-wrap { padding: 50px 20px; flex-direction: column; } .domeniu-img { height: 350px; width: 100%; } }
     </style>
 </head>
 <body>
@@ -87,89 +82,40 @@
             <a href="retreat.html">Metanoia</a>
             <a href="gastronomie.html">Gastronomie</a>
             <a href="experiente.html">Ateliere</a>
-            <a href="evenimente.html">Evenimente</a>
-            <a href="rezervari.html" style="border: 1px solid #fff; padding: 5px 10px;">Reservations</a>
+            <a href="rezervari.html">Reservations</a>
         </nav>
     </header>
 
     <section class="hero-slider">
         <div class="slider-track">
-            <div class="slide" style="background-image: url('transgenerational.png');">
-                <div class="hero-content">
-                    <span>DOMENIILE LA BULIGĂ</span>
-                    <h1>Simte.<br>Explorează.<br>Trăiește.</h1>
-                </div>
+            <div class="slide" style="background-image: url('images/transgenerational.png');">
+                <div class="hero-content"><h1>Simte.<br>Trăiește.</h1></div>
             </div>
-            <div class="slide" style="background-image: url('ciorba-aurie.jpg');">
-                <div class="hero-content">
-                    <span>PUNCT GASTRONOMIC</span>
-                    <h1>Aurul<br>Lichid.</h1>
-                </div>
+            <div class="slide" style="background-image: url('images/ciorba-aurie.jpg');">
+                <div class="hero-content"><h1>Aurul<br>Lichid.</h1></div>
             </div>
             <div class="slide" style="background-image: url('images/retezat.jpg');">
-                <div class="hero-content">
-                    <span>RETEZAT</span>
-                    <h1>Terapia<br>Isihiei.</h1>
-                </div>
+                <div class="hero-content"><h1>Terapia<br>Isihiei.</h1></div>
             </div>
-            <div class="slide" style="background-image: url('images/hero-eveniment.jpg');"> <div class="hero-content">
-                    <span>SIGNATURE EVENTS</span>
-                    <h1>Momente<br>De Colecție.</h1>
-                </div>
+            <div class="slide" style="background-image: url('images/exp-fluturi.jpg');">
+                <div class="hero-content"><h1>Diamantele<br>Minții.</h1></div>
             </div>
         </div>
     </section>
 
-    <section class="domeniu-section">
+    <section class="domeniu-wrap">
         <div class="domeniu-img">
-            <img src="images/casa-domeniu.jpg" alt="Domeniile la Buligă"> </div>
-        <div class="domeniu-text">
+            <img src="images/casa-domeniu.jpg" alt="Domeniile la Buligă">
+        </div>
+        <div class="domeniu-info">
             <h2>Domeniile la Buligă</h2>
-            <p>Un sanctuar al rânduielii, unde arhitectura tradițională întâlnește liniștea munților. Locația se închiriază integral, oferind oaspeților intimitate totală pentru pelerinajul lor interior.</p>
-            <p>Organizăm <strong>evenimente private și corporate</strong>, transformând fiecare întâlnire într-un manifest al rafinamentului și al isihiei.</p>
-            <a href="contact.html" style="color:var(--auriu); text-transform:uppercase; font-size:0.7rem; font-weight:900; letter-spacing:2px; text-decoration:none; border-bottom: 1px solid var(--auriu);">Solicită o ofertă de eveniment</a>
+            <p>Un sanctuar al rânduielii și al intimității. Locația noastră se închiriază în regim integral pentru a vă oferi libertatea totală de a explora liniștea.</p>
+            <p>De la evenimente private exclusiviste, până la retrageri corporate de tip <em>Metanoia</em>, aici timpul lucrează în favoarea dumneavoastră.</p>
+            <a href="rezervari.html" style="color:var(--auriu); text-transform:uppercase; font-size:0.7rem; font-weight:900; letter-spacing:2px; text-decoration:none; border-bottom:1px solid var(--auriu);">Solicită rezervare integrală</a>
         </div>
     </section>
 
-    <section class="section-dark">
-        <div class="grid-container">
-            <div class="grid-card">
-                <a href="gastronomie.html">
-                    <img src="images/gast-masa-traditionala.jpg" alt="Gastro">
-                    <div class="card-content">
-                        <span>Punct Gastronomic</span>
-                        <h3>Rânduiala Gustului</h3>
-                    </div>
-                </a>
-            </div>
-            <div class="grid-card">
-                <a href="experiente.html">
-                    <img src="images/exp-fluturi.jpg" alt="Ateliere">
-                    <div class="card-content">
-                        <span>Ateliere Creative</span>
-                        <h3>Diamantele Minții</h3>
-                    </div>
-                </a>
-            </div>
-            <div class="grid-card">
-                <a href="evenimente.html">
-                    <img src="images/feed-buliga.jpg" alt="Evenimente">
-                    <div class="card-content">
-                        <span>Evenimente Signature</span>
-                        <h3>Momente de Colecție</h3>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <footer style="padding: 60px; text-align: center; opacity: 0.3; font-size: 0.6rem; letter-spacing: 2px;">
-        HAȚEG ALTERNATIV &copy; 2026 | TRIBUT PATRICIA | MANIFEST METANOIA
-    </footer>
-
-    <a href="https://wa.me/40749229686" class="wa-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <a href="https://wa.me/40749229686" class="wa-button" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
     <script type="text/javascript">
         var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
@@ -180,5 +126,6 @@
             s0.parentNode.insertBefore(s1,s0);
         })();
     </script>
+
 </body>
-</html>
+</html> 
