@@ -2,104 +2,60 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <title>Panou Control | Rezervări Live</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <title>Admin | Hațeg Alternativ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --verde: #1b3022; --auriu: #c5a059; --crem: #fdfcf8; }
-        body { font-family: 'Inter', sans-serif; background: var(--crem); padding: 40px; color: var(--verde); }
-        .container { max-width: 1200px; margin: 0 auto; }
-        .header-admin { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; }
-        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 30px; }
-        .stat-card { background: white; padding: 25px; border-radius: 12px; border: 1px solid #eee; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.02); }
-        .stat-card span { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: #888; }
-        .stat-card strong { font-size: 2rem; display: block; margin-top: 10px; color: var(--verde); }
-        table { width: 100%; background: white; border-collapse: collapse; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        th { background: #fafafa; padding: 18px; border-bottom: 2px solid #eee; text-align: left; font-size: 0.9rem; }
-        td { padding: 18px; border-bottom: 1px solid #f8f8f8; font-size: 0.95rem; }
-        .badge { padding: 6px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 700; background: #fff7ed; color: #c2410c; border: 1px solid #ffedd5; }
-        .btn-refresh { background: var(--verde); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: 700; }
+        body { font-family: 'Inter', sans-serif; padding: 40px; background: #f9f9f9; }
+        table { width: 100%; border-collapse: collapse; background: #fff; }
+        th, td { padding: 15px; border: 1px solid #eee; text-align: left; font-size: 0.9rem; }
+        th { background: #c5a059; color: white; }
+        .status-nou { background: #e3f2fd; color: #1976d2; padding: 4px 8px; border-radius: 4px; font-weight: bold; }
     </style>
 </head>
 <body>
-<div class="container">
-    <div class="header-admin">
-        <div>
-            <h1 style="font-family:'Playfair Display'; font-style:italic; font-size: 2.5rem;">Gestiune Rezervări</h1>
-            <p>Date sincronizate din Google Sheets</p>
-        </div>
-        <div style="text-align: right;">
-            <button onclick="loadAdminData()" class="btn-refresh">Actualizează Date</button><br><br>
-            <a href="index.html" style="text-decoration:none; color:var(--auriu); font-weight:700;">← Pagina Principală</a>
-        </div>
-    </div>
-
-    <div class="stats-grid">
-        <div class="stat-card"><span>Cereri înregistrate</span><strong id="statCount">0</strong></div>
-        <div class="stat-card"><span>Estimări Venituri</span><strong id="statMoney" style="color:var(--auriu)">0 RON</strong></div>
-        <div class="stat-card"><span>Status Conexiune</span><strong style="font-size:1.1rem; color: #15803d;" id="statStatus">Sincronizat</strong></div>
-    </div>
-
-    <table>
+    <h1 style="margin-bottom:30px;">Panou Administrare Rezervări</h1>
+    <table id="tabel-admin">
         <thead>
             <tr>
-                <th>Dată Cerere</th>
-                <th>Oaspete / Telefon</th>
+                <th>Data Rezervării</th>
+                <th>Client</th>
+                <th>Telefon</th>
                 <th>Sejur</th>
-                <th>Valoare</th>
+                <th>Total</th>
                 <th>Status</th>
             </tr>
         </thead>
-        <tbody id="adminTableBody">
-            <tr><td colspan="5" style="text-align:center; padding:60px; color: #888;">Se conectează la baza de date...</td></tr>
+        <tbody id="lista-rezervari">
+            <tr><td colspan="6">Se încarcă datele...</td></tr>
         </tbody>
     </table>
-</div>
 
-<script>
-    const ADMIN_API_URL = "https://script.google.com/macros/s/AKfycbxzO-cS84CzBbtzYceD4JmsGvMjaprKMqtdnowAC_KYBZxqrbYv1I81winZjuIW2LhU/exec";
-
-    async function loadAdminData() {
-        try {
-            document.getElementById('statStatus').innerText = "Se încarcă...";
-            const res = await fetch(ADMIN_API_URL + "?action=read"); // Sau doar URL-ul dacă doGet trimite direct datele
-            const data = await res.json();
-            
-            const tbody = document.getElementById('adminTableBody');
-            tbody.innerHTML = "";
-
-            let totalIncasari = 0;
-
-            data.forEach(item => {
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <td><span style="opacity:0.6">${item.data || '-'}</span></td>
-                    <td><strong>${item.nume || '-'}</strong><br><small>${item.telefon || '-'}</small></td>
-                    <td>${item.sejur || '-'} / ${item.persoane || '10'} pers.</td>
-                    <td style="font-weight:700; color:var(--verde)">${item.total || '0 RON'}</td>
-                    <td><span class="badge">${item.status || 'Nouă'}</span></td>
-                `;
-                tbody.appendChild(tr);
-
-                // Calcul sumă (eliminăm " RON" pentru a aduna)
-                let valoareNumerică = item.total ? parseInt(item.total.replace(/[^0-9]/g, '')) : 0;
-                totalIncasari += valoareNumerică;
-            });
-
-            document.getElementById('statCount').innerText = data.length;
-            document.getElementById('statMoney').innerText = totalIncasari.toLocaleString() + " RON";
-            document.getElementById('statStatus').innerText = "Live";
-
-        } catch (e) {
-            console.error(e);
-            document.getElementById('adminTableBody').innerHTML = "<tr><td colspan='5' style='color:red; text-align:center; padding: 40px;'>Eroare la preluarea datelor. Verifică scriptul Google.</td></tr>";
-            document.getElementById('statStatus').innerText = "Eroare";
+    <script>
+        async function incarcaDate() {
+            const scriptURL = 'PUNE_AICI_URL_UL_TAU_DE_LA_DEPLOY';
+            try {
+                const response = await fetch(scriptURL);
+                const date = await response.json();
+                
+                let html = '';
+                date.forEach(r => {
+                    html += `
+                        <tr>
+                            <td>${r.data}</td>
+                            <td>${r.nume}</td>
+                            <td>${r.telefon}</td>
+                            <td>${r.sejur}</td>
+                            <td>${r.total}</td>
+                            <td><span class="status-nou">${r.status}</span></td>
+                        </tr>
+                    `;
+                });
+                document.getElementById('lista-rezervari').innerHTML = html;
+            } catch (e) {
+                document.getElementById('lista-rezervari').innerHTML = 'Eroare la încărcare.';
+            }
         }
-    }
-
-    // Încarcă la pornire
-    loadAdminData();
-    // Reîmprospătare la fiecare 60 secunde
-    setInterval(loadAdminData, 60000);
-</script>
+        incarcaDate();
+    </script>
 </body>
 </html>
