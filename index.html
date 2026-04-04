@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hațeg Alternativ | Moștenirea de Aur & Terapie Vagală</title>
+    <title>Hațeg Alternativ | Manifest Metanoia</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
@@ -14,57 +14,44 @@
         /* HEADER */
         .site-header { position: fixed; top: 0; width: 100%; z-index: 9999; background: #fff; border-bottom: 1px solid #eee; }
         .top-announcement { background: var(--auriu); color: #fff; text-align: center; padding: 8px 0; font-size: 0.6rem; letter-spacing: 3px; font-weight: 700; text-transform: uppercase; }
-        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; }
+        .nav-container { max-width: 1240px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; }
         
         .logo-wrapper { display: flex; align-items: center; text-decoration: none; color: var(--negru); }
         .logo-wrapper img { height: 60px; width: auto; margin-right: 15px; }
-        .brand-text { display: flex; flex-direction: column; }
         .brand-text h1 { font-family: 'Playfair Display', serif; font-size: 1.1rem; letter-spacing: 2px; text-transform: uppercase; margin: 0; }
         .brand-text span { font-size: 0.55rem; color: var(--auriu); letter-spacing: 2px; }
 
-        .main-nav { display: flex; align-items: center; gap: 20px; }
-        .main-nav a { text-decoration: none; color: var(--negru); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
-        .cta-nav { border: 1px solid var(--negru); padding: 10px 15px; font-weight: 700; transition: all 0.3s ease; }
-        .cta-nav:hover { background: var(--negru); color: #fff; }
+        .main-nav { display: flex; align-items: center; gap: 15px; }
+        .main-nav a { text-decoration: none; color: var(--negru); font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; }
+        .main-nav a:hover { color: var(--auriu); }
+        .cta-nav { border: 1px solid var(--negru); padding: 8px 12px; }
 
-        /* HERO BANNER - MOȘTENIREA DE AUR */
-        .trans-hero { width: 100%; position: relative; line-height: 0; text-align: center; color: #fff; border-bottom: 5px solid var(--auriu); }
+        /* BANNER */
+        .trans-hero { width: 100%; position: relative; line-height: 0; border-bottom: 5px solid var(--auriu); }
         .trans-hero img { width: 100%; height: auto; }
-        .trans-hero-content { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 3; }
-        .trans-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 7vw, 4rem); font-style: italic; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
-        .trans-hero p { letter-spacing: 5px; font-size: 0.7rem; margin-top: 10px; text-transform: uppercase; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
 
-        /* EXPERIENCES GRID */
+        /* GRID EXPERIENTE */
         .gallery-section { padding: 60px 20px; max-width: 1200px; margin: 0 auto; }
-        .gallery-title { text-align: center; font-family: 'Playfair Display', serif; font-size: 2rem; font-style: italic; margin-bottom: 10px; }
-        .grid-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .grid-item { position: relative; overflow: hidden; height: 300px; transition: transform 0.5s; border-bottom: 2px solid var(--auriu); }
-        .grid-item:hover { transform: translateY(-5px); }
-        .grid-item a { text-decoration: none; color: inherit; display: block; width: 100%; height: 100%; }
-        .grid-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
-        .grid-item:hover img { transform: scale(1.1); }
-        .grid-label { position: absolute; bottom: 20px; left: 20px; color: #fff; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; background: rgba(0,0,0,0.5); padding: 5px 10px; z-index: 5; }
+        .grid-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .grid-item { position: relative; overflow: hidden; height: 350px; border-bottom: 3px solid var(--auriu); background: #eee; }
+        .grid-item a { display: block; width: 100%; height: 100%; text-decoration: none; }
+        .grid-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; }
+        .grid-item:hover img { transform: scale(1.05); }
+        .grid-label { position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0,0,0,0.6); color: #fff; padding: 15px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
 
-        /* INFO GRID SECTION */
-        .info-grid { padding: 80px 20px; background: #fff; border-top: 1px solid #f5f5f5; }
-        .info-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; max-width: 1100px; margin: 0 auto; }
-        .info-card { padding: 30px; background: #fff; text-align: center; }
-        .info-card i { color: var(--auriu); font-size: 2rem; margin-bottom: 15px; }
-        .info-card h3 { font-family: 'Playfair Display', serif; margin-bottom: 15px; font-size: 1.3rem; }
-        .info-card p { font-size: 0.9rem; color: #666; }
-
-        /* CARTA SECTION */
+        /* CARTA */
         .carta-section { padding: 80px 20px; display: flex; align-items: center; justify-content: center; gap: 40px; max-width: 1200px; margin: 0 auto; flex-wrap: wrap; }
         .carta-info { flex: 1; min-width: 300px; }
         .carta-img { flex: 1; min-width: 300px; }
         .carta-img img { width: 100%; border-radius: 2px; box-shadow: 15px 15px 0 var(--auriu); }
 
-        /* FOOTER */
-        footer { padding: 60px 40px; text-align: center; background: #fff; border-top: 1px solid #eee; font-size: 0.7rem; }
-        .footer-social a { color: var(--negru); margin: 0 10px; font-size: 1rem; text-decoration: none; transition: color 0.3s ease; }
-        .footer-social a:hover { color: var(--auriu); }
+        footer { padding: 40px; text-align: center; font-size: 0.7rem; opacity: 0.6; }
 
-        @media (max-width: 992px) { body { padding-top: 180px; } .nav-container { flex-direction: column; } }
+        @media (max-width: 1100px) { 
+            body { padding-top: 180px; } 
+            .nav-container { flex-direction: column; gap: 15px; } 
+            .main-nav { flex-wrap: wrap; justify-content: center; }
+        }
     </style>
 </head>
 <body>
@@ -73,7 +60,7 @@
         <div class="top-announcement">1 MAI 2026: LANSAREA MANIFEST METANOIA | TRIBUT PATRICIA</div>
         <div class="nav-container">
             <a href="index.html" class="logo-wrapper">
-                <img src="logo-liniar-transparent.png" alt="Hațeg Alternativ Logo">
+                <img src="images/logo-liniar-transparent.png" alt="Logo">
                 <div class="brand-text">
                     <h1>Hațeg Alternativ</h1>
                     <span>METANOIA RETREAT @ LA BULIGĂ</span>
@@ -81,77 +68,75 @@
             </a>
             <nav class="main-nav">
                 <a href="retreat.html">Metanoia</a>
-                <a href="evenimente.html">Serata</a>
+                <a href="gastronomie.html">Gastronomie</a>
+                <a href="experiente.html">Experiențe</a>
+                <a href="evenimente.html">Evenimente</a>
+                <a href="obiective.html">Obiective</a>
+                <a href="forum.html">Forum</a>
                 <a href="rezervari.html" class="cta-nav">RESERVATIONS</a>
             </nav>
         </div>
     </header>
 
     <section class="trans-hero">
-        <img src="transgenerational.png" alt="Moștenirea de Aur - Hațeg Alternativ">
-        <div class="trans-hero-content">
-            <h1>Moștenirea de Aur</h1>
-            <p>Turism de Descoperire Culturală, Literatură și Isihie</p>
-        </div>
+        <img src="transgenerational.png" alt="Moștenirea de Aur">
     </section>
 
     <section class="gallery-section">
-        <h2 class="gallery-title">Experiențe de Suflet</h2>
-        <p style="text-align: center; color:var(--auriu); letter-spacing: 1px; font-weight:700; font-size:0.7rem; margin-bottom: 40px;">Călătoria Spre Rădăcini și Vindecare</p>
+        <h2 style="text-align: center; font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 40px; font-style: italic;">Explorează Manifestul</h2>
         <div class="grid-gallery">
+            
             <div class="grid-item">
-                <a href="retreat.html">
-                    <img src="images/exp-biserica-densus.jpg" alt="Denșuș - Rădăcini Sfinte">
-                    <div class="grid-label">Rădăcini Sfinte</div>
+                <a href="gastronomie.html">
+                    <img src="images/gast-masa-traditionala.jpg" alt="Gastronomie">
+                    <div class="grid-label">Punct Gastronomic Local</div>
                 </a>
             </div>
-            <div class="grid-item">
-                <a href="retreat.html">
-                    <img src="images/gast-masa-traditionala.jpg" alt="Gastronomie - Gustul de Lux">
-                    <div class="grid-label">Gustul de Lux</div>
-                </a>
-            </div>
-            <div class="grid-item">
-                <a href="retreat.html">
-                    <img src="images/retezat.jpg" alt="Retezat - Isihia Munților">
-                    <div class="grid-label">Isihia Munților</div>
-                </a>
-            </div>
-            <div class="grid-item">
-                <a href="retreat.html">
-                    <img src="images/exp-fluturi.jpg" alt="Natură - Metanoia">
-                    <div class="grid-label">Metanoia</div>
-                </a>
-            </div>
-        </div>
-    </section>
 
-    <section class="info-grid">
-        <div class="info-container">
-            <div class="info-card">
-                <i class="fas fa-heartbeat"></i>
-                <h3>Terapie Vagală</h3>
-                <p>Învățăm să ne reglăm sistemul nervos. De la CMH la pacea inimii, fiecare moment aici este un pas spre sănătate conștientă.</p>
+            <div class="grid-item">
+                <a href="experiente.html">
+                    <img src="images/exp-fluturi.jpg" alt="Experiente">
+                    <div class="grid-label">Experiențe și Workshop-uri</div>
+                </a>
             </div>
-            <div class="info-card">
-                <i class="fas fa-palette"></i>
-                <h3>Arta de a Trăi</h3>
-                <p>Creativitatea este limbajul prin care vindecăm traumele trecutului. "Micul tău diamant" (creația) devine terapie.</p>
+
+            <div class="grid-item">
+                <a href="obiective.html">
+                    <img src="images/exp-biserica-densus.jpg" alt="Obiective">
+                    <div class="grid-label">Obiective Turistice</div>
+                </a>
             </div>
-            <div class="info-card">
-                <i class="fas fa-seedling"></i>
-                <h3>Isihia Noastră</h3>
-                <p>Bucură-te de pacea isihastă, inspirată de moștenirea bunicii. Amin, viața a învins definitiv frica.</p>
+
+            <div class="grid-item">
+                <a href="evenimente.html">
+                    <img src="images/hero-sat.jpg" alt="Evenimente">
+                    <div class="grid-label">Serata și Evenimente</div>
+                </a>
             </div>
+
+            <div class="grid-item">
+                <a href="forum.html">
+                    <img src="images/collage-final.png" alt="Forum">
+                    <div class="grid-label">Forumul Comunității</div>
+                </a>
+            </div>
+
+            <div class="grid-item">
+                <a href="retreat.html">
+                    <img src="images/retezat.jpg" alt="Metanoia">
+                    <div class="grid-label">Metanoia Retreat</div>
+                </a>
+            </div>
+
         </div>
     </section>
 
     <section class="carta-section">
         <div class="carta-info">
             <h2 style="font-family: 'Playfair Display', serif; font-size: 2.2rem; font-style: italic; margin-bottom: 20px;">Carta Gândurilor</h2>
-            <p>Jurnalul tău artizanal, creat sub cerul Hațegului. Un spațiu sacru, de o isihie rară, unde diamantele minții tale devin nemurire.</p>
+            <p>Jurnalul tău de lux, unde isihia și diamantele minții se întâlnesc. Spațiul sacru pentru miracolele scrise.</p>
             <br>
-            <a href="https://wa.me/40749229686" style="text-decoration: none; color: #1a1a1a; font-weight: 700; border-bottom: 2px solid var(--auriu);">RESERVĂ ACUM</a>
+            <a href="https://wa.me/40749229686" style="text-decoration: none; color: #1a1a1a; font-weight: 700; border-bottom: 2px solid var(--auriu);">RESERVĂ CARTA ACUM</a>
         </div>
         <div class="carta-img">
             <img src="images/carta-jurnal.jpg" alt="Carta Jurnal">
@@ -159,11 +144,7 @@
     </section>
 
     <footer>
-        <div class="footer-social" style="margin-bottom: 20px;">
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-facebook"></i></a>
-        </div>
-        HAȚEG ALTERNATIV &copy; 2026 | TRIBUT PATRICIA | PROGRAM METANOIA
+        HAȚEG ALTERNATIV &copy; 2026 | TRIBUT PATRICIA | MANIFEST METANOIA
     </footer>
 
     <script type="text/javascript">
@@ -171,7 +152,7 @@
     (function(){
     var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
     s1.async=true;
-    s1.src='https://embed.tawk.to/642944b54247f20fefea97df/1gsvek60a'; /* AM PUS ID-UL TĂU REAL DIN PROIECT */
+    s1.src='https://embed.tawk.to/642944b54247f20fefea97df/1gsvek60a';
     s1.charset='UTF-8';
     s1.setAttribute('crossorigin','*');
     s0.parentNode.insertBefore(s1,s0);
