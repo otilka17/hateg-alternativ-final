@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rezervare | Hațeg Alternativ</title>
+    <title>Rezervare | Hațeg Alternativ Signature</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root { --auriu: #c5a059; --negru: #1a1a1a; --crem: #fdfcf8; }
@@ -14,14 +14,14 @@
         .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; height: 70px; }
         
         .res-container { max-width: 600px; margin: 40px auto; background: #fff; padding: 40px; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-top: 5px solid var(--auriu); }
-        h1 { font-family: 'Playfair Display', serif; font-style: italic; text-align: center; font-size: 2.2rem; }
+        h1 { font-family: 'Playfair Display', serif; font-style: italic; text-align: center; font-size: 2.2rem; margin-bottom: 30px; }
         
         .section-label { font-size: 0.65rem; font-weight: 800; color: var(--auriu); text-transform: uppercase; letter-spacing: 2px; margin: 20px 0 10px; display: block; }
-        input, select { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #eee; background: #fbfbfb; font-family: inherit; font-size: 0.9rem; }
-        input:focus, select:focus { border-color: var(--auriu); background: #fff; outline: none; }
+        input, select { width: 100%; padding: 15px; margin-bottom: 15px; border: 1px solid #eee; background: #fbfbfb; font-family: inherit; font-size: 0.9rem; outline: none; }
+        input:focus { border-color: var(--auriu); background: #fff; }
 
         .btn-submit { width: 100%; padding: 18px; background: var(--auriu); color: white; border: none; font-weight: 700; text-transform: uppercase; cursor: pointer; letter-spacing: 2px; transition: 0.3s; margin-top: 20px; }
-        .btn-submit:hover { background: #b08d4a; }
+        .btn-submit:disabled { background: #ccc; cursor: not-allowed; }
     </style>
 </head>
 <body>
@@ -29,43 +29,45 @@
     <header class="site-header">
         <div class="nav-container">
             <a href="index.html" style="text-decoration:none; color:#000; font-family:'Playfair Display'; font-weight:700; font-size: 1.2rem;">HAȚEG ALTERNATIV</a>
-            <nav><a href="index.html" style="text-decoration:none; color:#000; font-size:0.7rem; font-weight:700; text-transform: uppercase; letter-spacing: 1px;">← Acasă</a></nav>
+            <nav><a href="index.html" style="text-decoration:none; color:#000; font-size:0.7rem; font-weight:700; text-transform: uppercase;">← Acasă</a></nav>
         </div>
     </header>
 
     <div class="res-container">
         <h1>Rezervare Sejur</h1>
-        <p style="text-align:center; font-size: 0.7rem; color: var(--auriu); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 30px;">Casa Integrală (10 Locuri)</p>
         
-        <span class="section-label">Date de Contact</span>
-        <input type="text" id="nume" placeholder="Nume Complet" required>
-        <input type="text" id="telefon" placeholder="Telefon (WhatsApp)" required>
+        <form id="bookingForm">
+            <span class="section-label">Date de Contact</span>
+            <input type="text" id="nume" name="nume" placeholder="Nume Complet" required>
+            <input type="text" id="telefon" name="telefon" placeholder="Telefon (WhatsApp)" required>
 
-        <span class="section-label">Perioadă Sejur</span>
-        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px;">
-            <div><label style="font-size: 0.6rem;">Check-in</label><input type="date" id="checkin" required></div>
-            <div><label style="font-size: 0.6rem;">Check-out</label><input type="date" id="checkout" required></div>
-        </div>
+            <span class="section-label">Perioadă Sejur</span>
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px;">
+                <div><label style="font-size: 0.6rem;">Check-in</label><input type="date" id="checkin" name="checkin" required></div>
+                <div><label style="font-size: 0.6rem;">Check-out</label><input type="date" id="checkout" name="checkout" required></div>
+            </div>
 
-        <span class="section-label">Alege Pachetul</span>
-        <select id="pachet">
-            <option value="2000">Cazare Integrală (10 locuri) - 2000 RON</option>
-            <option value="3000">Cazare + 2 Mese (PGL) - 3000 RON</option>
-            <option value="4000">Metanoia All-Inclusive + Tururi - 4000 RON</option>
-        </select>
+            <span class="section-label">Alege Pachetul</span>
+            <select id="pachet" name="total">
+                <option value="2000">Cazare Integrală (10 locuri) - 2000 RON</option>
+                <option value="3000">Cazare + 2 Mese (PGL) - 3000 RON</option>
+                <option value="4000">Metanoia All-Inclusive - 4000 RON</option>
+            </select>
 
-        <input type="hidden" id="locatie" value="Domeniile la Buligă">
-        <input type="hidden" id="persoane" value="10">
+            <input type="hidden" id="locatie" name="locatie" value="Domeniile la Buligă">
+            <input type="hidden" id="persoane" name="persoane" value="10">
 
-        <button class="btn-submit" onclick="trimiteRezervarea()">Confirmă Rezervarea</button>
+            <button type="button" class="btn-submit" id="submitBtn" onclick="trimiteDatele()">Confirmă Rezervarea</button>
+        </form>
     </div>
 
     <script>
-        async function trimiteRezervarea() {
+        async function trimiteDatele() {
             const scriptURL = 'https://script.google.com/macros/s/AKfycbwofzsm29XJWpkSw2A5l3aC2Jz5p2NNq8LMkzptewh1yjI8M3EUZ8NLwxsGVkDDS4b_/exec';
+            const btn = document.getElementById('submitBtn');
             
-            const btn = document.querySelector('.btn-submit');
-            const data = {
+            // Preluăm datele
+            const date = {
                 nume: document.getElementById('nume').value,
                 telefon: document.getElementById('telefon').value,
                 locatie: document.getElementById('locatie').value,
@@ -75,32 +77,40 @@
                 total: document.getElementById('pachet').value + " RON"
             };
 
-            if(!data.nume || !data.telefon || !data.checkin || !data.checkout) {
-                alert("Te rugăm să completezi toate datele.");
+            // Validare simplă
+            if (!date.nume || !date.telefon || !date.checkin || !date.checkout) {
+                alert("Te rugăm să completezi toate câmpurile!");
                 return;
             }
 
-            btn.innerText = "Se trimite...";
             btn.disabled = true;
+            btn.innerText = "Se trimite...";
 
             try {
-                // Trimite la Google Sheet
+                // Trimitem la Google Sheet
                 await fetch(scriptURL, {
                     method: 'POST',
-                    mode: 'no-cors',
+                    mode: 'no-cors', 
                     cache: 'no-cache',
-                    body: JSON.stringify(data)
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(date)
                 });
 
-                // Deschide WhatsApp pentru notificare
-                const msg = `Bună ziua! Am trimis o rezervare pe site:\nNume: ${data.nume}\nPerioada: ${data.checkin} - ${data.checkout}\nTotal: ${data.total}`;
-                window.open(`https://wa.me/40749229686?text=${encodeURIComponent(msg)}`);
-                
-                alert("Mulțumim! Rezervarea a fost înregistrată în sistem.");
-                btn.innerText = "Confirmă Rezervarea";
+                // Dacă am ajuns aici, trimitem și pe WhatsApp
+                const msg = `Bună! Rezervare nouă:\nNume: ${date.nume}\nTelefon: ${date.telefon}\nPerioada: ${date.checkin} - ${date.checkout}\nTotal: ${date.total}`;
+                window.open(`https://wa.me/40749229686?text=${encodeURIComponent(msg)}`, '_blank');
+
+                alert("Rezervarea a fost trimisă cu succes! Verifică WhatsApp.");
+                document.getElementById('bookingForm').reset();
+
+            } catch (error) {
+                console.error('Eroare:', error);
+                alert("A apărut o eroare. Verifică dacă ai activat Web App în Google Script.");
+            } finally {
                 btn.disabled = false;
-            } catch (e) {
-                alert("A apărut o eroare la conexiune. Te rugăm să încerci din nou.");
                 btn.innerText = "Confirmă Rezervarea";
-                btn.disabled = false;
             }
+        }
+    </script>
+</body>
+</html>
