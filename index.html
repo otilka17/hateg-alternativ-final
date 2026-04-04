@@ -3,150 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hațeg Alternativ | Signature Experience</title>
+    <title>Hațeg Alternativ | Moștenirea de Aur</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700;1,900&family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
     <style>
-        :root { --auriu: #c5a059; --alb: #ffffff; }
+        :root { --auriu: #c5a059; --alb: #ffffff; --negru: #0a0a0a; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background: #000; 
-            color: var(--alb); 
-            overflow-x: hidden;
-        }
+        body { font-family: 'Inter', sans-serif; background: #fff; color: var(--negru); overflow-x: hidden; line-height: 1.6; }
 
-        /* HEADER TRANSPARENT (STIL ERMES) */
+        /* HEADER ERMES */
         .site-header { 
-            position: fixed; 
-            top: 0; width: 100%; 
-            z-index: 1000; 
-            padding: 30px 50px;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, transparent 100%);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            position: fixed; top: 0; width: 100%; z-index: 1000; padding: 20px 50px;
+            background: rgba(255,255,255,0.95); backdrop-filter: blur(15px);
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
-        .brand { 
-            font-family: 'Inter', sans-serif; 
-            font-weight: 900; 
-            letter-spacing: 5px; 
-            text-transform: uppercase; 
-            font-size: 1.2rem;
-            text-decoration: none;
-            color: #fff;
-        }
-        .brand span { display: block; font-size: 0.5rem; letter-spacing: 2px; font-weight: 400; opacity: 0.7; }
+        .brand { font-weight: 900; letter-spacing: 4px; text-transform: uppercase; font-size: 1rem; text-decoration: none; color: var(--negru); }
+        .main-nav a { text-decoration: none; color: var(--negru); font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-left: 20px; }
+        .cta-nav { border: 1px solid var(--negru); padding: 8px 15px !important; }
 
-        .main-nav { display: flex; gap: 25px; }
-        .main-nav a { 
-            text-decoration: none; 
-            color: #fff; 
-            font-size: 0.65rem; 
-            font-weight: 700; 
-            text-transform: uppercase; 
-            letter-spacing: 1px;
-            opacity: 0.8;
-            transition: 0.3s;
-        }
-        .main-nav a:hover { opacity: 1; color: var(--auriu); }
-
-        /* HERO SLIDER FULLSCREEN */
-        .hero-slider {
-            width: 100%;
-            height: 100vh;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .slider-track {
-            display: flex;
-            width: 400%; /* Pentru 4 imagini */
-            height: 100%;
-            animation: slide-anim 24s infinite ease-in-out;
-        }
-
-        .slide {
-            width: 25%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* UMBRA PROFUNDĂ (STIL ERMES) */
+        /* HERO SLIDER (UMBRĂ + TEXT) */
+        .hero-slider { width: 100%; height: 95vh; position: relative; overflow: hidden; background: #000; }
+        .slider-track { display: flex; width: 400%; height: 100%; animation: slide-anim 24s infinite ease-in-out; }
+        .slide { width: 25%; height: 100%; background-size: cover; background-position: center; position: relative; display: flex; align-items: center; justify-content: center; }
         .slide::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(
-                45deg, 
-                rgba(0,0,0,0.8) 0%, 
-                rgba(0,0,0,0.3) 50%, 
-                rgba(0,0,0,0.8) 100%
-            );
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.8) 100%);
             z-index: 1;
         }
+        .hero-content { position: relative; z-index: 2; text-align: center; color: #fff; max-width: 900px; }
+        .hero-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 8vw, 6rem); font-weight: 900; font-style: italic; line-height: 0.8; margin: 25px 0; }
+        .hero-content span { font-size: 0.7rem; letter-spacing: 10px; color: var(--auriu); text-transform: uppercase; font-weight: 800; }
 
-        /* TEXTUL BOLD SI IMPUNATOR */
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            max-width: 900px;
-            padding: 0 20px;
-        }
+        /* INFO INTEGRAL */
+        .section-info { padding: 100px 20px; text-align: center; background: #fff; }
+        .section-info h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-style: italic; margin-bottom: 20px; color: var(--auriu); }
+        .section-info p { max-width: 700px; margin: 0 auto; font-size: 1.1rem; font-weight: 300; }
 
-        .hero-content span { 
-            font-size: 0.7rem; 
-            text-transform: uppercase; 
-            letter-spacing: 8px; 
-            color: var(--auriu); 
-            display: block; 
-            margin-bottom: 20px;
-            font-weight: 800;
-        }
+        /* GRID EXPERIENTE */
+        .grid-section { padding: 40px 20px 100px; max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 30px; }
+        .grid-item { position: relative; height: 500px; overflow: hidden; background: #000; border-bottom: 4px solid var(--auriu); }
+        .grid-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.8s; opacity: 0.7; }
+        .grid-item:hover img { transform: scale(1.05); opacity: 0.4; }
+        .grid-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; color: #fff; text-align: center; }
+        .grid-overlay h3 { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-style: italic; }
 
-        .hero-content h1 { 
-            font-family: 'Playfair Display', serif; 
-            font-size: clamp(3rem, 8vw, 6rem); 
-            font-weight: 900; 
-            font-style: italic;
-            line-height: 0.9;
-            margin-bottom: 30px;
-            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        .hero-content p {
-            font-size: 1.1rem;
-            font-weight: 300;
-            max-width: 600px;
-            margin: 0 auto 40px;
-            opacity: 0.9;
-            letter-spacing: 1px;
-        }
-
-        .btn-lux {
-            display: inline-block;
-            padding: 20px 45px;
-            border: 1px solid rgba(255,255,255,0.3);
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(10px);
-            color: #fff;
-            text-decoration: none;
-            font-size: 0.7rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            transition: 0.4s;
-        }
-        .btn-lux:hover {
-            background: #fff;
-            color: #000;
-        }
+        /* CARTA GANDURILOR */
+        .carta-section { padding: 100px 20px; display: flex; align-items: center; gap: 60px; max-width: 1200px; margin: 0 auto; flex-wrap: wrap; }
+        .carta-text { flex: 1; min-width: 350px; }
+        .carta-img { flex: 1; min-width: 350px; }
+        .carta-img img { width: 100%; border-radius: 2px; box-shadow: 30px 30px 0 var(--auriu); }
 
         @keyframes slide-anim {
             0%, 20% { transform: translateX(0); }
@@ -156,74 +61,69 @@
             100% { transform: translateX(0); }
         }
 
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .site-header { padding: 20px; flex-direction: column; gap: 15px; }
-            .hero-content h1 { font-size: 3.5rem; }
-            .main-nav { gap: 10px; font-size: 0.5rem; }
-        }
+        @media (max-width: 768px) { .site-header { padding: 15px; flex-direction: column; } .hero-content h1 { font-size: 3.5rem; } }
     </style>
 </head>
 <body>
 
     <header class="site-header">
-        <a href="index.html" class="brand">
-            HAȚEG ALTERNATIV
-            <span>INTERIOR DISCOVERY SINCE 2026</span>
-        </a>
+        <a href="index.html" class="brand">HAȚEG ALTERNATIV</a>
         <nav class="main-nav">
             <a href="retreat.html">Metanoia</a>
             <a href="gastronomie.html">Gastronomie</a>
             <a href="experiente.html">Ateliere</a>
-            <a href="rezervari.html">Reservations</a>
+            <a href="rezervari.html" class="cta-nav">Reservations</a>
         </nav>
     </header>
 
     <section class="hero-slider">
         <div class="slider-track">
             <div class="slide" style="background-image: url('transgenerational.png');">
-                <div class="hero-content">
-                    <span>DOMENIILE LA BULIGĂ</span>
-                    <h1>Simte.<br>Explorează.<br>Trăiește.</h1>
-                    <p>Un pelerinaj spre rânduială, isihie și regăsire transgenerațională.</p>
-                    <a href="rezervari.html" class="btn-lux">Planifică Sejurul</a>
-                </div>
+                <div class="hero-content"><span>Signature</span><h1>Simte.<br>Explorează.<br>Trăiește.</h1></div>
             </div>
             <div class="slide" style="background-image: url('images/gast-masa-traditionala.jpg');">
-                <div class="hero-content">
-                    <span>PUNCT GASTRONOMIC</span>
-                    <h1>Rânduiala<br>Gustului.</h1>
-                    <p>Ingrediente culese în zori, gătite cu liniște pentru suflet.</p>
-                    <a href="gastronomie.html" class="btn-lux">Vezi Meniul</a>
-                </div>
+                <div class="hero-content"><span>PGL</span><h1>Rânduiala<br>Gustului.</h1></div>
             </div>
             <div class="slide" style="background-image: url('images/retezat.jpg');">
-                <div class="hero-content">
-                    <span>RETEZAT</span>
-                    <h1>Terapia<br>Isihiei.</h1>
-                    <p>Munții care reglează sistemul nervos prin simpla lor prezență.</p>
-                    <a href="obiective.html" class="btn-lux">Explorează</a>
-                </div>
+                <div class="hero-content"><span>Isihie</span><h1>Terapia<br>Liniștii.</h1></div>
             </div>
             <div class="slide" style="background-image: url('images/hero-sat.jpg');">
-                <div class="hero-content">
-                    <span>EXPERIENȚĂ VIP</span>
-                    <h1>Moștenirea<br>De Aur.</h1>
-                    <p>Transformă diamantele minții în realitate.</p>
-                    <a href="rezervari.html" class="btn-lux">Rezervă VIP</a>
-                </div>
+                <div class="hero-content"><span>Moștenire</span><h1>Manifest<br>Metanoia.</h1></div>
             </div>
         </div>
     </section>
 
-    <script type="text/javascript">
-        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-        (function(){
-            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-            s1.async=true; s1.src='https://embed.tawk.to/642944b54247f20fefea97df/1gsvek60a';
-            s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
-            s0.parentNode.insertBefore(s1,s0);
-        })();
-    </script>
+    <section class="section-info">
+        <h2>Închiriere Integrală</h2>
+        <p>Locația se închiriază doar integral pentru grupuri de maxim 10 persoane. Exclusivitate totală pentru pelerinajul tău interior.</p>
+    </section>
+
+    <section class="grid-section">
+        <div class="grid-item">
+            <a href="gastronomie.html">
+                <img src="images/gast-supa2.jpg" alt="Gastro">
+                <div class="grid-overlay"><h3>Gastronomie</h3><span>Punct Local</span></div>
+            </a>
+        </div>
+        <div class="grid-item">
+            <a href="experiente.html">
+                <img src="images/exp-fluturi.jpg" alt="Ateliere">
+                <div class="grid-overlay"><h3>Ateliere</h3><span>Creație & Artă</span></div>
+            </a>
+        </div>
+    </section>
+
+    <section class="carta-section">
+        <div class="carta-text">
+            <h2 style="font-family: 'Playfair Display'; font-size: 3rem; font-style: italic; margin-bottom: 20px;">Carta Gândurilor</h2>
+            <p>Un spațiu sacru pentru scris. Carta nu se comandă, ea te așteaptă la Domenii pentru a-ți transforma trăirile în diamante.</p>
+        </div>
+        <div class="carta-img"><img src="images/carta-jurnal.jpg" alt="Carta"></div>
+    </section>
+
+    <footer style="padding: 60px; text-align: center; opacity: 0.5; font-size: 0.7rem; letter-spacing: 2px;">
+        HAȚEG ALTERNATIV &copy; 2026 | TRIBUT PATRICIA
+    </footer>
+
 </body>
 </html>
