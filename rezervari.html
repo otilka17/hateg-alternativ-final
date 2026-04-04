@@ -3,97 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rezervare | Domeniile la Buligă</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Rezervare Sejur | Hațeg Alternativ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --negru: #1a1a1a; --auriu: #c5a059; --crem: #fdfcf8; }
-        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru); padding: 40px 20px; line-height: 1.6; }
-        .config-container { max-width: 600px; margin: 0 auto; background: white; padding: 40px; border: 1px solid #eee; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.02); }
-        .section-title { font-weight: 700; margin: 25px 0 10px; border-bottom: 1px solid #eee; padding-bottom: 8px; color: var(--auriu); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
-        .input-group input { width: 100%; padding: 14px; margin-bottom: 12px; border: 1px solid #ddd; border-radius: 6px; font-family: 'Inter', sans-serif; outline: none; }
-        .night-opt { padding: 18px; border: 2px solid #eee; cursor: pointer; text-align: center; margin-bottom: 10px; font-weight: 700; transition: 0.3s; border-radius: 6px; }
-        .night-opt.active { border-color: var(--auriu); background: #fffcf5; }
-        .total-box { background: var(--negru); color: white; padding: 30px; text-align: center; margin-top: 30px; border-radius: 8px; }
-        .total-box h2 { font-size: 2.5rem; color: var(--auriu); margin: 10px 0; }
-        .btn-send { background: var(--auriu); color: white; border: none; padding: 18px; width: 100%; font-weight: 800; cursor: pointer; margin-top: 15px; border-radius: 50px; transition: 0.3s; font-size: 1rem; }
-        .btn-send:hover { background: #b48e4d; transform: translateY(-2px); }
+        :root { --auriu: #c5a059; --negru: #1a1a1a; --crem: #fdfcf8; }
+        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru); padding: 20px; line-height: 1.4; }
+        .res-container { max-width: 600px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        h1 { font-family: 'Playfair Display', serif; font-style: italic; text-align: center; margin-bottom: 5px; }
+        p.subtitle { text-align: center; font-size: 0.7rem; color: var(--auriu); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; }
+        
+        .section-label { font-size: 0.65rem; font-weight: 700; color: var(--auriu); text-transform: uppercase; letter-spacing: 1px; margin: 20px 0 10px; display: block; }
+        input, select { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #eee; border-radius: 4px; font-family: inherit; }
+
+        .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 15px; }
+        .opt-btn { padding: 15px; border: 1px solid #eee; background: #fff; cursor: pointer; text-align: center; font-size: 0.8rem; transition: 0.3s; border-radius: 4px; }
+        .opt-btn.active { border-color: var(--auriu); background: var(--crem); font-weight: 600; }
+
+        .summary-box { background: var(--negru); color: #fff; padding: 25px; border-radius: 4px; margin-top: 30px; }
+        .summary-box h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; border-bottom: 1px solid #333; padding-bottom: 10px; margin-bottom: 15px; color: var(--auriu); }
+        .summary-item { display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 8px; opacity: 0.8; }
+        .total-price { display: flex; justify-content: space-between; font-size: 1.5rem; font-weight: 600; margin-top: 15px; border-top: 1px solid #333; padding-top: 15px; }
+
+        .btn-submit { width: 100%; padding: 18px; background: var(--auriu); color: #fff; border: none; border-radius: 4px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; cursor: pointer; margin-top: 20px; }
     </style>
 </head>
 <body>
 
-<div class="config-container">
-    <h2 style="text-align:center; font-family:'Playfair Display'; font-style:italic; font-size: 2rem;">Rezervare Sejur</h2>
-    <p style="text-align:center; color: #888; font-size: 0.9rem; margin-bottom: 30px;">Domeniile la Buligă - Hațeg</p>
-    
-    <div class="section-title">Date de Contact</div>
-    <div class="input-group">
-        <input type="text" id="clientName" placeholder="Numele tău complet">
-        <input type="tel" id="clientPhone" placeholder="Telefon (WhatsApp)">
+<div class="res-container">
+    <h1>Rezervare Sejur</h1>
+    <p class="subtitle">Manifest Metanoia - Domeniile la Buligă</p>
+
+    <span class="section-label">Date de Contact</span>
+    <input type="text" id="nume" placeholder="Numele tău complet">
+    <input type="text" id="tel" placeholder="Telefon (WhatsApp)">
+
+    <span class="section-label">Alege Pachetul (Sejur Integral)</span>
+    <select id="pachet" onchange="updateSummary()">
+        <option value="1500">Pachet Standard Isihie - 1500 RON</option>
+        <option value="2500">Pachet Premium Metanoia - 2500 RON</option>
+        <option value="4000">Retreat VIP Moștenirea de Aur - 4000 RON</option>
+    </select>
+
+    <span class="section-label">Durată Sejur</span>
+    <div class="options-grid">
+        <button class="opt-btn active" onclick="setNights(1, this)">1 Noapte</button>
+        <button class="opt-btn" onclick="setNights(2, this)">2 Nopți</button>
+        <button class="opt-btn" onclick="setNights(3, this)">3 Nopți</button>
+        <button class="opt-btn" onclick="setNights(4, this)">Mai mult</button>
     </div>
 
-    <div class="section-title">Durată Sejur (Casa Integral)</div>
-    <div id="nopti-wrap">
-        <div class="night-opt active" onclick="setN(this, 1)">1 Noapte</div>
-        <div class="night-opt" onclick="setN(this, 2)">2 Nopți</div>
-        <div class="night-opt" onclick="setN(this, 3)">3 Nopți</div>
+    <span class="section-label">Adaugă Ateliere și Tururi</span>
+    <div class="options-grid">
+        <button class="opt-btn" onclick="toggleExtra('Atelier Creație', 200, this)">Atelier Creație (200 RON)</button>
+        <button class="opt-btn" onclick="toggleExtra('Tur de Suflet', 300, this)">Tur de Suflet (300 RON)</button>
+        <button class="opt-btn" onclick="toggleExtra('Terapie Vagală', 150, this)">Sesiune Vagală (150 RON)</button>
+        <button class="opt-btn" onclick="toggleExtra('Cina de Lux', 250, this)">Cină Tradițională (250 RON)</button>
     </div>
 
-    <div class="total-box">
-        <span>ESTIMARE TOTALĂ:</span>
-        <h2 id="totalDisp">2000 RON</h2>
-        <button onclick="trimiteRezervare()" id="btnSubmit" class="btn-send">TRIMITE REZERVAREA</button>
+    <div class="summary-box">
+        <h3>Sumar Rezervare</h3>
+        <div id="summary-content">
+            </div>
+        <div class="total-price">
+            <span>Total:</span>
+            <span id="total-val">0 RON</span>
+        </div>
+        <button class="btn-submit" onclick="sendWhatsApp()">Trimite Rezervarea</button>
     </div>
 </div>
 
 <script>
-    let noptiSelected = 1;
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxzO-cS84CzBbtzYceD4JmsGvMjaprKMqtdnowAC_KYBZxqrbYv1I81winZjuIW2LhU/exec";
+    let nights = 1;
+    let extras = [];
+    let totalPrice = 0;
 
-    function setN(el, n) {
-        document.querySelectorAll('.night-opt').forEach(o => o.classList.remove('active'));
-        el.classList.add('active');
-        noptiSelected = n;
-        document.getElementById('totalDisp').innerText = (n * 2000) + " RON";
+    function setNights(n, btn) {
+        nights = n;
+        document.querySelectorAll('.options-grid .opt-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        updateSummary();
     }
 
-    async function trimiteRezervare() {
-        const nume = document.getElementById('clientName').value;
-        const tel = document.getElementById('clientPhone').value;
-        
-        if(!nume || !tel) return alert("Te rugăm să completezi numele și telefonul.");
-
-        const btn = document.getElementById('btnSubmit');
-        btn.innerText = "Se salvează...";
-        btn.disabled = true;
-
-        const payload = {
-            nume: nume,
-            telefon: tel,
-            locatie: "Domeniile la Buliga",
-            checkin: new Date().toLocaleDateString('ro-RO'),
-            checkout: noptiSelected + " nopți",
-            persoane: 10,
-            total: (noptiSelected * 2000) + " RON"
-        };
-
-        try {
-            // Trimitem la Google Sheet
-            await fetch(SCRIPT_URL, {
-                method: "POST",
-                mode: "no-cors",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(payload)
-            });
-
-            // Deschidem WhatsApp după un mic delay
-            const msg = `Bună ziua! Sunt ${nume}. Am trimis o cerere de rezervare pentru ${noptiSelected} nopți la Domenii. Total: ${payload.total}.`;
-            window.location.href = `https://wa.me/40749229686?text=${encodeURIComponent(msg)}`;
-        } catch(e) {
-            alert("A apărut o eroare. Te rugăm să încerci direct pe WhatsApp.");
-            btn.disabled = false;
-            btn.innerText = "TRIMITE REZERVAREA";
+    function toggleExtra(name, price, btn) {
+        const index = extras.findIndex(e => e.name === name);
+        if (index > -1) {
+            extras.splice(index, 1);
+            btn.classList.remove('active');
+        } else {
+            extras.push({name, price});
+            btn.classList.add('active');
         }
+        updateSummary();
     }
+
+    function updateSummary() {
+        const basePrice = parseInt(document.getElementById('pachet').value);
+        const extrasTotal = extras.reduce((sum, e) => sum + e.price, 0);
+        totalPrice = (basePrice * nights) + extrasTotal;
+
+        let html = `
+            <div class="summary-item"><span>Sejur (${nights} nopți)</span><span>${basePrice * nights} RON</span></div>
+        `;
+        extras.forEach(e => {
+            html += `<div class="summary-item"><span>${e.name}</span><span>${e.price} RON</span></div>`;
+        });
+
+        document.getElementById('summary-content').innerHTML = html;
+        document.getElementById('total-val').innerText = totalPrice + " RON";
+    }
+
+    function sendWhatsApp() {
+        const nume = document.getElementById('nume').value;
+        const msg = `Bună ziua! Rezervare nouă: ${nume}, Sejur: ${nights} nopți, Pachete: ${document.getElementById('pachet').selectedOptions[0].text}, Extras: ${extras.map(e => e.name).join(', ')}. Total: ${totalPrice} RON.`;
+        window.open(`https://wa.me/40749229686?text=${encodeURIComponent(msg)}`);
+    }
+
+    updateSummary();
 </script>
+
 </body>
 </html>
