@@ -3,118 +3,158 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hațeg Alternativ | Signature Home</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <title>Hațeg Alternativ | Moștenirea de Aur</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700;1,900&family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
     <style>
-        :root { --auriu: #c5a059; --alb: #ffffff; --negru: #0a0a0a; --gri-soft: #f4f4f4; }
+        :root { --auriu: #c5a059; --alb: #ffffff; --negru-profund: #0a0a0a; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--alb); color: var(--negru); overflow-x: hidden; }
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: var(--negru-profund); 
+            color: var(--alb); 
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
 
-        /* HEADER MINIMALIST */
+        /* HEADER TRANSPARENT STYLE */
         .site-header { 
-            position: fixed; top: 0; width: 100%; z-index: 1000; padding: 30px 50px;
-            background: rgba(255,255,255,0.9); backdrop-filter: blur(10px);
-            display: flex; justify-content: space-between; align-items: center;
-        }
-        .brand { font-weight: 900; letter-spacing: 5px; text-transform: uppercase; font-size: 0.9rem; text-decoration: none; color: var(--negru); }
-        .main-nav a { text-decoration: none; color: var(--negru); font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-left: 25px; }
-
-        /* HERO SPLIT (STIL ERMES) */
-        .hero-split {
+            position: fixed; 
+            top: 0; width: 100%; 
+            z-index: 1000; 
+            padding: 30px 50px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, transparent 100%);
             display: flex;
-            height: 100vh;
-            width: 100%;
+            justify-content: space-between;
             align-items: center;
-            background: var(--alb);
         }
+        .brand { 
+            font-weight: 900; 
+            letter-spacing: 5px; 
+            text-transform: uppercase; 
+            font-size: 1rem;
+            text-decoration: none;
+            color: #fff;
+        }
+        .main-nav a { 
+            text-decoration: none; 
+            color: #fff; 
+            font-size: 0.65rem; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 2px;
+            margin-left: 25px;
+            opacity: 0.8;
+            transition: 0.3s;
+        }
+        .main-nav a:hover { opacity: 1; color: var(--auriu); }
 
-        /* COLOANA POZELOR (VERTICAL SLIDER) */
-        .vertical-slider {
-            width: 55%; /* Ocupa cam jumatate din pagina */
-            height: 85vh;
+        /* HERO FULLSCREEN (STILUL DIN SCREENSHOT) */
+        .hero-home {
+            width: 100%;
+            height: 100vh;
+            background: url('transgenerational.png') center/cover;
             position: relative;
-            overflow: hidden;
-            margin-left: 50px;
-            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
         }
-
-        /* UMBRA DE LUX PESTE POZE */
-        .vertical-slider::after {
+        .hero-home::after {
             content: '';
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to right, rgba(0,0,0,0.4), transparent, rgba(0,0,0,0.1));
+            background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, var(--negru-profund) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
             z-index: 2;
         }
-
-        .slider-track-v {
-            display: flex;
-            flex-direction: column;
-            height: 400%; /* 4 poze */
-            animation: slide-vertical 24s infinite ease-in-out;
-        }
-
-        .slide-v {
-            height: 25%; /* 100% / 4 */
-            width: 100%;
-            background-size: cover;
-            background-position: center;
-        }
-
-        /* ZONA DE TEXT BOLD */
-        .content-side {
-            width: 45%;
-            padding: 0 80px;
-            z-index: 5;
-        }
-        .content-side span { font-size: 0.7rem; letter-spacing: 8px; color: var(--auriu); font-weight: 800; text-transform: uppercase; display: block; margin-bottom: 20px; }
-        .content-side h1 { 
-            font-family: 'Playfair Display', serif; 
-            font-size: clamp(3rem, 6vw, 5rem); 
-            font-weight: 900; 
-            font-style: italic; 
-            line-height: 0.85;
-            margin-bottom: 30px;
-            color: var(--negru);
-        }
-        .content-side p { font-size: 1rem; font-weight: 300; max-width: 400px; color: #555; margin-bottom: 40px; }
-
-        .btn-lux {
-            display: inline-block;
-            padding: 20px 40px;
-            border: 1px solid var(--negru);
-            color: var(--negru);
-            text-decoration: none;
-            font-size: 0.65rem;
-            font-weight: 900;
+        .hero-content span { 
+            font-size: 0.7rem; 
+            letter-spacing: 10px; 
+            color: var(--auriu); 
             text-transform: uppercase;
-            letter-spacing: 3px;
-            transition: 0.4s;
+            font-weight: 800;
+            display: block;
+            margin-bottom: 15px;
         }
-        .btn-lux:hover { background: var(--negru); color: #fff; }
-
-        /* SECTIUNI RAMASE */
-        .manifest-info { padding: 100px 50px; background: var(--gri-soft); text-align: center; }
-        .manifest-info h2 { font-family: 'Playfair Display'; font-size: 2.5rem; font-style: italic; color: var(--auriu); margin-bottom: 20px; }
-
-        .carta-section { padding: 100px 50px; display: flex; align-items: center; gap: 80px; max-width: 1300px; margin: 0 auto; }
-        .carta-text { flex: 1; }
-        .carta-img { flex: 1; }
-        .carta-img img { width: 100%; box-shadow: 40px 40px 0 var(--auriu); }
-
-        @keyframes slide-vertical {
-            0%, 20% { transform: translateY(0); }
-            25%, 45% { transform: translateY(-25%); }
-            50%, 70% { transform: translateY(-50%); }
-            75%, 95% { transform: translateY(-75%); }
-            100% { transform: translateY(0); }
+        .hero-content h1 { 
+            font-family: 'Playfair Display', serif; 
+            font-size: clamp(3rem, 10vw, 6rem); 
+            font-weight: 900; 
+            font-style: italic;
+            line-height: 0.9;
+            color: #fff;
         }
 
-        @media (max-width: 992px) {
-            .hero-split { flex-direction: column; height: auto; padding-top: 150px; }
-            .vertical-slider { width: 90%; margin: 0 auto; height: 50vh; }
-            .content-side { width: 100%; padding: 50px 20px; text-align: center; }
-            .content-side p { margin: 0 auto 30px; }
+        /* SECTIUNI CONTENT PE FUNDAL NEGRU */
+        .content-section {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .gold-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-style: italic;
+            color: var(--auriu);
+            margin-bottom: 30px;
+        }
+
+        .text-block {
+            font-weight: 300;
+            font-size: 1.1rem;
+            opacity: 0.8;
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
+
+        /* GRID-UL DE EXPERIENTE IN STILUL NOU */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        .grid-card {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+            border-bottom: 3px solid var(--auriu);
+        }
+        .grid-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: 0.5s; }
+        .grid-card:hover img { opacity: 0.4; transform: scale(1.05); }
+        .grid-card-content {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            padding: 20px;
+        }
+        .grid-card-content h3 { font-family: 'Playfair Display'; font-size: 1.8rem; font-style: italic; }
+
+        /* CARTA GANDURILOR STILIZAT */
+        .carta-box {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            margin-top: 100px;
+            text-align: left;
+            flex-wrap: wrap;
+        }
+        .carta-box img { flex: 1; min-width: 300px; width: 100%; border: 1px solid rgba(255,255,255,0.1); padding: 10px; }
+        .carta-info { flex: 1; min-width: 300px; }
+
+        footer { padding: 60px; text-align: center; opacity: 0.4; font-size: 0.7rem; letter-spacing: 2px; }
+
+        @media (max-width: 768px) {
+            .site-header { padding: 20px; flex-direction: column; gap: 15px; }
+            .hero-home { height: 70vh; }
+            .carta-box { text-align: center; }
         }
     </style>
 </head>
@@ -130,40 +170,53 @@
         </nav>
     </header>
 
-    <section class="hero-split">
-        <div class="vertical-slider">
-            <div class="slider-track-v">
-                <div class="slide-v" style="background-image: url('transgenerational.png');"></div>
-                <div class="slide-v" style="background-image: url('images/gast-masa-traditionala.jpg');"></div>
-                <div class="slide-v" style="background-image: url('images/retezat.jpg');"></div>
-                <div class="slide-v" style="background-image: url('images/hero-sat.jpg');"></div>
+    <section class="hero-home">
+        <div class="hero-content">
+            <span>SIGNATURE</span>
+            <h1>Moștenirea<br>de Aur.</h1>
+        </div>
+    </section>
+
+    <main class="content-section">
+        
+        <div class="info-integral">
+            <h2 class="gold-title">Închiriere Integrală</h2>
+            <p class="text-block">Domeniul se închiriază doar integral pentru grupuri de 10 persoane. Un spațiu al rânduielii unde isihia și intimitatea sunt garantate.</p>
+        </div>
+
+        <h2 class="gold-title">Experiențe</h2>
+        <div class="grid-container">
+            <div class="grid-card">
+                <a href="gastronomie.html">
+                    <img src="images/gast-masa-traditionala.jpg" alt="Gastro">
+                    <div class="grid-card-content">
+                        <span style="color:var(--auriu); font-size:0.6rem; letter-spacing:3px;">DESCOPERĂ</span>
+                        <h3>Punct Gastronomic</h3>
+                    </div>
+                </a>
+            </div>
+            <div class="grid-card">
+                <a href="experiente.html">
+                    <img src="images/exp-fluturi.jpg" alt="Ateliere">
+                    <div class="grid-card-content">
+                        <span style="color:var(--auriu); font-size:0.6rem; letter-spacing:3px;">CREEAZĂ</span>
+                        <h3>Ateliere Signature</h3>
+                    </div>
+                </a>
             </div>
         </div>
 
-        <div class="content-side">
-            <span>Signature Experience</span>
-            <h1>Moștenirea<br>De Aur.</h1>
-            <p>Un pelerinaj spre rânduială, isihie și regăsire. Casa se închiriază doar integral pentru 10 persoane.</p>
-            <a href="rezervari.html" class="btn-lux">Planifică Sejurul</a>
-        </div>
-    </section>
-
-    <section class="manifest-info">
-        <h2>Manifest Metanoia</h2>
-        <p style="max-width: 800px; margin: 0 auto; font-weight: 300;">Transformăm timpul în terapie și amintirile în diamantele minții. O experiență transgenerațională unică la Domeniile la Buligă.</p>
-    </section>
-
-    <section class="carta-section">
-        <div class="carta-text">
-            <h2 style="font-family: 'Playfair Display'; font-size: 3rem; font-style: italic; color: var(--auriu); margin-bottom: 20px;">Carta Gândurilor</h2>
-            <p style="font-weight: 300; font-size: 1.1rem;">Un spațiu sacru pentru scris. Carta nu se comandă, ea te așteaptă pentru a-ți transforma trăirile în nemurire.</p>
-        </div>
-        <div class="carta-img">
+        <div class="carta-box">
+            <div class="carta-info">
+                <h2 class="gold-title" style="text-align: left;">Carta Gândurilor</h2>
+                <p class="text-block" style="text-align: left; margin-left: 0;">Un spațiu sacru pentru scris. Carta nu se comandă, ea te așteaptă la Domenii pentru a-ți transforma trăirile în diamante.</p>
+            </div>
             <img src="images/carta-jurnal.jpg" alt="Carta">
         </div>
-    </section>
 
-    <footer style="padding: 60px; text-align: center; opacity: 0.4; font-size: 0.7rem; letter-spacing: 2px;">
+    </main>
+
+    <footer>
         HAȚEG ALTERNATIV &copy; 2026 | TRIBUT PATRICIA | DOMENIILE LA BULIGĂ
     </footer>
 
