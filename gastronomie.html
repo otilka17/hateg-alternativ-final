@@ -4,175 +4,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gastronomie | Hațeg Alternativ</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,900&family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
     <style>
-        :root { --negru: #1a1a1a; --auriu: #c5a059; --crem: #fdfcf8; --alb: #ffffff; }
+        :root { --auriu: #c5a059; --alb: #ffffff; --negru: #0a0a0a; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru); line-height: 1.6; padding-top: 130px; }
+        body { font-family: 'Inter', sans-serif; background: var(--negru); color: var(--alb); line-height: 1.6; }
 
-        /* --- HEADER UNIFICAT (IDENTIC) --- */
-        .site-header { position: fixed; top: 0; width: 100%; z-index: 9999; background: #fff; border-bottom: 1px solid #eee; }
-        .top-announcement { background: var(--auriu); color: #fff; text-align: center; padding: 8px 0; font-size: 0.6rem; letter-spacing: 3px; font-weight: 700; text-transform: uppercase; }
-        .nav-container { max-width: 1240px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; height: 80px; }
-        .logo-wrapper { display: flex; align-items: center; text-decoration: none; color: var(--negru); }
-        .logo-wrapper img { height: 45px; width: auto; margin-right: 12px; }
-        .brand-text h1 { font-family: 'Playfair Display', serif; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; margin: 0; }
-        .main-nav { display: flex; align-items: center; gap: 20px; }
-        .main-nav a { text-decoration: none; color: var(--negru); font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
-        .main-nav a:hover { color: var(--auriu); }
-        .cta-nav { border: 1px solid var(--negru); padding: 10px 18px !important; transition: 0.3s; }
-        .cta-nav:hover { background: var(--negru); color: #fff !important; }
+        .site-header { position: fixed; top: 0; width: 100%; z-index: 1000; padding: 30px 50px; background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent); display: flex; justify-content: space-between; align-items: center; }
+        .brand { font-weight: 900; letter-spacing: 5px; text-transform: uppercase; font-size: 1rem; text-decoration: none; color: #fff; }
 
-        /* --- CONTENT GASTRO --- */
-        .hero-gastro { height: 50vh; background: url('images/gast-masa-traditionala.jpg') center/cover; position: relative; border-bottom: 5px solid var(--auriu); }
-        .hero-gastro::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.2); }
-
-        .container { max-width: 1000px; margin: 0 auto; padding: 80px 20px; }
-        .intro-gastro { text-align: center; margin-bottom: 80px; }
-        .intro-gastro h1 { font-family: 'Playfair Display', serif; font-size: 3rem; font-style: italic; margin-bottom: 15px; }
-        .intro-gastro p { font-size: 0.75rem; letter-spacing: 4px; text-transform: uppercase; color: var(--auriu); font-weight: 700; }
-
-        /* MENIU ZILE */
-        .menu-grid { display: grid; grid-template-columns: 1fr; gap: 40px; }
-        .day-box { background: #fff; padding: 40px; border: 1px solid #eee; display: grid; grid-template-columns: 200px 1fr; gap: 40px; transition: 0.3s; }
-        .day-box:hover { border-color: var(--auriu); box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
+        .hero-gastro { height: 60vh; background: url('images/gast-masa-traditionala.jpg') center/cover; position: relative; display: flex; align-items: center; justify-content: center; }
+        .hero-gastro::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, transparent, var(--negru)); }
         
-        .day-title { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-style: italic; color: var(--auriu); }
-        .day-label { font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 800; display: block; margin-bottom: 10px; opacity: 0.6; }
-        
-        .dish-group { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
-        .dish h4 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; font-weight: 700; }
-        .dish p { font-size: 0.85rem; color: #666; font-weight: 300; font-style: italic; }
+        .menu-container { max-width: 900px; margin: -50px auto 100px; position: relative; z-index: 10; padding: 0 20px; }
+        .category-title { font-family: 'Playfair Display'; font-size: 2.2rem; font-style: italic; color: var(--auriu); text-align: center; margin: 60px 0 40px; border-bottom: 1px solid rgba(197,160,89,0.3); padding-bottom: 10px; }
 
-        .garden-section { margin-top: 100px; padding: 60px; background: var(--negru); color: #fff; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-        .garden-text h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-style: italic; margin-bottom: 20px; color: var(--auriu); }
-        .garden-text p { font-weight: 300; opacity: 0.8; font-size: 0.95rem; margin-bottom: 20px; }
-        .garden-img img { width: 100%; border: 1px solid var(--auriu); padding: 10px; }
+        .menu-item { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px; }
+        .item-info h3 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 800; }
+        .item-info p { font-size: 0.75rem; font-weight: 300; color: #888; font-style: italic; }
+        .item-price { font-family: 'Playfair Display'; color: var(--auriu); font-weight: 700; font-size: 1.1rem; }
 
-        @media (max-width: 992px) { 
-            body { padding-top: 180px; } 
-            .nav-container { flex-direction: column; height: auto; padding: 20px; gap: 15px; }
-            .day-box { grid-template-columns: 1fr; gap: 20px; }
-            .dish-group { grid-template-columns: 1fr; }
-            .garden-section { grid-template-columns: 1fr; text-align: center; }
-        }
+        @media (max-width: 768px) { .menu-item { flex-direction: column; text-align: center; } .item-price { margin-top: 5px; } }
     </style>
 </head>
 <body>
 
     <header class="site-header">
-        <div class="top-announcement">1 MAI 2026: LANSAREA MANIFEST METANOIA | TRIBUT PATRICIA</div>
-        <div class="nav-container">
-            <a href="index.html" class="logo-wrapper">
-                <img src="images/logo-liniar-transparent.png" alt="Logo">
-                <div class="brand-text"><h1>Hațeg Alternativ</h1></div>
-            </a>
-            <nav class="main-nav">
-                <a href="retreat.html">Metanoia</a>
-                <a href="gastronomie.html" style="color: var(--auriu);">Gastronomie</a>
-                <a href="experiente.html">Ateliere</a>
-                <a href="obiective.html">Obiective</a>
-                <a href="forum.html">Comunitate</a>
-                <a href="contact.html">Contact</a>
-                <a href="rezervari.html" class="cta-nav">RESERVATIONS</a>
-            </nav>
-        </div>
+        <a href="index.html" class="brand">HAȚEG ALTERNATIV</a>
+        <nav><a href="index.html" style="color:#fff; text-decoration:none; font-size:0.6rem; font-weight:700; letter-spacing:2px;">ÎNAPOI</a></nav>
     </header>
 
-    <div class="hero-gastro"></div>
-
-    <main class="container">
-        <div class="intro-gastro">
-            <p>Punct Gastronomic Local (PGL)</p>
-            <h1>Rânduiala Gustului</h1>
-            <div style="width: 50px; height: 2px; background: var(--auriu); margin: 25px auto;"></div>
+    <section class="hero-gastro">
+        <div style="text-align:center; position:relative; z-index:2;">
+            <span style="color:var(--auriu); letter-spacing:10px; font-weight:800;">SIGNATURE</span>
+            <h1 style="font-family:'Playfair Display'; font-size:4rem; font-weight:900; font-style:italic;">Gustul de Aur.</h1>
         </div>
+    </section>
 
-        <div class="menu-grid">
-            
-            <div class="day-box">
-                <div><span class="day-label">Tradiția Locului</span><h2 class="day-title">Luni.</h2></div>
-                <div class="dish-group">
-                    <div class="dish"><h4>Ciorbă de fasole</h4><p>La ceaun, cu afumătură sau variantă de post cu mult tarhon.</p></div>
-                    <div class="dish"><h4>Iahnie în tihnă</h4><p>Fasole bătută cu ceapă caramelizată și murături de casă.</p></div>
-                </div>
-            </div>
+    <main class="menu-container">
+        
+        <div class="category-title">Ciorbe & Supe</div>
+        <div class="menu-item"><div class="item-info"><h3>Ciorbă de burtă</h3><p>Dreasă cu smântână și usturoi.</p></div><div class="item-price">28 RON</div></div>
+        <div class="menu-item"><div class="item-info"><h3>Ciorbă de fasole cu ciolan</h3><p>Afumătură de casă (și variantă de post).</p></div><div class="item-price">25 RON</div></div>
+        <div class="menu-item"><div class="item-info"><h3>Supă de tăiței</h3><p>Tăiței de casă făcuți manual.</p></div><div class="item-price">22 RON</div></div>
+        <div class="menu-item"><div class="item-info"><h3>Ciorbă de coaste / Păstăi</h3><p>Rețete tradiționale sezoniere.</p></div><div class="item-price">26 RON</div></div>
 
-            <div class="day-box">
-                <div><span class="day-label">Tihna Grădinii</span><h2 class="day-title">Marți.</h2></div>
-                <div class="dish-group">
-                    <div class="dish"><h4>Zama de legume</h4><p>Rădăcinoase coapte și ierburi aromatice culese în zori.</p></div>
-                    <div class="dish"><h4>Tocăniță de hribi</h4><p>Ciuperci de pădure cu mămăliguță aurie, la foc de lemne.</p></div>
-                </div>
-            </div>
+        <div class="category-title">Felul Doi</div>
+        <div class="menu-item"><div class="item-info"><h3>Paste de toate felurile</h3><p>Artizanale, cu sosuri pregătite în casă.</p></div><div class="item-price">38 RON</div></div>
+        <div class="menu-item"><div class="item-info"><h3>Gratar cu cartofi aurii</h3><p>Ceafă sau pui la jar.</p></div><div class="item-price">42 RON</div></div>
+        <div class="menu-item"><div class="item-info"><h3>Somon sau Creveți</h3><p>Senzații marine în inima munților.</p></div><div class="item-price">55-65 RON</div></div>
+        <div class="menu-item"><div class="item-info"><h3>Vinete Parmigiana</h3><p>Un deliciu vegetarian cu brânzeturi fine.</p></div><div class="item-price">38 RON</div></div>
+        <div class="menu-item"><div class="item-info"><h3>Cartofi țărănești cu sângerete</h3><p>Gustul pur al satului hațegan.</p></div><div class="item-price">35 RON</div></div>
 
-            <div class="day-box">
-                <div><span class="day-label">Spiritul Casei</span><h2 class="day-title">Miercuri.</h2></div>
-                <div class="dish-group">
-                    <div class="dish"><h4>Ciorbă de urzici</h4><p>Dreasă cu usturoi verde și mălai, un elixir pentru sănătate.</p></div>
-                    <div class="dish"><h4>Sarmale de post</h4><p>Învelite în frunză de viță, cu ciuperci, nucă și orez.</p></div>
-                </div>
-            </div>
+        <div class="category-title">Plăcinte & Langoși</div>
+        <div class="menu-item"><div class="item-info"><h3>Plăcinte pe lespede Pădurenești</h3><p>Cu brânză sau măr, coapte tradițional.</p></div><div class="item-price">18 RON</div></div>
+        <div class="menu-item"><div class="item-info"><h3>Langoși tip "Plăcinte"</h3><p>Varză, brânză sau Fineti.</p></div><div class="item-price">15 RON</div></div>
+        <div class="menu-item"><div class="item-info"><h3>Porone</h3><p>Plăcintă tradițională cu măr sau brânză.</p></div><div class="item-price">18 RON</div></div>
 
-            <div class="day-box">
-                <div><span class="day-label">Signature Dish</span><h2 class="day-title">Joi.</h2></div>
-                <div class="dish-group">
-                    <div class="dish"><h4>Supă de tăiței</h4><p>Bulion clar de pasăre cu tăiței făcuți manual în dimineața zilei.</p></div>
-                    <div class="dish"><h4>Pături pe lespede</h4><p>Plăcinte subțiri umplute cu cartofi sau brânză de stână.</p></div>
-                </div>
-            </div>
+        <div class="category-title">Deserturi Fine</div>
+        <div class="menu-item"><div class="item-info"><h3>Prăjitura Albinuța</h3><p>Foi cu miere și nucă, gustul copilăriei.</p></div><div class="item-price">20 RON</div></div>
+        <div class="menu-item"><div class="item-info"><h3>Kinder Pinguí de casă</h3><p>Un desert fin pentru toate vârstele.</p></div><div class="item-price">22 RON</div></div>
+        <div class="menu-item"><div class="item-info"><h3>Cheesecake Signature</h3><p>Cremos, cu fructe de pădure.</p></div><div class="item-price">24 RON</div></div>
+        <div class="menu-item"><div class="item-info"><h3>Clătite Pufoase</h3><p>Diverse umpluturi artizanale.</p></div><div class="item-price">15 RON</div></div>
 
-            <div class="day-box">
-                <div><span class="day-label">Isihie și Post</span><h2 class="day-title">Vineri.</h2></div>
-                <div class="dish-group">
-                    <div class="dish"><h4>Ciorbă de salată</h4><p>Variantă de post cu „lapte” de nuci, răcoritoare și fină.</p></div>
-                    <div class="dish"><h4>Mazăre cu mărar</h4><p>Dulceața grădinii pregătită cu unt de casă sau ulei de presă.</p></div>
-                </div>
-            </div>
+        <div class="category-title">Licoarea Spiritului</div>
+        <div class="menu-item"><div class="item-info"><h3>Vinars de Colecție</h3><p>Distilat fin, maturat cu răbdare.</p></div><div class="item-price">25 RON</div></div>
+        <div class="menu-item"><div class="item-info"><h3>Vișinată de Casă</h3><p>Din fructe culese din grădina proprie.</p></div><div class="item-price">15 RON</div></div>
+        <div class="menu-item"><div class="item-info"><h3>Vinul Domeniilor</h3><p>Selecție de soiuri alese.</p></div><div class="item-price">18 RON / pahar</div></div>
 
-            <div class="day-box">
-                <div><span class="day-label">Moștenirea</span><h2 class="day-title">Sâmbătă.</h2></div>
-                <div class="dish-group">
-                    <div class="dish"><h4>Zama de picioci</h4><p>Cartofii noi fierți cu tarhon și afumătură de la Domenii.</p></div>
-                    <div class="dish"><h4>Bulz Hațegan</h4><p>Brânză de burduf în mămăligă rumenită bine la cuptor.</p></div>
-                </div>
-            </div>
-
-            <div class="day-box">
-                <div><span class="day-label">Ospăț de Sărbătoare</span><h2 class="day-title">Duminică.</h2></div>
-                <div class="dish-group">
-                    <div class="dish"><h4>Supă de găină</h4><p>Simbolul duminicii: tăiței galbeni și legume dulci de curte.</p></div>
-                    <div class="dish"><h4>Prăjitura Albinuța</h4><p>Foi de miere și nucă, desertul care încheie rânduiala mesei.</p></div>
-                </div>
-            </div>
-
-        </div>
-
-        <section class="garden-section">
-            <div class="garden-text">
-                <h2>Grădina Noastră: Sursa Isihiei</h2>
-                <p>La Punctul Gastronomic Local, 90% din ceea ce găsești în farfurie provine din pământul nostru sau de la micii producători din vecinătate.</p>
-                <p>Oul proaspăt, brânza de la stâna din munte și apa pură de izvor sunt medicamentele tale pentru o recuperare vagală completă.</p>
-            </div>
-            <div class="garden-img">
-                <img src="images/gast-supa2.jpg" alt="Ingrediente Locale">
-            </div>
-        </section>
     </main>
 
-    <footer style="padding: 40px; text-align: center; opacity: 0.5; font-size: 0.7rem;">
-        HAȚEG ALTERNATIV &copy; 2026 | DOMENIILE LA BULIGĂ
-    </footer>
-
-    <script type="text/javascript">
-        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-        (function(){
-            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-            s1.async=true; s1.src='https://embed.tawk.to/642944b54247f20fefea97df/1gsvek60a';
-            s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
-            s0.parentNode.insertBefore(s1,s0);
-        })();
-    </script>
 </body>
 </html>
