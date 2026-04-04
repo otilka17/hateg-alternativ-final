@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact | Hațeg Alternativ Signature</title>
+    <title>Contact | Hațeg Alternativ</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root { 
@@ -15,24 +15,26 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru-mat); line-height: 1.6; padding-top: 180px; }
+        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru-mat); line-height: 1.6; padding-top: 150px; }
 
-        /* Header Signature */
-        .site-header { position: fixed; top: 0; width: 100%; z-index: 1500; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); }
-        .header-container { display: flex; flex-direction: column; align-items: center; padding: 20px 0; }
-        .brand { text-decoration: none; color: var(--negru-mat); font-family: 'Playfair Display', serif; font-size: 1.6rem; line-height: 1; font-weight: 700; text-align: center; }
-        .est { font-size: 0.6rem; color: var(--auriu); letter-spacing: 4px; font-weight: 800; margin-top: 8px; text-transform: uppercase; }
+        /* --- HEADER UNIFICAT STYLE --- */
+        .site-header { position: fixed; top: 0; width: 100%; z-index: 9999; background: #fff; border-bottom: 1px solid #eee; }
+        .top-announcement { background: var(--auriu); color: #fff; text-align: center; padding: 8px 0; font-size: 0.6rem; letter-spacing: 3px; font-weight: 700; text-transform: uppercase; }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; height: 80px; }
+        .logo-wrapper { display: flex; align-items: center; text-decoration: none; color: var(--negru-mat); }
+        .logo-wrapper img { height: 45px; width: auto; margin-right: 12px; }
+        .brand-text h1 { font-family: 'Playfair Display', serif; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; margin: 0; }
+        .main-nav { display: flex; align-items: center; gap: 25px; }
+        .main-nav a { text-decoration: none; color: var(--negru-mat); font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .main-nav a:hover { color: var(--auriu); }
+        .cta-nav { border: 1px solid var(--negru-mat); padding: 10px 18px !important; transition: all 0.3s; }
+        .cta-nav:hover { background: var(--negru-mat); color: #fff !important; }
 
-        .main-nav { background: var(--negru-mat); width: 100%; display: flex; justify-content: center; gap: 30px; padding: 15px 0; margin-top: 20px; }
-        .main-nav a { text-decoration: none; color: #fff; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
-        .active { color: var(--auriu) !important; }
-
-        /* Hero Contact */
+        /* --- CONTACT CONTENT STYLE --- */
         .contact-hero { text-align: center; margin-bottom: 80px; padding: 0 20px; }
         .contact-hero span { color: var(--auriu); font-size: 0.7rem; font-weight: 800; letter-spacing: 5px; text-transform: uppercase; display: block; margin-bottom: 15px; }
         .contact-hero h1 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 3.5rem; }
 
-        /* Contact Grid */
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
         .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 100px; }
         
@@ -41,14 +43,12 @@
         .contact-item h4 { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--auriu); margin-bottom: 5px; }
         .contact-item p { font-size: 1.1rem; font-weight: 300; }
 
-        /* Form Style */
         .contact-form { background: var(--alb); padding: 50px; border: 1px solid #eee; border-radius: 4px; }
         .form-group { margin-bottom: 25px; }
         .form-group label { display: block; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
         .form-group input, .form-group textarea { width: 100%; padding: 15px; border: 1px solid #eee; background: #fbfbfb; font-family: inherit; font-size: 0.9rem; outline: none; transition: 0.3s; }
         .form-group input:focus, .form-group textarea:focus { border-color: var(--auriu); background: #fff; }
 
-        /* Map */
         .map-container { width: 100%; height: 450px; background: #eee; margin-bottom: 100px; border-radius: 4px; overflow: hidden; filter: grayscale(100%) contrast(1.1); }
 
         .btn-gold { background: var(--auriu); color: white; padding: 18px 45px; border-radius: 50px; text-decoration: none; font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem; display: inline-block; border: none; cursor: pointer; transition: 0.3s; width: 100%; }
@@ -56,24 +56,30 @@
 
         .wa-float { position: fixed; bottom: 30px; right: 30px; background: var(--auriu); color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 2000; font-size: 0.8rem; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
 
-        @media (max-width: 850px) {
+        @media (max-width: 992px) {
+            .nav-container { height: auto; padding: 15px; flex-direction: column; gap: 15px; }
+            .main-nav { gap: 12px; flex-wrap: wrap; justify-content: center; }
             .contact-grid { grid-template-columns: 1fr; gap: 50px; }
             .contact-hero h1 { font-size: 2.5rem; }
-            .main-nav { display: none; }
         }
     </style>
 </head>
 <body>
 
 <header class="site-header">
-    <div class="header-container">
-        <a href="index.html" class="brand">HAȚEG<br>ALTERNATIV</a>
-        <span class="est">EST. 2026</span>
+    <div class="top-announcement">1 MAI 2026: LANSAREA MANIFEST METANOIA | TRIBUT PATRICIA</div>
+    <div class="nav-container">
+        <a href="index.html" class="logo-wrapper">
+            <img src="images/logo-liniar-transparent.png" alt="Logo">
+            <div class="brand-text"><h1>Hațeg Alternativ</h1></div>
+        </a>
         <nav class="main-nav">
-            <a href="pensiuni.html">Pensiuni</a>
-            <a href="retreat.html">Retreat</a>
-            <a href="experiente.html">Experiențe</a>
-            <a href="contact.html" class="active">Contact</a>
+            <a href="retreat.html">Metanoia</a>
+            <a href="gastronomie.html">Gastronomie</a>
+            <a href="experiente.html">Ateliere</a>
+            <a href="obiective.html">Obiective</a>
+            <a href="forum.html">Comunitate</a>
+            <a href="rezervari.html" class="cta-nav">RESERVATIONS</a>
         </nav>
     </div>
 </header>
@@ -125,18 +131,17 @@
     </div>
 
     <div class="map-container">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m13!1m3!1d44697.12656910795!2d22.90909564619934!3d45.60749449852233!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x474e760c384814df%3A0xc66519f7e800635e!2zSGHIm2VnIDMzNTUwMA!5e0!3m2!1sro!2sro!4v1711650000000!5m2!1sro!2sro" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11181.164344400518!2d22.93514755!3d45.608303!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x474e797e8841793b%3A0x6b7762699f187a5f!2sHa%C5%A3eg!5e0!3m2!1sro!2sro!4v1680000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
     </div>
 </main>
 
 <a href="https://wa.me/40749229686" class="wa-float">Chat pe WhatsApp</a>
 
 <script type="text/javascript">
-    var Tawk_API=Tawk_API||{};
-    Tawk_API.customStyle = { visibility : { desktop : { xOffset : '30', yOffset : '30', position : 'bottom-left' }, mobile : { xOffset : '20', yOffset : '20', position : 'bottom-left' } } };
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
     (function(){
         var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-        s1.async=true; s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
+        s1.async=true; s1.src='https://embed.tawk.to/642944b54247f20fefea97df/1gsvek60a'; /* ID-ul tău stabil */
         s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
         s0.parentNode.insertBefore(s1,s0);
     })();
