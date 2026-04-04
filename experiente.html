@@ -4,73 +4,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Experiențe | Hațeg Alternativ</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400;1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --negru: #0d0d0d; --auriu: #9d8665; --portocaliu: #ff4500; --alb: #ffffff; --gri-soft: #f4f4f4; }
+        :root { --negru: #1a1a1a; --auriu: #c5a059; --crem: #fdfcf8; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: #fff; }
+        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru); padding-top: 130px; }
 
-        .site-header { position: fixed; top: 0; width: 100%; z-index: 5000; background: #fff; border-bottom: 1px solid #eee; padding: 15px 0; }
-        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 30px; }
-        .brand { font-weight: 700; font-size: 1rem; text-decoration: none; color: #000; text-transform: uppercase; letter-spacing: 4px; }
-        .main-nav a { text-decoration: none; color: #000; font-size: 0.65rem; font-weight: 600; text-transform: uppercase; margin-left: 20px; }
+        /* HEADER UNIFICAT */
+        .site-header { position: fixed; top: 0; width: 100%; z-index: 9999; background: #fff; border-bottom: 1px solid #eee; }
+        .top-announcement { background: var(--auriu); color: #fff; text-align: center; padding: 8px 0; font-size: 0.6rem; letter-spacing: 3px; font-weight: 700; text-transform: uppercase; }
+        .nav-container { max-width: 1240px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; height: 80px; }
+        .logo-wrapper img { height: 45px; margin-right: 12px; }
+        .brand-text h1 { font-family: 'Playfair Display', serif; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; margin: 0; }
+        .main-nav a { text-decoration: none; color: var(--negru); font-size: 0.65rem; font-weight: 700; text-transform: uppercase; margin-left: 20px; letter-spacing: 1px; }
 
-        .hero-small { height: 40vh; background: #111 linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/IMG-20260326-WA0005.jpg') center/cover; display: flex; align-items: center; justify-content: center; color: #fff; margin-top: 50px; }
+        /* CONTENT */
+        .intro-section { text-align: center; padding: 80px 20px; }
+        .intro-section h1 { font-family: 'Playfair Display', serif; font-size: 3rem; font-style: italic; margin-bottom: 10px; }
+        .intro-section p { font-size: 0.8rem; letter-spacing: 4px; text-transform: uppercase; color: var(--auriu); }
+
+        .exp-container { max-width: 1100px; margin: 0 auto; padding-bottom: 100px; }
+        .exp-row { display: flex; align-items: center; gap: 60px; margin-bottom: 80px; }
+        .exp-row:nth-child(even) { flex-direction: row-reverse; }
         
-        .container { max-width: 1000px; margin: 0 auto; padding: 80px 20px; }
-        .pricing-table { width: 100%; border-collapse: collapse; margin-top: 40px; }
-        .pricing-table td { padding: 25px 0; border-bottom: 1px solid #eee; }
-        .item-name { font-weight: 600; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; }
-        .item-price { text-align: right; font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--portocaliu); font-weight: 700; }
+        .exp-img { flex: 1; height: 450px; overflow: hidden; border-bottom: 5px solid var(--auriu); }
+        .exp-img img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        
+        .exp-info { flex: 1; padding: 20px; }
+        .exp-info h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 20px; }
+        .price-tag { display: inline-block; padding: 8px 15px; background: var(--negru); color: #fff; font-size: 0.75rem; font-weight: 700; margin-bottom: 20px; }
+        
+        .btn-reserve { display: inline-block; margin-top: 30px; padding: 15px 40px; border: 1px solid var(--negru); text-decoration: none; color: var(--negru); font-weight: 700; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; }
+        .btn-reserve:hover { background: var(--negru); color: #fff; }
+
+        @media (max-width: 850px) { .exp-row { flex-direction: column !important; gap: 30px; } .exp-img { height: 300px; width: 100%; } }
     </style>
 </head>
 <body>
 
     <header class="site-header">
+        <div class="top-announcement">1 MAI 2026: LANSAREA MANIFEST METANOIA | TRIBUT PATRICIA</div>
         <div class="nav-container">
-            <a href="index.html" class="brand">Hațeg Alternativ</a>
+            <a href="index.html" class="logo-wrapper">
+                <img src="images/logo-liniar-transparent.png" alt="Logo">
+                <div class="brand-text"><h1>Hațeg Alternativ</h1></div>
+            </a>
             <nav class="main-nav">
+                <a href="retreat.html">Metanoia</a>
+                <a href="gastronomie.html">Gastronomie</a>
+                <a href="experiente.html" style="color:var(--auriu)">Ateliere</a>
                 <a href="obiective.html">Obiective</a>
-                <a href="experiente.html" style="color: var(--portocaliu);">Experiențe</a>
-                <a href="rezervari.html">Rezervări</a>
+                <a href="rezervari.html" style="border: 1px solid #000; padding: 8px 15px;">RESERVATIONS</a>
             </nav>
         </div>
     </header>
 
-    <section class="hero-small">
-        <h1 style="font-family: 'Playfair Display', serif; font-style: italic; font-size: 3rem;">Experiențe & Tarife</h1>
+    <section class="intro-section">
+        <p>Terapie prin creație</p>
+        <h1>Investiția în amintiri</h1>
     </section>
 
-    <div class="container">
-        <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; text-align: center; margin-bottom: 50px;">Investiția în amintiri.</h2>
-        
-        <table class="pricing-table">
-            <tr>
-                <td class="item-name">Atelier Gastronomic (Pâine, sarmale, ruladă)</td>
-                <td class="item-price">150 RON / pers.</td>
-            </tr>
-            <tr>
-                <td class="item-name">Terapie prin Artă (Pictură, Diamond Painting)</td>
-                <td class="item-price">150 RON / pers.</td>
-            </tr>
-            <tr>
-                <td class="item-name">Tur Ghidat GoNomad (Explorare personalizată)</td>
-                <td class="item-price">350 RON / grup</td>
-            </tr>
-            <tr>
-                <td class="item-name">Degustare Virsli de Sălaș</td>
-                <td class="item-price">95 RON / pers.</td>
-            </tr>
-        </table>
-
-        <div style="text-align: center; margin-top: 60px;">
-            <a href="rezervari.html" style="background: var(--portocaliu); color: white; text-decoration: none; padding: 20px 40px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px;">Solicită Rezervare</a>
+    <main class="exp-container">
+        <div class="exp-row">
+            <div class="exp-img"><img src="images/gast-masa-traditionala.jpg" alt="Atelier Gastronomic"></div>
+            <div class="exp-info">
+                <div class="price-tag">150 RON / PERSOANĂ</div>
+                <h2>Atelier Gastronomic</h2>
+                <p>Învață rânduiala pâinii calde, taina sarmalelor hațegane și rulada "La Buligă". O experiență despre gustul care vindecă.</p>
+                <a href="rezervari.html" class="btn-reserve">SOLICITĂ LOC</a>
+            </div>
         </div>
-    </div>
 
-    <footer style="padding: 60px; text-align: center; background: #f9f9f9; border-top: 1px solid #eee;">
-        <p style="font-size: 0.7rem; color: #aaa;">© 2026 HAȚEG ALTERNATIV</p>
-    </footer>
+        <div class="exp-row">
+            <div class="exp-img"><img src="images/exp-fluturi.jpg" alt="Terapie prin Arta"></div>
+            <div class="exp-info">
+                <div class="price-tag">150 RON / PERSOANĂ</div>
+                <h2>Terapie prin Artă</h2>
+                <p>Pictură intuitivă și Diamond Painting pentru reglarea sistemului nervos. Transformăm diamantele minții în obiecte de colecție.</p>
+                <a href="rezervari.html" class="btn-reserve">SOLICITĂ LOC</a>
+            </div>
+        </div>
+
+        <div class="exp-row">
+            <div class="exp-img"><img src="images/retezat.jpg" alt="Tur Ghidat"></div>
+            <div class="exp-info">
+                <div class="price-tag">350 RON / GRUP</div>
+                <h2>Tur Ghidat Gonomad</h2>
+                <p>Explorare personalizată a Țării Hațegului. Descoperim împreună locuri neștiute și isihia munților Retezat.</p>
+                <a href="rezervari.html" class="btn-reserve">SOLICITĂ LOC</a>
+            </div>
+        </div>
+    </main>
 
 </body>
 </html>
