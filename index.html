@@ -3,53 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hațeg Alternativ | Manifest Metanoia</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Hațeg Alternativ | Acasă</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --negru: #1a1a1a; --auriu: #c5a059; --crem: #fdfcf8; }
+        :root { --auriu: #c5a059; --negru: #1a1a1a; --crem: #fdfcf8; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru); padding-top: 100px; line-height: 1.6; }
+        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru); padding-top: 130px; line-height: 1.6; }
 
-        /* HEADER MINIMALIST */
+        /* HEADER UNIFICAT CU CONTACT */
         .site-header { position: fixed; top: 0; width: 100%; z-index: 9999; background: #fff; border-bottom: 1px solid #eee; }
         .top-announcement { background: var(--auriu); color: #fff; text-align: center; padding: 8px 0; font-size: 0.6rem; letter-spacing: 3px; font-weight: 700; text-transform: uppercase; }
-        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; }
+        .nav-container { max-width: 1240px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; height: 80px; }
         
         .logo-wrapper { display: flex; align-items: center; text-decoration: none; color: var(--negru); }
-        .logo-wrapper img { height: 50px; width: auto; margin-right: 15px; }
-        .brand-text h1 { font-family: 'Playfair Display', serif; font-size: 1rem; letter-spacing: 2px; text-transform: uppercase; margin: 0; }
+        .logo-wrapper img { height: 45px; width: auto; margin-right: 12px; }
+        .brand-text h1 { font-family: 'Playfair Display', serif; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; margin: 0; }
 
-        .main-nav { display: flex; align-items: center; gap: 30px; }
-        .main-nav a { text-decoration: none; color: var(--negru); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; }
+        .main-nav { display: flex; align-items: center; gap: 20px; }
+        .main-nav a { text-decoration: none; color: var(--negru); font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
         .main-nav a:hover { color: var(--auriu); }
-        .cta-nav { border: 1px solid var(--negru); padding: 10px 20px; }
+        .cta-nav { border: 1px solid var(--negru); padding: 10px 18px !important; }
+        .cta-nav:hover { background: var(--negru); color: #fff !important; }
 
         /* BANNER */
-        .trans-hero { width: 100%; line-height: 0; border-bottom: 5px solid var(--auriu); background: #eee; }
-        .trans-hero img { width: 100%; height: auto; display: block; }
+        .trans-hero { width: 100%; border-bottom: 5px solid var(--auriu); line-height: 0; }
+        .trans-hero img { width: 100%; height: auto; }
 
-        /* GRID VIZUAL (NAVIGARE PRINCIPALĂ) */
-        .gallery-section { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
-        .gallery-section h2 { text-align: center; font-family: 'Playfair Display', serif; font-size: 2.2rem; font-style: italic; margin-bottom: 50px; }
+        /* GRID */
+        .grid-section { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
         .grid-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        
-        .grid-item { position: relative; overflow: hidden; height: 380px; border-bottom: 4px solid var(--auriu); }
-        .grid-item a { display: block; width: 100%; height: 100%; text-decoration: none; }
-        .grid-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; }
+        .grid-item { position: relative; overflow: hidden; height: 350px; border-bottom: 3px solid var(--auriu); }
+        .grid-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
         .grid-item:hover img { transform: scale(1.05); }
-        
-        .grid-label { position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0,0,0,0.7); color: #fff; padding: 20px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
+        .grid-label { position: absolute; bottom: 0; width: 100%; background: rgba(0,0,0,0.6); color: #fff; padding: 15px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
 
-        /* CARTA */
-        .carta-section { padding: 100px 20px; display: flex; align-items: center; justify-content: center; gap: 60px; max-width: 1200px; margin: 0 auto; flex-wrap: wrap; border-top: 1px solid #eee; }
-        .carta-info { flex: 1; min-width: 300px; }
-        .carta-img { flex: 1; min-width: 300px; }
-        .carta-img img { width: 100%; border-radius: 2px; box-shadow: 20px 20px 0 var(--auriu); }
-
-        footer { padding: 60px; text-align: center; font-size: 0.7rem; opacity: 0.5; letter-spacing: 1px; }
-
-        @media (max-width: 768px) { .nav-container { flex-direction: column; gap: 15px; } .grid-gallery { grid-template-columns: 1fr; } }
+        @media (max-width: 1100px) {
+            body { padding-top: 180px; }
+            .nav-container { flex-direction: column; height: auto; padding: 20px; gap: 15px; }
+            .main-nav { flex-wrap: wrap; justify-content: center; gap: 10px; }
+        }
     </style>
 </head>
 <body>
@@ -63,8 +56,11 @@
             </a>
             <nav class="main-nav">
                 <a href="retreat.html">Metanoia</a>
-                <a href="#experiente">Experiențe</a>
-                <a href="rezervari.html" class="cta-nav">Rezervări</a>
+                <a href="gastronomie.html">Gastronomie</a>
+                <a href="experiente.html">Ateliere</a>
+                <a href="obiective.html">Obiective</a>
+                <a href="forum.html">Comunitate</a>
+                <a href="contact.html">Contact</a> <a href="rezervari.html" class="cta-nav">RESERVATIONS</a>
             </nav>
         </div>
     </header>
@@ -73,80 +69,28 @@
         <img src="transgenerational.png" alt="Moștenirea de Aur">
     </section>
 
-    <section class="gallery-section" id="experiente">
-        <h2>Experiențe de Suflet</h2>
+    <section class="grid-section">
         <div class="grid-gallery">
-            
             <div class="grid-item">
                 <a href="gastronomie.html">
                     <img src="images/gast-masa-traditionala.jpg" alt="Gastronomie">
                     <div class="grid-label">Punct Gastronomic Local</div>
                 </a>
             </div>
-
             <div class="grid-item">
                 <a href="experiente.html">
-                    <img src="images/exp-fluturi.jpg" alt="Experiente">
-                    <div class="grid-label">Workshop-uri și Creație</div>
+                    <img src="images/exp-fluturi.jpg" alt="Ateliere">
+                    <div class="grid-label">Ateliere de Creație</div>
                 </a>
             </div>
-
             <div class="grid-item">
                 <a href="obiective.html">
                     <img src="images/exp-biserica-densus.jpg" alt="Obiective">
                     <div class="grid-label">Obiective Turistice</div>
                 </a>
             </div>
-
-            <div class="grid-item">
-                <a href="evenimente.html">
-                    <img src="images/hero-sat.jpg" alt="Evenimente">
-                    <div class="grid-label">Serata și Tradiție</div>
-                </a>
-            </div>
-
-            <div class="grid-item">
-                <a href="forum.html">
-                    <img src="images/collage-final.png" alt="Forum">
-                    <div class="grid-label">Forumul Comunității</div>
-                </a>
-            </div>
-
-            <div class="grid-item">
-                <a href="retreat.html">
-                    <img src="images/retezat.jpg" alt="Metanoia">
-                    <div class="grid-label">Metanoia Retreat</div>
-                </a>
-            </div>
-
         </div>
     </section>
-
-    <section class="carta-section">
-        <div class="carta-info">
-            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; font-style: italic; margin-bottom: 25px;">Carta Gândurilor</h2>
-            <p style="font-size: 1.1rem; color: #555; margin-bottom: 30px;">Un spațiu sacru pentru isihie. Carta nu se comandă, ea te așteaptă la Domenii pentru a-ți transforma diamantele minții în rânduri scrise sub cerul Hațegului.</p>
-            <a href="retreat.html" style="text-decoration: none; color: #1a1a1a; font-weight: 700; border-bottom: 2px solid var(--auriu); padding-bottom: 5px;">DESCOPERĂ CARTA LA DOMENII</a>
-        </div>
-        <div class="carta-img">
-            <img src="images/carta-jurnal.jpg" alt="Carta Jurnal">
-        </div>
-    </section>
-
-    <footer>
-        HAȚEG ALTERNATIV &copy; 2026 | TRIBUT PATRICIA | MANIFEST METANOIA
-    </footer>
 
     <script type="text/javascript">
-        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-        (function(){
-        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-        s1.async=true;
-        s1.src='https://embed.tawk.to/642944b54247f20fefea97df/1gsvek60a';
-        s1.charset='UTF-8';
-        s1.setAttribute('crossorigin','*');
-        s0.parentNode.insertBefore(s1,s0);
-        })();
-    </script>
-</body>
-</html>
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart
