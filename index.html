@@ -4,45 +4,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hațeg Alternativ | Acasă</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --auriu: #c5a059; --negru: #1a1a1a; --crem: #fdfcf8; }
+        :root { --negru: #1a1a1a; --auriu: #c5a059; --crem: #fdfcf8; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru); padding-top: 130px; line-height: 1.6; }
 
-        /* HEADER UNIFICAT CU CONTACT */
+        /* HEADER UNIFICAT */
         .site-header { position: fixed; top: 0; width: 100%; z-index: 9999; background: #fff; border-bottom: 1px solid #eee; }
         .top-announcement { background: var(--auriu); color: #fff; text-align: center; padding: 8px 0; font-size: 0.6rem; letter-spacing: 3px; font-weight: 700; text-transform: uppercase; }
         .nav-container { max-width: 1240px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; height: 80px; }
-        
-        .logo-wrapper { display: flex; align-items: center; text-decoration: none; color: var(--negru); }
         .logo-wrapper img { height: 45px; width: auto; margin-right: 12px; }
         .brand-text h1 { font-family: 'Playfair Display', serif; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; margin: 0; }
-
         .main-nav { display: flex; align-items: center; gap: 20px; }
-        .main-nav a { text-decoration: none; color: var(--negru); font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
-        .main-nav a:hover { color: var(--auriu); }
-        .cta-nav { border: 1px solid var(--negru); padding: 10px 18px !important; }
+        .main-nav a { text-decoration: none; color: var(--negru); font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+        .cta-nav { border: 1px solid var(--negru); padding: 10px 18px !important; transition: 0.3s; }
         .cta-nav:hover { background: var(--negru); color: #fff !important; }
 
-        /* BANNER */
-        .trans-hero { width: 100%; border-bottom: 5px solid var(--auriu); line-height: 0; }
-        .trans-hero img { width: 100%; height: auto; }
+        /* BANNER - Am pus un fundal temporar sa nu fie alb daca poza nu se incarca */
+        .trans-hero { width: 100%; border-bottom: 5px solid var(--auriu); background: #f0ede4; min-height: 300px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .trans-hero img { width: 100%; height: auto; display: block; }
 
-        /* GRID */
-        .grid-section { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
-        .grid-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .grid-item { position: relative; overflow: hidden; height: 350px; border-bottom: 3px solid var(--auriu); }
-        .grid-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        /* SECTIUNE MANIFEST (Pentru densitate) */
+        .manifest-intro { padding: 80px 20px; text-align: center; max-width: 800px; margin: 0 auto; }
+        .manifest-intro h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-style: italic; margin-bottom: 20px; color: var(--auriu); }
+        .manifest-intro p { font-size: 1.1rem; font-weight: 300; color: #555; }
+
+        /* GRID EXPERIENTE */
+        .grid-section { padding: 60px 20px; max-width: 1200px; margin: 0 auto; }
+        .grid-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .grid-item { position: relative; overflow: hidden; height: 400px; border-bottom: 4px solid var(--auriu); background: #eee; }
+        .grid-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
         .grid-item:hover img { transform: scale(1.05); }
-        .grid-label { position: absolute; bottom: 0; width: 100%; background: rgba(0,0,0,0.6); color: #fff; padding: 15px; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
+        .grid-label { position: absolute; bottom: 0; width: 100%; background: rgba(0,0,0,0.7); color: #fff; padding: 20px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
 
-        @media (max-width: 1100px) {
-            body { padding-top: 180px; }
-            .nav-container { flex-direction: column; height: auto; padding: 20px; gap: 15px; }
-            .main-nav { flex-wrap: wrap; justify-content: center; gap: 10px; }
-        }
+        /* CARTA SECTION */
+        .carta-section { padding: 100px 20px; display: flex; align-items: center; justify-content: center; gap: 60px; max-width: 1200px; margin: 0 auto; flex-wrap: wrap; background: #fff; }
+        .carta-info { flex: 1; min-width: 300px; }
+        .carta-img { flex: 1; min-width: 300px; }
+        .carta-img img { width: 100%; border-radius: 2px; box-shadow: 20px 20px 0 var(--auriu); }
+
+        footer { padding: 60px; text-align: center; opacity: 0.5; font-size: 0.7rem; }
+
+        @media (max-width: 992px) { body { padding-top: 180px; } .nav-container { flex-direction: column; height: auto; gap: 15px; } }
     </style>
 </head>
 <body>
@@ -60,13 +65,19 @@
                 <a href="experiente.html">Ateliere</a>
                 <a href="obiective.html">Obiective</a>
                 <a href="forum.html">Comunitate</a>
-                <a href="contact.html">Contact</a> <a href="rezervari.html" class="cta-nav">RESERVATIONS</a>
+                <a href="contact.html">Contact</a>
+                <a href="rezervari.html" class="cta-nav">RESERVATIONS</a>
             </nav>
         </div>
     </header>
 
     <section class="trans-hero">
         <img src="transgenerational.png" alt="Moștenirea de Aur">
+    </section>
+
+    <section class="manifest-intro">
+        <h2>Moștenirea de Aur</h2>
+        <p>Un pelerinaj spre rânduială, isihie și regăsire. La Domeniile la Buligă, transformăm timpul în terapie și amintirile în diamante.</p>
     </section>
 
     <section class="grid-section">
@@ -92,5 +103,29 @@
         </div>
     </section>
 
+    <section class="carta-section">
+        <div class="carta-info">
+            <h2 style="font-family: 'Playfair Display', serif; font-size: 2.5rem; font-style: italic; margin-bottom: 25px;">Carta Gândurilor</h2>
+            <p style="margin-bottom: 30px;">Un spațiu sacru pentru scris. Carta nu se comandă, ea te așteaptă la Domenii pentru a-ți transforma trăirile în nemurire.</p>
+            <a href="retreat.html" style="text-decoration: none; color: #1a1a1a; font-weight: 700; border-bottom: 2px solid var(--auriu); padding-bottom: 5px;">DESCOPERĂ MAI MULT</a>
+        </div>
+        <div class="carta-img">
+            <img src="images/carta-jurnal.jpg" alt="Carta Jurnal">
+        </div>
+    </section>
+
+    <footer>
+        HAȚEG ALTERNATIV &copy; 2026 | TRIBUT PATRICIA | MANIFEST METANOIA
+    </footer>
+
     <script type="text/javascript">
-        var Tawk_API=Tawk_API||{}, Tawk_LoadStart
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true; s1.src='https://embed.tawk.to/642944b54247f20fefea97df/1gsvek60a';
+            s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+</body>
+</html>
