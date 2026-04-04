@@ -3,80 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Momente de Colecție | Hațeg Alternativ</title>
+    <title>Evenimente | Hațeg Alternativ</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root { --negru: #1a1a1a; --auriu: #c5a059; --crem: #fdfcf8; --alb: #ffffff; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru); line-height: 1.6; padding-top: 140px; }
+        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru); line-height: 1.6; padding-top: 130px; }
 
-        /* HEADER IDENTIC CU INDEX */
+        /* --- HEADER UNIFICAT (IDENTIC CU INDEX) --- */
         .site-header { position: fixed; top: 0; width: 100%; z-index: 9999; background: #fff; border-bottom: 1px solid #eee; }
-        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; }
+        .top-announcement { background: var(--auriu); color: #fff; text-align: center; padding: 8px 0; font-size: 0.6rem; letter-spacing: 3px; font-weight: 700; text-transform: uppercase; }
+        .nav-container { max-width: 1240px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; height: 80px; }
         .logo-wrapper { display: flex; align-items: center; text-decoration: none; color: var(--negru); }
-        .logo-wrapper img { height: 60px; margin-right: 15px; }
-        .brand-text h1 { font-family: 'Playfair Display', serif; font-size: 1.2rem; letter-spacing: 2px; text-transform: uppercase; margin: 0; }
+        .logo-wrapper img { height: 45px; width: auto; margin-right: 12px; }
+        .brand-text h1 { font-family: 'Playfair Display', serif; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; margin: 0; }
+        .main-nav { display: flex; align-items: center; gap: 20px; }
+        .main-nav a { text-decoration: none; color: var(--negru); font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .main-nav a:hover { color: var(--auriu); }
+        .cta-nav { border: 1px solid var(--negru); padding: 10px 18px !important; transition: 0.3s; }
+        .cta-nav:hover { background: var(--negru); color: #fff !important; }
 
-        /* HERO EVENT */
+        /* --- HERO & CONTENT --- */
         .hero-events { 
-            height: 55vh; 
+            height: 50vh; 
             background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/gast-masa-traditionala.jpg') center/cover; 
             display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; text-align: center; 
         }
-        .hero-events h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-style: italic; }
+        .hero-events h1 { font-family: 'Playfair Display', serif; font-size: 3rem; font-style: italic; }
 
-        /* PLANIFICATOR BADGE */
         .planner-badge { 
             background: var(--auriu); color: white; padding: 40px 20px; text-align: center; 
             max-width: 900px; margin: -60px auto 60px; position: relative; z-index: 10; box-shadow: 0 15px 35px rgba(0,0,0,0.1);
         }
-        .planner-badge h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; letter-spacing: 2px; margin-bottom: 10px; }
 
-        /* EVENTS GRID */
         .events-container { max-width: 1100px; margin: 0 auto; padding: 40px 15px; }
         .event-card { 
             display: flex; background: white; margin-bottom: 60px; border-radius: 2px; overflow: hidden;
             box-shadow: 0 5px 20px rgba(0,0,0,0.02); transition: 0.4s;
         }
-        .event-card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
         .event-img { width: 45%; background-size: cover; background-position: center; min-height: 400px; }
         .event-info { width: 55%; padding: 50px; display: flex; flex-direction: column; justify-content: center; }
         
-        .event-details { font-size: 0.95rem; color: #555; margin: 20px 0; list-style: none; font-weight: 300; }
-        .event-details li { margin-bottom: 10px; }
+        .event-details { font-size: 0.9rem; color: #555; margin: 20px 0; list-style: none; }
         .event-details li::before { content: "— "; color: var(--auriu); font-weight: bold; }
 
         .btn-booking { 
-            align-self: flex-start; padding: 14px 35px; border: 1px solid var(--negru); 
-            text-decoration: none; color: var(--negru); font-size: 0.75rem; font-weight: 700; letter-spacing: 2px; transition: 0.3s;
+            align-self: flex-start; padding: 12px 30px; border: 1px solid var(--negru); 
+            text-decoration: none; color: var(--negru); font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; transition: 0.3s;
         }
         .btn-booking:hover { background: var(--negru); color: white; }
 
-        /* RANDOM FEED GRID */
         .random-feed { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 60px; }
-        .random-feed img { width: 100%; height: 250px; object-fit: cover; border-radius: 2px; }
+        .random-feed img { width: 100%; height: 200px; object-fit: cover; }
 
-        @media (max-width: 850px) {
+        @media (max-width: 992px) {
+            body { padding-top: 180px; }
+            .nav-container { flex-direction: column; height: auto; padding: 20px; gap: 15px; }
             .event-card { flex-direction: column; }
             .event-img, .event-info { width: 100%; }
-            .hero-events h1 { font-size: 2.5rem; }
-            .random-feed { grid-template-columns: repeat(2, 1fr); }
-            body { padding-top: 180px; }
         }
     </style>
 </head>
 <body>
 
     <header class="site-header">
+        <div class="top-announcement">1 MAI 2026: LANSAREA MANIFEST METANOIA | TRIBUT PATRICIA</div>
         <div class="nav-container">
             <a href="index.html" class="logo-wrapper">
                 <img src="images/logo-liniar-transparent.png" alt="Logo">
                 <div class="brand-text"><h1>Hațeg Alternativ</h1></div>
             </a>
-            <nav style="display:flex; gap:20px;">
-                <a href="index.html" style="text-decoration:none; color:#000; font-weight:700; font-size:0.7rem; text-transform:uppercase;">Home</a>
-                <a href="retreat.html" style="text-decoration:none; color:#000; font-weight:700; font-size:0.7rem; text-transform:uppercase;">Metanoia</a>
+            <nav class="main-nav">
+                <a href="retreat.html">Metanoia</a>
+                <a href="gastronomie.html">Gastronomie</a>
+                <a href="experiente.html">Ateliere</a>
+                <a href="obiective.html">Obiective</a>
+                <a href="forum.html">Comunitate</a>
+                <a href="contact.html">Contact</a>
+                <a href="rezervari.html" class="cta-nav">RESERVATIONS</a>
             </nav>
         </div>
     </header>
@@ -87,12 +92,11 @@
     </section>
 
     <div class="planner-badge">
-        <h2>REVENIREA LA ORIGINI</h2>
-        <p>Fiecare eveniment este o poveste scrisă împreună. Dispunem de expertiza necesară pentru a transforma o simplă masă într-o amintire pentru o viață.</p>
+        <h2 style="font-family:'Playfair Display'; margin-bottom:10px;">REVENIREA LA ORIGINI</h2>
+        <p>Fiecare eveniment este o poveste scrisă împreună sub cerul Hațegului.</p>
     </div>
 
     <section class="events-container">
-        
         <div class="event-card">
             <div class="event-img" style="background-image: url('images/gast-supa2.jpg');"></div>
             <div class="event-info">
@@ -103,21 +107,21 @@
                     <li>Degustări de vinuri alese din inima Retezatului</li>
                     <li>Atmosferă Signature sub cerul liber</li>
                 </ul>
-                <a href="https://wa.me/40749229686" class="btn-booking">DETALII SERATĂ</a>
+                <a href="rezervari.html" class="btn-booking">DETALII SERATĂ</a>
             </div>
         </div>
 
         <div class="event-card" style="flex-direction: row-reverse;">
             <div class="event-img" style="background-image: url('images/feed-buliga.jpg');"></div>
-            <div class="event-info" style="padding-right: 80px;">
+            <div class="event-info">
                 <span style="color: var(--auriu); font-size: 0.7rem; letter-spacing: 3px; font-weight: 700;">METANOIA</span>
                 <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin: 15px 0;">Retreat de Weekend</h3>
                 <ul class="event-details">
-                    <li>Sesiuni de reculegere în natură</li>
+                    <li>Sesiuni de reculegere și isihie în natură</li>
                     <li>Cazare exclusivă în camere Signature</li>
                     <li>Acces la experiențe locale autentice</li>
                 </ul>
-                <a href="https://wa.me/40749229686" class="btn-booking">SOLICITĂ LOC</a>
+                <a href="rezervari.html" class="btn-booking">SOLICITĂ LOC</a>
             </div>
         </div>
 
@@ -128,14 +132,20 @@
             <img src="images/exp-fluturi.jpg" alt="Feed 3">
             <img src="images/feed-cetate.jpg" alt="Feed 4">
         </div>
-
     </section>
 
-    <footer style="padding: 60px; text-align: center; opacity: 0.6; font-size: 0.8rem; letter-spacing: 2px;">
+    <footer style="padding: 60px; text-align: center; opacity: 0.6; font-size: 0.8rem;">
         HAȚEG ALTERNATIV &copy; 2026 | TRIBUT PATRICIA
     </footer>
 
-    <a href="https://wa.me/40749229686" style="position: fixed; bottom: 30px; left: 30px; background: #25d366; color: #fff; width: 60px; height: 60px; border-radius: 50px; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 10000; text-decoration: none;"><i class="fab fa-whatsapp"></i></a>
-
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true; s1.src='https://embed.tawk.to/642944b54247f20fefea97df/1gsvek60a';
+            s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
 </body>
 </html>
