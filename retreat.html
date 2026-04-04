@@ -4,111 +4,172 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Metanoia Retreat | Hațeg Alternativ</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400;1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700;1,900&family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
     <style>
-        :root { --negru: #1a1a1a; --auriu: #c5a059; --crem: #fdfcf8; }
+        :root { --auriu: #c5a059; --alb: #ffffff; --negru: #1a1a1a; --crem: #fdfcf8; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru); line-height: 1.6; padding-top: 130px; }
+        
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: var(--crem); 
+            color: var(--negru); 
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
 
-        /* --- HEADER UNIFICAT (IDENTIC) --- */
-        .site-header { position: fixed; top: 0; width: 100%; z-index: 9999; background: #fff; border-bottom: 1px solid #eee; }
-        .top-announcement { background: var(--auriu); color: #fff; text-align: center; padding: 8px 0; font-size: 0.6rem; letter-spacing: 3px; font-weight: 700; text-transform: uppercase; }
-        .nav-container { max-width: 1240px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; height: 80px; }
-        .logo-wrapper { display: flex; align-items: center; text-decoration: none; color: var(--negru); }
-        .logo-wrapper img { height: 45px; width: auto; margin-right: 12px; }
-        .brand-text h1 { font-family: 'Playfair Display', serif; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; margin: 0; }
-        .main-nav { display: flex; align-items: center; gap: 20px; }
-        .main-nav a { text-decoration: none; color: var(--negru); font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
-        .main-nav a:hover { color: var(--auriu); }
-        .cta-nav { border: 1px solid var(--negru); padding: 10px 18px !important; transition: 0.3s; }
-        .cta-nav:hover { background: var(--negru); color: #fff !important; }
+        /* HEADER ELEGANT */
+        .site-header { 
+            position: fixed; top: 0; width: 100%; z-index: 1000; padding: 20px 50px;
+            background: rgba(255,255,255,0.9); backdrop-filter: blur(10px);
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .brand { font-weight: 900; letter-spacing: 4px; text-transform: uppercase; font-size: 1rem; text-decoration: none; color: var(--negru); }
+        .main-nav a { text-decoration: none; color: var(--negru); font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-left: 20px; }
 
-        /* --- CONTENT RETREAT --- */
-        .retreat-hero { height: 60vh; background: url('images/hero-premium.jpg') center/cover; display: flex; align-items: center; justify-content: center; color: white; text-align: center; position: relative; }
-        .retreat-hero::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.3); }
-        .retreat-hero h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-style: italic; position: relative; z-index: 2; }
+        /* HERO RETREAT - IMPACT SIGNATURE */
+        .hero-retreat {
+            width: 100%;
+            height: 85vh;
+            background: url('images/hero-sat.jpg') center/cover;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .hero-retreat::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, var(--crem) 100%);
+            z-index: 1;
+        }
+        .hero-content { position: relative; z-index: 2; color: #fff; }
+        .hero-content span { font-size: 0.7rem; letter-spacing: 10px; color: var(--auriu); text-transform: uppercase; font-weight: 800; display: block; margin-bottom: 15px; }
+        .hero-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 10vw, 5.5rem); font-weight: 900; font-style: italic; line-height: 0.85; text-shadow: 0 10px 30px rgba(0,0,0,0.3); }
 
-        .container { max-width: 1000px; margin: 0 auto; padding: 80px 20px; }
-        .intro-text { text-align: center; margin-bottom: 80px; }
-        .intro-text h2 { font-family: 'Playfair Display', serif; font-size: 2.2rem; margin-bottom: 20px; color: var(--auriu); }
-        .intro-text p { font-size: 1.1rem; font-weight: 300; max-width: 700px; margin: 0 auto; }
+        /* MANIFEST SECTION */
+        .manifest-container { max-width: 900px; margin: 0 auto; padding: 100px 20px; text-align: center; }
+        .gold-title { font-family: 'Playfair Display', serif; font-size: 2.8rem; font-style: italic; color: var(--auriu); margin-bottom: 30px; }
+        .text-lead { font-size: 1.3rem; font-weight: 300; color: #444; margin-bottom: 40px; font-style: italic; }
 
-        /* CE INCLUDE RETREAT-UL (Conexiunea cu Gastronomia și Experiențele) */
-        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 60px; }
-        .feature-card { padding: 40px; background: white; border: 1px solid #eee; text-align: center; transition: 0.3s; }
-        .feature-card:hover { border-color: var(--auriu); }
-        .feature-card i { font-size: 2rem; color: var(--auriu); margin-bottom: 20px; }
-        .feature-card h3 { font-family: 'Playfair Display', serif; margin-bottom: 15px; }
-        .feature-card a { color: var(--auriu); text-decoration: none; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid var(--auriu); }
+        /* CEI 3 PILONI - Layout Modern */
+        .pillars-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 40px; 
+            max-width: 1200px; 
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+        .pillar-card { 
+            background: #fff; 
+            padding: 50px 30px; 
+            border-bottom: 4px solid var(--auriu);
+            transition: 0.4s;
+            text-align: center;
+        }
+        .pillar-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.03); }
+        .pillar-card i { font-size: 2rem; color: var(--auriu); margin-bottom: 25px; display: block; }
+        .pillar-card h3 { font-family: 'Playfair Display'; font-size: 1.6rem; font-style: italic; margin-bottom: 15px; }
+        .pillar-card p { font-size: 0.9rem; font-weight: 300; color: #666; }
 
-        footer { padding: 60px; text-align: center; opacity: 0.5; font-size: 0.7rem; }
+        /* SECTION: CARTA & RESET */
+        .reset-section { 
+            display: flex; align-items: center; gap: 80px; 
+            max-width: 1200px; margin: 120px auto; padding: 0 20px;
+            flex-wrap: wrap;
+        }
+        .reset-img { flex: 1; min-width: 350px; position: relative; }
+        .reset-img img { width: 100%; border-radius: 2px; }
+        .reset-img::before { 
+            content: ''; position: absolute; top: -20px; left: -20px; 
+            width: 100px; height: 100px; border-top: 5px solid var(--auriu); border-left: 5px solid var(--auriu); 
+        }
+        .reset-text { flex: 1; min-width: 350px; }
 
-        @media (max-width: 992px) { body { padding-top: 180px; } .nav-container { flex-direction: column; height: auto; padding: 20px; gap: 15px; } }
+        /* CTA */
+        .cta-box { background: var(--negru); color: #fff; padding: 100px 20px; text-align: center; margin-top: 100px; }
+        .btn-lux { 
+            display: inline-block; padding: 20px 50px; border: 1px solid var(--auriu); 
+            color: #fff; text-decoration: none; font-size: 0.7rem; font-weight: 900; 
+            text-transform: uppercase; letter-spacing: 3px; transition: 0.4s; 
+        }
+        .btn-lux:hover { background: var(--auriu); color: var(--negru); }
+
+        footer { padding: 60px; text-align: center; opacity: 0.5; font-size: 0.7rem; letter-spacing: 2px; border-top: 1px solid #eee; }
+
+        @media (max-width: 768px) {
+            .site-header { padding: 15px; flex-direction: column; gap: 10px; }
+            .hero-retreat { height: 70vh; }
+            .reset-section { flex-direction: column; text-align: center; }
+        }
     </style>
 </head>
 <body>
 
     <header class="site-header">
-        <div class="top-announcement">1 MAI 2026: LANSAREA MANIFEST METANOIA | TRIBUT PATRICIA</div>
-        <div class="nav-container">
-            <a href="index.html" class="logo-wrapper">
-                <img src="images/logo-liniar-transparent.png" alt="Logo">
-                <div class="brand-text"><h1>Hațeg Alternativ</h1></div>
-            </a>
-            <nav class="main-nav">
-                <a href="retreat.html" style="color: var(--auriu);">Metanoia</a>
-                <a href="gastronomie.html">Gastronomie</a>
-                <a href="experiente.html">Ateliere</a>
-                <a href="obiective.html">Obiective</a>
-                <a href="forum.html">Comunitate</a>
-                <a href="contact.html">Contact</a>
-                <a href="rezervari.html" class="cta-nav">RESERVATIONS</a>
-            </nav>
-        </div>
+        <a href="index.html" class="brand">HAȚEG ALTERNATIV</a>
+        <nav class="main-nav">
+            <a href="index.html">Acasă</a>
+            <a href="gastronomie.html">Gastronomie</a>
+            <a href="experiente.html">Ateliere</a>
+            <a href="rezervari.html">Reservations</a>
+        </nav>
     </header>
 
-    <section class="retreat-hero">
-        <h1>Manifest Metanoia</h1>
+    <section class="hero-retreat">
+        <div class="hero-content">
+            <span>TRANSFORMARE</span>
+            <h1>Manifest<br>Metanoia.</h1>
+        </div>
     </section>
 
-    <main class="container">
-        <div class="intro-text">
-            <h2>Terapie Vagală și Isihie</h2>
-            <p>Retreat-ul nostru nu este doar o cazare, ci o metodă de resetare a sistemului nervos prin natură, artă și liniște transgenerațională.</p>
-        </div>
-
-        <div class="features-grid">
-            
-            <div class="feature-card">
-                <i class="fas fa-utensils"></i>
-                <h3>Culinaria de Suflet</h3>
-                <p>Mic dejun și cină incluse, gătite cu ingrediente de la Punctul Gastronomic Local.</p>
-                <br>
-                <a href="gastronomie.html">Vezi Meniul</a>
-            </div>
-
-            <div class="feature-card">
-                <i class="fas fa-paint-brush"></i>
-                <h3>Ateliere Creative</h3>
-                <p>Înveți să-ți transformi „diamantele minții” în obiecte de artă sub îndrumarea noastră.</p>
-                <br>
-                <a href="experiente.html">Vezi Atelierele</a>
-            </div>
-
-            <div class="feature-card">
-                <i class="fas fa-bed"></i>
-                <h3>Cazare Signature</h3>
-                <p>Odihnă în camere artizanale unde fiecare detaliu este gândit pentru un somn profund.</p>
-                <br>
-                <a href="rezervari.html">Rezervă Acum</a>
-            </div>
-
-        </div>
+    <main class="manifest-container">
+        <h2 class="gold-title">Terapia Isihiei</h2>
+        <p class="text-lead">„Metanoia nu este o simplă vacanță, ci o călătorie de la zgomotul minții la liniștea sufletului.”</p>
+        <p style="font-weight: 300; color: #555;">La Domeniile la Buligă, am creat un ecosistem de vindecare. Aici, timpul nu se măsoară în ore, ci în bătăi de inimă liniștite. Folosim rânduiala locului și forța naturii pentru a-ți reseta sistemul nervos.</p>
     </main>
 
+    <section class="pillars-grid">
+        <div class="pillar-card">
+            <h3>Isihia</h3>
+            <p>Tăcerea care vindecă. Învățăm să ascultăm liniștea munților Retezat pentru a ne regăsi vocea interioară.</p>
+        </div>
+        <div class="pillar-card">
+            <h3>Terapia Vagală</h3>
+            <p>Tehnici de respirație, rânduială alimentară și contact cu natura pentru reglarea nervului vag și eliminarea stresului cronic.</p>
+        </div>
+        <div class="pillar-card">
+            <h3>Creația</h3>
+            <p>Prin atelierele de pictură și gastronomie, transformăm energia blocată în obiecte de colecție și amintiri vii.</p>
+        </div>
+    </section>
+
+    <section class="reset-section">
+        <div class="reset-img">
+            <img src="images/retreat-meditatie.jpg" alt="Reset">
+        </div>
+        <div class="reset-text">
+            <h2 class="gold-title" style="text-align: left;">Rânduiala Zilnică</h2>
+            <p style="font-weight: 300; margin-bottom: 20px;">Fiecare zi de retreat este structurată pentru a-ți oferi siguranță și tihnă. De la micul dejun tăcut, până la sesiunile de scris în Carta Gândurilor sub lumina apusului.</p>
+            <ul style="list-style: none; font-weight: 700; font-size: 0.8rem; color: var(--auriu); letter-spacing: 1px;">
+                <li>— MIC DEJUN ÎN RÂNDUIALĂ</li>
+                <li>— PLIMBĂRI CONȘTIENTE</li>
+                <li>— ATELIERE DE METANOIA</li>
+                <li>— CINĂ FUSION TRADIȚIONALĂ</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="cta-box">
+        <h2 style="font-family: 'Playfair Display'; font-size: 2.5rem; font-style: italic; margin-bottom: 30px;">Ești gata pentru resetare?</h2>
+        <a href="rezervari.html" class="btn-lux">Rezervă experiența Metanoia</a>
+    </section>
+
     <footer>
-        HAȚEG ALTERNATIV &copy; 2026 | TURISM DE DESCOPERIRE
+        HAȚEG ALTERNATIV &copy; 2026 | MANIFEST METANOIA | TRIBUT PATRICIA
     </footer>
 
     <script type="text/javascript">
