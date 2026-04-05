@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+   <!DOCTYPE html>
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
@@ -9,15 +9,14 @@
     <style>
         :root { --auriu: #c5a059; --negru: #000; --gri-card: #0a0a0a; }
         
-        /* RESETARE PENTRU STABILITATE MOBIL */
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        html, body { background: var(--negru); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; width: 100%; position: relative; }
+        html, body { background: var(--negru); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; width: 100%; }
 
-        /* HEADER RESPONSIV */
+        /* HEADER */
         .site-header { 
             position: fixed; top: 0; width: 100%; z-index: 1000; 
             padding: 15px 20px;
-            background: rgba(0,0,0,0.9);
+            background: rgba(0,0,0,0.95);
             backdrop-filter: blur(10px);
             display: flex; flex-direction: column; align-items: center;
             border-bottom: 1px solid #1a1a1a;
@@ -25,46 +24,42 @@
         .brand { font-weight: 900; letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem; color: #fff; text-decoration: none; margin-bottom: 10px; }
         .main-nav { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
         .main-nav a { text-decoration: none; color: #fff; font-size: 0.55rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; opacity: 0.7; }
-        .main-nav a.active { color: var(--auriu); opacity: 1; }
 
-        /* HERO SLIDER STABILIZAT */
-        .hero-slider { width: 100%; height: 70vh; position: relative; overflow: hidden; margin-top: 80px; }
+        /* HERO SLIDER */
+        .hero-slider { width: 100%; height: 70vh; position: relative; overflow: hidden; margin-top: 85px; }
         .slider-track { display: flex; width: 400%; height: 100%; animation: slide-anim 20s infinite ease-in-out; }
         .slide { width: 25%; height: 100%; background-size: cover; background-position: center; position: relative; display: flex; align-items: center; justify-content: center; }
-        .slide::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 1; }
+        .slide::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); z-index: 1; }
+        .hero-content { position: relative; z-index: 2; text-align: center; }
+        .hero-content h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-style: italic; font-weight: 900; line-height: 1; }
 
-        .hero-content { position: relative; z-index: 2; text-align: center; padding: 20px; }
-        .hero-content h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-style: italic; font-weight: 900; line-height: 1; text-shadow: 0 5px 20px rgba(0,0,0,0.8); }
-
-        /* SECTIUNEA PENSIUNE (OPTIUNEA CATRE PENSIUNE) */
-        .pensiune-box { padding: 40px 20px; background: var(--negru); border-top: 1px solid #1a1a1a; }
+        /* SECTIUNEA PENSIUNE (FIX LINK TO pensiune.html) */
+        .pensiune-box { padding: 40px 20px; background: var(--negru); }
         .pensiune-card { 
             display: block; text-decoration: none; color: inherit;
             border: 1px solid #1a1a1a; background: var(--gri-card); overflow: hidden;
             transition: 0.3s;
         }
-        .pensiune-img { width: 100%; height: 250px; overflow: hidden; }
-        .pensiune-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
+        .pensiune-img { width: 100%; height: 280px; overflow: hidden; background: #111; }
+        .pensiune-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; }
         
-        .pensiune-info { padding: 25px; text-align: center; }
-        .pensiune-info h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-style: italic; color: var(--auriu); margin-bottom: 10px; }
-        .pensiune-info p { font-size: 0.9rem; color: #888; font-weight: 300; line-height: 1.6; margin-bottom: 20px; }
+        .pensiune-info { padding: 30px; text-align: center; }
+        .pensiune-info h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-style: italic; color: var(--auriu); margin-bottom: 15px; }
+        .pensiune-info p { font-size: 0.95rem; color: #aaa; font-weight: 300; line-height: 1.6; margin-bottom: 25px; }
         .btn-gold { 
-            display: inline-block; padding: 12px 30px; background: var(--auriu); color: #000; 
+            display: inline-block; padding: 14px 35px; background: var(--auriu); color: #000; 
             font-weight: 900; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px;
         }
 
-        /* GRID EXPERIENTE */
+        /* GRID MIC */
         .grid-section { padding: 20px; display: grid; grid-template-columns: 1fr; gap: 20px; }
-        .mini-card { background: var(--gri-card); border-bottom: 3px solid var(--auriu); text-decoration: none; color: inherit; overflow: hidden; }
-        .mini-img { height: 200px; overflow: hidden; }
+        .mini-card { background: var(--gri-card); border-bottom: 3px solid var(--auriu); text-decoration: none; color: inherit; }
+        .mini-img { height: 220px; overflow: hidden; }
         .mini-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; }
         .mini-info { padding: 20px; }
-        .mini-info h3 { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-style: italic; }
-        .mini-info span { font-size: 0.6rem; color: var(--auriu); letter-spacing: 1px; font-weight: 700; text-transform: uppercase; }
+        .mini-info h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-style: italic; }
 
-        /* FLOATING WHATSAPP */
-        .wa-float { position: fixed; bottom: 20px; right: 20px; background: #25d366; color: #fff; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; z-index: 2000; }
+        .wa-float { position: fixed; bottom: 25px; right: 25px; background: #25d366; color: #fff; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; z-index: 2000; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
 
         @keyframes slide-anim {
             0%, 20% { transform: translateX(0); }
@@ -74,7 +69,6 @@
             100% { transform: translateX(0); }
         }
 
-        /* DESKTOP ADJUSTMENTS */
         @media (min-width: 768px) {
             .site-header { flex-direction: row; justify-content: space-between; padding: 25px 50px; }
             .brand { margin-bottom: 0; font-size: 1.2rem; }
@@ -82,10 +76,10 @@
             .hero-slider { height: 100vh; margin-top: 0; }
             .hero-content h1 { font-size: 6rem; }
             .pensiune-box { padding: 80px 50px; }
-            .pensiune-card { display: flex; align-items: center; height: 500px; }
-            .pensiune-img { flex: 1; height: 100%; }
+            .pensiune-card { display: flex; align-items: center; min-height: 500px; }
+            .pensiune-img { flex: 1.2; height: 500px; }
             .pensiune-info { flex: 1; padding: 60px; text-align: left; }
-            .grid-section { grid-template-columns: 1fr 1fr; padding: 50px; }
+            .grid-section { grid-template-columns: 1fr 1fr; padding: 50px; gap: 40px; }
         }
     </style>
 </head>
@@ -94,11 +88,11 @@
     <header class="site-header">
         <a href="index.html" class="brand">HAȚEG ALTERNATIV</a>
         <nav class="main-nav">
+            <a href="pensiune.html" class="active">Pensiune</a>
             <a href="retreat.html">Metanoia</a>
             <a href="gastronomie.html">Gastronomie</a>
             <a href="experiente.html">Ateliere</a>
             <a href="obiective.html">Obiective</a>
-            <a href="rezervari.html">Reservations</a>
         </nav>
     </header>
 
@@ -112,14 +106,14 @@
     </section>
 
     <section class="pensiune-box">
-        <a href="retreat.html" class="pensiune-card">
+        <a href="pensiune.html" class="pensiune-card">
             <div class="pensiune-img">
-                <img src="images/la-buliga-pensiune.jpg" alt="Pensiune">
+                <img src="images/la-buliga-pensiune.jpg" alt="La Buliga Pensiune">
             </div>
             <div class="pensiune-info">
                 <h2>Pensiunea la Buligă</h2>
-                <p>O oază de isihie și rânduială în inima Geoparcului. Închiriere integrală pentru o experiență Signature.</p>
-                <span class="btn-gold">Vezi Pensiunea</span>
+                <p>O oază de isihie și rânduială în inima Geoparcului Dinozaurilor. Oferim un spațiu creat pentru regăsire, disponibil spre închiriere integrală.</p>
+                <span class="btn-gold">Vezi Detalii Pensiune</span>
             </div>
         </a>
     </section>
@@ -128,21 +122,21 @@
         <a href="gastronomie.html" class="mini-card">
             <div class="mini-img"><img src="images/gast-masa-traditionala.jpg" alt="Gastro"></div>
             <div class="mini-info">
-                <span>Tradiție</span>
                 <h3>Punct Gastronomic</h3>
+                <p style="font-size: 0.8rem; color: #888; margin-top: 5px;">Gustul curat al Hațegului.</p>
             </div>
         </a>
         <a href="experiente.html" class="mini-card">
             <div class="mini-img"><img src="images/exp-fluturi.jpg" alt="Ateliere"></div>
             <div class="mini-info">
-                <span>Creație</span>
                 <h3>Ateliere Signature</h3>
+                <p style="font-size: 0.8rem; color: #888; margin-top: 5px;">Terapie prin artă și rânduială.</p>
             </div>
         </a>
     </section>
 
-    <footer style="padding: 40px; text-align: center; opacity: 0.3; font-size: 0.6rem; letter-spacing: 2px;">
-        HAȚEG ALTERNATIV &copy; 2026
+    <footer style="padding: 60px 20px; text-align: center; opacity: 0.3; font-size: 0.6rem; letter-spacing: 2px;">
+        HAȚEG ALTERNATIV &copy; 2026 | TURISM CONȘTIENT
     </footer>
 
     <a href="https://wa.me/40749229686" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
