@@ -25,58 +25,33 @@
         .hero-slider { width: 100%; height: 100vh; position: relative; overflow: hidden; }
         .slider-track { display: flex; width: 400%; height: 100%; animation: slide-anim 20s infinite ease-in-out; }
         .slide { width: 25%; height: 100%; background-size: cover; background-position: center; position: relative; display: flex; align-items: center; justify-content: center; }
+        .slide::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%); z-index: 1; }
+
+        .hero-content { position: relative; z-index: 2; text-align: center; }
+        .hero-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 10vw, 6.5rem); font-weight: 900; font-style: italic; line-height: 0.85; text-shadow: 0 10px 50px rgba(0,0,0,0.8); }
+
+        /* SECTIUNE PENSIUNEA LA BULIGA (REPARATA) */
+        .pensiune-section { padding: 100px 50px; max-width: 1300px; margin: 0 auto; display: flex; gap: 60px; align-items: center; flex-wrap: wrap; background: var(--negru); }
         
-        /* UMBRA ERMES */
-        .slide::after {
-            content: '';
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%);
-            z-index: 1;
-        }
-
-        .hero-content { position: relative; z-index: 2; text-align: center; max-width: 1000px; padding: 0 20px; }
-        .hero-content span { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 10px; color: var(--auriu); display: block; margin-bottom: 20px; font-weight: 800; }
-        .hero-content h1 { 
-            font-family: 'Playfair Display', serif; 
-            font-size: clamp(3rem, 10vw, 6.5rem); 
-            font-weight: 900; font-style: italic; line-height: 0.85; margin-bottom: 30px; 
-            text-shadow: 0 10px 50px rgba(0,0,0,0.8);
-        }
-
-        /* SECTIUNE PENSIUNEA LA BULIGA */
-        .pensiune-section { padding: 100px 50px; max-width: 1300px; margin: 0 auto; display: flex; gap: 60px; align-items: center; flex-wrap: wrap; }
-        .pensiune-img { flex: 1; min-width: 350px; height: 500px; border: 1px solid #1a1a1a; padding: 12px; background: var(--gri-card); }
+        /* LINK PE POZA */
+        .pensiune-link { flex: 1; min-width: 350px; text-decoration: none; }
+        .pensiune-img { height: 500px; border: 1px solid #1a1a1a; padding: 12px; background: var(--gri-card); transition: 0.4s; }
+        .pensiune-img:hover { border-color: var(--auriu); transform: scale(1.02); }
         .pensiune-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; }
+
         .pensiune-text { flex: 1; min-width: 350px; }
         .pensiune-text h2 { font-family: 'Playfair Display', serif; font-size: 3rem; font-style: italic; color: var(--auriu); margin-bottom: 20px; line-height: 1.1; }
         .pensiune-text p { color: #888; line-height: 1.8; font-weight: 300; margin-bottom: 25px; font-size: 1.1rem; }
 
-        /* GRID CARDS (STYLE OBIECTIVE) */
+        /* GRID CARDS STYLE OBIECTIVE */
         .section-grid { padding: 80px 50px; max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 40px; }
         .obj-card { background: var(--gri-card); border-bottom: 4px solid var(--auriu); transition: 0.4s; text-decoration: none; color: inherit; display: block; }
-        .obj-card:hover { transform: translateY(-10px); }
-        .obj-img { height: 350px; overflow: hidden; position: relative; }
-        .obj-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; }
         .obj-info { padding: 30px; }
         .obj-info h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-style: italic; margin-bottom: 15px; }
         .dist { display: block; margin-top: 20px; font-size: 0.65rem; font-weight: 800; color: var(--auriu); letter-spacing: 2px; text-transform: uppercase; }
 
-        /* BUTOANE */
-        .wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 9999; text-decoration: none; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-
-        @keyframes slide-anim {
-            0%, 20% { transform: translateX(0); }
-            25%, 45% { transform: translateX(-25%); }
-            50%, 70% { transform: translateX(-50%); }
-            75%, 95% { transform: translateX(-75%); }
-            100% { transform: translateX(0); }
-        }
-
-        @media (max-width: 768px) {
-            .site-header { padding: 20px; flex-direction: column; gap: 10px; }
-            .pensiune-section { padding: 50px 20px; }
-            .hero-content h1 { font-size: 3.5rem; }
-        }
+        @keyframes slide-anim { 0%, 20% { transform: translateX(0); } 25%, 45% { transform: translateX(-25%); } 50%, 70% { transform: translateX(-50%); } 75%, 95% { transform: translateX(-75%); } 100% { transform: translateX(0); } }
+        @media (max-width: 768px) { .site-header { padding: 20px; flex-direction: column; } .pensiune-section { padding: 50px 20px; } .hero-content h1 { font-size: 3.5rem; } }
     </style>
 </head>
 <body>
@@ -94,69 +69,37 @@
 
     <section class="hero-slider">
         <div class="slider-track">
-            <div class="slide" style="background-image: url('images/hero-premium.jpg');">
-                <div class="hero-content">
-                    <span>DOMENIILE LA BULIGĂ</span>
-                    <h1>Simte.<br>Explorează.<br>Trăiește.</h1>
-                </div>
-            </div>
-            <div class="slide" style="background-image: url('images/hero-camp-munti.jpg');">
-                <div class="hero-content">
-                    <span>RETEZAT</span>
-                    <h1>Terapia<br>Isihiei.</h1>
-                </div>
-            </div>
-            <div class="slide" style="background-image: url('images/hero-lac.jpg');">
-                <div class="hero-content">
-                    <span>MANIFEST</span>
-                    <h1>Moștenirea<br>De Aur.</h1>
-                </div>
-            </div>
-            <div class="slide" style="background-image: url('images/hero-sat.jpg');">
-                <div class="hero-content">
-                    <span>RÂNDUIALĂ</span>
-                    <h1>Pelerinaj<br>Spre Sine.</h1>
-                </div>
-            </div>
+            <div class="slide" style="background-image: url('images/hero-premium.jpg');"><div class="hero-content"><h1>Simte.<br>Trăiește.</h1></div></div>
+            <div class="slide" style="background-image: url('images/hero-camp-munti.jpg');"><div class="hero-content"><h1>Terapia<br>Isihiei.</h1></div></div>
+            <div class="slide" style="background-image: url('images/hero-lac.jpg');"><div class="hero-content"><h1>Moștenirea<br>De Aur.</h1></div></div>
+            <div class="slide" style="background-image: url('images/hero-sat.jpg');"><div class="hero-content"><h1>Pelerinaj<br>Spre Sine.</h1></div></div>
         </div>
     </section>
 
     <section class="pensiune-section">
-        <div class="pensiune-img">
-            <img src="images/la-buliga-pensiune.jpg" alt="La Buliga Pensiune">
-        </div>
+        <a href="retreat.html" class="pensiune-link"> <div class="pensiune-img">
+                <img src="images/la-buliga-pensiune.jpg" alt="La Buliga Pensiune">
+            </div>
+        </a>
         <div class="pensiune-text">
             <h2>Pensiunea la Buligă</h2>
-            <p>Un sanctuar al rânduielii, unde arhitectura tradițională întâlnește liniștea profundă a munților Retezat. Oferim o experiență de cazare Signature, gândită pentru grupuri care caută reconectarea cu sinele.</p>
-            <p>Locația se închiriază integral, asigurând o izolare voită de zgomotul lumii și o imersiune totală în isihie.</p>
-            <a href="rezervari.html" class="dist">VERIFICĂ DISPONIBILITATEA →</a>
+            <p>Un sanctuar al rânduielii, unde arhitectura tradițională întâlnește liniștea profundă. Oferim o experiență Signature, gândită pentru reconectare.</p>
+            <a href="retreat.html" class="dist">DESCOPERĂ DOMENIUL →</a>
         </div>
     </section>
 
     <section class="section-grid">
         <a href="gastronomie.html" class="obj-card">
-            <div class="obj-img"><img src="images/gast-masa-traditionala.jpg" alt="Gastro"></div>
-            <div class="obj-info">
-                <h3>Punct Gastronomic Local</h3>
-                <p>Descoperă gustul autentic al Hațegului, preparat cu dragoste și ingrediente curate.</p>
-                <span class="dist">MENIUL ZILEI</span>
-            </div>
+            <div style="height:300px; overflow:hidden;"><img src="images/gast-masa-traditionala.jpg" style="width:100%; height:100%; object-fit:cover; opacity:0.7;"></div>
+            <div class="obj-info"><h3>Punct Gastronomic</h3><span class="dist">MENIUL ZILEI</span></div>
         </a>
         <a href="experiente.html" class="obj-card">
-            <div class="obj-img"><img src="images/exp-fluturi.jpg" alt="Ateliere"></div>
-            <div class="obj-info">
-                <h3>Ateliere Signature</h3>
-                <p>Terapie prin creație și artă, într-un cadru care inspiră diamantele minții.</p>
-                <span class="dist">VEZI EXPERIENȚELE</span>
-            </div>
+            <div style="height:300px; overflow:hidden;"><img src="images/exp-fluturi.jpg" style="width:100%; height:100%; object-fit:cover; opacity:0.7;"></div>
+            <div class="obj-info"><h3>Ateliere Signature</h3><span class="dist">EXPERIENȚE</span></div>
         </a>
     </section>
 
-    <footer style="padding: 60px; text-align: center; opacity: 0.3; font-size: 0.6rem; letter-spacing: 2px;">
-        HAȚEG ALTERNATIV &copy; 2026 | TRIBUT PATRICIA | MANIFEST METANOIA
-    </footer>
-
-    <a href="https://wa.me/40749229686" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://wa.me/40749229686" style="position:fixed; bottom:30px; right:30px; background:#25d366; color:white; width:60px; height:60px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:30px; z-index:9999; text-decoration:none;"><i class="fab fa-whatsapp"></i></a>
 
     <script type="text/javascript">
         var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
