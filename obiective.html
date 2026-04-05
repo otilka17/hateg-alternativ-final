@@ -3,63 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Obiective | Hațeg Alternativ Signature</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700;1,900&family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <title>Natură & Geoparc | Hațeg Alternativ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --auriu: #c5a059; --alb: #ffffff; --negru: #0a0a0a; --crem: #fdfcf8; }
+        :root { --auriu: #c5a059; --negru: #000; --gri-card: #0a0a0a; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background: var(--crem); 
-            color: var(--negru); 
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
+        body { background: var(--negru); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; padding-top: 100px; }
 
-        /* HEADER ERMES */
+        /* HEADER EDITORIAL */
         .site-header { 
-            position: fixed; top: 0; width: 100%; z-index: 1000; padding: 20px 50px;
-            background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
+            position: fixed; top: 0; width: 100%; z-index: 1000; 
+            padding: 25px 50px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, transparent 100%);
             display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
-        .brand { font-weight: 900; letter-spacing: 4px; text-transform: uppercase; font-size: 1rem; text-decoration: none; color: var(--negru); }
-        .main-nav a { text-decoration: none; color: var(--negru); font-size: 0.6rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-left: 20px; }
+        .brand { font-weight: 900; letter-spacing: 4px; text-transform: uppercase; font-size: 1rem; color: #fff; text-decoration: none; }
+        .main-nav a { text-decoration: none; color: #fff; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; margin-left: 25px; letter-spacing: 1px; }
 
-        /* HERO OBIECTIVE */
-        .hero-obj {
-            width: 100%; height: 70vh;
-            background: url('images/retezat.jpg') center/cover;
-            position: relative; display: flex; align-items: center; justify-content: center;
-        }
-        .hero-obj::after {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, var(--crem) 100%);
-            z-index: 1;
-        }
-        .hero-content { position: relative; z-index: 2; text-align: center; color: #fff; }
-        .hero-content span { font-size: 0.7rem; letter-spacing: 10px; color: var(--auriu); text-transform: uppercase; font-weight: 800; }
-        .hero-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 10vw, 5rem); font-weight: 900; font-style: italic; text-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        /* TITLU PAGINA */
+        .page-title { text-align: center; padding: 60px 20px; }
+        .page-title h1 { font-family: 'Playfair Display', serif; font-size: 4rem; font-style: italic; color: var(--auriu); }
 
-        /* CONTAINER OBIECTIVE */
-        .obj-container { max-width: 1200px; margin: 0 auto; padding: 0 20px 100px; }
-        .category-label { 
-            font-family: 'Playfair Display'; font-size: 2.2rem; font-style: italic; color: var(--auriu); 
-            text-align: center; margin: 80px 0 40px; border-bottom: 1px solid rgba(197,160,89,0.2); padding-bottom: 15px; 
-        }
-
-        .obj-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
+        /* GRID CARDS (STILUL CARE TI-A PLACUT) */
+        .section-grid { padding: 40px 50px; max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 40px; }
+        .obj-card { background: var(--gri-card); border-bottom: 4px solid var(--auriu); transition: 0.4s; text-decoration: none; color: inherit; display: block; overflow: hidden; }
+        .obj-card:hover { transform: translateY(-10px); border-color: #fff; }
         
-        .obj-card { background: #fff; border-bottom: 4px solid var(--auriu); box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: 0.4s; overflow: hidden; }
-        .obj-card:hover { transform: translateY(-10px); }
-        .obj-img { height: 280px; background-size: cover; background-position: center; }
-        .obj-info { padding: 30px; }
-        .obj-info h3 { font-family: 'Playfair Display'; font-size: 1.6rem; font-style: italic; margin-bottom: 10px; }
-        .obj-info p { font-size: 0.85rem; font-weight: 300; color: #666; height: 80px; overflow: hidden; }
-        .dist { display: block; margin-top: 20px; font-size: 0.6rem; font-weight: 800; letter-spacing: 2px; color: var(--auriu); text-transform: uppercase; }
+        .obj-img { height: 350px; overflow: hidden; position: relative; background: #111; }
+        .obj-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: 0.8s; }
+        .obj-card:hover .obj-img img { opacity: 1; transform: scale(1.05); }
 
-        @media (max-width: 768px) { .site-header { padding: 15px; flex-direction: column; } .hero-obj { height: 50vh; } }
+        .obj-info { padding: 35px; }
+        .obj-info h3 { font-family: 'Playfair Display', serif; font-size: 2rem; font-style: italic; margin-bottom: 15px; line-height: 1.2; }
+        .obj-info p { font-size: 1rem; font-weight: 300; color: #888; line-height: 1.6; }
+        
+        .dist { display: block; margin-top: 25px; font-size: 0.7rem; font-weight: 800; color: var(--auriu); letter-spacing: 3px; text-transform: uppercase; }
+
+        footer { padding: 80px; text-align: center; opacity: 0.3; font-size: 0.6rem; letter-spacing: 2px; }
+
+        @media (max-width: 768px) {
+            .site-header { padding: 20px; flex-direction: column; gap: 10px; }
+            .page-title h1 { font-size: 2.5rem; }
+            .section-grid { padding: 20px; }
+        }
     </style>
 </head>
 <body>
@@ -68,134 +55,62 @@
         <a href="index.html" class="brand">HAȚEG ALTERNATIV</a>
         <nav class="main-nav">
             <a href="index.html">Acasă</a>
-            <a href="retreat.html">Metanoia</a>
             <a href="gastronomie.html">Gastronomie</a>
-            <a href="rezervari.html">Reservations</a>
+            <a href="experiente.html">Ateliere</a>
+            <a href="rezervari.html" style="border: 1px solid #fff; padding: 5px 15px;">Reservations</a>
         </nav>
     </header>
 
-    <section class="hero-obj">
-        <div class="hero-content">
-            <span>PELERINAJ & ISTORIE</span>
-            <h1>Locuri de<br>Legendă.</h1>
+    <div class="page-title">
+        <h1>Natură & Geoparc</h1>
+    </div>
+
+    <section class="section-grid">
+        <div class="obj-card">
+            <div class="obj-img">
+                <img src="images/munti.jpg" alt="Zimbri Slivut"> </div>
+            <div class="obj-info">
+                <h3>Rezervația de Zimbri Slivuț</h3>
+                <p>Primul loc din România unde zimbrii au fost reintroduși, într-o pădure seculară de stejari.</p>
+                <span class="dist">10 MINUTE DE LA DOMENII</span>
+            </div>
+        </div>
+
+        <div class="obj-card">
+            <div class="obj-img">
+                <img src="images/retezat.jpg" alt="Parcul National Retezat">
+            </div>
+            <div class="obj-info">
+                <h3>Parcul Național Retezat</h3>
+                <p>Tărâmul celor peste 80 de lacuri glaciare. Inima sălbatică a Carpaților și sanctuar al isihiei.</p>
+                <span class="dist">POARTA DE INTRARE ÎN PARC</span>
+            </div>
+        </div>
+
+        <div class="obj-card">
+            <div class="obj-img">
+                <img src="images/exp-lac.jpg" alt="Drumul Pietrei">
+            </div>
+            <div class="obj-info">
+                <h3>Drumul Pietrei (Ohaba-Sibișel)</h3>
+                <p>Un traseu ce dezvăluie legătura profundă dintre om și piatra extrasă din inima muntelui.</p>
+                <span class="dist">TRASEU TEMATIC SPECTACULOS</span>
+            </div>
         </div>
     </section>
 
-    <main class="obj-container">
-        
-        <div class="category-label">Pelerinaj Spiritual</div>
-        <div class="obj-grid">
-            <div class="obj-card">
-                <div class="obj-img" style="background-image: url('images/exp-biserica-densus.jpg');"></div>
-                <div class="obj-info">
-                    <h3>Biserica Sf. Nicolae Densuș</h3>
-                    <p>Unică în lume, construită din pietre romane. Un loc al isihiei depline unde istoria se contopește cu divinul.</p>
-                    <span class="dist">15 MINUTE DE LA DOMENII</span>
-                </div>
-            </div>
-            <div class="obj-card">
-                <div class="obj-img" style="background-image: url('images/prislop.jpg');"></div>
-                <div class="obj-info">
-                    <h3>Mănăstirea Prislop</h3>
-                    <p>Locul de odihnă al Părintelui Arsenie Boca, o oază de rugăciune și liniște în mijlocul naturii.</p>
-                    <span class="dist">20 MINUTE DE LA DOMENII</span>
-                </div>
-            </div>
-            <div class="obj-card">
-                <div class="obj-img" style="background-image: url('images/colt-biserica.jpg');"></div>
-                <div class="obj-info">
-                    <h3>Biserica Cetate Colț</h3>
-                    <p>Biserica de piatră a cnejilor Cândea, sursa de inspirație pentru "Castelul din Carpați" de Jules Verne.</p>
-                    <span class="dist">25 MINUTE DE LA DOMENII</span>
-                </div>
-            </div>
-            <div class="obj-card">
-                <div class="obj-img" style="background-image: url('images/ghelari.jpg');"></div>
-                <div class="obj-info">
-                    <h3>Catedrala Pădurenilor</h3>
-                    <p>Monumentala catedrală din Ghelari, simbol al credinței și mândriei Ținutului Pădurenilor.</p>
-                    <span class="dist">35 MINUTE DE LA DOMENII</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="category-label">Cetăți & Istorie</div>
-        <div class="obj-grid">
-            <div class="obj-card">
-                <div class="obj-img" style="background-image: url('images/sarmisegetusaregia.jpg');"></div>
-                <div class="obj-info">
-                    <h3>Ulpia Traiana Sarmizegetusa</h3>
-                    <p>Metropola antichității romane în Dacia. Explorează amfiteatrul și forumul imperial.</p>
-                    <span class="dist">10 MINUTE DE LA DOMENII</span>
-                </div>
-            </div>
-            <div class="obj-card">
-                <div class="obj-img" style="background-image: url('images/cetate-malaiesti.jpg');"></div>
-                <div class="obj-info">
-                    <h3>Cetatea Malaiești</h3>
-                    <p>O fortăreață medievală restaurată, care veghează intrarea în muntele Retezat.</p>
-                    <span class="dist">20 MINUTE DE LA DOMENII</span>
-                </div>
-            </div>
-            <div class="obj-card">
-                <div class="obj-img" style="background-image: url('images/cetate-hateg.jpg');"></div>
-                <div class="obj-info">
-                    <h3>Cetatea Regală a Hațegului</h3>
-                    <p>Ruinele turnului de pază ce domina odinioară întreaga depresiune a Hațegului.</p>
-                    <span class="dist">10 MINUTE DE LA DOMENII</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="category-label">Natură & Geoparc</div>
-        <div class="obj-grid">
-            <div class="obj-card">
-                <div class="obj-img" style="background-image: url('images/zimbri.jpg');"></div>
-                <div class="obj-info">
-                    <h3>Rezervația de Zimbri Slivuț</h3>
-                    <p>Primul loc din România unde zimbrii au fost reintroduși, într-o pădure seculară de stejari.</p>
-                    <span class="dist">HAȚEG - 5 MINUTE</span>
-                </div>
-            </div>
-            <div class="obj-card">
-                <div class="obj-img" style="background-image: url('images/fundatura-ponorului.jpg');"></div>
-                <div class="obj-info">
-                    <h3>Fundătura Ponorului</h3>
-                    <p>Cunoscută ca "Palma lui Dumnezeu", un loc de o frumusețe ireală unde timpul pare să fi încremenit.</p>
-                    <span class="dist">45 MINUTE (TRASEU SPECTACULOS)</span>
-                </div>
-            </div>
-            <div class="obj-card">
-                <div class="obj-img" style="background-image: url('images/retezat-lacuri.jpg');"></div>
-                <div class="obj-info">
-                    <h3>Parcul Național Retezat</h3>
-                    <p>Tărâmul celor peste 80 de lacuri glaciare. Inima sălbatică a Carpaților.</p>
-                    <span class="dist">POARTA DE INTRARE ÎN PARC</span>
-                </div>
-            </div>
-            <div class="obj-card">
-                <div class="obj-img" style="background-image: url('images/vulcani.jpg');"></div>
-                <div class="obj-info">
-                    <h3>Traseul Vulcanilor</h3>
-                    <p>O călătorie în timp până acum 70 de milioane de ani, pe urmele vulcanilor de pe Insula Hațeg.</p>
-                    <span class="dist">GEOPARC INTERNAȚIONAL UNESCO</span>
-                </div>
-            </div>
-            <div class="obj-card">
-                <div class="obj-img" style="background-image: url('images/drumul-pietrei.jpg');"></div>
-                <div class="obj-info">
-                    <h3>Drumul Pietrei (Ohaba-Sibișel)</h3>
-                    <p>Un traseu ce dezvăluie legătura profundă dintre om și piatra extrasă din inima muntelui.</p>
-                    <span class="dist">TRASEU TEMATIC</span>
-                </div>
-            </div>
-        </div>
-
-    </main>
-
-    <footer style="padding: 60px; text-align: center; opacity: 0.5; font-size: 0.7rem; letter-spacing: 2px;">
+    <footer>
         HAȚEG ALTERNATIV &copy; 2026 | TURISM CONȘTIENT
     </footer>
 
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true; s1.src='https://embed.tawk.to/642944b54247f20fefea97df/1gsvek60a';
+            s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
 </body>
 </html>
