@@ -25,27 +25,27 @@
         .page-title { text-align: center; padding: 60px 20px; }
         .page-title h1 { font-family: 'Playfair Display', serif; font-size: 4rem; font-style: italic; color: var(--auriu); }
 
-        /* GRID CARDS (STILUL CARE TI-A PLACUT) */
-        .section-grid { padding: 40px 50px; max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 40px; }
+        /* GRID CARDS */
+        .section-grid { padding: 40px 50px; max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px; }
         .obj-card { background: var(--gri-card); border-bottom: 4px solid var(--auriu); transition: 0.4s; text-decoration: none; color: inherit; display: block; overflow: hidden; }
         .obj-card:hover { transform: translateY(-10px); border-color: #fff; }
         
-        .obj-img { height: 350px; overflow: hidden; position: relative; background: #111; }
+        .obj-img { height: 400px; overflow: hidden; position: relative; background: #111; }
         .obj-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: 0.8s; }
         .obj-card:hover .obj-img img { opacity: 1; transform: scale(1.05); }
 
         .obj-info { padding: 35px; }
         .obj-info h3 { font-family: 'Playfair Display', serif; font-size: 2rem; font-style: italic; margin-bottom: 15px; line-height: 1.2; }
-        .obj-info p { font-size: 1rem; font-weight: 300; color: #888; line-height: 1.6; }
+        .obj-info p { font-size: 1rem; font-weight: 300; color: #888; line-height: 1.6; min-height: 80px; }
         
         .dist { display: block; margin-top: 25px; font-size: 0.7rem; font-weight: 800; color: var(--auriu); letter-spacing: 3px; text-transform: uppercase; }
 
-        footer { padding: 80px; text-align: center; opacity: 0.3; font-size: 0.6rem; letter-spacing: 2px; }
+        footer { padding: 80px; text-align: center; opacity: 0.3; font-size: 0.6rem; letter-spacing: 2px; border-top: 1px solid #1a1a1a; }
 
         @media (max-width: 768px) {
             .site-header { padding: 20px; flex-direction: column; gap: 10px; }
             .page-title h1 { font-size: 2.5rem; }
-            .section-grid { padding: 20px; }
+            .section-grid { padding: 20px; grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -67,19 +67,7 @@
 
     <section class="section-grid">
         <div class="obj-card">
-            <div class="obj-img">
-                <img src="images/munti.jpg" alt="Zimbri Slivut"> </div>
-            <div class="obj-info">
-                <h3>Rezervația de Zimbri Slivuț</h3>
-                <p>Primul loc din România unde zimbrii au fost reintroduși, într-o pădure seculară de stejari.</p>
-                <span class="dist">10 MINUTE DE LA DOMENII</span>
-            </div>
-        </div>
-
-        <div class="obj-card">
-            <div class="obj-img">
-                <img src="images/retezat.jpg" alt="Parcul National Retezat">
-            </div>
+            <div class="obj-img"><img src="images/retezat.jpg" alt="Retezat"></div>
             <div class="obj-info">
                 <h3>Parcul Național Retezat</h3>
                 <p>Tărâmul celor peste 80 de lacuri glaciare. Inima sălbatică a Carpaților și sanctuar al isihiei.</p>
@@ -88,19 +76,62 @@
         </div>
 
         <div class="obj-card">
-            <div class="obj-img">
-                <img src="images/exp-lac.jpg" alt="Drumul Pietrei">
+            <div class="obj-img"><img src="images/exp-lac.jpg" alt="Peștera Banița"></div>
+            <div class="obj-info">
+                <h3>Peștera & Canionul Banița</h3>
+                <p>O sculptură naturală în calcar, unde apa a săpat un culoar sinuos de o frumusețe rară. Un spectacol vizual unic.</p>
+                <span class="dist">CANION & AVENTURĂ</span>
             </div>
+        </div>
+
+        <div class="obj-card">
+            <div class="obj-img"><img src="images/munti.jpg" alt="Zimbri"></div>
+            <div class="obj-info">
+                <h3>Rezervația de Zimbri Slivuț</h3>
+                <p>Primul loc din România unde zimbrii au fost reintroduși, într-o pădure seculară de stejari.</p>
+                <span class="dist">10 MINUTE DE DOMENII</span>
+            </div>
+        </div>
+
+        <div class="obj-card">
+            <div class="obj-img"><img src="images/exp-biserica-densus.jpg" alt="Densus"></div>
+            <div class="obj-info">
+                <h3>Biserica Sf. Nicolae Densuș</h3>
+                <p>Cea mai veche biserică din piatră din România, un loc învăluit în mister și spiritualitate dacică.</p>
+                <span class="dist">MISTERUL PIETREI ANTICE</span>
+            </div>
+        </div>
+
+        <div class="obj-card">
+            <div class="obj-img"><img src="images/sarmisegetusaregia.jpg" alt="Sarmizegetusa"></div>
+            <div class="obj-info">
+                <h3>Sarmizegetusa Regia</h3>
+                <p>Capitala Daciei, un sit UNESCO unde istoria se împletește cu energia pământului străbun.</p>
+                <span class="dist">MOȘTENIREA STRĂMOȘILOR</span>
+            </div>
+        </div>
+
+        <div class="obj-card">
+            <div class="obj-img"><img src="images/exp-lac.jpg" alt="Drumul Pietrei"></div>
             <div class="obj-info">
                 <h3>Drumul Pietrei (Ohaba-Sibișel)</h3>
-                <p>Un traseu ce dezvăluie legătura profundă dintre om și piatra extrasă din inima muntelui.</p>
-                <span class="dist">TRASEU TEMATIC SPECTACULOS</span>
+                <p>Un traseu tematic ce dezvăluie legătura profundă dintre om și piatra extrasă din inima muntelui.</p>
+                <span class="dist">TRASEU SPECTACULOS</span>
+            </div>
+        </div>
+
+        <div class="obj-card">
+            <div class="obj-img"><img src="images/feed-cetate.jpg" alt="Cetatea Colt"></div>
+            <div class="obj-info">
+                <h3>Cetatea Colț</h3>
+                <p>Ruinele cetății care l-au inspirat pe Jules Verne în scrierea „Castelului din Carpați”.</p>
+                <span class="dist">INSPIRAȚIE LITERARĂ</span>
             </div>
         </div>
     </section>
 
     <footer>
-        HAȚEG ALTERNATIV &copy; 2026 | TURISM CONȘTIENT
+        HAȚEG ALTERNATIV &copy; 2026 | TURISM CONȘTIENT | TRIBUT PATRICIA
     </footer>
 
     <script type="text/javascript">
