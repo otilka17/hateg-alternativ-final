@@ -7,63 +7,117 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --auriu: #c5a059; --negru: #000; --gri-card: #0a0a0a; }
+        :root { 
+            --auriu: #c5a059; 
+            --negru: #050505; 
+            --gri-card: #0d0d0d; 
+            --tranzitie: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background: var(--negru); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-        /* HEADER EDITORIAL */
+        /* HEADER EDITORIAL REFINED */
         .site-header { 
             position: fixed; top: 0; width: 100%; z-index: 1000; 
-            padding: 25px 50px;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, transparent 100%);
+            padding: 30px 50px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, transparent 100%);
             display: flex; justify-content: space-between; align-items: center;
+            transition: var(--tranzitie);
         }
-        .brand { font-weight: 900; letter-spacing: 4px; text-transform: uppercase; font-size: 1rem; color: #fff; text-decoration: none; }
-        .main-nav a { text-decoration: none; color: #fff; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; margin-left: 25px; letter-spacing: 1px; }
-
-        /* HERO SLIDER (IN MISCARE) */
-        .hero-slider { width: 100%; height: 100vh; position: relative; overflow: hidden; }
-        .slider-track { display: flex; width: 400%; height: 100%; animation: slide-anim 20s infinite ease-in-out; }
-        .slide { width: 25%; height: 100%; background-size: cover; background-position: center; position: relative; display: flex; align-items: center; justify-content: center; }
         
-        /* UMBRA ERMES */
+        .brand { font-weight: 900; letter-spacing: 5px; text-transform: uppercase; font-size: 0.9rem; color: #fff; text-decoration: none; }
+        
+        .main-nav a { 
+            text-decoration: none; color: #fff; font-size: 0.65rem; font-weight: 700; 
+            text-transform: uppercase; margin-left: 30px; letter-spacing: 2px; 
+            opacity: 0.7; transition: var(--tranzitie);
+        }
+        .main-nav a:hover { opacity: 1; color: var(--auriu); }
+
+        .main-nav a[href="rezervari.html"] {
+            border: 1px solid rgba(255,255,255,0.3);
+            padding: 10px 22px;
+            opacity: 1;
+        }
+        .main-nav a[href="rezervari.html"]:hover {
+            background: #fff; color: #000; border-color: #fff;
+        }
+
+        /* HERO SLIDER CU KEN BURNS EFFECT */
+        .hero-slider { width: 100%; height: 100vh; position: relative; overflow: hidden; }
+        .slider-track { display: flex; width: 400%; height: 100%; animation: slide-anim 24s infinite ease-in-out; }
+        
+        .slide { 
+            width: 25%; height: 100%; position: relative; overflow: hidden;
+            display: flex; align-items: center; justify-content: center; 
+        }
+
+        /* Imaginea din interiorul slide-ului pentru efectul Ken Burns */
+        .slide-bg {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover; background-position: center;
+            animation: kenburns 12s infinite alternate;
+            z-index: 0;
+        }
+        
         .slide::after {
             content: '';
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%);
+            background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.7) 100%);
             z-index: 1;
         }
 
         .hero-content { position: relative; z-index: 2; text-align: center; max-width: 1000px; padding: 0 20px; }
-        .hero-content span { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 10px; color: var(--auriu); display: block; margin-bottom: 20px; font-weight: 800; }
+        .hero-content span { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 12px; color: var(--auriu); display: block; margin-bottom: 25px; font-weight: 800; }
         .hero-content h1 { 
             font-family: 'Playfair Display', serif; 
-            font-size: clamp(3rem, 10vw, 6.5rem); 
+            font-size: clamp(3.5rem, 12vw, 7rem); 
             font-weight: 900; font-style: italic; line-height: 0.85; margin-bottom: 30px; 
-            text-shadow: 0 10px 50px rgba(0,0,0,0.8);
+            text-shadow: 0 15px 60px rgba(0,0,0,0.9);
         }
 
-        /* SECTIUNE PENSIUNEA LA BULIGA */
-        .pensiune-section { padding: 100px 50px; max-width: 1300px; margin: 0 auto; display: flex; gap: 60px; align-items: center; flex-wrap: wrap; }
-        .pensiune-img { flex: 1; min-width: 350px; height: 500px; border: 1px solid #1a1a1a; padding: 12px; background: var(--gri-card); }
-        .pensiune-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; }
+        /* PENSIUNEA SECTION REFINED */
+        .pensiune-section { padding: 120px 50px; max-width: 1400px; margin: 0 auto; display: flex; gap: 80px; align-items: center; flex-wrap: wrap; }
+        
+        .pensiune-img { 
+            flex: 1; min-width: 350px; height: 600px; 
+            border: 1px solid #1a1a1a; padding: 15px; background: var(--gri-card);
+            transition: var(--tranzitie);
+        }
+        .pensiune-img:hover { border-color: var(--auriu); }
+        .pensiune-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: var(--tranzitie); }
+        .pensiune-img:hover img { opacity: 1; }
+
         .pensiune-text { flex: 1; min-width: 350px; }
-        .pensiune-text h2 { font-family: 'Playfair Display', serif; font-size: 3rem; font-style: italic; color: var(--auriu); margin-bottom: 20px; line-height: 1.1; }
-        .pensiune-text p { color: #888; line-height: 1.8; font-weight: 300; margin-bottom: 25px; font-size: 1.1rem; }
+        .pensiune-text h2 { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-style: italic; color: var(--auriu); margin-bottom: 30px; line-height: 1.1; }
+        .pensiune-text p { color: #aaa; line-height: 1.9; font-weight: 300; margin-bottom: 30px; font-size: 1.15rem; }
 
-        /* GRID CARDS (STYLE OBIECTIVE) */
-        .section-grid { padding: 80px 50px; max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 40px; }
-        .obj-card { background: var(--gri-card); border-bottom: 4px solid var(--auriu); transition: 0.4s; text-decoration: none; color: inherit; display: block; }
-        .obj-card:hover { transform: translateY(-10px); }
-        .obj-img { height: 350px; overflow: hidden; position: relative; }
-        .obj-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; }
-        .obj-info { padding: 30px; }
-        .obj-info h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-style: italic; margin-bottom: 15px; }
-        .dist { display: block; margin-top: 20px; font-size: 0.65rem; font-weight: 800; color: var(--auriu); letter-spacing: 2px; text-transform: uppercase; }
+        /* GRID CARDS LUXURY HOVER */
+        .section-grid { padding: 80px 50px 150px; max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 50px; }
+        
+        .obj-card { background: var(--gri-card); border-bottom: 1px solid #1a1a1a; transition: var(--tranzitie); text-decoration: none; color: inherit; display: block; overflow: hidden; }
+        .obj-card:hover { transform: translateY(-15px); border-bottom: 1px solid var(--auriu); }
+        
+        .obj-img { height: 400px; overflow: hidden; position: relative; }
+        .obj-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: transform 1.2s ease, opacity 1.2s ease; }
+        .obj-card:hover .obj-img img { transform: scale(1.1); opacity: 0.9; }
 
-        /* BUTOANE */
-        .wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 9999; text-decoration: none; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .obj-info { padding: 40px; }
+        .obj-info h3 { font-family: 'Playfair Display', serif; font-size: 2rem; font-style: italic; margin-bottom: 15px; color: #fff; }
+        
+        .dist { 
+            display: inline-block; margin-top: 25px; font-size: 0.7rem; font-weight: 800; 
+            color: var(--auriu); letter-spacing: 3px; text-transform: uppercase; 
+            position: relative;
+        }
+        .dist::after {
+            content: ''; position: absolute; bottom: -5px; left: 0; width: 30px; height: 1px;
+            background: var(--auriu); transition: var(--tranzitie);
+        }
+        .obj-card:hover .dist::after { width: 100%; }
 
+        /* ANIMATII */
         @keyframes slide-anim {
             0%, 20% { transform: translateX(0); }
             25%, 45% { transform: translateX(-25%); }
@@ -72,10 +126,21 @@
             100% { transform: translateX(0); }
         }
 
+        @keyframes kenburns {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.15); }
+        }
+
+        /* WHATSAPP FLOAT REFINED */
+        .wa-float { position: fixed; bottom: 40px; right: 40px; background: #128c7e; color: white; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; z-index: 9999; text-decoration: none; box-shadow: 0 15px 40px rgba(0,0,0,0.6); transition: var(--tranzitie); }
+        .wa-float:hover { transform: scale(1.1) rotate(10deg); }
+
         @media (max-width: 768px) {
-            .site-header { padding: 20px; flex-direction: column; gap: 10px; }
-            .pensiune-section { padding: 50px 20px; }
-            .hero-content h1 { font-size: 3.5rem; }
+            .site-header { padding: 25px; }
+            .main-nav { display: none; } /* De obicei se pune un burger menu aici */
+            .pensiune-section { padding: 60px 25px; }
+            .hero-content h1 { font-size: 3.8rem; }
+            .section-grid { grid-template-columns: 1fr; padding: 40px 25px; }
         }
     </style>
 </head>
@@ -88,31 +153,35 @@
             <a href="gastronomie.html">Gastronomie</a>
             <a href="experiente.html">Ateliere</a>
             <a href="obiective.html">Obiective</a>
-            <a href="rezervari.html" style="border: 1px solid #fff; padding: 5px 15px;">Reservations</a>
+            <a href="rezervari.html">Reservations</a>
         </nav>
     </header>
 
     <section class="hero-slider">
         <div class="slider-track">
-            <div class="slide" style="background-image: url('images/hero-premium.jpg');">
+            <div class="slide">
+                <div class="slide-bg" style="background-image: url('images/hero-premium.jpg');"></div>
                 <div class="hero-content">
                     <span>DOMENIILE LA BULIGĂ</span>
                     <h1>Simte.<br>Explorează.<br>Trăiește.</h1>
                 </div>
             </div>
-            <div class="slide" style="background-image: url('images/hero-camp-munti.jpg');">
+            <div class="slide">
+                <div class="slide-bg" style="background-image: url('images/hero-camp-munti.jpg');"></div>
                 <div class="hero-content">
                     <span>RETEZAT</span>
                     <h1>Terapia<br>Isihiei.</h1>
                 </div>
             </div>
-            <div class="slide" style="background-image: url('images/hero-lac.jpg');">
+            <div class="slide">
+                <div class="slide-bg" style="background-image: url('images/hero-lac.jpg');"></div>
                 <div class="hero-content">
                     <span>MANIFEST</span>
                     <h1>Moștenirea<br>De Aur.</h1>
                 </div>
             </div>
-            <div class="slide" style="background-image: url('images/hero-sat.jpg');">
+            <div class="slide">
+                <div class="slide-bg" style="background-image: url('images/hero-sat.jpg');"></div>
                 <div class="hero-content">
                     <span>RÂNDUIALĂ</span>
                     <h1>Pelerinaj<br>Spre Sine.</h1>
@@ -152,8 +221,10 @@
         </a>
     </section>
 
-    <footer style="padding: 60px; text-align: center; opacity: 0.3; font-size: 0.6rem; letter-spacing: 2px;">
-        HAȚEG ALTERNATIV &copy; 2026 | TRIBUT PATRICIA | MANIFEST METANOIA
+    <footer style="padding: 100px 60px; text-align: center; border-top: 1px solid #1a1a1a;">
+        <div style="opacity: 0.4; font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase;">
+            HAȚEG ALTERNATIV &copy; 2026 | TRIBUT PATRICIA | MANIFEST METANOIA
+        </div>
     </footer>
 
     <a href="https://wa.me/40749229686" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
