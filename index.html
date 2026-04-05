@@ -21,21 +21,16 @@
         .brand { font-weight: 900; letter-spacing: 4px; text-transform: uppercase; font-size: 1rem; color: #fff; text-decoration: none; }
         .main-nav a { text-decoration: none; color: #fff; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; margin-left: 25px; letter-spacing: 1px; }
 
-        /* HERO SECTION - O SINGURA POZA (STIL ERMES) */
-        .hero-single {
-            width: 100%;
-            height: 100vh;
-            background: url('images/hero-sat.jpg') center/cover no-repeat;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        /* UMBRA PROFUNDA */
-        .hero-single::after {
+        /* HERO SLIDER (IN MISCARE) */
+        .hero-slider { width: 100%; height: 100vh; position: relative; overflow: hidden; }
+        .slider-track { display: flex; width: 400%; height: 100%; animation: slide-anim 20s infinite ease-in-out; }
+        .slide { width: 25%; height: 100%; background-size: cover; background-position: center; position: relative; display: flex; align-items: center; justify-content: center; }
+        
+        /* UMBRA ERMES */
+        .slide::after {
             content: '';
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.8) 100%);
+            background: radial-gradient(circle, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%);
             z-index: 1;
         }
 
@@ -43,19 +38,20 @@
         .hero-content span { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 10px; color: var(--auriu); display: block; margin-bottom: 20px; font-weight: 800; }
         .hero-content h1 { 
             font-family: 'Playfair Display', serif; 
-            font-size: clamp(3.5rem, 10vw, 7rem); 
+            font-size: clamp(3rem, 10vw, 6.5rem); 
             font-weight: 900; font-style: italic; line-height: 0.85; margin-bottom: 30px; 
             text-shadow: 0 10px 50px rgba(0,0,0,0.8);
         }
 
-        /* SECTIUNE DOMENIU */
-        .domeniu-wrap { padding: 100px 50px; max-width: 1300px; margin: 0 auto; display: flex; gap: 60px; align-items: center; flex-wrap: wrap; }
-        .domeniu-img { flex: 1; min-width: 350px; height: 500px; border: 1px solid #1a1a1a; padding: 10px; background: var(--gri-card); }
-        .domeniu-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
-        .domeniu-text h2 { font-family: 'Playfair Display', serif; font-size: 3rem; font-style: italic; color: var(--auriu); margin-bottom: 20px; }
-        .domeniu-text p { color: #888; line-height: 1.8; font-weight: 300; margin-bottom: 25px; }
+        /* SECTIUNE PENSIUNEA LA BULIGA */
+        .pensiune-section { padding: 100px 50px; max-width: 1300px; margin: 0 auto; display: flex; gap: 60px; align-items: center; flex-wrap: wrap; }
+        .pensiune-img { flex: 1; min-width: 350px; height: 500px; border: 1px solid #1a1a1a; padding: 12px; background: var(--gri-card); }
+        .pensiune-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; }
+        .pensiune-text { flex: 1; min-width: 350px; }
+        .pensiune-text h2 { font-family: 'Playfair Display', serif; font-size: 3rem; font-style: italic; color: var(--auriu); margin-bottom: 20px; line-height: 1.1; }
+        .pensiune-text p { color: #888; line-height: 1.8; font-weight: 300; margin-bottom: 25px; font-size: 1.1rem; }
 
-        /* GRID CARDS (CA LA OBIECTIVE) */
+        /* GRID CARDS (STYLE OBIECTIVE) */
         .section-grid { padding: 80px 50px; max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 40px; }
         .obj-card { background: var(--gri-card); border-bottom: 4px solid var(--auriu); transition: 0.4s; text-decoration: none; color: inherit; display: block; }
         .obj-card:hover { transform: translateY(-10px); }
@@ -63,17 +59,23 @@
         .obj-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; }
         .obj-info { padding: 30px; }
         .obj-info h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-style: italic; margin-bottom: 15px; }
-        .obj-info p { font-size: 0.9rem; font-weight: 300; color: #888; }
         .dist { display: block; margin-top: 20px; font-size: 0.65rem; font-weight: 800; color: var(--auriu); letter-spacing: 2px; text-transform: uppercase; }
 
         /* BUTOANE */
         .wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 9999; text-decoration: none; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
 
+        @keyframes slide-anim {
+            0%, 20% { transform: translateX(0); }
+            25%, 45% { transform: translateX(-25%); }
+            50%, 70% { transform: translateX(-50%); }
+            75%, 95% { transform: translateX(-75%); }
+            100% { transform: translateX(0); }
+        }
+
         @media (max-width: 768px) {
             .site-header { padding: 20px; flex-direction: column; gap: 10px; }
-            .domeniu-wrap { padding: 50px 20px; }
+            .pensiune-section { padding: 50px 20px; }
             .hero-content h1 { font-size: 3.5rem; }
-            .section-grid { padding: 40px 20px; }
         }
     </style>
 </head>
@@ -90,21 +92,44 @@
         </nav>
     </header>
 
-    <section class="hero-single">
-        <div class="hero-content">
-            <span>DOMENIILE LA BULIGĂ</span>
-            <h1>Simte.<br>Explorează.<br>Trăiește.</h1>
+    <section class="hero-slider">
+        <div class="slider-track">
+            <div class="slide" style="background-image: url('images/hero-premium.jpg');">
+                <div class="hero-content">
+                    <span>DOMENIILE LA BULIGĂ</span>
+                    <h1>Simte.<br>Explorează.<br>Trăiește.</h1>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('images/hero-camp-munti.jpg');">
+                <div class="hero-content">
+                    <span>RETEZAT</span>
+                    <h1>Terapia<br>Isihiei.</h1>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('images/hero-lac.jpg');">
+                <div class="hero-content">
+                    <span>MANIFEST</span>
+                    <h1>Moștenirea<br>De Aur.</h1>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('images/hero-sat.jpg');">
+                <div class="hero-content">
+                    <span>RÂNDUIALĂ</span>
+                    <h1>Pelerinaj<br>Spre Sine.</h1>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section class="domeniu-wrap">
-        <div class="domeniu-img">
-            <img src="images/retezat.jpg" alt="Domeniu">
+    <section class="pensiune-section">
+        <div class="pensiune-img">
+            <img src="images/la-buliga-pensiune.jpg" alt="La Buliga Pensiune">
         </div>
-        <div class="domeniu-text">
-            <h2>Domeniile la Buligă</h2>
-            <p>Locația noastră se închiriază integral (10 locuri), oferind oaspeților intimitate totală pentru pelerinajul lor interior. Organizăm evenimente private și corporate exclusiviste într-un cadru de poveste.</p>
-            <a href="rezervari.html" class="dist">Solicită Rezervare Integrală →</a>
+        <div class="pensiune-text">
+            <h2>Pensiunea la Buligă</h2>
+            <p>Un sanctuar al rânduielii, unde arhitectura tradițională întâlnește liniștea profundă a munților Retezat. Oferim o experiență de cazare Signature, gândită pentru grupuri care caută reconectarea cu sinele.</p>
+            <p>Locația se închiriază integral, asigurând o izolare voită de zgomotul lumii și o imersiune totală în isihie.</p>
+            <a href="rezervari.html" class="dist">VERIFICĂ DISPONIBILITATEA →</a>
         </div>
     </section>
 
@@ -113,16 +138,16 @@
             <div class="obj-img"><img src="images/gast-masa-traditionala.jpg" alt="Gastro"></div>
             <div class="obj-info">
                 <h3>Punct Gastronomic Local</h3>
-                <p>Rânduiala gustului autentic, cu ingrediente culese din grădina noastră.</p>
-                <span class="dist">VEZI MENIUL ZILEI</span>
+                <p>Descoperă gustul autentic al Hațegului, preparat cu dragoste și ingrediente curate.</p>
+                <span class="dist">MENIUL ZILEI</span>
             </div>
         </a>
         <a href="experiente.html" class="obj-card">
             <div class="obj-img"><img src="images/exp-fluturi.jpg" alt="Ateliere"></div>
             <div class="obj-info">
                 <h3>Ateliere Signature</h3>
-                <p>Terapie prin creație, pictură și rânduiala pâinii calde.</p>
-                <span class="dist">EXPLOREAZĂ EXPERIENȚELE</span>
+                <p>Terapie prin creație și artă, într-un cadru care inspiră diamantele minții.</p>
+                <span class="dist">VEZI EXPERIENȚELE</span>
             </div>
         </a>
     </section>
