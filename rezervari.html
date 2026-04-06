@@ -3,114 +3,202 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rezervare | Hațeg Alternativ Signature</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Rezervări | Hațeg Alternativ Signature</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,900&family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
     <style>
-        :root { --auriu: #c5a059; --negru: #1a1a1a; --crem: #fdfcf8; }
+        :root { --auriu: #c5a059; --alb: #ffffff; --negru-profund: #0a0a0a; --gri-input: #1a1a1a; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru); padding-top: 100px; line-height: 1.6; }
-
-        .site-header { position: fixed; top: 0; width: 100%; z-index: 9999; background: #fff; border-bottom: 1px solid #eee; }
-        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; height: 70px; }
         
-        .res-container { max-width: 600px; margin: 40px auto; background: #fff; padding: 40px; border-radius: 4px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-top: 5px solid var(--auriu); }
-        h1 { font-family: 'Playfair Display', serif; font-style: italic; text-align: center; font-size: 2.2rem; margin-bottom: 30px; }
-        
-        .section-label { font-size: 0.65rem; font-weight: 800; color: var(--auriu); text-transform: uppercase; letter-spacing: 2px; margin: 20px 0 10px; display: block; }
-        input, select { width: 100%; padding: 15px; margin-bottom: 15px; border: 1px solid #eee; background: #fbfbfb; font-family: inherit; font-size: 0.9rem; outline: none; }
-        input:focus { border-color: var(--auriu); background: #fff; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: var(--negru-profund); 
+            color: var(--alb); 
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-        .btn-submit { width: 100%; padding: 18px; background: var(--auriu); color: white; border: none; font-weight: 700; text-transform: uppercase; cursor: pointer; letter-spacing: 2px; transition: 0.3s; margin-top: 20px; }
-        .btn-submit:disabled { background: #ccc; cursor: not-allowed; }
+        /* HEADER */
+        .site-header { 
+            position: fixed; top: 0; width: 100%; z-index: 1000; padding: 25px 50px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.95), transparent);
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .brand { font-weight: 900; letter-spacing: 5px; text-transform: uppercase; font-size: 1rem; text-decoration: none; color: #fff; }
+        .nav-back { color: var(--auriu); text-decoration: none; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* HERO AREA */
+        .hero-res {
+            height: 50vh;
+            background: url('images/hero-sat.jpg') center/cover;
+            position: relative;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .hero-res::after {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.4), var(--negru-profund));
+        }
+        .hero-content { position: relative; z-index: 2; text-align: center; }
+        .hero-content h1 { font-family: 'Playfair Display'; font-size: 4rem; font-style: italic; font-weight: 900; }
+        .hero-content span { font-size: 0.7rem; letter-spacing: 8px; color: var(--auriu); text-transform: uppercase; font-weight: 800; }
+
+        /* FORMULARE LUX */
+        .form-container {
+            max-width: 600px;
+            margin: -60px auto 100px;
+            position: relative;
+            z-index: 10;
+            padding: 40px;
+            background: #0d0d0d;
+            border: 1px solid rgba(255,255,255,0.05);
+            border-bottom: 4px solid var(--auriu);
+        }
+
+        .input-group { margin-bottom: 25px; }
+        .input-group label { 
+            display: block; font-size: 0.6rem; color: var(--auriu); 
+            text-transform: uppercase; letter-spacing: 2px; font-weight: 800; margin-bottom: 10px;
+        }
+        input, select { 
+            width: 100%; padding: 15px; background: var(--gri-input); border: 1px solid #222; 
+            color: #fff; font-family: inherit; font-size: 0.9rem; outline: none; transition: 0.3s;
+        }
+        input:focus { border-color: var(--auriu); background: #111; }
+
+        .btn-lux {
+            width: 100%; padding: 20px; background: none; border: 1px solid var(--auriu);
+            color: #fff; font-size: 0.75rem; font-weight: 900; text-transform: uppercase;
+            letter-spacing: 4px; cursor: pointer; transition: 0.4s; margin-top: 20px;
+        }
+        .btn-lux:hover { background: var(--auriu); color: #000; }
+        .btn-lux:disabled { opacity: 0.5; cursor: not-allowed; border-color: #444; }
+
+        footer { text-align: center; padding: 40px; opacity: 0.3; font-size: 0.6rem; letter-spacing: 2px; }
+
+        @media (max-width: 768px) {
+            .site-header { padding: 20px; flex-direction: column; gap: 15px; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .form-container { margin-top: 0; padding: 20px; }
+        }
     </style>
 </head>
 <body>
 
     <header class="site-header">
-        <div class="nav-container">
-            <a href="index.html" style="text-decoration:none; color:#000; font-family:'Playfair Display'; font-weight:700; font-size: 1.2rem;">HAȚEG ALTERNATIV</a>
-            <nav><a href="index.html" style="text-decoration:none; color:#000; font-size:0.7rem; font-weight:700; text-transform: uppercase;">← Acasă</a></nav>
-        </div>
+        <a href="index.html" class="brand">HAȚEG ALTERNATIV</a>
+        <a href="index.html" class="nav-back">← Înapoi</a>
     </header>
 
-    <div class="res-container">
-        <h1>Rezervare Sejur</h1>
-        
-        <form id="bookingForm">
-            <span class="section-label">Date de Contact</span>
-            <input type="text" id="nume" name="nume" placeholder="Nume Complet" required>
-            <input type="text" id="telefon" name="telefon" placeholder="Telefon (WhatsApp)" required>
+    <section class="hero-res">
+        <div class="hero-content">
+            <span>RÂNDUIALĂ</span>
+            <h1>Rezervare Sejur.</h1>
+        </div>
+    </section>
 
-            <span class="section-label">Perioadă Sejur</span>
-            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px;">
-                <div><label style="font-size: 0.6rem;">Check-in</label><input type="date" id="checkin" name="checkin" required></div>
-                <div><label style="font-size: 0.6rem;">Check-out</label><input type="date" id="checkout" name="checkout" required></div>
+    <main class="form-container">
+        <form id="bookingForm">
+            <div class="input-group">
+                <label>Numele tău complet</label>
+                <input type="text" id="form-nume" placeholder="Ex: Popescu Ion" required>
             </div>
 
-            <span class="section-label">Alege Pachetul</span>
-            <select id="pachet" name="total">
-                <option value="2000">Cazare Integrală (10 locuri) - 2000 RON</option>
-                <option value="3000">Cazare + 2 Mese (PGL) - 3000 RON</option>
-                <option value="4000">Metanoia All-Inclusive - 4000 RON</option>
-            </select>
+            <div class="input-group">
+                <label>Număr de Telefon (WhatsApp)</label>
+                <input type="text" id="form-tel" placeholder="Ex: 0749..." required>
+            </div>
 
-            <input type="hidden" id="locatie" name="locatie" value="Domeniile la Buligă">
-            <input type="hidden" id="persoane" name="persoane" value="10">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div class="input-group">
+                    <label>Check-in</label>
+                    <input type="date" id="form-in" required>
+                </div>
+                <div class="input-group">
+                    <label>Check-out</label>
+                    <input type="date" id="form-out" required>
+                </div>
+            </div>
 
-            <button type="button" class="btn-submit" id="submitBtn" onclick="trimiteDatele()">Confirmă Rezervarea</button>
+            <div class="input-group">
+                <label>Alege Pachetul (Casa Integrală - 10 pers)</label>
+                <select id="form-pachet">
+                    <option value="2000">Cazare Integrală - 2000 RON</option>
+                    <option value="3000">Cazare + 2 Mese - 3000 RON</option>
+                    <option value="4000">Metanoia All-Inclusive - 4000 RON</option>
+                </select>
+            </div>
+
+            <button type="button" class="btn-lux" id="submitBtn" onclick="executaRezervarea()">Confirmă prin WhatsApp</button>
         </form>
-    </div>
+    </main>
+
+    <footer>
+        HAȚEG ALTERNATIV &copy; 2026 | DOMENIILE LA BULIGĂ
+    </footer>
 
     <script>
-        async function trimiteDatele() {
+        // Setăm data minimă de azi pentru calendar
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('form-in').min = today;
+        document.getElementById('form-out').min = today;
+
+        async function executaRezervarea() {
             const scriptURL = 'https://script.google.com/macros/s/AKfycbwofzsm29XJWpkSw2A5l3aC2Jz5p2NNq8LMkzptewh1yjI8M3EUZ8NLwxsGVkDDS4b_/exec';
             const btn = document.getElementById('submitBtn');
             
             // Preluăm datele
-            const date = {
-                nume: document.getElementById('nume').value,
-                telefon: document.getElementById('telefon').value,
-                locatie: document.getElementById('locatie').value,
-                checkin: document.getElementById('checkin').value,
-                checkout: document.getElementById('checkout').value,
-                persoane: document.getElementById('persoane').value,
-                total: document.getElementById('pachet').value + " RON"
+            const dateRezervare = {
+                nume: document.getElementById('form-nume').value,
+                telefon: document.getElementById('form-tel').value,
+                locatie: "Domeniile la Buligă",
+                checkin: document.getElementById('form-in').value,
+                checkout: document.getElementById('form-out').value,
+                persoane: "10",
+                total: document.getElementById('form-pachet').value + " RON"
             };
 
-            // Validare simplă
-            if (!date.nume || !date.telefon || !date.checkin || !date.checkout) {
-                alert("Te rugăm să completezi toate câmpurile!");
+            // Validare minimă
+            if(!dateRezervare.nume || !dateRezervare.telefon || !dateRezervare.checkin || !dateRezervare.checkout) {
+                alert("Te rugăm să completezi toate câmpurile rânduielii.");
                 return;
             }
 
+            btn.innerText = "SE TRIMITE...";
             btn.disabled = true;
-            btn.innerText = "Se trimite...";
 
             try {
-                // Trimitem la Google Sheet
+                // Pasul 1: Trimitem către Google Sheet (metoda no-cors pentru a ocoli blocajele)
                 await fetch(scriptURL, {
                     method: 'POST',
                     mode: 'no-cors', 
                     cache: 'no-cache',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(date)
+                    body: JSON.stringify(dateRezervare)
                 });
 
-                // Dacă am ajuns aici, trimitem și pe WhatsApp
-                const msg = `Bună! Rezervare nouă:\nNume: ${date.nume}\nTelefon: ${date.telefon}\nPerioada: ${date.checkin} - ${date.checkout}\nTotal: ${date.total}`;
-                window.open(`https://wa.me/40749229686?text=${encodeURIComponent(msg)}`, '_blank');
+                // Pasul 2: Notificare WhatsApp (se deschide într-o fereastră nouă)
+                const mesajWA = `Bună ziua! Rezervare nouă de pe site:\nNume: ${dateRezervare.nume}\nTelefon: ${dateRezervare.telefon}\nPerioada: ${dateRezervare.checkin} - ${dateRezervare.checkout}\nTotal: ${dateRezervare.total}`;
+                window.open(`https://wa.me/40749229686?text=${encodeURIComponent(mesajWA)}`, '_blank');
 
-                alert("Rezervarea a fost trimisă cu succes! Verifică WhatsApp.");
-                document.getElementById('bookingForm').reset();
-
+                alert("Mulțumim! Rezervarea a fost trimisă în sistem și către noi pe WhatsApp.");
+                
             } catch (error) {
                 console.error('Eroare:', error);
-                alert("A apărut o eroare. Verifică dacă ai activat Web App în Google Script.");
+                alert("A apărut o eroare la trimitere. Te rugăm să ne contactezi direct.");
             } finally {
+                btn.innerText = "CONFIRMĂ PRIN WHATSAPP";
                 btn.disabled = false;
-                btn.innerText = "Confirmă Rezervarea";
             }
         }
+    </script>
+
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true; s1.src='https://embed.tawk.to/642944b54247f20fefea97df/1gsvek60a';
+        s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
     </script>
 </body>
 </html>
