@@ -13,33 +13,34 @@
             --auriu: #c5a059; 
             --negru: #050505; 
             --alb: #ffffff;
-            /* Umbră dramatică tip Metanoia */
-            --shadow-metanoia: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.9) 100%);
+            /* Umbră dramatică tip Metanoia pentru contrast total */
+            --shadow-metanoia: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.9) 100%);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; line-height: 1.6; }
 
         /* HEADER ERMES - LOGO VIZIBIL */
         .site-header { 
             position: fixed; top: 0; width: 100%; z-index: 5000; 
-            padding: 40px 50px;
+            padding: 40px 60px;
             display: flex; justify-content: space-between; align-items: center;
             background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, transparent 100%);
             transition: 0.5s ease;
         }
         
         .brand img { 
-            height: 110px; /* Logo impunător */
+            height: 110px; /* Logo impunător desktop */
             width: auto; 
             display: block;
-            filter: drop-shadow(0 0 20px rgba(0,0,0,0.8));
+            filter: drop-shadow(0 0 25px rgba(0,0,0,0.8));
         }
 
+        /* BURGER "BOLD" */
         .burger { cursor: pointer; z-index: 6000; padding: 15px; }
         .burger div { width: 50px; height: 5px; background: var(--alb); margin: 10px; transition: 0.3s; border-radius: 5px; }
 
-        /* NAV OVERLAY */
+        /* NAV OVERLAY FULLSCREEN */
         .main-nav { 
             position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; 
             background: var(--negru); display: flex; flex-direction: column; 
@@ -48,11 +49,11 @@
         .main-nav.active { right: 0; }
         .main-nav a { 
             text-decoration: none; color: var(--alb); font-size: clamp(2.5rem, 8vw, 4.5rem); 
-            font-weight: 900; text-transform: uppercase; margin: 15px 0; letter-spacing: 5px; opacity: 0.5; transition: 0.3s;
+            font-weight: 900; text-transform: uppercase; margin: 20px 0; letter-spacing: 5px; opacity: 0.5; transition: 0.3s;
         }
         .main-nav a:hover { opacity: 1; color: var(--auriu); }
 
-        /* SLIDER ERMES (CROSS-FADE + ZOOM 20s) */
+        /* ERMES SLIDER (CROSS-FADE + ZOOM 20s) */
         .hermes-viewport {
             position: relative; width: 100%; height: 100vh; overflow: hidden; background: #000;
         }
@@ -68,7 +69,7 @@
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background-size: cover; background-position: center;
             transform: scale(1.1);
-            transition: transform 20s linear; /* Zoom ultra-lent */
+            transition: transform 20s linear; /* Zoom-ul infinit Ermes */
         }
         .slide.active .slide-bg { transform: scale(1.35); }
 
@@ -87,21 +88,21 @@
             text-shadow: 0 10px 80px rgba(0,0,0,1);
         }
 
-        /* CONTENT SECTIONS */
+        /* CONTAINER CONTENT */
         .container { padding: 180px 50px; max-width: 1500px; margin: 0 auto; }
         
         .intro-block { display: flex; gap: 80px; align-items: center; flex-wrap: wrap; margin-bottom: 200px; }
         .intro-img { flex: 1; min-width: 450px; height: 750px; border: 1px solid #1a1a1a; overflow: hidden; }
         .intro-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
         
-        .intro-text h2 { font-family: 'Playfair Display', serif; font-size: 5rem; font-style: italic; color: var(--auriu); margin-bottom: 35px; }
+        .intro-text h2 { font-family: 'Playfair Display', serif; font-size: clamp(3.5rem, 7vw, 6rem); font-style: italic; color: var(--auriu); margin-bottom: 35px; }
         .intro-text p { font-size: 2.2rem; color: #888; font-weight: 300; line-height: 1.5; }
 
-        /* LUXURY GRID - PACHETE CU BUTOANE */
+        /* GRID LUXURY - PACHETE CU BUTOANE FUNCTIONALE */
         .luxury-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 80px; margin-bottom: 150px; }
         .card-lux { background: #0a0a0a; border: 1px solid #1a1a1a; transition: 0.5s; display: flex; flex-direction: column; text-decoration: none; color: inherit; }
         .card-lux:hover { border-color: var(--auriu); transform: translateY(-20px); }
-        .img-lux { height: 500px; overflow: hidden; }
+        .img-lux { height: 550px; overflow: hidden; }
         .img-lux img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: 1.5s; }
         .card-lux:hover .img-lux img { opacity: 1; transform: scale(1.1); }
 
@@ -113,18 +114,18 @@
 
         footer { padding: 150px 50px; text-align: center; border-top: 1px solid #111; font-size: 1.2rem; letter-spacing: 10px; opacity: 0.3; text-transform: uppercase; }
 
-        /* MOBIL */
+        /* MOBIL - VIZIBILITATE MAXIMĂ */
         @media (max-width: 1024px) {
-            .site-header { padding: 30px 20px; background: rgba(0,0,0,1); border-bottom: 2px solid var(--auriu); }
+            .site-header { padding: 30px 20px; background: rgba(0,0,0,0.9); border-bottom: 2px solid var(--auriu); }
             .brand img { height: 130px !important; } /* LOGO MASIV PE MOBIL */
             .burger div { width: 55px; height: 6px; margin: 12px; }
-            .container { padding: 100px 20px; }
-            .block-img { height: 450px; min-width: 100%; }
+            .container { padding: 120px 20px; }
+            .block-img { height: 500px; min-width: 100%; }
             .grid-lux { grid-template-columns: 1fr; }
             .slide-content h1 { font-size: 7rem; }
-            .info-lux h3 { font-size: 3rem; }
+            .info-lux h3 { font-size: 3.2rem; }
             .price { font-size: 3.5rem; }
-            .btn-reserve { font-size: 1.6rem; padding: 30px; }
+            .btn-reserve { font-size: 1.6rem; padding: 35px; }
         }
     </style>
 </head>
@@ -174,7 +175,7 @@
             <div class="intro-text">
                 <h2>Pensiunea<br>La Buligă</h2>
                 <p>Un sanctuar al rânduielii și al tăcerii profunde. O experiență boutique în inima Retezatului.</p>
-                <a href="buliga.html" style="color:var(--auriu); font-weight:900; font-size:1.8rem; text-transform:uppercase; text-decoration:none; border-bottom:3px solid var(--auriu); margin-top:30px; display:inline-block;">Vezi Detalii</a>
+                <a href="buliga.html" style="color:var(--auriu); font-weight:900; font-size:2rem; text-transform:uppercase; text-decoration:none; border-bottom:3px solid var(--auriu); margin-top:40px; display:inline-block;">Vezi Detalii →</a>
             </div>
         </section>
 
@@ -184,7 +185,7 @@
                 <div class="info-lux">
                     <h3>Buliga: Izolare</h3>
                     <span class="price">8.500 RON</span>
-                    <a href="https://wa.me/40749229686?text=Vreau pachetul Buliga: Izolare." class="btn-reserve">Rezervă Experiența</a>
+                    <a href="https://wa.me/40749229686?text=Bună! Vreau pachetul Buliga: Izolare." class="btn-reserve">Rezervă Experiența</a>
                 </div>
             </div>
             <div class="card-lux">
@@ -192,7 +193,7 @@
                 <div class="info-lux">
                     <h3>Metanoia: Tăcere</h3>
                     <span class="price">4.500 RON</span>
-                    <a href="https://wa.me/40749229686?text=Vreau pachetul Metanoia: Tăcere." class="btn-reserve">Rezervă Experiența</a>
+                    <a href="https://wa.me/40749229686?text=Bună! Vreau pachetul Metanoia: Tăcere." class="btn-reserve">Rezervă Experiența</a>
                 </div>
             </div>
         </div>
@@ -219,7 +220,7 @@
             slides[current].classList.remove('active');
             current = (current + 1) % slides.length;
             slides[current].classList.add('active');
-        }, 7000);
+        }, 7500);
 
         // BURGER MENU
         const burger = document.getElementById('burger');
