@@ -4,139 +4,165 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hațeg Alternativ | Simte. Explorează. Trăiește.</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --black-deep: #000000;
-            --gold-warm: #D4AF37;
-            --white-pure: #ffffff;
-            --gray-soft: #1a1a1a;
+        /* Rânduiala Variabilelor - Ermes Signature Style [cite: 1525, 1761-1763] */
+        :root { 
+            --negru-profund: #000000; 
+            --auriu-warm: #D4AF37; 
+            --alb-pur: #ffffff; 
+            --gri-isihie: #1a1a1a; 
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            background: var(--negru-profund); 
+            color: var(--alb-pur); 
+            line-height: 1.7; 
+            overflow-x: hidden; 
         }
 
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: var(--black-deep);
-            color: var(--white-pure);
-            font-family: 'Montserrat', sans-serif;
+        /* HEADER UNITAR - Isihie Digitală [cite: 1502-1503] */
+        .site-header { 
+            position: fixed; top: 0; width: 100%; z-index: 5000; 
+            background: rgba(0,0,0,0.95); 
+            border-bottom: 1px solid #222; padding: 15px 0; 
+        }
+        
+        .nav-container { 
+            max-width: 1600px; margin: 0 auto; 
+            display: flex; justify-content: space-between; align-items: center; padding: 0 40px; 
         }
 
-        /* Navigația Restaurată - Toate paginile tale sunt aici */
-        nav {
-            display: flex;
-            justify-content: flex-end;
-            padding: 20px 5%;
-            background: rgba(0,0,0,0.9);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+        /* Logo Vectorial Integrat */
+        .brand-logo { height: 70px; width: auto; filter: brightness(0) invert(1); transition: 0.4s; }
+        .brand-logo:hover { transform: scale(1.05); filter: brightness(0) invert(1) drop-shadow(0 0 8px var(--auriu-warm)); }
+        
+        .desktop-nav { display: flex; gap: 20px; }
+        .desktop-nav a { 
+            text-decoration: none; color: var(--alb-pur); 
+            font-size: 0.7rem; font-weight: 600; text-transform: uppercase; 
+            letter-spacing: 2px; opacity: 0.7; transition: 0.3s; 
         }
+        .desktop-nav a:hover { opacity: 1; color: var(--auriu-warm); }
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 20px;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            transition: 0.3s;
-        }
-
-        nav a:hover { color: var(--gold-warm); }
-
-        /* Secțiunea Logo cu noul fișier hateg-logo.svg */
-        header {
-            padding: 40px 0;
+        /* HERO - Neuro-estetica Siguranței [cite: 1526, 1747-1748] */
+        .hero { 
+            height: 90vh; width: 100%; display: flex; align-items: center; justify-content: center; 
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.3)), url('images/hero-bg.jpg') center/cover no-repeat;
             text-align: center;
         }
-
-        .hateg-logo-vector {
-            height: 120px;
-            filter: brightness(0) invert(1); /* Îl face alb pentru Isihie Digitală */
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        .hero h1 { 
+            font-family: 'Playfair Display', serif; font-size: clamp(4rem, 12vw, 8rem); 
+            font-style: italic; font-weight: 400; line-height: 1; 
         }
 
-        .hateg-logo-vector:hover {
-            transform: scale(1.1);
-            filter: brightness(0) invert(1) drop-shadow(0 0 10px var(--gold-warm));
+        .container { max-width: 1200px; margin: 0 auto; padding: 120px 25px; }
+
+        /* Arhitectura Liniștii */
+        .intro-text h2 { 
+            font-family: 'Playfair Display', serif; font-size: 3.5rem; font-style: italic; 
+            margin-bottom: 20px; color: var(--auriu-warm); 
         }
 
-        /* Hero Sections conform screenshot-urilor tale */
-        .hero {
-            height: 70vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/hero-bg.jpg');
-            background-size: cover;
-            background-position: center;
+        /* BUTON ERMES [cite: 1498] */
+        .btn-ermes { 
+            display: inline-block; background: var(--auriu-warm); color: black; 
+            text-decoration: none; padding: 22px 60px; font-size: 0.8rem; 
+            font-weight: 700; text-transform: uppercase; letter-spacing: 3px; 
+            transition: 0.3s; border-radius: 2px; 
+        }
+        .btn-ermes:hover { background: var(--alb-pur); transform: translateY(-3px); }
+
+        /* BINECUVÂNTARE - Alchimia Sării [cite: 1826-1827] */
+        .blessing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-top: 100px; }
+        .img-blessing { 
+            width: 100%; height: 650px; 
+            background: var(--gri-isihie) url('images/casa-buliga.jpg') center/cover no-repeat; 
+        }
+        
+        .text-blessing span { color: var(--auriu-warm); font-size: 0.75rem; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 25px; display: block; }
+        .text-blessing h2 { font-family: 'Playfair Display', serif; font-size: 3rem; font-style: italic; margin-bottom: 30px; }
+        
+        .quote-style { 
+            font-family: 'Playfair Display', serif; font-size: 1.4rem; font-style: italic; 
+            border-left: 2px solid var(--auriu-warm); padding-left: 30px; margin-bottom: 40px; color: #ccc;
         }
 
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            font-size: 5rem;
+        /* WhatsApp de Siguranță Vagală [cite: 1530] */
+        .whatsapp-float {
+            position: fixed; bottom: 30px; right: 30px; background: #25d366; 
+            color: white; padding: 15px 25px; border-radius: 50px; 
+            text-decoration: none; font-weight: 700; z-index: 9999;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
 
-        .section-buliga {
-            padding: 80px 10%;
-            text-align: center;
-            background: url('images/casa-buliga.jpg') no-repeat center; /* Imaginea cu casa de la 13:18 */
-            background-size: cover;
-            min-height: 500px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        /* Butonul de WhatsApp original */
-        .whatsapp-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #25d366;
-            border-radius: 50px;
-            padding: 15px 25px;
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        @media (max-width: 1024px) {
+            .desktop-nav { display: none; }
+            .blessing-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 4rem; }
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <a href="index.html">Acasă</a>
-        <a href="pachete.html">Pachete</a>
-        <a href="metanoia.html">Metanoia</a>
-        <a href="gastronomie.html">Gastronomie</a>
-        <a href="ateliere.html">Ateliere</a>
-        <a href="obiective.html">Obiective</a>
-        <a href="evenimente.html">Evenimente</a>
-        <a href="forum.html">Forum</a>
-        <a href="contact.html">Contact</a>
-    </nav>
-
-    <header>
-        <img src="images/hateg-logo.svg" alt="Hațeg Alternativ" class="hateg-logo-vector">
+    <header class="site-header">
+        <div class="nav-container">
+            <a href="index.html">
+                <img src="images/hateg-logo.svg" alt="Hațeg Alternativ" class="brand-logo">
+            </a>
+            <nav class="desktop-nav">
+                <a href="pachete.html">Pachete</a>
+                <a href="metanoia.html">Metanoia</a>
+                <a href="gastronomie.html">Gastronomie</a>
+                <a href="ateliere.html">Ateliere</a>
+                <a href="obiective.html">Obiective</a>
+                <a href="evenimente.html">Evenimente</a>
+                <a href="forum.html">Forum</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
     </header>
 
     <section class="hero">
-        <h1>Simte.</h1> </section>
+        <div class="hero-content">
+            <h1>Simte.</h1> </div>
+    </section>
 
-    <section class="section-buliga">
-        <h2 style="font-family:'Playfair Display'; font-size: 4rem; color: white; margin:0;">Buliga.</h2>
-        <p style="color: var(--gold-warm); letter-spacing: 3px;">UNDE PĂMÂNTUL ÎNTÂLNEȘTE CERUL.</p> </section>
+    <div class="container">
+        
+        <div class="intro-text" style="text-align: center;">
+            <h2>Buliga.</h2> <p style="max-width: 800px; margin: 0 auto; opacity: 0.8; letter-spacing: 1px;">UNDE PĂMÂNTUL ÎNTÂLNEȘTE CERUL.</p>
+        </div>
 
-    <div style="text-align: center; padding: 50px;">
-        <a href="pachete.html" style="background: var(--gold-warm); color: black; padding: 20px 40px; text-decoration: none; font-weight: bold; border-radius: 50px; text-transform: uppercase;">Rezervă Liniștea</a> </div>
+        <div class="blessing-grid">
+            <div class="img-blessing"></div>
+            <div class="text-blessing">
+                <span>Identitate Sistemică [cite: 1827]</span>
+                <h2>Esența sufletului hațegan</h2>
+                
+                <div class="quote-style">
+                    <p>Unde-i credință, acolo-i dragoste,</p>
+                    <p>Unde-i dragoste, acolo-i pace,</p>
+                    <p>Unde-i pace, acolo-i binecuvântare,</p>
+                    <p>Unde-i binecuvântare, acolo-i Dumnezeu,</p>
+                    <p>Unde-i Dumnezeu, acolo lipsă nu e!</p>
+                </div>
 
-    <script src="js/translations.js"></script> <a href="https://wa.me/40749000000" class="whatsapp-btn">
-        <span>Chat WhatsApp</span>
-    </a>
+                <a href="pachete.html" class="btn-ermes">Rezervă Liniștea</a> </div>
+        </div>
+
+    </div>
+
+    <a href="https://wa.me/40749000000" class="whatsapp-float">Chat WhatsApp</a>
+
+    <footer style="padding: 60px; text-align: center; opacity: 0.4; font-size: 0.6rem; letter-spacing: 3px;">
+        <p>© 2026 HAȚEG ALTERNATIV — MANAGEMENTUL ISIHIEI</p>
+    </footer>
+
+    <script src="js/translations.js"></script>
+
 </body>
 </html>
