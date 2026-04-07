@@ -1,154 +1,233 @@
-   <!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Hațeg Alternativ | Signature Dark</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hațeg Alternativ | Simte. Explorează. Trăiește.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        :root { --auriu: #c5a059; --negru: #000; --gri-card: #0a0a0a; }
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        html, body { background: var(--negru); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; width: 100%; }
-
-        /* HEADER */
-        .site-header { 
-            position: fixed; top: 0; width: 100%; z-index: 1000; 
-            padding: 15px 20px;
-            background: rgba(0,0,0,0.95);
-            backdrop-filter: blur(10px);
-            display: flex; flex-direction: column; align-items: center;
-            border-bottom: 1px solid #1a1a1a;
+        /* Rânduiala CSS - Ermes Signature Style */
+        :root {
+            --black-deep: #000000;
+            --gold-warm: #D4AF37;
+            --white-pure: #ffffff;
+            --gray-soft: #1a1a1a;
         }
-        .brand { font-weight: 900; letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem; color: #fff; text-decoration: none; margin-bottom: 10px; }
-        .main-nav { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
-        .main-nav a { text-decoration: none; color: #fff; font-size: 0.55rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; opacity: 0.7; }
 
-        /* HERO SLIDER */
-        .hero-slider { width: 100%; height: 70vh; position: relative; overflow: hidden; margin-top: 85px; }
-        .slider-track { display: flex; width: 400%; height: 100%; animation: slide-anim 20s infinite ease-in-out; }
-        .slide { width: 25%; height: 100%; background-size: cover; background-position: center; position: relative; display: flex; align-items: center; justify-content: center; }
-        .slide::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.4); z-index: 1; }
-        .hero-content { position: relative; z-index: 2; text-align: center; }
-        .hero-content h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-style: italic; font-weight: 900; line-height: 1; }
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--black-deep);
+            color: var(--white-pure);
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+        }
 
-        /* SECTIUNEA PENSIUNE (FIX LINK TO pensiune.html) */
-        .pensiune-box { padding: 40px 20px; background: var(--negru); }
-        .pensiune-card { 
-            display: block; text-decoration: none; color: inherit;
-            border: 1px solid #1a1a1a; background: var(--gri-card); overflow: hidden;
+        h1, h2, h3, .italic-font {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+        }
+
+        /* Header & Logo Section */
+        header {
+            padding: 40px 20px;
+            text-align: center;
+            background-color: var(--black-deep);
+        }
+
+        .hateg-logo-vector {
+            height: 140px; /* Dimensiune optimă pentru munte și aripi */
+            width: auto;
+            filter: brightness(0) invert(1); /* Îl face alb pe fundal negru */
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+        }
+
+        .hateg-logo-vector:hover {
+            transform: scale(1.08);
+            filter: brightness(0) invert(1) drop-shadow(0 0 15px rgba(212, 175, 55, 0.4));
+        }
+
+        /* Hero Section - "Simte." */
+        .hero {
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/hero-bg.jpg'); /* Referință la imagine_264922.jpg */
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            margin: 0;
+        }
+
+        /* Section Buliga */
+        .section-buliga {
+            padding: 100px 20px;
+            text-align: center;
+        }
+
+        .section-buliga h2 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            color: var(--gold-warm);
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+        }
+
+        /* Terapia Isihiei Cards */
+        .ecosystem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            padding: 60px 10%;
+        }
+
+        .card {
+            background: var(--gray-soft);
+            padding: 40px;
+            border-radius: 5px;
+            text-align: center;
             transition: 0.3s;
         }
-        .pensiune-img { width: 100%; height: 280px; overflow: hidden; background: #111; }
-        .pensiune-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.9; }
-        
-        .pensiune-info { padding: 30px; text-align: center; }
-        .pensiune-info h2 { font-family: 'Playfair Display', serif; font-size: 2rem; font-style: italic; color: var(--auriu); margin-bottom: 15px; }
-        .pensiune-info p { font-size: 0.95rem; color: #aaa; font-weight: 300; line-height: 1.6; margin-bottom: 25px; }
-        .btn-gold { 
-            display: inline-block; padding: 14px 35px; background: var(--auriu); color: #000; 
-            font-weight: 900; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px;
+
+        .card:hover {
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1);
         }
 
-        /* GRID MIC */
-        .grid-section { padding: 20px; display: grid; grid-template-columns: 1fr; gap: 20px; }
-        .mini-card { background: var(--gri-card); border-bottom: 3px solid var(--auriu); text-decoration: none; color: inherit; }
-        .mini-img { height: 220px; overflow: hidden; }
-        .mini-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; }
-        .mini-info { padding: 20px; }
-        .mini-info h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-style: italic; }
-
-        .wa-float { position: fixed; bottom: 25px; right: 25px; background: #25d366; color: #fff; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; z-index: 2000; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
-
-        @keyframes slide-anim {
-            0%, 20% { transform: translateX(0); }
-            25%, 45% { transform: translateX(-25%); }
-            50%, 70% { transform: translateX(-50%); }
-            75%, 95% { transform: translateX(-75%); }
-            100% { transform: translateX(0); }
+        .card h3 {
+            color: var(--gold-warm);
+            font-size: 1.8rem;
         }
 
-        @media (min-width: 768px) {
-            .site-header { flex-direction: row; justify-content: space-between; padding: 25px 50px; }
-            .brand { margin-bottom: 0; font-size: 1.2rem; }
-            .main-nav a { font-size: 0.65rem; margin-left: 20px; }
-            .hero-slider { height: 100vh; margin-top: 0; }
-            .hero-content h1 { font-size: 6rem; }
-            .pensiune-box { padding: 80px 50px; }
-            .pensiune-card { display: flex; align-items: center; min-height: 500px; }
-            .pensiune-img { flex: 1.2; height: 500px; }
-            .pensiune-info { flex: 1; padding: 60px; text-align: left; }
-            .grid-section { grid-template-columns: 1fr 1fr; padding: 50px; gap: 40px; }
+        /* Formular Rezervare */
+        .booking-container {
+            max-width: 600px;
+            margin: 80px auto;
+            padding: 40px;
+            background: var(--gray-soft);
+            border: 1px solid #333;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            color: var(--gold-warm);
+            margin-bottom: 8px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            background: #000;
+            border: 1px solid #444;
+            color: #fff;
+            font-family: inherit;
+        }
+
+        .btn-gold {
+            background: var(--gold-warm);
+            color: #000;
+            border: none;
+            padding: 15px 30px;
+            width: 100%;
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        .btn-gold:hover {
+            background: #b8972f;
+        }
+
+        /* WhatsApp Float */
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25d366;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
     </style>
 </head>
 <body>
 
-    <header class="site-header">
-        <a href="index.html" class="brand">HAȚEG ALTERNATIV</a>
-        <nav class="main-nav">
-            <a href="pensiune.html" class="active">Pensiune</a>
-            <a href="retreat.html">Metanoia</a>
-            <a href="gastronomie.html">Gastronomie</a>
-            <a href="experiente.html">Ateliere</a>
-            <a href="obiective.html">Obiective</a>
-        </nav>
+    <header>
+        <a href="index.html">
+            <img src="images/hateg-logo.svg" alt="Logo Hațeg Alternativ" class="hateg-logo-vector">
+        </a>
     </header>
 
-    <section class="hero-slider">
-        <div class="slider-track">
-            <div class="slide" style="background-image: url('images/hero-premium.jpg');"><div class="hero-content"><h1>Simte.</h1></div></div>
-            <div class="slide" style="background-image: url('images/hero-camp-munti.jpg');"><div class="hero-content"><h1>Explorează.</h1></div></div>
-            <div class="slide" style="background-image: url('images/hero-lac.jpg');"><div class="hero-content"><h1>Trăiește.</h1></div></div>
-            <div class="slide" style="background-image: url('images/hero-sat.jpg');"><div class="hero-content"><h1>Rânduială.</h1></div></div>
+    <section class="hero">
+        <h1>Simte.</h1> </section>
+
+    <section class="section-buliga">
+        <h2>Buliga.</h2> <p class="tagline">UNDE PĂMÂNTUL ÎNTÂLNEȘTE CERUL.</p> </section>
+
+    <section>
+        <h2 style="text-align: center; font-size: 3rem;">Terapia Isihiei</h2> <div class="ecosystem-grid">
+            <div class="card">
+                <h3>Isihia</h3>
+                <p>Tăcerea care vindecă. Învățăm să ascultăm liniștea munților Retezat pentru a ne regăsi vocea interioară.</p>
+            </div>
+            <div class="card">
+                <h3>Terapia Vagală</h3>
+                <p>Tehnici de respirație și contact cu natura pentru reglarea nervului vag și eliminarea stresului cronic.</p>
+            </div>
+            <div class="card">
+                <h3>Creația</h3>
+                <p>Prin atelierele de pictură și gastronomie, transformăm energia blocată în obiecte de colecție.</p>
+            </div>
         </div>
     </section>
 
-    <section class="pensiune-box">
-        <a href="pensiune.html" class="pensiune-card">
-            <div class="pensiune-img">
-                <img src="images/la-buliga-pensiune.jpg" alt="La Buliga Pensiune">
+    <section class="booking-container">
+        <h2 style="text-align: center; margin-top: 0;">Rezervare Sejur.</h2> <form id="bookingForm">
+            <div class="form-group">
+                <label>Numele tău complet</label>
+                <input type="text" name="nume" placeholder="Ex: Popescu Ion" required>
             </div>
-            <div class="pensiune-info">
-                <h2>Pensiunea la Buligă</h2>
-                <p>O oază de isihie și rânduială în inima Geoparcului Dinozaurilor. Oferim un spațiu creat pentru regăsire, disponibil spre închiriere integrală.</p>
-                <span class="btn-gold">Vezi Detalii Pensiune</span>
+            <div class="form-group">
+                <label>Număr de telefon (WhatsApp)</label>
+                <input type="tel" name="tel" placeholder="Ex: 0749..." required>
             </div>
-        </a>
+            <div class="form-group" style="display: flex; gap: 20px;">
+                <div style="flex: 1;">
+                    <label>Check-in</label>
+                    <input type="date" name="checkin">
+                </div>
+                <div style="flex: 1;">
+                    <label>Check-out</label>
+                    <input type="date" name="checkout">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Alege pachetul (Casa Integrală - 10 pers)</label>
+                <select name="pachet">
+                    <option value="integral">Cazare Integrală - 2000 RON / Noapte</option>
+                    <option value="metanoia">Retreat Metanoia - 4000 RON / Noapte</option> </select>
+            </div>
+            <button type="submit" class="btn-gold">Confirmă prin WhatsApp</button>
+        </form>
     </section>
 
-    <section class="grid-section">
-        <a href="gastronomie.html" class="mini-card">
-            <div class="mini-img"><img src="images/gast-masa-traditionala.jpg" alt="Gastro"></div>
-            <div class="mini-info">
-                <h3>Punct Gastronomic</h3>
-                <p style="font-size: 0.8rem; color: #888; margin-top: 5px;">Gustul curat al Hațegului.</p>
-            </div>
-        </a>
-        <a href="experiente.html" class="mini-card">
-            <div class="mini-img"><img src="images/exp-fluturi.jpg" alt="Ateliere"></div>
-            <div class="mini-info">
-                <h3>Ateliere Signature</h3>
-                <p style="font-size: 0.8rem; color: #888; margin-top: 5px;">Terapie prin artă și rânduială.</p>
-            </div>
-        </a>
-    </section>
-
-    <footer style="padding: 60px 20px; text-align: center; opacity: 0.3; font-size: 0.6rem; letter-spacing: 2px;">
-        HAȚEG ALTERNATIV &copy; 2026 | TURISM CONȘTIENT
-    </footer>
-
-    <a href="https://wa.me/40749229686" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
-
-    <script type="text/javascript">
-        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-        (function(){
-            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-            s1.async=true; s1.src='https://embed.tawk.to/642944b54247f20fefea97df/1gsvek60a';
-            s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
-            s0.parentNode.insertBefore(s1,s0);
-        })();
-    </script>
-</body>
+    <a href="https://wa.me/40749000000" class="whatsapp-btn">Chat WhatsApp</a> </body>
 </html>
