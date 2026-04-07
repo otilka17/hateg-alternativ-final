@@ -84,4 +84,167 @@
         .p-features { list-style: none; margin-bottom: 50px; color: #fff; font-size: 1.8rem; }
         .p-features li { padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
         .price { display: block; font-family: 'Playfair Display', serif; font-size: 3.5rem; color: #fff; margin-bottom: 40px; font-weight: 900; }
-        .btn-gold { border: 4px solid var(--auriu); color: var(--auriu); padding: 30px 50px; text-decoration: none; text-transform: uppercase; font-size: 1.5
+        .btn-gold { border: 4px solid var(--auriu); color: var(--auriu); padding: 30px 50px; text-decoration: none; text-transform: uppercase; font-size: 1.5rem; letter-spacing: 4px; font-weight: 900; transition: 0.3s; display: block; }
+        .btn-gold:hover { background: var(--auriu); color: #000; }
+
+        /* ACTIVITATI */
+        .activities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); gap: 80px; }
+        .act-card { text-decoration: none; color: inherit; background: var(--gri-card); border: 2px solid #222; transition: 0.4s; }
+        .act-img { height: 500px; overflow: hidden; }
+        .act-img img { width: 100%; height: 100%; object-fit: cover; }
+        .act-info { padding: 60px; }
+        .act-info h3 { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-style: italic; margin-bottom: 30px; }
+        .act-info p { color: #aaa; font-size: 1.8rem; margin-bottom: 40px; }
+
+        footer { padding: 100px 50px; text-align: center; font-size: 1.2rem; letter-spacing: 6px; border-top: 1px solid #222; }
+
+        /* TRANSFORMĂRI MOBIL - MARE ȘI CLAR */
+        @media (max-width: 1024px) {
+            .site-header { padding: 25px; background: rgba(0,0,0,1); border-bottom: 4px solid var(--auriu); }
+            .brand img { height: 130px !important; } /* LOGO URIAS PE MOBIL */
+            .burger { display: block; }
+            .main-nav { 
+                position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; 
+                background: var(--negru); flex-direction: column; justify-content: center; 
+                transition: 0.5s ease; z-index: 3500;
+            }
+            .main-nav.active { right: 0; }
+            .main-nav a { margin: 35px 0; font-size: 3rem; letter-spacing: 6px; font-weight: 900; }
+            .btn-res { border: 6px solid var(--auriu); font-size: 3rem !important; }
+            
+            .burger.toggle .line1 { transform: rotate(-45deg) translate(-10px, 10px); }
+            .burger.toggle .line2 { opacity: 0; }
+            .burger.toggle .line3 { transform: rotate(45deg) translate(-10px, -10px); }
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 150px 20px 80px; }
+            .pensiune-img { height: 500px; min-width: 100%; }
+            .pensiune-text h2 { font-size: 4rem; }
+            .pensiune-text p { font-size: 1.8rem; }
+            .p-content h3 { font-size: 3.8rem; }
+            .p-features { font-size: 2rem; }
+            .price { font-size: 4rem; }
+            .act-info h3 { font-size: 3.8rem; }
+            .act-info p { font-size: 2rem; }
+            .hero-content h1 { font-size: 5rem; }
+        }
+
+        @keyframes slide-anim { 0%, 22% { transform: translateX(0); } 25%, 47% { transform: translateX(-25%); } 50%, 72% { transform: translateX(-50%); } 75%, 97% { transform: translateX(-75%); } 100% { transform: translateX(0); } }
+        @keyframes kenburns { 0% { transform: scale(1); } 100% { transform: scale(1.18); } }
+    </style>
+</head>
+<body>
+
+    <header class="site-header" id="navbar">
+        <a href="index.html" class="brand">
+            <img src="images/Hateg-logo.svg" alt="Hațeg Alternativ Logo">
+        </a>
+        <div class="burger" id="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+        <nav class="main-nav" id="nav-links">
+            <a href="retreat.html">Metanoia</a>
+            <a href="gastronomie.html">Gastronomie</a>
+            <a href="experiente.html">Ateliere</a>
+            <a href="obiective.html">Obiective</a>
+            <a href="buliga.html" class="btn-res">Reservations</a>
+        </nav>
+    </header>
+
+    <section class="hero-slider">
+        <div class="slider-track">
+            <div class="slide"><div class="slide-bg" style="background-image: url('images/hero-premium.jpg');"></div><div class="hero-content"><h1>Simte.</h1></div></div>
+            <div class="slide"><div class="slide-bg" style="background-image: url('images/hero-camp-munti.jpg');"></div><div class="hero-content"><h1>Explorează.</h1></div></div>
+            <div class="slide"><div class="slide-bg" style="background-image: url('images/hero-lac.jpg');"></div><div class="hero-content"><h1>Trăiește.</h1></div></div>
+            <div class="slide"><div class="slide-bg" style="background-image: url('images/hero-sat.jpg');"></div><div class="hero-content"><h1>Rânduială.</h1></div></div>
+        </div>
+    </section>
+
+    <div class="container">
+        <section class="pensiune-section">
+            <div class="pensiune-img"><img src="images/la-buliga-pensiune.jpg" alt="Pensiunea La Buligă"></div>
+            <div class="pensiune-text">
+                <h2>Pensiunea La Buligă</h2>
+                <p>Un sanctuar al rânduielii și al tăcerii profunde în inima munților Retezat. Oferim o experiență de cazare Signature, gândită pentru reconectarea cu sinele.</p>
+            </div>
+        </section>
+
+        <div class="section-header"><h2>Pachete Signature</h2></div>
+
+        <div class="package-grid">
+            <article class="p-card">
+                <div class="p-card-img"><img src="images/hero-premium.jpg" alt="Metanoia"></div>
+                <div class="p-content">
+                    <h3>Metanoia: Tăcere</h3>
+                    <ul class="p-features">
+                        <li>2 Nopți Cazare Premium</li>
+                        <li>Mese Bio Farm-to-Table</li>
+                        <li>Digital Detox Program</li>
+                    </ul>
+                    <span class="price">4.500 RON</span>
+                    <a href="https://wa.me/40749229686?text=Vreau pachetul Metanoia" class="btn-gold">Rezervă</a>
+                </div>
+            </article>
+
+            <article class="p-card">
+                <div class="p-card-img"><img src="images/la-buliga-pensiune.jpg" alt="Buliga"></div>
+                <div class="p-content">
+                    <h3>Buliga: Izolare</h3>
+                    <ul class="p-features">
+                        <li>Închiriere Integrală Buliga</li>
+                        <li>Cină Tradițională la Stână</li>
+                        <li>Ghid Privat Munții Retezat</li>
+                    </ul>
+                    <span class="price">8.500 RON</span>
+                    <a href="https://wa.me/40749229686?text=Vreau pachetul Buliga" class="btn-gold">Rezervă</a>
+                </div>
+            </article>
+
+            <article class="p-card">
+                <div class="p-card-img"><img src="images/hero-lac.jpg" alt="Hateg"></div>
+                <div class="p-content">
+                    <h3>Hațeg: Pe Roți</h3>
+                    <ul class="p-features">
+                        <li>Cazare Pensiunea Natalia</li>
+                        <li>2 E-Bikes incluse 48h</li>
+                        <li>Pachet Picnic Gourmet</li>
+                    </ul>
+                    <span class="price">1.800 RON</span>
+                    <a href="https://wa.me/40749229686?text=Vreau pachetul Hateg" class="btn-gold">Rezervă</a>
+                </div>
+            </article>
+        </div>
+
+        <div class="activities-grid">
+            <a href="gastronomie.html" class="act-card">
+                <div class="act-img"><img src="images/index-mancare.jpg" alt="Gastronomie"></div>
+                <div class="act-info">
+                    <h3>Punct Gastronomic</h3>
+                    <p>Descoperă gustul autentic al Hațegului, preparat cu dragoste din grădina noastră.</p>
+                </div>
+            </a>
+            <a href="experiente.html" class="act-card">
+                <div class="act-img"><img src="images/exp-fluturi.jpg" alt="Ateliere"></div>
+                <div class="act-info">
+                    <h3>Ateliere Signature</h3>
+                    <p>Terapie prin creație și artă, într-un cadru care inspiră diamantele minții.</p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <footer>HAȚEG ALTERNATIV &copy; 2026 | TRIBUT PATRICIA</footer>
+
+    <script>
+        const burger = document.getElementById('burger');
+        const nav = document.getElementById('nav-links');
+        burger.addEventListener('click', () => {
+            nav.classList.toggle('active');
+            burger.classList.toggle('toggle');
+        });
+    </script>
+</body>
+</html>
