@@ -20,6 +20,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         html { scroll-behavior: smooth; }
         body { background: var(--negru); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; line-height: 1.6; }
+        p { font-size: 1rem; } /* Asigurăm un minim pentru paragrafe generale */
 
         /* HEADER EDITORIAL DINAMIC */
         .site-header { 
@@ -37,7 +38,8 @@
         }
         
         .brand { font-weight: 900; letter-spacing: 6px; text-transform: uppercase; font-size: 0.85rem; color: #fff; text-decoration: none; }
-        .main-nav a { text-decoration: none; color: #fff; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; margin-left: 35px; letter-spacing: 2px; opacity: 0.6; transition: var(--tranzitie); }
+        /* MĂRIT: .main-nav a size de la 0.65rem la 0.7rem */
+        .main-nav a { text-decoration: none; color: #fff; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; margin-left: 35px; letter-spacing: 2px; opacity: 0.6; transition: var(--tranzitie); }
         .main-nav a:hover { opacity: 1; color: var(--auriu); }
         .btn-res { border: 1px solid rgba(255,255,255,0.2); padding: 12px 25px; margin-left: 40px !important; opacity: 1 !important; }
         .btn-res:hover { background: var(--auriu); color: #000 !important; border-color: var(--auriu); }
@@ -50,7 +52,8 @@
         .slide::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.85) 100%); z-index: 1; }
 
         .hero-content { position: relative; z-index: 10; text-align: center; max-width: 1100px; padding: 0 20px; }
-        .hero-content span { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 14px; color: var(--auriu); display: block; margin-bottom: 30px; font-weight: 800; }
+        /* MĂRIT: hero span size de la 0.75rem la 0.8rem */
+        .hero-content span { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 14px; color: var(--auriu); display: block; margin-bottom: 30px; font-weight: 800; }
         .hero-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(3.5rem, 12vw, 7.5rem); font-weight: 900; font-style: italic; line-height: 0.8; margin-bottom: 40px; }
 
         /* SECTION PENSIUNEA */
@@ -61,12 +64,14 @@
 
         .pensiune-text { flex: 1; min-width: 350px; }
         .pensiune-text h2 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-style: italic; color: var(--auriu); margin-bottom: 35px; }
-        .pensiune-text p { color: #8a8a8a; line-height: 2; font-weight: 300; margin-bottom: 35px; font-size: 1.1rem; }
+        /* MĂRIT: pensiune p de la 1.1rem la 1.15rem */
+        .pensiune-text p { color: #8a8a8a; line-height: 2; font-weight: 300; margin-bottom: 35px; font-size: 1.15rem; }
 
-        /* PACHETE SIGNATURE - NEW SECTION */
+        /* PACHETE SIGNATURE */
         .packages-section { padding: 100px 60px; max-width: 1500px; margin: 0 auto; }
         .section-title { text-align: center; margin-bottom: 80px; }
-        .section-title span { color: var(--auriu); font-size: 0.8rem; letter-spacing: 8px; text-transform: uppercase; font-weight: 800; display: block; margin-bottom: 20px; }
+        /* MĂRIT: section title span de la 0.8rem la 0.85rem */
+        .section-title span { color: var(--auriu); font-size: 0.85rem; letter-spacing: 8px; text-transform: uppercase; font-weight: 800; display: block; margin-bottom: 20px; }
         .section-title h2 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-style: italic; }
 
         .package-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
@@ -77,15 +82,18 @@
         .p-card:hover .p-img img { opacity: 1; transform: scale(1.1); }
         
         .p-content { padding: 45px; text-align: center; flex-grow: 1; display: flex; flex-direction: column; }
-        .p-tag { color: var(--auriu); font-size: 0.65rem; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; display: block; }
+        /* MĂRIT: p-tag size de la 0.65rem la 0.7rem */
+        .p-tag { color: var(--auriu); font-size: 0.7rem; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; display: block; }
         .p-content h3 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 2.2rem; margin-bottom: 25px; color: #fff; }
         .p-features { list-style: none; margin-bottom: 40px; text-align: center; flex-grow: 1; }
-        .p-features li { color: #888; font-size: 0.95rem; font-weight: 300; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        /* MĂRIT: list items de la 0.95rem la 1rem */
+        .p-features li { color: #888; font-size: 1rem; font-weight: 300; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
         .p-features li:last-child { border-bottom: none; }
         
         .price-box { margin-bottom: 30px; }
         .price-tag { display: block; font-family: 'Playfair Display', serif; font-size: 1.6rem; color: #fff; margin-bottom: 5px; }
-        .price-details { font-size: 0.7rem; color: var(--auriu); text-transform: uppercase; letter-spacing: 2px; }
+        /* MĂRIT: price details de la 0.7rem la 0.75rem */
+        .price-details { font-size: 0.75rem; color: var(--auriu); text-transform: uppercase; letter-spacing: 2px; }
 
         .btn-gold { background: transparent; color: var(--auriu); border: 1px solid var(--auriu); padding: 18px 40px; text-decoration: none; font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.1rem; transition: var(--tranzitie); }
         .btn-gold:hover { background: var(--auriu); color: #000; }
@@ -99,7 +107,9 @@
         .obj-card:hover .obj-img img { transform: scale(1.1); opacity: 0.9; }
         .obj-info { padding: 45px; }
         .obj-info h3 { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-style: italic; margin-bottom: 20px; }
-        .dist { display: inline-block; font-size: 0.75rem; font-weight: 800; color: var(--auriu); letter-spacing: 4px; text-transform: uppercase; position: relative; padding-bottom: 8px; text-decoration: none; }
+        .obj-info p { font-size: 1rem; color: #888; font-weight: 300; } /* Asigurăm 1rem pentru descrieri */
+        /* MĂRIT: dist size de la 0.75rem la 0.8rem */
+        .dist { display: inline-block; font-size: 0.8rem; font-weight: 800; color: var(--auriu); letter-spacing: 4px; text-transform: uppercase; position: relative; padding-bottom: 8px; text-decoration: none; }
         .dist::after { content: ''; position: absolute; bottom: 0; left: 0; width: 40px; height: 1px; background: var(--auriu); transition: var(--tranzitie); }
 
         /* ANIMATII */
@@ -235,10 +245,10 @@
 
     <section class="section-grid">
         <a href="gastronomie.html" class="obj-card">
-            <div class="obj-img"><img src="images/gast-masa-traditionala.jpg" alt="Gastro"></div>
+            <div class="obj-img"><img src="images/index-mancare.jpg" alt="Gastronomie"></div>
             <div class="obj-info">
                 <h3>Punct Gastronomic Local</h3>
-                <p>Descoperă gustul autentic al Hațegului, preparat cu dragoste și ingrediente curate.</p>
+                <p>Descoperă gustul autentic al Hațegului, preparat cu dragoste și ingrediente curate din grădina noastră.</p>
                 <span class="dist">DESCOPERĂ MENIUL</span>
             </div>
         </a>
@@ -246,14 +256,14 @@
             <div class="obj-img"><img src="images/exp-fluturi.jpg" alt="Ateliere"></div>
             <div class="obj-info">
                 <h3>Ateliere Signature</h3>
-                <p>Terapie prin creație și artă, într-un cadru care inspiră diamantele minții.</p>
+                <p>Terapie prin creație și artă, într-un cadru care inspiră diamantele minții și liniștea sufletului.</p>
                 <span class="dist">VEZI EXPERIENȚELE</span>
             </div>
         </a>
     </section>
 
     <footer style="padding: 100px 60px; text-align: center; border-top: 1px solid rgba(197, 160, 89, 0.1);">
-        <div style="opacity: 0.3; font-size: 0.65rem; letter-spacing: 4px; text-transform: uppercase;">
+        <div style="opacity: 0.3; font-size: 0.75rem; letter-spacing: 4px; text-transform: uppercase;">
             HAȚEG ALTERNATIV &copy; 2026 | TRIBUT PATRICIA | MANIFEST METANOIA
         </div>
     </footer>
