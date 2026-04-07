@@ -49,4 +49,134 @@
         .slide::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.85) 100%); z-index: 1; }
 
         .hero-content { position: relative; z-index: 10; text-align: center; max-width: 1100px; padding: 0 20px; }
-        .hero-content span { font-size: 0.75rem; text-transform
+        .hero-content span { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 14px; color: var(--auriu); display: block; margin-bottom: 30px; font-weight: 800; }
+        .hero-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(3.5rem, 12vw, 7.5rem); font-weight: 900; font-style: italic; line-height: 0.8; margin-bottom: 40px; text-shadow: 0 20px 80px rgba(0,0,0,0.6); }
+
+        /* PENSIUNEA SECTION */
+        .pensiune-section { padding: 160px 80px; max-width: 1500px; margin: 0 auto; display: flex; gap: 100px; align-items: center; flex-wrap: wrap; }
+        .pensiune-img { flex: 1; min-width: 400px; height: 650px; border: 1px solid rgba(197, 160, 89, 0.1); padding: 15px; background: var(--gri-card); transition: var(--tranzitie); position: relative; overflow: hidden; display: block; }
+        .pensiune-img::before { content: ''; position: absolute; top: -10px; left: -10px; width: 50px; height: 50px; border-top: 1px solid var(--auriu); border-left: 1px solid var(--auriu); z-index: 2; }
+        .pensiune-img img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(30%); opacity: 0.7; transition: var(--tranzitie); }
+        .pensiune-img:hover img { filter: grayscale(0%); opacity: 1; transform: scale(1.03); }
+        .pensiune-img:hover { border-color: var(--auriu); }
+
+        .pensiune-text { flex: 1; min-width: 350px; }
+        .pensiune-text h2 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-style: italic; color: var(--auriu); margin-bottom: 35px; line-height: 1.1; }
+        .pensiune-text p { color: #8a8a8a; line-height: 2; font-weight: 300; margin-bottom: 35px; font-size: 1.1rem; }
+        
+        /* GRID SERVICES */
+        .section-grid { padding: 0 80px 180px; max-width: 1500px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 60px; }
+        .obj-card { background: var(--gri-card); transition: var(--tranzitie); text-decoration: none; color: inherit; display: block; overflow: hidden; border: 1px solid rgba(255,255,255,0.03); }
+        .obj-card:hover { transform: translateY(-20px); border-color: rgba(197, 160, 89, 0.4); }
+        .obj-img { height: 450px; overflow: hidden; position: relative; }
+        .obj-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: transform 1.5s ease; }
+        .obj-card:hover .obj-img img { transform: scale(1.1); opacity: 0.9; }
+        .obj-info { padding: 45px; }
+        .obj-info h3 { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-style: italic; margin-bottom: 20px; }
+        
+        .dist { display: inline-block; font-size: 0.75rem; font-weight: 800; color: var(--auriu); letter-spacing: 4px; text-transform: uppercase; position: relative; padding-bottom: 8px; text-decoration: none; }
+        .dist::after { content: ''; position: absolute; bottom: 0; left: 0; width: 40px; height: 1px; background: var(--auriu); transition: var(--tranzitie); }
+        .obj-card:hover .dist::after { width: 100%; }
+
+        @keyframes slide-anim { 0%, 22% { transform: translateX(0); } 25%, 47% { transform: translateX(-25%); } 50%, 72% { transform: translateX(-50%); } 75%, 97% { transform: translateX(-75%); } 100% { transform: translateX(0); } }
+        @keyframes kenburns { 0% { transform: scale(1); } 100% { transform: scale(1.18); } }
+
+        .wa-float { position: fixed; bottom: 45px; right: 45px; background: #075E54; color: white; width: 68px; height: 68px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 3000; text-decoration: none; box-shadow: 0 20px 40px rgba(0,0,0,0.5); transition: var(--tranzitie); }
+        .wa-float:hover { transform: scale(1.1) rotate(12deg); background: #25D366; }
+
+        @media (max-width: 1024px) { .site-header { padding: 25px 30px; } .pensiune-section { padding: 100px 30px; } .pensiune-img { min-width: 100%; height: 450px; } .hero-content h1 { font-size: 4rem; } }
+    </style>
+</head>
+<body>
+
+    <header class="site-header" id="navbar">
+        <a href="index.html" class="brand">HAȚEG ALTERNATIV</a>
+        <nav class="main-nav">
+            <a href="retreat.html">Metanoia</a>
+            <a href="gastronomie.html">Gastronomie</a>
+            <a href="experiente.html">Ateliere</a>
+            <a href="obiective.html">Obiective</a>
+            <a href="buliga.html" class="btn-res">Reservations</a>
+        </nav>
+    </header>
+
+    <section class="hero-slider">
+        <div class="slider-track">
+            <div class="slide">
+                <div class="slide-bg" style="background-image: url('images/hero-premium.jpg');"></div>
+                <div class="hero-content">
+                    <span>DOMENIILE LA BULIGĂ</span>
+                    <h1>Simte.<br>Explorează.<br>Trăiește.</h1>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="slide-bg" style="background-image: url('images/hero-camp-munti.jpg');"></div>
+                <div class="hero-content">
+                    <span>RETEZAT</span>
+                    <h1>Terapia<br>Isihiei.</h1>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="slide-bg" style="background-image: url('images/hero-lac.jpg');"></div>
+                <div class="hero-content">
+                    <span>MANIFEST</span>
+                    <h1>Moștenirea<br>De Aur.</h1>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="slide-bg" style="background-image: url('images/hero-sat.jpg');"></div>
+                <div class="hero-content">
+                    <span>RÂNDUIALĂ</span>
+                    <h1>Pelerinaj<br>Spre Sine.</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pensiune-section">
+        <a href="buliga.html" class="pensiune-img">
+            <img src="images/la-buliga-pensiune.jpg" alt="La Buliga Pensiune">
+        </a>
+        <div class="pensiune-text">
+            <h2>Pensiunea la Buligă</h2>
+            <p>Un sanctuar al rânduielii, unde arhitectura tradițională întâlnește liniștea profundă a munților Retezat. Oferim o experiență de cazare Signature.</p>
+            <a href="buliga.html" class="dist">VERIFICĂ DISPONIBILITATEA →</a>
+        </div>
+    </section>
+
+    <section class="section-grid">
+        <a href="gastronomie.html" class="obj-card">
+            <div class="obj-img"><img src="images/gast-masa-traditionala.jpg" alt="Gastro"></div>
+            <div class="obj-info">
+                <h3>Punct Gastronomic Local</h3>
+                <p>Descoperă gustul autentic al Hațegului, preparat cu dragoste și ingrediente curate.</p>
+                <span class="dist">DESCOPERĂ MENIUL</span>
+            </div>
+        </a>
+        <a href="experiente.html" class="obj-card">
+            <div class="obj-img"><img src="images/exp-fluturi.jpg" alt="Ateliere"></div>
+            <div class="obj-info">
+                <h3>Ateliere Signature</h3>
+                <p>Terapie prin creație și artă, într-un cadru care inspiră diamantele minții.</p>
+                <span class="dist">VEZI EXPERIENȚELE</span>
+            </div>
+        </a>
+    </section>
+
+    <footer style="padding: 100px 60px; text-align: center; border-top: 1px solid rgba(197, 160, 89, 0.1);">
+        <div style="opacity: 0.3; font-size: 0.65rem; letter-spacing: 4px; text-transform: uppercase;">
+            HAȚEG ALTERNATIV &copy; 2026 | TRIBUT PATRICIA | MANIFEST METANOIA
+        </div>
+    </footer>
+
+    <a href="https://wa.me/40749229686" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+    <script>
+        window.onscroll = function() {
+            var navbar = document.getElementById("navbar");
+            if (window.pageYOffset > 50) { navbar.classList.add("scrolled"); } 
+            else { navbar.classList.remove("scrolled"); }
+        };
+    </script>
+</body>
+</html>
