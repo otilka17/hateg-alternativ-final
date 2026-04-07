@@ -6,7 +6,6 @@
     <title>Hațeg Alternativ | Simte. Explorează. Trăiește.</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        /* Rânduiala CSS - Ermes Signature Style */
         :root {
             --black-deep: #000000;
             --gold-warm: #D4AF37;
@@ -20,214 +19,124 @@
             background-color: var(--black-deep);
             color: var(--white-pure);
             font-family: 'Montserrat', sans-serif;
-            line-height: 1.6;
         }
 
-        h1, h2, h3, .italic-font {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
+        /* Navigația Restaurată - Toate paginile tale sunt aici */
+        nav {
+            display: flex;
+            justify-content: flex-end;
+            padding: 20px 5%;
+            background: rgba(0,0,0,0.9);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
-        /* Header & Logo Section */
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: 0.3s;
+        }
+
+        nav a:hover { color: var(--gold-warm); }
+
+        /* Secțiunea Logo cu noul fișier hateg-logo.svg */
         header {
-            padding: 40px 20px;
+            padding: 40px 0;
             text-align: center;
-            background-color: var(--black-deep);
         }
 
         .hateg-logo-vector {
-            height: 140px; /* Dimensiune optimă pentru munte și aripi */
-            width: auto;
-            filter: brightness(0) invert(1); /* Îl face alb pe fundal negru */
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
+            height: 120px;
+            filter: brightness(0) invert(1); /* Îl face alb pentru Isihie Digitală */
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .hateg-logo-vector:hover {
-            transform: scale(1.08);
-            filter: brightness(0) invert(1) drop-shadow(0 0 15px rgba(212, 175, 55, 0.4));
+            transform: scale(1.1);
+            filter: brightness(0) invert(1) drop-shadow(0 0 10px var(--gold-warm));
         }
 
-        /* Hero Section - "Simte." */
+        /* Hero Sections conform screenshot-urilor tale */
         .hero {
-            height: 80vh;
+            height: 70vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/hero-bg.jpg'); /* Referință la imagine_264922.jpg */
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/hero-bg.jpg');
             background-size: cover;
             background-position: center;
-            text-align: center;
         }
 
         .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
             font-size: 5rem;
-            margin: 0;
         }
 
-        /* Section Buliga */
         .section-buliga {
-            padding: 100px 20px;
+            padding: 80px 10%;
             text-align: center;
+            background: url('images/casa-buliga.jpg') no-repeat center; /* Imaginea cu casa de la 13:18 */
+            background-size: cover;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
-        .section-buliga h2 {
-            font-size: 3.5rem;
-            margin-bottom: 10px;
-        }
-
-        .tagline {
-            color: var(--gold-warm);
-            font-size: 1.2rem;
-            letter-spacing: 2px;
-        }
-
-        /* Terapia Isihiei Cards */
-        .ecosystem-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            padding: 60px 10%;
-        }
-
-        .card {
-            background: var(--gray-soft);
-            padding: 40px;
-            border-radius: 5px;
-            text-align: center;
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1);
-        }
-
-        .card h3 {
-            color: var(--gold-warm);
-            font-size: 1.8rem;
-        }
-
-        /* Formular Rezervare */
-        .booking-container {
-            max-width: 600px;
-            margin: 80px auto;
-            padding: 40px;
-            background: var(--gray-soft);
-            border: 1px solid #333;
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        label {
-            display: block;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            color: var(--gold-warm);
-            margin-bottom: 8px;
-        }
-
-        input, select {
-            width: 100%;
-            padding: 12px;
-            background: #000;
-            border: 1px solid #444;
-            color: #fff;
-            font-family: inherit;
-        }
-
-        .btn-gold {
-            background: var(--gold-warm);
-            color: #000;
-            border: none;
-            padding: 15px 30px;
-            width: 100%;
-            font-weight: bold;
-            cursor: pointer;
-            text-transform: uppercase;
-            transition: 0.3s;
-        }
-
-        .btn-gold:hover {
-            background: #b8972f;
-        }
-
-        /* WhatsApp Float */
+        /* Butonul de WhatsApp original */
         .whatsapp-btn {
             position: fixed;
             bottom: 30px;
             right: 30px;
             background: #25d366;
-            color: white;
-            padding: 15px 25px;
             border-radius: 50px;
+            padding: 15px 25px;
+            color: white;
             text-decoration: none;
             font-weight: bold;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
     </style>
 </head>
 <body>
 
+    <nav>
+        <a href="index.html">Acasă</a>
+        <a href="pachete.html">Pachete</a>
+        <a href="metanoia.html">Metanoia</a>
+        <a href="gastronomie.html">Gastronomie</a>
+        <a href="ateliere.html">Ateliere</a>
+        <a href="obiective.html">Obiective</a>
+        <a href="evenimente.html">Evenimente</a>
+        <a href="forum.html">Forum</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+
     <header>
-        <a href="index.html">
-            <img src="images/hateg-logo.svg" alt="Logo Hațeg Alternativ" class="hateg-logo-vector">
-        </a>
+        <img src="images/hateg-logo.svg" alt="Hațeg Alternativ" class="hateg-logo-vector">
     </header>
 
     <section class="hero">
         <h1>Simte.</h1> </section>
 
     <section class="section-buliga">
-        <h2>Buliga.</h2> <p class="tagline">UNDE PĂMÂNTUL ÎNTÂLNEȘTE CERUL.</p> </section>
+        <h2 style="font-family:'Playfair Display'; font-size: 4rem; color: white; margin:0;">Buliga.</h2>
+        <p style="color: var(--gold-warm); letter-spacing: 3px;">UNDE PĂMÂNTUL ÎNTÂLNEȘTE CERUL.</p> </section>
 
-    <section>
-        <h2 style="text-align: center; font-size: 3rem;">Terapia Isihiei</h2> <div class="ecosystem-grid">
-            <div class="card">
-                <h3>Isihia</h3>
-                <p>Tăcerea care vindecă. Învățăm să ascultăm liniștea munților Retezat pentru a ne regăsi vocea interioară.</p>
-            </div>
-            <div class="card">
-                <h3>Terapia Vagală</h3>
-                <p>Tehnici de respirație și contact cu natura pentru reglarea nervului vag și eliminarea stresului cronic.</p>
-            </div>
-            <div class="card">
-                <h3>Creația</h3>
-                <p>Prin atelierele de pictură și gastronomie, transformăm energia blocată în obiecte de colecție.</p>
-            </div>
-        </div>
-    </section>
+    <div style="text-align: center; padding: 50px;">
+        <a href="pachete.html" style="background: var(--gold-warm); color: black; padding: 20px 40px; text-decoration: none; font-weight: bold; border-radius: 50px; text-transform: uppercase;">Rezervă Liniștea</a> </div>
 
-    <section class="booking-container">
-        <h2 style="text-align: center; margin-top: 0;">Rezervare Sejur.</h2> <form id="bookingForm">
-            <div class="form-group">
-                <label>Numele tău complet</label>
-                <input type="text" name="nume" placeholder="Ex: Popescu Ion" required>
-            </div>
-            <div class="form-group">
-                <label>Număr de telefon (WhatsApp)</label>
-                <input type="tel" name="tel" placeholder="Ex: 0749..." required>
-            </div>
-            <div class="form-group" style="display: flex; gap: 20px;">
-                <div style="flex: 1;">
-                    <label>Check-in</label>
-                    <input type="date" name="checkin">
-                </div>
-                <div style="flex: 1;">
-                    <label>Check-out</label>
-                    <input type="date" name="checkout">
-                </div>
-            </div>
-            <div class="form-group">
-                <label>Alege pachetul (Casa Integrală - 10 pers)</label>
-                <select name="pachet">
-                    <option value="integral">Cazare Integrală - 2000 RON / Noapte</option>
-                    <option value="metanoia">Retreat Metanoia - 4000 RON / Noapte</option> </select>
-            </div>
-            <button type="submit" class="btn-gold">Confirmă prin WhatsApp</button>
-        </form>
-    </section>
-
-    <a href="https://wa.me/40749000000" class="whatsapp-btn">Chat WhatsApp</a> </body>
+    <script src="js/translations.js"></script> <a href="https://wa.me/40749000000" class="whatsapp-btn">
+        <span>Chat WhatsApp</span>
+    </a>
+</body>
 </html>
