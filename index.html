@@ -3,245 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hațeg Alternativ | Moștenirea de Aur</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
+    <title>Metanoia | Reset Total</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root { 
-            --auriu: #c5a059; 
-            --negru: #050505; 
-            --alb: #ffffff;
-            --tranzitie: all 0.5s cubic-bezier(0.7, 0, 0.3, 1);
-        }
+        :root { --verde: #1b3022; --auriu: #c5a059; --fundal: #fdfcf8; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--fundal); color: var(--verde); line-height: 1.6; }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; line-height: 1.6; }
+        .header { position: fixed; top: 0; width: 100%; z-index: 1000; padding: 30px 50px; background: rgba(253, 252, 248, 0.9); display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .header img { height: 60px; }
 
-        /* HEADER HERMES - LOGO IMPUNĂTOR */
-        .site-header { 
-            position: fixed; top: 0; width: 100%; z-index: 5000; 
-            padding: 40px 60px;
-            display: flex; justify-content: space-between; align-items: center;
-            background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.5) 100%);
-            transition: 0.4s;
-        }
+        .hero { height: 80vh; background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('images/hero-camp-munti.jpg') center/cover; display: flex; align-items: center; justify-content: center; color: white; text-align: center; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 5rem; font-style: italic; }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 100px 20px; }
+        .section-title { text-align: center; margin-bottom: 60px; }
+        .section-title h2 { font-family: 'Playfair Display', serif; font-size: 3.5rem; color: var(--auriu); font-style: italic; }
         
-        .brand img { 
-            height: 100px; 
-            width: auto; 
-            display: block;
-            filter: drop-shadow(0 0 20px rgba(0,0,0,0.5));
-        }
+        .reset-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-bottom: 80px; }
+        .reset-item { padding: 40px; border: 1px solid #eee; background: white; text-align: center; }
+        .reset-item h3 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 20px; color: var(--auriu); }
 
-        /* BURGER BOLD */
-        .burger { cursor: pointer; z-index: 6000; padding: 15px; }
-        .burger div { width: 45px; height: 4px; background: #fff; margin: 10px; transition: 0.3s; }
-
-        /* NAV OVERLAY */
-        .main-nav { 
-            position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; 
-            background: var(--negru); display: flex; flex-direction: column; 
-            justify-content: center; align-items: center; transition: 0.7s var(--tranzitie); z-index: 5500;
-        }
-        .main-nav.active { right: 0; }
-        .main-nav a { 
-            text-decoration: none; color: #fff; font-size: clamp(2.5rem, 8vw, 4.5rem); 
-            font-weight: 900; text-transform: uppercase; margin: 15px 0; letter-spacing: 5px; opacity: 0.6; transition: 0.3s;
-        }
-        .main-nav a:hover { opacity: 1; color: var(--auriu); }
-
-        /* SLIDER ERMES (CROSS-FADE & SLOW ZOOM) */
-        .hermes-viewport {
-            position: relative; width: 100%; height: 100vh; overflow: hidden; background: #000;
-        }
-        .slide {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            opacity: 0; visibility: hidden;
-            transition: opacity 3s ease-in-out;
-            display: flex; align-items: center; justify-content: center;
-        }
-        .slide.active { opacity: 1; visibility: visible; }
-
-        .slide-bg {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background-size: cover; background-position: center;
-            transform: scale(1.05);
-            transition: transform 12s linear;
-        }
-        .slide.active .slide-bg { transform: scale(1.2); }
-
-        .hero-text { position: relative; z-index: 10; text-align: center; }
-        .hero-text h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(4rem, 16vw, 11rem);
-            font-weight: 900; font-style: italic; line-height: 0.85;
-            text-shadow: 0 10px 60px rgba(0,0,0,0.5);
-        }
-
-        /* CONTAINER CONTENT */
-        .content-wrap { padding: 150px 50px; max-width: 1500px; margin: 0 auto; }
-
-        /* PENSIUNEA */
-        .intro-block { display: flex; gap: 100px; align-items: center; flex-wrap: wrap; margin-bottom: 200px; }
-        .intro-img { flex: 1; min-width: 450px; height: 750px; overflow: hidden; border: 1px solid #1a1a1a; }
-        .intro-img img { width: 100%; height: 100%; object-fit: cover; }
-        .intro-text h2 { font-family: 'Playfair Display', serif; font-size: clamp(3.5rem, 7vw, 6rem); font-style: italic; margin-bottom: 40px; color: var(--auriu); }
-        .intro-text p { font-size: 1.8rem; color: #aaa; font-weight: 300; }
-
-        /* GRILA LUXURY (PACHETE & ACTIVITĂȚI) */
-        .luxury-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 60px; margin-bottom: 150px; }
-        .card-lux { background: #0a0a0a; border: 1px solid #1a1a1a; transition: 0.4s; overflow: hidden; display: flex; flex-direction: column; }
-        .card-lux:hover { border-color: var(--auriu); transform: translateY(-15px); }
-        
-        .img-lux { height: 500px; overflow: hidden; }
-        .img-lux img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: 1.5s; }
-        .card-lux:hover .img-lux img { opacity: 1; transform: scale(1.05); }
-
-        .info-lux { padding: 60px 40px; text-align: center; flex-grow: 1; }
-        .info-lux h3 { font-family: 'Playfair Display', serif; font-size: 3rem; font-style: italic; margin-bottom: 20px; }
-        .lux-features { list-style: none; margin-bottom: 40px; color: #888; font-size: 1.2rem; }
-        .lux-features li { padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        
-        .price-lux { font-family: 'Playfair Display', serif; font-size: 3.5rem; display: block; margin-bottom: 40px; color: #fff; font-weight: 900; }
-        
-        /* BUTOANELE ÎNAPOI */
-        .btn-lux { 
-            display: block; padding: 25px 50px; border: 2px solid var(--auriu); 
-            color: var(--auriu); text-decoration: none; text-transform: uppercase; 
-            font-weight: 900; letter-spacing: 5px; font-size: 1.2rem; transition: 0.3s;
-        }
-        .btn-lux:hover { background: var(--auriu); color: #000; }
-
-        footer { padding: 120px 50px; text-align: center; font-size: 1.2rem; letter-spacing: 8px; border-top: 1px solid #111; opacity: 0.4; }
-
-        /* MOBIL - RECALIBRARE */
-        @media (max-width: 1024px) {
-            .site-header { padding: 25px; background: rgba(0,0,0,1); border-bottom: 2px solid var(--auriu); }
-            .brand img { height: 120px !important; } /* LOGO URIAS PE TELEFON */
-            .burger div { width: 55px; height: 5px; margin: 10px; }
-            .content-wrap { padding: 100px 20px; }
-            .intro-img { height: 450px; min-width: 100%; }
-            .luxury-grid { grid-template-columns: 1fr; }
-            .info-lux h3 { font-size: 3.5rem; }
-            .price-lux { font-size: 3.5rem; }
-            .btn-lux { font-size: 1.5rem; padding: 30px; }
-            .hero-text h1 { font-size: 6.5rem; }
-        }
+        .btn-reserve { display: block; width: fit-content; margin: 50px auto; padding: 20px 60px; background: var(--verde); color: white; text-decoration: none; font-weight: 800; text-transform: uppercase; letter-spacing: 4px; border-radius: 50px; }
     </style>
 </head>
 <body>
-
-    <header class="site-header">
-        <a href="index.html" class="brand">
-            <img src="images/Hateg-logo.svg" alt="Hațeg Alternativ Logo">
-        </a>
-        <div class="burger" id="burger">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-        <nav class="main-nav" id="nav-links">
-            <a href="retreat.html">Metanoia</a>
-            <a href="gastronomie.html">Gastronomie</a>
-            <a href="experiente.html">Ateliere</a>
-            <a href="obiective.html">Obiective</a>
-            <a href="buliga.html">Reservations</a>
-        </nav>
+    <header class="header">
+        <a href="index.html"><img src="images/Hateg-logo.svg" alt="Logo"></a>
+        <a href="buliga.html" style="color:var(--verde); text-decoration:none; font-weight:800; text-transform:uppercase; font-size:0.8rem;">Reservations</a>
     </header>
 
-    <section class="hermes-viewport">
-        <div class="slide active">
-            <div class="slide-bg" style="background-image: url('images/rasarit.jpg');"></div>
-            <div class="hero-text"><h1>Simte.</h1></div>
-        </div>
-        <div class="slide">
-            <div class="slide-bg" style="background-image: url('images/apus.jpg');"></div>
-            <div class="hero-text"><h1>Explorează.</h1></div>
-        </div>
-        <div class="slide">
-            <div class="slide-bg" style="background-image: url('images/nori.jpg');"></div>
-            <div class="hero-text"><h1>Trăiește.</h1></div>
-        </div>
+    <section class="hero">
+        <h1>Terapia Isihiei.</h1>
     </section>
 
-    <div class="content-wrap">
-        <section class="intro-block">
-            <div class="intro-img"><img src="images/la-buliga-pensiune.jpg" alt="La Buligă"></div>
-            <div class="intro-text">
-                <h2>Pensiunea<br>La Buligă</h2>
-                <p>Un sanctuar al rânduielii și al tăcerii profunde. O experiență Signature în inima Retezatului.</p>
-                <a href="buliga.html" style="color:var(--auriu); font-weight:900; font-size:1.5rem; text-transform:uppercase; text-decoration:none; margin-top:30px; display:inline-block; border-bottom:2px solid var(--auriu);">Vezi Detalii →</a>
-            </div>
-        </section>
+    <main class="container">
+        <div class="section-title">
+            <h2>Metanoia: Reset</h2>
+            <p style="font-size:1.4rem; color:#666; font-style:italic;">Călătoria de la zgomotul minții la liniștea sufletului.</p>
+        </div>
 
-        <div class="luxury-grid">
-            <div class="card-lux">
-                <div class="img-lux"><img src="images/jeep.jpg" alt="Buliga Adventure"></div>
-                <div class="info-lux">
-                    <h3>Buliga: Izolare</h3>
-                    <ul class="lux-features">
-                        <li>Închiriere Integrală</li>
-                        <li>Aventură 4x4 Jeep</li>
-                        <li>Ghid Privat Munți</li>
-                    </ul>
-                    <span class="price-lux">8.500 RON</span>
-                    <a href="https://wa.me/40749229686" class="btn-lux">Rezervă</a>
-                </div>
+        <div class="reset-grid">
+            <div class="reset-item">
+                <h3>Isihia</h3>
+                <p>Tăcerea care vindecă. Ascultăm liniștea Retezatului pentru a ne regăsi vocea interioară.</p>
             </div>
-            <div class="card-lux">
-                <div class="img-lux"><img src="images/apus1.jpg" alt="Metanoia Retreat"></div>
-                <div class="info-lux">
-                    <h3>Metanoia: Tăcere</h3>
-                    <ul class="lux-features">
-                        <li>2 Nopți Cazare Premium</li>
-                        <li>Mese Bio Farm-to-Table</li>
-                        <li>Digital Detox Program</li>
-                    </ul>
-                    <span class="price-lux">4.500 RON</span>
-                    <a href="https://wa.me/40749229686" class="btn-lux">Rezervă</a>
-                </div>
+            <div class="reset-item">
+                <h3>Terapie Vagală</h3>
+                <p>Resetăm sistemul nervos prin contact direct cu natura sălbatică și rânduială.</p>
+            </div>
+            <div class="reset-item">
+                <h3>Creația</h3>
+                <p>Transformăm energia prin ateliere de artă și gastronomie curată.</p>
             </div>
         </div>
 
-        <div class="luxury-grid">
-            <a href="gastronomie.html" class="card-lux" style="text-decoration:none; color:inherit;">
-                <div class="img-lux"><img src="images/index-mancare.jpg" alt="Gastronomie"></div>
-                <div class="info-lux">
-                    <h3>Gastronomie</h3>
-                    <p style="font-size:1.4rem; color:#888;">Gustul onest al Hațegului.</p>
-                </div>
-            </a>
-            <a href="experiente.html" class="card-lux" style="text-decoration:none; color:inherit;">
-                <div class="img-lux"><img src="images/narcise.jpg" alt="Artă"></div>
-                <div class="info-lux">
-                    <h3>Ateliere Artă</h3>
-                    <p style="font-size:1.4rem; color:#888;">Terapie prin frumos și isihie.</p>
-                </div>
-            </a>
-        </div>
-    </div>
+        <a href="https://wa.me/40749229686" class="btn-reserve">Rezervă Resetarea</a>
+    </main>
 
-    <footer>HAȚEG ALTERNATIV &copy; 2026</footer>
-
-    <script>
-        // SLIDER ERMES (CROSS-FADE)
-        let slides = document.querySelectorAll('.slide');
-        let current = 0;
-        function nextSlide() {
-            slides[current].classList.remove('active');
-            current = (current + 1) % slides.length;
-            slides[current].classList.add('active');
-        }
-        setInterval(nextSlide, 7000);
-
-        // BURGER
-        const burger = document.getElementById('burger');
-        const nav = document.getElementById('nav-links');
-        burger.addEventListener('click', () => {
-            nav.classList.toggle('active');
-        });
-    </script>
+    <footer style="padding: 100px 20px; text-align: center; border-top: 1px solid #eee; font-size: 0.8rem; letter-spacing: 2px; color: #999;">
+        HAȚEG ALTERNATIV &copy; 2026 | MANIFEST METANOIA
+    </footer>
 </body>
 </html>
