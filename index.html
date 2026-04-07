@@ -6,44 +6,38 @@
     <title>Hațeg Alternativ | Moștenirea de Aur</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
         :root { 
             --auriu: #c5a059; 
             --negru: #050505; 
             --alb: #ffffff;
-            --tranzitie-lenta: all 2s cubic-bezier(0.4, 0, 0.2, 1);
+            --tranzitie-hermes: all 2.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-        /* HEADER ERMES STYLE */
+        /* HEADER "ERMES" - LOGO MASIV */
         .site-header { 
             position: fixed; top: 0; width: 100%; z-index: 5000; 
             padding: 50px 60px;
             display: flex; justify-content: space-between; align-items: center;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, transparent 100%);
-            transition: all 0.5s ease;
-        }
-        .site-header.scrolled {
-            padding: 25px 40px;
-            background: rgba(0, 0, 0, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            background: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, transparent 100%);
         }
         
         .brand img { 
-            height: 120px; /* Logo mare și impunător */
+            height: 120px; /* Logo impunător pe desktop */
             width: auto; 
             display: block;
+            filter: drop-shadow(0 0 20px rgba(0,0,0,0.5));
         }
 
+        /* BURGER GROS */
         .burger { cursor: pointer; z-index: 6000; padding: 15px; }
-        .burger div { width: 50px; height: 3px; background: var(--alb); margin: 10px; transition: 0.3s; }
+        .burger div { width: 55px; height: 4px; background: var(--alb); margin: 12px; transition: 0.3s; }
 
-        /* MENU OVERLAY */
+        /* NAV OVERLAY */
         .main-nav { 
             position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; 
             background: var(--negru); display: flex; flex-direction: column; 
@@ -51,103 +45,97 @@
         }
         .main-nav.active { right: 0; }
         .main-nav a { 
-            text-decoration: none; color: var(--alb); font-size: clamp(2rem, 8vw, 4rem); 
-            font-weight: 900; text-transform: uppercase; margin: 15px 0; letter-spacing: 5px; transition: 0.3s;
+            text-decoration: none; color: var(--alb); font-size: clamp(2.5rem, 8vw, 5rem); 
+            font-weight: 900; text-transform: uppercase; margin: 20px 0; letter-spacing: 5px; opacity: 0.6; transition: 0.3s;
         }
-        .main-nav a:hover { color: var(--auriu); }
+        .main-nav a:hover { opacity: 1; color: var(--auriu); }
 
-        /* ERMES HERO SLIDER (CROSS-FADE + SLOW ZOOM) */
-        .hero-viewport {
+        /* SLIDER "CROSS-FADE" (STIL ERMES) */
+        .hermes-viewport {
             position: relative; width: 100%; height: 100vh; overflow: hidden; background: #000;
         }
-        .hermes-slide {
+        .slide {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             opacity: 0; visibility: hidden;
-            transition: opacity 2.5s ease-in-out, visibility 2.5s ease-in-out;
+            transition: opacity 3s ease-in-out;
             display: flex; align-items: center; justify-content: center;
         }
-        .hermes-slide.active { opacity: 1; visibility: visible; }
+        .slide.active { opacity: 1; visibility: visible; }
 
-        .hermes-bg {
+        .slide-bg {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background-size: cover; background-position: center;
             transform: scale(1);
-            transition: transform 12s linear; /* Zoom ultra lent */
+            transition: transform 15s linear; /* Zoom infinit lent */
         }
-        .hermes-slide.active .hermes-bg { transform: scale(1.15); }
+        .slide.active .slide-bg { transform: scale(1.18); }
 
-        .hero-overlay {
+        .slide-overlay {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.35); z-index: 2;
+            background: rgba(0,0,0,0.3); z-index: 2;
         }
 
-        .hero-text {
-            position: relative; z-index: 10; text-align: center; max-width: 90%;
-        }
-        .hero-text h1 {
+        .slide-text { position: relative; z-index: 10; text-align: center; }
+        .slide-text h1 {
             font-family: 'Playfair Display', serif;
             font-size: clamp(4rem, 18vw, 12rem);
             font-weight: 900; font-style: italic; line-height: 0.85;
-            letter-spacing: -2px;
+            text-shadow: 0 10px 60px rgba(0,0,0,0.5);
         }
 
-        /* SECTIUNI CONTENT - AERISITE */
-        .content-container { padding: 180px 60px; max-width: 1600px; margin: 0 auto; }
+        /* CONTENT SECTIONS */
+        .content-wrap { padding: 180px 60px; max-width: 1600px; margin: 0 auto; }
         
-        .intro-block { display: flex; gap: 100px; align-items: center; flex-wrap: wrap; margin-bottom: 200px; }
-        .intro-image { flex: 1; min-width: 450px; height: 800px; overflow: hidden; }
-        .intro-image img { width: 100%; height: 100%; object-fit: cover; }
+        .intro-block { display: flex; gap: 100px; align-items: center; flex-wrap: wrap; margin-bottom: 250px; }
+        .intro-img { flex: 1; min-width: 450px; height: 800px; overflow: hidden; }
+        .intro-img img { width: 100%; height: 100%; object-fit: cover; }
         
         .intro-text { flex: 1; min-width: 450px; }
-        .intro-text h2 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 6vw, 6rem); margin-bottom: 50px; font-style: italic; line-height: 1; }
-        .intro-text p { font-size: 2rem; color: #888; font-weight: 300; line-height: 1.6; }
+        .intro-text h2 { font-family: 'Playfair Display', serif; font-size: clamp(3.5rem, 7vw, 6.5rem); font-style: italic; margin-bottom: 40px; }
+        .intro-text p { font-size: 2.2rem; color: #888; font-weight: 300; line-height: 1.6; }
 
-        /* CARDS LUXURY */
-        .luxury-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); gap: 80px; margin-bottom: 200px; }
-        .lux-card { background: var(--gri-card); text-decoration: none; color: inherit; transition: 0.5s; }
-        .lux-card:hover { transform: translateY(-20px); }
-        .lux-img { height: 600px; overflow: hidden; }
-        .lux-img img { width: 100%; height: 100%; object-fit: cover; transition: 1.5s; opacity: 0.7; }
-        .lux-card:hover .lux-img img { transform: scale(1.1); opacity: 1; }
+        /* GRID LUXURY */
+        .grid-lux { display: grid; grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); gap: 80px; margin-bottom: 200px; }
+        .card-lux { background: #0a0a0a; text-decoration: none; color: inherit; transition: 0.5s; }
+        .img-lux { height: 650px; overflow: hidden; }
+        .img-lux img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: 1.5s; }
+        .card-lux:hover .img-lux img { opacity: 1; transform: scale(1.1); }
         
-        .lux-info { padding: 60px; text-align: center; }
-        .lux-info h3 { font-family: 'Playfair Display', serif; font-size: 4rem; font-style: italic; margin-bottom: 30px; }
-        .lux-price { font-family: 'Playfair Display', serif; font-size: 3rem; display: block; margin-bottom: 40px; }
-        .lux-btn { display: inline-block; padding: 25px 60px; border: 2px solid var(--alb); color: var(--alb); text-transform: uppercase; letter-spacing: 5px; font-weight: 900; font-size: 1.2rem; }
+        .info-lux { padding: 60px; text-align: center; }
+        .info-lux h3 { font-family: 'Playfair Display', serif; font-size: 4rem; font-style: italic; margin-bottom: 25px; }
+        .price-lux { font-family: 'Playfair Display', serif; font-size: 3.5rem; display: block; margin-bottom: 45px; }
+        .btn-lux { display: inline-block; padding: 25px 70px; border: 3px solid var(--alb); font-weight: 900; text-transform: uppercase; letter-spacing: 5px; font-size: 1.3rem; }
 
-        footer { padding: 150px 60px; text-align: center; border-top: 1px solid #222; font-size: 1.2rem; letter-spacing: 8px; opacity: 0.4; text-transform: uppercase; }
+        footer { padding: 150px 60px; text-align: center; font-size: 1.3rem; letter-spacing: 8px; opacity: 0.4; text-transform: uppercase; border-top: 1px solid #111; }
 
-        /* MOBIL - RECALIBRARE TOTALA */
+        /* MOBIL - REPARAT LOGO SI TEXT */
         @media (max-width: 1024px) {
-            .site-header { padding: 30px 20px; }
-            .brand img { height: 140px !important; }
-            .burger div { width: 60px; height: 4px; margin: 12px; }
-            .content-container { padding: 100px 25px; }
-            .intro-image { height: 500px; min-width: 100%; }
-            .luxury-grid { grid-template-columns: 1fr; }
-            .lux-img { height: 450px; }
-        }
-
-        @media (max-width: 768px) {
-            .intro-text h2 { font-size: 4rem; }
-            .intro-text p { font-size: 1.8rem; }
-            .lux-info h3 { font-size: 3.5rem; }
-            .lux-price { font-size: 3rem; }
-            .lux-btn { width: 100%; padding: 30px; font-size: 1.5rem; }
-            .hero-text h1 { font-size: 6rem; }
+            .site-header { padding: 30px; background: rgba(0,0,0,0.8); }
+            .brand img { height: 140px !important; } /* LOGO URIAS */
+            .burger div { width: 65px; height: 5px; margin: 14px; }
+            .content-wrap { padding: 100px 25px; }
+            .intro-img { height: 500px; min-width: 100%; }
+            .grid-lux { grid-template-columns: 1fr; }
+            .img-lux { height: 500px; }
+            .slide-text h1 { font-size: 6.5rem; }
+            .intro-text h2 { font-size: 4.5rem; }
+            .intro-text p { font-size: 2rem; }
+            .info-lux h3 { font-size: 3.5rem; }
+            .price-lux { font-size: 3.5rem; }
+            .btn-lux { width: 100%; padding: 35px; font-size: 1.6rem; }
         }
     </style>
 </head>
 <body>
 
-    <header class="site-header" id="navbar">
+    <header class="site-header">
         <a href="index.html" class="brand">
             <img src="images/Hateg-logo.svg" alt="Hațeg Alternativ Logo">
         </a>
         <div class="burger" id="burger">
-            <div class="line1"></div>
-            <div class="line2"></div>
-            <div class="line3"></div>
+            <div></div>
+            <div></div>
+            <div></div>
         </div>
         <nav class="main-nav" id="nav-links">
             <a href="retreat.html">Metanoia</a>
@@ -158,62 +146,58 @@
         </nav>
     </header>
 
-    <section class="hero-viewport">
-        <div class="hero-overlay"></div>
-        <div class="hermes-slide active">
-            <div class="hermes-bg" style="background-image: url('images/rasarit.jpg');"></div>
-            <div class="hero-text"><h1>Simte.</h1></div>
+    <section class="hermes-viewport">
+        <div class="slide-overlay"></div>
+        <div class="slide active">
+            <div class="slide-bg" style="background-image: url('images/rasarit.jpg');"></div>
+            <div class="slide-text"><h1>Simte.</h1></div>
         </div>
-        <div class="hermes-slide">
-            <div class="hermes-bg" style="background-image: url('images/apus.jpg');"></div>
-            <div class="hero-text"><h1>Explorează.</h1></div>
+        <div class="slide">
+            <div class="slide-bg" style="background-image: url('images/apus.jpg');"></div>
+            <div class="slide-text"><h1>Explorează.</h1></div>
         </div>
-        <div class="hermes-slide">
-            <div class="hermes-bg" style="background-image: url('images/nori.jpg');"></div>
-            <div class="hero-text"><h1>Trăiește.</h1></div>
-        </div>
-        <div class="hermes-slide">
-            <div class="hermes-bg" style="background-image: url('images/hero-premium.jpg');"></div>
-            <div class="hero-text"><h1>Rânduială.</h1></div>
+        <div class="slide">
+            <div class="slide-bg" style="background-image: url('images/nori.jpg');"></div>
+            <div class="slide-text"><h1>Trăiește.</h1></div>
         </div>
     </section>
 
-    <div class="content-container">
+    <div class="content-wrap">
         <section class="intro-block">
-            <div class="intro-image"><img src="images/la-buliga-pensiune.jpg" alt="La Buligă"></div>
+            <div class="intro-img"><img src="images/la-buliga-pensiune.jpg" alt="La Buligă"></div>
             <div class="intro-text">
                 <h2>Pensiunea<br>La Buligă</h2>
-                <p>Un sanctuar al rânduielii și al tăcerii profunde. O experiență Signature în inima Retezatului.</p>
+                <p>Un sanctuar al rânduielii și al tăcerii profunde. O experiență Signature deasupra norilor.</p>
             </div>
         </section>
 
-        <div class="luxury-grid">
-            <a href="buliga.html" class="lux-card">
-                <div class="lux-img"><img src="images/jeep.jpg" alt="Buliga Adventure"></div>
-                <div class="lux-info">
+        <div class="grid-lux">
+            <a href="buliga.html" class="card-lux">
+                <div class="img-lux"><img src="images/jeep.jpg" alt="Buliga Adventure"></div>
+                <div class="info-lux">
                     <h3>Buliga: Izolare</h3>
-                    <span class="lux-price">8.500 RON</span>
-                    <span class="lux-btn">Rezervă</span>
+                    <span class="price-lux">8.500 RON</span>
+                    <span class="btn-lux">Rezervă</span>
                 </div>
             </a>
-            <a href="buliga.html" class="lux-card">
-                <div class="lux-img"><img src="images/narcise.jpg" alt="Metanoia"></div>
-                <div class="lux-info">
+            <a href="buliga.html" class="card-lux">
+                <div class="img-lux"><img src="images/apus1.jpg" alt="Metanoia"></div>
+                <div class="info-lux">
                     <h3>Metanoia: Tăcere</h3>
-                    <span class="lux-price">4.500 RON</span>
-                    <span class="lux-btn">Rezervă</span>
+                    <span class="price-lux">4.500 RON</span>
+                    <span class="btn-lux">Rezervă</span>
                 </div>
             </a>
         </div>
 
-        <div class="luxury-grid">
-            <a href="gastronomie.html" class="lux-card">
-                <div class="lux-img"><img src="images/index-mancare.jpg" alt="Gastronomie"></div>
-                <div class="lux-info"><h3>Gastronomie</h3></div>
+        <div class="grid-lux">
+            <a href="gastronomie.html" class="card-lux">
+                <div class="img-lux"><img src="images/index-mancare.jpg" alt="Gastronomie"></div>
+                <div class="info-lux"><h3>Gastronomie</h3></div>
             </a>
-            <a href="experiente.html" class="lux-card">
-                <div class="lux-img"><img src="images/exp-fluturi.jpg" alt="Arta"></div>
-                <div class="lux-info"><h3>Ateliere Artă</h3></div>
+            <a href="experiente.html" class="card-lux">
+                <div class="img-lux"><img src="images/narcise.jpg" alt="Arta"></div>
+                <div class="info-lux"><h3>Ateliere Artă</h3></div>
             </a>
         </div>
     </div>
@@ -221,32 +205,22 @@
     <footer>HAȚEG ALTERNATIV &copy; 2026</footer>
 
     <script>
-        // SLIDER ERMES STYLE (CROSS-FADE)
-        let slides = document.querySelectorAll('.hermes-slide');
+        // SLIDER ERMES (CROSS-FADE)
+        let slides = document.querySelectorAll('.slide');
         let current = 0;
-
         function nextSlide() {
             slides[current].classList.remove('active');
             current = (current + 1) % slides.length;
             slides[current].classList.add('active');
         }
+        setInterval(nextSlide, 7000);
 
-        setInterval(nextSlide, 7000); // Tranzitie lenta la 7 secunde
-
-        // BURGER MENU
+        // BURGER
         const burger = document.getElementById('burger');
         const nav = document.getElementById('nav-links');
         burger.addEventListener('click', () => {
             nav.classList.toggle('active');
-            burger.classList.toggle('toggle');
         });
-
-        // HEADER SCROLL EFFECT
-        window.onscroll = function() {
-            const navbar = document.getElementById("navbar");
-            if (window.pageYOffset > 50) navbar.classList.add("scrolled");
-            else navbar.classList.remove("scrolled");
-        };
     </script>
 </body>
 </html>
