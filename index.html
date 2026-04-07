@@ -20,9 +20,8 @@
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         html { scroll-behavior: smooth; }
         body { background: var(--negru); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; line-height: 1.6; }
-        p { font-size: 1rem; } /* Asigurăm un minim pentru paragrafe generale */
 
-        /* HEADER EDITORIAL DINAMIC */
+        /* HEADER */
         .site-header { 
             position: fixed; top: 0; width: 100%; z-index: 2000; 
             padding: 30px 60px;
@@ -37,12 +36,10 @@
             border-bottom: 1px solid rgba(197, 160, 89, 0.2);
         }
         
-        .brand { font-weight: 900; letter-spacing: 6px; text-transform: uppercase; font-size: 0.85rem; color: #fff; text-decoration: none; }
-        /* MĂRIT: .main-nav a size de la 0.65rem la 0.7rem */
-        .main-nav a { text-decoration: none; color: #fff; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; margin-left: 35px; letter-spacing: 2px; opacity: 0.6; transition: var(--tranzitie); }
+        .brand { font-weight: 900; letter-spacing: 6px; text-transform: uppercase; font-size: 0.9rem; color: #fff; text-decoration: none; }
+        .main-nav a { text-decoration: none; color: #fff; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; margin-left: 35px; letter-spacing: 2px; opacity: 0.6; transition: var(--tranzitie); }
         .main-nav a:hover { opacity: 1; color: var(--auriu); }
         .btn-res { border: 1px solid rgba(255,255,255,0.2); padding: 12px 25px; margin-left: 40px !important; opacity: 1 !important; }
-        .btn-res:hover { background: var(--auriu); color: #000 !important; border-color: var(--auriu); }
 
         /* HERO SLIDER */
         .hero-slider { width: 100%; height: 100vh; position: relative; overflow: hidden; }
@@ -52,26 +49,21 @@
         .slide::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.85) 100%); z-index: 1; }
 
         .hero-content { position: relative; z-index: 10; text-align: center; max-width: 1100px; padding: 0 20px; }
-        /* MĂRIT: hero span size de la 0.75rem la 0.8rem */
-        .hero-content span { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 14px; color: var(--auriu); display: block; margin-bottom: 30px; font-weight: 800; }
+        .hero-content span { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 14px; color: var(--auriu); display: block; margin-bottom: 30px; font-weight: 800; }
         .hero-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(3.5rem, 12vw, 7.5rem); font-weight: 900; font-style: italic; line-height: 0.8; margin-bottom: 40px; }
 
         /* SECTION PENSIUNEA */
         .pensiune-section { padding: 160px 80px 100px; max-width: 1500px; margin: 0 auto; display: flex; gap: 100px; align-items: center; flex-wrap: wrap; }
         .pensiune-img { flex: 1; min-width: 400px; height: 650px; border: 1px solid rgba(197, 160, 89, 0.1); padding: 15px; background: var(--gri-card); transition: var(--tranzitie); position: relative; display: block; }
         .pensiune-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: var(--tranzitie); }
-        .pensiune-img:hover img { opacity: 1; transform: scale(1.02); }
-
         .pensiune-text { flex: 1; min-width: 350px; }
         .pensiune-text h2 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-style: italic; color: var(--auriu); margin-bottom: 35px; }
-        /* MĂRIT: pensiune p de la 1.1rem la 1.15rem */
-        .pensiune-text p { color: #8a8a8a; line-height: 2; font-weight: 300; margin-bottom: 35px; font-size: 1.15rem; }
+        .pensiune-text p { color: #8a8a8a; line-height: 2; font-weight: 300; margin-bottom: 35px; font-size: 1.2rem; }
 
         /* PACHETE SIGNATURE */
         .packages-section { padding: 100px 60px; max-width: 1500px; margin: 0 auto; }
         .section-title { text-align: center; margin-bottom: 80px; }
-        /* MĂRIT: section title span de la 0.8rem la 0.85rem */
-        .section-title span { color: var(--auriu); font-size: 0.85rem; letter-spacing: 8px; text-transform: uppercase; font-weight: 800; display: block; margin-bottom: 20px; }
+        .section-title span { color: var(--auriu); font-size: 0.9rem; letter-spacing: 8px; text-transform: uppercase; font-weight: 800; display: block; margin-bottom: 20px; }
         .section-title h2 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-style: italic; }
 
         .package-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
@@ -79,47 +71,41 @@
         .p-card:hover { transform: translateY(-15px); border-color: var(--auriu); box-shadow: 0 30px 60px rgba(0,0,0,0.5); }
         .p-card .p-img { height: 300px; overflow: hidden; }
         .p-card .p-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: var(--tranzitie); }
-        .p-card:hover .p-img img { opacity: 1; transform: scale(1.1); }
         
         .p-content { padding: 45px; text-align: center; flex-grow: 1; display: flex; flex-direction: column; }
-        /* MĂRIT: p-tag size de la 0.65rem la 0.7rem */
-        .p-tag { color: var(--auriu); font-size: 0.7rem; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; display: block; }
+        .p-tag { color: var(--auriu); font-size: 0.8rem; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 20px; display: block; }
         .p-content h3 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 2.2rem; margin-bottom: 25px; color: #fff; }
+        
         .p-features { list-style: none; margin-bottom: 40px; text-align: center; flex-grow: 1; }
-        /* MĂRIT: list items de la 0.95rem la 1rem */
-        .p-features li { color: #888; font-size: 1rem; font-weight: 300; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .p-features li:last-child { border-bottom: none; }
+        .p-features li { color: #888; font-size: 1.1rem; font-weight: 300; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
         
         .price-box { margin-bottom: 30px; }
-        .price-tag { display: block; font-family: 'Playfair Display', serif; font-size: 1.6rem; color: #fff; margin-bottom: 5px; }
-        /* MĂRIT: price details de la 0.7rem la 0.75rem */
-        .price-details { font-size: 0.75rem; color: var(--auriu); text-transform: uppercase; letter-spacing: 2px; }
+        .price-tag { display: block; font-family: 'Playfair Display', serif; font-size: 1.7rem; color: #fff; margin-bottom: 5px; }
+        .price-details { font-size: 0.85rem; color: var(--auriu); text-transform: uppercase; letter-spacing: 2px; }
 
-        .btn-gold { background: transparent; color: var(--auriu); border: 1px solid var(--auriu); padding: 18px 40px; text-decoration: none; font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.1rem; transition: var(--tranzitie); }
+        .btn-gold { background: transparent; color: var(--auriu); border: 1px solid var(--auriu); padding: 18px 40px; text-decoration: none; font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem; transition: var(--tranzitie); }
         .btn-gold:hover { background: var(--auriu); color: #000; }
 
-        /* GRID OBJECTIVE */
+        /* GRID OBIECTIVE */
         .section-grid { padding: 80px 60px 180px; max-width: 1500px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 60px; }
         .obj-card { background: var(--gri-card); transition: var(--tranzitie); text-decoration: none; color: inherit; display: block; overflow: hidden; border: 1px solid rgba(255,255,255,0.03); }
         .obj-card:hover { transform: translateY(-20px); border-color: rgba(197, 160, 89, 0.4); }
         .obj-img { height: 450px; overflow: hidden; position: relative; }
         .obj-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: transform 1.5s ease; }
-        .obj-card:hover .obj-img img { transform: scale(1.1); opacity: 0.9; }
+        
         .obj-info { padding: 45px; }
         .obj-info h3 { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-style: italic; margin-bottom: 20px; }
-        .obj-info p { font-size: 1rem; color: #888; font-weight: 300; } /* Asigurăm 1rem pentru descrieri */
-        /* MĂRIT: dist size de la 0.75rem la 0.8rem */
-        .dist { display: inline-block; font-size: 0.8rem; font-weight: 800; color: var(--auriu); letter-spacing: 4px; text-transform: uppercase; position: relative; padding-bottom: 8px; text-decoration: none; }
+        .obj-info p { color: #aaa; font-size: 1.1rem; font-weight: 300; margin-bottom: 25px; }
+        .dist { display: inline-block; font-size: 0.9rem; font-weight: 800; color: var(--auriu); letter-spacing: 4px; text-transform: uppercase; position: relative; padding-bottom: 8px; text-decoration: none; }
         .dist::after { content: ''; position: absolute; bottom: 0; left: 0; width: 40px; height: 1px; background: var(--auriu); transition: var(--tranzitie); }
 
         /* ANIMATII */
         @keyframes slide-anim { 0%, 22% { transform: translateX(0); } 25%, 47% { transform: translateX(-25%); } 50%, 72% { transform: translateX(-50%); } 75%, 97% { transform: translateX(-75%); } 100% { transform: translateX(0); } }
         @keyframes kenburns { 0% { transform: scale(1); } 100% { transform: scale(1.18); } }
 
-        .wa-float { position: fixed; bottom: 45px; right: 45px; background: #075E54; color: white; width: 68px; height: 68px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 3000; text-decoration: none; box-shadow: 0 20px 40px rgba(0,0,0,0.5); transition: var(--tranzitie); }
-        .wa-float:hover { transform: scale(1.1) rotate(12deg); background: #25D366; }
+        .wa-float { position: fixed; bottom: 45px; right: 45px; background: #075E54; color: white; width: 68px; height: 68px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 3000; text-decoration: none; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
 
-        @media (max-width: 1024px) { .site-header { padding: 25px 30px; } .pensiune-section, .packages-section, .section-grid { padding: 60px 30px; } .pensiune-img { min-width: 100%; height: 450px; } .hero-content h1 { font-size: 4rem; } }
+        @media (max-width: 1024px) { .site-header { padding: 25px 30px; } .pensiune-img { min-width: 100%; height: 450px; } }
     </style>
 </head>
 <body>
@@ -131,113 +117,58 @@
             <a href="gastronomie.html">Gastronomie</a>
             <a href="experiente.html">Ateliere</a>
             <a href="obiective.html">Obiective</a>
-            <a href="buliga.html" class="btn-res">Reservations</a>
+            <a href="https://wa.me/40749229686?text=Bună! Vreau să fac o rezervare." class="btn-res">Reservations</a>
         </nav>
     </header>
 
     <section class="hero-slider">
         <div class="slider-track">
-            <div class="slide">
-                <div class="slide-bg" style="background-image: url('images/hero-premium.jpg');"></div>
-                <div class="hero-content">
-                    <span>DOMENIILE LA BULIGĂ</span>
-                    <h1>Simte.<br>Explorează.<br>Trăiește.</h1>
-                </div>
-            </div>
-            <div class="slide">
-                <div class="slide-bg" style="background-image: url('images/hero-camp-munti.jpg');"></div>
-                <div class="hero-content">
-                    <span>RETEZAT</span>
-                    <h1>Terapia<br>Isihiei.</h1>
-                </div>
-            </div>
-            <div class="slide">
-                <div class="slide-bg" style="background-image: url('images/hero-lac.jpg');"></div>
-                <div class="hero-content">
-                    <span>MANIFEST</span>
-                    <h1>Moștenirea<br>De Aur.</h1>
-                </div>
-            </div>
-            <div class="slide">
-                <div class="slide-bg" style="background-image: url('images/hero-sat.jpg');"></div>
-                <div class="hero-content">
-                    <span>RÂNDUIALĂ</span>
-                    <h1>Pelerinaj<br>Spre Sine.</h1>
-                </div>
-            </div>
+            <div class="slide"><div class="slide-bg" style="background-image: url('images/hero-premium.jpg');"></div></div>
+            <div class="slide"><div class="slide-bg" style="background-image: url('images/hero-camp-munti.jpg');"></div></div>
+            <div class="slide"><div class="slide-bg" style="background-image: url('images/hero-lac.jpg');"></div></div>
+            <div class="slide"><div class="slide-bg" style="background-image: url('images/hero-sat.jpg');"></div></div>
         </div>
     </section>
 
     <section class="pensiune-section">
-        <a href="buliga.html" class="pensiune-img">
+        <a href="https://wa.me/40749229686?text=Bună! Sunt interesat de Pensiunea La Buligă." class="pensiune-img">
             <img src="images/la-buliga-pensiune.jpg" alt="La Buliga Pensiune">
         </a>
         <div class="pensiune-text">
             <h2>Pensiunea la Buligă</h2>
-            <p>Un sanctuar al rânduielii, unde arhitectura tradițională întâlnește liniștea profundă a munților Retezat. Oferim o experiență de cazare Signature, gândită pentru grupuri care caută reconectarea cu sinele.</p>
-            <p>Locația se închiriază integral, asigurând o izolare voită de zgomotul lumii și o imersiune totală în isihie.</p>
-            <a href="buliga.html" class="dist">VEZI DETALII ȘI TARIFE →</a>
+            <p>Un sanctuar al rânduielii, unde arhitectura tradițională întâlnește liniștea profundă a munților Retezat. Oferim o experiență de cazare Signature.</p>
+            <a href="https://wa.me/40749229686?text=Bună! Vreau să rezerv Pensiunea La Buligă." class="dist">REZERVĂ PE WHATSAPP →</a>
         </div>
     </section>
 
-    <section class="packages-section" id="pachete">
-        <div class="section-title">
-            <span>CURATED EXPERIENCES</span>
-            <h2>Pachete Signature</h2>
-        </div>
+    <section class="packages-section">
+        <div class="section-title"><span>CURATED EXPERIENCES</span><h2>Pachete Signature</h2></div>
         <div class="package-grid">
             <article class="p-card">
-                <div class="p-img"><img src="images/hero-premium.jpg" alt="Metanoia Retreat"></div>
+                <div class="p-img"><img src="images/hero-premium.jpg" alt="Metanoia"></div>
                 <div class="p-content">
-                    <span class="p-tag">4 Camere • 3 Zile</span>
-                    <h3>Metanoia: Tăcere</h3>
-                    <ul class="p-features">
-                        <li>2 Nopți Cazare Premium</li>
-                        <li>Mese Bio (Farm to Table)</li>
-                        <li>Sesiune Meditație la Răsărit</li>
-                        <li>Digital Detox (Smartphone Safe)</li>
-                    </ul>
-                    <div class="price-box">
-                        <span class="price-tag">4.500 RON</span>
-                        <span class="price-details">Preț total grup</span>
-                    </div>
-                    <a href="https://wa.me/40749229686?text=Bună! Sunt interesat de pachetul Metanoia: Tăcere." class="btn-gold">Rezervă Experiența</a>
+                    <span class="p-tag">4 Camere • 3 Zile</span><h3>Metanoia: Tăcere</h3>
+                    <ul class="p-features"><li>2 Nopți Cazare</li><li>Mese Bio</li><li>Digital Detox</li></ul>
+                    <div class="price-box"><span class="price-tag">4.500 RON</span><span class="price-details">Total Grup</span></div>
+                    <a href="https://wa.me/40749229686?text=Metanoia Tacere" class="btn-gold">Rezervă</a>
                 </div>
             </article>
             <article class="p-card">
-                <div class="p-img"><img src="images/la-buliga-pensiune.jpg" alt="Buliga Experience"></div>
+                <div class="p-img"><img src="images/la-buliga-pensiune.jpg" alt="Buliga"></div>
                 <div class="p-content">
-                    <span class="p-tag">10 Locuri • Weekend</span>
-                    <h3>Buliga: Izolare</h3>
-                    <ul class="p-features">
-                        <li>Închiriere Integrală Buliga</li>
-                        <li>Cioban pentru o zi la Stână</li>
-                        <li>Cină tradițională cu degustare</li>
-                        <li>Ghid privat Munții Retezat</li>
-                    </ul>
-                    <div class="price-box">
-                        <span class="price-tag">8.500 RON</span>
-                        <span class="price-details">Pachet all-inclusive</span>
-                    </div>
-                    <a href="https://wa.me/40749229686?text=Bună! Sunt interesat de pachetul Buliga: Izolare." class="btn-gold">Rezervă Experiența</a>
+                    <span class="p-tag">10 Locuri</span><h3>Buliga: Izolare</h3>
+                    <ul class="p-features"><li>Închiriere Integrală</li><li>Cină Tradițională</li><li>Ghid Privat</li></ul>
+                    <div class="price-box"><span class="price-tag">8.500 RON</span><span class="price-details">Weekend</span></div>
+                    <a href="https://wa.me/40749229686?text=Buliga Izolare" class="btn-gold">Rezervă</a>
                 </div>
             </article>
             <article class="p-card">
-                <div class="p-img"><img src="images/hero-lac.jpg" alt="Hateg Explorer"></div>
+                <div class="p-img"><img src="images/hero-lac.jpg" alt="Explorer"></div>
                 <div class="p-content">
-                    <span class="p-tag">Explorer • 2 Persoane</span>
-                    <h3>Hațeg: Pe Roți</h3>
-                    <ul class="p-features">
-                        <li>Cazare Pensiunea Natalia</li>
-                        <li>2 E-Bikes incluse 48h</li>
-                        <li>Pachet Picnic Gourmet</li>
-                        <li>Hărți trasee personalizate</li>
-                    </ul>
-                    <div class="price-box">
-                        <span class="price-tag">1.800 RON</span>
-                        <span class="price-details">Preț per cuplu</span>
-                    </div>
-                    <a href="https://wa.me/40749229686?text=Bună! Sunt interesat de pachetul Hațeg: Pe Roți." class="btn-gold">Rezervă Experiența</a>
+                    <span class="p-tag">2 Persoane</span><h3>Hațeg: Pe Roți</h3>
+                    <ul class="p-features"><li>Cazare Natalia</li><li>2 E-Bikes</li><li>Picnic Gourmet</li></ul>
+                    <div class="price-box"><span class="price-tag">1.800 RON</span><span class="price-details">Per Cuplu</span></div>
+                    <a href="https://wa.me/40749229686?text=Hateg Pe Roti" class="btn-gold">Rezervă</a>
                 </div>
             </article>
         </div>
@@ -245,37 +176,29 @@
 
     <section class="section-grid">
         <a href="gastronomie.html" class="obj-card">
-            <div class="obj-img"><img src="images/index-mancare.jpg" alt="Gastronomie"></div>
-            <div class="obj-info">
-                <h3>Punct Gastronomic Local</h3>
-                <p>Descoperă gustul autentic al Hațegului, preparat cu dragoste și ingrediente curate din grădina noastră.</p>
-                <span class="dist">DESCOPERĂ MENIUL</span>
-            </div>
+            <div class="obj-img"><img src="images/index-mancare.jpg" alt="Gastro"></div>
+            <div class="obj-info"><h3>Punct Gastronomic Local</h3><p>Descoperă gustul autentic al Hațegului.</p><span class="dist">MENIUL ZILEI</span></div>
         </a>
         <a href="experiente.html" class="obj-card">
             <div class="obj-img"><img src="images/exp-fluturi.jpg" alt="Ateliere"></div>
-            <div class="obj-info">
-                <h3>Ateliere Signature</h3>
-                <p>Terapie prin creație și artă, într-un cadru care inspiră diamantele minții și liniștea sufletului.</p>
-                <span class="dist">VEZI EXPERIENȚELE</span>
-            </div>
+            <div class="obj-info"><h3>Ateliere Signature</h3><p>Terapie prin creație și artă.</p><span class="dist">VEZI EXPERIENȚELE</span></div>
         </a>
     </section>
 
     <footer style="padding: 100px 60px; text-align: center; border-top: 1px solid rgba(197, 160, 89, 0.1);">
-        <div style="opacity: 0.3; font-size: 0.75rem; letter-spacing: 4px; text-transform: uppercase;">
-            HAȚEG ALTERNATIV &copy; 2026 | TRIBUT PATRICIA | MANIFEST METANOIA
-        </div>
+        <div style="opacity: 0.3; font-size: 0.9rem; letter-spacing: 4px; text-transform: uppercase;">HAȚEG ALTERNATIV &copy; 2026</div>
     </footer>
 
     <a href="https://wa.me/40749229686" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
-    <script>
-        window.onscroll = function() {
-            var navbar = document.getElementById("navbar");
-            if (window.pageYOffset > 50) { navbar.classList.add("scrolled"); } 
-            else { navbar.classList.remove("scrolled"); }
-        };
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true; s1.src='https://embed.tawk.to/642944b54247f20fefea97df/1gsvek60a';
+            s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+        })();
     </script>
 </body>
 </html>
