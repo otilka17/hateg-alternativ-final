@@ -18,25 +18,23 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         html { scroll-behavior: smooth; }
-        body { background: var(--negru); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        body { background: var(--negru); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; line-height: 1.6; }
 
-        /* HEADER & NAV */
+        /* HEADER & BURGER */
         .site-header { 
             position: fixed; top: 0; width: 100%; z-index: 3000; 
             padding: 25px 40px;
             display: flex; justify-content: space-between; align-items: center;
             transition: var(--tranzitie);
         }
-        
         .site-header.scrolled {
             padding: 15px 30px;
             background: rgba(5, 5, 5, 0.98);
             border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+            backdrop-filter: blur(10px);
         }
-        
         .brand { font-weight: 900; letter-spacing: 4px; text-transform: uppercase; font-size: 0.9rem; color: #fff; text-decoration: none; z-index: 4000; }
         
-        /* Meniu Desktop */
         .main-nav { display: flex; align-items: center; }
         .main-nav a { 
             text-decoration: none; color: #fff; font-size: 0.7rem; font-weight: 700; 
@@ -44,9 +42,8 @@
             opacity: 0.7; transition: 0.3s;
         }
         .main-nav a:hover { opacity: 1; color: var(--auriu); }
-        .btn-res { border: 1px solid var(--auriu); padding: 10px 20px; opacity: 1 !important; color: var(--auriu) !important; }
+        .btn-res { border: 1px solid var(--auriu); padding: 10px 20px; color: var(--auriu) !important; opacity: 1 !important; }
 
-        /* Meniu Burger (Mobil) */
         .burger { display: none; cursor: pointer; z-index: 4000; }
         .burger div { width: 25px; height: 2px; background: #fff; margin: 5px; transition: 0.3s; }
 
@@ -60,7 +57,6 @@
             }
             .main-nav.active { right: 0; }
             .main-nav a { margin: 20px 0; font-size: 1.2rem; }
-            .btn-res { border: none; font-size: 1.5rem !important; color: var(--auriu) !important; }
         }
 
         /* HERO SLIDER */
@@ -68,39 +64,62 @@
         .slider-track { display: flex; width: 400%; height: 100%; animation: slide-anim 28s infinite ease-in-out; }
         .slide { width: 25%; height: 100%; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
         .slide-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; animation: kenburns 14s infinite alternate; }
-        .slide::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); }
-
+        .slide::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8)); }
         .hero-content { position: relative; z-index: 10; text-align: center; }
         .hero-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 10vw, 7rem); font-style: italic; line-height: 1; }
 
-        /* SECTIUNI */
+        /* CONTENT SECTIONS */
         .container { padding: 100px 40px; max-width: 1400px; margin: 0 auto; }
-        .pensiune-section { display: flex; gap: 60px; align-items: center; flex-wrap: wrap; }
-        .pensiune-img { flex: 1; min-width: 300px; height: 500px; background: var(--gri-card); padding: 10px; border: 1px solid #1a1a1a; }
-        .pensiune-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
-        .pensiune-text { flex: 1; min-width: 300px; }
-        .pensiune-text h2 { font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--auriu); margin-bottom: 20px; font-style: italic; }
+        
+        .pensiune-section { display: flex; gap: 80px; align-items: center; flex-wrap: wrap; margin-bottom: 120px; }
+        .pensiune-img { flex: 1; min-width: 320px; height: 600px; background: var(--gri-card); padding: 12px; border: 1px solid #1a1a1a; }
+        .pensiune-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: 0.5s; }
+        .pensiune-img:hover img { opacity: 1; }
+        .pensiune-text { flex: 1; min-width: 320px; }
+        .pensiune-text h2 { font-family: 'Playfair Display', serif; font-size: 3.5rem; color: var(--auriu); margin-bottom: 25px; font-style: italic; }
 
         /* PACHETE */
-        .package-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 50px; }
-        .p-card { background: var(--gri-card); border: 1px solid #1a1a1a; padding: 40px; text-align: center; transition: 0.3s; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-header span { color: var(--auriu); letter-spacing: 6px; text-transform: uppercase; font-size: 0.75rem; font-weight: 800; display: block; margin-bottom: 15px; }
+        .section-header h2 { font-family: 'Playfair Display', serif; font-size: 3.2rem; font-style: italic; }
+
+        .package-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; margin-bottom: 120px; }
+        .p-card { background: var(--gri-card); border: 1px solid #1a1a1a; transition: 0.4s; display: flex; flex-direction: column; overflow: hidden; }
         .p-card:hover { border-color: var(--auriu); transform: translateY(-10px); }
-        .p-card h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 20px; font-style: italic; }
-        .p-features { list-style: none; margin-bottom: 30px; color: #888; font-size: 0.9rem; }
-        .p-features li { padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .btn-gold { border: 1px solid var(--auriu); color: var(--auriu); padding: 12px 30px; text-decoration: none; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; }
+        .p-card-img { height: 250px; overflow: hidden; }
+        .p-card-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: 0.5s; }
+        .p-card:hover .p-card-img img { opacity: 1; transform: scale(1.05); }
+        .p-content { padding: 40px; text-align: center; }
+        .p-content h3 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 20px; font-style: italic; }
+        .p-features { list-style: none; margin-bottom: 30px; color: #888; font-size: 0.95rem; }
+        .p-features li { padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .price { display: block; font-family: 'Playfair Display', serif; font-size: 1.6rem; color: #fff; margin-bottom: 25px; }
+        .btn-gold { border: 1px solid var(--auriu); color: var(--auriu); padding: 15px 35px; text-decoration: none; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px; transition: 0.3s; }
+        .btn-gold:hover { background: var(--auriu); color: #000; }
 
-        /* FOOTER */
-        footer { padding: 60px; text-align: center; border-top: 1px solid #1a1a1a; font-size: 0.7rem; letter-spacing: 3px; opacity: 0.4; }
+        /* ACTIVITATI (GASTRO & ARTA) */
+        .activities-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 50px; }
+        .act-card { text-decoration: none; color: inherit; background: var(--gri-card); overflow: hidden; border: 1px solid #1a1a1a; transition: 0.4s; }
+        .act-card:hover { transform: translateY(-10px); border-color: var(--auriu); }
+        .act-img { height: 400px; overflow: hidden; }
+        .act-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: 0.6s; }
+        .act-card:hover .act-img img { opacity: 0.9; transform: scale(1.05); }
+        .act-info { padding: 40px; }
+        .act-info h3 { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-style: italic; margin-bottom: 15px; }
+        .act-info p { color: #888; margin-bottom: 25px; }
+        .dist { color: var(--auriu); font-size: 0.8rem; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; border-bottom: 1px solid var(--auriu); padding-bottom: 5px; }
 
-        /* ANIMATII */
+        footer { padding: 100px 40px; text-align: center; border-top: 1px solid #1a1a1a; font-size: 0.7rem; letter-spacing: 4px; opacity: 0.3; text-transform: uppercase; }
+
         @keyframes slide-anim { 0%, 22% { transform: translateX(0); } 25%, 47% { transform: translateX(-25%); } 50%, 72% { transform: translateX(-50%); } 75%, 97% { transform: translateX(-75%); } 100% { transform: translateX(0); } }
         @keyframes kenburns { 0% { transform: scale(1); } 100% { transform: scale(1.15); } }
 
         @media (max-width: 768px) {
             .container { padding: 60px 20px; }
-            .pensiune-img { height: 350px; }
-            .pensiune-text h2 { font-size: 2.2rem; }
+            .pensiune-img { height: 400px; }
+            .pensiune-text h2, .section-header h2 { font-size: 2.5rem; }
+            .activities-grid { grid-template-columns: 1fr; }
+            .act-img { height: 300px; }
         }
     </style>
 </head>
@@ -133,54 +152,88 @@
 
     <div class="container">
         <section class="pensiune-section">
-            <div class="pensiune-img"><img src="images/la-buliga-pensiune.jpg" alt="Buliga"></div>
+            <a href="buliga.html" class="pensiune-img">
+                <img src="images/la-buliga-pensiune.jpg" alt="Pensiunea La Buligă">
+            </a>
             <div class="pensiune-text">
                 <h2>Pensiunea La Buligă</h2>
-                <p>Un sanctuar al rânduielii și al tăcerii profunde în inima munților Retezat. Locația se închiriază integral pentru experiențe de grup unice.</p>
-                <a href="buliga.html" style="color: var(--auriu); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px;">Detalii Pensiune →</a>
+                <p>Un sanctuar al rânduielii și al tăcerii profunde în inima munților Retezat. Oferim o experiență de cazare Signature, gândită pentru reconectarea cu sinele.</p>
+                <a href="buliga.html" class="dist">Detalii Pensiune →</a>
             </div>
         </section>
 
-        <div style="text-align: center; margin-top: 100px;">
-            <span style="color: var(--auriu); letter-spacing: 5px; text-transform: uppercase; font-size: 0.7rem;">Curated Experiences</span>
-            <h2 style="font-family: 'Playfair Display', serif; font-size: 3rem; font-style: italic;">Pachete Signature</h2>
+        <div class="section-header">
+            <span>Curated Experiences</span>
+            <h2>Pachete Signature</h2>
         </div>
 
         <div class="package-grid">
-            <div class="p-card">
-                <h3>Metanoia: Tăcere</h3>
-                <ul class="p-features">
-                    <li>2 Nopți Cazare Premium</li>
-                    <li>Mese Bio Farm-to-Table</li>
-                    <li>Digital Detox</li>
-                </ul>
-                <a href="https://wa.me/40749229686" class="btn-gold">Rezervă</a>
-            </div>
-            <div class="p-card">
-                <h3>Buliga: Izolare</h3>
-                <ul class="p-features">
-                    <li>Închiriere Integrală</li>
-                    <li>Cină Tradițională</li>
-                    <li>Ghid Privat Retezat</li>
-                </ul>
-                <a href="https://wa.me/40749229686" class="btn-gold">Rezervă</a>
-            </div>
-            <div class="p-card">
-                <h3>Hațeg: Pe Roți</h3>
-                <ul class="p-features">
-                    <li>Cazare Pensiunea Natalia</li>
-                    <li>2 E-Bikes incluse</li>
-                    <li>Picnic Gourmet</li>
-                </ul>
-                <a href="https://wa.me/40749229686" class="btn-gold">Rezervă</a>
-            </div>
+            <article class="p-card">
+                <div class="p-card-img"><img src="images/hero-premium.jpg" alt="Metanoia"></div>
+                <div class="p-content">
+                    <h3>Metanoia: Tăcere</h3>
+                    <ul class="p-features">
+                        <li>2 Nopți Cazare Premium</li>
+                        <li>Mese Bio Farm-to-Table</li>
+                        <li>Digital Detox</li>
+                    </ul>
+                    <span class="price">4.500 RON</span>
+                    <a href="https://wa.me/40749229686?text=Vreau pachetul Metanoia" class="btn-gold">Rezervă Experiența</a>
+                </div>
+            </article>
+
+            <article class="p-card">
+                <div class="p-card-img"><img src="images/la-buliga-pensiune.jpg" alt="Buliga"></div>
+                <div class="p-content">
+                    <h3>Buliga: Izolare</h3>
+                    <ul class="p-features">
+                        <li>Închiriere Integrală Buliga</li>
+                        <li>Cină Tradițională</li>
+                        <li>Ghid Privat Retezat</li>
+                    </ul>
+                    <span class="price">8.500 RON</span>
+                    <a href="https://wa.me/40749229686?text=Vreau pachetul Buliga" class="btn-gold">Rezervă Experiența</a>
+                </div>
+            </article>
+
+            <article class="p-card">
+                <div class="p-card-img"><img src="images/hero-lac.jpg" alt="Hateg"></div>
+                <div class="p-content">
+                    <h3>Hațeg: Pe Roți</h3>
+                    <ul class="p-features">
+                        <li>Cazare Pensiunea Natalia</li>
+                        <li>2 E-Bikes incluse 48h</li>
+                        <li>Picnic Gourmet</li>
+                    </ul>
+                    <span class="price">1.800 RON</span>
+                    <a href="https://wa.me/40749229686?text=Vreau pachetul Hateg" class="btn-gold">Rezervă Experiența</a>
+                </div>
+            </article>
+        </div>
+
+        <div class="activities-grid">
+            <a href="gastronomie.html" class="act-card">
+                <div class="act-img"><img src="images/index-mancare.jpg" alt="Gastronomie"></div>
+                <div class="act-info">
+                    <h3>Punct Gastronomic Local</h3>
+                    <p>Descoperă gustul autentic al Hațegului, preparat cu dragoste și ingrediente curate din grădina noastră.</p>
+                    <span class="dist">Descoperă Meniul</span>
+                </div>
+            </a>
+            <a href="experiente.html" class="act-card">
+                <div class="act-img"><img src="images/exp-fluturi.jpg" alt="Ateliere"></div>
+                <div class="act-info">
+                    <h3>Ateliere Signature</h3>
+                    <p>Terapie prin creație și artă, într-un cadru care inspiră diamantele minții și liniștea sufletului.</p>
+                    <span class="dist">Vezi Experiențele</span>
+                </div>
+            </a>
         </div>
     </div>
 
-    <footer>HAȚEG ALTERNATIV &copy; 2026 | TRIBUT PATRICIA</footer>
+    <footer>HAȚEG ALTERNATIV &copy; 2026 | TRIBUT PATRICIA | MANIFEST METANOIA</footer>
 
     <script>
-        // Meniu Burger Logic
         const burger = document.getElementById('burger');
         const nav = document.getElementById('nav-links');
 
@@ -189,7 +242,6 @@
             burger.classList.toggle('toggle');
         });
 
-        // Scroll Effect
         window.onscroll = function() {
             const navbar = document.getElementById("navbar");
             if (window.pageYOffset > 50) {
