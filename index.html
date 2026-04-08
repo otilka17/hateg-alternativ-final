@@ -13,24 +13,23 @@
             --auriu: #c5a059; 
             --negru: #050505; 
             --alb: #ffffff;
-            /* Umbra densă de calitate pentru contrast brutal */
             --shadow-metanoia: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.9) 100%);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; line-height: 1.4; }
 
-        /* HEADER ERMES - LOGO URIAS */
+        /* HEADER - LOGO MASIV */
         .site-header { 
             position: fixed; top: 0; width: 100%; z-index: 5000; 
-            padding: 50px 60px;
+            padding: 40px 60px;
             display: flex; justify-content: space-between; align-items: center;
             background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, transparent 100%);
             transition: 0.5s ease;
         }
         
         .brand img { 
-            height: 140px; /* Logo impunător desktop */
+            height: 130px; /* Logo mare */
             width: auto; 
             display: block;
             filter: drop-shadow(0 0 30px rgba(0,0,0,0.8));
@@ -39,7 +38,7 @@
         .burger { cursor: pointer; z-index: 6000; padding: 15px; }
         .burger div { width: 60px; height: 5px; background: var(--alb); margin: 12px; transition: 0.3s; }
 
-        /* NAV OVERLAY FULLSCREEN */
+        /* NAV OVERLAY */
         .main-nav { 
             position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; 
             background: var(--negru); display: flex; flex-direction: column; 
@@ -52,7 +51,7 @@
         }
         .main-nav a:hover { opacity: 1; color: var(--auriu); }
 
-        /* SLIDER ERMES (CROSS-FADE + ZOOM 20s) */
+        /* ERMES SLIDER (CROSS-FADE + ZOOM 20s) */
         .hermes-viewport {
             position: relative; width: 100%; height: 100vh; overflow: hidden; background: #000;
         }
@@ -68,11 +67,10 @@
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background-size: cover; background-position: center;
             transform: scale(1.1);
-            transition: transform 20s linear; /* Zoom-ul hipnotic Ermes */
+            transition: transform 20s linear;
         }
         .slide.active .slide-bg { transform: scale(1.45); }
 
-        /* Umbra densă Metanoia */
         .slide-overlay {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: var(--shadow-metanoia);
@@ -86,10 +84,19 @@
         }
         .slide-content h1 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(5rem, 20vw, 16rem); /* SCRIS URIAS CA LA ERMES */
+            font-size: clamp(5rem, 20vw, 15rem);
             font-weight: 900; font-style: italic; line-height: 0.8;
             text-shadow: 0 20px 100px rgba(0,0,0,1);
+            margin-bottom: 40px;
         }
+
+        /* BUTON SUB IMAGINE HERO */
+        .hero-btn {
+            display: inline-block; padding: 25px 60px; border: 3px solid var(--auriu);
+            color: var(--auriu); text-decoration: none; text-transform: uppercase;
+            font-weight: 900; letter-spacing: 8px; font-size: 1.5rem; transition: 0.4s;
+        }
+        .hero-btn:hover { background: var(--auriu); color: #000; }
 
         /* CONTAINER CONTENT */
         .container { padding: 200px 50px; max-width: 1600px; margin: 0 auto; }
@@ -98,12 +105,12 @@
         .intro-img { flex: 1; min-width: 450px; height: 850px; border: 1px solid #1a1a1a; overflow: hidden; }
         .intro-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
         
-        .intro-text h2 { font-family: 'Playfair Display', serif; font-size: 6.5rem; font-style: italic; color: var(--auriu); margin-bottom: 40px; line-height: 1; }
+        .intro-text h2 { font-family: 'Playfair Display', serif; font-size: 6rem; font-style: italic; color: var(--auriu); margin-bottom: 40px; line-height: 1; }
         .intro-text p { font-size: 2.5rem; color: #888; font-weight: 300; line-height: 1.6; }
 
         /* GRID LUXURY - CARDS URIEȘI */
         .grid-lux { display: grid; grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); gap: 100px; margin-bottom: 200px; }
-        .card-lux { background: #0a0a0a; border: 1px solid #1a1a1a; transition: 0.6s; display: flex; flex-direction: column; text-decoration: none; color: inherit; }
+        .card-lux { background: #0a0a0a; border: 1px solid #1a1a1a; transition: 0.6s; display: flex; flex-direction: column; text-decoration: none; color: inherit; position: relative; }
         .card-lux:hover { border-color: var(--auriu); transform: translateY(-30px); }
         .img-lux { height: 650px; overflow: hidden; }
         .img-lux img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: 2s; }
@@ -112,24 +119,19 @@
         .info-lux { padding: 80px 60px; text-align: center; }
         .info-lux h3 { font-family: 'Playfair Display', serif; font-size: 4.5rem; font-style: italic; margin-bottom: 30px; }
         .price { display: block; font-family: 'Playfair Display', serif; font-size: 4.5rem; margin-bottom: 50px; font-weight: 900; }
-        .btn-reserve { display: block; padding: 35px; border: 4px solid var(--auriu); color: var(--auriu); text-transform: uppercase; font-weight: 900; letter-spacing: 8px; font-size: 1.8rem; transition: 0.4s; }
+        .btn-reserve { display: block; padding: 35px; border: 4px solid var(--auriu); color: var(--auriu); text-transform: uppercase; font-weight: 900; letter-spacing: 8px; font-size: 1.8rem; transition: 0.4s; text-align: center; }
         .btn-reserve:hover { background: var(--auriu); color: #000; }
 
         footer { padding: 150px 60px; text-align: center; border-top: 1px solid #111; font-size: 1.5rem; letter-spacing: 12px; opacity: 0.3; text-transform: uppercase; }
 
-        /* MOBIL - RECALIBRARE URIASA */
+        /* MOBIL */
         @media (max-width: 1024px) {
-            .site-header { padding: 40px 30px; background: rgba(0,0,0,1); border-bottom: 4px solid var(--auriu); }
-            .brand img { height: 160px !important; } /* LOGO MASIV PE MOBIL */
+            .site-header { padding: 40px 30px; background: rgba(0,0,0,1); }
+            .brand img { height: 160px !important; }
             .burger div { width: 80px; height: 8px; margin: 15px; }
-            .intro-img { height: 600px; min-width: 100%; }
             .grid-lux { grid-template-columns: 1fr; }
-            .slide-content h1 { font-size: 9.5rem; }
-            .intro-text h2 { font-size: 5.5rem; }
-            .intro-text p { font-size: 2.2rem; }
-            .info-lux h3 { font-size: 4rem; }
-            .price { font-size: 4.5rem; }
-            .btn-reserve { font-size: 2.2rem; padding: 40px; }
+            .slide-content h1 { font-size: 9rem; }
+            .hero-btn { font-size: 1.2rem; padding: 20px 40px; letter-spacing: 4px; }
         }
     </style>
 </head>
@@ -146,7 +148,7 @@
             <a href="retreat.html">Metanoia</a>
             <a href="gastronomie.html">Gastronomie</a>
             <a href="experiente.html">Ateliere</a>
-            <a href="buliga.html">Reservations</a>
+            <a href="buliga.html">Rezervări</a>
         </nav>
     </header>
 
@@ -155,8 +157,9 @@
             <div class="slide-bg" style="background-image: url('images/rasarit.jpg');"></div>
             <div class="slide-overlay"></div>
             <div class="slide-content">
-                <span>Orizonturi Noi</span>
+                <span>Rănduiala Locului</span>
                 <h1>Simte.</h1>
+                <a href="buliga.html" class="hero-btn">Descoperă Pensiunea</a>
             </div>
         </div>
         <div class="slide">
@@ -165,22 +168,16 @@
             <div class="slide-content">
                 <span>Tăcerea Munților</span>
                 <h1>Explorează.</h1>
-            </div>
-        </div>
-        <div class="slide">
-            <div class="slide-bg" style="background-image: url('images/nori.jpg');"></div>
-            <div class="slide-overlay"></div>
-            <div class="slide-content">
-                <span>Deasupra Lumii</span>
-                <h1>Trăiește.</h1>
+                <a href="obiective.html" class="hero-btn">Vezi Obiective</a>
             </div>
         </div>
         <div class="slide">
             <div class="slide-bg" style="background-image: url('images/jeep.jpg');"></div>
             <div class="slide-overlay"></div>
             <div class="slide-content">
-                <span>Reset Total</span>
+                <span>Aventură Signature</span>
                 <h1>Metanoia.</h1>
+                <a href="retreat.html" class="hero-btn">Rezervă Resetarea</a>
             </div>
         </div>
     </section>
@@ -201,7 +198,7 @@
                 <div class="info-lux">
                     <h3>Buliga: Izolare</h3>
                     <span class="price">8.500 RON</span>
-                    <a href="https://wa.me/40749229686?text=Vreau pachetul Buliga: Izolare" class="btn-reserve">Rezervă</a>
+                    <a href="https://wa.me/40749229686" class="btn-reserve">Rezervă</a>
                 </div>
             </div>
             <div class="card-lux">
@@ -209,7 +206,7 @@
                 <div class="info-lux">
                     <h3>Metanoia: Tăcere</h3>
                     <span class="price">4.500 RON</span>
-                    <a href="https://wa.me/40749229686?text=Vreau pachetul Metanoia: Tăcere" class="btn-reserve">Rezervă</a>
+                    <a href="https://wa.me/40749229686" class="btn-reserve">Rezervă</a>
                 </div>
             </div>
         </div>
@@ -217,11 +214,17 @@
         <div class="grid-lux">
             <a href="gastronomie.html" class="card-lux">
                 <div class="img-lux"><img src="images/index-mancare.jpg" alt="Gastronomie"></div>
-                <div class="info-lux"><h3>Gastronomie</h3></div>
+                <div class="info-lux">
+                    <h3>Gastronomie</h3>
+                    <span class="btn-reserve">Vezi Meniul</span>
+                </div>
             </a>
             <a href="experiente.html" class="card-lux">
-                <div class="img-lux"><img src="images/narcise.jpg" alt="Ateliere Artă"></div>
-                <div class="info-lux"><h3>Ateliere Artă</h3></div>
+                <div class="img-lux"><img src="images/narcise.jpg" alt="Artă"></div>
+                <div class="info-lux">
+                    <h3>Ateliere Artă</h3>
+                    <span class="btn-reserve">Vezi Ateliere</span>
+                </div>
             </a>
         </div>
     </div>
@@ -229,7 +232,7 @@
     <footer>HAȚEG ALTERNATIV &copy; 2026</footer>
 
     <script>
-        // SLIDER ERMES (TOPIRI CROSS-FADE LA 8 SECUNDE)
+        // SLIDER ERMES (CROSS-FADE LA 8 SECUNDE)
         let slides = document.querySelectorAll('.slide');
         let current = 0;
         setInterval(() => {
