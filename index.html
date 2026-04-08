@@ -19,37 +19,40 @@
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         body { background: var(--negru-pur); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
 
-        /* HEADER ORIGINAL */
-        .site-header { 
-            position: absolute; top: 0; width: 100%; z-index: 9999; 
-            padding: 30px 50px; display: flex; justify-content: space-between; align-items: center;
-        }
+        .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 30px 50px; display: flex; justify-content: space-between; align-items: center; }
         .brand svg { height: 130px; width: auto; filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.4)); }
-
         .burger { cursor: pointer; z-index: 10000; padding: 10px; }
         .burger div { width: 35px; height: 2px; background: var(--auriu-gold); margin: 8px; transition: 0.3s; }
 
-        /* NAV OVERLAY */
-        .main-nav { 
-            position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; 
-            background: rgba(0,0,0,0.98); display: flex; flex-direction: column; 
-            justify-content: center; align-items: center; transition: 0.6s cubic-bezier(0.7, 0, 0.3, 1); z-index: 9500;
-        }
+        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: rgba(0,0,0,0.98); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.6s cubic-bezier(0.7, 0, 0.3, 1); z-index: 9500; }
         .main-nav.active { right: 0; }
         .main-nav a { text-decoration: none; color: #fff; font-size: 3rem; font-family: 'Cinzel'; margin: 15px 0; letter-spacing: 5px; opacity: 0.6; transition: 0.3s; }
         .main-nav a:hover { opacity: 1; color: var(--auriu-gold); }
 
-        /* HERO SLIDER */
-        .hermes-viewport { position: relative; width: 100%; height: 100vh; overflow: hidden; }
+        .hermes-viewport { position: relative; width: 100%; height: 100vh; overflow: hidden; display: flex; align-items: center; justify-content: center; flex-direction: column;}
         .slide { position: absolute; width: 100%; height: 100%; opacity: 0; visibility: hidden; transition: opacity 2s; display: flex; align-items: center; justify-content: center; }
         .slide.active { opacity: 1; visibility: visible; }
         .slide-bg { position: absolute; width: 100%; height: 100%; background-size: cover; background-position: center; transform: scale(1.1); transition: transform 12s linear; }
         .slide.active .slide-bg { transform: scale(1.2); }
-        .slide-overlay { position: absolute; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.9) 100%); z-index: 2; }
-        .slide-content h1 { position: relative; z-index: 10; font-family: 'Playfair Display', serif; font-size: clamp(4rem, 12vw, 10rem); font-style: italic; color: var(--auriu-gold); }
+        .slide-overlay { position: absolute; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.9) 100%); z-index: 2; }
+        
+        .hero-text-container { position: relative; z-index: 10; text-align: center; }
+        .slide-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(4rem, 12vw, 10rem); font-style: italic; color: var(--auriu-gold); margin-bottom: 20px; }
+        .btn-main-forum { display: inline-block; padding: 15px 45px; border: 2px solid var(--auriu-gold); color: var(--auriu-gold); text-decoration: none; font-family: 'Cinzel'; letter-spacing: 5px; font-weight: 900; background: rgba(0,0,0,0.3); transition: 0.4s; }
+        .btn-main-forum:hover { background: var(--auriu-gold); color: #000; transform: scale(1.05); }
 
-        /* FORUM REZERVARE - INTEGRAT PENTRU ADMIN */
-        .forum-section { padding: 100px 50px; background: #050505; border-top: 1px solid #222; }
+        /* 1. ACTIVITATI (RATONASELE) SUS */
+        .grid-lux { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; padding: 100px 50px; max-width: 1600px; margin: 0 auto; background: var(--negru-pur); }
+        .card-lux { height: 500px; display: flex; flex-direction: column; justify-content: flex-end; padding: 40px 30px; border: 1px solid #222; position: relative; overflow: hidden; text-decoration: none; transition: 0.5s; background-size: cover; background-position: center; }
+        .card-lux::before { content: ""; position: absolute; top:0; left:0; width:100%; height:100%; background: var(--overlay-card); z-index: 1; transition: 0.4s; }
+        .card-lux:hover::before { background: rgba(0,0,0,0.4); }
+        .card-lux:hover { border-color: var(--auriu-gold); transform: translateY(-10px); }
+        .card-content { position: relative; z-index: 5; }
+        .card-lux h3 { font-family: 'Playfair Display'; font-size: 2.2rem; color: var(--auriu-gold); margin-bottom: 12px; font-style: italic; }
+        .card-lux p { color: #fff; line-height: 1.5; margin-bottom: 20px; font-size: 0.95rem; text-shadow: 1px 1px 10px rgba(0,0,0,0.8); }
+
+        /* 2. FORUM REZERVARE JOS */
+        .forum-section { padding: 120px 50px; background: #050505; border-top: 1px solid #222; }
         .forum-container { max-width: 900px; margin: 0 auto; }
         .forum-container h2 { font-family: 'Cinzel'; font-size: 2rem; color: var(--auriu-gold); text-align: center; margin-bottom: 60px; letter-spacing: 5px; }
         .forum-form { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
@@ -57,26 +60,10 @@
         .forum-form textarea { grid-column: span 2; }
         .forum-form button { grid-column: span 2; cursor: pointer; }
 
-        /* ACTIVITATILE LA SUBSOL */
-        .grid-lux { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; padding: 50px; max-width: 1600px; margin: 0 auto; }
-        .card-lux { 
-            height: 500px; display: flex; flex-direction: column; justify-content: flex-end; 
-            padding: 40px 30px; border: 1px solid #333; position: relative; overflow: hidden; 
-            text-decoration: none; transition: 0.5s; background-size: cover; background-position: center; 
-        }
-        .card-lux::before { content: ""; position: absolute; top:0; left:0; width:100%; height:100%; background: var(--overlay-card); z-index: 1; transition: 0.4s; }
-        .card-lux:hover::before { background: rgba(0,0,0,0.4); }
-        .card-lux:hover { border-color: var(--auriu-gold); transform: translateY(-10px); }
-        
-        .card-content { position: relative; z-index: 5; }
-        .card-lux h3 { font-family: 'Playfair Display'; font-size: 2.2rem; color: var(--auriu-gold); margin-bottom: 12px; font-style: italic; }
-        .card-lux p { color: #fff; line-height: 1.5; margin-bottom: 20px; font-size: 0.95rem; text-shadow: 1px 1px 10px rgba(0,0,0,0.8); }
-
         .btn-gold { display: inline-block; padding: 12px 30px; border: 1px solid var(--auriu-gold); color: var(--auriu-gold); text-decoration: none; font-family: 'Cinzel'; letter-spacing: 3px; font-size: 0.75rem; transition: 0.4s; background: transparent; text-align: center;}
         .btn-gold:hover { background: var(--auriu-gold); color: #000; }
 
         .whatsapp-float { position: fixed; bottom: 30px; left: 30px; background-color: #25d366; color: #FFF; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 10000; }
-
         footer { padding: 80px; text-align: center; border-top: 1px solid #111; opacity: 0.3; letter-spacing: 12px; font-family: 'Cinzel'; font-size: 0.7rem; }
     </style>
 </head>
@@ -100,6 +87,8 @@
             <a href="buliga.html">Pensiunea</a>
             <a href="retreat.html">Metanoia</a>
             <a href="gastronomie.html">Gastronomie</a>
+            <a href="experiente.html">Activități</a>
+            <a href="forum.html" style="color: var(--auriu-gold); font-weight: 900;">Forum</a>
         </nav>
     </header>
 
@@ -107,34 +96,15 @@
         <div class="slide active">
             <div class="slide-bg" style="background-image: url('images/rasarit.jpg');"></div>
             <div class="slide-overlay"></div>
-            <div class="slide-content"><h1>Simte.</h1></div>
         </div>
         <div class="slide">
             <div class="slide-bg" style="background-image: url('images/apus.jpg');"></div>
             <div class="slide-overlay"></div>
-            <div class="slide-content"><h1>Explorează.</h1></div>
         </div>
-    </section>
-
-    <section class="forum-section" id="forum">
-        <div class="forum-container">
-            <h2>SOLICITĂ REZERVARE</h2>
-            <form class="forum-form" action="https://formspree.io/f/xjgpvbkj" method="POST">
-                <input type="text" name="Nume_Client" placeholder="Numele tău" required>
-                <input type="email" name="Email_Contact" placeholder="Email" required>
-                <select name="Pachet_Ales">
-                    <option value="Buliga_Izolare">Pachet: Buliga Izolare</option>
-                    <option value="Metanoia_Tacere">Pachet: Metanoia Tăcere</option>
-                    <option value="Hateg_Pe_Roti">Pachet: Hațeg Pe Roți</option>
-                    <option value="Atelier_Gastronomic">Atelier Gastronomic</option>
-                    <option value="Lucru_Manual">Lucru Manual</option>
-                </select>
-                <textarea name="Mesaj_Detalii" rows="5" placeholder="Mesajul tău (Perioada, nr. persoane, întrebări)..." required></textarea>
-                
-                <input type="text" name="_gotcha" style="display:none">
-                
-                <button type="submit" class="btn-gold">TRIMITE SOLICITAREA</button>
-            </form>
+        
+        <div class="hero-text-container">
+            <div class="slide-content"><h1>Simte. Explorează.</h1></div>
+            <a href="forum.html" class="btn-main-forum">INTRĂ ÎN FORUM</a>
         </div>
     </section>
 
@@ -155,6 +125,26 @@
             <div class="card-content"><h3>Lucru Manual</h3><p>Redescoperă bucuria de a crea cu mâinile.</p><span class="btn-gold">CREEAZĂ</span></div>
         </a>
     </div>
+
+    <section class="forum-section" id="forum">
+        <div class="forum-container">
+            <h2>SOLICITĂ REZERVARE</h2>
+            <form class="forum-form" action="https://formspree.io/f/xjgpvbkj" method="POST">
+                <input type="text" name="Nume_Client" placeholder="Numele tău" required>
+                <input type="email" name="Email_Contact" placeholder="Email" required>
+                <select name="Pachet_Ales">
+                    <option value="Buliga_Izolare">Pachet: Buliga Izolare</option>
+                    <option value="Metanoia_Tacere">Pachet: Metanoia Tăcere</option>
+                    <option value="Hateg_Pe_Roti">Pachet: Hațeg Pe Roți</option>
+                    <option value="Atelier_Gastronomic">Atelier Gastronomic</option>
+                    <option value="Lucru_Manual">Lucru Manual</option>
+                </select>
+                <textarea name="Mesaj_Detalii" rows="5" placeholder="Mesajul tău (Perioada, nr. persoane, întrebări)..." required></textarea>
+                <input type="text" name="_gotcha" style="display:none">
+                <button type="submit" class="btn-gold">TRIMITE SOLICITAREA</button>
+            </form>
+        </div>
+    </section>
 
     <footer>HAȚEG ALTERNATIV &copy; 2026</footer>
 
