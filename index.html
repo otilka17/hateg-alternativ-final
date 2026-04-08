@@ -12,17 +12,16 @@
             --auriu: #c5a059; 
             --negru: #050505; 
             --alb: #ffffff;
-            /* Umbră brutală Metanoia */
             --shadow-metanoia: linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.95) 100%);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; line-height: 1.4; }
 
-        /* HEADER - STATIC (Rămâne sus) */
+        /* HEADER - STATIC (Rămâne la începutul paginii) */
         .site-header { 
             position: absolute; top: 0; width: 100%; z-index: 9999; 
-            padding: 20px 50px;
+            padding: 30px 50px;
             display: flex; justify-content: space-between; align-items: center;
             background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, transparent 100%);
         }
@@ -42,9 +41,10 @@
             justify-content: center; align-items: center; transition: 0.8s cubic-bezier(0.7, 0, 0.3, 1); z-index: 9500;
         }
         .main-nav.active { right: 0; }
-        .main-nav a { text-decoration: none; color: #fff; font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 900; text-transform: uppercase; margin: 15px 0; letter-spacing: 5px; opacity: 0.6; }
+        .main-nav a { text-decoration: none; color: #fff; font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 900; text-transform: uppercase; margin: 15px 0; letter-spacing: 5px; opacity: 0.6; transition: 0.3s; }
+        .main-nav a:hover { opacity: 1; color: var(--auriu); }
 
-        /* ERMES SLIDER - ZOOM LENT */
+        /* HERO SLIDER - ERMES STYLE */
         .hermes-viewport { position: relative; width: 100%; height: 100vh; overflow: hidden; background: #000; }
         .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; visibility: hidden; transition: opacity 3s ease-in-out; display: flex; align-items: center; justify-content: center; }
         .slide.active { opacity: 1; visibility: visible; }
@@ -52,17 +52,16 @@
         .slide.active .slide-bg { transform: scale(1.4); }
         .slide-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: var(--shadow-metanoia); z-index: 2; }
 
-        /* TEXT PE IMAGINILE CARE RULEAZĂ */
+        /* TEXT STORYTELLING PESTE IMAGINI */
         .slide-content { position: relative; z-index: 10; text-align: center; max-width: 90%; }
         .slide-content span { font-size: 1.5rem; letter-spacing: 15px; text-transform: uppercase; color: var(--auriu); display: block; margin-bottom: 20px; font-weight: 300; }
         .slide-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(4rem, 15vw, 11rem); font-weight: 900; font-style: italic; line-height: 0.85; text-shadow: 0 20px 80px rgba(0,0,0,1); margin-bottom: 40px; }
         .hero-btn { display: inline-block; padding: 22px 50px; border: 2px solid var(--auriu); color: var(--auriu); text-decoration: none; text-transform: uppercase; font-weight: 900; letter-spacing: 6px; font-size: 1.2rem; transition: 0.4s; }
         .hero-btn:hover { background: var(--auriu); color: #000; }
 
-        /* CONTAINER GENERAL */
         .container { padding: 120px 50px; max-width: 1600px; margin: 0 auto; }
         
-        /* PENSIUNEA INTRO */
+        /* INTRO STORY */
         .intro-block { display: flex; gap: 80px; align-items: center; flex-wrap: wrap; margin-bottom: 180px; }
         .intro-img { flex: 1; min-width: 450px; height: 750px; border: 1px solid #1a1a1a; overflow: hidden; }
         .intro-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
@@ -70,10 +69,9 @@
         .intro-text h2 { font-family: 'Playfair Display', serif; font-size: 5rem; font-style: italic; color: var(--auriu); margin-bottom: 30px; }
         .intro-text p { font-size: 2rem; color: #888; font-weight: 300; margin-bottom: 30px; }
 
-        /* GRID TITLU */
         .section-title { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-style: italic; text-align: center; margin-bottom: 80px; letter-spacing: 2px; }
 
-        /* GRID CARDURI - PACHETE & ACTIVITATI */
+        /* GRILA PACHETE SIGNATURE */
         .grid-lux { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 60px; margin-bottom: 120px; }
         .card-lux { background: #0a0a0a; border: 1px solid #1a1a1a; transition: 0.5s; text-decoration: none; color: inherit; display: flex; flex-direction: column; }
         .card-lux:hover { border-color: var(--auriu); transform: translateY(-20px); }
@@ -132,7 +130,7 @@
             <div class="slide-bg" style="background-image: url('images/rasarit.jpg');"></div>
             <div class="slide-overlay"></div>
             <div class="slide-content">
-                <span>Arhaic. Autentic.</span>
+                <span>Rânduială Arhaică</span>
                 <h1>Simte.</h1>
                 <a href="buliga.html" class="hero-btn">Rezervă Acum</a>
             </div>
@@ -141,7 +139,7 @@
             <div class="slide-bg" style="background-image: url('images/apus.jpg');"></div>
             <div class="slide-overlay"></div>
             <div class="slide-content">
-                <span>Tăcerea munților Retezat</span>
+                <span>Liniștea Munților</span>
                 <h1>Explorează.</h1>
                 <a href="buliga.html" class="hero-btn">Rezervă Acum</a>
             </div>
@@ -150,7 +148,7 @@
             <div class="slide-bg" style="background-image: url('images/jeep.jpg');"></div>
             <div class="slide-overlay"></div>
             <div class="slide-content">
-                <span>Resetarea de care ai nevoie</span>
+                <span>Resetare Profundă</span>
                 <h1>Metanoia.</h1>
                 <a href="retreat.html" class="hero-btn">Vezi Experiența</a>
             </div>
@@ -162,7 +160,7 @@
             <div class="intro-img"><img src="images/la-buliga-pensiune.jpg" alt="Pensiunea"></div>
             <div class="intro-text">
                 <h2>O moștenire<br>vie în munte.</h2>
-                <p>La Buligă nu este doar o cazare. Este o experiență boutique creată pentru a-ți oferi rânduială și liniște profundă.</p>
+                <p>La Buligă este un sanctuar al tăcerii și al rânduielii locale. Un refugiu boutique unde timpul se oprește pentru a-ți permite reconectarea.</p>
                 <a href="buliga.html" style="color:var(--auriu); font-weight:900; font-size:1.8rem; text-transform:uppercase; text-decoration:none; border-bottom:3px solid var(--auriu);">Vezi Povestea</a>
             </div>
         </section>
@@ -173,7 +171,7 @@
                 <div class="img-lux"><img src="images/jeep.jpg" alt="Adventure"></div>
                 <div class="info-lux">
                     <h3>Buliga: Izolare</h3>
-                    <p>4 zile de deconectare totală în sălbăticie, cu acces privat și rânduială locală.</p>
+                    <p>4 zile de reconectare brută în sălbăticie, cu acces privat și rânduială locală.</p>
                     <a href="buliga.html" class="btn-reserve">Rezervă</a>
                 </div>
             </div>
@@ -181,7 +179,7 @@
                 <div class="img-lux"><img src="images/apus1.jpg" alt="Metanoia"></div>
                 <div class="info-lux">
                     <h3>Metanoia: Tăcere</h3>
-                    <p>Un retreat spiritual axat pe liniște, meditație și echilibru interior.</p>
+                    <p>Un retreat de liniște axat pe meditație și echilibru interior, departe de zgomotul lumii.</p>
                     <a href="buliga.html" class="btn-reserve">Rezervă</a>
                 </div>
             </div>
@@ -189,26 +187,26 @@
                 <div class="img-lux"><img src="images/drumul-pietrelor.jpg" alt="Offroad"></div>
                 <div class="info-lux">
                     <h3>Hațeg: Pe Roți</h3>
-                    <p>Descoperă moștenirea geoparc-ului într-o aventură 4x4 fără compromisuri.</p>
+                    <p>Aventură 4x4 printre monumentele naturii, descoperind rutele ascunse ale Geoparcului.</p>
                     <a href="buliga.html" class="btn-reserve">Rezervă</a>
                 </div>
             </div>
         </div>
 
-        <h2 class="section-title">Experiențe</h2>
+        <h2 class="section-title">Experiențe Hațeg</h2>
         <div class="grid-lux">
             <a href="gastronomie.html" class="card-lux">
                 <div class="img-lux"><img src="images/index-mancare.jpg" alt="Gastronomie"></div>
                 <div class="info-lux">
                     <h3>Gastronomie</h3>
-                    <p>Gusturi uitate, ingrediente locale culese direct din grădinile Hațegului.</p>
+                    <p>Gusturi uitate și ingrediente pure culese direct de pe rândurile noastre.</p>
                 </div>
             </a>
             <a href="experiente.html" class="card-lux">
                 <div class="img-lux"><img src="images/narcise.jpg" alt="Ateliere"></div>
                 <div class="info-lux">
                     <h3>Ateliere Artă</h3>
-                    <p>Reînvățăm să creăm cu mâinile noastre prin ateliere de olărit și pictură.</p>
+                    <p>Redescoperă bucuria de a crea cu mâinile prin olărit și pictură în natură.</p>
                 </div>
             </a>
         </div>
@@ -223,7 +221,7 @@
             slides[current].classList.remove('active');
             current = (current + 1) % slides.length;
             slides[current].classList.add('active');
-        }, 7500);
+        }, 8000);
 
         const burger = document.getElementById('burger');
         const nav = document.getElementById('nav-links');
