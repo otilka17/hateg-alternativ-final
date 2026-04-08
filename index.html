@@ -18,17 +18,17 @@
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-        /* HEADER - ACUM ESTE ABSOLUTE (Rămâne sus la începutul paginii) */
+        /* HEADER - STATIC (Nu te urmărește) */
         .site-header { 
-            position: absolute; /* SCHIMBARE: Nu se mai plimbă după tine */
+            position: absolute; 
             top: 0; width: 100%; z-index: 9999; 
-            padding: 20px 50px;
+            padding: 30px 50px;
             display: flex; justify-content: space-between; align-items: center;
             background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, transparent 100%);
         }
         
         .brand svg { 
-            height: 180px; /* Logo Masiv */
+            height: 180px; 
             width: auto; 
             display: block;
             filter: drop-shadow(0 0 25px rgba(0,0,0,1));
@@ -44,7 +44,8 @@
             justify-content: center; align-items: center; transition: 0.8s cubic-bezier(0.7, 0, 0.3, 1); z-index: 9500;
         }
         .main-nav.active { right: 0; }
-        .main-nav a { text-decoration: none; color: #fff; font-size: clamp(3rem, 10vw, 5rem); font-weight: 900; text-transform: uppercase; margin: 20px 0; letter-spacing: 5px; opacity: 0.6; }
+        .main-nav a { text-decoration: none; color: #fff; font-size: clamp(2.5rem, 8vw, 4.5rem); font-weight: 900; text-transform: uppercase; margin: 15px 0; letter-spacing: 5px; opacity: 0.6; transition: 0.3s; }
+        .main-nav a:hover { opacity: 1; color: var(--auriu); }
 
         /* ERMES SLIDER */
         .hermes-viewport { position: relative; width: 100%; height: 100vh; overflow: hidden; background: #000; }
@@ -63,16 +64,17 @@
         .hero-btn { display: inline-block; padding: 25px 60px; border: 3px solid var(--auriu); color: var(--auriu); text-decoration: none; text-transform: uppercase; font-weight: 900; letter-spacing: 8px; font-size: 1.5rem; transition: 0.4s; }
         .hero-btn:hover { background: var(--auriu); color: #000; }
 
-        /* CONTENT SECTIONS */
+        /* CONTENT */
         .container { padding: 150px 50px; max-width: 1600px; margin: 0 auto; }
+        
         .intro-block { display: flex; gap: 80px; align-items: center; flex-wrap: wrap; margin-bottom: 200px; }
         .intro-img { flex: 1; min-width: 450px; height: 800px; border: 1px solid #1a1a1a; overflow: hidden; }
         .intro-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
         .intro-text h2 { font-family: 'Playfair Display', serif; font-size: 5.5rem; font-style: italic; color: var(--auriu); margin-bottom: 40px; }
         .intro-text p { font-size: 2.2rem; color: #888; font-weight: 300; line-height: 1.5; }
 
-        /* GRID LUXURY */
-        .grid-lux { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 80px; margin-bottom: 150px; }
+        /* GRID LUXURY - 3 PACHETE + 2 ACTIVITATI */
+        .grid-lux { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 80px; margin-bottom: 80px; }
         .card-lux { background: #0a0a0a; border: 1px solid #1a1a1a; transition: 0.6s; display: flex; flex-direction: column; text-decoration: none; color: inherit; }
         .card-lux:hover { border-color: var(--auriu); transform: translateY(-25px); }
         .img-lux { height: 600px; overflow: hidden; }
@@ -88,6 +90,7 @@
             .brand svg { height: 140px !important; }
             .slide-content h1 { font-size: 8rem; }
             .hero-btn { width: 100%; text-align: center; }
+            .grid-lux { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -106,8 +109,7 @@
                         <stop offset="100%" style="stop-color:#7a5c32;stop-opacity:1" />
                     </linearGradient>
                     <filter id="glow">
-                        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-                        <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                        <feGaussianBlur stdDeviation="3" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
                     </filter>
                 </defs>
                 <rect width="800" height="800" fill="url(#skyGradient)" />
@@ -188,21 +190,28 @@
                     <a href="buliga.html" class="btn-reserve">Rezervă</a>
                 </div>
             </div>
+            <div class="card-lux">
+                <div class="img-lux"><img src="images/drumul-pietrelor.jpg" alt="Hateg Pe Roti"></div>
+                <div class="info-lux">
+                    <h3>Hațeg: Pe Roți</h3>
+                    <a href="buliga.html" class="btn-reserve">Rezervă</a>
+                </div>
+            </div>
         </div>
 
-        <div class="grid-lux">
+        <div class="grid-lux" style="margin-top: 80px;">
             <a href="gastronomie.html" class="card-lux">
                 <div class="img-lux"><img src="images/index-mancare.jpg" alt="Gastronomie"></div>
                 <div class="info-lux">
                     <h3>Gastronomie</h3>
-                    <span class="btn-reserve">Vezi Meniul</span>
+                    <span class="btn-reserve">Detalii</span>
                 </div>
             </a>
             <a href="experiente.html" class="card-lux">
                 <div class="img-lux"><img src="images/narcise.jpg" alt="Ateliere Artă"></div>
                 <div class="info-lux">
                     <h3>Ateliere Artă</h3>
-                    <span class="btn-reserve">Vezi Ateliere</span>
+                    <span class="btn-reserve">Detalii</span>
                 </div>
             </a>
         </div>
