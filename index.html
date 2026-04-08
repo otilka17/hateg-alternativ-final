@@ -44,12 +44,13 @@
         .manifest-section p { font-family: 'Playfair Display'; font-size: clamp(2rem, 5vw, 4rem); font-style: italic; line-height: 1.1; color: var(--alb); margin-bottom: 30px; }
         .manifest-section .sub-text { font-family: 'Inter'; font-size: 1.1rem; color: #aaa; letter-spacing: 4px; margin-top: 20px; font-weight: 400; }
 
-        /* GRILA ACTIVITATI */
-        .grid-lux { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; padding: 40px; max-width: 1600px; margin: 0 auto; }
-        .card-lux { height: 500px; display: flex; flex-direction: column; justify-content: flex-end; padding: 40px 25px; border: 1px solid #222; position: relative; overflow: hidden; text-decoration: none; transition: 0.5s; background-size: cover; background-position: center; }
+        /* GRILA ACTIVITATI ACTUALIZATĂ */
+        .grid-lux { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; padding: 40px; max-width: 1600px; margin: 0 auto; }
+        .card-lux { height: 550px; display: flex; flex-direction: column; justify-content: flex-end; padding: 40px 25px; border: 1px solid #222; position: relative; overflow: hidden; text-decoration: none; transition: 0.5s; background-size: cover; background-position: center; }
         .card-lux::before { content: ""; position: absolute; top:0; left:0; width:100%; height:100%; background: var(--overlay-card); z-index: 1; }
-        .card-lux h3 { font-family: 'Playfair Display'; font-size: 2.4rem; color: var(--auriu-gold); margin-bottom: 10px; font-style: italic; position: relative; z-index: 5; text-shadow: 2px 2px 10px rgba(0,0,0,1); }
-        .card-lux p { color: #fff; font-size: 1rem; margin-bottom: 25px; position: relative; z-index: 5; text-shadow: 1px 1px 5px #000; font-weight: 400; }
+        
+        .card-lux h3 { font-family: 'Playfair Display'; font-size: 2.6rem; color: var(--auriu-gold); margin-bottom: 15px; font-style: italic; position: relative; z-index: 5; text-shadow: 2px 2px 10px rgba(0,0,0,1); }
+        .card-lux p { color: #f0f0f0; font-size: 1.05rem; line-height: 1.5; margin-bottom: 25px; position: relative; z-index: 5; text-shadow: 1px 1px 5px #000; font-weight: 400; max-width: 95%; }
 
         /* FORUM REZERVARE */
         .forum-section { padding: 100px 30px; background: #080808; border-top: 1px solid #1a1a1a; }
@@ -71,7 +72,8 @@
             .forum-form { grid-template-columns: 1fr; }
             .forum-form textarea, .forum-form button { grid-column: 1; }
             .site-header { padding: 20px; }
-            .grid-lux { padding: 20px; }
+            .grid-lux { padding: 20px; gap: 30px; }
+            .card-lux { height: 580px; }
         }
     </style>
 </head>
@@ -92,7 +94,8 @@
         <div class="burger" id="burger"><div></div><div></div><div></div></div>
         <nav class="main-nav" id="nav-links">
             <a href="index.html">Acasă</a>
-            <a href="pensiune.html">Pensiunea</a> <a href="retreat.html">Metanoia</a>
+            <a href="pensiune.html">Pensiunea</a>
+            <a href="retreat.html">Metanoia</a>
             <a href="gastronomie.html">Gastronomie</a>
         </nav>
     </header>
@@ -118,61 +121,11 @@
 
     <div class="grid-lux">
         <a href="pensiune.html" class="card-lux" style="background-image: url('images/rasarit.jpg');">
-            <div class="card-content"><h3>Buliga: Izolare</h3><p>4 zile de reconectare brută în sălbăticie.</p><span class="btn-gold">VEZI PACHET</span></div>
+            <div class="card-content">
+                <h3>Buliga: Izolare</h3>
+                <p>Descoperă reconectarea brută în sălbăticie. 4 zile departe de tehnologie, în inima munților, unde liniștea devine noul tău limbaj.</p>
+                <span class="btn-gold">VEZI DETALII PACHET</span>
+            </div>
         </a>
-        <a href="retreat.html" class="card-lux" style="background-image: url('images/apus.jpg');">
-            <div class="card-content"><h3>Metanoia: Tăcere</h3><p>Un retreat de liniște profundă.</p><span class="btn-gold">AFLĂ MAI MULTE</span></div>
-        </a>
-        <a href="experiente.html" class="card-lux" style="background-image: url('images/jeep.jpg');">
-            <div class="card-content"><h3>Hațeg: Pe Roți</h3><p>Aventură 4x4 printre monumente.</p><span class="btn-gold">EXPLORAȚI</span></div>
-        </a>
-        <a href="pensiune.html" class="card-lux" style="background-image: url('images/rasarit.jpg');">
-            <div class="card-content"><h3>Pensiunea</h3><p>Rânduiala veche într-o casă de oaspeți primitoare.</p><span class="btn-gold">VEZI CASĂ</span></div>
-        </a>
-    </div>
 
-    <section class="forum-section" id="forum">
-        <div class="forum-container">
-            <h2>SOLICITĂ REZERVARE</h2>
-            <form class="forum-form" action="https://formspree.io/f/xjgpvbkj" method="POST">
-                <input type="text" name="name" placeholder="Numele tău" required aria-label="Nume">
-                <input type="email" name="_replyto" placeholder="Email" required aria-label="Email">
-                <select name="pachet" aria-label="Selectează pachet">
-                    <option value="izolare">Pachet: Buliga Izolare</option>
-                    <option value="tacere">Pachet: Metanoia Tăcere</option>
-                    <option value="4x4">Pachet: Hațeg Pe Roți</option>
-                    <option value="gastronomie">Atelier Gastronomic</option>
-                    <option value="cazare">Doar Cazare (Pensiune)</option>
-                </select>
-                <textarea name="message" rows="5" placeholder="Mesajul tău (perioada, număr persoane)..." aria-label="Mesaj"></textarea>
-                <button type="submit" class="btn-gold">TRIMITE SOLICITAREA</button>
-            </form>
-        </div>
-    </section>
-
-    <footer>HAȚEG ALTERNATIV &copy; 2026</footer>
-
-    <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true; s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
-    s1.charset='UTF-8'; s1.setAttribute('crossorigin','*'); s0.parentNode.insertBefore(s1,s0);
-    })();
-    </script>
-
-    <script>
-        const burger = document.getElementById('burger');
-        const nav = document.getElementById('nav-links');
-        burger.addEventListener('click', () => { nav.classList.toggle('active'); });
-        
-        let slides = document.querySelectorAll('.slide');
-        let current = 0;
-        setInterval(() => {
-            slides[current].classList.remove('active');
-            current = (current + 1) % slides.length;
-            slides[current].classList.add('active');
-        }, 6000);
-    </script>
-</body>
-</html>
+        <a href="retreat.html" class="card-lux" style="
