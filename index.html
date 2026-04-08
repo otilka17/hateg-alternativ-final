@@ -13,14 +13,14 @@
             --auriu: #c5a059; 
             --negru: #050505; 
             --alb: #ffffff;
-            /* Umbra densă Metanoia pentru contrast brutal */
-            --shadow-metanoia: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.9) 100%);
+            /* Umbra densă de calitate pentru contrast brutal */
+            --shadow-metanoia: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.9) 100%);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; line-height: 1.4; }
 
-        /* HEADER - LOGO URIAS SI CLAR */
+        /* HEADER ERMES - LOGO URIAS */
         .site-header { 
             position: fixed; top: 0; width: 100%; z-index: 5000; 
             padding: 50px 60px;
@@ -30,7 +30,7 @@
         }
         
         .brand img { 
-            height: 140px; /* Logo impunător, ca la Ermes */
+            height: 140px; /* Logo impunător desktop */
             width: auto; 
             display: block;
             filter: drop-shadow(0 0 30px rgba(0,0,0,0.8));
@@ -39,7 +39,7 @@
         .burger { cursor: pointer; z-index: 6000; padding: 15px; }
         .burger div { width: 60px; height: 5px; background: var(--alb); margin: 12px; transition: 0.3s; }
 
-        /* NAV OVERLAY */
+        /* NAV OVERLAY FULLSCREEN */
         .main-nav { 
             position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; 
             background: var(--negru); display: flex; flex-direction: column; 
@@ -59,7 +59,7 @@
         .slide {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             opacity: 0; visibility: hidden;
-            transition: opacity 3s ease-in-out;
+            transition: opacity 3.5s ease-in-out;
             display: flex; align-items: center; justify-content: center;
         }
         .slide.active { opacity: 1; visibility: visible; }
@@ -68,11 +68,11 @@
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background-size: cover; background-position: center;
             transform: scale(1.1);
-            transition: transform 20s linear; /* Zoom ultra-lent de calitate */
+            transition: transform 20s linear; /* Zoom-ul hipnotic Ermes */
         }
-        .slide.active .slide-bg { transform: scale(1.4); }
+        .slide.active .slide-bg { transform: scale(1.45); }
 
-        /* Stratul de opacitate Metanoia Shadow */
+        /* Umbra densă Metanoia */
         .slide-overlay {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: var(--shadow-metanoia);
@@ -86,7 +86,7 @@
         }
         .slide-content h1 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(5rem, 20vw, 15rem); /* SCRIS URIAS CA LA ERMES */
+            font-size: clamp(5rem, 20vw, 16rem); /* SCRIS URIAS CA LA ERMES */
             font-weight: 900; font-style: italic; line-height: 0.8;
             text-shadow: 0 20px 100px rgba(0,0,0,1);
         }
@@ -98,7 +98,7 @@
         .intro-img { flex: 1; min-width: 450px; height: 850px; border: 1px solid #1a1a1a; overflow: hidden; }
         .intro-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
         
-        .intro-text h2 { font-family: 'Playfair Display', serif; font-size: 6rem; font-style: italic; color: var(--auriu); margin-bottom: 40px; line-height: 1; }
+        .intro-text h2 { font-family: 'Playfair Display', serif; font-size: 6.5rem; font-style: italic; color: var(--auriu); margin-bottom: 40px; line-height: 1; }
         .intro-text p { font-size: 2.5rem; color: #888; font-weight: 300; line-height: 1.6; }
 
         /* GRID LUXURY - CARDS URIEȘI */
@@ -124,12 +124,12 @@
             .burger div { width: 80px; height: 8px; margin: 15px; }
             .intro-img { height: 600px; min-width: 100%; }
             .grid-lux { grid-template-columns: 1fr; }
-            .slide-content h1 { font-size: 9rem; }
-            .intro-text h2 { font-size: 5rem; }
+            .slide-content h1 { font-size: 9.5rem; }
+            .intro-text h2 { font-size: 5.5rem; }
             .intro-text p { font-size: 2.2rem; }
             .info-lux h3 { font-size: 4rem; }
             .price { font-size: 4.5rem; }
-            .btn-reserve { font-size: 2rem; padding: 40px; }
+            .btn-reserve { font-size: 2.2rem; padding: 40px; }
         }
     </style>
 </head>
@@ -179,8 +179,8 @@
             <div class="slide-bg" style="background-image: url('images/jeep.jpg');"></div>
             <div class="slide-overlay"></div>
             <div class="slide-content">
-                <span>Aventură Autentică</span>
-                <h1>Rânduială.</h1>
+                <span>Reset Total</span>
+                <h1>Metanoia.</h1>
             </div>
         </div>
     </section>
@@ -220,7 +220,7 @@
                 <div class="info-lux"><h3>Gastronomie</h3></div>
             </a>
             <a href="experiente.html" class="card-lux">
-                <div class="img-lux"><img src="images/narcise.jpg" alt="Artă"></div>
+                <div class="img-lux"><img src="images/narcise.jpg" alt="Ateliere Artă"></div>
                 <div class="info-lux"><h3>Ateliere Artă</h3></div>
             </a>
         </div>
@@ -229,14 +229,14 @@
     <footer>HAȚEG ALTERNATIV &copy; 2026</footer>
 
     <script>
-        // SLIDER ERMES (TOPIRI CROSS-FADE)
+        // SLIDER ERMES (TOPIRI CROSS-FADE LA 8 SECUNDE)
         let slides = document.querySelectorAll('.slide');
         let current = 0;
         setInterval(() => {
             slides[current].classList.remove('active');
             current = (current + 1) % slides.length;
             slides[current].classList.add('active');
-        }, 7500);
+        }, 8000);
 
         // BURGER MENU
         const burger = document.getElementById('burger');
