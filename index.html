@@ -29,7 +29,7 @@
         .burger { cursor: pointer; z-index: 10000; padding: 10px; }
         .burger div { width: 35px; height: 2px; background: var(--auriu-gold); margin: 8px; transition: 0.3s; }
 
-        /* NAV OVERLAY ORIGINAL */
+        /* NAV OVERLAY */
         .main-nav { 
             position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; 
             background: rgba(0,0,0,0.98); display: flex; flex-direction: column; 
@@ -45,7 +45,7 @@
         .slide.active { opacity: 1; visibility: visible; }
         .slide-bg { position: absolute; width: 100%; height: 100%; background-size: cover; background-position: center; transform: scale(1.1); transition: transform 12s linear; }
         .slide.active .slide-bg { transform: scale(1.2); }
-        .slide-overlay { position: absolute; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.9) 100%); z-index: 2; }
+        .slide-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.9) 100%); z-index: 2; }
         .slide-content h1 { position: relative; z-index: 10; font-family: 'Playfair Display', serif; font-size: clamp(4rem, 12vw, 10rem); font-style: italic; color: var(--auriu-gold); }
 
         /* FORUM REZERVARE */
@@ -57,11 +57,11 @@
         .forum-form textarea { grid-column: span 2; }
         .forum-form button { grid-column: span 2; cursor: pointer; }
 
-        /* ACTIVITATI (MUTATE JOS) */
-        .grid-lux { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 30px; padding: 50px; max-width: 1500px; margin: 0 auto; }
+        /* ACTIVITATI LA SUBSOL */
+        .grid-lux { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; padding: 50px; max-width: 1600px; margin: 0 auto; }
         .card-lux { 
-            height: 600px; display: flex; flex-direction: column; justify-content: flex-end; 
-            padding: 50px 30px; border: 1px solid #333; position: relative; overflow: hidden; 
+            height: 500px; display: flex; flex-direction: column; justify-content: flex-end; 
+            padding: 40px 30px; border: 1px solid #333; position: relative; overflow: hidden; 
             text-decoration: none; transition: 0.5s; background-size: cover; background-position: center; 
         }
         .card-lux::before { content: ""; position: absolute; top:0; left:0; width:100%; height:100%; background: var(--overlay-card); z-index: 1; transition: 0.4s; }
@@ -69,10 +69,10 @@
         .card-lux:hover { border-color: var(--auriu-gold); transform: translateY(-10px); }
         
         .card-content { position: relative; z-index: 5; }
-        .card-lux h3 { font-family: 'Playfair Display'; font-size: 2.8rem; color: var(--auriu-gold); margin-bottom: 15px; font-style: italic; }
-        .card-lux p { color: #fff; line-height: 1.6; margin-bottom: 25px; text-shadow: 1px 1px 10px rgba(0,0,0,0.8); }
+        .card-lux h3 { font-family: 'Playfair Display'; font-size: 2.2rem; color: var(--auriu-gold); margin-bottom: 12px; font-style: italic; }
+        .card-lux p { color: #fff; line-height: 1.5; margin-bottom: 20px; font-size: 0.95rem; text-shadow: 1px 1px 10px rgba(0,0,0,0.8); }
 
-        .btn-gold { display: inline-block; padding: 15px 40px; border: 1px solid var(--auriu-gold); color: var(--auriu-gold); text-decoration: none; font-family: 'Cinzel'; letter-spacing: 3px; font-size: 0.8rem; transition: 0.4s; background: transparent; }
+        .btn-gold { display: inline-block; padding: 12px 30px; border: 1px solid var(--auriu-gold); color: var(--auriu-gold); text-decoration: none; font-family: 'Cinzel'; letter-spacing: 3px; font-size: 0.75rem; transition: 0.4s; background: transparent; }
         .btn-gold:hover { background: var(--auriu-gold); color: #000; }
 
         .whatsapp-float { position: fixed; bottom: 30px; left: 30px; background-color: #25d366; color: #FFF; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 10000; }
@@ -126,6 +126,8 @@
                     <option value="izolare">Pachet: Buliga Izolare</option>
                     <option value="tacere">Pachet: Metanoia Tăcere</option>
                     <option value="4x4">Pachet: Hațeg Pe Roți</option>
+                    <option value="gastronomie">Atelier Gastronomic</option>
+                    <option value="manual">Lucru Manual</option>
                 </select>
                 <textarea name="mesaj" rows="5" placeholder="Mesajul tău..."></textarea>
                 <button type="submit" class="btn-gold">TRIMITE SOLICITAREA</button>
@@ -134,27 +136,41 @@
     </section>
 
     <div class="grid-lux">
-        <div class="card-lux" style="background-image: url('images/rasarit.jpg');">
+        <a href="buliga.html" class="card-lux" style="background-image: url('images/rasarit.jpg');">
             <div class="card-content">
                 <h3>Buliga: Izolare</h3>
-                <p>4 zile de reconectare brută în sălbăticie. Acces privat și rânduială locală.</p>
-                <a href="buliga.html" class="btn-gold">VEZI PACHET</a>
+                <p>4 zile de reconectare brută în sălbăticie.</p>
+                <span class="btn-gold">VEZI PACHET</span>
             </div>
-        </div>
-        <div class="card-lux" style="background-image: url('images/apus.jpg');">
+        </a>
+        <a href="retreat.html" class="card-lux" style="background-image: url('images/apus.jpg');">
             <div class="card-content">
                 <h3>Metanoia: Tăcere</h3>
-                <p>Un retreat de liniște profundă axat pe meditație și echilibru interior.</p>
-                <a href="retreat.html" class="btn-gold">AFLĂ MAI MULTE</a>
+                <p>Un retreat de liniște profundă.</p>
+                <span class="btn-gold">AFLĂ MAI MULTE</span>
             </div>
-        </div>
-        <div class="card-lux" style="background-image: url('images/jeep.jpg');">
+        </a>
+        <a href="experiente.html" class="card-lux" style="background-image: url('images/jeep.jpg');">
             <div class="card-content">
                 <h3>Hațeg: Pe Roți</h3>
-                <p>Aventură 4x4 printre monumentele naturii și rutele ascunse.</p>
-                <a href="experiente.html" class="btn-gold">EXPLORAȚI</a>
+                <p>Aventură 4x4 printre monumentele naturii.</p>
+                <span class="btn-gold">EXPLORAȚI</span>
             </div>
-        </div>
+        </a>
+        <a href="gastronomie.html" class="card-lux" style="background-image: url('images/index-mancare.jpg');">
+            <div class="card-content">
+                <h3>Gastronomie</h3>
+                <p>Gusturi uitate și ingrediente pure din grădina noastră.</p>
+                <span class="btn-gold">GUSTĂ TRADIȚIA</span>
+            </div>
+        </a>
+        <a href="experiente.html" class="card-lux" style="background-image: url('images/narcise.jpg');">
+            <div class="card-content">
+                <h3>Lucru Manual</h3>
+                <p>Redescoperă bucuria de a crea cu mâinile în inima naturii.</p>
+                <span class="btn-gold">CREEAZĂ</span>
+            </div>
+        </a>
     </div>
 
     <footer>HAȚEG ALTERNATIV &copy; 2026</footer>
