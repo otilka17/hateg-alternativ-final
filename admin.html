@@ -3,15 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin | Bază de Date Rezervări</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Admin | Gestiune Rezervări Hațeg</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
     <style>
-        :root { --auriu: #c5a059; --negru: #050505; --gri: #0d0d0d; --alb: #ffffff; }
+        :root { 
+            --auriu: #c5a059; 
+            --negru: #050505; 
+            --gri-inchis: #0d0d0d; 
+            --alb: #ffffff; 
+        }
         
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; padding: 40px 20px; }
 
-        /* HEADER ADMIN - LOGO-UL TĂU FIXAT SUS */
+        /* HEADER ADMIN - LOGO-UL TĂU ORIGINAL (STATIC) */
         .admin-header { 
             text-align: center; 
             margin-bottom: 60px; 
@@ -19,28 +24,85 @@
             padding-bottom: 40px;
         }
         
-        /* CONTAINER LOGO - SĂ SE VADĂ BRUTAL */
         .admin-header svg { 
-            height: 220px; /* Dimensiune mare pentru impact */
+            height: 240px; /* Logo masiv de calitate */
             width: auto; 
             display: block; 
-            margin: 0 auto 20px;
-            filter: drop-shadow(0 0 20px rgba(197, 160, 89, 0.3));
+            margin: 0 auto 30px;
+            filter: drop-shadow(0 0 25px rgba(197, 160, 89, 0.4));
         }
 
-        h1 { font-family: 'Playfair Display', serif; font-style: italic; color: var(--auriu); font-size: 3rem; letter-spacing: 2px; }
+        h1 { 
+            font-family: 'Playfair Display', serif; 
+            font-style: italic; 
+            color: var(--auriu); 
+            font-size: clamp(2.5rem, 5vw, 4rem); 
+            letter-spacing: 3px; 
+            text-transform: uppercase;
+        }
 
-        /* TABEL REZERVĂRI */
-        .table-container { max-width: 1400px; margin: 0 auto; overflow-x: auto; }
-        table { width: 100%; border-collapse: collapse; background: var(--gri); border: 1px solid #222; }
-        th { background: var(--auriu); color: #000; padding: 20px; text-align: left; text-transform: uppercase; letter-spacing: 2px; font-weight: 900; }
-        td { padding: 20px; border-bottom: 1px solid #222; font-size: 1.1rem; }
+        /* TABEL REZERVĂRI - CALITATE ERMES */
+        .table-container { 
+            max-width: 1400px; 
+            margin: 0 auto; 
+            overflow-x: auto; 
+            border: 1px solid #222;
+            background: var(--gri-inchis);
+        }
+        
+        table { width: 100%; border-collapse: collapse; min-width: 900px; }
+        
+        th { 
+            background: var(--auriu); 
+            color: #000; 
+            padding: 25px 20px; 
+            text-align: left; 
+            text-transform: uppercase; 
+            letter-spacing: 3px; 
+            font-weight: 900; 
+            font-size: 0.9rem;
+        }
+        
+        td { 
+            padding: 20px; 
+            border-bottom: 1px solid #222; 
+            font-size: 1.1rem; 
+            font-weight: 300;
+        }
+        
         tr:hover { background: #151515; }
 
-        .status { font-weight: 900; text-transform: uppercase; color: var(--auriu); }
+        .client-name { color: var(--auriu); font-weight: 700; font-family: 'Playfair Display', serif; font-size: 1.3rem; }
+        .status-pill { 
+            font-weight: 900; 
+            text-transform: uppercase; 
+            font-size: 0.75rem; 
+            letter-spacing: 2px;
+            padding: 6px 12px;
+            border: 1px solid var(--auriu);
+            color: var(--auriu);
+        }
         
-        #loading { text-align: center; padding: 100px; font-size: 1.5rem; letter-spacing: 5px; color: var(--auriu); font-weight: 900; }
-        .error-msg { border: 2px solid #ff4444; color: #ff4444; padding: 30px; text-align: center; margin: 20px; font-weight: bold; }
+        #loading { 
+            text-align: center; 
+            padding: 100px; 
+            font-size: 1.5rem; 
+            letter-spacing: 8px; 
+            color: var(--auriu); 
+            font-weight: 900;
+            text-transform: uppercase;
+        }
+
+        .error-box { 
+            border: 2px solid #ff4444; 
+            color: #ff4444; 
+            padding: 40px; 
+            text-align: center; 
+            margin: 40px auto; 
+            max-width: 600px;
+            font-weight: bold; 
+            letter-spacing: 2px;
+        }
     </style>
 </head>
 <body>
@@ -74,7 +136,7 @@
         <h1>Bază de Date Rezervări</h1>
     </div>
 
-    <div id="loading">SINCROZINARE CU GOOGLE SHEETS...</div>
+    <div id="loading">Sincronizare în curs...</div>
 
     <div class="table-container" id="admin-content" style="display:none;">
         <table>
@@ -94,41 +156,48 @@
     </div>
 
     <script>
-        // PUNE AICI URL-UL TĂU DE LA GOOGLE (CEL CU /exec)
-        const URL_SHEET = "AICI_PUNE_URL_UL_TAU_DE_LA_GOOGLE";
+        // URL-ul tău de Google Apps Script Web App
+        const URL_WEB_APP = "https://script.google.com/macros/s/AKfycbwoW6k_U_jIurNoZ0OwgcbXZP-zj0pQxj_qiqkGpi2l21cpPh5e10XMKi1ZdIO5LY0Z/exec";
 
-        async function loadData() {
+        async function loadReservations() {
             try {
-                const res = await fetch(URL_SHEET);
+                const response = await fetch(URL_WEB_APP);
                 const data = await response.json();
                 
                 const rows = document.getElementById('data-rows');
                 const loading = document.getElementById('loading');
                 const content = document.getElementById('admin-content');
 
+                if (!data || data.length === 0) {
+                    loading.innerText = "Nu există rezervări înregistrate.";
+                    return;
+                }
+
                 rows.innerHTML = data.map(item => `
                     <tr>
                         <td>${item['Data Inreg'] || '-'}</td>
-                        <td style="color:var(--auriu); font-weight:bold;">${item['Client'] || '-'}</td>
+                        <td class="client-name">${item['Client'] || 'Anonim'}</td>
                         <td>${item['Telefon'] || '-'}</td>
                         <td>${item['Sejur'] || '-'}</td>
-                        <td style="font-weight:bold;">${item['Total'] || '-'}</td>
-                        <td class="status">${item['Status'] || 'Activ'}</td>
+                        <td style="font-weight:900;">${item['Total'] || '0'} RON</td>
+                        <td><span class="status-pill">${item['Status'] || 'CONFIRMAT'}</span></td>
                     </tr>
                 `).join('');
 
                 loading.style.display = 'none';
                 content.style.display = 'block';
 
-            } catch (e) {
+            } catch (err) {
                 document.getElementById('loading').innerHTML = `
-                <div class="error-msg">
-                    EROARE DE PERMISIUNE GOOGLE.<br>
-                    Verifică dacă ai dat Deployment ca "Anyone".
+                <div class="error-box">
+                    EROARE DE CONECTARE GOOGLE SHEETS<br><br>
+                    <small style="font-size:0.8rem; letter-spacing:0;">Asigură-te că ai dat Deploy la script ca "Anyone" și că URL-ul este corect.</small>
                 </div>`;
+                console.error(err);
             }
         }
-        loadData();
+        
+        loadReservations();
     </script>
 </body>
 </html>
