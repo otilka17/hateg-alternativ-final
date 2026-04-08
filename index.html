@@ -5,21 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hațeg Alternativ | Moștenirea de Aur</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Inter:wght@300;400;700;900&family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet">
     
     <style>
         :root { 
-            --auriu: #c5a059; 
+            --hermes-orange: #E85C28; 
+            --hermes-brown: #4E3629;
             --negru: #050505; 
             --alb: #ffffff;
-            /* Umbră densă "Metanoia" pentru profunzime și contrast brutal */
-            --shadow-metanoia: linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.95) 100%);
+            --shadow-metanoia: linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.95) 100%);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-        /* HEADER - LOGO-UL TĂU SVG INTEGRAT */
+        /* HEADER - NOUL LOGO HERMÈS INTEGRAT */
         .site-header { 
             position: fixed; top: 0; width: 100%; z-index: 9999; 
             padding: 20px 50px;
@@ -29,14 +29,14 @@
         
         .brand { display: block; z-index: 10000; text-decoration: none; }
         .brand svg { 
-            height: 180px; /* Masiv, Ermes Style */
+            height: 180px; /* Masiv și impunător */
             width: auto; 
             display: block;
-            filter: drop-shadow(0 0 25px rgba(0,0,0,0.8));
+            filter: drop-shadow(0 10px 30px rgba(0,0,0,0.8));
         }
 
         .burger { cursor: pointer; z-index: 10000; padding: 15px; }
-        .burger div { width: 55px; height: 6px; background: #fff; margin: 12px; transition: 0.3s; }
+        .burger div { width: 55px; height: 6px; background: var(--alb); margin: 12px; transition: 0.3s; }
 
         /* NAV OVERLAY */
         .main-nav { 
@@ -47,11 +47,11 @@
         .main-nav.active { right: 0; }
         .main-nav a { 
             text-decoration: none; color: #fff; font-size: clamp(2.5rem, 8vw, 4.5rem); 
-            font-weight: 900; text-transform: uppercase; margin: 20px 0; letter-spacing: 5px; opacity: 0.6; transition: 0.3s;
+            font-weight: 900; text-transform: uppercase; margin: 20px 0; letter-spacing: 5px; opacity: 0.6; 
         }
-        .main-nav a:hover { opacity: 1; color: var(--auriu); }
+        .main-nav a:hover { opacity: 1; color: var(--hermes-orange); }
 
-        /* ERMES SLIDER - ZOOM LENT & STORYTELLING */
+        /* SLIDER ERMES - ZOOM & STORYTELLING */
         .hermes-viewport { position: relative; width: 100%; height: 100vh; overflow: hidden; background: #000; }
         .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; visibility: hidden; transition: opacity 3s ease-in-out; display: flex; align-items: center; justify-content: center; }
         .slide.active { opacity: 1; visibility: visible; }
@@ -62,36 +62,36 @@
         .slide-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: var(--shadow-metanoia); z-index: 2; }
 
         .slide-content { position: relative; z-index: 10; text-align: center; max-width: 90%; }
-        .slide-content span { font-size: 1.5rem; letter-spacing: 15px; text-transform: uppercase; color: var(--auriu); display: block; margin-bottom: 30px; font-weight: 300; }
+        .slide-content span { font-size: 1.5rem; letter-spacing: 15px; text-transform: uppercase; color: var(--hermes-orange); display: block; margin-bottom: 30px; font-weight: 300; }
         .slide-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(4.5rem, 18vw, 13rem); font-weight: 900; font-style: italic; line-height: 0.8; text-shadow: 0 20px 80px rgba(0,0,0,1); }
 
         /* BUTON HERO */
-        .hero-btn { display: inline-block; padding: 25px 60px; border: 3px solid var(--auriu); color: var(--auriu); text-decoration: none; text-transform: uppercase; font-weight: 900; letter-spacing: 8px; font-size: 1.5rem; transition: 0.4s; margin-top: 50px; }
-        .hero-btn:hover { background: var(--auriu); color: #000; }
+        .hero-btn { display: inline-block; padding: 25px 60px; border: 3px solid var(--hermes-orange); color: var(--hermes-orange); text-decoration: none; text-transform: uppercase; font-weight: 900; letter-spacing: 8px; font-size: 1.5rem; transition: 0.4s; margin-top: 50px; }
+        .hero-btn:hover { background: var(--hermes-orange); color: #000; }
 
         /* CONTENT SECTIONS */
         .container { padding: 150px 50px; max-width: 1600px; margin: 0 auto; }
         .intro-block { display: flex; gap: 80px; align-items: center; flex-wrap: wrap; margin-bottom: 200px; }
         .intro-img { flex: 1; min-width: 450px; height: 800px; border: 1px solid #1a1a1a; overflow: hidden; }
         .intro-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
-        .intro-text h2 { font-family: 'Playfair Display', serif; font-size: 5.5rem; font-style: italic; color: var(--auriu); margin-bottom: 40px; }
+        .intro-text h2 { font-family: 'Playfair Display', serif; font-size: 5.5rem; font-style: italic; color: var(--hermes-orange); margin-bottom: 40px; }
         .intro-text p { font-size: 2.2rem; color: #888; font-weight: 300; line-height: 1.5; }
 
         /* GRID LUXURY */
         .grid-lux { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 80px; margin-bottom: 150px; }
         .card-lux { background: #0a0a0a; border: 1px solid #1a1a1a; transition: 0.6s; display: flex; flex-direction: column; text-decoration: none; color: inherit; }
-        .card-lux:hover { border-color: var(--auriu); transform: translateY(-25px); }
+        .card-lux:hover { border-color: var(--hermes-orange); transform: translateY(-25px); }
         .img-lux { height: 600px; overflow: hidden; }
         .img-lux img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: 2s; }
         .card-lux:hover .img-lux img { opacity: 1; transform: scale(1.1); }
         .info-lux { padding: 60px 40px; text-align: center; }
         .info-lux h3 { font-family: 'Playfair Display', serif; font-size: 3.5rem; font-style: italic; margin-bottom: 30px; }
-        .btn-reserve { display: block; padding: 30px; border: 4px solid var(--auriu); color: var(--auriu); text-transform: uppercase; font-weight: 900; letter-spacing: 6px; font-size: 1.5rem; text-align: center; }
+        .btn-reserve { display: block; padding: 30px; border: 4px solid var(--hermes-orange); color: var(--hermes-orange); text-transform: uppercase; font-weight: 900; letter-spacing: 6px; font-size: 1.5rem; text-align: center; }
 
         footer { padding: 120px 50px; text-align: center; border-top: 1px solid #111; font-size: 1.3rem; letter-spacing: 10px; opacity: 0.3; text-transform: uppercase; }
 
         @media (max-width: 1024px) {
-            .brand svg { height: 140px !important; }
+            .brand svg { height: 150px !important; }
             .slide-content h1 { font-size: 8rem; }
             .hero-btn { width: 100%; text-align: center; font-size: 1.2rem; }
         }
@@ -102,30 +102,30 @@
     <header class="site-header">
         <a href="index.html" class="brand">
             <svg width="800" height="800" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
-              <defs>
-                <radialGradient id="skyGradient" cx="50%" cy="40%" r="70%">
-                  <stop offset="0%" style="stop-color:#fff9e6;stop-opacity:1" />
-                  <stop offset="100%" style="stop-color:#d4c5a1;stop-opacity:1" />
-                </radialGradient>
-                <linearGradient id="mountainGradient" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" style="stop-color:#d4a35a;stop-opacity:1" />
-                  <stop offset="100%" style="stop-color:#7a5c32;stop-opacity:1" />
-                </linearGradient>
-                <filter id="glow">
-                  <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-                  <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
-                </filter>
-              </defs>
-              <rect width="800" height="800" fill="url(#skyGradient)" />
-              <circle cx="400" cy="300" r="100" fill="none" stroke="#ffffff" stroke-width="4" opacity="0.8" filter="url(#glow)" />
-              <path d="M250 450 L400 300 L550 450 Z" fill="url(#mountainGradient)" opacity="0.9" />
-              <g transform="translate(400, 520)" fill="#3d3d3d">
-                <path d="M-10 -50 C-80 -100 -200 -150 -250 50 C-180 30 -120 10 -10 -10 Z" opacity="0.9" />
-                <path d="M10 -50 C80 -100 200 -150 250 50 C180 30 120 10 10 -10 Z" opacity="0.9" />
-              </g>
-              <g font-family="Serif, 'Playfair Display', Georgia" text-anchor="middle" fill="#ffffff">
-                <text x="400" y="760" font-size="44" font-weight="900" letter-spacing="2">HAȚEG ALTERNATIV</text>
-              </g>
+                <defs>
+                  <linearGradient id="mtnGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" style="stop-color:#E85C28;stop-opacity:1" />
+                    <stop offset="100%" style="stop-color:#4E3629;stop-opacity:1" />
+                  </linearGradient>
+                  <filter id="softShadow">
+                    <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.2"/>
+                  </filter>
+                </defs>
+                <rect width="800" height="800" fill="#FDFCF9" />
+                <circle cx="400" cy="280" r="115" fill="none" stroke="#E85C28" stroke-width="1" opacity="0.3" />
+                <g filter="url(#softShadow)">
+                  <path d="M250 460 L400 240 L550 460 Z" fill="url(#mtnGrad)" opacity="0.95" />
+                  <path d="M180 490 L320 340 L460 490 Z" fill="#4E3629" opacity="0.7" />
+                  <path d="M480 490 L620 340 L760 490 Z" fill="#4E3629" opacity="0.7" />
+                </g>
+                <g transform="translate(400, 520)" fill="#E85C28" filter="url(#softShadow)">
+                  <path d="M-5 -40 C-100 -120 -250 -150 -260 60 C-180 30 -120 10 -5 10 Z" opacity="0.9" />
+                  <path d="M5 -40 C100 -120 250 -150 260 60 C180 30 120 10 5 10 Z" opacity="0.9" />
+                </g>
+                <g text-anchor="middle" font-family="'Cinzel', serif" fill="#4E3629">
+                  <text x="400" y="740" font-size="56" font-weight="900" letter-spacing="6">HAȚEG</text>
+                  <text x="400" y="785" font-size="30" font-weight="400" letter-spacing="16" fill="#E85C28">ALTERNATIV</text>
+                </g>
             </svg>
         </a>
         <div class="burger" id="burger">
@@ -135,7 +135,8 @@
             <a href="retreat.html">Metanoia</a>
             <a href="gastronomie.html">Gastronomie</a>
             <a href="experiente.html">Ateliere</a>
-            <a href="buliga.html">Rezervări</a> </nav>
+            <a href="buliga.html">Rezervări</a> 
+        </nav>
     </header>
 
     <section class="hermes-viewport">
@@ -174,7 +175,7 @@
             <div class="intro-text">
                 <h2>Pensiunea<br>La Buligă</h2>
                 <p>Un sanctuar al rânduielii și al tăcerii profunde creat pentru reconectare în inima munților Retezat.</p>
-                <a href="buliga.html" style="color:var(--auriu); font-weight:900; font-size:2rem; text-transform:uppercase; text-decoration:none; border-bottom:4px solid var(--auriu); margin-top:40px; display:inline-block;">Vezi Rezervări</a>
+                <a href="buliga.html" style="color:var(--hermes-orange); font-weight:900; font-size:2rem; text-transform:uppercase; text-decoration:none; border-bottom:4px solid var(--hermes-orange); margin-top:40px; display:inline-block;">Rezervări</a>
             </div>
         </section>
 
@@ -200,14 +201,14 @@
                 <div class="img-lux"><img src="images/index-mancare.jpg" alt="Gastro"></div>
                 <div class="info-lux">
                     <h3>Gastronomie</h3>
-                    <span class="btn-reserve">Vezi Meniul</span>
+                    <span class="btn-reserve">Meniu</span>
                 </div>
             </a>
             <a href="experiente.html" class="card-lux">
-                <div class="img-lux"><img src="images/narcise.jpg" alt="Artă"></div>
+                <div class="img-lux"><img src="images/narcise.jpg" alt="Ateliere"></div>
                 <div class="info-lux">
                     <h3>Ateliere Artă</h3>
-                    <span class="btn-reserve">Vezi Ateliere</span>
+                    <span class="btn-reserve">Ateliere</span>
                 </div>
             </a>
         </div>
@@ -216,7 +217,6 @@
     <footer>HAȚEG ALTERNATIV &copy; 2026</footer>
 
     <script>
-        // SLIDER ERMES (CROSS-FADE LA 8 SECUNDE)
         let slides = document.querySelectorAll('.slide');
         let current = 0;
         setInterval(() => {
@@ -225,12 +225,6 @@
             slides[current].classList.add('active');
         }, 8000);
 
-        // BURGER MENU
         const burger = document.getElementById('burger');
         const nav = document.getElementById('nav-links');
-        burger.addEventListener('click', () => {
-            nav.classList.toggle('active');
-        });
-    </script>
-</body>
-</html>  
+        burger.addEventListener('click', () =>
