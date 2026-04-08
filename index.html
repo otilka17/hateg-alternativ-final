@@ -33,7 +33,7 @@
         .main-nav a:hover { opacity: 1; color: var(--auriu-gold); }
         .nav-res-btn { border: 1px solid var(--auriu-gold); padding: 10px 40px; margin-top: 20px !important; opacity: 1 !important; color: var(--auriu-gold) !important; }
 
-        /* HERO SLIDER (85vh - optimizat) */
+        /* HERO SLIDER (85vh) */
         .hermes-viewport { position: relative; width: 100%; height: 85vh; overflow: hidden; display: flex; align-items: center; justify-content: center; }
         .slide { position: absolute; width: 100%; height: 100%; opacity: 0; visibility: hidden; transition: opacity 2.5s ease-in-out; }
         .slide.active { opacity: 1; visibility: visible; }
@@ -57,7 +57,7 @@
         .card-content p { color: #fff; line-height: 1.5; margin-bottom: 20px; font-size: 0.95rem; }
         .btn-gold { display: inline-block; padding: 10px 25px; border: 1px solid var(--auriu-gold); color: var(--auriu-gold); text-decoration: none; font-family: 'Cinzel'; font-size: 0.75rem; transition: 0.4s; }
 
-        /* REZERVARE CU PREȚURI ȘI OPȚIUNI - JOS */
+        /* REZERVARE - JOS */
         .forum-section { padding: 100px 50px; background: #050505; border-top: 1px solid #222; }
         .forum-container { max-width: 900px; margin: 0 auto; }
         .forum-container h2 { font-family: 'Cinzel'; font-size: 1.8rem; color: var(--auriu-gold); text-align: center; margin-bottom: 50px; letter-spacing: 5px; }
@@ -73,7 +73,6 @@
         .forum-form button { grid-column: span 2; cursor: pointer; border: 1px solid var(--auriu-gold); background: transparent; color: var(--auriu-gold); font-family: 'Cinzel'; padding: 20px; transition: 0.4s; letter-spacing: 3px;}
         .forum-form button:hover { background: var(--auriu-gold); color: #000; }
 
-        /* UTILS */
         .whatsapp-float { position: fixed; bottom: 30px; left: 30px; background-color: #25d366; color: #FFF; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 10000; }
         footer { padding: 60px; text-align: center; border-top: 1px solid #111; opacity: 0.3; letter-spacing: 12px; font-family: 'Cinzel'; font-size: 0.7rem; }
     </style>
@@ -147,14 +146,15 @@
                         <option value="Buliga_Izolare_850">Buliga: Izolare (850 RON / pers)</option>
                         <option value="Metanoia_Tacere_1200">Metanoia: Tăcere (1200 RON / pers)</option>
                         <option value="Hateg_4x4_450">Hațeg Pe Roți (450 RON / mașină)</option>
-                        <option value="Gastronomie_250">Atelier Gastronomic (250 RON / pers)</option>
+                        <option value="Atelier_Creatie_150">Atelier Lucru Manual (150 RON / pers)</option>
                     </select>
 
                     <div class="extra-services">
                         <h4>Opțiuni suplimentare:</h4>
                         <label class="checkbox-item"><input type="checkbox" name="Cina_Traditionala" value="Da"> <span>Cină la ceaun (+120 RON)</span></label>
-                        <label class="checkbox-item"><input type="checkbox" name="Ghid_Privat" value="Da"> <span>Ghid privat (+200 RON)</span></label>
-                        <label class="checkbox-item"><input type="checkbox" name="Transfer_Aeroport" value="Da"> <span>Transfer Aeroport (+150 RON)</span></label>
+                        <label class="checkbox-item"><input type="checkbox" name="Atelier_Gastronomic" value="Da"> <span>Atelier Gastronomic (+250 RON)</span></label>
+                        <label class="checkbox-item"><input type="checkbox" name="Atelier_Creatie_Extra" value="Da"> <span>Atelier Creație/Lucru Manual (+150 RON)</span></label>
+                        <label class="checkbox-item"><input type="checkbox" name="Ghid_Privat" value="Da"> <span>Ghid privat drumeție (+200 RON)</span></label>
                     </div>
                 </div>
 
