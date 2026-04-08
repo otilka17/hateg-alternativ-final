@@ -13,125 +13,86 @@
             --auriu: #c5a059; 
             --negru: #050505; 
             --alb: #ffffff;
-            --shadow-metanoia: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.9) 100%);
+            --shadow-metanoia: linear-gradient(180deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.95) 100%);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; line-height: 1.4; }
+        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-        /* HEADER - LOGO MASIV */
+        /* HEADER - LOGO URIAS SI VIZIBIL */
         .site-header { 
-            position: fixed; top: 0; width: 100%; z-index: 5000; 
-            padding: 40px 60px;
+            position: fixed; top: 0; width: 100%; z-index: 9999; 
+            padding: 40px 50px;
             display: flex; justify-content: space-between; align-items: center;
             background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, transparent 100%);
-            transition: 0.5s ease;
         }
         
+        .brand { display: block; z-index: 10000; }
         .brand img { 
-            height: 130px; /* Logo mare */
+            height: 140px; /* Logo impunător */
             width: auto; 
             display: block;
-            filter: drop-shadow(0 0 30px rgba(0,0,0,0.8));
+            filter: drop-shadow(0 0 25px rgba(0,0,0,1));
         }
 
-        .burger { cursor: pointer; z-index: 6000; padding: 15px; }
-        .burger div { width: 60px; height: 5px; background: var(--alb); margin: 12px; transition: 0.3s; }
+        .burger { cursor: pointer; z-index: 10000; padding: 15px; }
+        .burger div { width: 55px; height: 6px; background: #fff; margin: 12px; transition: 0.3s; }
 
         /* NAV OVERLAY */
         .main-nav { 
             position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; 
             background: var(--negru); display: flex; flex-direction: column; 
-            justify-content: center; align-items: center; transition: 0.8s cubic-bezier(0.7, 0, 0.3, 1); z-index: 5500;
+            justify-content: center; align-items: center; transition: 0.8s cubic-bezier(0.7, 0, 0.3, 1); z-index: 9500;
         }
         .main-nav.active { right: 0; }
-        .main-nav a { 
-            text-decoration: none; color: var(--alb); font-size: clamp(3rem, 10vw, 5rem); 
-            font-weight: 900; text-transform: uppercase; margin: 20px 0; letter-spacing: 5px; opacity: 0.5; 
-        }
-        .main-nav a:hover { opacity: 1; color: var(--auriu); }
+        .main-nav a { text-decoration: none; color: #fff; font-size: clamp(3rem, 10vw, 5rem); font-weight: 900; text-transform: uppercase; margin: 20px 0; letter-spacing: 5px; opacity: 0.6; }
 
-        /* ERMES SLIDER (CROSS-FADE + ZOOM 20s) */
-        .hermes-viewport {
-            position: relative; width: 100%; height: 100vh; overflow: hidden; background: #000;
-        }
-        .slide {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            opacity: 0; visibility: hidden;
-            transition: opacity 3.5s ease-in-out;
-            display: flex; align-items: center; justify-content: center;
-        }
+        /* HERO SLIDER - ZOOM & STORYTELLING */
+        .hermes-viewport { position: relative; width: 100%; height: 100vh; overflow: hidden; background: #000; }
+        .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; visibility: hidden; transition: opacity 3s ease-in-out; display: flex; align-items: center; justify-content: center; }
         .slide.active { opacity: 1; visibility: visible; }
 
-        .slide-bg {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background-size: cover; background-position: center;
-            transform: scale(1.1);
-            transition: transform 20s linear;
-        }
-        .slide.active .slide-bg { transform: scale(1.45); }
+        .slide-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; transform: scale(1.1); transition: transform 20s linear; }
+        .slide.active .slide-bg { transform: scale(1.4); }
 
-        .slide-overlay {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--shadow-metanoia);
-            z-index: 2;
-        }
+        .slide-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: var(--shadow-metanoia); z-index: 2; }
 
         .slide-content { position: relative; z-index: 10; text-align: center; max-width: 90%; }
-        .slide-content span {
-            font-size: 1.5rem; letter-spacing: 15px; text-transform: uppercase;
-            font-weight: 300; color: var(--auriu); display: block; margin-bottom: 30px;
-        }
-        .slide-content h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(5rem, 20vw, 15rem);
-            font-weight: 900; font-style: italic; line-height: 0.8;
-            text-shadow: 0 20px 100px rgba(0,0,0,1);
-            margin-bottom: 40px;
-        }
+        .slide-content span { font-size: 1.5rem; letter-spacing: 15px; text-transform: uppercase; color: var(--auriu); display: block; margin-bottom: 30px; }
+        .slide-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(5rem, 18vw, 13rem); font-weight: 900; font-style: italic; line-height: 0.8; text-shadow: 0 20px 80px rgba(0,0,0,1); margin-bottom: 50px; }
 
-        /* BUTON SUB IMAGINE HERO */
-        .hero-btn {
-            display: inline-block; padding: 25px 60px; border: 3px solid var(--auriu);
-            color: var(--auriu); text-decoration: none; text-transform: uppercase;
-            font-weight: 900; letter-spacing: 8px; font-size: 1.5rem; transition: 0.4s;
-        }
+        /* BUTON HERO - DUCE LA REZERVĂRI */
+        .hero-btn { display: inline-block; padding: 25px 60px; border: 3px solid var(--auriu); color: var(--auriu); text-decoration: none; text-transform: uppercase; font-weight: 900; letter-spacing: 8px; font-size: 1.5rem; transition: 0.4s; }
         .hero-btn:hover { background: var(--auriu); color: #000; }
 
-        /* CONTAINER CONTENT */
-        .container { padding: 200px 50px; max-width: 1600px; margin: 0 auto; }
-        
-        .intro-block { display: flex; gap: 100px; align-items: center; flex-wrap: wrap; margin-bottom: 250px; }
-        .intro-img { flex: 1; min-width: 450px; height: 850px; border: 1px solid #1a1a1a; overflow: hidden; }
+        /* CONTENT */
+        .container { padding: 150px 50px; max-width: 1600px; margin: 0 auto; }
+        .intro-block { display: flex; gap: 80px; align-items: center; flex-wrap: wrap; margin-bottom: 200px; }
+        .intro-img { flex: 1; min-width: 450px; height: 800px; border: 1px solid #1a1a1a; overflow: hidden; }
         .intro-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
-        
-        .intro-text h2 { font-family: 'Playfair Display', serif; font-size: 6rem; font-style: italic; color: var(--auriu); margin-bottom: 40px; line-height: 1; }
-        .intro-text p { font-size: 2.5rem; color: #888; font-weight: 300; line-height: 1.6; }
+        .intro-text h2 { font-family: 'Playfair Display', serif; font-size: 6rem; font-style: italic; color: var(--auriu); margin-bottom: 40px; }
+        .intro-text p { font-size: 2.2rem; color: #888; font-weight: 300; line-height: 1.5; }
 
-        /* GRID LUXURY - CARDS URIEȘI */
-        .grid-lux { display: grid; grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); gap: 100px; margin-bottom: 200px; }
-        .card-lux { background: #0a0a0a; border: 1px solid #1a1a1a; transition: 0.6s; display: flex; flex-direction: column; text-decoration: none; color: inherit; position: relative; }
-        .card-lux:hover { border-color: var(--auriu); transform: translateY(-30px); }
-        .img-lux { height: 650px; overflow: hidden; }
+        /* GRID LUXURY */
+        .grid-lux { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 80px; margin-bottom: 150px; }
+        .card-lux { background: #0a0a0a; border: 1px solid #1a1a1a; transition: 0.6s; display: flex; flex-direction: column; text-decoration: none; color: inherit; }
+        .card-lux:hover { border-color: var(--auriu); transform: translateY(-25px); }
+        .img-lux { height: 600px; overflow: hidden; }
         .img-lux img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: 2s; }
         .card-lux:hover .img-lux img { opacity: 1; transform: scale(1.1); }
-
-        .info-lux { padding: 80px 60px; text-align: center; }
-        .info-lux h3 { font-family: 'Playfair Display', serif; font-size: 4.5rem; font-style: italic; margin-bottom: 30px; }
-        .price { display: block; font-family: 'Playfair Display', serif; font-size: 4.5rem; margin-bottom: 50px; font-weight: 900; }
-        .btn-reserve { display: block; padding: 35px; border: 4px solid var(--auriu); color: var(--auriu); text-transform: uppercase; font-weight: 900; letter-spacing: 8px; font-size: 1.8rem; transition: 0.4s; text-align: center; }
+        .info-lux { padding: 60px 40px; text-align: center; }
+        .info-lux h3 { font-family: 'Playfair Display', serif; font-size: 4rem; font-style: italic; margin-bottom: 30px; }
+        
+        /* BUTON CARD - DUCE LA REZERVĂRI */
+        .btn-reserve { display: block; padding: 30px; border: 4px solid var(--auriu); color: var(--auriu); text-transform: uppercase; font-weight: 900; letter-spacing: 6px; font-size: 1.5rem; text-align: center; }
         .btn-reserve:hover { background: var(--auriu); color: #000; }
 
-        footer { padding: 150px 60px; text-align: center; border-top: 1px solid #111; font-size: 1.5rem; letter-spacing: 12px; opacity: 0.3; text-transform: uppercase; }
+        footer { padding: 120px 50px; text-align: center; border-top: 1px solid #111; font-size: 1.3rem; letter-spacing: 10px; opacity: 0.3; }
 
-        /* MOBIL */
         @media (max-width: 1024px) {
-            .site-header { padding: 40px 30px; background: rgba(0,0,0,1); }
             .brand img { height: 160px !important; }
-            .burger div { width: 80px; height: 8px; margin: 15px; }
-            .grid-lux { grid-template-columns: 1fr; }
-            .slide-content h1 { font-size: 9rem; }
-            .hero-btn { font-size: 1.2rem; padding: 20px 40px; letter-spacing: 4px; }
+            .slide-content h1 { font-size: 8.5rem; }
+            .hero-btn { width: 90%; text-align: center; }
         }
     </style>
 </head>
@@ -139,7 +100,7 @@
 
     <header class="site-header">
         <a href="index.html" class="brand">
-            <img src="images/Hateg-logo.svg" alt="Hațeg Alternativ Logo">
+            <img src="images/Hateg-logo.svg" alt="Hațeg Alternativ">
         </a>
         <div class="burger" id="burger">
             <div></div><div></div><div></div>
@@ -148,8 +109,7 @@
             <a href="retreat.html">Metanoia</a>
             <a href="gastronomie.html">Gastronomie</a>
             <a href="experiente.html">Ateliere</a>
-            <a href="buliga.html">Rezervări</a>
-        </nav>
+            <a href="buliga.html">Rezervări</a> </nav>
     </header>
 
     <section class="hermes-viewport">
@@ -157,18 +117,17 @@
             <div class="slide-bg" style="background-image: url('images/rasarit.jpg');"></div>
             <div class="slide-overlay"></div>
             <div class="slide-content">
-                <span>Rănduiala Locului</span>
+                <span>Rânduiala Munților</span>
                 <h1>Simte.</h1>
-                <a href="buliga.html" class="hero-btn">Descoperă Pensiunea</a>
-            </div>
+                <a href="buliga.html" class="hero-btn">Rezervări</a> </div>
         </div>
         <div class="slide">
             <div class="slide-bg" style="background-image: url('images/apus.jpg');"></div>
             <div class="slide-overlay"></div>
             <div class="slide-content">
-                <span>Tăcerea Munților</span>
+                <span>Tăcerea Vindecătoare</span>
                 <h1>Explorează.</h1>
-                <a href="obiective.html" class="hero-btn">Vezi Obiective</a>
+                <a href="buliga.html" class="hero-btn">Rezervări</a>
             </div>
         </div>
         <div class="slide">
@@ -177,37 +136,33 @@
             <div class="slide-content">
                 <span>Aventură Signature</span>
                 <h1>Metanoia.</h1>
-                <a href="retreat.html" class="hero-btn">Rezervă Resetarea</a>
+                <a href="buliga.html" class="hero-btn">Rezervări</a>
             </div>
         </div>
     </section>
 
     <div class="container">
         <section class="intro-block">
-            <div class="intro-img"><img src="images/la-buliga-pensiune.jpg" alt="Pensiunea La Buligă"></div>
+            <div class="intro-img"><img src="images/la-buliga-pensiune.jpg" alt="Pensiunea"></div>
             <div class="intro-text">
                 <h2>Pensiunea<br>La Buligă</h2>
-                <p>Un sanctuar al rânduielii și al tăcerii profunde. O experiență boutique creată pentru a-ți reseta sistemul nervos în inima Retezatului.</p>
-                <a href="buliga.html" style="color:var(--auriu); font-weight:900; font-size:2.5rem; text-transform:uppercase; text-decoration:none; border-bottom:4px solid var(--auriu); margin-top:50px; display:inline-block;">Vezi Detalii</a>
+                <p>Un sanctuar al rânduielii și al tăcerii profunde în inima munților Retezat.</p>
+                <a href="buliga.html" style="color:var(--auriu); font-weight:900; font-size:2rem; text-transform:uppercase; text-decoration:none; border-bottom:4px solid var(--auriu); margin-top:40px; display:inline-block;">Rezervări →</a>
             </div>
         </section>
 
         <div class="grid-lux">
             <div class="card-lux">
-                <div class="img-lux"><img src="images/jeep.jpg" alt="Buliga Adventure"></div>
+                <div class="img-lux"><img src="images/jeep.jpg" alt="Aventura"></div>
                 <div class="info-lux">
                     <h3>Buliga: Izolare</h3>
-                    <span class="price">8.500 RON</span>
-                    <a href="https://wa.me/40749229686" class="btn-reserve">Rezervă</a>
-                </div>
+                    <a href="buliga.html" class="btn-reserve">Rezervă</a> </div>
             </div>
             <div class="card-lux">
-                <div class="img-lux"><img src="images/apus1.jpg" alt="Metanoia Tăcere"></div>
+                <div class="img-lux"><img src="images/apus1.jpg" alt="Metanoia"></div>
                 <div class="info-lux">
                     <h3>Metanoia: Tăcere</h3>
-                    <span class="price">4.500 RON</span>
-                    <a href="https://wa.me/40749229686" class="btn-reserve">Rezervă</a>
-                </div>
+                    <a href="buliga.html" class="btn-reserve">Rezervă</a> </div>
             </div>
         </div>
 
@@ -216,14 +171,14 @@
                 <div class="img-lux"><img src="images/index-mancare.jpg" alt="Gastronomie"></div>
                 <div class="info-lux">
                     <h3>Gastronomie</h3>
-                    <span class="btn-reserve">Vezi Meniul</span>
+                    <span class="btn-reserve">Detalii</span>
                 </div>
             </a>
             <a href="experiente.html" class="card-lux">
-                <div class="img-lux"><img src="images/narcise.jpg" alt="Artă"></div>
+                <div class="img-lux"><img src="images/narcise.jpg" alt="Ateliere"></div>
                 <div class="info-lux">
                     <h3>Ateliere Artă</h3>
-                    <span class="btn-reserve">Vezi Ateliere</span>
+                    <span class="btn-reserve">Detalii</span>
                 </div>
             </a>
         </div>
@@ -232,21 +187,17 @@
     <footer>HAȚEG ALTERNATIV &copy; 2026</footer>
 
     <script>
-        // SLIDER ERMES (CROSS-FADE LA 8 SECUNDE)
         let slides = document.querySelectorAll('.slide');
         let current = 0;
         setInterval(() => {
             slides[current].classList.remove('active');
             current = (current + 1) % slides.length;
             slides[current].classList.add('active');
-        }, 8000);
+        }, 7500);
 
-        // BURGER MENU
         const burger = document.getElementById('burger');
         const nav = document.getElementById('nav-links');
-        burger.addEventListener('click', () => {
-            nav.classList.toggle('active');
-        });
+        burger.addEventListener('click', () => { nav.classList.toggle('active'); });
     </script>
 </body>
 </html>
