@@ -3,33 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin | Gestiune Rezervări Hațeg</title>
+    <title>Admin | Rezervări Hațeg Alternativ</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
     <style>
         :root { 
             --auriu: #c5a059; 
             --negru: #050505; 
-            --gri-inchis: #0d0d0d; 
+            --gri-panel: #0d0d0d; 
             --alb: #ffffff; 
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; padding: 40px 20px; }
 
-        /* HEADER ADMIN - LOGO-UL TĂU ORIGINAL (STATIC) */
+        /* HEADER ADMIN - LOGO STATIC (Nu se plimbă) */
         .admin-header { 
             text-align: center; 
             margin-bottom: 60px; 
             border-bottom: 1px solid #222; 
             padding-bottom: 40px;
+            position: relative; 
         }
         
         .admin-header svg { 
-            height: 240px; /* Logo masiv de calitate */
+            height: 240px; /* Dimensiune brutală */
             width: auto; 
             display: block; 
             margin: 0 auto 30px;
-            filter: drop-shadow(0 0 25px rgba(197, 160, 89, 0.4));
+            filter: drop-shadow(0 0 30px rgba(197, 160, 89, 0.4));
         }
 
         h1 { 
@@ -37,20 +38,22 @@
             font-style: italic; 
             color: var(--auriu); 
             font-size: clamp(2.5rem, 5vw, 4rem); 
-            letter-spacing: 3px; 
+            letter-spacing: 4px; 
             text-transform: uppercase;
+            line-height: 1;
         }
 
-        /* TABEL REZERVĂRI - CALITATE ERMES */
+        /* TABEL REZERVĂRI */
         .table-container { 
             max-width: 1400px; 
             margin: 0 auto; 
             overflow-x: auto; 
+            background: var(--gri-panel); 
             border: 1px solid #222;
-            background: var(--gri-inchis);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
         }
         
-        table { width: 100%; border-collapse: collapse; min-width: 900px; }
+        table { width: 100%; border-collapse: collapse; min-width: 1000px; }
         
         th { 
             background: var(--auriu); 
@@ -60,11 +63,11 @@
             text-transform: uppercase; 
             letter-spacing: 3px; 
             font-weight: 900; 
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
         
         td { 
-            padding: 20px; 
+            padding: 22px 20px; 
             border-bottom: 1px solid #222; 
             font-size: 1.1rem; 
             font-weight: 300;
@@ -73,33 +76,38 @@
         tr:hover { background: #151515; }
 
         .client-name { color: var(--auriu); font-weight: 700; font-family: 'Playfair Display', serif; font-size: 1.3rem; }
+        
         .status-pill { 
+            display: inline-block;
             font-weight: 900; 
             text-transform: uppercase; 
-            font-size: 0.75rem; 
+            font-size: 0.7rem; 
             letter-spacing: 2px;
-            padding: 6px 12px;
+            padding: 6px 15px;
             border: 1px solid var(--auriu);
             color: var(--auriu);
         }
         
         #loading { 
             text-align: center; 
-            padding: 100px; 
+            padding: 120px; 
             font-size: 1.5rem; 
-            letter-spacing: 8px; 
+            letter-spacing: 10px; 
             color: var(--auriu); 
             font-weight: 900;
             text-transform: uppercase;
+            animation: pulse 2s infinite;
         }
 
-        .error-box { 
+        @keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
+
+        .error-msg { 
             border: 2px solid #ff4444; 
             color: #ff4444; 
             padding: 40px; 
             text-align: center; 
             margin: 40px auto; 
-            max-width: 600px;
+            max-width: 700px;
             font-weight: bold; 
             letter-spacing: 2px;
         }
@@ -133,20 +141,20 @@
                 <text x="400" y="760" font-size="44" font-weight="900" letter-spacing="2">HAȚEG ALTERNATIV</text>
             </g>
         </svg>
-        <h1>Bază de Date Rezervări</h1>
+        <h1>Gestiune Rezervări</h1>
     </div>
 
-    <div id="loading">Sincronizare în curs...</div>
+    <div id="loading">Sincronizare cu baza de date...</div>
 
     <div class="table-container" id="admin-content" style="display:none;">
         <table>
             <thead>
                 <tr>
-                    <th>Data</th>
+                    <th>Data Înreg.</th>
                     <th>Client</th>
                     <th>Telefon</th>
                     <th>Sejur</th>
-                    <th>Suma</th>
+                    <th>Total</th>
                     <th>Status</th>
                 </tr>
             </thead>
@@ -156,12 +164,12 @@
     </div>
 
     <script>
-        // URL-ul tău de Google Apps Script Web App
-        const URL_WEB_APP = "https://script.google.com/macros/s/AKfycbwoW6k_U_jIurNoZ0OwgcbXZP-zj0pQxj_qiqkGpi2l21cpPh5e10XMKi1ZdIO5LY0Z/exec";
+        // NOUL TĂU URL WEB APP
+        const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxasnYvO3O9LBVEeZeqmvE8DQF21My7DJegMQNPIETEnpDLNOTOWrKDWqh-q5mbm250/exec";
 
-        async function loadReservations() {
+        async function fetchReservations() {
             try {
-                const response = await fetch(URL_WEB_APP);
+                const response = await fetch(SCRIPT_URL);
                 const data = await response.json();
                 
                 const rows = document.getElementById('data-rows');
@@ -169,35 +177,37 @@
                 const content = document.getElementById('admin-content');
 
                 if (!data || data.length === 0) {
-                    loading.innerText = "Nu există rezervări înregistrate.";
+                    loading.innerText = "Baza de date este goală.";
                     return;
                 }
 
                 rows.innerHTML = data.map(item => `
                     <tr>
                         <td>${item['Data Inreg'] || '-'}</td>
-                        <td class="client-name">${item['Client'] || 'Anonim'}</td>
+                        <td class="client-name">${item['Client'] || 'Nespecificat'}</td>
                         <td>${item['Telefon'] || '-'}</td>
                         <td>${item['Sejur'] || '-'}</td>
                         <td style="font-weight:900;">${item['Total'] || '0'} RON</td>
-                        <td><span class="status-pill">${item['Status'] || 'CONFIRMAT'}</span></td>
+                        <td><span class="status-pill">${item['Status'] || 'NOU'}</span></td>
                     </tr>
                 `).join('');
 
                 loading.style.display = 'none';
                 content.style.display = 'block';
 
-            } catch (err) {
+            } catch (error) {
                 document.getElementById('loading').innerHTML = `
-                <div class="error-box">
-                    EROARE DE CONECTARE GOOGLE SHEETS<br><br>
-                    <small style="font-size:0.8rem; letter-spacing:0;">Asigură-te că ai dat Deploy la script ca "Anyone" și că URL-ul este corect.</small>
+                <div class="error-msg">
+                    EROARE DE CONECTARE<br><br>
+                    <small style="font-size:0.8rem; letter-spacing:0; font-weight:normal; text-transform:none;">
+                        Asigură-te că în Google Apps Script ai dat: Deploy -> Manage Deployments -> Anyone has access.<br>
+                        De asemenea, verifică dacă numele coloanelor din Sheet sunt identice cu cele din cod.
+                    </small>
                 </div>`;
-                console.error(err);
             }
         }
-        
-        loadReservations();
+
+        fetchReservations();
     </script>
 </body>
 </html>
