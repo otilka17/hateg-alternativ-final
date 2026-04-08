@@ -23,14 +23,13 @@
         .site-header { 
             position: absolute; top: 0; width: 100%; z-index: 9999; 
             padding: 30px 50px; display: flex; justify-content: space-between; align-items: center;
-            background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, transparent 100%);
         }
         
         .brand { text-decoration: none; color: var(--alb); }
         .logo-text { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 900; letter-spacing: 2px; border: 1px solid var(--auriu); padding: 10px 20px; }
         .logo-text span { color: var(--auriu); }
 
-        .burger { cursor: pointer; z-index: 10000; }
+        .burger { cursor: pointer; z-index: 10000; padding: 10px; }
         .burger div { width: 35px; height: 2px; background: #fff; margin: 8px; transition: 0.3s; }
 
         /* NAV OVERLAY */
@@ -40,39 +39,46 @@
             justify-content: center; align-items: center; transition: 0.6s; z-index: 9500;
         }
         .main-nav.active { right: 0; }
-        .main-nav a { text-decoration: none; color: #fff; font-size: 3rem; font-weight: 900; text-transform: uppercase; margin: 15px 0; letter-spacing: 5px; opacity: 0.6; transition: 0.3s; }
+        .main-nav a { text-decoration: none; color: #fff; font-size: 3rem; font-weight: 900; text-transform: uppercase; margin: 15px 0; letter-spacing: 5px; opacity: 0.6; }
 
         /* HERO SLIDER */
-        .hermes-viewport { position: relative; width: 100%; height: 100vh; overflow: hidden; background: #000; }
+        .hermes-viewport { position: relative; width: 100%; height: 90vh; overflow: hidden; background: #000; }
         .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; visibility: hidden; transition: opacity 2s; display: flex; align-items: center; justify-content: center; }
         .slide.active { opacity: 1; visibility: visible; }
-        .slide-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; transform: scale(1.1); transition: transform 10s linear; }
-        .slide.active .slide-bg { transform: scale(1.3); }
+        .slide-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; }
         .slide-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: var(--shadow-metanoia); z-index: 2; }
-
         .slide-content { position: relative; z-index: 10; text-align: center; }
-        .slide-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 10vw, 8rem); font-style: italic; line-height: 0.9; margin-bottom: 20px; }
+        .slide-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(4rem, 12vw, 9rem); font-style: italic; line-height: 0.8; }
 
-        /* FLOATERS - REPOZITIONATE */
+        /* FLOATERS */
         .whatsapp-float {
-            position: fixed; bottom: 30px; left: 30px; /* STÂNGA JOS */
+            position: fixed; bottom: 30px; left: 30px; 
             background-color: #25d366; color: #FFF; border-radius: 50px; 
             width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;
             text-decoration: none; font-size: 30px; z-index: 10000; box-shadow: 0 10px 20px rgba(0,0,0,0.5);
         }
 
-        /* TEXT SECTIONS */
-        .container { padding: 120px 50px; max-width: 1400px; margin: 0 auto; }
-        .intro-text h2 { font-family: 'Playfair Display', serif; font-size: 4rem; color: var(--auriu); margin-bottom: 30px; font-style: italic; }
-        .intro-text p { font-size: 1.8rem; color: #999; margin-bottom: 60px; font-weight: 300; }
+        /* --- SECTIUNEA DE TEXTE (ACUM VIZIBILA) --- */
+        .content-section { padding: 100px 50px; max-width: 1400px; margin: 0 auto; }
+        
+        .intro-block { margin-bottom: 100px; border-left: 4px solid var(--auriu); padding-left: 30px; }
+        .intro-block h2 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 6vw, 4.5rem); color: var(--auriu); margin-bottom: 20px; font-style: italic; }
+        .intro-block p { font-size: 1.6rem; color: #ccc; max-width: 900px; font-weight: 300; line-height: 1.6; }
 
-        .grid-lux { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
-        .card-lux { border: 1px solid #222; padding: 40px; transition: 0.4s; }
-        .card-lux:hover { border-color: var(--auriu); background: #0a0a0a; }
-        .card-lux h3 { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--auriu); margin-bottom: 15px; }
-        .card-lux p { color: #777; line-height: 1.6; }
+        /* GRILA PACHETE */
+        .packages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-top: 50px; }
+        .package-card { background: #0a0a0a; border: 1px solid #1a1a1a; padding: 60px 40px; transition: 0.4s; position: relative; overflow: hidden; }
+        .package-card:hover { border-color: var(--auriu); transform: translateY(-10px); }
+        .package-card h3 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--auriu); margin-bottom: 20px; font-style: italic; }
+        .package-card p { font-size: 1.2rem; color: #999; line-height: 1.7; margin-bottom: 30px; }
+        .package-card .badge { color: var(--auriu); text-transform: uppercase; letter-spacing: 4px; font-size: 0.8rem; margin-bottom: 15px; display: block; }
 
-        footer { padding: 80px; text-align: center; border-top: 1px solid #111; opacity: 0.3; letter-spacing: 10px; }
+        footer { padding: 100px 50px; text-align: center; border-top: 1px solid #111; opacity: 0.3; letter-spacing: 10px; text-transform: uppercase; font-size: 0.9rem; }
+
+        @media (max-width: 768px) {
+            .content-section { padding: 60px 20px; }
+            .site-header { padding: 20px; }
+        }
     </style>
 </head>
 <body>
@@ -98,40 +104,43 @@
         <div class="slide active">
             <div class="slide-bg" style="background-image: url('images/rasarit.jpg');"></div>
             <div class="slide-overlay"></div>
-            <div class="slide-content">
-                <h1>Simte.</h1>
-            </div>
+            <div class="slide-content"><h1>Simte.</h1></div>
         </div>
         <div class="slide">
             <div class="slide-bg" style="background-image: url('images/apus.jpg');"></div>
             <div class="slide-overlay"></div>
-            <div class="slide-content">
-                <h1>Metanoia.</h1>
-            </div>
+            <div class="slide-content"><h1>Explorează.</h1></div>
         </div>
     </section>
 
-    <div class="container">
-        <div class="intro-text">
+    <main class="content-section">
+        <section class="intro-block">
             <h2>O moștenire vie în munte.</h2>
-            <p>La Buligă este un sanctuar al tăcerii și al rânduielii locale. Un refugiu boutique unde timpul se oprește pentru a-ți permite reconectarea.</p>
-        </div>
+            <p>La Buligă este un sanctuar al tăcerii și al rânduielii locale. Un refugiu boutique unde timpul se oprește pentru a-ți permite reconectarea cu natura și cu propriul sine.</p>
+        </section>
 
-        <div class="grid-lux">
-            <div class="card-lux">
+        <h2 style="font-family: 'Playfair Display'; font-size: 3rem; margin-bottom: 50px; font-style: italic;">Pachete Signature</h2>
+        
+        <div class="packages-grid">
+            <div class="package-card">
+                <span class="badge">Experiență 4 Zile</span>
                 <h3>Buliga: Izolare</h3>
-                <p>4 zile de reconectare brută în sălbăticie, cu acces privat și rânduială locală.</p>
+                <p>Reconectare brută în sălbăticie. Acces privat, hrană curată din rânduiala locală și liniște absolută.</p>
             </div>
-            <div class="card-lux">
+
+            <div class="package-card">
+                <span class="badge">Spirit & Minte</span>
                 <h3>Metanoia: Tăcere</h3>
-                <p>Un retreat de liniște axat pe meditație și echilibru interior, departe de zgomot.</p>
+                <p>Un retreat de liniște axat pe meditație și echilibru interior. O pauză necesară de la zgomotul lumii moderne.</p>
             </div>
-            <div class="card-lux">
+
+            <div class="package-card">
+                <span class="badge">Aventură 4x4</span>
                 <h3>Hațeg: Pe Roți</h3>
-                <p>Aventură 4x4 printre monumentele naturii, descoperind rutele ascunse ale Geoparcului.</p>
+                <p>Descoperă monumentele naturii și rutele ascunse ale Geoparcului într-o expediție off-road memorabilă.</p>
             </div>
         </div>
-    </div>
+    </main>
 
     <footer>HAȚEG ALTERNATIV &copy; 2026</footer>
 
