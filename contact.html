@@ -6,61 +6,36 @@
     <title>Contact | Hațeg Alternativ</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        :root { 
-            --negru-mat: #242424; 
-            --auriu: #c5a059; 
-            --crem: #fdfcf8; 
-            --alb: #ffffff;
-            --text-soft: #555555;
-        }
-
+        :root { --negru-mat: #242424; --auriu: #c5a059; --crem: #fdfcf8; --alb: #ffffff; --text-soft: #555555; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru-mat); line-height: 1.6; padding-top: 150px; }
+        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru-mat); padding-top: 140px; }
 
-        /* --- HEADER UNIFICAT STYLE --- */
+        /* HEADER UNIFICAT */
         .site-header { position: fixed; top: 0; width: 100%; z-index: 9999; background: #fff; border-bottom: 1px solid #eee; }
-        .top-announcement { background: var(--auriu); color: #fff; text-align: center; padding: 8px 0; font-size: 0.6rem; letter-spacing: 3px; font-weight: 700; text-transform: uppercase; }
-        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; height: 80px; }
+        .top-announcement { background: var(--auriu); color: #fff; text-align: center; padding: 8px 0; font-size: 0.6rem; letter-spacing: 2px; font-weight: 700; text-transform: uppercase; }
+        .nav-container { max-width: 1300px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; height: 90px; }
         .logo-wrapper { display: flex; align-items: center; text-decoration: none; color: var(--negru-mat); }
-        .logo-wrapper img { height: 45px; width: auto; margin-right: 12px; }
-        .brand-text h1 { font-family: 'Playfair Display', serif; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; margin: 0; }
-        .main-nav { display: flex; align-items: center; gap: 25px; }
-        .main-nav a { text-decoration: none; color: var(--negru-mat); font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .logo-wrapper img { height: 40px; margin-right: 10px; }
+        .brand-text h1 { font-family: 'Playfair Display', serif; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; margin: 0; }
+        .main-nav { display: flex; align-items: center; gap: 18px; }
+        .main-nav a { text-decoration: none; color: var(--negru-mat); font-size: 0.65rem; font-weight: 700; text-transform: uppercase; transition: 0.3s; }
         .main-nav a:hover { color: var(--auriu); }
-        .cta-nav { border: 1px solid var(--negru-mat); padding: 10px 18px !important; transition: all 0.3s; }
+        .cta-nav { border: 1px solid var(--negru-mat); padding: 8px 15px !important; }
         .cta-nav:hover { background: var(--negru-mat); color: #fff !important; }
 
-        /* --- CONTACT CONTENT STYLE --- */
-        .contact-hero { text-align: center; margin-bottom: 80px; padding: 0 20px; }
-        .contact-hero span { color: var(--auriu); font-size: 0.7rem; font-weight: 800; letter-spacing: 5px; text-transform: uppercase; display: block; margin-bottom: 15px; }
-        .contact-hero h1 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 3.5rem; }
-
+        /* CONTACT STYLE */
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-bottom: 100px; }
-        
-        .info-box h2 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 2.2rem; margin-bottom: 30px; }
-        .contact-item { margin-bottom: 30px; }
-        .contact-item h4 { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--auriu); margin-bottom: 5px; }
-        .contact-item p { font-size: 1.1rem; font-weight: 300; }
-
-        .contact-form { background: var(--alb); padding: 50px; border: 1px solid #eee; border-radius: 4px; }
-        .form-group { margin-bottom: 25px; }
-        .form-group label { display: block; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
-        .form-group input, .form-group textarea { width: 100%; padding: 15px; border: 1px solid #eee; background: #fbfbfb; font-family: inherit; font-size: 0.9rem; outline: none; transition: 0.3s; }
-        .form-group input:focus, .form-group textarea:focus { border-color: var(--auriu); background: #fff; }
-
-        .map-container { width: 100%; height: 450px; background: #eee; margin-bottom: 100px; border-radius: 4px; overflow: hidden; filter: grayscale(100%) contrast(1.1); }
-
-        .btn-gold { background: var(--auriu); color: white; padding: 18px 45px; border-radius: 50px; text-decoration: none; font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem; display: inline-block; border: none; cursor: pointer; transition: 0.3s; width: 100%; }
-        .btn-gold:hover { box-shadow: 0 10px 20px rgba(197,160,89,0.3); }
-
-        .wa-float { position: fixed; bottom: 30px; right: 30px; background: var(--auriu); color: white; padding: 15px 30px; border-radius: 50px; text-decoration: none; font-weight: 700; z-index: 2000; font-size: 0.8rem; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin: 60px 0; }
+        .info-box h2 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 2.5rem; margin-bottom: 30px; }
+        .contact-item { margin-bottom: 25px; }
+        .contact-item h4 { font-size: 0.7rem; font-weight: 800; text-transform: uppercase; color: var(--auriu); }
+        .contact-form { background: #fff; padding: 40px; border: 1px solid #eee; }
+        .btn-gold { background: var(--auriu); color: white; padding: 18px; width: 100%; border: none; font-family: 'Playfair Display'; font-style: italic; font-size: 1.2rem; cursor: pointer; transition: 0.3s; }
+        .btn-gold:hover { opacity: 0.9; }
 
         @media (max-width: 992px) {
-            .nav-container { height: auto; padding: 15px; flex-direction: column; gap: 15px; }
-            .main-nav { gap: 12px; flex-wrap: wrap; justify-content: center; }
-            .contact-grid { grid-template-columns: 1fr; gap: 50px; }
-            .contact-hero h1 { font-size: 2.5rem; }
+            .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+            body { padding-top: 190px; }
         }
     </style>
 </head>
@@ -74,78 +49,52 @@
             <div class="brand-text"><h1>Hațeg Alternativ</h1></div>
         </a>
         <nav class="main-nav">
+            <a href="index.html">Acasă</a>
             <a href="retreat.html">Metanoia</a>
             <a href="gastronomie.html">Gastronomie</a>
-            <a href="experiente.html">Ateliere</a>
+            <a href="experiente.html">Experiențe</a>
             <a href="obiective.html">Obiective</a>
+            <a href="evenimente.html">Evenimente</a>
             <a href="forum.html">Comunitate</a>
-            <a href="rezervari.html" class="cta-nav">RESERVATIONS</a>
+            <a href="rezervari.html" class="cta-nav">Rezervări</a>
         </nav>
     </div>
 </header>
 
 <main class="container">
-    <section class="contact-hero">
-        <span>Get in touch</span>
-        <h1>Suntem aici.</h1>
-    </section>
-
     <div class="contact-grid">
         <div class="info-box">
-            <h2>Găsește-ne în inima naturii.</h2>
-            <p style="color: var(--text-soft); margin-bottom: 40px; font-weight: 300;">Dacă ai întrebări despre pachetele noastre sau vrei să rezervi o experiență privată, scrie-ne sau sună-ne. Îți răspundem cu drag.</p>
-            
+            <h2>Suntem aici.</h2>
+            <p style="margin-bottom: 30px;">Găsește-ne în inima naturii, la Totești.</p>
             <div class="contact-item">
                 <h4>Telefon / WhatsApp</h4>
                 <p>+40 749 229 686</p>
             </div>
-            
             <div class="contact-item">
                 <h4>Email</h4>
                 <p>hello@hateg-alternativ.ro</p>
             </div>
-            
-            <div class="contact-item">
-                <h4>Adresă</h4>
-                <p>Hațeg, Județul Hunedoara,<br>Poarta Retezatului</p>
-            </div>
         </div>
 
         <div class="contact-form">
-            <form action="#">
-                <div class="form-group">
-                    <label>Nume Complet</label>
-                    <input type="text" placeholder="Ex: Maria Popescu" required>
-                </div>
-                <div class="form-group">
-                    <label>Adresa de Email</label>
-                    <input type="email" placeholder="nume@exemplu.com" required>
-                </div>
-                <div class="form-group">
-                    <label>Mesajul Tău</label>
-                    <textarea rows="5" placeholder="Cu ce te putem ajuta?"></textarea>
-                </div>
-                <button type="submit" class="btn-gold">Trimite Mesajul</button>
+            <form>
+                <input type="text" placeholder="Nume" style="width:100%; padding:15px; margin-bottom:15px; border:1px solid #eee;">
+                <input type="email" placeholder="Email" style="width:100%; padding:15px; margin-bottom:15px; border:1px solid #eee;">
+                <textarea placeholder="Mesaj" rows="5" style="width:100%; padding:15px; margin-bottom:15px; border:1px solid #eee;"></textarea>
+                <button type="submit" class="btn-gold">Trimite</button>
             </form>
         </div>
     </div>
-
-    <div class="map-container">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11181.164344400518!2d22.93514755!3d45.608303!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x474e797e8841793b%3A0x6b7762699f187a5f!2sHa%C5%A3eg!5e0!3m2!1sro!2sro!4v1680000000000" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-    </div>
 </main>
-
-<a href="https://wa.me/40749229686" class="wa-float">Chat pe WhatsApp</a>
 
 <script type="text/javascript">
     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
     (function(){
         var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-        s1.async=true; s1.src='https://embed.tawk.to/642944b54247f20fefea97df/1gsvek60a'; /* ID-ul tău stabil */
+        s1.async=true; s1.src='https://embed.tawk.to/642944b54247f20fefea97df/1gsvek60a'; 
         s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
         s0.parentNode.insertBefore(s1,s0);
     })();
 </script>
-
 </body>
 </html>
