@@ -20,7 +20,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
 
-        /* HEADER & BURGER */
+        /* HEADER */
         .site-header { position: fixed; top: 0; width: 100%; z-index: 10000; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent); }
         .brand svg { height: 70px; width: auto; }
         .burger { cursor: pointer; z-index: 10001; }
@@ -32,7 +32,7 @@
         .main-nav a { text-decoration: none; color: #fff; font-size: 2rem; font-family: 'Cinzel'; margin: 20px 0; letter-spacing: 4px; transition: 0.3s; opacity: 0.7; }
         .main-nav a:hover { color: var(--auriu); opacity: 1; }
 
-        /* HERO IMPACT */
+        /* HERO SECTION */
         .hero { height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
         .hero-bg { position: absolute; width: 100%; height: 100%; background: url('images/rasarit.jpg') center/cover; transform: scale(1.05); }
         .hero-overlay { position: absolute; width: 100%; height: 100%; background: var(--overlay); }
@@ -40,13 +40,14 @@
         .hero-content h1 { font-family: 'Playfair Display'; font-size: clamp(3rem, 12vw, 7rem); font-style: italic; color: var(--auriu); line-height: 0.9; }
         .hero-content p { font-family: 'Cinzel'; letter-spacing: 10px; font-size: 0.8rem; margin-top: 25px; color: rgba(255,255,255,0.6); }
 
-        /* GRILA EXPERIENTE */
+        /* GRILA EXPERIENTE (4 CARDURI) */
         .grid-impact { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); background: #000; }
         .card-impact { height: 80vh; position: relative; overflow: hidden; display: flex; align-items: flex-end; padding: 40px; text-decoration: none; border: 0.5px solid #111; }
         .card-bg { position: absolute; top:0; left:0; width:100%; height:100%; background-size: cover; background-position: center; transition: 1.5s cubic-bezier(0.2, 1, 0.3, 1); }
         .card-impact:hover .card-bg { transform: scale(1.1); }
         .card-impact::after { content: ""; position: absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(to top, rgba(0,0,0,0.9) 10%, transparent 70%); z-index: 1; }
         .card-content { position: relative; z-index: 5; }
+        .card-content span { font-family: 'Cinzel'; font-size: 0.7rem; color: var(--auriu); letter-spacing: 3px; display: block; margin-bottom: 10px; }
         .card-content h3 { font-family: 'Playfair Display'; font-size: 2.2rem; font-style: italic; color: var(--auriu); margin-bottom: 10px; }
         .card-content p { font-size: 0.95rem; color: #ccc; max-width: 250px; line-height: 1.4; }
 
@@ -56,9 +57,8 @@
         .form-side { flex: 1; min-width: 320px; }
         .summary-side { flex: 0.6; min-width: 300px; background: var(--gri-card); border: 1px solid #333; padding: 40px; height: fit-content; border-radius: 4px; }
 
-        input, select, textarea { width: 100%; background: transparent; border: 1px solid #222; padding: 18px; color: #fff; font-family: 'Inter'; margin-bottom: 20px; outline: none; }
+        input, select, textarea { width: 100%; background: transparent; border: 1px solid #222; padding: 18px; color: #fff; font-family: 'Inter'; margin-bottom: 20px; outline: none; transition: 0.3s; }
         input:focus, select:focus { border-color: var(--auriu); }
-        
         .btn-reserve { width: 100%; background: transparent; border: 1px solid var(--auriu); color: var(--auriu); padding: 20px; font-family: 'Cinzel'; letter-spacing: 3px; cursor: pointer; transition: 0.4s; font-weight: bold; }
         .btn-reserve:hover { background: var(--auriu); color: #000; }
 
@@ -89,6 +89,7 @@
         <nav class="main-nav" id="nav-links">
             <a href="index.html">ACASĂ</a>
             <a href="pensiune.html">PENSIUNEA</a>
+            <a href="evenimente.html">EVENIMENTE</a>
             <a href="retreat.html">METANOIA</a>
             <a href="experiente.html">EXPERIENȚE</a>
         </nav>
@@ -107,22 +108,33 @@
         <a href="pensiune.html" class="card-impact">
             <div class="card-bg" style="background-image: url('images/rasarit.jpg');"></div>
             <div class="card-content">
+                <span>01. IZOLARE</span>
                 <h3>La Buligă</h3>
                 <p>Izolare totală și rânduială veche la 1000m.</p>
+            </div>
+        </a>
+        <a href="evenimente.html" class="card-impact">
+            <div class="card-bg" style="background-image: url('images/gast-masa-traditionala.jpg');"></div>
+            <div class="card-content">
+                <span>02. CELEBRARE</span>
+                <h3>Evenimente</h3>
+                <p>Botezuri și workshop-uri cu planificator acreditat.</p>
             </div>
         </a>
         <a href="retreat.html" class="card-impact">
             <div class="card-bg" style="background-image: url('images/apus.jpg');"></div>
             <div class="card-content">
+                <span>03. SPIRIT</span>
                 <h3>Metanoia</h3>
-                <p>Retreat de tăcere profundă pentru suflet.</p>
+                <p>Retreat de tăcere profundă pentru reconectare.</p>
             </div>
         </a>
         <a href="experiente.html" class="card-impact">
-            <div class="card-bg" style="background-image: url('images/jeep.jpg');"></div>
+            <div class="card-bg" style="background-image: url('images/exp-fluturi.jpg');"></div>
             <div class="card-content">
-                <h3>Experiențe</h3>
-                <p>Hațeg pe roți: 4x4 și gastronomie ancestrală.</p>
+                <span>04. EXPLORARE</span>
+                <h3>Go Nomad</h3>
+                <p>Tururi ghidate cu echipa Go Nomad și ateliere vii.</p>
             </div>
         </a>
     </section>
@@ -141,8 +153,8 @@
                     <select id="pachet" name="Pachet" required>
                         <option value="" disabled selected>Alege Experiența</option>
                         <option value="2000" data-nume="Cazare Integrală" data-details="• Închiriere completă Casă (10 locuri)<br>• Acces Pergola & Grătar<br>• Bucătărie utilată<br>• Intimitate totală">Cazare Integrală - 2000 RON/noapte</option>
-                        <option value="3000" data-nume="Cazare + 2 Mese" data-details="• Cazare 10 persoane<br>• Mic Dejun & Cină Tradițională<br>• Produse Bio din gospodărie">Cazare + 2 Mese - 3000 RON/noapte</option>
-                        <option value="4000" data-nume="Metanoia All-Inclusive" data-details="• Cazare + 3 Mese Festive<br>• Expediție Off-Road 4x4 inclusă<br>• Atelier Gastronomic inclus">Metanoia All-Inclusive - 4000 RON/noapte</option>
+                        <option value="3000" data-nume="Cazare + 2 Mese" data-details="• Cazare 10 persoane<br>• Mic Dejun & Cină Tradițională<br>• Gastronomie vie la fața locului">Cazare + 2 Mese - 3000 RON/noapte</option>
+                        <option value="4000" data-nume="Metanoia Full Experience" data-details="• Cazare + Pensiune Completă<br>• Tur ghidat cu echipa Go Nomad inclus<br>• Atelier de creație / lucru manual inclus">Metanoia Full Experience - 4000 RON/noapte</option>
                     </select>
 
                     <div id="pachet-details" style="display: none;">
