@@ -4,216 +4,156 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galerie Cinematică | Hațeg Alternativ</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
+    <link rel="stylesheet" href="style.css">
     <style>
-        :root { 
-            --auriu: #ffd700; 
-            --negru: #0a0a0a; 
-            --alb: #ffffff;
-            --overlay: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%);
+        /* Stiluri rapide pentru a asigura funcționarea meniului */
+        .nav-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.95);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: 0.4s;
+            z-index: 999;
         }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow: hidden; height: 100vh; }
-
-        /* HEADER (Păstrat identic) */
-        .site-header { position: fixed; top: 0; width: 100%; z-index: 10000; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent); }
-        .brand svg { height: 60px; width: auto; }
-        .burger { cursor: pointer; z-index: 10001; }
-        .burger div { width: 25px; height: 2px; background: var(--auriu); margin: 6px; transition: 0.4s; }
-
-        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: rgba(0,0,0,0.95); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.6s cubic-bezier(0.7, 0, 0.3, 1); z-index: 9500; }
-        .main-nav.active { right: 0; }
-        .main-nav a { text-decoration: none; color: #fff; font-size: 2rem; font-family: 'Cinzel'; margin: 20px 0; letter-spacing: 4px; opacity: 0.7; }
-
-        /* GALERIE CINEMATICĂ - CAROUSEL FULLSCREEN */
-        .gallery-container { position: relative; width: 100%; height: 100vh; overflow: hidden; }
-        
-        .gallery-slider { display: flex; width: 100%; height: 100%; transition: transform 0.8s cubic-bezier(0.7, 0, 0.3, 1); }
-        
-        .gallery-slide { flex: 0 0 100%; width: 100%; height: 100%; position: relative; }
-        .gallery-slide img { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; }
-        
-        /* Overlay pentru lizibilitate text */
-        .gallery-slide::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 40%; background: var(--overlay); z-index: 1; }
-
-        /* Text pe Slide */
-        .slide-content { position: absolute; bottom: 60px; left: 40px; z-index: 10; max-width: 600px; opacity: 0; transform: translateY(20px); transition: 0.5s 0.5s; }
-        .gallery-slide.active .slide-content { opacity: 1; transform: translateY(0); }
-        
-        .slide-content span { font-family: 'Cinzel'; font-size: 0.8rem; color: var(--auriu); letter-spacing: 3px; display: block; margin-bottom: 10px; }
-        .slide-content h2 { font-family: 'Playfair Display'; font-size: clamp(2rem, 5vw, 3.5rem); font-style: italic; color: #fff; line-height: 1.1; margin-bottom: 15px; }
-        .slide-content p { font-size: 0.9rem; color: #ccc; line-height: 1.5; font-weight: 300; }
-
-        /* NAVIGARE (Săgeți & Dots) */
-        .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 20px; cursor: pointer; z-index: 100; transition: 0.3s; border-radius: 50%; font-size: 1.2rem; }
-        .nav-btn:hover { background: var(--auriu); color: #000; border-color: var(--auriu); }
-        .prev-btn { left: 30px; }
-        .next-btn { right: 30px; }
-
-        .gallery-dots { position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 100; }
-        .dot { width: 12px; height: 12px; background: rgba(255,255,255,0.3); border-radius: 50%; cursor: pointer; transition: 0.3s; }
-        .dot.active { background: var(--auriu); transform: scale(1.2); }
-
-        @media (max-width: 768px) {
-            .site-header { padding: 20px; }
-            .nav-btn { padding: 15px; font-size: 1rem; }
-            .prev-btn { left: 15px; }
-            .next-btn { right: 15px; }
-            .slide-content { bottom: 80px; left: 20px; padding-right: 20px; }
+        .nav-menu.active {
+            right: 0;
+        }
+        .menu-toggle {
+            cursor: pointer;
+            z-index: 1000;
+        }
+        .gallery-section {
+            padding: 50px 20px;
+            background: #000;
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #333;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        .item-info {
+            padding: 15px;
+            background: rgba(0,0,0,0.8);
+            color: #d4af37;
+            text-align: center;
         }
     </style>
 </head>
 <body>
 
-    <header class="site-header">
-        <a href="index.html" class="brand">
-            <svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="400" cy="280" r="105" fill="none" stroke="#ffd700" stroke-width="2" opacity="0.4"/>
-                <path d="M300 450 L400 250 L500 450 Z" fill="#ffd700"/>
-                <text x="400" y="765" font-family="'Cinzel'" text-anchor="middle" font-size="42" fill="#ffd700">HAȚEG ALTERNATIV</text>
-            </svg>
-        </a>
-        <div class="burger" id="burger"><div></div><div></div><div></div></div>
-        <nav class="main-nav" id="nav-links">
-            <a href="index.html">ACASĂ</a>
-            <a href="pensiune.html">PENSIUNEA</a>
-            <a href="evenimente.html">EVENIMENTE</a>
-            <a href="retreat.html">METANOIA</a>
-            <a href="experiente.html">EXPERIENȚE</a>
-            <a href="galerie.html" style="color:var(--auriu); opacity:1;">GALERIE</a>
-        </nav>
-    </header>
-
-    <div class="gallery-container">
+    <nav class="navbar">
+        <div class="logo">
+            <a href="index.html">
+                <img src="images/logo.svg" alt="Hațeg Alternativ" style="height: 50px;">
+            </a>
+        </div>
         
-        <div class="gallery-slider" id="slider">
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+        <ul class="nav-menu">
+            <li><a href="index.html">ACASĂ</a></li>
+            <li><a href="pensiune.html">PENSIUNEA</a></li>
+            <li><a href="evenimente.html">EVENIMENTE</a></li>
+            <li><a href="retreat.html">METANOIA</a></li>
+            <li><a href="experiente.html">EXPERIENȚE</a></li>
+            <li><a href="galerie.html">GALERIE</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero-subpage" style="background: url('images/rasarit.jpg') no-repeat center center/cover;">
+        <div class="hero-content">
+            <h1 class="gold-text">Galerie Cinematică</h1>
+            <p>Rânduială vizuală la 1000m altitudine</p>
+        </div>
+    </section>
+
+    <section class="gallery-section">
+        <div class="gallery-grid">
             
-            <div class="gallery-slide active">
-                <img src="images/rasarit.jpg" alt="Răsărit monumentale la 1000m">
-                <div class="slide-content">
-                    <span>01. DIMINEȚI</span>
-                    <h2>Răsărit Monumental</h2>
-                    <p>Lumina de aur care trezește coama muntelui la 1000m altitudine. O experiență pură de izolare și rânduială veche.</p>
+            <div class="gallery-item">
+                <img src="images/rasarit.jpg" alt="Răsărit Monumental">
+                <div class="item-info">
+                    <h3>Răsărit Monumental</h3>
+                    <p>01. DIMINEȚI LA ALTITUDINE</p>
                 </div>
             </div>
 
-            <div class="gallery-slide">
-                <img src="images/gast-masa-traditionala.jpg" alt="Masa tradițională la Buligă">
-                <div class="slide-content">
-                    <span>02. GUST</span>
-                    <h2>Gastronomie Vie</h2>
-                    <p>Mese festive cu produse bio, locale, pregătite la țest sau la gura sobei. Adevăratul gust al moștenirii noastre.</p>
+            <div class="gallery-item">
+                <img src="images/gast-masa-traditionala.jpg" alt="Gastronomie Vie">
+                <div class="item-info">
+                    <h3>Gastronomie Vie</h3>
+                    <p>02. GUSTUL MOȘTENIRII</p>
                 </div>
             </div>
 
-            <div class="gallery-slide">
-                <img src="images/apus.jpg" alt="Apus spiritual Metanoia">
-                <div class="slide-content">
-                    <span>03. SPIRIT</span>
-                    <h2>Tăcerea din Apus</h2>
-                    <p>Momentul perfect pentru reconectare profundă în cadrul retreat-ului Metanoia. Liniște care se simte în suflet.</p>
+            <div class="gallery-item">
+                <img src="images/apus.jpg" alt="Tăcerea din Apus">
+                <div class="item-info">
+                    <h3>Tăcerea din Apus</h3>
+                    <p>03. SPIRIT METANOIA</p>
                 </div>
             </div>
 
-            <div class="gallery-slide">
-                <img src="images/gonomad.jpg" alt="Explorare cu Go Nomad">
-                <div class="slide-content">
-                    <span>04. AVENTURĂ</span>
-                    <h2>Explorare cu Go Nomad</h2>
-                    <p>Drumeții ghidate și trasee neexplorate cu echipa Go Nomad. Descoperă secretele ascunse ale Țării Hațegului.</p>
+            <div class="gallery-item">
+                <img src="images/gonomad.jpg" alt="Explorare Go Nomad">
+                <div class="item-info">
+                    <h3>Explorare Go Nomad</h3>
+                    <p>04. AVENTURĂ ȘI LIBERTATE</p>
                 </div>
             </div>
 
-            </div>
+        </div>
+    </section>
 
-        <button class="nav-btn prev-btn" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
-        <button class="nav-btn next-btn" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
-
-        <div class="gallery-dots" id="galleryDots"></div>
-    </div>
+    <footer class="footer">
+        <p>&copy; 2026 Hațeg Alternativ. Creat cu rânduială.</p>
+    </footer>
 
     <script>
-        // Meniu Mobil (Identic ca pe index)
-        const burger = document.getElementById('burger');
-        const nav = document.getElementById('nav-links');
-        burger.addEventListener('click', () => { nav.classList.toggle('active'); });
+        const menu = document.querySelector('#mobile-menu');
+        const menuLinks = document.querySelector('.nav-menu');
 
-        // LOGICA CAROUSEL
-        const slider = document.getElementById('slider');
-        const slides = document.querySelectorAll('.gallery-slide');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        const dotsContainer = document.getElementById('galleryDots');
-
-        let currentIndex = 0;
-        let slideInterval;
-        const intervalTime = 5000; // Pozele rulează singure la 5 secunde
-
-        // 1. Generează Dots automat
-        slides.forEach((slide, index) => {
-            const dot = document.createElement('div');
-            dot.classList.add('dot');
-            if (index === 0) dot.classList.add('active');
-            dot.addEventListener('click', () => goToSlide(index));
-            dotsContainer.appendChild(dot);
+        menu.addEventListener('click', function() {
+            menu.classList.toggle('is-active');
+            menuLinks.classList.toggle('active');
         });
-        const dots = document.querySelectorAll('.dot');
-
-        // 2. Funcția de schimbare Slide
-        function updateSlider() {
-            slider.style.transform = `translateX(-${currentIndex * 100}%)`;
-            
-            // Actualizează clasa active pentru animația textului
-            slides.forEach((slide, index) => {
-                if (index === currentIndex) {
-                    slide.classList.add('active');
-                    dots[index].classList.add('active');
-                } else {
-                    slide.classList.remove('active');
-                    dots[index].classList.remove('active');
-                }
-            });
-        }
-
-        function nextSlide() {
-            currentIndex = (currentIndex + 1) % slides.length;
-            updateSlider();
-        }
-
-        function prevSlide() {
-            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-            updateSlider();
-        }
-
-        function goToSlide(index) {
-            currentIndex = index;
-            updateSlider();
-            resetInterval(); // Oprim autoplay-ul dacă utilizatorul dă click
-        }
-
-        // 3. Autoplay
-        function startInterval() {
-            slideInterval = setInterval(nextSlide, intervalTime);
-        }
-
-        function resetInterval() {
-            clearInterval(slideInterval);
-            startInterval();
-        }
-
-        // 4. Event Listeners Butoane
-        nextBtn.addEventListener('click', () => { nextSlide(); resetInterval(); });
-        prevBtn.addEventListener('click', () => { prevSlide(); resetInterval(); });
-
-        // 5. Pornire
-        startInterval();
-        updateSlider(); // Forțează starea inițială
-
-    }
     </script>
+
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/67f620242480f5b136879e67/default';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+
 </body>
 </html>
