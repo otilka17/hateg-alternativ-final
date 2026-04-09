@@ -3,259 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hațeg Alternativ | Simte, Explorează, Trăiește</title>
+    <title>Hațeg Alternativ</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --gold: #D4AF37;
-            --black: #000000;
-            --white: #ffffff;
-            --silver: #C0C0C0;
-        }
-
-        body, html {
-            margin: 0;
-            padding: 0;
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--black);
-            color: var(--white);
-            scroll-behavior: smooth;
-            overflow-x: hidden;
-        }
-
-        /* 1. HEADER & MENIU SANDWICH - REPARAT - NEGRU TOTAL */
+        body { margin: 0; background: #000; color: #fff; font-family: sans-serif; overflow-x: hidden; }
+        
+        /* HEADER NEGRU CURAT */
         header {
-            background-color: var(--black) !important; /* Forțăm negrul, eliminând fundalul alb */
-            height: 90px;
+            background: #000;
+            height: 70px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 5%;
+            padding: 0 20px;
             position: fixed;
-            top: 0;
             width: 100%;
-            z-index: 1000;
+            top: 0;
+            z-index: 9999;
             box-sizing: border-box;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            border-bottom: 1px solid #D4AF37;
         }
 
-        .logo-box {
-            display: flex;
-            align-items: center;
-        }
+        .logo { color: #D4AF37; font-weight: bold; letter-spacing: 2px; }
 
-        /* Triunghiul tău simbolic - făcut din CSS pur, antifragil */
-        .logo-icon {
-            width: 0;
-            height: 0;
-            border-left: 15px solid transparent;
-            border-right: 15px solid transparent;
-            border-bottom: 25px solid var(--gold);
-            margin-right: 15px;
-        }
-
-        .logo-text {
-            color: var(--gold);
-            font-size: 13px;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            font-weight: bold;
-        }
-
-        /* Navigație Desktop */
-        .nav-links {
-            display: flex;
-            list-style: none;
-            margin: 0;
-        }
-
-        .nav-links a {
-            color: var(--white);
-            text-decoration: none;
-            margin-left: 30px;
-            font-size: 11px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            transition: 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--gold);
-        }
-
-        /* Burger Menu (Sandwich) */
-        .burger {
-            display: none;
-            cursor: pointer;
-            z-index: 1001;
-        }
-
-        .burger div {
-            width: 25px;
-            height: 2px;
-            background-color: var(--gold);
-            margin: 6px;
-            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        /* 2. HERO SECTION - RECONECTAT LA FOTO (Nu mai e fundal negru) */
+        /* HERO - POZA DE SUS */
         .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                        url('https://otilka17.github.io/hero.jpg'); /* Calea ta de GitHub */
-            background-size: cover;
-            background-position: center;
+            height: 80vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://otilka17.github.io/hero.jpg') center/cover;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
+            margin-top: 70px;
         }
 
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 90px;
-            color: var(--gold);
-            margin: 0;
-            font-style: italic;
-            font-weight: 300;
-        }
+        .hero h1 { font-size: 50px; color: #D4AF37; margin: 0; }
 
-        .hero p {
-            letter-spacing: 9px;
-            text-transform: uppercase;
-            font-size: 15px;
-            margin-top: 15px;
-            color: var(--silver);
-        }
-
-        .btn-explore {
-            margin-top: 50px;
-            padding: 18px 45px;
-            border: 1px solid var(--gold);
-            color: var(--gold);
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-size: 11px;
-            transition: 0.5s;
-        }
-
-        .btn-explore:hover {
-            background: var(--gold);
-            color: var(--black);
-        }
-
-        /* 3. GALERIE CINEMATICĂ - RULEAZĂ AUTOMAT - CALE FOTO OK */
-        .gallery-section {
-            background-color: var(--black);
-            padding: 100px 5%;
-        }
-
-        .gallery-header {
-            margin-bottom: 60px;
-        }
-
-        .gallery-header h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 42px;
-            color: var(--white);
-            margin: 0;
-            font-weight: 300;
-        }
-
-        .gallery-header p {
-            font-size: 14px;
-            color: rgba(255,255,255,0.4);
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            margin-top: 10px;
-        }
-
-        .slider-viewport {
-            position: relative;
+        /* GALERIA CARE RULEAZĂ */
+        .galerie-titlu { padding: 40px 20px 10px; font-size: 24px; color: #fff; }
+        
+        .viewport {
             width: 100%;
-            height: 600px; /* Impact cinematic */
+            height: 400px;
             overflow: hidden;
-            border: 1px solid rgba(212, 175, 55, 0.1);
-        }
-
-        .slider-track {
-            display: flex;
-            width: 100%;
-            height: 100%;
-            transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .slide-item {
-            min-width: 100%;
-            height: 100%;
             position: relative;
         }
 
-        .slide-item img {
-            width: 100%;
+        .track {
+            display: flex;
+            width: 300%; /* Avem 3 poze */
+            height: 100%;
+            transition: transform 0.8s ease-in-out;
+        }
+
+        .track img {
+            width: 100vw;
             height: 100%;
             object-fit: cover;
-            filter: brightness(0.9);
         }
 
-        /* Info Slide (Răsărit, Metanoia) */
-        .slide-info {
+        /* TEXTUL DE PE POZE */
+        .info-poza {
             position: absolute;
-            bottom: 50px;
-            left: 5%;
-            z-index: 10;
-            background: rgba(0,0,0,0.6);
-            padding: 30px;
-            border-left: 3px solid var(--gold);
-            backdrop-filter: blur(5px);
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0,0,0,0.7);
+            padding: 10px;
+            border-left: 3px solid #D4AF37;
         }
 
-        .slide-tag {
-            color: var(--gold);
-            font-size: 12px;
-            letter-spacing: 3px;
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        .slide-info h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 32px;
-            color: #fff;
-            margin: 0;
-            font-weight: 300;
-        }
-
-        /* Butoane Navigație (Opțional, apar la hover) */
-        .slider-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0,0,0,0.3);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            color: var(--gold);
-            padding: 20px 15px;
-            cursor: pointer;
-            z-index: 20;
-            transition: 0.3s;
-            opacity: 0;
-        }
-
-        .slider-viewport:hover .slider-btn {
-            opacity: 1;
-        }
-
-        .prev { left: 0; border-radius: 0 5px 5px 0; }
-        .next { right: 0; border-radius: 5px 0 0 5px; }
-
-        /* REGLAJ WHATSAPP FLOAT - STÂNGA Jos (Exact ca în index) */
-        .whatsapp-float {
+        /* BUTON WHATSAPP */
+        .wa {
             position: fixed;
-            bottom: 30px;
-            left: 30px; /* Ca în captură */
+            bottom: 20px;
+            left: 20px;
             background: #25d366;
             width: 60px;
             height: 60px;
@@ -263,212 +85,50 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 1001;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            transition: transform 0.3s ease;
+            z-index: 9999;
         }
-
-        .whatsapp-float:hover {
-            transform: scale(1.1) translateY(-5px);
-        }
-
-        /* MOBIL REGLAJ - REPARAT BURGER & HEADER */
-        @media screen and (max-width: 768px) {
-            header {
-                height: 80px;
-            }
-            .nav-links {
-                position: absolute;
-                right: 0px;
-                height: 100vh;
-                top: 80px;
-                background-color: var(--black);
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                width: 100%;
-                transform: translateX(100%);
-                transition: transform 0.5s ease-in;
-                padding-top: 60px;
-                border-left: 1px solid rgba(212, 175, 55, 0.1);
-            }
-            .nav-links li {
-                margin: 25px 0;
-            }
-            .nav-links a {
-                margin: 0;
-                font-size: 14px;
-                letter-spacing: 3px;
-            }
-            .nav-links.nav-active {
-                transform: translateX(0%);
-            }
-            .burger {
-                display: block;
-            }
-            .hero h1 { font-size: 50px; }
-            .hero p { font-size: 11px; letter-spacing: 5px; }
-            .slider-viewport { height: 450px; }
-            .slide-info h3 { font-size: 22px; }
-            .whatsapp-float {
-                bottom: 20px;
-                left: 20px;
-                width: 50px;
-                height: 50px;
-            }
-            .logo-icon { border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 18px solid var(--gold); margin-right: 10px;}
-            .logo-text { font-size: 10px; letter-spacing: 3px;}
-        }
-
-        /* Animație burger */
-        .toggle .line1 { transform: rotate(-45deg) translate(-5px, 6px); }
-        .toggle .line2 { opacity: 0; }
-        .toggle .line3 { transform: rotate(45deg) translate(-5px, -6px); }
-
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo-box">
-            <div class="logo-icon"></div>
-            <div class="logo-text">Hațeg Alternativ</div>
-        </div>
-        <ul class="nav-links">
-            <li><a href="#acasa">Acasă</a></li>
-            <li><a href="#galerie">Galerie</a></li>
-            <li><a href="https://otilka17.github.io/contact.html">Contact</a></li>
-        </ul>
-        <div class="burger">
-            <div class="line1"></div>
-            <div class="line2"></div>
-            <div class="line3"></div>
-        </div>
-    </header>
+<header>
+    <div class="logo">▲ HAȚEG ALTERNATIV</div>
+    <i class="fas fa-bars" style="color:#D4AF37; font-size:24px;"></i>
+</header>
 
-    <section id="acasa" class="hero">
-        <h1>Simte.</h1>
-        <p>Rânduială & Tăcere</p>
-        <a href="#galerie" class="btn-explore">Explorează Vizual <i class="fas fa-expand-alt" style="margin-left: 12px;"></i></a>
-    </section>
+<section class="hero">
+    <h1>Simte.</h1>
+    <p>Rânduială & Tăcere</p>
+</section>
 
-    <section id="galerie" class="gallery-section">
-        <div class="gallery-header">
-            <h2>Galerie Cinematică</h2>
-            <p>Rânduială vizuală la 1000m altitudine</p>
-        </div>
+<div class="galerie-titlu">Galerie Cinematică</div>
 
-        <div class="slider-viewport" onmouseover="stopAuto()" onmouseout="startAuto()">
-            <div class="slider-track" id="sliderTrack">
-                
-                <div class="slide-item">
-                    <img src="https://otilka17.github.io/1.jpg" alt="Răsărit Monumental">
-                    <div class="slide-overlay">
-                        <div class="slide-info">
-                            <span class="slide-tag">01. DIMINEȚI</span>
-                            <h3>Răsărit Monumental</h3>
-                        </div>
-                    </div>
-                </div>
+<div class="viewport">
+    <div class="track" id="slider">
+        <img src="https://otilka17.github.io/1.jpg">
+        <img src="https://otilka17.github.io/2.jpg">
+        <img src="https://otilka17.github.io/hero.jpg">
+    </div>
+    <div class="info-poza" id="text-poza">Răsărit Monumental</div>
+</div>
 
-                <div class="slide-item">
-                    <img src="https://otilka17.github.io/2.jpg" alt="Metanoia">
-                    <div class="slide-overlay">
-                        <div class="slide-info">
-                            <span class="slide-tag">03. SPIRIT</span>
-                            <h3>Metanoia</h3>
-                        </div>
-                    </div>
-                </div>
+<a href="https://wa.me/407XXXXXXXX" class="wa">
+    <i class="fab fa-whatsapp" style="color:#fff; font-size:30px;"></i>
+</a>
 
-                <div class="slide-item">
-                    <img src="https://otilka17.github.io/hero.jpg" alt="Viziune Alternativă">
-                    <div class="slide-overlay">
-                        <div class="slide-info">
-                            <span class="slide-tag">02. ORIZONT</span>
-                            <h3>Viziune Alternativă</h3>
-                        </div>
-                    </div>
-                </div>
+<script>
+    let pas = 0;
+    const slider = document.getElementById('slider');
+    const texte = ["Răsărit Monumental", "Metanoia", "Viziune Alternativă"];
+    const textElement = document.getElementById('text-poza');
 
-            </div>
-
-            <button class="slider-btn prev" onclick="moveSlide(-1)">&#10094;</button>
-            <button class="slider-btn next" onclick="moveSlide(1)">&#10095;</button>
-        </div>
-    </section>
-
-    <a href="https://wa.me/407XXXXXXXX" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp" style="color:white; font-size:30px;"></i>
-    </a>
-
-    <script>
-        // 1. REGLAJ MENIU SANDWICH (BURGER)
-        const burger = document.querySelector('.burger');
-        const nav = document.querySelector('.nav-links');
-        const navLinks = document.querySelectorAll('.nav-links li');
-
-        burger.addEventListener('click', () => {
-            // Toggle Nav
-            nav.classList.toggle('nav-active');
-            // Animație Burger
-            burger.classList.toggle('toggle');
-        });
-
-        // Închide meniul la click pe un link
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                nav.classList.remove('nav-active');
-                burger.classList.remove('toggle');
-            });
-        });
-
-
-        // 2. REGLAJ SLIDER GALERIE - RULEAZĂ AUTOMAT LA 6 SECUNDE
-        let currentIdx = 0;
-        const track = document.getElementById('sliderTrack');
-        const slides = document.querySelectorAll('.slide-item');
-        const totalSlides = slides.length;
-        let autoInterval;
-
-        function updateSlider() {
-            // Aliniere perfectă pe axa X
-            track.style.transform = `translateX(-${currentIdx * 100}%)`;
-        }
-
-        // Funcție pentru mișcare manuală (Next/Prev)
-        function moveSlide(direction) {
-            currentIdx = (currentIdx + direction + totalSlides) % totalSlides;
-            updateSlider();
-        }
-
-        // Pornire automată a slider-ului (6 secunde)
-        function startAuto() {
-            autoInterval = setInterval(() => {
-                moveSlide(1); // Mergi la următorul slide automat
-            }, 6000); 
-        }
-
-        // Oprire automată la hover (pauză)
-        function stopAuto() {
-            clearInterval(autoInterval);
-        }
-
-        // Pornire inițială
-        startAuto();
-
-
-        // 3. TAWK.TO CHAT - INTEGRAT PE INDEX
-        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-        (function(){
-            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-            s1.async=true;
-            s1.src='https://embed.tawk.to/67f51950473260190ba32912/1imlshk5m'; // ID-ul tău din captură
-            s1.charset='UTF-8';
-            s1.setAttribute('crossorigin','*');
-            s0.parentNode.insertBefore(s1,s0);
-        })();
-    </script>
+    setInterval(() => {
+        pas++;
+        if (pas > 2) pas = 0;
+        slider.style.transform = `translateX(-${pas * 100}vw)`;
+        textElement.innerHTML = texte[pas];
+    }, 4000);
+</script>
 
 </body>
 </html>
