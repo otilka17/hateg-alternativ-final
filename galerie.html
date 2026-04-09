@@ -45,47 +45,13 @@
             transition: 0.5s ease;
             z-index: 1001;
         }
-
         .nav-overlay.open { right: 0; }
-        .nav-overlay a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 28px;
-            margin: 20px;
-            letter-spacing: 4px;
-            font-family: 'Playfair Display', serif;
-        }
+        .nav-overlay a { color: #fff; text-decoration: none; font-size: 28px; margin: 20px; font-family: 'Playfair Display', serif; }
 
-        .viewport {
-            width: 100%;
-            height: 100vh;
-            position: relative;
-            overflow: hidden;
-            background: #000;
-        }
-
-        .track {
-            display: flex;
-            width: 100%;
-            height: 100%;
-            /* Am făcut tranziția de 0.8 secunde pentru a fi mai rapidă și mai fermă */
-            transition: transform 0.8s cubic-bezier(0.45, 0.05, 0.55, 0.95);
-        }
-
-        .slide {
-            min-width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .slide img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
+        .viewport { width: 100%; height: 100vh; position: relative; overflow: hidden; background: #000; }
+        .track { display: flex; width: 100%; height: 100%; transition: transform 0.8s cubic-bezier(0.45, 0.05, 0.55, 0.95); }
+        .slide { min-width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; }
+        .slide img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
         .caption {
             position: absolute;
@@ -97,35 +63,10 @@
             backdrop-filter: blur(5px);
             z-index: 10;
         }
+        .caption h3 { font-family: 'Playfair Display', serif; font-size: 30px; margin: 0; font-style: italic; }
+        .caption p { font-size: 10px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; }
 
-        .caption h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 32px;
-            margin: 0;
-            font-style: italic;
-        }
-
-        .caption p {
-            font-size: 10px;
-            letter-spacing: 3px;
-            color: var(--gold);
-            text-transform: uppercase;
-        }
-
-        .wa-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #25d366;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-        }
-
+        .wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 2000; }
     </style>
 </head>
 <body>
@@ -147,46 +88,48 @@
     <div class="track" id="slider">
         <div class="slide">
             <img src="images/hero-sat.jpg">
-            <div class="caption">
-                <p>FRAGMENT DIN RETEZAT</p>
-                <h3>Răsărit la ora 5.</h3>
-            </div>
+            <div class="caption"><p>Fragment din Retezat</p><h3>Răsărit la ora 5.</h3></div>
         </div>
         <div class="slide">
             <img src="images/feed-buliga.jpg">
-            <div class="caption">
-                <p>RETREAT SPIRITUAL</p>
-                <h3>Metanoia.</h3>
-            </div>
+            <div class="caption"><p>Retreat</p><h3>Metanoia.</h3></div>
+        </div>
+        <div class="slide">
+            <img src="images/jeep.jpg">
+            <div class="caption"><p>Aventură</p><h3>Explorare Alternativă.</h3></div>
         </div>
         <div class="slide">
             <img src="images/gast-cafea-inima.jpg">
-            <div class="caption">
-                <p>O STARE DE BINE</p>
-                <h3>Detaliul care vindecă.</h3>
-            </div>
+            <div class="caption"><p>Stare de bine</p><h3>Detaliul care vindecă.</h3></div>
+        </div>
+        <div class="slide">
+            <img src="images/exp-zapada.jpg">
+            <div class="caption"><p>Altitudine</p><h3>Rânduială și Zăpadă.</h3></div>
+        </div>
+        <div class="slide">
+            <img src="images/gast-masa-traditionala.jpg">
+            <div class="caption"><p>Gust</p><h3>Ospăț în Tăcere.</h3></div>
+        </div>
+        <div class="slide">
+            <img src="images/la-buliga-pensiune.jpg">
+            <div class="caption"><p>Acasă</p><h3>Tihna de la munte.</h3></div>
         </div>
     </div>
 </div>
 
-<a href="https://wa.me/40749229686" class="wa-float" target="_blank">
-    <i class="fab fa-whatsapp" style="color:#fff; font-size:35px;"></i>
-</a>
+<a href="https://wa.me/40749229686" class="wa-float" target="_blank"><i class="fab fa-whatsapp" style="color:#fff; font-size:35px;"></i></a>
 
 <script>
-    function toggleMenu() {
-        document.getElementById('navMenu').classList.toggle('open');
-    }
-
+    function toggleMenu() { document.getElementById('navMenu').classList.toggle('open'); }
     let currentPos = 0;
     const track = document.getElementById('slider');
-    const totalSlides = 3;
+    const totalSlides = 7; // Am crescut la 7 poze
 
     setInterval(() => {
         currentPos++;
         if (currentPos >= totalSlides) currentPos = 0;
         track.style.transform = `translateX(-${currentPos * 100}%)`;
-    }, 3000); // AM SCĂZUT LA 3 SECUNDE
+    }, 3000); // Ritm alert
 </script>
 
 </body>
