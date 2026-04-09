@@ -3,133 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galerie | Hațeg Alternativ</title>
+    <title>Galerie Cinematică | Hațeg Alternativ</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
     <style>
         :root { --gold: #D4AF37; --black: #000000; }
-        body { margin: 0; background: var(--black); color: #fff; font-family: sans-serif; overflow-x: hidden; }
+        body { margin: 0; background: var(--black); color: #fff; font-family: sans-serif; overflow: hidden; }
 
-        header {
-            background: rgba(0,0,0,0.9);
-            height: 70px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 5%;
+        .top-nav {
             position: fixed;
-            width: 100%;
             top: 0;
+            width: 100%;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(10px);
             z-index: 1000;
-            box-sizing: border-box;
             border-bottom: 1px solid rgba(212, 175, 55, 0.2);
         }
 
-        .logo-box { display: flex; align-items: center; }
-        .logo-icon { width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 18px solid var(--gold); margin-right: 10px; }
-        .logo-text { color: var(--gold); font-size: 14px; letter-spacing: 2px; font-weight: bold; text-transform: uppercase; }
+        .top-nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: 0.3s;
+        }
 
-        .menu-btn { color: var(--gold); cursor: pointer; font-size: 24px; z-index: 1002; }
-        
-        .nav-overlay {
-            position: fixed;
-            top: 0;
-            right: -100%;
+        .top-nav a.active { color: var(--gold); }
+
+        .viewport {
+            width: 100%;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+        }
+
+        .track {
+            display: flex;
             width: 100%;
             height: 100%;
-            background: var(--black);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            transition: 0.5s ease;
-            z-index: 1001;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .nav-overlay.open { right: 0; }
-        .nav-overlay a { color: #fff; text-decoration: none; font-size: 28px; margin: 20px; font-family: 'Playfair Display', serif; }
 
-        .viewport { width: 100%; height: 100vh; position: relative; overflow: hidden; background: #000; }
-        .track { display: flex; width: 100%; height: 100%; transition: transform 0.8s cubic-bezier(0.45, 0.05, 0.55, 0.95); }
-        .slide { min-width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; position: relative; }
-        .slide img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .slide img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
 
         .caption {
             position: absolute;
             bottom: 15%;
             left: 5%;
-            border-left: 3px solid var(--gold);
-            padding-left: 20px;
-            background: rgba(0,0,0,0.4);
-            backdrop-filter: blur(5px);
+            border-left: 2px solid var(--gold);
+            padding-left: 15px;
             z-index: 10;
+            background: rgba(0,0,0,0.3);
         }
-        .caption h3 { font-family: 'Playfair Display', serif; font-size: 30px; margin: 0; font-style: italic; }
-        .caption p { font-size: 10px; letter-spacing: 3px; color: var(--gold); text-transform: uppercase; }
 
-        .wa-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; z-index: 2000; }
+        .caption h3 { font-family: 'Playfair Display', serif; font-size: 26px; margin: 0; font-style: italic; }
+        .caption p { font-size: 9px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; margin-bottom: 5px; }
+
+        .wa-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25d366;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="logo-box">
-        <div class="logo-icon"></div>
-        <div class="logo-text">HAȚEG ALTERNATIV</div>
-    </div>
-    <div class="menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
-</header>
-
-<nav class="nav-overlay" id="navMenu">
-    <a href="index.html" onclick="toggleMenu()">ACASĂ</a>
-    <a href="#galerie" onclick="toggleMenu()">GALERIE</a>
+<nav class="top-nav">
+    <a href="index.html">Acasă</a>
+    <a href="galerie.html" class="active">Galerie</a>
 </nav>
 
 <div class="viewport">
     <div class="track" id="slider">
-        <div class="slide">
-            <img src="images/hero-sat.jpg">
-            <div class="caption"><p>Fragment din Retezat</p><h3>Răsărit la ora 5.</h3></div>
-        </div>
-        <div class="slide">
-            <img src="images/feed-buliga.jpg">
-            <div class="caption"><p>Retreat</p><h3>Metanoia.</h3></div>
-        </div>
-        <div class="slide">
-            <img src="images/jeep.jpg">
-            <div class="caption"><p>Aventură</p><h3>Explorare Alternativă.</h3></div>
-        </div>
-        <div class="slide">
-            <img src="images/gast-cafea-inima.jpg">
-            <div class="caption"><p>Stare de bine</p><h3>Detaliul care vindecă.</h3></div>
-        </div>
-        <div class="slide">
-            <img src="images/exp-zapada.jpg">
-            <div class="caption"><p>Altitudine</p><h3>Rânduială și Zăpadă.</h3></div>
-        </div>
-        <div class="slide">
-            <img src="images/gast-masa-traditionala.jpg">
-            <div class="caption"><p>Gust</p><h3>Ospăț în Tăcere.</h3></div>
-        </div>
-        <div class="slide">
-            <img src="images/la-buliga-pensiune.jpg">
-            <div class="caption"><p>Acasă</p><h3>Tihna de la munte.</h3></div>
-        </div>
+        <div class="slide"><img src="images/hero-sat.jpg"><div class="caption"><p>Retezat</p><h3>Răsărit la ora 5.</h3></div></div>
+        <div class="slide"><img src="images/feed-buliga.jpg"><div class="caption"><p>Spirit</p><h3>Metanoia.</h3></div></div>
+        <div class="slide"><img src="images/jeep.jpg"><div class="caption"><p>Explorare</p><h3>Aventură Alternativă.</h3></div></div>
+        <div class="slide"><img src="images/biserica-sf-nicolae-densus.jpg"><div class="caption"><p>Istorie</p><h3>Rânduială Veche.</h3></div></div>
+        <div class="slide"><img src="images/gast-cafea-inima.jpg"><div class="caption"><p>Simțire</p><h3>Detaliul care vindecă.</h3></div></div>
+        <div class="slide"><img src="images/exp-fluturi.jpg"><div class="caption"><p>Natură</p><h3>Libertate.</h3></div></div>
+        <div class="slide"><img src="images/exp-lac.jpg"><div class="caption"><p>Liniște</p><h3>Oglinda Sufletului.</h3></div></div>
+        <div class="slide"><img src="images/exp-stana.jpg"><div class="caption"><p>Autentic</p><h3>Viața la munte.</h3></div></div>
+        <div class="slide"><img src="images/exp-zapada.jpg"><div class="caption"><p>Iarnă</p><h3>Tăcere Albă.</h3></div></div>
+        <div class="slide"><img src="images/gast-masa-traditionala.jpg"><div class="caption"><p>Gust</p><h3>Ospăț Străbun.</h3></div></div>
+        <div class="slide"><img src="images/la-buliga-pensiune.jpg"><div class="caption"><p>Acasă</p><h3>Tihna Noastră.</h3></div></div>
+        <div class="slide"><img src="images/munti.jpg"><div class="caption"><p>Orizont</p><h3>Imensitate.</h3></div></div>
+        <div class="slide"><img src="images/gast-supa2.jpg"><div class="caption"><p>Culinat</p><h3>Arome Locale.</h3></div></div>
+        <div class="slide"><img src="images/exp-biserica-padureni.jpg"><div class="caption"><p>Mistic</p><h3>Rugăciune în piatră.</h3></div></div>
+        <div class="slide"><img src="images/bucura.jpg"><div class="caption"><p>Vârf</p><h3>Bucura-te de munte.</h3></div></div>
     </div>
 </div>
 
-<a href="https://wa.me/40749229686" class="wa-float" target="_blank"><i class="fab fa-whatsapp" style="color:#fff; font-size:35px;"></i></a>
+<a href="https://wa.me/40749229686" class="wa-float" target="_blank">
+    <i class="fab fa-whatsapp" style="color:#fff; font-size:30px;"></i>
+</a>
 
 <script>
-    function toggleMenu() { document.getElementById('navMenu').classList.toggle('open'); }
-    let currentPos = 0;
-    const track = document.getElementById('slider');
-    const totalSlides = 7; // Am crescut la 7 poze
+    let pos = 0;
+    const slider = document.getElementById('slider');
+    const total = 15; // Actualizat la 15
 
     setInterval(() => {
-        currentPos++;
-        if (currentPos >= totalSlides) currentPos = 0;
-        track.style.transform = `translateX(-${currentPos * 100}%)`;
-    }, 3000); // Ritm alert
+        pos++;
+        if (pos >= total) pos = 0;
+        slider.style.transform = `translateX(-${pos * 100}%)`;
+    }, 3000);
 </script>
 
 </body>
