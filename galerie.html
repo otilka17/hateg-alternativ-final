@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galerie Cinematică | Hațeg Alternativ</title>
+    <title>Galerie | Hațeg Alternativ</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
     <style>
         :root { --gold: #D4AF37; --black: #000000; }
-        body { margin: 0; background: var(--black); color: #fff; font-family: sans-serif; overflow-x: hidden; }
+        body { margin: 0; background: var(--black); color: #fff; font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
 
-        /* HEADER & LOGO */
+        /* HEADER & LOGO - CURATE */
         header {
             background: rgba(0,0,0,0.9);
             height: 70px;
@@ -23,14 +23,15 @@
             top: 0;
             z-index: 1000;
             box-sizing: border-box;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
         }
 
         .logo-box { display: flex; align-items: center; }
         .logo-icon { width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 18px solid var(--gold); margin-right: 10px; }
-        .logo-text { color: var(--gold); font-size: 14px; letter-spacing: 2px; font-weight: bold; }
+        .logo-text { color: var(--gold); font-size: 14px; letter-spacing: 2px; font-weight: bold; text-transform: uppercase; }
 
-        /* MENIU SANDWICH REFORMATAT */
-        .menu-icon { color: var(--gold); cursor: pointer; font-size: 24px; z-index: 1002; }
+        /* MENIU BURGER - FĂRĂ SUPRAPUNERE */
+        .menu-btn { color: var(--gold); cursor: pointer; font-size: 24px; z-index: 1002; }
         
         .nav-overlay {
             position: fixed;
@@ -43,34 +44,38 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            transition: 0.5s;
+            transition: 0.5s cubic-bezier(0.77, 0, 0.175, 1);
             z-index: 1001;
         }
 
         .nav-overlay.open { right: 0; }
         .nav-overlay a {
-            color: var(--white);
+            color: #fff;
             text-decoration: none;
-            font-size: 24px;
+            font-size: 28px;
             margin: 20px;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             font-family: 'Playfair Display', serif;
+            transition: 0.3s;
         }
+        .nav-overlay a:hover { color: var(--gold); }
 
-        /* GALERIE - REGLAJ IMAGINI TĂIATE */
+        /* GALERIE - IMAGINI TOTALE (CONTAIN) */
         .viewport {
             width: 100%;
-            height: 100vh; /* Ocupă tot ecranul */
+            height: 100vh;
             position: relative;
             overflow: hidden;
-            margin-top: 0;
+            display: flex;
+            align-items: center;
+            background: #000;
         }
 
         .track {
             display: flex;
             width: 100%;
             height: 100%;
-            transition: transform 1s ease-in-out;
+            transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .slide {
@@ -79,54 +84,61 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #000;
+            position: relative;
         }
 
         .slide img {
-            width: 100%;
-            height: 100%;
-            /* 'contain' asigură că imaginea se vede TOATĂ, fără să fie tăiată */
-            object-fit: contain; 
-            background: #000;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain; /* GARANTEAZĂ CĂ POZA NU E TĂIATĂ */
         }
 
-        /* TEXT PESTE IMAGINE */
+        /* TEXT PESTE IMAGINE - POZIȚIONARE FIXĂ */
         .caption {
             position: absolute;
-            bottom: 100px;
+            bottom: 12%;
             left: 5%;
             border-left: 3px solid var(--gold);
             padding-left: 20px;
-            background: rgba(0,0,0,0.5);
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(5px);
+            z-index: 10;
         }
 
         .caption h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 36px;
+            font-size: 32px;
             margin: 0;
             font-style: italic;
+            color: #fff;
         }
 
         .caption p {
-            font-size: 12px;
+            font-size: 10px;
             letter-spacing: 3px;
             color: var(--gold);
             text-transform: uppercase;
+            margin-bottom: 5px;
         }
 
+        /* WHATSAPP - NUMĂRUL TĂU ACTIVAT */
         .wa-float {
             position: fixed;
             bottom: 30px;
             right: 30px;
             background: #25d366;
-            width: 60px;
-            height: 60px;
+            width: 65px;
+            height: 65px;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 1000;
+            z-index: 2000;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+            transition: 0.3s;
         }
+        .wa-float:hover { transform: scale(1.1); }
+
     </style>
 </head>
 <body>
@@ -136,47 +148,58 @@
         <div class="logo-icon"></div>
         <div class="logo-text">HAȚEG ALTERNATIV</div>
     </div>
-    <div class="menu-icon" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+    <div class="menu-btn" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
 </header>
 
 <nav class="nav-overlay" id="navMenu">
-    <a href="#" onclick="toggleMenu()">ACASĂ</a>
+    <a href="index.html" onclick="toggleMenu()">ACASĂ</a>
     <a href="#galerie" onclick="toggleMenu()">GALERIE</a>
-    <a href="#" onclick="toggleMenu()">REZERVARE</a>
+    <a href="rezervari.html" onclick="toggleMenu()">REZEVĂRI</a>
 </nav>
 
 <div class="viewport">
     <div class="track" id="slider">
         <div class="slide">
-            <img src="images/hero-sat.jpg">
+            <img src="images/hero-sat.jpg" alt="Răsărit">
             <div class="caption">
-                <p>Fragment din Retezat</p>
+                <p>FRAGMENT DIN RETEZAT</p>
                 <h3>Răsărit la ora 5.</h3>
             </div>
         </div>
         <div class="slide">
-            <img src="images/feed-buliga.jpg">
+            <img src="images/feed-buliga.jpg" alt="Metanoia">
             <div class="caption">
-                <p>Retreat</p>
+                <p>RETREAT SPIRITUAL</p>
                 <h3>Metanoia.</h3>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="images/gast-cafea-inima.jpg" alt="Detalii">
+            <div class="caption">
+                <p>O STARE DE BINE</p>
+                <h3>Detaliul care vindecă.</h3>
             </div>
         </div>
     </div>
 </div>
 
-<a href="https://wa.me/407XXXXXXXX" class="wa-float"><i class="fab fa-whatsapp" style="color:#fff; font-size:30px;"></i></a>
+<a href="https://wa.me/40749229686" class="wa-float" target="_blank">
+    <i class="fab fa-whatsapp" style="color:#fff; font-size:35px;"></i>
+</a>
 
 <script>
     function toggleMenu() {
         document.getElementById('navMenu').classList.toggle('open');
     }
 
-    let pas = 0;
-    const slider = document.getElementById('slider');
+    let currentPos = 0;
+    const track = document.getElementById('slider');
+    const totalSlides = 3;
+
     setInterval(() => {
-        pas++;
-        if (pas > 1) pas = 0;
-        slider.style.transform = `translateX(-${pas * 100}%)`;
+        currentPos++;
+        if (currentPos >= totalSlides) currentPos = 0;
+        track.style.transform = `translateX(-${currentPos * 100}%)`;
     }, 5000);
 </script>
 
