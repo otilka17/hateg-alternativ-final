@@ -3,80 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galerie Cinematică | Isihia Retezatului</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Galerie Cinematică | Hațeg Alternativ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --negru: #000000; --auriu: #D4AF37; --alb: #ffffff; }
+        :root { 
+            --negru: #000000; 
+            --auriu: #D4AF37; /* Auriul tău din screenshot */
+            --alb: #ffffff; 
+            --gri-inchis: #1a1a1a; 
+        }
         
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        body { font-family: 'Montserrat', sans-serif; background: var(--negru); color: var(--alb); overflow: hidden; height: 100vh; width: 100vw; }
+        body, html { height: 100%; width: 100%; background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow: hidden; }
 
-        /* HEADER ERMES FIXAT */
+        /* HEADER UNITAR - ADOPTAT DIN INDEX */
         .site-header { 
             position: fixed; top: 0; width: 100%; z-index: 5000; 
-            background: rgba(0,0,0,0.95); padding: 20px 0; border-bottom: 1px solid #1a1a1a; 
+            background: rgba(0,0,0,0.95); border-bottom: 1px solid #222; padding: 20px 0; 
         }
-        .nav-container { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 40px; }
+        .nav-container { 
+            max-width: 1600px; margin: 0 auto; display: flex; 
+            justify-content: space-between; align-items: center; padding: 0 40px; 
+        }
         
-        /* Logo-ul tău cu Munte și Aripi */
-        .brand-logo { height: 50px; filter: brightness(0) invert(1); transition: 0.3s; }
+        /* LOGO TEXT DIN INDEX */
+        .brand { 
+            font-weight: 700; font-size: 1.1rem; text-decoration: none; 
+            color: var(--auriu); text-transform: uppercase; letter-spacing: 5px; 
+            display: flex; align-items: center; gap: 10px;
+        }
+        .brand span { font-size: 0.8rem; } /* Pentru triunghiul mic ▲ */
         
-        .desktop-nav a { text-decoration: none; color: var(--alb); font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-left: 20px; opacity: 0.6; }
+        .desktop-nav { display: flex; gap: 25px; }
+        .desktop-nav a { 
+            text-decoration: none; color: var(--alb); font-size: 0.7rem; 
+            font-weight: 600; text-transform: uppercase; letter-spacing: 2px; 
+            opacity: 0.6; transition: 0.3s; 
+        }
         .desktop-nav a:hover { opacity: 1; color: var(--auriu); }
 
-        /* CONTAINER SLIDESHOW FULL SCREEN (Hermes Style) */
-        .slideshow-container { 
-            position: relative; width: 100vw; height: 100vh; /* Ocupă tot ecranul */
-            overflow: hidden; background: var(--negru); 
-        }
-
-        /* Stil pentru fiecare Slide */
+        /* SLIDESHOW FULL SCREEN (ERMES STYLE) */
+        .slideshow-wrapper { position: relative; width: 100vw; height: 100vh; overflow: hidden; }
+        
         .slide { 
-            position: absolute; width: 100%; height: 100%; 
-            top: 0; left: 0; opacity: 0; /* Ascuns implicit */
-            transition: opacity 2s ease-in-out; /* Tranziție fluidă (Fade) */
-            z-index: 1; 
+            position: absolute; inset: 0; opacity: 0; 
+            transition: opacity 2.5s ease-in-out; z-index: 1; 
         }
-
-        /* Slide activ */
         .slide.active { opacity: 1; z-index: 10; }
 
-        /* IMAGINEA ZUMATĂ ȘI RULATĂ (Ken Burns Effect) */
+        /* EFECTUL KEN BURNS (ZOOM LENT) */
         .slide-img { 
-            width: 100%; height: 100%; object-fit: cover; /* Umple spațiul fără distorsionare */
-            filter: brightness(0.7); /* Adaugă un strat de Isihie vizuală */
-            animation: zoomPan 18s linear infinite; /* Mișcarea lentă și predictibilă */
-            will-change: transform; /* Performanță îmbunătățită */
+            width: 100%; height: 100%; object-fit: cover; 
+            filter: brightness(0.6); /* Isihie vizuală */
+            animation: zoomEffect 20s linear infinite; 
         }
 
-        /* DEFINIREA MIȘCĂRII (ZOOM & PAN) */
-        @keyframes zoomPan {
-            0%   { transform: scale(1); }
-            100% { transform: scale(1.1); }
+        @keyframes zoomEffect {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.15); }
         }
 
-        /* TEXTE CINEMATICE */
+        /* CAPTIONS CINEMATICE */
         .caption { 
-            position: absolute; bottom: 80px; left: 80px; 
-            border-left: 2px solid var(--auriu); padding-left: 30px; 
-            max-width: 600px; 
+            position: absolute; bottom: 100px; left: 80px; z-index: 20;
+            border-left: 2px solid var(--auriu); padding-left: 35px;
         }
-        .caption h3 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 3rem; margin-bottom: 5px; color: var(--alb); }
-        .caption p { color: var(--auriu); text-transform: uppercase; letter-spacing: 3px; font-size: 0.8rem; }
-
-        /* WHATSAPP FLOAT - Inductor de Siguranță */
-        .whatsapp-float {
-            position: fixed; bottom: 30px; right: 30px; 
-            background: #25d366; width: 65px; height: 65px; 
-            border-radius: 50%; display: flex; align-items: center; justify-content: center; 
-            z-index: 9999; box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        .caption h2 { 
+            font-family: 'Playfair Display', serif; font-style: italic; 
+            font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.1; margin-bottom: 10px; 
         }
-        .whatsapp-float img { width: 35px; }
+        .caption p { color: var(--auriu); letter-spacing: 5px; font-size: 0.7rem; text-transform: uppercase; }
 
-        @media (max-width: 768px) {
-            .nav-container { padding: 0 20px; }
-            .caption { left: 30px; bottom: 60px; }
-            .caption h3 { font-size: 2rem; }
+        /* WHATSAPP FLOAT */
+        .wa-float { 
+            position: fixed; bottom: 40px; right: 40px; z-index: 9999; 
+            background: #25d366; width: 60px; height: 60px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
         }
     </style>
 </head>
@@ -84,9 +87,7 @@
 
     <header class="site-header">
         <div class="nav-container">
-            <a href="index.html">
-                <img src="images/hateg-logo.svg" alt="Hațeg Alternativ" class="brand-logo">
-            </a>
+            <a href="index.html" class="brand"><span>▲</span> Hațeg Alternativ</a>
             <nav class="desktop-nav">
                 <a href="index.html">Acasă</a>
                 <a href="obiective.html">Obiective</a>
@@ -96,54 +97,44 @@
         </div>
     </header>
 
-    <div class="slideshow-container">
-        
-        <div class="slide active"> <img src="images/rasarit.jpg" alt="Răsărit la ora 5" class="slide-img">
+    <div class="slideshow-wrapper">
+        <div class="slide active">
+            <img src="images/hero-camp-munti.jpg" class="slide-img" alt="Munte">
             <div class="caption">
-                <h3>Răsărit la ora 5.</h3>
+                <h2>Răsărit la ora 5.</h2>
                 <p>FRAGMENT DIN ISIHIA RETEZATULUI</p>
             </div>
         </div>
 
         <div class="slide">
-            <img src="images/monumental.jpg" alt="Monumental" class="slide-img">
+            <img src="images/apus.jpg" class="slide-img" alt="Apus">
             <div class="caption">
-                <h3>Monumental.</h3>
-                <p>O STÂNCĂ NESCHIMBATĂ ÎN FLUX</p>
+                <h2>Monumental.</h2>
+                <p>STABILITATE ÎN MODERNITATE LICHIDĂ</p>
             </div>
         </div>
 
         <div class="slide">
-            <img src="images/detaliu.jpg" alt="Detaliu" class="slide-img">
+            <img src="images/narcise.jpg" class="slide-img" alt="Narcise">
             <div class="caption">
-                <h3>Detaliul care vindecă.</h3>
-                <p>ACUL DE GOBLEN AL BRANDULUI</p>
+                <h2>Detaliul care vindecă.</h2>
+                <p>PRACTICA NEPSISULUI VIZUAL</p>
             </div>
         </div>
-
     </div>
 
-    <a href="https://wa.me/40749000000" class="whatsapp-float">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="Chat WhatsApp">
+    <a href="https://wa.me/40749000000" class="wa-float">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" style="width: 32px;" alt="WA">
     </a>
 
     <script>
-        // Selectăm toate slide-urile
         const slides = document.querySelectorAll('.slide');
-        let currentSlide = 0; // Indexul slide-ului curent
-        const slideInterval = 6000; // Durata afișării fiecărui slide (6 secunde)
-
-        function nextSlide() {
-            // Ascundem slide-ul curent
-            slides[currentSlide].classList.remove('active');
-            // Calculăm indexul următorului slide (ciclic)
-            currentSlide = (currentSlide + 1) % slides.length;
-            // Afișăm următorul slide
-            slides[currentSlide].classList.add('active');
-        }
-
-        // Pornim automatizarea fluxului
-        setInterval(nextSlide, slideInterval);
+        let current = 0;
+        setInterval(() => {
+            slides[current].classList.remove('active');
+            current = (current + 1) % slides.length;
+            slides[current].classList.add('active');
+        }, 7000); // Schimbă slide-ul la fiecare 7 secunde
     </script>
 
 </body>
