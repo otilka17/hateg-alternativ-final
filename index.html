@@ -20,6 +20,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
 
+        /* HEADER */
         .site-header { position: fixed; top: 0; width: 100%; z-index: 10000; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent); }
         .brand svg { height: 70px; width: auto; }
         .burger { cursor: pointer; z-index: 10001; }
@@ -30,6 +31,7 @@
         .main-nav a { text-decoration: none; color: #fff; font-size: 2rem; font-family: 'Cinzel'; margin: 15px 0; letter-spacing: 4px; transition: 0.3s; opacity: 0.7; }
         .main-nav a:hover { color: var(--auriu); opacity: 1; }
 
+        /* HERO */
         .hero { height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
         .hero-bg { position: absolute; width: 100%; height: 100%; background: url('images/rasarit.jpg') center/cover; transform: scale(1.05); }
         .hero-overlay { position: absolute; width: 100%; height: 100%; background: var(--overlay); }
@@ -40,6 +42,7 @@
         .btn-hero-galerie { display: inline-block; margin-top: 35px; padding: 15px 30px; border: 1px solid var(--auriu); color: var(--auriu); text-decoration: none; font-family: 'Cinzel'; font-size: 0.75rem; letter-spacing: 3px; transition: 0.4s; text-transform: uppercase; background: rgba(0,0,0,0.2); backdrop-filter: blur(5px); }
         .btn-hero-galerie:hover { background: var(--auriu); color: #000; }
 
+        /* GRILA IMPACT */
         .grid-impact { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); background: #000; }
         .card-impact { height: 80vh; position: relative; overflow: hidden; display: flex; align-items: flex-end; padding: 40px; text-decoration: none; border: 0.5px solid #111; }
         .card-bg { position: absolute; top:0; left:0; width:100%; height:100%; background-size: cover; background-position: center; transition: 1.5s cubic-bezier(0.2, 1, 0.3, 1); }
@@ -50,6 +53,7 @@
         .card-content h3 { font-family: 'Playfair Display'; font-size: 3rem; font-style: italic; color: var(--auriu); line-height: 1; margin-bottom: 10px; }
         .card-content p { font-size: 0.95rem; color: #ccc; max-width: 280px; line-height: 1.4; }
 
+        /* REZERVARE */
         .booking-wrap { padding: 120px 20px; background: #050505; }
         .booking-grid { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 50px; }
         .form-side { flex: 1; min-width: 320px; }
@@ -225,8 +229,16 @@
         </div>
     </section>
 
-    <footer style="padding: 60px; text-align: center; opacity: 0.3; font-family: 'Cinzel'; font-size: 0.7rem; border-top: 1px solid #111;">
-        HAȚEG ALTERNATIV &copy; 2026 | DOMENIILE LA BULIGĂ | TRIBUT PATRICIA
+    <footer style="padding: 80px 20px; text-align: center; background: #000; border-top: 1px solid #111;">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <p style="font-family: 'Cinzel'; font-size: 0.8rem; color: var(--auriu); letter-spacing: 3px; margin-bottom: 15px; opacity: 0.9;">
+                HAȚEG ALTERNATIV &copy; 2026 | DOMENIILE LA BULIGĂ
+            </p>
+            <div style="width: 40px; height: 1px; background: var(--auriu); margin: 20px auto; opacity: 0.3;"></div>
+            <p style="font-family: 'Playfair Display'; font-style: italic; font-size: 1.1rem; color: #fff; letter-spacing: 1px; opacity: 0.8;">
+                Un proiect născut din iubire. Tribut Patricia.
+            </p>
+        </div>
     </footer>
 
     <script>
