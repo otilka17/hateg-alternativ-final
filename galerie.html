@@ -8,7 +8,6 @@
     <style>
         body { margin: 0; background: #000; color: #fff; font-family: sans-serif; overflow-x: hidden; }
         
-        /* HEADER NEGRU CURAT */
         header {
             background: #000;
             height: 70px;
@@ -24,12 +23,12 @@
             border-bottom: 1px solid #D4AF37;
         }
 
-        .logo { color: #D4AF37; font-weight: bold; letter-spacing: 2px; }
+        .logo { color: #D4AF37; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; }
 
-        /* HERO - POZA DE SUS */
         .hero {
             height: 80vh;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://otilka17.github.io/hero.jpg') center/cover;
+            /* CALE REPARATĂ: images/hero.jpg */
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/hero.jpg') center/cover;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -38,23 +37,23 @@
             margin-top: 70px;
         }
 
-        .hero h1 { font-size: 50px; color: #D4AF37; margin: 0; }
+        .hero h1 { font-size: 60px; color: #D4AF37; margin: 0; font-style: italic; }
+        .hero p { letter-spacing: 5px; text-transform: uppercase; opacity: 0.8; }
 
-        /* GALERIA CARE RULEAZĂ */
-        .galerie-titlu { padding: 40px 20px 10px; font-size: 24px; color: #fff; }
+        .galerie-titlu { padding: 40px 20px 10px; font-size: 28px; color: #fff; font-weight: 300; }
         
         .viewport {
             width: 100%;
-            height: 400px;
+            height: 450px;
             overflow: hidden;
             position: relative;
         }
 
         .track {
             display: flex;
-            width: 300%; /* Avem 3 poze */
+            width: 300%;
             height: 100%;
-            transition: transform 0.8s ease-in-out;
+            transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .track img {
@@ -63,21 +62,20 @@
             object-fit: cover;
         }
 
-        /* TEXTUL DE PE POZE */
         .info-poza {
             position: absolute;
-            bottom: 20px;
+            bottom: 30px;
             left: 20px;
             background: rgba(0,0,0,0.7);
-            padding: 10px;
+            padding: 15px;
             border-left: 3px solid #D4AF37;
+            backdrop-filter: blur(5px);
         }
 
-        /* BUTON WHATSAPP */
         .wa {
             position: fixed;
-            bottom: 20px;
-            left: 20px;
+            bottom: 30px;
+            left: 30px;
             background: #25d366;
             width: 60px;
             height: 60px;
@@ -86,6 +84,7 @@
             justify-content: center;
             align-items: center;
             z-index: 9999;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
     </style>
 </head>
@@ -105,9 +104,9 @@
 
 <div class="viewport">
     <div class="track" id="slider">
-        <img src="https://otilka17.github.io/1.jpg">
-        <img src="https://otilka17.github.io/2.jpg">
-        <img src="https://otilka17.github.io/hero.jpg">
+        <img src="images/1.jpg" alt="Răsărit">
+        <img src="images/2.jpg" alt="Metanoia">
+        <img src="images/hero.jpg" alt="Viziune">
     </div>
     <div class="info-poza" id="text-poza">Răsărit Monumental</div>
 </div>
@@ -127,7 +126,7 @@
         if (pas > 2) pas = 0;
         slider.style.transform = `translateX(-${pas * 100}vw)`;
         textElement.innerHTML = texte[pas];
-    }, 4000);
+    }, 5000);
 </script>
 
 </body>
