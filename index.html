@@ -20,7 +20,6 @@
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
 
-        /* HEADER */
         .site-header { position: fixed; top: 0; width: 100%; z-index: 10000; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent); }
         .brand svg { height: 70px; width: auto; }
         .burger { cursor: pointer; z-index: 10001; }
@@ -28,10 +27,9 @@
 
         .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: rgba(0,0,0,0.95); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.6s cubic-bezier(0.7, 0, 0.3, 1); z-index: 9500; }
         .main-nav.active { right: 0; }
-        .main-nav a { text-decoration: none; color: #fff; font-size: 2rem; font-family: 'Cinzel'; margin: 20px 0; letter-spacing: 4px; transition: 0.3s; opacity: 0.7; }
+        .main-nav a { text-decoration: none; color: #fff; font-size: 2rem; font-family: 'Cinzel'; margin: 15px 0; letter-spacing: 4px; transition: 0.3s; opacity: 0.7; }
         .main-nav a:hover { color: var(--auriu); opacity: 1; }
 
-        /* HERO */
         .hero { height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
         .hero-bg { position: absolute; width: 100%; height: 100%; background: url('images/rasarit.jpg') center/cover; transform: scale(1.05); }
         .hero-overlay { position: absolute; width: 100%; height: 100%; background: var(--overlay); }
@@ -39,7 +37,9 @@
         .hero-content h1 { font-family: 'Playfair Display'; font-size: clamp(3rem, 12vw, 7rem); font-style: italic; color: var(--auriu); line-height: 0.9; }
         .hero-content p { font-family: 'Cinzel'; letter-spacing: 10px; font-size: 0.8rem; margin-top: 25px; color: rgba(255,255,255,0.6); }
 
-        /* GRILA IMPACT */
+        .btn-hero-galerie { display: inline-block; margin-top: 35px; padding: 15px 30px; border: 1px solid var(--auriu); color: var(--auriu); text-decoration: none; font-family: 'Cinzel'; font-size: 0.75rem; letter-spacing: 3px; transition: 0.4s; text-transform: uppercase; background: rgba(0,0,0,0.2); backdrop-filter: blur(5px); }
+        .btn-hero-galerie:hover { background: var(--auriu); color: #000; }
+
         .grid-impact { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); background: #000; }
         .card-impact { height: 80vh; position: relative; overflow: hidden; display: flex; align-items: flex-end; padding: 40px; text-decoration: none; border: 0.5px solid #111; }
         .card-bg { position: absolute; top:0; left:0; width:100%; height:100%; background-size: cover; background-position: center; transition: 1.5s cubic-bezier(0.2, 1, 0.3, 1); }
@@ -50,11 +50,13 @@
         .card-content h3 { font-family: 'Playfair Display'; font-size: 3rem; font-style: italic; color: var(--auriu); line-height: 1; margin-bottom: 10px; }
         .card-content p { font-size: 0.95rem; color: #ccc; max-width: 280px; line-height: 1.4; }
 
-        /* REZERVARE */
         .booking-wrap { padding: 120px 20px; background: #050505; }
         .booking-grid { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 50px; }
         .form-side { flex: 1; min-width: 320px; }
         .summary-side { flex: 0.6; min-width: 300px; background: var(--gri-card); border: 1px solid #333; padding: 40px; height: fit-content; border-radius: 4px; }
+
+        .early-booking-bar { display: block; background: linear-gradient(90deg, #1a1a1a, #000); border: 1px solid var(--auriu); padding: 20px; margin-bottom: 35px; text-decoration: none; transition: 0.3s; }
+        .early-booking-bar:hover { border-color: #fff; transform: translateY(-2px); }
 
         input, select, textarea { width: 100%; background: transparent; border: 1px solid #222; padding: 18px; color: white; font-family: 'Inter'; margin-bottom: 20px; outline: none; transition: 0.3s; color-scheme: dark; }
         input:focus, select:focus { border-color: var(--auriu); }
@@ -94,6 +96,7 @@
             <a href="evenimente.html">EVENIMENTE</a>
             <a href="retreat.html">METANOIA</a>
             <a href="experiente.html">EXPERIENȚE</a>
+            <a href="galerie.html" style="color: var(--auriu); font-weight: bold;">VEZI GALERIA</a>
         </nav>
     </header>
 
@@ -103,6 +106,9 @@
         <div class="hero-content">
             <h1>Simte.</h1>
             <p>RÂNDUIALĂ & TĂCERE</p>
+            <a href="galerie.html" class="btn-hero-galerie">
+                EXPLOREAZĂ VIZUAL <i class="fas fa-expand-alt" style="margin-left: 10px;"></i>
+            </a>
         </div>
     </section>
 
@@ -144,7 +150,24 @@
     <section class="booking-wrap" id="booking">
         <div class="booking-grid">
             <div class="form-side">
+                
+                <a href="rezervari.html" class="early-booking-bar">
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <i class="fas fa-gem" style="color: var(--auriu); font-size: 1.5rem;"></i>
+                        <div style="flex: 1;">
+                            <p style="font-size: 0.8rem; letter-spacing: 1px; color: #fff;">
+                                <strong style="color: var(--auriu); font-family: 'Cinzel';">EARLY BOOKING 2026:</strong> 
+                                Deschidem listele pentru vară și toamnă. 
+                            </p>
+                            <p style="font-size: 0.7rem; color: var(--auriu); text-transform: uppercase; margin-top: 5px;">
+                                Plătește avansul acum pentru beneficii exclusive →
+                            </p>
+                        </div>
+                    </div>
+                </a>
+
                 <h2 style="font-family: 'Cinzel'; color: var(--auriu); margin-bottom: 30px; letter-spacing: 4px;">SOLICITĂ LOCUL TĂU</h2>
+                
                 <form id="resForm" action="https://formspree.io/f/xjgpvbkj" method="POST">
                     <input type="text" name="Nume" placeholder="Numele tău complet" required>
                     
@@ -170,7 +193,7 @@
                         <select id="pachet" name="Pachet" required>
                             <option value="" disabled selected>Alege Experiența</option>
                             <option value="2000" data-nume="Cazare Integrală" data-details="• Închiriere completă Casă (10 locuri)<br>• Acces Pergola & Grătar<br>• Bucătărie utilată">Cazare Integrală - 2000 RON</option>
-                            <option value="3000" data-nume="Cazare + 2 Mese" data-details="• Cazare 10 persoane<br>• Mic Dejun & Cină Tradițională<br>• Gastronomie vie la fața locului">Cazare + 2 Mese - 3000 RON</option>
+                            <option value="3000" data-nume="Cazare + 2 Mese" data-details="• Cazare 10 persoane<br>• Mic Dejun & Cină Tradițională<br>• Gastronomie vie">Cazare + 2 Mese - 3000 RON</option>
                             <option value="4000" data-nume="Metanoia Full Experience" data-details="• Pensiune Completă<br>• Tur ghidat cu Go Nomad inclus<br>• Atelier de creație inclus">Metanoia Full Experience - 4000 RON</option>
                         </select>
                     </div>
@@ -181,7 +204,10 @@
                     </div>
 
                     <input type="email" name="_replyto" placeholder="Email confirmare" required style="margin-top:20px;">
-                    <textarea name="Mesaj" rows="3" placeholder="Alte detalii (nr. copii, alergii)..."></textarea>
+                    <textarea name="Mesaj" rows="3" placeholder="Alte detalii..."></textarea>
+                    
+                    <p style="font-size: 0.7rem; color: #444; margin-bottom: 15px; font-style: italic;">* Rezervarea se confirmă după plata avansului de 30%.</p>
+
                     <button type="submit" class="btn-reserve">TRIMITE SOLICITAREA</button>
                 </form>
             </div>
@@ -213,6 +239,7 @@
         const pachet = document.getElementById('pachet');
         const detailsBox = document.getElementById('pachet-details');
         const detailsContent = document.getElementById('details-content');
+        const resForm = document.getElementById('resForm');
 
         function updateSumar() {
             const d1 = new Date(checkin.value);
@@ -241,6 +268,42 @@
         }
 
         [checkin, checkout, pachet].forEach(el => el.addEventListener('change', updateSumar));
+
+        resForm.addEventListener("submit", async function(event) {
+            event.preventDefault(); 
+            const status = document.querySelector(".btn-reserve");
+            const data = new FormData(event.target);
+            status.innerHTML = "SE TRIMITE...";
+            status.disabled = true;
+
+            fetch(event.target.action, {
+                method: resForm.method,
+                body: data,
+                headers: { 'Accept': 'application/json' }
+            }).then(response => {
+                if (response.ok) {
+                    status.innerHTML = "SOLICITARE TRIMISĂ!";
+                    status.style.background = "#25d366"; 
+                    status.style.color = "#fff";
+                    resForm.reset();
+                    updateSumar(); 
+                    alert("Mulțumim! Solicitarea a fost trimisă. Te contactăm imediat pe WhatsApp!");
+                    setTimeout(() => {
+                        status.innerHTML = "TRIMITE SOLICITAREA";
+                        status.style.background = "transparent";
+                        status.style.color = "var(--auriu)";
+                        status.disabled = false;
+                    }, 5000);
+                } else {
+                    alert("Eroare. Încearcă din nou.");
+                    status.disabled = false;
+                    status.innerHTML = "TRIMITE SOLICITAREA";
+                }
+            }).catch(error => {
+                alert("Eroare internet.");
+                status.disabled = false;
+            });
+        });
     </script>
 </body>
 </html>
