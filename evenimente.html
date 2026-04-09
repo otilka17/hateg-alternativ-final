@@ -3,140 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Evenimente | Hațeg Alternativ</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Evenimente | Hațeg Alternativ - Momente de Colecție</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <style>
-        :root { --negru: #1a1a1a; --auriu: #c5a059; --crem: #fdfcf8; --alb: #ffffff; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru); line-height: 1.6; padding-top: 130px; }
+        :root { 
+            --auriu: #ffd700; 
+            --negru: #0a0a0a; 
+            --gri-inchis: #111111;
+            --alb: #ffffff;
+            --overlay: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.9) 100%);
+        }
 
-        /* --- HEADER UNIFICAT (IDENTIC CU INDEX) --- */
-        .site-header { position: fixed; top: 0; width: 100%; z-index: 9999; background: #fff; border-bottom: 1px solid #eee; }
-        .top-announcement { background: var(--auriu); color: #fff; text-align: center; padding: 8px 0; font-size: 0.6rem; letter-spacing: 3px; font-weight: 700; text-transform: uppercase; }
-        .nav-container { max-width: 1240px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; height: 80px; }
-        .logo-wrapper { display: flex; align-items: center; text-decoration: none; color: var(--negru); }
-        .logo-wrapper img { height: 45px; width: auto; margin-right: 12px; }
-        .brand-text h1 { font-family: 'Playfair Display', serif; font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; margin: 0; }
-        .main-nav { display: flex; align-items: center; gap: 20px; }
-        .main-nav a { text-decoration: none; color: var(--negru); font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; scroll-behavior: smooth; line-height: 1.6; }
+
+        /* HEADER IDENTIC CU INDEX */
+        .site-header { position: fixed; top: 0; width: 100%; z-index: 10000; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent); }
+        .brand svg { height: 70px; width: auto; }
+        .burger { cursor: pointer; z-index: 10001; }
+        .burger div { width: 25px; height: 2px; background: var(--auriu); margin: 6px; transition: 0.4s; }
+
+        /* NAV OVERLAY */
+        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: rgba(0,0,0,0.98); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.6s cubic-bezier(0.7, 0, 0.3, 1); z-index: 9500; }
+        .main-nav.active { right: 0; }
+        .main-nav a { text-decoration: none; color: #fff; font-size: 2rem; font-family: 'Cinzel'; margin: 20px 0; letter-spacing: 4px; transition: 0.3s; }
         .main-nav a:hover { color: var(--auriu); }
-        .cta-nav { border: 1px solid var(--negru); padding: 10px 18px !important; transition: 0.3s; }
-        .cta-nav:hover { background: var(--negru); color: #fff !important; }
 
-        /* --- HERO & CONTENT --- */
-        .hero-events { 
-            height: 50vh; 
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/gast-masa-traditionala.jpg') center/cover; 
-            display: flex; flex-direction: column; align-items: center; justify-content: center; color: white; text-align: center; 
-        }
-        .hero-events h1 { font-family: 'Playfair Display', serif; font-size: 3rem; font-style: italic; }
+        /* HERO EVENIMENTE */
+        .hero-events { height: 70vh; position: relative; display: flex; align-items: center; justify-content: center; background: url('images/gast-masa-traditionala.jpg') center/cover; }
+        .hero-events::before { content: ""; position: absolute; top:0; left:0; width:100%; height:100%; background: var(--overlay); }
+        .hero-content { position: relative; z-index: 10; text-align: center; }
+        .hero-content h1 { font-family: 'Playfair Display'; font-size: clamp(3rem, 10vw, 7rem); font-style: italic; color: var(--auriu); line-height: 1; }
+        .hero-content p { font-family: 'Cinzel'; letter-spacing: 5px; font-size: 0.8rem; margin-top: 20px; color: rgba(255,255,255,0.7); }
 
-        .planner-badge { 
-            background: var(--auriu); color: white; padding: 40px 20px; text-align: center; 
-            max-width: 900px; margin: -60px auto 60px; position: relative; z-index: 10; box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-        }
+        /* SECTIUNI EVENIMENTE */
+        .section-padding { padding: 100px 20px; max-width: 1200px; margin: 0 auto; }
+        .event-intro { text-align: center; margin-bottom: 80px; }
+        .event-intro h2 { font-family: 'Cinzel'; font-size: 1.2rem; color: var(--auriu); letter-spacing: 8px; margin-bottom: 30px; }
+        .event-intro p { font-family: 'Playfair Display'; font-size: clamp(1.8rem, 4vw, 3rem); font-style: italic; line-height: 1.2; }
 
-        .events-container { max-width: 1100px; margin: 0 auto; padding: 40px 15px; }
-        .event-card { 
-            display: flex; background: white; margin-bottom: 60px; border-radius: 2px; overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.02); transition: 0.4s;
-        }
-        .event-img { width: 45%; background-size: cover; background-position: center; min-height: 400px; }
-        .event-info { width: 55%; padding: 50px; display: flex; flex-direction: column; justify-content: center; }
+        /* CARDS EVENIMENTE */
+        .event-row { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-bottom: 120px; }
+        .event-row.reverse { direction: rtl; }
+        .event-row.reverse .event-text { direction: ltr; }
         
-        .event-details { font-size: 0.9rem; color: #555; margin: 20px 0; list-style: none; }
-        .event-details li::before { content: "— "; color: var(--auriu); font-weight: bold; }
+        .event-img { position: relative; height: 500px; border: 1px solid #222; overflow: hidden; }
+        .event-img img { width: 100%; height: 100%; object-fit: cover; transition: 1s; }
+        .event-img:hover img { transform: scale(1.1); }
+        
+        .event-text h3 { font-family: 'Playfair Display'; font-size: 2.5rem; font-style: italic; margin-bottom: 20px; color: var(--auriu); }
+        .event-text p { color: #ccc; margin-bottom: 30px; font-size: 1.1rem; }
+        
+        .event-features { list-style: none; margin-bottom: 40px; }
+        .event-features li { margin-bottom: 12px; position: relative; padding-left: 30px; font-size: 0.9rem; }
+        .event-features li::before { content: "—"; color: var(--auriu); position: absolute; left: 0; }
 
-        .btn-booking { 
-            align-self: flex-start; padding: 12px 30px; border: 1px solid var(--negru); 
-            text-decoration: none; color: var(--negru); font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; transition: 0.3s;
-        }
-        .btn-booking:hover { background: var(--negru); color: white; }
+        /* CTA BUTTON */
+        .btn-gold { display: inline-block; padding: 16px 40px; border: 1px solid var(--auriu); color: var(--auriu); text-decoration: none; font-family: 'Cinzel'; letter-spacing: 3px; font-weight: bold; transition: 0.3s; }
+        .btn-gold:hover { background: var(--auriu); color: #000; }
 
-        .random-feed { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 60px; }
-        .random-feed img { width: 100%; height: 200px; object-fit: cover; }
+        /* FOOTER */
+        footer { padding: 80px 20px; text-align: center; border-top: 1px solid #111; opacity: 0.4; font-family: 'Cinzel'; font-size: 0.8rem; letter-spacing: 2px; }
 
-        @media (max-width: 992px) {
-            body { padding-top: 180px; }
-            .nav-container { flex-direction: column; height: auto; padding: 20px; gap: 15px; }
-            .event-card { flex-direction: column; }
-            .event-img, .event-info { width: 100%; }
+        @media (max-width: 768px) {
+            .event-row { grid-template-columns: 1fr; gap: 40px; }
+            .event-img { height: 350px; }
+            .hero-content h1 { font-size: 4rem; }
         }
     </style>
 </head>
 <body>
 
     <header class="site-header">
-        <div class="top-announcement">1 MAI 2026: LANSAREA MANIFEST METANOIA | TRIBUT PATRICIA</div>
-        <div class="nav-container">
-            <a href="index.html" class="logo-wrapper">
-                <img src="images/logo-liniar-transparent.png" alt="Logo">
-                <div class="brand-text"><h1>Hațeg Alternativ</h1></div>
-            </a>
-            <nav class="main-nav">
-                <a href="retreat.html">Metanoia</a>
-                <a href="gastronomie.html">Gastronomie</a>
-                <a href="experiente.html">Ateliere</a>
-                <a href="obiective.html">Obiective</a>
-                <a href="forum.html">Comunitate</a>
-                <a href="contact.html">Contact</a>
-                <a href="rezervari.html" class="cta-nav">RESERVATIONS</a>
-            </nav>
-        </div>
+        <a href="index.html" class="brand">
+            <svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="400" cy="280" r="105" fill="none" stroke="#ffd700" stroke-width="2" opacity="0.4"/>
+                <path d="M300 450 L400 250 L500 450 Z" fill="#ffd700"/>
+                <text x="400" y="765" font-family="'Cinzel'" text-anchor="middle" font-size="42" fill="#ffd700">HAȚEG ALTERNATIV</text>
+            </svg>
+        </a>
+        <div class="burger" id="burger"><div></div><div></div><div></div></div>
+        <nav class="main-nav" id="nav-links">
+            <a href="index.html">ACASĂ</a>
+            <a href="pensiune.html">PENSIUNEA</a>
+            <a href="evenimente.html" style="color: var(--auriu);">EVENIMENTE</a>
+            <a href="retreat.html">METANOIA</a>
+            <a href="experiente.html">EXPERIENȚE</a>
+            <a href="contact.html">CONTACT</a>
+        </nav>
     </header>
 
     <section class="hero-events">
-        <h1>Momente de Colecție</h1>
-        <p style="letter-spacing: 4px; text-transform: uppercase; font-size: 0.7rem; margin-top: 15px;">Rafinament la Domeniile la Buligă</p>
-    </section>
-
-    <div class="planner-badge">
-        <h2 style="font-family:'Playfair Display'; margin-bottom:10px;">REVENIREA LA ORIGINI</h2>
-        <p>Fiecare eveniment este o poveste scrisă împreună sub cerul Hațegului.</p>
-    </div>
-
-    <section class="events-container">
-        <div class="event-card">
-            <div class="event-img" style="background-image: url('images/gast-supa2.jpg');"></div>
-            <div class="event-info">
-                <span style="color: var(--auriu); font-size: 0.7rem; letter-spacing: 3px; font-weight: 700;">GASTRONOMIE</span>
-                <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin: 15px 0;">Serata Româno-Italiană</h3>
-                <ul class="event-details">
-                    <li>Meniu fusion cu produse din ferma proprie</li>
-                    <li>Degustări de vinuri alese din inima Retezatului</li>
-                    <li>Atmosferă Signature sub cerul liber</li>
-                </ul>
-                <a href="rezervari.html" class="btn-booking">DETALII SERATĂ</a>
-            </div>
-        </div>
-
-        <div class="event-card" style="flex-direction: row-reverse;">
-            <div class="event-img" style="background-image: url('images/feed-buliga.jpg');"></div>
-            <div class="event-info">
-                <span style="color: var(--auriu); font-size: 0.7rem; letter-spacing: 3px; font-weight: 700;">METANOIA</span>
-                <h3 style="font-family: 'Playfair Display', serif; font-size: 2rem; margin: 15px 0;">Retreat de Weekend</h3>
-                <ul class="event-details">
-                    <li>Sesiuni de reculegere și isihie în natură</li>
-                    <li>Cazare exclusivă în camere Signature</li>
-                    <li>Acces la experiențe locale autentice</li>
-                </ul>
-                <a href="rezervari.html" class="btn-booking">SOLICITĂ LOC</a>
-            </div>
-        </div>
-
-        <h2 style="text-align:center; font-family:'Playfair Display'; font-style:italic; margin-top: 80px;">Instantanee de la Domeniu</h2>
-        <div class="random-feed">
-            <img src="images/gast-cafea-inima.jpg" alt="Feed 1">
-            <img src="images/feed-virslii.jpg" alt="Feed 2">
-            <img src="images/exp-fluturi.jpg" alt="Feed 3">
-            <img src="images/feed-cetate.jpg" alt="Feed 4">
+        <div class="hero-content">
+            <h1>Momente.</h1>
+            <p>DESIGN DE EVENIMENT & ORGANIZARE ACREDITATĂ</p>
         </div>
     </section>
 
-    <footer style="padding: 60px; text-align: center; opacity: 0.6; font-size: 0.8rem;">
-        HAȚEG ALTERNATIV &copy; 2026 | TRIBUT PATRICIA
+    <main class="section-padding">
+        
+        <div class="event-intro">
+            <h2>Arta de a Celebra</h2>
+            <p>Fiecare eveniment la Domeniile la Buligă este un parcurs creativ, orchestrat de organizatori acreditați pentru amintiri fără cusur.</p>
+        </div>
+
+        <div class="event-row">
+            <div class="event-img">
+                <img src="images/feed-cetate.jpg" alt="Botez Boutique">
+            </div>
+            <div class="event-text">
+                <h3>Botezuri Boutique</h3>
+                <p>O rânduială nouă începută într-un loc cu istorie. Creăm un cadru intim, elegant și cald pentru prima mare sărbătoare a copilului tău.</p>
+                <ul class="event-features">
+                    <li>Concept vizual personalizat</li>
+                    <li>Meniu gastronomic local rafinat</li>
+                    <li>Decoruri naturale și atmosferă de poveste</li>
+                </ul>
+                <a href="contact.html" class="btn-gold">SOLICITĂ OFERTĂ</a>
+            </div>
+        </div>
+
+        <div class="event-row reverse">
+            <div class="event-img">
+                <img src="images/exp-fluturi.jpg" alt="Workshop">
+            </div>
+            <div class="event-text">
+                <h3>Workshop-uri & Retreat-uri</h3>
+                <p>Locul ideal pentru învățare și coeziune. Indiferent dacă organizezi un curs de yoga, un atelier de pictură sau un team building strategic, izolarea oferă concentrarea necesară.</p>
+                <ul class="event-features">
+                    <li>Organizator acreditat dedicat evenimentului</li>
+                    <li>Logistica completă inclusă</li>
+                    <li>Pauze de cafea artizanale și prânz în natură</li>
+                </ul>
+                <a href="contact.html" class="btn-gold">ORGANIZEAZĂ CU NOI</a>
+            </div>
+        </div>
+
+        <div class="event-row">
+            <div class="event-img">
+                <img src="images/gast-cafea-inima.jpg" alt="Baby Shower">
+            </div>
+            <div class="event-text">
+                <h3>Baby Showers & Aniversări</h3>
+                <p>Sărbătorim viața în cele mai mici detalii. De la decoruri boho-chic sub pergola panoramică până la petreceri surpriză pline de emoție.</p>
+                <ul class="event-features">
+                    <li>Candy bar cu produse locale reinterpretate</li>
+                    <li>Sesiuni foto profesionale pe domeniu</li>
+                    <li>Planificare pas cu pas (Full Planning)</li>
+                </ul>
+                <a href="contact.html" class="btn-gold">DETALII EVENIMENT</a>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        HAȚEG ALTERNATIV &copy; 2026 | DOMENIILE LA BULIGĂ | TRIBUT PATRICIA
     </footer>
+
+    <script>
+        const burger = document.getElementById('burger');
+        const nav = document.getElementById('nav-links');
+        burger.addEventListener('click', () => { nav.classList.toggle('active'); });
+    </script>
 
     <script type="text/javascript">
         var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
