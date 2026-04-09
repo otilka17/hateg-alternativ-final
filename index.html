@@ -10,7 +10,8 @@
 
     <style>
         :root { 
-            --auriu: #ffd700; 
+            --auriu: #c5a059; /* Am unificat auriul cu cel din paginile de contact pentru subtilitate premium */
+            --auriu-bright: #ffd700; 
             --negru: #0a0a0a; 
             --gri-card: #141414;
             --alb: #ffffff;
@@ -20,27 +21,30 @@
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
 
-        /* HEADER */
-        .site-header { position: fixed; top: 0; width: 100%; z-index: 10000; padding: 20px 40px; display: flex; justify-content: space-between; align-items: center; background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent); }
-        .brand svg { height: 70px; width: auto; }
-        .burger { cursor: pointer; z-index: 10001; }
-        .burger div { width: 25px; height: 2px; background: var(--auriu); margin: 6px; transition: 0.4s; }
-
-        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: rgba(0,0,0,0.95); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.6s cubic-bezier(0.7, 0, 0.3, 1); z-index: 9500; }
-        .main-nav.active { right: 0; }
-        .main-nav a { text-decoration: none; color: #fff; font-size: 2rem; font-family: 'Cinzel'; margin: 15px 0; letter-spacing: 4px; transition: 0.3s; opacity: 0.7; }
-        .main-nav a:hover { color: var(--auriu); opacity: 1; }
+        /* HEADER UNIFICAT DAR PE NEGRU */
+        .site-header { position: fixed; top: 0; width: 100%; z-index: 10000; background: rgba(0,0,0,0.9); border-bottom: 1px solid #222; }
+        .top-announcement { background: var(--auriu); color: #000; text-align: center; padding: 8px 0; font-size: 0.6rem; letter-spacing: 2px; font-weight: 700; text-transform: uppercase; }
+        
+        .nav-container { max-width: 1300px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; height: 80px; }
+        .logo-wrapper { display: flex; align-items: center; text-decoration: none; color: var(--auriu-bright); }
+        .logo-wrapper svg { height: 50px; margin-right: 12px; }
+        .brand-text h1 { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 2px; text-transform: uppercase; margin: 0; }
+        
+        .main-nav { display: flex; align-items: center; gap: 20px; }
+        .main-nav a { text-decoration: none; color: #fff; font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; opacity: 0.8; }
+        .main-nav a:hover { color: var(--auriu-bright); opacity: 1; }
+        .cta-nav { border: 1px solid var(--auriu-bright); padding: 8px 15px !important; color: var(--auriu-bright) !important; }
 
         /* HERO */
-        .hero { height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .hero { height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; padding-top: 100px; }
         .hero-bg { position: absolute; width: 100%; height: 100%; background: url('images/rasarit.jpg') center/cover; transform: scale(1.05); }
         .hero-overlay { position: absolute; width: 100%; height: 100%; background: var(--overlay); }
         .hero-content { position: relative; z-index: 10; text-align: center; }
-        .hero-content h1 { font-family: 'Playfair Display'; font-size: clamp(3rem, 12vw, 7rem); font-style: italic; color: var(--auriu); line-height: 0.9; }
+        .hero-content h1 { font-family: 'Playfair Display'; font-size: clamp(3.5rem, 12vw, 7rem); font-style: italic; color: var(--auriu-bright); line-height: 0.9; }
         .hero-content p { font-family: 'Cinzel'; letter-spacing: 10px; font-size: 0.8rem; margin-top: 25px; color: rgba(255,255,255,0.6); }
 
-        .btn-hero-galerie { display: inline-block; margin-top: 35px; padding: 15px 30px; border: 1px solid var(--auriu); color: var(--auriu); text-decoration: none; font-family: 'Cinzel'; font-size: 0.75rem; letter-spacing: 3px; transition: 0.4s; text-transform: uppercase; background: rgba(0,0,0,0.2); backdrop-filter: blur(5px); }
-        .btn-hero-galerie:hover { background: var(--auriu); color: #000; }
+        .btn-hero-galerie { display: inline-block; margin-top: 35px; padding: 15px 30px; border: 1px solid var(--auriu-bright); color: var(--auriu-bright); text-decoration: none; font-family: 'Cinzel'; font-size: 0.75rem; letter-spacing: 3px; transition: 0.4s; text-transform: uppercase; background: rgba(0,0,0,0.2); backdrop-filter: blur(5px); }
+        .btn-hero-galerie:hover { background: var(--auriu-bright); color: #000; }
 
         /* GRILA IMPACT */
         .grid-impact { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); background: #000; }
@@ -49,8 +53,8 @@
         .card-impact:hover .card-bg { transform: scale(1.1); }
         .card-impact::after { content: ""; position: absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(to top, rgba(0,0,0,0.9) 10%, transparent 70%); z-index: 1; }
         .card-content { position: relative; z-index: 5; }
-        .card-content span { font-family: 'Cinzel'; font-size: 0.7rem; color: var(--auriu); letter-spacing: 3px; display: block; margin-bottom: 10px; }
-        .card-content h3 { font-family: 'Playfair Display'; font-size: 3rem; font-style: italic; color: var(--auriu); line-height: 1; margin-bottom: 10px; }
+        .card-content span { font-family: 'Cinzel'; font-size: 0.7rem; color: var(--auriu-bright); letter-spacing: 3px; display: block; margin-bottom: 10px; }
+        .card-content h3 { font-family: 'Playfair Display'; font-size: 3rem; font-style: italic; color: var(--auriu-bright); line-height: 1; margin-bottom: 10px; }
         .card-content p { font-size: 0.95rem; color: #ccc; max-width: 280px; line-height: 1.4; }
 
         /* REZERVARE */
@@ -59,49 +63,53 @@
         .form-side { flex: 1; min-width: 320px; }
         .summary-side { flex: 0.6; min-width: 300px; background: var(--gri-card); border: 1px solid #333; padding: 40px; height: fit-content; border-radius: 4px; }
 
-        .early-booking-bar { display: block; background: linear-gradient(90deg, #1a1a1a, #000); border: 1px solid var(--auriu); padding: 20px; margin-bottom: 35px; text-decoration: none; transition: 0.3s; }
+        .early-booking-bar { display: block; background: linear-gradient(90deg, #1a1a1a, #000); border: 1px solid var(--auriu-bright); padding: 20px; margin-bottom: 35px; text-decoration: none; transition: 0.3s; }
         .early-booking-bar:hover { border-color: #fff; transform: translateY(-2px); }
 
         input, select, textarea { width: 100%; background: transparent; border: 1px solid #222; padding: 18px; color: white; font-family: 'Inter'; margin-bottom: 20px; outline: none; transition: 0.3s; color-scheme: dark; }
-        input:focus, select:focus { border-color: var(--auriu); }
-        label { font-size: 0.7rem; color: var(--auriu); margin-bottom: 5px; font-family: 'Cinzel'; letter-spacing: 2px; display: block; }
+        input:focus, select:focus { border-color: var(--auriu-bright); }
+        label { font-size: 0.7rem; color: var(--auriu-bright); margin-bottom: 5px; font-family: 'Cinzel'; letter-spacing: 2px; display: block; }
         
-        .btn-reserve { width: 100%; background: transparent; border: 1px solid var(--auriu); color: var(--auriu); padding: 20px; font-family: 'Cinzel'; letter-spacing: 3px; cursor: pointer; transition: 0.4s; font-weight: bold; }
-        .btn-reserve:hover { background: var(--auriu); color: #000; }
+        .btn-reserve { width: 100%; background: transparent; border: 1px solid var(--auriu-bright); color: var(--auriu-bright); padding: 20px; font-family: 'Cinzel'; letter-spacing: 3px; cursor: pointer; transition: 0.4s; font-weight: bold; }
+        .btn-reserve:hover { background: var(--auriu-bright); color: #000; }
 
         .summary-row { display: flex; justify-content: space-between; margin-bottom: 20px; font-size: 0.9rem; border-bottom: 1px solid #1a1a1a; padding-bottom: 10px; }
-        #pachet-details { background: #0a0a0a; border-left: 3px solid var(--auriu); padding: 20px; margin-bottom: 25px; font-size: 0.85rem; color: #aaa; line-height: 1.6; }
+        #pachet-details { background: #0a0a0a; border-left: 3px solid var(--auriu-bright); padding: 20px; margin-bottom: 25px; font-size: 0.85rem; color: #aaa; line-height: 1.6; }
 
-        .whatsapp-float { position: fixed; bottom: 30px; left: 30px; background: #25d366; color: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 9999; }
+        .whatsapp-float { position: fixed; bottom: 30px; left: 30px; background: #25d366; color: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 9999; transition: 0.3s; }
+        .whatsapp-float:hover { transform: scale(1.1); }
 
-        @media (max-width: 768px) {
-            .site-header { padding: 20px; }
+        @media (max-width: 992px) {
+            .nav-container { flex-direction: column; height: auto; padding: 20px; gap: 15px; }
+            .main-nav { gap: 10px; flex-wrap: wrap; justify-content: center; }
+            .hero { padding-top: 160px; }
             .card-impact { height: 65vh; padding: 30px; }
-            .card-content h3 { font-size: 2.5rem; }
         }
     </style>
 </head>
 <body>
 
-    <a href="https://wa.me/40749229686" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
-
     <header class="site-header">
-        <a href="index.html" class="brand">
-            <svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="400" cy="280" r="105" fill="none" stroke="#ffd700" stroke-width="2" opacity="0.4"/>
-                <path d="M300 450 L400 250 L500 450 Z" fill="#ffd700"/>
-                <text x="400" y="765" font-family="'Cinzel'" text-anchor="middle" font-size="42" fill="#ffd700">HAȚEG ALTERNATIV</text>
-            </svg>
-        </a>
-        <div class="burger" id="burger"><div></div><div></div><div></div></div>
-        <nav class="main-nav" id="nav-links">
-            <a href="index.html">ACASĂ</a>
-            <a href="pensiune.html">PENSIUNEA</a>
-            <a href="evenimente.html">EVENIMENTE</a>
-            <a href="retreat.html">METANOIA</a>
-            <a href="experiente.html">EXPERIENȚE</a>
-            <a href="galerie.html" style="color: var(--auriu); font-weight: bold;">VEZI GALERIA</a>
-        </nav>
+        <div class="top-announcement">1 MAI 2026: LANSAREA MANIFEST METANOIA | TRIBUT PATRICIA</div>
+        <div class="nav-container">
+            <a href="index.html" class="logo-wrapper">
+                <svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="400" cy="280" r="105" fill="none" stroke="#ffd700" stroke-width="2" opacity="0.4"/>
+                    <path d="M300 450 L400 250 L500 450 Z" fill="#ffd700"/>
+                </svg>
+                <div class="brand-text"><h1>Hațeg Alternativ</h1></div>
+            </a>
+            <nav class="main-nav">
+                <a href="index.html">Acasă</a>
+                <a href="retreat.html">Metanoia</a>
+                <a href="gastronomie.html">Gastronomie</a>
+                <a href="experiente.html">Experiențe</a>
+                <a href="obiective.html">Obiective</a>
+                <a href="evenimente.html">Evenimente</a>
+                <a href="forum.html">Comunitate</a>
+                <a href="rezervari.html" class="cta-nav">Rezervări</a>
+            </nav>
+        </div>
     </header>
 
     <section class="hero">
@@ -116,206 +124,28 @@
         </div>
     </section>
 
-    <section class="grid-impact">
-        <a href="pensiune.html" class="card-impact">
-            <div class="card-bg" style="background-image: url('images/rasarit.jpg');"></div>
-            <div class="card-content">
-                <span>01. IZOLARE</span>
-                <h3>La Buligă</h3>
-                <p>O casă de oaspeți monumentale la 1000m altitudine.</p>
-            </div>
-        </a>
-        <a href="evenimente.html" class="card-impact">
-            <div class="card-bg" style="background-image: url('images/gast-masa-traditionala.jpg');"></div>
-            <div class="card-content">
-                <span>02. CELEBRARE</span>
-                <h3>Evenimente</h3>
-                <p>Botezuri și workshop-uri organizate acreditat.</p>
-            </div>
-        </a>
-        <a href="retreat.html" class="card-impact">
-            <div class="card-bg" style="background-image: url('images/apus.jpg');"></div>
-            <div class="card-content">
-                <span>03. SPIRIT</span>
-                <h3>Metanoia</h3>
-                <p>Retreat de tăcere profundă pentru suflet.</p>
-            </div>
-        </a>
-        <a href="experiente.html" class="card-impact">
-            <div class="card-bg" style="background-image: url('images/gonomad.jpg');"></div>
-            <div class="card-content">
-                <span>04. EXPLORARE</span>
-                <h3>Go Nomad</h3>
-                <p>Tururi ghidate cu echipa Go Nomad și ateliere vii.</p>
-            </div>
-        </a>
-    </section>
-
-    <section class="booking-wrap" id="booking">
-        <div class="booking-grid">
-            <div class="form-side">
-                
-                <a href="rezervari.html" class="early-booking-bar">
-                    <div style="display: flex; align-items: center; gap: 15px;">
-                        <i class="fas fa-gem" style="color: var(--auriu); font-size: 1.5rem;"></i>
-                        <div style="flex: 1;">
-                            <p style="font-size: 0.8rem; letter-spacing: 1px; color: #fff;">
-                                <strong style="color: var(--auriu); font-family: 'Cinzel';">EARLY BOOKING 2026:</strong> 
-                                Deschidem listele pentru vară și toamnă. 
-                            </p>
-                            <p style="font-size: 0.7rem; color: var(--auriu); text-transform: uppercase; margin-top: 5px;">
-                                Plătește avansul acum pentru beneficii exclusive →
-                            </p>
-                        </div>
-                    </div>
-                </a>
-
-                <h2 style="font-family: 'Cinzel'; color: var(--auriu); margin-bottom: 30px; letter-spacing: 4px;">SOLICITĂ LOCUL TĂU</h2>
-                
-                <form id="resForm" action="https://formspree.io/f/xjgpvbkj" method="POST">
-                    <input type="text" name="Nume" placeholder="Numele tău complet" required>
-                    
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
-                        <div>
-                            <label>Check-in</label>
-                            <input type="date" id="checkin" name="Check-in" required style="margin-bottom:0;">
-                        </div>
-                        <div>
-                            <label>Check-out</label>
-                            <input type="date" id="checkout" name="Check-out" required style="margin-bottom:0;">
-                        </div>
-                    </div>
-
-                    <div style="display: grid; grid-template-columns: 1fr 2.5fr; gap: 15px;">
-                        <select name="Persoane" required>
-                            <option value="" disabled selected>Persoane</option>
-                            <option value="1-2">1-2 Pers.</option>
-                            <option value="3-4">3-4 Pers.</option>
-                            <option value="5-6">5-6 Pers.</option>
-                            <option value="7-10">7-10 Pers.</option>
-                        </select>
-                        <select id="pachet" name="Pachet" required>
-                            <option value="" disabled selected>Alege Experiența</option>
-                            <option value="2000" data-nume="Cazare Integrală" data-details="• Închiriere completă Casă (10 locuri)<br>• Acces Pergola & Grătar<br>• Bucătărie utilată">Cazare Integrală - 2000 RON</option>
-                            <option value="3000" data-nume="Cazare + 2 Mese" data-details="• Cazare 10 persoane<br>• Mic Dejun & Cină Tradițională<br>• Gastronomie vie">Cazare + 2 Mese - 3000 RON</option>
-                            <option value="4000" data-nume="Metanoia Full Experience" data-details="• Pensiune Completă<br>• Tur ghidat cu Go Nomad inclus<br>• Atelier de creație inclus">Metanoia Full Experience - 4000 RON</option>
-                        </select>
-                    </div>
-
-                    <div id="pachet-details" style="display: none;">
-                        <strong style="color: var(--auriu); font-family: 'Cinzel'; display: block; margin-bottom: 10px;">INCLUDE:</strong>
-                        <div id="details-content"></div>
-                    </div>
-
-                    <input type="email" name="_replyto" placeholder="Email confirmare" required style="margin-top:20px;">
-                    <textarea name="Mesaj" rows="3" placeholder="Alte detalii..."></textarea>
-                    
-                    <p style="font-size: 0.7rem; color: #444; margin-bottom: 15px; font-style: italic;">* Rezervarea se confirmă după plata avansului de 30%.</p>
-
-                    <button type="submit" class="btn-reserve">TRIMITE SOLICITAREA</button>
-                </form>
-            </div>
-
-            <div class="summary-side">
-                <h3 style="font-family: 'Cinzel'; color: var(--auriu); margin-bottom: 30px; text-align: center;">SUMAR REZERVARE</h3>
-                <div class="summary-row"><span>Pachet:</span><span id="sum_pachet">-</span></div>
-                <div class="summary-row"><span>Nopți:</span><span id="sum_nopti">0</span></div>
-                <div class="summary-row"><span>Preț / noapte:</span><span id="sum_pret">0 RON</span></div>
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 30px; border-top: 2px solid #222; padding-top: 20px;">
-                    <span style="font-family: 'Cinzel'; color: var(--auriu);">TOTAL:</span>
-                    <span id="sum_total" style="font-size: 2rem; font-weight: 900; color: var(--auriu);">0 RON</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <footer style="padding: 80px 20px; text-align: center; background: #000; border-top: 1px solid #111;">
         <div style="max-width: 600px; margin: 0 auto;">
-            <p style="font-family: 'Cinzel'; font-size: 0.8rem; color: var(--auriu); letter-spacing: 3px; margin-bottom: 15px; opacity: 0.9;">
+            <p style="font-family: 'Cinzel'; font-size: 0.8rem; color: var(--auriu-bright); letter-spacing: 3px; margin-bottom: 15px; opacity: 0.9;">
                 HAȚEG ALTERNATIV &copy; 2026 | DOMENIILE LA BULIGĂ
             </p>
-            <div style="width: 40px; height: 1px; background: var(--auriu); margin: 20px auto; opacity: 0.3;"></div>
+            <div style="width: 40px; height: 1px; background: var(--auriu-bright); margin: 20px auto; opacity: 0.3;"></div>
             <p style="font-family: 'Playfair Display'; font-style: italic; font-size: 1.1rem; color: #fff; letter-spacing: 1px; opacity: 0.8;">
                 Un proiect născut din iubire. Tribut Patricia.
             </p>
         </div>
     </footer>
 
-    <script>
-        const burger = document.getElementById('burger');
-        const nav = document.getElementById('nav-links');
-        burger.addEventListener('click', () => { nav.classList.toggle('active'); });
+    <a href="https://wa.me/40749229686" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
-        const checkin = document.getElementById('checkin');
-        const checkout = document.getElementById('checkout');
-        const pachet = document.getElementById('pachet');
-        const detailsBox = document.getElementById('pachet-details');
-        const detailsContent = document.getElementById('details-content');
-        const resForm = document.getElementById('resForm');
-
-        function updateSumar() {
-            const d1 = new Date(checkin.value);
-            const d2 = new Date(checkout.value);
-            const pret = parseInt(pachet.value) || 0;
-            const selectedOption = pachet.options[pachet.selectedIndex];
-            const nume = selectedOption ? selectedOption.getAttribute('data-nume') : "-";
-            const info = selectedOption ? selectedOption.getAttribute('data-details') : "";
-
-            if (pret > 0) {
-                detailsBox.style.display = 'block';
-                detailsContent.innerHTML = info;
-            } else {
-                detailsBox.style.display = 'none';
-            }
-
-            let nopti = 0;
-            if (d1 && d2 && d2 > d1) {
-                nopti = Math.ceil(Math.abs(d2 - d1) / (1000 * 60 * 60 * 24));
-            }
-
-            document.getElementById('sum_pachet').innerText = nume;
-            document.getElementById('sum_nopti').innerText = nopti;
-            document.getElementById('sum_pret').innerText = pret + " RON";
-            document.getElementById('sum_total').innerText = (nopti * pret) + " RON";
-        }
-
-        [checkin, checkout, pachet].forEach(el => el.addEventListener('change', updateSumar));
-
-        resForm.addEventListener("submit", async function(event) {
-            event.preventDefault(); 
-            const status = document.querySelector(".btn-reserve");
-            const data = new FormData(event.target);
-            status.innerHTML = "SE TRIMITE...";
-            status.disabled = true;
-
-            fetch(event.target.action, {
-                method: resForm.method,
-                body: data,
-                headers: { 'Accept': 'application/json' }
-            }).then(response => {
-                if (response.ok) {
-                    status.innerHTML = "SOLICITARE TRIMISĂ!";
-                    status.style.background = "#25d366"; 
-                    status.style.color = "#fff";
-                    resForm.reset();
-                    updateSumar(); 
-                    alert("Mulțumim! Solicitarea a fost trimisă. Te contactăm imediat pe WhatsApp!");
-                    setTimeout(() => {
-                        status.innerHTML = "TRIMITE SOLICITAREA";
-                        status.style.background = "transparent";
-                        status.style.color = "var(--auriu)";
-                        status.disabled = false;
-                    }, 5000);
-                } else {
-                    alert("Eroare. Încearcă din nou.");
-                    status.disabled = false;
-                    status.innerHTML = "TRIMITE SOLICITAREA";
-                }
-            }).catch(error => {
-                alert("Eroare internet.");
-                status.disabled = false;
-            });
-        });
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true; s1.src='https://embed.tawk.to/642944b54247f20fefea97df/1gsvek60a';
+            s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+        })();
     </script>
 </body>
 </html>
