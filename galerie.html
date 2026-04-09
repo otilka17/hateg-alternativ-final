@@ -3,314 +3,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hațeg Alternativ | Rânduială & Tăcere</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <title>Galerie Hațeg Alternativ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --gold: #D4AF37;
-            --black: #000000;
-            --white: #ffffff;
-        }
-
-        body, html {
-            margin: 0;
-            padding: 0;
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--black);
-            color: var(--white);
-            scroll-behavior: smooth;
-        }
-
-        /* REGLAJ BARA DE SUS (HEADER) */
-        header {
-            background-color: var(--black) !important; /* Forțăm negrul Ermes */
-            height: 80px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 5%;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            box-sizing: border-box;
-            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
-        }
-
-        .logo-box {
-            display: flex;
-            align-items: center;
-        }
-
-        /* Triunghiul tău simbolic făcut din CSS pentru a evita erorile de imagine */
-        .logo-icon {
-            width: 0;
-            height: 0;
-            border-left: 12px solid transparent;
-            border-right: 12px solid transparent;
-            border-bottom: 20px solid var(--gold);
-            margin-right: 10px;
-        }
-
-        .logo-text {
-            color: var(--gold);
-            font-size: 10px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-weight: bold;
-        }
-
-        /* MENIU SANDWICH REPARAT */
-        .nav-links {
-            display: flex;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--white);
-            text-decoration: none;
-            margin-left: 25px;
-            font-size: 12px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            transition: 0.3s;
-        }
-
-        .burger {
-            display: none;
-            cursor: pointer;
-            z-index: 1001;
-        }
-
-        .burger div {
-            width: 25px;
-            height: 2px;
-            background-color: var(--gold);
-            margin: 5px;
-            transition: all 0.3s ease;
-        }
-
-        /* HERO SECTION */
-        .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://otilka17.github.io/hero.jpg'); /* Calea ta de GitHub */
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 70px;
-            color: var(--gold);
-            margin: 0;
-            font-style: italic;
-        }
-
-        .hero p {
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            font-size: 14px;
-            margin-top: 10px;
-            color: rgba(255,255,255,0.7);
-        }
-
-        .btn-explore {
-            margin-top: 40px;
-            padding: 15px 35px;
-            border: 1px solid var(--gold);
-            color: var(--gold);
-            text-decoration: none;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 11px;
-            transition: 0.4s;
-        }
-
-        .btn-explore:hover {
-            background: var(--gold);
-            color: var(--black);
-        }
-
-        /* SECȚIUNE GALERIE CINEMATICĂ - EXACT CA ÎN CAPTURI */
+        body { margin: 0; background: #000; }
+        
         .gallery-section {
+            background-color: #000;
             padding: 80px 0;
-            background: var(--black);
-        }
-
-        .gallery-title {
-            text-align: left;
-            padding-left: 5%;
-            margin-bottom: 40px;
-        }
-
-        .gallery-title h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 32px;
-            margin: 0;
-        }
-
-        .gallery-title p {
-            font-size: 14px;
-            color: rgba(255,255,255,0.5);
-        }
-
-        .slider {
-            position: relative;
-            width: 100%;
-            height: 500px;
             overflow: hidden;
         }
 
-        .slides {
+        .gallery-header {
+            padding: 0 5%;
+            margin-bottom: 40px;
+        }
+
+        .gallery-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 38px;
+            color: #fff;
+            margin: 0;
+        }
+
+        .gallery-header p {
+            font-size: 14px;
+            color: rgba(255,255,255,0.4);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 10px;
+        }
+
+        .slider-viewport {
+            position: relative;
+            width: 100%;
+            height: 600px; 
+            overflow: hidden;
+        }
+
+        .slider-track {
             display: flex;
             width: 100%;
             height: 100%;
-            transition: transform 0.6s ease-in-out;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .slide {
+        .slide-item {
             min-width: 100%;
             height: 100%;
             position: relative;
         }
 
-        .slide img {
+        .slide-item img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            filter: brightness(0.8);
         }
 
-        .slide-overlay {
+        .slide-info {
             position: absolute;
             bottom: 60px;
             left: 5%;
             z-index: 10;
+            background: rgba(0,0,0,0.6);
+            padding: 30px;
+            border-left: 3px solid #D4AF37;
+            backdrop-filter: blur(5px);
         }
 
-        .slide-number {
-            color: var(--gold);
+        .slide-tag {
+            color: #D4AF37;
             font-size: 12px;
-            letter-spacing: 2px;
-            margin-bottom: 5px;
+            letter-spacing: 3px;
+            display: block;
+            margin-bottom: 10px;
         }
 
-        .slide-text {
+        .slide-info h3 {
             font-family: 'Playfair Display', serif;
-            font-size: 38px;
-            color: var(--white);
+            font-size: 32px;
+            color: #fff;
             margin: 0;
         }
 
-        /* MOBIL REGLAJ */
-        @media screen and (max-width: 768px) {
-            .nav-links {
-                position: absolute;
-                right: 0px;
-                height: 100vh;
-                top: 80px;
-                background-color: var(--black);
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                width: 100%;
-                transform: translateX(100%);
-                transition: transform 0.5s ease-in;
-                padding-top: 50px;
-            }
-            .nav-links li { margin: 20px 0; }
-            .nav-links.nav-active { transform: translateX(0%); }
-            .burger { display: block; }
-            .hero h1 { font-size: 50px; }
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            color: #D4AF37;
+            padding: 20px 15px;
+            cursor: pointer;
+            z-index: 20;
+            transition: 0.3s;
+        }
+
+        .slider-btn:hover { background: #D4AF37; color: #000; }
+        .prev { left: 0; border-radius: 0 5px 5px 0; }
+        .next { right: 0; border-radius: 5px 0 0 5px; }
+
+        @media (max-width: 768px) {
+            .slider-viewport { height: 450px; }
+            .slide-info h3 { font-size: 24px; }
+            .gallery-header h2 { font-size: 28px; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo-box">
-            <div class="logo-icon"></div>
-            <div class="logo-text">Hațeg Alternativ</div>
-        </div>
-        <ul class="nav-links">
-            <li><a href="#">Acasă</a></li>
-            <li><a href="#galerie">Galerie</a></li>
-            <li><a href="#">Contact</a></li>
-        </ul>
-        <div class="burger">
-            <div class="line1"></div>
-            <div class="line2"></div>
-            <div class="line3"></div>
-        </div>
-    </header>
+<section id="galerie" class="gallery-section">
+    <div class="gallery-header">
+        <h2>Galerie Cinematică</h2>
+        <p>Rânduială vizuală la 1000m altitudine</p>
+    </div>
 
-    <section class="hero">
-        <h1>Simte.</h1>
-        <p>Rânduială & Tăcere</p>
-        <a href="#galerie" class="btn-explore">Explorează Vizual <i class="fas fa-expand-alt" style="margin-left: 10px;"></i></a>
-    </section>
-
-    <section id="galerie" class="gallery-section">
-        <div class="gallery-title">
-            <h2>Galerie Cinematică</h2>
-            <p>Rânduială vizuală la 1000m altitudine</p>
-        </div>
-
-        <div class="slider">
-            <div class="slides" id="main-slides">
-                <div class="slide">
-                    <img src="https://otilka17.github.io/1.jpg" alt="Răsărit">
-                    <div class="slide-overlay">
-                        <div class="slide-number">01. DIMINEȚI</div>
-                        <h3 class="slide-text">Răsărit Monumental</h3>
-                    </div>
+    <div class="slider-viewport">
+        <div class="slider-track" id="sliderTrack">
+            <div class="slide-item">
+                <img src="https://otilka17.github.io/1.jpg" alt="Răsărit Monumental">
+                <div class="slide-info">
+                    <span class="slide-tag">01. DIMINEȚI</span>
+                    <h3>Răsărit Monumental</h3>
                 </div>
-                <div class="slide">
-                    <img src="https://otilka17.github.io/2.jpg" alt="Metanoia">
-                    <div class="slide-overlay">
-                        <div class="slide-number">03. SPIRIT</div>
-                        <h3 class="slide-text">Metanoia</h3>
-                    </div>
+            </div>
+            <div class="slide-item">
+                <img src="https://otilka17.github.io/2.jpg" alt="Metanoia">
+                <div class="slide-info">
+                    <span class="slide-tag">03. SPIRIT</span>
+                    <h3>Metanoia</h3>
+                </div>
+            </div>
+            <div class="slide-item">
+                <img src="https://otilka17.github.io/hero.jpg" alt="Viziune">
+                <div class="slide-info">
+                    <span class="slide-tag">02. ORIZONT</span>
+                    <h3>Viziune Alternativă</h3>
                 </div>
             </div>
         </div>
-    </section>
 
-    <script>
-        // FUNCTIONALITATE BURGER (SANDWICH)
-        const burger = document.querySelector('.burger');
-        const nav = document.querySelector('.nav-links');
+        <button class="slider-btn prev" onclick="moveManual(-1)">&#10094;</button>
+        <button class="slider-btn next" onclick="moveManual(1)">&#10095;</button>
+    </div>
+</section>
 
-        burger.addEventListener('click', () => {
-            nav.classList.toggle('nav-active');
-            burger.classList.toggle('toggle');
-        });
+<script>
+    let currentIdx = 0;
+    const track = document.getElementById('sliderTrack');
+    const allItems = document.querySelectorAll('.slide-item');
+    const totalItems = allItems.length;
 
-        // AUTO-SLIDER PENTRU GALERIE
-        let counter = 0;
-        const slides = document.getElementById('main-slides');
-        
-        setInterval(() => {
-            counter++;
-            if(counter > 1) counter = 0;
-            slides.style.transform = 'translateX(' + (-counter * 100) + '%)';
-        }, 5000);
+    function updateGallery() {
+        track.style.transform = `translateX(-${currentIdx * 100}%)`;
+    }
 
-        // TAWK.TO INTEGRAT
-        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-        (function(){
-            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-            s1.async=true;
-            s1.src='https://embed.tawk.to/67f51950473260190ba32912/1imlshk5m';
-            s1.charset='UTF-8';
-            s1.setAttribute('crossorigin','*');
-            s0.parentNode.insertBefore(s1,s0);
-        })();
-    </script>
+    function moveManual(direction) {
+        currentIdx = (currentIdx + direction + totalItems) % totalItems;
+        updateGallery();
+    }
+
+    let autoInterval = setInterval(() => { moveManual(1); }, 6000);
+</script>
+
 </body>
 </html>
