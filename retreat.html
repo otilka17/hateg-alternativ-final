@@ -4,181 +4,88 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Metanoia Retreat | Hațeg Alternativ</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
     <style>
-        :root { 
-            --auriu-gold: #ffd700; 
-            --negru-pur: #000000; 
-            --alb: #ffffff;
-            --gri-soft: #1a1a1a;
+        body { margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #fdfaf6; color: #2c3e50; line-height: 1.6; }
+        
+        /* Navigație Curată */
+        nav { background: white; padding: 20px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        nav a { margin: 0 15px; text-decoration: none; color: #7f8c8d; font-weight: bold; font-size: 0.9rem; letter-spacing: 1px; }
+        nav a:hover { color: #d4a373; }
+
+        /* Hero cu Poiana Narciselor */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/narcise.jpg');
+            background-size: cover; background-position: center;
+            height: 70vh; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center;
         }
+        .hero h1 { font-size: 3.5rem; margin: 0; letter-spacing: 3px; }
+        .hero p { font-size: 1.2rem; font-style: italic; opacity: 0.9; }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        body { background: var(--negru-pur); color: var(--alb); font-family: 'Inter', sans-serif; line-height: 1.6; overflow-x: hidden; scroll-behavior: smooth; }
+        .container { max-width: 900px; margin: 0 auto; padding: 60px 20px; }
+        
+        h2 { text-align: center; color: #d4a373; font-size: 2rem; margin-bottom: 40px; }
 
-        /* HEADER & NAVIGATION */
-        .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 30px 50px; display: flex; justify-content: space-between; align-items: center; }
-        .brand svg { height: 100px; width: auto; filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.4)); }
-        .burger { cursor: pointer; z-index: 10000; padding: 10px; }
-        .burger div { width: 35px; height: 2px; background: var(--auriu-gold); margin: 8px; transition: 0.3s; }
+        /* Grid Imagini */
+        .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 40px 0; }
+        .gallery img { width: 100%; height: 300px; object-fit: cover; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
 
-        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: rgba(0,0,0,0.98); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.6s cubic-bezier(0.7, 0, 0.3, 1); z-index: 9500; }
-        .main-nav.active { right: 0; }
-        .main-nav a { text-decoration: none; color: #fff; font-size: 2.5rem; font-family: 'Cinzel'; margin: 12px 0; letter-spacing: 5px; opacity: 0.7; transition: 0.3s; }
-        .main-nav a:hover { opacity: 1; color: var(--auriu-gold); }
+        .program { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); margin-bottom: 40px; }
+        .program ul { list-style: none; padding: 0; }
+        .program li { padding: 15px 0; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; }
+        .program li b { color: #d4a373; }
 
-        /* HERO SECTION */
-        .hero-retreat { height: 70vh; background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.8)), url('images/apus.jpg'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; text-align: center; }
-        .hero-retreat h1 { font-family: 'Playfair Display'; font-size: clamp(3rem, 8vw, 6rem); font-style: italic; color: var(--auriu-gold); text-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .cta-section { text-align: center; padding: 60px 0; background: #2c3e50; color: white; border-radius: 20px; }
+        .btn { display: inline-block; padding: 18px 40px; background: #d4a373; color: white; text-decoration: none; border-radius: 50px; font-weight: bold; transition: 0.3s; }
+        .btn:hover { background: #bc8a5f; transform: scale(1.05); }
 
-        /* CONTENT WRAPPER */
-        .container { max-width: 1200px; margin: 0 auto; padding: 80px 50px; }
-
-        .intro-text { text-align: center; margin-bottom: 100px; }
-        .intro-text h2 { font-family: 'Cinzel'; color: var(--auriu-gold); letter-spacing: 8px; margin-bottom: 30px; }
-        .intro-text p { font-size: 1.3rem; color: #ccc; max-width: 800px; margin: 0 auto; font-weight: 300; }
-
-        /* DETALII RETREAT & OBIECTIVE */
-        .details-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-bottom: 100px; }
-        .detail-card { background: var(--gri-soft); padding: 40px; border-left: 1px solid var(--auriu-gold); }
-        .detail-card h3 { font-family: 'Playfair Display'; font-size: 1.8rem; color: var(--auriu-gold); margin-bottom: 20px; font-style: italic; }
-        .detail-card ul { list-style: none; color: #aaa; }
-        .detail-card ul li { margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
-        .detail-card ul li i { color: var(--auriu-gold); font-size: 0.8rem; }
-
-        /* OBIECTIVE TURISTICE */
-        .objectives-section { margin-bottom: 100px; }
-        .objectives-section h2 { font-family: 'Cinzel'; text-align: center; margin-bottom: 60px; color: var(--auriu-gold); letter-spacing: 5px; }
-        .obj-item { display: flex; flex-wrap: wrap; gap: 50px; align-items: center; margin-bottom: 60px; }
-        .obj-item:nth-child(even) { flex-direction: row-reverse; }
-        .obj-img { flex: 1; min-width: 300px; height: 400px; background-size: cover; background-position: center; border: 1px solid #222; }
-        .obj-text { flex: 1; min-width: 300px; }
-        .obj-text h4 { font-family: 'Playfair Display'; font-size: 2.2rem; color: var(--auriu-gold); margin-bottom: 20px; font-style: italic; }
-
-        /* REZERVARE (JOS) */
-        .forum-section { background: #050505; padding: 100px 50px; border-top: 1px solid #222; }
-        .forum-container { max-width: 800px; margin: 0 auto; }
-        .forum-form { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .forum-form input, .forum-form select, .forum-form textarea { background: #0a0a0a; border: 1px solid #333; padding: 20px; color: #fff; width: 100%; }
-        .forum-form textarea { grid-column: span 2; }
-        .forum-form button { grid-column: span 2; padding: 20px; border: 1px solid var(--auriu-gold); background: transparent; color: var(--auriu-gold); font-family: 'Cinzel'; cursor: pointer; transition: 0.4s; }
-        .forum-form button:hover { background: var(--auriu-gold); color: #000; }
-
-        .whatsapp-float { position: fixed; bottom: 30px; left: 30px; background-color: #25d366; color: #FFF; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 10000; }
-        footer { padding: 80px; text-align: center; opacity: 0.3; font-family: 'Cinzel'; letter-spacing: 12px; font-size: 0.7rem; }
+        footer { text-align: center; padding: 40px; font-size: 0.8rem; color: #bdc3c7; }
     </style>
 </head>
 <body>
 
-    <a href="https://wa.me/40749229686" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <nav>
+        <a href="index.html">ACASĂ</a>
+        <a href="retreat.html">RETREAT</a>
+        <a href="contact.html">CONTACT</a>
+    </nav>
 
-    <header class="site-header">
-        <a href="index.html" class="brand">
-            <svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
-                <defs><linearGradient id="mtnGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#ffd700;stop-opacity:1"/><stop offset="100%" style="stop-color:#b8860b;stop-opacity:1"/></linearGradient></defs>
-                <circle cx="400" cy="280" r="105" fill="none" stroke="#ffd700" stroke-width="2" opacity="0.4"/>
-                <path d="M300 450 L400 250 L500 450 Z" fill="url(#mtnGrad)"/>
-                <g transform="translate(400, 500)" fill="#e0e0e0"><path d="M-5 -20 C-60 -80 -180 -150 -240 60 C-180 30 -120 10 -5 10 Z" opacity="0.9"/><path d="M5 -20 C60 -80 180 -150 240 60 C180 30 120 10 5 10 Z" opacity="0.9"/></g>
-                <text x="400" y="765" font-family="'Cinzel', serif" text-anchor="middle" font-size="45" font-weight="900" letter-spacing="2" fill="#ffd700">HAȚEG ALTERNATIV</text>
-            </svg>
-        </a>
-        <div class="burger" id="burger"><div></div><div></div><div></div></div>
-        <nav class="main-nav" id="nav-links">
-            <a href="index.html">Acasă</a>
-            <a href="pensiune.html">Pensiunea</a>
-            <a href="experiente.html">Activități</a>
-            <a href="gastronomie.html">Gastronomie</a>
-            <a href="forum.html">Jurnal</a>
-            <a href="contact.html">Contact</a>
-        </nav>
+    <header class="hero">
+        <h1>METANOIA</h1>
+        <p>Tăcere, Isihie și Rânduială în Munții Poiana Ruscă</p>
     </header>
 
-    <section class="hero-retreat">
-        <h1>Metanoia: Tăcere & Isihie</h1>
-    </section>
-
     <main class="container">
-        <div class="intro-text">
-            <h2>Arta Deconectării</h2>
-            <p>Nu este o simplă vacanță. Este un parcurs de 3 sau 5 zile creat pentru a-ți reseta sistemul nervos și a redescoperi ritmul natural al vieții în inima Munților Poiana Ruscă.</p>
+        <h2>Experiența Deconectării</h2>
+        <p>Metanoia nu este o vacanță, ci un parcurs de resetare a sistemului nervos. În inima naturii, la Totești și Vadul Dobrii, redescoperim ritmul natural al vieții.</p>
+
+        <div class="gallery">
+            <img src="images/biserica-sf-nicolae-densus.jpg" alt="Densus">
+            <img src="images/sarmisegetusaregia.jpg" alt="Sarmisegetusa">
+            <img src="images/exp-biserica-padureni.jpg" alt="Ghelari">
+            <img src="images/gast-masa-traditionala.jpg" alt="Gastronomie">
         </div>
 
-        <div class="details-grid">
-            <div class="detail-card">
-                <h3>Programul Zilnic</h3>
-                <ul>
-                    <li><i class="fas fa-circle"></i> 07:00 - Meditație la Răsărit</li>
-                    <li><i class="fas fa-circle"></i> 09:00 - Mic dejun arhaic</li>
-                    <li><i class="fas fa-circle"></i> 11:00 - Drumeție în tăcere</li>
-                    <li><i class="fas fa-circle"></i> 17:00 - Ateliere de isihie</li>
-                </ul>
-            </div>
-            <div class="detail-card">
-                <h3>Ce include</h3>
-                <ul>
-                    <li><i class="fas fa-circle"></i> Cazare individuală boutique</li>
-                    <li><i class="fas fa-circle"></i> Toate mesele (ingrediente bio)</li>
-                    <li><i class="fas fa-circle"></i> Ghid spiritual & facilitator</li>
-                    <li><i class="fas fa-circle"></i> Digital Detox (fără ecrane)</li>
-                </ul>
-            </div>
-            <div class="detail-card">
-                <h3>Investiție</h3>
-                <ul>
-                    <li><i class="fas fa-circle"></i> 3 Zile Solo: 1200 RON</li>
-                    <li><i class="fas fa-circle"></i> 5 Zile Solo: 1800 RON</li>
-                    <li><i class="fas fa-circle"></i> Supliment Ghid Privat: 300 RON</li>
-                </ul>
-            </div>
+        <div class="program">
+            <h3>Programul Tău</h3>
+            <ul>
+                <li><span>07:00</span> <b>Meditație la Răsărit</b></li>
+                <li><span>09:00</span> <b>Mic dejun arhaic</b></li>
+                <li><span>11:00</span> <b>Drumeție în tăcere (Poiana Narciselor)</b></li>
+                <li><span>17:00</span> <b>Ateliere de isihie și rânduială</b></li>
+            </ul>
         </div>
 
-        <section class="objectives-section">
-            <h2>Obiective din Apropiere</h2>
-            
-            <div class="obj-item">
-                <div class="obj-img" style="background-image: url('images/narcise.jpg');"></div>
-                <div class="obj-text">
-                    <h4>Poiana Narciselor</h4>
-                    <p>Un monument al naturii situat la mică distanță de Vadul Dobrii. Primăvara, întreg muntele devine alb, oferind un decor ireal pentru meditație.</p>
-                </div>
-            </div>
-
-            <div class="obj-item">
-                <div class="obj-img" style="background-image: url('images/jeep.jpg');"></div>
-                <div class="obj-text">
-                    <h4>Vârful Rusca</h4>
-                    <p>Cel mai înalt punct din zonă, oferind o panoramă de 360 de grade asupra Masivului Retezat și a Țării Hațegului. Locul ideal pentru a simți măreția creației.</p>
-                </div>
-            </div>
+        <section class="cta-section">
+            <h2>Ești gata pentru schimbare?</h2>
+            <p>Locuri limitate pentru o experiență solo sau de grup restrâns.</p>
+            <br>
+            <a href="contact.html" class="btn">SOLICITĂ LOCUL TĂU</a>
         </section>
     </main>
 
-    <section class="forum-section" id="booking">
-        <div class="forum-container">
-            <h2 style="font-family: 'Cinzel'; color: var(--auriu-gold); text-align: center; margin-bottom: 50px; letter-spacing: 5px;">SOLICITĂ LOCUL TĂU</h2>
-            <form class="forum-form" action="https://formspree.io/f/xjgpvbkj" method="POST">
-                <input type="text" name="Nume" placeholder="Numele tău" required>
-                <input type="email" name="Email" placeholder="Email" required>
-                <select name="Tip_Retreat">
-                    <option value="Metanoia_3zile">Metanoia - 3 Zile (1200 RON)</option>
-                    <option value="Metanoia_5zile">Metanoia - 5 Zile (1800 RON)</option>
-                </select>
-                <input type="text" name="Data_Dorita" placeholder="Perioada dorită">
-                <textarea name="Mesaj" rows="5" placeholder="Spune-ne ce cauți în acest retreat..."></textarea>
-                <button type="submit">RESERVĂ ACUM</button>
-            </form>
-        </div>
-    </section>
+    <footer>
+        &copy; 2026 Hațeg Alternativ | Creat cu suflet la Totești.
+    </footer>
 
-    <footer>HAȚEG ALTERNATIV &copy; 2026</footer>
-
-    <script>
-        const burger = document.getElementById('burger');
-        const nav = document.getElementById('nav-links');
-        burger.addEventListener('click', () => { nav.classList.toggle('active'); });
-    </script>
 </body>
 </html>
