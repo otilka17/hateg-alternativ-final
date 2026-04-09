@@ -8,9 +8,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
     <style>
         :root { --gold: #D4AF37; --black: #000000; }
-        body { margin: 0; background: var(--black); color: #fff; font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
+        body { margin: 0; background: var(--black); color: #fff; font-family: sans-serif; overflow-x: hidden; }
 
-        /* HEADER & LOGO - CURATE */
         header {
             background: rgba(0,0,0,0.9);
             height: 70px;
@@ -30,7 +29,6 @@
         .logo-icon { width: 0; height: 0; border-left: 10px solid transparent; border-right: 10px solid transparent; border-bottom: 18px solid var(--gold); margin-right: 10px; }
         .logo-text { color: var(--gold); font-size: 14px; letter-spacing: 2px; font-weight: bold; text-transform: uppercase; }
 
-        /* MENIU BURGER - FĂRĂ SUPRAPUNERE */
         .menu-btn { color: var(--gold); cursor: pointer; font-size: 24px; z-index: 1002; }
         
         .nav-overlay {
@@ -44,7 +42,7 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            transition: 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+            transition: 0.5s ease;
             z-index: 1001;
         }
 
@@ -56,18 +54,13 @@
             margin: 20px;
             letter-spacing: 4px;
             font-family: 'Playfair Display', serif;
-            transition: 0.3s;
         }
-        .nav-overlay a:hover { color: var(--gold); }
 
-        /* GALERIE - IMAGINI TOTALE (CONTAIN) */
         .viewport {
             width: 100%;
             height: 100vh;
             position: relative;
             overflow: hidden;
-            display: flex;
-            align-items: center;
             background: #000;
         }
 
@@ -75,7 +68,8 @@
             display: flex;
             width: 100%;
             height: 100%;
-            transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+            /* Am făcut tranziția de 0.8 secunde pentru a fi mai rapidă și mai fermă */
+            transition: transform 0.8s cubic-bezier(0.45, 0.05, 0.55, 0.95);
         }
 
         .slide {
@@ -90,13 +84,12 @@
         .slide img {
             max-width: 100%;
             max-height: 100%;
-            object-fit: contain; /* GARANTEAZĂ CĂ POZA NU E TĂIATĂ */
+            object-fit: contain;
         }
 
-        /* TEXT PESTE IMAGINE - POZIȚIONARE FIXĂ */
         .caption {
             position: absolute;
-            bottom: 12%;
+            bottom: 15%;
             left: 5%;
             border-left: 3px solid var(--gold);
             padding-left: 20px;
@@ -110,7 +103,6 @@
             font-size: 32px;
             margin: 0;
             font-style: italic;
-            color: #fff;
         }
 
         .caption p {
@@ -118,26 +110,21 @@
             letter-spacing: 3px;
             color: var(--gold);
             text-transform: uppercase;
-            margin-bottom: 5px;
         }
 
-        /* WHATSAPP - NUMĂRUL TĂU ACTIVAT */
         .wa-float {
             position: fixed;
             bottom: 30px;
             right: 30px;
             background: #25d366;
-            width: 65px;
-            height: 65px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 2000;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.4);
-            transition: 0.3s;
         }
-        .wa-float:hover { transform: scale(1.1); }
 
     </style>
 </head>
@@ -154,27 +141,26 @@
 <nav class="nav-overlay" id="navMenu">
     <a href="index.html" onclick="toggleMenu()">ACASĂ</a>
     <a href="#galerie" onclick="toggleMenu()">GALERIE</a>
-    <a href="rezervari.html" onclick="toggleMenu()">REZEVĂRI</a>
 </nav>
 
 <div class="viewport">
     <div class="track" id="slider">
         <div class="slide">
-            <img src="images/hero-sat.jpg" alt="Răsărit">
+            <img src="images/hero-sat.jpg">
             <div class="caption">
                 <p>FRAGMENT DIN RETEZAT</p>
                 <h3>Răsărit la ora 5.</h3>
             </div>
         </div>
         <div class="slide">
-            <img src="images/feed-buliga.jpg" alt="Metanoia">
+            <img src="images/feed-buliga.jpg">
             <div class="caption">
                 <p>RETREAT SPIRITUAL</p>
                 <h3>Metanoia.</h3>
             </div>
         </div>
         <div class="slide">
-            <img src="images/gast-cafea-inima.jpg" alt="Detalii">
+            <img src="images/gast-cafea-inima.jpg">
             <div class="caption">
                 <p>O STARE DE BINE</p>
                 <h3>Detaliul care vindecă.</h3>
@@ -200,7 +186,7 @@
         currentPos++;
         if (currentPos >= totalSlides) currentPos = 0;
         track.style.transform = `translateX(-${currentPos * 100}%)`;
-    }, 5000);
+    }, 3000); // AM SCĂZUT LA 3 SECUNDE
 </script>
 
 </body>
