@@ -4,62 +4,116 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jurnalul | Hațeg Alternativ</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Cinzel:wght@400;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Cinzel:wght@400;700&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        :root { --auriu: #ffd700; --negru: #000; --alb: #fff; }
+        :root { 
+            --negru-mat: #242424; 
+            --auriu: #c5a059; 
+            --crem: #fdfcf8; 
+            --alb: #ffffff;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--alb); color: var(--negru); font-family: 'Inter', sans-serif; line-height: 1.6; }
+        body { background: var(--crem); color: var(--negru-mat); font-family: 'Inter', sans-serif; line-height: 1.6; padding-top: 140px; }
 
-        .header-journal { text-align: center; padding: 60px 20px; border-bottom: 1px solid #eee; }
-        .header-journal span { font-family: 'Cinzel'; letter-spacing: 5px; font-size: 0.8rem; text-transform: uppercase; }
-        .header-journal h1 { font-family: 'Playfair Display'; font-size: 5rem; font-style: italic; margin: 20px 0; }
-
-        .container { max-width: 900px; margin: 0 auto; padding: 50px 20px; }
+        /* --- HEADER UNIFICAT STYLE --- */
+        .site-header { position: fixed; top: 0; width: 100%; z-index: 10000; background: #fff; border-bottom: 1px solid #eee; }
+        .top-announcement { background: var(--auriu); color: #fff; text-align: center; padding: 8px 0; font-size: 0.6rem; letter-spacing: 2px; font-weight: 700; text-transform: uppercase; }
+        .nav-container { max-width: 1300px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; height: 90px; }
+        .logo-wrapper { display: flex; align-items: center; text-decoration: none; color: var(--negru-mat); }
+        .logo-wrapper img { height: 40px; margin-right: 10px; }
+        .brand-text h1 { font-family: 'Playfair Display', serif; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; margin: 0; }
         
-        .post { margin-bottom: 80px; }
-        .date { font-family: 'Cinzel'; font-size: 0.7rem; color: #888; margin-bottom: 10px; display: block; }
-        .post h2 { font-family: 'Playfair Display'; font-size: 2.5rem; font-style: italic; margin-bottom: 15px; cursor: pointer; }
-        .post p { font-size: 1.1rem; color: #444; }
+        .main-nav { display: flex; align-items: center; gap: 18px; }
+        .main-nav a { text-decoration: none; color: var(--negru-mat); font-size: 0.65rem; font-weight: 700; text-transform: uppercase; transition: 0.3s; }
+        .main-nav a:hover { color: var(--auriu); }
+        .cta-nav { border: 1px solid var(--negru-mat); padding: 8px 15px !important; }
+        .cta-nav:hover { background: var(--negru-mat); color: #fff !important; }
 
-        /* BUTON REPARAT */
+        /* --- JURNAL CONTENT --- */
+        .header-journal { text-align: center; padding: 60px 20px; }
+        .header-journal span { font-family: 'Cinzel'; letter-spacing: 5px; font-size: 0.8rem; text-transform: uppercase; color: var(--auriu); }
+        .header-journal h1 { font-family: 'Playfair Display'; font-size: clamp(3rem, 10vw, 5rem); font-style: italic; margin: 10px 0; }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+        
+        .post { margin-bottom: 80px; border-bottom: 1px solid #eee; padding-bottom: 40px; }
+        .date { font-family: 'Cinzel'; font-size: 0.7rem; color: #888; margin-bottom: 10px; display: block; letter-spacing: 2px; }
+        .post h2 { font-family: 'Playfair Display'; font-size: 2.2rem; font-style: italic; margin-bottom: 15px; cursor: pointer; color: var(--negru-mat); transition: 0.3s; }
+        .post h2:hover { color: var(--auriu); }
+        .post p { font-size: 1.1rem; color: #555; font-weight: 300; }
+
+        /* BUTON FLOTANT WHATSAPP / POVESTE */
         .write-btn { 
             position: fixed; bottom: 40px; right: 40px; 
-            background: var(--negru); color: var(--alb); 
+            background: var(--negru-mat); color: var(--alb); 
             padding: 15px 30px; border-radius: 50px; 
             text-decoration: none; font-family: 'Cinzel'; 
-            font-size: 0.8rem; letter-spacing: 2px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            font-size: 0.7rem; letter-spacing: 2px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
             transition: 0.3s; z-index: 1000;
         }
-        .write-btn:hover { transform: scale(1.05); background: var(--auriu); color: var(--negru); }
+        .write-btn:hover { transform: translateY(-5px); background: var(--auriu); color: var(--alb); }
 
-        .nav-back { position: absolute; top: 30px; left: 30px; text-decoration: none; color: var(--negru); font-family: 'Cinzel'; font-size: 0.7rem; letter-spacing: 2px; }
+        @media (max-width: 1100px) {
+            .nav-container { height: auto; padding: 15px; flex-direction: column; gap: 10px; }
+            body { padding-top: 190px; }
+            .header-journal h1 { font-size: 3.5rem; }
+        }
     </style>
 </head>
 <body>
 
-    <a href="index.html" class="nav-back">← ACASĂ</a>
+<header class="site-header">
+    <div class="top-announcement">1 MAI 2026: LANSAREA MANIFEST METANOIA | TRIBUT PATRICIA</div>
+    <div class="nav-container">
+        <a href="index.html" class="logo-wrapper">
+            <img src="images/logo-liniar-transparent.png" alt="Logo">
+            <div class="brand-text"><h1>Hațeg Alternativ</h1></div>
+        </a>
+        <nav class="main-nav">
+            <a href="index.html">Acasă</a>
+            <a href="retreat.html">Metanoia</a>
+            <a href="gastronomie.html">Gastronomie</a>
+            <a href="experiente.html">Experiențe</a>
+            <a href="obiective.html">Obiective</a>
+            <a href="evenimente.html">Evenimente</a>
+            <a href="forum.html" style="color: var(--auriu);">Comunitate</a>
+            <a href="rezervari.html" class="cta-nav">Rezervări</a>
+        </nav>
+    </div>
+</header>
 
+<main class="container">
     <header class="header-journal">
         <span>Hațeg Alternativ</span>
         <h1>Jurnalul.</h1>
     </header>
 
-    <div class="container">
-        <article class="post">
-            <span class="date">1 APRILIE, 2026</span>
-            <h2>O dimineață la Vadul Dobrii.</h2>
-            <p>Când ceața se ridică peste Munții Poiana Ruscă, designul naturii devine cel mai bun arhitect. O poveste despre liniște și despre cum sălbăticia ne învață să ascultăm...</p>
-        </article>
+    <article class="post">
+        <span class="date">1 APRILIE, 2026</span>
+        <h2>O dimineață la Vadul Dobrii.</h2>
+        <p>Când ceața se ridică peste Munții Poiana Ruscă, designul naturii devine cel mai bun arhitect. O poveste despre liniște și despre cum sălbăticia ne învață să ascultăm...</p>
+    </article>
 
-        <article class="post">
-            <span class="date">28 MARTIE, 2026</span>
-            <h2>Rânduiala pâinii pe lespede.</h2>
-            <p>Nu e doar despre făină și apă. E despre căldura pietrei și mâinile care frământă tradiția. Am petrecut o zi în bucătăria de la Buligă și am înțeles că gustul are memorie.</p>
-        </article>
-    </div>
+    <article class="post">
+        <span class="date">28 MARTIE, 2026</span>
+        <h2>Rânduiala pâinii pe lespede.</h2>
+        <p>Nu e doar despre făină și apă. E despre căldura pietrei și mâinile care frământă tradiția. Am petrecut o zi în bucătăria de la Buligă și am înțeles că gustul are memorie.</p>
+    </article>
+</main>
 
-    <a href="index.html#forum" class="write-btn">+ TRIMITE O POVESTE</a>
+<a href="https://wa.me/40749229686" class="write-btn">+ TRIMITE O POVESTE</a>
+
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true; s1.src='https://embed.tawk.to/642944b54247f20fefea97df/1gsvek60a';
+        s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+    })();
+</script>
 
 </body>
 </html>
