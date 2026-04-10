@@ -4,132 +4,156 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hațeg Alternativ | Moștenirea de Aur</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <style>
         :root { 
-            --negru-mat: #242424; 
-            --auriu: #c5a059; 
-            --crem: #fdfcf8; 
+            --auriu-gold: #D4AF37; 
+            --negru-hermes: #0a0a0a; 
             --alb: #ffffff;
+            --overlay-card: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru-mat); padding-top: 140px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        body { background: var(--negru-hermes); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
 
-        /* HEADER UNIFICAT PREMIUM */
-        .site-header { position: fixed; top: 0; width: 100%; z-index: 10000; background: #fff; border-bottom: 1px solid #eee; }
-        .top-announcement { background: var(--auriu); color: #fff; text-align: center; padding: 8px 0; font-size: 0.6rem; letter-spacing: 2px; font-weight: 700; text-transform: uppercase; }
-        .nav-container { max-width: 1300px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; height: 90px; }
-        .logo-wrapper { display: flex; align-items: center; text-decoration: none; color: var(--negru-mat); }
-        .logo-wrapper img { height: 45px; margin-right: 12px; }
-        .brand-text h1 { font-family: 'Playfair Display', serif; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; margin: 0; font-weight: 900; }
+        /* HEADER PREMIUM */
+        .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 20px 30px; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.2); backdrop-filter: blur(5px); }
+        .brand svg { height: 80px; width: auto; filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.4)); }
         
-        .main-nav { display: flex; align-items: center; gap: 20px; }
-        .main-nav a { text-decoration: none; color: var(--negru-mat); font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
-        .main-nav a:hover { color: var(--auriu); }
-        .cta-nav { border: 1px solid var(--negru-mat); padding: 10px 18px !important; }
+        .burger { cursor: pointer; z-index: 10000; padding: 10px; }
+        .burger div { width: 30px; height: 1px; background: var(--auriu-gold); margin: 8px; transition: 0.3s; }
 
-        /* HERO */
-        .hero { 
-            height: 70vh; 
-            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), url('images/hero-hateg.jpg') center/cover; 
-            display: flex; align-items: center; justify-content: center; text-align: center; color: white;
-        }
-        .hero-content h2 { font-family: 'Playfair Display'; font-size: clamp(2.5rem, 7vw, 5rem); font-style: italic; }
+        /* NAV OVERLAY */
+        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: var(--negru-hermes); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.6s cubic-bezier(0.77, 0, 0.175, 1); z-index: 9500; }
+        .main-nav.active { right: 0; }
+        .main-nav a { text-decoration: none; color: #fff; font-size: 1.5rem; font-family: 'Cinzel'; margin: 15px 0; letter-spacing: 5px; transition: 0.3s; }
+        .main-nav a:hover { color: var(--auriu-gold); letter-spacing: 8px; }
+        .nav-res-btn { border: 1px solid var(--auriu-gold) !important; padding: 12px 40px !important; color: var(--auriu-gold) !important; margin-top: 30px !important; font-size: 0.9rem !important; }
 
-        /* MANIFEST & SECTIUNI TEXT */
-        .content-section { max-width: 900px; margin: 60px auto; padding: 0 20px; text-align: center; }
-        .content-section h3 { font-family: 'Playfair Display'; font-size: 2.2rem; font-style: italic; color: var(--auriu); margin-bottom: 25px; }
-        .content-section p { font-size: 1.1rem; line-height: 1.8; color: #444; margin-bottom: 20px; font-weight: 300; }
+        /* HERO SLIDER - POZELE CARE RULEAZA */
+        .hermes-viewport { position: relative; width: 100%; height: 100vh; overflow: hidden; }
+        .slide { position: absolute; width: 100%; height: 100%; opacity: 0; visibility: hidden; transition: opacity 2s ease; }
+        .slide.active { opacity: 1; visibility: visible; }
+        .slide-bg { position: absolute; width: 100%; height: 100%; background-size: cover; background-position: center center; transform: scale(1.1); transition: transform 8s linear; }
+        .slide.active .slide-bg { transform: scale(1); }
+        .slide-overlay { position: absolute; width: 100%; height: 100%; background: rgba(0,0,0,0.4); z-index: 2; }
+        
+        .hero-text-container { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10; text-align: center; width: 90%; }
+        .slide-content h2 { font-family: 'Cinzel'; font-size: 0.8rem; letter-spacing: 8px; color: var(--auriu-gold); margin-bottom: 20px; text-transform: uppercase; }
+        .slide-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 10vw, 7rem); font-style: italic; font-weight: 900; line-height: 0.9; }
 
-        /* SECTIUNEA TRIBUT PATRICIA - IMPORTANTA */
-        .tribut-box { background: #f4f1ea; padding: 80px 20px; border-top: 1px solid #e0dbd0; border-bottom: 1px solid #e0dbd0; text-align: center; margin: 80px 0; }
-        .tribut-box h3 { font-family: 'Cinzel'; letter-spacing: 4px; font-size: 1.2rem; color: var(--negru-mat); margin-bottom: 30px; }
-        .tribut-inner { max-width: 700px; margin: 0 auto; font-style: italic; font-family: 'Playfair Display'; font-size: 1.3rem; color: #666; }
+        /* GRID CARDURI LUX */
+        .grid-lux { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #1a1a1a; padding: 1px; }
+        .card-lux { height: 600px; position: relative; overflow: hidden; text-decoration: none; display: flex; align-items: flex-end; padding: 50px; }
+        .card-bg { position: absolute; inset: 0; background-size: cover; background-position: center; transition: 1.5s; opacity: 0.6; }
+        .card-lux:hover .card-bg { transform: scale(1.05); opacity: 0.3; }
+        .card-lux::after { content: ""; position: absolute; inset: 0; background: var(--overlay-card); z-index: 1; }
+        
+        .card-content { position: relative; z-index: 5; transition: 0.5s; }
+        .card-lux span { font-family: 'Cinzel'; font-size: 0.7rem; color: var(--auriu-gold); letter-spacing: 4px; display: block; margin-bottom: 10px; }
+        .card-lux h3 { font-family: 'Playfair Display'; font-size: 2.5rem; font-style: italic; margin-bottom: 20px; }
+        .btn-outline { display: inline-block; padding: 12px 30px; border: 1px solid var(--auriu-gold); color: var(--auriu-gold); text-decoration: none; font-family: 'Cinzel'; font-size: 0.6rem; letter-spacing: 2px; }
 
-        /* INFO LOCATII */
-        .location-info { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1100px; margin: 80px auto; padding: 0 20px; }
-        .loc-card { background: white; padding: 40px; border: 1px solid #eee; }
-        .loc-card h4 { font-family: 'Cinzel'; color: var(--auriu); margin-bottom: 15px; letter-spacing: 2px; }
+        /* WHATSAPP FLOAT - AUR */
+        .whatsapp-float { position: fixed; bottom: 40px; right: 40px; background: var(--auriu-gold); color: #000; border-radius: 50%; width: 70px; height: 70px; display: flex; align-items: center; justify-content: center; font-size: 35px; z-index: 10000; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transition: 0.3s; }
+        .whatsapp-float:hover { transform: translateY(-5px) scale(1.1); }
 
-        /* WHATSAPP FLOAT */
-        .wa-float { position: fixed; bottom: 30px; right: 30px; background: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; text-decoration: none; z-index: 10000; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        footer { padding: 100px 20px; text-align: center; border-top: 1px solid #1a1a1a; }
+        .footer-text { font-family: 'Cinzel'; font-size: 0.7rem; letter-spacing: 3px; color: var(--auriu-gold); margin-bottom: 15px; }
+        .tribute { font-family: 'Playfair Display'; font-style: italic; opacity: 0.5; font-size: 0.9rem; }
 
         @media (max-width: 992px) {
-            body { padding-top: 180px; }
-            .nav-container { flex-direction: column; height: auto; padding: 15px; gap: 15px; }
-            .location-info { grid-template-columns: 1fr; }
+            .grid-lux { grid-template-columns: 1fr; }
+            .card-lux { height: 450px; padding: 30px; }
+            .hero-text-container h1 { font-size: 3.5rem; }
         }
     </style>
 </head>
 <body>
 
-<header class="site-header">
-    <div class="top-announcement">1 MAI 2026: LANSAREA MANIFEST METANOIA | TRIBUT PATRICIA</div>
-    <div class="nav-container">
-        <a href="index.html" class="logo-wrapper">
-            <img src="images/logo-liniar-transparent.png" alt="Logo">
-            <div class="brand-text"><h1>Hațeg Alternativ</h1></div>
+    <a href="https://wa.me/40749229686" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+    <header class="site-header">
+        <a href="index.html" class="brand">
+            <svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+                <defs><linearGradient id="mtnGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#ffd700;stop-opacity:1"/><stop offset="100%" style="stop-color:#b8860b;stop-opacity:1"/></linearGradient></defs>
+                <circle cx="400" cy="280" r="105" fill="none" stroke="#ffd700" stroke-width="2" opacity="0.4"/>
+                <path d="M300 450 L400 250 L500 450 Z" fill="url(#mtnGrad)"/>
+                <text x="400" y="765" font-family="'Cinzel', serif" text-anchor="middle" font-size="45" font-weight="900" letter-spacing="2" fill="#ffd700">HAȚEG ALTERNATIV</text>
+            </svg>
         </a>
-        <nav class="main-nav">
-            <a href="index.html" style="color: var(--auriu);">Acasă</a>
-            <a href="retreat.html">Metanoia</a>
-            <a href="gastronomie.html">Gastronomie</a>
-            <a href="experiente.html">Experiențe</a>
-            <a href="forum.html">Comunitate</a>
-            <a href="rezervari.html" class="cta-nav">Rezervări</a>
+        <div class="burger" id="burger"><div></div><div></div></div>
+        <nav class="main-nav" id="nav-links">
+            <a href="index.html">ACASĂ</a>
+            <a href="metanoia.html">METANOIA</a>
+            <a href="gastronomie.html">GASTRONOMIE</a>
+            <a href="experiente.html">EXPERIENȚE</a>
+            <a href="forum.html">JURNAL</a>
+            <a href="rezervari.html" class="nav-res-btn">REZERVARE ACUM</a>
         </nav>
+    </header>
+
+    <section class="hermes-viewport">
+        <div class="slide active"><div class="slide-bg" style="background-image: url('images/rasarit.jpg');"></div><div class="slide-overlay"></div></div>
+        <div class="slide"><div class="slide-bg" style="background-image: url('images/apus.jpg');"></div><div class="slide-overlay"></div></div>
+        <div class="slide"><div class="slide-bg" style="background-image: url('images/narcise.jpg');"></div><div class="slide-overlay"></div></div>
+        <div class="hero-text-container">
+            <div class="slide-content">
+                <h2>Rânduială & Tăcere</h2>
+                <h1>Simte. Explorează.</h1>
+            </div>
+        </div>
+    </section>
+
+    <div class="grid-lux">
+        <a href="metanoia.html" class="card-lux">
+            <div class="card-bg" style="background-image: url('images/apus.jpg');"></div>
+            <div class="card-content">
+                <span>Retreat</span>
+                <h3>Metanoia: Tăcere</h3>
+                <div class="btn-outline">DESCOPERĂ</div>
+            </div>
+        </a>
+        <a href="gastronomie.html" class="card-lux">
+            <div class="card-bg" style="background-image: url('images/index-mancare.jpg');"></div>
+            <div class="card-content">
+                <span>Tradiție</span>
+                <h3>Gusturi Uitate</h3>
+                <div class="btn-outline">GUSTĂ ACUM</div>
+            </div>
+        </a>
+        <a href="experiente.html" class="card-lux">
+            <div class="card-bg" style="background-image: url('images/narcise.jpg');"></div>
+            <div class="card-content">
+                <span>Creativitate</span>
+                <h3>Rânduială Manuală</h3>
+                <div class="btn-outline">CREEAZĂ</div>
+            </div>
+        </a>
     </div>
-</header>
 
-<section class="hero">
-    <div class="hero-content">
-        <h2>Moștenirea de Aur.</h2>
-    </div>
-</section>
+    <footer>
+        <div class="footer-text">HAȚEG ALTERNATIV &copy; 2026 | DOMENIILE LA BULIGĂ</div>
+        <div class="tribute">Un proiect născut din iubire. Tribut Patricia.</div>
+    </footer>
 
-<section class="content-section">
-    <h3>Manifestul Hațeg Alternativ</h3>
-    <p>Suntem aici pentru a redescoperi rânduiala. Într-o lume a vitezei, noi alegem tăcerea, gustul dulceții de gutui crocantă și bucuria de a picta lămâi sub lumina dimineții. Hațeg Alternativ nu este doar turism, este o întoarcere la esență.</p>
-</section>
+    <script>
+        // Meniu Burger
+        const burger = document.getElementById('burger');
+        const nav = document.getElementById('nav-links');
+        burger.addEventListener('click', () => { nav.classList.toggle('active'); });
 
-<section class="tribut-box">
-    <h3>ÎN MEMORIAM</h3>
-    <div class="tribut-inner">
-        „Această întreagă rânduială este purtată în suflet ca un tribut pentru Patricia. Fiecare candelă aprinsă și fiecare moment de tihnă este o moștenire a iubirii care nu piere niciodată.”
-    </div>
-</section>
-
-<section class="location-info">
-    <div class="loc-card">
-        <h4>TOTEȘTI</h4>
-        <p>Aici începe povestea. În curtea noastră, unde se pregătesc bunătățile arhaice și unde arta prinde viață pe șevalet.</p>
-    </div>
-    <div class="loc-card">
-        <h4>VADUL DOBRII</h4>
-        <p>Domeniile la Buligă. La 1000m altitudine, acolo unde tăcerea munților Poiana Ruscă devine terapie prin programul Metanoia.</p>
-    </div>
-</section>
-
-<a href="https://wa.me/40749229686" class="wa-float" target="_blank">
-    <i class="fab fa-whatsapp"></i>
-</a>
-
-<footer style="padding: 60px 20px; text-align: center; border-top: 1px solid #eee; font-family: 'Cinzel'; font-size: 0.7rem; letter-spacing: 2px; color: #888; background: #fff;">
-    HAȚEG ALTERNATIV &copy; 2026 | TRIBUT PATRICIA | RÂNDUIALĂ ȘI TIHNĂ
-</footer>
-
-<script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-        s1.async=true; s1.src='https://embed.tawk.to/642944b54247f20fefea97df/1gsvek60a';
-        s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
-        s0.parentNode.insertBefore(s1,s0);
-    })();
-</script>
-
+        // Slider Hero - Rulare poze
+        let slides = document.querySelectorAll('.slide');
+        let current = 0;
+        setInterval(() => {
+            slides[current].classList.remove('active');
+            current = (current + 1) % slides.length;
+            slides[current].classList.add('active');
+        }, 5000);
+    </script>
 </body>
 </html>
