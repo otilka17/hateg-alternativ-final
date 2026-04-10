@@ -21,7 +21,7 @@
 
         body { background: var(--negru-pur); color: var(--alb); font-family: 'Inter', sans-serif; line-height: 1.8; overflow-x: hidden; }
 
-        /* HEADER & LOGO */
+        /* HEADER */
         .site-header { position: relative; width: 100%; z-index: 9999; padding: 20px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1a1a1a; }
         .brand svg { height: 70px; width: auto; filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3)); }
         
@@ -38,7 +38,7 @@
 
         /* HERO RETREAT */
         .hero-retreat { 
-            height: 70vh; width: 100%; 
+            height: 60vh; width: 100%; 
             background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8)), url('images/hero-camp-munti.jpg'); 
             background-size: cover; background-position: center; 
             display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
@@ -46,15 +46,18 @@
         .hero-retreat span { font-family: 'Cinzel'; color: var(--auriu-gold); letter-spacing: 5px; font-size: 0.8rem; }
         .hero-retreat h1 { font-family: 'Playfair Display'; font-size: clamp(3rem, 10vw, 5rem); font-style: italic; margin-top: 10px; }
 
-        /* CONTENT */
-        .content-section { max-width: 900px; margin: 0 auto; padding: 80px 20px; text-align: center; }
-        .content-section h2 { font-family: 'Cinzel'; color: var(--auriu-gold); letter-spacing: 3px; margin-bottom: 30px; font-size: 1.5rem; }
-        .content-section p { font-size: 1.2rem; color: #d0d0d0; font-weight: 300; margin-bottom: 40px; font-style: italic; }
+        /* CONTENT SECTION */
+        .content-section { max-width: 800px; margin: 0 auto; padding: 60px 20px; }
+        
+        .detail-block { margin-bottom: 60px; text-align: center; }
+        .detail-block h2 { font-family: 'Cinzel'; color: var(--auriu-gold); letter-spacing: 3px; margin-bottom: 20px; font-size: 1.6rem; }
+        .detail-block p { font-size: 1.15rem; color: #d0d0d0; font-weight: 300; line-height: 1.8; }
+        .detail-block i { color: var(--auriu-gold); font-size: 1.5rem; margin-bottom: 15px; display: block; }
 
-        /* GALLERY GRID */
-        .gallery-retreat { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; padding: 20px; max-width: 1200px; margin: 0 auto; }
-        .gallery-retreat img { width: 100%; height: 400px; object-fit: cover; border: 1px solid #1a1a1a; transition: 0.4s; }
-        .gallery-retreat img:hover { border-color: var(--auriu-gold); }
+        /* LISTA DETALII */
+        .retreat-list { list-style: none; text-align: left; display: inline-block; margin-top: 20px; }
+        .retreat-list li { margin-bottom: 15px; font-size: 1rem; color: var(--alb); display: flex; align-items: center; gap: 15px; }
+        .retreat-list li i { margin-bottom: 0; font-size: 1rem; width: 20px; }
 
         footer { padding: 60px 20px; text-align: center; border-top: 1px solid #1a1a1a; opacity: 0.4; font-family: 'Cinzel'; font-size: 0.7rem; letter-spacing: 5px; color: var(--auriu-gold); }
     </style>
@@ -81,20 +84,37 @@
     </header>
 
     <section class="hero-retreat">
-        <span>EXPERIENȚA METANOIA</span>
-        <h1>Tăcerea Munților.</h1>
+        <span>MOȘTENIREA LINIȘTII</span>
+        <h1>Metanoia Retreat.</h1>
     </section>
 
     <main class="content-section">
-        <h2>SCHIMBAREA MINȚII</h2>
-        <p>"Metanoia nu este doar un retreat, este o întoarcere la esență. Sus, unde cerul atinge crestele, învățăm să lăsăm zgomotul lumii în urmă și să ascultăm rânduiala tăcerii."</p>
-    </main>
+        
+        <div class="detail-block">
+            <i class="fas fa-mountain"></i>
+            <h2>SCHIMBAREA MINȚII</h2>
+            <p>"Metanoia nu este doar o destinație, ci o stare. Sus, în inima munților, unde zgomotul lumii dispare, rânduiala tăcerii devine singura voce pe care o mai asculți."</p>
+        </div>
 
-    <section class="gallery-retreat">
-        <img src="images/hero-camp-munti.jpg" alt="Camp Metanoia">
-        <img src="images/rasarit.jpg" alt="Răsărit în munte">
-        <img src="images/narcise.jpg" alt="Natură sălbatică">
-    </section>
+        <div class="detail-block">
+            <i class="fas fa-leaf"></i>
+            <h2>CE ÎNSEAMNĂ EXPERIENȚA?</h2>
+            <ul class="retreat-list">
+                <li><i class="fas fa-check"></i> 3 zile de izolare totală în natură sălbatică.</li>
+                <li><i class="fas fa-check"></i> Cazare în corturi premium, sub bolta înstelată.</li>
+                <li><i class="fas fa-check"></i> Gastronomie la foc de tabără, rețete hațegane vechi.</li>
+                <li><i class="fas fa-check"></i> Trasee de tăcere și meditație ghidată.</li>
+                <li><i class="fas fa-check"></i> Detox digital - deconectare completă de tehnologie.</li>
+            </ul>
+        </div>
+
+        <div class="detail-block">
+            <i class="fas fa-sun"></i>
+            <h2>RÂNDUIALA ZILEI</h2>
+            <p>De la răsăritul care scaldă crestele Retezatului, până la poveștile spuse la gura focului sub stele, fiecare moment este gândit să îți redea tihna pierdută.</p>
+        </div>
+
+    </main>
 
     <footer>HAȚEG ALTERNATIV &copy; 2026</footer>
 
@@ -111,9 +131,7 @@
     <script>
         const burger = document.getElementById('burger');
         const nav = document.getElementById('nav-links');
-        burger.addEventListener('click', () => {
-            nav.classList.toggle('active');
-        });
+        burger.addEventListener('click', () => { nav.classList.toggle('active'); });
     </script>
 </body>
 </html>
