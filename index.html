@@ -4,162 +4,86 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hațeg Alternativ | Moștenirea de Aur</title>
-    
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
     <style>
-        :root { 
-            --auriu-gold: #ffd700; 
-            --negru-pur: #000000; 
-            --alb: #ffffff;
-            --overlay-card: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        a { text-decoration: none !important; color: inherit !important; }
-
-        body { background: var(--negru-pur); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
-
+        :root { --auriu: #ffd700; --negru: #000000; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--negru); color: white; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        
         /* HEADER */
-        .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 20px 30px; display: flex; justify-content: space-between; align-items: center; }
-        .brand svg { height: 90px; width: auto; filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.4)); }
-        
-        .nav-right { display: flex; align-items: center; gap: 20px; }
-        .btn-reserve-top { padding: 10px 20px; border: 1px solid var(--auriu-gold); font-family: 'Cinzel'; color: var(--auriu-gold) !important; font-size: 0.75rem; letter-spacing: 2px; transition: 0.3s; }
-        .btn-reserve-top:hover { background: var(--auriu-gold); color: black !important; }
+        .site-header { position: absolute; top: 0; width: 100%; z-index: 99; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
+        .brand svg { height: 70px; filter: drop-shadow(0 0 10px var(--auriu)); }
+        .btn-reserve { padding: 10px 15px; border: 1px solid var(--auriu); color: var(--auriu); font-family: 'Cinzel'; font-size: 0.7rem; text-decoration: none; }
 
-        .burger { cursor: pointer; z-index: 10000; padding: 10px; }
-        .burger div { width: 30px; height: 2px; background: var(--auriu-gold); margin: 6px; transition: 0.3s; }
+        /* HERO */
+        .hero { height: 85vh; background: #000; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; }
+        /* AICI AM PUS LINK DIRECT */
+        .hero-bg { position: absolute; inset: 0; background: url('https://raw.githubusercontent.com/otilka17/otilka17.github.io/main/images/hero-premium.jpg') center/cover; opacity: 0.6; }
+        .hero h1 { position: relative; font-family: 'Playfair Display'; font-style: italic; font-size: clamp(2.5rem, 8vw, 5rem); color: var(--auriu); text-shadow: 2px 2px 15px black; }
 
-        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: rgba(0,0,0,0.98); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.5s ease; z-index: 9500; }
-        .main-nav.active { right: 0; }
-        .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 15px 0; letter-spacing: 3px; color: var(--alb) !important; text-transform: uppercase; }
+        /* PACHETE */
+        .section-title { text-align: center; font-family: 'Cinzel'; color: var(--auriu); padding: 60px 20px 20px; letter-spacing: 5px; }
+        .grid-pachete { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; padding: 20px; max-width: 1400px; margin: 0 auto; }
+        .pachet-card { background: #080808; border: 1px solid #1a1a1a; padding-bottom: 20px; text-align: center; }
+        .p-img { height: 250px; background-size: cover; background-position: center; margin-bottom: 20px; }
+        .pachet-card h3 { font-family: 'Cinzel'; color: var(--auriu); margin-bottom: 10px; }
+        .price { font-size: 1.5rem; font-weight: 900; display: block; margin-bottom: 15px; }
 
-        /* HERO MARE */
-        .hermes-viewport { position: relative; width: 100%; height: 95vh; overflow: hidden; }
-        .slide { position: absolute; width: 100%; height: 100%; opacity: 0; visibility: hidden; transition: opacity 2s ease; }
-        .slide.active { opacity: 1; visibility: visible; }
-        .slide-bg { position: absolute; width: 100%; height: 100%; background-size: cover; background-position: center !important; transform: scale(1); transition: transform 10s linear; }
-        .slide.active .slide-bg { transform: scale(1.1); }
-        .slide-overlay { position: absolute; width: 100%; height: 100%; background: rgba(0,0,0,0.45); z-index: 2; }
-        
-        .hero-text-container { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10; text-align: center; width: 90%; }
-        .slide-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 10vw, 6rem); font-style: italic; color: var(--auriu-gold); text-shadow: 2px 2px 20px rgba(0,0,0,1); margin-bottom: 20px; }
-        .btn-main-reserve { display: inline-block; padding: 18px 45px; background: var(--auriu-gold); color: black !important; font-family: 'Cinzel'; font-weight: bold; letter-spacing: 3px; font-size: 1rem; transition: 0.3s; border: 1px solid var(--auriu-gold); }
-        .btn-main-reserve:hover { background: transparent; color: var(--auriu-gold) !important; }
+        /* EXPERIENTE */
+        .grid-exp { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; padding: 15px; max-width: 1400px; margin: 0 auto 100px; }
+        .exp-card { height: 400px; background-size: cover; background-position: center; position: relative; display: flex; align-items: flex-end; padding: 20px; text-decoration: none; border: 1px solid #111; }
+        .exp-card::before { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent, black); }
+        .exp-card h3 { position: relative; font-family: 'Playfair Display'; color: var(--auriu); font-size: 2rem; font-style: italic; }
 
-        /* SECTIUNE PACHETE */
-        .section-padding { padding: 100px 20px; }
-        .pachete-intro { text-align: center; max-width: 800px; margin: 0 auto 60px; }
-        .pachete-intro h2 { font-family: 'Cinzel'; color: var(--auriu-gold); font-size: 2.5rem; letter-spacing: 8px; margin-bottom: 20px; }
-        
-        .grid-pachete { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; max-width: 1400px; margin: 0 auto; }
-        .pachet-card { background: #050505; border: 1px solid #151515; transition: 0.4s; overflow: hidden; display: flex; flex-direction: column; }
-        .pachet-card:hover { border-color: var(--auriu-gold); transform: translateY(-10px); }
-        .pachet-img { width: 100%; height: 300px; background-size: cover; background-position: center; }
-        .pachet-info { padding: 30px; text-align: center; flex-grow: 1; }
-        .pachet-info h3 { font-family: 'Cinzel'; color: var(--auriu-gold); font-size: 1.2rem; margin-bottom: 15px; letter-spacing: 2px; }
-        .pachet-info p { font-size: 0.9rem; color: #888; margin-bottom: 20px; font-style: italic; }
-        .price-tag { font-family: 'Inter'; font-weight: 900; font-size: 1.8rem; color: #fff; display: block; margin-bottom: 25px; }
-
-        /* GRID EXPERIENTE MARI */
-        .grid-lux { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 20px; padding: 20px; max-width: 1600px; margin: 0 auto 100px; }
-        .card-lux { 
-            height: 600px; display: flex; flex-direction: column; justify-content: flex-end; 
-            padding: 50px; border: 1px solid #111; position: relative; overflow: hidden; 
-            background-size: cover !important; background-position: center !important; transition: 0.6s ease;
-        }
-        .card-lux::before { content: ""; position: absolute; inset:0; background: var(--overlay-card); z-index: 1; }
-        .card-content { position: relative; z-index: 5; }
-        .card-lux h3 { font-family: 'Playfair Display'; font-size: 3rem; color: var(--auriu-gold); margin-bottom: 15px; font-style: italic; }
-        
-        footer { padding: 120px 20px; text-align: center; opacity: 0.3; font-family: 'Cinzel'; color: var(--auriu-gold); font-size: 0.8rem; letter-spacing: 6px; border-top: 1px solid #111; }
+        footer { padding: 80px; text-align: center; opacity: 0.3; font-family: 'Cinzel'; color: var(--auriu); font-size: 0.7rem; border-top: 1px solid #111; }
     </style>
 </head>
 <body>
 
     <header class="site-header">
         <div class="brand">
-            <svg viewBox="0 0 800 800">
-                <circle cx="400" cy="280" r="105" fill="none" stroke="#ffd700" stroke-width="2" opacity="0.4"/>
-                <path d="M300 450 L400 250 L500 450 Z" fill="#ffd700"/>
-                <text x="400" y="765" font-family="'Cinzel'" text-anchor="middle" font-size="45" fill="#ffd700">HAȚEG ALTERNATIV</text>
-            </svg>
+            <svg viewBox="0 0 800 800"><path d="M300 450 L400 250 L500 450 Z" fill="#ffd700"/><text x="400" y="750" font-family="'Cinzel'" text-anchor="middle" font-size="45" fill="#ffd700">HAȚEG ALTERNATIV</text></svg>
         </div>
-        <div class="nav-right">
-            <a href="rezervare.html" class="btn-reserve-top">REZERVĂRI</a>
-            <div class="burger" id="burger"><div></div><div></div><div></div></div>
-        </div>
-        <nav class="main-nav" id="nav-links">
-            <a href="index.html">ACASĂ</a>
-            <a href="rezervare.html">REZERVĂ ACUM</a>
-            <a href="pensiune.html">PENSIUNEA</a>
-            <a href="retreat.html">METANOIA</a>
-            <a href="gastronomie.html">GASTRONOMIE</a>
-            <a href="forum.html">JURNAL</a>
-        </nav>
+        <a href="rezervare.html" class="btn-reserve">REZERVĂRI</a>
     </header>
 
-    <section class="hermes-viewport">
-        <div class="slide active"><div class="slide-bg" style="background-image: url('images/hero-premium.jpg');"></div><div class="slide-overlay"></div></div>
-        <div class="slide"><div class="slide-bg" style="background-image: url('images/hero-camp-munti.jpg');"></div><div class="slide-overlay"></div></div>
-        <div class="slide"><div class="slide-bg" style="background-image: url('images/rasarit.jpg');"></div><div class="slide-overlay"></div></div>
-        <div class="hero-text-container">
-            <div class="slide-content">
-                <h1>Tihna rânduită.</h1>
-                <a href="rezervare.html" class="btn-main-reserve">REZERVĂ ACUM</a>
-            </div>
-        </div>
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <h1>Tihna rânduită.</h1>
     </section>
 
-    <section class="section-padding">
-        <div class="pachete-intro">
-            <h2>PACHETE SPECIALE</h2>
-            <p>Alege experiența care ți se potrivește în matca tradiției hațegane.</p>
+    <h2 class="section-title">PACHETE</h2>
+    <div class="grid-pachete">
+        <div class="pachet-card">
+            <div class="p-img" style="background-image: url('https://raw.githubusercontent.com/otilka17/otilka17.github.io/main/images/la-buliga-pensiune.jpg');"></div>
+            <h3>Cazare Integrală</h3>
+            <span class="price">2000 RON</span>
+            <a href="rezervare.html" class="btn-reserve">SELECTEAZĂ</a>
         </div>
-
-        <div class="grid-pachete">
-            <div class="pachet-card">
-                <div class="pachet-img" style="background-image: url('images/la-buliga-pensiune.jpg');"></div>
-                <div class="pachet-info">
-                    <h3>CAZARE INTEGRALĂ</h3>
-                    <p>Intimitate deplină în casa bunicilor.</p>
-                    <span class="price-tag">2000 RON</span>
-                    <a href="rezervare.html" class="btn-reserve-top">SELECTEAZĂ</a>
-                </div>
-            </div>
-            <div class="pachet-card">
-                <div class="pachet-img" style="background-image: url('images/index-mancare.jpg');"></div>
-                <div class="pachet-info">
-                    <h3>CAZARE + 2 MESE</h3>
-                    <p>Gustul autentic gătit la foc mic.</p>
-                    <span class="price-tag">3000 RON</span>
-                    <a href="rezervare.html" class="btn-reserve-top">SELECTEAZĂ</a>
-                </div>
-            </div>
-            <div class="pachet-card">
-                <div class="pachet-img" style="background-image: url('images/hero-camp-munti.jpg');"></div>
-                <div class="pachet-info">
-                    <h3>METANOIA ALL-IN</h3>
-                    <p>Experiența completă de regăsire.</p>
-                    <span class="price-tag">4000 RON</span>
-                    <a href="rezervare.html" class="btn-reserve-top">SELECTEAZĂ</a>
-                </div>
-            </div>
+        <div class="pachet-card">
+            <div class="p-img" style="background-image: url('https://raw.githubusercontent.com/otilka17/otilka17.github.io/main/images/index-mancare.jpg');"></div>
+            <h3>Cazare + Mese</h3>
+            <span class="price">3000 RON</span>
+            <a href="rezervare.html" class="btn-reserve">SELECTEAZĂ</a>
         </div>
-    </section>
+        <div class="pachet-card">
+            <div class="p-img" style="background-image: url('https://raw.githubusercontent.com/otilka17/otilka17.github.io/main/images/hero-camp-munti.jpg');"></div>
+            <h3>Metanoia All-In</h3>
+            <span class="price">4000 RON</span>
+            <a href="rezervare.html" class="btn-reserve">SELECTEAZĂ</a>
+        </div>
+    </div>
 
-    <div class="grid-lux">
-        <a href="experiente.html" class="card-lux" style="background-image: url('images/jeep.jpg');">
-            <div class="card-content"><h3>Aventură</h3></div>
+    <div class="grid-exp">
+        <a href="experiente.html" class="exp-card" style="background-image: url('https://raw.githubusercontent.com/otilka17/otilka17.github.io/main/images/jeep.jpg');">
+            <h3>Aventură</h3>
         </a>
-        <a href="experiente.html" class="card-lux" style="background-image: url('images/floripepanza.JPG');">
-            <div class="card-content"><h3>Atelier</h3></div>
+        <a href="experiente.html" class="exp-card" style="background-image: url('https://raw.githubusercontent.com/otilka17/otilka17.github.io/main/images/floripepanza.JPG');">
+            <h3>Atelier</h3>
         </a>
     </div>
 
-    <footer>HAȚEG ALTERNATIV &copy; 2026 | TRIBUT PATRICIA</footer>
+    <footer>HAȚEG ALTERNATIV &copy; 2026</footer>
 
     <script type="text/javascript">
         var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
@@ -169,18 +93,6 @@
             s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
             s0.parentNode.insertBefore(s1,s0);
         })();
-
-        const burger = document.getElementById('burger');
-        const nav = document.getElementById('nav-links');
-        burger.addEventListener('click', () => { nav.classList.toggle('active'); });
-
-        let slides = document.querySelectorAll('.slide');
-        let current = 0;
-        setInterval(() => {
-            slides[current].classList.remove('active');
-            current = (current + 1) % slides.length;
-            slides[current].classList.add('active');
-        }, 6000);
     </script>
 </body>
 </html>
