@@ -13,9 +13,10 @@
             --auriu-gold: #ffd700; 
             --negru-pur: #000000; 
             --alb: #ffffff;
-            --overlay-card: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.9) 100%);
+            --overlay-card: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%);
         }
 
+        /* FĂRĂ SCRIS ALBASTRUI - FORȚĂM AUR ȘI ALB */
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         a, a:visited, a:hover, a:active { text-decoration: none !important; color: inherit !important; }
 
@@ -31,51 +32,34 @@
         .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: rgba(0,0,0,0.98); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.5s ease; z-index: 9500; }
         .main-nav.active { right: 0; }
         .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 10px 0; letter-spacing: 3px; color: var(--alb) !important; }
+        .main-nav a:hover { color: var(--auriu-gold) !important; }
 
         /* HERO SLIDER */
         .hermes-viewport { position: relative; width: 100%; height: 85vh; overflow: hidden; }
         .slide { position: absolute; width: 100%; height: 100%; opacity: 0; visibility: hidden; transition: opacity 2s ease; }
         .slide.active { opacity: 1; visibility: visible; }
-        .slide-bg { position: absolute; width: 100%; height: 100%; background-size: cover; background-position: center center; transform: scale(1); transition: transform 10s linear; }
+        .slide-bg { position: absolute; width: 100%; height: 100%; background-size: cover; background-position: center center !important; transform: scale(1); transition: transform 10s linear; }
         .slide.active .slide-bg { transform: scale(1.1); }
         .slide-overlay { position: absolute; width: 100%; height: 100%; background: rgba(0,0,0,0.3); z-index: 2; }
         .hero-text-container { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10; text-align: center; width: 90%; }
         .slide-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 8vw, 5rem); font-style: italic; color: var(--auriu-gold); text-shadow: 2px 2px 10px rgba(0,0,0,0.8); }
 
-        /* GRID CARDURI - REPARAT */
+        /* GRID CELE 5 CARDURI - REPARAT NUMELE LUNG */
         .grid-lux { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; padding: 40px 20px; max-width: 1600px; margin: 0 auto; }
-        
         .card-lux { 
-            height: 450px; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: flex-end; 
-            padding: 30px; 
-            border: 1px solid #222; 
-            position: relative; 
-            overflow: hidden; 
-            background-size: cover !important; 
-            background-position: center !important; 
-            background-repeat: no-repeat !important;
-            transition: 0.4s; 
-            color: var(--alb) !important;
+            height: 450px; display: flex; flex-direction: column; justify-content: flex-end; 
+            padding: 30px; border: 1px solid #222; position: relative; overflow: hidden; 
+            background-size: cover; background-position: center center !important; 
+            transition: 0.4s; color: var(--alb) !important;
         }
-
-        /* Overlay-ul care se asigură că textul se vede pe orice poză */
-        .card-lux::before { 
-            content: ""; 
-            position: absolute; 
-            top: 0; left: 0; width: 100%; height: 100%; 
-            background: var(--overlay-card); 
-            z-index: 1; 
-        }
-
+        .card-lux::before { content: ""; position: absolute; top:0; left:0; width:100%; height:100%; background: var(--overlay-card); z-index: 1; }
         .card-lux:hover { border-color: var(--auriu-gold); transform: translateY(-5px); }
+        
         .card-content { position: relative; z-index: 5; }
         .card-lux h3 { font-family: 'Playfair Display'; font-size: 2rem; color: var(--auriu-gold) !important; margin-bottom: 10px; font-style: italic; }
         .btn-gold { display: inline-block; padding: 10px 20px; border: 1px solid var(--auriu-gold); color: var(--auriu-gold) !important; font-family: 'Cinzel'; font-size: 0.7rem; letter-spacing: 2px; }
 
-        footer { padding: 60px; text-align: center; opacity: 0.5; font-family: 'Cinzel'; font-size: 0.7rem; color: var(--auriu-gold); border-top: 1px solid #111; }
+        footer { padding: 60px; text-align: center; opacity: 0.5; font-family: 'Cinzel'; font-size: 0.7rem; letter-spacing: 5px; color: var(--auriu-gold); border-top: 1px solid #111; }
         .whatsapp-float { position: fixed; bottom: 30px; left: 20px; background-color: #25d366; color: #FFF; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 10000; }
     </style>
 </head>
@@ -125,8 +109,9 @@
         <a href="gastronomie.html" class="card-lux" style="background-image: url('images/index-mancare.jpg');">
             <div class="card-content"><h3>Gastronomie</h3><span class="btn-gold">GUSTĂ</span></div>
         </a>
-        <a href="experiente.html" class="card-lux" style="background-image: url('images/pictura.jpg');">
-            <div class="card-content"><h3>Lucru Manual</h3><span class="btn-gold">CREEAZĂ</span></div>
+        
+        <a href="experiente.html" class="card-lux" style="background-image: url('IMG20260316153821.jpg');">
+            <div class="card-content"><h3>Atelier Creație</h3><span class="btn-gold">CREEAZĂ</span></div>
         </a>
     </div>
 
