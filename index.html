@@ -16,12 +16,13 @@
             --overlay-card: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%);
         }
 
+        /* Eliminăm definitiv orice urmă de albastru */
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         a, a:visited, a:hover, a:active { text-decoration: none !important; color: inherit !important; }
 
         body { background: var(--negru-pur); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
 
-        /* HEADER */
+        /* HEADER & LOGO */
         .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 20px 30px; display: flex; justify-content: space-between; align-items: center; }
         .brand svg { height: 90px; width: auto; filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.4)); }
         .burger { cursor: pointer; z-index: 10000; padding: 10px; }
@@ -32,6 +33,7 @@
         .main-nav.active { right: 0; }
         .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 10px 0; letter-spacing: 3px; color: var(--alb) !important; }
         .main-nav a:hover { color: var(--auriu-gold) !important; }
+        .nav-res-btn { border: 1px solid var(--auriu-gold) !important; padding: 10px 30px !important; color: var(--auriu-gold) !important; margin-top: 20px !important; font-weight: 700; }
 
         /* HERO SLIDER */
         .hermes-viewport { position: relative; width: 100%; height: 85vh; overflow: hidden; }
@@ -57,8 +59,15 @@
         .card-lux h3 { font-family: 'Playfair Display'; font-size: 2rem; color: var(--auriu-gold) !important; margin-bottom: 10px; font-style: italic; }
         .btn-gold { display: inline-block; padding: 10px 20px; border: 1px solid var(--auriu-gold); color: var(--auriu-gold) !important; font-family: 'Cinzel'; font-size: 0.7rem; letter-spacing: 2px; }
 
+        /* FOOTER */
         footer { padding: 60px; text-align: center; opacity: 0.5; font-family: 'Cinzel'; font-size: 0.7rem; letter-spacing: 5px; color: var(--auriu-gold); border-top: 1px solid #111; }
+
         .whatsapp-float { position: fixed; bottom: 30px; left: 20px; background-color: #25d366; color: #FFF; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 10000; }
+
+        @media (max-width: 768px) {
+            .hermes-viewport { height: 70vh; }
+            .brand svg { height: 70px; }
+        }
     </style>
 </head>
 <body>
@@ -81,35 +90,33 @@
             <a href="retreat.html">METANOIA</a>
             <a href="gastronomie.html">GASTRONOMIE</a>
             <a href="forum.html">JURNAL</a>
-            <a href="rezervari.html">REZERVĂRI</a>
+            <a href="rezervari.html" class="nav-res-btn">REZERVĂRI</a>
         </nav>
     </header>
 
     <section class="hermes-viewport">
-        <div class="slide active"><div class="slide-bg" style="background-image: url('hero-premium.jpg');"></div><div class="slide-overlay"></div></div>
-        <div class="slide"><div class="slide-bg" style="background-image: url('rasarit.jpg');"></div><div class="slide-overlay"></div></div>
-        <div class="slide"><div class="slide-bg" style="background-image: url('narcise.jpg');"></div><div class="slide-overlay"></div></div>
-        <div class="slide"><div class="slide-bg" style="background-image: url('munti.jpg');"></div><div class="slide-overlay"></div></div>
-        
+        <div class="slide active"><div class="slide-bg" style="background-image: url('images/hero-premium.jpg');"></div><div class="slide-overlay"></div></div>
+        <div class="slide"><div class="slide-bg" style="background-image: url('images/rasarit.jpg');"></div><div class="slide-overlay"></div></div>
+        <div class="slide"><div class="slide-bg" style="background-image: url('images/narcise.jpg');"></div><div class="slide-overlay"></div></div>
         <div class="hero-text-container">
             <div class="slide-content"><h1>Simte. Explorează.</h1></div>
         </div>
     </section>
 
     <div class="grid-lux">
-        <a href="pensiune.html" class="card-lux" style="background-image: url('la-buliga-pensiune.jpg');">
+        <a href="pensiune.html" class="card-lux" style="background-image: url('images/la-buliga-pensiune.jpg');">
             <div class="card-content"><h3>Buliga: Izolare</h3><span class="btn-gold">DETALII</span></div>
         </a>
-        <a href="retreat.html" class="card-lux" style="background-image: url('hero-camp-munti.jpg');">
+        <a href="retreat.html" class="card-lux" style="background-image: url('images/hero-camp-munti.jpg');">
             <div class="card-content"><h3>Metanoia: Tăcere</h3><span class="btn-gold">DESCOPERĂ</span></div>
         </a>
-        <a href="experiente.html" class="card-lux" style="background-image: url('jeep.jpg');">
+        <a href="experiente.html" class="card-lux" style="background-image: url('images/jeep.jpg');">
             <div class="card-content"><h3>Hațeg: Pe Roți</h3><span class="btn-gold">EXPLOREAZĂ</span></div>
         </a>
-        <a href="gastronomie.html" class="card-lux" style="background-image: url('index-mancare.jpg');">
+        <a href="gastronomie.html" class="card-lux" style="background-image: url('images/index-mancare.jpg');">
             <div class="card-content"><h3>Gastronomie</h3><span class="btn-gold">GUSTĂ</span></div>
         </a>
-        <a href="experiente.html" class="card-lux" style="background-image: url('collage-final.png');">
+        <a href="experiente.html" class="card-lux" style="background-image: url('images/collage-final.png');">
             <div class="card-content"><h3>Lucru Manual</h3><span class="btn-gold">CREEAZĂ</span></div>
         </a>
     </div>
