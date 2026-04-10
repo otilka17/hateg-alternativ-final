@@ -4,116 +4,108 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jurnalul | Hațeg Alternativ</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Cinzel:wght@400;700&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <style>
         :root { 
-            --negru-mat: #242424; 
-            --auriu: #c5a059; 
-            --crem: #fdfcf8; 
+            --auriu-gold: #ffd700; 
+            --negru-pur: #000000; 
             --alb: #ffffff;
+            --gri-text: #a0a0a0;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--crem); color: var(--negru-mat); font-family: 'Inter', sans-serif; line-height: 1.6; padding-top: 140px; }
+        /* Eliminăm definitiv orice urmă de albastru */
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        a, a:visited, a:hover, a:active { text-decoration: none !important; color: inherit !important; }
 
-        /* --- HEADER UNIFICAT STYLE --- */
-        .site-header { position: fixed; top: 0; width: 100%; z-index: 10000; background: #fff; border-bottom: 1px solid #eee; }
-        .top-announcement { background: var(--auriu); color: #fff; text-align: center; padding: 8px 0; font-size: 0.6rem; letter-spacing: 2px; font-weight: 700; text-transform: uppercase; }
-        .nav-container { max-width: 1300px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; height: 90px; }
-        .logo-wrapper { display: flex; align-items: center; text-decoration: none; color: var(--negru-mat); }
-        .logo-wrapper img { height: 40px; margin-right: 10px; }
-        .brand-text h1 { font-family: 'Playfair Display', serif; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; margin: 0; }
+        body { background: var(--negru-pur); color: var(--alb); font-family: 'Inter', sans-serif; line-height: 1.8; }
+
+        /* HEADER & LOGO DIN INDEX */
+        .site-header { position: relative; width: 100%; z-index: 9999; padding: 40px 30px; display: flex; flex-direction: column; align-items: center; border-bottom: 1px solid #1a1a1a; }
+        .brand svg { height: 100px; width: auto; margin-bottom: 20px; filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.4)); }
         
-        .main-nav { display: flex; align-items: center; gap: 18px; }
-        .main-nav a { text-decoration: none; color: var(--negru-mat); font-size: 0.65rem; font-weight: 700; text-transform: uppercase; transition: 0.3s; }
-        .main-nav a:hover { color: var(--auriu); }
-        .cta-nav { border: 1px solid var(--negru-mat); padding: 8px 15px !important; }
-        .cta-nav:hover { background: var(--negru-mat); color: #fff !important; }
+        /* NAV MENU */
+        .main-nav { display: flex; gap: 25px; margin-top: 20px; flex-wrap: wrap; justify-content: center; }
+        .main-nav a { font-family: 'Cinzel'; font-size: 0.75rem; letter-spacing: 3px; font-weight: 700; color: var(--gri-text) !important; transition: 0.3s; }
+        .main-nav a:hover { color: var(--auriu-gold) !important; }
+        .nav-active { color: var(--auriu-gold) !important; }
 
-        /* --- JURNAL CONTENT --- */
-        .header-journal { text-align: center; padding: 60px 20px; }
-        .header-journal span { font-family: 'Cinzel'; letter-spacing: 5px; font-size: 0.8rem; text-transform: uppercase; color: var(--auriu); }
-        .header-journal h1 { font-family: 'Playfair Display'; font-size: clamp(3rem, 10vw, 5rem); font-style: italic; margin: 10px 0; }
-
-        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+        /* CONTAINER JURNAL */
+        .journal-container { max-width: 850px; margin: 0 auto; padding: 80px 20px; }
         
-        .post { margin-bottom: 80px; border-bottom: 1px solid #eee; padding-bottom: 40px; }
-        .date { font-family: 'Cinzel'; font-size: 0.7rem; color: #888; margin-bottom: 10px; display: block; letter-spacing: 2px; }
-        .post h2 { font-family: 'Playfair Display'; font-size: 2.2rem; font-style: italic; margin-bottom: 15px; cursor: pointer; color: var(--negru-mat); transition: 0.3s; }
-        .post h2:hover { color: var(--auriu); }
-        .post p { font-size: 1.1rem; color: #555; font-weight: 300; }
+        .header-title { text-align: center; margin-bottom: 80px; }
+        .header-title span { font-family: 'Cinzel'; color: var(--auriu-gold); letter-spacing: 5px; font-size: 0.8rem; }
+        .header-title h1 { font-family: 'Playfair Display'; font-size: clamp(3rem, 10vw, 5rem); font-style: italic; margin-top: 10px; font-weight: 900; }
 
-        /* BUTON FLOTANT WHATSAPP / POVESTE */
+        /* POSTARE JURNAL */
+        .post { margin-bottom: 100px; border-bottom: 1px solid #1a1a1a; padding-bottom: 60px; }
+        .post-date { font-family: 'Cinzel'; font-size: 0.7rem; color: var(--auriu-gold); letter-spacing: 3px; margin-bottom: 15px; display: block; }
+        .post h2 { font-family: 'Playfair Display'; font-size: 2.5rem; font-style: italic; margin-bottom: 25px; line-height: 1.2; font-weight: 700; }
+        
+        .post-image { width: 100%; border-radius: 4px; margin-bottom: 30px; border: 1px solid #1a1a1a; }
+        
+        .post p { font-size: 1.2rem; color: #d0d0d0; font-weight: 300; margin-bottom: 20px; }
+
+        /* BUTON WHATSAPP */
         .write-btn { 
             position: fixed; bottom: 40px; right: 40px; 
-            background: var(--negru-mat); color: var(--alb); 
-            padding: 15px 30px; border-radius: 50px; 
-            text-decoration: none; font-family: 'Cinzel'; 
-            font-size: 0.7rem; letter-spacing: 2px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            transition: 0.3s; z-index: 1000;
+            background: var(--auriu-gold); color: #000; 
+            padding: 15px 35px; border-radius: 50px; 
+            font-family: 'Cinzel'; font-size: 0.7rem; letter-spacing: 2px; font-weight: 900;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); z-index: 1000;
         }
-        .write-btn:hover { transform: translateY(-5px); background: var(--auriu); color: var(--alb); }
 
-        @media (max-width: 1100px) {
-            .nav-container { height: auto; padding: 15px; flex-direction: column; gap: 10px; }
-            body { padding-top: 190px; }
-            .header-journal h1 { font-size: 3.5rem; }
-        }
+        footer { padding: 80px 20px; text-align: center; border-top: 1px solid #1a1a1a; opacity: 0.5; font-family: 'Cinzel'; font-size: 0.7rem; letter-spacing: 5px; color: var(--auriu-gold); }
     </style>
 </head>
 <body>
 
-<header class="site-header">
-    <div class="top-announcement">1 MAI 2026: LANSAREA MANIFEST METANOIA | TRIBUT PATRICIA</div>
-    <div class="nav-container">
-        <a href="index.html" class="logo-wrapper">
-            <img src="images/logo-liniar-transparent.png" alt="Logo">
-            <div class="brand-text"><h1>Hațeg Alternativ</h1></div>
-        </a>
+    <header class="site-header">
+        <div class="brand">
+            <svg viewBox="0 0 800 800">
+                <defs><linearGradient id="mtnGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#ffd700;stop-opacity:1"/><stop offset="100%" style="stop-color:#b8860b;stop-opacity:1"/></linearGradient></defs>
+                <circle cx="400" cy="280" r="105" fill="none" stroke="#ffd700" stroke-width="2" opacity="0.4"/>
+                <path d="M300 450 L400 250 L500 450 Z" fill="url(#mtnGrad)"/>
+                <text x="400" y="765" font-family="'Cinzel', serif" text-anchor="middle" font-size="45" font-weight="900" letter-spacing="2" fill="#ffd700">HAȚEG ALTERNATIV</text>
+            </svg>
+        </div>
         <nav class="main-nav">
-            <a href="index.html">Acasă</a>
-            <a href="retreat.html">Metanoia</a>
-            <a href="gastronomie.html">Gastronomie</a>
-            <a href="experiente.html">Experiențe</a>
-            <a href="obiective.html">Obiective</a>
-            <a href="evenimente.html">Evenimente</a>
-            <a href="forum.html" style="color: var(--auriu);">Comunitate</a>
-            <a href="rezervari.html" class="cta-nav">Rezervări</a>
+            <a href="index.html">ACASĂ</a>
+            <a href="pensiune.html">PENSIUNEA</a>
+            <a href="retreat.html">METANOIA</a>
+            <a href="gastronomie.html">GASTRONOMIE</a>
+            <a href="forum.html" class="nav-active">JURNAL</a>
+            <a href="rezervari.html">REZERVĂRI</a>
         </nav>
-    </div>
-</header>
-
-<main class="container">
-    <header class="header-journal">
-        <span>Hațeg Alternativ</span>
-        <h1>Jurnalul.</h1>
     </header>
 
-    <article class="post">
-        <span class="date">1 APRILIE, 2026</span>
-        <h2>O dimineață la Vadul Dobrii.</h2>
-        <p>Când ceața se ridică peste Munții Poiana Ruscă, designul naturii devine cel mai bun arhitect. O poveste despre liniște și despre cum sălbăticia ne învață să ascultăm...</p>
-    </article>
+    <main class="journal-container">
+        <header class="header-title">
+            <span>RÂNDUIALA GUSTULUI</span>
+            <h1>Jurnalul.</h1>
+        </header>
 
-    <article class="post">
-        <span class="date">28 MARTIE, 2026</span>
-        <h2>Rânduiala pâinii pe lespede.</h2>
-        <p>Nu e doar despre făină și apă. E despre căldura pietrei și mâinile care frământă tradiția. Am petrecut o zi în bucătăria de la Buligă și am înțeles că gustul are memorie.</p>
-    </article>
-</main>
+        <article class="post">
+            <span class="post-date">10 APRILIE, 2026</span>
+            <h2>Gata ouăle pentru tata.</h2>
+            
+            <img src="images/17757992374078155021585591758943_e5d9bd.jpg" alt="Ouă de Paște" class="post-image">
+            
+            <p>Roșul acela intens și amprenta aurie a frunzelor... Se vede că ai avut răbdare să le migălești. Exact ce trebuie pentru masa de Paște în Țara Hațegului.</p>
+        </article>
 
-<a href="https://wa.me/40749229686" class="write-btn">+ TRIMITE O POVESTE</a>
+        <article class="post">
+            <span class="post-date">28 MARTIE, 2026</span>
+            <h2>Rânduiala pâinii pe lespede.</h2>
+            <p>Nu e doar despre făină și apă. E despre căldura pietrei și mâinile care frământă tradiția. Am petrecut o zi în bucătăria de la Buligă și am înțeles că gustul are memorie.</p>
+        </article>
+    </main>
 
-<script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-        s1.async=true; s1.src='https://embed.tawk.to/642944b54247f20fefea97df/1gsvek60a';
-        s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
-        s0.parentNode.insertBefore(s1,s0);
-    })();
-</script>
+    <a href="https://wa.me/40749229686" class="write-btn">+ TRIMITE O POVESTE</a>
+
+    <footer>HAȚEG ALTERNATIV &copy; 2026 | TRIBUT PATRICIA</footer>
 
 </body>
 </html>
