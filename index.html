@@ -31,7 +31,7 @@
         .main-nav.active { right: 0; }
         .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 15px 0; letter-spacing: 3px; color: var(--alb) !important; text-transform: uppercase; }
 
-        /* HERO SLIDER */
+        /* HERO */
         .hermes-viewport { position: relative; width: 100%; height: 85vh; overflow: hidden; }
         .slide { position: absolute; width: 100%; height: 100%; opacity: 0; visibility: hidden; transition: opacity 2s ease; }
         .slide.active { opacity: 1; visibility: visible; }
@@ -42,23 +42,24 @@
         .slide-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 8vw, 5rem); font-style: italic; color: var(--auriu-gold); text-shadow: 2px 2px 10px rgba(0,0,0,0.8); }
         .hero-subtext { font-family: 'Cinzel'; font-size: 0.8rem; letter-spacing: 4px; color: var(--alb); margin-top: 15px; opacity: 0.8; }
 
-        /* INTRO INFO */
+        /* INTRO */
         .intro-text { padding: 80px 20px; text-align: center; max-width: 800px; margin: 0 auto; }
         .intro-text h2 { font-family: 'Cinzel'; color: var(--auriu-gold); margin-bottom: 20px; letter-spacing: 3px; font-size: 1.2rem; }
         .intro-text p { font-size: 1.1rem; color: #ccc; line-height: 1.8; font-weight: 300; font-style: italic; }
 
-        /* GRID CARDURI - CU NUMELE NOI DIN SCREENSHOT */
+        /* GRID CARDURI - REPARAT NUME POZE DIN GITHUB */
         .grid-lux { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; padding: 40px 20px; max-width: 1600px; margin: 0 auto; }
         .card-lux { 
-            height: 450px; display: flex; flex-direction: column; justify-content: flex-end; 
-            padding: 30px; border: 1px solid #222; position: relative; overflow: hidden; 
+            height: 480px; display: flex; flex-direction: column; justify-content: flex-end; 
+            padding: 30px; border: 1px solid #1a1a1a; position: relative; overflow: hidden; 
             background-size: cover !important; background-position: center !important; 
-            transition: 0.4s; color: var(--alb) !important;
+            transition: 0.4s;
         }
         .card-lux::before { content: ""; position: absolute; inset:0; background: var(--overlay-card); z-index: 1; }
         .card-content { position: relative; z-index: 5; }
-        .card-lux h3 { font-family: 'Playfair Display'; font-size: 2rem; color: var(--auriu-gold) !important; margin-bottom: 10px; font-style: italic; }
-        .btn-gold { display: inline-block; padding: 10px 20px; border: 1px solid var(--auriu-gold); color: var(--auriu-gold) !important; font-family: 'Cinzel'; font-size: 0.7rem; letter-spacing: 2px; }
+        .card-lux h3 { font-family: 'Playfair Display'; font-size: 2rem; color: var(--auriu-gold); margin-bottom: 10px; font-style: italic; }
+        .card-lux p { font-size: 0.85rem; margin-bottom: 15px; opacity: 0.8; letter-spacing: 1px; }
+        .btn-gold { display: inline-block; padding: 10px 20px; border: 1px solid var(--auriu-gold); color: var(--auriu-gold); font-family: 'Cinzel'; font-size: 0.7rem; letter-spacing: 2px; }
 
         footer { padding: 80px; text-align: center; opacity: 0.4; font-family: 'Cinzel'; font-size: 0.7rem; letter-spacing: 5px; color: var(--auriu-gold); border-top: 1px solid #111; }
     </style>
@@ -91,31 +92,35 @@
         <div class="hero-text-container">
             <div class="slide-content">
                 <h1>Simte. Explorează.</h1>
-                <p class="hero-subtext">RÂNDUIALA TIHNEI</p>
+                <p class="hero-subtext">MOȘTENIREA TIHNEI</p>
             </div>
         </div>
     </section>
 
     <section class="intro-text">
-        <h2>MOȘTENIREA ȘI SPIRITUL</h2>
-        <p>"Aici, timpul nu se măsoară în ore, ci în rânduiala pământului. Hațeg Alternativ este despre regăsirea liniștii prin gesturi simple și autentice."</p>
+        <h2>SPIRITUL RÂNDUIELII</h2>
+        <p>"Aici, timpul nu se măsoară în ore, ci în gesturi simple. Hațeg Alternativ este despre regăsirea liniștii prin moștenirea primită."</p>
     </section>
 
     <div class="grid-lux">
         <a href="pensiune.html" class="card-lux" style="background-image: url('images/la-buliga-pensiune.jpg');">
-            <div class="card-content"><h3>Buliga: Izolare</h3><span class="btn-gold">DETALII</span></div>
+            <div class="card-content"><h3>Izolare la Buligă</h3><p>Tihnă deplină în matca tradiției.</p><span class="btn-gold">DETALII</span></div>
         </a>
+
         <a href="retreat.html" class="card-lux" style="background-image: url('images/hero-camp-munti.jpg');">
-            <div class="card-content"><h3>Metanoia: Tăcere</h3><span class="btn-gold">DESCOPERĂ</span></div>
+            <div class="card-content"><h3>Metanoia</h3><p>Retreat spiritual în inima munților.</p><span class="btn-gold">DESCOPERĂ</span></div>
         </a>
+
         <a href="experiente.html" class="card-lux" style="background-image: url('images/jeep.jpg');">
-            <div class="card-content"><h3>Hațeg: Pe Roți</h3><span class="btn-gold">EXPLOREAZĂ</span></div>
+            <div class="card-content"><h3>Hațeg pe Roți</h3><p>Aventură off-road pe culmile Retezatului.</p><span class="btn-gold">EXPLOREAZĂ</span></div>
         </a>
+
         <a href="gastronomie.html" class="card-lux" style="background-image: url('images/index-mancare.jpg');">
-            <div class="card-content"><h3>Gastronomie</h3><span class="btn-gold">GUSTĂ</span></div>
+            <div class="card-content"><h3>Gastronomie</h3><p>Rețete vechi gătit la foc mic.</p><span class="btn-gold">GUSTĂ</span></div>
         </a>
+
         <a href="experiente.html" class="card-lux" style="background-image: url('images/floripepanza.jpg');">
-            <div class="card-content"><h3>Atelier Creație</h3><span class="btn-gold">CREEAZĂ</span></div>
+            <div class="card-content"><h3>Atelier Creație</h3><p>Măiestria mâinilor care dau viață tradiției.</p><span class="btn-gold">CREEAZĂ</span></div>
         </a>
     </div>
 
