@@ -26,7 +26,7 @@
         .brand svg { height: 90px; width: auto; filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.4)); }
         
         .nav-right { display: flex; align-items: center; gap: 20px; }
-        .btn-reserve-top { padding: 10px 20px; border: 1px solid var(--auriu-gold); font-family: 'Cinzel'; color: var(--auriu-gold) !important; font-size: 0.7rem; letter-spacing: 2px; transition: 0.3s; }
+        .btn-reserve-top { padding: 10px 20px; border: 1px solid var(--auriu-gold); font-family: 'Cinzel'; color: var(--auriu-gold) !important; font-size: 0.75rem; letter-spacing: 2px; transition: 0.3s; }
         .btn-reserve-top:hover { background: var(--auriu-gold); color: black !important; }
 
         .burger { cursor: pointer; z-index: 10000; padding: 10px; }
@@ -37,44 +37,44 @@
         .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 15px 0; letter-spacing: 3px; color: var(--alb) !important; text-transform: uppercase; }
 
         /* HERO MARE */
-        .hermes-viewport { position: relative; width: 100%; height: 90vh; overflow: hidden; }
+        .hermes-viewport { position: relative; width: 100%; height: 95vh; overflow: hidden; }
         .slide { position: absolute; width: 100%; height: 100%; opacity: 0; visibility: hidden; transition: opacity 2s ease; }
         .slide.active { opacity: 1; visibility: visible; }
         .slide-bg { position: absolute; width: 100%; height: 100%; background-size: cover; background-position: center !important; transform: scale(1); transition: transform 10s linear; }
         .slide.active .slide-bg { transform: scale(1.1); }
-        .slide-overlay { position: absolute; width: 100%; height: 100%; background: rgba(0,0,0,0.3); z-index: 2; }
+        .slide-overlay { position: absolute; width: 100%; height: 100%; background: rgba(0,0,0,0.45); z-index: 2; }
         
         .hero-text-container { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10; text-align: center; width: 90%; }
-        .slide-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 10vw, 5.5rem); font-style: italic; color: var(--auriu-gold); text-shadow: 2px 2px 15px rgba(0,0,0,0.9); }
-        .btn-main-reserve { display: inline-block; margin-top: 30px; padding: 15px 40px; background: var(--auriu-gold); color: black !important; font-family: 'Cinzel'; font-weight: bold; letter-spacing: 3px; transition: 0.3s; }
+        .slide-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 10vw, 6rem); font-style: italic; color: var(--auriu-gold); text-shadow: 2px 2px 20px rgba(0,0,0,1); margin-bottom: 20px; }
+        .btn-main-reserve { display: inline-block; padding: 18px 45px; background: var(--auriu-gold); color: black !important; font-family: 'Cinzel'; font-weight: bold; letter-spacing: 3px; font-size: 1rem; transition: 0.3s; border: 1px solid var(--auriu-gold); }
+        .btn-main-reserve:hover { background: transparent; color: var(--auriu-gold) !important; }
 
-        /* SECTIUNE INTRO */
-        .intro-text { padding: 100px 20px; text-align: center; max-width: 900px; margin: 0 auto; }
-        .intro-text h2 { font-family: 'Cinzel'; color: var(--auriu-gold); margin-bottom: 25px; letter-spacing: 5px; }
-        .intro-text p { font-size: 1.2rem; color: #ccc; font-style: italic; line-height: 1.8; }
-
-        /* SECTIUNE PACHETE CU POZA */
-        .pachete-title { text-align: center; font-family: 'Cinzel'; color: var(--auriu-gold); font-size: 2rem; letter-spacing: 5px; margin-bottom: 40px; }
-        .grid-pachete { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 0 20px; max-width: 1400px; margin: 0 auto 100px; }
-        .pachet-card { background: #080808; border: 1px solid #1a1a1a; transition: 0.3s; text-align: center; padding-bottom: 30px; }
-        .pachet-card:hover { border-color: var(--auriu-gold); }
-        .pachet-img { width: 100%; height: 250px; background-size: cover; background-position: center; margin-bottom: 20px; }
-        .pachet-card h3 { font-family: 'Cinzel'; color: var(--auriu-gold); margin-bottom: 10px; font-size: 1.1rem; }
-        .pachet-card .price { font-family: 'Inter'; font-weight: 900; font-size: 1.5rem; margin-bottom: 20px; display: block; }
+        /* SECTIUNE PACHETE */
+        .section-padding { padding: 100px 20px; }
+        .pachete-intro { text-align: center; max-width: 800px; margin: 0 auto 60px; }
+        .pachete-intro h2 { font-family: 'Cinzel'; color: var(--auriu-gold); font-size: 2.5rem; letter-spacing: 8px; margin-bottom: 20px; }
         
-        /* GRID EXPERIENTE (CARDS) */
-        .grid-lux { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 25px; padding: 40px 20px; max-width: 1600px; margin: 0 auto; }
+        .grid-pachete { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; max-width: 1400px; margin: 0 auto; }
+        .pachet-card { background: #050505; border: 1px solid #151515; transition: 0.4s; overflow: hidden; display: flex; flex-direction: column; }
+        .pachet-card:hover { border-color: var(--auriu-gold); transform: translateY(-10px); }
+        .pachet-img { width: 100%; height: 300px; background-size: cover; background-position: center; }
+        .pachet-info { padding: 30px; text-align: center; flex-grow: 1; }
+        .pachet-info h3 { font-family: 'Cinzel'; color: var(--auriu-gold); font-size: 1.2rem; margin-bottom: 15px; letter-spacing: 2px; }
+        .pachet-info p { font-size: 0.9rem; color: #888; margin-bottom: 20px; font-style: italic; }
+        .price-tag { font-family: 'Inter'; font-weight: 900; font-size: 1.8rem; color: #fff; display: block; margin-bottom: 25px; }
+
+        /* GRID EXPERIENTE MARI */
+        .grid-lux { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 20px; padding: 20px; max-width: 1600px; margin: 0 auto 100px; }
         .card-lux { 
-            height: 550px; display: flex; flex-direction: column; justify-content: flex-end; 
-            padding: 40px; border: 1px solid #1a1a1a; position: relative; overflow: hidden; 
-            background-size: cover !important; background-position: center !important; transition: 0.5s ease;
+            height: 600px; display: flex; flex-direction: column; justify-content: flex-end; 
+            padding: 50px; border: 1px solid #111; position: relative; overflow: hidden; 
+            background-size: cover !important; background-position: center !important; transition: 0.6s ease;
         }
         .card-lux::before { content: ""; position: absolute; inset:0; background: var(--overlay-card); z-index: 1; }
         .card-content { position: relative; z-index: 5; }
-        .card-lux h3 { font-family: 'Playfair Display'; font-size: 2.5rem; color: var(--auriu-gold); margin-bottom: 15px; font-style: italic; }
-        .btn-gold { display: inline-block; padding: 12px 25px; border: 1px solid var(--auriu-gold); color: var(--auriu-gold); font-family: 'Cinzel'; font-size: 0.8rem; letter-spacing: 2px; }
-
-        footer { padding: 100px; text-align: center; opacity: 0.4; font-family: 'Cinzel'; color: var(--auriu-gold); font-size: 0.8rem; letter-spacing: 5px; border-top: 1px solid #111; }
+        .card-lux h3 { font-family: 'Playfair Display'; font-size: 3rem; color: var(--auriu-gold); margin-bottom: 15px; font-style: italic; }
+        
+        footer { padding: 120px 20px; text-align: center; opacity: 0.3; font-family: 'Cinzel'; color: var(--auriu-gold); font-size: 0.8rem; letter-spacing: 6px; border-top: 1px solid #111; }
     </style>
 </head>
 <body>
@@ -104,47 +104,58 @@
     <section class="hermes-viewport">
         <div class="slide active"><div class="slide-bg" style="background-image: url('images/hero-premium.jpg');"></div><div class="slide-overlay"></div></div>
         <div class="slide"><div class="slide-bg" style="background-image: url('images/hero-camp-munti.jpg');"></div><div class="slide-overlay"></div></div>
+        <div class="slide"><div class="slide-bg" style="background-image: url('images/rasarit.jpg');"></div><div class="slide-overlay"></div></div>
         <div class="hero-text-container">
             <div class="slide-content">
-                <h1>Simte. Explorează.</h1>
+                <h1>Tihna rânduită.</h1>
                 <a href="rezervare.html" class="btn-main-reserve">REZERVĂ ACUM</a>
             </div>
         </div>
     </section>
 
-    <section class="intro-text">
-        <h2>RÂNDUIALA ȘI TIHNA</h2>
-        <p>"Aici, luxul nu se măsoară în stele, ci în tăcerea munților și gustul autentic al pământului."</p>
-    </section>
+    <section class="section-padding">
+        <div class="pachete-intro">
+            <h2>PACHETE SPECIALE</h2>
+            <p>Alege experiența care ți se potrivește în matca tradiției hațegane.</p>
+        </div>
 
-    <h2 class="pachete-title">PACHETE SPECIALE</h2>
-    <div class="grid-pachete">
-        <div class="pachet-card">
-            <div class="pachet-img" style="background-image: url('images/la-buliga-pensiune.jpg');"></div>
-            <h3>CAZARE INTEGRALĂ</h3>
-            <span class="price">2000 RON / noapte</span>
-            <a href="rezervare.html" class="btn-gold">DETALII</a>
+        <div class="grid-pachete">
+            <div class="pachet-card">
+                <div class="pachet-img" style="background-image: url('images/la-buliga-pensiune.jpg');"></div>
+                <div class="pachet-info">
+                    <h3>CAZARE INTEGRALĂ</h3>
+                    <p>Intimitate deplină în casa bunicilor.</p>
+                    <span class="price-tag">2000 RON</span>
+                    <a href="rezervare.html" class="btn-reserve-top">SELECTEAZĂ</a>
+                </div>
+            </div>
+            <div class="pachet-card">
+                <div class="pachet-img" style="background-image: url('images/index-mancare.jpg');"></div>
+                <div class="pachet-info">
+                    <h3>CAZARE + 2 MESE</h3>
+                    <p>Gustul autentic gătit la foc mic.</p>
+                    <span class="price-tag">3000 RON</span>
+                    <a href="rezervare.html" class="btn-reserve-top">SELECTEAZĂ</a>
+                </div>
+            </div>
+            <div class="pachet-card">
+                <div class="pachet-img" style="background-image: url('images/hero-camp-munti.jpg');"></div>
+                <div class="pachet-info">
+                    <h3>METANOIA ALL-IN</h3>
+                    <p>Experiența completă de regăsire.</p>
+                    <span class="price-tag">4000 RON</span>
+                    <a href="rezervare.html" class="btn-reserve-top">SELECTEAZĂ</a>
+                </div>
+            </div>
         </div>
-        <div class="pachet-card">
-            <div class="pachet-img" style="background-image: url('images/index-mancare.jpg');"></div>
-            <h3>CAZARE + 2 MESE</h3>
-            <span class="price">3000 RON / noapte</span>
-            <a href="rezervare.html" class="btn-gold">DETALII</a>
-        </div>
-        <div class="pachet-card">
-            <div class="pachet-img" style="background-image: url('images/hero-camp-munti.jpg');"></div>
-            <h3>METANOIA ALL-IN</h3>
-            <span class="price">4000 RON / noapte</span>
-            <a href="rezervare.html" class="btn-gold">DETALII</a>
-        </div>
-    </div>
+    </section>
 
     <div class="grid-lux">
         <a href="experiente.html" class="card-lux" style="background-image: url('images/jeep.jpg');">
-            <div class="card-content"><h3>Hațeg pe Roți</h3><span class="btn-gold">EXPLOREAZĂ</span></div>
+            <div class="card-content"><h3>Aventură</h3></div>
         </a>
         <a href="experiente.html" class="card-lux" style="background-image: url('images/floripepanza.JPG');">
-            <div class="card-content"><h3>Atelier Creație</h3><span class="btn-gold">CREEAZĂ</span></div>
+            <div class="card-content"><h3>Atelier</h3></div>
         </a>
     </div>
 
@@ -169,7 +180,7 @@
             slides[current].classList.remove('active');
             current = (current + 1) % slides.length;
             slides[current].classList.add('active');
-        }, 5000);
+        }, 6000);
     </script>
 </body>
 </html>
