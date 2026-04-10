@@ -17,38 +17,52 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        a, a:visited, a:hover, a:active { text-decoration: none !important; color: inherit !important; }
+        a { text-decoration: none !important; color: inherit !important; }
 
         body { background: var(--negru-pur); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
 
         /* HEADER */
         .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 20px 30px; display: flex; justify-content: space-between; align-items: center; }
         .brand svg { height: 90px; width: auto; filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.4)); }
+        
+        .nav-right { display: flex; align-items: center; gap: 20px; }
+        .btn-reserve-top { padding: 10px 20px; border: 1px solid var(--auriu-gold); font-family: 'Cinzel'; color: var(--auriu-gold) !important; font-size: 0.7rem; letter-spacing: 2px; transition: 0.3s; }
+        .btn-reserve-top:hover { background: var(--auriu-gold); color: black !important; }
+
         .burger { cursor: pointer; z-index: 10000; padding: 10px; }
         .burger div { width: 30px; height: 2px; background: var(--auriu-gold); margin: 6px; transition: 0.3s; }
 
-        /* NAV MENU */
         .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: rgba(0,0,0,0.98); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.5s ease; z-index: 9500; }
         .main-nav.active { right: 0; }
         .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 15px 0; letter-spacing: 3px; color: var(--alb) !important; text-transform: uppercase; }
 
-        /* HERO SLIDER (REVENIRE LA DIMENSIUNE MARE) */
-        .hermes-viewport { position: relative; width: 100%; height: 85vh; overflow: hidden; }
+        /* HERO MARE */
+        .hermes-viewport { position: relative; width: 100%; height: 90vh; overflow: hidden; }
         .slide { position: absolute; width: 100%; height: 100%; opacity: 0; visibility: hidden; transition: opacity 2s ease; }
         .slide.active { opacity: 1; visibility: visible; }
         .slide-bg { position: absolute; width: 100%; height: 100%; background-size: cover; background-position: center !important; transform: scale(1); transition: transform 10s linear; }
         .slide.active .slide-bg { transform: scale(1.1); }
         .slide-overlay { position: absolute; width: 100%; height: 100%; background: rgba(0,0,0,0.3); z-index: 2; }
+        
         .hero-text-container { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10; text-align: center; width: 90%; }
         .slide-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 10vw, 5.5rem); font-style: italic; color: var(--auriu-gold); text-shadow: 2px 2px 15px rgba(0,0,0,0.9); }
-        .hero-subtext { font-family: 'Cinzel'; font-size: 0.9rem; letter-spacing: 5px; color: var(--alb); margin-top: 20px; text-transform: uppercase; }
+        .btn-main-reserve { display: inline-block; margin-top: 30px; padding: 15px 40px; background: var(--auriu-gold); color: black !important; font-family: 'Cinzel'; font-weight: bold; letter-spacing: 3px; transition: 0.3s; }
 
-        /* INTRO TEXT */
-        .intro-text { padding: 120px 20px; text-align: center; max-width: 900px; margin: 0 auto; }
-        .intro-text h2 { font-family: 'Cinzel'; color: var(--auriu-gold); margin-bottom: 30px; letter-spacing: 5px; font-size: 1.5rem; }
-        .intro-text p { font-size: 1.25rem; color: #ccc; line-height: 2; font-weight: 300; font-style: italic; }
+        /* SECTIUNE INTRO */
+        .intro-text { padding: 100px 20px; text-align: center; max-width: 900px; margin: 0 auto; }
+        .intro-text h2 { font-family: 'Cinzel'; color: var(--auriu-gold); margin-bottom: 25px; letter-spacing: 5px; }
+        .intro-text p { font-size: 1.2rem; color: #ccc; font-style: italic; line-height: 1.8; }
 
-        /* GRID CARDURI (REVENIRE LA CARDURI MARI) */
+        /* SECTIUNE PACHETE CU POZA */
+        .pachete-title { text-align: center; font-family: 'Cinzel'; color: var(--auriu-gold); font-size: 2rem; letter-spacing: 5px; margin-bottom: 40px; }
+        .grid-pachete { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 0 20px; max-width: 1400px; margin: 0 auto 100px; }
+        .pachet-card { background: #080808; border: 1px solid #1a1a1a; transition: 0.3s; text-align: center; padding-bottom: 30px; }
+        .pachet-card:hover { border-color: var(--auriu-gold); }
+        .pachet-img { width: 100%; height: 250px; background-size: cover; background-position: center; margin-bottom: 20px; }
+        .pachet-card h3 { font-family: 'Cinzel'; color: var(--auriu-gold); margin-bottom: 10px; font-size: 1.1rem; }
+        .pachet-card .price { font-family: 'Inter'; font-weight: 900; font-size: 1.5rem; margin-bottom: 20px; display: block; }
+        
+        /* GRID EXPERIENTE (CARDS) */
         .grid-lux { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 25px; padding: 40px 20px; max-width: 1600px; margin: 0 auto; }
         .card-lux { 
             height: 550px; display: flex; flex-direction: column; justify-content: flex-end; 
@@ -58,9 +72,7 @@
         .card-lux::before { content: ""; position: absolute; inset:0; background: var(--overlay-card); z-index: 1; }
         .card-content { position: relative; z-index: 5; }
         .card-lux h3 { font-family: 'Playfair Display'; font-size: 2.5rem; color: var(--auriu-gold); margin-bottom: 15px; font-style: italic; }
-        .card-lux p { font-size: 1rem; margin-bottom: 20px; opacity: 0.8; letter-spacing: 1px; }
-        .btn-gold { display: inline-block; padding: 12px 25px; border: 1px solid var(--auriu-gold); color: var(--auriu-gold); font-family: 'Cinzel'; font-size: 0.8rem; letter-spacing: 2px; transition: 0.3s; }
-        .card-lux:hover { transform: translateY(-10px); border-color: var(--auriu-gold); }
+        .btn-gold { display: inline-block; padding: 12px 25px; border: 1px solid var(--auriu-gold); color: var(--auriu-gold); font-family: 'Cinzel'; font-size: 0.8rem; letter-spacing: 2px; }
 
         footer { padding: 100px; text-align: center; opacity: 0.4; font-family: 'Cinzel'; color: var(--auriu-gold); font-size: 0.8rem; letter-spacing: 5px; border-top: 1px solid #111; }
     </style>
@@ -70,15 +82,18 @@
     <header class="site-header">
         <div class="brand">
             <svg viewBox="0 0 800 800">
-                <defs><linearGradient id="mtnGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#ffd700;stop-opacity:1"/><stop offset="100%" style="stop-color:#b8860b;stop-opacity:1"/></linearGradient></defs>
                 <circle cx="400" cy="280" r="105" fill="none" stroke="#ffd700" stroke-width="2" opacity="0.4"/>
-                <path d="M300 450 L400 250 L500 450 Z" fill="url(#mtnGrad)"/>
-                <text x="400" y="765" font-family="'Cinzel', serif" text-anchor="middle" font-size="45" font-weight="900" letter-spacing="2" fill="#ffd700">HAȚEG ALTERNATIV</text>
+                <path d="M300 450 L400 250 L500 450 Z" fill="#ffd700"/>
+                <text x="400" y="765" font-family="'Cinzel'" text-anchor="middle" font-size="45" fill="#ffd700">HAȚEG ALTERNATIV</text>
             </svg>
         </div>
-        <div class="burger" id="burger"><div></div><div></div><div></div></div>
+        <div class="nav-right">
+            <a href="rezervare.html" class="btn-reserve-top">REZERVĂRI</a>
+            <div class="burger" id="burger"><div></div><div></div><div></div></div>
+        </div>
         <nav class="main-nav" id="nav-links">
             <a href="index.html">ACASĂ</a>
+            <a href="rezervare.html">REZERVĂ ACUM</a>
             <a href="pensiune.html">PENSIUNEA</a>
             <a href="retreat.html">METANOIA</a>
             <a href="gastronomie.html">GASTRONOMIE</a>
@@ -89,35 +104,47 @@
     <section class="hermes-viewport">
         <div class="slide active"><div class="slide-bg" style="background-image: url('images/hero-premium.jpg');"></div><div class="slide-overlay"></div></div>
         <div class="slide"><div class="slide-bg" style="background-image: url('images/hero-camp-munti.jpg');"></div><div class="slide-overlay"></div></div>
-        <div class="slide"><div class="slide-bg" style="background-image: url('images/rasarit.jpg');"></div><div class="slide-overlay"></div></div>
         <div class="hero-text-container">
             <div class="slide-content">
                 <h1>Simte. Explorează.</h1>
-                <p class="hero-subtext">Moștenirea și Tihna Țării Hațegului</p>
+                <a href="rezervare.html" class="btn-main-reserve">REZERVĂ ACUM</a>
             </div>
         </div>
     </section>
 
     <section class="intro-text">
-        <h2>SPIRITUL LOCULUI</h2>
-        <p>"Aici, timpul nu se măsoară în ore, ci în rânduiala pământului. Hațeg Alternativ este despre regăsirea liniștii prin gesturi simple și autentice."</p>
+        <h2>RÂNDUIALA ȘI TIHNA</h2>
+        <p>"Aici, luxul nu se măsoară în stele, ci în tăcerea munților și gustul autentic al pământului."</p>
     </section>
 
+    <h2 class="pachete-title">PACHETE SPECIALE</h2>
+    <div class="grid-pachete">
+        <div class="pachet-card">
+            <div class="pachet-img" style="background-image: url('images/la-buliga-pensiune.jpg');"></div>
+            <h3>CAZARE INTEGRALĂ</h3>
+            <span class="price">2000 RON / noapte</span>
+            <a href="rezervare.html" class="btn-gold">DETALII</a>
+        </div>
+        <div class="pachet-card">
+            <div class="pachet-img" style="background-image: url('images/index-mancare.jpg');"></div>
+            <h3>CAZARE + 2 MESE</h3>
+            <span class="price">3000 RON / noapte</span>
+            <a href="rezervare.html" class="btn-gold">DETALII</a>
+        </div>
+        <div class="pachet-card">
+            <div class="pachet-img" style="background-image: url('images/hero-camp-munti.jpg');"></div>
+            <h3>METANOIA ALL-IN</h3>
+            <span class="price">4000 RON / noapte</span>
+            <a href="rezervare.html" class="btn-gold">DETALII</a>
+        </div>
+    </div>
+
     <div class="grid-lux">
-        <a href="pensiune.html" class="card-lux" style="background-image: url('images/la-buliga-pensiune.jpg');">
-            <div class="card-content"><h3>Izolare la Buligă</h3><p>Tihnă în matca tradiției.</p><span class="btn-gold">DETALII</span></div>
-        </a>
-        <a href="retreat.html" class="card-lux" style="background-image: url('images/hero-camp-munti.jpg');">
-            <div class="card-content"><h3>Metanoia</h3><p>Retreat spiritual în munți.</p><span class="btn-gold">DESCOPERĂ</span></div>
-        </a>
         <a href="experiente.html" class="card-lux" style="background-image: url('images/jeep.jpg');">
-            <div class="card-content"><h3>Hațeg pe Roți</h3><p>Aventură off-road pe culmi.</p><span class="btn-gold">EXPLOREAZĂ</span></div>
-        </a>
-        <a href="gastronomie.html" class="card-lux" style="background-image: url('images/index-mancare.jpg');">
-            <div class="card-content"><h3>Gastronomie</h3><p>Rețete vechi la foc mic.</p><span class="btn-gold">GUSTĂ</span></div>
+            <div class="card-content"><h3>Hațeg pe Roți</h3><span class="btn-gold">EXPLOREAZĂ</span></div>
         </a>
         <a href="experiente.html" class="card-lux" style="background-image: url('images/floripepanza.JPG');">
-            <div class="card-content"><h3>Atelier Creație</h3><p>Măiestria mâinilor tradiționale.</p><span class="btn-gold">CREEAZĂ</span></div>
+            <div class="card-content"><h3>Atelier Creație</h3><span class="btn-gold">CREEAZĂ</span></div>
         </a>
     </div>
 
@@ -131,9 +158,7 @@
             s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
             s0.parentNode.insertBefore(s1,s0);
         })();
-    </script>
 
-    <script>
         const burger = document.getElementById('burger');
         const nav = document.getElementById('nav-links');
         burger.addEventListener('click', () => { nav.classList.toggle('active'); });
