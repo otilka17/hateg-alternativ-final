@@ -9,70 +9,57 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        :root { 
-            --auriu-gold: #ffd700; 
-            --negru-pur: #000000; 
-            --alb: #ffffff;
-            --overlay-card: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%);
-        }
-
+        :root { --auriu: #ffd700; --negru: #000000; --alb: #ffffff; }
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        body { background: var(--negru-pur); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
+        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
         a { text-decoration: none !important; color: inherit !important; }
 
         /* HEADER */
         .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 20px 30px; display: flex; justify-content: space-between; align-items: center; }
-        .brand svg { height: 90px; width: auto; filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.4)); }
-        
-        .nav-right { display: flex; align-items: center; gap: 20px; }
-        .btn-reserve-top { padding: 10px 20px; border: 1px solid var(--auriu-gold); font-family: 'Cinzel'; color: var(--auriu-gold) !important; font-size: 0.75rem; letter-spacing: 2px; transition: 0.3s; }
-        .btn-reserve-top:hover { background: var(--auriu-gold); color: black !important; }
-
+        .brand svg { height: 80px; width: auto; filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.4)); }
+        .btn-reserve-top { padding: 10px 20px; border: 1px solid var(--auriu); color: var(--auriu) !important; font-family: 'Cinzel'; font-size: 0.75rem; letter-spacing: 2px; }
         .burger { cursor: pointer; z-index: 10000; padding: 10px; }
-        .burger div { width: 30px; height: 2px; background: var(--auriu-gold); margin: 6px; transition: 0.3s; }
+        .burger div { width: 30px; height: 2px; background: var(--auriu); margin: 6px; }
 
         .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: rgba(0,0,0,0.98); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.5s ease; z-index: 9500; }
         .main-nav.active { right: 0; }
-        .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 15px 0; letter-spacing: 3px; color: var(--alb) !important; text-transform: uppercase; }
+        .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 15px 0; letter-spacing: 3px; color: var(--alb) !important; }
 
-        /* HERO MARE */
-        .hermes-viewport { position: relative; width: 100%; height: 95vh; overflow: hidden; }
+        /* HERO SLIDER */
+        .hermes-viewport { position: relative; width: 100%; height: 85vh; overflow: hidden; }
         .slide { position: absolute; width: 100%; height: 100%; opacity: 0; visibility: hidden; transition: opacity 2s ease; }
         .slide.active { opacity: 1; visibility: visible; }
-        .slide-bg { position: absolute; width: 100%; height: 100%; background-size: cover; background-position: center !important; transform: scale(1); transition: transform 10s linear; }
-        .slide.active .slide-bg { transform: scale(1.1); }
-        .slide-overlay { position: absolute; width: 100%; height: 100%; background: rgba(0,0,0,0.45); z-index: 2; }
-        
+        .slide-bg { position: absolute; width: 100%; height: 100%; background-size: cover; background-position: center !important; }
+        .slide-overlay { position: absolute; width: 100%; height: 100%; background: rgba(0,0,0,0.4); z-index: 2; }
         .hero-text-container { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10; text-align: center; width: 90%; }
-        .slide-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 10vw, 6rem); font-style: italic; color: var(--auriu-gold); text-shadow: 2px 2px 20px rgba(0,0,0,1); margin-bottom: 20px; }
-        .btn-main-reserve { display: inline-block; padding: 18px 45px; background: var(--auriu-gold); color: black !important; font-family: 'Cinzel'; font-weight: bold; letter-spacing: 3px; font-size: 1rem; transition: 0.3s; border: 1px solid var(--auriu-gold); }
+        .slide-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 8vw, 5.5rem); font-style: italic; color: var(--auriu); text-shadow: 2px 2px 20px rgba(0,0,0,1); }
 
-        /* SECTIUNE PACHETE */
+        /* EARLY BOOKING SECTION */
+        .early-booking { padding: 80px 20px; text-align: center; background: #050505; }
+        .early-booking h2 { font-family: 'Playfair Display'; font-style: italic; color: var(--auriu); font-size: clamp(2.5rem, 6vw, 4rem); margin-bottom: 10px; }
+        .early-booking h3 { font-family: 'Cinzel'; letter-spacing: 5px; color: #888; margin-bottom: 40px; font-size: 1.2rem; }
+        .early-card { max-width: 800px; margin: 0 auto; border-left: 4px solid var(--auriu); background: #0a0a0a; padding: 40px; text-align: left; }
+        .early-card h4 { color: var(--auriu); font-family: 'Cinzel'; margin-bottom: 20px; }
+        .early-card p { color: #ccc; line-height: 1.8; font-size: 1.1rem; }
+
+        /* PACHETE */
         .section-padding { padding: 100px 20px; }
-        .pachete-intro { text-align: center; max-width: 800px; margin: 0 auto 60px; }
-        .pachete-intro h2 { font-family: 'Cinzel'; color: var(--auriu-gold); font-size: 2.5rem; letter-spacing: 8px; margin-bottom: 20px; }
-        
         .grid-pachete { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; max-width: 1400px; margin: 0 auto; }
-        .pachet-card { background: #050505; border: 1px solid #151515; transition: 0.4s; overflow: hidden; display: flex; flex-direction: column; }
-        .pachet-card:hover { border-color: var(--auriu-gold); transform: translateY(-10px); }
+        .pachet-card { background: #050505; border: 1px solid #151515; text-align: center; transition: 0.3s; }
+        .pachet-card:hover { border-color: var(--auriu); }
         .pachet-img { width: 100%; height: 300px; background-size: cover; background-position: center; }
-        .pachet-info { padding: 30px; text-align: center; flex-grow: 1; }
-        .pachet-info h3 { font-family: 'Cinzel'; color: var(--auriu-gold); font-size: 1.2rem; margin-bottom: 15px; letter-spacing: 2px; }
+        .pachet-info { padding: 30px; }
         .price-tag { font-family: 'Inter'; font-weight: 900; font-size: 1.8rem; color: #fff; display: block; margin-bottom: 25px; }
 
-        /* GRID EXPERIENTE MARI */
-        .grid-lux { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 20px; padding: 20px; max-width: 1600px; margin: 40px auto 100px; }
-        .card-lux { 
-            height: 600px; display: flex; flex-direction: column; justify-content: flex-end; 
-            padding: 50px; border: 1px solid #111; position: relative; overflow: hidden; 
-            background-size: cover !important; background-position: center !important; transition: 0.6s ease;
-        }
-        .card-lux::before { content: ""; position: absolute; inset:0; background: var(--overlay-card); z-index: 1; }
+        /* ACTIVITATI */
+        .grid-lux { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 20px; padding: 20px; max-width: 1600px; margin: 0 auto 100px; }
+        .card-lux { height: 500px; display: flex; flex-direction: column; justify-content: flex-end; padding: 50px; border: 1px solid #111; position: relative; overflow: hidden; background-size: cover !important; }
+        .card-lux::before { content: ""; position: absolute; inset:0; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.9)); z-index: 1; }
         .card-content { position: relative; z-index: 5; }
-        .card-lux h3 { font-family: 'Playfair Display'; font-size: 3rem; color: var(--auriu-gold); margin-bottom: 15px; font-style: italic; }
-        
+        .card-content h3 { font-family: 'Playfair Display'; font-size: 2.5rem; color: var(--auriu); font-style: italic; }
+
         .whatsapp-float { position: fixed; bottom: 30px; left: 20px; background-color: #25d366; color: #FFF; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 10000; }
-        footer { padding: 120px 20px; text-align: center; opacity: 0.3; font-family: 'Cinzel'; color: var(--auriu-gold); font-size: 0.8rem; letter-spacing: 6px; border-top: 1px solid #111; }
+        footer { padding: 60px; text-align: center; opacity: 0.3; font-family: 'Cinzel'; color: var(--auriu); font-size: 0.7rem; }
     </style>
 </head>
 <body>
@@ -95,7 +82,6 @@
             <a href="index.html">ACASĂ</a>
             <a href="rezervare.html">REZERVĂ ACUM</a>
             <a href="pensiune.html">PENSIUNEA</a>
-            <a href="experiente.html">ACTIVITĂȚI</a>
             <a href="gastronomie.html">GASTRONOMIE</a>
             <a href="forum.html">JURNAL</a>
         </nav>
@@ -104,48 +90,30 @@
     <section class="hermes-viewport">
         <div class="slide active"><div class="slide-bg" style="background-image: url('https://raw.githubusercontent.com/otilka17/otilka17.github.io/main/images/rasarit.jpg');"></div><div class="slide-overlay"></div></div>
         <div class="slide"><div class="slide-bg" style="background-image: url('https://raw.githubusercontent.com/otilka17/otilka17.github.io/main/images/hero-camp-munti.jpg');"></div><div class="slide-overlay"></div></div>
-        <div class="slide"><div class="slide-bg" style="background-image: url('https://raw.githubusercontent.com/otilka17/otilka17.github.io/main/images/jeep.jpg');"></div><div class="slide-overlay"></div></div>
+        <div class="slide"><div class="slide-bg" style="background-image: url('https://raw.githubusercontent.com/otilka17/otilka17.github.io/main/images/hero-premium.jpg');"></div><div class="slide-overlay"></div></div>
         <div class="hero-text-container">
-            <div class="slide-content">
-                <h1>Tihna rânduită.</h1>
-                <a href="rezervare.html" class="btn-main-reserve">REZERVĂ ACUM</a>
-            </div>
+            <div class="slide-content"><h1>Tihna rânduită.</h1></div>
+        </div>
+    </section>
+
+    <section class="early-booking">
+        <h2>Early Booking 2026</h2>
+        <h3>SECURIZAREA LOCULUI</h3>
+        <div class="early-card">
+            <h4>DE CE SĂ REZERVI ÎN AVANS?</h4>
+            <p>Sezonul de vară și toamnă la "La Buligă" este limitat la doar câteva weekend-uri disponibile. Programul Early Booking îți garantează nu doar locul, ci și tarifele actuale, protejându-te de ajustările de sezon.</p>
         </div>
     </section>
 
     <section class="section-padding">
-        <div class="pachete-intro">
-            <h2>PACHETE SPECIALE</h2>
-            <p>Alege experiența care ți se potrivește în matca tradiției hațegane.</p>
-        </div>
-
         <div class="grid-pachete">
             <div class="pachet-card">
                 <div class="pachet-img" style="background-image: url('https://raw.githubusercontent.com/otilka17/otilka17.github.io/main/images/la-buliga-pensiune.jpg');"></div>
-                <div class="pachet-info">
-                    <h3>CAZARE INTEGRALĂ</h3>
-                    <p>Intimitate deplină în casa bunicilor.</p>
-                    <span class="price-tag">2000 RON</span>
-                    <a href="rezervare.html" class="btn-reserve-top">SELECTEAZĂ</a>
-                </div>
+                <div class="pachet-info"><h3>CAZARE INTEGRALĂ</h3><span class="price-tag">2000 RON</span><a href="rezervare.html" class="btn-reserve-top">SELECTEAZĂ</a></div>
             </div>
             <div class="pachet-card">
                 <div class="pachet-img" style="background-image: url('https://raw.githubusercontent.com/otilka17/otilka17.github.io/main/images/index-mancare.jpg');"></div>
-                <div class="pachet-info">
-                    <h3>CAZARE + 2 MESE</h3>
-                    <p>Gustul autentic gătit la foc mic.</p>
-                    <span class="price-tag">3000 RON</span>
-                    <a href="rezervare.html" class="btn-reserve-top">SELECTEAZĂ</a>
-                </div>
-            </div>
-            <div class="pachet-card">
-                <div class="pachet-img" style="background-image: url('https://raw.githubusercontent.com/otilka17/otilka17.github.io/main/images/hero-camp-munti.jpg');"></div>
-                <div class="pachet-info">
-                    <h3>METANOIA ALL-IN</h3>
-                    <p>Experiența completă de regăsire.</p>
-                    <span class="price-tag">4000 RON</span>
-                    <a href="rezervare.html" class="btn-reserve-top">SELECTEAZĂ</a>
-                </div>
+                <div class="pachet-info"><h3>CAZARE + 2 MESE</h3><span class="price-tag">3000 RON</span><a href="rezervare.html" class="btn-reserve-top">SELECTEAZĂ</a></div>
             </div>
         </div>
     </section>
@@ -154,22 +122,14 @@
         <a href="experiente.html" class="card-lux" style="background-image: url('https://raw.githubusercontent.com/otilka17/otilka17.github.io/main/images/jeep.jpg');">
             <div class="card-content"><h3>Aventură</h3></div>
         </a>
-        <a href="experiente.html" class="card-lux" style="background-image: url('https://raw.githubusercontent.com/otilka17/otilka17.github.io/main/images/floripepanza.JPG');">
+        <a href="experiente.html" class="card-lux" style="background-image: url('https://raw.githubusercontent.com/otilka17/otilka17.github.io/main/images/floripepanza.jpg');">
             <div class="card-content"><h3>Atelier</h3></div>
         </a>
     </div>
 
     <footer>HAȚEG ALTERNATIV &copy; 2026</footer>
 
-    <script type="text/javascript">
-        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-        (function(){
-            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-            s1.async=true; s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
-            s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
-            s0.parentNode.insertBefore(s1,s0);
-        })();
-
+    <script>
         const burger = document.getElementById('burger');
         const nav = document.getElementById('nav-links');
         burger.addEventListener('click', () => { nav.classList.toggle('active'); });
@@ -180,7 +140,7 @@
             slides[current].classList.remove('active');
             current = (current + 1) % slides.length;
             slides[current].classList.add('active');
-        }, 6000);
+        }, 5000);
     </script>
 </body>
 </html>
