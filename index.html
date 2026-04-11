@@ -27,7 +27,6 @@
         .burger { cursor: pointer; z-index: 10001; padding: 10px; position: relative; }
         .burger div { width: 30px; height: 2px; background: var(--auriu-gold); margin: 6px; transition: 0.3s; }
 
-        /* Meniul care se deschide */
         .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: rgba(0,0,0,0.95); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.5s ease; z-index: 10000; }
         .main-nav.active { right: 0; }
         .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 15px 0; color: var(--alb) !important; text-transform: uppercase; letter-spacing: 3px; }
@@ -187,25 +186,31 @@
 
     <footer>HAȚEG ALTERNATIV &copy; 2026</footer>
 
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true; s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
+    s1.charset='UTF-8'; s1.setAttribute('crossorigin','*'); s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+
     <script>
-        // SCRIPT PENTRU MENIUL BURGER
         const burger = document.getElementById('burger');
         const nav = document.getElementById('nav-links');
         
-        burger.addEventListener('click', () => {
-            nav.classList.toggle('active');
-            // Animație opțională pentru burger (se face X)
-            burger.classList.toggle('toggle');
-        });
+        if(burger) {
+            burger.addEventListener('click', () => {
+                nav.classList.toggle('active');
+            });
+        }
 
-        // Închide meniul când dai click pe un link
         document.querySelectorAll('.main-nav a').forEach(link => {
             link.addEventListener('click', () => {
                 nav.classList.remove('active');
             });
         });
 
-        // SCRIPT PENTRU SLIDER
         let slides = document.querySelectorAll('.slide');
         let current = 0;
         setInterval(() => {
