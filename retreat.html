@@ -3,127 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Metanoia Retreat | Hațeg Alternativ</title>
+    <title>Metanoia | Regăsire în Munte</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        :root { 
-            --auriu-gold: #ffd700; 
-            --negru-pur: #000000; 
-            --alb: #ffffff;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        a, a:visited, a:hover, a:active { text-decoration: none !important; color: inherit !important; }
-
-        body { background: var(--negru-pur); color: var(--alb); font-family: 'Inter', sans-serif; line-height: 1.8; overflow-x: hidden; }
+        :root { --auriu: #ffd700; --negru: #000000; --alb: #ffffff; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
 
         /* HEADER */
-        .site-header { position: relative; width: 100%; z-index: 9999; padding: 20px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1a1a1a; }
-        .brand svg { height: 70px; width: auto; filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3)); }
-        
-        .burger { cursor: pointer; z-index: 10000; padding: 10px; }
-        .burger div { width: 25px; height: 2px; background: var(--auriu-gold); margin: 5px; transition: 0.3s; }
+        .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 20px 30px; display: flex; justify-content: space-between; align-items: center; }
+        .brand svg { height: 70px; width: auto; }
+        .burger { cursor: pointer; z-index: 10001; }
+        .burger div { width: 30px; height: 2px; background: var(--auriu); margin: 6px; }
 
-        .main-nav { 
-            position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; 
-            background: rgba(0,0,0,0.98); display: flex; flex-direction: column; 
-            justify-content: center; align-items: center; transition: 0.5s ease; z-index: 9500; 
-        }
+        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: rgba(0,0,0,0.98); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.5s; z-index: 10000; }
         .main-nav.active { right: 0; }
-        .main-nav a { font-family: 'Cinzel'; font-size: 1.5rem; letter-spacing: 4px; margin: 15px 0; color: var(--alb) !important; }
+        .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 15px 0; color: var(--alb); text-decoration: none; letter-spacing: 3px; }
 
-        /* HERO */
-        .hero-retreat { 
-            height: 60vh; width: 100%; 
-            background: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.8)), url('images/hero-camp-munti.jpg'); 
-            background-size: cover; background-position: center; 
-            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
-        }
-        .hero-retreat span { font-family: 'Cinzel'; color: var(--auriu-gold); letter-spacing: 5px; font-size: 0.8rem; }
-        .hero-retreat h1 { font-family: 'Playfair Display'; font-size: clamp(3rem, 10vw, 5rem); font-style: italic; margin-top: 10px; }
+        /* HERO METANOIA */
+        .metanoia-hero { height: 70vh; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; background: url('images/hero-premium.jpg') center/cover; }
+        .metanoia-hero::before { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,0.6); }
+        .hero-content { position: relative; z-index: 5; }
+        .hero-content h1 { font-family: 'Playfair Display'; font-size: clamp(3rem, 10vw, 6rem); color: var(--auriu); font-style: italic; }
+        .hero-content p { font-family: 'Cinzel'; letter-spacing: 8px; margin-top: 20px; font-size: 1.2rem; }
 
-        /* CONTENT */
-        .content-section { max-width: 800px; margin: 0 auto; padding: 60px 20px; }
+        /* SECTIUNE COMBINATA: EXPERIENTE SI OBIECTIVE */
+        .metanoia-grid { padding: 80px 20px; max-width: 1400px; margin: 0 auto; }
+        .section-title { font-family: 'Cinzel'; color: var(--auriu); text-align: center; margin-bottom: 60px; letter-spacing: 5px; }
         
-        .detail-block { margin-bottom: 60px; text-align: center; }
-        .detail-block h2 { font-family: 'Cinzel'; color: var(--auriu-gold); letter-spacing: 3px; margin-bottom: 20px; font-size: 1.6rem; }
-        .detail-block p { font-size: 1.15rem; color: #d0d0d0; font-weight: 300; line-height: 1.8; }
-        .detail-block i { color: var(--auriu-gold); font-size: 1.5rem; margin-bottom: 15px; display: block; }
+        .experience-item { display: flex; flex-wrap: wrap; gap: 40px; margin-bottom: 100px; align-items: center; }
+        .experience-item:nth-child(even) { flex-direction: row-reverse; }
+        
+        .exp-img { flex: 1; min-width: 320px; height: 500px; background-size: cover; background-position: center; border: 1px solid #1a1a1a; }
+        .exp-text { flex: 1; min-width: 320px; padding: 20px; }
+        .exp-text h3 { font-family: 'Playfair Display'; font-style: italic; font-size: 2.5rem; color: var(--auriu); margin-bottom: 20px; }
+        .exp-text p { font-size: 1.1rem; line-height: 1.8; color: #ccc; margin-bottom: 30px; }
+        
+        .tags { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px; }
+        .tag { border: 1px solid var(--auriu); color: var(--auriu); padding: 5px 15px; font-size: 0.7rem; font-family: 'Cinzel'; }
 
-        .retreat-list { list-style: none; text-align: left; display: inline-block; margin-top: 20px; }
-        .retreat-list li { margin-bottom: 15px; font-size: 1.1rem; color: var(--alb); display: flex; align-items: center; gap: 15px; }
-        .retreat-list li i { color: var(--auriu-gold); font-size: 1rem; }
+        /* CTA */
+        .cta-box { background: #080808; padding: 80px 20px; text-align: center; border-top: 1px solid #111; }
+        .btn-gold { display: inline-block; padding: 18px 40px; border: 1px solid var(--auriu); color: var(--auriu); text-decoration: none; font-family: 'Cinzel'; font-weight: 900; letter-spacing: 3px; transition: 0.3s; }
+        .btn-gold:hover { background: var(--auriu); color: #000; }
 
-        footer { padding: 60px 20px; text-align: center; border-top: 1px solid #1a1a1a; opacity: 0.4; font-family: 'Cinzel'; font-size: 0.7rem; letter-spacing: 5px; color: var(--auriu-gold); }
+        footer { padding: 60px; text-align: center; opacity: 0.3; font-family: 'Cinzel'; font-size: 0.7rem; }
+
+        @media (max-width: 768px) { .exp-img { height: 300px; } .experience-item { margin-bottom: 60px; } }
     </style>
 </head>
 <body>
 
     <header class="site-header">
-        <a href="index.html" class="brand">
+        <div class="brand">
             <svg viewBox="0 0 800 800">
-                <defs><linearGradient id="mtnGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#ffd700;stop-opacity:1"/><stop offset="100%" style="stop-color:#b8860b;stop-opacity:1"/></linearGradient></defs>
                 <circle cx="400" cy="280" r="105" fill="none" stroke="#ffd700" stroke-width="2" opacity="0.4"/>
-                <path d="M300 450 L400 250 L500 450 Z" fill="url(#mtnGrad)"/>
-                <text x="400" y="765" font-family="'Cinzel', serif" text-anchor="middle" font-size="45" font-weight="900" letter-spacing="2" fill="#ffd700">HAȚEG ALTERNATIV</text>
+                <path d="M300 450 L400 250 L500 450 Z" fill="#ffd700"/>
+                <text x="400" y="765" font-family="'Cinzel'" text-anchor="middle" font-size="45" fill="#ffd700">HAȚEG ALTERNATIV</text>
             </svg>
-        </a>
+        </div>
         <div class="burger" id="burger"><div></div><div></div><div></div></div>
         <nav class="main-nav" id="nav-links">
             <a href="index.html">ACASĂ</a>
             <a href="pensiune.html">PENSIUNEA</a>
-            <a href="retreat.html" style="color: var(--auriu-gold) !important;">METANOIA</a>
             <a href="gastronomie.html">GASTRONOMIE</a>
-            <a href="forum.html">JURNAL</a>
+            <a href="retreat.html">METANOIA</a>
+            <a href="rezervari.html">REZERVARE</a>
         </nav>
     </header>
 
-    <section class="hero-retreat">
-        <span>VADUL DOBRII</span>
-        <h1>Metanoia Retreat.</h1>
+    <section class="metanoia-hero">
+        <div class="hero-content">
+            <h1>Metanoia.</h1>
+            <p>EXPERIENȚĂ ȘI OBIECTIV</p>
+        </div>
     </section>
 
-    <main class="content-section">
-        
-        <div class="detail-block">
-            <i class="fas fa-mountain"></i>
-            <h2>3 ZILE ÎN POIANA RUSCĂ</h2>
-            <p>"O experiență de regăsire la Buligă, în inima munților, unde timpul se oprește pentru a face loc rânduielii și liniștii."</p>
+    <div class="metanoia-grid">
+        <h2 class="section-title">CĂLĂTORIA TA ÎNCEPE AICI</h2>
+
+        <div class="experience-item">
+            <div class="exp-img" style="background-image: url('images/jeep.jpg');"></div>
+            <div class="exp-text">
+                <h3>Hațeg pe Roți</h3>
+                <p>Explorăm obiectivele rânduite ale Țării Hațegului dintr-o altă perspectivă. De la cetăți uitate la panorame alpine, drumul devine parte din Metanoia.</p>
+                <div class="tags"><span class="tag">AVENTURĂ</span><span class="tag">ISTORIE</span><span class="tag">4X4</span></div>
+            </div>
         </div>
 
-        <div class="detail-block">
-            <i class="fas fa-compass"></i>
-            <h2>CE INCLUDE RÂNDUIALA?</h2>
-            <ul class="retreat-list">
-                <li><i class="fas fa-star"></i> 3 zile de reconectare în Munții Poiana Ruscă.</li>
-                <li><i class="fas fa-utensils"></i> Demipensiune cu gusturi autentice de munte.</li>
-                <li><i class="fas fa-map-marked-alt"></i> Tur ghidat prin sălbăticia locului.</li>
-                <li><i class="fas fa-paint-brush"></i> Atelier creativ (măiestria mâinilor).</li>
-                <li><i class="fas fa-mortar-pestle"></i> Atelier gastronomic (rețete vechi de la Buligă).</li>
-            </ul>
+        <div class="experience-item">
+            <div class="exp-img" style="background-image: url('images/narcise.jpg');"></div>
+            <div class="exp-text">
+                <h3>Tihna Narciselor</h3>
+                <p>Obiective naturale unice. O plimbare prin poienile de narcise sau pe potecile munților Retezat pentru a găsi liniștea pe care timpul a pierdut-o.</p>
+                <div class="tags"><span class="tag">NATURĂ</span><span class="tag">RECONECTARE</span><span class="tag">RETEZAT</span></div>
+            </div>
         </div>
 
-    </main>
+        <div class="experience-item">
+            <div class="exp-img" style="background-image: url('images/floripepanza.jpg');"></div>
+            <div class="exp-text">
+                <h3>Atelierul de Aur</h3>
+                <p>Experiența creației. Obiectivul nu este doar produsul final, ci procesul prin care mâinile tale dau viață tradiției hațegane.</p>
+                <div class="tags"><span class="tag">ARTĂ</span><span class="tag">TRADIȚIE</span><span class="tag">HANDMADE</span></div>
+            </div>
+        </div>
+    </div>
+
+    <section class="cta-box">
+        <h2 style="font-family: 'Cinzel'; margin-bottom: 30px;">EȘTI GATA DE SCHIMBARE?</h2>
+        <a href="rezervari.html" class="btn-gold">SOLICITĂ LOCUL TĂU</a>
+    </section>
 
     <footer>HAȚEG ALTERNATIV &copy; 2026</footer>
-
-    <script type="text/javascript">
-        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-        (function(){
-            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-            s1.async=true; s1.src='https://embed.tawk.to/642944b54247f20fefea97df/1gsvek60a';
-            s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
-            s0.parentNode.insertBefore(s1,s0);
-        })();
-    </script>
 
     <script>
         const burger = document.getElementById('burger');
         const nav = document.getElementById('nav-links');
         burger.addEventListener('click', () => { nav.classList.toggle('active'); });
+
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true; s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
+            s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+        })();
     </script>
 </body>
 </html>
