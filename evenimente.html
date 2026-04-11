@@ -3,97 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Evenimente | Hațeg Alternativ - Momente de Colecție</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    
+    <title>Evenimente | Hațeg Alternativ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { 
-            --negru-mat: #242424; 
-            --auriu: #c5a059; 
-            --auriu-bright: #ffd700;
-            --crem: #fdfcf8; 
-            --alb: #ffffff;
-            --overlay: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.9) 100%);
-        }
-
+        :root { --auriu: #c5a059; --negru: #050505; --alb: #ffffff; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--negru-mat); color: var(--alb); font-family: 'Inter', sans-serif; line-height: 1.6; padding-top: 140px; }
+        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; line-height: 1.6; }
 
-        /* --- HEADER UNIFICAT STYLE --- */
-        .site-header { position: fixed; top: 0; width: 100%; z-index: 10000; background: #fff; border-bottom: 1px solid #eee; }
-        .top-announcement { background: var(--auriu); color: #fff; text-align: center; padding: 8px 0; font-size: 0.6rem; letter-spacing: 2px; font-weight: 700; text-transform: uppercase; }
-        .nav-container { max-width: 1300px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; height: 90px; }
-        .logo-wrapper { display: flex; align-items: center; text-decoration: none; color: var(--negru-mat); }
-        .logo-wrapper img { height: 40px; margin-right: 10px; }
-        .brand-text h1 { font-family: 'Playfair Display', serif; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; margin: 0; }
+        /* HEADER UNIFICAT NEGRU */
+        .site-header { position: fixed; top: 0; width: 100%; z-index: 10000; padding: 20px 30px; display: flex; justify-content: space-between; align-items: center; background: rgba(5,5,5,0.9); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(197,160,89,0.2); }
+        .brand { font-family: 'Cinzel'; font-weight: 900; letter-spacing: 4px; text-transform: uppercase; font-size: 0.9rem; color: #fff; text-decoration: none; }
+        .burger { cursor: pointer; z-index: 10001; }
+        .burger div { width: 25px; height: 2px; background: var(--auriu); margin: 5px; transition: 0.3s; }
         
-        .main-nav { display: flex; align-items: center; gap: 18px; }
-        .main-nav a { text-decoration: none; color: var(--negru-mat); font-size: 0.65rem; font-weight: 700; text-transform: uppercase; transition: 0.3s; }
-        .main-nav a:hover { color: var(--auriu); }
-        .cta-nav { border: 1px solid var(--negru-mat); padding: 8px 15px !important; }
-        .cta-nav:hover { background: var(--negru-mat); color: #fff !important; }
+        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: var(--negru); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.5s; z-index: 9999; }
+        .main-nav.active { right: 0; }
+        .main-nav a { font-size: 1.5rem; font-family: 'Cinzel'; margin: 15px 0; color: var(--alb); text-decoration: none; letter-spacing: 3px; }
 
-        /* HERO EVENIMENTE */
-        .hero-events { height: 60vh; position: relative; display: flex; align-items: center; justify-content: center; background: url('images/gast-masa-traditionala.jpg') center/cover; margin-top: -10px; }
-        .hero-events::before { content: ""; position: absolute; top:0; left:0; width:100%; height:100%; background: var(--overlay); }
-        .hero-content { position: relative; z-index: 10; text-align: center; }
-        .hero-content h1 { font-family: 'Playfair Display'; font-size: clamp(3rem, 8vw, 6rem); font-style: italic; color: var(--auriu-bright); line-height: 1; }
-        .hero-content p { font-family: 'Cinzel'; letter-spacing: 5px; font-size: 0.8rem; margin-top: 20px; color: rgba(255,255,255,0.7); }
+        /* HERO */
+        .hero-events { height: 60vh; position: relative; display: flex; align-items: center; justify-content: center; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('images/gast-masa-traditionala.jpg') center/cover; margin-top: 80px; }
+        .hero-content { text-align: center; z-index: 10; }
+        .hero-content h1 { font-family: 'Playfair Display'; font-size: clamp(3rem, 8vw, 5rem); font-style: italic; color: var(--auriu); }
+        .hero-content p { font-family: 'Cinzel'; letter-spacing: 5px; font-size: 0.8rem; margin-top: 20px; color: #ccc; }
 
-        /* SECTIUNI */
-        .section-padding { padding: 100px 20px; max-width: 1200px; margin: 0 auto; }
-        .event-intro { text-align: center; margin-bottom: 80px; }
-        .event-intro h2 { font-family: 'Cinzel'; font-size: 1.2rem; color: var(--auriu-bright); letter-spacing: 8px; margin-bottom: 30px; }
-        .event-intro p { font-family: 'Playfair Display'; font-size: clamp(1.8rem, 4vw, 3rem); font-style: italic; line-height: 1.2; }
-
-        .event-row { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; margin-bottom: 120px; }
+        .section-padding { padding: 80px 20px; max-width: 1200px; margin: 0 auto; }
+        .event-row { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-bottom: 100px; }
         .event-row.reverse { direction: rtl; }
         .event-row.reverse .event-text { direction: ltr; }
         
-        .event-img { position: relative; height: 500px; border: 1px solid #333; overflow: hidden; }
-        .event-img img { width: 100%; height: 100%; object-fit: cover; transition: 1s; }
+        .event-img { height: 450px; border: 1px solid #1a1a1a; overflow: hidden; }
+        .event-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
         
-        .event-text h3 { font-family: 'Playfair Display'; font-size: 2.5rem; font-style: italic; margin-bottom: 20px; color: var(--auriu-bright); }
-        .event-text p { color: #ccc; margin-bottom: 30px; font-size: 1.1rem; }
+        .event-text h3 { font-family: 'Playfair Display'; font-size: 2.2rem; font-style: italic; margin-bottom: 20px; color: var(--auriu); }
+        .event-text p { color: #ccc; margin-bottom: 25px; }
         
-        .event-features { list-style: none; margin-bottom: 40px; }
-        .event-features li { margin-bottom: 12px; position: relative; padding-left: 30px; font-size: 0.9rem; }
-        .event-features li::before { content: "—"; color: var(--auriu-bright); position: absolute; left: 0; }
+        .btn-gold { display: inline-block; padding: 15px 35px; border: 1px solid var(--auriu); color: var(--auriu); text-decoration: none; font-family: 'Cinzel'; letter-spacing: 2px; font-weight: bold; transition: 0.3s; }
+        .btn-gold:hover { background: var(--auriu); color: #000; }
 
-        .btn-gold { display: inline-block; padding: 16px 40px; border: 1px solid var(--auriu-bright); color: var(--auriu-bright); text-decoration: none; font-family: 'Cinzel'; letter-spacing: 3px; font-weight: bold; transition: 0.3s; }
-        .btn-gold:hover { background: var(--auriu-bright); color: #000; }
-
-        footer { padding: 60px 20px; text-align: center; border-top: 1px solid #222; color: rgba(255,255,255,0.4); font-family: 'Cinzel'; font-size: 0.7rem; letter-spacing: 2px; }
-
-        @media (max-width: 1100px) {
-            .nav-container { height: auto; padding: 15px; flex-direction: column; gap: 10px; }
-            body { padding-top: 190px; }
-            .event-row { grid-template-columns: 1fr; gap: 40px; }
-            .event-img { height: 350px; }
-        }
+        footer { padding: 60px; text-align: center; border-top: 1px solid #111; color: rgba(255,255,255,0.3); font-family: 'Cinzel'; font-size: 0.7rem; }
+        
+        @media (max-width: 768px) { .event-row { grid-template-columns: 1fr; } .event-img { height: 300px; } }
     </style>
 </head>
 <body>
-
     <header class="site-header">
-        <div class="top-announcement">1 MAI 2026: LANSAREA MANIFEST METANOIA | TRIBUT PATRICIA</div>
-        <div class="nav-container">
-            <a href="index.html" class="logo-wrapper">
-                <img src="images/logo-liniar-transparent.png" alt="Logo">
-                <div class="brand-text"><h1>Hațeg Alternativ</h1></div>
-            </a>
-            <nav class="main-nav">
-                <a href="index.html">Acasă</a>
-                <a href="retreat.html">Metanoia</a>
-                <a href="gastronomie.html">Gastronomie</a>
-                <a href="experiente.html">Experiențe</a>
-                <a href="obiective.html">Obiective</a>
-                <a href="evenimente.html" style="color: var(--auriu);">Evenimente</a>
-                <a href="forum.html">Comunitate</a>
-                <a href="rezervari.html" class="cta-nav">Rezervări</a>
-            </nav>
-        </div>
+        <a href="index.html" class="brand">HAȚEG ALTERNATIV</a>
+        <div class="burger" id="burger"><div></div><div></div><div></div></div>
+        <nav class="main-nav" id="nav-links">
+            <a href="index.html">Acasă</a>
+            <a href="pensiune.html">Pensiunea</a>
+            <a href="gastronomie.html">Gastronomie</a>
+            <a href="metanoia.html">Metanoia</a>
+            <a href="evenimente.html">Evenimente</a>
+            <a href="rezervari.html">Rezervări</a>
+        </nav>
     </header>
 
     <section class="hero-events">
@@ -104,71 +68,27 @@
     </section>
 
     <main class="section-padding">
-        
-        <div class="event-intro">
-            <h2>Arta de a Celebra</h2>
-            <p>Fiecare eveniment este un parcurs creativ, orchestrat pentru amintiri fără cusur în inima naturii.</p>
-        </div>
-
         <div class="event-row">
-            <div class="event-img">
-                <img src="images/feed-cetate.jpg" alt="Botez Boutique">
-            </div>
+            <div class="event-img"><img src="images/feed-cetate.jpg" alt="Botez"></div>
             <div class="event-text">
                 <h3>Botezuri Boutique</h3>
-                <p>O rânduială nouă începută într-un loc cu istorie. Creăm un cadru intim, elegant și cald pentru prima mare sărbătoare a copilului tău.</p>
-                <ul class="event-features">
-                    <li>Concept vizual personalizat</li>
-                    <li>Meniu gastronomic local rafinat</li>
-                    <li>Atmosferă autentică și discretă</li>
-                </ul>
+                <p>Creăm un cadru intim și elegant pentru prima mare sărbătoare a copilului tău, într-un loc cu istorie.</p>
                 <a href="https://wa.me/40749229686" class="btn-gold">SOLICITĂ OFERTĂ</a>
             </div>
         </div>
-
-        <div class="event-row reverse">
-            <div class="event-img">
-                <img src="images/exp-fluturi.jpg" alt="Workshop">
-            </div>
-            <div class="event-text">
-                <h3>Workshop-uri & Retreat-uri</h3>
-                <p>Locul ideal pentru învățare și coeziune. Indiferent dacă organizezi un curs de yoga, un atelier de pictură sau un team building, izolarea oferă concentrarea necesară.</p>
-                <ul class="event-features">
-                    <li>Organizator acreditat dedicat</li>
-                    <li>Logistica completă inclusă</li>
-                    <li>Pauze de cafea artizanale</li>
-                </ul>
-                <a href="https://wa.me/40749229686" class="btn-gold">ORGANIZEAZĂ CU NOI</a>
-            </div>
-        </div>
-
-        <div class="event-row">
-            <div class="event-img">
-                <img src="images/gast-cafea-inima.jpg" alt="Baby Shower">
-            </div>
-            <div class="event-text">
-                <h3>Aniversări cu Sens</h3>
-                <p>Sărbătorim viața în cele mai mici detalii. De la decoruri naturale sub cerul liber până la cine private pline de emoție.</p>
-                <ul class="event-features">
-                    <li>Candy bar cu produse locale reinterpretate</li>
-                    <li>Sesiuni foto profesionale pe domeniu</li>
-                    <li>Planificare pas cu pas (Full Planning)</li>
-                </ul>
-                <a href="https://wa.me/40749229686" class="btn-gold">DETALII EVENIMENT</a>
-            </div>
-        </div>
-
     </main>
 
-    <footer>
-        HAȚEG ALTERNATIV &copy; 2026 | TRIBUT PATRICIA | TOTEȘTI
-    </footer>
+    <footer>HAȚEG ALTERNATIV &copy; 2026 | TRIBUT PATRICIA</footer>
 
-    <script type="text/javascript">
+    <script>
+        const burger = document.getElementById('burger');
+        const nav = document.getElementById('nav-links');
+        burger.onclick = () => nav.classList.toggle('active');
+
         var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
         (function(){
             var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-            s1.async=true; s1.src='https://embed.tawk.to/642944b54247f20fefea97df/1gsvek60a';
+            s1.async=true; s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
             s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
             s0.parentNode.insertBefore(s1,s0);
         })();
