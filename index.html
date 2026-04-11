@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hațeg Alternativ | Moștenirea de Aur</title>
+    <title>Hațeg Alternativ | Schelet Oficial</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -17,13 +17,13 @@
         /* HEADER */
         .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 20px 30px; display: flex; justify-content: space-between; align-items: center; }
         .brand svg { height: 80px; width: auto; filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.4)); }
-        .btn-reserve-top { padding: 10px 20px; border: 1px solid var(--auriu); color: var(--auriu) !important; font-family: 'Cinzel'; font-size: 0.75rem; letter-spacing: 2px; }
         .burger { cursor: pointer; z-index: 10000; padding: 10px; }
         .burger div { width: 30px; height: 2px; background: var(--auriu); margin: 6px; }
 
+        /* NAV MENU */
         .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: rgba(0,0,0,0.98); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.5s ease; z-index: 9500; }
         .main-nav.active { right: 0; }
-        .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 15px 0; letter-spacing: 3px; color: var(--alb) !important; }
+        .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 15px 0; color: var(--alb) !important; text-transform: uppercase; letter-spacing: 3px; }
 
         /* HERO SLIDER */
         .hermes-viewport { position: relative; width: 100%; height: 85vh; overflow: hidden; }
@@ -32,19 +32,19 @@
         .slide-bg { position: absolute; width: 100%; height: 100%; background-size: cover; background-position: center !important; }
         .slide-overlay { position: absolute; width: 100%; height: 100%; background: rgba(0,0,0,0.4); z-index: 2; }
         .hero-text-container { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10; text-align: center; width: 90%; }
-        .slide-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 8vw, 5.5rem); font-style: italic; color: var(--auriu); text-shadow: 2px 2px 20px rgba(0,0,0,1); }
+        .slide-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 8vw, 5rem); font-style: italic; color: var(--auriu); text-shadow: 2px 2px 20px black; }
 
         /* EARLY BOOKING SECTION */
         .early-booking { padding: 80px 20px; text-align: center; background: #050505; }
         .early-booking h2 { font-family: 'Playfair Display'; font-style: italic; color: var(--auriu); font-size: clamp(2.5rem, 6vw, 4rem); margin-bottom: 10px; }
-        .early-booking h3 { font-family: 'Cinzel'; letter-spacing: 5px; color: #888; margin-bottom: 40px; font-size: 1.2rem; }
-        .early-card { max-width: 800px; margin: 0 auto; border-left: 4px solid var(--auriu); background: #0a0a0a; padding: 40px; text-align: left; }
-        .early-card h4 { color: var(--auriu); font-family: 'Cinzel'; margin-bottom: 20px; }
+        .early-card { max-width: 800px; margin: 40px auto; border-left: 4px solid var(--auriu); background: #0a0a0a; padding: 40px; text-align: left; }
+        .early-card h4 { color: var(--auriu); font-family: 'Cinzel'; margin-bottom: 20px; letter-spacing: 2px; }
         .early-card p { color: #ccc; line-height: 1.8; font-size: 1.1rem; }
 
-        /* PACHETE */
-        .section-padding { padding: 100px 20px; }
-        .grid-pachete { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; max-width: 1400px; margin: 0 auto; }
+        /* GRID PACHETE */
+        .pachete-intro { text-align: center; padding: 60px 20px 20px; }
+        .pachete-intro h2 { font-family: 'Cinzel'; color: var(--auriu); font-size: 2.5rem; letter-spacing: 5px; }
+        .grid-pachete { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; max-width: 1400px; margin: 0 auto; padding: 20px; }
         .pachet-card { background: #050505; border: 1px solid #151515; text-align: center; transition: 0.3s; }
         .pachet-card:hover { border-color: var(--auriu); }
         .pachet-img { width: 100%; height: 300px; background-size: cover; background-position: center; }
@@ -52,14 +52,14 @@
         .price-tag { font-family: 'Inter'; font-weight: 900; font-size: 1.8rem; color: #fff; display: block; margin-bottom: 25px; }
 
         /* ACTIVITATI */
-        .grid-lux { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 20px; padding: 20px; max-width: 1600px; margin: 0 auto 100px; }
+        .grid-lux { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 20px; padding: 20px; max-width: 1600px; margin: 40px auto 100px; }
         .card-lux { height: 500px; display: flex; flex-direction: column; justify-content: flex-end; padding: 50px; border: 1px solid #111; position: relative; overflow: hidden; background-size: cover !important; }
         .card-lux::before { content: ""; position: absolute; inset:0; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.9)); z-index: 1; }
         .card-content { position: relative; z-index: 5; }
         .card-content h3 { font-family: 'Playfair Display'; font-size: 2.5rem; color: var(--auriu); font-style: italic; }
 
         .whatsapp-float { position: fixed; bottom: 30px; left: 20px; background-color: #25d366; color: #FFF; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 10000; }
-        footer { padding: 60px; text-align: center; opacity: 0.3; font-family: 'Cinzel'; color: var(--auriu); font-size: 0.7rem; }
+        footer { padding: 60px; text-align: center; opacity: 0.3; font-family: 'Cinzel'; color: var(--auriu); font-size: 0.7rem; border-top: 1px solid #111; }
     </style>
 </head>
 <body>
@@ -74,13 +74,10 @@
                 <text x="400" y="765" font-family="'Cinzel'" text-anchor="middle" font-size="45" fill="#ffd700">HAȚEG ALTERNATIV</text>
             </svg>
         </div>
-        <div class="nav-right">
-            <a href="rezervare.html" class="btn-reserve-top">REZERVĂRI</a>
-            <div class="burger" id="burger"><div></div><div></div><div></div></div>
-        </div>
+        <div class="burger" id="burger"><div></div><div></div><div></div></div>
         <nav class="main-nav" id="nav-links">
             <a href="index.html">ACASĂ</a>
-            <a href="rezervare.html">REZERVĂ ACUM</a>
+            <a href="rezervare.html">REZERVARE</a>
             <a href="pensiune.html">PENSIUNEA</a>
             <a href="gastronomie.html">GASTRONOMIE</a>
             <a href="forum.html">JURNAL</a>
@@ -92,31 +89,29 @@
         <div class="slide"><div class="slide-bg" style="background-image: url('https://raw.githubusercontent.com/otilka17/otilka17.github.io/main/images/hero-camp-munti.jpg');"></div><div class="slide-overlay"></div></div>
         <div class="slide"><div class="slide-bg" style="background-image: url('https://raw.githubusercontent.com/otilka17/otilka17.github.io/main/images/hero-premium.jpg');"></div><div class="slide-overlay"></div></div>
         <div class="hero-text-container">
-            <div class="slide-content"><h1>Tihna rânduită.</h1></div>
+            <div class="slide-content"><h1>Simte. Explorează.</h1></div>
         </div>
     </section>
 
     <section class="early-booking">
         <h2>Early Booking 2026</h2>
-        <h3>SECURIZAREA LOCULUI</h3>
         <div class="early-card">
-            <h4>DE CE SĂ REZERVI ÎN AVANS?</h4>
-            <p>Sezonul de vară și toamnă la "La Buligă" este limitat la doar câteva weekend-uri disponibile. Programul Early Booking îți garantează nu doar locul, ci și tarifele actuale, protejându-te de ajustările de sezon.</p>
+            <h4>SECURIZAREA LOCULUI</h4>
+            <p>Sezonul de vară și toamnă la "La Buligă" este limitat. Programul Early Booking îți garantează locul și tarifele actuale, protejându-te de ajustările de sezon.</p>
         </div>
     </section>
 
-    <section class="section-padding">
-        <div class="grid-pachete">
-            <div class="pachet-card">
-                <div class="pachet-img" style="background-image: url('https://raw.githubusercontent.com/otilka17/otilka17.github.io/main/images/la-buliga-pensiune.jpg');"></div>
-                <div class="pachet-info"><h3>CAZARE INTEGRALĂ</h3><span class="price-tag">2000 RON</span><a href="rezervare.html" class="btn-reserve-top">SELECTEAZĂ</a></div>
-            </div>
-            <div class="pachet-card">
-                <div class="pachet-img" style="background-image: url('https://raw.githubusercontent.com/otilka17/otilka17.github.io/main/images/index-mancare.jpg');"></div>
-                <div class="pachet-info"><h3>CAZARE + 2 MESE</h3><span class="price-tag">3000 RON</span><a href="rezervare.html" class="btn-reserve-top">SELECTEAZĂ</a></div>
-            </div>
+    <div class="pachete-intro"><h2>PACHETE</h2></div>
+    <div class="grid-pachete">
+        <div class="pachet-card">
+            <div class="pachet-img" style="background-image: url('https://raw.githubusercontent.com/otilka17/otilka17.github.io/main/images/la-buliga-pensiune.jpg');"></div>
+            <div class="pachet-info"><h3>CAZARE INTEGRALĂ</h3><span class="price-tag">2000 RON</span><a href="rezervare.html" style="color:var(--auriu); border: 1px solid var(--auriu); padding: 10px 20px; font-family:'Cinzel';">SELECTEAZĂ</a></div>
         </div>
-    </section>
+        <div class="pachet-card">
+            <div class="pachet-img" style="background-image: url('https://raw.githubusercontent.com/otilka17/otilka17.github.io/main/images/index-mancare.jpg');"></div>
+            <div class="pachet-info"><h3>CAZARE + 2 MESE</h3><span class="price-tag">3000 RON</span><a href="rezervare.html" style="color:var(--auriu); border: 1px solid var(--auriu); padding: 10px 20px; font-family:'Cinzel';">SELECTEAZĂ</a></div>
+        </div>
+    </div>
 
     <div class="grid-lux">
         <a href="experiente.html" class="card-lux" style="background-image: url('https://raw.githubusercontent.com/otilka17/otilka17.github.io/main/images/jeep.jpg');">
