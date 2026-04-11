@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metanoia | Hațeg Alternativ - Experiența Completă</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root { 
+            --auriu: #c5a059; 
+            --negru: #050505; 
+            --gri-card: #0d0d0d;
+            --alb: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
+
+        /* HEADER FIX */
+        .site-header { position: fixed; top: 0; width: 100%; z-index: 10000; padding: 20px 30px; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.85); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(197,160,89,0.2); }
+        .brand { font-family: 'Cinzel'; font-weight: 900; letter-spacing: 4px; text-transform: uppercase; font-size: 0.9rem; color: #fff; text-decoration: none; }
+        .burger { cursor: pointer; z-index: 10001; }
+        .burger div { width: 25px; height: 2px; background: var(--auriu); margin: 5px; transition: 0.3s; }
+
+        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: var(--negru); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.5s; z-index: 9999; }
+        .main-nav.active { right: 0; }
+        .main-nav a { font-size: 1.5rem; font-family: 'Cinzel'; margin: 15px 0; color: var(--alb); text-decoration: none; letter-spacing: 3px; }
+
+        /* SECTION HERO */
+        .hero-metanoia { height: 80vh; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.8)), url('images/hero-premium.jpg') center/cover; display: flex; align-items: center; justify-content: center; text-align: center; }
+        .hero-metanoia h1 { font-family: 'Playfair Display'; font-size: clamp(3.5rem, 10vw, 7rem); font-style: italic; color: var(--auriu); line-height: 1; }
+
+        .section-label { font-family: 'Cinzel'; color: var(--auriu); text-align: center; letter-spacing: 8px; font-size: 0.8rem; margin-bottom: 20px; text-transform: uppercase; }
+        .container { max-width: 1300px; margin: 0 auto; padding: 100px 20px; }
+
+        /* 1. GALERIE CINEMATICA (Orizontala) */
+        .gallery-viewport { width: 100%; height: 60vh; overflow: hidden; position: relative; margin-bottom: 100px; border: 1px solid #1a1a1a; }
+        .gallery-track { display: flex; width: 100%; height: 100%; transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+        .gallery-slide { min-width: 100%; height: 100%; position: relative; }
+        .gallery-slide img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; }
+        .gallery-caption { position: absolute; bottom: 30px; left: 30px; border-left: 2px solid var(--auriu); padding-left: 15px; }
+
+        /* 2. PACHETE SIGNATURE */
+        .package-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-bottom: 100px; }
+        .p-card { background: var(--gri-card); border: 1px solid #1a1a1a; padding: 40px; text-align: center; transition: 0.4s; }
+        .p-card:hover { border-color: var(--auriu); transform: translateY(-10px); }
+        .p-card h3 { font-family: 'Playfair Display'; font-size: 2.2rem; font-style: italic; color: var(--auriu); margin-bottom: 20px; }
+        .p-features { list-style: none; margin-bottom: 30px; color: #aaa; font-size: 0.9rem; }
+        .p-features li { padding: 10px 0; border-bottom: 1px solid #1a1a1a; }
+        .price-tag { font-family: 'Cinzel'; font-size: 1.4rem; display: block; margin-bottom: 20px; }
+
+        /* 3. OBIECTIVE (Grid) */
+        .obj-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .obj-item { height: 400px; position: relative; overflow: hidden; border: 1px solid #1a1a1a; }
+        .obj-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; opacity: 0.5; }
+        .obj-item:hover img { opacity: 0.8; transform: scale(1.05); }
+        .obj-info { position: absolute; bottom: 0; padding: 25px; background: linear-gradient(transparent, black); width: 100%; }
+        .obj-info h4 { font-family: 'Playfair Display'; font-size: 1.5rem; font-style: italic; color: var(--auriu); }
+
+        .btn-cta { display: inline-block; padding: 15px 40px; border: 1px solid var(--auriu); color: var(--auriu); text-decoration: none; font-family: 'Cinzel'; font-size: 0.8rem; letter-spacing: 2px; transition: 0.3s; }
+        .btn-cta:hover { background: var(--auriu); color: #000; }
+
+        footer { text-align: center; padding: 80px 20px; opacity: 0.4; font-family: 'Cinzel'; font-size: 0.7rem; border-top: 1px solid #111; }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <a href="index.html" class="brand">HAȚEG ALTERNATIV</a>
+        <div class="burger" id="burger"><div></div><div></div><div></div></div>
+        <nav class="main-nav" id="nav-links">
+            <a href="index.html">Acasă</a>
+            <a href="pensiune.html">Pensiunea</a>
+            <a href="gastronomie.html">Gastronomie</a>
+            <a href="metanoia.html">Metanoia</a>
+            <a href="rezervari.html">Rezervări</a>
+        </nav>
+    </header>
+
+    <section class="hero-metanoia">
+        <div class="hero-content">
+            <p class="section-label">Manifest</p>
+            <h1>Metanoia.</h1>
+        </div>
+    </section>
+
+    <div class="container">
+        
+        <p class="section-label">Momente de Colecție</p>
+        <div class="gallery-viewport">
+            <div class="gallery-track" id="gallerySlider">
+                <div class="gallery-slide"><img src="images/hero-sat.jpg"><div class="gallery-caption"><h3>Răsărit la ora 5.</h3></div></div>
+                <div class="gallery-slide"><img src="images/feed-buliga.jpg"><div class="gallery-caption"><h3>Tihnă Rânduită.</h3></div></div>
+                <div class="gallery-slide"><img src="images/jeep.jpg"><div class="gallery-caption"><h3>Aventură Alternativă.</h3></div></div>
+                <div class="gallery-slide"><img src="images/biserica-sf-nicolae-densus.jpg"><div class="gallery-caption"><h3>Istorie în Piatră.</h3></div></div>
+            </div>
+        </div>
+
+        <p class="section-label">Pachete Signature</p>
+        <div class="package-grid">
+            <div class="p-card">
+                <h3>Metanoia: Tăcere</h3>
+                <ul class="p-features">
+                    <li>2 Nopți Cazare Premium</li>
+                    <li>Mese Bio (Farm to Table)</li>
+                    <li>Digital Detox inclus</li>
+                </ul>
+                <span class="price-tag">4.500 RON</span>
+                <a href="rezervari.html" class="btn-cta">REZERVĂ EXPERIENȚA</a>
+            </div>
+            <div class="p-card">
+                <h3>Gustul Munților</h3>
+                <ul class="p-features">
+                    <li>Închiriere Integrală</li>
+                    <li>Cină Tradițională la foc</li>
+                    <li>Tur ghidat la Bucura</li>
+                </ul>
+                <span class="price-tag">8.500 RON</span>
+                <a href="rezervari.html" class="btn-cta">REZERVĂ GRUP</a>
+            </div>
+        </div>
+
+        <p class="section-label">Destinații cu Suflet</p>
+        <div class="obj-grid">
+            <div class="obj-item">
+                <img src="images/bucura.jpg" alt="Bucura">
+                <div class="obj-info"><h4>Lacul Bucura</h4><p>Ochiul de cristal al Retezatului.</p></div>
+            </div>
+            <div class="obj-item">
+                <img src="images/biserica-sf-nicolae-densus.jpg" alt="Densus">
+                <div class="obj-info"><h4>Biserica Densuș</h4><p>Cea mai veche biserică de piatră.</p></div>
+            </div>
+            <div class="obj-item">
+                <img src="images/hero-camp-munti.jpg" alt="Ulpia">
+                <div class="obj-info"><h4>Ulpia Traiana</h4><p>Vechea capitală a Daciei Romane.</p></div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>HAȚEG ALTERNATIV &copy; 2026 | TRIBUT PATRICIA</footer>
+
+    <script>
+        // Meniu
+        const burger = document.getElementById('burger');
+        const nav = document.getElementById('nav-links');
+        burger.onclick = () => nav.classList.toggle('active');
+
+        // Galerie Automata
+        let current = 0;
+        const track = document.getElementById('gallerySlider');
+        const slides = document.querySelectorAll('.gallery-slide');
+        setInterval(() => {
+            current = (current + 1) % slides.length;
+            track.style.transform = `translateX(-${current * 100}%)`;
+        }, 4000);
+
+        // Tawk.to
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true; s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
+            s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+</body>
+</html>
