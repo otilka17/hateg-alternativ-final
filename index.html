@@ -20,10 +20,14 @@
         body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
         a { text-decoration: none !important; color: inherit !important; }
 
-        /* HEADER */
-        .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 25px 30px; display: flex; justify-content: space-between; align-items: center; }
-        .brand svg { height: 85px; width: auto; filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.3)); }
+        /* HEADER & LOGO REPARAT */
+        .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 20px 20px; display: flex; justify-content: space-between; align-items: center; }
         
+        .brand { display: flex; align-items: center; gap: 15px; }
+        .brand svg { height: 60px; width: auto; filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.3)); }
+        /* Textul de lângă logo pentru ecrane mici */
+        .brand-text { font-family: 'Cinzel'; font-size: 0.9rem; color: var(--auriu-crem); letter-spacing: 2px; text-transform: uppercase; font-weight: 700; }
+
         .burger { cursor: pointer; z-index: 10001; padding: 10px; }
         .burger div { width: 30px; height: 2px; background: var(--auriu-crem); margin: 6px; transition: 0.3s; }
 
@@ -31,30 +35,36 @@
         .main-nav.active { right: 0; }
         .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 15px 0; color: var(--alb) !important; text-transform: uppercase; letter-spacing: 3px; }
 
-        /* HERO - LA BULIGA */
+        /* HERO */
         .hero { height: 100vh; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
-        .hero-bg { position: absolute; inset: 0; background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('images/rasarit.jpg') center/cover; z-index: 1; }
-        .hero-content { position: relative; z-index: 10; margin-top: 100px; }
-        .hero-content h1 { font-family: 'Playfair Display'; font-size: clamp(4rem, 12vw, 8rem); color: var(--auriu-crem); font-style: italic; line-height: 1; }
-        .hero-content p { font-family: 'Cinzel'; letter-spacing: 6px; color: #fff; font-size: 1.1rem; margin-top: 10px; text-transform: uppercase; }
+        .hero-bg { position: absolute; inset: 0; background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('images/rasarit.jpg') center/cover no-repeat; z-index: 1; }
+        .hero-content { position: relative; z-index: 10; padding: 0 20px; }
+        .hero-content h1 { font-family: 'Playfair Display'; font-size: clamp(3rem, 10vw, 7rem); color: var(--auriu-crem); font-style: italic; line-height: 1.1; }
+        .hero-content p { font-family: 'Cinzel'; letter-spacing: 4px; color: #fff; font-size: clamp(0.8rem, 3vw, 1.1rem); margin-top: 15px; text-transform: uppercase; }
 
         /* INTRO */
-        .intro { padding: 100px 20px; text-align: center; max-width: 900px; margin: 0 auto; }
-        .intro h2 { font-family: 'Cinzel'; color: var(--auriu-crem); letter-spacing: 5px; margin-bottom: 25px; }
-        .intro p { font-family: 'Playfair Display'; font-style: italic; font-size: 1.6rem; color: #ccc; }
+        .intro { padding: 80px 20px; text-align: center; max-width: 900px; margin: 0 auto; }
+        .intro h2 { font-family: 'Cinzel'; color: var(--auriu-crem); letter-spacing: 5px; margin-bottom: 25px; font-size: 1.2rem; }
+        .intro p { font-family: 'Playfair Display'; font-style: italic; font-size: clamp(1.2rem, 4vw, 1.6rem); color: #ccc; line-height: 1.4; }
 
-        /* GRID LUX - REPARAT CU POZELE DIN REPO */
-        .grid-lux { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; padding: 60px 20px; max-width: 1600px; margin: 0 auto; }
-        .card-lux { height: 500px; display: flex; flex-direction: column; justify-content: flex-end; padding: 40px; border: 1px solid #1a1a1a; position: relative; overflow: hidden; background-size: cover; background-position: center !important; }
+        /* GRID LUX */
+        .grid-lux { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; padding: 40px 20px; max-width: 1400px; margin: 0 auto; }
+        .card-lux { height: 450px; display: flex; flex-direction: column; justify-content: flex-end; padding: 30px; border: 1px solid #1a1a1a; position: relative; overflow: hidden; background-size: cover; background-position: center; transition: transform 0.5s ease; }
+        .card-lux:hover { transform: scale(1.02); }
         .card-lux::before { content: ""; position: absolute; inset: 0; background: var(--overlay); z-index: 1; }
         .card-content { position: relative; z-index: 5; }
-        .card-content h3 { font-family: 'Cinzel'; color: var(--auriu-crem); font-size: 1.4rem; margin-bottom: 10px; }
+        .card-content h3 { font-family: 'Cinzel'; color: var(--auriu-crem); font-size: 1.2rem; margin-bottom: 15px; letter-spacing: 2px; }
         
-        .btn-gold { display: inline-block; padding: 12px 25px; border: 1px solid var(--auriu-crem); color: var(--auriu-crem); font-family: 'Cinzel'; font-size: 0.75rem; letter-spacing: 2px; transition: 0.3s; }
+        .btn-gold { display: inline-block; padding: 12px 25px; border: 1px solid var(--auriu-crem); color: var(--auriu-crem); font-family: 'Cinzel'; font-size: 0.75rem; letter-spacing: 2px; transition: 0.3s; background: transparent; }
         .btn-gold:hover { background: var(--auriu-crem); color: #000 !important; }
 
-        .whatsapp-float { position: fixed; bottom: 30px; left: 20px; background: #25d366; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 1000; color: #fff; }
-        footer { padding: 80px; text-align: center; opacity: 0.3; font-family: 'Cinzel'; font-size: 0.7rem; border-top: 1px solid #111; }
+        /* FLOATING ELEMENTS */
+        .whatsapp-float { position: fixed; bottom: 30px; left: 20px; background: #25d366; border-radius: 50%; width: 55px; height: 55px; display: flex; align-items: center; justify-content: center; font-size: 28px; z-index: 1000; color: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        
+        footer { padding: 60px 20px; text-align: center; opacity: 0.5; font-family: 'Cinzel'; font-size: 0.7rem; border-top: 1px solid #111; letter-spacing: 1px; }
+
+        /* REPARARE LOGO SVG */
+        .brand svg { width: 50px; height: 50px; }
     </style>
 </head>
 <body>
@@ -63,11 +73,11 @@
 
     <header class="site-header">
         <div class="brand">
-            <svg viewBox="0 0 800 800">
-                <circle cx="400" cy="280" r="105" fill="none" stroke="#c5a059" stroke-width="2" opacity="0.4"/>
-                <path d="M300 450 L400 250 L500 450 Z" fill="#c5a059"/>
-                <text x="400" y="765" font-family="'Cinzel'" text-anchor="middle" font-size="45" fill="#c5a059">HAȚEG ALTERNATIV</text>
+            <svg viewBox="0 0 800 500">
+                <circle cx="400" cy="250" r="105" fill="none" stroke="#c5a059" stroke-width="4" opacity="0.6"/>
+                <path d="M300 400 L400 200 L500 400 Z" fill="#c5a059"/>
             </svg>
+            <div class="brand-text">Hațeg Alternativ</div>
         </div>
         <div class="burger" id="burger"><div></div><div></div><div></div></div>
         <nav class="main-nav" id="nav-links">
@@ -105,14 +115,14 @@
         <div class="card-lux" style="background-image: url('images/gast-masa-traditionala.jpg');">
             <div class="card-content">
                 <h3>GASTRONOMIE</h3>
-                <a href="gastronomie.html" class="btn-gold">VEZI MENIU</a>
+                <a href="gastronomie.html" class="btn-gold">DETALII MENIU</a>
             </div>
         </div>
 
         <div class="card-lux" style="background-image: url('images/hero-premium.jpg');">
             <div class="card-content">
                 <h3>MANIFEST METANOIA</h3>
-                <a href="metanoia.html" class="btn-gold">DETALII</a>
+                <a href="metanoia.html" class="btn-gold">DESCOPERĂ</a>
             </div>
         </div>
 
@@ -134,11 +144,11 @@
     <footer>HAȚEG ALTERNATIV &copy; 2026 | TRIBUT PATRICIA</footer>
 
     <script type="text/javascript">
-        // CHAT TAWK.TO
+        // CHAT TAWK.TO - REPARAT COD
         var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
         (function(){
             var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-            s1.async=true; s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
+            s1.async=true; s1.src='https://embed.tawk.to/65c5607435e8d61c3a875f21/1hklg1i9s';
             s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
             s0.parentNode.insertBefore(s1,s0);
         })();
@@ -146,7 +156,13 @@
         // MENU BURGER
         const burger = document.getElementById('burger');
         const nav = document.getElementById('nav-links');
-        if(burger) { burger.onclick = () => nav.classList.toggle('active'); }
+        if(burger) { 
+            burger.onclick = () => {
+                nav.classList.toggle('active');
+                // Efect burger (opțional)
+                burger.classList.toggle('toggle');
+            } 
+        }
     </script>
 </body>
 </html>
