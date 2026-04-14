@@ -10,22 +10,22 @@
 
     <style>
         :root { 
-            --auriu-gold: #ffd700; 
-            --negru-pur: #000000; 
+            --auriu-crem: #c5a059; 
+            --negru-pur: #050505; 
             --alb: #ffffff;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         body { background: var(--negru-pur); color: var(--alb); font-family: 'Inter', sans-serif; line-height: 1.6; overflow-x: hidden; }
 
-        /* HEADER & BURGER */
-        .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 20px 30px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1a1a1a; background: rgba(0,0,0,0.8); }
-        .brand svg { height: 60px; width: auto; filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.3)); }
+        /* HEADER & BURGER REPARAT */
+        .site-header { position: fixed; top: 0; width: 100%; z-index: 10000; padding: 20px 30px; display: flex; justify-content: space-between; align-items: center; background: rgba(5,5,5,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(197,160,89,0.2); }
+        .brand { font-family: 'Cinzel'; font-weight: 900; letter-spacing: 3px; text-transform: uppercase; font-size: 0.85rem; color: var(--auriu-crem); }
         
         .burger { cursor: pointer; z-index: 10001; padding: 10px; }
-        .burger div { width: 30px; height: 2px; background: var(--auriu-gold); margin: 6px; transition: 0.3s; }
+        .burger div { width: 25px; height: 2px; background: var(--auriu-crem); margin: 5px; transition: 0.3s; }
 
-        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: rgba(0,0,0,0.95); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.5s ease; z-index: 10000; }
+        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: var(--negru-pur); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.5s ease; z-index: 9999; }
         .main-nav.active { right: 0; }
         .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 15px 0; color: var(--alb) !important; text-transform: uppercase; letter-spacing: 3px; text-decoration: none; }
 
@@ -33,30 +33,30 @@
 
         /* FORMULAR */
         .form-side { flex: 1; min-width: 320px; }
-        .form-side h2 { font-family: 'Cinzel'; color: var(--auriu-gold); margin-bottom: 30px; letter-spacing: 3px; }
+        .form-side h2 { font-family: 'Cinzel'; color: var(--auriu-crem); margin-bottom: 30px; letter-spacing: 3px; font-size: 1.2rem; }
         
         .booking-form { display: grid; gap: 20px; }
         .booking-form input, .booking-form select, .booking-form textarea { 
-            background: #000; border: 1px solid #333; padding: 15px; color: #fff; font-family: 'Inter'; font-size: 1rem; outline: none; transition: 0.3s;
+            background: #000; border: 1px solid #222; padding: 15px; color: #fff; font-family: 'Inter'; font-size: 1rem; outline: none; transition: 0.3s;
         }
-        .booking-form input:focus { border-color: var(--auriu-gold); }
+        .booking-form input:focus { border-color: var(--auriu-crem); }
         
         .date-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .date-label { font-size: 0.7rem; color: var(--auriu-gold); margin-bottom: 5px; display: block; font-family: 'Cinzel'; }
+        .date-label { font-size: 0.7rem; color: var(--auriu-crem); margin-bottom: 5px; display: block; font-family: 'Cinzel'; letter-spacing: 1px; }
 
         /* SUMAR */
-        .summary-side { flex: 0.6; min-width: 300px; background: #080808; border: 1px solid var(--auriu-gold); padding: 35px; height: fit-content; position: sticky; top: 100px; }
-        .summary-side h3 { font-family: 'Cinzel'; color: var(--auriu-gold); margin-bottom: 25px; text-align: center; border-bottom: 1px solid #222; padding-bottom: 15px; }
+        .summary-side { flex: 0.6; min-width: 300px; background: #0d0d0d; border: 1px solid var(--auriu-crem); padding: 35px; height: fit-content; position: sticky; top: 120px; }
+        .summary-side h3 { font-family: 'Cinzel'; color: var(--auriu-crem); margin-bottom: 25px; text-align: center; border-bottom: 1px solid #222; padding-bottom: 15px; font-size: 1rem; letter-spacing: 2px; }
         
         .summary-row { display: flex; justify-content: space-between; margin-bottom: 15px; font-size: 0.9rem; }
         .summary-row span:first-child { color: #888; }
         .total-row { margin-top: 20px; padding-top: 20px; border-top: 1px solid #222; display: flex; justify-content: space-between; align-items: center; }
-        .total-price { color: var(--auriu-gold); font-size: 1.8rem; font-weight: 900; }
+        .total-price { color: var(--auriu-crem); font-size: 1.8rem; font-weight: 900; font-family: 'Playfair Display'; font-style: italic; }
 
-        .btn-submit { background: transparent; border: 1px solid var(--auriu-gold); color: var(--auriu-gold); padding: 20px; cursor: pointer; font-family: 'Cinzel'; font-weight: bold; letter-spacing: 2px; transition: 0.3s; margin-top: 20px; }
-        .btn-submit:hover { background: var(--auriu-gold); color: #000; }
+        .btn-submit { background: transparent; border: 1px solid var(--auriu-crem); color: var(--auriu-crem); padding: 20px; cursor: pointer; font-family: 'Cinzel'; font-weight: bold; letter-spacing: 2px; transition: 0.3s; margin-top: 20px; }
+        .btn-submit:hover { background: var(--auriu-crem); color: #000; }
 
-        .whatsapp-float { position: fixed; bottom: 30px; left: 20px; background: #25d366; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 1000; color: #fff; text-decoration: none; }
+        .whatsapp-float { position: fixed; bottom: 30px; left: 20px; background: #25d366; border-radius: 50%; width: 55px; height: 55px; display: flex; align-items: center; justify-content: center; font-size: 28px; z-index: 1000; color: #fff; text-decoration: none; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
 
         @media (max-width: 768px) {
             .main-container { margin: 100px auto 30px; }
@@ -70,13 +70,7 @@
     <a href="https://wa.me/40749229686" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
     <header class="site-header">
-        <div class="brand">
-            <svg viewBox="0 0 800 800">
-                <circle cx="400" cy="280" r="105" fill="none" stroke="#ffd700" stroke-width="2" opacity="0.4"/>
-                <path d="M300 450 L400 250 L500 450 Z" fill="#ffd700"/>
-                <text x="400" y="765" font-family="'Cinzel'" text-anchor="middle" font-size="40" fill="#ffd700">HAȚEG ALTERNATIV</text>
-            </svg>
-        </div>
+        <a href="index.html" class="brand">HAȚEG ALTERNATIV</a>
         <div class="burger" id="burger">
             <div></div><div></div><div></div>
         </div>
@@ -84,14 +78,15 @@
             <a href="index.html">ACASĂ</a>
             <a href="pensiune.html">PENSIUNEA</a>
             <a href="gastronomie.html">GASTRONOMIE</a>
-            <a href="experiente.html">ACTIVITĂȚI</a>
-            <a href="rezervari.html">REZERVARE</a>
+            <a href="metanoia.html">METANOIA</a>
+            <a href="evenimente.html">EVENIMENTE</a>
+            <a href="contact.html">CONTACT</a>
         </nav>
     </header>
 
     <div class="main-container">
         <div class="form-side">
-            <h2>FINALIZARE REZERVARE</h2>
+            <h2>CERERE REZERVARE</h2>
             <form id="reservationForm" action="https://formspree.io/f/xjgpvbkj" method="POST" class="booking-form">
                 <input type="text" name="Nume" placeholder="Numele tău complet" required>
                 <input type="text" name="Telefon" placeholder="Număr de Telefon (WhatsApp)" required>
@@ -109,85 +104,4 @@
 
                 <select id="pachet_select" name="Pachet" required>
                     <option value="" disabled selected>Alege Pachetul</option>
-                    <option value="2000" data-nume="Cazare Integrală">Cazare Integrală - 2000 RON / noapte</option>
-                    <option value="3000" data-nume="Cazare + 2 Mese">Cazare + 2 Mese - 3000 RON / noapte</option>
-                    <option value="4000" data-nume="Metanoia All-Inclusive">Metanoia All-Inclusive - 4000 RON / noapte</option>
-                </select>
-
-                <input type="number" id="nr_pers" name="Persoane" placeholder="Număr persoane (max 10)" min="1" max="10" required>
-                <textarea name="Mesaj" rows="4" placeholder="Alte detalii sau cerințe speciale..."></textarea>
-                
-                <button type="submit" class="btn-submit">CONFIRMĂ REZERVAREA</button>
-            </form>
-        </div>
-
-        <div class="summary-side">
-            <h3>SUMAR REZERVARE</h3>
-            <div id="summary-content">
-                <div class="summary-row">
-                    <span>Pachet:</span>
-                    <span id="sum_pachet" style="font-weight: bold; text-align: right;">-</span>
-                </div>
-                <div class="summary-row">
-                    <span>Nopți:</span>
-                    <span id="sum_nopti" style="font-weight: bold;">0</span>
-                </div>
-                <div class="summary-row">
-                    <span>Preț / noapte:</span>
-                    <span id="sum_pret" style="font-weight: bold;">0 RON</span>
-                </div>
-                <div class="total-row">
-                    <span style="font-family: 'Cinzel'; font-size: 1.2rem;">TOTAL ESTIMAT</span>
-                    <span id="sum_total" class="total-price">0 RON</span>
-                </div>
-            </div>
-            <p style="font-size: 0.7rem; color: #555; margin-top: 20px; text-align: center;">* Plata și disponibilitatea se confirmă telefonic.</p>
-        </div>
-    </div>
-
-    <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true; s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
-    s1.charset='UTF-8'; s1.setAttribute('crossorigin','*'); s0.parentNode.insertBefore(s1,s0);
-    })();
-    </script>
-
-    <script>
-        // SCRIPT PENTRU MENIUL BURGER
-        const burger = document.getElementById('burger');
-        const nav = document.getElementById('nav-links');
-        
-        if(burger) {
-            burger.onclick = function() {
-                nav.classList.toggle('active');
-            };
-        }
-
-        // CALCULATOR REZERVARE
-        const checkin = document.getElementById('checkin');
-        const checkout = document.getElementById('checkout');
-        const pachet = document.getElementById('pachet_select');
-
-        function updateSumar() {
-            const d1 = new Date(checkin.value);
-            const d2 = new Date(checkout.value);
-            const pret = parseInt(pachet.value) || 0;
-            const nume = pachet.options[pachet.selectedIndex].getAttribute('data-nume') || "-";
-
-            let nopti = 0;
-            if (d1 && d2 && d2 > d1) {
-                nopti = Math.ceil(Math.abs(d2 - d1) / (1000 * 60 * 60 * 24));
-            }
-
-            document.getElementById('sum_pachet').innerText = nume;
-            document.getElementById('sum_nopti').innerText = nopti;
-            document.getElementById('sum_pret').innerText = pret + " RON";
-            document.getElementById('sum_total').innerText = (nopti * pret) + " RON";
-        }
-
-        [checkin, checkout, pachet].forEach(el => el.addEventListener('change', updateSumar));
-    </script>
-</body>
-</html> 
+                    <option value="2000" data-nume
