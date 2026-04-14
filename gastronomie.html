@@ -24,6 +24,10 @@
         .item-info p { font-size: 0.75rem; font-weight: 300; color: #888; font-style: italic; }
         .item-price { font-family: 'Playfair Display'; color: var(--auriu); font-weight: 700; font-size: 1.1rem; }
 
+        .special-request { background: rgba(197,160,89,0.05); border: 1px dashed var(--auriu); padding: 30px; text-align: center; margin-top: 50px; border-radius: 4px; }
+        .special-request h4 { font-family: 'Cinzel', serif; color: var(--auriu); margin-bottom: 10px; letter-spacing: 2px; }
+        .special-request p { font-size: 0.85rem; color: #aaa; }
+
         @media (max-width: 768px) { .menu-item { flex-direction: column; text-align: center; } .item-price { margin-top: 5px; } }
     </style>
 </head>
@@ -45,83 +49,52 @@
         
         <div class="category-title">Mic Dejun & Aperitive</div>
         <div class="menu-item">
-            <div class="item-info"><h3>Omletă, Ochiuri sau Ouă Fierte</h3><p>Servite cu mezeluri tradiționale de casă.</p></div>
+            <div class="item-info"><h3>Ouă & Mezeluri de Casă</h3><p>Omletă, Ochiuri sau Ouă Fierte cu preparate locale.</p></div>
             <div class="item-price">25 RON</div>
         </div>
         <div class="menu-item">
-            <div class="item-info"><h3>Bruschete Mixte</h3><p>Cu roșii, busuioc sau arome locale.</p></div>
+            <div class="item-info"><h3>Bruschete Mixte</h3><p>Roșii, busuioc și arome de munte.</p></div>
             <div class="item-price">28 RON</div>
         </div>
         <div class="menu-item">
-            <div class="item-info"><h3>Clătite Americane</h3><p>Pufoase, cu miere sau topping artizanal.</p></div>
+            <div class="item-info"><h3>Clătite Americane</h3><p>Pufoase, cu miere sau fructe.</p></div>
             <div class="item-price">25 RON</div>
         </div>
 
         <div class="category-title">Ciorbe & Supe</div>
-        <div class="menu-item">
-            <div class="item-info"><h3>Ciorbă de burtă</h3><p>Dreasă cu smântână și usturoi, după rețeta casei.</p></div>
-            <div class="item-price">28 RON</div>
-        </div>
-        <div class="menu-item">
-            <div class="item-info"><h3>Ciorbă de fasole</h3><p>Cu afumătură de casă sau variantă de post.</p></div>
-            <div class="item-price">25 RON</div>
-        </div>
-        <div class="menu-item">
-            <div class="item-info"><h3>Ciorbă de cartofi</h3><p>Gust autentic, bogată în legume proaspete.</p></div>
-            <div class="item-price">22 RON</div>
-        </div>
-        <div class="menu-item">
-            <div class="item-info"><h3>Supă cremă de legume coapte</h3><p>De post. Legume alese, coapte domol și pasate fin.</p></div>
-            <div class="item-price">24 RON</div>
-        </div>
+        <div class="menu-item"><div class="item-info"><h3>Ciorbă de burtă</h3><p>Dreasă cu smântână.</p></div><div class="item-price">28 RON</div></div>
+        <div class="menu-item"><div class="item-info"><h3>Ciorbă de fasole</h3><p>Cu afumătură de casă.</p></div><div class="item-price">25 RON</div></div>
+        <div class="menu-item"><div class="item-info"><h3>Ciorbă de cartofi</h3><p>Rețetă tradițională.</p></div><div class="item-price">22 RON</div></div>
+        <div class="menu-item"><div class="item-info"><h3>Supă cremă de legume</h3><p>De post, din legume coapte.</p></div><div class="item-price">24 RON</div></div>
 
         <div class="category-title">Felul Principal</div>
         <div class="menu-item">
-            <div class="item-info"><h3>Paste Signature</h3><p>Bolognese, Carbonara Clasic sau cu Zucchini și Somon.</p></div>
-            <div class="item-price">38 - 48 RON</div>
-        </div>
-        <div class="menu-item">
-            <div class="item-info"><h3>Ceaun de Porc & Sarmale</h3><p>Tradiție pură gătită la foc mic.</p></div>
+            <div class="item-info"><h3>Ceaun de Porc & Sarmale</h3><p>Servite cu mămăliguță caldă și murături.</p></div>
             <div class="item-price">45 RON</div>
         </div>
         <div class="menu-item">
-            <div class="item-info"><h3>Friptură de porc la tavă</h3><p>Carne fragedă, rumenită cu mirodenii montane.</p></div>
+            <div class="item-info"><h3>Friptură de porc la tavă</h3><p>Cu cartofi aurii la cuptor și rozmarin.</p></div>
             <div class="item-price">42 RON</div>
         </div>
         <div class="menu-item">
-            <div class="item-info"><h3>Varză călită (Post)</h3><p>Gătită lent, aromată și sățioasă.</p></div>
+            <div class="item-info"><h3>Paste Signature</h3><p>Bolognese, Carbonara sau Somon & Zucchini.</p></div>
+            <div class="item-price">38 - 48 RON</div>
+        </div>
+        <div class="menu-item">
+            <div class="item-info"><h3>Varză călită (Post)</h3><p>Gătită domol pe foc.</p></div>
             <div class="item-price">30 RON</div>
         </div>
 
-        <div class="category-title">Desert & Răsfăț</div>
-        <div class="menu-item">
-            <div class="item-info"><h3>Prăjituri de Casă</h3><p>Albinuța, Porone sau Plăcinte pe lespede.</p></div>
-            <div class="item-price">20 RON</div>
-        </div>
+        <div class="category-title">Răsfăț & Cafea</div>
+        <div class="menu-item"><div class="item-info"><h3>Prăjituri de Casă</h3><p>Albinuța sau Plăcinte.</p></div><div class="item-price">20 RON</div></div>
+        <div class="menu-item"><div class="item-info"><h3>Cafea la Expresor / Fiartă</h3><p>Espresso sau cafea tradițională.</p></div><div class="item-price">10 RON</div></div>
 
-        <div class="category-title">Cafea & Ceai</div>
-        <div class="menu-item">
-            <div class="item-info"><h3>Cafea la Expresor</h3><p>Aromă intensă pentru o dimineață perfectă.</p></div>
-            <div class="item-price">10 RON</div>
+        <div class="special-request">
+            <h4>MENIU PERSONALIZAT</h4>
+            <p>La noi, rânduiala veche înseamnă ospitalitate fără limite. <br> 
+            <strong>Gătim orice preparat la cerere</strong> pentru oaspeții noștri, dacă ne anunțați din timp.</p>
         </div>
-        <div class="menu-item">
-            <div class="item-info"><h3>Cafea Fiartă</h3><p>Pregătită tradițional, pentru un gust bogat.</p></div>
-            <div class="item-price">10 RON</div>
-        </div>
-        <div class="menu-item">
-            <div class="item-info"><h3>Ceaiul Munților</h3><p>Plante culese manual, infuzate cu grijă.</p></div>
-            <div class="item-price">12 RON</div>
-        </div>
-
-        <div class="category-title">Licoarea Spiritului</div>
-        <div class="menu-item">
-            <div class="item-info"><h3>Vișinată de Casă / Vinars</h3><p>Distilate artizanale de colecție.</p></div>
-            <div class="item-price">15 - 25 RON</div>
-        </div>
-        <div class="menu-item">
-            <div class="item-info"><h3>Vinul Domeniilor</h3><p>Selecție premium la pahar sau sticlă.</p></div>
-            <div class="item-price">18 RON / pahar</div>
-        </div> 
+        
     </main>
 </body>
 </html>
