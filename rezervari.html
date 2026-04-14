@@ -5,103 +5,130 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rezervare | Hațeg Alternativ</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        :root { 
-            --auriu-crem: #c5a059; 
-            --negru-pur: #050505; 
-            --alb: #ffffff;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        body { background: var(--negru-pur); color: var(--alb); font-family: 'Inter', sans-serif; line-height: 1.6; overflow-x: hidden; }
-
-        /* HEADER & BURGER REPARAT */
-        .site-header { position: fixed; top: 0; width: 100%; z-index: 10000; padding: 20px 30px; display: flex; justify-content: space-between; align-items: center; background: rgba(5,5,5,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(197,160,89,0.2); }
-        .brand { font-family: 'Cinzel'; font-weight: 900; letter-spacing: 3px; text-transform: uppercase; font-size: 0.85rem; color: var(--auriu-crem); }
+        :root { --auriu: #c5a059; --negru: #050505; --gri: #111; --alb: #fff; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; line-height: 1.6; }
         
-        .burger { cursor: pointer; z-index: 10001; padding: 10px; }
-        .burger div { width: 25px; height: 2px; background: var(--auriu-crem); margin: 5px; transition: 0.3s; }
+        .site-header { position: fixed; top: 0; width: 100%; z-index: 1000; padding: 20px; background: rgba(0,0,0,0.9); border-bottom: 1px solid rgba(197,160,89,0.3); display: flex; justify-content: space-between; align-items: center; }
+        .brand { font-family: 'Cinzel'; color: var(--auriu); font-weight: 900; letter-spacing: 2px; font-size: 0.9rem; }
 
-        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: var(--negru-pur); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.5s ease; z-index: 9999; }
-        .main-nav.active { right: 0; }
-        .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 15px 0; color: var(--alb) !important; text-transform: uppercase; letter-spacing: 3px; text-decoration: none; }
+        .main-container { max-width: 1200px; margin: 100px auto 50px; display: grid; grid-template-columns: 1fr 400px; gap: 40px; padding: 20px; }
 
-        .main-container { max-width: 1200px; margin: 120px auto 60px; display: flex; flex-wrap: wrap; gap: 40px; padding: 0 20px; }
-
-        /* FORMULAR */
-        .form-side { flex: 1; min-width: 320px; }
-        .form-side h2 { font-family: 'Cinzel'; color: var(--auriu-crem); margin-bottom: 30px; letter-spacing: 3px; font-size: 1.2rem; }
-        
+        .form-side h2 { font-family: 'Cinzel'; color: var(--auriu); margin-bottom: 25px; letter-spacing: 3px; }
         .booking-form { display: grid; gap: 20px; }
-        .booking-form input, .booking-form select, .booking-form textarea { 
-            background: #000; border: 1px solid #222; padding: 15px; color: #fff; font-family: 'Inter'; font-size: 1rem; outline: none; transition: 0.3s;
-        }
-        .booking-form input:focus { border-color: var(--auriu-crem); }
         
+        input, select, textarea { width: 100%; background: #000; border: 1px solid #333; padding: 15px; color: #fff; font-family: 'Inter'; outline: none; }
+        input:focus { border-color: var(--auriu); }
+
         .date-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .date-label { font-size: 0.7rem; color: var(--auriu-crem); margin-bottom: 5px; display: block; font-family: 'Cinzel'; letter-spacing: 1px; }
+        .label-mini { font-size: 0.7rem; color: var(--auriu); font-family: 'Cinzel'; display: block; margin-bottom: 5px; }
 
-        /* SUMAR */
-        .summary-side { flex: 0.6; min-width: 300px; background: #0d0d0d; border: 1px solid var(--auriu-crem); padding: 35px; height: fit-content; position: sticky; top: 120px; }
-        .summary-side h3 { font-family: 'Cinzel'; color: var(--auriu-crem); margin-bottom: 25px; text-align: center; border-bottom: 1px solid #222; padding-bottom: 15px; font-size: 1rem; letter-spacing: 2px; }
-        
-        .summary-row { display: flex; justify-content: space-between; margin-bottom: 15px; font-size: 0.9rem; }
-        .summary-row span:first-child { color: #888; }
-        .total-row { margin-top: 20px; padding-top: 20px; border-top: 1px solid #222; display: flex; justify-content: space-between; align-items: center; }
-        .total-price { color: var(--auriu-crem); font-size: 1.8rem; font-weight: 900; font-family: 'Playfair Display'; font-style: italic; }
+        /* SUPLIMENTE */
+        .extras-section { margin-top: 20px; border: 1px solid #222; padding: 20px; }
+        .extras-section h4 { font-family: 'Cinzel'; color: var(--auriu); font-size: 0.8rem; margin-bottom: 15px; border-bottom: 1px solid #222; padding-bottom: 10px; }
+        .extra-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-size: 0.9rem; cursor: pointer; }
+        .extra-item input { width: auto; margin-right: 10px; }
 
-        .btn-submit { background: transparent; border: 1px solid var(--auriu-crem); color: var(--auriu-crem); padding: 20px; cursor: pointer; font-family: 'Cinzel'; font-weight: bold; letter-spacing: 2px; transition: 0.3s; margin-top: 20px; }
-        .btn-submit:hover { background: var(--auriu-crem); color: #000; }
+        /* SUMAR VIZIBIL */
+        .summary-side { background: var(--gri); border: 1px solid var(--auriu); padding: 30px; position: sticky; top: 120px; height: fit-content; }
+        .summary-side h3 { font-family: 'Cinzel'; color: var(--auriu); text-align: center; margin-bottom: 20px; }
+        .sum-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.85rem; border-bottom: 1px dotted #333; padding-bottom: 5px; }
+        .total-row { margin-top: 20px; padding-top: 20px; border-top: 2px solid var(--auriu); display: flex; justify-content: space-between; align-items: center; }
+        .total-price { font-family: 'Playfair Display'; font-size: 2rem; color: var(--auriu); font-style: italic; }
 
-        .whatsapp-float { position: fixed; bottom: 30px; left: 20px; background: #25d366; border-radius: 50%; width: 55px; height: 55px; display: flex; align-items: center; justify-content: center; font-size: 28px; z-index: 1000; color: #fff; text-decoration: none; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        .btn-send { background: transparent; border: 1px solid var(--auriu); color: var(--auriu); padding: 20px; font-family: 'Cinzel'; cursor: pointer; transition: 0.3s; width: 100%; font-weight: bold; }
+        .btn-send:hover { background: var(--auriu); color: #000; }
 
-        @media (max-width: 768px) {
-            .main-container { margin: 100px auto 30px; }
-            .site-header { padding: 15px 20px; }
-            .summary-side { position: static; }
-        }
+        @media (max-width: 900px) { .main-container { grid-template-columns: 1fr; } .summary-side { position: static; } }
     </style>
 </head>
 <body>
 
-    <a href="https://wa.me/40749229686" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
-
     <header class="site-header">
         <a href="index.html" class="brand">HAȚEG ALTERNATIV</a>
-        <div class="burger" id="burger">
-            <div></div><div></div><div></div>
-        </div>
-        <nav class="main-nav" id="nav-links">
-            <a href="index.html">ACASĂ</a>
-            <a href="pensiune.html">PENSIUNEA</a>
-            <a href="gastronomie.html">GASTRONOMIE</a>
-            <a href="metanoia.html">METANOIA</a>
-            <a href="evenimente.html">EVENIMENTE</a>
-            <a href="contact.html">CONTACT</a>
-        </nav>
     </header>
 
     <div class="main-container">
         <div class="form-side">
             <h2>CERERE REZERVARE</h2>
-            <form id="reservationForm" action="https://formspree.io/f/xjgpvbkj" method="POST" class="booking-form">
-                <input type="text" name="Nume" placeholder="Numele tău complet" required>
-                <input type="text" name="Telefon" placeholder="Număr de Telefon (WhatsApp)" required>
+            <form id="bookingForm" action="https://formspree.io/f/xjgpvbkj" method="POST" class="booking-form">
+                <input type="text" name="Nume" placeholder="Numele tău" required>
+                <input type="text" name="Telefon" placeholder="Telefon / WhatsApp" required>
                 
                 <div class="date-grid">
-                    <div>
-                        <span class="date-label">CHECK-IN</span>
-                        <input type="date" id="checkin" name="Check-in" required>
-                    </div>
-                    <div>
-                        <span class="date-label">CHECK-OUT</span>
-                        <input type="date" id="checkout" name="Check-out" required>
-                    </div>
+                    <div><span class="label-mini">Check-In</span><input type="date" id="checkin" name="Check-in" required></div>
+                    <div><span class="label-mini">Check-Out</span><input type="date" id="checkout" name="Check-out" required></div>
                 </div>
 
-                <select id="pachet_select" name="Pachet" required>
-                    <option value="" disabled selected>Alege Pachetul</option>
-                    <option value="2000" data-nume
+                <select id="pachet_base" name="Pachet_Baza" required>
+                    <option value="0" disabled selected>Alege Pachetul de Bază</option>
+                    <option value="2000" data-nume="Rânduiala Veche">Rânduiala Veche (Cazare) - 2000 RON/noapte</option>
+                    <option value="4000" data-nume="Metanoia All-In">Metanoia All-In (Demipensiune) - 4000 RON/noapte</option>
+                </select>
+
+                <div class="extras-section">
+                    <h4>ADĂUGAȚI SUPLIMENTE (Per sejur)</h4>
+                    <label class="extra-item"><span><input type="checkbox" class="extra-cb" name="Atelier_Ebike" value="300"> Atelier E-Bike</span> <span>300 RON</span></label>
+                    <label class="extra-item"><span><input type="checkbox" class="extra-cb" name="Atelier_Gastronomic" value="500"> Atelier Gastronomic</span> <span>500 RON</span></label>
+                    <label class="extra-item"><span><input type="checkbox" class="extra-cb" name="Zi_la_Stana" value="400"> Zi la Stâne & Gastronomie</span> <span>400 RON</span></label>
+                    <label class="extra-item"><span><input type="checkbox" class="extra-cb" name="Tur_Gol_Nomad" value="600"> Tur Gol Nomad (4x4)</span> <span>600 RON</span></label>
+                    <label class="extra-item"><span><input type="checkbox" class="extra-cb" name="Pelerinaj" value="200"> Pelerinaj la Schituri</span> <span>200 RON</span></label>
+                </div>
+
+                <input type="number" name="Persoane" placeholder="Nr. persoane" min="1" max="10" required>
+                <textarea name="Mesaj" placeholder="Mențiuni speciale..."></textarea>
+                
+                <button type="submit" class="btn-send">TRIMITE CEREREA</button>
+            </form>
+        </div>
+
+        <div class="summary-side">
+            <h3>SUMAR ESTIMATIV</h3>
+            <div id="summary-details">
+                <div class="sum-row"><span>Pachet:</span> <span id="res_pachet">-</span></div>
+                <div class="sum-row"><span>Nopți:</span> <span id="res_nopti">0</span></div>
+                <div class="sum-row"><span>Suplimente:</span> <span id="res_extras">0 RON</span></div>
+                <div class="total-row"><span>TOTAL:</span> <span id="res_total" class="total-price">0 RON</span></div>
+            </div>
+            <p style="font-size: 0.6rem; margin-top: 15px; opacity: 0.5;">* Prețul final se confirmă telefonic în funcție de disponibilitate.</p>
+        </div>
+    </div>
+
+    <script>
+        const checkin = document.getElementById('checkin');
+        const checkout = document.getElementById('checkout');
+        const pachet = document.getElementById('pachet_base');
+        const extras = document.querySelectorAll('.extra-cb');
+
+        function calculate() {
+            const d1 = new Date(checkin.value);
+            const d2 = new Date(checkout.value);
+            let nopti = 0;
+            if(d1 && d2 && d2 > d1) {
+                nopti = Math.ceil((d2 - d1) / (1000 * 60 * 60 * 24));
+            }
+
+            const pretBaza = parseInt(pachet.value) || 0;
+            const numePachet = pachet.options[pachet.selectedIndex].getAttribute('data-nume') || "-";
+            
+            let pretExtras = 0;
+            extras.forEach(cb => { if(cb.checked) pretExtras += parseInt(cb.value); });
+
+            document.getElementById('res_pachet').innerText = numePachet;
+            document.getElementById('res_nopti').innerText = nopti;
+            document.getElementById('res_extras').innerText = pretExtras + " RON";
+            
+            const total = (nopti * pretBaza) + pretExtras;
+            document.getElementById('res_total').innerText = total + " RON";
+        }
+
+        [checkin, checkout, pachet].forEach(el => el.addEventListener('change', calculate));
+        extras.forEach(cb => cb.addEventListener('change', calculate));
+    </script>
+
+</body>
+</html>
