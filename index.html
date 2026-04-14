@@ -11,20 +11,18 @@
     <style>
         :root { --auriu: #c5a059; --negru: #000; --alb: #fff; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
+        a { text-decoration: none !important; color: inherit !important; }
 
         .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
-        
-        /* STIL LOGO DIN COD */
         .brand-logo { height: 70px; width: auto; filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.5)); }
         .brand-logo svg { height: 100%; width: auto; }
 
         .burger { cursor: pointer; z-index: 10001; padding: 10px; }
         .burger div { width: 30px; height: 2px; background: var(--auriu); margin: 6px; transition: 0.3s; }
-
         .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: rgba(0,0,0,0.98); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.5s ease; z-index: 10000; }
         .main-nav.active { right: 0; }
-        .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 15px 0; color: #fff !important; text-transform: uppercase; letter-spacing: 3px; text-decoration: none; }
+        .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 15px 0; color: #fff !important; text-transform: uppercase; letter-spacing: 3px; }
 
         .hero { height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; }
         .hero-bg { position: absolute; inset: 0; background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.7)), url('images/rasarit.jpg') center/cover no-repeat; z-index: 1; }
@@ -34,20 +32,18 @@
         .grid-lux { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; padding: 40px 20px; max-width: 1400px; margin: 0 auto; }
         .card-lux { height: 450px; display: flex; flex-direction: column; justify-content: flex-end; padding: 30px; border: 1px solid #1a1a1a; position: relative; overflow: hidden; background-size: cover; background-position: center; transition: 0.5s; }
         .card-lux::before { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.9)); z-index: 1; }
-        
-        .btn-gold { position: relative; z-index: 2; display: inline-block; padding: 12px 25px; border: 1px solid var(--auriu); color: var(--auriu); font-family: 'Cinzel'; font-size: 0.75rem; text-decoration: none; transition: 0.3s; }
+        .btn-gold { position: relative; z-index: 2; display: inline-block; padding: 12px 25px; border: 1px solid var(--auriu); color: var(--auriu); font-family: 'Cinzel'; font-size: 0.75rem; transition: 0.3s; background: transparent; cursor: pointer; }
         .btn-gold:hover { background: var(--auriu); color: #000 !important; }
 
-        /* FOOTER LEGAL DAKAMIGOS */
         .footer-legal { padding: 60px 20px; background: #080808; border-top: 1px solid #1a1a1a; margin-top: 50px; }
         .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
         .footer-section h4 { color: var(--auriu); font-family: 'Cinzel'; margin-bottom: 20px; font-size: 0.9rem; letter-spacing: 2px; }
-        .footer-section p, .footer-section a { font-size: 0.8rem; color: #888 !important; text-decoration: none; margin-bottom: 10px; display: block; }
-        .anpc-links { display: flex; gap: 15px; margin-top: 20px; }
-        .anpc-links img { height: 45px; filter: grayscale(100%); transition: 0.3s; }
-        .anpc-links img:hover { filter: grayscale(0%); }
+        .footer-section p, .footer-section a { font-size: 0.8rem; color: #888 !important; margin-bottom: 10px; display: block; }
+        
+        .anpc-links { display: flex; gap: 15px; align-items: center; margin-top: 10px; }
+        .anpc-links img { height: 45px; width: auto; background: white; border-radius: 4px; padding: 2px; }
 
-        .whatsapp-float { position: fixed; bottom: 30px; left: 20px; background: #25d366; border-radius: 50%; width: 55px; height: 55px; display: flex; align-items: center; justify-content: center; font-size: 28px; z-index: 1000; color: #fff; text-decoration: none; }
+        .whatsapp-float { position: fixed; bottom: 30px; left: 20px; background: #25d366; border-radius: 50%; width: 55px; height: 55px; display: flex; align-items: center; justify-content: center; font-size: 28px; z-index: 1000; color: #fff; }
     </style>
 </head>
 <body>
@@ -116,8 +112,12 @@
             <div class="footer-section">
                 <h4>ANPC</h4>
                 <div class="anpc-links">
-                    <a href="https://anpc.ro/ce-este-sal/" target="_blank"><img src="https://anpc.ro/wp-content/uploads/2022/11/sal.png" alt="SAL"></a>
-                    <a href="https://ec.europa.eu/consumers/odr/" target="_blank"><img src="https://anpc.ro/wp-content/uploads/2022/11/sol.png" alt="SOL"></a>
+                    <a href="https://anpc.ro/ce-este-sal/" target="_blank">
+                        <img src="images/anpc-sal.png" alt="SAL">
+                    </a>
+                    <a href="https://ec.europa.eu/consumers/odr/" target="_blank">
+                        <img src="images/anpc-sol.png" alt="SOL">
+                    </a>
                 </div>
             </div>
         </div>
