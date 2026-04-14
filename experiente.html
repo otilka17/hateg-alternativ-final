@@ -9,43 +9,49 @@
     <style>
         :root { --auriu: #c5a059; --negru: #050505; --gri: #0d0d0d; --alb: #fff; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; line-height: 1.6; }
+        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; line-height: 1.6; overflow-x: hidden; }
 
         .site-header { position: fixed; top: 0; width: 100%; z-index: 1000; padding: 20px 30px; background: rgba(0,0,0,0.9); display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(197,160,89,0.2); }
         .brand { font-family: 'Cinzel'; color: var(--auriu); font-weight: 900; letter-spacing: 2px; text-decoration: none; }
 
-        .container { max-width: 1100px; margin: 120px auto 60px; padding: 0 20px; }
-        .page-title { font-family: 'Playfair Display'; font-size: 3.5rem; font-style: italic; color: var(--auriu); text-align: center; margin-bottom: 50px; }
+        .container { max-width: 1200px; margin: 120px auto 60px; padding: 0 20px; }
+        .page-title { font-family: 'Playfair Display'; font-size: clamp(2.5rem, 8vw, 4rem); font-style: italic; color: var(--auriu); text-align: center; margin-bottom: 60px; }
 
-        /* CARDURI PACHETE */
-        .pachete-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 60px; }
-        .pachet-card { background: var(--gri); border: 1px solid #222; padding: 40px; transition: 0.3s; position: relative; }
-        .pachet-card:hover { border-color: var(--auriu); }
-        .pachet-card h2 { font-family: 'Cinzel'; color: var(--auriu); margin-bottom: 20px; }
-        .price-tag { font-family: 'Playfair Display'; font-size: 2.5rem; margin-bottom: 20px; display: block; }
+        .pachete-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 80px; }
+        .pachet-card { background: var(--gri); border: 1px solid #222; transition: 0.3s; position: relative; overflow: hidden; display: flex; flex-direction: column; }
+        
+        .pachet-img { height: 300px; width: 100%; background-size: cover; background-position: center; position: relative; }
+        .pachet-img::after { content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 50%; background: linear-gradient(to top, var(--gri), transparent); }
+
+        .pachet-content { padding: 40px; flex-grow: 1; }
+        .pachet-card h2 { font-family: 'Cinzel'; color: var(--auriu); margin-bottom: 20px; font-size: 1.5rem; }
+        .price-tag { font-family: 'Playfair Display'; font-size: 2.8rem; margin-bottom: 25px; display: block; color: #fff; font-style: italic; }
+        
         .pachet-card ul { list-style: none; margin-bottom: 30px; color: #aaa; }
-        .pachet-card ul li { margin-bottom: 10px; padding-left: 20px; position: relative; }
+        .pachet-card ul li { margin-bottom: 12px; padding-left: 25px; position: relative; }
         .pachet-card ul li::before { content: "✓"; position: absolute; left: 0; color: var(--auriu); }
 
-        /* SUPLIMENTE */
-        .extras-box { background: #000; border: 1px solid var(--auriu); padding: 40px; margin-top: 40px; }
-        .extras-box h3 { font-family: 'Cinzel'; color: var(--auriu); margin-bottom: 25px; text-align: center; }
-        .extra-line { display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid #1a1a1a; }
-        .extra-name { font-weight: 600; }
-        .extra-price { color: var(--auriu); font-family: 'Playfair Display'; font-style: italic; }
+        .extras-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .extra-card { background: #000; border: 1px solid #1a1a1a; position: relative; overflow: hidden; height: 350px; display: flex; flex-direction: column; justify-content: flex-end; }
+        
+        .extra-img { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0.4; transition: 0.5s ease; }
+        .extra-card:hover .extra-img { opacity: 0.7; transform: scale(1.05); }
 
-        .cta-container { text-align: center; margin-top: 50px; }
-        .btn-booking { display: inline-block; background: var(--auriu); color: #000; padding: 20px 50px; font-family: 'Cinzel'; font-weight: 900; text-decoration: none; transition: 0.3s; letter-spacing: 2px; }
-        .btn-booking:hover { background: #fff; transform: translateY(-3px); }
+        .extra-content { position: relative; z-index: 5; padding: 30px; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); }
+        .extra-card h4 { font-family: 'Playfair Display'; color: var(--auriu); font-size: 1.8rem; font-style: italic; margin-bottom: 8px; }
+        .extra-price { font-family: 'Cinzel'; color: #fff; font-size: 1rem; }
 
-        @media (max-width: 768px) { .pachete-grid { grid-template-columns: 1fr; } .page-title { font-size: 2.5rem; } }
+        .btn-booking { display: inline-block; background: transparent; border: 1px solid var(--auriu); color: var(--auriu); padding: 22px 60px; font-family: 'Cinzel'; font-weight: 900; text-decoration: none; transition: 0.3s; letter-spacing: 3px; margin-top: 50px; }
+        .btn-booking:hover { background: var(--auriu); color: #000 !important; }
+
+        @media (max-width: 900px) { .pachete-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
     <header class="site-header">
         <a href="index.html" class="brand">HAȚEG ALTERNATIV</a>
-        <a href="index.html" style="color:var(--auriu); text-decoration:none; font-family:'Cinzel'; font-size:0.8rem;">ÎNAPOI</a>
+        <a href="index.html" style="color:var(--auriu); text-decoration:none; font-family:'Cinzel';">ÎNAPOI</a>
     </header>
 
     <div class="container">
@@ -53,61 +59,77 @@
 
         <div class="pachete-grid">
             <div class="pachet-card">
-                <h2>Rânduiala Veche</h2>
-                <span class="price-tag">2000 RON <small style="font-size: 1rem; color: #666;">/ noapte</small></span>
-                <ul>
-                    <li>Cazare integrală (Pensiune la cheie)</li>
-                    <li>Capacitate maximă: 10 persoane</li>
-                    <li>Acces la toate facilitățile casei</li>
-                    <li>Self-catering (bucătărie complet utilată)</li>
-                </ul>
+                <div class="pachet-img" style="background-image: url('images/feed-buliga.jpg');"></div>
+                <div class="pachet-content">
+                    <h2>Rânduiala Veche</h2>
+                    <span class="price-tag">2000 RON <small style="font-size: 1rem; color: #666;">/ noapte</small></span>
+                    <ul>
+                        <li>Cazare integrală (Pensiune la cheie)</li>
+                        <li>Capacitate: 10 persoane</li>
+                        <li>Self-catering inclus</li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="pachet-card" style="border-color: var(--auriu); background: rgba(197, 160, 89, 0.05);">
-                <div style="position: absolute; top: -15px; right: 20px; background: var(--auriu); color: #000; padding: 5px 15px; font-size: 0.7rem; font-family: 'Cinzel'; font-weight: 900;">RECOMANDAT</div>
-                <h2>Metanoia All-In</h2>
-                <span class="price-tag">4000 RON <small style="font-size: 1rem; color: #666;">/ noapte</small></span>
-                <ul>
-                    <li>Cazare integrală (10 persoane)</li>
-                    <li><b>Demipensiune inclusă</b> (Mic dejun & Cină)</li>
-                    <li>Produse Bio din gospodăria proprie</li>
-                    <li>Rânduială gastronomică tradițională</li>
-                </ul>
+            <div class="pachet-card" style="border-color: var(--auriu);">
+                <div class="pachet-img" style="background-image: url('images/hero-premium.jpg');"></div>
+                <div class="pachet-content">
+                    <h2>Metanoia All-In</h2>
+                    <span class="price-tag">4000 RON <small style="font-size: 1rem; color: #666;">/ noapte</small></span>
+                    <ul>
+                        <li>Cazare integrală</li>
+                        <li><b>Demipensiune inclusă</b></li>
+                        <li>Produse Bio locale</li>
+                    </ul>
+                </div>
             </div>
         </div>
 
-        <div class="extras-box">
-            <h3>Ateliere & Activități Opționale</h3>
-            <div class="extra-line">
-                <span class="extra-name">Tur Gol Nomad (Aventură 4x4)</span>
-                <span class="extra-price">600 RON / tur</span>
+        <div class="extras-grid">
+            <div class="extra-card">
+                <div class="extra-img" style="background-image: url('images/gonomad.jpg');"></div>
+                <div class="extra-content">
+                    <h4>Tur Gol Nomad</h4>
+                    <span class="extra-price">600 RON</span>
+                </div>
             </div>
-            <div class="extra-line">
-                <span class="extra-name">Atelier Gastronomic (Plăcinte pe lespede)</span>
-                <span class="extra-price">500 RON / grup</span>
+
+            <div class="extra-card">
+                <div class="extra-img" style="background-image: url('images/gast-masa-traditionala.jpg');"></div>
+                <div class="extra-content">
+                    <h4>Atelier Gastronomic</h4>
+                    <span class="extra-price">500 RON</span>
+                </div>
             </div>
-            <div class="extra-line">
-                <span class="extra-name">Zi la Stâne & Prânz Tradițional</span>
-                <span class="extra-price">400 RON / grup</span>
+
+            <div class="extra-card">
+                <div class="extra-img" style="background-image: url('images/exp-stana.jpg');"></div>
+                <div class="extra-content">
+                    <h4>Zi la Stâne</h4>
+                    <span class="extra-price">400 RON</span>
+                </div>
             </div>
-            <div class="extra-line">
-                <span class="extra-name">Atelier E-Bike (Ghidaj inclus)</span>
-                <span class="extra-price">300 RON / zi</span>
+
+            <div class="extra-card">
+                <div class="extra-img" style="background-image: url('images/banita.jpg');"></div>
+                <div class="extra-content">
+                    <h4>Cheile Baniței</h4>
+                    <span class="extra-price">300 RON</span>
+                </div>
             </div>
-            <div class="extra-line">
-                <span class="extra-name">Pelerinaj la Schituri & Istorie Locală</span>
-                <span class="extra-price">200 RON / grup</span>
+
+            <div class="extra-card">
+                <div class="extra-img" style="background-image: url('images/exp-biserica-int.jpg');"></div>
+                <div class="extra-content">
+                    <h4>Pelerinaj</h4>
+                    <span class="extra-price">200 RON</span>
+                </div>
             </div>
         </div>
 
-        <div class="cta-container">
-            <a href="rezervari.html" class="btn-booking">RESERVĂ ACUM EXPERIENȚA</a>
+        <div style="text-align: center;">
+            <a href="rezervari.html" class="btn-booking">RESERVĂ ACUM</a>
         </div>
     </div>
-
-    <footer style="text-align: center; padding: 40px; opacity: 0.3; font-size: 0.8rem; font-family: 'Cinzel';">
-        HAȚEG ALTERNATIV &copy; 2026
-    </footer>
-
 </body>
 </html>
