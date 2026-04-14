@@ -41,11 +41,6 @@
         .hero-content h1 { font-family: 'Playfair Display'; font-size: clamp(3rem, 10vw, 7rem); color: var(--auriu-crem); font-style: italic; line-height: 1.1; }
         .hero-content p { font-family: 'Cinzel'; letter-spacing: 4px; color: #fff; font-size: clamp(0.8rem, 3vw, 1.1rem); margin-top: 15px; text-transform: uppercase; }
 
-        /* INTRO */
-        .intro { padding: 80px 20px; text-align: center; max-width: 900px; margin: 0 auto; }
-        .intro h2 { font-family: 'Cinzel'; color: var(--auriu-crem); letter-spacing: 5px; margin-bottom: 25px; font-size: 1.2rem; }
-        .intro p { font-family: 'Playfair Display'; font-style: italic; font-size: clamp(1.2rem, 4vw, 1.6rem); color: #ccc; line-height: 1.4; }
-
         /* GRID LUX */
         .grid-lux { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; padding: 40px 20px; max-width: 1400px; margin: 0 auto; }
         .card-lux { height: 450px; display: flex; flex-direction: column; justify-content: flex-end; padding: 30px; border: 1px solid #1a1a1a; position: relative; overflow: hidden; background-size: cover; background-position: center; transition: transform 0.5s ease; }
@@ -61,9 +56,6 @@
         .whatsapp-float { position: fixed; bottom: 30px; left: 20px; background: #25d366; border-radius: 50%; width: 55px; height: 55px; display: flex; align-items: center; justify-content: center; font-size: 28px; z-index: 1000; color: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
         
         footer { padding: 60px 20px; text-align: center; opacity: 0.5; font-family: 'Cinzel'; font-size: 0.7rem; border-top: 1px solid #111; letter-spacing: 1px; }
-
-        /* REPARARE LOGO SVG */
-        .brand svg { width: 50px; height: 50px; }
     </style>
 </head>
 <body>
@@ -81,13 +73,11 @@
         <div class="burger" id="burger"><div></div><div></div><div></div></div>
         <nav class="main-nav" id="nav-links">
             <a href="index.html">ACASĂ</a>
-            <a href="experiente.html">EXPERIENȚE & TARIFE</a>
-            <a href="pensiune.html">PENSIUNEA</a>
+            <a href="experiente.html">EXPERIENȚE & TARIFE</a> <a href="pensiune.html">PENSIUNEA</a>
             <a href="gastronomie.html">GASTRONOMIE</a>
             <a href="metanoia.html">METANOIA</a>
-            <a href="evenimente.html">EVENIMENTE</a>
             <a href="contact.html">CONTACT</a>
-        </nav>
+            <a href="rezervari.html">REZERVARE</a> </nav>
     </header>
 
     <section class="hero">
@@ -95,27 +85,25 @@
         <div class="hero-content">
             <h1>La Buligă.</h1>
             <p>Rânduiala veche în munte</p>
-            <a href="experiente.html" class="btn-gold" style="margin-top: 30px;">DESCOPERĂ PACHETELE 2026</a>
+            <div style="margin-top: 30px; display: flex; gap: 15px; justify-content: center;">
+                <a href="experiente.html" class="btn-gold">VEZI PACHETELE</a>
+                <a href="rezervari.html" class="btn-gold" style="background: rgba(197, 160, 89, 0.1);">REZERVARE RAPIDĂ</a>
+            </div>
         </div>
-    </section>
-
-    <section class="intro">
-        <h2>O CASĂ CU SUFLET</h2>
-        <p>Acolo unde timpul se măsoară în răsărituri...</p>
     </section>
 
     <div class="grid-lux">
         <div class="card-lux" style="background-image: url('images/la-buliga-pensiune.jpg');">
             <div class="card-content">
                 <h3>CAZARE INTEGRALĂ</h3>
-                <a href="experiente.html" class="btn-gold">VEZI TARIFE</a>
+                <a href="rezervari.html" class="btn-gold">REZERVĂ ACUM</a>
             </div>
         </div>
 
         <div class="card-lux" style="background-image: url('images/gast-masa-traditionala.jpg');">
             <div class="card-content">
                 <h3>GASTRONOMIE</h3>
-                <a href="gastronomie.html" class="btn-gold">DETALII MENIU</a>
+                <a href="experiente.html" class="btn-gold">TARIFE MESE</a>
             </div>
         </div>
 
@@ -123,13 +111,6 @@
             <div class="card-content">
                 <h3>MANIFEST METANOIA</h3>
                 <a href="metanoia.html" class="btn-gold">DESCOPERĂ</a>
-            </div>
-        </div>
-
-        <div class="card-lux" style="background-image: url('images/index-mancare.jpg');">
-            <div class="card-content">
-                <h3>EVENIMENTE</h3>
-                <a href="evenimente.html" class="btn-gold">VEZI MOMENTE</a>
             </div>
         </div>
 
@@ -144,7 +125,6 @@
     <footer>HAȚEG ALTERNATIV &copy; 2026 | TRIBUT PATRICIA</footer>
 
     <script type="text/javascript">
-        // CHAT TAWK.TO - REPARAT COD
         var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
         (function(){
             var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
@@ -153,14 +133,10 @@
             s0.parentNode.insertBefore(s1,s0);
         })();
 
-        // MENU BURGER
         const burger = document.getElementById('burger');
         const nav = document.getElementById('nav-links');
         if(burger) { 
-            burger.onclick = () => {
-                nav.classList.toggle('active');
-                burger.classList.toggle('toggle');
-            } 
+            burger.onclick = () => { nav.classList.toggle('active'); } 
         }
     </script>
 </body>
