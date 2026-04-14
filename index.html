@@ -20,11 +20,10 @@
         body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
         a { text-decoration: none !important; color: inherit !important; }
 
-        /* HEADER & LOGO */
         .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
-        .brand { display: flex; align-items: center; gap: 15px; }
-        .brand svg { height: 60px; width: auto; filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.3)); }
-        .brand-text { font-family: 'Cinzel'; font-size: 0.9rem; color: var(--auriu-crem); letter-spacing: 2px; text-transform: uppercase; font-weight: 700; }
+        
+        /* LOGO REPARAT - Folosește fișierul tău SVG exact */
+        .brand img { height: 65px; width: auto; filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.4)); }
 
         .burger { cursor: pointer; z-index: 10001; padding: 10px; }
         .burger div { width: 30px; height: 2px; background: var(--auriu-crem); margin: 6px; transition: 0.3s; }
@@ -33,32 +32,30 @@
         .main-nav.active { right: 0; }
         .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 15px 0; color: var(--alb) !important; text-transform: uppercase; letter-spacing: 3px; }
 
-        /* HERO */
         .hero { height: 100vh; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
-        .hero-bg { position: absolute; inset: 0; background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('images/rasarit.jpg') center/cover no-repeat; z-index: 1; }
+        /* Fundal corectat: apus.jpg */
+        .hero-bg { position: absolute; inset: 0; background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('images/apus.jpg') center/cover no-repeat; z-index: 1; }
         .hero-content { position: relative; z-index: 10; padding: 0 20px; }
         .hero-content h1 { font-family: 'Playfair Display'; font-size: clamp(3rem, 10vw, 7rem); color: var(--auriu-crem); font-style: italic; line-height: 1.1; }
         .hero-content p { font-family: 'Cinzel'; letter-spacing: 4px; color: #fff; font-size: clamp(0.8rem, 3vw, 1.1rem); margin-top: 15px; text-transform: uppercase; }
 
-        /* GRID LUX */
         .grid-lux { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; padding: 40px 20px; max-width: 1400px; margin: 0 auto; }
         .card-lux { height: 450px; display: flex; flex-direction: column; justify-content: flex-end; padding: 30px; border: 1px solid #1a1a1a; position: relative; overflow: hidden; background-size: cover; background-position: center; transition: transform 0.5s ease; }
-        .card-lux:hover { transform: scale(1.02); }
         .card-lux::before { content: ""; position: absolute; inset: 0; background: var(--overlay); z-index: 1; }
+        
         .card-content { position: relative; z-index: 5; }
         .card-content h3 { font-family: 'Cinzel'; color: var(--auriu-crem); font-size: 1.2rem; margin-bottom: 15px; letter-spacing: 2px; }
         
         .btn-gold { display: inline-block; padding: 12px 25px; border: 1px solid var(--auriu-crem); color: var(--auriu-crem); font-family: 'Cinzel'; font-size: 0.75rem; letter-spacing: 2px; transition: 0.3s; background: transparent; cursor: pointer; }
         .btn-gold:hover { background: var(--auriu-crem); color: #000 !important; }
 
-        /* FOOTER LEGAL MODIFICAT */
+        /* FOOTER */
         .footer-legal { padding: 60px 20px; background: #080808; border-top: 1px solid #1a1a1a; margin-top: 50px; }
         .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
         .footer-section h4 { color: var(--auriu-crem); font-family: 'Cinzel'; margin-bottom: 20px; font-size: 0.9rem; letter-spacing: 2px; }
         .footer-section p, .footer-section a { font-size: 0.8rem; color: #888; text-decoration: none; margin-bottom: 10px; display: block; }
         .anpc-links { display: flex; gap: 15px; margin-top: 20px; }
-        .anpc-links img { height: 40px; filter: grayscale(100%); transition: 0.3s; }
-        .anpc-links img:hover { filter: grayscale(0%); }
+        .anpc-links img { height: 40px; filter: grayscale(100%); }
 
         .whatsapp-float { position: fixed; bottom: 30px; left: 20px; background: #25d366; border-radius: 50%; width: 55px; height: 55px; display: flex; align-items: center; justify-content: center; font-size: 28px; z-index: 1000; color: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
     </style>
@@ -69,11 +66,7 @@
 
     <header class="site-header">
         <div class="brand">
-            <svg viewBox="0 0 800 500">
-                <circle cx="400" cy="250" r="105" fill="none" stroke="#c5a059" stroke-width="4" opacity="0.6"/>
-                <path d="M300 400 L400 200 L500 400 Z" fill="#c5a059"/>
-            </svg>
-            <div class="brand-text">Hațeg Alternativ</div>
+            <img src="images/Hateg-logo.svg" alt="Hațeg Alternativ">
         </div>
         <div class="burger" id="burger"><div></div><div></div><div></div></div>
         <nav class="main-nav" id="nav-links">
@@ -93,10 +86,6 @@
         <div class="hero-content">
             <h1>La Buligă.</h1>
             <p>Rânduiala veche în munte</p>
-            <div style="margin-top: 30px; display: flex; gap: 15px; justify-content: center;">
-                <a href="experiente.html" class="btn-gold">VEZI PACHETELE</a>
-                <a href="rezervari.html" class="btn-gold" style="background: rgba(197, 160, 89, 0.1);">REZERVARE RAPIDĂ</a>
-            </div>
         </div>
     </section>
 
@@ -122,7 +111,7 @@
             </div>
         </div>
 
-        <div class="card-lux" style="background-image: url('images/jeep.jpg');">
+        <div class="card-lux" style="background-image: url('images/gonomad.jpg');">
             <div class="card-content">
                 <h3>CONTACT</h3>
                 <a href="contact.html" class="btn-gold">SUNTEM AICI</a>
@@ -148,12 +137,8 @@
             <div class="footer-section">
                 <h4>PROTECȚIA CONSUMATORULUI</h4>
                 <div class="anpc-links">
-                    <a href="https://anpc.ro/ce-este-sal/" target="_blank">
-                        <img src="https://anpc.ro/wp-content/uploads/2022/11/sal.png" alt="SAL">
-                    </a>
-                    <a href="https://ec.europa.eu/consumers/odr/main/index.cfm?event=main.home2.show&lng=RO" target="_blank">
-                        <img src="https://anpc.ro/wp-content/uploads/2022/11/sol.png" alt="SOL">
-                    </a>
+                    <a href="https://anpc.ro/ce-este-sal/" target="_blank"><img src="https://anpc.ro/wp-content/uploads/2022/11/sal.png" alt="SAL"></a>
+                    <a href="https://ec.europa.eu/consumers/odr/" target="_blank"><img src="https://anpc.ro/wp-content/uploads/2022/11/sol.png" alt="SOL"></a>
                 </div>
             </div>
         </div>
@@ -163,7 +148,6 @@
     </footer>
 
     <script type="text/javascript">
-        // Chat Tawk.to
         var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
         (function(){
             var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
@@ -172,12 +156,9 @@
             s0.parentNode.insertBefore(s1,s0);
         })();
 
-        // Meniu Burger
         const burger = document.getElementById('burger');
         const nav = document.getElementById('nav-links');
-        if(burger) { 
-            burger.onclick = () => { nav.classList.toggle('active'); } 
-        }
+        if(burger) { burger.onclick = () => { nav.classList.toggle('active'); } }
     </script>
 </body>
 </html>
