@@ -20,10 +20,11 @@
         body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
         a { text-decoration: none !important; color: inherit !important; }
 
+        /* HEADER & LOGO */
         .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
-        
-        /* LOGO REPARAT - Folosește fișierul tău SVG exact */
-        .brand img { height: 65px; width: auto; filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.4)); }
+        .brand { display: flex; align-items: center; }
+        /* Am fixat logo-ul să caute Hateg-logo.svg */
+        .brand img { height: 70px; width: auto; filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.4)); display: block; }
 
         .burger { cursor: pointer; z-index: 10001; padding: 10px; }
         .burger div { width: 30px; height: 2px; background: var(--auriu-crem); margin: 6px; transition: 0.3s; }
@@ -32,30 +33,30 @@
         .main-nav.active { right: 0; }
         .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 15px 0; color: var(--alb) !important; text-transform: uppercase; letter-spacing: 3px; }
 
+        /* HERO */
         .hero { height: 100vh; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
-        /* Fundal corectat: apus.jpg */
         .hero-bg { position: absolute; inset: 0; background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.6)), url('images/apus.jpg') center/cover no-repeat; z-index: 1; }
         .hero-content { position: relative; z-index: 10; padding: 0 20px; }
         .hero-content h1 { font-family: 'Playfair Display'; font-size: clamp(3rem, 10vw, 7rem); color: var(--auriu-crem); font-style: italic; line-height: 1.1; }
         .hero-content p { font-family: 'Cinzel'; letter-spacing: 4px; color: #fff; font-size: clamp(0.8rem, 3vw, 1.1rem); margin-top: 15px; text-transform: uppercase; }
 
+        /* GRID LUX */
         .grid-lux { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; padding: 40px 20px; max-width: 1400px; margin: 0 auto; }
         .card-lux { height: 450px; display: flex; flex-direction: column; justify-content: flex-end; padding: 30px; border: 1px solid #1a1a1a; position: relative; overflow: hidden; background-size: cover; background-position: center; transition: transform 0.5s ease; }
         .card-lux::before { content: ""; position: absolute; inset: 0; background: var(--overlay); z-index: 1; }
-        
         .card-content { position: relative; z-index: 5; }
         .card-content h3 { font-family: 'Cinzel'; color: var(--auriu-crem); font-size: 1.2rem; margin-bottom: 15px; letter-spacing: 2px; }
-        
         .btn-gold { display: inline-block; padding: 12px 25px; border: 1px solid var(--auriu-crem); color: var(--auriu-crem); font-family: 'Cinzel'; font-size: 0.75rem; letter-spacing: 2px; transition: 0.3s; background: transparent; cursor: pointer; }
         .btn-gold:hover { background: var(--auriu-crem); color: #000 !important; }
 
-        /* FOOTER */
+        /* FOOTER LEGAL */
         .footer-legal { padding: 60px 20px; background: #080808; border-top: 1px solid #1a1a1a; margin-top: 50px; }
         .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
         .footer-section h4 { color: var(--auriu-crem); font-family: 'Cinzel'; margin-bottom: 20px; font-size: 0.9rem; letter-spacing: 2px; }
-        .footer-section p, .footer-section a { font-size: 0.8rem; color: #888; text-decoration: none; margin-bottom: 10px; display: block; }
+        .footer-section p, .footer-section a { font-size: 0.8rem; color: #888 !important; text-decoration: none; margin-bottom: 10px; display: block; }
         .anpc-links { display: flex; gap: 15px; margin-top: 20px; }
-        .anpc-links img { height: 40px; filter: grayscale(100%); }
+        .anpc-links img { height: 45px; filter: grayscale(100%); transition: 0.3s; }
+        .anpc-links img:hover { filter: grayscale(0%); }
 
         .whatsapp-float { position: fixed; bottom: 30px; left: 20px; background: #25d366; border-radius: 50%; width: 55px; height: 55px; display: flex; align-items: center; justify-content: center; font-size: 28px; z-index: 1000; color: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
     </style>
@@ -66,7 +67,7 @@
 
     <header class="site-header">
         <div class="brand">
-            <img src="images/Hateg-logo.svg" alt="Hațeg Alternativ">
+            <img src="images/Hateg-logo.svg" alt="Hațeg Alternativ Logo">
         </div>
         <div class="burger" id="burger"><div></div><div></div><div></div></div>
         <nav class="main-nav" id="nav-links">
@@ -96,21 +97,18 @@
                 <a href="pensiune.html" class="btn-gold">DESCOPERĂ CASA</a>
             </div>
         </div>
-
         <div class="card-lux" style="background-image: url('images/gast-masa-traditionala.jpg');">
             <div class="card-content">
                 <h3>GASTRONOMIE</h3>
                 <a href="gastronomie.html" class="btn-gold">MENIU DETALIAT</a>
             </div>
         </div>
-
         <div class="card-lux" style="background-image: url('images/hero-premium.jpg');">
             <div class="card-content">
                 <h3>MANIFEST METANOIA</h3>
                 <a href="metanoia.html" class="btn-gold">DESCOPERĂ</a>
             </div>
         </div>
-
         <div class="card-lux" style="background-image: url('images/gonomad.jpg');">
             <div class="card-content">
                 <h3>CONTACT</h3>
@@ -122,20 +120,20 @@
     <footer class="footer-legal">
         <div class="footer-content">
             <div class="footer-section">
-                <h4>DATE FIRMĂ</h4>
+                <h4>DATE LEGALE</h4>
                 <p><strong>DAKAMIGOS MARKT SRL</strong></p>
                 <p>CUI: RO40767794</p>
                 <p>Reg. Com: J20/386/2019</p>
                 <p>Sediul: Hațeg, Hunedoara</p>
             </div>
             <div class="footer-section">
-                <h4>INFORMAȚII LEGALE</h4>
+                <h4>INFORMAȚII</h4>
                 <a href="termeni-si-conditii.html">Termeni și Condiții</a>
                 <a href="confidentialitate.html">Politica GDPR</a>
                 <a href="cookies.html">Politica Cookies</a>
             </div>
             <div class="footer-section">
-                <h4>PROTECȚIA CONSUMATORULUI</h4>
+                <h4>ANPC</h4>
                 <div class="anpc-links">
                     <a href="https://anpc.ro/ce-este-sal/" target="_blank"><img src="https://anpc.ro/wp-content/uploads/2022/11/sal.png" alt="SAL"></a>
                     <a href="https://ec.europa.eu/consumers/odr/" target="_blank"><img src="https://anpc.ro/wp-content/uploads/2022/11/sol.png" alt="SOL"></a>
