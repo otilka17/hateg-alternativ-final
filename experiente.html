@@ -11,7 +11,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--negru-mat); line-height: 1.6; }
 
-        /* Header Premium */
+        /* Header */
         .site-header { position: fixed; top: 0; width: 100%; z-index: 1500; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(0,0,0,0.05); padding: 20px 0; text-align: center; }
         .brand { text-decoration: none; color: var(--negru-mat); font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; line-height: 1; text-transform: uppercase; }
         .est { font-size: 0.6rem; color: var(--auriu); letter-spacing: 4px; display: block; margin-top: 8px; }
@@ -25,9 +25,9 @@
 
         /* Package Cards */
         .package-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-bottom: 100px; }
-        .p-card { background: var(--alb); border: 1px solid #eee; border-radius: 4px; overflow: hidden; transition: 0.4s; position: relative; }
+        .p-card { background: var(--alb); border: 1px solid #eee; border-radius: 4px; overflow: hidden; transition: 0.4s; }
         .p-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(0,0,0,0.05); }
-        .p-img { height: 280px; background-size: cover; background-position: center; background-color: #eee; }
+        .p-img { height: 280px; background-size: cover; background-position: center; background-color: #1a1a1a; }
         .p-content { padding: 40px; text-align: center; }
         .p-tag { color: var(--auriu); font-size: 0.7rem; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 15px; display: block; }
         .p-content h3 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.8rem; margin-bottom: 20px; }
@@ -36,19 +36,14 @@
         .p-features li i { color: var(--auriu); margin-right: 10px; }
         .price { font-family: 'Playfair Display', serif; font-size: 1.6rem; color: var(--negru-mat); display: block; margin-bottom: 25px; font-weight: 700; }
         
-        .btn-gold { background: var(--auriu); color: white; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-family: 'Playfair Display', serif; font-style: italic; display: inline-block; transition: 0.3s; border: none; cursor: pointer; }
+        .btn-gold { background: var(--auriu); color: white; padding: 15px 35px; border-radius: 50px; text-decoration: none; font-family: 'Playfair Display', serif; font-style: italic; display: inline-block; transition: 0.3s; }
         .btn-gold:hover { background: var(--negru-mat); transform: scale(1.05); }
 
-        /* Early Booking Policy */
+        /* Policy Section */
         .booking-policy { background: var(--negru-mat); color: var(--alb); padding: 80px 40px; border-radius: 8px; margin-top: 50px; }
         .policy-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
         .policy-content h2 { font-family: 'Playfair Display', serif; font-style: italic; font-size: 2.5rem; color: var(--auriu); margin-bottom: 30px; }
-        .policy-card { background: rgba(255,255,255,0.05); padding: 30px; border-left: 4px solid var(--auriu); margin-bottom: 20px; }
         
-        .steps { list-style: none; }
-        .steps li { margin-bottom: 15px; display: flex; align-items: flex-start; gap: 15px; font-size: 0.95rem; color: #ccc; }
-        .steps li strong { color: var(--alb); }
-
         footer { text-align: center; padding: 60px 0; color: #999; font-family: 'Cinzel'; font-size: 0.7rem; letter-spacing: 3px; }
 
         @media (max-width: 850px) {
@@ -79,10 +74,10 @@
                 <ul class="p-features">
                     <li><i class="fas fa-check"></i> 2 Nopți Cazare Premium</li>
                     <li><i class="fas fa-check"></i> Mese Bio (Farm to Table)</li>
-                    <li><i class="fas fa-check"></i> Digital Detox (Smartphone Safe)</li>
+                    <li><i class="fas fa-check"></i> Digital Detox Program</li>
                 </ul>
                 <span class="price">4.500 RON / grup</span>
-                <a href="https://wa.me/40749229686?text=Bună! Vreau detalii despre pachetul Metanoia Tăcere" class="btn-gold">Rezervă prin WhatsApp</a>
+                <a href="index.html#booking" class="btn-gold">SOLICITĂ REZERVARE</a>
             </div>
         </article>
 
@@ -97,7 +92,7 @@
                     <li><i class="fas fa-check"></i> Tur ghidat personalizat</li>
                 </ul>
                 <span class="price">8.500 RON / pachet</span>
-                <a href="https://wa.me/40749229686?text=Bună! Vreau pachetul Gustul Munților" class="btn-gold">Rezervă prin WhatsApp</a>
+                <a href="index.html#booking" class="btn-gold">SOLICITĂ REZERVARE</a>
             </div>
         </article>
 
@@ -112,7 +107,7 @@
                     <li><i class="fas fa-check"></i> Pachet Picnic Gourmet</li>
                 </ul>
                 <span class="price">1.800 RON / cuplu</span>
-                <a href="https://wa.me/40749229686?text=Bună! Vreau pachetul Hațeg pe Roți" class="btn-gold">Rezervă prin WhatsApp</a>
+                <a href="index.html#booking" class="btn-gold">SOLICITĂ REZERVARE</a>
             </div>
         </article>
     </div>
@@ -120,30 +115,21 @@
     <section class="booking-policy">
         <div class="policy-grid">
             <div class="policy-content">
-                <h2>Early Booking 2026</h2>
-                <div class="policy-card">
-                    <p style="font-size: 0.9rem; opacity: 0.9;">Garanția locului tău într-o lume care nu se oprește niciodată. Rezervă din timp pentru a securiza tarifele actuale.</p>
+                <h2>Rânduiala Plății</h2>
+                <div style="background: rgba(255,255,255,0.05); padding: 30px; border-left: 4px solid var(--auriu);">
+                    <p style="margin-bottom: 15px;">1. Alegi pachetul și trimiți solicitarea.</p>
+                    <p style="margin-bottom: 15px;">2. Verificăm disponibilitatea și emitem factura.</p>
+                    <p>3. Confirmarea finală se face după plata avansului de 30%.</p>
                 </div>
-                <ul class="steps">
-                    <li><i class="fas fa-shield-alt" style="color:var(--auriu)"></i> <span><strong>Avans 30%:</strong> Confirmare instantanee a rezervării.</span></li>
-                    <li><i class="fas fa-undo" style="color:var(--auriu)"></i> <span><strong>Flexibilitate:</strong> Anulare gratuită cu 30 de zile înainte.</span></li>
-                </ul>
             </div>
-
-            <div class="policy-content" style="border-left: 1px solid rgba(255,255,255,0.1); padding-left: 40px;">
-                <h3 style="font-family: 'Cinzel'; color: var(--auriu); margin-bottom: 20px;">CUM REZERVI?</h3>
-                <p style="margin-bottom: 20px; font-size: 0.9rem;">Procesul nostru este simplu și uman:</p>
-                <ol style="color: #ccc; font-size: 0.9rem; margin-left: 20px;">
-                    <li style="margin-bottom: 10px;">Alegi pachetul și ne scrii pe WhatsApp.</li>
-                    <li style="margin-bottom: 10px;">Emitem factura proformă pentru avans.</li>
-                    <li>Primești Ghidul Oaspetelui în format PDF.</li>
-                </ol>
+            <div class="policy-content">
+                <p style="color: #999;">Toate rezervările sunt procesate în ordinea primirii solicitărilor. Locurile sunt securizate doar prin plată bancară.</p>
             </div>
         </div>
     </section>
 </main>
 
-<footer>HAȚEG ALTERNATIV &copy; 2026 • RÂNDUIALĂ ȘI METANOIA</footer>
+<footer>HAȚEG ALTERNATIV &copy; 2026</footer>
 
 </body>
 </html>
