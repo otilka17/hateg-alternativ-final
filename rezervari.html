@@ -4,131 +4,84 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rezervare | Hațeg Alternativ</title>
-    
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
     <style>
         :root { --auriu: #c5a059; --negru: #050505; --gri: #111; --alb: #fff; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; line-height: 1.6; }
-        
         .site-header { position: fixed; top: 0; width: 100%; z-index: 1000; padding: 20px; background: rgba(0,0,0,0.9); border-bottom: 1px solid rgba(197,160,89,0.3); display: flex; justify-content: space-between; align-items: center; }
-        .brand { font-family: 'Cinzel'; color: var(--auriu); font-weight: 900; letter-spacing: 2px; font-size: 0.9rem; }
-
+        .brand { font-family: 'Cinzel'; color: var(--auriu); font-weight: 900; letter-spacing: 2px; text-decoration: none; }
         .main-container { max-width: 1200px; margin: 100px auto 50px; display: grid; grid-template-columns: 1fr 400px; gap: 40px; padding: 20px; }
-
         .form-side h2 { font-family: 'Cinzel'; color: var(--auriu); margin-bottom: 25px; letter-spacing: 3px; }
         .booking-form { display: grid; gap: 20px; }
-        
         input, select, textarea { width: 100%; background: #000; border: 1px solid #333; padding: 15px; color: #fff; font-family: 'Inter'; outline: none; }
-        input:focus { border-color: var(--auriu); }
-
         .date-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
         .label-mini { font-size: 0.7rem; color: var(--auriu); font-family: 'Cinzel'; display: block; margin-bottom: 5px; }
-
-        /* SUPLIMENTE */
         .extras-section { margin-top: 20px; border: 1px solid #222; padding: 20px; }
-        .extras-section h4 { font-family: 'Cinzel'; color: var(--auriu); font-size: 0.8rem; margin-bottom: 15px; border-bottom: 1px solid #222; padding-bottom: 10px; }
-        .extra-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-size: 0.9rem; cursor: pointer; }
-        .extra-item input { width: auto; margin-right: 10px; }
-
-        /* SUMAR VIZIBIL */
+        .extra-item { display: flex; align-items: center; margin-bottom: 10px; font-size: 0.9rem; cursor: pointer; }
+        .extra-item input { width: auto; margin-right: 15px; }
         .summary-side { background: var(--gri); border: 1px solid var(--auriu); padding: 30px; position: sticky; top: 120px; height: fit-content; }
         .summary-side h3 { font-family: 'Cinzel'; color: var(--auriu); text-align: center; margin-bottom: 20px; }
         .sum-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 0.85rem; border-bottom: 1px dotted #333; padding-bottom: 5px; }
         .total-row { margin-top: 20px; padding-top: 20px; border-top: 2px solid var(--auriu); display: flex; justify-content: space-between; align-items: center; }
         .total-price { font-family: 'Playfair Display'; font-size: 2rem; color: var(--auriu); font-style: italic; }
-
         .btn-send { background: transparent; border: 1px solid var(--auriu); color: var(--auriu); padding: 20px; font-family: 'Cinzel'; cursor: pointer; transition: 0.3s; width: 100%; font-weight: bold; }
         .btn-send:hover { background: var(--auriu); color: #000; }
-
-        @media (max-width: 900px) { .main-container { grid-template-columns: 1fr; } .summary-side { position: static; } }
+        @media (max-width: 900px) { .main-container { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
-
-    <header class="site-header">
-        <a href="index.html" class="brand">HAȚEG ALTERNATIV</a>
-    </header>
-
+    <header class="site-header"><a href="index.html" class="brand">HAȚEG ALTERNATIV</a></header>
     <div class="main-container">
         <div class="form-side">
             <h2>CERERE REZERVARE</h2>
             <form id="bookingForm" action="https://formspree.io/f/xjgpvbkj" method="POST" class="booking-form">
                 <input type="text" name="Nume" placeholder="Numele tău" required>
                 <input type="text" name="Telefon" placeholder="Telefon / WhatsApp" required>
-                
                 <div class="date-grid">
                     <div><span class="label-mini">Check-In</span><input type="date" id="checkin" name="Check-in" required></div>
                     <div><span class="label-mini">Check-Out</span><input type="date" id="checkout" name="Check-out" required></div>
                 </div>
-
                 <select id="pachet_base" name="Pachet_Baza" required>
                     <option value="0" disabled selected>Alege Pachetul de Bază</option>
-                    <option value="2000" data-nume="Rânduiala Veche">Rânduiala Veche (Cazare) - 2000 RON/noapte</option>
-                    <option value="4000" data-nume="Metanoia All-In">Metanoia All-In (Demipensiune) - 4000 RON/noapte</option>
+                    <option value="2000" data-nume="Rânduiala Veche">Rânduiala Veche - 2000 RON/noapte</option>
+                    <option value="4000" data-nume="Metanoia All-In">Metanoia All-In - 4000 RON/noapte</option>
                 </select>
-
                 <div class="extras-section">
-                    <h4>ADĂUGAȚI SUPLIMENTE (Per sejur)</h4>
-                    <label class="extra-item"><span><input type="checkbox" class="extra-cb" name="Atelier_Ebike" value="300"> Atelier E-Bike</span> <span>300 RON</span></label>
-                    <label class="extra-item"><span><input type="checkbox" class="extra-cb" name="Atelier_Gastronomic" value="500"> Atelier Gastronomic</span> <span>500 RON</span></label>
-                    <label class="extra-item"><span><input type="checkbox" class="extra-cb" name="Zi_la_Stana" value="400"> Zi la Stâne & Gastronomie</span> <span>400 RON</span></label>
-                    <label class="extra-item"><span><input type="checkbox" class="extra-cb" name="Tur_Gol_Nomad" value="600"> Tur Gol Nomad (4x4)</span> <span>600 RON</span></label>
-                    <label class="extra-item"><span><input type="checkbox" class="extra-cb" name="Pelerinaj" value="200"> Pelerinaj la Schituri</span> <span>200 RON</span></label>
+                    <h4 class="label-mini" style="font-size: 0.8rem; margin-bottom: 15px;">ADĂUGAȚI SUPLIMENTE</h4>
+                    <label class="extra-item"><input type="checkbox" class="extra-cb" name="Atelier_Ebike" value="300"> Atelier E-Bike (300 RON)</label>
+                    <label class="extra-item"><input type="checkbox" class="extra-cb" name="Atelier_Gastro" value="500"> Atelier Gastro (500 RON)</label>
+                    <label class="extra-item"><input type="checkbox" class="extra-cb" name="Stane" value="400"> Zi la Stâne (400 RON)</label>
+                    <label class="extra-item"><input type="checkbox" class="extra-cb" name="Nomad" value="600"> Tur Nomad 4x4 (600 RON)</label>
+                    <label class="extra-item"><input type="checkbox" class="extra-cb" name="Pelerinaj" value="200"> Pelerinaj (200 RON)</label>
                 </div>
-
-                <input type="number" name="Persoane" placeholder="Nr. persoane" min="1" max="10" required>
-                <textarea name="Mesaj" placeholder="Mențiuni speciale..."></textarea>
-                
+                <input type="number" name="Persoane" placeholder="Nr. persoane" required>
                 <button type="submit" class="btn-send">TRIMITE CEREREA</button>
             </form>
         </div>
-
         <div class="summary-side">
             <h3>SUMAR ESTIMATIV</h3>
-            <div id="summary-details">
-                <div class="sum-row"><span>Pachet:</span> <span id="res_pachet">-</span></div>
-                <div class="sum-row"><span>Nopți:</span> <span id="res_nopti">0</span></div>
-                <div class="sum-row"><span>Suplimente:</span> <span id="res_extras">0 RON</span></div>
-                <div class="total-row"><span>TOTAL:</span> <span id="res_total" class="total-price">0 RON</span></div>
-            </div>
-            <p style="font-size: 0.6rem; margin-top: 15px; opacity: 0.5;">* Prețul final se confirmă telefonic în funcție de disponibilitate.</p>
+            <div class="sum-row"><span>Pachet:</span> <span id="res_pachet">-</span></div>
+            <div class="sum-row"><span>Nopți:</span> <span id="res_nopti">0</span></div>
+            <div class="sum-row"><span>Suplimente:</span> <span id="res_extras">0 RON</span></div>
+            <div class="total-row"><span>TOTAL:</span> <span id="res_total" class="total-price">0 RON</span></div>
         </div>
     </div>
-
     <script>
-        const checkin = document.getElementById('checkin');
-        const checkout = document.getElementById('checkout');
-        const pachet = document.getElementById('pachet_base');
-        const extras = document.querySelectorAll('.extra-cb');
-
+        const checkin = document.getElementById('checkin'); const checkout = document.getElementById('checkout');
+        const pachet = document.getElementById('pachet_base'); const extras = document.querySelectorAll('.extra-cb');
         function calculate() {
-            const d1 = new Date(checkin.value);
-            const d2 = new Date(checkout.value);
-            let nopti = 0;
-            if(d1 && d2 && d2 > d1) {
-                nopti = Math.ceil((d2 - d1) / (1000 * 60 * 60 * 24));
-            }
-
+            const d1 = new Date(checkin.value); const d2 = new Date(checkout.value);
+            let nopti = (d1 && d2 && d2 > d1) ? Math.ceil((d2 - d1) / (1000 * 60 * 60 * 24)) : 0;
             const pretBaza = parseInt(pachet.value) || 0;
-            const numePachet = pachet.options[pachet.selectedIndex].getAttribute('data-nume') || "-";
-            
-            let pretExtras = 0;
-            extras.forEach(cb => { if(cb.checked) pretExtras += parseInt(cb.value); });
-
-            document.getElementById('res_pachet').innerText = numePachet;
+            let pretExtras = 0; extras.forEach(cb => { if(cb.checked) pretExtras += parseInt(cb.value); });
+            document.getElementById('res_pachet').innerText = pachet.options[pachet.selectedIndex].getAttribute('data-nume') || "-";
             document.getElementById('res_nopti').innerText = nopti;
             document.getElementById('res_extras').innerText = pretExtras + " RON";
-            
-            const total = (nopti * pretBaza) + pretExtras;
-            document.getElementById('res_total').innerText = total + " RON";
+            document.getElementById('res_total').innerText = (nopti * pretBaza) + pretExtras + " RON";
         }
-
         [checkin, checkout, pachet].forEach(el => el.addEventListener('change', calculate));
         extras.forEach(cb => cb.addEventListener('change', calculate));
     </script>
-
 </body>
 </html>
