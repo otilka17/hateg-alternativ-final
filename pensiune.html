@@ -10,7 +10,8 @@
 
     <style>
         :root { 
-            --auriu-gold: #ffd700; 
+            /* SCHIMBAT: Din galben strident în auriu cremos */
+            --auriu-gold: #c5a059; 
             --negru-pur: #0a0a0a; 
             --alb: #ffffff;
             --gri-text: #aaa;
@@ -21,7 +22,7 @@
         body { background: var(--negru-pur); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; scroll-behavior: smooth; line-height: 1.6; }
 
         .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 30px 50px; display: flex; justify-content: space-between; align-items: center; }
-        .brand svg { height: 100px; width: auto; filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.4)); }
+        .brand svg { height: 100px; width: auto; filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.4)); }
         .burger { cursor: pointer; z-index: 10000; padding: 10px; }
         .burger div { width: 35px; height: 2px; background: var(--auriu-gold); margin: 8px; }
 
@@ -72,7 +73,7 @@
         .forum-form button { grid-column: span 2; cursor: pointer; }
 
         .btn-gold { display: inline-block; padding: 16px 45px; border: 1.5px solid var(--auriu-gold); color: var(--auriu-gold); text-decoration: none; font-family: 'Cinzel'; letter-spacing: 3px; font-size: 0.85rem; transition: 0.4s; background: transparent; text-align: center; }
-        .btn-gold:hover { background: var(--auriu-gold); color: #000; box-shadow: 0 0 20px rgba(255, 215, 0, 0.3); }
+        .btn-gold:hover { background: var(--auriu-gold); color: #000; box-shadow: 0 0 20px rgba(197, 160, 89, 0.3); }
 
         .whatsapp-float { position: fixed; bottom: 30px; left: 30px; background-color: #25d366; color: #FFF; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 10000; box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
         footer { padding: 60px; text-align: center; opacity: 0.5; font-family: 'Cinzel'; font-size: 0.75rem; letter-spacing: 2px; border-top: 1px solid #111; color: #666; }
@@ -94,9 +95,9 @@
     <header class="site-header">
         <a href="index.html" class="brand">
             <svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="400" cy="280" r="105" fill="none" stroke="#ffd700" stroke-width="2" opacity="0.4"/>
-                <path d="M300 450 L400 250 L500 450 Z" fill="#ffd700"/>
-                <text x="400" y="765" font-family="'Cinzel'" text-anchor="middle" font-size="40" fill="#ffd700">HAȚEG ALTERNATIV</text>
+                <circle cx="400" cy="280" r="105" fill="none" stroke="#c5a059" stroke-width="2" opacity="0.4"/>
+                <path d="M300 450 L400 250 L500 450 Z" fill="#c5a059"/>
+                <text x="400" y="765" font-family="'Cinzel'" text-anchor="middle" font-size="40" fill="#c5a059">HAȚEG ALTERNATIV</text>
             </svg>
         </a>
         <div class="burger" id="burger"><div></div><div></div><div></div></div>
