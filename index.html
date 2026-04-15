@@ -39,14 +39,20 @@
         .card-content h3 { font-family: 'Cinzel'; color: var(--auriu); font-size: 1.4rem; margin-bottom: 15px; letter-spacing: 2px; }
         .btn-gold { display: inline-block; padding: 12px 25px; border: 1px solid var(--auriu); color: var(--auriu); font-family: 'Cinzel'; font-size: 0.75rem; transition: 0.3s; background: transparent; cursor: pointer; }
 
-        /* MOBIL - 1 COLOANĂ PENTRU IMPACT (SA NU FIE INGSUIT) */
+        /* MOBIL - 1 COLOANĂ */
         @media (max-width: 768px) {
             .grid-lux { grid-template-columns: 1fr !important; gap: 30px; padding: 20px; }
             .card-lux { height: 400px; }
         }
 
+        /* VREMEA & EVENIMENTE */
+        .info-section { padding: 80px 20px; background: #050505; border-top: 1px solid #1a1a1a; }
+        .info-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
+        .info-card { background: rgba(255,255,255,0.02); border: 1px solid #111; padding: 40px; border-radius: 15px; text-align: center; transition: 0.3s; }
+        .info-card:hover { border-color: var(--auriu); }
+
         /* POP-UPS */
-        #custom-popup, #payment-popup { position: fixed; inset: 0; z-index: 100000; display: none; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(8px); }
+        #custom-popup, #payment-popup { position: fixed; inset: 0; z-index: 100000; display: none; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(10px); }
         .popup-content { background: #0a0a0a; border: 1px solid var(--auriu); max-width: 450px; width: 100%; padding: 40px; text-align: center; border-radius: 4px; position: relative; }
         .payment-content { background: #fff; color: #000; width: 100%; max-width: 400px; padding: 30px; border-radius: 12px; text-align: center; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
 
@@ -54,18 +60,17 @@
         .footer-legal { padding: 60px 20px; background: #080808; border-top: 1px solid #1a1a1a; }
         .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
         .footer-section h4 { color: var(--auriu); font-family: 'Cinzel'; margin-bottom: 20px; font-size: 0.8rem; letter-spacing: 2px; }
-        .footer-section p { font-size: 0.8rem; color: #888; line-height: 1.6; }
         a[href*="elfsight.com"] { display: none !important; }
         .whatsapp-float { position: fixed; bottom: 30px; left: 20px; background: #25d366; border-radius: 50%; width: 55px; height: 55px; display: flex; align-items: center; justify-content: center; font-size: 28px; z-index: 1000; color: #fff; }
     </style>
 </head>
 <body>
 
-    <div id="custom-popup" style="background: rgba(0,0,0,0.85);">
+    <div id="custom-popup" style="background: rgba(0,0,0,0.9);">
         <div class="popup-content">
             <span onclick="closeOfferPopup()" style="position:absolute; top:15px; right:20px; color:var(--auriu); font-size:24px; cursor:pointer;">&times;</span>
-            <h2 style="font-family:'Playfair Display'; color:var(--auriu); font-style:italic; margin-bottom:15px;">Oferta de Aur</h2>
-            <p style="color:#ccc; margin-bottom:20px;">Reducere 30% la orice ședere în 2026.</p>
+            <h2 style="font-family:'Playfair Display'; color:var(--auriu); font-style:italic; margin-bottom:15px;">Oferta Metanoia</h2>
+            <p style="color:#ccc; margin-bottom:20px; font-size:0.9rem;">Rezervă acum pentru 2026 și primești 30% reducere la orice experiență.</p>
             <div style="border:1px dashed var(--auriu); padding:10px; margin-bottom:20px; font-family:'Cinzel'; color:var(--auriu); font-size:1.2rem;">GET30</div>
             <button onclick="openPayment()" style="background: #ff4747; color:white; border:none; padding:15px; width:100%; font-family:'Cinzel'; font-weight:bold; cursor:pointer;">REZERVĂ ACUM</button>
         </div>
@@ -74,8 +79,8 @@
     <div id="payment-popup">
         <div class="payment-content">
             <span onclick="closePaymentPopup()" style="position:absolute; top:15px; right:15px; font-size:24px; cursor:pointer; color:#888;">&times;</span>
-            <h2 style="font-family:'Playfair Display'; margin-bottom:10px;">Finalizează Plata</h2>
-            <p style="color:#666; font-size:0.9rem; margin-bottom:25px;">Avans confirmare (50 EUR)</p>
+            <h2 style="font-family:'Playfair Display'; margin-bottom:10px;">Finalizează Rezervarea</h2>
+            <p style="color:#666; font-size:0.9rem; margin-bottom:25px;">Plată securizată avans (50 EUR)</p>
             <div id="paypal-button-container"></div>
         </div>
     </div>
@@ -89,11 +94,9 @@
         <div class="burger" id="burger"><div></div><div></div><div></div></div>
         <nav class="main-nav" id="nav-links">
             <a href="index.html">ACASĂ</a>
-            <a href="experiente.html">EXPERIENȚE</a>
             <a href="pensiune.html">PENSIUNEA</a>
             <a href="gastronomie.html">GASTRONOMIE</a>
-            <a href="metanoia.html">METANOIA</a>
-            <a href="forum.html">RECENZII</a>
+            <a href="experiente.html">EXPERIENȚE</a>
             <a href="rezervari.html">REZERVARE</a>
         </nav>
     </header>
@@ -114,20 +117,42 @@
             <div class="card-content"><h3>GASTRONOMIE</h3><a href="gastronomie.html" class="btn-gold">GUSTĂ</a></div>
         </div>
         <div class="card-lux" style="background-image: url('images/hero-premium.jpg');">
-            <div class="card-content"><h3>RECENZII</h3><a href="forum.html" class="btn-gold">GÂNDURI</a></div>
+            <div class="card-content"><h3>MANIFEST</h3><a href="metanoia.html" class="btn-gold">METANOIA</a></div>
         </div>
         <div class="card-lux" style="background-image: url('images/index-mancare.jpg');">
             <div class="card-content"><h3>EXPERIENȚE</h3><a href="experiente.html" class="btn-gold">VEZI</a></div>
         </div>
         <div class="card-lux" style="background-image: url('images/gonomad.jpg');">
-            <div class="card-content"><h3>CONTACT</h3><a href="contact.html" class="btn-gold">HARTA</a></div>
+            <div class="card-content"><h3>HARTA</h3><a href="#harta" class="btn-gold">EXPLOREAZĂ</a></div>
         </div>
     </div>
 
-    <section style="padding: 100px 20px; background: #000; border-top: 1px solid #1a1a1a;">
+    <section class="info-section">
+        <div class="info-grid">
+            <div class="info-card">
+                <h4 style="font-family:'Cinzel'; color:var(--auriu); margin-bottom:20px;">Vremea Acum</h4>
+                <div style="display:flex; justify-content:space-around; align-items:center; margin-bottom:20px;">
+                    <div><p style="font-size:0.7rem; color:#666;">HAȚEG</p><p style="font-size:1.5rem;">12°C</p></div>
+                    <div style="width:1px; height:40px; background:#222;"></div>
+                    <div><p style="font-size:0.7rem; color:var(--auriu);">VADU DOBRII</p><p style="font-size:1.5rem; color:var(--auriu);">6°C</p></div>
+                </div>
+                <p style="font-size:0.7rem; color:#444;">Altitudine: 1100m. Pregătește haine groase.</p>
+            </div>
+            <div class="info-card" style="text-align:left;">
+                <h4 style="font-family:'Cinzel'; color:var(--auriu); margin-bottom:20px; text-align:center;">Evenimente Viitoare</h4>
+                <div style="font-size:0.8rem;">
+                    <p style="margin-bottom:10px;"><span style="color:var(--auriu);">15 MAI:</span> Degustare vinuri locale</p>
+                    <p style="margin-bottom:10px;"><span style="color:var(--auriu);">01 IUNIE:</span> Tabără de Vară Metanoia</p>
+                    <p><span style="color:var(--auriu);">15 IULIE:</span> Brunch în livada de pruni</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="harta" style="padding: 100px 20px; background: #000; border-top: 1px solid #1a1a1a;">
         <div style="text-align: center; margin-bottom: 60px;">
-            <h2 style="font-family: 'Playfair Display'; font-size: 3.5rem; color: #c5a059; font-style: italic;">Explorează Ținutul</h2>
-            <p style="font-family: 'Cinzel'; letter-spacing: 4px; color: #666; font-size: 0.8rem; margin-top: 15px;">Puncte legendare aproape de La Buligă</p>
+            <h2 style="font-family: 'Playfair Display'; font-size: 3.5rem; color: #c5a059; font-style: italic;">Țara Hațegului</h2>
+            <p style="font-family: 'Cinzel'; letter-spacing: 4px; color: #444; font-size: 0.8rem; margin-top: 15px;">Legende la un pas de La Buligă</p>
         </div>
         <div style="max-width: 1200px; margin: 0 auto; border: 1px solid #c5a05933; border-radius: 15px; overflow: hidden;">
             <script src="https://elfsightcdn.com/platform.js" async></script>
@@ -136,7 +161,6 @@
     </section>
 
     <section style="padding: 60px 20px; background: #050505; text-align: center;">
-        <h2 style="font-family: 'Playfair Display'; font-size: 2.5rem; color: #c5a059; margin-bottom: 40px; font-style: italic;">Gânduri de la Oaspeți</h2>
         <script src="https://elfsightcdn.com/platform.js" async></script>
         <div class="elfsight-app-e204a27d-0a66-45bb-8486-27afa8a94a26" data-elfsight-app-lazy></div>
     </section>
@@ -156,16 +180,17 @@
                 <div style="background:white; padding:10px; display:inline-block; border-radius:6px;">
                     <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://hategalternativ.ro/gastronomie.html" alt="QR">
                 </div>
+                <p style="font-size:0.55rem; color:#444; margin-top:5px;">MENIU DIGITAL</p>
             </div>
         </div>
-        <div style="text-align:center; margin-top:40px; font-family:'Cinzel'; font-size:0.7rem; color:#444;">
+        <div style="text-align:center; margin-top:40px; font-family:'Cinzel'; font-size:0.7rem; color:#333;">
             HAȚEG ALTERNATIV &copy; 2026 | TRIBUT PATRICIA
         </div>
     </footer>
 
     <script src="https://www.paypal.com/sdk/js?client-id=test&currency=EUR"></script>
     <script>
-        // TAWK.TO CHAT
+        // TAWK.TO
         var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
         (function(){
         var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
@@ -174,20 +199,20 @@
         s0.parentNode.insertBefore(s1,s0);
         })();
 
-        // LOGICA POP-UPS
+        // POP-UP LOGIC
         window.onload = function() { setTimeout(() => { document.getElementById('custom-popup').style.display = 'flex'; }, 4000); };
         function closeOfferPopup() { document.getElementById('custom-popup').style.display = 'none'; }
         function openPayment() { closeOfferPopup(); document.getElementById('payment-popup').style.display = 'flex'; }
         function closePaymentPopup() { document.getElementById('payment-popup').style.display = 'none'; }
 
-        // PAYPAL CONFIG
+        // PAYPAL
         paypal.Buttons({
             style: { layout: 'vertical', color: 'black', shape: 'rect' },
             createOrder: function(data, actions) { return actions.order.create({ purchase_units: [{ amount: { value: '50.00' } }] }); },
-            onApprove: function(data, actions) { return actions.order.capture().then(function(d) { alert('Plata confirmată! Te așteptăm!'); closePaymentPopup(); }); }
+            onApprove: function(data, actions) { return actions.order.capture().then(function(d) { alert('Rezervare confirmată!'); closePaymentPopup(); }); }
         }).render('#paypal-button-container');
 
-        // MENU BURGER
+        // BURGER
         const burger = document.getElementById('burger');
         const nav = document.getElementById('nav-links');
         if(burger) { burger.onclick = () => { nav.classList.toggle('active'); } }
