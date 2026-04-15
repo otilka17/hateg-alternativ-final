@@ -12,62 +12,70 @@
         :root { --auriu: #c5a059; --negru: #000000; --alb: #ffffff; }
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         
-        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; }
+        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; line-height: 1.6; }
         a { text-decoration: none !important; color: inherit !important; }
 
-        /* HEADER & MENU BURGER */
-        .site-header { position: relative; width: 100%; z-index: 9999; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; background: #000; border-bottom: 1px solid rgba(197,160,89,0.2); }
-        .brand-logo { height: 45px; filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.5)); }
+        /* HEADER & BRANDING */
+        .site-header { position: relative; width: 100%; z-index: 9999; padding: 20px; display: flex; justify-content: space-between; align-items: center; background: #000; border-bottom: 1px solid rgba(197,160,89,0.2); }
+        .brand-text { font-family: 'Cinzel', serif; color: var(--auriu); font-size: 0.7rem; letter-spacing: 2px; }
         
         .burger { cursor: pointer; z-index: 10001; padding: 10px; }
         .burger div { width: 28px; height: 2px; background: var(--auriu); margin: 5px; transition: 0.3s; }
         
         .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: rgba(0,0,0,0.98); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.5s ease; z-index: 10000; }
         .main-nav.active { right: 0; }
-        .main-nav a { font-size: 1.3rem; font-family: 'Cinzel'; margin: 12px 0; color: #fff !important; text-transform: uppercase; letter-spacing: 2px; }
+        .main-nav a { font-size: 1.3rem; font-family: 'Cinzel', serif; margin: 12px 0; color: #fff !important; text-transform: uppercase; letter-spacing: 2px; }
 
-        /* TITLU */
+        /* TITLU PAGINA */
         .page-header { text-align: center; padding: 40px 20px; }
-        .page-header h1 { font-family: 'Playfair Display'; font-size: 2.8rem; color: var(--auriu); font-style: italic; }
+        .page-header h1 { font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--auriu); font-style: italic; margin-bottom: 10px; }
+        .page-header p { font-family: 'Cinzel', serif; letter-spacing: 4px; color: #666; font-size: 0.7rem; text-transform: uppercase; }
 
-        /* FORMULAR FIX (TEXT ALB) */
-        .form-container { 
-            max-width: 800px; 
-            margin: 0 auto 50px; 
+        /* CONTAINERE */
+        .rezervare-wrapper { max-width: 800px; margin: 0 auto 100px; padding: 0 20px; }
+        
+        .step-box { 
+            background: #0a0a0a; 
+            border: 1px solid #1a1a1a; 
             padding: 30px; 
-            background: #0a0a0a; 
-            border: 1px solid #1a1a1a;
-            border-radius: 8px;
+            border-radius: 8px; 
+            margin-bottom: 30px;
         }
+        .step-title { font-family: 'Cinzel', serif; color: var(--auriu); font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 25px; border-bottom: 1px solid #222; padding-bottom: 10px; display: block; }
 
-        /* Fortam Elfsight sa se vada pe negru */
-        [class*="FormBuilder__Container"], [class*="form-entity"], span, label, input, h2, div {
-            color: #ffffff !important;
+        /* FIX ELFSIGHT */
+        [class*="FormBuilder__Container"], [class*="form-entity"], span, label, input, h2, div { color: #ffffff !important; }
+        input, select, textarea { background-color: #111 !important; border: 1px solid #333 !important; color: #fff !important; }
+        [class*="ButtonBase__Ellipsis"], button[type="submit"] { background-color: var(--auriu) !important; color: #000 !important; font-family: 'Cinzel', serif !important; font-weight: bold !important; }
+
+        /* PLATA REVOLUT & IBAN */
+        .payment-area { text-align: center; }
+        .btn-revolut {
+            display: inline-block;
+            background: #ffffff; /* Alb pentru contrast cu Revolut */
+            color: #1971ff; /* Albastru Revolut */
+            padding: 18px 40px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            font-size: 1rem;
+            border-radius: 50px;
+            margin: 20px 0;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(25, 113, 255, 0.2);
         }
-        input, select, textarea {
-            background-color: #1a1a1a !important;
-            border: 1px solid #333 !important;
-            color: #fff !important;
+        .btn-revolut:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(25, 113, 255, 0.4); }
+
+        .iban-box {
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px dashed #333;
+            background: rgba(255,255,255,0.02);
+            font-size: 0.8rem;
         }
+        .iban-box p { margin-bottom: 5px; color: #888; }
+        .iban-text { color: var(--auriu); font-family: monospace; font-size: 1.1rem; letter-spacing: 1px; }
 
-        /* POP-UP RE-DESIGNAT (PENTRU REZERVARI) */
-        #custom-popup { position: fixed; inset: 0; z-index: 100000; display: none; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(15px); background: rgba(0,0,0,0.8); }
-        .popup-content { 
-            background: #0a0a0a; 
-            border: 1px solid var(--auriu); 
-            max-width: 450px; 
-            width: 100%; 
-            padding: 50px 40px; 
-            text-align: center; 
-            position: relative;
-        }
-        .btn-gold { display: inline-block; padding: 15px 30px; border: 1px solid var(--auriu); color: var(--auriu); font-family: 'Cinzel'; font-size: 0.7rem; background: transparent; transition: 0.3s; cursor: pointer; width: 100%; margin-top: 20px; }
-
-        /* PAYPAL BOX */
-        #payment-popup { position: fixed; inset: 0; z-index: 100001; display: none; align-items: center; justify-content: center; padding: 20px; background: rgba(0,0,0,0.9); }
-        .payment-box { background: #fff; padding: 30px; border-radius: 12px; width: 100%; max-width: 400px; position: relative; }
-
-        footer { padding: 40px; text-align: center; border-top: 1px solid #111; font-family: 'Cinzel'; font-size: 0.6rem; color: #444; }
+        footer { padding: 40px; text-align: center; border-top: 1px solid #111; font-family: 'Cinzel', serif; font-size: 0.55rem; color: #333; letter-spacing: 2px; }
         .whatsapp-float { position: fixed; bottom: 25px; left: 20px; background: #25d366; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; font-size: 24px; z-index: 1000; color: #fff; }
         .eapps-widget-toolbar, a[href*="elfsight.com"] { display: none !important; opacity: 0 !important; }
     </style>
@@ -76,27 +84,8 @@
 
     <a href="https://wa.me/40749229686" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
-    <div id="custom-popup">
-        <div class="popup-content">
-            <span onclick="closeOfferPopup()" style="position:absolute; top:20px; right:20px; color:var(--auriu); cursor:pointer;">&times;</span>
-            <h2 style="font-family:'Playfair Display'; color:var(--auriu); font-style:italic; margin-bottom:15px;">Privilegiu 2026</h2>
-            <p style="color:#888; font-size:0.9rem; margin-bottom:20px;">Plătește avansul acum și blochează reducerea de 30% pentru șederea ta.</p>
-            <button onclick="openPayment()" class="btn-gold">GARANTEAZĂ REZERVAREA (50€)</button>
-        </div>
-    </div>
-
-    <div id="payment-popup">
-        <div class="payment-box">
-            <span onclick="closePaymentPopup()" style="position:absolute; top:15px; right:15px; color:#ccc; cursor:pointer; font-size:24px;">&times;</span>
-            <h3 style="color:#000; margin-bottom:20px; font-family:'Playfair Display';">Avans Rezervare</h3>
-            <div id="paypal-button-container"></div>
-        </div>
-    </div>
-
     <header class="site-header">
-        <div class="brand-logo">
-            <svg viewBox="0 0 800 500" style="height:100%"><circle cx="400" cy="250" r="105" fill="none" stroke="#c5a059" stroke-width="4"/><path d="M300 400 L400 200 L500 400 Z" fill="#c5a059"/></svg>
-        </div>
+        <div class="brand-text">HAȚEG ALTERNATIV</div>
         <div class="burger" id="burger"><div></div><div></div><div></div></div>
         <nav class="main-nav" id="nav-links">
             <a href="index.html">ACASĂ</a>
@@ -111,42 +100,42 @@
 
     <div class="page-header">
         <h1>Rezervare</h1>
+        <p>Rânduiala Veche în Munte</p>
     </div>
 
-    <div class="form-container">
-        <script src="https://elfsightcdn.com/platform.js" async></script>
-        <div class="elfsight-app-82c1ef99-f191-401c-a020-b28a4eeacfc0" data-elfsight-app-lazy></div>
-    </div>
+    <main class="rezervare-wrapper">
+        
+        <div class="step-box">
+            <span class="step-title">Pasul 1: Trimite Cererea</span>
+            <script src="https://elfsightcdn.com/platform.js" async></script>
+            <div class="elfsight-app-82c1ef99-f191-401c-a020-b28a4eeacfc0" data-elfsight-app-lazy></div>
+        </div>
+
+        <div class="step-box payment-area">
+            <span class="step-title">Pasul 2: Confirmă cu Avans (50 EUR)</span>
+            <p style="font-size: 0.8rem; color: #666; margin-bottom: 10px;">Folosește link-ul de Revolut pentru plată instant sau transfer bancar clasic.</p>
+            
+            <a href="https://revolut.me/otiliaioana" target="_blank" class="btn-revolut">
+                <i class="fa-solid fa-bolt"></i> PLĂTEȘTE PRIN REVOLUT
+            </a>
+
+            <div class="iban-box">
+                <p>Transfer Bancar (Cont Firmă):</p>
+                <p><strong>DAKAMIGOS MARKT SRL</strong></p>
+                <p class="iban-text">RO00 BBBB 0000 0000 0000 0000</p>
+                <p>Banca: BCR / BT / ING</p>
+                <p style="margin-top:10px; font-size:0.65rem;"><em>* Te rugăm să trimiți dovada plății pe WhatsApp.</em></p>
+            </div>
+        </div>
+
+    </main>
 
     <footer>
-        HAȚEG ALTERNATIV &copy; 2026 | Rânduiala Veche
+        HAȚEG ALTERNATIV &copy; 2026 | RÂNDUIALA VECHE
     </footer>
 
-    <script src="https://www.paypal.com/sdk/js?client-id=test&currency=EUR"></script>
     <script>
-        // TAwk.to
-        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-        (function(){
-            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-            s1.async=true; s1.src='https://embed.tawk.to/65c5607435e8d61c3a875f21/1hklg1i9s';
-            s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
-            s0.parentNode.insertBefore(s1,s0);
-        })();
-
-        // Pop-ups
-        window.onload = function() { setTimeout(() => { document.getElementById('custom-popup').style.display = 'flex'; }, 5000); };
-        function closeOfferPopup() { document.getElementById('custom-popup').style.display = 'none'; }
-        function openPayment() { closeOfferPopup(); document.getElementById('payment-popup').style.display = 'flex'; }
-        function closePaymentPopup() { document.getElementById('payment-popup').style.display = 'none'; }
-
-        // PayPal
-        paypal.Buttons({
-            style: { layout: 'vertical', color: 'black', shape: 'rect' },
-            createOrder: function(data, actions) { return actions.order.create({ purchase_units: [{ amount: { value: '50.00' } }] }); },
-            onApprove: function(data, actions) { return actions.order.capture().then(function(d) { alert('Avans plătit! Vei fi contactat pentru confirmare.'); closePaymentPopup(); }); }
-        }).render('#paypal-button-container');
-
-        // Burger
+        // BURGER MENU
         const burger = document.getElementById('burger');
         const nav = document.getElementById('nav-links');
         if(burger) { burger.onclick = () => { nav.classList.toggle('active'); } }
