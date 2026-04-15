@@ -72,4 +72,157 @@
         .footer-legal-data { font-size: 0.75rem; color: #888; margin-bottom: 20px; line-height: 1.8; }
         .tribute { font-family: 'Cinzel'; font-size: 0.7rem; color: #444; letter-spacing: 4px; margin-top: 30px; display: block; text-transform: uppercase; }
 
-        .whatsapp-float { position: fixed; bottom: 30px; left: 30px; background: #25d366; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 3
+        .whatsapp-float { position: fixed; bottom: 30px; left: 30px; background: #25d366; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 1000; color: #fff; box-shadow: 0 10px 20px rgba(0,0,0,0.4); }
+
+        @media (max-width: 768px) { .site-header { padding: 20px; } .hero-text h1 { font-size: 3.5rem; } .event-row { grid-template-columns: 1fr; text-align: center; } }
+    </style>
+</head>
+<body>
+
+    <a href="https://wa.me/40749229686" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+    <header class="site-header">
+        <a href="index.html" class="brand-logo">
+            <svg viewBox="0 0 800 500">
+                <circle cx="400" cy="250" r="105" fill="none" stroke="#c5a059" stroke-width="4" opacity="0.6"/>
+                <path d="M300 400 L400 200 L500 400 Z" fill="#c5a059"/>
+            </svg>
+        </a>
+        <div class="burger" id="burger"><div></div><div></div><div></div></div>
+        <nav class="main-nav" id="nav-links">
+            <a href="index.html">ACASĂ</a>
+            <a href="pensiune.html">PENSIUNEA</a>
+            <a href="evenimente.html">EVENIMENTE</a>
+            <a href="gastronomie.html">GASTRONOMIE</a>
+            <a href="metanoia.html">METANOIA</a>
+            <a href="contact.html">CONTACT</a>
+        </nav>
+    </header>
+
+    <div class="gallery-viewport">
+        <div class="gallery-track" id="gallerySlider">
+            <div class="gallery-slide"><img src="images/rasarit.jpg"></div>
+            <div class="gallery-slide"><img src="images/jeep.jpg"></div>
+            <div class="gallery-slide"><img src="images/feed-buliga.jpg"></div>
+        </div>
+        <div class="hero-overlay">
+            <div class="hero-text">
+                <h1>Simte, trăiește tăcerea.</h1>
+                <p>Hațeg Alternativ</p>
+            </div>
+        </div>
+    </div>
+
+    <main class="container">
+        <div class="intro-box">
+            <h2>Unde rânduiala veche întâlnește liniștea muntelui.</h2>
+            <p>O experiență curatoriată în inima Retezatului</p>
+        </div>
+
+        <div class="grid-5">
+            <a href="pensiune.html" class="card-item">
+                <img src="images/la-buliga-pensiune.jpg">
+                <div class="card-info"><h4>PENSIUNEA</h4><p>Tihnă la peste 1000m.</p></div>
+            </a>
+            <a href="metanoia.html" class="card-item">
+                <img src="images/rasarit.jpg">
+                <div class="card-info"><h4>METANOIA</h4><p>Călătoria spiritului.</p></div>
+            </a>
+            <a href="gastronomie.html" class="card-item">
+                <img src="images/sura.jpg">
+                <div class="card-info"><h4>GASTRONOMIE</h4><p>Gustul pământului.</p></div>
+            </a>
+            <a href="evenimente.html" class="card-item">
+                <img src="images/narcise.jpg">
+                <div class="card-info"><h4>EVENIMENTE</h4><p>Momente rânduite.</p></div>
+            </a>
+            <a href="contact.html" class="card-item">
+                <img src="images/jeep.jpg">
+                <div class="card-info"><h4>EXPLORARE</h4><p>Aventură off-road.</p></div>
+            </a>
+        </div>
+
+        <h3 style="font-family: 'Cinzel'; color: var(--auriu); margin: 60px 0 30px; letter-spacing: 5px;">RÂNDUIALA CALENDARULUI</h3>
+        
+        <div class="event-row">
+            <div style="font-family: 'Cinzel'; color: var(--auriu); text-align: center; border-right: 1px solid #1a1a1a;">01<br><small>MAI</small></div>
+            <div style="padding-left: 20px;"><h4 style="font-family: 'Playfair Display'; font-style: italic;">Marea Deschidere: La Buligă</h4><p style="font-size: 0.8rem; color: #666;">Inaugurăm oficial rânduiala veche.</p></div>
+            <div style="text-align: right;"><span style="color: var(--auriu); font-size: 0.7rem;">SOLD OUT</span></div>
+        </div>
+
+        <div class="event-row">
+            <div style="font-family: 'Cinzel'; color: var(--auriu); text-align: center; border-right: 1px solid #1a1a1a;">15<br><small>MAI</small></div>
+            <div style="padding-left: 20px;"><h4 style="font-family: 'Playfair Display'; font-style: italic;">Atelier: Flori pe Pânză</h4><p style="font-size: 0.8rem; color: #666;">Creație manuală în grădina cu narcise.</p></div>
+            <div style="text-align: right;"><a href="rezervari.html" class="btn-gold" style="padding: 8px 15px; font-size: 0.6rem;">RESERVĂ</a></div>
+        </div>
+
+        <div class="event-row">
+            <div style="font-family: 'Cinzel'; color: var(--auriu); text-align: center; border-right: 1px solid #1a1a1a;">05<br><small>IUN</small></div>
+            <div style="padding-left: 20px;"><h4 style="font-family: 'Playfair Display'; font-style: italic;">Corporate Detox</h4><p style="font-size: 0.8rem; color: #666;">Weekend de strategie pentru echipe.</p></div>
+            <div style="text-align: right;"><a href="contact.html" class="btn-gold" style="padding: 8px 15px; font-size: 0.6rem;">DETALII</a></div>
+        </div>
+    </main>
+
+    <section class="utils-wrap">
+        <div class="utils-grid">
+            <div class="util-box">
+                <h4>VREMEA LA MUNTE</h4>
+                <a class="weatherwidget-io" href="https://forecast7.com/ro/45p4722p94/hateg/" data-label_1="HAȚEG" data-label_2="RETEZAT" data-font="Playfair Display" data-icons="Climacons Animated" data-theme="pure" >HAȚEG RETEZAT</a>
+                <script>
+                !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+                </script>
+            </div>
+            <div class="util-box">
+                <h4>CALENDAR DISPONIBILITATE</h4>
+                <p style="color: #666; font-size: 0.9rem; margin-bottom: 30px;">Planifică-ți refugiul în funcție de zilele libere.</p>
+                <a href="rezervari.html" class="btn-gold">VEZI CALENDAR</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="map-section">
+        <h2 style="font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 5px;">HARTA EXPERIENȚELOR</h2>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11166.36873919632!2d22.93616654763071!3d45.50346045958569!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x474e6484e5a9b7cf%3A0x6a0a09e02e0b6a6a!2sHa%C8%9Beg!5e0!3m2!1sen!2sro!4v1713220000000!5m2!1sen!2sro" 
+            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+        <p style="color: #444; font-family: 'Cinzel'; font-size: 0.7rem; letter-spacing: 2px;">Densuș • Sarmizegetusa • Rezervația de Zimbri • Cheile Baniței</p>
+    </section>
+
+    <footer>
+        <div class="footer-legal-data">
+            <p><strong>DAKAMIGOS MARKT SRL</strong></p>
+            <p>CUI: RO40767794 | Reg. Com: J20/386/2019</p>
+        </div>
+        <p>HAȚEG ALTERNATIV &copy; 2026</p>
+        <span class="tribute">TRIBUT PATRICIA</span>
+    </footer>
+
+    <script>
+        // Meniu Burger
+        const burger = document.getElementById('burger');
+        const nav = document.getElementById('nav-links');
+        if(burger) { burger.onclick = () => nav.classList.toggle('active'); }
+
+        // Slider Hero
+        let current = 0;
+        const track = document.getElementById('gallerySlider');
+        const slides = document.querySelectorAll('.gallery-slide');
+        if(track && slides.length > 0) {
+            setInterval(() => {
+                current = (current + 1) % slides.length;
+                track.style.transform = `translateX(-${current * 100}%)`;
+            }, 6000);
+        }
+
+        // Tawk.to Chat
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true; s1.src='https://embed.tawk.to/65c5607435e8d61c3a875f21/1hklg1i9s';
+            s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+</body>
+</html>
