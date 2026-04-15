@@ -4,29 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gastronomie | Hațeg Alternativ</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,900&family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,900&family=Inter:wght@300;400;700;900&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root { --auriu: #c5a059; --alb: #ffffff; --negru: #0a0a0a; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background: var(--negru); color: var(--alb); line-height: 1.6; }
 
-        .site-header { position: fixed; top: 0; width: 100%; z-index: 1000; padding: 30px 50px; background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent); display: flex; justify-content: space-between; align-items: center; }
-        .brand { font-weight: 900; letter-spacing: 5px; text-transform: uppercase; font-size: 1rem; text-decoration: none; color: #fff; }
+        .site-header { position: fixed; top: 0; width: 100%; z-index: 1000; padding: 20px 30px; background: rgba(0,0,0,0.9); display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(197,160,89,0.2); }
+        
+        /* LOGO SVG */
+        .brand-logo { height: 50px; width: auto; filter: drop-shadow(0 0 8px rgba(197, 160, 89, 0.5)); }
+        .brand-logo svg { height: 100%; width: auto; }
 
-        .hero-gastro { height: 60vh; background: url('images/gast-masa-traditionala.jpg') center/cover; position: relative; display: flex; align-items: center; justify-content: center; }
+        .hero-gastro { height: 50vh; background: url('images/gast-masa-traditionala.jpg') center/cover; position: relative; display: flex; align-items: center; justify-content: center; }
         .hero-gastro::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, transparent, var(--negru)); }
         
-        .menu-container { max-width: 900px; margin: -50px auto 100px; position: relative; z-index: 10; padding: 0 20px; }
-        .category-title { font-family: 'Playfair Display'; font-size: 2.2rem; font-style: italic; color: var(--auriu); text-align: center; margin: 60px 0 40px; border-bottom: 1px solid rgba(197,160,89,0.3); padding-bottom: 10px; }
+        .menu-container { max-width: 900px; margin: -40px auto 100px; position: relative; z-index: 10; padding: 0 20px; }
+        .category-title { font-family: 'Playfair Display'; font-size: 2rem; font-style: italic; color: var(--auriu); text-align: center; margin: 50px 0 30px; border-bottom: 1px solid rgba(197,160,89,0.3); padding-bottom: 10px; }
 
         .menu-item { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px; }
         .item-info h3 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 800; }
         .item-info p { font-size: 0.75rem; font-weight: 300; color: #888; font-style: italic; }
         .item-price { font-family: 'Playfair Display'; color: var(--auriu); font-weight: 700; font-size: 1.1rem; }
 
-        .special-request { background: rgba(197,160,89,0.05); border: 1px dashed var(--auriu); padding: 30px; text-align: center; margin-top: 50px; border-radius: 4px; }
-        .special-request h4 { font-family: 'Cinzel', serif; color: var(--auriu); margin-bottom: 10px; letter-spacing: 2px; }
-        .special-request p { font-size: 0.85rem; color: #aaa; }
+        .special-request { background: rgba(197,160,89,0.05); border: 1px dashed var(--auriu); padding: 25px; text-align: center; margin-top: 50px; }
+        .special-request h4 { font-family: 'Playfair Display'; font-style: italic; color: var(--auriu); margin-bottom: 10px; font-size: 1.4rem; }
+
+        /* FOOTER STYLING (Sincronizat cu Index) */
+        .footer-legal { padding: 60px 20px; background: #080808; border-top: 1px solid #1a1a1a; margin-top: 50px; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
+        .footer-section h4 { color: var(--auriu); font-family: 'Cinzel'; margin-bottom: 20px; font-size: 0.8rem; letter-spacing: 2px; text-align: left; }
+        .footer-section p, .footer-section a { font-size: 0.75rem; color: #888 !important; text-decoration: none; margin-bottom: 10px; display: block; text-align: left; }
+        
+        .anpc-links { display: flex; gap: 10px; align-items: center; margin-top: 10px; }
+        .anpc-links img { height: 40px; width: auto; background: white; border-radius: 4px; padding: 2px; }
+        .qr-box { background: white; padding: 8px; display: inline-block; border-radius: 6px; margin-top: 10px; }
 
         @media (max-width: 768px) { .menu-item { flex-direction: column; text-align: center; } .item-price { margin-top: 5px; } }
     </style>
@@ -34,67 +46,80 @@
 <body>
 
     <header class="site-header">
-        <a href="index.html" class="brand">HAȚEG ALTERNATIV</a>
-        <nav><a href="index.html" style="color:#fff; text-decoration:none; font-size:0.6rem; font-weight:700; letter-spacing:2px;">ÎNAPOI</a></nav>
+        <div class="brand-logo">
+            <svg viewBox="0 0 800 500">
+                <circle cx="400" cy="250" r="105" fill="none" stroke="#c5a059" stroke-width="4" opacity="0.6"/>
+                <path d="M300 400 L400 200 L500 400 Z" fill="#c5a059"/>
+            </svg>
+        </div>
+        <nav><a href="index.html" style="color:var(--auriu); text-decoration:none; font-size:0.7rem; font-weight:700; letter-spacing:2px; font-family:'Cinzel';">ÎNAPOI LA SITE</a></nav>
     </header>
 
     <section class="hero-gastro">
         <div style="text-align:center; position:relative; z-index:2;">
-            <span style="color:var(--auriu); letter-spacing:10px; font-weight:800;">SIGNATURE</span>
-            <h1 style="font-family:'Playfair Display'; font-size:4rem; font-weight:900; font-style:italic;">Gustul de Aur.</h1>
+            <h1 style="font-family:'Playfair Display'; font-size:3.5rem; font-weight:900; font-style:italic;">Gustul de Aur.</h1>
         </div>
     </section>
 
     <main class="menu-container">
         
         <div class="category-title">Mic Dejun & Aperitive</div>
-        <div class="menu-item">
-            <div class="item-info"><h3>Ouă & Mezeluri de Casă</h3><p>Omletă, Ochiuri sau Ouă Fierte cu preparate locale.</p></div>
-            <div class="item-price">25 RON</div>
-        </div>
-        <div class="menu-item">
-            <div class="item-info"><h3>Bruschete Mixte</h3><p>Roșii, busuioc și arome de munte.</p></div>
-            <div class="item-price">28 RON</div>
-        </div>
-        <div class="menu-item">
-            <div class="item-info"><h3>Clătite Americane</h3><p>Pufoase, cu miere sau fructe.</p></div>
-            <div class="item-price">25 RON</div>
-        </div>
+        <div class="menu-item"><div class="item-info"><h3>Ouă & Mezeluri de Casă</h3><p>Omletă, Ochiuri sau Ouă Fierte cu preparate locale.</p></div><div class="item-price">25 RON</div></div>
+        <div class="menu-item"><div class="item-info"><h3>Bruschete Mixte & Clătite Americane</h3><p>Opțiuni dulci sau sărate pentru un start perfect.</p></div><div class="item-price">25-28 RON</div></div>
 
         <div class="category-title">Ciorbe & Supe</div>
-        <div class="menu-item"><div class="item-info"><h3>Ciorbă de burtă</h3><p>Dreasă cu smântână.</p></div><div class="item-price">28 RON</div></div>
-        <div class="menu-item"><div class="item-info"><h3>Ciorbă de fasole</h3><p>Cu afumătură de casă.</p></div><div class="item-price">25 RON</div></div>
-        <div class="menu-item"><div class="item-info"><h3>Ciorbă de cartofi</h3><p>Rețetă tradițională.</p></div><div class="item-price">22 RON</div></div>
-        <div class="menu-item"><div class="item-info"><h3>Supă cremă de legume</h3><p>De post, din legume coapte.</p></div><div class="item-price">24 RON</div></div>
+        <div class="menu-item"><div class="item-info"><h3>Ciorbă de burtă / Fasole</h3><p>Rețete tradiționale cu afumătură locală.</p></div><div class="item-price">25-28 RON</div></div>
+        <div class="menu-item"><div class="item-info"><h3>Ciorbă de cartofi / Supă Cremă</h3><p>Opțiuni tradiționale sau de post din legume coapte.</p></div><div class="item-price">22-24 RON</div></div>
 
         <div class="category-title">Felul Principal</div>
-        <div class="menu-item">
-            <div class="item-info"><h3>Ceaun de Porc & Sarmale</h3><p>Servite cu mămăliguță caldă și murături.</p></div>
-            <div class="item-price">45 RON</div>
-        </div>
-        <div class="menu-item">
-            <div class="item-info"><h3>Friptură de porc la tavă</h3><p>Cu cartofi aurii la cuptor și rozmarin.</p></div>
-            <div class="item-price">42 RON</div>
-        </div>
-        <div class="menu-item">
-            <div class="item-info"><h3>Paste Signature</h3><p>Bolognese, Carbonara sau Somon & Zucchini.</p></div>
-            <div class="item-price">38 - 48 RON</div>
-        </div>
-        <div class="menu-item">
-            <div class="item-info"><h3>Varză călită (Post)</h3><p>Gătită domol pe foc.</p></div>
-            <div class="item-price">30 RON</div>
-        </div>
+        <div class="menu-item"><div class="item-info"><h3>Paste Signature</h3><p>Bolognese, Carbonara Clasic sau Zucchini & Somon.</p></div><div class="item-price">38-48 RON</div></div>
+        <div class="menu-item"><div class="item-info"><h3>Ceaun de Porc & Sarmale</h3><p>Servite cu mămăliguță caldă și murături asortate.</p></div><div class="item-price">45 RON</div></div>
+        <div class="menu-item"><div class="item-info"><h3>Friptură de porc la tavă</h3><p>Cu cartofi aurii la cuptor și rozmarin.</p></div><div class="item-price">42 RON</div></div>
+        <div class="menu-item"><div class="item-info"><h3>Varză călită (Post)</h3><p>Gătită domol pe foc.</p></div><div class="item-price">30 RON</div></div>
 
-        <div class="category-title">Răsfăț & Cafea</div>
-        <div class="menu-item"><div class="item-info"><h3>Prăjituri de Casă</h3><p>Albinuța sau Plăcinte.</p></div><div class="item-price">20 RON</div></div>
-        <div class="menu-item"><div class="item-info"><h3>Cafea la Expresor / Fiartă</h3><p>Espresso sau cafea tradițională.</p></div><div class="item-price">10 RON</div></div>
+        <div class="category-title">Cafea & Desert</div>
+        <div class="menu-item"><div class="item-info"><h3>Cafea la Expresor / Fiartă</h3><p>Aromă intensă sau pregătită tradițional.</p></div><div class="item-price">10 RON</div></div>
+        <div class="menu-item"><div class="item-info"><h3>Desertul Casei</h3><p>Albinuța, Porone sau Plăcinte pe lespede.</p></div><div class="item-price">20 RON</div></div>
 
         <div class="special-request">
-            <h4>MENIU PERSONALIZAT</h4>
-            <p>La noi, rânduiala veche înseamnă ospitalitate fără limite. <br> 
-            <strong>Gătim orice preparat la cerere</strong> pentru oaspeții noștri, dacă ne anunțați din timp.</p>
+            <h4>La Cerere</h4>
+            <p>Gătim cu drag orice preparat doriți, dacă ne anunțați din timp. Rânduiala noastră e ospitalitatea.</p>
         </div>
-        
     </main>
+
+    <footer class="footer-legal">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>DATE LEGALE</h4>
+                <p><strong>DAKAMIGOS MARKT SRL</strong></p>
+                <p>CUI: RO40767794</p>
+                <p>Reg. Com: J20/386/2019</p>
+                <p>Hațeg, Hunedoara</p>
+            </div>
+            <div class="footer-section">
+                <h4>INFORMAȚII</h4>
+                <a href="termeni-si-conditii.html">Termeni și Condiții</a>
+                <a href="confidentialitate.html">Politica GDPR</a>
+                <a href="cookies.html">Politica Cookies</a>
+            </div>
+            <div class="footer-section">
+                <h4>ANPC</h4>
+                <div class="anpc-links">
+                    <a href="https://anpc.ro/ce-este-sal/" target="_blank"><img src="images/anpc-sal.png" alt="SAL"></a>
+                    <a href="https://ec.europa.eu/consumers/odr/" target="_blank"><img src="images/anpc-sol.png" alt="SOL"></a>
+                </div>
+            </div>
+            <div class="footer-section" style="text-align: center;">
+                <h4>SHARE MENU</h4>
+                <div class="qr-box">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://hategalternativ.ro/gastronomie.html" alt="QR Meniu">
+                </div>
+                <p style="font-size: 0.55rem !important; margin-top: 5px; text-align: center;">SCAN TO SHARE</p>
+            </div>
+        </div>
+        <div style="text-align:center; margin-top:40px; border-top: 1px solid #111; padding-top: 20px; font-family:'Cinzel'; font-size:0.7rem; color:#444;">
+            HAȚEG ALTERNATIV &copy; 2026 | TRIBUT PATRICIA
+        </div>
+    </footer>
 </body>
 </html>
