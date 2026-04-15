@@ -21,9 +21,9 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         body { background: var(--negru); color: var(--alb); font-family: var(--font-sans); overflow-x: hidden; scroll-behavior: smooth; line-height: 1.6; }
-        a { text-decoration: none !important; color: inherit !important; }
+        
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
 
-        /* HEADER REPARAT */
         .site-header { position: fixed; top: 0; width: 100%; z-index: 10000; padding: 20px 30px; display: flex; justify-content: space-between; align-items: center; background: rgba(5,5,5,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(197,160,89,0.2); }
         .brand { font-family: var(--font-cinzel); font-weight: 900; letter-spacing: 3px; text-transform: uppercase; font-size: 0.85rem; color: var(--auriu-crem); }
         .burger { cursor: pointer; z-index: 10001; }
@@ -33,23 +33,21 @@
         .main-nav.active { right: 0; }
         .main-nav a { font-size: 1.6rem; font-family: var(--font-cinzel); margin: 15px 0; color: var(--alb) !important; letter-spacing: 3px; text-transform: uppercase; }
 
-        /* SLIDER */
         .gallery-viewport { width: 100%; height: 70vh; overflow: hidden; position: relative; margin-top: 70px; }
         .gallery-track { display: flex; width: 100%; height: 100%; transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1); }
         .gallery-slide { min-width: 100%; height: 100%; position: relative; }
         .gallery-slide img { width: 100%; height: 100%; object-fit: cover; opacity: 0.5; }
-        .gallery-caption { position: absolute; bottom: 50px; left: 30px; border-left: 2px solid var(--auriu-crem); padding-left: 20px; padding-right: 20px; }
+        .gallery-caption { position: absolute; bottom: 50px; left: 30px; border-left: 2px solid var(--auriu-crem); padding-left: 20px; }
         .gallery-caption h3 { font-family: var(--font-serif); font-size: clamp(2rem, 8vw, 3.5rem); font-style: italic; color: #fff; line-height: 1.1; }
         .gallery-caption p { font-family: var(--font-cinzel); font-size: 0.7rem; color: var(--auriu-crem); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 5px; }
 
-        /* CONTAINER */
         .container { max-width: 1200px; margin: 0 auto; padding: 80px 20px; }
         .metanoia-intro { text-align: center; max-width: 800px; margin: 0 auto 80px; }
         .metanoia-intro h2 { font-family: var(--font-cinzel); color: var(--auriu-crem); letter-spacing: 6px; font-size: 0.85rem; margin-bottom: 20px; text-transform: uppercase; }
         .metanoia-intro p { font-family: var(--font-serif); font-size: clamp(1.5rem, 4vw, 2.5rem); font-style: italic; color: #fff; line-height: 1.3; }
 
-        /* PACHETE REPARATE (FĂRĂ BIBLIOTECĂ / 3 MESE) */
         .section-label { font-family: var(--font-cinzel); color: var(--auriu-crem); text-align: center; letter-spacing: 5px; font-size: 0.75rem; margin-bottom: 50px; text-transform: uppercase; }
+        
         .package-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-bottom: 100px; }
         .p-card { background: var(--gri-card); border: 1px solid #1a1a1a; padding: 50px 30px; text-align: center; transition: 0.4s; }
         .p-card:hover { border-color: var(--auriu-crem); }
@@ -58,20 +56,18 @@
         .p-features li { padding: 12px 0; border-bottom: 1px solid #1a1a1a; }
         .price-tag { font-family: var(--font-cinzel); font-size: 1.3rem; color: #fff; display: block; margin-bottom: 30px; font-weight: 700; }
 
-        /* ACTIVITĂȚI */
         .act-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
-        .act-item { height: 400px; position: relative; overflow: hidden; border: 1px solid #1a1a1a; }
+        .act-item { height: 400px; position: relative; overflow: hidden; border: 1px solid #1a1a1a; display: block; }
         .act-item img { width: 100%; height: 100%; object-fit: cover; transition: 1.5s; opacity: 0.4; }
-        .act-item:hover img { opacity: 0.7; transform: scale(1.05); }
+        .act-item:hover img { opacity: 0.8; transform: scale(1.05); }
         .act-info { position: absolute; bottom: 0; padding: 25px; background: linear-gradient(to top, rgba(0,0,0,0.95), transparent); width: 100%; }
         .act-info h4 { font-family: var(--font-serif); font-size: 1.6rem; font-style: italic; color: var(--auriu-crem); margin-bottom: 5px; }
-        .act-info p { color: #bbb; font-size: 0.85rem; font-weight: 300; }
+        .act-info p { color: #bbb; font-size: 0.85rem; }
 
-        /* BUTON REZERVARE */
         .btn-cta { display: inline-block; padding: 15px 35px; border: 1px solid var(--auriu-crem); color: var(--auriu-crem); font-family: var(--font-cinzel); font-size: 0.75rem; letter-spacing: 2px; transition: 0.3s; font-weight: 700; background: transparent; }
         .btn-cta:hover { background: var(--auriu-crem); color: #000 !important; }
 
-        .whatsapp-float { position: fixed; bottom: 30px; left: 20px; background: #25d366; border-radius: 50%; width: 55px; height: 55px; display: flex; align-items: center; justify-content: center; font-size: 28px; z-index: 1000; color: #fff; box-shadow: 0 4px 10px rgba(0,0,0,0.3); }
+        .whatsapp-float { position: fixed; bottom: 30px; left: 20px; background: #25d366; border-radius: 50%; width: 55px; height: 55px; display: flex; align-items: center; justify-content: center; font-size: 28px; z-index: 1000; color: #fff; }
         footer { padding: 60px 20px; text-align: center; opacity: 0.4; font-family: var(--font-cinzel); font-size: 0.65rem; border-top: 1px solid #111; letter-spacing: 2px; }
     </style>
 </head>
@@ -89,7 +85,6 @@
             <a href="gastronomie.html">Gastronomie</a>
             <a href="evenimente.html">Evenimente</a>
             <a href="contact.html">Contact</a>
-            <a href="rezervari.html">Rezervare</a>
         </nav>
     </header>
 
@@ -102,7 +97,6 @@
     </div>
 
     <div class="container">
-        
         <div class="metanoia-intro">
             <h2>Manifest Metanoia</h2>
             <p>O călătorie curatoriată unde rânduiala veche întâlnește liniștea muntelui.</p>
@@ -136,6 +130,10 @@
 
         <p class="section-label">Experiențe și Obiective</p>
         <div class="act-grid">
+            <a href="pictura.html" class="act-item">
+                <img src="images/floripepanza.jpg">
+                <div class="act-info"><h4>Atelier Pictură</h4><p>Creație pe pânză sub cerul liber.</p></div>
+            </a>
             <div class="act-item">
                 <img src="images/biserica-sf-nicolae-densus.jpg">
                 <div class="act-info"><h4>Duhul Locului</h4><p>Exteriorul celei mai vechi biserici de piatră.</p></div>
@@ -143,10 +141,6 @@
             <div class="act-item">
                 <img src="images/exp-biserica-int.jpg">
                 <div class="act-info"><h4>Reculegere</h4><p>Interiorul plin de istorie și tăcere.</p></div>
-            </div>
-            <div class="act-item">
-                <img src="images/floripepanza.jpg">
-                <div class="act-info"><h4>Atelier</h4><p>Creație manuală și rânduială.</p></div>
             </div>
             <div class="act-item">
                 <img src="images/banita.jpg">
@@ -161,7 +155,6 @@
                 <div class="act-info"><h4>Lacul Bucura</h4><p>Inima de cristal a munților.</p></div>
             </div>
         </div>
-
     </div>
 
     <footer>HAȚEG ALTERNATIV &copy; 2026 | TRIBUT PATRICIA</footer>
