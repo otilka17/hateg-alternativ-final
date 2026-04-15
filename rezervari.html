@@ -4,139 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rezervare | La Buligă</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,900&family=Cinzel:wght@400;700&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --auriu: #c5a059; --negru: #000000; --alb: #ffffff; }
+        :root { --auriu: #c5a059; --negru: #0a0a0a; --alb: #ffffff; }
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        
-        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; line-height: 1.6; }
-        a { text-decoration: none !important; color: inherit !important; }
-
-        /* HEADER & BRANDING */
-        .site-header { position: relative; width: 100%; z-index: 9999; padding: 20px; display: flex; justify-content: space-between; align-items: center; background: #000; border-bottom: 1px solid rgba(197,160,89,0.2); }
-        .brand-text { font-family: 'Cinzel', serif; color: var(--auriu); font-size: 0.7rem; letter-spacing: 2px; }
-        
-        .burger { cursor: pointer; z-index: 10001; padding: 10px; }
-        .burger div { width: 28px; height: 2px; background: var(--auriu); margin: 5px; transition: 0.3s; }
-        
-        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: rgba(0,0,0,0.98); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.5s ease; z-index: 10000; }
-        .main-nav.active { right: 0; }
-        .main-nav a { font-size: 1.3rem; font-family: 'Cinzel', serif; margin: 12px 0; color: #fff !important; text-transform: uppercase; letter-spacing: 2px; }
-
-        /* TITLU PAGINA */
-        .page-header { text-align: center; padding: 40px 20px; }
-        .page-header h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--auriu); font-style: italic; margin-bottom: 10px; }
-        .page-header p { font-family: 'Cinzel', serif; letter-spacing: 4px; color: #666; font-size: 0.6rem; text-transform: uppercase; }
-
-        /* CONTAINERE */
-        .rezervare-wrapper { max-width: 800px; margin: 0 auto 100px; padding: 0 20px; }
-        
-        .step-box { 
-            background: #0a0a0a; 
-            border: 1px solid #1a1a1a; 
-            padding: 30px; 
-            border-radius: 8px; 
-            margin-bottom: 30px;
-        }
-        .step-title { font-family: 'Cinzel', serif; color: var(--auriu); font-size: 0.75rem; letter-spacing: 2px; margin-bottom: 25px; border-bottom: 1px solid #222; padding-bottom: 10px; display: block; }
-
-        /* FIX ELFSIGHT (TEXT ALB) */
-        [class*="FormBuilder__Container"], [class*="form-entity"], span, label, input, h2, div { color: #ffffff !important; }
-        input, select, textarea { background-color: #111 !important; border: 1px solid #333 !important; color: #fff !important; }
-        [class*="ButtonBase__Ellipsis"], button[type="submit"] { 
-            background-color: var(--auriu) !important; 
-            color: #000 !important; 
-            font-family: 'Cinzel', serif !important; 
-            font-weight: bold !important; 
-            text-transform: uppercase;
-            padding: 15px !important;
-        }
-
-        /* IBAN BOX */
-        .iban-container { text-align: center; padding: 20px; }
-        .iban-details {
-            margin-top: 20px;
-            padding: 25px;
-            border: 1px dashed var(--auriu);
-            background: rgba(197, 160, 89, 0.03);
-            border-radius: 4px;
-        }
-        .iban-details p { margin-bottom: 8px; font-size: 0.85rem; color: #ccc; }
-        .iban-code { 
-            font-family: 'Courier New', monospace; 
-            font-size: 1.2rem; 
-            color: var(--auriu); 
-            letter-spacing: 1px; 
-            display: block;
-            margin: 15px 0;
-            word-break: break-all;
-        }
-        .whatsapp-note { font-size: 0.7rem; color: #555; font-style: italic; margin-top: 15px; }
-
-        footer { padding: 40px; text-align: center; border-top: 1px solid #111; font-family: 'Cinzel', serif; font-size: 0.55rem; color: #333; letter-spacing: 2px; }
-        .whatsapp-float { position: fixed; bottom: 25px; left: 20px; background: #25d366; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; font-size: 24px; z-index: 1000; color: #fff; }
-        .eapps-widget-toolbar, a[href*="elfsight.com"] { display: none !important; opacity: 0 !important; }
+        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; }
+        .site-header { padding: 30px 50px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(197, 160, 89, 0.2); }
+        .brand-text { font-family: 'Cinzel'; color: var(--auriu); font-size: 0.7rem; letter-spacing: 2px; }
+        .hero-title { text-align: center; padding: 60px 20px; }
+        .hero-title h1 { font-family: 'Playfair Display'; font-size: 3rem; color: var(--auriu); font-style: italic; }
+        .form-container { max-width: 800px; margin: 0 auto 100px; padding: 0 20px; }
+        /* Fix text alb */
+        [class*="FormBuilder__Container"], span, label { color: #ffffff !important; }
+        button[type="submit"] { background-color: var(--auriu) !important; color: #000 !important; font-family: 'Cinzel' !important; }
+        footer { padding: 40px; text-align: center; color: #333; font-family: 'Cinzel'; font-size: 0.6rem; }
     </style>
 </head>
 <body>
-
-    <a href="https://wa.me/40749229686" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
-
     <header class="site-header">
         <div class="brand-text">HAȚEG ALTERNATIV</div>
-        <div class="burger" id="burger"><div></div><div></div><div></div></div>
-        <nav class="main-nav" id="nav-links">
-            <a href="index.html">ACASĂ</a>
-            <a href="pensiune.html">PENSIUNEA</a>
-            <a href="metanoia.html">METANOIA</a>
-            <a href="gastronomie.html">GASTRONOMIE</a>
-            <a href="evenimente.html">EVENIMENTE</a>
-            <a href="contact.html">CONTACT</a>
-            <a href="rezervari.html">REZERVARE</a>
-        </nav>
+        <nav><a href="index.html" style="color:var(--auriu); font-size:0.6rem; text-decoration:none; font-family:'Cinzel';">ÎNAPOI</a></nav>
     </header>
 
-    <div class="page-header">
+    <div class="hero-title">
         <h1>Rezervare</h1>
-        <p>Rânduiala Veche în Munte</p>
+        <p style="font-family:'Cinzel'; font-size:0.6rem; letter-spacing:3px; color:#444;">FĂRĂ PLATĂ INSTANTĂ</p>
     </div>
 
-    <main class="rezervare-wrapper">
-        
-        <div class="step-box">
-            <span class="step-title">Pasul 1: Trimite Cererea</span>
-            <script src="https://elfsightcdn.com/platform.js" async></script>
-            <div class="elfsight-app-82c1ef99-f191-401c-a020-b28a4eeacfc0" data-elfsight-app-lazy></div>
-        </div>
-
-        <div class="step-box iban-container">
-            <span class="step-title">Pasul 2: Confirmare Avans (50€)</span>
-            <p style="font-size: 0.8rem; color: #888;">Pentru a bloca data dorită, te rugăm să efectuezi un transfer bancar:</p>
-            
-            <div class="iban-details">
-                <p>Beneficiar: <strong>DAKAMIGOS MARKT SRL</strong></p>
-                <p>Banca: <strong>Banca Transilvania / BCR</strong></p>
-                <span class="iban-code">RO00 BBBB 0000 0000 0000 0000</span>
-                <p style="color: var(--auriu); font-family: 'Cinzel'; font-size: 0.7rem;">Suma: 250 RON (Echivalent 50 EUR)</p>
-            </div>
-
-            <p class="whatsapp-note">Te rugăm să trimiți o dovadă a plății pe WhatsApp pentru confirmare instantanee.</p>
-        </div>
-
+    <main class="form-container">
+        <script src="https://elfsightcdn.com/platform.js" async></script>
+        <div class="elfsight-app-82c1ef99-f191-401c-a020-b28a4eeacfc0" data-elfsight-app-lazy></div>
     </main>
 
-    <footer>
-        HAȚEG ALTERNATIV &copy; 2026 | RÂNDUIALA VECHE
-    </footer>
-
-    <script>
-        // BURGER MENU
-        const burger = document.getElementById('burger');
-        const nav = document.getElementById('nav-links');
-        if(burger) { burger.onclick = () => { nav.classList.toggle('active'); } }
-    </script>
+    <footer>HAȚEG ALTERNATIV &copy; 2026</footer>
 </body>
 </html>
