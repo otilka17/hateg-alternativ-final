@@ -3,97 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forum Metanoia | Hațeg Alternativ</title>
+    <title>Recenzii | La Buligă</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,900&family=Cinzel:wght@400;700&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
         :root { --auriu: #c5a059; --negru: #000000; --alb: #ffffff; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        a { text-decoration: none !important; color: inherit !important; }
 
-        /* HEADER - Sincronizat cu restul site-ului */
-        .site-header { position: relative; width: 100%; z-index: 9999; padding: 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(197, 160, 89, 0.2); }
-        .brand-logo { height: 50px; filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.5)); }
-        .brand-logo svg { height: 100%; width: auto; }
-
-        /* FORUM HERO */
-        .forum-hero { padding: 60px 20px; text-align: center; background: linear-gradient(to bottom, #0a0a0a, #000); }
-        .forum-hero h1 { font-family: 'Playfair Display'; font-size: 3rem; color: var(--auriu); font-style: italic; margin-bottom: 10px; }
-        .forum-hero p { font-family: 'Cinzel'; letter-spacing: 3px; font-size: 0.9rem; color: #888; }
-
-        /* FEED CONTAINER - Unde apare widget-ul Elfsight */
-        .feed-container { max-width: 1000px; margin: 20px auto 100px; padding: 0 20px; min-height: 400px; }
-
-        /* FOOTER LEGAL */
-        .footer-legal { padding: 60px 20px; background: #080808; border-top: 1px solid #1a1a1a; margin-top: 50px; }
-        .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
-        .footer-section h4 { color: var(--auriu); font-family: 'Cinzel'; margin-bottom: 20px; font-size: 0.8rem; letter-spacing: 2px; }
-        .footer-section p, .footer-section a { font-size: 0.75rem; color: #888 !important; text-decoration: none; margin-bottom: 10px; display: block; }
+        /* HEADER & MENU BURGER COMPLET */
+        .site-header { position: relative; width: 100%; z-index: 9999; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; background: #000; border-bottom: 1px solid rgba(197,160,89,0.2); }
+        .brand-logo { height: 45px; filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.5)); }
         
-        .anpc-links { display: flex; gap: 10px; align-items: center; margin-top: 10px; }
-        .anpc-links img { height: 40px; background: white; border-radius: 4px; padding: 2px; }
-        .qr-box { background: white; padding: 8px; display: inline-block; border-radius: 6px; margin-top: 10px; }
+        .burger { cursor: pointer; z-index: 10001; padding: 10px; }
+        .burger div { width: 28px; height: 2px; background: var(--auriu); margin: 5px; transition: 0.3s; }
+        
+        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: rgba(0,0,0,0.98); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.5s ease; z-index: 10000; }
+        .main-nav.active { right: 0; }
+        .main-nav a { font-size: 1.3rem; font-family: 'Cinzel'; margin: 12px 0; color: #fff !important; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* TITLU PAGINA */
+        .page-header { text-align: center; padding: 60px 20px; }
+        .page-header h1 { font-family: 'Playfair Display'; font-size: 3rem; color: var(--auriu); font-style: italic; }
+        .page-header p { font-family: 'Cinzel'; letter-spacing: 3px; color: #666; font-size: 0.8rem; margin-top: 10px; }
+
+        /* CONTAINER RECENZII */
+        .reviews-container { max-width: 1200px; margin: 0 auto 100px; padding: 0 20px; min-height: 600px; }
+
+        /* FOOTER SINCRONIZAT */
+        .footer-legal { padding: 60px 20px; background: #080808; border-top: 1px solid #1a1a1a; margin-top: 50px; text-align: center; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; text-align: left; }
+        .footer-section h4 { color: var(--auriu); font-family: 'Cinzel'; margin-bottom: 20px; font-size: 0.8rem; letter-spacing: 2px; }
+        .footer-section p { font-size: 0.7rem; color: #555; line-height: 1.8; }
+        
+        .whatsapp-float { position: fixed; bottom: 25px; left: 20px; background: #25d366; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; font-size: 24px; z-index: 1000; color: #fff; }
+        a[href*="elfsight.com"] { display: none !important; opacity: 0 !important; }
     </style>
 </head>
 <body>
 
+    <a href="https://wa.me/40749229686" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
     <header class="site-header">
         <div class="brand-logo">
-            <svg viewBox="0 0 800 500">
-                <circle cx="400" cy="250" r="105" fill="none" stroke="#c5a059" stroke-width="4" opacity="0.6"/>
-                <path d="M300 400 L400 200 L500 400 Z" fill="#c5a059"/>
-            </svg>
+            <svg viewBox="0 0 800 500" style="height:100%"><circle cx="400" cy="250" r="105" fill="none" stroke="#c5a059" stroke-width="4"/><path d="M300 400 L400 200 L500 400 Z" fill="#c5a059"/></svg>
         </div>
-        <nav><a href="index.html" style="color:var(--auriu); text-decoration:none; font-family:'Cinzel'; font-size:0.7rem; letter-spacing:2px;">ÎNAPOI LA SITE</a></nav>
+        <div class="burger" id="burger"><div></div><div></div><div></div></div>
+        
+        <nav class="main-nav" id="nav-links">
+            <a href="index.html">ACASĂ</a>
+            <a href="pensiune.html">PENSIUNEA</a>
+            <a href="metanoia.html">METANOIA</a>
+            <a href="gastronomie.html">GASTRONOMIE</a>
+            <a href="evenimente.html">EVENIMENTE</a>
+            <a href="contact.html">CONTACT</a>
+            <a href="rezervari.html">REZERVARE</a>
+        </nav>
     </header>
 
-    <section class="forum-hero">
-        <h1>Gânduri & Experiențe</h1>
-        <p>Ce spun oaspeții noștri</p>
-    </section>
+    <div class="page-header">
+        <h1>Gânduri bune</h1>
+        <p>Experiențele oaspeților noștri</p>
+    </div>
 
-    <main class="feed-container">
+    <main class="reviews-container">
         <script src="https://elfsightcdn.com/platform.js" async></script>
-        <div class="elfsight-app-e204a27d-0a66-45bb-8486-27afa8a94a26" data-elfsight-app-lazy></div>
+        <div class="elfsight-app-5f0df1ec-e996-4d6c-8158-6ee1ad3a65bb" data-elfsight-app-lazy></div>
     </main>
 
     <footer class="footer-legal">
         <div class="footer-content">
             <div class="footer-section">
                 <h4>DATE LEGALE</h4>
-                <p><strong>DAKAMIGOS MARKT SRL</strong></p>
-                <p>CUI: RO40767794</p>
-                <p>Reg. Com: J20/386/2019</p>
-            </div>
-            <div class="footer-section">
-                <h4>INFORMAȚII</h4>
-                <a href="termeni-si-conditii.html">Termeni și Condiții</a>
-                <a href="confidentialitate.html">Politica GDPR</a>
-            </div>
-            <div class="footer-section">
-                <h4>ANPC</h4>
-                <div class="anpc-links">
-                    <a href="https://anpc.ro/ce-este-sal/" target="_blank">
-                        <img src="images/anpc-sal.png" alt="SAL">
-                    </a>
-                    <a href="https://ec.europa.eu/consumers/odr/" target="_blank">
-                        <img src="images/anpc-sol.png" alt="SOL">
-                    </a>
-                </div>
+                <p>DAKAMIGOS MARKT SRL<br>CUI: RO40767794<br>Hațeg, Hunedoara</p>
             </div>
             <div class="footer-section" style="text-align: center;">
-                <h4>MENIU DIGITAL</h4>
-                <div class="qr-box">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://hategalternativ.ro/gastronomie.html" alt="QR Meniu">
+                <div style="background:white; padding:8px; display:inline-block; border-radius:6px;">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://hategalternativ.ro/forum.html" alt="QR Meniu">
                 </div>
             </div>
         </div>
-        <div style="text-align:center; margin-top:40px; border-top: 1px solid #111; padding-top: 20px; font-family:'Cinzel'; font-size:0.7rem; color:#444;">
-            HAȚEG ALTERNATIV &copy; 2026 | TRIBUT PATRICIA
+        <div style="margin-top:40px; font-family:'Cinzel'; font-size:0.6rem; color:#333;">
+            HAȚEG ALTERNATIV &copy; 2026
         </div>
     </footer>
 
+    <script>
+        // TAWK.TO
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true; s1.src='https://embed.tawk.to/65c5607435e8d61c3a875f21/1hklg1i9s';
+            s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+        })();
+
+        // BURGER MENU
+        const burger = document.getElementById('burger');
+        const nav = document.getElementById('nav-links');
+        if(burger) { burger.onclick = () => { nav.classList.toggle('active'); } }
+    </script>
 </body>
 </html>
