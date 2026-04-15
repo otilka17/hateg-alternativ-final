@@ -3,71 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Evenimente & Tarife | Hațeg Alternativ</title>
+    <title>Evenimente & Experiențe | Hațeg Alternativ</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        :root { --auriu: #c5a059; --negru: #000000; --alb: #ffffff; --gri-card: #0d0d0d; }
+        :root { --auriu: #c5a059; --negru: #000000; --alb: #ffffff; --gri: #0d0d0d; }
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; line-height: 1.6; overflow-x: hidden; }
+        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; line-height: 1.6; }
         
-        /* HEADER - Transparent peste imagine */
         .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 30px 50px; display: flex; justify-content: space-between; align-items: center; }
-        .brand-logo svg { height: 70px; width: auto; filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.4)); }
+        .brand-logo svg { height: 60px; width: auto; filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.4)); }
         .burger { cursor: pointer; z-index: 10001; }
         .burger div { width: 30px; height: 2px; background: var(--auriu); margin: 6px; }
 
-        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: rgba(0,0,0,0.98); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.5s ease; z-index: 10000; }
-        .main-nav.active { right: 0; }
-        .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 15px 0; color: #fff !important; text-transform: uppercase; letter-spacing: 4px; }
+        .hero-ev { height: 60vh; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.8)), url('images/narcise.jpg') center/cover; display: flex; align-items: center; justify-content: center; text-align: center; }
+        .hero-ev h1 { font-family: 'Playfair Display'; font-size: clamp(3rem, 8vw, 5rem); color: var(--auriu); font-style: italic; }
 
-        /* HERO */
-        .hero-events { 
-            height: 60vh; 
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('images/rasarit.jpg') center/cover;
-            display: flex; align-items: center; justify-content: center; text-align: center;
-        }
-        .hero-events h1 { font-family: 'Playfair Display'; font-size: clamp(3rem, 8vw, 6rem); color: var(--auriu); font-style: italic; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 80px 20px; }
+        .section-label { font-family: 'Cinzel'; color: var(--auriu); text-align: center; letter-spacing: 5px; margin-bottom: 60px; }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 100px 20px; }
-        .section-label { font-family: 'Cinzel'; color: var(--auriu); text-align: center; letter-spacing: 6px; margin-bottom: 60px; font-size: 1.1rem; }
+        /* COMBINARE TEXTE METANOIA */
+        .metanoia-intro { background: var(--gri); padding: 60px; border-left: 2px solid var(--auriu); margin-bottom: 100px; }
+        .metanoia-intro h3 { font-family: 'Cinzel'; color: var(--auriu); margin-bottom: 20px; letter-spacing: 3px; }
+        .metanoia-intro p { font-family: 'Playfair Display'; font-size: 1.4rem; font-style: italic; color: #eee; }
 
-        /* GRID EVENIMENTE */
-        .events-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-bottom: 120px; }
-        .event-card { background: var(--gri-card); border: 1px solid #1a1a1a; transition: 0.5s; position: relative; overflow: hidden; }
+        .event-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-bottom: 80px; }
+        .event-card { border: 1px solid #1a1a1a; background: #050505; transition: 0.4s; }
         .event-card:hover { border-color: var(--auriu); }
-        .event-img { height: 300px; background-size: cover; background-position: center; opacity: 0.6; transition: 1s; }
-        .event-card:hover .event-img { opacity: 0.8; transform: scale(1.05); }
-        .event-content { padding: 40px; }
-        .event-content h3 { font-family: 'Cinzel'; color: var(--auriu); margin-bottom: 20px; letter-spacing: 3px; }
-        .event-content p { color: #aaa; font-size: 1rem; margin-bottom: 0; }
+        .event-img { height: 300px; background-size: cover; background-position: center; }
+        .event-body { padding: 40px; }
+        .event-body h4 { font-family: 'Cinzel'; color: var(--auriu); margin-bottom: 15px; letter-spacing: 2px; }
+        .event-body p { color: #aaa; font-size: 0.95rem; }
 
-        /* TABEL TARIFE / PACHETE */
-        .pricing-wrap { background: #050505; padding: 100px 20px; border-top: 1px solid #111; margin-bottom: 100px; }
-        .price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; max-width: 1000px; margin: 0 auto; }
-        .price-card { padding: 60px 40px; border: 1px solid #1a1a1a; text-align: center; position: relative; background: #000; }
-        .price-card.featured { border-color: var(--auriu); box-shadow: 0 20px 50px rgba(197, 160, 89, 0.1); }
-        .badge { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--auriu); color: #000; padding: 5px 20px; font-family: 'Cinzel'; font-size: 0.7rem; font-weight: 900; letter-spacing: 2px; }
-        
-        .price-card h4 { font-family: 'Cinzel'; color: var(--auriu); margin-bottom: 20px; letter-spacing: 3px; }
-        .price-value { font-family: 'Playfair Display'; font-size: 3rem; margin-bottom: 30px; color: #fff; font-style: italic; }
-        .price-value span { font-size: 1rem; font-family: 'Inter'; font-style: normal; color: #666; }
-        
-        .price-card ul { list-style: none; color: #888; margin-bottom: 40px; text-align: left; }
-        .price-card li { padding: 12px 0; border-bottom: 1px solid #111; font-size: 0.95rem; }
-        .price-card li i { color: var(--auriu); margin-right: 10px; }
+        /* DOAR TARIFUL DE BAZĂ */
+        .price-tag { text-align: center; padding: 60px; border: 1px solid #222; margin-top: 50px; }
+        .price-tag h4 { font-family: 'Cinzel'; color: var(--auriu); margin-bottom: 20px; }
+        .price-tag .value { font-family: 'Playfair Display'; font-size: 3rem; color: #fff; }
 
-        .btn-gold { display: inline-block; padding: 18px 45px; border: 1px solid var(--auriu); color: var(--auriu); font-family: 'Cinzel'; font-size: 0.85rem; letter-spacing: 3px; transition: 0.4s; background: transparent; cursor: pointer; }
-        .btn-gold:hover { background: var(--auriu); color: #000 !important; }
+        .btn-gold { display: inline-block; padding: 15px 35px; border: 1px solid var(--auriu); color: var(--auriu); font-family: 'Cinzel'; font-size: 0.8rem; letter-spacing: 2px; margin-top: 30px; }
+        .btn-gold:hover { background: var(--auriu); color: #000; }
 
-        footer { padding: 80px 20px; text-align: center; border-top: 1px solid #111; }
-        .tribute { font-family: 'Cinzel'; font-size: 0.7rem; color: #333; letter-spacing: 3px; margin-top: 20px; display: block; text-transform: uppercase; }
-        
+        footer { padding: 60px 20px; text-align: center; border-top: 1px solid #111; opacity: 0.5; }
         .whatsapp-float { position: fixed; bottom: 30px; left: 30px; background: #25d366; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 1000; color: #fff; }
-
-        @media (max-width: 768px) { .site-header { padding: 20px; } .hero-events { height: 50vh; } }
     </style>
 </head>
 <body>
@@ -75,88 +54,54 @@
     <a href="https://wa.me/40749229686" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
     <header class="site-header">
-        <a href="index.html" class="brand-logo">
+        <div class="brand-logo">
             <svg viewBox="0 0 800 500"><circle cx="400" cy="250" r="105" fill="none" stroke="#c5a059" stroke-width="4" opacity="0.6"/><path d="M300 400 L400 200 L500 400 Z" fill="#c5a059"/></svg>
-        </a>
-        <div class="burger" id="burger"><div></div><div></div><div></div></div>
-        <nav class="main-nav" id="nav-links">
-            <a href="index.html">ACASĂ</a>
-            <a href="pensiune.html">PENSIUNEA</a>
-            <a href="evenimente.html">EVENIMENTE & TARIFE</a>
-            <a href="gastronomie.html">GASTRONOMIE</a>
-            <a href="metanoia.html">METANOIA</a>
-            <a href="contact.html">CONTACT</a>
-            <a href="rezervari.html">REZERVARE</a>
-        </nav>
+        </div>
+        <div class="burger"><div></div><div></div><div></div></div>
     </header>
 
-    <section class="hero-events">
-        <h1>Evenimente & Tarife</h1>
+    <section class="hero-ev">
+        <h1>Evenimente & Experiențe</h1>
     </section>
 
     <main class="container">
         
-        <p class="section-label">Categorii Evenimente</p>
-        <div class="events-grid">
+        <div class="metanoia-intro">
+            <h3>Conceptul Metanoia</h3>
+            <p>„Metanoia nu este un pachet turistic, ci o invitație la transformare. Combinăm liniștea absolută a muntelui cu ateliere de creație și explorare off-road pentru a regăsi rânduiala interioară.”</p>
+            <p style="font-size: 1rem; margin-top: 20px; color: #888;">Fiecare experiență Metanoia este unică și se rânduiește împreună cu tine.</p>
+        </div>
+
+        <p class="section-label">Categorii de Evenimente</p>
+        <div class="event-grid">
             <div class="event-card">
                 <div class="event-img" style="background-image: url('images/sura.jpg');"></div>
-                <div class="event-content">
-                    <h3>Corporate Retreat</h3>
-                    <p>Leadership, strategie și reconectare în vatra șurii. Spațiul ideal pentru echipe care caută esența dincolo de birou.</p>
+                <div class="event-body">
+                    <h4>CORPORATE RETREAT</h4>
+                    <p>Leadership și strategie în tăcerea munților. Schimbăm mediul pentru a schimba perspectiva.</p>
                 </div>
             </div>
             <div class="event-card">
                 <div class="event-img" style="background-image: url('images/narcise.jpg');"></div>
-                <div class="event-content">
-                    <h3>Private Heritage</h3>
-                    <p>Botezuri, cununii intime sau aniversări sub cerul liber. Rânduim fiecare moment ca pe o moștenire de familie.</p>
+                <div class="event-body">
+                    <h4>PRIVATE GATHERING</h4>
+                    <p>Botezuri în tihnă, aniversări discrete sau cununii sub cerul liber. Rânduim momente de neuitat.</p>
                 </div>
             </div>
         </div>
+
+        <div class="price-tag">
+            <h4>Închiriere Integrală Pensiune</h4>
+            <div class="value">2.000 <span>RON / noapte</span></div>
+            <p style="color: #666; margin-top: 10px;">*Capacitate 10 persoane. Se închiriază pentru minim 2 nopți.</p>
+            <a href="contact.html" class="btn-gold">SOLICITĂ OFERTĂ EVENIMENT</a>
+        </div>
+
     </main>
 
-    <section class="pricing-wrap">
-        <p class="section-label">Tarife și Pachete Signature</p>
-        <div class="price-grid">
-            <div class="price-card">
-                <h4>Rânduiala Veche</h4>
-                <div class="price-value">2.000 <span>RON / noapte</span></div>
-                <ul>
-                    <li><i class="fas fa-check"></i> Închiriere Integrală (10 persoane)</li>
-                    <li><i class="fas fa-check"></i> Acces Exclusiv la Pensiune</li>
-                    <li><i class="fas fa-check"></i> Mic Dejun Tradițional inclus</li>
-                    <li><i class="fas fa-check"></i> Minim 2 nopți de tihnă</li>
-                </ul>
-                <a href="rezervari.html" class="btn-gold">SOLICITĂ REZERVARE</a>
-            </div>
-
-            <div class="price-card featured">
-                <div class="badge">RECOMANDAT</div>
-                <h4>Metanoia All-In</h4>
-                <div class="price-value">4.000 <span>RON / pachet</span></div>
-                <ul>
-                    <li><i class="fas fa-check"></i> 3 Nopți Cazare Premium</li>
-                    <li><i class="fas fa-check"></i> Demipensiune Bio & Locală</li>
-                    <li><i class="fas fa-check"></i> Tur Off-road & Explorare 4x4</li>
-                    <li><i class="fas fa-check"></i> Atelier de Creație inclus</li>
-                </ul>
-                <a href="rezervari.html" class="btn-gold">REZERVĂ EXPERIENȚA</a>
-            </div>
-        </div>
-        <div style="text-align: center; margin-top: 60px; color: #555; font-style: italic;">
-            <p>*Pentru evenimente personalizate (corporate/private), tarifele se stabilesc în rânduială cu cerințele dumneavoastră.</p>
-        </div>
-    </section>
-
     <footer>
-        <p>HAȚEG ALTERNATIV &copy; 2026 | DAKAMIGOS MARKT SRL</p>
-        <span class="tribute">TRIBUT PATRICIA</span>
+        <p>HAȚEG ALTERNATIV &copy; 2026 | TRIBUT PATRICIA</p>
     </footer>
 
-    <script>
-        const burger = document.getElementById('burger');
-        const nav = document.getElementById('nav-links');
-        if(burger) { burger.onclick = () => { nav.classList.toggle('active'); } }
-    </script>
 </body>
 </html>
