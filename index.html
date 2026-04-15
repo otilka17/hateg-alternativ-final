@@ -15,47 +15,65 @@
         a { text-decoration: none !important; color: inherit !important; }
 
         /* HEADER & LOGO */
-        .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
+        .site-header { position: absolute; top: 0; width: 100%; z-index: 999; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
         .brand-logo { height: 70px; width: auto; filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.5)); }
         .brand-logo svg { height: 100%; width: auto; }
 
-        .burger { cursor: pointer; z-index: 10001; padding: 10px; }
+        .burger { cursor: pointer; z-index: 1001; padding: 10px; }
         .burger div { width: 30px; height: 2px; background: var(--auriu); margin: 6px; transition: 0.3s; }
-        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: rgba(0,0,0,0.98); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.5s ease; z-index: 10000; }
+        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: rgba(0,0,0,0.98); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.5s ease; z-index: 1000; }
         .main-nav.active { right: 0; }
         .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 15px 0; color: #fff !important; text-transform: uppercase; letter-spacing: 3px; }
 
         /* HERO */
-        .hero { height: 100vh; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+        .hero { height: 100vh; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
         .hero-bg { position: absolute; inset: 0; background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.7)), url('images/rasarit.jpg') center/cover no-repeat; z-index: 1; }
         .hero-content { position: relative; z-index: 10; padding: 0 20px; }
         .hero-content h1 { font-family: 'Playfair Display'; font-size: clamp(3.5rem, 10vw, 7.5rem); color: var(--auriu); font-style: italic; line-height: 1.1; }
 
-        /* CATEGORII */
+        /* GRID LUX */
         .grid-lux { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; padding: 40px 20px; max-width: 1400px; margin: 0 auto; }
-        .card-lux { height: 450px; display: flex; flex-direction: column; justify-content: flex-end; padding: 30px; border: 1px solid #1a1a1a; position: relative; overflow: hidden; background-size: cover; background-position: center; transition: 0.5s ease; }
-        .card-lux:hover { transform: scale(1.02); }
+        .card-lux { height: 450px; display: flex; flex-direction: column; justify-content: flex-end; padding: 30px; border: 1px solid #1a1a1a; position: relative; overflow: hidden; background-size: cover; background-position: center; transition: 0.5s; }
         .card-lux::before { content: ""; position: absolute; inset: 0; background: var(--overlay); z-index: 1; }
-        .btn-gold { position: relative; z-index: 5; display: inline-block; padding: 12px 25px; border: 1px solid var(--auriu); color: var(--auriu); font-family: 'Cinzel'; font-size: 0.75rem; letter-spacing: 2px; transition: 0.3s; background: transparent; cursor: pointer; }
+        .btn-gold { position: relative; z-index: 5; display: inline-block; padding: 12px 25px; border: 1px solid var(--auriu); color: var(--auriu); font-family: 'Cinzel'; font-size: 0.75rem; transition: 0.3s; background: transparent; }
 
-        /* FORUM PREVIEW */
+        /* RECENZII FEED (Elfsight) */
         .forum-preview { padding: 80px 20px; background: #050505; text-align: center; border-top: 1px solid #111; }
         .forum-preview h2 { font-family: 'Playfair Display'; font-size: 2.8rem; color: var(--auriu); font-style: italic; margin-bottom: 40px; }
-        
+        a[href*="elfsight.com"] { display: none !important; }
+
+        /* POP-UP NATIV "LA BULIGĂ" */
+        #custom-popup { position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 9999; display: none; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(5px); }
+        .popup-content { background: #0a0a0a; border: 1px solid var(--auriu); max-width: 450px; width: 100%; padding: 40px; text-align: center; position: relative; border-radius: 4px; box-shadow: 0 0 30px rgba(197, 160, 89, 0.2); }
+        .popup-close { position: absolute; top: 15px; right: 15px; color: var(--auriu); font-size: 1.5rem; cursor: pointer; opacity: 0.7; }
+        .popup-content h2 { font-family: 'Playfair Display'; color: var(--auriu); font-style: italic; font-size: 2.2rem; margin-bottom: 15px; }
+        .popup-content p { font-size: 0.9rem; color: #ccc; margin-bottom: 25px; line-height: 1.6; }
+        .promo-code { display: block; border: 1px dashed var(--auriu); padding: 10px; margin-bottom: 25px; font-family: 'Cinzel'; color: var(--auriu); font-size: 1.2rem; letter-spacing: 3px; }
+        .popup-btn { background: #ff4747; color: white !important; padding: 15px 30px; display: inline-block; font-family: 'Cinzel'; font-weight: bold; letter-spacing: 2px; border-radius: 2px; transition: 0.3s; width: 100%; }
+        .popup-btn:hover { background: #d43f3f; transform: translateY(-2px); }
+
         /* FOOTER */
         .footer-legal { padding: 60px 20px; background: #080808; border-top: 1px solid #1a1a1a; }
         .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
         .footer-section h4 { color: var(--auriu); font-family: 'Cinzel'; margin-bottom: 20px; font-size: 0.8rem; letter-spacing: 2px; }
-        .footer-section p, .footer-section a { font-size: 0.75rem; color: #888 !important; margin-bottom: 10px; display: block; }
-        .anpc-links img { height: 40px; background: white; border-radius: 4px; padding: 2px; margin-right: 10px; }
+        .footer-section p { font-size: 0.75rem; color: #888; }
         .qr-box { background: white; padding: 8px; display: inline-block; border-radius: 6px; }
-
-        /* WHATSAPP & ASCUNDERE ELFSIGHT ADS */
+        
+        /* WHATSAPP FLOAT */
         .whatsapp-float { position: fixed; bottom: 30px; left: 20px; background: #25d366; border-radius: 50%; width: 55px; height: 55px; display: flex; align-items: center; justify-content: center; font-size: 28px; z-index: 1000; color: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
-        a[href*="elfsight.com"] { display: none !important; opacity: 0 !important; }
     </style>
 </head>
 <body>
+
+    <div id="custom-popup">
+        <div class="popup-content">
+            <span class="popup-close" onclick="closePopup()">&times;</span>
+            <h2>Oferta de Aur</h2>
+            <p>Rezervă-ți acum vacanța la pensiunea "La Buligă" și economisește 30% la cazare pentru rezervările făcute în avans.</p>
+            <span class="promo-code">GET30</span>
+            <a href="rezervari.html" class="popup-btn">REZERVĂ ACUM</a>
+        </div>
+    </div>
 
     <a href="https://wa.me/40749229686" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
@@ -66,9 +84,12 @@
         <div class="burger" id="burger"><div></div><div></div><div></div></div>
         <nav class="main-nav" id="nav-links">
             <a href="index.html">ACASĂ</a>
+            <a href="experiente.html">EXPERIENȚE & TARIFE</a>
             <a href="pensiune.html">PENSIUNEA</a>
             <a href="gastronomie.html">GASTRONOMIE</a>
-            <a href="forum.html">FORUM & RECENZII</a>
+            <a href="metanoia.html">METANOIA</a>
+            <a href="forum.html">FORUM</a>
+            <a href="contact.html">CONTACT</a>
             <a href="rezervari.html">REZERVARE</a>
         </nav>
     </header>
@@ -99,16 +120,8 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h4>DATE LEGALE</h4>
-                <p><strong>DAKAMIGOS MARKT SRL</strong></p>
+                <p>DAKAMIGOS MARKT SRL</p>
                 <p>CUI: RO40767794</p>
-                <p>Hațeg, Hunedoara</p>
-            </div>
-            <div class="footer-section">
-                <h4>ANPC</h4>
-                <div class="anpc-links">
-                    <a href="https://anpc.ro/ce-este-sal/" target="_blank"><img src="images/anpc-sal.png" alt="SAL"></a>
-                    <a href="https://ec.europa.eu/consumers/odr/" target="_blank"><img src="images/anpc-sol.png" alt="SOL"></a>
-                </div>
             </div>
             <div class="footer-section" style="text-align: center;">
                 <h4>MENIU DIGITAL</h4>
@@ -122,10 +135,22 @@
         </div>
     </footer>
 
-    <div class="elfsight-app-3b02c58c-e516-4340-9a57-45342cacc2d4" data-elfsight-app-lazy></div>
+    <script>
+        // Funcții Pop-up
+        function closePopup() { document.getElementById('custom-popup').style.display = 'none'; }
+        
+        window.onload = function() {
+            setTimeout(function() {
+                document.getElementById('custom-popup').style.display = 'flex';
+            }, 3000);
+        };
 
-    <script type="text/javascript">
-        // TAWK.TO - REINSTALAT
+        // Burger Menu
+        const burger = document.getElementById('burger');
+        const nav = document.getElementById('nav-links');
+        if(burger) { burger.onclick = () => { nav.classList.toggle('active'); } }
+
+        // TAWK.TO CHAT
         var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
         (function(){
             var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
@@ -133,11 +158,6 @@
             s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
             s0.parentNode.insertBefore(s1,s0);
         })();
-
-        // BURGER MENU
-        const burger = document.getElementById('burger');
-        const nav = document.getElementById('nav-links');
-        if(burger) { burger.onclick = () => { nav.classList.toggle('active'); } }
     </script>
 </body>
 </html>
