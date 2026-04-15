@@ -3,39 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rezervare | La Buligă</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Rezervare | Hațeg Alternativ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --auriu: #c5a059; --negru: #0a0a0a; --alb: #ffffff; }
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; }
-        .site-header { padding: 30px 50px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(197, 160, 89, 0.2); }
-        .brand-text { font-family: 'Cinzel'; color: var(--auriu); font-size: 0.7rem; letter-spacing: 2px; }
-        .hero-title { text-align: center; padding: 60px 20px; }
-        .hero-title h1 { font-family: 'Playfair Display'; font-size: 3rem; color: var(--auriu); font-style: italic; }
-        .form-container { max-width: 800px; margin: 0 auto 100px; padding: 0 20px; }
-        /* Fix text alb */
-        [class*="FormBuilder__Container"], span, label { color: #ffffff !important; }
-        button[type="submit"] { background-color: var(--auriu) !important; color: #000 !important; font-family: 'Cinzel' !important; }
-        footer { padding: 40px; text-align: center; color: #333; font-family: 'Cinzel'; font-size: 0.6rem; }
+        :root { --auriu: #c5a059; --negru: #050505; --gri: #0a0a0a; --alb: #fff; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+        
+        /* HEADER */
+        .site-header { position: fixed; top: 0; width: 100%; z-index: 1000; padding: 20px 50px; background: rgba(0,0,0,0.95); border-bottom: 1px solid rgba(197,160,89,0.2); display: flex; justify-content: space-between; align-items: center; }
+        .brand { font-family: 'Cinzel'; color: var(--auriu); font-weight: 900; letter-spacing: 3px; text-decoration: none; font-size: 0.8rem; }
+        
+        .main-container { max-width: 1200px; margin: 120px auto 50px; display: grid; grid-template-columns: 1fr 400px; gap: 40px; padding: 20px; }
+        
+        .form-side h2 { font-family: 'Cinzel'; color: var(--auriu); margin-bottom: 25px; letter-spacing: 3px; font-size: 1.2rem; }
+        .booking-form { display: grid; gap: 20px; }
+        
+        input, select, textarea { width: 100%; background: #000; border: 1px solid #222; padding: 15px; color: #fff; font-family: 'Inter'; outline: none; transition: 0.3s; }
+        input:focus, select:focus, textarea:focus { border-color: var(--auriu); }
+        
+        .date-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .label-mini { font-size: 0.65rem; color: var(--auriu); font-family: 'Cinzel'; display: block; margin-bottom: 5px; letter-spacing: 1px; }
+        
+        .extras-section { margin-top: 10px; border: 1px solid #1a1a1a; padding: 25px; background: #080808; }
+        .extra-item { display: flex; align-items: center; margin-bottom: 12px; font-size: 0.85rem; cursor: pointer; color: #ccc; }
+        .extra-item input { width: auto; margin-right: 15px; accent-color: var(--auriu); }
+        
+        /* SUMAR SIDE */
+        .summary-side { background: var(--gri); border: 1px solid rgba(197,160,89,0.3); padding: 35px; position: sticky; top: 120px; height: fit-content; }
+        .summary-side h3 { font-family: 'Cinzel'; color: var(--auriu); text-align: center; margin-bottom: 25px; letter-spacing: 2px; font-size: 1rem; }
+        .sum-row { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 0.8rem; border-bottom: 1px solid #1a1a1a; padding-bottom: 8px; color: #888; }
+        .sum-row span:last-child { color: #fff; font-weight: 600; }
+        
+        .total-row { margin-top: 25px; padding-top: 25px; border-top: 1px solid var(--auriu); display: flex; justify-content: space-between; align-items: center; }
+        .total-row span:first-child { font-family: 'Cinzel'; font-size: 0.8rem; color: var(--auriu); }
+        .total-price { font-family: 'Playfair Display'; font-size: 2.2rem; color: var(--auriu); font-style: italic; }
+        
+        .btn-send { background: transparent; border: 1px solid var(--auriu); color: var(--auriu); padding: 20px; font-family: 'Cinzel'; cursor: pointer; transition: 0.4s; width: 100%; font-weight: bold; letter-spacing: 2px; margin-top: 20px; }
+        .btn-send:hover { background: var(--auriu); color: #000; box-shadow: 0 0 20px rgba(197, 160, 89, 0.2); }
+        
+        .info-note { font-size: 0.7rem; color: #555; text-align: center; margin-top: 15px; font-style: italic; }
+
+        @media (max-width: 900px) { 
+            .main-container { grid-template-columns: 1fr; margin-top: 80px; } 
+            .summary-side { position: static; margin-top: 20px; }
+            .site-header { padding: 15px 20px; }
+        }
     </style>
 </head>
 <body>
+
     <header class="site-header">
-        <div class="brand-text">HAȚEG ALTERNATIV</div>
-        <nav><a href="index.html" style="color:var(--auriu); font-size:0.6rem; text-decoration:none; font-family:'Cinzel';">ÎNAPOI</a></nav>
+        <a href="index.html" class="brand">HAȚEG ALTERNATIV</a>
+        <a href="index.html" style="color:var(--auriu); text-decoration:none; font-family:'Cinzel'; font-size:0.6rem; letter-spacing:1px;">ÎNAPOI</a>
     </header>
 
-    <div class="hero-title">
-        <h1>Rezervare</h1>
-        <p style="font-family:'Cinzel'; font-size:0.6rem; letter-spacing:3px; color:#444;">FĂRĂ PLATĂ INSTANTĂ</p>
+    <div class="main-container">
+        <div class="form-side">
+            <h2>CERERE REZERVARE</h2>
+            <form id="bookingForm" action="https://formspree.io/f/xjgpvbkj" method="POST" class="booking-form">
+                <input type="text" name="Nume" placeholder="Numele tău complet" required>
+                <input type="text" name="Telefon" placeholder="Telefon / WhatsApp" required>
+                
+                <div class="date-grid">
+                    <div><span class="label-mini">Check-In</span><input type="date" id="checkin" name="Check-in" required></div>
+                    <div><span class="label-mini">Check-Out</span><input type="date" id="checkout" name="Check-out" required></div>
+                </div>
+
+                <span class="label-mini">Alege Experiența</span>
+                <select id="pachet_base" name="Pachet_Baza" required>
+                    <option value="0" disabled selected>Selectează un pachet...</option>
+                    <option value="2000" data-nume="Rânduiala Veche">Rânduiala Veche - 2000 RON / noapte</option>
+                    <option value="4000" data-nume="Metanoia All-In">Metanoia All-In - 4000 RON / noapte</option>
+                </select>
+
+                <div class="extras-section">
+                    <h4 class="label-mini" style="font-size: 0.75rem; margin-bottom: 15px;">ADĂUGAȚI SUPLIMENTE</h4>
+                    <label class="extra-item"><input type="checkbox" class="extra-cb" name="Atelier_Ebike" value="300"> Atelier E-Bike (+300 RON)</label>
+                    <label class="extra-item"><input type="checkbox" class="extra-cb" name="Atelier_Gastro" value="500"> Atelier Gastro (+500 RON)</label>
+                    <label class="extra-item"><input type="checkbox" class="extra-cb" name="Stane" value="400"> Zi la Stâne (+400 RON)</label>
+                    <label class="extra-item"><input type="checkbox" class="extra-cb" name="Nomad" value="600"> Tur Nomad 4x4 (+600 RON)</label>
+                    <label class="extra-item"><input type="checkbox" class="extra-cb" name="Pelerinaj" value="200"> Pelerinaj (+200 RON)</label>
+                </div>
+
+                <input type="number" name="Persoane" placeholder="Număr persoane" required>
+                <textarea name="Mesaj" rows="4" placeholder="Alte detalii sau cerințe speciale..."></textarea>
+                
+                <button type="submit" class="btn-send">TRIMITE CEREREA</button>
+                <p class="info-note">* Aceasta este o cerere de rezervare, nu o plată instantă. Vă vom contacta pentru confirmare.</p>
+            </form>
+        </div>
+
+        <div class="summary-side">
+            <h3>SUMAR ESTIMATIV</h3>
+            <div class="sum-row"><span>Pachet ales:</span> <span id="res_pachet">-</span></div>
+            <div class="sum-row"><span>Număr nopți:</span> <span id="res_nopti">0</span></div>
+            <div class="sum-row"><span>Suplimente:</span> <span id="res_extras">0 RON</span></div>
+            <div class="total-row">
+                <span>TOTAL ESTIMAT:</span> 
+                <span id="res_total" class="total-price">0 RON</span>
+            </div>
+            <p style="font-size: 0.6rem; color: #444; margin-top: 20px; line-height: 1.4;">
+                Prețul final va fi confirmat telefonic în funcție de disponibilitate și numărul exact de persoane.
+            </p>
+        </div>
     </div>
 
-    <main class="form-container">
-        <script src="https://elfsightcdn.com/platform.js" async></script>
-        <div class="elfsight-app-82c1ef99-f191-401c-a020-b28a4eeacfc0" data-elfsight-app-lazy></div>
-    </main>
+    <script>
+        const checkin = document.getElementById('checkin'); 
+        const checkout = document.getElementById('checkout');
+        const pachet = document.getElementById('pachet_base'); 
+        const extras = document.querySelectorAll('.extra-cb');
 
-    <footer>HAȚEG ALTERNATIV &copy; 2026</footer>
+        function calculate() {
+            const d1 = new Date(checkin.value); 
+            const d2 = new Date(checkout.value);
+            
+            let nopti = (checkin.value && checkout.value && d2 > d1) ? Math.ceil((d2 - d1) / (1000 * 60 * 60 * 24)) : 0;
+            const pretBaza = parseInt(pachet.value) || 0;
+            
+            let pretExtras = 0; 
+            extras.forEach(cb => { 
+                if(cb.checked) pretExtras += parseInt(cb.value); 
+            });
+
+            document.getElementById('res_pachet').innerText = pachet.options[pachet.selectedIndex].getAttribute('data-nume') || "-";
+            document.getElementById('res_nopti').innerText = nopti;
+            document.getElementById('res_extras').innerText = pretExtras + " RON";
+            
+            let total = (nopti * pretBaza) + pretExtras;
+            document.getElementById('res_total').innerText = total + " RON";
+        }
+
+        [checkin, checkout, pachet].forEach(el => el.addEventListener('change', calculate));
+        extras.forEach(cb => cb.addEventListener('change', calculate));
+    </script>
+
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true; s1.src='https://embed.tawk.to/65c5607435e8d61c3a875f21/1hklg1i9s';
+        s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
+    </script>
+
 </body>
 </html>
