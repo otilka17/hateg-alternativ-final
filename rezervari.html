@@ -28,8 +28,8 @@
 
         /* TITLU PAGINA */
         .page-header { text-align: center; padding: 40px 20px; }
-        .page-header h1 { font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--auriu); font-style: italic; margin-bottom: 10px; }
-        .page-header p { font-family: 'Cinzel', serif; letter-spacing: 4px; color: #666; font-size: 0.7rem; text-transform: uppercase; }
+        .page-header h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--auriu); font-style: italic; margin-bottom: 10px; }
+        .page-header p { font-family: 'Cinzel', serif; letter-spacing: 4px; color: #666; font-size: 0.6rem; text-transform: uppercase; }
 
         /* CONTAINERE */
         .rezervare-wrapper { max-width: 800px; margin: 0 auto 100px; padding: 0 20px; }
@@ -41,39 +41,40 @@
             border-radius: 8px; 
             margin-bottom: 30px;
         }
-        .step-title { font-family: 'Cinzel', serif; color: var(--auriu); font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 25px; border-bottom: 1px solid #222; padding-bottom: 10px; display: block; }
+        .step-title { font-family: 'Cinzel', serif; color: var(--auriu); font-size: 0.75rem; letter-spacing: 2px; margin-bottom: 25px; border-bottom: 1px solid #222; padding-bottom: 10px; display: block; }
 
-        /* FIX ELFSIGHT */
+        /* FIX ELFSIGHT (TEXT ALB) */
         [class*="FormBuilder__Container"], [class*="form-entity"], span, label, input, h2, div { color: #ffffff !important; }
         input, select, textarea { background-color: #111 !important; border: 1px solid #333 !important; color: #fff !important; }
-        [class*="ButtonBase__Ellipsis"], button[type="submit"] { background-color: var(--auriu) !important; color: #000 !important; font-family: 'Cinzel', serif !important; font-weight: bold !important; }
-
-        /* PLATA REVOLUT & IBAN */
-        .payment-area { text-align: center; }
-        .btn-revolut {
-            display: inline-block;
-            background: #ffffff; /* Alb pentru contrast cu Revolut */
-            color: #1971ff; /* Albastru Revolut */
-            padding: 18px 40px;
-            font-family: 'Inter', sans-serif;
-            font-weight: 800;
-            font-size: 1rem;
-            border-radius: 50px;
-            margin: 20px 0;
-            transition: 0.3s;
-            box-shadow: 0 5px 15px rgba(25, 113, 255, 0.2);
+        [class*="ButtonBase__Ellipsis"], button[type="submit"] { 
+            background-color: var(--auriu) !important; 
+            color: #000 !important; 
+            font-family: 'Cinzel', serif !important; 
+            font-weight: bold !important; 
+            text-transform: uppercase;
+            padding: 15px !important;
         }
-        .btn-revolut:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(25, 113, 255, 0.4); }
 
-        .iban-box {
-            margin-top: 30px;
-            padding: 20px;
-            border: 1px dashed #333;
-            background: rgba(255,255,255,0.02);
-            font-size: 0.8rem;
+        /* IBAN BOX */
+        .iban-container { text-align: center; padding: 20px; }
+        .iban-details {
+            margin-top: 20px;
+            padding: 25px;
+            border: 1px dashed var(--auriu);
+            background: rgba(197, 160, 89, 0.03);
+            border-radius: 4px;
         }
-        .iban-box p { margin-bottom: 5px; color: #888; }
-        .iban-text { color: var(--auriu); font-family: monospace; font-size: 1.1rem; letter-spacing: 1px; }
+        .iban-details p { margin-bottom: 8px; font-size: 0.85rem; color: #ccc; }
+        .iban-code { 
+            font-family: 'Courier New', monospace; 
+            font-size: 1.2rem; 
+            color: var(--auriu); 
+            letter-spacing: 1px; 
+            display: block;
+            margin: 15px 0;
+            word-break: break-all;
+        }
+        .whatsapp-note { font-size: 0.7rem; color: #555; font-style: italic; margin-top: 15px; }
 
         footer { padding: 40px; text-align: center; border-top: 1px solid #111; font-family: 'Cinzel', serif; font-size: 0.55rem; color: #333; letter-spacing: 2px; }
         .whatsapp-float { position: fixed; bottom: 25px; left: 20px; background: #25d366; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; font-size: 24px; z-index: 1000; color: #fff; }
@@ -111,21 +112,18 @@
             <div class="elfsight-app-82c1ef99-f191-401c-a020-b28a4eeacfc0" data-elfsight-app-lazy></div>
         </div>
 
-        <div class="step-box payment-area">
-            <span class="step-title">Pasul 2: Confirmă cu Avans (50 EUR)</span>
-            <p style="font-size: 0.8rem; color: #666; margin-bottom: 10px;">Folosește link-ul de Revolut pentru plată instant sau transfer bancar clasic.</p>
+        <div class="step-box iban-container">
+            <span class="step-title">Pasul 2: Confirmare Avans (50€)</span>
+            <p style="font-size: 0.8rem; color: #888;">Pentru a bloca data dorită, te rugăm să efectuezi un transfer bancar:</p>
             
-            <a href="https://revolut.me/otiliaioana" target="_blank" class="btn-revolut">
-                <i class="fa-solid fa-bolt"></i> PLĂTEȘTE PRIN REVOLUT
-            </a>
-
-            <div class="iban-box">
-                <p>Transfer Bancar (Cont Firmă):</p>
-                <p><strong>DAKAMIGOS MARKT SRL</strong></p>
-                <p class="iban-text">RO00 BBBB 0000 0000 0000 0000</p>
-                <p>Banca: BCR / BT / ING</p>
-                <p style="margin-top:10px; font-size:0.65rem;"><em>* Te rugăm să trimiți dovada plății pe WhatsApp.</em></p>
+            <div class="iban-details">
+                <p>Beneficiar: <strong>DAKAMIGOS MARKT SRL</strong></p>
+                <p>Banca: <strong>Banca Transilvania / BCR</strong></p>
+                <span class="iban-code">RO00 BBBB 0000 0000 0000 0000</span>
+                <p style="color: var(--auriu); font-family: 'Cinzel'; font-size: 0.7rem;">Suma: 250 RON (Echivalent 50 EUR)</p>
             </div>
+
+            <p class="whatsapp-note">Te rugăm să trimiți o dovadă a plății pe WhatsApp pentru confirmare instantanee.</p>
         </div>
 
     </main>
