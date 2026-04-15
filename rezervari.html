@@ -11,38 +11,51 @@
     <style>
         :root { --auriu: #c5a059; --negru: #000000; --alb: #ffffff; }
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        
+        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; }
         a { text-decoration: none !important; color: inherit !important; }
 
-        /* HEADER & LOGO */
+        /* HEADER */
         .site-header { position: relative; width: 100%; z-index: 9999; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; background: #000; border-bottom: 1px solid rgba(197,160,89,0.2); }
-        .brand-logo { height: 50px; width: auto; filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.5)); }
-        .brand-logo svg { height: 100%; width: auto; }
-
+        .brand-logo { height: 45px; width: auto; filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.5)); }
+        
         .burger { cursor: pointer; z-index: 10001; padding: 10px; }
         .burger div { width: 28px; height: 2px; background: var(--auriu); margin: 5px; transition: 0.3s; }
         
-        /* MENIU COMPLET (7 SECTIUNI) */
+        /* MENU */
         .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: rgba(0,0,0,0.98); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.5s ease; z-index: 10000; }
         .main-nav.active { right: 0; }
         .main-nav a { font-size: 1.3rem; font-family: 'Cinzel'; margin: 12px 0; color: #fff !important; text-transform: uppercase; letter-spacing: 2px; }
-        .main-nav a:hover { color: var(--auriu) !important; }
 
         /* TITLU PAGINA */
-        .page-header { text-align: center; padding: 60px 20px 40px; }
-        .page-header h1 { font-family: 'Playfair Display'; font-size: 3.5rem; color: var(--auriu); font-style: italic; }
-        .page-header p { font-family: 'Cinzel'; letter-spacing: 3px; color: #666; font-size: 0.8rem; margin-top: 10px; }
+        .page-header { text-align: center; padding: 40px 20px; }
+        .page-header h1 { font-family: 'Playfair Display'; font-size: 2.8rem; color: var(--auriu); font-style: italic; }
 
-        /* FORMULAR CONTAINER */
-        .form-wrapper { max-width: 800px; margin: 0 auto 100px; padding: 0 20px; }
-        
-        /* ASCUNDERE RECLAME & ADMIN PANEL ELFSIGHT */
-        a[href*="elfsight.com"], .eapps-widget-toolbar { display: none !important; opacity: 0 !important; visibility: hidden !important; }
+        /* FIX PENTRU TEXTUL INVIZIBIL */
+        .form-container { 
+            max-width: 800px; 
+            margin: 0 auto 100px; 
+            padding: 30px; 
+            background: #0a0a0a; /* Fundal foarte inchis dar nu negru pur */
+            border: 1px solid #1a1a1a;
+            border-radius: 8px;
+        }
 
-        .footer-legal { padding: 60px 20px; background: #080808; border-top: 1px solid #1a1a1a; text-align: center; }
-        .footer-legal h4 { color: var(--auriu); font-family: 'Cinzel'; font-size: 0.8rem; margin-bottom: 20px; }
-        .footer-legal p { font-size: 0.7rem; color: #555; }
+        /* Fortam Elfsight sa arate textul cu alb prin CSS */
+        [class*="FormBuilder__Container"], [class*="form-entity"], span, label, input, h2, div {
+            color: #ffffff !important;
+        }
         
+        input, select, textarea {
+            background-color: #1a1a1a !important;
+            border: 1px solid #333 !important;
+            color: #fff !important;
+        }
+
+        /* ASCUNDEM BARA DE ADMIN ELFSIGHT */
+        .eapps-widget-toolbar, a[href*="elfsight.com"] { display: none !important; opacity: 0 !important; }
+
+        footer { padding: 40px; text-align: center; border-top: 1px solid #111; font-family: 'Cinzel'; font-size: 0.6rem; color: #444; }
         .whatsapp-float { position: fixed; bottom: 25px; left: 20px; background: #25d366; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; font-size: 24px; z-index: 1000; color: #fff; }
     </style>
 </head>
@@ -52,7 +65,7 @@
 
     <header class="site-header">
         <div class="brand-logo">
-            <svg viewBox="0 0 800 500"><circle cx="400" cy="250" r="105" fill="none" stroke="#c5a059" stroke-width="4"/><path d="M300 400 L400 200 L500 400 Z" fill="#c5a059"/></svg>
+            <svg viewBox="0 0 800 500" style="height: 100%;"><circle cx="400" cy="250" r="105" fill="none" stroke="#c5a059" stroke-width="4"/><path d="M300 400 L400 200 L500 400 Z" fill="#c5a059"/></svg>
         </div>
         <div class="burger" id="burger"><div></div><div></div><div></div></div>
         
@@ -69,32 +82,18 @@
 
     <div class="page-header">
         <h1>Rezervare</h1>
-        <p>Alege rânduiala ta la munte</p>
     </div>
 
-    <main class="form-wrapper">
+    <div class="form-container">
         <script src="https://elfsightcdn.com/platform.js" async></script>
         <div class="elfsight-app-82c1ef99-f191-401c-a020-b28a4eeacfc0" data-elfsight-app-lazy></div>
-    </main>
+    </div>
 
-    <footer class="footer-legal">
-        <h4>LA BULIGĂ</h4>
-        <p>DAKAMIGOS MARKT SRL | CUI: RO40767794</p>
-        <div style="margin-top:20px; opacity:0.3;">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&data=https://hategalternativ.ro/rezervari.html" alt="QR">
-        </div>
+    <footer>
+        HAȚEG ALTERNATIV &copy; 2026 | DAKAMIGOS MARKT SRL
     </footer>
 
     <script>
-        // TAWK.TO
-        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-        (function(){
-        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-        s1.async=true; s1.src='https://embed.tawk.to/65c5607435e8d61c3a875f21/1hklg1i9s';
-        s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
-        s0.parentNode.insertBefore(s1,s0);
-        })();
-
         // BURGER MENU
         const burger = document.getElementById('burger');
         const nav = document.getElementById('nav-links');
