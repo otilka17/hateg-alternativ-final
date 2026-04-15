@@ -43,6 +43,7 @@
         /* GRID LUX - 5 CARDURI */
         .grid-lux { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; padding: 40px 20px; max-width: 1400px; margin: 0 auto; }
         .card-lux { height: 450px; display: flex; flex-direction: column; justify-content: flex-end; padding: 30px; border: 1px solid #1a1a1a; position: relative; overflow: hidden; background-size: cover; background-position: center; transition: 0.5s ease; }
+        .card-lux:hover { transform: scale(1.02); }
         .card-lux::before { content: ""; position: absolute; inset: 0; background: var(--overlay); z-index: 1; }
         .card-content { position: relative; z-index: 5; }
         .card-content h3 { font-family: 'Cinzel'; color: var(--auriu); font-size: 1.1rem; margin-bottom: 15px; letter-spacing: 2px; }
@@ -67,9 +68,10 @@
             .dash-container { grid-template-columns: 1fr; }
         }
 
-        /* GÂNDURI - REPARAT PENTRU VIZIBILITATE */
-        .dark-wrap { padding: 80px 20px; background: #050505; text-align: center; border-top: 1px solid #111; min-height: 400px; }
+        /* SECȚIUNI ELFSIGHT */
+        .dark-wrap { padding: 80px 20px; background: #050505; text-align: center; border-top: 1px solid #111; }
         .dark-wrap h2 { font-family: 'Playfair Display'; font-size: 2.5rem; color: var(--auriu); font-style: italic; margin-bottom: 40px; }
+        .section-tag { font-family: 'Cinzel'; color: var(--auriu); font-size: 0.75rem; letter-spacing: 5px; margin-bottom: 30px; display: block; }
 
         /* FOOTER LEGAL */
         .footer-legal { padding: 60px 20px; background: #080808; border-top: 1px solid #1a1a1a; }
@@ -85,125 +87,4 @@
 </head>
 <body>
 
-    <a href="https://wa.me/40749229686" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
-
-    <header class="site-header">
-        <div class="brand-box">
-            <div class="brand-logo">
-                <svg viewBox="0 0 800 500">
-                    <circle cx="400" cy="250" r="105" fill="none" stroke="#c5a059" stroke-width="4" opacity="0.6"/>
-                    <path d="M300 400 L400 200 L500 400 Z" fill="#c5a059"/>
-                </svg>
-            </div>
-            <div class="brand-text">HAȚEG ALTERNATIV</div>
-        </div>
-        <div class="burger" id="burger"><div></div><div></div><div></div></div>
-        <nav class="main-nav" id="nav-links">
-            <a href="index.html">ACASĂ</a>
-            <a href="experiente.html">EXPERIENȚE & TARIFE</a>
-            <a href="pensiune.html">PENSIUNEA</a>
-            <a href="gastronomie.html">GASTRONOMIE</a>
-            <a href="metanoia.html">METANOIA</a>
-            <a href="rezervari.html">REZERVARE</a>
-        </nav>
-    </header>
-
-    <section class="hero">
-        <div class="hero-bg"></div>
-        <div class="hero-content">
-            <h1>La Buligă.</h1>
-            <p>Rânduiala veche în munte</p>
-        </div>
-    </section>
-
-    <section class="manifest-section">
-        <p>„Așază cuminte pe grinzi vechi și te invită să respiri odată cu muntele.”</p>
-    </section>
-
-    <div class="grid-lux">
-        <div class="card-lux" style="background-image: url('images/la-buliga-pensiune.jpg');">
-            <div class="card-content"><h3>CAZARE INTEGRALĂ</h3><a href="pensiune.html" class="btn-gold">DETALII</a></div>
-        </div>
-        <div class="card-lux" style="background-image: url('images/gast-masa-traditionala.jpg');">
-            <div class="card-content"><h3>GASTRONOMIE</h3><a href="gastronomie.html" class="btn-gold">MENIU</a></div>
-        </div>
-        <div class="card-lux" style="background-image: url('images/hero-premium.jpg');">
-            <div class="card-content"><h3>MANIFEST METANOIA</h3><a href="metanoia.html" class="btn-gold">MANIFEST</a></div>
-        </div>
-        <div class="card-lux" style="background-image: url('images/index-mancare.jpg');">
-            <div class="card-content"><h3>EVENIMENTE</h3><a href="evenimente.html" class="btn-gold">MOMENTE</a></div>
-        </div>
-        <div class="card-lux" style="background-image: url('images/gonomad.jpg');">
-            <div class="card-content"><h3>CONTACT</h3><a href="contact.html" class="btn-gold">CONTACT</a></div>
-        </div>
-    </div>
-
-    <div class="dash-container">
-        <div class="dash-card">
-            <h4>ATMOSFERA</h4>
-            <div class="w-flex">
-                <div class="w-box"><span>HAȚEG</span><big>12°C</big></div>
-                <div style="width:1px; height:60px; background:#1a1a1a;"></div>
-                <div class="w-box"><span style="color:var(--auriu);">VADU DOBRII</span><big style="color:var(--auriu);">6°C</big></div>
-            </div>
-        </div>
-        <div class="dash-card">
-            <h4>CALENDAR 2026</h4>
-            <a href="rezervari.html" class="cal-item"><div><h5>Tabăra Metanoia</h5><p>15-20 Iunie</p></div><span class="btn-mini">DETALII</span></a>
-            <a href="rezervari.html" class="cal-item"><div><h5>Atelier Gastro</h5><p>10-12 Iulie</p></div><span class="btn-mini">DETALII</span></a>
-            <a href="rezervari.html" class="cal-item"><div><h5>Yoga & Silence</h5><p>August 2026</p></div><span class="btn-mini">DETALII</span></a>
-        </div>
-    </div>
-
-    <section class="dark-wrap">
-        <h3 style="font-family:'Cinzel'; color:var(--auriu); letter-spacing:4px; font-size:0.8rem; margin-bottom:30px;">COORDONATE</h3>
-        <div class="elfsight-app-4342bef8-07d4-4bfe-9114-34160d0e96f1"></div>
-    </section>
-
-    <section class="dark-wrap" style="background: #080808;">
-        <h2>Gânduri de la Oaspeți</h2>
-        <div class="elfsight-app-e204a27d-0a66-45bb-8486-27afa8a94a26"></div>
-    </section>
-
-    <footer class="footer-legal">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>DATE LEGALE</h4>
-                <p><strong>DAKAMIGOS MARKT SRL</strong></p>
-                <p>CUI: RO40767794</p>
-                <p>Reg. Com: J20/386/2019</p>
-            </div>
-            <div class="footer-section">
-                <h4>ANPC</h4>
-                <div class="anpc-links">
-                    <a href="https://anpc.ro/ce-este-sal/" target="_blank"><img src="images/anpc-sal.png" alt="SAL"></a>
-                    <a href="https://ec.europa.eu/consumers/odr/" target="_blank"><img src="images/anpc-sol.png" alt="SOL"></a>
-                </div>
-            </div>
-            <div class="footer-section" style="text-align: center;">
-                <h4>MENIU DIGITAL</h4>
-                <div class="qr-box">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://hategalternativ.ro/gastronomie.html" alt="QR Meniu">
-                </div>
-            </div>
-        </div>
-        <div style="text-align:center; margin-top:40px; font-family:'Cinzel'; font-size:0.7rem; color:#444;">
-            HAȚEG ALTERNATIV &copy; 2026 | TRIBUT PATRICIA
-        </div>
-    </footer>
-
-    <script type="text/javascript">
-        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-        (function(){
-            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-            s1.async=true; s1.src='https://embed.tawk.to/65c5607435e8d61c3a875f21/1hklg1i9s';
-            s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
-            s0.parentNode.insertBefore(s1,s0);
-        })();
-
-        const burger = document.getElementById('burger');
-        const nav = document.getElementById('nav-links');
-        if(burger) { burger.onclick = () => { nav.classList.toggle('active'); } }
-    </script>
-</body>
-</html>
+    <div class="elfsight-app-3b02c58c-e516-4340-9a57-45342cacc2d4" data-elfsight-app-lazy
