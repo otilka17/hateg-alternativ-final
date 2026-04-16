@@ -23,30 +23,30 @@
         .main-nav.active { right: 0; }
         .main-nav a { font-size: 1.5rem; font-family: 'Cinzel'; margin: 15px 0; color: #fff !important; text-transform: uppercase; letter-spacing: 4px; }
 
-        /* HERO - Inaltime optimizata */
+        /* HERO */
         .hero-gastro { height: 40vh; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1920&auto=format&fit=crop') center/cover; display: flex; align-items: center; justify-content: center; text-align: center; }
         .hero-gastro h1 { font-family: 'Playfair Display'; font-size: clamp(2.2rem, 7vw, 4rem); font-style: italic; color: var(--auriu); }
 
         .menu-container { max-width: 850px; margin: 30px auto; padding: 0 20px; }
 
-        /* CATEGORII - Design echilibrat */
-        .menu-category { margin-bottom: 40px; }
-        .category-header { position: relative; height: 220px; overflow: hidden; margin-bottom: 15px; border: 1px solid #1a1a1a; border-radius: 4px; }
-        .category-header img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: 1s; }
+        /* CATEGORII */
+        .menu-category { margin-bottom: 50px; }
+        .category-header { position: relative; height: 220px; overflow: hidden; margin-bottom: 20px; border: 1px solid #1a1a1a; border-radius: 4px; }
+        .category-header img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; }
         .category-overlay { position: absolute; bottom: 0; left: 0; width: 100%; padding: 15px 20px; background: linear-gradient(to top, var(--negru), transparent); }
-        .category-overlay h2 { font-family: 'Playfair Display'; font-size: 1.6rem; font-style: italic; color: var(--auriu); }
+        .category-overlay h2 { font-family: 'Playfair Display'; font-size: 1.8rem; font-style: italic; color: var(--auriu); }
 
         /* LISTA PRODUSE */
-        .menu-item { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 6px; }
-        .item-info h3 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; color: #fff; font-weight: 700; }
-        .item-info p { font-size: 0.7rem; color: #777; font-style: italic; }
-        .item-price { font-family: 'Playfair Display'; color: var(--auriu); font-weight: 700; font-size: 1rem; margin-left: 10px; }
+        .menu-item { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px; }
+        .item-info h3 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px; color: #fff; font-weight: 700; }
+        .item-info p { font-size: 0.75rem; color: #777; font-style: italic; }
+        .item-price { font-family: 'Playfair Display'; color: var(--auriu); font-weight: 700; font-size: 1.1rem; margin-left: 10px; }
 
         footer { padding: 50px 20px; text-align: center; background: #000; border-top: 1px solid #111; }
         .whatsapp-float { position: fixed; bottom: 30px; left: 25px; background: #25d366; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; font-size: 24px; z-index: 1000; color: #fff; }
 
         @media (max-width: 600px) {
-            .category-header { height: 160px; }
+            .category-header { height: 180px; }
             .hero-gastro { height: 30vh; }
         }
     </style>
@@ -76,43 +76,51 @@
         
         <div class="menu-category">
             <div class="category-header">
-                <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?q=80&w=1000&auto=format&fit=crop" alt="Ciorbe Traditionale">
-                <div class="category-overlay"><h2>Ciorbe & Supe</h2></div>
+                <img src="https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?q=80&w=1000&auto=format&fit=crop" alt="Mic Dejun Rustic">
+                <div class="category-overlay"><h2>Mic Dejun</h2></div>
             </div>
-            <div class="menu-item"><div class="item-info"><h3>Ciorbă de burtă</h3><p>Secretul Pădurenilor.</p></div><div class="item-price">28 RON</div></div>
-            <div class="menu-item"><div class="item-info"><h3>Ciorbă de fasole cu ciolan</h3><p>Gătită domol la ceaun.</p></div><div class="item-price">25 RON</div></div>
+            
+            <div class="menu-item">
+                <div class="item-info"><h3>Platou Local "La Buligă"</h3><p>Brânzeturi de munte, zacuscă, șuncă afumată și pâine la cuptor.</p></div>
+                <div class="item-price">45 RON</div>
+            </div>
+            
+            <div class="menu-item">
+                <div class="item-info"><h3>Ochiuri Țărănești</h3><p>Ouă de casă, slănină perpelită și brânză proaspătă.</p></div>
+                <div class="item-price">30 RON</div>
+            </div>
+
+            <div class="menu-item">
+                <div class="item-info"><h3>Omletă Pădurenească</h3><p>Cu ciuperci de pădure și verdețuri.</p></div>
+                <div class="item-price">28 RON</div>
+            </div>
         </div>
 
         <div class="menu-category">
             <div class="category-header">
-                <img src="https://images.unsplash.com/photo-1473093226795-af9932fe5856?q=80&w=1000&auto=format&fit=crop" alt="Paste Signature">
-                <div class="category-overlay"><h2>Paste Signature</h2></div>
+                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1000&auto=format&fit=crop" alt="Cina Premium">
+                <div class="category-overlay"><h2>Cină</h2></div>
             </div>
-            <div class="menu-item"><div class="item-info"><h3>Somon sau Creveți</h3><p>Fusilli artizanale cu fructe de mare.</p></div><div class="item-price">55-65 RON</div></div>
-        </div>
+            
+            <div class="menu-item">
+                <div class="item-info"><h3>Tocăniță de Vită Metanoia</h3><p>Carne fragedă gătită domol în vin roșu, cu mămăliguță cremoasă.</p></div>
+                <div class="item-price">65 RON</div>
+            </div>
 
-        <div class="menu-category">
-            <div class="category-header">
-                <img src="https://images.unsplash.com/photo-1546548970-71785318a17b?q=80&w=1000&auto=format&fit=crop" alt="Paste Clasice">
-                <div class="category-overlay"><h2>Paste Clasice</h2></div>
+            <div class="menu-item">
+                <div class="item-info"><h3>Păstrăv la Grătar</h3><p>Prins local, servit cu mujdei de usturoi și cartofi aurii.</p></div>
+                <div class="item-price">55 RON</div>
             </div>
-            <div class="menu-item"><div class="item-info"><h3>Bolognese / Carbonara</h3><p>Rețeta originală cu gust bogat.</p></div><div class="item-price">38 RON</div></div>
-        </div>
 
-        <div class="menu-category">
-            <div class="category-header">
-                <img src="https://images.unsplash.com/photo-1518013391915-e40643a1b2bd?q=80&w=1000&auto=format&fit=crop" alt="Garnituri">
-                <div class="category-overlay"><h2>Garnituri</h2></div>
+            <div class="menu-item">
+                <div class="item-info"><h3>Ciolan cu Varză Călită</h3><p>Gătit tradițional pe foc de lemne.</p></div>
+                <div class="item-price">48 RON</div>
             </div>
-            <div class="menu-item"><div class="item-info"><h3>Cartofi Aurii</h3><p>La cuptor cu ierburi aromatice.</p></div><div class="item-price">15 RON</div></div>
-        </div>
 
-        <div class="menu-category">
-            <div class="category-header">
-                <img src="https://images.unsplash.com/photo-1568254183919-78a4f43a2877?q=80&w=1000&auto=format&fit=crop" alt="Placinte Traditionale">
-                <div class="category-overlay"><h2>Plăcinte & Langoși</h2></div>
+            <div class="menu-item">
+                <div class="item-info"><h3>Specialitatea Casei</h3><p>Paste Signature cu arome montane.</p></div>
+                <div class="item-price">55 RON</div>
             </div>
-            <div class="menu-item"><div class="item-info"><h3>Plăcinte pe lespede</h3><p>Umplutură bogată de brânză sau măr.</p></div><div class="item-price">18 RON</div></div>
         </div>
 
     </main>
