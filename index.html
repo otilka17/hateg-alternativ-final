@@ -40,7 +40,7 @@
         /* INTRO */
         .container { max-width: 1400px; margin: 0 auto; padding: 100px 20px; text-align: center; }
         .intro-box h2 { font-family: 'Playfair Display'; font-style: italic; font-size: clamp(1.8rem, 5vw, 3.2rem); margin-bottom: 30px; line-height: 1.2; }
-        .intro-box p { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 5px; font-size: 0.9rem; margin-bottom: 20px; }
+        .intro-box p { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 5px; font-size: 0.9rem; }
 
         /* CELE 5 CARDURI */
         .grid-5 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; margin-bottom: 80px; }
@@ -51,31 +51,29 @@
         .card-info h4 { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 3px; font-size: 1.1rem; }
 
         /* BIKE HIGHLIGHT */
-        .bike-highlight { background: #080808; padding: 80px 20px; border-top: 1px solid #1a1a1a; text-align: center; margin-bottom: 60px; }
-        .bike-box { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; background: #050505; border: 1px solid #111; padding: 40px; }
+        .bike-box { max-width: 1200px; margin: 0 auto 100px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; background: #050505; border: 1px solid #111; padding: 40px; }
         .bike-text-box { text-align: left; }
         .bike-text-box h3 { font-family: 'Playfair Display'; font-style: italic; font-size: 2.5rem; color: var(--auriu); margin-bottom: 20px; }
         .bike-text-box p { font-size: 1.1rem; line-height: 1.6; color: #ccc; }
-        .bike-img-box img { width: 100%; border: 1px solid var(--auriu); opacity: 0.9; }
+        .bike-img-box img { width: 100%; border: 1px solid var(--auriu); }
 
         /* CALENDAR EVENIMENTE */
         .event-row { display: grid; grid-template-columns: 120px 1fr 200px; gap: 20px; align-items: center; padding: 25px; border: 1px solid #1a1a1a; background: #050505; margin-bottom: 15px; text-align: left; }
         .event-row:hover { border-color: var(--auriu); }
 
-        /* UTILS: VREMEA & ELFSIGHT */
+        /* UTILS: METEO & REVIEWS */
         .utils-wrap { background: #050505; padding: 80px 20px; border-top: 1px solid #111; }
         .utils-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; max-width: 1100px; margin: 0 auto; }
-        .util-box { border: 1px solid #1a1a1a; padding: 30px; text-align: center; }
+        .util-box { border: 1px solid #1a1a1a; padding: 30px; text-align: center; min-height: 250px; display: flex; flex-direction: column; justify-content: center; }
         .util-box h4 { font-family: 'Cinzel'; color: var(--auriu); margin-bottom: 20px; letter-spacing: 3px; }
 
-        .btn-gold { display: inline-block; padding: 12px 25px; border: 1px solid var(--auriu); color: var(--auriu); font-family: 'Cinzel'; font-size: 0.75rem; transition: 0.3s; background: transparent; cursor: pointer; }
+        .btn-gold { display: inline-block; padding: 12px 25px; border: 1px solid var(--auriu); color: var(--auriu); font-family: 'Cinzel'; font-size: 0.75rem; transition: 0.3s; background: transparent; cursor: pointer; text-align: center; }
         .btn-gold:hover { background: var(--auriu); color: #000 !important; }
 
         /* FOOTER LEGAL */
-        .footer-legal { padding: 80px 20px; background: #000; border-top: 1px solid #1a1a1a; text-align: center; }
+        footer { padding: 80px 20px; background: #000; border-top: 1px solid #1a1a1a; text-align: center; }
         .footer-links { margin: 20px 0; font-size: 0.75rem; color: #555; }
         .footer-links a { margin: 0 10px; text-decoration: underline !important; }
-        .footer-links a:hover { color: var(--auriu); }
         .qr-box { background: white; padding: 8px; display: inline-block; border-radius: 6px; margin-top: 20px; }
         .tribute { font-family: 'Cinzel'; font-size: 0.7rem; color: #444; letter-spacing: 4px; margin-top: 40px; display: block; text-transform: uppercase; }
 
@@ -147,7 +145,9 @@
         <div class="event-row">
             <div style="font-family: 'Cinzel'; color: var(--auriu); text-align: center; border-right: 1px solid #1a1a1a;">01<br><small>MAI</small></div>
             <div style="padding-left: 20px;"><h4 style="font-family: 'Playfair Display'; font-style: italic;">Marea Deschidere</h4><p style="font-size: 0.8rem; color: #666;">Inaugurăm oficial rânduiala veche la Domeniile la Buligă.</p></div>
-            <div style="text-align: right;"><span style="color: var(--auriu); border: 1px solid var(--auriu); padding: 5px 10px; font-size: 0.7rem; letter-spacing: 2px;">EARLY BOOKING</span></div>
+            <div style="text-align: right;">
+                <a href="rezervari.html" class="btn-gold">EARLY BOOKING</a>
+            </div>
         </div>
 
         <div class="event-row">
@@ -155,6 +155,10 @@
             <div style="padding-left: 20px;"><h4 style="font-family: 'Playfair Display'; font-style: italic;">Atelier: Flori pe Pânză</h4><p style="font-size: 0.8rem; color: #666;">Creație manuală în grădina cu narcise.</p></div>
             <div style="text-align: right;"><a href="rezervari.html" class="btn-gold" style="padding: 8px 15px; font-size: 0.6rem;">RESERVĂ</a></div>
         </div>
+
+        <h3 style="font-family: 'Cinzel'; color: var(--auriu); margin: 80px 0 30px; letter-spacing: 3px; font-size: 0.9rem;">GÂNDURI DE LA OASPEȚI</h3>
+        <div class="elfsight-app-9e87d320-859d-4ef5-9a42-3eaeeaadb2d7" data-elfsight-app-lazy></div>
+
     </main>
 
     <section class="utils-wrap">
@@ -162,18 +166,20 @@
             <div class="utils-grid">
                 <div class="util-box">
                     <h4>VREMEA LA MUNTE</h4>
-                    <a class="weatherwidget-io" href="https://forecast7.com/ro/45p4722p94/hateg/" data-label_1="HAȚEG" data-label_2="RETEZAT" data-font="Playfair Display" data-icons="Climacons Animated" data-theme="pure" >HAȚEG RETEZAT</a>
-                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');</script>
+                    <div style="width: 100%; min-height: 150px;">
+                        <a class="weatherwidget-io" href="https://forecast7.com/ro/45p4722p94/hateg/" data-label_1="HAȚEG" data-label_2="RETEZAT" data-font="Playfair Display" data-icons="Climacons Animated" data-theme="pure" >HAȚEG RETEZAT</a>
+                        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');</script>
+                    </div>
                 </div>
                 <div class="util-box">
-                    <h4>ATRACȚII & PROGRAM</h4>
+                    <h4>PROGRAMUL EXPERIENȚELOR</h4>
                     <div class="elfsight-app-bccbbe48-b741-4518-ab8e-2fe18bcb0a3b" data-elfsight-app-lazy></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="footer-legal">
+    <footer>
         <div class="container" style="padding:0;">
             <p style="font-size: 0.8rem; color: #888;"><strong>DAKAMIGOS MARKT SRL</strong> | CUI: RO40767794 | J20/386/2019</p>
             
@@ -197,12 +203,10 @@
     </footer>
 
     <script>
-        // Meniu Burger
         const burger = document.getElementById('burger');
         const nav = document.getElementById('nav-links');
         if(burger) { burger.onclick = () => nav.classList.toggle('active'); }
 
-        // Slider Hero
         let current = 0;
         const track = document.getElementById('gallerySlider');
         const slides = document.querySelectorAll('.gallery-slide');
@@ -213,7 +217,6 @@
             }, 6000);
         }
 
-        // Tawk.to Chat
         var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
         (function(){
             var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
