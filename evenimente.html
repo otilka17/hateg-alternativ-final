@@ -50,4 +50,95 @@
 
         /* FOOTER */
         footer { padding: 80px 20px; text-align: center; background: #000; border-top: 1px solid #111; margin-top: 100px; }
-        .legal-row {
+        .legal-row { margin-top: 40px; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; font-size: 0.75rem; color: #555; font-family: 'Cinzel'; letter-spacing: 1px; }
+        .legal-row a:hover { color: var(--auriu) !important; }
+        .anpc-row { margin: 30px 0; display: flex; justify-content: center; gap: 20px; }
+        .anpc-row img { height: 40px; background: white; padding: 3px; border-radius: 2px; }
+
+        .whatsapp-float { position: fixed; bottom: 30px; left: 30px; background: #25d366; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 1000; color: #fff; }
+
+        @media (max-width: 768px) { .site-header { padding: 15px 25px; } .hero-small h1 { font-size: 3.5rem; } .event-entry { margin-bottom: 80px; } }
+    </style>
+</head>
+<body>
+
+    <a href="https://wa.me/40749229686" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+    <header class="site-header">
+        <a href="index.html" class="brand-logo">
+            <svg viewBox="0 0 800 500"><circle cx="400" cy="250" r="105" fill="none" stroke="#c5a059" stroke-width="2" opacity="0.6"/><path d="M300 400 L400 200 L500 400 Z" fill="#c5a059"/></svg>
+        </a>
+        <div class="burger" id="burger"><div></div><div></div></div>
+        <nav class="main-nav" id="nav-links">
+            <a href="index.html">Acasă</a>
+            <a href="pensiune.html">Pensiunea</a>
+            <a href="metanoia.html">Metanoia</a>
+            <a href="gastronomie.html">Gastronomie</a>
+            <a href="evenimente.html">Evenimente</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero-small">
+        <h1>Experiențe curatoriate</h1>
+    </section>
+
+    <main class="container">
+
+        <div class="event-entry">
+            <span class="label-date">01 MAI 2026</span>
+            <h2>Serată Romano-Italiană</h2>
+            <p>O sărbătoare a simțurilor desfășurată sub cerul liber al Poienii Ruscă. Inaugurăm sezonul cu o fuziune gastronomică unde preparatele gătite lent la foc deschis întâlnesc rafinamentul mediteranean. Muzică vie, joc tradițional și tihnă, într-un cadru limitat la 30 de oaspeți. Dispunem de 10 locuri de cazare premium pentru cei care doresc să prelungească experiența tăcerii montane.</p>
+            <div style="margin-bottom: 40px; font-family:'Cinzel'; color:var(--auriu); font-size:1.2rem; letter-spacing:2px;">Tarif: 250 Lei / Persoană</div>
+            <a href="https://wa.me/40749229686?text=Bună!%20Doresc%20să%20rezerv%20un%20loc%20prin%20Early%20Booking%20pentru%20Serata%20Romano-Italiană%20din%201%20Mai." target="_blank" class="btn-gold">EARLY BOOKING PE WHATSAPP</a>
+        </div>
+
+        <div class="event-entry">
+            <div class="event-img-wrap"><img src="images/narcise.jpg" alt="Poiana Narciselor"></div>
+            <span class="label-date">10-11 MAI 2026</span>
+            <h2>Bike & Flowers: Vadu Dobrii</h2>
+            <p>Pornim din legendarul sat Vadu Dobrii, situat la 1100m altitudine, într-o explorare activă pe e-bike-uri performante. Traseul ne poartă prin păduri seculare până în inima Poienii Narciselor, oferind un amestec perfect de adrenalină și relaxare vizuală. O experiență de neuitat în plină explozie de primăvară în Ținutul Pădurenilor.</p>
+            <a href="https://wa.me/40749229686?text=Bună!%20Doresc%20să%20rezerv%20turul%20Bike%20%26%20Flowers%20din%2010-11%20Mai." target="_blank" class="btn-gold">REZERVĂ TURUL PE WHATSAPP</a>
+        </div>
+
+        <div class="event-entry">
+            <div class="event-img-wrap"><img src="images/Sarmizegetusa.jpg" alt="Sarmizegetusa Regia"></div>
+            <span class="label-date">PARTENERIAT GONOMAD</span>
+            <h2>Sarmizegetusa: Două Capitale</h2>
+            <p>O incursiune de două zile în istoria milenară a acestor meleaguri. Vizităm Sarmizegetusa Regia și Ulpia Traiana Sarmizegetusa sub îndrumarea ghizilor specializați. Pentru cei care caută confortul după drumeție, oferim cazare opțională la Domeniile la Buligă, unde liniștea crestelor întâlnește ospitalitatea noastră.</p>
+            <a href="https://wa.me/40749229686?text=Bună!%20Vreau%20detalii%20despre%20turul%20Sarmizegetusa%20cu%20cazare%20la%20Buligă." target="_blank" class="btn-gold">DETALII REZERVARE PE WHATSAPP</a>
+        </div>
+
+        <div style="margin-top: 50px;">
+            <h3 style="font-family:'Cinzel'; color:var(--auriu); text-align:center; margin-bottom:40px; letter-spacing:5px; font-size:1rem;">PARTENERI DE DRUM</h3>
+            <div class="elfsight-app-2a7a128c-e004-486e-961a-99f57d874913" data-elfsight-app-lazy></div>
+        </div>
+
+    </main>
+
+    <footer>
+        <p style="font-size:0.8rem; color:#444; letter-spacing:2px; font-weight:bold;">DAKAMIGOS MARKT SRL | CUI: RO40767794</p>
+        
+        <div class="anpc-row">
+            <a href="https://anpc.ro/ce-este-sal/" target="_blank"><img src="images/anpc-sal.png" alt="ANPC SAL"></a>
+            <a href="https://ec.europa.eu/consumers/odr/" target="_blank"><img src="images/anpc-sol.png" alt="ANPC SOL"></a>
+        </div>
+
+        <div class="legal-row">
+            <a href="politica-cookies.html">POLITICA COOKIES</a> | 
+            <a href="termeni.html">TERMENI ȘI CONDIȚII</a> | 
+            <a href="confidentialitate.html">POLITICA DE CONFIDENȚIALITATE</a>
+        </div>
+        
+        <p style="margin-top:40px; font-family:'Cinzel'; font-size:0.7rem; color:#888; letter-spacing:5px;">HAȚEG ALTERNATIV © 2026 | TRIBUT PATRICIA</p>
+    </footer>
+
+    <script>
+        const burger = document.getElementById('burger');
+        const nav = document.getElementById('nav-links');
+        if(burger) {
+            burger.onclick = () => nav.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
