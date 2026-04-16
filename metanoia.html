@@ -24,6 +24,7 @@
         
         a { text-decoration: none; color: inherit; transition: 0.3s; }
 
+        /* HEADER */
         .site-header { position: fixed; top: 0; width: 100%; z-index: 10000; padding: 20px 30px; display: flex; justify-content: space-between; align-items: center; background: rgba(5,5,5,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(197,160,89,0.2); }
         .brand { font-family: var(--font-cinzel); font-weight: 900; letter-spacing: 3px; text-transform: uppercase; font-size: 0.85rem; color: var(--auriu-crem); }
         .burger { cursor: pointer; z-index: 10001; }
@@ -33,6 +34,7 @@
         .main-nav.active { right: 0; }
         .main-nav a { font-size: 1.6rem; font-family: var(--font-cinzel); margin: 15px 0; color: var(--alb) !important; letter-spacing: 3px; text-transform: uppercase; }
 
+        /* GALLERY TOP */
         .gallery-viewport { width: 100%; height: 70vh; overflow: hidden; position: relative; margin-top: 70px; }
         .gallery-track { display: flex; width: 100%; height: 100%; transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1); }
         .gallery-slide { min-width: 100%; height: 100%; position: relative; }
@@ -41,10 +43,54 @@
         .gallery-caption h3 { font-family: var(--font-serif); font-size: clamp(2rem, 8vw, 3.5rem); font-style: italic; color: #fff; line-height: 1.1; }
         .gallery-caption p { font-family: var(--font-cinzel); font-size: 0.7rem; color: var(--auriu-crem); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 5px; }
 
+        /* CONTAINER GENERAL */
         .container { max-width: 1200px; margin: 0 auto; padding: 80px 20px; }
-        .metanoia-intro { text-align: center; max-width: 800px; margin: 0 auto 80px; }
+        .metanoia-intro { text-align: center; max-width: 800px; margin: 0 auto 40px; }
         .metanoia-intro h2 { font-family: var(--font-cinzel); color: var(--auriu-crem); letter-spacing: 6px; font-size: 0.85rem; margin-bottom: 20px; text-transform: uppercase; }
         .metanoia-intro p { font-family: var(--font-serif); font-size: clamp(1.5rem, 4vw, 2.5rem); font-style: italic; color: #fff; line-height: 1.3; }
+
+        /* --- STILURI VIDEO INTEGRATE --- */
+        .video-teaser-section { display: flex; flex-direction: column; align-items: center; padding-bottom: 80px; }
+        #video-container {
+            position: relative;
+            width: 100%;
+            max-width: 350px; /* Dimensiune optimizată pentru pagină */
+            aspect-ratio: 9 / 16;
+            background: #111;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            overflow: hidden;
+            border: 1px solid #1a1a1a;
+            border-radius: 8px;
+        }
+        .scene { position: absolute; inset: 0; opacity: 0; transition: opacity 1s ease-in-out; visibility: hidden; }
+        .scene.active { opacity: 1; visibility: visible; }
+        .scene img { width: 100%; height: 100%; object-fit: cover; transform: scale(1); transition: transform 3s linear; }
+        .scene.active img { transform: scale(1.1); }
+        .text-overlay {
+            position: absolute; bottom: 15%; left: 10%; right: 10%; text-align: center;
+            color: var(--alb); text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+            font-family: var(--font-serif); font-size: 1.4rem; font-style: italic; z-index: 10;
+            opacity: 0; transform: translateY(20px); transition: all 0.8s ease 0.5s;
+        }
+        .scene.active .text-overlay { opacity: 1; transform: translateY(0); }
+        .scene.final .text-overlay {
+            bottom: 50%; transform: translateY(50%); font-family: var(--font-cinzel);
+            font-weight: 700; color: var(--auriu-crem); background: rgba(0,0,0,0.6);
+            padding: 15px; border: 1px solid var(--auriu-crem); font-size: 1.1rem; font-style: normal;
+        }
+        #play-overlay {
+            position: absolute; inset: 0; background: rgba(0,0,0,0.75);
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            z-index: 100; cursor: pointer; color: var(--auriu-crem);
+        }
+        #play-button {
+            width: 60px; height: 60px; border: 2px solid var(--auriu-crem);
+            border-radius: 50%; display: flex; justify-content: center; align-items: center;
+            margin-bottom: 15px; font-size: 24px; transition: 0.3s;
+        }
+        #play-overlay:hover #play-button { background: var(--auriu-crem); color: #000; }
+        .brand-watermark { position: absolute; top: 15px; left: 15px; font-family: var(--font-cinzel); font-size: 0.6rem; letter-spacing: 2px; color: rgba(255,255,255,0.4); z-index: 20; }
+        /* --- SFARSIT STILURI VIDEO --- */
 
         .section-label { font-family: var(--font-cinzel); color: var(--auriu-crem); text-align: center; letter-spacing: 5px; font-size: 0.75rem; margin-bottom: 50px; text-transform: uppercase; }
         
@@ -100,6 +146,29 @@
         <div class="metanoia-intro">
             <h2>Manifest Metanoia</h2>
             <p>O călătorie curatoriată unde rânduiala veche întâlnește liniștea muntelui.</p>
+        </div>
+
+        <div class="video-teaser-section">
+            <div id="video-container">
+                <div class="brand-watermark">HAȚEG ALTERNATIV</div>
+                
+                <div id="play-overlay" onclick="startVideo()">
+                    <div id="play-button">▶</div>
+                    <p style="font-family:'Cinzel'; font-size: 0.7rem; letter-spacing: 2px;">APASĂ PENTRU VIBE</p>
+                </div>
+
+                <div class="scene" data-duration="2500"><img src="images/nori.jph.jpg"><div class="text-overlay">Simți nevoia de o pauză?</div></div>
+                <div class="scene" data-duration="2500"><img src="images/hero-premium.jpg"><div class="text-overlay">De zgomot...</div></div>
+                <div class="scene" data-duration="2500"><img src="images/apus1.jpg"><div class="text-overlay">...și de agitație?</div></div>
+                <div class="scene" data-duration="2500"><img src="images/jeep.jpg"><div class="text-overlay">Evadează în Ținutul Pădurenilor.</div></div>
+                <div class="scene" data-duration="2500"><img src="images/feed-buliga.jpg"><div class="text-overlay">Bine ai venit la Buligă.</div></div>
+                <div class="scene" data-duration="2500"><img src="images/IMG_20260330_160505.jpg"><div class="text-overlay">Rânduiala veche...</div></div>
+                <div class="scene" data-duration="2500"><img src="images/IMG_20260330_160314.jpg"><div class="text-overlay">...într-un confort regăsit.</div></div>
+                <div class="scene final" data-duration="4500">
+                    <img src="images/Screenshot_2026-04-15-14-23-23-38_254de13a4bc8758c9908fff1f73e3725.jpg">
+                    <div class="text-overlay">Early Booking 2026.<br>Securizează-ți tihna.</div>
+                </div>
+            </div>
         </div>
 
         <p class="section-label">Pachete Signature</p>
@@ -160,12 +229,12 @@
     <footer>HAȚEG ALTERNATIV &copy; 2026 | TRIBUT PATRICIA</footer>
 
     <script>
+        /* SCRIPT BURGER */
         const burger = document.getElementById('burger');
         const nav = document.getElementById('nav-links');
-        if(burger) {
-            burger.onclick = () => nav.classList.toggle('active');
-        }
+        if(burger) { burger.onclick = () => nav.classList.toggle('active'); }
 
+        /* SCRIPT SLIDER TOP */
         let current = 0;
         const track = document.getElementById('gallerySlider');
         const slides = document.querySelectorAll('.gallery-slide');
@@ -176,6 +245,40 @@
             }, 5000);
         }
 
+        /* --- SCRIPT VIDEO PREVIEW --- */
+        const videoScenes = document.querySelectorAll('.scene');
+        let currentVideoScene = 0;
+
+        function startVideo() {
+            document.getElementById('play-overlay').style.display = 'none';
+            playNextVideoScene();
+        }
+
+        function playNextVideoScene() {
+            if (currentVideoScene > 0) {
+                videoScenes[currentVideoScene - 1].classList.remove('active');
+            } else if (currentVideoScene === 0) {
+                videoScenes[videoScenes.length - 1].classList.remove('active');
+            }
+
+            const activeScene = videoScenes[currentVideoScene];
+            activeScene.classList.add('active');
+            const duration = parseInt(activeScene.getAttribute('data-duration'));
+
+            setTimeout(() => {
+                currentVideoScene++;
+                if (currentVideoScene < videoScenes.length) {
+                    playNextVideoScene();
+                } else {
+                    currentVideoScene = 0;
+                    setTimeout(() => {
+                        document.getElementById('play-overlay').style.display = 'flex';
+                    }, 1500);
+                }
+            }, duration);
+        }
+
+        /* TAWK.TO */
         var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
         (function(){
             var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
