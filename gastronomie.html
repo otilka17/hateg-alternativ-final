@@ -9,7 +9,7 @@
     <style>
         :root { --auriu: #c5a059; --alb: #ffffff; --negru: #050505; }
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        body { font-family: 'Inter', sans-serif; background: var(--negru); color: var(--alb); line-height: 1.6; }
+        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; scroll-behavior: smooth; line-height: 1.6; }
 
         .site-header { position: fixed; top: 0; width: 100%; z-index: 1000; padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; background: rgba(5,5,5,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(197,160,89,0.1); }
         .brand { font-family: 'Cinzel'; font-weight: 900; letter-spacing: 5px; text-transform: uppercase; font-size: 1rem; color: var(--auriu); text-decoration: none; }
@@ -21,17 +21,24 @@
         .menu-category { margin-bottom: 80px; }
         
         .category-header { position: relative; height: 350px; overflow: hidden; margin-bottom: 30px; border: 1px solid #1a1a1a; }
-        .category-header img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: 1s; }
+        .category-header img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: 1.5s ease; }
+        .menu-category:hover .category-header img { opacity: 0.8; transform: scale(1.05); }
         .category-overlay { position: absolute; bottom: 0; left: 0; width: 100%; padding: 30px; background: linear-gradient(to top, var(--negru), transparent); }
         .category-overlay h2 { font-family: 'Playfair Display'; font-size: 2.5rem; font-style: italic; color: var(--auriu); }
 
         .menu-item { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px; }
         .item-info h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 800; color: #fff; }
-        .item-info p { font-size: 0.8rem; color: #888; font-style: italic; }
+        .item-info p { font-size: 0.8rem; font-weight: 300; color: #888; font-style: italic; }
         .item-price { font-family: 'Playfair Display'; color: var(--auriu); font-weight: 700; font-size: 1.2rem; min-width: 90px; text-align: right; }
 
-        footer { padding: 60px 20px; background: #000; border-top: 1px solid #111; text-align: center; font-family: 'Cinzel'; font-size: 0.7rem; color: #444; }
+        footer { padding: 80px 20px; background: #000; border-top: 1px solid #111; text-align: center; }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; text-align: left; }
+        .legal-box h5 { color: var(--auriu); font-family: 'Cinzel'; margin-bottom: 20px; font-size: 0.8rem; letter-spacing: 2px; }
+        .legal-box p { font-size: 0.75rem; color: #666; margin-bottom: 10px; }
+
         .whatsapp-float { position: fixed; bottom: 30px; left: 30px; background: #25d366; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 1000; color: #fff; }
+
+        @media (max-width: 768px) { .menu-item { flex-direction: column; text-align: center; } .item-price { margin: 10px auto; text-align: center; } .category-header { height: 250px; } }
     </style>
 </head>
 <body>
@@ -40,7 +47,7 @@
 
     <header class="site-header">
         <a href="index.html" class="brand">HAȚEG ALTERNATIV</a>
-        <nav><a href="index.html" style="color:var(--auriu); text-decoration:none; font-size:0.75rem; font-family:'Cinzel';">ÎNAPOI</a></nav>
+        <nav><a href="index.html" style="color:var(--auriu); text-decoration:none; font-size:0.75rem; font-weight:700; letter-spacing:2px; font-family:'Cinzel';">ÎNAPOI</a></nav>
     </header>
 
     <section class="hero-gastro"><h1>Gustul de Aur.</h1></section>
@@ -53,41 +60,61 @@
                 <div class="category-overlay"><h2>Ciorbe & Supe</h2></div>
             </div>
             <div class="menu-item"><div class="item-info"><h3>Ciorbă de burtă</h3><p>Dreasă cu smântână și usturoi.</p></div><div class="item-price">28 RON</div></div>
-            <div class="menu-item"><div class="item-info"><h3>Ciorbă de fasole cu ciolan</h3><p>Afumătură de casă.</p></div><div class="item-price">25 RON</div></div>
+            <div class="menu-item"><div class="item-info"><h3>Ciorbă de fasole cu ciolan</h3><p>Afumătură de casă (și variantă de post).</p></div><div class="item-price">25 RON</div></div>
+            <div class="menu-item"><div class="item-info"><h3>Supă de tăiței</h3><p>Tăiței de casă făcuți manual.</p></div><div class="item-price">22 RON</div></div>
         </div>
 
         <div class="menu-category">
             <div class="category-header">
-                <img src="images/la-buliga-pensiune.jpg" alt="Paste Signature">
+                <img src="images/pasta-ai-signature.jpg" alt="Paste Signature">
                 <div class="category-overlay"><h2>Paste Signature</h2></div>
             </div>
             <div class="menu-item"><div class="item-info"><h3>Somon sau Creveți</h3><p>Senzații marine în inima munților.</p></div><div class="item-price">55-65 RON</div></div>
-            <div class="menu-item"><div class="item-info"><h3>Zucchini & Somon</h3><p>Fuziune rafinată și ușoară.</p></div><div class="item-price">48 RON</div></div>
+            <div class="menu-item"><div class="item-info"><h3>Zucchini & Somon</h3><p>O fuziune rafinată și ușoară.</p></div><div class="item-price">48 RON</div></div>
         </div>
 
         <div class="menu-category">
             <div class="category-header">
-                <img src="images/index-mancare.jpg" alt="Garnituri">
+                <img src="images/pasta-ai-classic.jpg" alt="Paste Clasice">
+                <div class="category-overlay"><h2>Paste Clasice</h2></div>
+            </div>
+            <div class="menu-item"><div class="item-info"><h3>Bolognese / Carbonara</h3><p>Artizanale, cu sosuri pregătite în casă.</p></div><div class="item-price">38 RON</div></div>
+            <div class="menu-item"><div class="item-info"><h3>Vinete Parmigiana</h3><p>Un deliciu vegetarian cu brânzeturi fine.</p></div><div class="item-price">38 RON</div></div>
+        </div>
+
+        <div class="menu-category">
+            <div class="category-header">
+                <img src="images/garnituri-hateg-alternativ-ai.jpg" alt="Garnituri">
                 <div class="category-overlay"><h2>Garnituri</h2></div>
             </div>
             <div class="menu-item"><div class="item-info"><h3>Cartofi Aurii</h3><p>La cuptor, cu rozmarin și usturoi.</p></div><div class="item-price">15 RON</div></div>
             <div class="menu-item"><div class="item-info"><h3>Cartofi țărănești cu sângerete</h3><p>Gustul pur al satului hațegan.</p></div><div class="item-price">35 RON</div></div>
+            <div class="menu-item"><div class="item-info"><h3>Varză călită</h3><p>Gătită domol pe foc (Post).</p></div><div class="item-price">30 RON</div></div>
         </div>
 
         <div class="menu-category">
             <div class="category-header">
-                <img src="images/IMG20260416111657.jpg" alt="Plăcinte">
+                <img src="images/placinte-padurenesti-hateg-alternativ-ai.jpg" alt="Plăcinte">
                 <div class="category-overlay"><h2>Plăcinte & Langoși</h2></div>
             </div>
-            <div class="menu-item"><div class="item-info"><h3>Plăcinte pe lespede</h3><p>Tradiționale, cu brânză sau măr.</p></div><div class="item-price">18 RON</div></div>
-            <div class="menu-item"><div class="item-info"><h3>Porone</h3><p>Plăcintă tradițională locală.</p></div><div class="item-price">18 RON</div></div>
+            <div class="menu-item"><div class="item-info"><h3>Plăcinte pe lespede Pădurenești</h3><p>Cu brânză sau măr, coapte tradițional.</p></div><div class="item-price">18 RON</div></div>
+            <div class="menu-item"><div class="item-info"><h3>Langoși tip "Plăcinte"</h3><p>Varză, brânză sau ciocolată.</p></div><div class="item-price">15 RON</div></div>
         </div>
-
     </main>
 
     <footer>
-        <p>DAKAMIGOS MARKT SRL | CUI: RO40767794</p>
-        <p style="margin-top:10px;">HAȚEG ALTERNATIV &copy; 2026</p>
+        <div class="footer-content">
+            <div class="legal-box">
+                <h5>DAKAMIGOS MARKT SRL</h5>
+                <p>CUI: RO40767794</p>
+                <p>Hațeg, Hunedoara</p>
+            </div>
+            <div class="legal-box">
+                <h5>SCAN TO SHARE</h5>
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://hategalternativ.ro/gastronomie.html" alt="QR" style="background:white; padding:5px; border-radius:5px;">
+            </div>
+        </div>
+        <p style="margin-top:40px; font-family:'Cinzel'; font-size:0.7rem; color:#444; letter-spacing:5px;">HAȚEG ALTERNATIV &copy; 2026 | TRIBUT PATRICIA</p>
     </footer>
 
 </body>
