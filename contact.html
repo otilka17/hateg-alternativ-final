@@ -16,20 +16,20 @@
         body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
         a { text-decoration: none !important; color: inherit !important; }
 
-        .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 30px 50px; display: flex; justify-content: space-between; align-items: center; }
-        .brand-logo svg { height: 70px; width: auto; }
+        .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 30px 50px; display: flex; justify-content: space-between; align-items: center; background: rgba(5,5,5,0.8); backdrop-filter: blur(5px); }
+        .brand-logo svg { height: 60px; width: auto; }
         .burger div { width: 30px; height: 1px; background: var(--auriu); margin: 8px; }
         
         .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: var(--negru); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.6s; z-index: 10000; }
         .main-nav.active { right: 0; }
         .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 15px 0; color: #fff !important; text-transform: uppercase; letter-spacing: 5px; }
 
-        .hero-contact { height: 40vh; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.9)), url('images/jeep.jpg') center/cover; display: flex; align-items: center; justify-content: center; text-align: center; }
+        .hero-contact { height: 45vh; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.9)), url('images/jeep.jpg') center/cover; display: flex; align-items: center; justify-content: center; text-align: center; }
         .hero-contact h1 { font-family: 'Playfair Display'; font-size: 3.5rem; color: var(--auriu); font-style: italic; }
 
         .container { max-width: 1200px; margin: 0 auto; padding: 80px 20px; }
 
-        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; margin-bottom: 100px; }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; margin-bottom: 80px; }
         .contact-info h2 { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 6px; font-size: 0.9rem; margin-bottom: 30px; }
         .contact-info p { font-family: 'Playfair Display'; font-style: italic; font-size: 1.8rem; color: #ccc; line-height: 1.4; margin-bottom: 50px; }
         
@@ -37,15 +37,15 @@
         .info-item i { color: var(--auriu); font-size: 1.2rem; }
         .info-item strong { font-size: 1.1rem; color: #fff; display: block; }
 
-        /* SURVEY VISIBILITY FIX - Spațiu alb pentru a vedea textul negru din widget */
-        .survey-highlight { background: #fff; color: #000; padding: 60px 40px; border-radius: 4px; margin-top: 80px; }
-        .survey-highlight h3 { font-family: 'Cinzel'; text-align: center; margin-bottom: 30px; letter-spacing: 3px; font-size: 1.2rem; }
+        /* FIX VIZIBILITATE SURVEY - FUNDAL ALB PENTRU TEXT NEGRU */
+        .survey-block { background: #ffffff; color: #000000 !important; padding: 60px 40px; border-radius: 8px; margin-top: 50px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        .survey-block h3 { font-family: 'Cinzel'; text-align: center; margin-bottom: 30px; color: #000; letter-spacing: 3px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
 
-        footer { padding: 60px 20px; text-align: center; border-top: 1px solid #111; }
-        .legal-row { margin-top: 30px; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; font-size: 0.7rem; color: #555; }
+        footer { padding: 80px 20px; text-align: center; border-top: 1px solid #111; background: #000; }
+        .legal-row { margin-top: 30px; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; font-size: 0.75rem; color: #555; }
         .whatsapp-float { position: fixed; bottom: 30px; left: 30px; background: #25d366; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 1000; color: #fff; }
 
-        @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; } .hero-contact h1 { font-size: 2.8rem; } }
     </style>
 </head>
 <body>
@@ -68,7 +68,7 @@
         <div class="contact-grid">
             <div class="contact-info">
                 <h2>INFORMAȚII CONTACT</h2>
-                <p>"Timpul petrecut în Poiana Ruscă începe cu un simplu mesaj."</p>
+                <p>"Mesajul tău este primul pas spre liniștea muntelui."</p>
                 <div class="info-item"><i class="fas fa-map-marker-alt"></i><strong>Domeniile la Buligă, Poiana Ruscă</strong></div>
                 <div class="info-item"><i class="fab fa-whatsapp"></i><strong>0749 229 686</strong></div>
                 <div class="info-item"><i class="fas fa-envelope"></i><strong>contact@hategalternativ.ro</strong></div>
@@ -79,8 +79,8 @@
             </div>
         </div>
 
-        <div class="survey-highlight">
-            <h3>OPINIA TA CONTEAZĂ</h3>
+        <div class="survey-block">
+            <h3>PĂREREA TA CONTEAZĂ</h3>
             <div class="elfsight-app-0a8867a5-9276-4d24-814b-5542b20f04e4" data-elfsight-app-lazy></div>
         </div>
     </main>
@@ -90,7 +90,7 @@
         <div class="legal-row">
             <a href="politica-cookies.html">COOKIES</a> | <a href="termeni.html">TERMENI</a> | <a href="confidentialitate.html">CONFIDENȚIALITATE</a>
         </div>
-        <p style="margin-top:20px; font-family:'Cinzel'; font-size:0.7rem; color:#888;">HAȚEG ALTERNATIV © 2026</p>
+        <p style="margin-top:30px; font-family:'Cinzel'; font-size:0.7rem; color:#888; letter-spacing: 3px;">HAȚEG ALTERNATIV © 2026</p>
     </footer>
 
     <script>
