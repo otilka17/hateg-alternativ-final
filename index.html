@@ -25,7 +25,7 @@
         .main-nav.active { right: 0; }
         .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 15px 0; color: #fff !important; text-transform: uppercase; letter-spacing: 5px; }
 
-        /* HERO SLIDER */
+        /* HERO */
         .hero-slider { width: 100%; height: 100vh; overflow: hidden; position: relative; }
         .slider-track { display: flex; width: 100%; height: 100%; transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1); }
         .slide { min-width: 100%; height: 100%; position: relative; }
@@ -35,7 +35,7 @@
 
         .container { max-width: 1400px; margin: 0 auto; padding: 100px 20px; }
 
-        /* GRID-UL TAU DE 5 CARDURI */
+        /* GRID 5 CARDURI */
         .grid-5 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; margin-bottom: 120px; }
         .card-item { height: 550px; position: relative; overflow: hidden; display: block; }
         .card-item img { width: 100%; height: 100%; object-fit: cover; opacity: 0.3; transition: 1.5s ease; }
@@ -43,34 +43,28 @@
         .card-info { position: absolute; bottom: 0; padding: 40px; width: 100%; background: linear-gradient(to top, var(--negru), transparent); }
         .card-info h4 { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 4px; font-size: 1.1rem; }
 
-        /* VADU DOBRII HIGHLIGHT */
+        /* VADU DOBRII */
         .vadu-section { padding: 120px 20px; text-align: center; border-top: 1px solid #111; }
         .vadu-section h3 { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 8px; margin-bottom: 30px; font-size: 0.9rem; }
-        .vadu-image { max-width: 1000px; margin: 40px auto; border: 1px solid #151515; padding: 15px; filter: grayscale(0.5); }
 
-        /* SECTIUNEA DE EVENIMENTE - FLOW AERISIT */
+        /* EVENTS FLOW */
         .events-flow { padding: 100px 0; background: #080808; }
-        .event-entry { max-width: 900px; margin: 0 auto 120px; text-align: center; position: relative; }
-        .event-entry::after { content: ''; display: block; width: 40px; height: 1px; background: var(--auriu); margin: 60px auto; opacity: 0.3; }
-        .event-entry:last-child::after { display: none; }
-        
+        .event-entry { max-width: 900px; margin: 0 auto 100px; text-align: center; position: relative; }
         .label-date { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 6px; font-size: 0.8rem; margin-bottom: 20px; display: block; }
         .event-entry h2 { font-family: 'Playfair Display'; font-size: clamp(2.5rem, 5vw, 4rem); font-style: italic; color: #fff; margin-bottom: 30px; line-height: 1.1; }
-        .event-entry p { font-size: 1.1rem; color: #999; line-height: 1.8; max-width: 750px; margin: 0 auto 40px; }
         
         .btn-gold { display: inline-block; padding: 18px 45px; border: 1px solid var(--auriu); color: var(--auriu); font-family: 'Cinzel'; font-size: 0.75rem; letter-spacing: 3px; transition: 0.4s; background: transparent; text-transform: uppercase; }
-        .btn-gold:hover { background: var(--auriu); color: #000 !important; box-shadow: 0 0 30px rgba(197, 160, 89, 0.2); }
+        .btn-gold:hover { background: var(--auriu); color: #000 !important; }
 
-        /* UTILS SECTION (VREME & PROGRAM) */
+        /* UTILS */
         .utils-wrap { background: #000; padding: 80px 20px; border-top: 1px solid #111; }
-        .utils-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; max-width: 1100px; margin: 0 auto; }
-        .util-box { border: 1px solid #1a1a1a; padding: 30px; text-align: center; min-height: 400px; }
-        .util-box h4 { font-family: 'Cinzel'; color: var(--auriu); margin-bottom: 25px; letter-spacing: 4px; }
+        .util-box-solo { max-width: 500px; margin: 0 auto; border: 1px solid #1a1a1a; padding: 40px; text-align: center; }
 
         footer { padding: 80px 20px; text-align: center; background: #000; border-top: 1px solid #111; }
+        .legal-row { margin-top: 30px; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; font-size: 0.7rem; color: #555; }
         .whatsapp-float { position: fixed; bottom: 30px; left: 30px; background: #25d366; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 1000; color: #fff; }
 
-        @media (max-width: 768px) { .site-header { padding: 20px; } .hero-text h1 { font-size: 3.5rem; } }
+        @media (max-width: 768px) { .site-header { padding: 20px; } }
     </style>
 </head>
 <body>
@@ -82,14 +76,9 @@
         <a href="index.html" class="brand-logo">
             <svg viewBox="0 0 800 500"><circle cx="400" cy="250" r="105" fill="none" stroke="#c5a059" stroke-width="2" opacity="0.6"/><path d="M300 400 L400 200 L500 400 Z" fill="#c5a059"/></svg>
         </a>
-        <div class="burger" id="burger"><div></div><div></div></div>
+        <div class="burger" id="burger" style="cursor:pointer;"><div></div><div></div></div>
         <nav class="main-nav" id="nav-links">
-            <a href="index.html">Acasă</a>
-            <a href="pensiune.html">Pensiunea</a>
-            <a href="metanoia.html">Metanoia</a>
-            <a href="gastronomie.html">Gastronomie</a>
-            <a href="evenimente.html">Evenimente</a>
-            <a href="contact.html">Contact</a>
+            <a href="index.html">Acasă</a><a href="pensiune.html">Pensiunea</a><a href="metanoia.html">Metanoia</a><a href="gastronomie.html">Gastronomie</a><a href="evenimente.html">Evenimente</a><a href="contact.html">Contact</a>
         </nav>
     </header>
 
@@ -98,21 +87,11 @@
             <div class="slide"><img src="images/rasarit.jpg"></div>
             <div class="slide"><img src="images/jeep.jpg"></div>
         </div>
-        <div class="hero-overlay">
-            <div class="hero-text">
-                <h1>Simte, trăiește tăcerea.</h1>
-                <p style="font-family:'Cinzel'; color:var(--auriu); letter-spacing:8px; margin-top:20px;">Poiana Ruscă</p>
-            </div>
-        </div>
+        <div class="hero-overlay"><div class="hero-text"><h1>Simte, trăiește tăcerea.</h1><p style="font-family:'Cinzel'; color:var(--auriu); letter-spacing:8px; margin-top:20px;">Poiana Ruscă</p></div></div>
     </div>
 
     <main>
-        <div class="container" style="padding-bottom: 0;">
-            <div style="text-align:center; margin-bottom: 80px;">
-                <h2 style="font-family:'Playfair Display'; font-style:italic; font-size: 2.5rem; margin-bottom: 20px;">Unde rânduiala veche întâlnește liniștea muntelui.</h2>
-                <p style="font-family:'Cinzel'; color:var(--auriu); letter-spacing:5px;">Via Ținutul Pădurenilor</p>
-            </div>
-
+        <div class="container">
             <div class="grid-5">
                 <a href="pensiune.html" class="card-item"><img src="images/la-buliga-pensiune.jpg"><div class="card-info"><h4>PENSIUNEA</h4></div></a>
                 <a href="metanoia.html" class="card-item"><img src="images/rasarit.jpg"><div class="card-info"><h4>METANOIA</h4></div></a>
@@ -124,10 +103,7 @@
 
         <section class="vadu-section">
             <h3>VADU DOBRII • POARTA TĂCERII</h3>
-            <p style="max-width: 800px; margin: 0 auto; color: #888; font-family: 'Playfair Display'; font-style: italic; font-size: 1.4rem;">
-                "La 1100m altitudine, rânduiala timpului a rămas neatinsă. Un sat de deasupra norilor unde testăm limitele liniștii."
-            </p>
-            <div class="vadu-image"><img src="images/jeep.jpg" style="width: 100%;"></div>
+            <p style="max-width: 800px; margin: 0 auto; color: #888; font-family: 'Playfair Display'; font-style: italic; font-size: 1.4rem;">"La 1100m altitudine, rânduiala timpului a rămas neatinsă."</p>
         </section>
 
         <section class="events-flow">
@@ -136,48 +112,38 @@
             <div class="event-entry">
                 <span class="label-date">01 MAI 2026</span>
                 <h2>Serată Romano-Italiană</h2>
-                <p>O fuziune gastronomică unică la peste 1000m altitudine. Mâncare pregătită lent la foc deschis, muzică și joc sub cerul liber. O experiență rânduită pentru 30 de oaspeți care caută autenticul.</p>
-                <div style="margin-bottom: 40px;"><span style="font-family:'Cinzel'; color:#fff; font-size:1.2rem; letter-spacing:2px;">250 Lei / Persoană</span></div>
-                <a href="https://wa.me/40749229686?text=Bun%C4%83!%20Vreau%20detalii%20Early%20Booking%20pentru%20Serata%20din%201%20Mai." target="_blank" class="btn-gold">REZERVĂ PE WHATSAPP</a>
+                <p>Mâncare pregătită lent la foc deschis, muzică și joc sub cerul liber.</p>
+                <a href="https://wa.me/40749229686?text=Vreau%20Early%20Booking%20Serata%201%20Mai" target="_blank" class="btn-gold">REZERVARE WHATSAPP</a>
             </div>
 
             <div class="event-entry">
                 <span class="label-date">10-11 MAI 2026</span>
                 <h2>Bike & Flowers</h2>
-                <p>Explorare activă de la Vadu Dobrii până în inima Poienii Narciselor. Tur ghidat cu e-bike performant prin peisajele de poveste ale Ținutului Pădurenilor.</p>
-                <a href="https://wa.me/40749229686?text=Bun%C4%83!%20Doresc%20s%C4%83%20rezerv%20turul%20Bike%20%26%20Flowers." target="_blank" class="btn-gold">REZERVĂ PE WHATSAPP</a>
+                <p>Tur ghidat cu e-bike de la Vadu Dobrii la Poiana Narciselor.</p>
+                <a href="https://wa.me/40749229686?text=Rezervare%20Bike%20Flowers" target="_blank" class="btn-gold">REZERVĂ TUR</a>
             </div>
 
-            <div class="event-entry">
+            <div class="event-entry" style="margin-bottom: 40px;">
                 <span class="label-date">PARTENERIAT GONOMAD</span>
                 <h2>Sarmizegetusa: Două Capitale</h2>
-                <p>Weekend istoric între Sarmizegetusa Regia și Ulpia Traiana. O incursiune profundă în rigoarea administrativă dacică și romană.</p>
+                <p>Weekend istoric între Sarmizegetusa Regia și Ulpia Traiana.</p>
                 <a href="https://gonomad.ro/tura/401-sarmizegetusa-doua-capitale-antice" target="_blank" class="btn-gold">VEZI DETALII TUR</a>
+            </div>
+
+            <div class="container" style="padding-top: 50px;">
+                <h3 style="font-family:'Cinzel'; color:var(--auriu); text-align:center; margin-bottom:40px; letter-spacing:5px;">PARTENERI DE RÂNDUIALĂ</h3>
+                <div class="elfsight-app-2a7a128c-e004-486e-961a-99f57d874913" data-elfsight-app-lazy></div>
             </div>
         </section>
 
         <section class="utils-wrap">
-            <div class="utils-grid">
-                <div class="util-box">
-                    <h4>VREMEA LA MUNTE</h4>
-                    <div class="elfsight-app-8217fa9c-47ca-4b54-bb21-6a682ba7a413" data-elfsight-app-lazy></div>
-                </div>
-                <div class="util-box">
-                    <h4>PROGRAM OBIECTIVE</h4>
-                    <div class="elfsight-app-bccbbe48-b741-4518-ab8e-2fe18bcb0a3b" data-elfsight-app-lazy></div>
-                </div>
+            <div class="util-box-solo">
+                <h4 style="font-family:'Cinzel'; color:var(--auriu); margin-bottom:25px; letter-spacing:4px;">VREMEA LA MUNTE</h4>
+                <div class="elfsight-app-8217fa9c-47ca-4b54-bb21-6a682ba7a413" data-elfsight-app-lazy></div>
             </div>
         </section>
 
-        <section class="widgets-wrap">
-            <div class="container" style="padding:0;">
-                <h3 style="font-family:'Cinzel'; color:var(--auriu); text-align:center; margin-bottom:60px; letter-spacing:5px;">GÂNDURI ȘI PARTENERI</h3>
-                <div class="elfsight-app-9e87d320-859d-4ef5-9a42-3eaeeaadb2d7" data-elfsight-app-lazy></div>
-                <div class="elfsight-app-2a7a128c-e004-486e-961a-99f57d874913" data-elfsight-app-lazy style="margin-top:80px;"></div>
-            </div>
-        </section>
-
-        <section style="background:#000; padding-bottom: 100px;">
+        <section style="background:#000; padding: 100px 0;">
             <div class="container" style="padding:0;">
                 <h3 style="font-family:'Cinzel'; color:var(--auriu); text-align:center; margin-bottom:40px; letter-spacing:5px;">PUNCTE DE REPER</h3>
                 <div class="elfsight-app-4342bef8-07d4-4bfe-9114-34160d0e96f1" data-elfsight-app-lazy></div>
@@ -187,23 +153,24 @@
 
     <footer>
         <p style="font-size:0.8rem; color:#444; letter-spacing:2px;">DAKAMIGOS MARKT SRL | CUI: RO40767794</p>
-        <p style="margin-top:20px; font-family:'Cinzel'; font-size:0.7rem; color:#888; letter-spacing:5px;">HAȚEG ALTERNATIV © 2026 | TRIBUT PATRICIA</p>
+        <div style="margin: 20px 0; display: flex; justify-content: center; gap: 20px;">
+            <a href="https://anpc.ro/ce-este-sal/" target="_blank"><img src="images/anpc-sal.png" alt="SAL" style="height: 35px; background:white;"></a>
+            <a href="https://ec.europa.eu/consumers/odr/" target="_blank"><img src="images/anpc-sol.png" alt="SOL" style="height: 35px; background:white;"></a>
+        </div>
+        <div class="legal-row">
+            <a href="politica-cookies.html">POLITICA COOKIES</a> | 
+            <a href="termeni.html">TERMENI ȘI CONDIȚII</a> | 
+            <a href="confidentialitate.html">POLITICA DE CONFIDENȚIALITATE</a>
+        </div>
+        <p style="margin-top:40px; font-family:'Cinzel'; font-size:0.7rem; color:#888; letter-spacing:5px;">HAȚEG ALTERNATIV © 2026 | TRIBUT PATRICIA</p>
     </footer>
 
     <script>
         const burger = document.getElementById('burger');
         const nav = document.getElementById('nav-links');
         if(burger) { burger.onclick = () => nav.classList.toggle('active'); }
-
-        let current = 0;
-        const track = document.getElementById('slider');
-        const slides = document.querySelectorAll('.slide');
-        if(track && slides.length > 0) {
-            setInterval(() => {
-                current = (current + 1) % slides.length;
-                track.style.transform = `translateX(-${current * 100}%)`;
-            }, 6000);
-        }
+        let current = 0; const track = document.getElementById('slider'); const slides = document.querySelectorAll('.slide');
+        if(track && slides.length > 0) { setInterval(() => { current = (current + 1) % slides.length; track.style.transform = `translateX(-${current * 100}%)`; }, 6000); }
     </script>
 </body>
 </html>
