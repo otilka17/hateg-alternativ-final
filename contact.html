@@ -3,95 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact | Hațeg Alternativ - Poiana Ruscă</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Contact | Hațeg Alternativ - Domeniile la Buligă</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <script src="https://elfsightcdn.com/platform.js" async></script>
-
     <style>
         :root { --auriu: #c5a059; --negru: #050505; --alb: #ffffff; }
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
-        a { text-decoration: none !important; color: inherit !important; }
-
-        .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 30px 50px; display: flex; justify-content: space-between; align-items: center; background: rgba(5,5,5,0.8); backdrop-filter: blur(5px); }
-        .brand-logo svg { height: 60px; width: auto; }
-        .burger div { width: 30px; height: 1px; background: var(--auriu); margin: 8px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; }
         
-        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: var(--negru); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.6s; z-index: 10000; }
+        .site-header { position: fixed; top: 0; width: 100%; z-index: 9999; padding: 20px 30px; display: flex; justify-content: space-between; align-items: center; background: rgba(5,5,5,0.95); border-bottom: 1px solid rgba(197,160,89,0.1); }
+        .brand { font-family: 'Cinzel'; color: var(--auriu); text-decoration: none; font-weight: 900; letter-spacing: 3px; font-size: 0.9rem; }
+        .burger div { width: 25px; height: 1px; background: var(--auriu); margin: 6px; }
+
+        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: var(--negru); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.5s; z-index: 10000; }
         .main-nav.active { right: 0; }
-        .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 15px 0; color: #fff !important; text-transform: uppercase; letter-spacing: 5px; }
+        .main-nav a { font-size: 1.5rem; font-family: 'Cinzel'; margin: 15px 0; color: #fff !important; text-transform: uppercase; letter-spacing: 4px; text-decoration: none; }
 
-        .hero-contact { height: 45vh; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.9)), url('images/jeep.jpg') center/cover; display: flex; align-items: center; justify-content: center; text-align: center; }
-        .hero-contact h1 { font-family: 'Playfair Display'; font-size: 3.5rem; color: var(--auriu); font-style: italic; }
-
-        .container { max-width: 1200px; margin: 0 auto; padding: 80px 20px; }
-
-        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; margin-bottom: 80px; }
-        .contact-info h2 { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 6px; font-size: 0.9rem; margin-bottom: 30px; }
-        .contact-info p { font-family: 'Playfair Display'; font-style: italic; font-size: 1.8rem; color: #ccc; line-height: 1.4; margin-bottom: 50px; }
+        .contact-wrap { max-width: 1000px; margin: 120px auto 80px; padding: 0 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
         
-        .info-item { margin-bottom: 30px; display: flex; align-items: center; gap: 20px; }
-        .info-item i { color: var(--auriu); font-size: 1.2rem; }
-        .info-item strong { font-size: 1.1rem; color: #fff; display: block; }
+        .contact-info h2 { font-family: 'Playfair Display'; font-size: 2.5rem; color: var(--auriu); font-style: italic; margin-bottom: 30px; }
+        .info-item { margin-bottom: 25px; }
+        .info-item h4 { font-family: 'Cinzel'; font-size: 0.8rem; color: var(--auriu); letter-spacing: 2px; margin-bottom: 5px; }
+        .info-item p { color: #ccc; font-weight: 300; }
 
-        /* FIX VIZIBILITATE SURVEY - FUNDAL ALB PENTRU TEXT NEGRU */
-        .survey-block { background: #ffffff; color: #000000 !important; padding: 60px 40px; border-radius: 8px; margin-top: 50px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
-        .survey-block h3 { font-family: 'Cinzel'; text-align: center; margin-bottom: 30px; color: #000; letter-spacing: 3px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+        .contact-form-box { background: #0d0d0d; padding: 40px; border: 1px solid #1a1a1a; }
+        .contact-form-box h3 { font-family: 'Cinzel'; color: var(--auriu); margin-bottom: 25px; letter-spacing: 2px; }
+        
+        .c-input { width: 100%; background: #000; border: 1px solid #222; padding: 15px; color: #fff; margin-bottom: 20px; outline: none; }
+        .c-input:focus { border-color: var(--auriu); }
+        .btn-gold { width: 100%; padding: 15px; border: 1px solid var(--auriu); background: transparent; color: var(--auriu); font-family: 'Cinzel'; cursor: pointer; transition: 0.4s; }
+        .btn-gold:hover { background: var(--auriu); color: #000; }
 
-        footer { padding: 80px 20px; text-align: center; border-top: 1px solid #111; background: #000; }
-        .legal-row { margin-top: 30px; display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; font-size: 0.75rem; color: #555; }
-        .whatsapp-float { position: fixed; bottom: 30px; left: 30px; background: #25d366; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 1000; color: #fff; }
-
-        @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; } .hero-contact h1 { font-size: 2.8rem; } }
+        @media (max-width: 800px) { .contact-wrap { grid-template-columns: 1fr; margin-top: 100px; } }
     </style>
 </head>
 <body>
-
-    <a href="https://wa.me/40749229686" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
-
     <header class="site-header">
-        <a href="index.html" class="brand-logo">
-            <svg viewBox="0 0 800 500"><circle cx="400" cy="250" r="105" fill="none" stroke="#c5a059" stroke-width="2" opacity="0.6"/><path d="M300 400 L400 200 L500 400 Z" fill="#c5a059"/></svg>
-        </a>
+        <a href="index.html" class="brand">HAȚEG ALTERNATIV</a>
         <div class="burger" id="burger" style="cursor:pointer;"><div></div><div></div></div>
         <nav class="main-nav" id="nav-links">
-            <a href="index.html">Acasă</a><a href="pensiune.html">Pensiunea</a><a href="metanoia.html">Metanoia</a><a href="gastronomie.html">Gastronomie</a><a href="evenimente.html">Evenimente</a><a href="contact.html">Contact</a>
+            <a href="index.html">Acasă</a>
+            <a href="pensiune.html">Pensiunea</a>
+            <a href="gastronomie.html">Gastronomie</a>
+            <a href="rezervare.html">Rezervare</a>
+            <a href="contact.html">Contact</a>
         </nav>
     </header>
 
-    <section class="hero-contact"><h1>Să ținem legătura.</h1></section>
-
-    <main class="container">
-        <div class="contact-grid">
-            <div class="contact-info">
-                <h2>INFORMAȚII CONTACT</h2>
-                <p>"Mesajul tău este primul pas spre liniștea muntelui."</p>
-                <div class="info-item"><i class="fas fa-map-marker-alt"></i><strong>Domeniile la Buligă, Poiana Ruscă</strong></div>
-                <div class="info-item"><i class="fab fa-whatsapp"></i><strong>0749 229 686</strong></div>
-                <div class="info-item"><i class="fas fa-envelope"></i><strong>contact@hategalternativ.ro</strong></div>
+    <div class="contact-wrap">
+        <div class="contact-info">
+            <h2>Să rânduim o întâlnire.</h2>
+            <div class="info-item">
+                <h4>LOCAȚIE</h4>
+                <p>Vadu Dobrii, Munții Poiana Ruscă, Hunedoara</p>
             </div>
-
-            <div class="form-wrap">
-                <div class="elfsight-app-9e904cd3-f8a7-4616-8e4b-4af6bf927d7d" data-elfsight-app-lazy></div>
+            <div class="info-item">
+                <h4>TELEFON / WHATSAPP</h4>
+                <p>+40 749 229 686</p>
+            </div>
+            <div class="info-item">
+                <h4>EMAIL</h4>
+                <p>contact@hategalternativ.ro</p>
             </div>
         </div>
 
-        <div class="survey-block">
-            <h3>PĂREREA TA CONTEAZĂ</h3>
-            <div class="elfsight-app-0a8867a5-9276-4d24-814b-5542b20f04e4" data-elfsight-app-lazy></div>
+        <div class="contact-form-box">
+            <h3>TRIMITE UN MESAJ</h3>
+            <form action="https://formspree.io/f/xjgpvbkj" method="POST">
+                <input type="text" name="name" class="c-input" placeholder="Numele tău" required>
+                <input type="email" name="email" class="c-input" placeholder="Email" required>
+                <textarea name="message" class="c-input" rows="5" placeholder="Mesajul tău" required></textarea>
+                <button type="submit" class="btn-gold">TRIMITE ACUM</button>
+            </form>
         </div>
-    </main>
-
-    <footer>
-        <p style="font-size:0.8rem; color:#444;">DAKAMIGOS MARKT SRL | CUI: RO40767794</p>
-        <div class="legal-row">
-            <a href="politica-cookies.html">COOKIES</a> | <a href="termeni.html">TERMENI</a> | <a href="confidentialitate.html">CONFIDENȚIALITATE</a>
-        </div>
-        <p style="margin-top:30px; font-family:'Cinzel'; font-size:0.7rem; color:#888; letter-spacing: 3px;">HAȚEG ALTERNATIV © 2026</p>
-    </footer>
+    </div>
 
     <script>
         const burger = document.getElementById('burger');
