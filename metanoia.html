@@ -48,27 +48,30 @@
 
         .section-label { font-family: var(--font-cinzel); color: var(--auriu-crem); text-align: center; letter-spacing: 5px; font-size: 0.75rem; margin-bottom: 50px; text-transform: uppercase; }
         
-        .package-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-bottom: 100px; }
-        .p-card { background: var(--gri-card); border: 1px solid #1a1a1a; padding: 50px 30px; text-align: center; transition: 0.4s; }
+        .package-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-bottom: 100px; }
+        .p-card { background: var(--gri-card); border: 1px solid #1a1a1a; padding: 50px 30px; text-align: center; transition: 0.4s; display: flex; flex-direction: column; justify-content: space-between; }
         .p-card:hover { border-color: var(--auriu-crem); }
-        .p-card h3 { font-family: var(--font-serif); font-size: 2rem; font-style: italic; color: var(--auriu-crem); margin-bottom: 25px; }
-        .p-features { list-style: none; margin-bottom: 35px; color: #aaa; font-size: 0.9rem; }
-        .p-features li { padding: 12px 0; border-bottom: 1px solid #1a1a1a; }
-        .price-tag { font-family: var(--font-cinzel); font-size: 1.3rem; color: #fff; display: block; margin-bottom: 30px; font-weight: 700; }
+        .p-card h3 { font-family: var(--font-serif); font-size: 2.2rem; font-style: italic; color: var(--auriu-crem); margin-bottom: 20px; }
+        .p-desc { color: #ccc; font-size: 0.95rem; margin-bottom: 25px; line-height: 1.8; }
+        .p-features { list-style: none; margin-bottom: 35px; color: #aaa; font-size: 0.85rem; text-align: left; border-top: 1px solid #1a1a1a; padding-top: 20px; }
+        .p-features li { padding: 8px 0; display: flex; align-items: center; }
+        .p-features li::before { content: "—"; color: var(--auriu-crem); margin-right: 10px; }
+        
+        .price-tag { font-family: var(--font-cinzel); font-size: 1.4rem; color: #fff; display: block; margin-bottom: 30px; font-weight: 700; letter-spacing: 2px; }
 
-        .act-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
-        .act-item { height: 400px; position: relative; overflow: hidden; border: 1px solid #1a1a1a; display: block; }
+        .act-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .act-item { height: 450px; position: relative; overflow: hidden; border: 1px solid #1a1a1a; display: block; }
         .act-item img { width: 100%; height: 100%; object-fit: cover; transition: 1.5s; opacity: 0.4; }
-        .act-item:hover img { opacity: 0.8; transform: scale(1.05); }
-        .act-info { position: absolute; bottom: 0; padding: 25px; background: linear-gradient(to top, rgba(0,0,0,0.95), transparent); width: 100%; }
-        .act-info h4 { font-family: var(--font-serif); font-size: 1.6rem; font-style: italic; color: var(--auriu-crem); margin-bottom: 5px; }
-        .act-info p { color: #bbb; font-size: 0.85rem; }
+        .act-item:hover img { opacity: 0.7; transform: scale(1.05); }
+        .act-info { position: absolute; bottom: 0; padding: 30px; background: linear-gradient(to top, rgba(0,0,0,0.95), transparent); width: 100%; }
+        .act-info h4 { font-family: var(--font-serif); font-size: 1.8rem; font-style: italic; color: var(--auriu-crem); margin-bottom: 10px; }
+        .act-info p { color: #eee; font-size: 0.9rem; line-height: 1.5; }
 
-        .btn-cta { display: inline-block; padding: 15px 35px; border: 1px solid var(--auriu-crem); color: var(--auriu-crem); font-family: var(--font-cinzel); font-size: 0.75rem; letter-spacing: 2px; transition: 0.3s; font-weight: 700; background: transparent; }
+        .btn-cta { display: inline-block; padding: 15px 35px; border: 1px solid var(--auriu-crem); color: var(--auriu-crem); font-family: var(--font-cinzel); font-size: 0.75rem; letter-spacing: 2px; transition: 0.3s; font-weight: 700; background: transparent; cursor: pointer; }
         .btn-cta:hover { background: var(--auriu-crem); color: #000 !important; }
 
         .whatsapp-float { position: fixed; bottom: 30px; left: 20px; background: #25d366; border-radius: 50%; width: 55px; height: 55px; display: flex; align-items: center; justify-content: center; font-size: 28px; z-index: 1000; color: #fff; }
-        footer { padding: 60px 20px; text-align: center; opacity: 0.4; font-family: var(--font-cinzel); font-size: 0.65rem; border-top: 1px solid #111; letter-spacing: 2px; }
+        footer { padding: 60px 20px; text-align: center; border-top: 1px solid #111; color: #555; font-family: var(--font-cinzel); font-size: 0.7rem; letter-spacing: 3px; }
     </style>
 </head>
 <body>
@@ -99,60 +102,70 @@
     <div class="container">
         <div class="metanoia-intro">
             <h2>Manifest Metanoia</h2>
-            <p>O călătorie curatoriată unde rânduiala veche întâlnește liniștea muntelui.</p>
+            <p>O călătorie curatoriată în inima Poienii Ruscă, unde rânduiala veche devine un sistem de resetare a sufletului.</p>
         </div>
 
         <p class="section-label">Pachete Signature</p>
         <div class="package-grid">
             <div class="p-card">
-                <h3>Metanoia All-In</h3>
-                <ul class="p-features">
-                    <li>3 Nopți Cazare Premium</li>
-                    <li>Demipensiune (Bio & Local)</li>
-                    <li>Tur Off-road & Explorare</li>
-                    <li>Atelier de Creație Manuală</li>
-                </ul>
-                <span class="price-tag">4.000 RON</span>
-                <a href="rezervari.html" class="btn-cta">REZERVĂ EXPERIENȚA</a>
+                <div>
+                    <h3>Metanoia All-In</h3>
+                    <p class="p-desc">O imersiune totală de 4 zile concepută pentru o resetare completă. Testăm limitele tăcerii și rânduim experiențele astfel încât să plecați cu o viziune nouă asupra timpului.</p>
+                    <ul class="p-features">
+                        <li>3 Nopți Cazare Premium în camere rânduite</li>
+                        <li>Demipensiune cu produse bio de la producători locali</li>
+                        <li>Tur Off-road de explorare pe culmile Pădurenilor</li>
+                        <li>Atelier privat de pictură sau creație manuală</li>
+                    </ul>
+                </div>
+                <div>
+                    <span class="price-tag">4.000 RON</span>
+                    <a href="https://wa.me/40749229686?text=Bun%C4%83!%20Doresc%20detalii%20pentru%20pachetul%20Metanoia%20All-In." target="_blank" class="btn-gold btn-cta">REZERVĂ PE WHATSAPP</a>
+                </div>
             </div>
             <div class="p-card">
-                <h3>Rânduiala Veche</h3>
-                <ul class="p-features">
-                    <li>2 Nopți Cazare Integrală</li>
-                    <li>Mic Dejun Tradițional</li>
-                    <li>Experiență Digital Detox</li>
-                    <li>Tihnă în Cercul de Foc</li>
-                </ul>
-                <span class="price-tag">2.000 RON</span>
-                <a href="rezervari.html" class="btn-cta">REZERVĂ ACUM</a>
+                <div>
+                    <h3>Rânduiala Veche</h3>
+                    <p class="p-desc">O experiență de weekend dedicată simplității și tihnei. Ne întoarcem la esențial, acolo unde singurul cod care contează este cel al naturii și al focului din vatră.</p>
+                    <ul class="p-features">
+                        <li>2 Nopți Cazare Integrală la Domeniile la Buligă</li>
+                        <li>Mic Dejun Tradițional cu aromele copilăriei</li>
+                        <li>Program ghidat de "Digital Detox" și reculegere</li>
+                        <li>Seri rânduite în jurul cercului de foc</li>
+                    </ul>
+                </div>
+                <div>
+                    <span class="price-tag">2.000 RON</span>
+                    <a href="https://wa.me/40749229686?text=Bun%C4%83!%20Doresc%20s%C4%83%20rezerv%20pachetul%20R%C3%A2nduiala%20Veche." target="_blank" class="btn-gold btn-cta">REZERVARE RAPIDĂ</a>
+                </div>
             </div>
         </div>
 
         <p class="section-label">Experiențe și Obiective</p>
         <div class="act-grid">
-            <a href="pictura.html" class="act-item">
+            <a href="https://wa.me/40749229686?text=Bun%C4%83!%20Vreau%20detalii%20despre%20Atelierul%20de%20Pictur%C4%83." target="_blank" class="act-item">
                 <img src="images/pictura.jpg">
-                <div class="act-info"><h4>Atelier Pictură</h4><p>Creație pe pânză sub cerul liber.</p></div>
+                <div class="act-info"><h4>Atelier Pictură</h4><p>Lăsați culorile să prindă viață pe pânză sub cerul liber din Poiana Ruscă. Un moment de introspecție creativă rânduit pentru a captura peisajul montan.</p></div>
             </a>
             <div class="act-item">
                 <img src="images/biserica-sf-nicolae-densus.jpg">
-                <div class="act-info"><h4>Duhul Locului</h4><p>Exteriorul celei mai vechi biserici de piatră.</p></div>
+                <div class="act-info"><h4>Duhul Locului</h4><p>Explorarea exteriorului celei mai vechi biserici de piatră din România, un monument unde rigoarea istoriei se împletește cu misterul dacic.</p></div>
             </div>
             <div class="act-item">
                 <img src="images/exp-biserica-int.jpg">
-                <div class="act-info"><h4>Reculegere</h4><p>Interiorul plin de istorie și tăcere.</p></div>
+                <div class="act-info"><h4>Reculegere</h4><p>Pătrundeți în interiorul plin de tăcere al bisericii Densuș, un spațiu rânduit pentru meditație și conectare cu divinitatea prin pictura veche.</p></div>
             </div>
             <div class="act-item">
                 <img src="images/banita.jpg">
-                <div class="act-info"><h4>Cheile Baniței</h4><p>Sculpturi naturale în calcar.</p></div>
+                <div class="act-info"><h4>Cheile Baniței</h4><p>Incursiune în sculpturile naturale modelate de apă în calcar. O locație spectaculoasă care testeză imaginația vizitatorului prin formele sale sălbatice.</p></div>
             </div>
             <div class="act-item">
                 <img src="images/exp-stana.jpg">
-                <div class="act-info"><h4>Viața la Stână</h4><p>Tradiția ciobanilor din Retezat.</p></div>
+                <div class="act-info"><h4>Viața la Stână</h4><p>Descoperiți rânduiala aspră a păstorilor din Ținutul Pădurenilor. O experiență autentică despre gustul brânzei tradiționale și viața trăită în ritmul munților.</p></div>
             </div>
             <div class="act-item">
-                <img src="images/bucura.jpg">
-                <div class="act-info"><h4>Lacul Bucura</h4><p>Inima de cristal a munților.</p></div>
+                <img src="images/jeep.jpg">
+                <div class="act-info"><h4>Culmile Pădurenilor</h4><p>Vederi panoramice de la 1200m altitudine. Un tur de explorare rânduit pentru a descoperi frumusețea ascunsă a munților Poiana Ruscă.</p></div>
             </div>
         </div>
     </div>
@@ -162,9 +175,7 @@
     <script>
         const burger = document.getElementById('burger');
         const nav = document.getElementById('nav-links');
-        if(burger) {
-            burger.onclick = () => nav.classList.toggle('active');
-        }
+        if(burger) { burger.onclick = () => nav.classList.toggle('active'); }
 
         let current = 0;
         const track = document.getElementById('gallerySlider');
