@@ -4,72 +4,160 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rezervări | Hațeg Alternativ</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <style>
-        :root { --auriu: #c5a059; --negru: #050505; --gri-card: #0d0d0d; --alb: #ffffff; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; line-height: 1.6; }
-        .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 30px 50px; display: flex; justify-content: space-between; align-items: center; }
-        .btn-reserve-header { padding: 12px 25px; border: 1px solid var(--auriu); color: var(--auriu) !important; font-family: 'Cinzel'; font-size: 0.7rem; letter-spacing: 2px; }
-        .burger div { width: 30px; height: 1px; background: var(--auriu); margin: 8px; }
-        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: var(--negru); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.6s; z-index: 10000; }
+        :root { 
+            --auriu-gold: #ffd700; 
+            --negru-pur: #000000; 
+            --alb: #ffffff;
+            --gri-inchis: #0a0a0a;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        body { background: var(--negru-pur); color: var(--alb); font-family: 'Inter', sans-serif; line-height: 1.6; overflow-x: hidden; }
+
+        /* HEADER ORIGINAL */
+        .site-header { position: relative; width: 100%; z-index: 9999; padding: 20px 30px; display: flex; justify-content: space-between; align-items: center; background: var(--negru-pur); border-bottom: 1px solid #111; }
+        .brand svg { height: 70px; width: auto; filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.4)); }
+        .burger { cursor: pointer; z-index: 10000; padding: 10px; }
+        .burger div { width: 30px; height: 2px; background: var(--auriu-gold); margin: 6px; transition: 0.3s; }
+
+        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: rgba(0,0,0,0.98); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.5s ease; z-index: 9500; }
         .main-nav.active { right: 0; }
-        .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 15px 0; color: #fff !important; text-transform: uppercase; letter-spacing: 5px; }
+        .main-nav a { text-decoration: none; color: #fff; font-size: 1.8rem; font-family: 'Cinzel'; margin: 10px 0; letter-spacing: 3px; }
 
-        .hero-res { height: 40vh; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('images/rasarit.jpg') center/cover; display: flex; align-items: center; justify-content: center; }
-        .hero-res h1 { font-family: 'Playfair Display'; font-size: 3rem; font-style: italic; color: var(--auriu); }
+        /* CONTINUT REZERVARE */
+        .rezervari-hero { padding: 60px 20px; text-align: center; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,1)), url('images/rasarit.jpg'); background-size: cover; background-position: center; }
+        .rezervari-hero h1 { font-family: 'Playfair Display'; font-size: clamp(2.5rem, 8vw, 4rem); font-style: italic; color: var(--auriu-gold); }
 
-        .container { max-width: 1100px; margin: -50px auto 100px; padding: 0 20px; position: relative; z-index: 10; }
-        .package-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-bottom: 60px; }
-        .p-card { background: var(--gri-card); border: 1px solid #1a1a1a; padding: 40px; }
-        .p-card h3 { font-family: 'Playfair Display'; font-size: 1.8rem; color: var(--auriu); margin-bottom: 20px; }
+        .form-container { max-width: 900px; margin: 40px auto; padding: 40px 20px; background: var(--gri-inchis); border: 1px solid #222; }
+        
+        .forum-form { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .forum-form input, .forum-form select, .forum-form textarea { background: #000; border: 1px solid #333; padding: 15px; color: #fff; width: 100%; font-family: 'Inter'; font-size: 1rem; }
+        .forum-form textarea { grid-column: span 2; }
 
-        .booking-box { background: #080808; border: 1px solid #1a1a1a; padding: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
-        .total-display { padding: 30px; border: 1px solid var(--auriu); text-align: center; }
-        .price-tag { font-family: 'Playfair Display'; font-size: 3rem; color: #fff; }
+        /* CALCULATOR SECTION */
+        .calculator-section { grid-column: span 2; margin-top: 20px; border-top: 1px solid #222; padding-top: 30px; }
+        .calculator-section h4 { font-family: 'Cinzel'; color: var(--auriu-gold); margin-bottom: 20px; letter-spacing: 2px; }
 
-        input, select, textarea { width: 100%; background: #000; border: 1px solid #222; padding: 15px; color: #fff; margin-bottom: 15px; outline: none; }
-        .btn-submit { width: 100%; padding: 20px; background: transparent; border: 1px solid var(--auriu); color: var(--auriu); font-family: 'Cinzel'; cursor: pointer; }
-        @media (max-width: 900px) { .booking-box { grid-template-columns: 1fr; } .site-header { padding: 20px; } }
+        .checkbox-group { display: grid; grid-template-columns: 1fr; gap: 15px; margin-bottom: 30px; }
+        .checkbox-item { display: flex; align-items: center; gap: 15px; cursor: pointer; color: #aaa; transition: 0.3s; }
+        .checkbox-item:hover { color: #fff; }
+        .checkbox-item input { width: 22px !important; height: 22px !important; accent-color: var(--auriu-gold); }
+
+        /* TOTAL DISPLAY */
+        .total-box { grid-column: span 2; padding: 30px; border: 2px solid var(--auriu-gold); text-align: center; margin: 20px 0; background: rgba(255, 215, 0, 0.05); }
+        .total-box span { font-family: 'Cinzel'; font-size: 1.2rem; color: var(--auriu-gold); display: block; margin-bottom: 5px; }
+        .total-box #total_valoare { font-size: 2.8rem; font-weight: 900; color: #fff; }
+
+        .btn-submit { grid-column: span 2; padding: 20px; background: transparent; border: 1px solid var(--auriu-gold); color: var(--auriu-gold); font-family: 'Cinzel'; cursor: pointer; font-weight: 700; letter-spacing: 3px; transition: 0.4s; }
+        .btn-submit:hover { background: var(--auriu-gold); color: #000; }
+
+        /* MOBIL */
+        @media (max-width: 768px) {
+            .forum-form { grid-template-columns: 1fr; }
+            .forum-form textarea, .calculator-section, .total-box, .btn-submit { grid-column: span 1; }
+            .total-box #total_valoare { font-size: 2rem; }
+        }
+
+        footer { padding: 40px; text-align: center; opacity: 0.3; font-family: 'Cinzel'; font-size: 0.7rem; }
     </style>
 </head>
 <body>
+
     <header class="site-header">
-        <a href="index.html" class="brand-logo"><svg viewBox="0 0 800 500" style="height:70px;"><circle cx="400" cy="250" r="105" fill="none" stroke="#c5a059" stroke-width="2"/><path d="M300 400 L400 200 L500 400 Z" fill="#c5a059"/></svg></a>
-        <div class="header-controls">
-            <a href="rezervari.html" class="btn-reserve-header">REZERVĂ-ȚI EXPERIENȚA</a>
-            <div class="burger" id="burger" style="cursor:pointer;"><div></div><div></div></div>
-        </div>
+        <a href="index.html" class="brand">
+            <svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+                <defs><linearGradient id="mtnGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#ffd700;stop-opacity:1"/><stop offset="100%" style="stop-color:#b8860b;stop-opacity:1"/></linearGradient></defs>
+                <circle cx="400" cy="280" r="105" fill="none" stroke="#ffd700" stroke-width="2" opacity="0.4"/>
+                <path d="M300 450 L400 250 L500 450 Z" fill="url(#mtnGrad)"/>
+                <g transform="translate(400, 500)" fill="#e0e0e0"><path d="M-5 -20 C-60 -80 -180 -150 -240 60 C-180 30 -120 10 -5 10 Z" opacity="0.9"/><path d="M5 -20 C60 -80 180 -150 240 60 C180 30 120 10 5 10 Z" opacity="0.9"/></g>
+                <text x="400" y="765" font-family="'Cinzel', serif" text-anchor="middle" font-size="45" font-weight="900" letter-spacing="2" fill="#ffd700">HAȚEG ALTERNATIV</text>
+            </svg>
+        </a>
+        <div class="burger" id="burger"><div></div><div></div><div></div></div>
         <nav class="main-nav" id="nav-links">
-            <a href="index.html">Acasă</a><a href="pensiune.html">Pensiunea</a><a href="metanoia.html">Metanoia</a><a href="gastronomie.html">Gastronomie</a><a href="evenimente.html">Evenimente</a><a href="rezervari.html">Rezervare</a><a href="contact.html">Contact</a>
+            <a href="index.html">ACASĂ</a>
+            <a href="pensiune.html">PENSIUNEA</a>
+            <a href="experiente.html">ACTIVITĂȚI</a>
+            <a href="gastronomie.html">GASTRONOMIE</a>
+            <a href="forum.html">JURNAL</a>
+            <a href="contact.html">CONTACT</a>
         </nav>
     </header>
-    <section class="hero-res"><h1>Rânduiala Rezervării.</h1></section>
-    <main class="container">
-        <div class="package-row">
-            <div class="p-card"><h3>Tihnă la Buligă</h3><p>2 Nopți • Mic Dejun • E-bike</p></div>
-            <div class="p-card" style="border-color: var(--auriu);"><h3>Metanoia Supremă</h3><p>3 Nopți • Demipensiune • Nomad 4x4 • Muzică Live</p></div>
-        </div>
-        <div class="booking-box">
-            <div>
-                <select id="pachet-select" onchange="calc()">
-                    <option value="6000">Metanoia Supremă (6000 RON)</option>
-                    <option value="3000">Tihnă la Buligă (3000 RON)</option>
+
+    <section class="rezervari-hero">
+        <h1>Rezervare & Tarife</h1>
+    </section>
+
+    <div class="form-container">
+        <form class="forum-form" action="https://formspree.io/f/xjgpvbkj" method="POST" id="bookingForm">
+            <input type="text" name="Nume" placeholder="Nume complet" required>
+            <input type="email" name="Email" placeholder="Email" required>
+            <input type="text" name="Telefon" placeholder="Telefon" required>
+            <input type="text" name="Perioada" placeholder="Data (ex: 15-17 Iulie)" required>
+
+            <div class="calculator-section">
+                <h4>1. Alege Pachetul de Bază (per noapte)</h4>
+                <select name="Pachet_Baza" id="pachet_pret" onchange="updateCalcul()" required>
+                    <option value="0">Selectează pachetul...</option>
+                    <option value="2000">Cazare Integrală (10 locuri) + Mic Dejun - 2000 RON</option>
+                    <option value="4000">Pachet Premium (Cazare + Mic Dejun + Cină Festivă + Ateliere + Tururi) - 4000 RON</option>
+                    <option value="850">Individual: Buliga Izolare - 850 RON/pers</option>
                 </select>
-                <div class="total-display"><h4>TOTAL</h4><div class="price-tag" id="total">6000 <span>RON</span></div></div>
+
+                <h4 style="margin-top: 30px;">2. Extra Servicii (Opțional)</h4>
+                <div class="checkbox-group">
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="Extra_Cina" value="120" onchange="updateCalcul()"> 
+                        <span>Cină Tradițională la ceaun (+120 RON/pers)</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="Extra_Atelier_G" value="250" onchange="updateCalcul()"> 
+                        <span>Atelier Gastronomic Extra (+250 RON/pers)</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="Extra_Atelier_C" value="150" onchange="updateCalcul()"> 
+                        <span>Atelier Creație/Lucru Manual (+150 RON/pers)</span>
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" name="Extra_Ghid" value="200" onchange="updateCalcul()"> 
+                        <span>Ghid privat drumeție (+200 RON/grup)</span>
+                    </label>
+                </div>
+
+                <div class="total-box">
+                    <span>TOTAL ESTIMATIV</span>
+                    <div id="total_valoare">0 RON</div>
+                    <input type="hidden" name="Total_Final" id="input_total" value="0 RON">
+                </div>
             </div>
-            <form action="https://formspree.io/f/xjgpvbkj" method="POST">
-                <input type="text" name="nume" placeholder="Nume" required>
-                <input type="date" name="data" required>
-                <textarea name="mesaj" placeholder="Preferințe..."></textarea>
-                <button type="submit" class="btn-submit">TRIMITE</button>
-            </form>
-        </div>
-    </main>
+
+            <textarea name="Mesaj" rows="4" placeholder="Alte mențiuni (nr. persoane, observații)..."></textarea>
+            <button type="submit" class="btn-submit">TRIMITE REZERVAREA</button>
+        </form>
+    </div>
+
+    <footer>HAȚEG ALTERNATIV &copy; 2026</footer>
+
     <script>
-        const burger = document.getElementById('burger'); const nav = document.getElementById('nav-links'); burger.onclick = () => nav.classList.toggle('active');
-        function calc() { const val = document.getElementById('pachet-select').value; document.getElementById('total').innerHTML = val + " <span>RON</span>"; }
+        const burger = document.getElementById('burger');
+        const nav = document.getElementById('nav-links');
+        burger.addEventListener('click', () => { nav.classList.toggle('active'); });
+
+        function updateCalcul() {
+            let pachet = parseInt(document.getElementById('pachet_pret').value) || 0;
+            let extra = 0;
+            let checks = document.querySelectorAll('input[type="checkbox"]:checked');
+            checks.forEach(c => extra += parseInt(c.value));
+
+            let total = pachet + extra;
+            document.getElementById('total_valoare').innerText = total + " RON";
+            document.getElementById('input_total').value = total + " RON";
+        }
     </script>
 </body>
 </html>
