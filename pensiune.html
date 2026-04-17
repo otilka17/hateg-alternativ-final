@@ -3,62 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pensiunea | Hațeg Alternativ - Rânduiala Locului</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Pensiunea | Hațeg Alternativ - Rânduiala Veche</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root { --auriu: #c5a059; --negru: #050505; --alb: #ffffff; --gri-card: #0d0d0d; }
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; line-height: 1.6; overflow-x: hidden; }
-        .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 30px 50px; display: flex; justify-content: space-between; align-items: center; }
-        .brand-logo svg { height: 75px; filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.4)); }
-        .burger div { width: 30px; height: 1px; background: var(--auriu); margin: 8px; }
-        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: var(--negru); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.6s; z-index: 10000; }
-        .main-nav.active { right: 0; }
-        .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 15px 0; color: #fff !important; text-transform: uppercase; letter-spacing: 5px; text-decoration: none; }
-        
-        .hero-pensiune { height: 65vh; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('images/la-buliga-pensiune.jpg') center/cover; display: flex; align-items: center; justify-content: center; }
-        .hero-pensiune h1 { font-family: 'Playfair Display'; font-size: clamp(3rem, 8vw, 6rem); font-style: italic; color: var(--auriu); }
 
-        .container { max-width: 1200px; margin: 80px auto; padding: 0 20px; }
-        .house-structure { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .struct-card { background: var(--gri-card); border: 1px solid #1a1a1a; padding: 40px; text-align: center; transition: 0.4s; }
-        .struct-card:hover { border-color: var(--auriu); }
-        .struct-card i { color: var(--auriu); font-size: 2.5rem; margin-bottom: 20px; display: block; }
-        .struct-card h3 { font-family: 'Cinzel'; letter-spacing: 3px; margin-bottom: 15px; }
-        
-        /* IMAGINI LUMINOASE */
-        .vibe-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 15px; margin-top: 60px; }
-        .vibe-img { height: 400px; background-size: cover; background-position: center; border: 1px solid #1a1a1a; opacity: 0.9; transition: 0.5s; }
-        .vibe-img:hover { opacity: 1; transform: scale(1.02); }
-        
-        footer { padding: 60px 20px; text-align: center; border-top: 1px solid #111; font-family: 'Cinzel'; font-size: 0.7rem; opacity: 0.6; }
+    <style>
+        :root { 
+            --auriu: #c5a059; 
+            --negru: #050505; 
+            --alb: #ffffff;
+            --gri-card: #0d0d0d;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; line-height: 1.6; }
+
+        /* HEADER PREMIUM */
+        .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 30px 50px; display: flex; justify-content: space-between; align-items: center; }
+        .brand svg { height: 80px; width: auto; filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.4)); }
+        .burger { cursor: pointer; z-index: 10001; }
+        .burger div { width: 30px; height: 1px; background: var(--auriu); margin: 8px; }
+
+        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: var(--negru); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.6s cubic-bezier(0.7, 0, 0.3, 1); z-index: 10000; }
+        .main-nav.active { right: 0; }
+        .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 12px 0; color: #fff !important; text-transform: uppercase; letter-spacing: 5px; text-decoration: none; transition: 0.3s; }
+        .main-nav a:hover { color: var(--auriu) !important; }
+
+        /* HERO */
+        .hero-sub { height: 70vh; position: relative; display: flex; align-items: center; justify-content: center; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('images/la-buliga-pensiune.jpg') center/cover; }
+        .hero-content { text-align: center; z-index: 10; }
+        .hero-content h1 { font-family: 'Playfair Display'; font-size: clamp(3.5rem, 10vw, 6rem); font-style: italic; color: var(--auriu); }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 100px 20px; }
+
+        /* DETALII CAMERE */
+        .house-structure { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 80px; }
+        .struct-card { background: var(--gri-card); border: 1px solid #1a1a1a; padding: 50px 30px; text-align: center; transition: 0.4s; }
+        .struct-card:hover { border-color: var(--auriu); transform: translateY(-5px); }
+        .struct-card i { color: var(--auriu); font-size: 2.5rem; margin-bottom: 25px; display: block; }
+        .struct-card h3 { font-family: 'Cinzel'; letter-spacing: 3px; margin-bottom: 15px; color: var(--auriu); }
+        .struct-card p { font-size: 0.95rem; color: #888; }
+
+        /* SECTIUNE VINIL / VIBE */
+        .vibe-section { display: grid; grid-template-columns: 1.2fr 1fr; gap: 50px; align-items: center; margin-bottom: 100px; }
+        .vibe-img { height: 600px; background: url('images/IMG20260417121324_01.jpg') center/cover; border: 1px solid #1a1a1a; }
+        .vibe-text h2 { font-family: 'Playfair Display'; font-size: 3rem; font-style: italic; margin-bottom: 25px; color: var(--auriu); }
+        .vibe-text p { font-size: 1.1rem; color: #ccc; margin-bottom: 20px; }
+
+        /* GALERIE FOTO - LUMINOASA */
+        .section-label { font-family: 'Cinzel'; color: var(--auriu); text-align: center; letter-spacing: 6px; font-size: 0.8rem; margin-bottom: 50px; text-transform: uppercase; }
+        .grid-vibe { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 15px; margin-bottom: 100px; }
+        .img-item { height: 450px; background-size: cover; background-position: center; border: 1px solid #1a1a1a; transition: 0.5s; opacity: 0.9; }
+        .img-item:hover { opacity: 1; transform: scale(1.02); border-color: var(--auriu); }
+
+        .btn-gold { display: inline-block; padding: 18px 45px; border: 1px solid var(--auriu); color: var(--auriu); text-decoration: none; font-family: 'Cinzel'; letter-spacing: 3px; font-size: 0.8rem; transition: 0.4s; background: transparent; }
+        .btn-gold:hover { background: var(--auriu); color: #000 !important; }
+
+        footer { padding: 80px 20px; text-align: center; background: #000; border-top: 1px solid #111; color: #444; font-family: 'Cinzel'; font-size: 0.7rem; letter-spacing: 2px; }
+        .whatsapp-float { position: fixed; bottom: 30px; left: 30px; background-color: #25d366; color: #FFF; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 10000; }
+
+        @media (max-width: 768px) {
+            .vibe-section { grid-template-columns: 1fr; }
+            .vibe-img { height: 400px; order: 2; }
+            .site-header { padding: 20px; }
+        }
     </style>
 </head>
 <body>
+
+    <a href="https://wa.me/40749229686" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
     <header class="site-header">
-        <a href="index.html" class="brand-logo"><svg viewBox="0 0 800 500"><circle cx="400" cy="250" r="105" fill="none" stroke="#c5a059" stroke-width="2"/><path d="M300 400 L400 200 L500 400 Z" fill="#c5a059"/></svg></a>
-        <div class="burger" id="burger" style="cursor:pointer;"><div></div><div></div></div>
+        <a href="index.html" class="brand">
+            <svg viewBox="0 0 800 500"><circle cx="400" cy="250" r="105" fill="none" stroke="#c5a059" stroke-width="2" opacity="0.6"/><path d="M300 400 L400 200 L500 400 Z" fill="#c5a059"/></svg>
+        </a>
+        <div class="burger" id="burger"><div></div><div></div></div>
         <nav class="main-nav" id="nav-links">
-            <a href="index.html">Acasă</a><a href="pensiune.html">Pensiunea</a><a href="metanoia.html">Metanoia</a><a href="gastronomie.html">Gastronomie</a><a href="evenimente.html">Evenimente</a><a href="rezervari.html">Rezervare</a><a href="contact.html">Contact</a>
+            <a href="index.html">Acasă</a>
+            <a href="pensiune.html">Pensiunea</a>
+            <a href="metanoia.html">Metanoia</a>
+            <a href="gastronomie.html">Gastronomie</a>
+            <a href="evenimente.html">Evenimente</a>
+            <a href="rezervari.html">Rezervare</a>
+            <a href="contact.html">Contact</a>
         </nav>
     </header>
 
-    <section class="hero-pensiune"><h1>La Buligă.</h1></section>
+    <section class="hero-sub">
+        <div class="hero-content">
+            <h1>La Buligă.</h1>
+        </div>
+    </section>
 
     <main class="container">
+        
         <div class="house-structure">
-            <div class="struct-card"><i class="fas fa-bed"></i><h3>Dormitor 1</h3><p>4 Locuri (2 paturi + pătuț pliabil)</p></div>
-            <div class="struct-card"><i class="fas fa-couch"></i><h3>Dormitor 2</h3><p>1 Pat dublu + Canapea</p></div>
-            <div class="struct-card"><i class="fas fa-users"></i><h3>Living</h3><p>Zonă comună (2 locuri suplimentare)</p></div>
+            <div class="struct-card">
+                <i class="fas fa-bed"></i>
+                <h3>Dormitor 1</h3>
+                <p>Capacitate 4 persoane (2 paturi + pătuț pliabil la cerere). Tihnă în bârne de lemn.</p>
+            </div>
+            <div class="struct-card">
+                <i class="fas fa-couch"></i>
+                <h3>Dormitor 2</h3>
+                <p>1 Pat dublu matrimonial + Canapea extensibilă. Vedere panoramică spre padurea deasa.</p>
+            </div>
+            <div class="struct-card">
+                <i class="fas fa-users"></i>
+                <h3>Living & Social</h3>
+                <p>Zonă comună generoasă (2 locuri suplimentare). Locul unde se deapănă poveștile.</p>
+            </div>
         </div>
-        <div class="vibe-grid">
-            <div class="vibe-img" style="background-image: url('images/IMG20260417113220.jpg');"></div>
-            <div class="vibe-img" style="background-image: url('images/IMG20260417121324_01.jpg');"></div>
-            <div class="vibe-img" style="background-image: url('images/IMG20260417130750.jpg');"></div>
+
+        <section class="vibe-section">
+            <div class="vibe-img"></div>
+            <div class="vibe-text">
+                <h2>Ritmul muntelui.</h2>
+                <p>Am ales ca la Buligă timpul să nu fie grăbit. Am lăsat muzica să curgă lent dintr-un pick-up vechi, unde Ella și Louis fac echipa perfectă cu liniștea pădurii.</p>
+                <p>Fiecare colț al casei este o invitație la deconectare digitală și reconectare cu simțurile.</p>
+                <a href="rezervari.html" class="btn-gold">REZERVĂ TIMPUL TĂU</a>
+            </div>
+        </section>
+
+        <p class="section-label">Detalii de Rânduială</p>
+        <div class="grid-vibe">
+            <div class="img-item" style="background-image: url('images/IMG20260417131737.jpg');"></div>
+            <div class="img-item" style="background-image: url('images/IMG20260417130750.jpg');"></div>
+            <div class="img-item" style="background-image: url('images/IMG20260417115844.jpg');"></div>
+            <div class="img-item" style="background-image: url('images/IMG20260417113220.jpg');"></div>
+            <div class="img-item" style="background-image: url('images/IMG20260417115816.jpg');"></div>
+            <div class="img-item" style="background-image: url('images/IMG20260417113231.jpg');"></div>
         </div>
+
     </main>
-    <footer>DAKAMIGOS MARKT SRL | RO40767794 | HAȚEG ALTERNATIV &copy; 2026</footer>
-    <script>const burger = document.getElementById('burger'); const nav = document.getElementById('nav-links'); burger.onclick = () => nav.classList.toggle('active');</script>
+
+    <footer>HAȚEG ALTERNATIV &copy; 2026 | TRIBUT PATRICIA</footer>
+
+    <script>
+        const burger = document.getElementById('burger');
+        const nav = document.getElementById('nav-links');
+        burger.onclick = () => nav.classList.toggle('active');
+    </script>
+
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true; s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
+    s1.charset='UTF-8'; s1.setAttribute('crossorigin','*'); s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
 </body>
 </html>
