@@ -18,7 +18,7 @@
 
         /* HEADER */
         .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 30px 50px; display: flex; justify-content: space-between; align-items: center; }
-        .brand-logo svg { height: 70px; width: auto; filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.4)); }
+        .brand-logo svg { height: 75px; width: auto; filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.4)); }
         
         .header-controls { display: flex; align-items: center; gap: 30px; }
         .btn-reserve-header { padding: 12px 25px; border: 1px solid var(--auriu); color: var(--auriu) !important; font-family: 'Cinzel'; font-size: 0.7rem; letter-spacing: 2px; transition: 0.4s; font-weight: 700; }
@@ -31,7 +31,7 @@
         .main-nav.active { right: 0; }
         .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 15px 0; color: #fff !important; text-transform: uppercase; letter-spacing: 5px; }
 
-        /* HERO SLIDER - CEATA PENTRU TEXT */
+        /* HERO SLIDER */
         .hero-slider { width: 100%; height: 100vh; overflow: hidden; position: relative; }
         .slider-track { display: flex; width: 100%; height: 100%; transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1); }
         .slide { min-width: 100%; height: 100%; position: relative; }
@@ -39,7 +39,7 @@
         .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; text-align: center; }
         .hero-text h1 { font-family: 'Playfair Display'; font-size: clamp(2.5rem, 10vw, 6.5rem); font-style: italic; color: var(--auriu); text-shadow: 0 10px 40px rgba(0,0,0,0.6); }
 
-        /* GRID 5 CARDURI - LUMINATE */
+        /* GRID 5 CARDURI */
         .container { max-width: 1400px; margin: 0 auto; padding: 80px 20px; }
         .grid-5 { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; margin-bottom: 60px; }
         .card-item { height: 550px; position: relative; overflow: hidden; display: block; border: 1px solid #1a1a1a; }
@@ -48,7 +48,7 @@
         .card-info { position: absolute; bottom: 0; padding: 40px; width: 100%; background: linear-gradient(to top, var(--negru), transparent); }
         .card-info h4 { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 4px; font-size: 1.1rem; }
 
-        /* CALENDAR CU POZE SPECIFICE */
+        /* CALENDAR SECTION */
         .calendar-section { padding: 100px 20px; background: #080808; border-top: 1px solid #111; position: relative; }
         .calendar-timeline { max-width: 1100px; margin: 0 auto; position: relative; }
         .calendar-timeline::before { content: ''; position: absolute; left: 50%; width: 1px; height: 100%; background: rgba(197, 160, 89, 0.2); transform: translateX(-50%); }
@@ -63,8 +63,7 @@
         .event-card h2 { font-family: 'Playfair Display'; font-style: italic; font-size: 2rem; color: #fff; margin-bottom: 15px; }
         .event-card p { color: #888; font-size: 0.9rem; margin-bottom: 25px; line-height: 1.6; }
         
-        /* BUTOANE CATRE CONTACT */
-        .btn-action { display: inline-block; padding: 12px 30px; border: 1px solid var(--auriu); color: var(--auriu); font-family: 'Cinzel'; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; transition: 0.4s; cursor: pointer; }
+        .btn-action { display: inline-block; padding: 12px 30px; border: 1px solid var(--auriu); color: var(--auriu); font-family: 'Cinzel'; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; transition: 0.4s; }
         .btn-action:hover { background: var(--auriu); color: #000 !important; }
 
         footer { padding: 80px 20px; text-align: center; background: #000; border-top: 1px solid #111; }
@@ -116,7 +115,8 @@
                 <a href="metanoia.html" class="card-item"><img src="images/rasarit.jpg"><div class="card-info"><h4>METANOIA</h4></div></a>
                 <a href="gastronomie.html" class="card-item"><img src="images/gast-supa2.jpg"><div class="card-info"><h4>GASTRONOMIE</h4></div></a>
                 <a href="evenimente.html" class="card-item"><img src="images/narcise.jpg"><div class="card-info"><h4>TIHNĂ ȘI TRĂIRE</h4></div></a>
-                <a href="https://corvinebike.ro/traseu/traseu-ebike-de-o-zi-prin-tinutul-padurenilor-din-vadu-dobrii-spre-roscani/" target="_blank" class="card-item"><img src="images/ebike.jpg"><div class="card-info"><h4>EXPLORARE</h4></div></a>
+                
+                <a href="explorare-ebike.html" class="card-item"><img src="images/ebike.jpg"><div class="card-info"><h4>EXPLORARE</h4></div></a>
             </div>
             <div class="widget-row" style="background: transparent;"><div class="elfsight-app-2a7a128c-e004-486e-961a-99f57d874913" data-elfsight-app-lazy></div></div>
         </div>
@@ -141,7 +141,7 @@
                         <span class="date-badge">09-10 MAI 2026</span>
                         <h2>Bike & Flowers</h2>
                         <p>Explorare cu e-bike către Poiana Narciselor. O simfonie a naturii în culorile primăverii.</p>
-                        <a href="contact.html" class="btn-action">REZERVĂ LOCUL</a>
+                        <a href="explorare-ebike.html" class="btn-action">DETALII EXPERIENȚĂ</a>
                     </div>
                 </div>
 
