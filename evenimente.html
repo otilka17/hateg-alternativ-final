@@ -7,13 +7,15 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <script src="https://elfsightcdn.com/platform.js" async></script>
 
     <style>
         :root { --auriu: #c5a059; --negru: #050505; --alb: #ffffff; --gri-card: #0d0d0d; }
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; line-height: 1.6; overflow-x: hidden; }
         
-        /* HEADER */
+        /* HEADER - LOGO CURAT */
         .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 30px 50px; display: flex; justify-content: space-between; align-items: center; }
         .brand-logo svg { height: 75px; width: auto; filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.4)); }
         .burger { cursor: pointer; z-index: 10001; }
@@ -21,16 +23,15 @@
 
         .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: var(--negru); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.6s; z-index: 10000; }
         .main-nav.active { right: 0; }
-        .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 15px 0; color: #fff !important; text-transform: uppercase; letter-spacing: 5px; text-decoration: none; transition: 0.3s; }
-        .main-nav a:hover { color: var(--auriu) !important; }
+        .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 15px 0; color: #fff !important; text-transform: uppercase; letter-spacing: 5px; text-decoration: none; }
 
         /* HERO */
-        .hero-ebike { 
+        .hero-events { 
             height: 60vh; 
             background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('images/narcise.jpg') center/cover;
             display: flex; align-items: center; justify-content: center; text-align: center;
         }
-        .hero-ebike h1 { font-family: 'Playfair Display'; font-size: clamp(3rem, 10vw, 6rem); font-style: italic; color: var(--auriu); }
+        .hero-events h1 { font-family: 'Playfair Display'; font-size: clamp(3rem, 10vw, 6rem); font-style: italic; color: var(--auriu); }
 
         .container { max-width: 1200px; margin: 0 auto; padding: 80px 20px; }
         .section-label { font-family: 'Cinzel'; color: var(--auriu); text-align: center; letter-spacing: 6px; font-size: 0.8rem; margin-bottom: 60px; text-transform: uppercase; border-bottom: 1px solid #1a1a1a; padding-bottom: 20px; }
@@ -38,29 +39,31 @@
         /* GRID EVENIMENTE CALENDAR */
         .events-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-bottom: 100px; }
         .event-card { background: var(--gri-card); border: 1px solid #1a1a1a; transition: 0.4s; overflow: hidden; }
-        .event-card:hover { border-color: var(--auriu); }
-        .event-img { height: 300px; background-size: cover; background-position: center; opacity: 0.7; transition: 0.5s; }
-        .event-card:hover .event-img { opacity: 1; }
+        .event-img { height: 300px; background-size: cover; background-position: center; opacity: 0.7; }
         .event-content { padding: 40px; text-align: center; }
-        .event-content span { font-family: 'Cinzel'; color: var(--auriu); font-size: 0.7rem; letter-spacing: 3px; }
         .event-content h3 { font-family: 'Playfair Display'; font-style: italic; font-size: 1.8rem; margin: 15px 0; color: #fff; }
         .event-content p { color: #777; font-size: 0.9rem; margin-bottom: 25px; }
 
-        /* SERVICII GRUP (TEAM BUILDING ETC) */
-        .offers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
-        .offer-item { background: #080808; padding: 50px 30px; border: 1px solid #151515; text-align: center; transition: 0.4s; }
-        .offer-item:hover { background: #0d0d0d; border-color: var(--auriu); }
-        .offer-item i { color: var(--auriu); font-size: 2.5rem; margin-bottom: 30px; display: block; }
-        .offer-item h3 { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 4px; margin-bottom: 20px; font-size: 1.1rem; }
-        .offer-item p { color: #888; font-size: 0.9rem; margin-bottom: 30px; line-height: 1.8; }
+        /* WIDGET: PERSONALIZEAZĂ EVENIMENTUL */
+        .personalize-widget { background: #080808; border: 1px solid var(--auriu); padding: 60px; margin: 80px 0; position: relative; }
+        .personalize-widget h2 { font-family: 'Cinzel'; color: var(--auriu); text-align: center; letter-spacing: 5px; margin-bottom: 40px; font-size: 1.5rem; }
+        
+        .options-flex { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-bottom: 40px; }
+        .option-chip { border: 1px solid #222; padding: 12px 25px; font-family: 'Cinzel'; font-size: 0.7rem; color: #555; cursor: pointer; transition: 0.3s; letter-spacing: 2px; }
+        .option-chip:hover, .option-chip.active { border-color: var(--auriu); color: var(--auriu); background: rgba(197,160,89,0.05); }
+
+        /* SERVICII GRUP */
+        .offers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 80px; }
+        .offer-item { background: #0d0d0d; padding: 50px 30px; border: 1px solid #151515; text-align: center; transition: 0.4s; }
+        .offer-item i { color: var(--auriu); font-size: 2rem; margin-bottom: 20px; display: block; }
+        .offer-item h3 { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 4px; margin-bottom: 15px; }
+        .offer-item p { color: #888; font-size: 0.9rem; margin-bottom: 30px; }
 
         .btn-gold { display: inline-block; padding: 14px 35px; border: 1px solid var(--auriu); color: var(--auriu); font-family: 'Cinzel'; font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase; transition: 0.4s; text-decoration: none; }
         .btn-gold:hover { background: var(--auriu); color: #000 !important; }
 
         footer { padding: 80px 20px; text-align: center; background: #000; border-top: 1px solid #111; }
         .whatsapp-float { position: fixed; bottom: 30px; left: 30px; background: #25d366; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 1000; color: #fff; }
-
-        @media (max-width: 768px) { .site-header { padding: 20px; } .hero-ebike { height: 45vh; } }
     </style>
 </head>
 <body>
@@ -69,96 +72,103 @@
 
     <header class="site-header">
         <a href="index.html" class="brand-logo">
-            <svg viewBox="0 0 800 500"><circle cx="400" cy="250" r="105" fill="none" stroke="#c5a059" stroke-width="2" opacity="0.6"/><path d="M300 400 L400 200 L500 400 Z" fill="#c5a059"/></svg>
+            <svg viewBox="0 0 800 500"><circle cx="400" cy="250" r="105" fill="none" stroke="#c5a059" stroke-width="2"/><path d="M300 400 L400 200 L500 400 Z" fill="#c5a059"/></svg>
         </a>
         <div class="burger" id="burger"><div></div><div></div></div>
         <nav class="main-nav" id="nav-links">
-            <a href="index.html">Acasă</a>
-            <a href="pensiune.html">Pensiunea</a>
-            <a href="metanoia.html">Metanoia</a>
-            <a href="gastronomie.html">Gastronomie</a>
-            <a href="evenimente.html">Evenimente</a>
-            <a href="rezervari.html">Rezervare</a>
-            <a href="contact.html">Contact</a>
+            <a href="index.html">Acasă</a><a href="pensiune.html">Pensiunea</a><a href="metanoia.html">Metanoia</a><a href="gastronomie.html">Gastronomie</a><a href="evenimente.html">Evenimente</a><a href="rezervari.html">Rezervare</a><a href="contact.html">Contact</a>
         </nav>
     </header>
 
-    <section class="hero-ebike">
+    <section class="hero-events">
         <h1>Tihnă și Trăire.</h1>
     </section>
 
     <main class="container">
         
-        <h2 class="section-label">Calendar Evenimente 2026</h2>
+        <h2 class="section-label">Calendar 2026</h2>
         
         <div class="events-grid">
             <div class="event-card">
                 <div class="event-img" style="background-image: url('images/la-buliga-pensiune.jpg');"></div>
                 <div class="event-content">
-                    <span>01 MAI 2026</span>
+                    <span style="font-family:'Cinzel'; color:var(--auriu);">01 MAI</span>
                     <h3>Serată Romano-Italiană</h3>
-                    <p>Mâncare la foc deschis, acorduri de chitară și povești depănate sub cerul liber.</p>
-                    <a href="contact.html" class="btn-gold">SOLICITĂ LOC</a>
+                    <p>Mâncare la foc deschis, chitară și povești.</p>
+                    <a href="contact.html" class="btn-gold">DETALII</a>
                 </div>
             </div>
-
             <div class="event-card">
                 <div class="event-img" style="background-image: url('images/bike.webp');"></div>
                 <div class="event-content">
-                    <span>09-10 MAI 2026</span>
+                    <span style="font-family:'Cinzel'; color:var(--auriu);">09-10 MAI</span>
                     <h3>Bike & Flowers</h3>
-                    <p>Explorare cu e-bike către Poiana Narciselor. O experiență activă în inima naturii.</p>
-                    <a href="explorare-ebike.html" class="btn-gold">DETALII TUR</a>
+                    <p>Explorare cu e-bike spre Poiana Narciselor.</p>
+                    <a href="explorare-ebike.html" class="btn-gold">DETALII</a>
                 </div>
             </div>
-
             <div class="event-card">
                 <div class="event-img" style="background-image: url('images/Sarmizegetusa.jpg');"></div>
                 <div class="event-content">
-                    <span>23-24 MAI 2026</span>
+                    <span style="font-family:'Cinzel'; color:var(--auriu);">23-24 MAI</span>
                     <h3>Go Nomad 4x4</h3>
-                    <p>Expediție off-road prin sălbăticia Munților Poiana Ruscă spre vestigii istorice.</p>
-                    <a href="contact.html" class="btn-gold">REZERVARE</a>
+                    <p>Expediție off-road spre vestigii istorice.</p>
+                    <a href="contact.html" class="btn-gold">DETALII</a>
                 </div>
             </div>
         </div>
 
-        <h2 class="section-label">Ce mai putem rândui</h2>
+        <section class="personalize-widget">
+            <h2>Personalizează-ți Evenimentul</h2>
+            <p style="text-align: center; color: #888; margin-bottom: 30px; font-style: italic;">Alege elementele pe care le dorești rânduite pentru grupul tău:</p>
+            
+            <div class="options-flex">
+                <div class="option-chip" onclick="this.classList.toggle('active')">TEAM BUILDING</div>
+                <div class="option-chip" onclick="this.classList.toggle('active')">GATHERING</div>
+                <div class="option-chip" onclick="this.classList.toggle('active')">CAZARE INTEGRALĂ</div>
+                <div class="option-chip" onclick="this.classList.toggle('active')">CATERING LOCAL</div>
+                <div class="option-chip" onclick="this.classList.toggle('active')">GHID MONTAN</div>
+                <div class="option-chip" onclick="this.classList.toggle('active')">TUR E-BIKE</div>
+                <div class="option-chip" onclick="this.classList.toggle('active')">EXPEDIȚIE 4X4</div>
+                <div class="option-chip" onclick="this.classList.toggle('active')">MUZICĂ LIVE</div>
+            </div>
 
+            <div style="text-align: center;">
+                <a href="https://wa.me/40749229686?text=Bună!%20Vreau%20să%20personalizez%20un%20eveniment%20pentru%20un%20grup." class="btn-gold">SOLICITĂ OFERTĂ PERSONALIZATĂ</a>
+            </div>
+        </section>
+
+        <h2 class="section-label">Categorii de Grup</h2>
         <div class="offers-grid">
             <div class="offer-item">
-                <i class="fas fa-users-gear"></i>
+                <i class="fas fa-users"></i>
                 <h3>TEAM BUILDING</h3>
-                <p>Retreat-uri corporate rânduite pentru claritate și conexiune. Strategie în vatra șurii, explorare off-road și ospăț la ceaun.</p>
-                <a href="https://wa.me/40749229686?text=Bună!%20Vrem%20să%20organizăm%20un%20Team%20Building." class="btn-gold">DETALII</a>
+                <p>Retreat-uri corporate pentru claritate și conexiune în vatra șurii.</p>
             </div>
-
             <div class="offer-item">
-                <i class="fas fa-fire-burner"></i>
+                <i class="fas fa-glass-cheers"></i>
                 <h3>GATHERING</h3>
-                <p>Reîntâlniri de suflet sau aniversări discrete. Povești la foc de tabără, degustări locale și muzică live sub cerul înstelat.</p>
-                <a href="https://wa.me/40749229686?text=Bună!%20Vrem%20să%20organizăm%20un%20Gathering." class="btn-gold">DETALII</a>
+                <p>Reîntâlniri de suflet, povești la foc de tabără și degustări locale.</p>
             </div>
+        </div>
 
-            <div class="offer-item">
-                <i class="fas fa-mountain-sun"></i>
-                <h3>EXPERIENȚE CUSTOM</h3>
-                <p>Configurăm evenimentul tău conform rânduielii tale. De la ateliere de creație și terapie prin artă până la tururi private.</p>
-                <a href="contact.html" class="btn-gold">CONTACT</a>
+        <div style="margin-top: 100px;">
+            <div class="elfsight-app-2a7a128c-e004-486e-961a-99f57d874913" data-elfsight-app-lazy></div>
+            <div style="background:#000; padding:50px 0; display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                <div class="elfsight-app-4342bef8-07d4-4bfe-9114-34160d0e96f1"></div>
+                <div class="elfsight-app-9e87d320-859d-4ef5-9a42-3eaeeaadb2d7"></div>
+                <div class="elfsight-app-8217fa9c-47ca-4b54-bb21-6a682ba7a413"></div>
             </div>
         </div>
 
     </main>
 
     <footer>
-        <p style="font-size:0.7rem; color:#444;">DAKAMIGOS MARKT SRL | RO40767794</p>
-        <p style="font-family:'Cinzel'; font-size:0.6rem; color:#888; letter-spacing:2px; margin-top:20px;">HAȚEG ALTERNATIV &copy; 2026 | TRIBUT PATRICIA</p>
+        <p style="font-family:'Cinzel'; font-size:0.7rem; color:#888;">HAȚEG ALTERNATIV &copy; 2026</p>
     </footer>
 
     <script>
-        const burger = document.getElementById('burger');
-        const nav = document.getElementById('nav-links');
-        if(burger) { burger.onclick = () => nav.classList.toggle('active'); }
+        const burger = document.getElementById('burger'); const nav = document.getElementById('nav-links'); if(burger) { burger.onclick = () => nav.classList.toggle('active'); }
     </script>
 </body>
 </html>
