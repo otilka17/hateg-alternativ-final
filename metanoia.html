@@ -1,232 +1,25 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Metanoia | Hațeg Alternativ - Experiențe și Rânduială</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
+    <meta charset="UTF-8"><title>Gastronomie | Hațeg Alternativ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
     <style>
-        :root { 
-            --auriu: #c5a059; 
-            --negru: #050505; 
-            --gri-card: #0d0d0d;
-            --alb: #ffffff;
-            --font-serif: 'Playfair Display', serif;
-            --font-cinzel: 'Cinzel', serif;
-            --font-sans: 'Inter', sans-serif;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        body { background: var(--negru); color: var(--alb); font-family: var(--font-sans); overflow-x: hidden; scroll-behavior: smooth; line-height: 1.6; }
-        
-        a { text-decoration: none !important; color: inherit !important; transition: 0.3s; }
-
-        /* HEADER - IDENTIC CU INDEX */
-        .site-header { position: absolute; top: 0; width: 100%; z-index: 10000; padding: 30px 50px; display: flex; justify-content: space-between; align-items: center; }
-        .brand-logo svg { height: 70px; width: auto; filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.4)); }
-        .burger { cursor: pointer; z-index: 10001; }
-        .burger div { width: 30px; height: 1px; background: var(--auriu); margin: 8px; }
-
-        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: var(--negru); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.6s; z-index: 10000; }
-        .main-nav.active { right: 0; }
-        .main-nav a { font-size: 1.8rem; font-family: var(--font-cinzel); margin: 15px 0; color: var(--alb) !important; letter-spacing: 5px; text-transform: uppercase; }
-        .main-nav a:hover { color: var(--auriu) !important; }
-
-        /* HERO TOP */
-        .gallery-viewport { width: 100%; height: 60vh; overflow: hidden; position: relative; margin-top: 0; }
-        .gallery-track { display: flex; width: 100%; height: 100%; transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1); }
-        .gallery-slide { min-width: 100%; height: 100%; position: relative; }
-        .gallery-slide img { width: 100%; height: 100%; object-fit: cover; opacity: 0.4; }
-        .gallery-caption { position: absolute; bottom: 40px; left: 30px; border-left: 2px solid var(--auriu); padding-left: 20px; }
-        .gallery-caption h3 { font-family: var(--font-serif); font-size: 2.5rem; font-style: italic; color: #fff; line-height: 1.1; }
-
-        .container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
-
-        /* MANIFEST */
-        .metanoia-intro { text-align: center; max-width: 800px; margin: 0 auto 40px; }
-        .metanoia-intro h2 { font-family: var(--font-cinzel); color: var(--auriu); letter-spacing: 5px; font-size: 0.8rem; margin-bottom: 20px; text-transform: uppercase; }
-        .metanoia-intro p { font-family: var(--font-serif); font-size: 2.2rem; font-style: italic; color: #fff; line-height: 1.3; }
-
-        /* VIDEO PREVIEW SCALAT */
-        .video-teaser-section { display: flex; flex-direction: column; align-items: center; padding: 40px 0 80px; }
-        #video-container {
-            position: relative;
-            width: 100%;
-            max-width: 280px;
-            aspect-ratio: 9 / 16;
-            background: #000;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
-            overflow: hidden;
-            border: 1px solid #1a1a1a;
-            border-radius: 12px;
-        }
-        .scene { position: absolute; inset: 0; opacity: 0; transition: opacity 0.8s ease; visibility: hidden; }
-        .scene.active { opacity: 1; visibility: visible; }
-        .scene img { width: 100%; height: 100%; object-fit: cover; }
-        .text-overlay {
-            position: absolute; bottom: 15%; left: 10%; right: 10%; text-align: center;
-            color: #fff; text-shadow: 2px 2px 8px #000;
-            font-family: var(--font-serif); font-size: 1.2rem; font-style: italic;
-            opacity: 0; transform: translateY(10px); transition: 0.6s ease 0.4s;
-        }
-        .scene.active .text-overlay { opacity: 1; transform: translateY(0); }
-        #play-overlay {
-            position: absolute; inset: 0; background: rgba(0,0,0,0.8);
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            z-index: 100; cursor: pointer; color: var(--auriu);
-        }
-        #play-button { width: 50px; height: 50px; border: 1px solid var(--auriu); border-radius: 50%; display: flex; justify-content: center; align-items: center; margin-bottom: 15px; font-size: 20px; }
-
-        /* PACHETE */
-        .section-label { font-family: var(--font-cinzel); color: var(--auriu); text-align: center; letter-spacing: 5px; font-size: 0.75rem; margin-bottom: 40px; text-transform: uppercase; }
-        .package-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-bottom: 100px; }
-        .p-card { background: var(--gri-card); border: 1px solid #1a1a1a; padding: 50px 30px; text-align: center; transition: 0.4s; }
-        .p-card:hover { border-color: var(--auriu); }
-        .p-card h3 { font-family: var(--font-serif); font-size: 2rem; font-style: italic; color: var(--auriu); margin-bottom: 25px; }
-        .p-features { list-style: none; margin-bottom: 35px; color: #aaa; font-size: 0.9rem; }
-        .p-features li { padding: 12px 0; border-bottom: 1px solid #1a1a1a; }
-        
-        .btn-cta { display: inline-block; padding: 15px 35px; border: 1px solid var(--auriu); color: var(--auriu); font-family: var(--font-cinzel); font-size: 0.75rem; letter-spacing: 2px; transition: 0.3s; font-weight: 700; background: transparent; }
-        .btn-cta:hover { background: var(--auriu); color: #000 !important; }
-
-        /* OBIECTIVE */
-        .act-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; }
-        .act-item { height: 400px; position: relative; overflow: hidden; border: 1px solid #1a1a1a; display: block; }
-        .act-item img { width: 100%; height: 100%; object-fit: cover; transition: 1.5s; opacity: 0.4; }
-        .act-item:hover img { opacity: 0.8; transform: scale(1.05); }
-        .act-info { position: absolute; bottom: 0; padding: 25px; background: linear-gradient(to top, rgba(0,0,0,0.95), transparent); width: 100%; }
-        .act-info h4 { font-family: var(--font-serif); font-size: 1.6rem; font-style: italic; color: var(--auriu); margin-bottom: 5px; }
-
-        footer { padding: 60px 20px; text-align: center; background: #000; border-top: 1px solid #111; font-family: var(--font-cinzel); font-size: 0.65rem; letter-spacing: 2px; }
-        .whatsapp-float { position: fixed; bottom: 30px; left: 20px; background: #25d366; border-radius: 50%; width: 55px; height: 55px; display: flex; align-items: center; justify-content: center; font-size: 28px; z-index: 1000; color: #fff; }
-
-        @media (max-width: 768px) { .site-header { padding: 20px; } .hero-text h1 { font-size: 3rem; } }
+        body { background: #050505; color: #fff; margin: 0; }
+        .hero { height: 50vh; background: url('images/gast-supa2.jpg') center/cover; display: flex; align-items: center; justify-content: center; }
+        h1 { font-family: 'Playfair Display'; font-size: 4rem; color: #c5a059; }
+        .menu-box { max-width: 1000px; margin: 80px auto; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; padding: 20px; }
+        .cat { border: 1px solid #1a1a1a; padding: 30px; background: #0d0d0d; }
+        h3 { color: #c5a059; font-family: 'Cinzel'; border-bottom: 1px solid #222; padding-bottom: 10px; }
     </style>
 </head>
 <body>
-
-    <a href="https://wa.me/40749229686" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
-
-    <header class="site-header">
-        <a href="index.html" class="brand-logo">
-            <svg viewBox="0 0 800 500"><circle cx="400" cy="250" r="105" fill="none" stroke="#c5a059" stroke-width="2" opacity="0.6"/><path d="M300 400 L400 200 L500 400 Z" fill="#c5a059"/></svg>
-        </a>
-        <div class="burger" id="burger"><div></div><div></div></div>
-        <nav class="main-nav" id="nav-links">
-            <a href="index.html">Acasă</a>
-            <a href="pensiune.html">Pensiunea</a>
-            <a href="metanoia.html">Metanoia</a>
-            <a href="gastronomie.html">Gastronomie</a>
-            <a href="evenimente.html">Evenimente</a>
-            <a href="rezervari.html">Rezervare</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    </header>
-
-    <div class="gallery-viewport">
-        <div class="gallery-track" id="gallerySlider">
-            <div class="gallery-slide"><img src="images/rasarit.jpg"><div class="gallery-caption"><h3>Răsărit la ora 5.</h3></div></div>
-            <div class="gallery-slide"><img src="images/jeep.jpg"><div class="gallery-caption"><h3>Explorare 4x4.</h3></div></div>
-            <div class="gallery-slide"><img src="images/feed-buliga.jpg"><div class="gallery-caption"><h3>Momente de Tihnă.</h3></div></div>
-        </div>
+    <div class="hero"><h1>Rânduiala Gustului.</h1></div>
+    <div class="menu-box">
+        <div class="cat"><h3>Ospăț cu Porc</h3><p>Tochitură Pădurenească</p><p>Costițe Caramelizate sub Pergolă</p></div>
+        <div class="cat"><h3>Bunătăți cu Pui</h3><p>Pui la Ceaun cu Mujdei</p><p>Papricaș ca-n Ardeal</p></div>
     </div>
-
-    <div class="container">
-        <div class="metanoia-intro">
-            <h2>Manifest Metanoia</h2>
-            <p>O călătorie curatoriată unde rânduiala veche întâlnește liniștea muntelui.</p>
-        </div>
-
-        <div class="video-teaser-section">
-            <div id="video-container">
-                <div id="play-overlay" onclick="startVideo()">
-                    <div id="play-button">▶</div>
-                    <p style="font-family:'Cinzel'; font-size: 0.6rem; letter-spacing: 2px;">PORNEȘTE VIBE-UL</p>
-                </div>
-                <div class="scene" data-duration="2500"><img src="images/nori.jpg"><div class="text-overlay">Nevoie de o pauză?</div></div>
-                <div class="scene" data-duration="2500"><img src="images/hero-premium.jpg"><div class="text-overlay">De zgomot...</div></div>
-                <div class="scene" data-duration="2500"><img src="images/apus1.jpg"><div class="text-overlay">...și de agitație?</div></div>
-                <div class="scene" data-duration="2500"><img src="images/jeep.jpg"><div class="text-overlay">Evadează la Buligă.</div></div>
-                <div class="scene" data-duration="2500"><img src="images/IMG_20260330_160314.jpg"><div class="text-overlay">Rânduiala regăsită.</div></div>
-                <div class="scene final" data-duration="4000">
-                    <img src="images/la-buliga-pensiune.jpg">
-                    <div class="text-overlay">Early Booking 2026.</div>
-                </div>
-            </div>
-        </div>
-
-        <p class="section-label">Pachete Signature</p>
-        <div class="package-grid">
-            <div class="p-card">
-                <h3>Metanoia All-In</h3>
-                <ul class="p-features">
-                    <li>3 Nopți Cazare Premium</li>
-                    <li>Demipensiune (Bio & Local)</li>
-                    <li>Tur Off-road & Explorare</li>
-                    <li>Atelier de Creație Manuală</li>
-                </ul>
-                <a href="rezervari.html" class="btn-cta">REZERVĂ EXPERIENȚA</a>
-            </div>
-            <div class="p-card">
-                <h3>Rânduiala Veche</h3>
-                <ul class="p-features">
-                    <li>2 Nopți Cazare Integrală</li>
-                    <li>Mic Dejun Tradițional</li>
-                    <li>Experiență Digital Detox</li>
-                    <li>Tihnă în Cercul de Foc</li>
-                </ul>
-                <a href="rezervari.html" class="btn-cta">REZERVĂ ACUM</a>
-            </div>
-        </div>
-
-        <p class="section-label">Obiectivele Ținutului</p>
-        <div class="act-grid">
-            <div class="act-item"><img src="images/biserica-sf-nicolae-densus.jpg"><div class="act-info"><h4>Duhul Locului</h4></div></div>
-            <div class="act-item"><img src="images/banita.jpg"><div class="act-info"><h4>Cheile Baniței</h4></div></div>
-            <div class="act-item"><img src="images/bucura.jpg"><div class="act-info"><h4>Lacul Bucura</h4></div></div>
-        </div>
-    </div>
-
-    <footer>HAȚEG ALTERNATIV &copy; 2026 | TRIBUT PATRICIA</footer>
-
-    <script>
-        const burger = document.getElementById('burger');
-        const nav = document.getElementById('nav-links');
-        if(burger) { burger.onclick = () => nav.classList.toggle('active'); }
-
-        /* SLIDER TOP */
-        let current = 0;
-        const track = document.getElementById('gallerySlider');
-        const slides = document.querySelectorAll('.gallery-slide');
-        if(track && slides.length > 0) {
-            setInterval(() => {
-                current = (current + 1) % slides.length;
-                track.style.transform = `translateX(-${current * 100}%)`;
-            }, 5000);
-        }
-
-        /* VIDEO PREVIEW */
-        const videoScenes = document.querySelectorAll('.scene');
-        let currentVideoScene = 0;
-        function startVideo() {
-            document.getElementById('play-overlay').style.display = 'none';
-            playNextVideoScene();
-        }
-        function playNextVideoScene() {
-            if (currentVideoScene > 0) { videoScenes[currentVideoScene - 1].classList.remove('active'); }
-            else if (currentVideoScene === 0) { videoScenes[videoScenes.length - 1].classList.remove('active'); }
-            const activeScene = videoScenes[currentVideoScene];
-            activeScene.classList.add('active');
-            const duration = parseInt(activeScene.getAttribute('data-duration'));
-            setTimeout(() => {
-                currentVideoScene++;
-                if (currentVideoScene < videoScenes.length) { playNextVideoScene(); }
-                else { currentVideoScene = 0; document.getElementById('play-overlay').style.display = 'flex'; }
-            }, duration);
-        }
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}; (function(){ var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0]; s1.async=true; s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s'; s1.charset='UTF-8'; s1.setAttribute('crossorigin','*'); s0.parentNode.insertBefore(s1,s0); })();
     </script>
 </body>
 </html>
