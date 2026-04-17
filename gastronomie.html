@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gastronomie | Hațeg Alternativ - Avy Wine & Dine</title>
+    <title>Gastronomie | Hațeg Alternativ - Mâncare de Oameni Normali</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
+    <script src="https://elfsightcdn.com/platform.js" async></script>
+
     <style>
         :root { --auriu: #c5a059; --negru: #050505; --alb: #ffffff; --gri-card: #0d0d0d; }
-        
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; line-height: 1.6; }
         a { text-decoration: none !important; color: inherit !important; transition: 0.3s; }
 
-        /* HEADER */
+        /* HEADER CURAT */
         .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 30px 50px; display: flex; justify-content: space-between; align-items: center; }
-        .brand-logo svg { height: 70px; width: auto; filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.4)); }
+        .brand-logo svg { height: 75px; width: auto; filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.4)); }
         .burger { cursor: pointer; z-index: 10001; }
         .burger div { width: 30px; height: 1px; background: var(--auriu); margin: 8px; }
         .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: var(--negru); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.6s; z-index: 10000; }
@@ -26,47 +27,31 @@
 
         /* HERO GASTRO */
         .hero-gastro { 
-            height: 60vh; 
+            height: 50vh; 
             background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.8)), url('images/gast-masa-traditionala.jpg') center/cover;
             display: flex; align-items: center; justify-content: center; text-align: center;
         }
         .hero-gastro h1 { font-family: 'Playfair Display'; font-size: clamp(3rem, 10vw, 5.5rem); font-style: italic; color: var(--auriu); }
 
         /* MENU SECTION */
-        .container { max-width: 1200px; margin: 0 auto; padding: 80px 20px; }
-        .menu-category { margin-bottom: 100px; }
-        .category-title { font-family: 'Cinzel'; color: var(--auriu); text-align: center; letter-spacing: 8px; font-size: 1.2rem; margin-bottom: 60px; text-transform: uppercase; position: relative; }
-        .category-title::after { content: ''; display: block; width: 50px; height: 1px; background: var(--auriu); margin: 15px auto; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
+        .category-title { font-family: 'Cinzel'; color: var(--auriu); text-align: center; letter-spacing: 8px; font-size: 1.2rem; margin: 60px 0 40px; text-transform: uppercase; border-bottom: 1px solid #111; padding-bottom: 15px; }
 
-        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
-        
-        .menu-item { background: #080808; border: 1px solid #1a1a1a; transition: 0.4s; overflow: hidden; }
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-bottom: 80px; }
+        .menu-item { background: #080808; border: 1px solid #1a1a1a; transition: 0.4s; padding: 25px; display: flex; flex-direction: column; align-items: center; text-align: center; }
         .menu-item:hover { border-color: var(--auriu); transform: translateY(-5px); }
-        
-        .item-img { width: 100%; height: 250px; overflow: hidden; }
-        .item-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: 1s ease; }
-        .menu-item:hover .item-img img { opacity: 1; transform: scale(1.05); }
+        .item-info h3 { font-family: 'Playfair Display'; font-size: 1.5rem; color: var(--auriu); margin-bottom: 10px; font-style: italic; }
+        .item-info p { color: #888; font-size: 0.9rem; margin-bottom: 15px; }
+        .price-tag { font-family: 'Cinzel'; color: #fff; font-size: 0.8rem; letter-spacing: 2px; }
 
-        .item-info { padding: 30px; text-align: center; }
-        .item-info h3 { font-family: 'Playfair Display'; font-style: italic; color: var(--auriu); font-size: 1.6rem; margin-bottom: 10px; }
-        .item-info p { color: #888; font-size: 0.9rem; margin-bottom: 15px; font-style: italic; }
-        .item-tag { font-family: 'Cinzel'; font-size: 0.6rem; color: #555; letter-spacing: 2px; text-transform: uppercase; border: 1px solid #222; padding: 4px 12px; display: inline-block; }
-
-        /* WINE & DINE SECTION */
-        .wine-dine-banner { 
-            background: #0d0d0d; padding: 100px 40px; text-align: center; border-top: 1px solid #1a1a1a; border-bottom: 1px solid #1a1a1a; margin-bottom: 100px;
-        }
-        .wine-dine-banner h2 { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 10px; font-size: 1.8rem; margin-bottom: 30px; }
-        .wine-dine-banner p { max-width: 700px; margin: 0 auto 40px; color: #aaa; font-style: italic; }
+        /* WIDGETS ROW */
+        .widget-row { background: #000; padding: 50px 0; border-top: 1px solid #111; }
 
         /* FOOTER */
-        footer { padding: 80px 20px; text-align: center; background: #000; border-top: 1px solid #111; }
-        .footer-legal { margin: 25px 0; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-        .footer-legal a { font-family: 'Cinzel'; font-size: 0.7rem; color: #555 !important; letter-spacing: 2px; }
-        
+        footer { padding: 60px 20px; text-align: center; background: #000; color: #444; }
         .whatsapp-float { position: fixed; bottom: 30px; left: 30px; background: #25d366; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 1000; color: #fff; }
 
-        @media (max-width: 768px) { .menu-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) { .site-header { padding: 20px; } }
     </style>
 </head>
 <body>
@@ -75,7 +60,7 @@
 
     <header class="site-header">
         <a href="index.html" class="brand-logo">
-            <svg viewBox="0 0 800 500"><circle cx="400" cy="250" r="105" fill="none" stroke="#c5a059" stroke-width="2" opacity="0.6"/><path d="M300 400 L400 200 L500 400 Z" fill="#c5a059"/></svg>
+            <svg viewBox="0 0 800 500"><circle cx="400" cy="250" r="105" fill="none" stroke="#c5a059" stroke-width="2"/><path d="M300 400 L400 200 L500 400 Z" fill="#c5a059"/></svg>
         </a>
         <div class="burger" id="burger"><div></div><div></div></div>
         <nav class="main-nav" id="nav-links">
@@ -84,83 +69,128 @@
     </header>
 
     <section class="hero-gastro">
-        <h1>Rânduiala Gustului.</h1>
+        <h1>Mâncare cu Rânduială.</h1>
     </section>
 
-    <main class="container">
-        
-        <section class="menu-category">
-            <h2 class="category-title">Gustări de Munte</h2>
+    <main>
+        <div class="container">
+            
+            <h2 class="category-title">Gustări & Aperitiv</h2>
             <div class="menu-grid">
                 <div class="menu-item">
-                    <div class="item-img"><img src="images/gast-cafea-inima.jpg"></div>
                     <div class="item-info">
-                        <h3>Platoul Pădureanului</h3>
-                        <p>Brânzeturi maturate în grotă, slănină afumată cu lemn de fag și ceapă roșie de grădină.</p>
-                        <span class="item-tag">LOCAL & BIO</span>
+                        <h3>Platou Tradițional</h3>
+                        <p>Brânză de munte, slănină afumată, cârnați uscați, roșii și ceapă roșie.</p>
                     </div>
                 </div>
                 <div class="menu-item">
-                    <div class="item-img"><img src="images/gast-supa2.jpg"></div>
                     <div class="item-info">
-                        <h3>Ciorbă de Hribi</h3>
-                        <p>Hribi culeși din pădurile Vadu Dobrii, dreasă cu smântână grasă și leuştean proaspăt.</p>
-                        <span class="item-tag">REȚETĂ VECHE</span>
+                        <h3>Zacuscă de Casă</h3>
+                        <p>Făcută la foc de lemne, servită cu pâine caldă de vatră.</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h3>Salată de Vinete</h3>
+                        <p>Vinete coapte pe jar, cu ceapă verde și ardei copt.</p>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <section class="wine-dine-banner">
-            <h2>Avy Wine & Dine</h2>
-            <p>„Vinul este poezia îmbuteliată, iar mâncarea este rânduiala care o desăvârșește.”</p>
-            <div class="item-tag" style="border-color:var(--auriu); color:var(--auriu);">EXPERIENȚĂ GASTRONOMICĂ</div>
-        </section>
-
-        <section class="menu-category">
-            <h2 class="category-title">Feluri de Rezistență</h2>
+            <h2 class="category-title">Paste</h2>
             <div class="menu-grid">
                 <div class="menu-item">
-                    <div class="item-img"><img src="images/gast-porc-ai.webp"></div>
                     <div class="item-info">
-                        <h3>Tochitură la Garniță</h3>
-                        <p>Carne de porc frăgezită în untură, servită cu mămăligă la ceaun și ou ochi.</p>
-                        <span class="item-tag">SIGNATURE DISH</span>
+                        <h3>Paste cu Hribi</h3>
+                        <p>Tagliatelle cu hribi culeși din pădure, parmezan și usturoi verde.</p>
                     </div>
                 </div>
                 <div class="menu-item">
-                    <div class="item-img"><img src="images/gast-pui-ai.webp"></div>
                     <div class="item-info">
-                        <h3>Pui în Cocă</h3>
-                        <p>Pui de curte rumenit lent, învelit în aluat dospit și ierburi aromatice de munte.</p>
-                        <span class="item-tag">LA FOC DE LEMNE</span>
-                    </div>
-                </div>
-                <div class="menu-item">
-                    <div class="item-img"><img src="images/gast-desert-ai.webp"></div>
-                    <div class="item-info">
-                        <h3>Plăcinte pe Lespede</h3>
-                        <p>Aluat subțire umplut cu brânză de oaie și mărar, coapte direct pe piatră încinsă.</p>
-                        <span class="item-tag">DESERTUL CASEI</span>
+                        <h3>Paste Carbonara</h3>
+                        <p>Rețetă clasică cu guanciale/pancetta, ou și mult piper.</p>
                     </div>
                 </div>
             </div>
-        </section>
 
+            <h2 class="category-title">La Ceaun și Tradițional</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h3>Sarmalele Casei</h3>
+                        <p>Sarmale fierte lent, servite cu mămăligă caldă, smântână și ardei iute.</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h3>Gulaș la Ceaun</h3>
+                        <p>Carne de vită și porc, cartofi și mult chimen, gătite afară la foc de lemne.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="category-title">Fripturi (Pui & Porc)</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h3>Ceafă de Porc</h3>
+                        <p>Fragedă și rumenită pe grătar, cu sare mare.</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h3>Pulpă de Pui la Cuptor</h3>
+                        <p>Cu mujdei de usturoi și ierburi aromatice.</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h3>Șnițel de Pui</h3>
+                        <p>În crustă croantă de pesmet auriu.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2 class="category-title">Garnituri</h2>
+            <div class="menu-grid">
+                <div class="menu-item"><div class="item-info"><h3>Cartofi Prăjiți</h3><p>Tăiați manual, exact ca acasă.</p></div></div>
+                <div class="menu-item"><div class="item-info"><h3>Piure de Cartofi</h3><p>Cu unt și lapte gras.</p></div></div>
+                <div class="menu-item"><div class="item-info"><h3>Legume la Grătar</h3><p>Dovlecei, ardei, ciuperci și vinete.</p></div></div>
+            </div>
+
+            <h2 class="category-title">Desert</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h3>Clătite Fine</h3>
+                        <p>Cu dulceață de afine din munte sau ciocolată fină.</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <div class="item-info">
+                        <h3>Plăcinte Pădurenești</h3>
+                        <p>Cu brânză dulce și stafide sau brânză sărată și mărar.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="elfsight-app-2a7a128c-e004-486e-961a-99f57d874913" data-elfsight-app-lazy></div>
+        </div>
+
+        <div class="widget-row">
+            <div class="elfsight-app-4342bef8-07d4-4bfe-9114-34160d0e96f1"></div>
+            <div class="elfsight-app-9e87d320-859d-4ef5-9a42-3eaeeaadb2d7"></div>
+            <div class="elfsight-app-8217fa9c-47ca-4b54-bb21-6a682ba7a413"></div>
+        </div>
     </main>
 
     <footer>
-        <p style="font-size:0.8rem; color:#444;">DAKAMIGOS MARKT SRL | CUI: RO40767794</p>
-        <div class="footer-legal"><a href="politica-cookies.html">POLITICA COOKIES</a><a href="termeni.html">TERMENI ȘI CONDIȚII</a><a href="confidentialitate.html">GDPR</a></div>
-        <p style="margin-top:20px; font-family:'Cinzel'; font-size:0.7rem; color:#888;">HAȚEG ALTERNATIV © 2026</p>
+        <p>DAKAMIGOS MARKT SRL | HAȚEG ALTERNATIV © 2026</p>
     </footer>
 
     <script>
-        const burger = document.getElementById('burger');
-        const nav = document.getElementById('nav-links');
-        if(burger) { burger.onclick = () => nav.classList.toggle('active'); }
+        const burger = document.getElementById('burger'); const nav = document.getElementById('nav-links'); if(burger) { burger.onclick = () => nav.classList.toggle('active'); }
     </script>
-    
     <script type="text/javascript">
     var Tawk_API=Tawk_API||{}; (function(){ var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0]; s1.async=true; s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s'; s1.charset='UTF-8'; s1.setAttribute('crossorigin','*'); s0.parentNode.insertBefore(s1,s0); })();
     </script>
