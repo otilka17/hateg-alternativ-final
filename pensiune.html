@@ -16,20 +16,15 @@
         .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: var(--negru); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.6s; z-index: 10000; }
         .main-nav.active { right: 0; }
         .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 15px 0; color: #fff !important; text-decoration: none; letter-spacing: 5px; }
-        .hero-sub { height: 60vh; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('images/la-buliga-pensiune.jpg') center/cover; display: flex; align-items: center; justify-content: center; }
-        .hero-sub h1 { font-family: 'Playfair Display'; font-size: clamp(3rem, 10vw, 5rem); font-style: italic; color: var(--auriu); }
+        .hero-sub { height: 65vh; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('images/la-buliga-pensiune.jpg') center/cover; display: flex; align-items: center; justify-content: center; }
+        .hero-sub h1 { font-family: 'Playfair Display'; font-size: clamp(3.5rem, 10vw, 6rem); font-style: italic; color: var(--auriu); }
         .container { max-width: 1200px; margin: 0 auto; padding: 80px 20px; }
-        .section-label { font-family: 'Cinzel'; color: var(--auriu); text-align: center; letter-spacing: 6px; font-size: 0.8rem; margin-bottom: 50px; }
-        .struct-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 80px; }
-        .card { background: var(--gri-card); padding: 40px; border: 1px solid #1a1a1a; text-align: center; }
-        .card i { color: var(--auriu); font-size: 2rem; margin-bottom: 20px; display: block; }
-        .card h3 { font-family: 'Cinzel'; color: var(--auriu); margin-bottom: 10px; }
-        .feature-block { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; margin-bottom: 80px; background: #080808; padding: 40px; }
-        .feature-img { height: 450px; background-size: cover; background-position: center; border: 1px solid #1a1a1a; }
+        .interior-colaj { width: 100%; margin-bottom: 80px; border: 1px solid #1a1a1a; }
+        .interior-colaj img { width: 100%; height: auto; display: block; }
         .vibe-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 15px; }
-        .vibe-item { height: 400px; background-size: cover; background-position: center; border: 1px solid #1a1a1a; }
+        .img-item { height: 450px; background-size: cover; background-position: center; border: 1px solid #1a1a1a; opacity: 0.9; transition: 0.5s; }
+        .img-item:hover { opacity: 1; border-color: var(--auriu); }
         footer { padding: 60px 20px; text-align: center; border-top: 1px solid #111; color: #444; font-family: 'Cinzel'; font-size: 0.7rem; }
-        @media (max-width: 800px) { .feature-block { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -42,29 +37,19 @@
     </header>
     <section class="hero-sub"><h1>Rânduiala Casei.</h1></section>
     <main class="container">
-        <p class="section-label">STRUCTURA ȘI CONFORT</p>
-        <div class="struct-grid">
-            <div class="card"><i class="fas fa-bed"></i><h3>Dormitor 1</h3><p>4 Locuri (2 paturi matrimoniale). Tihnă absolută.</p></div>
-            <div class="card"><i class="fas fa-moon"></i><h3>Dormitor 2</h3><p>3 Locuri (1 pat dublu + canapea extensibilă).</p></div>
-            <div class="card"><i class="fas fa-mug-hot"></i><h3>Aparate Cafea</h3><p>Două aparate dedicate (Boabe și Capsule).</p></div>
-        </div>
-        <div class="feature-block">
-            <div class="feature-text"><h2>Focul și Pergola.</h2><p>Am rânduit sub pergolă locul ideal de adunare, indiferent de vreme. Zona de grill și ceaun este pregătită.</p></div>
-            <div class="feature-img" style="background-image: url('images/pergola.jpg');"></div>
-        </div>
-        <p class="section-label">GALERIE RÂNDUITĂ</p>
+        <div class="interior-colaj"><img src="images/image_7182c2.jpg" loading="lazy"></div>
         <div class="vibe-grid">
-            <div class="vibe-item" style="background-image: url('images/IMG_20260330_160314.webp');"></div>
-            <div class="vibe-item" style="background-image: url('images/IMG_20260330_160323.webp');"></div>
-            <div class="vibe-item" style="background-image: url('images/IMG_20260330_160335.webp');"></div>
+            <div class="img-item" style="background-image: url('images/IMG_20260330_160314.webp');"></div>
+            <div class="img-item" style="background-image: url('images/IMG_20260330_160323.webp');"></div>
+            <div class="img-item" style="background-image: url('images/IMG_20260330_160335.webp');"></div>
+            <div class="img-item" style="background-image: url('images/IMG_20260330_160344.webp');"></div>
+            <div class="img-item" style="background-image: url('images/IMG_20260330_160353.webp');"></div>
+            <div class="img-item" style="background-image: url('images/IMG_20260330_160505.webp');"></div>
         </div>
     </main>
     <footer>HAȚEG ALTERNATIV &copy; 2026</footer>
     <script>
         const burger = document.getElementById('burger'); const nav = document.getElementById('nav-links'); burger.onclick = () => nav.classList.toggle('active');
-    </script>
-    <script type="text/javascript">
-        var Tawk_API=Tawk_API||{}; (function(){ var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0]; s1.async=true; s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s'; s1.charset='UTF-8'; s1.setAttribute('crossorigin','*'); s0.parentNode.insertBefore(s1,s0); })();
     </script>
 </body>
 </html>
