@@ -18,9 +18,9 @@
         .brand-logo svg { height: 75px; width: auto; filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.4)); }
         .burger { cursor: pointer; z-index: 10001; }
         .burger div { width: 30px; height: 1px; background: var(--auriu); margin: 8px; }
-        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: var(--negru); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.6s; z-index: 10000; }
+        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: var(--negru); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.6s cubic-bezier(0.7, 0, 0.3, 1); z-index: 10000; }
         .main-nav.active { right: 0; }
-        .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 12px 0; color: #fff !important; text-transform: uppercase; letter-spacing: 5px; }
+        .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 12px 0; color: #fff !important; text-transform: uppercase; letter-spacing: 5px; text-decoration: none; }
 
         /* HERO */
         .hero-sub { height: 60vh; position: relative; display: flex; align-items: center; justify-content: center; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('images/la-buliga-pensiune.jpg') center/cover; }
@@ -29,7 +29,7 @@
         .container { max-width: 1200px; margin: 0 auto; padding: 80px 20px; }
         .section-label { font-family: 'Cinzel'; color: var(--auriu); text-align: center; letter-spacing: 6px; font-size: 0.8rem; margin: 60px 0 40px; text-transform: uppercase; }
 
-        /* STRUCTURA CAMERE */
+        /* STRUCTURA CAMERE - REZUMATUL TAU INAPOI */
         .struct-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 80px; }
         .struct-card { background: var(--gri-card); padding: 45px; border: 1px solid #1a1a1a; text-align: center; transition: 0.4s; }
         .struct-card:hover { border-color: var(--auriu); transform: translateY(-5px); }
@@ -43,8 +43,8 @@
         .feature-text p { color: #ccc; margin-bottom: 20px; }
         .feature-img { height: 500px; background-size: cover; background-position: center; border: 1px solid #1a1a1a; }
 
-        /* INTERIOR COLLAGE */
-        .interior-highlight { width: 100%; margin-bottom: 80px; border: 1px solid #1a1a1a; }
+        /* INTERIOR COLLAGE SECTION */
+        .interior-highlight { width: 100%; margin-bottom: 80px; border: 1px solid #1a1a1a; overflow: hidden; }
         .interior-highlight img { width: 100%; height: auto; display: block; }
 
         /* GALLERY */
@@ -54,8 +54,8 @@
 
         /* FOOTER */
         footer { padding: 80px 20px; text-align: center; background: #000; border-top: 1px solid #111; }
-        .footer-legal { margin: 25px 0; display: flex; justify-content: center; gap: 20px; }
-        .footer-legal a { font-family: 'Cinzel'; font-size: 0.7rem; color: #555 !important; letter-spacing: 2px; }
+        .footer-legal { margin: 25px 0; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .footer-legal a { font-family: 'Cinzel'; font-size: 0.7rem; color: #555 !important; letter-spacing: 2px; text-decoration: none; }
         
         .whatsapp-float { position: fixed; bottom: 30px; left: 30px; background: #25d366; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 1000; color: #fff; }
 
@@ -120,7 +120,6 @@
             <div class="feature-text" style="direction: ltr;">
                 <h2>Confort Tehnic.</h2>
                 <p>Chiar și în sălbăticie, rânduiala trebuie să fie impecabilă. Casa este dotată cu mașină de spălat haine și uscător, facilități esențiale pentru sejururi lungi sau după expediții prin noroiul muntelui.</p>
-                <p>Totul este pregătit pentru ca grija treburilor casnice să dispară.</p>
             </div>
             <div class="feature-img" style="background-image: url('images/IMG_20260330_160344.webp');"></div>
         </div>
@@ -130,7 +129,7 @@
                 <h2>Vinil și Foc.</h2>
                 <p>Sub pergolă sau în living, muzica analogică completează tăcerea. Colecția noastră de viniluri și pick-up-ul sunt la dispoziția oaspeților pentru seri pline de poveste lângă jarul aprins.</p>
             </div>
-            <div class="feature-img" style="background-image: url('images/IMG20260417121324_01.jpg');"></div>
+            <div class="feature-img" style="background-image: url('images/IMG_20260330_160505.webp');"></div>
         </div>
 
         <p class="section-label">GALERIA RÂNDUIELII</p>
@@ -138,7 +137,7 @@
             <div class="img-item" style="background-image: url('images/IMG_20260330_160314.webp');" loading="lazy"></div>
             <div class="img-item" style="background-image: url('images/IMG_20260330_160323.webp');" loading="lazy"></div>
             <div class="img-item" style="background-image: url('images/IMG_20260330_160335.webp');" loading="lazy"></div>
-            <div class="img-item" style="background-image: url('images/IMG_20260330_160505.webp');" loading="lazy"></div>
+            <div class="img-item" style="background-image: url('images/sura.jpg');" loading="lazy"></div>
         </div>
 
     </main>
