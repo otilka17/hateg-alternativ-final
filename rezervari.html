@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rezervări | Hațeg Alternativ - Securizează-ți tihna</title>
+    <title>Rezervări | Hațeg Alternativ - Calculator Rânduială</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
@@ -14,156 +14,190 @@
         body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; line-height: 1.6; }
         
         /* HEADER */
-        .site-header { position: fixed; top: 0; width: 100%; z-index: 9999; padding: 20px 30px; display: flex; justify-content: space-between; align-items: center; background: rgba(5,5,5,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(197,160,89,0.1); }
-        .brand { font-family: 'Cinzel'; color: var(--auriu); text-decoration: none; font-weight: 900; letter-spacing: 3px; font-size: 0.9rem; }
-        .burger { cursor: pointer; }
-        .burger div { width: 25px; height: 1px; background: var(--auriu); margin: 6px; }
+        .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 30px 50px; display: flex; justify-content: space-between; align-items: center; }
+        .brand-logo svg { height: 70px; width: auto; filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.4)); }
+        .header-controls { display: flex; align-items: center; gap: 30px; }
+        .btn-reserve-header { padding: 12px 25px; border: 1px solid var(--auriu); color: var(--auriu) !important; font-family: 'Cinzel'; font-size: 0.7rem; letter-spacing: 2px; transition: 0.4s; text-decoration: none; }
+        .btn-reserve-header:hover { background: var(--auriu); color: #000 !important; }
+        .burger { cursor: pointer; z-index: 10001; }
+        .burger div { width: 30px; height: 1px; background: var(--auriu); margin: 8px; }
 
-        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: var(--negru); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.5s; z-index: 10000; }
+        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: var(--negru); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.6s; z-index: 10000; }
         .main-nav.active { right: 0; }
-        .main-nav a { font-size: 1.5rem; font-family: 'Cinzel'; margin: 15px 0; color: #fff !important; text-transform: uppercase; letter-spacing: 4px; text-decoration: none; }
+        .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 15px 0; color: #fff !important; text-transform: uppercase; letter-spacing: 5px; text-decoration: none; }
 
         /* HERO */
-        .hero-res { height: 45vh; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('images/rasarit.jpg') center/cover; display: flex; align-items: center; justify-content: center; text-align: center; }
+        .hero-res { height: 40vh; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('images/rasarit.jpg') center/cover; display: flex; align-items: center; justify-content: center; text-align: center; }
         .hero-res h1 { font-family: 'Playfair Display'; font-size: clamp(2.5rem, 8vw, 4rem); font-style: italic; color: var(--auriu); }
 
-        .container { max-width: 1100px; margin: -60px auto 100px; padding: 0 20px; position: relative; z-index: 10; }
+        .container { max-width: 1100px; margin: -50px auto 100px; padding: 0 20px; position: relative; z-index: 10; }
 
-        /* PACHETE - DESIGN NOU */
-        .package-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-bottom: 80px; }
-        .p-card { background: var(--gri-card); border: 1px solid #1a1a1a; padding: 50px 35px; text-align: center; transition: 0.4s; display: flex; flex-direction: column; }
-        .p-card:hover { border-color: var(--auriu); transform: translateY(-5px); }
-        .p-card.featured { border: 1px solid var(--auriu); background: #111; }
+        /* SUMAR PACHETE */
+        .section-label { font-family: 'Cinzel'; color: var(--auriu); text-align: center; letter-spacing: 5px; font-size: 0.8rem; margin-bottom: 40px; text-transform: uppercase; }
+        .package-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-bottom: 60px; }
+        .p-card { background: var(--gri-card); border: 1px solid #1a1a1a; padding: 40px; transition: 0.4s; }
+        .p-card h3 { font-family: 'Playfair Display'; font-size: 1.8rem; color: var(--auriu); font-style: italic; margin-bottom: 20px; }
+        .p-features { list-style: none; font-size: 0.85rem; color: #aaa; }
+        .p-features li { padding: 8px 0; border-bottom: 1px solid #1a1a1a; display: flex; align-items: center; }
+        .p-features li i { color: var(--auriu); margin-right: 12px; font-size: 0.7rem; }
 
-        .p-label { font-family: 'Cinzel'; color: var(--auriu); font-size: 0.7rem; letter-spacing: 4px; margin-bottom: 20px; display: block; }
-        .p-card h3 { font-family: 'Playfair Display'; font-size: 2.2rem; font-style: italic; margin-bottom: 25px; color: #fff; }
+        /* CALCULATOR & FORMULAR */
+        .booking-box { background: #080808; border: 1px solid #1a1a1a; padding: 50px; display: grid; grid-template-columns: 1fr 1.2fr; gap: 50px; }
         
-        .p-features { list-style: none; margin-bottom: 40px; text-align: left; flex-grow: 1; }
-        .p-features li { padding: 12px 0; border-bottom: 1px solid #1a1a1a; color: #aaa; font-size: 0.9rem; display: flex; align-items: center; }
-        .p-features li i { color: var(--auriu); margin-right: 15px; font-size: 0.8rem; }
+        .calculator-side { border-right: 1px solid #1a1a1a; padding-right: 40px; }
+        .calc-title { font-family: 'Cinzel'; color: var(--auriu); font-size: 0.9rem; letter-spacing: 3px; margin-bottom: 30px; }
         
-        .p-price { font-family: 'Cinzel'; font-size: 1.5rem; color: #fff; margin-bottom: 30px; display: block; font-weight: 700; }
-        .p-price span { font-size: 0.8rem; color: var(--auriu); font-weight: 400; }
+        .total-display { margin-top: 40px; padding: 30px; background: #000; border: 1px solid var(--auriu); text-align: center; }
+        .total-display h4 { font-family: 'Cinzel'; color: var(--auriu); font-size: 0.7rem; letter-spacing: 3px; margin-bottom: 10px; }
+        .price-tag { font-family: 'Playfair Display'; font-size: 3rem; color: #fff; font-weight: 700; }
+        .price-tag span { font-size: 1rem; color: var(--auriu); }
 
-        /* FORMULAR */
-        .booking-box { background: #080808; padding: 60px 40px; border: 1px solid #111; max-width: 800px; margin: 0 auto; }
-        .booking-box h2 { font-family: 'Cinzel'; color: var(--auriu); text-align: center; margin-bottom: 40px; letter-spacing: 4px; }
-        
-        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .f-group { margin-bottom: 25px; display: flex; flex-direction: column; }
-        .f-group label { font-family: 'Cinzel'; font-size: 0.65rem; color: var(--auriu); margin-bottom: 8px; letter-spacing: 2px; }
-        .f-group input, .f-group select, .f-group textarea { background: #000; border: 1px solid #222; padding: 15px; color: #fff; font-family: 'Inter'; outline: none; }
+        .form-side h2 { font-family: 'Cinzel'; color: #fff; font-size: 1rem; letter-spacing: 3px; margin-bottom: 30px; }
+        .f-group { margin-bottom: 20px; display: flex; flex-direction: column; }
+        .f-group label { font-family: 'Cinzel'; font-size: 0.6rem; color: var(--auriu); letter-spacing: 2px; margin-bottom: 8px; }
+        .f-group input, .f-group select, .f-group textarea { background: #000; border: 1px solid #222; padding: 15px; color: #fff; outline: none; transition: 0.3s; }
         .f-group input:focus { border-color: var(--auriu); }
 
-        .btn-reserve { width: 100%; padding: 20px; background: transparent; border: 1px solid var(--auriu); color: var(--auriu); font-family: 'Cinzel'; font-size: 0.8rem; letter-spacing: 3px; cursor: pointer; transition: 0.4s; }
-        .btn-reserve:hover { background: var(--auriu); color: #000; }
+        .btn-submit { width: 100%; padding: 20px; background: transparent; border: 1px solid var(--auriu); color: var(--auriu); font-family: 'Cinzel'; font-size: 0.8rem; letter-spacing: 3px; cursor: pointer; transition: 0.4s; font-weight: 700; }
+        .btn-submit:hover { background: var(--auriu); color: #000; }
 
         footer { padding: 60px 20px; text-align: center; background: #000; border-top: 1px solid #111; }
-        .whatsapp-float { position: fixed; bottom: 30px; left: 30px; background: #25d366; border-radius: 50%; width: 55px; height: 55px; display: flex; align-items: center; justify-content: center; font-size: 28px; z-index: 1000; color: #fff; }
 
-        @media (max-width: 768px) { .form-grid { grid-template-columns: 1fr; } .hero-res { height: 35vh; } }
+        @media (max-width: 900px) {
+            .booking-box { grid-template-columns: 1fr; }
+            .calculator-side { border-right: none; border-bottom: 1px solid #1a1a1a; padding-right: 0; padding-bottom: 40px; }
+            .site-header { padding: 20px; }
+            .btn-reserve-header { display: none; }
+        }
     </style>
 </head>
 <body>
 
-    <a href="https://wa.me/40749229686" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
-
     <header class="site-header">
-        <a href="index.html" class="brand">HAȚEG ALTERNATIV</a>
-        <div class="burger" id="burger"><div></div><div></div></div>
+        <a href="index.html" class="brand-logo">
+            <svg viewBox="0 0 800 500"><circle cx="400" cy="250" r="105" fill="none" stroke="#c5a059" stroke-width="2" opacity="0.6"/><path d="M300 400 L400 200 L500 400 Z" fill="#c5a059"/></svg>
+        </a>
+        <div class="header-controls">
+            <a href="rezervari.html" class="btn-reserve-header">REZERVĂ-ȚI EXPERIENȚA</a>
+            <div class="burger" id="burger"><div></div><div></div></div>
+        </div>
         <nav class="main-nav" id="nav-links">
             <a href="index.html">Acasă</a>
             <a href="pensiune.html">Pensiunea</a>
             <a href="metanoia.html">Metanoia</a>
             <a href="gastronomie.html">Gastronomie</a>
-            <a href="rezervari.html">Rezervări</a>
+            <a href="evenimente.html">Evenimente</a>
+            <a href="rezervari.html">Rezervare</a>
             <a href="contact.html">Contact</a>
         </nav>
     </header>
 
     <section class="hero-res">
-        <h1>Alege-ți Rânduiala.</h1>
+        <h1>Rânduiala Rezervării.</h1>
     </section>
 
     <main class="container">
         
+        <p class="section-label">Sumar Pachete</p>
         <div class="package-row">
             <div class="p-card">
-                <span class="p-label">ESENȚIAL</span>
                 <h3>Tihnă la Buligă</h3>
                 <ul class="p-features">
-                    <li><i class="fas fa-moon"></i> 2 Nopți de cazare integrală</li>
-                    <li><i class="fas fa-coffee"></i> Mic dejun tradițional inclus</li>
-                    <li><i class="fas fa-map-marked-alt"></i> Tur ghidat e-bike (2-3 ore)</li>
-                    <li><i class="fas fa-fire"></i> Seară la cercul de foc</li>
-                    <li><i class="fas fa-leaf"></i> Acces gratuit la toate zonele de relaxare</li>
+                    <li><i class="fas fa-check"></i> 2 Nopți cazare (locație integrală)</li>
+                    <li><i class="fas fa-check"></i> Mic dejun tradițional</li>
+                    <li><i class="fas fa-check"></i> Tur ghidat E-bike</li>
+                    <li><i class="fas fa-check"></i> Seară la cercul de foc</li>
                 </ul>
-                <span class="p-price">3.000 RON <span>/ locație / sejur</span></span>
             </div>
-
-            <div class="p-card featured">
-                <span class="p-label">SIGNATURE EXPERIENCE</span>
+            <div class="p-card" style="border-color: var(--auriu);">
                 <h3>Metanoia Supremă</h3>
                 <ul class="p-features">
-                    <li><i class="fas fa-star"></i> 3 Nopți de cazare (locație integrală)</li>
-                    <li><i class="fas fa-utensils"></i> <strong>Demipensiune inclusă</strong> (Mic dejun și cină tradiționale)</li>
-                    <li><i class="fas fa-compass"></i> <strong>Expediție la alegere</strong>: Tur E-bike ghidat SAU Go Nomad (4x4)</li>
-                    <li><i class="fas fa-music"></i> <strong>Seară cu Muzică Live</strong> sub cerul liber</li>
-                    <li><i class="fas fa-mortar-pestle"></i> <strong>Ateliere Gastronomice</strong> (secretele Pădurenilor)</li>
-                    <li><i class="fas fa-paint-brush"></i> <strong>Ateliere Creative</strong> (pictură/meșteșug)</li>
+                    <li><i class="fas fa-star"></i> 3 Nopți (locație integrală)</li>
+                    <li><i class="fas fa-star"></i> Demipensiune (Mic dejun + Cină)</li>
+                    <li><i class="fas fa-star"></i> Tur E-bike SAU Go Nomad 4x4</li>
+                    <li><i class="fas fa-star"></i> Muzică Live & Ateliere Creative</li>
                 </ul>
-                <span class="p-price">6.000 RON <span>/ locație / sejur</span></span>
             </div>
         </div>
 
         <div class="booking-box">
-            <h2>SOLICITĂ DISPONIBILITATE</h2>
-            <form action="https://formspree.io/f/xjgpvbkj" method="POST">
-                <div class="form-grid">
-                    <div class="f-group">
-                        <label>Nume Complet</label>
-                        <input type="text" name="nume" placeholder="Ex: Popescu Ion" required>
-                    </div>
-                    <div class="f-group">
-                        <label>Telefon</label>
-                        <input type="tel" name="telefon" placeholder="07xx xxx xxx" required>
-                    </div>
-                    <div class="f-group">
-                        <label>Data Sosire</label>
-                        <input type="date" name="checkin" required>
-                    </div>
-                    <div class="f-group">
-                        <label>Data Plecare</label>
-                        <input type="date" name="checkout" required>
-                    </div>
-                    <div class="f-group" style="grid-column: span 2;">
-                        <label>Pachetul Ales</label>
-                        <select name="pachet">
-                            <option value="6000">Metanoia Supremă (6.000 RON)</option>
-                            <option value="3000">Tihnă la Buligă (3.000 RON)</option>
-                            <option value="custom">Altă solicitare / Grup mare</option>
-                        </select>
-                    </div>
-                    <div class="f-group" style="grid-column: span 2;">
-                        <label>Mențiuni / Preferințe (Ex: Tur E-bike sau Nomad?)</label>
-                        <textarea name="mesaj" rows="4" placeholder="Spune-ne ce trăiri cauți..."></textarea>
-                    </div>
+            <div class="calculator-side">
+                <h3 class="calc-title">Configurator Sejur</h3>
+                <div class="f-group">
+                    <label>Alege Experiența</label>
+                    <select id="pachet-select" onchange="calculateTotal()">
+                        <option value="6000" selected>Metanoia Supremă (3 Nopți / Integral)</option>
+                        <option value="3000">Tihnă la Buligă (2 Nopți / Integral)</option>
+                    </select>
                 </div>
-                <button type="submit" class="btn-reserve">SOLICITĂ REZERVARE</button>
-            </form>
+                <div class="total-display">
+                    <h4>TOTAL DE PLATĂ</h4>
+                    <div class="price-tag" id="total-price">6000 <span>RON</span></div>
+                    <p style="font-size: 0.65rem; color: #555; margin-top: 10px; letter-spacing: 1px;" id="package-note">Pachet All-Inclusive Locație</p>
+                </div>
+            </div>
+
+            <div class="form-side">
+                <h2>DETALII CONTACT</h2>
+                <form action="https://formspree.io/f/xjgpvbkj" method="POST">
+                    <input type="hidden" name="Pachet_Ales" id="hidden-pachet" value="Metanoia Suprema">
+                    <input type="hidden" name="Pret_Total" id="hidden-pret" value="6000 RON">
+
+                    <div class="form-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div class="f-group"><label>Nume</label><input type="text" name="nume" required></div>
+                        <div class="f-group"><label>Telefon</label><input type="tel" name="telefon" required></div>
+                    </div>
+                    <div class="f-group"><label>Data Sosire</label><input type="date" name="data_sosire" required></div>
+                    <div class="f-group"><label>Mesaj / Preferințe Tur</label><textarea name="mesaj" rows="3" placeholder="Ex: Alegem turul Go Nomad..."></textarea></div>
+                    
+                    <button type="submit" class="btn-submit">SOLICITĂ DISPONIBILITATE</button>
+                </form>
+            </div>
         </div>
 
     </main>
 
     <footer>
-        <p style="font-size:0.7rem; color:#444;">DAKAMIGOS MARKT SRL | CUI: RO40767794</p>
-        <p style="margin-top:20px; font-family:'Cinzel'; font-size:0.6rem; color:#888; letter-spacing:3px;">HAȚEG ALTERNATIV &copy; 2026 | TRIBUT PATRICIA</p>
+        <p style="font-size:0.7rem; color:#444;">DAKAMIGOS MARKT SRL | RO40767794</p>
+        <p style="font-family:'Cinzel'; font-size:0.6rem; color:#888; letter-spacing:2px; margin-top:20px;">HAȚEG ALTERNATIV &copy; 2026</p>
     </footer>
 
     <script>
         const burger = document.getElementById('burger');
         const nav = document.getElementById('nav-links');
         if(burger) { burger.onclick = () => nav.classList.toggle('active'); }
+
+        function calculateTotal() {
+            const select = document.getElementById('pachet-select');
+            const priceDisplay = document.getElementById('total-price');
+            const hiddenPachet = document.getElementById('hidden-pachet');
+            const hiddenPret = document.getElementById('hidden-pret');
+            const note = document.getElementById('package-note');
+
+            const val = select.value;
+            priceDisplay.innerHTML = `${val} <span>RON</span>`;
+            hiddenPret.value = val + " RON";
+            
+            if(val === "6000") {
+                hiddenPachet.value = "Metanoia Suprema";
+                note.innerText = "Pachet 3 Nopți / Demipensiune / Muzică Live";
+            } else {
+                hiddenPachet.value = "Tihna la Buliga";
+                note.innerText = "Pachet 2 Nopți / Mic Dejun / E-bike";
+            }
+        }
+    </script>
+
+    <script type="text/javascript">
+        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+        (function(){
+        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+        s1.async=true;
+        s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
+        s1.charset='UTF-8';
+        s1.setAttribute('crossorigin','*');
+        s0.parentNode.insertBefore(s1,s0);
+        })();
     </script>
 </body>
 </html>
