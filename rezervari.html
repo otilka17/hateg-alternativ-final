@@ -4,140 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Rezervări | Hațeg Alternativ</title>
-    
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
     <style>
         :root { --auriu: #c5a059; --negru: #050505; --alb: #ffffff; }
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; line-height: 1.6; }
-
-        /* HEADER */
-        .site-header { position: absolute; top: 0; width: 100%; z-index: 999; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; }
-        .brand-logo svg { height: 50px; }
-        .back-btn { color: var(--auriu); text-decoration: none; font-family: 'Cinzel'; font-size: 0.8rem; letter-spacing: 2px; border: 1px solid var(--auriu); padding: 8px 15px; }
-
-        /* HERO */
-        .hero-rezervari { height: 35vh; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.9)), url('images/apus.jpg') center/cover; display: flex; align-items: center; justify-content: center; border-bottom: 2px solid var(--auriu); }
-        .hero-rezervari h1 { font-family: 'Playfair Display'; font-size: 2.5rem; font-style: italic; color: var(--auriu); text-align: center; }
-
-        .container { width: 100%; max-width: 700px; margin: 0 auto; padding: 40px 20px; }
-        
-        /* FORM BOX */
-        .form-box { background: #0a0a0a; border: 1px solid #1a1a1a; padding: 30px 20px; border-top: 3px solid var(--auriu); box-shadow: 0 15px 35px rgba(0,0,0,0.5); }
-        .form-group { margin-bottom: 18px; }
-        .form-group label { display: block; color: var(--auriu); margin-bottom: 8px; font-size: 0.75rem; font-family: 'Cinzel'; letter-spacing: 1px; }
-        .form-group input, .form-group textarea, .form-group select { 
-            width: 100%; padding: 14px; background: #000; border: 1px solid #222; color: #fff; font-family: 'Inter'; outline: none; border-radius: 0;
-        }
-        .form-group input:focus { border-color: var(--auriu); }
-        
-        /* CALENDAR STYLE */
-        input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(0.8); cursor: pointer; }
-
-        .total-display { text-align: center; padding: 20px; background: #111; border: 1px solid #1a1a1a; margin: 15px 0; }
-        .total-display p { font-family: 'Cinzel'; font-size: 0.65rem; color: #555; margin-bottom: 5px; letter-spacing: 2px; }
-        .total-display span { font-size: 2.2rem; color: var(--auriu); font-weight: 900; font-family: 'Playfair Display'; font-style: italic; }
-
-        .btn-submit { width: 100%; padding: 18px; background: transparent; border: 2px solid var(--auriu); color: var(--auriu); font-family: 'Cinzel'; font-weight: 700; letter-spacing: 3px; cursor: pointer; transition: 0.4s; text-transform: uppercase; }
-        .btn-submit:hover { background: var(--auriu); color: #000; }
-        
-        footer { padding: 40px 20px; text-align: center; opacity: 0.4; font-size: 0.7rem; font-family: 'Cinzel'; letter-spacing: 2px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; }
+        .hero-rezervari { height: 30vh; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.9)), url('images/apus.jpg') center/cover; display: flex; align-items: center; justify-content: center; border-bottom: 2px solid var(--auriu); }
+        .hero-rezervari h1 { font-family: 'Playfair Display'; font-size: 2.2rem; font-style: italic; color: var(--auriu); }
+        .container { width: 100%; max-width: 600px; margin: 0 auto; padding: 40px 20px; }
+        .form-box { background: #0a0a0a; border: 1px solid #1a1a1a; padding: 30px 20px; border-top: 3px solid var(--auriu); text-align: center; }
+        .form-group { margin-bottom: 15px; text-align: left; }
+        .form-group label { display: block; color: var(--auriu); margin-bottom: 5px; font-size: 0.7rem; font-family: 'Cinzel'; }
+        .form-group input, .form-group select { width: 100%; padding: 12px; background: #000; border: 1px solid #222; color: #fff; outline: none; }
+        .total-display { padding: 20px; background: #111; border: 1px solid #1a1a1a; margin: 15px 0; }
+        .total-display span { font-size: 2rem; color: var(--auriu); font-family: 'Playfair Display'; font-style: italic; }
+        .btn-whatsapp { width: 100%; padding: 20px; background: #25d366; color: #fff; border: none; font-family: 'Cinzel'; font-weight: 700; font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; }
+        input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(0.8); }
     </style>
 </head>
 <body>
-
-    <header class="site-header">
-        <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> ÎNAPOI</a>
-        <div class="brand-logo"><svg viewBox="0 0 800 500"><circle cx="400" cy="250" r="105" fill="none" stroke="#c5a059" stroke-width="4"/><path d="M300 400 L400 200 L500 400 Z" fill="#c5a059"/></svg></div>
-    </header>
-
-    <section class="hero-rezervari"><h1>Rânduiala Șederii.</h1></section>
-
+    <section class="hero-rezervari"><h1>Rânduiala Rezervării.</h1></section>
     <main class="container">
         <div class="form-box">
-            <form action="https://formspree.io/f/otilia.ioana96@gmail.com" method="POST">
-                
-                <div class="form-group">
-                    <label>Alege Experiența</label>
-                    <select name="Pachet_Ales" id="pachet" onchange="calculPret()">
-                        <option value="3000">Tihnă la Buligă (3000 lei/noapte)</option>
-                        <option value="6000">Metanoia Full (6000 lei/noapte)</option>
-                    </select>
-                </div>
-                
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
-                    <div class="form-group">
-                        <label>Data Sosirii</label>
-                        <input type="date" name="Data_CheckIn" id="checkin" required onchange="updateCheckoutMin()">
-                    </div>
-                    <div class="form-group">
-                        <label>Data Plecării</label>
-                        <input type="date" name="Data_CheckOut" id="checkout" required onchange="calculPret()">
-                    </div>
-                </div>
-
-                <div class="total-display">
-                    <p>TOTAL ESTIMAT (GRUP 10 PERSOANE)</p>
-                    <span id="total-price">6000 LEI</span>
-                    <input type="hidden" name="Suma_Totala_Calculata" id="hidden-total" value="6000 LEI">
-                </div>
-
-                <div class="form-group">
-                    <label>Nume Complet</label>
-                    <input type="text" name="Nume_Client" required placeholder="Numele tău">
-                </div>
-                
-                <div class="form-group">
-                    <label>WhatsApp / Telefon</label>
-                    <input type="tel" name="Telefon" required placeholder="07xx xxx xxx">
-                </div>
-
-                <div class="form-group">
-                    <label>Mențiuni Suplimentare</label>
-                    <textarea name="Mesaj" rows="3" placeholder="Detalii despre grup sau preferințe..."></textarea>
-                </div>
-                
-                <button type="submit" class="btn-submit">Trimite Solicitarea</button>
-
-            </form>
+            <div class="form-group">
+                <label>Alege Experiența</label>
+                <select id="pachet" onchange="calculPret()">
+                    <option value="3000">Tihnă la Buligă (3000 lei/noapte)</option>
+                    <option value="6000">Metanoia Full (6000 lei/noapte)</option>
+                </select>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <div class="form-group"><label>Check-In</label><input type="date" id="checkin" onchange="updateCheckoutMin()"></div>
+                <div class="form-group"><label>Check-Out</label><input type="date" id="checkout" onchange="calculPret()"></div>
+            </div>
+            <div class="form-group"><label>Numele Tău</label><input type="text" id="nume" placeholder="Cum vă numiți?"></div>
+            <div class="total-display"><p style="font-size: 0.6rem; color: #555;">TOTAL ESTIMAT</p><span id="total-price">6000 LEI</span></div>
+            
+            <button onclick="trimiteWhatsApp()" class="btn-whatsapp">
+                <i class="fab fa-whatsapp"></i> TRIMITE PE WHATSAPP
+            </button>
+            <p style="font-size: 0.7rem; color: #444; margin-top: 15px;">Apasă butonul și vom primi solicitarea ta instant!</p>
         </div>
     </main>
 
-    <footer>HAȚEG ALTERNATIV &copy; 2026</footer>
-
     <script>
-        // Setează data minimă de azi pentru calendar
-        const azi = new Date().toISOString().split('T')[0];
-        document.getElementById('checkin').min = azi;
-
+        document.getElementById('checkin').min = new Date().toISOString().split('T')[0];
         function updateCheckoutMin() {
             const cin = document.getElementById('checkin').value;
-            const cout = document.getElementById('checkout');
             if(cin) {
-                let d = new Date(cin);
-                d.setDate(d.getDate() + 2); // Minim 2 nopți
-                cout.min = d.toISOString().split('T')[0];
-                cout.value = d.toISOString().split('T')[0];
+                let d = new Date(cin); d.setDate(d.getDate() + 2);
+                document.getElementById('checkout').min = d.toISOString().split('T')[0];
+                document.getElementById('checkout').value = d.toISOString().split('T')[0];
             }
             calculPret();
         }
-
         function calculPret() {
             const p = parseInt(document.getElementById('pachet').value);
             const d1 = new Date(document.getElementById('checkin').value);
             const d2 = new Date(document.getElementById('checkout').value);
-            
             if(d1 && d2 && d2 > d1) {
                 const nopti = Math.ceil((d2 - d1) / (1000 * 60 * 60 * 24));
-                const total = p * nopti;
-                document.getElementById('total-price').innerText = total + " LEI";
-                document.getElementById('hidden-total').value = total + " LEI";
+                document.getElementById('total-price').innerText = (p * nopti) + " LEI";
             }
         }
-
-        // Calcul inițial
+        function trimiteWhatsApp() {
+            const nume = document.getElementById('nume').value || "Client";
+            const pachet = document.getElementById('pachet').options[document.getElementById('pachet').selectedIndex].text;
+            const checkin = document.getElementById('checkin').value;
+            const checkout = document.getElementById('checkout').value;
+            const total = document.getElementById('total-price').innerText;
+            
+            const mesaj = `Bună ziua! Sunt ${nume} și doresc o rezervare la Hațeg Alternativ.%0A%0A*Detalii:*%0A- Pachet: ${pachet}%0A- Perioada: ${checkin} / ${checkout}%0A- Total estimat: ${total}%0A%0AVă rog să-mi confirmați disponibilitatea.`;
+            
+            window.open(`https://wa.me/40749229686?text=${mesaj}`, '_blank');
+        }
         updateCheckoutMin();
     </script>
 </body>
