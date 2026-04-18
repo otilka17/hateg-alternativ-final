@@ -4,161 +4,100 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Domeniile La Buligă | Hațeg Alternativ</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Cinzel:wght@400;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
     <style>
         :root { --auriu: #c5a059; --negru: #050505; --alb: #ffffff; --gri-card: #0d0d0d; }
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; line-height: 1.6; overflow-x: hidden; }
-        
-        /* HEADER - LOGO CURAT */
         .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 30px 50px; display: flex; justify-content: space-between; align-items: center; }
         .brand-logo svg { height: 75px; width: auto; filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.4)); }
         .burger { cursor: pointer; z-index: 10001; }
         .burger div { width: 30px; height: 1px; background: var(--auriu); margin: 8px; }
-
         .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: var(--negru); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.6s; z-index: 10000; }
         .main-nav.active { right: 0; }
-        .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 15px 0; color: #fff !important; text-transform: uppercase; letter-spacing: 5px; text-decoration: none; }
-
-        /* HERO */
+        .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 15px 0; color: #fff !important; text-transform: uppercase; letter-spacing: 5px; }
         .hero-pensiune { height: 55vh; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.8)), url('images/la-buliga-pensiune.jpg') center/cover; display: flex; align-items: center; justify-content: center; text-align: center; }
-        .hero-pensiune h1 { font-family: 'Playfair Display'; font-size: clamp(2.5rem, 8vw, 5rem); font-style: italic; color: var(--auriu); }
-
+        .hero-pensiune h1 { font-family: 'Playfair Display'; font-size: 4rem; font-style: italic; color: var(--auriu); }
         .container { max-width: 1200px; margin: 80px auto; padding: 0 20px; }
         .section-label { font-family: 'Cinzel'; color: var(--auriu); text-align: center; letter-spacing: 6px; font-size: 0.8rem; margin-bottom: 50px; text-transform: uppercase; }
-
-        /* GRID STRUCTURA */
         .structure-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 60px; }
-        .struct-card { background: var(--gri-card); border: 1px solid #1a1a1a; padding: 40px; text-align: center; transition: 0.3s; }
-        .struct-card:hover { border-color: var(--auriu); }
+        .struct-card { background: var(--gri-card); border: 1px solid #1a1a1a; padding: 40px; text-align: center; }
         .struct-card i { color: var(--auriu); font-size: 1.8rem; margin-bottom: 20px; display: block; }
         .struct-card h3 { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 3px; font-size: 0.9rem; margin-bottom: 15px; }
-        .struct-card p { color: #888; font-size: 0.85rem; }
-
-        /* SLIDER INTERIOR */
         .interior-slider { width: 100%; height: 500px; margin: 60px 0; overflow: hidden; position: relative; border: 1px solid #1a1a1a; }
         .slider-wrap { display: flex; width: 300%; height: 100%; transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1); }
         .slider-wrap img { width: 33.333%; height: 100%; object-fit: cover; }
-
-        /* RITUALURI */
-        .ritual-section { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-top: 100px; }
+        .photo-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; margin: 40px 0 100px; }
+        .gallery-item { height: 300px; overflow: hidden; border: 1px solid #1a1a1a; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: 0.5s; }
+        .gallery-item:hover img { opacity: 1; transform: scale(1.05); }
+        .ritual-section { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
         .ritual-text h2 { font-family: 'Playfair Display'; font-size: 2.8rem; font-style: italic; color: var(--auriu); margin-bottom: 25px; }
-        .ritual-text p { color: #ccc; margin-bottom: 20px; }
-        .ritual-img img { width: 100%; border: 1px solid #1a1a1a; opacity: 0.8; }
-
-        /* FOOTER & LEGAL (IDENTIC CU INDEX) */
+        .ritual-img img { width: 100%; border: 1px solid #1a1a1a; }
         footer { padding: 80px 20px; text-align: center; background: #000; border-top: 1px solid #111; }
         .legal-badges { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin: 30px 0; }
-        .legal-badges img { height: 50px; opacity: 0.6; transition: 0.3s; }
-        .legal-badges img:hover { opacity: 1; }
+        .legal-badges img { height: 50px; opacity: 0.6; }
         .footer-legal { margin-bottom: 20px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
         .footer-legal a { font-family: 'Cinzel'; font-size: 0.7rem; color: #555 !important; letter-spacing: 2px; }
-
-        .whatsapp-float { position: fixed; bottom: 30px; left: 30px; background: #25d366; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 1000; color: #fff; }
-
-        @media (max-width: 850px) { .ritual-section { grid-template-columns: 1fr; } .interior-slider { height: 350px; } }
     </style>
 </head>
 <body>
-
-    <a href="https://wa.me/40749229686" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
-
     <header class="site-header">
         <a href="index.html" class="brand-logo">
             <svg viewBox="0 0 800 500"><circle cx="400" cy="250" r="105" fill="none" stroke="#c5a059" stroke-width="2" opacity="0.6"/><path d="M300 400 L400 200 L500 400 Z" fill="#c5a059"/></svg>
         </a>
         <div class="burger" id="burger"><div></div><div></div></div>
         <nav class="main-nav" id="nav-links">
-            <a href="index.html">Acasă</a>
-            <a href="pensiune.html">Domeniile La Buligă</a>
-            <a href="metanoia.html">Metanoia</a>
-            <a href="gastronomie.html">Gastronomie</a>
-            <a href="evenimente.html">Evenimente</a>
-            <a href="rezervari.html">Rezervare</a>
-            <a href="contact.html">Contact</a>
+            <a href="index.html">Acasă</a><a href="pensiune.html">Domeniile La Buligă</a><a href="metanoia.html">Metanoia</a><a href="gastronomie.html">Gastronomie</a><a href="evenimente.html">Evenimente</a><a href="rezervari.html">Rezervare</a><a href="contact.html">Contact</a>
         </nav>
     </header>
 
-    <section class="hero-pensiune">
-        <h1>Domeniile La Buligă.</h1>
-    </section>
+    <section class="hero-pensiune"><h1>Domeniile La Buligă.</h1></section>
 
     <main class="container">
         <p class="section-label">Structură și Odihnă</p>
         <div class="structure-grid">
-            <div class="struct-card">
-                <i class="fas fa-bed"></i>
-                <h3>DORMITORUL 1</h3>
-                <p>Capacitate 4 Persoane (2 paturi matrimoniale). Ideal pentru familii.</p>
-            </div>
-            <div class="struct-card">
-                <i class="fas fa-moon"></i>
-                <h3>DORMITORUL 2</h3>
-                <p>Capacitate 3 Persoane (1 pat dublu + canapea extensibilă).</p>
-            </div>
-            <div class="struct-card">
-                <i class="fas fa-couch"></i>
-                <h3>SOCIALIZARE</h3>
-                <p>Living generos & Bucătărie utilată complet pentru ospăț.</p>
-            </div>
+            <div class="struct-card"><i class="fas fa-bed"></i><h3>DORMITORUL 1</h3><p>Capacitate 4 Persoane.</p></div>
+            <div class="struct-card"><i class="fas fa-moon"></i><h3>DORMITORUL 2</h3><p>Capacitate 3 Persoane.</p></div>
+            <div class="struct-card"><i class="fas fa-couch"></i><h3>SOCIALIZARE</h3><p>Living & Bucătărie utilată.</p></div>
         </div>
 
         <div class="interior-slider">
             <div class="slider-wrap" id="interior-track">
-                <img src="images/rasarit.jpg" alt="Interior 1">
-                <img src="images/la-buliga-pensiune.jpg" alt="Interior 2">
-                <img src="images/jeep.jpg" alt="Interior 3">
+                <img src="images/rasarit.jpg"><img src="images/la-buliga-pensiune.jpg"><img src="images/jeep.jpg">
             </div>
         </div>
 
-        <p class="section-label">Ritualuri și Confort</p>
+        <p class="section-label">Instante de la Domeniu</p>
+        <div class="photo-gallery">
+            <div class="gallery-item"><img src="images/IMG_20260330_160314.webp"></div>
+            <div class="gallery-item"><img src="images/IMG_20260330_160323.jpg"></div>
+            <div class="gallery-item"><img src="images/IMG_20260330_160323.webp"></div>
+            <div class="gallery-item"><img src="images/IMG_20260330_160335.webp"></div>
+            <div class="gallery-item"><img src="images/IMG_20260330_160344.webp"></div>
+            <div class="gallery-item"><img src="images/IMG_20260330_160353.webp"></div>
+        </div>
+
         <div class="ritual-section">
-            <div class="ritual-text">
-                <h2>Ritualul Cafelei.</h2>
-                <p>Dimineața începe cu aromă proaspătă în mijlocul munților. Avem două aparate dedicate: unul pentru cafea boabe proaspăt măcinată și unul pentru capsule.</p>
-                <p>Savurează liniștea de la Vadu Dobrii cu o cană caldă în mână.</p>
-            </div>
-            <div class="ritual-img">
-                <img src="images/gast-cafea-inima.jpg" alt="Cafea La Buliga">
-            </div>
+            <div class="ritual-text"><h2>Ritualul Cafelei.</h2><p>Dimineața începe cu aromă proaspătă în mijlocul munților.</p></div>
+            <div class="ritual-img"><img src="images/gast-cafea-inima.jpg"></div>
         </div>
     </main>
 
     <footer>
-        <p style="font-size:0.8rem; color:#444; letter-spacing:2px; margin-bottom:20px;">DAKAMIGOS MARKT SRL | CUI: RO40767794</p>
-        
-        <div class="footer-legal">
-            <a href="politica-cookies.html">POLITICA COOKIES</a> | 
-            <a href="termeni.html">TERMENI ȘI CONDIȚII</a> | 
-            <a href="confidentialitate.html">GDPR</a>
-        </div>
-
+        <div class="footer-legal"><a href="politica-cookies.html">POLITICA COOKIES</a> | <a href="termeni.html">TERMENI ȘI CONDIȚII</a> | <a href="confidentialitate.html">GDPR</a></div>
         <div class="legal-badges">
-            <a href="https://anpc.ro/ce-este-sal/" target="_blank">
-                <img src="images/anpc-sal.png" alt="ANPC SAL">
-            </a>
-            <a href="https://ec.europa.eu/consumers/odr/main/index.cfm?event=main.home2.show&lng=RO" target="_blank">
-                <img src="images/anpc-sol.png" alt="ANPC SOL">
-            </a>
+            <a href="https://anpc.ro/ce-este-sal/"><img src="images/anpc-sal.png"></a>
+            <a href="https://ec.europa.eu/consumers/odr/"><img src="images/anpc-sol.png"></a>
         </div>
-
-        <p style="margin-top:40px; font-family:'Cinzel'; font-size:0.7rem; color:#888; letter-spacing:5px;">HAȚEG ALTERNATIV © 2026 | TRIBUT PATRICIA</p>
+        <p style="margin-top:20px; font-family:'Cinzel'; font-size:0.7rem;">HAȚEG ALTERNATIV &copy; 2026</p>
     </footer>
 
     <script>
-        let slideIndex = 0;
-        const track = document.getElementById('interior-track');
-        if(track) {
-            setInterval(() => {
-                slideIndex = (slideIndex + 1) % 3;
-                track.style.transform = `translateX(-${slideIndex * 33.333}%)`;
-            }, 5000);
-        }
+        let slideIndex = 0; const track = document.getElementById('interior-track');
+        if(track) { setInterval(() => { slideIndex = (slideIndex + 1) % 3; track.style.transform = `translateX(-${slideIndex * 33.333}%)`; }, 5000); }
     </script>
-
     <script src="script.js"></script>
 </body>
 </html>
