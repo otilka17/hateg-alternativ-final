@@ -17,7 +17,7 @@
         .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: var(--negru); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.6s; z-index: 10000; }
         .main-nav.active { right: 0; }
         .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 15px 0; color: #fff !important; text-transform: uppercase; letter-spacing: 5px; }
-        .hero-pensiune { height: 55vh; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.8)), url('images/la-buliga-pensiune.jpg') center/cover; display: flex; align-items: center; justify-content: center; text-align: center; }
+        .hero-pensiune { height: 50vh; background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.8)), url('images/IMG_20260330_160353.webp') center/cover; display: flex; align-items: center; justify-content: center; }
         .hero-pensiune h1 { font-family: 'Playfair Display'; font-size: 4rem; font-style: italic; color: var(--auriu); }
         .container { max-width: 1200px; margin: 80px auto; padding: 0 20px; }
         .section-label { font-family: 'Cinzel'; color: var(--auriu); text-align: center; letter-spacing: 6px; font-size: 0.8rem; margin-bottom: 50px; text-transform: uppercase; }
@@ -38,8 +38,6 @@
         footer { padding: 80px 20px; text-align: center; background: #000; border-top: 1px solid #111; }
         .legal-badges { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin: 30px 0; }
         .legal-badges img { height: 50px; opacity: 0.6; }
-        .footer-legal { margin-bottom: 20px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-        .footer-legal a { font-family: 'Cinzel'; font-size: 0.7rem; color: #555 !important; letter-spacing: 2px; }
     </style>
 </head>
 <body>
@@ -65,7 +63,7 @@
 
         <div class="interior-slider">
             <div class="slider-wrap" id="interior-track">
-                <img src="images/rasarit.jpg"><img src="images/la-buliga-pensiune.jpg"><img src="images/jeep.jpg">
+                <img src="images/apus.jpg"><img src="images/IMG_20260330_160353.webp"><img src="images/IMG_20260330_160344.webp">
             </div>
         </div>
 
@@ -86,14 +84,12 @@
     </main>
 
     <footer>
-        <div class="footer-legal"><a href="politica-cookies.html">POLITICA COOKIES</a> | <a href="termeni.html">TERMENI ȘI CONDIȚII</a> | <a href="confidentialitate.html">GDPR</a></div>
         <div class="legal-badges">
             <a href="https://anpc.ro/ce-este-sal/"><img src="images/anpc-sal.png"></a>
             <a href="https://ec.europa.eu/consumers/odr/"><img src="images/anpc-sol.png"></a>
         </div>
         <p style="margin-top:20px; font-family:'Cinzel'; font-size:0.7rem;">HAȚEG ALTERNATIV &copy; 2026</p>
     </footer>
-
     <script>
         let slideIndex = 0; const track = document.getElementById('interior-track');
         if(track) { setInterval(() => { slideIndex = (slideIndex + 1) % 3; track.style.transform = `translateX(-${slideIndex * 33.333}%)`; }, 5000); }
