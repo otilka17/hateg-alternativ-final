@@ -3,144 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Metanoia | Hațeg Alternativ - Terapie și Tihnă</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Metanoia | Hațeg Alternativ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Cinzel:wght@400;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
     <style>
         :root { --auriu: #c5a059; --negru: #050505; --alb: #ffffff; --gri-card: #0d0d0d; }
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; line-height: 1.8; }
         a { text-decoration: none !important; color: inherit !important; transition: 0.3s; }
-
-        /* HEADER - LOGO CURAT */
         .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 30px 50px; display: flex; justify-content: space-between; align-items: center; }
         .brand-logo svg { height: 75px; width: auto; filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.4)); }
         .burger { cursor: pointer; z-index: 10001; }
         .burger div { width: 30px; height: 1px; background: var(--auriu); margin: 8px; }
-        
         .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: var(--negru); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.6s; z-index: 10000; }
         .main-nav.active { right: 0; }
         .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 15px 0; color: #fff !important; text-transform: uppercase; letter-spacing: 5px; }
-
-        /* HERO */
         .hero-mini { height: 45vh; background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('images/rasarit.jpg') center/cover; display: flex; align-items: center; justify-content: center; text-align: center; }
-        .hero-mini h1 { font-family: 'Playfair Display'; font-size: clamp(3rem, 10vw, 5rem); font-style: italic; color: var(--auriu); }
-
-        /* CONTENT */
+        .hero-mini h1 { font-family: 'Playfair Display'; font-size: 4rem; font-style: italic; color: var(--auriu); }
         .container { max-width: 1200px; margin: 0 auto; padding: 80px 20px; }
-        .intro-text { text-align: center; margin-bottom: 80px; }
-        .section-label { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 6px; font-size: 0.8rem; margin-bottom: 25px; display: block; text-transform: uppercase; }
-        .intro-text h2 { font-family: 'Playfair Display'; font-size: 2.8rem; font-style: italic; color: #fff; margin-bottom: 20px; }
-
-        /* GRID EXPERIENȚE */
         .metanoia-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
         .meta-card { background: #0d0d0d; border: 1px solid #1a1a1a; transition: 0.5s; overflow: hidden; display: flex; flex-direction: column; }
         .meta-card:hover { border-color: var(--auriu); transform: translateY(-5px); }
-        
-        .meta-img { width: 100%; height: 260px; overflow: hidden; position: relative; }
+        .meta-img { width: 100%; height: 260px; overflow: hidden; }
         .meta-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: 0.5s; }
         .meta-card:hover .meta-img img { opacity: 1; transform: scale(1.05); }
-
         .meta-content { padding: 40px; }
         .meta-content i { color: var(--auriu); font-size: 1.5rem; margin-bottom: 20px; display: block; }
         .meta-content h3 { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 3px; font-size: 1.1rem; margin-bottom: 15px; }
-        .meta-content p { color: #888; font-size: 0.95rem; line-height: 1.7; }
-        
-        footer { padding: 60px 20px; text-align: center; border-top: 1px solid #111; color: #444; font-family: 'Cinzel'; font-size: 0.7rem; letter-spacing: 2px; }
+        .meta-content p { color: #888; font-size: 0.95rem; }
+        footer { padding: 60px 20px; text-align: center; border-top: 1px solid #111; color: #444; font-family: 'Cinzel'; font-size: 0.7rem; }
     </style>
 </head>
 <body>
-
     <header class="site-header">
         <a href="index.html" class="brand-logo">
             <svg viewBox="0 0 800 500"><circle cx="400" cy="250" r="105" fill="none" stroke="#c5a059" stroke-width="2" opacity="0.6"/><path d="M300 400 L400 200 L500 400 Z" fill="#c5a059"/></svg>
         </a>
         <div class="burger" id="burger"><div></div><div></div></div>
         <nav class="main-nav" id="nav-links">
-            <a href="index.html">Acasă</a>
-            <a href="pensiune.html">Pensiunea</a>
-            <a href="metanoia.html">Metanoia</a>
-            <a href="gastronomie.html">Gastronomie</a>
-            <a href="evenimente.html">Evenimente</a>
-            <a href="rezervari.html">Rezervare</a>
-            <a href="contact.html">Contact</a>
+            <a href="index.html">Acasă</a><a href="pensiune.html">Domeniile La Buligă</a><a href="metanoia.html">Metanoia</a><a href="gastronomie.html">Gastronomie</a><a href="evenimente.html">Evenimente</a><a href="rezervari.html">Rezervare</a><a href="contact.html">Contact</a>
         </nav>
     </header>
 
-    <section class="hero-mini">
-        <h1>Metanoia.</h1>
-    </section>
+    <section class="hero-mini"><h1>Metanoia.</h1></section>
 
     <main class="container">
-        <div class="intro-text">
-            <span class="section-label">Rânduiala sufletului</span>
-            <h2>Vindecare, Creație și Mișcare</h2>
-            <p>Am rânduit experiențe care să atingă mintea, corpul și spiritul, într-o simfonie a liniștii de la Vadu Dobrii.</p>
-        </div>
-
         <div class="metanoia-grid">
             <div class="meta-card">
-                <div class="meta-img"><img src="images/narcise.jpg" alt="Artă și Natură"></div>
-                <div class="meta-content">
-                    <i class="fas fa-paint-brush"></i>
-                    <h3>Artă și Mișcare</h3>
-                    <p>Terapie prin exprimare creativă și ritm corporal. Redescoperă echilibrul interior prin forme și culori.</p>
-                </div>
+                <div class="meta-img"><img src="images/narcise.jpg"></div>
+                <div class="meta-content"><i class="fas fa-paint-brush"></i><h3>Artă și Mișcare</h3><p>Terapie prin exprimare creativă și ritm corporal.</p></div>
             </div>
-
             <div class="meta-card">
-                <div class="meta-img"><img src="images/gast-supa2.jpg" alt="Ateliere"></div>
-                <div class="meta-content">
-                    <i class="fas fa-utensils"></i>
-                    <h3>Ateliere de Creație</h3>
-                    <p>Învățăm rânduiala gustului autentic și a obiectelor făcute manual. De la frământatul pâinii la meșteșug local.</p>
-                </div>
+                <div class="meta-img"><img src="images/gast-supa2.jpg"></div>
+                <div class="meta-content"><i class="fas fa-utensils"></i><h3>Ateliere de Creație</h3><p>Învățăm rânduiala gustului autentic și a meșteșugului.</p></div>
             </div>
-
             <div class="meta-card">
-                <div class="meta-img"><img src="images/biserica.jpg" alt="Pelerinaje"></div>
-                <div class="meta-content">
-                    <i class="fas fa-person-walking-luggage"></i>
-                    <h3>Pelerinaje</h3>
-                    <p>Drumuri cu tâlc spre schituri uitate și locuri încărcate de istorie pe potecile Masivului Poiana Ruscă.</p>
-                </div>
+                <div class="meta-img"><img src="images/biserica-sf-nicolae-densus.jpg"></div>
+                <div class="meta-content"><i class="fas fa-person-walking-luggage"></i><h3>Pelerinaje</h3><p>Drumuri cu tâlc spre schituri uitate și locuri încărcate de istorie.</p></div>
             </div>
-
             <div class="meta-card">
-                <div class="meta-img"><img src="images/vinil.jpg" alt="Seară muzicală"></div>
-                <div class="meta-content">
-                    <i class="fas fa-guitar"></i>
-                    <h3>Chitară Live</h3>
-                    <p>Seri magice sub cerul înstelat. Acorduri calde de chitară acustică și povești depănate la focul de tabără.</p>
-                </div>
+                <div class="meta-img"><img src="images/vinil.jpg"></div>
+                <div class="meta-content"><i class="fas fa-guitar"></i><h3>Chitară Live</h3><p>Acorduri calde de chitară acustică sub cerul înstelat.</p></div>
             </div>
-
             <div class="meta-card">
-                <div class="meta-img"><img src="images/ebike.webp" alt="E-bike Adventure"></div>
-                <div class="meta-content">
-                    <i class="fas fa-bicycle"></i>
-                    <h3>Pe două roți</h3>
-                    <p>Explorăm sălbăticia pe rute de e-bike rânduite special. Simte vântul și libertatea pe crestele munților.</p>
-                </div>
+                <div class="meta-img"><img src="images/ebike.webp"></div>
+                <div class="meta-content"><i class="fas fa-bicycle"></i><h3>Pe două roți</h3><p>Explorăm sălbăticia pe rute de e-bike rânduite special.</p></div>
             </div>
-
             <div class="meta-card">
-                <div class="meta-img"><img src="images/Sarmizegetusa.jpg" alt="Hiking"></div>
-                <div class="meta-content">
-                    <i class="fas fa-shoe-prints"></i>
-                    <h3>Pas cu pas</h3>
-                    <p>Hoinărim prin păduri de fag și poieni alpine. Plimbări conștiente unde singurul zgomot este cel al pașilor tăi.</p>
-                </div>
+                <div class="meta-img"><img src="images/Sarmizegetusa.jpg"></div>
+                <div class="meta-content"><i class="fas fa-shoe-prints"></i><h3>Pas cu pas</h3><p>Hoinărim prin păduri de fag și poieni alpine.</p></div>
             </div>
         </div>
     </main>
 
-    <footer>
-        <p style="font-family:'Cinzel'; font-size:0.7rem; color:#888; letter-spacing:2px;">HAȚEG ALTERNATIV &copy; 2026</p>
-    </footer>
-
+    <footer>HAȚEG ALTERNATIV &copy; 2026</footer>
     <script src="script.js"></script>
 </body>
 </html>
