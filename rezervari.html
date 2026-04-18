@@ -34,23 +34,20 @@
         .sumar-box h2 { font-family: 'Cinzel'; color: var(--auriu); margin-bottom: 20px; letter-spacing: 4px; }
         .sumar-box p { color: #ccc; font-size: 1.1rem; max-width: 800px; margin: 0 auto; }
 
-        /* CALCULATOR PREȚ */
-        .calculator-box { background: #080808; border: 1px solid var(--auriu); padding: 40px 25px; margin-bottom: 60px; border-radius: 4px; }
-        .calculator-box h3 { font-family: 'Cinzel'; color: var(--auriu); text-align: center; margin-bottom: 30px; letter-spacing: 3px; }
-        .calc-row { margin-bottom: 20px; }
-        .calc-row label { display: block; margin-bottom: 10px; color: var(--auriu); font-family: 'Cinzel'; font-size: 0.8rem; }
-        .calc-row select, .calc-row input { width: 100%; padding: 15px; background: #111; border: 1px solid #333; color: #fff; font-family: 'Inter'; }
-        .total-display { text-align: center; padding: 20px; background: #111; margin-top: 20px; }
-        .total-display span { font-size: 2rem; color: var(--auriu); font-weight: 900; }
-
-        /* FORMULAR FORMSPREE */
+        /* CALCULATOR & FORMULAR */
         .form-box { background: #0a0a0a; border: 1px solid #1a1a1a; padding: 40px 25px; }
         .form-box h3 { font-family: 'Cinzel'; color: var(--auriu); text-align: center; margin-bottom: 30px; letter-spacing: 3px; }
         .form-group { margin-bottom: 20px; }
         .form-group label { display: block; color: #888; margin-bottom: 8px; font-size: 0.9rem; }
-        .form-group input, .form-group textarea { width: 100%; padding: 15px; background: #000; border: 1px solid #222; color: #fff; }
+        .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 15px; background: #000; border: 1px solid #222; color: #fff; font-family: 'Inter'; }
+        
+        .calculator-box { background: #080808; border: 1px solid var(--auriu); padding: 30px 20px; margin-bottom: 40px; }
+        .total-display { text-align: center; padding: 20px; background: #111; margin-top: 20px; }
+        .total-display span { font-size: 2rem; color: var(--auriu); font-weight: 900; }
+
         .btn-submit { width: 100%; padding: 20px; background: transparent; border: 2px solid var(--auriu); color: var(--auriu); font-family: 'Cinzel'; font-weight: 700; letter-spacing: 3px; cursor: pointer; transition: 0.4s; }
         .btn-submit:hover { background: var(--auriu); color: #000; }
+        .btn-submit:disabled { opacity: 0.5; cursor: not-allowed; }
 
         footer { padding: 80px 20px; text-align: center; border-top: 1px solid #111; }
         .legal-badges { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 30px; }
@@ -79,52 +76,59 @@
             <p>Rezervarea la Domeniile La Buligă include accesul exclusiv la întreaga proprietate, mic dejun cu produse locale, ritualul cafelei și asistență pentru explorarea munților.</p>
         </div>
 
-        <div class="calculator-box">
-            <h3>Calculator Estimativ</h3>
-            <div class="calc-row">
-                <label>Alege Pachetul</label>
-                <select id="pachet" onchange="calculPret()">
-                    <option value="500">Tihnă la Buligă (2 Nopți) - 500 RON/pers</option>
-                    <option value="850">Metanoia Supremă (3 Nopți) - 850 RON/pers</option>
-                </select>
-            </div>
-            <div class="calc-row">
-                <label>Număr Persoane</label>
-                <input type="number" id="persoane" value="1" min="1" max="7" oninput="calculPret()">
-            </div>
-            <div class="total-display">
-                <p style="font-family:'Cinzel'; font-size:0.7rem; color:#888;">TOTAL ESTIMAT</p>
-                <span id="total-price">500 RON</span>
-            </div>
-        </div>
-
         <div class="form-box">
             <h3>Solicită Rezervare</h3>
-            <form action="https://formspree.io/f/xvgowway" method="POST">
+            
+            <div id="mesaj-succes" style="display: none; background: #1a472a; color: #4ade80; padding: 20px; border: 1px solid #4ade80; text-align: center; margin-bottom: 20px; font-family: 'Cinzel'; letter-spacing: 2px;">
+                Cererea ta a fost trimisă cu succes! Te vom contacta în curând pentru confirmare.
+            </div>
+
+            <form id="booking-form">
+                
+                <div class="calculator-box">
+                    <div class="form-group">
+                        <label>Alege Pachetul</label>
+                        <select name="Pachet_Ales" id="pachet" onchange="calculPret()">
+                            <option value="500">Tihnă la Buligă (2 Nopți) - 500 RON/pers</option>
+                            <option value="850">Metanoia Supremă (3 Nopți) - 850 RON/pers</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Număr Persoane</label>
+                        <input type="number" name="Nr_Persoane" id="persoane" value="1" min="1" max="7" oninput="calculPret()">
+                    </div>
+                    <div class="total-display">
+                        <p style="font-family:'Cinzel'; font-size:0.7rem; color:#888;">TOTAL ESTIMAT</p>
+                        <span id="total-price">500 RON</span>
+                        <input type="hidden" name="Pret_Total" id="hidden-total" value="500 RON (Tihnă la Buligă (2 Nopți) - 500 RON/pers)">
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <label>Nume Complet</label>
-                    <input type="text" name="nume" required>
+                    <input type="text" name="Nume_Client" required>
                 </div>
                 <div class="form-group">
                     <label>Email</label>
-                    <input type="email" name="email" required>
+                    <input type="email" name="Email_Client" required>
                 </div>
                 <div class="form-group">
                     <label>Perioada Dorită</label>
-                    <input type="text" name="perioada" placeholder="Ex: 01-03 Mai">
+                    <input type="text" name="Perioada" placeholder="Ex: 01-03 Mai">
                 </div>
                 <div class="form-group">
                     <label>Mesaj / Mențiuni speciale</label>
-                    <textarea name="mesaj" rows="4"></textarea>
+                    <textarea name="Mesaj" rows="4"></textarea>
                 </div>
-                <button type="submit" class="btn-submit">TRIMITE SOLICITAREA</button>
+                <button type="submit" class="btn-submit" id="btn-trimite">TRIMITE SOLICITAREA</button>
             </form>
         </div>
     </main>
 
     <footer>
         <div class="footer-legal">
-            <a href="politica-cookies.html">COOKIES</a> | <a href="confidentialitate.html">GDPR</a>
+            <a href="politica-cookies.html" style="color:#555; font-family:'Cinzel'; text-decoration:none; margin:0 10px;">COOKIES</a> | 
+            <a href="confidentialitate.html" style="color:#555; font-family:'Cinzel'; text-decoration:none; margin:0 10px;">GDPR</a>
         </div>
         <div class="legal-badges">
             <img src="images/anpc-sal.png" alt="SAL">
@@ -133,16 +137,57 @@
     </footer>
 
     <script>
-        function calculPret() {
-            const pachet = document.getElementById('pachet').value;
-            const persoane = document.getElementById('persoane').value;
-            const total = pachet * persoane;
-            document.getElementById('total-price').innerText = total + " RON";
-        }
-
         const burger = document.getElementById('burger');
         const nav = document.getElementById('nav-links');
         burger.onclick = () => nav.classList.toggle('active');
+
+        // Logica de calcul a prețului
+        function calculPret() {
+            const pachetSelect = document.getElementById('pachet');
+            const pachetNume = pachetSelect.options[pachetSelect.selectedIndex].text;
+            const pretUnitat = pachetSelect.value;
+            const persoane = document.getElementById('persoane').value;
+            const total = pretUnitat * persoane;
+            
+            document.getElementById('total-price').innerText = total + " RON";
+            document.getElementById('hidden-total').value = total + " RON (" + pachetNume + ")";
+        }
+
+        // Trimiterea datelor către Make.com prin AJAX
+        document.getElementById('booking-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const form = this;
+            const btn = document.getElementById('btn-trimite');
+            btn.innerText = "SE TRIMITE...";
+            btn.disabled = true; 
+            
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+
+            // Aici e link-ul tău de Make
+            fetch('https://hook.eu1.make.com/1ojlwd2tys2fa6rcp39oauobwe8sebzk', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => {
+                if (response.ok) {
+                    form.style.display = 'none';
+                    document.getElementById('mesaj-succes').style.display = 'block';
+                    window.scrollTo(0, document.getElementById('mesaj-succes').offsetTop - 100);
+                } else {
+                    throw new Error('Eroare la server');
+                }
+            })
+            .catch(error => {
+                console.error('Eroare:', error);
+                btn.innerText = "EROARE. ÎNCEARCĂ DIN NOU.";
+                btn.disabled = false;
+            });
+        });
     </script>
 </body>
 </html>
