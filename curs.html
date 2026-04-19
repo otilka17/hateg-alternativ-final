@@ -16,6 +16,7 @@
             --gri: #cfcfcf;
             --card: #0b0b0b;
             --border: #1a1a1a;
+            --verde: #25d366;
         }
 
         * {
@@ -44,6 +45,15 @@
             background:
                 linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.96)),
                 url('images/premium-ai-bg.jpg') center/cover no-repeat;
+            position: relative;
+        }
+
+        .page-wrap::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at top, rgba(197,160,89,0.08), transparent 45%);
+            pointer-events: none;
         }
 
         .hero {
@@ -54,6 +64,8 @@
             text-align: center;
             padding: 40px 20px 80px;
             border-bottom: 2px solid rgba(197,160,89,0.35);
+            position: relative;
+            z-index: 1;
         }
 
         .hero-content {
@@ -93,6 +105,13 @@
             text-shadow: 2px 2px 16px rgba(0,0,0,0.95);
         }
 
+        .hero-mini-proof {
+            margin-top: 22px;
+            color: #d9d9d9;
+            font-size: 0.98rem;
+            opacity: 0.95;
+        }
+
         .hero-points {
             max-width: 920px;
             margin: 34px auto 0;
@@ -105,6 +124,12 @@
             background: rgba(0,0,0,0.45);
             border: 1px solid rgba(197,160,89,0.28);
             padding: 16px 18px;
+            transition: 0.3s ease;
+        }
+
+        .hero-point:hover {
+            transform: translateY(-3px);
+            border-color: rgba(197,160,89,0.5);
         }
 
         .hero-point strong {
@@ -138,12 +163,14 @@
             font-size: 0.8rem;
             font-weight: 700;
             transition: 0.3s ease;
+            border-radius: 2px;
         }
 
         .btn-primary {
             background: var(--auriu);
             color: #000;
             border: 1px solid var(--auriu);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.28);
         }
 
         .btn-primary:hover {
@@ -176,6 +203,66 @@
             font-size: clamp(0.95rem, 2.7vw, 1.2rem);
             margin-bottom: 60px;
             text-transform: uppercase;
+        }
+
+        .intro-band {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 34px 20px 10px;
+        }
+
+        .intro-band-box {
+            border: 1px solid rgba(197,160,89,0.18);
+            background: linear-gradient(180deg, rgba(12,12,12,1), rgba(7,7,7,1));
+            padding: 28px 24px;
+            text-align: center;
+        }
+
+        .intro-band-box p {
+            max-width: 850px;
+            margin: 0 auto;
+            color: #d3d3d3;
+            line-height: 1.9;
+            font-size: 1.02rem;
+        }
+
+        .fit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
+        }
+
+        .fit-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 26px 22px;
+            text-align: center;
+            transition: 0.3s ease;
+        }
+
+        .fit-card:hover {
+            border-color: rgba(197,160,89,0.42);
+            transform: translateY(-3px);
+        }
+
+        .fit-card i {
+            color: var(--auriu);
+            font-size: 2rem;
+            margin-bottom: 14px;
+        }
+
+        .fit-card h3 {
+            font-family: 'Cinzel', serif;
+            color: var(--auriu);
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .fit-card p {
+            color: #d5d5d5;
+            font-size: 0.96rem;
+            line-height: 1.7;
         }
 
         .module-grid {
@@ -264,6 +351,18 @@
             border: 1px solid rgba(197,160,89,0.3);
             padding: 50px 28px;
             box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .offer-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -20%;
+            width: 140%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(197,160,89,0.6), transparent);
         }
 
         .offer-label {
@@ -309,11 +408,53 @@
             color: var(--auriu);
         }
 
+        .trust-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            max-width: 760px;
+            margin: 28px auto 0;
+        }
+
+        .trust-item {
+            border: 1px solid rgba(197,160,89,0.15);
+            background: rgba(255,255,255,0.01);
+            padding: 14px 12px;
+            color: #d4d4d4;
+            font-size: 0.92rem;
+        }
+
         .micro-trust {
             margin-top: 24px;
             color: #9d9d9d;
             font-size: 0.92rem;
             line-height: 1.7;
+        }
+
+        .faq-mini {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            gap: 14px;
+        }
+
+        .faq-item {
+            border: 1px solid var(--border);
+            background: #0a0a0a;
+            padding: 22px 20px;
+        }
+
+        .faq-item h4 {
+            color: var(--auriu);
+            font-family: 'Cinzel', serif;
+            font-size: 0.82rem;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .faq-item p {
+            color: #d1d1d1;
+            line-height: 1.8;
         }
 
         footer {
@@ -327,6 +468,10 @@
             color: #818181;
             font-size: 0.8rem;
             letter-spacing: 2px;
+        }
+
+        .sticky-mobile-cta {
+            display: none;
         }
 
         @media (max-width: 768px) {
@@ -354,6 +499,32 @@
             .offer-box {
                 padding: 38px 20px;
             }
+
+            .sticky-mobile-cta {
+                display: block;
+                position: fixed;
+                left: 14px;
+                right: 14px;
+                bottom: 14px;
+                z-index: 999;
+            }
+
+            .sticky-mobile-cta a {
+                display: block;
+                width: 100%;
+                text-align: center;
+                background: var(--verde);
+                color: #fff;
+                padding: 15px 18px;
+                font-family: 'Cinzel', serif;
+                font-size: 0.8rem;
+                letter-spacing: 1.5px;
+                box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+            }
+
+            body {
+                padding-bottom: 86px;
+            }
         }
     </style>
 </head>
@@ -368,6 +539,10 @@
 
                 <p class="hero-subtitle">
                     Învață cum să folosești inteligența artificială și strategia High-Ticket pentru a vinde de mii de euro, chiar și cu 20 de afișări.
+                </p>
+
+                <p class="hero-mini-proof">
+                    Creat pentru cei care vor să iasă din zona de content haotic și să intre într-un sistem clar de poziționare, conversație și încasare.
                 </p>
 
                 <div class="hero-points">
@@ -394,6 +569,41 @@
     </div>
 
     <main>
+        <section class="intro-band">
+            <div class="intro-band-box">
+                <p>
+                    Acest sistem nu este pentru cine caută „trucuri rapide”. Este pentru cei care vor să își construiască o ofertă premium, să comunice mai clar și să transforme interesul în vânzări reale.
+                </p>
+            </div>
+        </section>
+
+        <section class="section" style="padding-top: 50px;">
+            <p class="section-title">Pentru cine este</p>
+
+            <div class="fit-grid">
+                <div class="fit-card">
+                    <i class="fas fa-user-tie"></i>
+                    <h3>FREELANCERI</h3>
+                    <p>Care vor clienți mai buni și mai puține conversații pierdute.</p>
+                </div>
+                <div class="fit-card">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>BUSINESS OWNERS</h3>
+                    <p>Care vor să vândă mai clar, premium și fără dependență de volum mare.</p>
+                </div>
+                <div class="fit-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>CREATORI SERIOȘI</h3>
+                    <p>Care vor să folosească AI ca sistem de execuție, nu ca artificiu.</p>
+                </div>
+                <div class="fit-card">
+                    <i class="fas fa-comments-dollar"></i>
+                    <h3>VÂNZARE PRIN DM</h3>
+                    <p>Pentru cei care vor să închidă elegant și convingător în conversații.</p>
+                </div>
+            </div>
+        </section>
+
         <section class="section">
             <p class="section-title">Ce primești</p>
 
@@ -444,16 +654,18 @@
                     Include <strong>Masterplan PDF</strong> + <strong>1 sesiune de Audit Live (30 min)</strong>
                 </p>
                 <a href="https://wa.me/40749229686" class="btn-primary" target="_blank">CUMPĂRĂ PRIN WHATSAPP</a>
+
+                <div class="trust-row">
+                    <div class="trust-item">Acces rapid după confirmare</div>
+                    <div class="trust-item">Discuție directă pe WhatsApp</div>
+                    <div class="trust-item">Fără pași inutili</div>
+                </div>
+
                 <p class="micro-trust">
                     Plata și accesul se stabilesc direct prin WhatsApp. Rapid, clar și fără pași inutili.
                 </p>
             </div>
         </section>
-    </main>
 
-    <footer>
-        <p>HAȚEG ALTERNATIV | METANOIA AI SYSTEMS © 2026</p>
-    </footer>
-
-</body>
-</html>
+        <section class="section" style="padding-top:0; padding-bottom:100px;">
+           
