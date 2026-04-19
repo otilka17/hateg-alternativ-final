@@ -3,85 +3,174 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact | Hațeg Alternativ - Domeniile la Buligă</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Contact Privat | Hațeg Alternativ</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Cinzel:wght@400;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <style>
         :root { --auriu: #c5a059; --negru: #050505; --alb: #ffffff; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; }
-        
-        .site-header { position: fixed; top: 0; width: 100%; z-index: 9999; padding: 20px 30px; display: flex; justify-content: space-between; align-items: center; background: rgba(5,5,5,0.95); border-bottom: 1px solid rgba(197,160,89,0.1); }
-        .brand { font-family: 'Cinzel'; color: var(--auriu); text-decoration: none; font-weight: 900; letter-spacing: 3px; font-size: 0.9rem; }
-        .burger div { width: 25px; height: 1px; background: var(--auriu); margin: 6px; }
+        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: var(--negru); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.5s; z-index: 10000; }
-        .main-nav.active { right: 0; }
-        .main-nav a { font-size: 1.5rem; font-family: 'Cinzel'; margin: 15px 0; color: #fff !important; text-transform: uppercase; letter-spacing: 4px; text-decoration: none; }
+        /* POARTA DE ACCES (THE GATE) */
+        #access-gate {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            background: var(--negru); z-index: 9999;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            transition: 0.8s ease-in-out;
+        }
+        .gate-box { text-align: center; max-width: 400px; padding: 20px; }
+        .gate-box h2 { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 5px; margin-bottom: 20px; }
+        .gate-box input { 
+            width: 100%; padding: 15px; background: transparent; border: 1px solid #333; 
+            color: var(--auriu); text-align: center; font-family: 'Cinzel'; font-size: 1.2rem; outline: none;
+            letter-spacing: 5px; text-transform: uppercase;
+        }
+        .gate-box input:focus { border-color: var(--auriu); }
+        .gate-box button { 
+            margin-top: 20px; padding: 15px 40px; background: var(--auriu); border: none; color: #000;
+            font-family: 'Cinzel'; font-weight: 900; cursor: pointer; transition: 0.4s; letter-spacing: 3px;
+            width: 100%; text-transform: uppercase;
+        }
+        .gate-box button:hover { background: #fff; }
 
-        .contact-wrap { max-width: 1000px; margin: 120px auto 80px; padding: 0 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; }
-        
-        .contact-info h2 { font-family: 'Playfair Display'; font-size: 2.5rem; color: var(--auriu); font-style: italic; margin-bottom: 30px; }
-        .info-item { margin-bottom: 25px; }
-        .info-item h4 { font-family: 'Cinzel'; font-size: 0.8rem; color: var(--auriu); letter-spacing: 2px; margin-bottom: 5px; }
-        .info-item p { color: #ccc; font-weight: 300; }
+        /* CONTINUT CONTACT (ASCUNS INITIAL) */
+        #contact-content { display: none; opacity: 0; transition: 1s; }
 
-        .contact-form-box { background: #0d0d0d; padding: 40px; border: 1px solid #1a1a1a; }
-        .contact-form-box h3 { font-family: 'Cinzel'; color: var(--auriu); margin-bottom: 25px; letter-spacing: 2px; }
-        
-        .c-input { width: 100%; background: #000; border: 1px solid #222; padding: 15px; color: #fff; margin-bottom: 20px; outline: none; }
-        .c-input:focus { border-color: var(--auriu); }
-        .btn-gold { width: 100%; padding: 15px; border: 1px solid var(--auriu); background: transparent; color: var(--auriu); font-family: 'Cinzel'; cursor: pointer; transition: 0.4s; }
-        .btn-gold:hover { background: var(--auriu); color: #000; }
+        /* HEADER */
+        .site-header { padding: 30px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1a1a1a; }
+        .brand-logo svg { height: 60px; filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.2)); }
+        .back-link { color: var(--auriu); text-decoration: none; font-family: 'Cinzel'; font-size: 0.8rem; letter-spacing: 2px; transition: 0.3s; }
+        .back-link:hover { color: #fff; }
 
-        @media (max-width: 800px) { .contact-wrap { grid-template-columns: 1fr; margin-top: 100px; } }
+        /* FORMULAR CONTACT */
+        .container { max-width: 700px; margin: 60px auto; padding: 20px; }
+        .contact-box { background: #080808; padding: 50px 40px; border: 1px solid #1a1a1a; border-top: 2px solid var(--auriu); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        .form-group { margin-bottom: 30px; }
+        .form-group label { display: block; color: var(--auriu); font-family: 'Cinzel'; font-size: 0.7rem; letter-spacing: 2px; margin-bottom: 10px; }
+        .form-group input, .form-group textarea { 
+            width: 100%; padding: 15px; background: #000; border: 1px solid #222; color: #fff; outline: none; font-family: 'Inter'; font-size: 1rem;
+        }
+        .form-group input:focus, .form-group textarea:focus { border-color: var(--auriu); }
+        .btn-send { width: 100%; padding: 20px; background: transparent; border: 1px solid var(--auriu); color: var(--auriu); font-family: 'Cinzel'; cursor: pointer; transition: 0.4s; letter-spacing: 3px; }
+        .btn-send:hover { background: var(--auriu); color: #000; }
+
+        #mesaj-succes { display: none; text-align: center; padding: 40px; }
+        #mesaj-succes h2 { font-family: 'Playfair Display'; color: var(--auriu); font-style: italic; margin-bottom: 10px; font-size: 2rem; }
     </style>
 </head>
 <body>
-    <header class="site-header">
-        <a href="index.html" class="brand">HAȚEG ALTERNATIV</a>
-        <div class="burger" id="burger" style="cursor:pointer;"><div></div><div></div></div>
-        <nav class="main-nav" id="nav-links">
-            <a href="index.html">Acasă</a>
-            <a href="pensiune.html">Pensiunea</a>
-            <a href="gastronomie.html">Gastronomie</a>
-            <a href="rezervare.html">Rezervare</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    </header>
 
-    <div class="contact-wrap">
-        <div class="contact-info">
-            <h2>Să rânduim o întâlnire.</h2>
-            <div class="info-item">
-                <h4>LOCAȚIE</h4>
-                <p>Vadu Dobrii, Munții Poiana Ruscă, Hunedoara</p>
-            </div>
-            <div class="info-item">
-                <h4>TELEFON / WHATSAPP</h4>
-                <p>+40 749 229 686</p>
-            </div>
-            <div class="info-item">
-                <h4>EMAIL</h4>
-                <p>contact@hategalternativ.ro</p>
-            </div>
-        </div>
-
-        <div class="contact-form-box">
-            <h3>TRIMITE UN MESAJ</h3>
-            <form action="https://formspree.io/f/xjgpvbkj" method="POST">
-                <input type="text" name="name" class="c-input" placeholder="Numele tău" required>
-                <input type="email" name="email" class="c-input" placeholder="Email" required>
-                <textarea name="message" class="c-input" rows="5" placeholder="Mesajul tău" required></textarea>
-                <button type="submit" class="btn-gold">TRIMITE ACUM</button>
-            </form>
+    <div id="access-gate">
+        <div class="gate-box">
+            <i class="fas fa-key" style="color: var(--auriu); font-size: 2rem; margin-bottom: 20px;"></i>
+            <h2>ACCES PRIVAT</h2>
+            <p style="color: #555; font-size: 0.8rem; margin-bottom: 30px; letter-spacing: 1px;">Introduceți cheia pentru a debloca linia directă.</p>
+            <input type="password" id="access-code" placeholder="CHEIA DE ACCES">
+            <button onclick="checkAccess()">DEBLOCHEAZĂ</button>
+            <p id="error-msg" style="color: #ff3333; margin-top: 15px; font-size: 0.8rem; display: none; font-family: 'Cinzel'; letter-spacing: 1px;">Cheie incorectă.</p>
         </div>
     </div>
 
+    <div id="contact-content">
+        <header class="site-header">
+            <a href="index.html" class="brand-logo">
+                <svg viewBox="0 0 800 500"><circle cx="400" cy="250" r="105" fill="none" stroke="#c5a059" stroke-width="4"/><path d="M300 400 L400 200 L500 400 Z" fill="#c5a059"/></svg>
+            </a>
+            <a href="index.html" class="back-link">ÎNAPOI LA DOMENIU</a>
+        </header>
+
+        <main class="container">
+            <div id="mesaj-succes">
+                <h2>Mesaj Transmis.</h2>
+                <p style="color: #888;">Am primit rândurile tale. Revenim curând.</p>
+            </div>
+
+            <div class="contact-box" id="form-container">
+                <h1 style="font-family: 'Playfair Display'; font-style: italic; font-size: 2.5rem; color: var(--auriu); margin-bottom: 10px;">Linie Directă.</h1>
+                <p style="color: #666; margin-bottom: 40px; font-size: 0.9rem;">Folosește acest formular doar pentru propuneri serioase, parteneriate sau cereri speciale care nu țin de rezervările standard.</p>
+                
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label>Numele Tău</label>
+                        <input type="text" name="Nume_Contact" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Subiect / Scop</label>
+                        <input type="text" name="Subiect_Contact" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Mesajul Tău</label>
+                        <textarea name="Mesaj_Contact" rows="6" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-send" id="btn-submit">TRIMITE MESAJUL</button>
+                </form>
+            </div>
+        </main>
+    </div>
+
     <script>
-        const burger = document.getElementById('burger');
-        const nav = document.getElementById('nav-links');
-        if(burger) { burger.onclick = () => nav.classList.toggle('active'); }
+        // ==========================================
+        // 1. SETEAZĂ AICI CHEIA TA SECRETĂ
+        // ==========================================
+        const CHEIA_SECRETA = "ELITA2026"; 
+
+        // Logica de deblocare a porții
+        function checkAccess() {
+            const input = document.getElementById('access-code').value.toUpperCase(); // transformă tot în litere mari
+            const gate = document.getElementById('access-gate');
+            const content = document.getElementById('contact-content');
+            const error = document.getElementById('error-msg');
+
+            if(input === CHEIA_SECRETA) {
+                gate.style.opacity = "0";
+                setTimeout(() => {
+                    gate.style.display = "none";
+                    content.style.display = "block";
+                    setTimeout(() => content.style.opacity = "1", 50);
+                }, 800);
+            } else {
+                error.style.display = "block";
+            }
+        }
+
+        // Dacă apasă "Enter" pe tastatură să ia comanda
+        document.getElementById('access-code').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                checkAccess();
+            }
+        });
+
+        // ==========================================
+        // 2. TRIMITE DATELE LA MAKE.COM
+        // ==========================================
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('btn-submit');
+            btn.innerText = "SE TRIMITE...";
+            btn.disabled = true;
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+
+            // AICI PUI LINK-UL DE LA NOUL WEBHOOK MAKE
+            fetch('PUNE_LINKUL_NOU_AICI', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            })
+            .then(res => {
+                if(res.ok) {
+                    document.getElementById('form-container').style.display = 'none';
+                    document.getElementById('mesaj-succes').style.display = 'block';
+                } else {
+                    alert("A apărut o eroare. Te rugăm să ne scrii pe WhatsApp.");
+                    btn.innerText = "TRIMITE MESAJUL";
+                    btn.disabled = false;
+                }
+            });
+        });
     </script>
 </body>
 </html>
