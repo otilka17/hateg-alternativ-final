@@ -2,719 +2,399 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>JOCUL PREMIUM | Strategie AI & High-Ticket</title>
-
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>The Masterplan - Jocul Premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;600;700&family=Cinzel:wght@600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
     <style>
-        :root{
-            --auriu:#c5a059;
-            --auriu-soft:#d8b677;
-            --negru:#050505;
-            --negru-2:#0a0a0a;
-            --card:#0c0c0c;
-            --card-2:#101010;
-            --alb:#ffffff;
-            --verde:#25d366;
-            --shadow:0 25px 60px rgba(0,0,0,0.45);
+        :root { --auriu: #c5a059; --auriu-inchis: #a88540; --text: #222; --bg: #fff; --carbune: #111; }
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        body { font-family: 'Inter', sans-serif; color: var(--text); background: #f9f9f9; line-height: 1.6; }
+        
+        .page { width: 210mm; min-height: 297mm; padding: 20mm; margin: 10mm auto; background: white; box-shadow: 0 0 15px rgba(0,0,0,0.1); position: relative; overflow: hidden; page-break-after: always; }
+        
+        h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--carbune); }
+        .auriu { color: var(--auriu); }
+        .tagline { font-family: 'Cinzel', serif; letter-spacing: 3px; font-size: 0.8rem; color: #888; text-transform: uppercase; }
+
+        /* COPERTĂ */
+        .cover { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=2000') center/cover; color: white; padding: 0; }
+        .cover::before { content: ''; position: absolute; top:0; left:0; right:0; bottom:0; background: linear-gradient(rgba(5, 5, 5, 0.78), rgba(5,5,5,0.9)); z-index: 1; }
+        .cover-content { position: relative; z-index: 2; padding: 44px; border: 2px solid var(--auriu); width: 82%; background: rgba(0,0,0,0.18); }
+        .cover h1 { color: var(--auriu); font-size: 4.3rem; font-style: italic; line-height: 0.95; margin: 18px 0 22px; text-shadow: 0 10px 20px rgba(0,0,0,0.5); }
+        .cover p { font-size: 1.15rem; font-family: 'Inter'; font-weight: 300; margin-bottom: 28px; color: #f4f0e8; }
+        .cover .logo { font-family: 'Cinzel'; font-size: 1.05rem; letter-spacing: 5px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px; margin-top: 32px; }
+        .cover-pill {
+            display: inline-block;
+            border: 1px solid rgba(197,160,89,0.7);
+            color: #f0dfbf;
+            padding: 10px 16px;
+            font-family: 'Cinzel';
+            letter-spacing: 3px;
+            font-size: 0.7rem;
+            margin-bottom: 18px;
+        }
+        .cover-subproof {
+            max-width: 620px;
+            margin: 0 auto;
+            font-size: 0.96rem;
+            color: #d9d2c5;
+            line-height: 1.8;
         }
 
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            -webkit-font-smoothing:antialiased;
+        /* PAGINI INTERIOARE */
+        .header-page { border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 30px; display: flex; justify-content: space-between; font-family: 'Cinzel'; font-size: 0.7rem; color: #aaa; }
+        .chapter-title { font-size: 2.5rem; color: var(--carbune); border-left: 5px solid var(--auriu); padding-left: 20px; margin-bottom: 30px; }
+        .text-block { margin-bottom: 20px; font-size: 1rem; color: #444; }
+        .text-block strong { color: var(--carbune); }
+
+        /* IMAGINI & HIGHLIGHTS */
+        .image-banner { width: 100%; height: 200px; object-fit: cover; margin: 30px 0; border: 1px solid #eee; filter: grayscale(20%); }
+        .highlight-box { background: #fbf8f1; border-left: 3px solid var(--auriu); padding: 20px; margin: 30px 0; font-style: italic; color: #555; }
+
+        /* DIAGRAME CSS */
+        .diagram-container { margin: 40px 0; padding: 30px; background: #fafafa; border: 1px dashed #ccc; text-align: center; }
+        
+        .funnel-step { background: var(--carbune); color: var(--auriu); padding: 15px; margin: 10px auto; width: 80%; font-family: 'Cinzel'; font-weight: bold; position: relative; }
+        .funnel-step::after { content: '\f0dd'; font-family: 'Font Awesome 5 Free'; font-weight: 900; position: absolute; bottom: -22px; left: 50%; transform: translateX(-50%); color: var(--carbune); font-size: 24px; }
+        .funnel-step:last-child::after { display: none; }
+        .funnel-step:nth-child(2) { width: 70%; }
+        .funnel-step:nth-child(3) { width: 60%; }
+        .funnel-step:nth-child(4) { background: var(--auriu); color: #000; width: 50%; }
+
+        .timeline { display: flex; justify-content: space-between; margin-top: 40px; position: relative; }
+        .timeline::before { content: ''; position: absolute; top: 20px; left: 0; width: 100%; height: 2px; background: #eee; z-index: 1; }
+        .time-box { background: white; border: 2px solid var(--auriu); padding: 20px; width: 30%; position: relative; z-index: 2; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .time-box h4 { font-family: 'Cinzel'; color: var(--auriu); margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        .time-box p { font-size: 0.85rem; color: #666; }
+
+        /* PAGINĂ NOUĂ - SISTEM PREMIUM */
+        .system-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 20px;
         }
 
-        html,body{
-            background:var(--negru);
-            color:var(--alb);
-            font-family:'Inter',sans-serif;
-            line-height:1.6;
-            overflow-x:hidden;
-            scroll-behavior:smooth;
+        .system-box {
+            border: 1px solid #e9e2d3;
+            background: #fffdf9;
+            padding: 20px;
+            min-height: 150px;
+            text-align: left;
         }
 
-        body{
+        .system-box h4 {
+            font-family: 'Cinzel';
+            color: var(--auriu);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            margin-bottom: 14px;
+        }
+
+        .system-box ul {
+            margin-left: 18px;
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .system-core {
+            margin-top: 30px;
+            padding: 24px;
+            background: #111;
+            color: white;
+            text-align: center;
+            border: 2px solid var(--auriu);
+        }
+
+        .system-core h3 {
+            color: var(--auriu);
+            margin-bottom: 10px;
+        }
+
+        .system-core p {
+            color: #d7d7d7;
+        }
+
+        /* PAGINĂ OFERTĂ FINALĂ */
+        .offer-page {
             background:
-                radial-gradient(circle at top, rgba(197,160,89,0.10), transparent 30%),
-                linear-gradient(180deg, #050505 0%, #070707 100%);
+                linear-gradient(rgba(10,10,10,0.88), rgba(10,10,10,0.94)),
+                url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1600') center/cover;
+            color: white;
         }
 
-        a{ text-decoration:none; }
-
-        .topbar{
-            position:fixed;
-            top:0;
-            left:0;
-            width:100%;
-            z-index:1000;
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-            padding:16px 20px;
-            background:rgba(5,5,5,0.72);
-            backdrop-filter:blur(8px);
-            border-bottom:1px solid rgba(197,160,89,0.12);
-        }
-
-        .brand{
-            color:var(--auriu);
-            font-family:'Cinzel',serif;
-            font-size:0.82rem;
-            letter-spacing:3px;
-            text-transform:uppercase;
-        }
-
-        .topbar-btn{
-            display:inline-flex;
-            align-items:center;
-            gap:8px;
-            padding:10px 16px;
-            border:1px solid var(--auriu);
-            color:var(--auriu);
-            font-family:'Cinzel',serif;
-            font-size:0.72rem;
-            letter-spacing:1.5px;
-            background:rgba(0,0,0,0.25);
-            transition:0.3s ease;
-        }
-
-        .topbar-btn:hover{
-            background:var(--auriu);
-            color:#000;
-        }
-
-        .page-wrap{
-            width:100%;
-            min-height:100vh;
-            position:relative;
-            background:
-                linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.94)),
-                url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
-            border-bottom:1px solid rgba(197,160,89,0.18);
-        }
-
-        .page-wrap::before{
-            content:"";
-            position:absolute;
-            inset:0;
-            background:
-                radial-gradient(circle at 50% 20%, rgba(197,160,89,0.14), transparent 35%),
-                linear-gradient(180deg, rgba(0,0,0,0.15), rgba(0,0,0,0.72));
-            pointer-events:none;
-        }
-
-        .hero{
-            min-height:100vh;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            text-align:center;
-            padding:110px 20px 90px;
-            position:relative;
-            z-index:2;
-        }
-
-        .hero-content{
-            width:100%;
-            max-width:1100px;
-            margin:0 auto;
-        }
-
-        .eyebrow{
-            display:inline-block;
-            padding:10px 16px;
-            border:1px solid rgba(197,160,89,0.28);
-            background:rgba(0,0,0,0.28);
-            color:var(--auriu-soft);
-            font-family:'Cinzel',serif;
-            letter-spacing:4px;
-            text-transform:uppercase;
-            font-size:clamp(0.7rem,2vw,0.95rem);
-            margin-bottom:26px;
-            backdrop-filter:blur(4px);
-        }
-
-        .hero h1{
-            font-family:'Playfair Display',serif;
-            font-size:clamp(3.2rem,11vw,7.2rem);
-            line-height:0.92;
-            letter-spacing:-1px;
-            text-shadow:4px 4px 30px rgba(0,0,0,0.95);
-        }
-
-        .hero h1 span{
-            color:var(--auriu);
-            font-style:italic;
-        }
-
-        .hero-subtitle{
-            max-width:880px;
-            margin:28px auto 0;
-            font-size:clamp(1rem,3.8vw,1.28rem);
-            color:#ededed;
-            line-height:1.9;
-            text-shadow:2px 2px 16px rgba(0,0,0,0.95);
-        }
-
-        .hero-note{
-            max-width:760px;
-            margin:20px auto 0;
-            color:#d8d8d8;
-            font-size:0.98rem;
-            opacity:0.95;
-        }
-
-        .hero-points{
-            max-width:1000px;
-            margin:38px auto 0;
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-            gap:16px;
-        }
-
-        .hero-point{
-            background:linear-gradient(180deg, rgba(10,10,10,0.78), rgba(6,6,6,0.88));
-            border:1px solid rgba(197,160,89,0.18);
-            padding:20px 18px;
-            box-shadow:var(--shadow);
-            transition:0.35s ease;
-            backdrop-filter:blur(4px);
-        }
-
-        .hero-point i{
-            color:var(--auriu);
-            font-size:1.2rem;
-            margin-bottom:10px;
-        }
-
-        .hero-point strong{
-            display:block;
-            color:var(--auriu-soft);
-            font-family:'Cinzel',serif;
-            font-size:0.8rem;
-            letter-spacing:2px;
-            margin-bottom:8px;
-        }
-
-        .hero-point span{
-            color:#dddddd;
-            font-size:0.95rem;
-            line-height:1.6;
-        }
-
-        .hero-actions{
-            margin-top:36px;
-            display:flex;
-            gap:16px;
-            flex-wrap:wrap;
-            justify-content:center;
-        }
-
-        .btn-primary,
-        .btn-secondary{
-            display:inline-flex;
-            align-items:center;
-            justify-content:center;
-            gap:10px;
-            padding:16px 32px;
-            font-family:'Cinzel',serif;
-            letter-spacing:2px;
-            font-size:0.8rem;
-            font-weight:700;
-            transition:0.3s ease;
-            min-width:220px;
-        }
-
-        .btn-primary{
-            background:var(--auriu);
-            color:#000;
-            border:1px solid var(--auriu);
-            box-shadow:0 14px 30px rgba(0,0,0,0.35);
-        }
-
-        .btn-primary:hover{
-            background:transparent;
-            color:var(--auriu);
-        }
-
-        .btn-secondary{
-            background:rgba(0,0,0,0.32);
-            color:var(--auriu);
-            border:1px solid var(--auriu);
-        }
-
-        .btn-secondary:hover{
-            background:var(--auriu);
-            color:#000;
-        }
-
-        .hero-fill-text{
-            max-width:760px;
-            margin:34px auto 0;
-            padding:22px 20px;
-            border:1px solid rgba(197,160,89,0.16);
-            background:rgba(255,255,255,0.02);
-            color:#d6d6d6;
-            line-height:1.85;
-            font-size:0.98rem;
-            box-shadow:var(--shadow);
-        }
-
-        .section{
-            max-width:1240px;
-            margin:0 auto;
-            padding:100px 20px;
-        }
-
-        .section-title{
-            text-align:center;
-            font-family:'Cinzel',serif;
-            color:var(--auriu);
-            letter-spacing:8px;
-            font-size:clamp(0.9rem,2.4vw,1.15rem);
-            margin-bottom:60px;
-            text-transform:uppercase;
-        }
-
-        .intro-band{
-            max-width:1140px;
-            margin:0 auto;
-            padding:36px 20px 0;
-        }
-
-        .intro-band-box{
-            position:relative;
-            background:linear-gradient(180deg, rgba(14,14,14,1), rgba(8,8,8,1));
-            border:1px solid rgba(197,160,89,0.16);
-            padding:34px 24px;
-            text-align:center;
-            box-shadow:var(--shadow);
-            overflow:hidden;
-        }
-
-        .intro-band-box p{
-            max-width:900px;
-            margin:0 auto;
-            color:#d6d6d6;
-            line-height:1.9;
-            font-size:1.02rem;
-        }
-
-        .fit-grid{
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-            gap:18px;
-        }
-
-        .fit-card{
-            background:linear-gradient(180deg, var(--card), var(--card-2));
-            border:1px solid rgba(197,160,89,0.12);
-            padding:28px 22px;
-            text-align:center;
-            transition:0.35s ease;
-            box-shadow:var(--shadow);
-        }
-
-        .fit-card i{
-            color:var(--auriu);
-            font-size:2rem;
-            margin-bottom:14px;
-        }
-
-        .fit-card h3{
-            font-family:'Cinzel',serif;
-            color:var(--auriu-soft);
-            font-size:0.84rem;
-            letter-spacing:2px;
-            margin-bottom:10px;
-        }
-
-        .fit-card p{
-            color:#d5d5d5;
-            font-size:0.96rem;
-            line-height:1.75;
-        }
-
-        .module-grid{
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-            gap:28px;
-        }
-
-        .module-card{
-            background:linear-gradient(180deg, var(--card), #090909);
-            border:1px solid rgba(197,160,89,0.12);
-            overflow:hidden;
-            transition:0.35s ease;
-            box-shadow:var(--shadow);
-        }
-
-        .module-card img{
-            width:100%;
-            height:320px;
-            object-fit:cover;
-            display:block;
-            opacity:0.9;
-        }
-
-        .module-content{
-            padding:32px 26px;
-        }
-
-        .module-number{
-            display:inline-block;
-            font-family:'Cinzel',serif;
-            color:var(--auriu);
-            font-size:0.78rem;
-            letter-spacing:2px;
-            margin-bottom:12px;
-        }
-
-        .module-card h2{
-            font-family:'Playfair Display',serif;
-            font-size:2.1rem;
-            color:#fff;
-            margin-bottom:16px;
-        }
-
-        .module-card p{
-            color:#cccccc;
-            font-size:1rem;
-            line-height:1.85;
-            margin-bottom:20px;
-        }
-
-        .module-list{
-            list-style:none;
-        }
-
-        .module-list li{
-            position:relative;
-            padding-left:24px;
-            color:#e5e5e5;
-            margin-bottom:12px;
-            line-height:1.7;
-        }
-
-        .module-list li::before{
-            content:"✦";
-            position:absolute;
-            left:0;
-            top:0;
-            color:var(--auriu);
-        }
-
-        .offer-section{
-            padding-top:10px;
-            padding-bottom:110px;
-        }
-
-        .offer-box{
-            max-width:880px;
-            margin:0 auto;
-            text-align:center;
-            background:
-                radial-gradient(circle at top, rgba(197,160,89,0.08), transparent 28%),
-                linear-gradient(180deg, rgba(12,12,12,1), rgba(5,5,5,1));
-            border:1px solid rgba(197,160,89,0.22);
-            padding:56px 30px;
-            box-shadow:var(--shadow);
-            position:relative;
-            overflow:hidden;
-        }
-
-        .offer-label{
-            font-family:'Cinzel',serif;
-            color:var(--auriu);
-            letter-spacing:5px;
-            font-size:0.8rem;
-            margin-bottom:18px;
-            text-transform:uppercase;
-        }
-
-        .offer-title{
-            font-family:'Playfair Display',serif;
-            font-size:clamp(2.3rem,6vw,3.8rem);
-            color:#fff;
-            margin-bottom:10px;
-        }
-
-        .price{
-            font-family:'Cinzel',serif;
-            color:var(--auriu);
-            font-size:clamp(2.2rem,6vw,3.3rem);
-            font-weight:900;
-            letter-spacing:2px;
-            margin:18px 0 12px;
-        }
-
-        .offer-sub{
-            color:#d8d8d8;
-            font-size:1rem;
-            line-height:1.9;
-            max-width:650px;
-            margin:0 auto 26px;
-        }
-
-        .bonus-line{
-            color:#fff;
-            margin-bottom:28px;
-            font-size:1rem;
-            line-height:1.8;
-        }
-
-        .bonus-line strong{
-            color:var(--auriu);
-        }
-
-        .trust-row{
-            display:grid;
-            grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-            gap:12px;
-            max-width:780px;
-            margin:28px auto 0;
-        }
-
-        .trust-item{
-            border:1px solid rgba(197,160,89,0.12);
-            background:rgba(255,255,255,0.015);
-            padding:14px 12px;
-            color:#d4d4d4;
-            font-size:0.92rem;
-        }
-
-        .micro-trust{
-            margin-top:24px;
-            color:#9d9d9d;
-            font-size:0.92rem;
-            line-height:1.7;
-        }
-
-        .faq-mini{
-            max-width:920px;
-            margin:0 auto;
-            display:grid;
-            gap:14px;
+        .offer-page h2,
+        .offer-page h3 {
+            color: white;
         }
 
-        .faq-item{
-            border:1px solid rgba(197,160,89,0.12);
-            background:linear-gradient(180deg, #0a0a0a, #070707);
-            padding:22px 20px;
-            box-shadow:var(--shadow);
+        .offer-hero {
+            border: 1px solid rgba(197,160,89,0.35);
+            padding: 28px;
+            background: rgba(255,255,255,0.03);
+            margin-top: 20px;
         }
 
-        .faq-item h4{
-            color:var(--auriu);
-            font-family:'Cinzel',serif;
-            font-size:0.82rem;
-            letter-spacing:2px;
-            margin-bottom:10px;
+        .offer-hero .tagline {
+            color: #cbb58a;
         }
 
-        .faq-item p{
-            color:#d1d1d1;
-            line-height:1.85;
+        .offer-price {
+            font-family: 'Cinzel';
+            color: var(--auriu);
+            font-size: 2.6rem;
+            letter-spacing: 2px;
+            margin: 18px 0;
         }
 
-        footer{
-            padding:40px 20px 60px;
-            text-align:center;
-            border-top:1px solid rgba(197,160,89,0.08);
-            background:#030303;
+        .offer-list {
+            margin: 20px 0 0 20px;
+            color: #e6e6e6;
+            line-height: 1.9;
         }
 
-        footer p{
-            color:#818181;
-            font-size:0.8rem;
-            letter-spacing:2px;
+        .offer-note {
+            margin-top: 24px;
+            color: #d2d2d2;
+            font-size: 0.96rem;
         }
 
-        .sticky-mobile-cta{
-            display:none;
+        .offer-cta-box {
+            margin-top: 30px;
+            background: var(--auriu);
+            color: #000;
+            padding: 18px;
+            text-align: center;
+            font-family: 'Cinzel';
+            font-weight: bold;
+            letter-spacing: 2px;
         }
-
-        @media (max-width:768px){
-            .topbar{
-                padding:14px 14px;
-            }
-
-            .brand{
-                font-size:0.68rem;
-                letter-spacing:2px;
-            }
-
-            .topbar-btn{
-                padding:9px 12px;
-                font-size:0.64rem;
-            }
-
-            .hero{
-                min-height:auto;
-                padding-top:92px;
-                padding-bottom:46px;
-            }
-
-            .eyebrow{
-                margin-bottom:20px;
-            }
-
-            .hero-subtitle{
-                margin-top:20px;
-                line-height:1.75;
-            }
-
-            .hero-note{
-                margin-top:16px;
-                font-size:0.94rem;
-            }
-
-            .hero-points{
-                margin-top:26px;
-                gap:12px;
-            }
-
-            .hero-point{
-                padding:16px 14px;
-            }
-
-            .hero-actions{
-                flex-direction:column;
-                align-items:center;
-                margin-top:24px;
-            }
-
-            .btn-primary,
-            .btn-secondary{
-                width:100%;
-                max-width:330px;
-                min-width:unset;
-            }
-
-            .hero-fill-text{
-                margin-top:22px;
-                padding:18px 16px;
-                font-size:0.94rem;
-                line-height:1.75;
-            }
-
-            .module-card img{
-                height:230px;
-            }
-
-            .offer-box{
-                padding:40px 20px;
-            }
-
-            .sticky-mobile-cta{
-                display:block;
-                position:fixed;
-                left:14px;
-                right:14px;
-                bottom:14px;
-                z-index:999;
-            }
 
-            .sticky-mobile-cta a{
-                display:flex;
-                align-items:center;
-                justify-content:center;
-                gap:10px;
-                width:100%;
-                text-align:center;
-                background:var(--verde);
-                color:#fff;
-                padding:15px 18px;
-                font-family:'Cinzel',serif;
-                font-size:0.8rem;
-                letter-spacing:1.5px;
-                box-shadow:0 12px 30px rgba(0,0,0,0.35);
-            }
+        .footer-cta { background: var(--carbune); color: white; text-align: center; padding: 40px; margin-top: 50px; }
+        .footer-cta h2 { color: var(--auriu); margin-bottom: 20px; font-style: italic; }
 
-            body{
-                padding-bottom:86px;
-            }
+        @media print {
+            body { background: white; }
+            .page { margin: 0; box-shadow: none; border: none; }
+            .page { page-break-after: always; }
         }
     </style>
 </head>
 <body>
 
-    <header class="topbar">
-        <div class="brand">Jocul Premium</div>
-        <a href="https://wa.me/40749229686" target="_blank" class="topbar-btn">
-            <i class="fab fa-whatsapp"></i> WhatsApp
-        </a>
-    </header>
-
-    <div class="page-wrap">
-        <section class="hero">
-            <div class="hero-content">
-                <p class="eyebrow">Sistemul de Execuție 2026</p>
-
-                <h1>Jocul <span>Premium.</span></h1>
-
-                <p class="hero-subtitle">
-                    Învață cum să folosești inteligența artificială și strategia High-Ticket pentru a vinde de mii de euro, chiar și cu 20 de afișări.
-                </p>
-
-                <p class="hero-note">
-                    Creat pentru cei care nu mai vor content haotic, ci un sistem clar de poziționare, conversație și încasare.
-                </p>
-
-                <div class="hero-points">
-                    <div class="hero-point">
-                        <i class="fas fa-brain"></i>
-                        <strong>AI + STRATEGIE</strong>
-                        <span>Nu postezi mai mult. Execuți mai inteligent.</span>
-                    </div>
-                    <div class="hero-point">
-                        <i class="fas fa-comments"></i>
-                        <strong>SISTEM DE DM</strong>
-                        <span>Transformi conversațiile în încasări reale.</span>
-                    </div>
-                    <div class="hero-point">
-                        <i class="fas fa-gem"></i>
-                        <strong>HIGH-TICKET</strong>
-                        <span>Poziționare premium și filtrare de clienți buni.</span>
-                    </div>
-                </div>
-
-                <div class="hero-actions">
-                    <a href="https://wa.me/40749229686" class="btn-primary" target="_blank">
-                        <i class="fab fa-whatsapp"></i> OBȚINE ACCES
-                    </a>
-                    <a href="#oferta" class="btn-secondary">
-                        <i class="fas fa-arrow-down"></i> VEZI OFERTA
-                    </a>
-                </div>
-
-                <div class="hero-fill-text">
-                    Acest sistem este pentru cei care vor să vândă mai bine cu mai puțin zgomot. Nu urmărești validare, nu alergi după cifre goale și nu postezi la întâmplare. Construiești o ofertă mai clară, o conversație mai bună și un mod de lucru care te duce mai aproape de încasări reale.
-                </div>
-            </div>
-        </section>
+    <div class="page cover">
+        <div class="cover-content">
+            <div class="cover-pill">DOCUMENT STRATEGIC PREMIUM</div>
+            <div class="tagline">Sistemul de Vânzări High-Ticket</div>
+            <h1>JOCUL<br>PREMIUM.</h1>
+            <p>Cum să ignori algoritmul, să controlezi conversația<br>și să vinzi de mii de euro.</p>
+            <p class="cover-subproof">
+                Un sistem construit pentru cei care vor claritate, ofertă premium, conversații mai bune și un mod de lucru care transformă interesul în încasări reale.
+            </p>
+            <div class="logo">HAȚEG ALTERNATIV | METANOIA</div>
+        </div>
     </div>
 
-    <main>
-        <section class="intro-band">
-            <div class="intro-band-box">
-                <p>
-                    Acest sistem nu este pentru cine caută trucuri rapide. Este pentru cei care vor să își construiască o ofertă premium, să comunice mai clar și să transforme interesul în vânzări reale.
-                </p>
-            </div>
-        </section>
+    <div class="page">
+        <div class="header-page">
+            <span>THE MASTERPLAN V2</span>
+            <span>MODUL 01</span>
+        </div>
+        
+        <h2 class="chapter-title">Sclavul Algoritmului vs.<br>Arhitectul Sistemului</h2>
+        <p class="text-block">Majoritatea creatorilor trăiesc o iluzie toxică. Fac dansuri, urmăresc trenduri și se roagă la algoritmi pentru afișări, doar pentru a vinde produse ieftine. Acesta este jocul pierzătorilor.</p>
+        <p class="text-block"><strong>Jocul Premium</strong> înseamnă să joci după propriile reguli. Cu o ofertă High-Ticket (1.000 - 6.000 LEI), matematica se schimbă. Ai nevoie doar de 30 de oameni calificați și 5 conversații bune pentru a genera un venit de elită.</p>
 
-        <section class="section" style="padding-top:60px;">
-            <p class="section-title">Pentru cine este</p>
+        <img src="https://images.unsplash.com/photo-1633436374961-09b92742047b?auto=format&fit=crop&q=80&w=1000" class="image-banner" alt="Chess Strategy">
 
-            <div class="fit-grid">
-                <div class="fit-card">
-                    <i class="fas fa-user-tie"></i>
-                    <h3>FREELANCERI</h3>
-                    <p>Care vor clienți mai buni și mai puține conversații pierdute.</p>
+        <h3 style="margin-top: 30px; margin-bottom: 15px; color: var(--auriu);">Resetarea Identității (Mindset AI)</h3>
+        <p class="text-block"><strong>Ești antreprenor, nu influencer.</strong> Influencerii caută validare emoțională prin like-uri. Antreprenorii caută profit, eficiență și impact real. Nu mai crea conținut pentru a fi plăcut, creează conținut pentru a fi respectat.</p>
+        
+        <div class="highlight-box">
+            "Dacă ai 100.000 de urmăritori care nu cumpără nimic, ești un angajat neplătit al platformei. Dacă ai 100 de urmăritori care au încredere în tine și îți plătesc prețul premium, ești liber."
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header-page">
+            <span>THE MASTERPLAN V2</span>
+            <span>ARHITECTURA</span>
+        </div>
+
+        <h2 class="chapter-title">Sistemul complet<br><span style="font-size: 1.4rem; color: var(--auriu);">Cum funcționează Jocul Premium</span></h2>
+
+        <p class="text-block">
+            Majoritatea folosesc AI pentru task-uri mici. Tu îl folosești pentru <strong>sistem complet de vânzare</strong>, decizie și execuție.
+        </p>
+
+        <div class="diagram-container" style="background:#fff; border:1px solid #eee;">
+            <h3 style="margin-bottom:30px; color:#999; font-size:0.8rem; letter-spacing:2px;">
+                SCHEMA 0.1: SISTEMUL PREMIUM
+            </h3>
+
+            <div class="system-grid">
+                <div class="system-box">
+                    <h4>CLARITATE & STRATEGIE</h4>
+                    <ul>
+                        <li>Poziționare</li>
+                        <li>Mesaj</li>
+                        <li>Ofertă</li>
+                        <li>Client ideal</li>
+                    </ul>
                 </div>
-                     
+
+                <div class="system-box">
+                    <h4>CREARE DE CONȚINUT</h4>
+                    <ul>
+                        <li>Idei infinite</li>
+                        <li>Postări</li>
+                        <li>Scripturi</li>
+                        <li>Emailuri</li>
+                    </ul>
+                </div>
+
+                <div class="system-box">
+                    <h4>AUTOMATIZARE</h4>
+                    <ul>
+                        <li>Sisteme AI</li>
+                        <li>Fluxuri de lucru</li>
+                        <li>Reutilizare conținut</li>
+                        <li>Economie de timp</li>
+                    </ul>
+                </div>
+
+                <div class="system-box">
+                    <h4>MARKETING & VÂNZĂRI</h4>
+                    <ul>
+                        <li>Funnel</li>
+                        <li>Pagini de vânzare</li>
+                        <li>Copywriting</li>
+                        <li>CTA-uri</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="system-core">
+                <h3>STRATEGIE = TU</h3>
+                <p>Tu iei deciziile. AI execută. Nu mai ești operator. Ești arhitectul sistemului.</p>
+            </div>
+        </div>
+
+        <div class="highlight-box">
+            "Majoritatea folosesc AI ca unealtă. Tu îl folosești ca sistem de producție, claritate și vânzare."
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header-page">
+            <span>THE MASTERPLAN V2</span>
+            <span>MODUL 02</span>
+        </div>
+
+        <h2 class="chapter-title">Sistemul "Elite DM"<br><span style="font-size: 1.5rem; color: var(--auriu);">Arhitectura Conversației Private</span></h2>
+        <p class="text-block">Cea mai mare greșeală este să arunci prețul din prima când cineva te întreabă "Cât costă?". Pierzi controlul și pierzi vânzarea. Preia inițiativa folosind pâlnia conversațională de mai jos.</p>
+
+        <div class="diagram-container">
+            <h3 style="font-size: 1rem; margin-bottom: 20px; color: #888;">SCHEMA 1.1: FLUXUL DE CONVERSIE DM</h3>
+            <div class="funnel-step">
+                1. MOMEALA (Postare Targetată)<br>
+                <span style="font-size: 0.7rem; font-weight: normal; color: #ccc;">Atrage doar audiența care are o problemă specifică.</span>
+            </div>
+            <div class="funnel-step">
+                2. DIAGNOZA (Controlul DM)<br>
+                <span style="font-size: 0.7rem; font-weight: normal; color: #ccc;">"Ce te blochează acum cel mai tare?"</span>
+            </div>
+            <div class="funnel-step">
+                3. VIZIUNEA (Soluția)<br>
+                <span style="font-size: 0.7rem; font-weight: normal; color: #ccc;">"Dacă rezolvăm asta în 30 de zile, cum arată succesul?"</span>
+            </div>
+            <div class="funnel-step">
+                4. APELUL LIVE / ÎNCHIDEREA<br>
+                <span style="font-size: 0.7rem; font-weight: normal; color: #111;">Vânzarea High-Ticket (Mii de Euro)</span>
+            </div>
+        </div>
+
+        <p class="text-block"><strong>Gestionarea Obiecțiilor:</strong> Dacă prospectul spune că e prea scump, nu oferi reduceri. Răspunde: <em>„Înțeleg că este o investiție serioasă. Dar întreabă-te: cât te costă, de fapt, să rămâi blocat în aceeași problemă încă 6 luni de acum încolo?”</em></p>
+    </div>
+
+    <div class="page">
+        <div class="header-page">
+            <span>THE MASTERPLAN V2</span>
+            <span>MODUL 03 & 04</span>
+        </div>
+
+        <h2 class="chapter-title">Planul de Execuție<br><span style="font-size: 1.5rem; color: var(--auriu);">Harta pe 30 de Zile</span></h2>
+        <p class="text-block">Oprim complet haosul și "speranța". Nu mai așteptăm ca algoritmul să ne salveze. Iată planul matematic detaliat de acțiune pentru luna următoare:</p>
+
+        <div class="diagram-container" style="background: transparent; border: none; padding: 0;">
+            <div class="timeline">
+                <div class="time-box">
+                    <h4>Zilele 1-5</h4>
+                    <strong>Arhitectura</strong>
+                    <p style="margin-top: 10px;">Definește oferta. Formulează problema și postează cârligul (Hook-ul) pe rețele.</p>
+                </div>
+                <div class="time-box">
+                    <h4>Zilele 6-20</h4>
+                    <strong>Vânătoarea</strong>
+                    <p style="margin-top: 10px;">5 Conversații noi (DM) pe zi. Total 75 discuții. Statistic: 3-4 vânzări garantate.</p>
+                </div>
+                <div class="time-box" style="background: var(--auriu); border-color: var(--carbune);">
+                    <h4 style="color: var(--carbune);">Zilele 21-30</h4>
+                    <strong style="color: #fff;">Follow-up</strong>
+                    <p style="margin-top: 10px; color: #111;">Recuperează prospectii indecisi. Aici se fac banii adevărați și marja de profit.</p>
+                </div>
+            </div>
+        </div>
+
+        <h3 style="margin-top: 50px; margin-bottom: 15px; color: var(--carbune);">Protocolul de Elită (Psihologia Prețului)</h3>
+        <ul style="list-style-type: square; margin-left: 20px; color: #444; margin-bottom: 30px;">
+            <li style="margin-bottom: 10px;"><strong>Refuză Clienții Toxici:</strong> Dacă negociază agresiv sau nu respectă timpul, taie legătura. Spune: <em>"Nu ne potrivim. Caută pe cineva mai ieftin."</em></li>
+            <li style="margin-bottom: 10px;"><strong>Ridică-ți Prețul:</strong> Un preț premium ridică valoarea percepută. Un client care plătește 50 lei nu aplică nimic. Cel de 5000 lei e prezent și execută.</li>
+        </ul>
+
+        <div class="footer-cta">
+            <i class="fas fa-video" style="font-size: 2rem; color: var(--auriu); margin-bottom: 15px;"></i>
+            <h2>PASUL FINAL: AUDITUL LIVE</h2>
+            <p style="color: #aaa; margin-bottom: 20px;">Deoarece ai acest document, ai inclusă o sesiune de calibrare a ofertei (30 min) 1-la-1.</p>
+            <div style="background: var(--auriu); color: #000; padding: 15px; font-family: 'Cinzel'; font-weight: bold; letter-spacing: 2px;">
+                SCRIE-MI PE WHATSAPP: "VREAU AUDITUL."
+            </div>
+        </div>
+    </div>
+
+    <div class="page offer-page">
+        <div class="header-page" style="border-bottom-color: rgba(255,255,255,0.12); color:#c1b59d;">
+            <span>THE MASTERPLAN V2</span>
+            <span>OFERTĂ FINALĂ</span>
+        </div>
+
+        <div class="offer-hero">
+            <div class="tagline">Acces Premium</div>
+            <h2 style="font-size: 2.8rem; margin: 14px 0 10px;">Pachetul <span style="color: var(--auriu); font-style: italic;">Complet</span></h2>
+            <p style="color:#dcdcdc; max-width: 620px;">
+                Pentru cei care nu vor doar informație, ci un sistem clar de execuție, poziționare și vânzare.
+            </p>
+
+            <div class="offer-price">499 LEI</div>
+
+            <ul class="offer-list">
+                <li>Masterplan complet în format premium</li>
+                <li>Structură de ofertă High-Ticket</li>
+                <li>Framework de conversație DM</li>
+                <li>Plan de execuție pe 30 zile</li>
+                <li>1 sesiune Audit Live (30 min)</li>
+            </ul>
+
+            <p class="offer-note">
+                Acest pachet este potrivit pentru cei care vor claritate, poziționare mai bună și un mod concret de a transforma interesul în bani.
+            </p>
+
+            <div class="offer-cta-box">
+                ACTIVEAZĂ PACHETUL: SCRIE „VREAU SISTEMUL.”
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>                    
