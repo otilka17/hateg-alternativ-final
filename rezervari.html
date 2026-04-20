@@ -1,10 +1,28 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18106510896"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
+      
+      gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'analytics_storage': 'denied',
+        'regions': ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR', 'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE', 'IS', 'LI', 'NO', 'GB', 'CH']
+      });
+
+      gtag('consent', 'default', {
+        'ad_storage': 'granted',
+        'ad_user_data': 'granted',
+        'ad_personalization': 'granted',
+        'analytics_storage': 'granted'
+      });
+    </script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18106510896"></script>
+    <script>
       gtag('js', new Date());
       gtag('config', 'AW-18106510896');
     </script>
@@ -13,7 +31,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Rezervări | Hațeg Alternativ</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
@@ -21,14 +39,14 @@
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         html, body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; line-height: 1.6; overflow-x: hidden; }
 
-        /* HEADER & NAVIGATION */
+        /* HEADER */
         .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; }
         .brand-logo svg { height: 65px; filter: drop-shadow(0 0 15px #000); }
         .burger { cursor: pointer; z-index: 10001; background: rgba(0,0,0,0.6); padding: 10px; border-radius: 8px; border: 1px solid rgba(197, 160, 89, 0.3); }
         .burger div { width: 30px; height: 2px; background: var(--auriu); margin: 6px; }
         .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: var(--negru); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.6s; z-index: 10000; }
         .main-nav.active { right: 0; }
-        .main-nav a { font-size: 2rem; font-family: 'Cinzel'; margin: 15px 0; color: #fff !important; text-transform: uppercase; letter-spacing: 5px; text-decoration: none; }
+        .main-nav a { font-size: 2rem; font-family: 'Cinzel'; margin: 15px 0; color: #fff !important; text-transform: uppercase; letter-spacing: 5px; }
 
         /* HERO */
         .hero-rezervari { height: 45vh; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.85)), url('images/apus.jpg') center/cover; display: flex; align-items: center; justify-content: center; text-align: center; border-bottom: 2px solid var(--auriu); }
@@ -73,10 +91,147 @@
         <nav class="main-nav" id="nav-links">
             <a href="index.html">Acasă</a>
             <a href="pensiune.html">Domeniile La Buligă</a>
-            <a href="metanoia.html">Metanoia</a>
+            <a href="curs.html">Protocol de Elită</a>
+            <a href="gastronomie.html">Gastronomie</a>
+            <a href="evenimente.html">Evenimente</a>
             <a href="rezervari.html">Rezervare</a>
             <a href="contact.html">Contact</a>
         </nav>
     </header>
 
-    <section class="hero-rez
+    <section class="hero-rezervari"><h1>Rânduiala Rezervării.</h1></section>
+
+    <main class="container">
+        <div id="mesaj-succes">
+            <h2>CERERE TRIMISĂ.</h2>
+            <p>Vom verifica rânduiala și revenim pe WhatsApp.</p>
+        </div>
+
+        <div class="form-box" id="form-container">
+            <form id="booking-form">
+                <div class="form-group">
+                    <label>Experiența Dorită</label>
+                    <select name="Pachet_Ales" id="pachet" onchange="calculPret()">
+                        <option value="3000">Tihnă la Buligă (3000 lei/noapte)</option>
+                        <option value="6000">Metanoia Full (6000 lei/noapte)</option>
+                    </select>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="form-group">
+                        <label>Data Sosirii</label>
+                        <input type="date" name="Data_CheckIn" id="checkin" required onchange="updateCheckoutMin()">
+                    </div>
+                    <div class="form-group">
+                        <label>Data Plecării</label>
+                        <input type="date" name="Data_CheckOut" id="checkout" required onchange="calculPret()">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Nume Client</label>
+                    <input type="text" name="Nume_Client" required placeholder="Numele tău complet">
+                </div>
+
+                <div class="form-group">
+                    <label>WhatsApp / Telefon</label>
+                    <input type="tel" name="Telefon" required placeholder="07xx xxx xxx">
+                </div>
+
+                <div class="total-display">
+                    <p>SUMA TOTALĂ ESTIMATĂ</p>
+                    <span id="total-price">6000 LEI</span>
+                </div>
+
+                <div class="form-group">
+                    <label>Mesaj / Mențiuni</label>
+                    <textarea name="Mesaj" rows="3" placeholder="Detalii despre grup sau preferințe..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit" id="btn-trimite">Trimite Cererea</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>HAȚEG ALTERNATIV &copy; 2026</footer>
+
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/6620f4c01ec50827594bd999/1hrp34kga';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+
+    <script>
+        // Meniu Burger
+        const burger = document.getElementById('burger');
+        const nav = document.getElementById('nav-links');
+        burger.onclick = () => nav.classList.toggle('active');
+
+        // Logica Calendar & Pret
+        const azi = new Date().toISOString().split('T')[0];
+        document.getElementById('checkin').min = azi;
+
+        function updateCheckoutMin() {
+            const cin = document.getElementById('checkin').value;
+            const cout = document.getElementById('checkout');
+            if(cin) {
+                let d = new Date(cin);
+                d.setDate(d.getDate() + 1);
+                cout.min = d.toISOString().split('T')[0];
+                cout.value = d.toISOString().split('T')[0];
+            }
+            calculPret();
+        }
+
+        function calculPret() {
+            const p = parseInt(document.getElementById('pachet').value);
+            const d1 = new Date(document.getElementById('checkin').value);
+            const d2 = new Date(document.getElementById('checkout').value);
+            if(d1 && d2 && d2 > d1) {
+                const nopti = Math.ceil((d2 - d1) / (1000 * 60 * 60 * 24));
+                document.getElementById('total-price').innerText = (p * nopti) + " LEI";
+            }
+        }
+
+        // Trimitere Make.com
+        document.getElementById('booking-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('btn-trimite');
+            btn.innerText = "SE TRIMITE...";
+            btn.disabled = true;
+
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+            data.Suma_Totala = document.getElementById('total-price').innerText;
+
+            fetch('https://hook.eu1.make.com/1ojlwd2tys2fa6rcp39oauobwe8sebzk', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            })
+            .then(res => {
+                if(res.ok) {
+                    document.getElementById('form-container').style.display='none';
+                    document.getElementById('mesaj-succes').style.display='block';
+                    // Trigger Google Ads Conversion Event
+                    if(typeof gtag === 'function') {
+                        gtag('event', 'conversion', {'send_to': 'AW-18106510896/rezervare'});
+                    }
+                } else {
+                    alert("Eroare server. Te rugăm să ne scrii direct pe WhatsApp.");
+                    btn.disabled = false;
+                    btn.innerText = "TRIMITE DIN NOU";
+                }
+            });
+        });
+
+        updateCheckoutMin();
+    </script>
+</body>
+</html>
