@@ -31,4 +31,87 @@
         .text-block { margin-bottom: 20px; font-size: 1rem; color: #444; }
         .text-block strong { color: var(--carbune); }
 
-        .highlight-box { background: #fbf8f1; border-left: 3px solid var(--auriu); padding: 20px; margin: 30px 0; font-style: italic; color: #55
+        .highlight-box { background: #fbf8f1; border-left: 3px solid var(--auriu); padding: 20px; margin: 30px 0; font-style: italic; color: #555; }
+        .tech-box { background: #111; color: #fff; padding: 25px; border: 1px solid #333; margin: 30px 0; font-family: 'Inter', monospace; font-size: 0.9rem; }
+        .tech-box h4 { font-family: 'Cinzel'; color: var(--auriu); margin-bottom: 15px; letter-spacing: 2px; }
+
+        /* OFERTĂ */
+        .offer-page { background: #050505; color: white; }
+        .offer-hero { border: 1px solid rgba(197,160,89,0.35); padding: 35px; background: rgba(255,255,255,0.03); margin-top: 20px; }
+        .offer-price { font-family: 'Cinzel'; color: var(--auriu); font-size: 2rem; letter-spacing: 2px; margin: 18px 0; }
+        .offer-list { margin: 20px 0 0 20px; color: #ccc; line-height: 1.9; }
+        .offer-cta-box { display: block; margin-top: 30px; background: var(--auriu); color: #000; padding: 18px; text-align: center; font-family: 'Cinzel'; font-weight: bold; letter-spacing: 2px; text-decoration: none; transition: 0.3s; }
+        .offer-cta-box:hover { background: #fff; }
+
+        @media print { body { background: white; } .page { margin: 0; box-shadow: none; border: none; page-break-after: always; } }
+    </style>
+</head>
+<body>
+
+    <div class="page cover">
+        <div class="cover-content">
+            <div class="cover-pill">STUDIU DE CAZ & ARHITECTURĂ B2B</div>
+            <div class="tagline">Când Software Testing-ul întâlnește Managementul</div>
+            <h1>ARHITECTURA<br>UNUI ECOSISTEM.</h1>
+            <p>Implementarea principiilor de Quality Assurance (QA) și optimizare a fluxurilor operaționale în dezvoltarea unui hub turistic premium.</p>
+            <div class="logo">HAȚEG ALTERNATIV | METANOIA</div>
+        </div>
+    </div>
+
+    <div class="page">
+        <div class="header-page">
+            <span>DOCUMENTAȚIE TEHNICĂ</span>
+            <span>CAPITOLUL 01</span>
+        </div>
+        
+        <h2 class="chapter-title">Problema: Zgomotul de Fond<br><span style="font-size: 1.2rem; color: var(--auriu);">De ce turismul clasic eșuează în reținerea valorii</span></h2>
+        
+        <p class="text-block">Majoritatea afacerilor tratează generarea de clienți ca pe un proces de volum. Rezultatul este un consum ineficient de resurse (timp și personal) pentru a sorta clienți nepotriviți cu viziunea companiei.</p>
+        <p class="text-block">Din perspectiva unui <strong>Software Tester (QA)</strong>, o afacere este un sistem. Când un sistem primește <em>input</em> de calitate slabă, va genera un <em>output</em> plin de erori (clienți nemulțumiți, recenzii slabe, uzură operațională). Soluția nu este marketingul agresiv, ci <strong>construirea unor filtre la nivel de interfață (UI/UX) și procedură</strong>.</p>
+
+        <div class="tech-box">
+            <h4>ANALIZA DE RISC (Risk Identification)</h4>
+            <ul style="list-style-type: square; margin-left: 20px; color: #ccc; line-height: 1.8;">
+                <li><strong>Riscul de Proiect:</strong> Atragerea unui public axat pe preț, nu pe experiență.</li>
+                <li><strong>Soluția Implementată:</strong> Eliminarea ofertelor financiare publice. Introducerea "Black-box testing-ului" în procesul de rezervare — clientul trebuie să inițieze contactul pentru a debloca valoarea.</li>
+            </ul>
+        </div>
+
+        <h3 style="margin-top: 30px; margin-bottom: 15px; color: var(--carbune);">Design-ul prin Scarcity (Raritate)</h3>
+        <p class="text-block">La nivel operațional, pentru locația <strong>Domeniile La Buligă</strong>, am implementat un sistem de filtrare vizuală. Am limitat intenționat locurile disponibile (ex: "Doar 2 locuri rămase"). Aceasta nu este o tactică de vânzare, ci o procedură de management al capacității, care asigură standardul de livrare premium (Slow-Living, atenție la detalii).</p>
+    </div>
+
+    <div class="page offer-page">
+        <div class="header-page" style="border-bottom-color: rgba(255,255,255,0.12); color:#c1b59d;">
+            <span>CONSULTANȚĂ & IMPLEMENTARE</span>
+            <span>OFERTA DE AUDIT</span>
+        </div>
+
+        <div class="offer-hero">
+            <div class="tagline">Expertiză 1-la-1 (Real Life)</div>
+            <h2 style="font-size: 2.2rem; margin: 14px 0 10px;">Audit Operațional: <span style="color: var(--auriu); font-style: italic;">Retreat la Buligă</span></h2>
+            <p style="color:#dcdcdc; max-width: 620px;">
+                Dacă ești manager sau antreprenor și vrei să-ți reconstruiești afacerea după principii de QA și arhitectură de sisteme, teoria nu este suficientă. Ai nevoie de o diagnoză fizică.
+            </p>
+
+            <div class="offer-price">Consultanță Strategică Fizică</div>
+
+            <ul class="offer-list">
+                <li><strong style="color: var(--auriu);">[DIAGNOZĂ]</strong> Analiza "Black-Box" a afacerii tale actuale.</li>
+                <li><strong style="color: var(--auriu);">[SISTEM]</strong> Proiectarea unui flux procedural pentru a filtra clienții toxici.</li>
+                <li><strong style="color: #fff;">[REAL LIFE]</strong> Sesiune de consultanță directă, față în față, la Domeniile La Buligă.</li>
+                <li><strong style="color: #fff;">[GASTRONOMIE]</strong> Masă tradițională la vatră, în timpul integrării procedurilor.</li>
+            </ul>
+
+            <p style="margin-top: 24px; color: #888; font-size: 0.9rem;">
+                *Acest serviciu este limitat și necesită calificare. Nu lucrăm pe proiecte de masă.
+            </p>
+
+            <a href="https://wa.me/40749229686?text=Salut!%20Vreau%20s%C4%83%20programez%20un%20Audit%20Strategic%20(Retreat%20la%20Bulig%C4%83)." class="offer-cta-box" target="_blank">
+                PROGRAMEAZĂ AUDITUL (WHATSAPP)
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>
