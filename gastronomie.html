@@ -27,8 +27,7 @@
         /* HERO GASTRONOMIE */
         .hero-gastro {
             height: 65vh;
-            /* Imagine Hero Autentică - Focul de lemne din arhiva ta */
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.95)), url('images/foc.jpg') center/cover;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.95)), url('images/IMG_20260330_160505.jpg') center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -41,30 +40,33 @@
         .hero-gastro h1 { font-family: 'Playfair Display'; font-size: clamp(3rem, 8vw, 5.5rem); font-style: italic; color: var(--auriu); text-shadow: 4px 4px 30px #000; line-height: 1.1; }
         .hero-subtitle { font-family: 'Cinzel'; letter-spacing: 4px; font-size: 0.9rem; color: #ccc; margin-top: 15px; text-transform: uppercase; }
 
-        /* MANIFEST / CONCEPT */
-        .manifest-section { padding: 80px 20px 50px; max-width: 800px; margin: 0 auto; text-align: center; }
+        /* MANIFEST & STANDARDE */
+        .manifest-section { padding: 80px 20px 40px; max-width: 800px; margin: 0 auto; text-align: center; }
         .manifest-section h2 { font-family: 'Cinzel'; color: var(--auriu); margin-bottom: 30px; letter-spacing: 3px; font-size: 1.8rem; }
         .manifest-section p { font-size: 1.1rem; color: #ccc; margin-bottom: 25px; line-height: 1.8; }
 
-        /* EXPERIENȚA / STANDARDE */
-        .standards-grid { max-width: 1100px; margin: 0 auto; padding: 0 20px 80px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .standards-grid { max-width: 1100px; margin: 0 auto; padding: 0 20px 60px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .standard-card { background: #080808; border: 1px solid #1a1a1a; padding: 40px 30px; text-align: left; transition: 0.3s; border-top: 2px solid transparent; }
         .standard-card:hover { border-top-color: var(--auriu); background: #0a0a0a; }
         .standard-card i { color: var(--auriu); font-size: 2rem; margin-bottom: 20px; display: block; }
         .standard-card h3 { font-family: 'Cinzel'; color: #fff; letter-spacing: 2px; font-size: 1.1rem; margin-bottom: 15px; }
         .standard-card p { color: #888; font-size: 0.95rem; line-height: 1.7; }
 
-        /* GALERIE GASTRO - INTEGRARE DOCS ALE TALE */
-        .gastro-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; padding: 20px; max-width: 1200px; margin: 0 auto; }
+        /* TITLURI SECȚIUNI GALERIE */
+        .gallery-title { text-align: center; font-family: 'Playfair Display'; font-size: 2.5rem; color: var(--auriu); font-style: italic; margin: 40px 0 20px; border-bottom: 1px solid #1a1a1a; padding-bottom: 20px; max-width: 1200px; margin-left: auto; margin-right: auto; }
+
+        /* GALERIE GRID */
+        .gastro-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; padding: 20px; max-width: 1200px; margin: 0 auto 60px; }
         .gallery-item { position: relative; overflow: hidden; border: 1px solid #1a1a1a; transition: 0.5s; background: #000; }
         .gallery-item:hover { border-color: var(--auriu); transform: translateY(-3px); z-index: 2; box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
-        .gastro-gallery img { width: 100%; height: 350px; object-fit: cover; filter: grayscale(0.1) brightness(0.9); transition: 0.5s; display: block; }
+        .gastro-gallery img { width: 100%; height: 300px; object-fit: cover; filter: grayscale(0.1) brightness(0.9); transition: 0.5s; display: block; }
         .gallery-item:hover img { filter: grayscale(0) brightness(1.05); }
-        .image-caption { position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0,0,0,0.85); color: var(--auriu); font-family: 'Cinzel'; font-size: 0.75rem; letter-spacing: 2px; padding: 15px 12px; text-align: center; border-top: 1px solid var(--auriu); transform: translateY(100%); transition: 0.4s ease; }
+        
+        .image-caption { position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0,0,0,0.85); color: var(--auriu); font-family: 'Cinzel'; font-size: 0.8rem; letter-spacing: 2px; padding: 15px 12px; text-align: center; border-top: 1px solid var(--auriu); transform: translateY(100%); transition: 0.4s ease; }
         .gallery-item:hover .image-caption { transform: translateY(0); }
 
         /* CTA FINAL */
-        .cta-wrap { text-align: center; padding: 80px 20px; background: #030303; border-top: 1px solid #1a1a1a; margin-top: 60px; }
+        .cta-wrap { text-align: center; padding: 80px 20px; background: #030303; border-top: 1px solid #1a1a1a; margin-top: 20px; }
         .cta-wrap h2 { font-family: 'Playfair Display'; font-style: italic; color: var(--auriu); margin-bottom: 20px; font-size: 2rem; }
         .cta-button { display: inline-block; padding: 18px 40px; border: 1px solid var(--auriu); color: var(--auriu); text-decoration: none; font-family: 'Cinzel'; letter-spacing: 3px; transition: 0.3s ease; margin-top: 20px; }
         .cta-button:hover { background: var(--auriu); color: #000; }
@@ -78,10 +80,8 @@
 
         @media (max-width: 768px) {
             .hero-gastro h1 { font-size: 2.8rem; }
-            .manifest-section { padding: 60px 20px 40px; }
-            .standard-card { padding: 30px 20px; }
-            .gastro-gallery img { height: 280px; }
-            .image-caption { transform: translateY(0); padding: 10px; font-size: 0.65rem; }
+            .gastro-gallery img { height: 250px; }
+            .image-caption { transform: translateY(0); padding: 10px; font-size: 0.7rem; background: rgba(0,0,0,0.7); }
         }
     </style>
 </head>
@@ -115,51 +115,58 @@
     <main>
         <section class="manifest-section">
             <h2>Nu facem catering. Facem mâncare cu rost.</h2>
-            <p>La Domeniile La Buligă, mâncarea este un proces managerial strategic. Gătim asumat, folosind tehnici de slow-cooking, jar viu, fontă și ingrediente locale procurate cu respect. Rezultatul este o hrană curată, densă, care îți amintește de simplitatea vieții reale.</p>
+            <p>La Domeniile La Buligă, mâncarea este un proces managerial strategic. Gătim asumat, folosind tehnici de slow-cooking, jar viu, fontă și ingrediente locale procurate cu respect.</p>
         </section>
 
-        <section class="standards-grid">
-            <div class="standard-card">
-                <i class="fas fa-fire"></i>
-                <h3>Gătit la Vatră & Disc</h3>
-                <p>Tehnologia modernă grăbește lucrurile. Noi folosim focul de lemne și discul încins pentru a extrage arome profunde, imposibil de reprodus pe o plită electrică comercială.</p>
-            </div>
-            <div class="standard-card">
-                <i class="fas fa-clock"></i>
-                <h3>Slow-Cooking Autentic</h3>
-                <p>Carnea și preparatele specifice au nevoie de timp. Respectăm procesele termice lente. Aici, graba este exclusă din bucătărie.</p>
-            </div>
-            <div class="standard-card">
-                <i class="fas fa-seedling"></i>
-                <h3>Selecția Ingredientelor</h3>
-                <p>Folosim doar produse locale, curate, care ne permit să menținem un standard înalt și constant al gustului autentic de munte.</p>
-            </div>
-        </section>
-
+        <h2 class="gallery-title">Galerie Preparate</h2>
         <section class="gastro-gallery">
             <div class="gallery-item">
-                <img src="images/gast-masa-traditionala.jpg" alt="Masă Tradițională" onerror="this.src='https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1000&auto=format&fit=crop'">
-                <div class="image-caption">Masă Tradițională</div>
+                <img src="images/feed-virslii.jpg" alt="Virșli Tradiționali">
+                <div class="image-caption">Virșli Tradiționali la Foc</div>
             </div>
             <div class="gallery-item">
-                <img src="images/disc.jpg" alt="Gătit la Disc" onerror="this.src='https://images.unsplash.com/photo-1555939594-58d7cb561ad1?q=80&w=1000&auto=format&fit=crop'">
-                <div class="image-caption">Gătit la Disc pe Foc de Lemne</div>
+                <img src="images/pireu-cu-gratar.jpg" alt="Grătar cu Pireu">
+                <div class="image-caption">Carne la Vatră & Pireu</div>
             </div>
             <div class="gallery-item">
-                <img src="images/miel.jpg" alt="Friptură Miel" onerror="this.src='https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?q=80&w=1000&auto=format&fit=crop'">
-                <div class="image-caption">Carne Gătită Lent la Cuptor</div>
+                <img src="images/IMG_20260415_062134.jpg" alt="Platou Premium">
+                <div class="image-caption">Platou Țărănesc Premium</div>
             </div>
             <div class="gallery-item">
-                <img src="images/jumeri.jpg" alt="Jumări">
-                <div class="image-caption">Jumări Tradiționale</div>
+                <img src="images/IMG20260411140707.jpg" alt="Ciorbă de Casă">
+                <div class="image-caption">Supă / Ciorbă de Casă</div>
             </div>
             <div class="gallery-item">
-                <img src="images/feed-virslii.jpg" alt="Virșli">
-                <div class="image-caption">Virșli de Casă</div>
+                <img src="images/paine-in-ou.jpg" alt="Pâine în Ou">
+                <div class="image-caption">Mic Dejun: Pâine în Ou</div>
             </div>
             <div class="gallery-item">
                 <img src="images/orez-cu-lapte.jpg" alt="Orez cu Lapte">
-                <div class="image-caption">Orez cu Lapte (Desert)</div>
+                <div class="image-caption">Desert: Orez cu Lapte</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/jumeri.jpg" alt="Jumări">
+                <div class="image-caption">Jumări Proaspete</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/disc.jpg" alt="Gătit la Disc" onerror="this.src='images/IMG_20260330_160505.jpg'">
+                <div class="image-caption">Gătit Tradițional la Disc</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/miel.jpg" alt="Friptură Miel" onerror="this.src='images/gast-masa-traditionala.jpg'">
+                <div class="image-caption">Carne Gătită Lent</div>
+            </div>
+        </section>
+
+        <h2 class="gallery-title">Meniuri & Concepte</h2>
+        <section class="gastro-gallery" style="grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));">
+            <div class="gallery-item">
+                <img src="images/IMG_20260418_152117.jpg" alt="Meniul Domeniilor">
+                <div class="image-caption">Meniul Zilei (Autentic)</div>
+            </div>
+            <div class="gallery-item">
+                <img src="images/gast-masa-traditionala.jpg" alt="Organizare Masă" onerror="this.src='images/IMG20260412205813.jpg'">
+                <div class="image-caption">Concept Masă Comună</div>
             </div>
         </section>
 
