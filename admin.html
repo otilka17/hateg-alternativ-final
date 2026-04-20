@@ -1,34 +1,77 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurare Sistem | Hațeg Alternativ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <style>
+        :root { --accent: #c5a059; --bg: #0f0f0f; --card: #1a1a1a; --text: #e0e0e0; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); margin: 0; padding: 20px; }
+        .container { max-width: 800px; margin: 0 auto; }
+        header { border-bottom: 1px solid #333; padding-bottom: 20px; margin-bottom: 30px; }
+        h1 { font-size: 1.5rem; color: var(--accent); }
+        .badge { background: #2d2d2d; padding: 4px 8px; border-radius: 4px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .section { background: var(--card); border-radius: 8px; padding: 20px; margin-bottom: 20px; border: 1px solid #333; }
+        h2 { font-size: 1rem; margin-top: 0; border-left: 3px solid var(--accent); padding-left: 10px; }
+        
+        pre { background: #000; padding: 15px; border-radius: 5px; overflow-x: auto; border: 1px solid #222; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #888; }
+        .status { color: #4caf50; font-size: 0.8rem; font-weight: bold; }
+        .copy-btn { background: var(--accent); border: none; color: black; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold; margin-top: 10px; }
+        
+        .note { font-size: 0.85rem; color: #888; font-style: italic; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Consolă Management Sistem <span class="badge">v1.0 - Producție</span></h1>
+        <p style="font-size: 0.9rem; color: #666;">Proprietar: Otilia-Ioana Sălășan (Certified Software Tester)</p>
+    </header>
+
+    <div class="section">
+        <h2><i class="fas fa-chart-line"></i> Google Tag (Tracking ID: AW-16535577695)</h2>
+        <p class="status">● SENSORI ACTIVI</p>
+        <p class="note">Acest cod trebuie să fie prezent în secțiunea &lt;head&gt; a tuturor paginilor pentru a măsura conversiile.</p>
+        
+        <pre id="googleTag">
+&lt;!-- Google tag (gtag.js) --&gt;
+&lt;script async src="https://www.googletagmanager.com/gtag/js?id=AW-16535577695"&gt;&lt;/script&gt;
+&lt;script&gt;
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-16535577695');
+&lt;/script&gt;
+        </pre>
+        <button class="copy-btn" onclick="copyCode()">COPIAZĂ CODUL</button>
+    </div>
+
+    <div class="section">
+        <h2>Arhitectură Campanie</h2>
+        <ul style="font-size: 0.9rem; line-height: 1.8;">
+            <li><strong>Buget Zilnic:</strong> 30 - 40 RON (Stress Test)</li>
+            <li><strong>Licitare:</strong> Maxim 3.00 RON / Click</li>
+            <li><strong>Targeting:</strong> Search Only (No Display, No Partners)</li>
+            <li><strong>Landing Page:</strong> /curs.html (Studiu de Caz)</li>
+        </ul>
+    </div>
+
+    <div class="note">
+        Document confidențial. Acces limitat pentru administrarea platformei Hațeg Alternativ.
+    </div>
+</div>
+
 <script>
-    // PUNE AICI URL-UL NOU DE DUPĂ DEPLOY
-    const SCRIPT_URL = "URL_UL_TAU_NOU_DE_LA_PASUL_2";
-
-    async function loadReservations() {
-        try {
-            const res = await fetch(SCRIPT_URL);
-            const data = await res.json();
-            
-            const rows = document.getElementById('data-rows');
-            rows.innerHTML = data.map(item => `
-                <tr>
-                    <td><small>${item['Data'] || '-'}</small></td>
-                    <td class="client-name">${item['Nume'] || '-'}</td>
-                    <td>${item['Telefon'] || '-'}</td>
-                    <td>${item['Email'] || '-'}</td>
-                    <td>${item['Locație'] || '-'}</td>
-                    <td>${item['Check-in'] || '-'}</td>
-                    <td>${item['Check-out'] || '-'}</td>
-                    <td>${item['Persoane'] || '-'}</td>
-                    <td class="total-bold">${item['Total'] || '0'} RON</td>
-                    <td><small>${item['Mesaj'] || '-'}</small></td>
-                </tr>
-            `).join('');
-
-            document.getElementById('loading').style.display = 'none';
-            document.getElementById('admin-content').style.display = 'block';
-
-        } catch (err) {
-            document.getElementById('loading').innerHTML = `<div class="error-msg">EROARE: ${err.message}<br>Verifică dacă ai dat Deploy ca "Anyone"!</div>`;
-        }
+    function copyCode() {
+        const code = document.getElementById('googleTag').innerText;
+        navigator.clipboard.writeText(code);
+        alert('Codul a fost copiat în clipboard!');
     }
-    loadReservations();
 </script>
+
+</body>
+</html>
