@@ -1,143 +1,100 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18106510896"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-18106510896');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Protocol de Elită | Arhitectura Metanoia</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,900&family=Inter:wght@300;400;600;800&family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        :root { --aur: #c5a059; --negru: #050505; --gri: #111; --text: #e0e0e0; }
+        :root { --auriu: #c5a059; --negru: #050505; --gri: #111; --text: #e0e0e0; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background: var(--negru); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.7; }
 
-        /* HEADER EXECUTIV */
-        header { height: 70vh; background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.95)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000'); background-size: cover; display: flex; align-items: center; justify-content: center; text-align: center; border-bottom: 2px solid var(--aur); }
-        .hero-content { max-width: 800px; padding: 20px; }
-        .badge { border: 1px solid var(--aur); padding: 5px 15px; font-family: 'Cinzel'; font-size: 0.7rem; letter-spacing: 4px; color: var(--aur); margin-bottom: 25px; display: inline-block; }
-        h1 { font-family: 'Playfair Display'; font-size: clamp(2.5rem, 7vw, 4.5rem); font-style: italic; color: var(--aur); line-height: 1.1; margin-bottom: 20px; }
+        header { height: 60vh; background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.95)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000') center/cover; display: flex; align-items: center; justify-content: center; text-align: center; border-bottom: 2px solid var(--auriu); }
+        .hero-title h1 { font-family: 'Playfair Display'; font-size: clamp(2.5rem, 7vw, 4.5rem); font-style: italic; color: var(--auriu); }
 
-        .container { max-width: 1100px; margin: -120px auto 0; background: var(--gri); border: 1px solid #222; padding: 80px 50px; position: relative; z-index: 10; box-shadow: 0 50px 100px rgba(0,0,0,0.9); }
+        .container { max-width: 1100px; margin: -100px auto 0; background: var(--gri); border: 1px solid #222; padding: 60px 40px; box-shadow: 0 50px 100px rgba(0,0,0,0.9); }
 
-        /* TABLE OF CONTENTS (Stil TrendMiner) */
-        .toc { background: #000; border-left: 5px solid var(--aur); padding: 40px; margin-bottom: 80px; }
-        .toc h3 { font-family: 'Cinzel'; color: var(--aur); margin-bottom: 25px; font-size: 1rem; }
-        .toc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-        .toc-item { font-size: 0.8rem; opacity: 0.6; display: flex; align-items: center; font-family: 'Cinzel'; }
-        .toc-item span { color: var(--aur); margin-right: 15px; font-weight: 900; }
+        /* CELE 4 PIRE ALE PROTOCOLULUI */
+        .protocol-pillars { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 80px; }
+        .pillar-card { background: #000; border: 1px solid #222; padding: 30px; text-align: center; border-top: 3px solid var(--auriu); }
+        .pillar-num { font-family: 'Cinzel'; color: var(--auriu); font-size: 0.8rem; letter-spacing: 3px; display: block; margin-bottom: 10px; }
+        .pillar-card h3 { font-family: 'Cinzel'; font-size: 1rem; margin-bottom: 15px; color: #fff; }
+        .pillar-card p { font-size: 0.85rem; color: #888; }
 
-        /* SECTIUNI - Implementare Model 100€ */
-        .section { margin-bottom: 100px; }
-        .section-num { font-family: 'Cinzel'; color: #222; font-size: 6rem; font-weight: 900; line-height: 1; margin-bottom: -40px; position: relative; z-index: -1; }
-        h2 { font-family: 'Playfair Display'; font-size: 2.5rem; color: var(--aur); font-style: italic; margin-bottom: 30px; }
+        .whitepaper-content { max-width: 800px; margin: 0 auto; }
+        h2 { font-family: 'Playfair Display'; color: var(--auriu); font-size: 2.2rem; font-style: italic; margin-bottom: 30px; border-left: 4px solid var(--auriu); padding-left: 20px; }
+        p { margin-bottom: 25px; font-weight: 300; }
         
-        .feature-box { background: #080808; border: 1px solid #1a1a1a; padding: 30px; margin: 20px 0; }
-        .feature-box h4 { font-family: 'Cinzel'; color: var(--aur); margin-bottom: 15px; font-size: 0.9rem; }
+        .tech-box { background: #080808; border: 1px solid #1a1a1a; padding: 30px; margin: 40px 0; }
+        .tech-box h4 { font-family: 'Cinzel'; color: var(--auriu); margin-bottom: 15px; font-size: 0.9rem; }
 
-        /* DIAGRAMA SVG (Executie) */
-        .diagram { background: #000; padding: 50px; border: 1px solid #222; margin: 40px 0; border-radius: 4px; }
-        
-        /* TABEL DE CALCUL (Formula Matematica) */
-        .math-table { width: 100%; border-collapse: collapse; margin: 30px 0; }
-        .math-table td { padding: 20px; border: 1px solid #222; font-size: 0.9rem; }
-        .highlight-cell { background: rgba(197, 160, 89, 0.1); color: var(--aur); font-weight: bold; }
-
-        .cta-box { background: var(--aur); color: #000; padding: 50px; text-align: center; margin-top: 50px; }
-        .btn-elite { display: inline-block; padding: 20px 50px; background: #000; color: #fff; text-decoration: none; font-family: 'Cinzel'; font-weight: 900; letter-spacing: 3px; margin-top: 30px; }
-
-        @media (max-width: 768px) { .container { padding: 40px 20px; } .section-num { font-size: 4rem; } }
+        .cta-box { background: var(--auriu); color: #000; padding: 50px; text-align: center; margin-top: 60px; font-family: 'Cinzel'; }
+        .btn-elite { display: inline-block; margin-top: 20px; padding: 15px 40px; background: #000; color: #fff; font-weight: 900; letter-spacing: 2px; }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="hero-content">
-            <span class="badge">TECHNICAL DOCUMENTATION</span>
-            <h1>Protocolul de Elită: Resetarea Arhitecturii de Business</h1>
-            <p style="font-family: 'Cinzel'; letter-spacing: 5px; opacity: 0.5;">DE LA 1.000€ LA 10.000€ CONSTANT</p>
+        <div class="hero-title">
+            <p style="font-family:'Cinzel'; letter-spacing:10px; color:var(--auriu);">TECHNICAL DOCUMENTATION</p>
+            <h1>Protocolul de Elită</h1>
         </div>
     </header>
 
     <main class="container">
         
-        <div class="toc">
-            <h3>CONTENTS / MODULES</h3>
-            <div class="toc-grid">
-                <div class="toc-item"><span>01</span> MENTALITATE & QA</div>
-                <div class="toc-item"><span>02</span> SISTEMUL DE FILTRARE</div>
-                <div class="toc-item"><span>03</span> PLANUL DE EXECUȚIE</div>
-                <div class="toc-item"><span>04</span> PROTOCOLUL DE ELITĂ</div>
+        <div class="protocol-pillars">
+            <div class="pillar-card">
+                <span class="pillar-num">01</span>
+                <h3>MENTALITATE</h3>
+                <p>Reset strategic pentru eliminarea zgomotului operațional și a "bug-urilor" mentale.</p>
+            </div>
+            <div class="pillar-card">
+                <span class="pillar-num">02</span>
+                <h3>SISTEM</h3>
+                <p>Ecosistem B2B calibrat pentru filtrarea lead-urilor și automatizarea valorii.</p>
+            </div>
+            <div class="pillar-card">
+                <span class="pillar-num">03</span>
+                <h3>EXECUȚIE</h3>
+                <p>Plan de implementare on-site a noilor fluxuri de lucru în Țara Hațegului.</p>
+            </div>
+            <div class="pillar-card">
+                <span class="pillar-num">04</span>
+                <h3>ELITĂ</h3>
+                <p>Audit Metanoia: standardul de excelență pentru manageri și antreprenori.</p>
             </div>
         </div>
 
-        <div class="section">
-            <div class="section-num">01</div>
-            <h2>Resetare Mentală și Strategie Practică</h2>
-            <p>Identitatea care te ține blocat este un <strong>bug de sistem</strong>. În această fază, nu facem teorie inutilă, ci un <strong>"System Reboot"</strong> de 10 minute care îți resetează ziua și prioritățile strategice.</p>
-            <div class="feature-box">
-                <h4>CORE CONCEPTS:</h4>
-                <ul style="list-style: none; font-size: 0.9rem;">
-                    <li>✓ Eliminarea zgomotului de fond operațional.</li>
-                    <li>✓ Trecerea de la "CEO Reactiv" la "Arhitect Predictiv".</li>
-                    <li>✓ Standardul mental de înaltă rezoluție (Elite Mindset).</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-num">02</div>
-            <h2>Sistem Real de Valoare (Non-Manipulativ)</h2>
-            <p>Cum creezi o ofertă premium fără manipulare, folosind doar <strong>logica valorii pure</strong>. Implementăm sistemul de "Black-Box Filtering" pentru a atrage clienți care nu întreabă de preț, ci de impact.</p>
+        <div class="whitepaper-content">
+            <h2>Arhitectura unui Ecosistem fără erori</h2>
+            <p>În managementul de elită, afacerea este privită ca un cod software. Dacă input-ul (clienții) este de calitate slabă, output-ul (profitul și tihna) va fi plin de bug-uri. Protocolul Metanoia oferă debugging-ul necesar pentru orice sistem de business.</p>
             
-            <div class="diagram">
-                <p style="text-align:center; font-family:'Cinzel'; font-size:0.7rem; color:var(--aur); margin-bottom:30px;">DIAGRAMA FLUXULUI DE MONETIZARE (AI-DRIVEN)</p>
-                <svg width="100%" height="120" viewBox="0 0 600 120">
-                    <rect x="10" y="35" width="120" height="50" fill="none" stroke="#c5a059" stroke-width="1.5"/>
-                    <text x="70" y="65" fill="#c5a059" font-size="10" text-anchor="middle" font-family="Cinzel">INPUT (Zgomot)</text>
-                    
-                    <line x1="130" y1="60" x2="180" y2="60" stroke="#c5a059" stroke-width="1"/>
-                    
-                    <polygon points="180,35 300,35 320,60 300,85 180,85" fill="none" stroke="#c5a059" stroke-width="1.5"/>
-                    <text x="250" y="65" fill="#c5a059" font-size="10" text-anchor="middle" font-family="Cinzel">FILTRU QA (Metanoia)</text>
-
-                    <line x1="320" y1="60" x2="370" y2="60" stroke="#c5a059" stroke-width="1"/>
-
-                    <rect x="370" y="35" width="120" height="50" fill="#c5a059"/>
-                    <text x="430" y="65" fill="#000" font-size="10" text-anchor="middle" font-family="Cinzel" font-weight="bold">ELITE RESULT</text>
-                </svg>
+            <div class="tech-box">
+                <h4>ANALIZA DE RISC (QA)</h4>
+                <p style="font-size: 0.9rem;">Eliminăm "zgomotul" prin filtre de UI/UX aplicate în lumea reală. La Domeniile La Buligă, tăcerea nu este un produs, ci o resursă strategică de procesare.</p>
             </div>
-        </div>
 
-        <div class="section">
-            <div class="section-num">03</div>
-            <h2>Plan de Execuție — 30 de Zile</h2>
-            <p>Ce faci în fiecare zi — de la ziua 1 la ziua 30. Indicatori reali de progres și formula matematică pentru <strong>5.000€ - 10.000€ / lună</strong>.</p>
-            
-            <table class="math-table">
-                <tr>
-                    <td><strong>FAZA 01 (Zilele 1-10)</strong></td>
-                    <td>Audit complet de sistem și eliminarea "leak-urilor" de timp.</td>
-                </tr>
-                <tr>
-                    <td><strong>FAZA 02 (Zilele 11-20)</strong></td>
-                    <td>Construirea funnel-ului de "Liniște Aspră" și pre-validarea lead-urilor.</td>
-                </tr>
-                <tr>
-                    <td class="highlight-cell">FAZA 03 (Zilele 21-30)</td>
-                    <td class="highlight-cell">Deployment-ul ofertei de Elită și încasarea valorii.</td>
-                </tr>
-            </table>
+            <p>Acest document servește drept fundament pentru retreat-urile noastre strategice. Nu vindem cazare, vindem o resetare completă a sistemului de operare al afacerii tale.</p>
         </div>
 
         <div class="cta-box">
-            <h2 style="color:#000;">EȘTI GATA PENTRU PROTOCOL?</h2>
-            <p style="color:#000; font-weight:bold;">Nu lăsa bug-urile operaționale să-ți consume profitul. Aplică acum pentru Auditul de Elită.</p>
-            <a href="https://wa.me/40749229686" class="btn-elite">DEBLOCHEAZĂ DOCUMENTUL COMPLET</a>
+            <h3>EȘTI GATA SĂ DEBLOCHEZI SISTEMUL?</h3>
+            <a href="https://wa.me/40749229686" class="btn-elite">SOLICITĂ AUDIT STRATEGIC</a>
         </div>
-
     </main>
 
-    <footer style="padding:80px; text-align:center; opacity:0.3; font-family:'Cinzel'; font-size:0.7rem;">
-        CONFIDENTIAL DOCUMENT | &copy; 2026 METANOIA SYSTEM ARCHITECTURE
+    <footer style="padding:60px; text-align:center; opacity:0.3; font-family:'Cinzel'; font-size:0.7rem;">
+        &copy; 2026 METANOIA SYSTEM ARCHITECTURE
     </footer>
 
 </body>
