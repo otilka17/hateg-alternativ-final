@@ -58,7 +58,7 @@
         .secret-door i { cursor: pointer; transition: 0.3s; padding: 10px; }
         .secret-door i:hover { color: var(--auriu); }
 
-        /* MODAL PAROLĂ (Ascuns inițial) */
+        /* MODAL PAROLĂ */
         #password-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 100000; justify-content: center; align-items: center; }
         .modal-box { text-align: center; background: #0a0a0a; padding: 40px; border: 1px solid var(--auriu); max-width: 400px; width: 90%; }
         .modal-box h3 { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 3px; margin-bottom: 20px; }
@@ -110,7 +110,7 @@
             <div class="info-item">
                 <i class="fas fa-envelope"></i>
                 <h3>Email Oficial</h3>
-                <p><a href="mailto:contact@hategalternativ.ro">contact@hategalternativ.ro</a></p>
+                <p><a href="mailto:hategalternativ@gmail.com">hategalternativ@gmail.com</a></p>
             </div>
         </div>
 
@@ -147,4 +147,43 @@
             <p style="color: #666; font-size: 0.8rem; margin-bottom: 20px;">Introduceți cheia strategică pentru a accesa documentul operațional.</p>
             <input type="password" id="gate-key" placeholder="••••••••">
             <button onclick="checkKey()">DEBLOCHEAZĂ</button>
-            <p id="
+            <p id="error-msg" style="color: #ff4444; font-size: 0.8rem; margin-top: 10px; display: none;">Cheie incorectă.</p>
+            <span class="close-modal" onclick="closeGate()">ÎNCHIDE</span>
+        </div>
+    </div>
+
+    <script>
+        const burger = document.getElementById('burger');
+        const nav = document.getElementById('nav-links');
+        burger.onclick = () => nav.classList.toggle('active');
+
+        const modal = document.getElementById('password-modal');
+        const errorMsg = document.getElementById('error-msg');
+        const inputKey = document.getElementById('gate-key');
+
+        function openGate() {
+            modal.style.display = 'flex';
+            inputKey.focus();
+        }
+
+        function closeGate() {
+            modal.style.display = 'none';
+            errorMsg.style.display = 'none';
+            inputKey.value = '';
+        }
+
+        function checkKey() {
+            if (inputKey.value.toUpperCase() === 'ELITA2026') {
+                window.location.href = 'curs.html';
+            } else {
+                errorMsg.style.display = 'block';
+                inputKey.value = '';
+            }
+        }
+
+        inputKey.addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') checkKey();
+        });
+    </script>
+</body>
+</html>
