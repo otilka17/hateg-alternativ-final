@@ -23,23 +23,8 @@
         .cover h1 { color: var(--auriu); font-size: 4.3rem; font-style: italic; line-height: 0.95; margin: 18px 0 22px; text-shadow: 0 10px 20px rgba(0,0,0,0.5); }
         .cover p { font-size: 1.15rem; font-family: 'Inter'; font-weight: 300; margin-bottom: 28px; color: #f4f0e8; }
         .cover .logo { font-family: 'Cinzel'; font-size: 1.05rem; letter-spacing: 5px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px; margin-top: 32px; }
-        .cover-pill {
-            display: inline-block;
-            border: 1px solid rgba(197,160,89,0.7);
-            color: #f0dfbf;
-            padding: 10px 16px;
-            font-family: 'Cinzel';
-            letter-spacing: 3px;
-            font-size: 0.7rem;
-            margin-bottom: 18px;
-        }
-        .cover-subproof {
-            max-width: 620px;
-            margin: 0 auto;
-            font-size: 0.96rem;
-            color: #d9d2c5;
-            line-height: 1.8;
-        }
+        .cover-pill { display: inline-block; border: 1px solid rgba(197,160,89,0.7); color: #f0dfbf; padding: 10px 16px; font-family: 'Cinzel'; letter-spacing: 3px; font-size: 0.7rem; margin-bottom: 18px; }
+        .cover-subproof { max-width: 620px; margin: 0 auto; font-size: 0.96rem; color: #d9d2c5; line-height: 1.8; }
 
         /* PAGINI INTERIOARE */
         .header-page { border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 30px; display: flex; justify-content: space-between; font-family: 'Cinzel'; font-size: 0.7rem; color: #aaa; }
@@ -68,7 +53,7 @@
         .time-box h4 { font-family: 'Cinzel'; color: var(--auriu); margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
         .time-box p { font-size: 0.85rem; color: #666; }
 
-        /* SISTEM BOX */
+        /* PAGINĂ NOUĂ - SISTEM PREMIUM */
         .system-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 20px; }
         .system-box { border: 1px solid #e9e2d3; background: #fffdf9; padding: 20px; min-height: 150px; text-align: left; }
         .system-box h4 { font-family: 'Cinzel'; color: var(--auriu); font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 14px; }
@@ -80,7 +65,7 @@
         /* PAGINĂ OFERTĂ FINALĂ */
         .offer-page { background: linear-gradient(rgba(10,10,10,0.88), rgba(10,10,10,0.94)), url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1600') center/cover; color: white; }
         .offer-page h2, .offer-page h3 { color: white; }
-        .offer-hero { border: 1px solid rgba(197, 160, 89, 0.35); padding: 28px; background: rgba(255,255,255,0.03); margin-top: 20px; }
+        .offer-hero { border: 1px solid rgba(197,160,89,0.35); padding: 28px; background: rgba(255,255,255,0.03); margin-top: 20px; }
         .offer-hero .tagline { color: #cbb58a; }
         .offer-price { font-family: 'Cinzel'; color: var(--auriu); font-size: 2.6rem; letter-spacing: 2px; margin: 18px 0; }
         .offer-list { margin: 20px 0 0 20px; color: #e6e6e6; line-height: 1.9; }
@@ -89,6 +74,11 @@
         .footer-cta { background: var(--carbune); color: white; text-align: center; padding: 40px; margin-top: 50px; }
         .footer-cta h2 { color: var(--auriu); margin-bottom: 20px; font-style: italic; }
 
+        @media print {
+            body { background: white; }
+            .page { margin: 0; box-shadow: none; border: none; }
+            .page { page-break-after: always; }
+        }
     </style>
 </head>
 <body>
@@ -111,6 +101,7 @@
             <span>THE MASTERPLAN V2</span>
             <span>MODUL 01</span>
         </div>
+        
         <h2 class="chapter-title">Povestea vs.<br>Acțiunea Reală</h2>
         <p class="text-block">Să clarificăm un lucru din start: <strong>Marketingul clasic este o poveste.</strong> Este o încercare de a manipula percepții, de a cerși atenție pe internet și de a dansa pentru un algoritm în speranța că cineva va cumpăra.</p>
         <p class="text-block"><strong>Managementul strategic este acțiune reală (Real Life).</strong> Înseamnă să construiești un mecanism predictibil. Tu nu te rogi de oameni să cumpere. Tu proiectezi o „conductă” (pipeline) prin care intră o problemă și iese o soluție clară. Jocul Premium nu este despre vânzări, ci despre inginerie managerială.</p>
@@ -118,7 +109,7 @@
         <img src="https://images.unsplash.com/photo-1633436374961-09b92742047b?auto=format&fit=crop&q=80&w=1000" class="image-banner" alt="Chess Strategy">
 
         <h3 style="margin-top: 30px; margin-bottom: 15px; color: var(--auriu);">Resetarea Identității: Operator vs. Arhitect</h3>
-        <p class="text-block"><strong>Nu ești vânzător, ești manager de sistem.</strong> Vânzătorul încearcă să convingă. Managerul evaluează, diagnostichează și decide dacă prospectul este calificat să lucreze cu el.</p>
+        <p class="text-block"><strong>Nu ești vânzător, ești manager de sistem.</strong> Vânzătorul încearcă să convingă. Managerul evaluează, diagnostichează și decide dacă prospectul este calificat să lucreze cu el. Oprește-te din a crea conținut pentru a fi plăcut; creează sisteme pentru a filtra și a controla.</p>
         
         <div class="highlight-box dark">
             "Marketingul promite. Managementul livrează. Dacă ai 100.000 de urmăritori care nu cumpără nimic, ești un angajat neplătit al platformei. Dacă ai un sistem clar care îți convertește 5 discuții în contracte premium, ești arhitectul propriei tale libertăți."
@@ -130,30 +121,64 @@
             <span>THE MASTERPLAN V2</span>
             <span>ARHITECTURA SISTEMULUI</span>
         </div>
+
         <h2 class="chapter-title">Mecanismul<br><span style="font-size: 1.4rem; color: var(--auriu);">Anatomia unei Conducte High-Ticket</span></h2>
+
+        <p class="text-block">
+            În management, nu ne bazăm pe speranță. Ne bazăm pe proceduri clare (SOPs). Iată cum este structurat sistemul tău operațional de la atragere până la contractare.
+        </p>
+
         <div class="diagram-container" style="background:#fff; border:1px solid #eee;">
+            <h3 style="margin-bottom:30px; color:#999; font-size:0.8rem; letter-spacing:2px;">
+                SCHEMA 0.1: ARHITECTURA PROCEDURALĂ
+            </h3>
+
             <div class="system-grid">
                 <div class="system-box">
                     <h4>1. STRATEGIE & FUNDAȚIE</h4>
-                    <ul><li>Identificarea durerii (Real Life)</li><li>Proiectarea soluției</li><li>Setarea standardelor</li></ul>
+                    <ul>
+                        <li>Identificarea durerii (Real Life)</li>
+                        <li>Proiectarea soluției (Oferta)</li>
+                        <li>Setarea standardelor</li>
+                    </ul>
                 </div>
+
                 <div class="system-box">
                     <h4>2. GENERARE DE DATE</h4>
-                    <ul><li>Postări polarizante</li><li>Îndepărtarea curioșilor</li><li>Atragerea problemelor</li></ul>
+                    <ul>
+                        <li>Postări polarizante (Filtre)</li>
+                        <li>Îndepărtarea curioșilor</li>
+                        <li>Atragerea problemelor specifice</li>
+                    </ul>
                 </div>
+
                 <div class="system-box">
-                    <h4>3. PROCEDURI CONVERSIE</h4>
-                    <ul><li>Pre-calificare (Parole)</li><li>Audit privat</li><li>Managementul obiecțiilor</li></ul>
+                    <h4>3. PROCEDURI DE CONVERSIE</h4>
+                    <ul>
+                        <li>Pre-calificare (Parole/Lacăt)</li>
+                        <li>Audit privat (în loc de „sales pitch”)</li>
+                        <li>Managementul obiecțiilor</li>
+                    </ul>
                 </div>
+
                 <div class="system-box">
-                    <h4>4. ONBOARDING</h4>
-                    <ul><li>Semnarea parteneriatului</li><li>Livrarea experienței</li><li>Generarea rezultatului</li></ul>
+                    <h4>4. ONBOARDING & EXECUȚIE</h4>
+                    <ul>
+                        <li>Semnarea parteneriatului</li>
+                        <li>Livrarea experienței (Metanoia/etc)</li>
+                        <li>Generarea rezultatului</li>
+                    </ul>
                 </div>
             </div>
+
             <div class="system-core">
                 <h3>MANAGEMENT = CONTROL TOTAL</h3>
                 <p>Sistemul face selecția. Tu gestionezi doar excepțiile și aprobi deciziile finale.</p>
             </div>
+        </div>
+
+        <div class="highlight-box">
+            "Nu te ruga de ei. Evaluează-i. Un manager bun nu fuge după clienți, ci construiește uși pe care clienții trebuie să dovedească faptul că merită să intre."
         </div>
     </div>
 
@@ -162,14 +187,63 @@
             <span>THE MASTERPLAN V2</span>
             <span>MODUL 02</span>
         </div>
+
         <h2 class="chapter-title">Protocolul Diagnozei<br><span style="font-size: 1.5rem; color: var(--auriu);">Cum gestionezi o conversație 1-la-1</span></h2>
+        <p class="text-block">Cea mai mare eroare operațională este să arunci prețul imediat ce un prospect cere informații. Când faci asta, îi cedezi controlul. Urmează această procedură strictă de audit privat.</p>
+
         <div class="diagram-container">
-            <div class="funnel-step">1. FILTRUL INIȚIAL</div>
-            <div class="funnel-step">2. DIAGNOZA MANAGERIALĂ</div>
-            <div class="funnel-step">3. EVALUAREA SOLUȚIEI</div>
-            <div class="funnel-step">4. APROBAREA (Onboarding)</div>
+            <h3 style="font-size: 1rem; margin-bottom: 20px; color: #888;">SCHEMA 1.1: FLUXUL DE AUDIT PRIVAT</h3>
+            <div class="funnel-step">
+                1. FILTRUL INIȚIAL (Momeala Strategică)<br>
+                <span style="font-size: 0.7rem; font-weight: normal; color: #ccc;">Postezi o durere reală. Cine răspunde, intră în sistem.</span>
+            </div>
+            <div class="funnel-step">
+                2. DIAGNOZA MANAGERIALĂ<br>
+                <span style="font-size: 0.7rem; font-weight: normal; color: #ccc;">"La ce nivel operațional te blochezi acum?"</span>
+            </div>
+            <div class="funnel-step">
+                3. EVALUAREA SOLUȚIEI<br>
+                <span style="font-size: 0.7rem; font-weight: normal; color: #ccc;">"Dacă implementăm sistemul X în 30 de zile, rezolvăm?"</span>
+            </div>
+            <div class="funnel-step">
+                4. APROBAREA (Onboarding)<br>
+                <span style="font-size: 0.7rem; font-weight: normal; color: #111;">Încheierea contractului de asistență / pachetului premium</span>
+            </div>
         </div>
-        <p class="text-block"><strong>Gestionarea Obiecțiilor:</strong> Un manager nu oferă discounturi; el clarifică valoarea. <em>„Cât te costă operațional să rămâi cu această problemă nerezolvată?”</em></p>
+
+        <p class="text-block"><strong>Gestionarea Obiecțiilor Financiare:</strong> Un manager nu oferă discounturi; el clarifică valoarea. Dacă prospectul spune că e prea scump, răspunzi: <em>„Înțeleg perspectiva. Dar ca oameni de afaceri, hai să calculăm: cât te costă operațional să rămâi cu această problemă nerezolvată încă 6 luni?”</em></p>
+    </div>
+
+    <div class="page">
+        <div class="header-page">
+            <span>THE MASTERPLAN V2</span>
+            <span>APLICABILITATE</span>
+        </div>
+
+        <h2 class="chapter-title">Studii de Caz<br><span style="font-size: 1.5rem; color: var(--auriu);">Sistemul aplicat în piețe reale</span></h2>
+        <p class="text-block">Cum arată tranziția de la "prestator ieftin" la "arhitect de sistem" în industrii suprasaturate de zgomot comercial.</p>
+
+        <div class="system-box" style="margin-bottom: 30px; border-left: 3px solid var(--auriu);">
+            <h4 style="font-size: 1.1rem; color: var(--carbune);"><i class="fas fa-spa" style="color: var(--auriu); margin-right: 8px;"></i> Cazul 1: Industria de Beauty (Makeup Artist)</h4>
+            <ul style="margin-top: 15px; list-style: none; margin-left: 0;">
+                <li style="margin-bottom: 10px;"><strong>Problema veche:</strong> Competiție pe prețuri mici (200 lei/machiaj), cliente care negociază, epuizare fizică. Postări zilnice pe Instagram rugând lumea să se programeze.</li>
+                <li style="margin-bottom: 10px;"><strong>Soluția Premium:</strong> Trecerea de la "serviciu" la "Ofertă High-Ticket" (ex: <em>Pachet VIP Mireasă la 1.500 LEI</em> cu probă, deplasare, kit de retuș inclus).</li>
+                <li><strong>Controlul DM:</strong> Când clienta întreabă prețul, managerul răspunde cu diagnoză: <em>"Salut! Pentru a vedea dacă te pot ajuta, spune-mi: ce probleme de rezistență a tenului ai avut în trecut?"</em>. Refuză cliente toxice pentru a atrage clientele cu buget premium.</li>
+            </ul>
+        </div>
+
+        <div class="system-box" style="border-left: 3px solid var(--auriu);">
+            <h4 style="font-size: 1.1rem; color: var(--carbune);"><i class="fas fa-mountain" style="color: var(--auriu); margin-right: 8px;"></i> Cazul 2: Turism & Gastronomie (Retragere Montană)</h4>
+            <ul style="margin-top: 15px; list-style: none; margin-left: 0;">
+                <li style="margin-bottom: 10px;"><strong>Problema veche:</strong> Vânzarea de "cazare" ieftină sau "catering", gestionând turiști zgomotoși care fac stricăciuni și negociază tarifele.</li>
+                <li style="margin-bottom: 10px;"><strong>Soluția Premium:</strong> Nu se mai vinde cazare, se vinde un <em>"Reset Strategic"</em> sau experiențe exclusiviste (ex: <em>Serată Romano-Italiană cu doar 3 locuri VIP</em>).</li>
+                <li><strong>Controlul DM:</strong> Nu există buton de "book now" pentru oricine. Rezervarea se face strict prin WhatsApp. Dacă prospectul vrea doar "un loc de petrecere", este refuzat. Se adresează corporatiștilor și managerilor aflați în burnout care caută hrană curată (gătită la vatră) și tăcere absolută.</li>
+            </ul>
+        </div>
+
+        <div class="highlight-box dark" style="margin-top: 30px;">
+            "Indiferent că vinzi machiaj, cazare sau consultanță de afaceri, principiul este identic: Cine controlează selecția (filtrul) controlează prețul."
+        </div>
     </div>
 
     <div class="page">
@@ -177,16 +251,44 @@
             <span>THE MASTERPLAN V2</span>
             <span>MODUL 03 & 04</span>
         </div>
+
         <h2 class="chapter-title">Operaționalizarea<br><span style="font-size: 1.5rem; color: var(--auriu);">Calendarul de Implementare</span></h2>
-        <div class="timeline">
-            <div class="time-box"><h4>Faza 1</h4><strong>Proiectarea</strong><p>Configurezi site-ul și lansezi postarea-filtru.</p></div>
-            <div class="time-box"><h4>Faza 2</h4><strong>Calificarea</strong><p>Rulezi protocolul de diagnoză pe 5 prospecti noi zilnic.</p></div>
-            <div class="time-box" style="background: var(--auriu);"><h4>Faza 3</h4><strong>Follow-up</strong><p>Finalizezi contractele și parteneriatele.</p></div>
+        <p class="text-block">Teoria fără acțiune "real life" nu produce încasări. Iată planul de implementare a sistemului tău în următoarele 30 de zile:</p>
+
+        <div class="diagram-container" style="background: transparent; border: none; padding: 0;">
+            <div class="timeline">
+                <div class="time-box">
+                    <h4>Faza 1 (Zilele 1-5)</h4>
+                    <strong>Proiectarea</strong>
+                    <p style="margin-top: 10px;">Configurezi "poarta" (site-ul) și lansezi postarea-filtru pe piață.</p>
+                </div>
+                <div class="time-box">
+                    <h4>Faza 2 (Zilele 6-20)</h4>
+                    <strong>Calificarea Activă</strong>
+                    <p style="margin-top: 10px;">Rulezi protocolul de diagnoză pe 5 prospecti noi zilnic. Elimini necalificații.</p>
+                </div>
+                <div class="time-box" style="background: var(--auriu); border-color: var(--carbune);">
+                    <h4 style="color: var(--carbune);">Faza 3 (Zilele 21-30)</h4>
+                    <strong style="color: #fff;">Follow-up Managerial</strong>
+                    <p style="margin-top: 10px; color: #111;">Reiei contactul cu decidenții. Finalizezi contractele amânate.</p>
+                </div>
+            </div>
         </div>
-        <ul style="list-style-type: square; margin-left: 20px; margin-top: 50px;">
-            <li><strong>Elimină Resursele Toxice:</strong> Dacă un prospect negociază agresiv timpul, oprește procesul.</li>
-            <li><strong>Taxează Angajamentul:</strong> Cine investește scump, respectă procedurile.</li>
+
+        <h3 style="margin-top: 50px; margin-bottom: 15px; color: var(--carbune);">Protocolul Executiv (Standarde Inflexibile)</h3>
+        <ul style="list-style-type: square; margin-left: 20px; color: #444; margin-bottom: 30px;">
+            <li style="margin-bottom: 10px;"><strong>Elimină Resursele Toxice:</strong> Dacă un prospect negociază agresiv timpul sau banii tăi, oprește procesul. <em>"Sistemul nostru nu suportă această abordare. Caută un prestator clasic."</em></li>
+            <li style="margin-bottom: 10px;"><strong>Taxează Angajamentul:</strong> Un preț premium nu e doar profit; este un filtru de execuție. Cine plătește puțin, nu acționează. Cine investește scump, respectă procedurile.</li>
         </ul>
+
+        <div class="footer-cta">
+            <i class="fas fa-project-diagram" style="font-size: 2rem; color: var(--auriu); margin-bottom: 15px;"></i>
+            <h2>EVALUAREA FINALĂ (AUDIT)</h2>
+            <p style="color: #aaa; margin-bottom: 20px;">Dacă ai asimilat acest document, deblochezi o sesiune operațională privată (30 min) cu mine.</p>
+            <div style="background: var(--auriu); color: #000; padding: 15px; font-family: 'Cinzel'; font-weight: bold; letter-spacing: 2px;">
+                CERE AUDITUL: "SUNT PREGĂTIT PENTRU IMPLEMENTARE."
+            </div>
+        </div>
     </div>
 
     <div class="page">
@@ -196,7 +298,7 @@
         </div>
 
         <h2 class="chapter-title">Managementul Follow-up-ului<br><span style="font-size: 1.5rem; color: var(--auriu);">Puterea lui "NU" și Controlul Partenerilor</span></h2>
-        <p class="text-block">În managementul strategic, follow-up-ul nu este o unealtă de vânzare, ci un <strong>mecanism de filtrare a eficienței</strong>. Dacă un partener încearcă să te complice, rolul tău este să simplifici prin decizie radicală.</p>
+        <p class="text-block">În managementul strategic, follow-up-ul nu este o unealtă de vânzare, ci un <strong>mecanism de filtrare a eficienței</strong>. Dacă un partener (furnizor, designer, agenție) încearcă să te complice, rolul tău este să simplifici prin decizie radicală.</p>
 
         <div class="highlight-box dark">
             <strong>STUDIU DE CAZ (Real Life):</strong><br>
@@ -207,37 +309,64 @@
         <h3 style="margin-top: 30px; margin-bottom: 15px; color: var(--carbune);">Protocolul de Răspuns (Scripturi de Control)</h3>
         
         <div class="system-box" style="margin-bottom: 20px; border-left: 3px solid var(--auriu);">
-            <h4>SCENARIUL A: FURNIZORUL CARE "COMPLICĂ"</h4>
+            <h4 style="font-size: 0.8rem; letter-spacing: 1px;">SCENARIUL A: FURNIZORUL CARE "COMPLICĂ"</h4>
+            <p style="font-size: 0.9rem; color: #555;"><strong>Situație:</strong> Încearcă să îți vândă extra-servicii sau să modifice un sistem care deja funcționează.</p>
             <p style="font-size: 0.9rem; font-style: italic; color: var(--auriu-inchis); margin-top: 5px;">
                 "Apreciez efortul, dar sistemul actual livrează exact ce am nevoie. Rămânem pe varianta mea. Directă. Simplă."
             </p>
         </div>
 
         <div class="system-box" style="margin-bottom: 20px; border-left: 3px solid var(--auriu);">
-            <h4>SCENARIUL B: VIITORUL PARTENER INDECIS</h4>
+            <h4 style="font-size: 0.8rem; letter-spacing: 1px;">SCENARIUL B: VIITORUL PARTENER INDECIS</h4>
+            <p style="font-size: 0.9rem; color: #555;"><strong>Situație:</strong> A primit oferta ta premium, dar amână decizia sau caută "mai ieftin".</p>
             <p style="font-size: 0.9rem; font-style: italic; color: var(--auriu-inchis); margin-top: 5px;">
-                "Sistemul meu funcționează doar cu parteneri deciși. Dacă nu ești pregătit acum, eliberăm locul. Anunță-mă când ești gata."
+                "Am prezentat soluția și condițiile. Sistemul meu funcționează doar cu parteneri deciși. Dacă nu ești pregătit acum, eliberăm locul pentru următorul proiect. Anunță-mă când ești gata de execuție."
+            </p>
+        </div>
+
+        <div class="system-box" style="border-left: 3px solid var(--auriu);">
+            <h4 style="font-size: 0.8rem; letter-spacing: 1px;">SCENARIUL C: FOLLOW-UP DE MENȚINERE (Post-Eveniment)</h4>
+            <p style="font-size: 0.9rem; color: #555;"><strong>Situație:</strong> Partenerul a lucrat cu tine și vrei să setezi standardul pentru viitor.</p>
+            <p style="font-size: 0.9rem; font-style: italic; color: var(--auriu-inchis); margin-top: 5px;">
+                "Evenimentul a validat sistemul. Pentru pasul următor, standardul rămâne neschimbat. Vrei să scalăm sau menținem volumul actual?"
             </p>
         </div>
 
         <div class="highlight-box" style="margin-top: 30px;">
-            <strong>REGULA DE AUR:</strong> Nu lăsa partenerii să îți dicteze ritmul. Tu ești Arhitectul. Dacă o piesă din sistem aduce zgomot, se înlocuiește.
+            <strong>REGULA DE AUR:</strong> Nu lăsa partenerii să îți dicteze ritmul. Tu ești Arhitectul. Ei sunt Executanții. Dacă o piesă din sistem (om sau proces) aduce zgomot, se înlocuiește.
         </div>
     </div>
 
     <div class="page offer-page">
-        <div class="header-page" style="color:#c1b59d;"><span>THE MASTERPLAN V2</span><span>PACHET OPERAȚIONAL</span></div>
+        <div class="header-page" style="border-bottom-color: rgba(255,255,255,0.12); color:#c1b59d;">
+            <span>THE MASTERPLAN V2</span>
+            <span>PACHET OPERAȚIONAL</span>
+        </div>
+
         <div class="offer-hero">
             <div class="tagline">Infrastructură Premium</div>
             <h2 style="font-size: 2.8rem; margin: 14px 0 10px;">Sistemul <span style="color: var(--auriu); font-style: italic;">Complet</span></h2>
+            <p style="color:#dcdcdc; max-width: 620px;">
+                Pentru managerii care nu vor „sfaturi de marketing”, ci un mecanism de calificare bazat pe acțiune reală.
+            </p>
+
             <div class="offer-price">499 LEI</div>
+
             <ul class="offer-list">
-                <li>Manualul Operațional (SOP) High-Ticket</li>
-                <li>Framework Diagnoză Privată & Follow-up</li>
+                <li>Manualul Operațional (SOP) pentru High-Ticket</li>
+                <li>Framework-ul exact pentru Diagnoza Privată</li>
+                <li>Studii de Caz Aplicate (Beauty, Turism, HORECA)</li>
+                <li>Modulul de Follow-up și Control Parteneri</li>
                 <li>Harta de implementare pe 30 de zile</li>
-                <li>1 sesiune de Audit Strategic 1-la-1</li>
             </ul>
-            <div class="offer-cta-box">IMPLEMENTEAZĂ SISTEMUL ACUM.</div>
+
+            <p class="offer-note">
+                Acest pachet instalează controlul. Transformă modul în care extragi valoare din piață, mutând focusul de la „a vinde” la „a selecta”.
+            </p>
+
+            <div class="offer-cta-box">
+                IMPLEMENTEAZĂ SISTEMUL ACUM.
+            </div>
         </div>
     </div>
 
