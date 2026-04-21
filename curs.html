@@ -1,108 +1,159 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18106510896"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18106516696"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'AW-18106510896');
+      gtag('config', 'AW-18106516696');
     </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Whitepaper: Protocolul de Arhitectură Metanoia</title>
+    <title>Protocol de Arhitectură | Metanoia</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,900&family=Inter:wght@300;400;600;800&family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet">
+    
     <style>
         :root { --aur: #c5a059; --negru: #050505; --gri: #111; --text: #e0e0e0; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--negru); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.7; overflow-x: hidden; }
+        body { background: var(--negru); color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-        header { height: 60vh; background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.95)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000'); background-size: cover; display: flex; align-items: center; justify-content: center; text-align: center; border-bottom: 2px solid var(--aur); }
-        .badge { border: 1px solid var(--aur); padding: 5px 15px; font-family: 'Cinzel'; font-size: 0.7rem; letter-spacing: 4px; color: var(--aur); margin-bottom: 25px; display: inline-block; }
-        h1 { font-family: 'Playfair Display'; font-size: clamp(2rem, 6vw, 4rem); font-style: italic; color: var(--aur); line-height: 1.1; }
+        /* GATE DE ACCES - DISPLAY DEFAULT */
+        #login-gate {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            background: var(--negru); z-index: 99999;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; padding: 20px;
+        }
+        .gate-box {
+            max-width: 400px; width: 100%; padding: 40px;
+            border: 1px solid var(--aur); background: var(--gri);
+            box-shadow: 0 0 50px rgba(197, 160, 89, 0.1);
+        }
+        .gate-box h2 { font-family: 'Cinzel'; color: var(--aur); font-size: 0.9rem; letter-spacing: 4px; margin-bottom: 30px; }
+        .gate-box input {
+            width: 100%; padding: 15px; background: #000; border: 1px solid #333;
+            color: var(--aur); text-align: center; font-family: 'Inter'; font-size: 1.1rem;
+            margin-bottom: 20px; outline: none; border-radius: 0;
+        }
+        .gate-box button {
+            width: 100%; padding: 15px; background: var(--aur); color: #000;
+            border: none; font-family: 'Cinzel'; font-weight: 900; letter-spacing: 2px;
+            cursor: pointer; transition: 0.3s;
+        }
+        .gate-box button:hover { background: #fff; }
+        #error-msg { color: #ff4444; font-size: 0.7rem; margin-top: 15px; display: none; font-family: 'Cinzel'; }
 
-        .container { max-width: 1100px; margin: -100px auto 0; background: var(--gri); border: 1px solid #222; padding: 80px 50px; position: relative; z-index: 10; box-shadow: 0 50px 100px rgba(0,0,0,0.9); }
+        /* CONTINUT CURS - ASCUNS DEFAULT */
+        #main-content { display: none; opacity: 0; transition: opacity 1s ease-in; }
 
-        .toc { background: #000; border-left: 5px solid var(--aur); padding: 40px; margin-bottom: 80px; }
-        .toc h3 { font-family: 'Cinzel'; color: var(--aur); margin-bottom: 25px; font-size: 1rem; }
-        .toc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-        .toc-item { font-size: 0.75rem; opacity: 0.6; font-family: 'Cinzel'; letter-spacing: 1px; }
-        .toc-item span { color: var(--aur); margin-right: 15px; font-weight: 900; }
-
-        .module { margin-bottom: 120px; position: relative; }
-        .module-num { font-family: 'Cinzel'; color: #1a1a1a; font-size: 8rem; font-weight: 900; position: absolute; top: -60px; left: -20px; z-index: -1; opacity: 0.5; }
-        h2 { font-family: 'Playfair Display'; font-size: 2.5rem; color: var(--aur); font-style: italic; margin-bottom: 30px; }
-        
-        .diagram { background: #000; padding: 40px; border: 1px solid #222; margin: 40px 0; text-align: center; }
-        table { width: 100%; border-collapse: collapse; margin: 40px 0; font-size: 0.85rem; }
+        /* STYLE CURS */
+        header { height: 50vh; background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.98)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2000'); background-size: cover; display: flex; align-items: center; justify-content: center; text-align: center; border-bottom: 2px solid var(--aur); }
+        .badge { border: 1px solid var(--aur); padding: 5px 15px; font-family: 'Cinzel'; font-size: 0.7rem; letter-spacing: 4px; color: var(--aur); margin-bottom: 20px; display: inline-block; }
+        h1 { font-family: 'Playfair Display'; font-size: clamp(2.2rem, 7vw, 4rem); font-style: italic; color: var(--aur); }
+        .container { max-width: 1050px; margin: -80px auto 0; background: var(--gri); border: 1px solid #222; padding: clamp(40px, 10vw, 90px) clamp(20px, 5vw, 60px); position: relative; box-shadow: 0 50px 100px rgba(0,0,0,0.9); }
+        .module { margin-bottom: 100px; position: relative; }
+        .module-num { font-family: 'Cinzel'; color: #1a1a1a; font-size: 6rem; font-weight: 900; position: absolute; top: -50px; left: -10px; z-index: -1; opacity: 0.6; }
+        h2 { font-family: 'Playfair Display'; font-size: 2.5rem; color: var(--aur); font-style: italic; margin-bottom: 25px; }
+        .diagram-box { background: #000; padding: 40px 20px; border: 1px solid #222; margin: 40px 0; text-align: center; }
+        table { width: 100%; border-collapse: collapse; margin: 40px 0; font-size: 0.9rem; }
         th { background: #1a1a1a; color: var(--aur); font-family: 'Cinzel'; padding: 15px; text-align: left; border: 1px solid #333; }
         td { padding: 15px; border: 1px solid #222; }
-
-        .cta-final { background: var(--aur); color: #000; padding: 60px; text-align: center; margin-top: 80px; }
-        .btn-elite { display: inline-block; padding: 20px 50px; background: #000; color: #fff; text-decoration: none; font-family: 'Cinzel'; font-weight: 900; letter-spacing: 3px; margin-top: 30px; }
-
-        @media (max-width: 768px) { .container { padding: 40px 20px; } }
+        .cta-box { background: var(--aur); color: #000; padding: 50px; text-align: center; margin-top: 60px; }
+        .btn-elite { display: inline-block; padding: 20px 50px; background: #000; color: #fff; text-decoration: none; font-family: 'Cinzel'; font-weight: 900; letter-spacing: 3px; margin-top: 20px; }
     </style>
 </head>
 <body>
 
-    <header>
-        <div style="max-width: 800px;">
-            <span class="badge">TECHNICAL PROTOCOL V3.0</span>
-            <h1>Arhitectura unui Ecosistem: Protocol de Optimizare Business</h1>
+    <div id="login-gate">
+        <div class="gate-box">
+            <h2>ACCES PROTOCOL ELITĂ</h2>
+            <input type="password" id="passkey" placeholder="INTRODUCEȚI CHEIA" onkeypress="handleKeyPress(event)">
+            <button onclick="checkKey()">DEBLOCHEAZĂ</button>
+            <p id="error-msg">CHEIE INCORECTĂ. ACCES REFUZAT.</p>
         </div>
-    </header>
+        <p style="margin-top: 30px; font-family: 'Cinzel'; font-size: 0.6rem; letter-spacing: 3px; opacity: 0.4;">METANOIA SYSTEM ARCHITECTURE</p>
+    </div>
 
-    <main class="container">
-        
-        <div class="toc">
-            <h3>SUMAR EXECUTIV / MODULE</h3>
-            <div class="toc-grid">
-                <div class="toc-item"><span>01</span> REBOOT STRATEGIC</div>
-                <div class="toc-item"><span>02</span> FILTRAREA VALORII</div>
-                <div class="toc-item"><span>03</span> ROADMAP DE EXECUȚIE</div>
-                <div class="toc-item"><span>04</span> SCALARE PREMIUM</div>
+    <div id="main-content">
+        <header>
+            <div style="padding: 20px;">
+                <span class="badge">SYSTEM ARCHITECTURE</span>
+                <h1>Protocolul de Arhitectură Metanoia</h1>
             </div>
-        </div>
+        </header>
 
-        <section class="module">
-            <div class="module-num">01</div>
-            <h2>Faza de Reboot: Debugging Operațional</h2>
-            <p>Orice sistem ineficient rulează pe un cod sursă corupt. În prima etapă, identificăm "pierderile de memorie" — procesele care consumă resurse fără a genera valoare. Nu este vorba despre muncă mai multă, ci despre o <strong>arhitectură mentală de înaltă rezoluție</strong>.</p>
-        </section>
+        <main class="container">
+            <section class="module">
+                <div class="module-num">01</div>
+                <h2>Faza de Reboot: Debugging Operațional</h2>
+                <p>Identificăm procesele care consumă resurse critice fără a genera output de valoare. Nu este vorba de volum, ci de precizia execuției strategice.</p>
+            </section>
 
-        <section class="module">
-            <div class="module-num">02</div>
-            <h2>Sistemul de Filtrare: Black-Box Conversion</h2>
-            <p>Implementăm un protocol de selecție a lead-urilor. În loc să concurăm pe volum, optimizăm conversia prin <strong>validarea intenției</strong>. Rezultatul este un flux de clienți care apreciază rigoarea și calitatea, eliminând eroarea de sistem a clienților axați pe cost.</p>
-            
-            <div class="diagram">
-                <svg width="100%" height="100" viewBox="0 0 600 100">
-                    <rect x="50" y="30" width="120" height="40" fill="none" stroke="#c5a059" />
-                    <text x="110" y="55" fill="#c5a059" font-family="Cinzel" font-size="10" text-anchor="middle">INPUT DATA</text>
-                    <line x1="170" y1="50" x2="230" y2="50" stroke="#c5a059" />
-                    <polygon points="230,20 370,20 390,50 370,80 230,80" fill="none" stroke="#c5a059" />
-                    <text x="310" y="55" fill="#c5a059" font-family="Cinzel" font-size="10" text-anchor="middle">QA FILTER</text>
-                    <line x1="390" y1="50" x2="450" y2="50" stroke="#c5a059" />
-                    <rect x="450" y="30" width="100" height="40" fill="#c5a059" />
-                    <text x="500" y="55" fill="#000" font-family="Cinzel" font-size="10" font-weight="bold" text-anchor="middle">OUTPUT</text>
-                </svg>
+            <section class="module">
+                <div class="module-num">02</div>
+                <h2>Arhitectura Filtrului: Validarea Intenției</h2>
+                <p>Implementăm un protocol de <strong>Black-Box Conversion</strong>. Optimizăm sistemul pentru a procesa doar lead-uri de înaltă fidelitate.</p>
+                <div class="diagram-box">
+                    <svg width="100%" height="80" viewBox="0 0 600 80">
+                        <rect x="30" y="20" width="120" height="40" fill="none" stroke="#c5a059" />
+                        <text x="90" y="45" fill="#c5a059" font-size="9" text-anchor="middle" font-family="Cinzel">INPUT</text>
+                        <line x1="150" y1="40" x2="220" y2="40" stroke="#c5a059" stroke-dasharray="3"/>
+                        <polygon points="220,10 380,10 400,40 380,70 220,70" fill="none" stroke="#c5a059" />
+                        <text x="310" y="45" fill="#c5a059" font-size="10" text-anchor="middle" font-family="Cinzel">QA FILTER</text>
+                        <line x1="400" y1="40" x2="470" y2="40" stroke="#c5a059"/>
+                        <rect x="470" y="20" width="100" height="40" fill="#c5a059"/>
+                        <text x="520" y="45" fill="#000" font-size="10" text-anchor="middle" font-family="Cinzel" font-weight="bold">OUTPUT</text>
+                    </svg>
+                </div>
+            </section>
+
+            <section class="module">
+                <div class="module-num">03</div>
+                <h2>Roadmap Tehnic: Implementare 30 Zile</h2>
+                <table>
+                    <tr><th>FAZA</th><th>OBIECTIV TEHNIC</th></tr>
+                    <tr><td>01: Audit</td><td>Identificarea și eliminarea pierderilor operaționale.</td></tr>
+                    <tr><td>02: Design</td><td>Construirea structurii de filtrare și validare.</td></tr>
+                    <tr><td>03: Deploy</td><td>Lansarea protocolului și monitorizarea KPI.</td></tr>
+                </table>
+            </section>
+
+            <div class="cta-box">
+                <h2>SOLICITĂ AUDIT STRATEGIC</h2>
+                <p>Dacă arhitectura afacerii tale necesită resetare, inițiază procedura de contact.</p>
+                <a href="https://wa.me/40749229686" class="btn-elite">DEBLOCHEAZĂ ACCESUL</a>
             </div>
-        </section>
+        </main>
 
-        <section class="module">
-            <div class="module-num">03</div>
-            <h2>Roadmap de Execuție (30 Zile)</h2>
-            <table>
-                <tr><th>PERIOADĂ</th><th>OBIECTIV TEHNIC</th></tr>
-                <tr><td>Zilele 1-10</td><td>Audit de sistem și eliminarea "leak-urilor" operaționale.</td></tr>
-                <tr><td>Zilele 11-20</td><td>Implementarea infrastructurii de filtrare (Ușa Secretă).</td></tr>
-                <tr><td>Zilele 21-30</td><td>Deployment-ul ofertei de elită și monitorizarea conversiei.</td></tr>
-            </table>
-        </section>
+        <footer style="padding: 80px 20px; text-align: center; opacity: 0.3; font-family: 'Cinzel'; font-size: 0.7rem; letter-spacing: 4px;">
+            &copy; 2026 METANOIA SYSTEM ARCHITECTURE | CONFIDENTIAL
+        </footer>
+    </div>
 
-        <section class="cta-final">
-            <h2>DEBLOCHEAZĂ PROTOCOLUL COMPLET</h2>
-            <p>Sistemul Metanoia nu este pentru mase. Este o arhitectură dedicată managerilor care caută tăcere, rigoare și rezultate predictibile.</p>
-            <a href="https://wa.me/40749229686" class="btn-
+    <script>
+        function checkKey() {
+            const key = document.getElementById('passkey').value;
+            const gate = document.getElementById('login-gate');
+            const content = document.getElementById('main-content');
+            const error = document.getElementById('error-msg');
+
+            if (key === 'ELITA2026') {
+                gate.style.display = 'none';
+                content.style.display = 'block';
+                setTimeout(() => { content.style.opacity = '1'; }, 10);
+            } else {
+                error.style.display = 'block';
+                document.getElementById('passkey').value = '';
+            }
+        }
+
+        function handleKeyPress(e) {
+            if (e.key === 'Enter') {
+                checkKey();
+            }
+        }
+    </script>
+</body>
+</html>
