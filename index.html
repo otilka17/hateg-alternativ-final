@@ -24,9 +24,10 @@
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         html, body { overflow-x: hidden; width: 100%; position: relative; background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         
-        /* FIX TEXT MOV */
+        /* RESET LINK COLORS */
         a, a:visited, a:hover, a:active { text-decoration: none !important; color: inherit !important; }
 
+        /* HEADER & NAV */
         .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: clamp(15px, 5vw, 30px) 5%; display: flex; justify-content: space-between; align-items: center; }
         .brand-logo svg { height: clamp(50px, 10vw, 85px); cursor: pointer; filter: drop-shadow(0 0 15px #000); }
         .header-controls { display: flex; align-items: center; gap: 20px; }
@@ -38,6 +39,7 @@
         .main-nav.active { right: 0; }
         .main-nav a { font-size: 2rem; font-family: 'Cinzel'; margin: 15px 0; color: #fff !important; text-transform: uppercase; letter-spacing: 5px; }
 
+        /* HERO & BENEFITS */
         .hero-slider { width: 100%; height: 100vh; position: relative; overflow: hidden; }
         .slide img { width: 100%; height: 100%; object-fit: cover; opacity: 0.45; }
         .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; text-align: center; }
@@ -48,9 +50,11 @@
         .benefit-card strong { display: block; font-family: 'Cinzel'; color: var(--auriu); font-size: 0.7rem; letter-spacing: 2px; margin-bottom: 5px; }
         .benefit-card span { font-size: 0.8rem; color: #ccc; }
 
+        /* ROAD ADVISORY */
         .road-advisory { background: #080808; border-top: 3px solid var(--auriu); border-bottom: 3px solid var(--auriu); padding: 60px 20px; text-align: center; }
         .road-inner i { color: var(--auriu); font-size: 3rem; margin-bottom: 20px; display: block; }
 
+        /* GRID 7 CARDS */
         .container { width: 100%; max-width: 1450px; margin: 0 auto; padding: 60px 20px; }
         .grid-7 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 40px; }
         .card-item { height: clamp(450px, 70vh, 600px); position: relative; overflow: hidden; display: block; border: 1px solid #1a1a1a; background: #000; }
@@ -59,12 +63,20 @@
         .card-info { position: absolute; bottom: 0; padding: 30px; width: 100%; background: linear-gradient(to top, #000, transparent); text-align: center; }
         .card-info h4 { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 3px; }
 
+        /* CALENDAR */
         .calendar-section { padding: 100px 20px; background: #050505; }
         .event-row { display: flex; flex-direction: column; gap: 50px; align-items: center; text-align: center; margin-bottom: 100px; max-width: 1200px; margin: 0 auto; }
         .event-card img { width: 100%; height: 450px; object-fit: cover; opacity: 0.7; }
-        .event-desc { color: #aaa; margin: 15px 0 30px; line-height: 1.8; max-width: 500px; }
         .btn-action { display: inline-block; padding: 18px 40px; border: 1px solid var(--auriu); color: var(--auriu); font-family: 'Cinzel'; letter-spacing: 3px; font-weight: 700; }
 
+        /* AI CONSOLE STYLES */
+        #ai-console-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.98); z-index: 100000; display: none; font-family: 'Courier New', monospace; padding: 30px; color: #00ff00; overflow-y: auto; }
+        .console-header { border-bottom: 1px solid var(--auriu); padding-bottom: 10px; margin-bottom: 20px; display: flex; justify-content: space-between; color: var(--auriu); }
+        .log-entry { margin-bottom: 8px; font-size: 0.85rem; }
+        .log-success { color: #00ff00; }
+        .log-warning { color: #ffff00; }
+
+        /* FLOATS */
         .whatsapp-float { position: fixed; bottom: 25px; left: 25px; background: #25d366; border-radius: 50%; width: 65px; height: 65px; display: flex; align-items: center; justify-content: center; font-size: 35px; z-index: 1001; color: #fff; }
         #system-health { position: fixed; bottom: 15px; left: 100px; width: 12px; height: 12px; border-radius: 50%; background: gray; z-index: 9999; border: 1px solid #000; }
 
@@ -73,7 +85,14 @@
 </head>
 <body>
 
-    <div id="system-health"></div>
+    <div id="system-health" title="Status Google Ads"></div>
+    <div id="ai-console-overlay">
+        <div class="console-header">
+            <span>METANOIA_OS v3.0 // ENCRYPTED SESSION</span>
+            <span style="cursor:pointer" onclick="document.getElementById('ai-console-overlay').style.display='none'">[X] IESIRE</span>
+        </div>
+        <div id="console-logs"></div>
+    </div>
     <a href="https://wa.me/40749229686" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
     
     <header class="site-header">
@@ -92,7 +111,6 @@
             <a href="gastronomie.html">Gastronomie</a>
             <a href="evenimente.html">Evenimente</a>
             <a href="curs.html">Ușa Secretă</a>
-            <a href="contact.html">Contact</a>
         </nav>
     </header>
 
@@ -119,7 +137,7 @@
             <i class="fas fa-mountain-sun"></i>
             <div class="road-text">
                 <h3 style="font-family:'Cinzel'; color:var(--auriu); letter-spacing:5px;">RÂNDUIALA DRUMULUI</h3>
-                <p>Cei 15 KM de drum forestier necesită vehicule de tip SUV sau JEEP.</p>
+                <p>Cei 15 KM de drum forestier necesită vehicule de tip SUV sau JEEP pentru un confort deplin.</p>
             </div>
         </div>
     </section>
@@ -133,9 +151,9 @@
         <div class="grid-7">
             <a href="pensiune.html" class="card-item"><img src="images/IMG_20260330_160353.webp" alt="Domenii"><div class="card-info"><h4>DOMENIILE LA BULIGĂ</h4></div></a>
             <a href="metanoia.html" class="card-item"><img src="images/apus.jpg" alt="Metanoia"><div class="card-info"><h4>METANOIA</h4></div></a>
-            <a href="gastronomie.html" class="card-item"><img src="images/gast-supa2.jpg" alt="Gastronomie"><div class="card-info"><h4>GASTRONOMIE</h4></div></a>
+            <a href="gastronomie.html" class="card-item"><img src="images/gast-supa2.jpg" alt="Gastro"><div class="card-info"><h4>GASTRONOMIE</h4></div></a>
             <a href="evenimente.html" class="card-item"><img src="images/narcise.jpg" alt="Tihna"><div class="card-info"><h4>TIHNĂ ȘI TRĂIRE</h4></div></a>
-            <a href="explorare-ebike.html" class="card-item"><img src="images/ebike.webp" alt="E-bike"><div class="card-info"><h4>EXPLORARE E-BIKE</h4></div></a>
+            <a href="explorare-ebike.html" class="card-item"><img src="images/ebike.webp" alt="Ebike"><div class="card-info"><h4>EXPLORARE E-BIKE</h4></div></a>
             <a href="padureni.html" class="card-item"><img src="images/apus.jpg" alt="Padureni"><div class="card-info"><h4>ȚINUTUL PĂDURENILOR</h4></div></a>
             <a href="curs.html" class="card-item" style="border:1px solid var(--auriu);"><img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1000" alt="Protocol"><div class="card-info"><h4>UȘA SECRETĂ</h4></div></a>
         </div>
@@ -145,11 +163,11 @@
 
     <section class="calendar-section">
         <div class="event-row">
-            <div class="event-card"><img src="images/IMG_20260330_160353.webp" alt="Serată"></div>
+            <div class="event-card"><img src="images/IMG_20260330_160353.webp" alt="Serata"></div>
             <div class="event-info-box">
                 <span style="font-family:'Cinzel'; color:var(--auriu); font-weight:900;">01 MAI 2026</span>
                 <h2>Serată Romano-Italiană</h2>
-                <p class="event-desc">O fuziune gastronomică rânduită la foc de lemne. Rețete vechi din Țara Hațegului întâlnesc rafinamentul mediteranean sub cerul liber.</p>
+                <p style="color:#aaa; margin: 20px 0;">O fuziune gastronomică rânduită la foc de lemne. Rețete vechi din Țara Hațegului întâlnesc rafinamentul mediteranean.</p>
                 <a href="contact.html" class="btn-action">SOLICITĂ LOC</a>
             </div>
         </div>
@@ -158,7 +176,7 @@
             <div class="event-info-box">
                 <span style="font-family:'Cinzel'; color:var(--auriu); font-weight:900;">09-10 MAI 2026</span>
                 <h2>Bike & Flowers</h2>
-                <p class="event-desc">Explorăm Poiana Narciselor pe culmile munților cu e-bike-uri de ultimă generație. O expediție ghidată prin tăcere și culoare.</p>
+                <p style="color:#aaa; margin: 20px 0;">Explorăm Poiana Narciselor pe culmile munților cu e-bike-uri de ultimă generație. O experiență de culoare și tăcere.</p>
                 <a href="explorare-ebike.html" class="btn-action">DETALII</a>
             </div>
         </div>
@@ -176,20 +194,49 @@
     </footer>
 
     <script>
+        // NAVIGATION
         const burger = document.getElementById('burger');
         const nav = document.getElementById('nav-links');
         burger.onclick = () => nav.classList.toggle('active');
 
+        // AI CONSOLE & SENSORS
         (function() {
-            let logs = []; let clickCount = 0; const healthDot = document.getElementById('system-health');
-            document.getElementById('ai-trigger').onclick = function() {
-                clickCount++; if(clickCount === 5) { alert("AUDIT METANOIA: Sistem Operațional."); clickCount = 0; }
+            let clicks = 0;
+            const healthDot = document.getElementById('system-health');
+            const overlay = document.getElementById('ai-console-overlay');
+            const logs = document.getElementById('console-logs');
+
+            function addLog(msg, type = 'info') {
+                const div = document.createElement('div');
+                div.className = `log-entry log-${type}`;
+                div.innerHTML = `[${new Date().toLocaleTimeString()}] > ${msg}`;
+                logs.appendChild(div);
+                overlay.scrollTop = overlay.scrollHeight;
+            }
+
+            async function runAudit() {
+                logs.innerHTML = '';
+                addLog("INITIALIZARE METANOIA_SYSTEM_OS...", "info");
+                await new Promise(r => setTimeout(r, 600));
+                addLog("SCANARE SENZORI GOOGLE ADS: AW-18106516696...", "info");
+                addLog(typeof gtag === 'function' ? "SENZOR ACTIV [VERDE]" : "SENZOR OFFLINE [ROSU]", typeof gtag === 'function' ? "success" : "warning");
+                addLog(`TRACKING ID: 69c56074 - CHAT OPERATIONAL`, "success");
+                addLog(`DETECTARE DISPOZITIV: ${navigator.platform}`, "info");
+                addLog("STATUS DRUM VADU DOBRII: PLOAIE - JEEP RECOMANDAT", "warning");
+                addLog("ANALIZA AI COMPLETA: SISTEMUL LUCREAZA PT TINE.", "success");
+            }
+
+            document.getElementById('ai-trigger').onclick = () => {
+                clicks++;
+                if(clicks === 5) { overlay.style.display = 'block'; runAudit(); clicks = 0; }
             };
+
             window.onload = () => {
-                if(typeof gtag === 'function') { healthDot.style.background = '#00ff00'; } else { healthDot.style.background = '#ff0000'; }
+                healthDot.style.background = typeof gtag === 'function' ? '#00ff00' : '#ff0000';
             };
         })();
 
+        // CONVERSIONS
         document.querySelectorAll('.whatsapp-float, .btn-reserve-header, .btn-action').forEach(btn => {
             btn.onclick = () => { gtag('event', 'conversion', {'send_to': 'AW-18106516696/click'}); };
         });
@@ -199,10 +246,8 @@
     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
     (function(){
     var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
+    s1.async=true; s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
+    s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
     s0.parentNode.insertBefore(s1,s0);
     })();
     </script>
