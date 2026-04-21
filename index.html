@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <title>Hațeg Alternativ | Simte, trăiește tăcerea la Vadu Dobrii</title>
+    <meta name="description" content="Descoperă Hațeg Alternativ la Vadu Dobrii. Domeniile La Buligă oferă reconectare autentică, gastronomie la vatră și protocol de business la 1100m altitudine.">
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18106516696"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -9,13 +15,8 @@
       gtag('config', 'AW-18106516696');
     </script>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Hațeg Alternativ | Simte, trăiește tăcerea</title>
-    
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
     <script src="https://elfsightcdn.com/platform.js" async></script>
 
     <style>
@@ -23,9 +24,9 @@
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         html, body { overflow-x: hidden; width: 100%; position: relative; background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
         
+        /* FIX TEXT MOV */
         a, a:visited, a:hover, a:active { text-decoration: none !important; color: inherit !important; }
 
-        /* HEADER */
         .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: clamp(15px, 5vw, 30px) 5%; display: flex; justify-content: space-between; align-items: center; }
         .brand-logo svg { height: clamp(50px, 10vw, 85px); cursor: pointer; filter: drop-shadow(0 0 15px #000); }
         .header-controls { display: flex; align-items: center; gap: 20px; }
@@ -37,7 +38,6 @@
         .main-nav.active { right: 0; }
         .main-nav a { font-size: 2rem; font-family: 'Cinzel'; margin: 15px 0; color: #fff !important; text-transform: uppercase; letter-spacing: 5px; }
 
-        /* HERO */
         .hero-slider { width: 100%; height: 100vh; position: relative; overflow: hidden; }
         .slide img { width: 100%; height: 100%; object-fit: cover; opacity: 0.45; }
         .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; text-align: center; }
@@ -48,40 +48,27 @@
         .benefit-card strong { display: block; font-family: 'Cinzel'; color: var(--auriu); font-size: 0.7rem; letter-spacing: 2px; margin-bottom: 5px; }
         .benefit-card span { font-size: 0.8rem; color: #ccc; }
 
-        /* GRID */
+        .road-advisory { background: #080808; border-top: 3px solid var(--auriu); border-bottom: 3px solid var(--auriu); padding: 60px 20px; text-align: center; }
+        .road-inner i { color: var(--auriu); font-size: 3rem; margin-bottom: 20px; display: block; }
+
         .container { width: 100%; max-width: 1450px; margin: 0 auto; padding: 60px 20px; }
         .grid-7 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 40px; }
         .card-item { height: clamp(450px, 70vh, 600px); position: relative; overflow: hidden; display: block; border: 1px solid #1a1a1a; background: #000; }
         .card-item img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: 1s; }
+        .card-item:hover img { transform: scale(1.05); opacity: 0.8; }
         .card-info { position: absolute; bottom: 0; padding: 30px; width: 100%; background: linear-gradient(to top, #000, transparent); text-align: center; }
         .card-info h4 { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 3px; }
 
-        /* CALENDAR SECTION - DETALIAT */
-        .calendar-section { padding: 100px 20px; background: #050505; border-top: 1px solid #111; }
-        .calendar-title { font-family: 'Cinzel'; color: var(--auriu); text-align: center; margin-bottom: 80px; letter-spacing: 10px; font-weight: 900; }
-        
-        .event-row { display: flex; flex-direction: column; gap: 50px; align-items: center; text-align: center; margin-bottom: 100px; max-width: 1200px; margin-left: auto; margin-right: auto; }
-        .event-card { width: 100%; border: 1px solid #1a1a1a; overflow: hidden; background: #000; }
-        .event-card img { width: 100%; height: 450px; object-fit: cover; opacity: 0.7; transition: 0.5s; }
-        .event-card:hover img { opacity: 1; }
-        
-        .event-info-box { padding: 20px; }
-        .event-date { font-family: 'Cinzel'; color: var(--auriu); font-weight: 900; font-size: 0.9rem; letter-spacing: 3px; margin-bottom: 20px; display: block; }
-        .event-info-box h2 { font-family: 'Playfair Display'; font-style: italic; font-size: clamp(2rem, 5vw, 3rem); color: #fff; margin-bottom: 20px; }
-        .event-desc { color: #aaa; font-size: 1.05rem; line-height: 1.8; margin-bottom: 30px; max-width: 500px; margin-left: auto; margin-right: auto; }
-        .btn-action { display: inline-block; padding: 18px 40px; border: 1px solid var(--auriu); color: var(--auriu); font-family: 'Cinzel'; letter-spacing: 3px; font-weight: 700; transition: 0.3s; }
-        .btn-action:hover { background: var(--auriu); color: #000; }
+        .calendar-section { padding: 100px 20px; background: #050505; }
+        .event-row { display: flex; flex-direction: column; gap: 50px; align-items: center; text-align: center; margin-bottom: 100px; max-width: 1200px; margin: 0 auto; }
+        .event-card img { width: 100%; height: 450px; object-fit: cover; opacity: 0.7; }
+        .event-desc { color: #aaa; margin: 15px 0 30px; line-height: 1.8; max-width: 500px; }
+        .btn-action { display: inline-block; padding: 18px 40px; border: 1px solid var(--auriu); color: var(--auriu); font-family: 'Cinzel'; letter-spacing: 3px; font-weight: 700; }
 
-        /* FOOTER & SENSORS */
         .whatsapp-float { position: fixed; bottom: 25px; left: 25px; background: #25d366; border-radius: 50%; width: 65px; height: 65px; display: flex; align-items: center; justify-content: center; font-size: 35px; z-index: 1001; color: #fff; }
         #system-health { position: fixed; bottom: 15px; left: 100px; width: 12px; height: 12px; border-radius: 50%; background: gray; z-index: 9999; border: 1px solid #000; }
 
-        @media (min-width: 950px) {
-            .event-row { flex-direction: row; text-align: left; }
-            .event-row.reverse { flex-direction: row-reverse; }
-            .event-card, .event-info-box { width: 50%; }
-            .event-desc { margin-left: 0; }
-        }
+        @media (min-width: 950px) { .event-row { flex-direction: row; text-align: left; } .event-row.reverse { flex-direction: row-reverse; } .event-card, .event-info-box { width: 50%; } }
     </style>
 </head>
 <body>
@@ -105,6 +92,7 @@
             <a href="gastronomie.html">Gastronomie</a>
             <a href="evenimente.html">Evenimente</a>
             <a href="curs.html">Ușa Secretă</a>
+            <a href="contact.html">Contact</a>
         </nav>
     </header>
 
@@ -126,6 +114,16 @@
         </div>
     </div>
 
+    <section class="road-advisory">
+        <div class="road-inner">
+            <i class="fas fa-mountain-sun"></i>
+            <div class="road-text">
+                <h3 style="font-family:'Cinzel'; color:var(--auriu); letter-spacing:5px;">RÂNDUIALA DRUMULUI</h3>
+                <p>Cei 15 KM de drum forestier necesită vehicule de tip SUV sau JEEP.</p>
+            </div>
+        </div>
+    </section>
+
     <main class="container">
         <div style="text-align: center; margin-bottom: 50px;">
             <h2 style="font-family:'Playfair Display'; font-size:3rem; font-style:italic; color:var(--auriu);">Locuri de poveste.</h2>
@@ -136,7 +134,7 @@
             <a href="pensiune.html" class="card-item"><img src="images/IMG_20260330_160353.webp" alt="Domenii"><div class="card-info"><h4>DOMENIILE LA BULIGĂ</h4></div></a>
             <a href="metanoia.html" class="card-item"><img src="images/apus.jpg" alt="Metanoia"><div class="card-info"><h4>METANOIA</h4></div></a>
             <a href="gastronomie.html" class="card-item"><img src="images/gast-supa2.jpg" alt="Gastronomie"><div class="card-info"><h4>GASTRONOMIE</h4></div></a>
-            <a href="evenimente.html" class="card-item"><img src="images/narcise.jpg" alt="Evenimente"><div class="card-info"><h4>TIHNĂ ȘI TRĂIRE</h4></div></a>
+            <a href="evenimente.html" class="card-item"><img src="images/narcise.jpg" alt="Tihna"><div class="card-info"><h4>TIHNĂ ȘI TRĂIRE</h4></div></a>
             <a href="explorare-ebike.html" class="card-item"><img src="images/ebike.webp" alt="E-bike"><div class="card-info"><h4>EXPLORARE E-BIKE</h4></div></a>
             <a href="padureni.html" class="card-item"><img src="images/apus.jpg" alt="Padureni"><div class="card-info"><h4>ȚINUTUL PĂDURENILOR</h4></div></a>
             <a href="curs.html" class="card-item" style="border:1px solid var(--auriu);"><img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1000" alt="Protocol"><div class="card-info"><h4>UȘA SECRETĂ</h4></div></a>
@@ -146,35 +144,22 @@
     </main>
 
     <section class="calendar-section">
-        <h3 class="calendar-title">CALENDAR</h3>
-
         <div class="event-row">
-            <div class="event-card"><img src="images/IMG_20260330_160353.webp" alt="Serată Romano-Italiană"></div>
+            <div class="event-card"><img src="images/IMG_20260330_160353.webp" alt="Serată"></div>
             <div class="event-info-box">
-                <span class="event-date">01 MAI 2026</span>
+                <span style="font-family:'Cinzel'; color:var(--auriu); font-weight:900;">01 MAI 2026</span>
                 <h2>Serată Romano-Italiană</h2>
-                <p class="event-desc">O fuziune gastronomică rânduită la foc de lemne. Rețete vechi din Țara Hațegului întâlnesc rafinamentul mediteranean într-o experiență intimă. Vinuri alese, jar viu și povești sub cerul liber.</p>
-                <a href="contact.html" class="btn-action">SOLICITĂ UN LOC</a>
+                <p class="event-desc">O fuziune gastronomică rânduită la foc de lemne. Rețete vechi din Țara Hațegului întâlnesc rafinamentul mediteranean sub cerul liber.</p>
+                <a href="contact.html" class="btn-action">SOLICITĂ LOC</a>
             </div>
         </div>
-
         <div class="event-row reverse">
-            <div class="event-card"><img src="images/bike.webp" alt="Bike & Flowers"></div>
+            <div class="event-card"><img src="images/bike.webp" alt="Bike"></div>
             <div class="event-info-box">
-                <span class="event-date">09-10 MAI 2026</span>
+                <span style="font-family:'Cinzel'; color:var(--auriu); font-weight:900;">09-10 MAI 2026</span>
                 <h2>Bike & Flowers</h2>
-                <p class="event-desc">Explorăm Poiana Narciselor pe culmile munților. O expediție ghidată cu e-bike-uri de ultimă generație prin covoare nesfârșite de flori sălbatice. Aer pur, adrenalină controlată și tăcere absolută.</p>
-                <a href="explorare-ebike.html" class="btn-action">VEZI DETALII</a>
-            </div>
-        </div>
-
-        <div class="event-row">
-            <div class="event-card"><img src="images/Sarmizegetusa.jpg" alt="Go Nomad"></div>
-            <div class="event-info-box">
-                <span class="event-date">IUNIE 2026</span>
-                <h2>Go Nomad</h2>
-                <p class="event-desc">Expediție în inima mistică a Ținutului Pădurenilor. Descoperim urmele dacice și minele de fier uitate prin trasee off-road spectaculoase. O reconectare brutală și onestă cu rădăcinile pământului.</p>
-                <a href="contact.html" class="btn-action">REZERVARE</a>
+                <p class="event-desc">Explorăm Poiana Narciselor pe culmile munților cu e-bike-uri de ultimă generație. O expediție ghidată prin tăcere și culoare.</p>
+                <a href="explorare-ebike.html" class="btn-action">DETALII</a>
             </div>
         </div>
     </section>
@@ -196,24 +181,12 @@
         burger.onclick = () => nav.classList.toggle('active');
 
         (function() {
-            let logs = [];
-            let clickCount = 0;
-            const healthDot = document.getElementById('system-health');
-
+            let logs = []; let clickCount = 0; const healthDot = document.getElementById('system-health');
             document.getElementById('ai-trigger').onclick = function() {
-                clickCount++;
-                if(clickCount === 5) {
-                    alert("AUDIT METANOIA: Sistem Operațional. Zero Erori.");
-                    clickCount = 0;
-                }
+                clickCount++; if(clickCount === 5) { alert("AUDIT METANOIA: Sistem Operațional."); clickCount = 0; }
             };
-
             window.onload = () => {
-                if(typeof gtag === 'function') {
-                    healthDot.style.background = '#00ff00';
-                } else {
-                    healthDot.style.background = '#ff0000';
-                }
+                if(typeof gtag === 'function') { healthDot.style.background = '#00ff00'; } else { healthDot.style.background = '#ff0000'; }
             };
         })();
 
@@ -226,8 +199,10 @@
     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
     (function(){
     var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true; s1.src='https://embed.tawk.to/6620f4f31ec1082f04e43f38/1hrnq675q';
-    s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
+    s1.async=true;
+    s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
     s0.parentNode.insertBefore(s1,s0);
     })();
     </script>
