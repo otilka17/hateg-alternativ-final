@@ -11,7 +11,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Metanoia V3.0 | System Architecture</title>
+    <title>Metanoia V3.0 | Decalogul Suveranității</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,900&family=Inter:wght@300;400;800&family=Cinzel:wght@400;900&display=swap" rel="stylesheet">
     
     <style>
@@ -24,61 +24,59 @@
         .gate-box { width: 350px; padding: 40px; border: 1px solid var(--aur); text-align: center; background: #080808; box-shadow: 0 0 50px var(--glow); }
         .gate-box input { width: 100%; padding: 15px; margin: 20px 0; background: #000; border: 1px solid #222; color: var(--aur); text-align: center; outline: none; }
         .gate-box button { width: 100%; padding: 15px; background: var(--aur); border: none; font-family: 'Cinzel'; font-weight: 900; cursor: pointer; transition: 0.3s; }
-        .gate-box button:hover { background: #fff; }
 
         #main-content { display: none; opacity: 0; transition: 2s ease; }
 
-        /* HERO TECH */
-        header { height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; border-bottom: 1px solid #111; }
-        header h1 { font-family: 'Playfair Display'; font-size: clamp(3rem, 10vw, 5rem); color: var(--aur); font-style: italic; }
+        /* HERO */
+        header { height: 70vh; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; border-bottom: 1px solid #111; text-align: center; }
+        header h1 { font-family: 'Playfair Display'; font-size: clamp(3rem, 10vw, 6rem); color: var(--aur); font-style: italic; }
         .tech-badge { font-family: 'Cinzel'; font-size: 0.7rem; color: var(--aur); border: 1px solid var(--aur); padding: 5px 15px; letter-spacing: 5px; margin-bottom: 20px; }
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 50px 20px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 80px 20px; }
 
-        /* DIAGRAME & GRAFICE */
-        .grid-tech { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px; }
-        .tech-card { background: #080808; border: 1px solid #1a1a1a; padding: 30px; position: relative; overflow: hidden; }
-        .tech-card:hover { border-color: var(--aur); }
+        /* GRID MODULE */
+        .grid-tech { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
+        .tech-card { background: #080808; border: 1px solid #1a1a1a; padding: 40px; transition: 0.4s; }
+        .tech-card:hover { border-color: var(--aur); box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
         
-        .visual-element { height: 150px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; background: #000; border: 1px solid #111; }
+        .visual-element { height: 180px; margin-bottom: 30px; display: flex; align-items: center; justify-content: center; background: #000; border: 1px solid #111; position: relative; }
         
-        /* DIAGRAMA SVG 1 */
-        .diag-line { stroke: var(--aur); stroke-width: 2; fill: none; stroke-dasharray: 1000; animation: draw 5s infinite; }
+        .ai-img { width: 100%; height: 220px; object-fit: cover; opacity: 0.4; filter: grayscale(100%); transition: 0.5s; margin-bottom: 25px; }
+        .tech-card:hover .ai-img { opacity: 0.9; filter: grayscale(0%); }
+
+        .chapter-title { font-family: 'Cinzel'; color: #fff; font-size: 1rem; letter-spacing: 4px; margin-bottom: 15px; display: block; border-left: 3px solid var(--aur); padding-left: 20px; }
+        .tech-card p { font-size: 0.9rem; color: #777; margin-bottom: 20px; text-align: justify; }
+
+        .bar-container { width: 100%; background: #111; height: 3px; margin: 20px 0; }
+        .bar-fill { background: var(--aur); height: 100%; box-shadow: 0 0 15px var(--aur); }
+
+        /* SVG ANIMATIONS */
+        .diag-line { stroke: var(--aur); stroke-width: 1.5; fill: none; stroke-dasharray: 1000; animation: draw 6s infinite linear; }
         @keyframes draw { from { stroke-dashoffset: 1000; } to { stroke-dashoffset: 0; } }
 
-        /* PROGRESS BARS */
-        .bar-container { width: 100%; background: #111; height: 4px; margin: 10px 0 20px; }
-        .bar-fill { background: var(--aur); height: 100%; box-shadow: 0 0 10px var(--aur); }
-
-        /* IMAGINI AI-STYLE */
-        .ai-img { width: 100%; height: 200px; object-fit: cover; opacity: 0.5; filter: grayscale(100%) contrast(120%); transition: 0.5s; }
-        .tech-card:hover .ai-img { opacity: 1; filter: grayscale(0%); }
-
-        .chapter-title { font-family: 'Cinzel'; color: #fff; font-size: 0.9rem; letter-spacing: 3px; margin-bottom: 10px; display: block; border-left: 2px solid var(--aur); padding-left: 15px; }
-        .tech-card p { font-size: 0.85rem; color: #666; }
-
-        footer { text-align: center; padding: 50px; font-family: 'Cinzel'; font-size: 0.6rem; letter-spacing: 5px; opacity: 0.3; }
-
-        /* HEALTH DOT */
+        footer { text-align: center; padding: 100px; font-family: 'Cinzel'; font-size: 0.7rem; letter-spacing: 5px; opacity: 0.3; }
         #system-health { position: fixed; bottom: 15px; left: 100px; width: 10px; height: 10px; border-radius: 50%; background: gray; z-index: 9999; }
+
+        @media (max-width: 768px) { .grid-tech { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
     <div id="login-gate">
         <div class="gate-box">
-            <div class="tech-badge">SECURITY LAYER</div>
-            <input type="password" id="passkey" placeholder="IDENTIFICATION CODE">
-            <button onclick="checkKey()">EXECUTE ACCESS</button>
-            <p id="error-msg" style="color:red; display:none; margin-top:15px; font-size:0.7rem;">ACCESS DENIED.</p>
+            <div class="tech-badge">AUTHENTICATION REQUIRED</div>
+            <input type="password" id="passkey" placeholder="ACCESS KEY">
+            <button onclick="checkKey()">DECRYPT SYSTEM</button>
+            <p id="error-msg" style="color:red; display:none; margin-top:15px; font-size:0.7rem;">INVALID CREDENTIALS.</p>
         </div>
     </div>
 
     <div id="main-content">
         <div id="system-health"></div>
         <header>
-            <div class="tech-badge">METANOIA V3.0 CORE</div>
-            <h1>The Architecture.</h1>
+            <div class="tech-badge">METANOIA SYSTEM ARCHITECTURE</div>
+            <h1>The Decalogue.</h1>
+            <p style="font-family:'Cinzel'; letter-spacing:8px; font-size:0.8rem; margin-top:20px; color:#555;">BEYOND HUMAN MANAGEMENT</p>
         </header>
 
         <main class="container">
@@ -86,90 +84,104 @@
             <div class="grid-tech">
                 
                 <div class="tech-card">
-                    <span class="chapter-title">01 / DECOUPLING</span>
-                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800" class="ai-img" alt="Neural Network">
-                    <p>Izolarea zgomotului de fundal. Resetarea frecvenței executive pentru claritate absolută.</p>
-                    <div class="bar-container"><div class="bar-fill" style="width: 85%;"></div></div>
-                </div>
-
-                <div class="tech-card">
-                    <span class="chapter-title">02 / FLOW AUDIT</span>
-                    <div class="visual-element">
-                        <svg width="200" height="100" viewBox="0 0 200 100">
-                            <path class="diag-line" d="M10 80 L50 20 L90 60 L130 10 L190 90" />
-                            <circle cx="50" cy="20" r="3" fill="#c5a059" />
-                            <circle cx="130" cy="10" r="3" fill="#c5a059" />
-                        </svg>
-                    </div>
-                    <p>Măsurarea hemoragiei de resurse. Identificarea punctelor critice de pierdere energetică.</p>
-                </div>
-
-                <div class="tech-card">
-                    <span class="chapter-title">03 / VALUE SCALING</span>
-                    <img src="https://images.unsplash.com/photo-1507146153580-69a1fe6d8aa1?auto=format&fit=crop&q=80&w=800" class="ai-img" alt="Digital Eye">
-                    <p>Repoziționarea ofertei pe axa rarității digitale. Trecerea la sistemul High-Ticket.</p>
-                    <div class="bar-container"><div class="bar-fill" style="width: 95%;"></div></div>
-                </div>
-
-                <div class="tech-card">
-                    <span class="chapter-title">04 / FILTERING MESH</span>
-                    <div class="visual-element">
-                        <svg width="100" height="100" viewBox="0 0 100 100">
-                            <polygon points="10,10 90,10 60,90 40,90" fill="none" stroke="#c5a059" stroke-width="1" />
-                            <line x1="20" y1="30" x2="80" y2="30" stroke="#222" />
-                            <line x1="30" y1="50" x2="70" y2="50" stroke="#222" />
-                        </svg>
-                    </div>
-                    <p>Protocol de selecție automată a partenerilor. Filtrarea prin rezistență activă.</p>
-                </div>
-
-                <div class="tech-card">
-                    <span class="chapter-title">05 / BLACK BOX</span>
-                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800" class="ai-img" alt="Hardware">
-                    <p>Construcția mecanismelor autonome. Afacerea ca organism independent de operator.</p>
-                    <div class="bar-container"><div class="bar-fill" style="width: 70%;"></div></div>
-                </div>
-
-                <div class="tech-card">
-                    <span class="chapter-title">06 / CHRONOS SYNC</span>
-                    <div class="visual-element">
-                        <circle cx="50" cy="50" r="40" fill="none" stroke="#222" stroke-width="1" />
-                        <line x1="50" y1="50" x2="50" y2="20" stroke="#c5a059" stroke-width="2">
-                            <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="10s" repeatCount="indefinite" />
-                        </line>
-                    </div>
-                    <p>Sincronizarea timpului creativ cu obiectivele de arhitectură mare.</p>
-                </div>
-
-                <div class="tech-card">
-                    <span class="chapter-title">07 / SILENT SALES</span>
-                    <p>Marketing prin autoritate invizibilă. Pipeline de încredere asumată.</p>
-                    <div class="bar-container"><div class="bar-fill" style="width: 60%;"></div></div>
-                </div>
-                <div class="tech-card">
-                    <span class="chapter-title">08 / ABSENCE TEST</span>
-                    <p>Monitorizarea performanței în regim de decuplare totală (Vadu Dobrii Protocol).</p>
+                    <span class="chapter-title">01 / NEURAL DECOUPLING</span>
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1000" class="ai-img" alt="Decoupling">
+                    <p>Izolarea zgomotului de fundal prin protocoale de tăcere absolută. Resetarea frecvenței executive pentru a elimina bruiajul operațional. Fără acest punct zero, arhitectura nu poate fi stabilă.</p>
                     <div class="bar-container"><div class="bar-fill" style="width: 100%;"></div></div>
                 </div>
+
                 <div class="tech-card">
-                    <span class="chapter-title">09 / ANTIFRAGILITY</span>
-                    <p>Structuri care se optimizează sub presiune. Adaptabilitate prin design.</p>
+                    <span class="chapter-title">02 / FLOW ENTROPY AUDIT</span>
+                    <div class="visual-element">
+                        <svg width="250" height="100" viewBox="0 0 250 100">
+                            <path class="diag-line" d="M0 80 Q 50 10, 100 80 T 200 20" />
+                            <circle cx="100" cy="80" r="3" fill="#c5a059" />
+                            <circle cx="200" cy="20" r="3" fill="#fff" />
+                        </svg>
+                    </div>
+                    <p>Măsurarea hemoragiei de resurse. Identificarea punctelor critice unde energia decizională se pierde în micro-management. Cartografierea entropiei organizaționale.</p>
                 </div>
+
                 <div class="tech-card">
-                    <span class="chapter-title">10 / SOVEREIGNTY</span>
-                    <p>Finalizarea transferului de control. Arhitectul devine observator.</p>
+                    <span class="chapter-title">03 / SCARCITY SCALING</span>
+                    <img src="https://images.unsplash.com/photo-1507146153580-69a1fe6d8aa1?auto=format&fit=crop&q=80&w=1000" class="ai-img" alt="Scarcity">
+                    <p>Repoziționarea ofertei pe axa rarității digitale. Trecerea de la volum la sistemul High-Ticket prin ingineria dorinței. Algoritmul de preț bazat pe valoarea transformării, nu pe timp.</p>
+                    <div class="bar-container"><div class="bar-fill" style="width: 90%;"></div></div>
+                </div>
+
+                <div class="tech-card">
+                    <span class="chapter-title">04 / SELECTION MESH</span>
+                    <div class="visual-element">
+                        <svg width="100" height="100" viewBox="0 0 100 100">
+                            <polygon points="20,10 80,10 60,90 40,90" fill="none" stroke="#c5a059" stroke-width="1.5" />
+                            <circle cx="50" cy="30" r="5" fill="#c5a059">
+                                <animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" />
+                            </circle>
+                        </svg>
+                    </div>
+                    <p>Implementarea filtrelor de acces pentru clienți. Protocolul de „Ușă Secretă” care elimină automat paraziții de resurse, lăsând să treacă doar partenerii de elită cu afinitate sistemică.</p>
+                </div>
+
+                <div class="tech-card">
+                    <span class="chapter-title">05 / AUTONOMOUS CORE</span>
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=1000" class="ai-img" alt="Autonomy">
+                    <p>Construcția mecanismelor de „Black Box”. Afacerea devine un organism independent care se auto-corectează prin protocoale de delegare fără pierdere de fidelitate executivă.</p>
+                    <div class="bar-container"><div class="bar-fill" style="width: 75%;"></div></div>
+                </div>
+
+                <div class="tech-card">
+                    <span class="chapter-title">06 / TEMPORAL SYNC</span>
+                    <div class="visual-element">
+                        <circle cx="50" cy="50" r="40" fill="none" stroke="#222" stroke-width="1" />
+                        <line x1="50" y1="50" x2="50" y2="15" stroke="#c5a059" stroke-width="2">
+                            <animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="4s" repeatCount="indefinite" />
+                        </line>
+                    </div>
+                    <p>Arhitectura timpului de Deep Work. Sincronizarea ceasului biologic cu cel de business pentru a produce rezultate de înaltă densitate în ferestre scurte de execuție.</p>
+                </div>
+
+                <div class="tech-card">
+                    <span class="chapter-title">07 / INVISIBLE AUTHORITY</span>
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1000" class="ai-img" alt="Sales">
+                    <p>Vânzarea prin absență și autoritate tăcută. Pipeline de conversie care educă și filtrează prin poveste, fără a cere atenție în mod agresiv. Conversia ca proces natural.</p>
+                    <div class="bar-container"><div class="bar-fill" style="width: 65%;"></div></div>
+                </div>
+
+                <div class="tech-card">
+                    <span class="chapter-title">08 / VADU DOBRII PROTOCOL</span>
+                    <div class="visual-element">
+                        <rect x="25" y="25" width="50" height="50" fill="none" stroke="#c5a059" stroke-width="1" />
+                        <path d="M25 25 L75 75 M75 25 L25 75" stroke="#222" stroke-width="1" />
+                    </div>
+                    <p>Testul suprem de reziliență: managementul prin absență totală. Dacă sistemul nu scalează în timp ce tu ești deconectat la 1100m, arhitectura este incompletă.</p>
+                    <div class="bar-container"><div class="bar-fill" style="width: 100%;"></div></div>
+                </div>
+
+                <div class="tech-card">
+                    <span class="chapter-title">09 / CHAOS OPTIMIZATION</span>
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1000" class="ai-img" alt="Crisis">
+                    <p>Transformarea presiunii externe în creștere. Structuri care devin mai puternice sub haos și criză. Afacerea ca sistem antifragil imun la variațiile pieței.</p>
+                </div>
+
+                <div class="tech-card">
+                    <span class="chapter-title">10 / ARCHITECT STATUS</span>
+                    <div class="visual-element">
+                        <circle cx="50" cy="50" r="15" fill="var(--aur)" />
+                        <circle cx="50" cy="50" r="35" fill="none" stroke="var(--aur)" stroke-dasharray="5,5" />
+                    </div>
+                    <p>Atingerea stării de Suveranitate. Momentul în care transferul de control este complet, iar tu devii observatorul de la manșa propriului destin. Ieșirea din operativ.</p>
                 </div>
 
             </div>
 
-            <div style="margin-top: 100px; text-align: center;">
-                <a href="https://wa.me/40749229686" style="padding: 20px 40px; border: 1px solid var(--aur); color: var(--aur); font-family: 'Cinzel'; text-decoration: none; font-weight: 900; letter-spacing: 5px;">REQUEST SYSTEM AUDIT</a>
+            <div style="margin-top: 120px; text-align: center;">
+                <a href="https://wa.me/40749229686" style="padding: 25px 60px; border: 2px solid var(--aur); color: var(--aur); font-family: 'Cinzel'; text-decoration: none; font-weight: 900; letter-spacing: 6px; background: rgba(0,0,0,0.5);">INITIATE SYSTEM AUDIT</a>
             </div>
 
         </main>
 
         <footer>
-            METANOIA CORE V3.0 // ENCRYPTED SESSION &copy; 2026
+            METANOIA CORE V3.0 // END OF TRANSMISSION &copy; 2026
         </footer>
     </div>
 
