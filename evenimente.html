@@ -1,583 +1,194 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18106516696"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-18106516696');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Evenimente | Hațeg Alternativ</title>
-
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Evenimente cu Rost | Hațeg Alternativ</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        :root {
-            --auriu: #c5a059;
-            --negru: #050505;
-            --alb: #ffffff;
-        }
+        :root { --aur: #c5a059; --negru: #050505; --gri: #111; --text: #e0e0e0; }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        body { background: var(--negru); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.7; overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-font-smoothing: antialiased;
-        }
+        /* HEADER */
+        .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; }
+        .brand-logo svg { height: 65px; filter: drop-shadow(0 0 15px #000); }
+        .burger { cursor: pointer; z-index: 10001; background: rgba(0,0,0,0.6); padding: 10px; border-radius: 8px; border: 1px solid rgba(197, 160, 89, 0.3); }
+        .burger div { width: 30px; height: 2px; background: var(--aur); margin: 6px; }
 
-        html, body {
-            overflow-x: hidden;
-            width: 100%;
-            background: var(--negru);
-            color: var(--alb);
-            font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
-        }
-
-        a { text-decoration: none; }
-
-        .site-header {
-            position: absolute;
-            top: 0;
-            width: 100%;
-            z-index: 9999;
-            padding: 20px clamp(15px, 5vw, 50px);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .brand-logo svg {
-            height: clamp(50px, 10vw, 85px);
-            filter: drop-shadow(0 0 15px rgba(0,0,0,1));
-        }
-
-        .burger {
-            cursor: pointer;
-            z-index: 10001;
-            background: rgba(0,0,0,0.6);
-            padding: 10px;
-            border-radius: 8px;
-        }
-
-        .burger div {
-            width: 28px;
-            height: 2px;
-            background: var(--auriu);
-            margin: 6px;
-        }
-
-        .main-nav {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            height: 100vh;
-            width: 100%;
-            background: var(--negru);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            transition: 0.6s;
-            z-index: 10000;
-        }
-
+        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: var(--negru); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.6s; z-index: 10000; }
         .main-nav.active { right: 0; }
+        .main-nav a { font-size: 2rem; font-family: 'Cinzel'; margin: 15px 0; color: #fff !important; text-transform: uppercase; letter-spacing: 5px; }
 
-        .main-nav a {
-            font-size: 2rem;
-            font-family: 'Cinzel';
-            margin: 15px 0;
-            color: #fff !important;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            text-shadow: 2px 2px 15px #000;
+        /* HERO EVENT */
+        header.hero-event {
+            height: 60vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.95)), url('images/narcise.jpg') center/cover;
+            display: flex; align-items: center; justify-content: center; text-align: center; border-bottom: 2px solid var(--aur);
+        }
+        .hero-title h1 { font-family: 'Playfair Display'; font-size: clamp(2.5rem, 8vw, 5rem); font-style: italic; color: var(--aur); text-shadow: 0 0 30px #000; }
+        .hero-title p { font-family: 'Cinzel'; letter-spacing: 5px; font-size: 0.9rem; color: #ccc; margin-top: 15px; }
+
+        /* TIMELINE SECTION */
+        .timeline-container { max-width: 1100px; margin: -60px auto 100px; padding: 0 20px; position: relative; z-index: 10; }
+        
+        .event-entry { 
+            background: var(--gri); border: 1px solid #222; margin-bottom: 80px; 
+            display: flex; flex-direction: column; overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+        }
+        
+        .event-img { height: 400px; position: relative; overflow: hidden; }
+        .event-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: 0.6s; }
+        .event-entry:hover .event-img img { transform: scale(1.05); opacity: 1; }
+        
+        .event-tag { 
+            position: absolute; top: 20px; left: 20px; background: var(--aur); color: #000; 
+            padding: 8px 15px; font-family: 'Cinzel'; font-weight: 900; font-size: 0.7rem; letter-spacing: 2px;
         }
 
-        .hero-event {
-            min-height: 100vh;
-            background:
-                linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.92)),
-                url('images/IMG_20260330_160353.webp') center/cover no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 120px 20px 80px;
-            border-bottom: 2px solid rgba(197,160,89,0.25);
+        .event-content { padding: 50px; }
+        .event-date { font-family: 'Cinzel'; color: var(--aur); font-size: 0.85rem; letter-spacing: 4px; margin-bottom: 15px; display: block; }
+        .event-content h2 { font-family: 'Playfair Display'; font-size: 2.8rem; font-style: italic; color: #fff; margin-bottom: 25px; }
+        .event-content p { color: #bbb; line-height: 1.9; margin-bottom: 30px; font-weight: 300; font-size: 1.1rem; }
+
+        .tech-specs { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+            gap: 20px; border-top: 1px solid #222; padding-top: 30px; margin-top: 30px;
+        }
+        .spec-item { font-size: 0.8rem; font-family: 'Cinzel'; color: var(--aur); opacity: 0.7; }
+        .spec-item strong { display: block; color: #fff; margin-bottom: 5px; font-size: 0.9rem; }
+
+        .btn-reserve { 
+            display: inline-block; padding: 18px 45px; border: 1px solid var(--aur); 
+            color: var(--aur); font-family: 'Cinzel'; letter-spacing: 3px; font-weight: 900; 
+            margin-top: 40px; transition: 0.3s; 
+        }
+        .btn-reserve:hover { background: var(--aur); color: #000; }
+
+        @media (min-width: 950px) {
+            .event-entry { flex-direction: row; height: 500px; }
+            .event-img { width: 45%; height: 100%; }
+            .event-content { width: 55%; display: flex; flex-direction: column; justify-content: center; }
         }
 
-        .hero-content {
-            max-width: 980px;
-            margin: 0 auto;
-        }
-
-        .event-label {
-            font-family: 'Cinzel';
-            color: var(--auriu);
-            letter-spacing: 6px;
-            font-size: clamp(0.8rem, 2.5vw, 1rem);
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-
-        .hero-event h1 {
-            font-family: 'Playfair Display';
-            font-size: clamp(3rem, 10vw, 6.3rem);
-            line-height: 1;
-            color: var(--alb);
-            text-shadow: 4px 4px 30px rgba(0,0,0,0.95);
-        }
-
-        .hero-event h1 span {
-            color: var(--auriu);
-            font-style: italic;
-        }
-
-        .hero-subtitle {
-            max-width: 760px;
-            margin: 28px auto 0;
-            font-size: clamp(1rem, 3.8vw, 1.25rem);
-            line-height: 1.9;
-            color: #ededed;
-            text-shadow: 2px 2px 16px rgba(0,0,0,0.95);
-        }
-
-        .event-alert {
-            margin: 28px auto 0;
-            display: inline-block;
-            border: 1px solid rgba(197,160,89,0.38);
-            background: rgba(0,0,0,0.35);
-            color: var(--auriu);
-            padding: 12px 18px;
-            font-family: 'Cinzel';
-            letter-spacing: 2px;
-            font-size: 0.8rem;
-        }
-
-        .hero-actions {
-            margin-top: 34px;
-            display: flex;
-            justify-content: center;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        .btn-primary,
-        .btn-secondary {
-            display: inline-block;
-            padding: 16px 30px;
-            font-family: 'Cinzel';
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            font-weight: 700;
-            transition: 0.3s ease;
-        }
-
-        .btn-primary {
-            background: #25d366;
-            color: #fff;
-            border: 1px solid #25d366;
-        }
-
-        .btn-primary:hover {
-            opacity: 0.9;
-        }
-
-        .btn-secondary {
-            background: rgba(0,0,0,0.4);
-            color: var(--auriu);
-            border: 1px solid var(--auriu);
-        }
-
-        .btn-secondary:hover {
-            background: var(--auriu);
-            color: #000;
-        }
-
-        .section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 90px 20px;
-        }
-
-        .section-title {
-            text-align: center;
-            font-family: 'Cinzel';
-            color: var(--auriu);
-            letter-spacing: 8px;
-            font-size: clamp(0.95rem, 2.8vw, 1.2rem);
-            margin-bottom: 55px;
-            text-transform: uppercase;
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 18px;
-        }
-
-        .info-card {
-            background: #0b0b0b;
-            border: 1px solid #1a1a1a;
-            padding: 28px 22px;
-            text-align: center;
-        }
-
-        .info-card i {
-            color: var(--auriu);
-            font-size: 2rem;
-            margin-bottom: 14px;
-        }
-
-        .info-card h3 {
-            font-family: 'Cinzel';
-            color: var(--auriu);
-            font-size: 0.82rem;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-        }
-
-        .info-card p {
-            color: #d4d4d4;
-            line-height: 1.7;
-            font-size: 0.96rem;
-        }
-
-        .offer-box {
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-            background: linear-gradient(180deg, rgba(12,12,12,1), rgba(5,5,5,1));
-            border: 1px solid rgba(197,160,89,0.28);
-            padding: 50px 24px;
-            box-shadow: 0 25px 60px rgba(0,0,0,0.35);
-        }
-
-        .offer-box h2 {
-            font-family: 'Playfair Display';
-            font-size: clamp(2.2rem, 6vw, 3.8rem);
-            margin-bottom: 10px;
-        }
-
-        .offer-box h2 span {
-            color: var(--auriu);
-            font-style: italic;
-        }
-
-        .price {
-            font-family: 'Cinzel';
-            color: var(--auriu);
-            font-size: clamp(2rem, 6vw, 3.2rem);
-            letter-spacing: 2px;
-            font-weight: 900;
-            margin: 18px 0 12px;
-        }
-
-        .offer-box p {
-            color: #d8d8d8;
-            line-height: 1.85;
-            max-width: 700px;
-            margin: 0 auto 16px;
-        }
-
-        .offer-list {
-            list-style: none;
-            max-width: 600px;
-            margin: 26px auto;
-            text-align: left;
-        }
-
-        .offer-list li {
-            color: #efefef;
-            margin-bottom: 12px;
-            padding-left: 24px;
-            position: relative;
-            line-height: 1.7;
-        }
-
-        .offer-list li::before {
-            content: "✦";
-            position: absolute;
-            left: 0;
-            top: 0;
-            color: var(--auriu);
-        }
-
-        .mini-note {
-            margin-top: 18px;
-            color: #9e9e9e !important;
-            font-size: 0.93rem;
-        }
-
-        .event-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 18px;
-        }
-
-        .event-gallery img {
-            width: 100%;
-            height: 320px;
-            object-fit: cover;
-            border: 1px solid #1a1a1a;
-            opacity: 0.88;
-        }
-
-        footer {
-            padding: 80px 20px;
-            text-align: center;
-            background: #000;
-            border-top: 1px solid #111;
-        }
-
-        .footer-legal {
-            margin: 25px 0;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .footer-legal a {
-            font-family: 'Cinzel';
-            font-size: 0.75rem;
-            color: #666 !important;
-            letter-spacing: 2px;
-            font-weight: 700;
-        }
-
-        .legal-badges {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-top: 30px;
-        }
-
-        .legal-badges img {
-            height: 50px;
-            opacity: 0.8;
-        }
-
-        .whatsapp-float {
-            position: fixed;
-            bottom: 25px;
-            left: 25px;
-            background: #25d366;
-            border-radius: 50%;
-            width: 65px;
-            height: 65px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 35px;
-            z-index: 1001;
-            color: #fff;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-        }
-
-        .sticky-mobile-cta {
-            display: none;
-        }
-
-        @media (max-width: 768px) {
-            .whatsapp-float {
-                width: 58px;
-                height: 58px;
-                font-size: 30px;
-                left: 18px;
-                bottom: 18px;
-            }
-
-            .hero-actions {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn-primary,
-            .btn-secondary {
-                width: 100%;
-                max-width: 320px;
-            }
-
-            .event-gallery img {
-                height: 240px;
-            }
-
-            .main-nav a {
-                font-size: 1.5rem;
-                letter-spacing: 3px;
-            }
-
-            .sticky-mobile-cta {
-                display: block;
-                position: fixed;
-                left: 14px;
-                right: 14px;
-                bottom: 14px;
-                z-index: 999;
-            }
-
-            .sticky-mobile-cta a {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                gap: 10px;
-                background: #25d366;
-                color: #fff;
-                padding: 15px 18px;
-                font-family: 'Cinzel';
-                font-size: 0.8rem;
-                letter-spacing: 1.5px;
-                box-shadow: 0 12px 30px rgba(0,0,0,0.35);
-            }
-
-            body {
-                padding-bottom: 86px;
-            }
-        }
+        footer { padding: 80px 20px; text-align: center; opacity: 0.4; font-family: 'Cinzel'; font-size: 0.75rem; letter-spacing: 4px; }
     </style>
 </head>
 <body>
 
-    <a href="https://wa.me/40749229686" class="whatsapp-float" target="_blank" aria-label="Contact WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
     <header class="site-header">
         <a href="index.html" class="brand-logo">
-            <svg viewBox="0 0 800 500">
-                <circle cx="400" cy="250" r="105" fill="none" stroke="#c5a059" stroke-width="4" opacity="0.8"/>
-                <path d="M300 400 L400 200 L500 400 Z" fill="#c5a059"/>
-            </svg>
+            <svg viewBox="0 0 800 500"><circle cx="400" cy="250" r="105" fill="none" stroke="#c5a059" stroke-width="4"/><path d="M300 400 L400 200 L500 400 Z" fill="#c5a059"/></svg>
         </a>
-
         <div class="burger" id="burger"><div></div><div></div><div></div></div>
-
         <nav class="main-nav" id="nav-links">
             <a href="index.html">Acasă</a>
             <a href="pensiune.html">Domeniile La Buligă</a>
             <a href="metanoia.html">Metanoia</a>
             <a href="gastronomie.html">Gastronomie</a>
-            <a href="evenimente.html">Evenimente</a>
-            <a href="rezervari.html">Rezervare</a>
+            <a href="evenimente.html" style="color:var(--aur) !important;">Evenimente</a>
             <a href="contact.html">Contact</a>
         </nav>
     </header>
 
-    <section class="hero-event">
-        <div class="hero-content">
-            <p class="event-label">Eveniment Special</p>
+    <header class="hero-event">
+        <div class="hero-title">
+            <h1>Experiențe cu Rost.</h1>
+            <p>CALENDARUL TRĂIRII AUTENTICE 2026</p>
+        </div>
+    </header>
 
-            <h1>1 Mai la <span>Buligă.</span></h1>
-
-            <p class="hero-subtitle">
-                2 nopți în natură totală. Fără vecini. Fără zgomot. Doar liniște, grătar, aer curat și timp petrecut bine, departe de agitație.
-            </p>
-
-            <div class="event-alert">⚠️ Mai sunt doar 2 locuri disponibile</div>
-
-            <div class="hero-actions">
-                <a href="https://wa.me/40749229686?text=Salut!%20Vreau%20detalii%20pentru%20evenimentul%20de%201%20Mai%20la%20Bulig%C4%83." target="_blank" class="btn-primary">
-                    <i class="fab fa-whatsapp"></i> SCRIE „1 MAI”
-                </a>
-                <a href="#oferta" class="btn-secondary">
-                    VEZI OFERTA
-                </a>
+    <main class="timeline-container">
+        
+        <div class="event-entry">
+            <div class="event-img">
+                <span class="event-tag">GASTRONOMIE ARHAICĂ</span>
+                <img src="images/IMG_20260330_160353.webp" alt="Serata Romano-Italiană">
+            </div>
+            <div class="event-content">
+                <span class="event-date">01 MAI 2026 • VADU DOBRII</span>
+                <h2>Serată Romano-Italiană</h2>
+                <p>O fuziune între rânduiala locului și gusturile mediteraneene, totul pregătit la foc deschis. Un eveniment de tip "Social Debugging" unde tăcerea munților întâlnește poveștile la un pahar de vin bun.</p>
+                <div class="tech-specs">
+                    <div class="spec-item"><strong>CAPACITATE</strong>12 Useri (Filtrați)</div>
+                    <div class="spec-item"><strong>METODĂ</strong>Jar Viu & Fontă</div>
+                    <div class="spec-item"><strong>STATUS</strong>Locuri Limitate</div>
+                </div>
+                <a href="https://wa.me/40749229686?text=Salut!%20Vreau%20s%C4%83%20rezerv%20un%20loc%20la%20Serata%20Romano-Italian%C4%83." class="btn-reserve">SOLICITĂ LOC</a>
             </div>
         </div>
-    </section>
 
-    <main>
-        <section class="section">
-            <p class="section-title">Ce include</p>
-
-            <div class="info-grid">
-                <div class="info-card">
-                    <i class="fas fa-bed"></i>
-                    <h3>2 NOPȚI</h3>
-                    <p>Cazare într-un spațiu retras, potrivit pentru relaxare reală și timp petrecut fără grabă.</p>
-                </div>
-
-                <div class="info-card">
-                    <i class="fas fa-users"></i>
-                    <h3>PÂNĂ LA 6 PERSOANE</h3>
-                    <p>Perfect pentru cupluri, familie sau grup restrâns care vrea o ieșire de 1 Mai altfel.</p>
-                </div>
-
-                <div class="info-card">
-                    <i class="fas fa-fire"></i>
-                    <h3>GRĂTAR & TIHNĂ</h3>
-                    <p>Grătar, aer curat, ritm lent și spațiu privat în care te poți bucura de liniște.</p>
-                </div>
-
-                <div class="info-card">
-                    <i class="fas fa-tree"></i>
-                    <h3>NATURĂ TOTALĂ</h3>
-                    <p>Fără aglomerație, fără zgomot urban, doar peisaj, liniște și conexiune cu locul.</p>
-                </div>
+        <div class="event-entry">
+            <div class="event-img">
+                <span class="event-tag">EXPLORARE ACTIVĂ</span>
+                <img src="images/bike.webp" alt="Bike & Flowers">
             </div>
-        </section>
-
-        <section class="section" id="oferta" style="padding-top: 20px;">
-            <div class="offer-box">
-                <h2>Oferta de <span>1 Mai</span></h2>
-
-                <div class="price">1500 LEI / TOT</div>
-
-                <p>
-                    O experiență simplă și valoroasă pentru cei care vor să fugă de aglomerație și să petreacă 1 Mai într-un loc retras, autentic și liniștit.
-                </p>
-
-                <ul class="offer-list">
-                    <li>2 nopți de cazare</li>
-                    <li>Acces la locație și spațiu privat</li>
-                    <li>Atmosferă liniștită, potrivită pentru relaxare</li>
-                    <li>Perfect pentru grup restrâns sau familie</li>
-                </ul>
-
-                <a href="https://wa.me/40749229686?text=Salut!%20Vreau%20s%C4%83%20rezerv%20oferta%20de%201%20Mai%20la%20Bulig%C4%83." target="_blank" class="btn-primary">
-                    <i class="fab fa-whatsapp"></i> REZERVĂ PE WHATSAPP
-                </a>
-
-                <p class="mini-note">
-                    Rezervarea se face rapid, direct pe WhatsApp.
-                </p>
+            <div class="event-content">
+                <span class="event-date">09-10 MAI 2026 • MUNȚII POIANA RUSCĂ</span>
+                <h2>Bike & Flowers</h2>
+                <p>O expediție de tip "System Reset" către Poiana Narciselor. Utilizăm E-Bike-uri de înaltă performanță pentru a accesa zone virgine ale Pădurenilor, acolo unde natura rulează cel mai pur cod al primăverii.</p>
+                <div class="tech-specs">
+                    <div class="spec-item"><strong>EFORȚ</strong>Controlat (E-Bike)</div>
+                    <div class="spec-item"><strong>DISTANȚĂ</strong>45 KM de Poveste</div>
+                    <div class="spec-item"><strong>OBIECTIV</strong>Poiana Narciselor</div>
+                </div>
+                <a href="explorare-ebike.html" class="btn-reserve">VEZI PROTOCOLUL</a>
             </div>
-        </section>
+        </div>
 
-        <section class="section">
-            <p class="section-title">Atmosfera locului</p>
-
-            <div class="event-gallery">
-                <img src="images/IMG_20260330_160353.webp" alt="Domeniile La Buligă">
-                <img src="images/IMG_20260330_160344.webp" alt="Eveniment la Buligă">
-                <img src="images/IMG_20260330_160505.webp" alt="Natură și liniște">
+        <div class="event-entry">
+            <div class="event-img">
+                <span class="event-tag">EXPEDIȚIE MISTICĂ</span>
+                <img src="images/Sarmizegetusa.jpg" alt="Go Nomad">
             </div>
-        </section>
+            <div class="event-content">
+                <span class="event-date">IUNIE 2026 • REGENERARE TOTALĂ</span>
+                <h2>Go Nomad: Rădăcini de Fier</h2>
+                <p>O incursiune în istoria nescrisă a Ținutului Pădurenilor. Vizităm minele părăsite și satele de pe culmi, într-un format de retreat care combină istoria dacică cu managementul modern al stresului.</p>
+                <div class="tech-specs">
+                    <div class="spec-item"><strong>FOCUS</strong>Istorie & Reset</div>
+                    <div class="spec-item"><strong>ACCES</strong>Doar JEEP / SUV</div>
+                    <div class="spec-item"><strong>DURATĂ</strong>48 Ore Off-Grid</div>
+                </div>
+                <a href="contact.html" class="btn-reserve">EXPRIMĂ INTERESUL</a>
+            </div>
+        </div>
+
     </main>
 
     <footer>
-        <p style="font-size:0.8rem; color:#444; letter-spacing:2px; margin-bottom:20px;">DAKAMIGOS MARKT SRL | CUI: RO40767794</p>
-        <div class="footer-legal">
-            <a href="politica-cookies.html">COOKIES</a> |
-            <a href="confidentialitate.html">GDPR</a>
-        </div>
-        <div class="legal-badges">
-            <img src="images/anpc-sal.png" alt="ANPC SAL">
-            <img src="images/anpc-sol.png" alt="ANPC SOL">
-        </div>
-        <p style="margin-top:40px; font-family:'Cinzel'; font-size:0.7rem; color:#888; letter-spacing:5px;">HAȚEG ALTERNATIV &copy; 2026</p>
+        <p>HAȚEG ALTERNATIV &copy; 2026 | ARHITECTURA TRĂIRII</p>
     </footer>
-
-    <div class="sticky-mobile-cta">
-        <a href="https://wa.me/40749229686?text=Salut!%20Vreau%20detalii%20pentru%201%20Mai%20la%20Bulig%C4%83." target="_blank">
-            <i class="fab fa-whatsapp"></i> SCRIE „1 MAI” ACUM
-        </a>
-    </div>
 
     <script>
         const burger = document.getElementById('burger');
         const nav = document.getElementById('nav-links');
         burger.onclick = () => nav.classList.toggle('active');
+    </script>
+
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/6620f4f31ec1082f04e43f38/1hrnq675q';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
     </script>
 </body>
 </html>
