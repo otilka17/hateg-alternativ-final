@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gastronomie | Metanoia Core</title>
+    <title>Meniu Gastronomic | Metanoia</title>
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18106516696"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -12,128 +12,104 @@
       gtag('config', 'AW-18106516696');
     </script>
     
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,900&family=Cinzel:wght@400;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400&display=swap" rel="stylesheet">
 
     <style>
-        :root { --aur: #c5a059; --negru: #050505; --gri: #1a1a1a; --blue: #0061d5; }
+        :root { --gold: #c5a059; --dark: #0a0a0a; --wood: #151210; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--negru); color: #ccc; font-family: 'Inter', sans-serif; line-height: 1.6; }
+        body { background-color: var(--dark); color: #e0e0e0; font-family: 'Inter', sans-serif; line-height: 1.6; }
 
-        /* HEADER */
-        .site-header { padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.8); border-bottom: 1px solid var(--gri); }
-        .brand-logo svg { height: 50px; }
-        .nav-link { color: var(--aur); text-decoration: none; font-family: 'Cinzel'; font-size: 0.8rem; letter-spacing: 2px; }
-
-        /* HERO EVENT SECTION (Inspirat din Story-ul tău) */
-        .event-banner { 
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/apus.jpg') center/cover;
-            padding: 60px 20px; text-align: center; border-bottom: 2px solid var(--blue);
+        /* HEADER RUSTIC */
+        .header-menu { 
+            padding: 40px 20px; text-align: center; border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+            background: linear-gradient(to bottom, #000, var(--dark));
         }
-        .story-card {
-            background: #fff; color: #000; border-radius: 25px; padding: 30px;
-            max-width: 350px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-        .story-card span { font-size: 0.8rem; color: #666; display: block; margin-bottom: 10px; }
-        .story-card h2 { font-family: 'Inter'; font-weight: 800; margin-bottom: 20px; }
-        .btn-vezi-pagina { 
-            display: block; background: var(--blue); color: #fff; padding: 15px; 
-            border-radius: 15px; text-decoration: none; font-weight: bold; transition: 0.3s;
-        }
-        .btn-vezi-pagina:hover { transform: scale(1.05); background: #004bb3; }
+        .header-menu h1 { font-family: 'Cinzel'; color: var(--gold); font-size: 1.8rem; letter-spacing: 4px; }
+        .header-menu p { font-family: 'Playfair Display'; font-style: italic; font-size: 1.2rem; color: #888; }
 
-        .container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
-        h1 { font-family: 'Playfair Display'; font-style: italic; color: var(--aur); font-size: 3rem; text-align: center; margin-bottom: 50px; }
+        .container { max-width: 600px; margin: 0 auto; padding: 40px 20px; }
 
-        /* GRID GASTRONOMIE */
-        .food-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .food-card { background: #0c0c0c; border: 1px solid var(--gri); border-radius: 15px; overflow: hidden; transition: 0.4s; }
-        .food-card:hover { border-color: var(--aur); transform: translateY(-10px); }
-        .food-card img { width: 100%; height: 300px; object-fit: cover; opacity: 0.8; }
-        .food-card:hover img { opacity: 1; }
-        .food-info { padding: 20px; }
-        .food-info h3 { font-family: 'Cinzel'; color: var(--aur); margin-bottom: 10px; letter-spacing: 2px; }
-        .food-info p { font-size: 0.9rem; color: #888; }
-
-        /* CTA */
-        .cta-section { text-align: center; padding: 80px 20px; }
-        .btn-whatsapp { 
-            display: inline-block; background: #25d366; color: #fff; padding: 20px 40px; 
-            border-radius: 50px; text-decoration: none; font-weight: bold; font-family: 'Cinzel'; letter-spacing: 2px;
+        /* SECTIUNE MENIU */
+        .menu-section { margin-bottom: 60px; }
+        .section-title { 
+            font-family: 'Cinzel'; color: var(--gold); font-size: 1.4rem; 
+            border-bottom: 1px solid var(--gold); display: inline-block;
+            margin-bottom: 30px; padding-bottom: 5px; letter-spacing: 2px;
         }
 
-        footer { text-align: center; padding: 40px; font-size: 0.7rem; opacity: 0.4; font-family: 'Cinzel'; }
+        .menu-item { margin-bottom: 30px; position: relative; }
+        .item-header { display: flex; justify-content: space-between; align-items: baseline; }
+        .item-name { font-family: 'Cinzel'; font-weight: 700; font-size: 1.1rem; color: #fff; }
+        .item-dots { flex: 1; border-bottom: 1px dotted #444; margin: 0 10px; }
+        .item-price { font-family: 'Cinzel'; color: var(--gold); font-weight: bold; }
+        .item-desc { font-size: 0.85rem; color: #777; font-style: italic; margin-top: 5px; }
+
+        /* IMAGINI INTEGRATE IN MENIU */
+        .menu-img { 
+            width: 100%; height: 250px; object-fit: cover; border-radius: 5px; 
+            margin: 15px 0; border: 1px solid #222; filter: sepia(20%) contrast(110%);
+        }
+
+        /* BANNER SPECIALITATE */
+        .special-box { 
+            background: var(--wood); border: 2px solid var(--gold); padding: 30px; 
+            text-align: center; margin-bottom: 50px; box-shadow: 0 0 20px rgba(197, 160, 89, 0.1);
+        }
+        .special-box h3 { font-family: 'Cinzel'; color: var(--gold); margin-bottom: 15px; }
+
+        .footer-cta { text-align: center; padding: 60px 20px; background: #000; }
+        .btn-gold { 
+            display: inline-block; padding: 15px 35px; border: 1px solid var(--gold); 
+            color: var(--gold); text-decoration: none; font-family: 'Cinzel'; 
+            letter-spacing: 2px; font-weight: bold; transition: 0.3s;
+        }
+        .btn-gold:hover { background: var(--gold); color: #000; }
     </style>
 </head>
 <body>
 
-    <header class="site-header">
-        <a href="index.html" class="nav-link">← ACASĂ</a>
-        <div class="brand-logo">
-            <svg viewBox="0 0 800 500" style="width: 60px;"><circle cx="400" cy="250" r="105" fill="none" stroke="#c5a059" stroke-width="4"/><path d="M300 400 L400 200 L500 400 Z" fill="#c5a059"/></svg>
-        </div>
-        <a href="rezervari.html" class="nav-link">REZERVĂ →</a>
+    <header class="header-menu">
+        <p>Rânduiala de la 1100m</p>
+        <h1>Gastronomie Arhaică</h1>
     </header>
 
-    <section class="event-banner">
-        <div style="color: #fff; font-family: 'Cinzel'; margin-bottom: 20px; letter-spacing: 5px;">VĂ AȘTEPTĂM !!!!</div>
-        <div class="story-card">
-            <span>Vi, 1 mai la 12:00 EEST</span>
-            <h2>1 Mai Romano-Italian</h2>
-            <p style="color:#000; margin-bottom: 20px; font-size: 0.9rem;">Domeniile "La Buligă"</p>
-            <a href="evenimente.html" class="btn-vezi-pagina">Vezi Pagina evenimentului</a>
-        </div>
-        <div style="margin-top: 30px; background: #fff; display: inline-block; padding: 10px 20px; color: #8a2be2; font-weight: bold; border-radius: 5px;">
-            📍 DOMENIILE "LA BULIGĂ"
-        </div>
-    </section>
-
     <main class="container">
-        <h1>Rânduiala Gustului.</h1>
 
-        <div class="food-grid">
-            <div class="food-card">
-                <img src="images/miel.jpg" alt="Miel">
-                <div class="food-info">
-                    <h3>MIEL LA CEAUN</h3>
-                    <p>Copt domol pe jar viu, după rânduiala veche a pădurenilor.</p>
+        <section class="menu-section">
+            <h2 class="section-title">Zori de Zi</h2>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <span class="item-name">Pâine în Ou Metanoia</span>
+                    <span class="item-dots"></span>
+                    <span class="item-price">Inclus</span>
                 </div>
+                <p class="item-desc">Rețeta bunicii, prăjită în untură curată, servită cu brânză de munte.</p>
+                <img src="images/paine-in-ou.jpg" class="menu-img" alt="Paine in ou">
             </div>
 
-            <div class="food-card">
-                <img src="images/gast-supa2.jpg" alt="Ceaun">
-                <div class="food-info">
-                    <h3>CIORBĂ LA CEAUN</h3>
-                    <p>Gustul focului de lemne în fiecare lingură. Legume din grădină.</p>
+            <div class="menu-item">
+                <div class="item-header">
+                    <span class="item-name">Platoul Arhitectului</span>
+                    <span class="item-dots"></span>
+                    <span class="item-price">Inclus</span>
                 </div>
+                <p class="item-desc">Slănină afumată, brânză de burduf, ceapă roșie și roșii din grădină.</p>
+                <img src="images/platou-traditional.jpg" class="menu-img" alt="Platou traditional">
             </div>
+        </section>
 
-            <div class="food-card">
-                <img src="images/paine-in-ou.jpg" alt="Paine">
-                <div class="food-info">
-                    <h3>PÂINE ÎN OU</h3>
-                    <p>Micul dejun al campionilor de la 1100m altitudine.</p>
-                </div>
-            </div>
-
-            <div class="food-card">
-                <img src="images/gast-masa-traditionala.jpg" alt="Masa">
-                <div class="food-info">
-                    <h3>OSPĂȚ PĂDURENESC</h3>
-                    <p>Platouri pline cu bunătăți locale, brânză maturată și slănină.</p>
-                </div>
-            </div>
+        <div class="special-box">
+            <h3>Piesa Centrală</h3>
+            <p style="font-family: 'Playfair Display'; font-style: italic; color: #fff; font-size: 1.3rem;">Miel la Ceaun pe Jar Viu</p>
+            <p class="item-desc" style="margin-bottom: 20px;">Gătit lent, 6 ore, în tăcerea muntelui.</p>
+            <img src="images/miel-ceaun.jpg" class="menu-img" alt="Miel la ceaun">
         </div>
 
-        <section class="cta-section">
-            <h2 style="color: var(--aur); margin-bottom: 30px; font-family: 'Cinzel';">Ți-e foame de munte?</h2>
-            <a href="https://wa.me/40749229686" class="btn-whatsapp">RESERVĂ O MASĂ PE WHATSAPP</a>
-        </section>
-    </main>
-
-    <footer>
-        HAȚEG ALTERNATIV &copy; 2026 // DOMENIILE LA BULIGĂ
-    </footer>
-
-</body>
-</html>
+        <section class="menu-section">
+            <h2 class="section-title">Ospățul Muntelui</h2>
+            
+            <div class="menu-item">
+                <div class="item-header">
+                    <span class="item-name">Ciorbă la Foc de Lemne</span>
+                    <span class="
