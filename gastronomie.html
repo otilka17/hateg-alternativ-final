@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gastronomie | Metanoia Core</title>
+    <title>Gastronomie Cinematică | Metanoia Core</title>
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18106516696"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -12,166 +12,211 @@
       gtag('config', 'AW-18106516696');
     </script>
     
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@200;400;600&display=swap" rel="stylesheet">
 
     <style>
-        :root { --gold: #c5a059; --dark: #050505; --card: #0c0c0c; --text: #ccc; }
+        :root { --gold: #c5a059; --dark: #000000; --accent: #1a1a1a; --text-muted: #888; }
+        
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--dark); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.6; }
+        body { background-color: var(--dark); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-        header { padding: 60px 20px; text-align: center; border-bottom: 1px solid rgba(197, 160, 89, 0.2); }
-        header h1 { font-family: 'Cinzel'; color: var(--gold); font-size: 2rem; letter-spacing: 5px; margin-bottom: 10px; }
-        header p { font-family: 'Playfair Display'; font-style: italic; font-size: 1.2rem; color: #777; }
-
-        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
-
-        .section-title { 
-            font-family: 'Cinzel'; color: var(--gold); font-size: 1.5rem; text-align: center;
-            margin: 60px 0 40px; letter-spacing: 3px; position: relative;
+        /* CINEMATIC OVERLAY */
+        body::before {
+            content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/stardust.png');
+            opacity: 0.05; pointer-events: none; z-index: 9999;
         }
-        .section-title::after { content: ''; display: block; width: 50px; height: 1px; background: var(--gold); margin: 15px auto; }
 
-        .food-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; }
-        
-        .food-item { background: var(--card); border: 1px solid #1a1a1a; border-radius: 15px; overflow: hidden; transition: 0.3s; height: 100%; display: flex; flex-direction: column; }
-        .food-item:hover { border-color: var(--gold); transform: translateY(-5px); }
-        .food-item img { width: 100%; height: 250px; object-fit: cover; filter: brightness(0.8); transition: 0.5s; }
-        .food-item:hover img { filter: brightness(1); }
-        
-        .food-content { padding: 25px; flex-grow: 1; }
-        .food-content h3 { font-family: 'Cinzel'; color: #fff; font-size: 0.95rem; margin-bottom: 10px; letter-spacing: 1px; }
-        .food-content p { font-size: 0.85rem; color: #888; font-style: italic; }
+        /* HERO SECTION */
+        .hero-cinematic {
+            height: 100vh; position: relative; display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(rgba(0,0,0,0.3), var(--dark)), url('images/foc.jpg') center/cover no-repeat;
+            text-align: center; overflow: hidden;
+        }
+        .hero-content h1 {
+            font-family: 'Playfair Display'; font-style: italic; font-size: clamp(3rem, 12vw, 8rem);
+            color: var(--gold); line-height: 1; margin-bottom: 20px; text-shadow: 0 0 50px rgba(0,0,0,0.8);
+        }
+        .hero-content p { font-family: 'Cinzel'; letter-spacing: 8px; font-size: 0.8rem; color: var(--gold); }
 
-        .special-row { margin-bottom: 80px; text-align: center; }
-        .special-row img { width: 100%; max-height: 500px; object-fit: cover; border-radius: 20px; border: 1px solid var(--gold); margin-bottom: 25px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
+        /* SECTION HEADINGS */
+        .cinematic-label {
+            text-align: center; margin: 100px 0 50px; position: relative;
+        }
+        .cinematic-label span {
+            font-family: 'Cinzel'; font-size: 0.7rem; letter-spacing: 10px; color: var(--gold); text-transform: uppercase;
+        }
+        .cinematic-label h2 {
+            font-family: 'Playfair Display'; font-style: italic; font-size: 3rem; margin-top: 10px; opacity: 0.9;
+        }
 
-        .cta-box { text-align: center; padding: 80px 20px; background: #000; border-top: 1px solid #1a1a1a; }
-        .btn-reserve { display: inline-block; padding: 20px 50px; border: 1px solid var(--gold); color: var(--gold); text-decoration: none; font-family: 'Cinzel'; font-weight: bold; letter-spacing: 3px; transition: 0.3s; }
-        .btn-reserve:hover { background: var(--gold); color: #000; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 5%; }
 
-        footer { text-align: center; padding: 40px; font-family: 'Cinzel'; font-size: 0.7rem; letter-spacing: 3px; opacity: 0.4; }
+        /* GRID SYSTEM - TILE STYLE */
+        .cinematic-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 20px; margin-bottom: 100px;
+        }
+        @media (max-width: 600px) { .cinematic-grid { grid-template-columns: 1fr; } }
+
+        .scene-card {
+            position: relative; height: 600px; overflow: hidden; background: var(--accent); border-radius: 2px;
+        }
+        .scene-card img {
+            width: 100%; height: 100%; object-fit: cover; transition: transform 1.5s ease, filter 1s ease;
+            filter: brightness(0.6) grayscale(20%);
+        }
+        .scene-card:hover img { transform: scale(1.05); filter: brightness(0.8) grayscale(0%); }
+
+        .scene-info {
+            position: absolute; bottom: 0; left: 0; width: 100%; padding: 40px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+        }
+        .scene-info h3 { font-family: 'Cinzel'; font-size: 1.2rem; letter-spacing: 3px; color: var(--gold); margin-bottom: 10px; }
+        .scene-info p { font-size: 0.9rem; color: #ccc; max-width: 300px; font-weight: 200; line-height: 1.6; }
+
+        /* LARGE FOCUS SCENE */
+        .focus-scene {
+            width: 100%; height: 80vh; margin: 100px 0; position: relative; overflow: hidden;
+        }
+        .focus-scene img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.7); }
+        .focus-content {
+            position: absolute; top: 50%; left: 10%; transform: translateY(-50%);
+            max-width: 500px;
+        }
+        .focus-content h2 { font-family: 'Playfair Display'; font-style: italic; font-size: 4rem; color: var(--gold); margin-bottom: 20px; }
+
+        /* FOOTER CTA */
+        .cinematic-cta {
+            height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+            background: var(--accent); text-align: center;
+        }
+        .btn-cinematic {
+            padding: 20px 60px; border: 1px solid var(--gold); color: var(--gold);
+            text-decoration: none; font-family: 'Cinzel'; letter-spacing: 5px; font-size: 0.8rem;
+            transition: 0.4s; position: relative; overflow: hidden;
+        }
+        .btn-cinematic:hover { background: var(--gold); color: #000; box-shadow: 0 0 30px rgba(197, 160, 89, 0.3); }
+
+        footer { padding: 40px; text-align: center; font-family: 'Cinzel'; font-size: 0.6rem; letter-spacing: 4px; opacity: 0.3; }
+
     </style>
 </head>
 <body>
 
-    <header>
-        <p>Alchimia gustului la 1100m</p>
-        <h1>RÂNDUIALA GUSTULUI</h1>
-    </header>
+    <section class="hero-cinematic">
+        <div class="hero-content">
+            <p>DOMENIILE LA BULIGĂ PREZINTĂ</p>
+            <h1>Arta Focului.</h1>
+        </div>
+    </section>
 
-    <main class="container">
+    <div class="container">
 
-        <h2 class="section-title">Zori de Zi</h2>
-        <div class="food-grid">
-            <div class="food-item">
+        <div class="cinematic-label">
+            <span>Capitolul I</span>
+            <h2>Zori de Zi</h2>
+        </div>
+
+        <div class="cinematic-grid">
+            <div class="scene-card">
                 <img src="images/paine-in-ou.jpg" alt="Paine in ou">
-                <div class="food-content">
-                    <h3>PÂINE ÎN OU METANOIA</h3>
-                    <p>Aurul dimineților la munte. Pâine caldă, ouă proaspete și tihna unui răsărit fără grabă.</p>
+                <div class="scene-info">
+                    <h3>Pâinea în Ou</h3>
+                    <p>O rețetă moștenită, rânduită în tăcerea dimineților de munte.</p>
                 </div>
             </div>
-            <div class="food-item">
+            <div class="scene-card">
                 <img src="images/jumeri.jpg" alt="Jumeri">
-                <div class="food-content">
-                    <h3>JUMERII PĂDURENILOR</h3>
-                    <p>O delicatesă arhaică, crocantă și onestă, servită cu sare grunjoasă și ceapă roșie tăiată pe fund de lemn.</p>
+                <div class="scene-info">
+                    <h3>Jumeri Arhaici</h3>
+                    <p>Esența pură a gustului pădurenesc, pregătiți la foc iute.</p>
                 </div>
             </div>
-            <div class="food-item">
-                <img src="images/oua.jpg" alt="Oua de tara">
-                <div class="food-content">
-                    <h3>OUĂ DIN OGRADĂ</h3>
-                    <p>Esența vieții la țară. Un mic dejun simplu, dar care îți dă forța necesară pentru a cuceri muntele.</p>
+            <div class="scene-card">
+                <img src="images/oua.jpg" alt="Oua">
+                <div class="scene-info">
+                    <h3>Ouă din Ogradă</h3>
+                    <p>Simplitatea absolută, culeasă în zorii zilei.</p>
                 </div>
             </div>
         </div>
 
-        <h2 class="section-title">Inima Ospățului</h2>
-        <div class="special-row">
-            <img src="images/miel.jpg" alt="Miel la ceaun">
-            <h3 style="font-family: 'Cinzel'; color: var(--gold); font-size: 1.5rem; letter-spacing: 3px;">MIELUL RÂNDUIT LA CEAUN</h3>
-            <p style="font-style: italic; color: #888; max-width: 600px; margin: 0 auto;">Spectacolul focului viu. Carne fragedă care se desface de pe os, infuzată timp de 6 ore cu aroma discretă a fumului de fag.</p>
+        <section class="focus-scene">
+            <img src="images/miel.jpg" alt="Miel la Ceaun">
+            <div class="focus-content">
+                <span>PIESA CENTRALĂ</span>
+                <h2>Mielul pe Jar.</h2>
+                <p>O alchimie de 6 ore între carne fragedă, fum de fag și tihnă.</p>
+            </div>
+        </section>
+
+        <div class="cinematic-label">
+            <span>Capitolul II</span>
+            <h2>Ospățul</h2>
         </div>
 
-        <div class="food-grid">
-            <div class="food-item">
+        <div class="cinematic-grid">
+            <div class="scene-card">
                 <img src="images/sarmale.jpg" alt="Sarmale">
-                <div class="food-content">
-                    <h3>SARMALELE CASEI</h3>
-                    <p>Gătite domol în tihnă, cu mirodenii alese, pentru un gust care îți amintește de duminicile petrecute la bunica.</p>
+                <div class="scene-info">
+                    <h3>Sarmale Rânduite</h3>
+                    <p>Învelite în tihnă, fierte la foc domol în cuptor de lut.</p>
                 </div>
             </div>
-            <div class="food-item">
+            <div class="scene-card">
                 <img src="images/feed-virsli.jpg" alt="Virsli">
-                <div class="food-content">
-                    <h3>VÎRȘLI DE HUNEDOARA</h3>
-                    <p>Mândria locului. Picanți, suculenți și rumeniți exact cât trebuie pe jarul aprins de afară.</p>
+                <div class="scene-info">
+                    <h3>Vîrșli de Hunedoara</h3>
+                    <p>Legenda pământului nostru, rumeniți pe jarul încins.</p>
                 </div>
             </div>
-            <div class="food-item">
-                <img src="images/gast-supa2.jpg" alt="Ciorba">
-                <div class="food-content">
-                    <h3>CIORBĂ LA FOC DE LEMNE</h3>
-                    <p>O explozie de prospețime și gust afumat, servită aburindă direct din inima ceaunului de fontă.</p>
-                </div>
-            </div>
-            <div class="food-item">
+            <div class="scene-card">
                 <img src="images/aripioare.jpg" alt="Aripioare">
-                <div class="food-content">
-                    <h3>ARIPIOARE RUMENITE</h3>
-                    <p>Miere și cimbru sălbatic de munte, coapte până când pielea devine crocantă și aurie.</p>
+                <div class="scene-info">
+                    <h3>Aripioare Rumenite</h3>
+                    <p>Infuzate cu miere și cimbru sălbatic de la 1100m.</p>
                 </div>
             </div>
-            <div class="food-item">
+            <div class="scene-card">
                 <img src="images/cartofi.jpg" alt="Cartofi">
-                <div class="food-content">
-                    <h3>CARTOFI ÎN COAJĂ</h3>
-                    <p>Cei mai buni prieteni ai jarului. Zdrobiți cu unt de casă și presărați cu verdețuri culese din grădină.</p>
+                <div class="scene-info">
+                    <h3>Cartofi în Coajă</h3>
+                    <p>Zdrobiți cu unt de casă sub privirea jarului.</p>
                 </div>
             </div>
-            <div class="food-item">
-                <img src="images/supacrema.jpg" alt="Supa crema">
-                <div class="food-content">
-                    <h3>SUPĂ CREMĂ DE SEZON</h3>
-                    <p>O mângâiere caldă pentru serile răcoroase, catifelată și plină de aromele pământului pământului.</p>
+            <div class="scene-card">
+                <img src="images/supacrema.jpg" alt="Supa Crema">
+                <div class="scene-info">
+                    <h3>Supa de Sezon</h3>
+                    <p>O mângâiere caldă pentru suflet, în seri răcoroase.</p>
+                </div>
+            </div>
+            <div class="scene-card">
+                <img src="images/gast-supa2.jpg" alt="Ciorba">
+                <div class="scene-info">
+                    <h3>Ciorba la Ceaun</h3>
+                    <p>Aroma focului capturată într-o lingură de viață.</p>
                 </div>
             </div>
         </div>
 
-        <h2 class="section-title">Tihna de după masă</h2>
-        <div class="food-grid">
-            <div class="food-item">
+        <div class="cinematic-label">
+            <span>Capitolul III</span>
+            <h2>Tihna</h2>
+        </div>
+
+        <div class="cinematic-grid">
+            <div class="scene-card" style="height: 400px;">
                 <img src="images/orez-cu-lapte.jpg" alt="Orez cu lapte">
-                <div class="food-content">
-                    <h3>OREZ CU LAPTE ȘI SCORȚIȘOARĂ</h3>
-                    <p>Un desert blând, cu parfum de scorțișoară, care te trimite cu gândul la cele mai frumoase amintiri.</p>
-                </div>
+                <div class="scene-info"><h3>Orez cu Lapte</h3></div>
             </div>
-            <div class="food-item">
+            <div class="scene-card" style="height: 400px;">
                 <img src="images/cafea-si-ceai.jpg" alt="Cafea">
-                <div class="food-content">
-                    <h3>CAFEA LA CUPTOR</h3>
-                    <p>Măcinată proaspăt și infuzată la căldura constantă a cuptorului de lut pentru o aromă densă.</p>
-                </div>
-            </div>
-            <div class="food-item">
-                <img src="images/foc.jpg" alt="Focul Metanoia">
-                <div class="food-content">
-                    <h3>INIMA CASEI</h3>
-                    <p>Focul sacru al Metanoia. Sursa de viață, căldură și toate bunătățile care ne aduc împreună la masă.</p>
-                </div>
+                <div class="scene-info"><h3>Cafeaua la Cuptor</h3></div>
             </div>
         </div>
 
-    </main>
-
-    <div class="cta-box">
-        <a href="https://wa.me/40749229686" class="btn-reserve">SOLICITĂ ACCES LA MASĂ</a>
     </div>
 
-    <footer>
-        METANOIA CORE // GASTRONOMY DIVISION &copy; 2026
-    </footer>
-
-</body>
-</html>
+    <section class="cinematic-cta">
+        <p style="color: var(--gold); font
