@@ -2,8 +2,9 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Metanoia Core | Destinația Anului</title>
+    
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18106516696"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -13,108 +14,189 @@
     </script>
     
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@200;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://elfsightcdn.com/platform.js" async></script>
 
     <style>
-        :root { --gold: #c5a059; --dark: #000; --blue-ev: #0061d5; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--dark); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        :root { --auriu: #c5a059; --negru: #000000; --accent: #080808; --blue-ev: #0061d5; }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        body { background-color: var(--negru); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
         /* BURGER MENU & NAV */
-        .header-nav { position: fixed; top: 0; width: 100%; padding: 25px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 10000; background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent); }
-        .logo { font-family: 'Cinzel'; font-size: 1.2rem; letter-spacing: 5px; color: var(--gold); text-decoration: none; font-weight: 900; }
-        .burger { cursor: pointer; width: 30px; height: 20px; display: flex; flex-direction: column; justify-content: space-between; z-index: 10001; }
-        .burger span { display: block; width: 100%; height: 2px; background: var(--gold); transition: 0.3s; }
+        .site-header { position: fixed; top: 0; width: 100%; padding: 25px 5%; display: flex; justify-content: space-between; align-items: center; z-index: 10000; background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent); }
+        .logo { font-family: 'Cinzel'; font-size: 1.2rem; letter-spacing: 5px; color: var(--auriu); text-decoration: none; font-weight: 900; }
+        .burger { cursor: pointer; width: 30px; height: 20px; display: flex; flex-direction: column; justify-content: space-between; z-index: 10001; background: rgba(0,0,0,0.4); padding: 5px; box-sizing: content-box; border-radius: 4px; }
+        .burger span { display: block; width: 100%; height: 2px; background: var(--auriu); transition: 0.3s; }
 
-        .nav-overlay { position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background: var(--dark); display: flex; flex-direction: column; align-items: center; justify-content: center; transition: 0.5s; z-index: 9999; }
+        .nav-overlay { position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; background: var(--negru); display: flex; flex-direction: column; align-items: center; justify-content: center; transition: 0.6s cubic-bezier(0.4, 0, 0.2, 1); z-index: 9999; }
         .nav-overlay.active { right: 0; }
-        .nav-overlay a { font-family: 'Cinzel'; color: #fff; text-decoration: none; font-size: 1.5rem; margin: 20px 0; letter-spacing: 5px; }
+        .nav-overlay a { font-family: 'Cinzel'; color: #fff; text-decoration: none; font-size: clamp(1.2rem, 5vw, 2rem); margin: 15px 0; letter-spacing: 5px; text-transform: uppercase; }
 
         /* HERO CINEMATIC */
-        .hero { height: 100vh; background: linear-gradient(rgba(0,0,0,0.3), var(--dark)), url('images/foc.jpg') center/cover no-repeat; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
-        .hero span { font-family: 'Cinzel'; letter-spacing: 12px; font-size: 0.8rem; color: var(--gold); margin-bottom: 20px; }
-        .hero h1 { font-family: 'Playfair Display'; font-style: italic; font-size: clamp(4rem, 18vw, 12rem); color: var(--gold); line-height: 0.8; }
+        .hero { height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; background: linear-gradient(rgba(0,0,0,0.2), var(--negru)), url('images/foc.jpg') center/cover no-repeat; text-align: center; }
+        .hero-content span { font-family: 'Cinzel'; letter-spacing: 12px; font-size: 0.8rem; color: var(--auriu); margin-bottom: 20px; display: block; font-weight: 700; }
+        .hero-content h1 { font-family: 'Playfair Display'; font-style: italic; font-size: clamp(3.5rem, 15vw, 10rem); color: var(--auriu); line-height: 0.8; text-shadow: 0 0 50px rgba(0,0,0,0.8); }
 
-        /* CARD EVENIMENT 1 MAI (STORY STYLE) */
-        .event-main-section { padding: 80px 20px; display: flex; justify-content: center; background: var(--dark); }
-        .story-card { background: #fff; color: #000; border-radius: 35px; padding: 45px 30px; width: 100%; max-width: 400px; text-align: center; box-shadow: 0 25px 60px rgba(197, 160, 89, 0.25); }
-        .story-card span { font-size: 0.7rem; color: #777; font-weight: 700; letter-spacing: 1px; }
-        .story-card h2 { font-family: 'Inter'; font-weight: 900; font-size: 2.2rem; margin: 15px 0; line-height: 1.1; }
-        .btn-event { display: block; background: var(--blue-ev); color: #fff; padding: 20px; border-radius: 18px; text-decoration: none; font-weight: 800; margin-top: 25px; }
+        /* EVENT CARD STORY */
+        .event-promo { padding: 60px 20px; display: flex; justify-content: center; background: var(--negru); }
+        .story-card { background: #fff; color: #000; border-radius: 35px; padding: 45px 30px; width: 100%; max-width: 400px; text-align: center; box-shadow: 0 25px 60px rgba(197, 160, 89, 0.3); }
+        .story-card span { font-size: 0.7rem; color: #777; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+        .story-card h2 { font-family: 'Inter'; font-weight: 900; font-size: 2.2rem; margin: 15px 0; line-height: 1.1; letter-spacing: -1px; }
+        .btn-blue { display: block; background: var(--blue-ev); color: #fff; padding: 20px; border-radius: 18px; text-decoration: none; font-weight: 800; margin-top: 25px; font-size: 1.1rem; }
 
-        /* CELE 7 CARDURI */
-        .cinematic-grid { padding: 40px 20px; max-width: 1450px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 20px; }
-        .scene-card { position: relative; height: 650px; overflow: hidden; background: #111; }
-        .scene-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.5; transition: 1.5s; filter: grayscale(20%); }
-        .scene-card:hover img { opacity: 0.8; transform: scale(1.05); filter: grayscale(0%); }
-        .scene-info { position: absolute; bottom: 50px; left: 50px; }
-        .scene-info span { font-family: 'Cinzel'; font-size: 0.6rem; letter-spacing: 5px; color: var(--gold); }
-        .scene-info h3 { font-family: 'Playfair Display'; font-style: italic; font-size: 3rem; color: #fff; margin: 15px 0; }
-        .scene-info a { color: var(--gold); text-decoration: none; font-family: 'Cinzel'; font-size: 0.7rem; letter-spacing: 3px; border-bottom: 1px solid var(--gold); }
+        /* ROAD ADVISORY */
+        .road-advisory { background: var(--accent); border-top: 2px solid var(--auriu); border-bottom: 2px solid var(--auriu); padding: 60px 20px; text-align: center; }
+        .road-advisory i { color: var(--auriu); font-size: 3rem; margin-bottom: 20px; display: block; }
+        .road-advisory h3 { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 5px; font-size: 1.5rem; margin-bottom: 15px; }
+        .road-advisory p { font-size: 1.1rem; color: #fff; line-height: 1.6; max-width: 800px; margin: 0 auto; }
 
-        /* CALENDAR - 3 EVENIMENTE */
-        .calendar-section { padding: 100px 5%; background: #050505; }
-        .event-row { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; margin-bottom: 80px; }
+        /* CELE 7 CARDURI CINEMATICE */
+        .cinematic-grid { padding: 60px 20px; max-width: 1500px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 20px; }
+        .scene-card { position: relative; height: 600px; overflow: hidden; background: #0a0a0a; border: 1px solid #1a1a1a; }
+        .scene-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.55; transition: 1.5s ease; filter: brightness(0.7) grayscale(20%); }
+        .scene-card:hover img { opacity: 0.85; transform: scale(1.05); filter: brightness(0.9) grayscale(0%); }
+        .scene-info { position: absolute; bottom: 40px; left: 40px; right: 40px; }
+        .scene-info span { font-family: 'Cinzel'; font-size: 0.65rem; letter-spacing: 6px; color: var(--auriu); font-weight: 700; }
+        .scene-info h3 { font-family: 'Playfair Display'; font-style: italic; font-size: 2.8rem; color: #fff; margin: 10px 0; line-height: 1; }
+        .scene-link { color: var(--auriu); text-decoration: none; font-family: 'Cinzel'; font-size: 0.75rem; letter-spacing: 3px; border-bottom: 1px solid var(--auriu); padding-bottom: 5px; font-weight: 700; }
+
+        /* CALENDAR */
+        .calendar-section { padding: 100px 5%; background: var(--negru); }
+        .calendar-title { text-align: center; font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 12px; margin-bottom: 80px; font-weight: 900; }
+        .event-row { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-bottom: 100px; }
         .event-row.reverse { direction: rtl; }
         .event-row.reverse .event-text { direction: ltr; }
-        .event-img { height: 500px; overflow: hidden; border: 1px solid #1a1a1a; }
-        .event-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; }
-        .event-text h2 { font-family: 'Playfair Display'; font-style: italic; font-size: 3.5rem; color: var(--gold); margin-bottom: 20px; }
-        @media (max-width: 900px) { .event-row { grid-template-columns: 1fr; } .event-img { height: 350px; } }
+        .event-visual { height: 450px; overflow: hidden; border: 1px solid #1a1a1a; }
+        .event-visual img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
+        .event-text span { font-family: 'Cinzel'; color: var(--auriu); font-weight: 700; letter-spacing: 3px; font-size: 0.9rem; }
+        .event-text h2 { font-family: 'Playfair Display'; font-style: italic; font-size: clamp(2rem, 5vw, 3.5rem); color: #fff; margin: 15px 0; }
+        @media (max-width: 900px) { .event-row { grid-template-columns: 1fr; gap: 30px; } .event-visual { height: 300px; } }
 
-        .wa-float { position: fixed; bottom: 30px; left: 30px; background: #25d366; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 10000; box-shadow: 0 10px 30px rgba(0,0,0,0.5); color: #fff; }
+        /* FOOTER & WIDGETS */
+        .footer { padding: 80px 20px; text-align: center; background: #000; border-top: 1px solid #111; }
+        .footer-legal a { font-family: 'Cinzel'; font-size: 0.75rem; color: #666; letter-spacing: 2px; margin: 0 10px; }
+        .legal-badges img { height: 50px; opacity: 0.7; margin: 10px; }
+        .wa-float { position: fixed; bottom: 30px; left: 30px; background: #25d366; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 32px; z-index: 10000; color: #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
     </style>
 </head>
 <body>
 
-    <header class="header-nav">
+    <header class="site-header">
         <a href="index.html" class="logo">METANOIA</a>
         <div class="burger" id="burger"><span></span><span></span><span></span></div>
     </header>
 
-    <div class="nav-overlay" id="nav">
-        <a href="index.html">ACASĂ</a>
-        <a href="gastronomie.html">GASTRONOMIE</a>
-        <a href="pensiune.html">PENSIUNE</a>
-        <a href="evenimente.html">EVENIMENTE</a>
-    </div>
+    <nav class="nav-overlay" id="navMenu">
+        <a href="index.html">Acasă</a>
+        <a href="pensiune.html">Pensiune</a>
+        <a href="metanoia.html">Metanoia</a>
+        <a href="gastronomie.html">Gastronomie</a>
+        <a href="evenimente.html">Evenimente</a>
+        <a href="rezervari.html">Rezervare</a>
+        <a href="contact.html">Contact</a>
+    </nav>
 
     <section class="hero">
-        <span>DESTINAȚIA ANULUI</span>
-        <h1>Meta<br>noia.</h1>
-    </section>
-
-    <section class="event-main-section">
-        <div class="story-card">
-            <span>Vi, 1 MAI @ 12:00</span>
-            <h2>1 Mai Romano-Italian</h2>
-            <p>Experiența gustului la 1100m.</p>
-            <a href="evenimente.html" class="btn-event">Detalii Eveniment</a>
+        <div class="hero-content">
+            <span>DESTINAȚIA ANULUI</span>
+            <h1>Meta<br>noia.</h1>
         </div>
     </section>
 
-    <div class="cinematic-grid">
-        <div class="scene-card"><img src="images/miel.jpg"> <div class="scene-info"><span>SCENA 01</span><h3>Gustul.</h3><a href="gastronomie.html">MENIU ARHAIC</a></div></div>
-        <div class="scene-card"><img src="images/apus.jpg"> <div class="scene-info"><span>SCENA 02</span><h3>Tihna.</h3><a href="pensiune.html">DOMENIUL</a></div></div>
-        <div class="scene-card"><img src="images/paine-in-ou.jpg"> <div class="scene-info"><span>SCENA 03</span><h3>Zorii.</h3><p>Micul dejun la munte.</p></div></div>
-        <div class="scene-card"><img src="images/foc.jpg"> <div class="scene-info"><span>SCENA 04</span><h3>Vatra.</h3><p>Inima casei.</p></div></div>
-        <div class="scene-card"><img src="images/gast-masa-traditionala.jpg"> <div class="scene-info"><span>SCENA 05</span><h3>Ospățul.</h3><p>Comunitate.</p></div></div>
-        <div class="scene-card"><img src="images/gast-supa2.jpg"> <div class="scene-info"><span>SCENA 06</span><h3>Ceaunul.</h3><p>Foc viu.</p></div></div>
-        <div class="scene-card"><img src="images/bike.webp"> <div class="scene-info"><span>SCENA 07</span><h3>Drumul.</h3><p>Explorare.</p></div></div>
+    <section class="event-promo">
+        <div class="story-card">
+            <span>Vi, 1 MAI 2026 @ 12:00</span>
+            <h2>1 Mai Romano-Italian</h2>
+            <p>Experiențe autentice gătite la 1100m.</p>
+            <a href="evenimente.html" class="btn-blue">Vezi Evenimentul</a>
+        </div>
+    </section>
+
+    <section class="road-advisory">
+        <i class="fas fa-mountain-sun"></i>
+        <h3>RÂNDUIALA DRUMULUI</h3>
+        <p>Cei 15 KM de drum forestier sunt practicabili, însă recomandăm cu tărie vehiculele SUV sau JEEP pentru confortul dumneavoastră.</p>
+    </section>
+
+    <main class="cinematic-grid">
+        <div class="scene-card">
+            <img src="images/IMG_20260330_160353.webp" alt="Pensiune">
+            <div class="scene-info"><span>SCENA 01</span><h3>Tihna.</h3><a href="pensiune.html" class="scene-link">DOMENIUL</a></div>
+        </div>
+        <div class="scene-card">
+            <img src="images/gast-supa2.jpg" alt="Meniu">
+            <div class="scene-info"><span>SCENA 02</span><h3>Gustul.</h3><a href="gastronomie.html" class="scene-link">MENIUL ARHAIC</a></div>
+        </div>
+        <div class="scene-card">
+            <img src="images/paine-in-ou.jpg" alt="Mic Dejun">
+            <div class="scene-info"><span>SCENA 03</span><h3>Zorii.</h3><p>Micul dejun la munte.</p></div>
+        </div>
+        <div class="scene-card">
+            <img src="images/foc.jpg" alt="Focul">
+            <div class="scene-info"><span>SCENA 04</span><h3>Vatra.</h3><p>Inima casei Metanoia.</p></div>
+        </div>
+        <div class="scene-card">
+            <img src="images/gast-masa-traditionala.jpg" alt="Masa">
+            <div class="scene-info"><span>SCENA 05</span><h3>Ospățul.</h3><p>Momente de comunitate.</p></div>
+        </div>
+        <div class="scene-card">
+            <img src="images/ebike.webp" alt="Explorare">
+            <div class="scene-info"><span>SCENA 06</span><h3>Drumul.</h3><p>Aventură cu E-Bike.</p></div>
+        </div>
+        <div class="scene-card">
+            <img src="images/apus.jpg" alt="Metanoia">
+            <div class="scene-info"><span>SCENA 07</span><h3>Esența.</h3><a href="metanoia.html" class="scene-link">RECONECTARE</a></div>
+        </div>
+    </main>
+
+    <div class="container" style="padding: 0 5%;">
+        <div class="elfsight-app-2a7a128c-e004-486e-961a-99f57d874913" data-elfsight-app-lazy></div>
     </div>
 
     <section class="calendar-section">
-        <h1 style="text-align: center; font-family: 'Cinzel'; color: var(--gold); letter-spacing: 10px; margin-bottom: 100px;">CALENDAR</h1>
-        <div class="event-row"><div class="event-img"><img src="images/gast-supa2.jpg"></div><div class="event-text"><span>01 MAI 2026</span><h2>Serata Romano-Italiană</h2><p>Mâncare la ceaun sub cerul liber.</p></div></div>
-        <div class="event-row reverse"><div class="event-img"><img src="images/bike.webp"></div><div class="event-text"><span>09-10 MAI 2026</span><h2>Bike & Flowers</h2><p>Expediție la Poiana Narciselor.</p></div></div>
-        <div class="event-row"><div class="event-img"><img src="images/Sarmizegetusa.jpg"></div><div class="event-text"><span>IUNIE 2026</span><h2>Go Nomad</h2><p>Explorarea vestigiilor uitate.</p></div></div>
+        <h1 class="calendar-title">CALENDAR</h1>
+        <div class="event-row">
+            <div class="event-visual"><img src="images/gast-supa2.jpg"></div>
+            <div class="event-text"><span>01 MAI 2026</span><h2>Serata Romano-Italiană</h2><p>Mâncare la ceaun sub cerul liber.</p></div>
+        </div>
+        <div class="event-row reverse">
+            <div class="event-visual"><img src="images/bike.webp"></div>
+            <div class="event-text"><span>09-10 MAI 2026</span><h2>Bike & Flowers</h2><p>Expediție e-bike la Poiana Narciselor.</p></div>
+        </div>
+        <div class="event-row">
+            <div class="event-visual"><img src="images/Sarmizegetusa.jpg"></div>
+            <div class="event-text"><span>IUNIE 2026</span><h2>Go Nomad</h2><p>Explorarea vestigiilor uitate ale munților.</p></div>
+        </div>
     </section>
 
-    <a href="https://wa.me/40749229686" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <div style="background:#000; padding:60px 0;">
+        <div class="elfsight-app-4342bef8-07d4-4bfe-9114-34160d0e96f1" data-elfsight-app-lazy></div>
+        <div class="elfsight-app-9e87d320-859d-4ef5-9a42-3eaeeaadb2d7" data-elfsight-app-lazy></div>
+        <div class="elfsight-app-8217fa9c-47ca-4b54-bb21-6a682ba7a413" data-elfsight-app-lazy></div>
+    </div>
+
+    <footer class="footer">
+        <p style="font-size:0.8rem; color:#444; letter-spacing:2px; margin-bottom:20px;">DAKAMIGOS MARKT SRL | CUI: RO40767794</p>
+        <div class="footer-legal">
+            <a href="politica-cookies.html">COOKIES</a> | <a href="confidentialitate.html">GDPR</a>
+        </div>
+        <div class="legal-badges">
+            <img src="images/anpc-sal.png" alt="ANPC SAL">
+            <img src="images/anpc-sol.png" alt="ANPC SOL">
+        </div>
+        <p style="margin-top:40px; font-family:'Cinzel'; font-size:0.7rem; color:#888; letter-spacing:5px;">HAȚEG ALTERNATIV &copy; 2026</p>
+    </footer>
+
+    <a href="https://wa.me/40749229686" class="wa-float" target="_blank" aria-label="Contact WhatsApp"><i class="fab fa-whatsapp"></i></a>
 
     <script>
         const burger = document.getElementById('burger');
-        const nav = document.getElementById('nav');
-        burger.onclick = () => nav.classList.toggle('active');
+        const nav = document.getElementById('navMenu');
+        burger.onclick = () => {
+            nav.classList.toggle('active');
+            burger.classList.toggle('toggle');
+        };
     </script>
 </body>
 </html>
