@@ -19,58 +19,54 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background-color: var(--dark); color: #e0e0e0; font-family: 'Inter', sans-serif; line-height: 1.6; }
 
-        /* HEADER RUSTIC */
         .header-menu { 
             padding: 40px 20px; text-align: center; border-bottom: 1px solid rgba(197, 160, 89, 0.3);
             background: linear-gradient(to bottom, #000, var(--dark));
         }
-        .header-menu h1 { font-family: 'Cinzel'; color: var(--gold); font-size: 1.8rem; letter-spacing: 4px; }
-        .header-menu p { font-family: 'Playfair Display'; font-style: italic; font-size: 1.2rem; color: #888; }
+        .header-menu h1 { font-family: 'Cinzel'; color: var(--gold); font-size: 1.6rem; letter-spacing: 3px; }
+        .header-menu p { font-family: 'Playfair Display'; font-style: italic; font-size: 1.1rem; color: #888; }
 
         .container { max-width: 600px; margin: 0 auto; padding: 40px 20px; }
 
-        /* SECTIUNE MENIU */
         .menu-section { margin-bottom: 60px; }
         .section-title { 
-            font-family: 'Cinzel'; color: var(--gold); font-size: 1.4rem; 
+            font-family: 'Cinzel'; color: var(--gold); font-size: 1.3rem; 
             border-bottom: 1px solid var(--gold); display: inline-block;
             margin-bottom: 30px; padding-bottom: 5px; letter-spacing: 2px;
         }
 
-        .menu-item { margin-bottom: 30px; position: relative; }
+        .menu-item { margin-bottom: 40px; }
         .item-header { display: flex; justify-content: space-between; align-items: baseline; }
         .item-name { font-family: 'Cinzel'; font-weight: 700; font-size: 1.1rem; color: #fff; }
         .item-dots { flex: 1; border-bottom: 1px dotted #444; margin: 0 10px; }
         .item-price { font-family: 'Cinzel'; color: var(--gold); font-weight: bold; }
-        .item-desc { font-size: 0.85rem; color: #777; font-style: italic; margin-top: 5px; }
+        .item-desc { font-size: 0.85rem; color: #888; font-style: italic; margin-top: 5px; margin-bottom: 15px; }
 
-        /* IMAGINI INTEGRATE IN MENIU */
         .menu-img { 
-            width: 100%; height: 250px; object-fit: cover; border-radius: 5px; 
-            margin: 15px 0; border: 1px solid #222; filter: sepia(20%) contrast(110%);
+            width: 100%; height: auto; max-height: 350px; object-fit: cover; border-radius: 12px; 
+            margin: 10px 0; border: 1px solid #222; box-shadow: 0 10px 20px rgba(0,0,0,0.5);
         }
 
-        /* BANNER SPECIALITATE */
         .special-box { 
-            background: var(--wood); border: 2px solid var(--gold); padding: 30px; 
-            text-align: center; margin-bottom: 50px; box-shadow: 0 0 20px rgba(197, 160, 89, 0.1);
+            background: var(--wood); border: 1px solid var(--gold); padding: 25px; 
+            text-align: center; margin-bottom: 50px; border-radius: 15px;
         }
-        .special-box h3 { font-family: 'Cinzel'; color: var(--gold); margin-bottom: 15px; }
+        .special-box h3 { font-family: 'Cinzel'; color: var(--gold); margin-bottom: 15px; font-size: 1.2rem; }
 
-        .footer-cta { text-align: center; padding: 60px 20px; background: #000; }
         .btn-gold { 
             display: inline-block; padding: 15px 35px; border: 1px solid var(--gold); 
             color: var(--gold); text-decoration: none; font-family: 'Cinzel'; 
-            letter-spacing: 2px; font-weight: bold; transition: 0.3s;
+            letter-spacing: 2px; font-weight: bold; border-radius: 5px;
         }
-        .btn-gold:hover { background: var(--gold); color: #000; }
+
+        footer { text-align: center; padding: 60px 20px; font-size: 0.7rem; opacity: 0.5; letter-spacing: 2px; }
     </style>
 </head>
 <body>
 
     <header class="header-menu">
         <p>Rânduiala de la 1100m</p>
-        <h1>Gastronomie Arhaică</h1>
+        <h1>GASTRONOMIE ARHAICĂ</h1>
     </header>
 
     <main class="container">
@@ -84,7 +80,7 @@
                     <span class="item-dots"></span>
                     <span class="item-price">Inclus</span>
                 </div>
-                <p class="item-desc">Rețeta bunicii, prăjită în untură curată, servită cu brânză de munte.</p>
+                <p class="item-desc">Rețeta bunicii, gătite cu ouă proaspete de munte.</p>
                 <img src="images/paine-in-ou.jpg" class="menu-img" alt="Paine in ou">
             </div>
 
@@ -94,22 +90,39 @@
                     <span class="item-dots"></span>
                     <span class="item-price">Inclus</span>
                 </div>
-                <p class="item-desc">Slănină afumată, brânză de burduf, ceapă roșie și roșii din grădină.</p>
-                <img src="images/platou-traditional.jpg" class="menu-img" alt="Platou traditional">
+                <p class="item-desc">Slănină, brânză de munte și ceapă roșie.</p>
+                <img src="images/gast-masa-traditionala.jpg" class="menu-img" alt="Platou traditional">
             </div>
         </section>
 
         <div class="special-box">
             <h3>Piesa Centrală</h3>
-            <p style="font-family: 'Playfair Display'; font-style: italic; color: #fff; font-size: 1.3rem;">Miel la Ceaun pe Jar Viu</p>
-            <p class="item-desc" style="margin-bottom: 20px;">Gătit lent, 6 ore, în tăcerea muntelui.</p>
-            <img src="images/miel-ceaun.jpg" class="menu-img" alt="Miel la ceaun">
+            <p style="font-family: 'Playfair Display'; font-style: italic; color: #fff; font-size: 1.4rem; margin-bottom: 10px;">Miel la Ceaun pe Jar Viu</p>
+            <img src="images/miel.jpg" class="menu-img" alt="Miel la ceaun">
+            <p class="item-desc">Gătit lent, în tăcerea muntelui.</p>
         </div>
 
         <section class="menu-section">
             <h2 class="section-title">Ospățul Muntelui</h2>
-            
             <div class="menu-item">
                 <div class="item-header">
                     <span class="item-name">Ciorbă la Foc de Lemne</span>
-                    <span class="
+                    <span class="item-dots"></span>
+                    <span class="item-price">Inclus</span>
+                </div>
+                <img src="images/gast-supa2.jpg" class="menu-img" alt="Ceaun supa">
+            </div>
+        </section>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="https://wa.me/40749229686" class="btn-gold">REZERVĂ LOC LA MASĂ</a>
+        </div>
+
+    </main>
+
+    <footer>
+        DOMENIILE LA BULIGĂ // VADU DOBRII 2026
+    </footer>
+
+</body>
+</html>
