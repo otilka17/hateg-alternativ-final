@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gastronomie | Metanoia</title>
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18106516696"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -8,123 +11,97 @@
       gtag('js', new Date());
       gtag('config', 'AW-18106516696');
     </script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gastronomie | Hrană Reală la Vadu Dobrii</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,900&family=Cinzel:wght@400;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
+    
     <style>
-        :root { --auriu: #c5a059; --negru: #050505; --alb: #ffffff; }
+        :root { --blue-accent: #4da6e6; --dark-text: #1a1a1a; --light-text: #666; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; line-height: 1.8; }
-        a { text-decoration: none !important; color: inherit !important; }
-
-        .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; }
-        .brand-logo svg { height: 60px; filter: drop-shadow(0 0 10px #000); }
-        .burger { cursor: pointer; z-index: 10001; background: rgba(0,0,0,0.6); padding: 10px; border-radius: 8px; }
-        .burger div { width: 25px; height: 2px; background: var(--auriu); margin: 5px; }
-
-        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: var(--negru); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.6s; z-index: 10000; }
-        .main-nav.active { right: 0; }
-        .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 15px 0; letter-spacing: 5px; }
-
-        .hero-gastro { height: 60vh; background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&q=80&w=1500') center/cover; display: flex; align-items: center; justify-content: center; border-bottom: 2px solid var(--auriu); }
-        .hero-gastro h1 { font-family: 'Playfair Display'; font-size: 4rem; font-style: italic; color: var(--auriu); }
-
-        .container { max-width: 1100px; margin: 0 auto; padding: 80px 20px; }
+        body { font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto; background: #fff; color: var(--dark-text); line-height: 1.5; }
         
-        /* COPERTA MENIU */
-        .menu-cover { border: 1px solid var(--auriu); padding: 50px; background: #080808; text-align: center; margin-bottom: 100px; position: relative; }
-        .menu-cover h2 { font-family: 'Playfair Display'; font-size: 2.5rem; color: #fff; margin-bottom: 30px; font-style: italic; }
-        .menu-item { margin-bottom: 30px; }
-        .menu-item h4 { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 3px; }
-        .menu-item p { font-size: 0.9rem; color: #777; font-style: italic; }
+        .page-wrapper { max-width: 450px; margin: 0 auto; padding: 40px 20px; text-align: center; }
+        
+        h1 { font-size: 34px; font-weight: 800; margin-bottom: 2px; letter-spacing: -1px; }
+        .blue-title { font-size: 34px; font-weight: 800; color: var(--blue-accent); margin-bottom: 25px; letter-spacing: -1px; }
+        
+        .sub-heading { font-size: 17px; color: var(--dark-text); font-weight: 500; margin-bottom: 20px; line-height: 1.4; }
+        
+        .btn-blue {
+            display: inline-block;
+            background: var(--blue-accent);
+            color: #fff;
+            padding: 16px 40px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+            margin: 15px 0;
+            box-shadow: 0 10px 20px rgba(77, 166, 230, 0.25);
+        }
 
-        /* INFO MANCARE RESTAURATA */
-        .gastro-row { display: flex; flex-wrap: wrap; gap: 50px; margin-bottom: 100px; align-items: center; }
-        .gastro-row:nth-child(even) { flex-direction: row-reverse; }
-        .gastro-text { flex: 1; min-width: 300px; }
-        .gastro-text h3 { font-family: 'Cinzel'; color: var(--auriu); font-size: 1.8rem; margin-bottom: 20px; }
-        .gastro-text p { color: #aaa; margin-bottom: 20px; }
-        .gastro-img { flex: 1; min-width: 300px; height: 450px; border: 1px solid #1a1a1a; }
-        .gastro-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; }
+        .tagline { font-size: 15px; color: var(--light-text); margin-top: 15px; margin-bottom: 45px; font-weight: 400; }
 
-        #system-health { position: fixed; bottom: 15px; left: 100px; width: 10px; height: 10px; border-radius: 50%; background: gray; z-index: 9999; }
-        .whatsapp-float { position: fixed; bottom: 25px; left: 25px; background: #25d366; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 1001; }
+        /* GALERIE FOTO MÂNCARE */
+        .food-gallery { display: flex; flex-direction: column; gap: 30px; margin-top: 10px; }
+        .food-card { border-radius: 24px; overflow: hidden; background: #fff; border: 1px solid #f0f0f0; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+        .food-card img { width: 100%; height: 320px; object-fit: cover; display: block; }
+        .food-label { padding: 18px; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--blue-accent); background: #fafafa; border-top: 1px solid #f0f0f0; }
+
+        /* FLOATING CHAT */
+        .chat-bubble { position: fixed; bottom: 25px; right: 20px; background: var(--blue-accent); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 16px rgba(77, 166, 230, 0.3); z-index: 999; }
+        .chat-bubble svg { width: 28px; height: 28px; fill: white; }
     </style>
 </head>
 <body>
-    <div id="system-health"></div>
-    <a href="https://wa.me/40749229686" class="whatsapp-float"><i class="fab fa-whatsapp"></i></a>
 
-    <header class="site-header">
-        <a href="index.html" class="brand-logo">
-            <svg viewBox="0 0 800 500"><circle cx="400" cy="250" r="105" fill="none" stroke="#c5a059" stroke-width="4"/><path d="M300 400 L400 200 L500 400 Z" fill="#c5a059"/></svg>
-        </a>
-        <div class="burger" id="burger"><div></div><div></div><div></div></div>
-        <nav class="main-nav" id="nav-links">
-            <a href="index.html">Acasă</a>
-            <a href="pensiune.html">Pensiune</a>
-            <a href="padureni.html">Pădureni</a>
-            <a href="gastronomie.html">Gastronomie</a>
-            <a href="curs.html">Ușa Secretă</a>
-        </nav>
-    </header>
+    <div class="page-wrapper">
+        <h1>Bucate rânduite</h1>
+        <div class="blue-title">PE JAR VIU</div>
 
-    <section class="hero-gastro"><h1>Hrană Reală.</h1></section>
+        <p class="sub-heading">De la stână direct în ceaun. Gustul care nu se uită.</p>
 
-    <main class="container">
-        <div class="menu-cover">
-            <span style="font-family:'Cinzel'; color:var(--auriu); letter-spacing:5px; font-size:0.7rem;">PROTOCOL CULINAR</span>
-            <h2>Meniul Zilei la 1100m</h2>
-            <div class="menu-item">
-                <h4>CIORBĂ DE CASĂ</h4>
-                <p>Legume proaspete și afumătură rânduită la jar.</p>
+        <a href="https://wa.me/40749229686" class="btn-blue">Vreau să mănânc</a>
+
+        <p class="tagline">Produs local. Gătit lent. Servit în tăcere.</p>
+
+        <div class="food-gallery">
+            <div class="food-card">
+                <img src="images/miel-ceaun.jpg" alt="Miel la ceaun">
+                <div class="food-label">Miel la ceaun</div>
             </div>
-            <div class="menu-item">
-                <h4>CEAUNUL PĂDUREANULUI</h4>
-                <p>Vită sau vânat, slow-cooked 6 ore, servit cu mămăligă caldă.</p>
+
+            <div class="food-card">
+                <img src="images/placinte-lespede.jpg" alt="Placinte pe lespede">
+                <div class="food-label">Plăcinte pe lespede</div>
             </div>
-            <div class="menu-item">
-                <h4>DESERTUL MUNTELUI</h4>
-                <p>Plăcinte pe lespede cu brânză sau afine sălbatice.</p>
+
+            <div class="food-card">
+                <img src="images/gast-supa2.jpg" alt="Ceaun supa">
+                <div class="food-label">Ciorba de la 1100m</div>
+            </div>
+
+            <div class="food-card">
+                <img src="images/platou-traditional.jpg" alt="Platou cu branza si slanina">
+                <div class="food-label">Platoul Arhitectului</div>
+            </div>
+
+            <div class="food-card">
+                <img src="images/paine-in-ou.jpg" alt="Paine in ou">
+                <div class="food-label">Pâinea în ou (Mic dejun)</div>
+            </div>
+
+            <div class="food-card">
+                <img src="images/gast-masa-traditionala.jpg" alt="Masa intinsa">
+                <div class="food-label">Ospăț Pădurenesc</div>
             </div>
         </div>
 
-        <div class="gastro-row">
-            <div class="gastro-text">
-                <h3>Gătit asumat la foc de lemne.</h3>
-                <p>Nu folosim aragaze moderne. Gustul nostru vine din răbdare, jar viu și fontă. Fiecare masă este un ritual care începe cu tăierea lemnelor și se termină în tăcere.</p>
-                <p>Ingredientele sunt colectate de la stânele din împrejurimi sau din grădinile oamenilor locului, păstrând amprenta curată a muntelui.</p>
-            </div>
-            <div class="gastro-img"><img src="https://images.unsplash.com/photo-1547524513-593f8758ee76?auto=format&fit=crop&q=80&w=1000" alt="Ceaun"></div>
-        </div>
+        <footer style="margin-top: 80px; padding-bottom: 40px; font-size: 11px; color: #bbb; letter-spacing: 3px;">
+            METANOIA GASTRONOMY // RECONECTARE PRIN GUST
+        </footer>
+    </div>
 
-        <div class="gastro-row">
-            <div class="gastro-text">
-                <h3>Ingrediente de altitudine.</h3>
-                <p>Carnea de vânat, ciupercile de pădure și brânza maturată sunt baza meniului nostru. Nu avem meniu "a la carte" pentru că gătim ce ne oferă muntele în ziua respectivă.</p>
-                <p>Este un sistem de gastronomie strategică, unde prospețimea este singura regulă care contează.</p>
-            </div>
-            <div class="gastro-img"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=1000" alt="Friptura"></div>
-        </div>
-    </main>
+    <div class="chat-bubble" onclick="window.location.href='https://wa.me/40749229686'">
+        <svg viewBox="0 0 24 24"><path d="M12,2C6.477,2,2,6.477,2,12c0,1.821,0.487,3.53,1.338,5L2,22l5.005-1.334C8.481,21.514,10.191,22,12,22c5.523,0,10-4.477,10-10C22,6.477,17.523,2,12,2z M12,20c-1.478,0-2.871-0.367-4.093-1.011l-0.297-0.156L4.318,19.664l0.829-3.322l-0.155-0.294C4.364,14.823,4,13.434,4,12c0-4.411,3.589-8,8-8s8,3.589,8,8S16.411,20,12,20z M8.5,13.5c-0.828,0-1.5-0.672-1.5-1.5s0.672-1.5,1.5-1.5s1.5,0.672,1.5,1.5S9.328,13.5,8.5,13.5z M12,13.5c-0.828,0-1.5-0.672-1.5-1.5s0.672-1.5,1.5-1.5s1.5,0.672,1.5,1.5S12.828,13.5,12,13.5z M15.5,13.5c-0.828,0-1.5-0.672-1.5-1.5s0.672-1.5,1.5-1.5s1.5,0.672,1.5,1.5S16.328,13.5,15.5,13.5z"/></svg>
+    </div>
 
-    <script>
-        const burger = document.getElementById('burger');
-        const nav = document.getElementById('nav-links');
-        burger.onclick = () => nav.classList.toggle('active');
-        window.onload = () => { document.getElementById('system-health').style.background = typeof gtag === 'function' ? '#00ff00' : '#ff0000'; };
-    </script>
-    <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true; s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
-    s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
-    </script>
 </body>
 </html>
