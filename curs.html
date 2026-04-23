@@ -2,67 +2,84 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Curs Elite 2026 | Hațeg Alternativ</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body { 
-            background: #050505; 
-            color: #fff; 
-            font-family: 'Cinzel', serif; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            height: 100vh; 
-            margin: 0; 
-            background-image: radial-gradient(circle, #1a1a1a 0%, #050505 100%);
-        }
-        .container { 
-            text-align: center; 
-            border: 1px solid #c5a059; 
-            padding: 80px 40px; 
-            background: rgba(10, 10, 10, 0.9);
-            box-shadow: 0 0 50px rgba(0,0,0,1);
-        }
-        h1 { color: #c5a059; letter-spacing: 8px; margin-bottom: 40px; font-size: 2rem; }
+        :root { --auriu: #c5a059; --fond: #fcfaf8; --text: #1a1a1a; --carbune: #111; }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        body { background: var(--fond); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.6; }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 60px 20px; }
+        h1, h2 { font-family: 'Playfair Display'; font-style: italic; color: var(--auriu); text-align: center; margin-bottom: 30px; }
+        h1 { font-size: clamp(2.5rem, 8vw, 4.5rem); }
         
-        .btn-bomba {
-            background: #c5a059;
-            color: #000;
-            padding: 25px 50px;
-            font-size: 1.1rem;
-            font-weight: 900;
-            text-decoration: none;
-            border: none;
-            cursor: pointer;
-            display: inline-block;
-            transition: all 0.4s ease;
-            letter-spacing: 3px;
-            text-transform: uppercase;
+        .intro-text { font-size: 1.15rem; text-align: center; color: #444; margin-bottom: 60px; max-width: 750px; margin-left: auto; margin-right: auto; }
+        
+        .modul-preview { background: white; border: 1px solid #eee; padding: 40px; margin-bottom: 25px; transition: 0.3s; }
+        .modul-preview:hover { border-color: var(--auriu); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .modul-preview h3 { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 3px; margin-bottom: 15px; }
+
+        /* POARTA SECRETA */
+        .poarta-secreta { margin-top: 80px; padding: 60px; background: var(--carbune); color: white; text-align: center; border-radius: 2px; }
+        .poarta-secreta h2 { color: var(--auriu); font-family: 'Cinzel'; letter-spacing: 5px; font-size: 1.2rem; }
+        
+        .btn-acces { 
+            background: var(--auriu); color: #000; padding: 18px 40px; border: none; 
+            font-family: 'Cinzel'; font-weight: 900; font-size: 1rem; letter-spacing: 2px; 
+            cursor: pointer; margin-top: 30px; transition: 0.4s;
         }
-        .btn-bomba:hover {
-            background: #ffffff;
-            transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(197, 160, 89, 0.5);
+        .btn-acces:hover { background: #fff; transform: scale(1.05); }
+
+        #lock-screen { display: none; margin-top: 30px; }
+        #key-input { 
+            background: transparent; border: 1px solid var(--auriu); color: var(--auriu); 
+            padding: 15px; font-family: 'Cinzel'; font-size: 1.5rem; text-align: center; 
+            letter-spacing: 10px; width: 100%; max-width: 350px; outline: none;
         }
-        .key-info {
-            margin-top: 30px;
-            font-size: 0.9rem;
-            color: #c5a059;
-            letter-spacing: 5px;
-            opacity: 0.7;
-        }
+        .error-msg { color: #ff4d4d; font-size: 0.8rem; margin-top: 10px; display: none; font-family: 'Inter'; }
+
+        footer { text-align: center; padding: 60px; font-family: 'Cinzel'; color: #aaa; font-size: 0.7rem; letter-spacing: 4px; }
     </style>
 </head>
 <body>
+
     <div class="container">
-        <p style="letter-spacing: 10px; color: #555; margin-bottom: 10px;">DOMENIILE LA BULIGĂ</p>
-        <h1>MATERIAL INTEGRAL</h1>
-        
-        <a href="Curs_Integral_Elita_2026.pdf" class="btn-bomba" target="_blank">
-            DESCHIDE CURSUL (ELITA2026)
-        </a>
-        
-        <div class="key-info">CHEIA: ELITA2026</div>
+        <h1>Jocul Premium.</h1>
+        <p class="intro-text">
+            Oprește-te din a fi sclavul algoritmului. Învață arhitectura sistemului care transformă conversațiile în profit.
+        </p>
+
+        <div class="modul-preview">
+            <h3>01. Mentalitatea de Elită</h3>
+            <p>Ești antreprenor, nu influencer. Nu mai crea conținut pentru a fi plăcut, creează-l pentru a fi respectat.</p>
+        </div>
+
+        <div class="modul-preview">
+            <h3>02. Sistemul Elite DM</h3>
+            <p>Conversația privată este noul tău magazin exclusivist. Preia controlul și nu arunca prețul din prima.</p>
+        </div>
+
+        <div class="modul-preview">
+            <h3>03. Harta pe 30 de Zile</h3>
+            <p>Planul matematic: Zilele 1-5 (Arhitectura), 6-20 (Vânătoarea), 21-30 (Averea din Follow-up).</p>
+        </div>
+
+        <section class="poarta-secreta">
+            <h2>POARTA SECRETA 🏕️</h2>
+            <p style="opacity: 0.7; margin-top: 10px;">Accesul la Masterplanul Integral este rezervat exclusiv membrilor.</p>
+            
+            <button id="btn-poarta" class="btn-acces" onclick="showLock()">DESCHIDE POARTA</button>
+
+            <div id="lock-screen">
+                <input type="text" id="key-input" placeholder="********" oninput="checkKey(this.value)">
+                <p id="error-msg" class="error-msg">CHEIE INCORECTĂ. ACCES REFUZAT.</p>
+            </div>
+        </section>
     </div>
-</body>
-</html>
+
+    <footer>HAȚEG ALTERNATIV &copy; 2026</footer>
+
+    <script>
+        function showLock() {
+            document.getElementById('btn-poarta').style.
