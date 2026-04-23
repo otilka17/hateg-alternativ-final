@@ -10,6 +10,7 @@
 
     <style>
         :root { 
+            /* SCHIMBAT: Din galben strident în auriu cremos */
             --auriu-gold: #c5a059; 
             --negru-pur: #0a0a0a; 
             --alb: #ffffff;
@@ -59,7 +60,7 @@
         .features-list li::before { content: "\f00c"; font-family: "Font Awesome 6 Free"; font-weight: 900; color: var(--auriu-gold); position: absolute; left: 0; top: 0; }
 
         .grid-vibe { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 15px; padding: 0 50px 100px; max-width: 1400px; margin: 0 auto; }
-        .img-item { height: 450px; background-size: cover; background-position: center; border: 1px solid #222; transition: 0.5s; position: relative; overflow: hidden; background-color: #111; }
+        .img-item { height: 450px; background-size: cover; background-position: center; border: 1px solid #222; transition: 0.5s; position: relative; overflow: hidden; }
         .img-item:hover { border-color: var(--auriu-gold); transform: scale(1.02); }
 
         .forum-section { padding: 120px 50px; }
@@ -81,134 +82,4 @@
             .forum-form { grid-template-columns: 1fr; }
             .forum-form textarea, .forum-form button { grid-column: 1; }
             .site-header { padding: 20px; }
-            .grid-vibe, .content-section, .features-section { padding: 80px 20px; }
-            .features-list { grid-template-columns: 1fr; }
-            .desc-text { text-align: center; }
-        }
-    </style>
-</head>
-<body>
-
-    <a href="https://wa.me/40749229686" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
-
-    <header class="site-header">
-        <a href="index.html" class="brand">
-            <svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="400" cy="280" r="105" fill="none" stroke="#c5a059" stroke-width="2" opacity="0.4"/>
-                <path d="M300 450 L400 250 L500 450 Z" fill="#c5a059"/>
-                <text x="400" y="765" font-family="'Cinzel'" text-anchor="middle" font-size="40" fill="#c5a059">HAȚEG ALTERNATIV</text>
-            </svg>
-        </a>
-        <div class="burger" id="burger"><div></div><div></div><div></div></div>
-        <nav class="main-nav" id="nav-links">
-            <a href="index.html">Acasă</a>
-            <a href="pensiune.html">Pensiunea</a>
-            <a href="metanoia.html">Metanoia</a>
-            <a href="gastronomie.html">Gastronomie</a>
-        </nav>
-    </header>
-
-    <section class="hero-sub">
-        <div class="hero-content">
-            <h1>La Buligă.</h1>
-            <p>Rânduiala Veche în Munte</p>
-        </div>
-    </section>
-
-    <main>
-        <section class="content-section">
-            <h2>O Casă de Oaspeți cu Suflet</h2>
-            <p class="lead-text">Acolo unde timpul se măsoară în răsărituri, nu în ore. O experiență de locuire autentică, izolată în inima sălbăticiei.</p>
-            
-            <div class="desc-text">
-                <p>La Buligă nu este doar o pensiune, ci o întoarcere la esențial. Situată pe o coamă izolată de munte, departe de zgomotul civilizației, casa noastră a fost restaurată cu respect pentru arhitectura tradițională a zonei Hațegului.</p>
-                <p>Am păstrat bârnele vechi de lemn, pereții groși de piatră și am adăugat confortul modern discret, pentru ca tu să te poți concentra pe ceea ce contează cu adevărat: liniștea profundă și reconectarea cu natura brută din jurul tău.</p>
-            </div>
-
-            <div class="specs-grid">
-                <div class="spec-item">
-                    <i class="fas fa-home"></i>
-                    <h4>CASĂ INTEGRALĂ</h4>
-                    <p>Închiriere exclusivă pentru grupul tău.</p>
-                </div>
-                <div class="spec-item">
-                    <i class="fas fa-bed"></i>
-                    <h4>5 DORMITOARE</h4>
-                    <p>Capacitate confortabilă de 10 persoane.</p>
-                </div>
-                <div class="spec-item">
-                    <i class="fas fa-mountain"></i>
-                    <h4>IZOLARE TOTALĂ</h4>
-                    <p>Situată la peste 1000m altitudine, fără vecini.</p>
-                </div>
-                <div class="spec-item">
-                    <i class="fas fa-fire-alt"></i>
-                    <h4>ȘEMINEU</h4>
-                    <p>Seară de poveste lângă focul de lemne.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="features-section">
-            <div class="features-container">
-                <h3>Detalii și Rânduială</h3>
-                <ul class="features-list">
-                    <li>Living generos cu zonă de luat masa și șemineu tradițional.</li>
-                    <li>Bucătărie complet echipată pentru prepararea propriilor mese.</li>
-                    <li>2 băi moderne cu finisaje premium.</li>
-                    <li>Pergolă panoramică cu vedere spre masivul Retezat.</li>
-                    <li>Zonă exterioară pentru grătar și ceaun, cu lemne incluse.</li>
-                    <li>Zonă de relaxare în curte ("Curechiul"), perfectă pentru citit.</li>
-                    <li>Posibilitatea de a comanda coșuri cu produse bio locale.</li>
-                    <li>Acces la trasee montane neexplorate direct de la poartă.</li>
-                </ul>
-            </div>
-        </section>
-
-        <section class="grid-vibe">
-            <div class="img-item" style="background-image: url('images/IMG_20260330_160344.webp');"></div>
-            <div class="img-item" style="background-image: url('images/IMG_20260330_160353.webp');"></div>
-            <div class="img-item" style="background-image: url('images/IMG_20260330_160505.webp');"></div>
-            <div class="img-item" style="background-image: url('images/sura.jpg');"></div>
-            <div class="img-item" style="background-image: url('images/foc.jpg');"></div> <div class="img-item" style="background-image: url('images/apus.jpg');"></div>
-        </section>
-
-        <section class="forum-section" id="booking">
-            <div class="forum-container">
-                <h2>SOLICITĂ REZERVAREA CASEI</h2>
-                <form class="forum-form" action="https://formspree.io/f/xjgpvbkj" method="POST">
-                    <input type="hidden" name="Pachet" value="Închiriere Casă La Buligă">
-                    <input type="text" name="name" placeholder="Numele tău complet" required>
-                    <input type="email" name="_replyto" placeholder="Adresa de email" required>
-                    <input type="text" name="phone" placeholder="Număr de telefon">
-                    <select name="period" required>
-                        <option value="" disabled selected>Selectează perioada estimativă</option>
-                        <option value="weekend">Weekend (Vineri - Duminică)</option>
-                        <option value="curs_saptamana">În cursul săptămânii</option>
-                        <option value="saptamana_intreaga">O săptămână întreagă</option>
-                    </select>
-                    <textarea name="message" rows="6" placeholder="Spune-ne mai multe (Perioada exactă, număr de persoane, întrebări specifice)..."></textarea>
-                    <button type="submit" class="btn-gold">TRIMITE CEREREA DE DISPONIBILITATE</button>
-                </form>
-            </div>
-        </section>
-    </main>
-
-    <footer>HAȚEG ALTERNATIV &copy; 2026</footer>
-
-    <script>
-        const burger = document.getElementById('burger');
-        const nav = document.getElementById('nav-links');
-        burger.addEventListener('click', () => { nav.classList.toggle('active'); });
-    </script>
-
-    <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true; s1.src='https://embed.tawk.to/65c5607435e8d61c3a875f21/1hklg1i9s';
-    s1.charset='UTF-8'; s1.setAttribute('crossorigin','*'); s0.parentNode.insertBefore(s1,s0);
-    })();
-    </script>
-</body>
-</html>
+            .grid-vibe, .content-section, .features-section { padding: 80px
