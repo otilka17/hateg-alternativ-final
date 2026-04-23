@@ -60,11 +60,6 @@
             <p>Conversația privată este noul tău magazin exclusivist. Preia controlul și nu arunca prețul din prima.</p>
         </div>
 
-        <div class="modul-preview">
-            <h3>03. Harta pe 30 de Zile</h3>
-            <p>Planul matematic: Zilele 1-5 (Arhitectura), 6-20 (Vânătoarea), 21-30 (Averea din Follow-up).</p>
-        </div>
-
         <section class="poarta-secreta">
             <h2>POARTA SECRETA 🏕️</h2>
             <p style="opacity: 0.7; margin-top: 10px;">Accesul la Masterplanul Integral este rezervat exclusiv membrilor.</p>
@@ -82,4 +77,24 @@
 
     <script>
         function showLock() {
-            document.getElementById('btn-poarta').style.
+            document.getElementById('btn-poarta').style.display = 'none';
+            document.getElementById('lock-screen').style.display = 'block';
+            document.getElementById('key-input').focus();
+        }
+
+        function checkKey(val) {
+            const key = val.toUpperCase().trim();
+            const error = document.getElementById('error-msg');
+            
+            if (key === 'ELITA2026') {
+                // REDIRECȚIONARE CĂTRE MASTERPLAN.HTML
+                window.location.href = 'masterplan.html';
+            } else if (key.length >= 9) {
+                error.style.display = 'block';
+            } else {
+                error.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
