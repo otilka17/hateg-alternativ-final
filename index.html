@@ -13,13 +13,12 @@
     <style>
         :root { --auriu: #c5a059; --negru: #050505; --alb: #ffffff; }
         
-        /* Reset pentru a elimina scroll-ul lateral */
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         html, body { overflow-x: hidden; width: 100%; position: relative; background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
 
         a { text-decoration: none; }
 
-        /* HEADER - Spatieri flexibile */
+        /* HEADER */
         .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: clamp(15px, 5vw, 30px) clamp(15px, 5vw, 50px); display: flex; justify-content: space-between; align-items: center; }
         .brand-logo svg { height: clamp(50px, 10vw, 85px); width: auto; filter: drop-shadow(0 0 15px rgba(0, 0, 0, 1)); }
         
@@ -34,7 +33,7 @@
         .main-nav.active { right: 0; }
         .main-nav a { font-size: 2rem; font-family: 'Cinzel'; margin: 15px 0; color: #fff !important; text-transform: uppercase; letter-spacing: 5px; text-shadow: 2px 2px 15px #000; }
 
-        /* HERO - Text adaptabil (Clamp) */
+        /* HERO */
         .hero-slider { width: 100%; height: 100vh; overflow: hidden; position: relative; }
         .slider-track { display: flex; width: 100%; height: 100%; transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1); }
         .slide { min-width: 100%; height: 100%; position: relative; }
@@ -76,8 +75,7 @@
             flex-wrap: wrap;
         }
 
-        .hero-btn-primary,
-        .hero-btn-secondary {
+        .hero-btn-primary, .hero-btn-secondary {
             display: inline-block;
             padding: 14px 28px;
             font-family: 'Cinzel';
@@ -87,65 +85,27 @@
             transition: 0.3s ease;
         }
 
-        .hero-btn-primary {
-            background: var(--auriu);
-            color: #000 !important;
-            border: 1px solid var(--auriu);
-        }
-
-        .hero-btn-primary:hover {
-            background: transparent;
-            color: var(--auriu) !important;
-        }
-
-        .hero-btn-secondary {
-            background: rgba(0,0,0,0.45);
-            color: var(--auriu) !important;
-            border: 1px solid var(--auriu);
-        }
-
-        .hero-btn-secondary:hover {
-            background: var(--auriu);
-            color: #000 !important;
-        }
+        .hero-btn-primary { background: var(--auriu); color: #000 !important; border: 1px solid var(--auriu); }
+        .hero-btn-primary:hover { background: transparent; color: var(--auriu) !important; }
+        .hero-btn-secondary { background: rgba(0,0,0,0.45); color: var(--auriu) !important; border: 1px solid var(--auriu); }
+        .hero-btn-secondary:hover { background: var(--auriu); color: #000 !important; }
 
         .hero-benefits {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: calc(100% - 40px);
-            max-width: 1100px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 12px;
-            z-index: 3;
+            position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+            width: calc(100% - 40px); max-width: 1100px;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px; z-index: 3;
         }
 
         .hero-benefit-item {
-            background: rgba(0,0,0,0.45);
-            border: 1px solid rgba(197,160,89,0.35);
-            backdrop-filter: blur(2px);
-            padding: 14px 16px;
-            text-align: center;
+            background: rgba(0,0,0,0.45); border: 1px solid rgba(197,160,89,0.35);
+            backdrop-filter: blur(2px); padding: 14px 16px; text-align: center;
         }
 
-        .hero-benefit-item strong {
-            display: block;
-            font-family: 'Cinzel';
-            color: var(--auriu);
-            font-size: 0.78rem;
-            letter-spacing: 2px;
-            margin-bottom: 6px;
-        }
+        .hero-benefit-item strong { display: block; font-family: 'Cinzel'; color: var(--auriu); font-size: 0.78rem; letter-spacing: 2px; margin-bottom: 6px; }
+        .hero-benefit-item span { font-size: 0.9rem; color: #ddd; line-height: 1.4; }
 
-        .hero-benefit-item span {
-            font-size: 0.9rem;
-            color: #ddd;
-            line-height: 1.4;
-        }
-
-        /* TRANSPORT - MARE ȘI LIZIBIL */
+        /* TRANSPORT */
         .road-advisory { background: #080808; border-top: 3px solid var(--auriu); border-bottom: 3px solid var(--auriu); padding: 60px 20px; text-align: center; }
         .road-inner { max-width: 1100px; margin: 0 auto; }
         .road-inner i { color: var(--auriu); font-size: clamp(2.5rem, 8vw, 4rem); margin-bottom: 20px; display: block; }
@@ -153,7 +113,7 @@
         .road-text p { font-size: clamp(1.1rem, 4vw, 1.5rem); color: #fff; line-height: 1.6; margin-bottom: 10px; }
         .transport-limit { font-family: 'Cinzel'; color: var(--auriu); font-size: 0.9rem; font-weight: 700; letter-spacing: 2px; }
 
-        /* GRID 5 CARDURI - Stivuire pe mobil */
+        /* GRID EXPERIENTE */
         .container { width: 100%; max-width: 1450px; margin: 0 auto; padding: 60px 20px; }
         .grid-5 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 80px; }
         .card-item { height: clamp(450px, 70vh, 600px); position: relative; overflow: hidden; display: block; border: 1px solid #1a1a1a; background: #000; }
@@ -163,7 +123,7 @@
         .card-info h4 { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 3px; font-size: 1.1rem; margin-bottom: 10px; text-shadow: 2px 2px 5px #000; }
         .card-info p { font-size: 0.9rem; color: #ccc; line-height: 1.4; }
 
-        /* CALENDAR SECTION - Flexibil */
+        /* CALENDAR */
         .calendar-section { padding: 80px 20px; background: #050505; border-top: 1px solid #111; }
         .calendar-timeline { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 60px; }
         .event-row { display: flex; flex-direction: column; gap: 30px; align-items: center; text-align: center; margin-bottom: 40px; }
@@ -184,7 +144,6 @@
 
         .whatsapp-float { position: fixed; bottom: 25px; left: 25px; background: #25d366; border-radius: 50%; width: 65px; height: 65px; display: flex; align-items: center; justify-content: center; font-size: 35px; z-index: 1001; color: #fff; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
         
-        /* Ajustări Desktop pentru evenimente (să nu rămână coloană) */
         @media (min-width: 950px) {
             .event-row { flex-direction: row; text-align: left; }
             .event-row.reverse { flex-direction: row-reverse; }
@@ -194,31 +153,9 @@
         }
 
         @media (max-width: 768px) {
-            .hero-benefits {
-                position: static;
-                transform: none;
-                margin: 24px auto 0;
-                width: 100%;
-                padding: 0 20px 20px;
-            }
-
-            .hero-overlay {
-                flex-direction: column;
-                justify-content: center;
-            }
-
-            .hero-text {
-                max-width: 100%;
-                padding-top: 80px;
-            }
-
-            .whatsapp-float {
-                width: 58px;
-                height: 58px;
-                font-size: 30px;
-                left: 18px;
-                bottom: 18px;
-            }
+            .hero-benefits { position: static; transform: none; margin: 24px auto 0; width: 100%; padding: 0 20px 20px; }
+            .hero-overlay { flex-direction: column; justify-content: center; }
+            .hero-text { max-width: 100%; padding-top: 80px; }
         }
     </style>
 </head>
@@ -237,8 +174,11 @@
         <nav class="main-nav" id="nav-links">
             <a href="index.html">Acasă</a>
             <a href="pensiune.html">Pensiunea</a>
-            <a href="gastronomie.html">Gastronomie</a>
             <a href="metanoia.html">Metanoia</a>
+            <a href="gastronomie.html">Gastronomie</a>
+            <a href="evenimente.html">Evenimente</a>
+            <a href="rezervari.html">Rezervări</a>
+            <a href="contact.html">Contact</a>
         </nav>
     </header>
 
@@ -251,35 +191,20 @@
             <div class="hero-text">
                 <h1>Simte, trăiește tăcerea.</h1>
                 <p class="hero-highlight">VADU DOBRII</p>
-
                 <p class="hero-subtitle">
                     Experiențe autentice în Țara Hațegului: cazare, gastronomie, explorare, evenimente și momente de tihnă rânduite aproape de munte, natură și rădăcini.
                 </p>
-
                 <div class="hero-buttons">
                     <a href="rezervari.html" class="hero-btn-primary">REZERVĂ ACUM</a>
                     <a href="#experiente" class="hero-btn-secondary">VEZI EXPERIENȚELE</a>
                 </div>
             </div>
         </div>
-
         <div class="hero-benefits">
-            <div class="hero-benefit-item">
-                <strong>CAZARE</strong>
-                <span>Domeniu privat și spații pregătite pentru grupuri.</span>
-            </div>
-            <div class="hero-benefit-item">
-                <strong>EXPLORARE</strong>
-                <span>E-bike, trasee și expediții către locuri autentice.</span>
-            </div>
-            <div class="hero-benefit-item">
-                <strong>GASTRONOMIE</strong>
-                <span>Preparate locale și experiențe culinare cu suflet.</span>
-            </div>
-            <div class="hero-benefit-item">
-                <strong>EVENIMENTE</strong>
-                <span>Serate, întâlniri și momente de comunitate.</span>
-            </div>
+            <div class="hero-benefit-item"><strong>CAZARE</strong><span>Domeniu privat și spații pregătite pentru grupuri.</span></div>
+            <div class="hero-benefit-item"><strong>EXPLORARE</strong><span>E-bike, trasee și expediții către locuri autentice.</span></div>
+            <div class="hero-benefit-item"><strong>GASTRONOMIE</strong><span>Preparate locale și experiențe culinare cu suflet.</span></div>
+            <div class="hero-benefit-item"><strong>EVENIMENTE</strong><span>Serate, întâlniri și momente de comunitate.</span></div>
         </div>
     </div>
 
@@ -288,111 +213,61 @@
             <i class="fas fa-mountain-sun"></i>
             <div class="road-text">
                 <h3>RÂNDUIALA DRUMULUI</h3>
-                <p>Cei 15 KM de drum forestier sunt practicabili, însă recomandăm cu tărie vehiculele SUV sau JEEP pentru confortul dumneavoastră.</p>
+                <p>Cei 15 KM de drum forestier sunt practicabili, însă recomandăm cu tărie vehiculele SUV sau JEEP.</p>
                 <p class="transport-limit">Putem oferi transport în limita locurilor disponibile.</p>
             </div>
         </div>
     </section>
 
-    <main>
-        <div class="container" id="experiente">
-            <div class="grid-5">
-                <a href="pensiune.html" class="card-item">
-                    <img src="images/IMG_20260330_160353.webp" alt="Domeniile La Buligă">
-                    <div class="card-info">
-                        <h4>DOMENIILE LA BULIGĂ</h4>
-                        <p>Camere amenajate special pentru confort, living generos și grădină privată. Capacitate 12 persoane.</p>
-                    </div>
-                </a>
-                <a href="metanoia.html" class="card-item">
-                    <img src="images/apus.jpg" alt="Metanoia">
-                    <div class="card-info">
-                        <h4>METANOIA</h4>
-                        <p>Spațiu de regenerare prin artă, mișcare și pelerinaje spre rădăcini.</p>
-                    </div>
-                </a>
-                <a href="gastronomie.html" class="card-item">
-                    <img src="images/gast-supa2.jpg" alt="Gastronomie locală">
-                    <div class="card-info">
-                        <h4>GASTRONOMIE</h4>
-                        <p>Gusturi rânduite la ceaun și ritualul cafelei sub roua munților.</p>
-                    </div>
-                </a>
-                <a href="evenimente.html" class="card-item">
-                    <img src="images/narcise.jpg" alt="Tihnă și trăire">
-                    <div class="card-info">
-                        <h4>TIHNĂ ȘI TRĂIRE</h4>
-                        <p>Evenimente de comunitate, serate cu chitară și gathering-uri de suflet.</p>
-                    </div>
-                </a>
-                <a href="explorare-ebike.html" class="card-item">
-                    <img src="images/ebike.webp" alt="Explorare cu E-Bike">
-                    <div class="card-info">
-                        <h4>EXPLORARE</h4>
-                        <p>Aventură cu E-Bike sau expediții Go Nomad către vestigii uitate.</p>
-                    </div>
-                </a>
-                <a href="curs.html" class="card-item">
-                    <img src="images/foc.jpg" alt="Poarta">
-                    <div class="card-info">
-                        <h4>POARTA</h4>
-                        <p>Un spațiu al transformării și trecerii către un nou nivel de autocunoaștere.</p>
-                    </div>
-                </a>
-                <a href="padureni.html" class="card-item">
-                    <img src="images/gast-masa-traditionala.jpg" alt="Pădureni">
-                    <div class="card-info">
-                        <h4>PĂDURENI</h4>
-                        <p>Tradiții, rânduieli vechi și povești nescrise din inima Ținutului Pădurenilor.</p>
-                    </div>
-                </a>
-            </div>
-            
-            <div class="elfsight-app-2a7a128c-e004-486e-961a-99f57d874913" data-elfsight-app-lazy></div>
+    <main class="container" id="experiente">
+        <div class="grid-5">
+            <a href="pensiune.html" class="card-item">
+                <img src="images/IMG_20260330_160353.webp" alt="Pensiunea">
+                <div class="card-info"><h4>PENSIUNEA</h4><p>Camere amenajate pentru confort și grădină privată. Capacitate 12 persoane.</p></div>
+            </a>
+            <a href="metanoia.html" class="card-item">
+                <img src="images/apus.jpg" alt="Metanoia">
+                <div class="card-info"><h4>METANOIA</h4><p>Spațiu de regenerare prin artă, mișcare și pelerinaje spre rădăcini.</p></div>
+            </a>
+            <a href="gastronomie.html" class="card-item">
+                <img src="images/gast-supa2.jpg" alt="Gastronomie">
+                <div class="card-info"><h4>GASTRONOMIE</h4><p>Gusturi rânduite la ceaun și ritualul cafelei sub roua munților.</p></div>
+            </a>
+            <a href="evenimente.html" class="card-item">
+                <img src="images/narcise.jpg" alt="Tihnă">
+                <div class="card-info"><h4>EVENIMENTE</h4><p>Serate cu chitară și gathering-uri de suflet.</p></div>
+            </a>
+            <a href="explorare-ebike.html" class="card-item">
+                <img src="images/ebike.webp" alt="Explorare">
+                <div class="card-info"><h4>EXPLORARE</h4><p>Aventură cu E-Bike sau expediții Go Nomad către vestigii uitate.</p></div>
+            </a>
         </div>
-
-        <section class="calendar-section">
-            <h3 style="font-family:'Cinzel'; color:var(--auriu); text-align:center; margin-bottom:80px; letter-spacing:10px; font-weight:900;">CALENDAR</h3>
-            <div class="calendar-timeline">
-                
-                <div class="event-row">
-                    <div class="event-card"><img src="images/IMG_20260330_160353.webp" alt="Serată Romano-Italiană"></div>
-                    <div class="event-info-box">
-                        <span class="date-badge">01 MAI 2026</span>
-                        <h2>Serată Romano-Italiană</h2>
-                        <p style="color:#aaa; margin-bottom:20px;">Mâncare la foc deschis și povești depănate sub cerul liber.</p>
-                        <a href="contact.html" class="btn-action">SOLICITĂ LOC</a>
-                    </div>
-                </div>
-
-                <div class="event-row reverse">
-                    <div class="event-card"><img src="images/bike.webp" alt="Bike and Flowers"></div>
-                    <div class="event-info-box">
-                        <span class="date-badge">09-10 MAI 2026</span>
-                        <h2>Bike & Flowers</h2>
-                        <p style="color:#aaa; margin-bottom:20px;">Explorare cu e-bike către Poiana Narciselor.</p>
-                        <a href="explorare-ebike.html" class="btn-action">DETALII</a>
-                    </div>
-                </div>
-
-                <div class="event-row">
-                    <div class="event-card"><img src="images/Sarmizegetusa.jpg" alt="Go Nomad"></div>
-                    <div class="event-info-box">
-                        <span class="date-badge">IUNIE 2026</span>
-                        <h2>Go Nomad</h2>
-                        <p style="color:#aaa; margin-bottom:20px;">Descoperim istoria ascunsă a munților în expediție autentică.</p>
-                        <a href="contact.html" class="btn-action">REZERVARE</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <div style="background:#000; padding:60px 0;">
-            <div class="elfsight-app-4342bef8-07d4-4bfe-9114-34160d0e96f1" data-elfsight-app-lazy></div>
-            <div class="elfsight-app-9e87d320-859d-4ef5-9a42-3eaeeaadb2d7" data-elfsight-app-lazy></div>
-            <div class="elfsight-app-8217fa9c-47ca-4b54-bb21-6a682ba7a413" data-elfsight-app-lazy></div>
-        </div>
+        <div class="elfsight-app-2a7a128c-e004-486e-961a-99f57d874913" data-elfsight-app-lazy></div>
     </main>
+
+    <section class="calendar-section">
+        <h3 style="font-family:'Cinzel'; color:var(--auriu); text-align:center; margin-bottom:80px; letter-spacing:10px; font-weight:900;">CALENDAR</h3>
+        <div class="calendar-timeline">
+            <div class="event-row">
+                <div class="event-card"><img src="images/IMG_20260330_160353.webp" alt="Serată"></div>
+                <div class="event-info-box">
+                    <span class="date-badge">01 MAI 2026</span>
+                    <h2>Serată Romano-Italiană</h2>
+                    <p style="color:#aaa; margin-bottom:20px;">Mâncare la foc deschis și povești sub cerul liber.</p>
+                    <a href="contact.html" class="btn-action">SOLICITĂ LOC</a>
+                </div>
+            </div>
+            <div class="event-row reverse">
+                <div class="event-card"><img src="images/bike.webp" alt="Bike"></div>
+                <div class="event-info-box">
+                    <span class="date-badge">09-10 MAI 2026</span>
+                    <h2>Bike & Flowers</h2>
+                    <p style="color:#aaa; margin-bottom:20px;">Explorare cu e-bike către Poiana Narciselor.</p>
+                    <a href="explorare-ebike.html" class="btn-action">DETALII</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <footer>
         <p style="font-size:0.8rem; color:#444; letter-spacing:2px; margin-bottom:20px;">DAKAMIGOS MARKT SRL | CUI: RO40767794</p>
@@ -407,7 +282,6 @@
     </footer>
 
     <script type="text/javascript">
-        // Burger logic
         const burger = document.getElementById('burger');
         const nav = document.getElementById('nav-links');
         burger.onclick = () => nav.classList.toggle('active');
