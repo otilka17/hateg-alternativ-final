@@ -31,7 +31,7 @@
         .main-nav a:hover { opacity: 1; color: var(--auriu-gold); }
 
         /* HERO */
-        .hero-sub { height: 60vh; position: relative; display: flex; align-items: center; justify-content: center; background: url('images/rasarit.jpg') center/cover; }
+        .hero-sub { height: 60vh; position: relative; display: flex; align-items: center; justify-content: center; background: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2000') center/cover; }
         .hero-sub::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); }
         .hero-content { position: relative; z-index: 10; text-align: center; max-width: 800px; padding: 0 20px; }
         .hero-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 8vw, 6rem); font-style: italic; color: var(--auriu-gold); text-shadow: 0 5px 25px rgba(0,0,0,0.8); }
@@ -48,29 +48,15 @@
         .exp-card:hover { border-color: var(--auriu-gold); transform: translateY(-10px); }
         
         .exp-img { height: 350px; overflow: hidden; position: relative; }
-        .exp-img img { width: 100%; height: 100%; object-fit: cover; transition: 1s; filter: grayscale(30%); }
+        .exp-img img { width: 100%; height: 100%; object-fit: cover; transition: 1s; filter: grayscale(20%); }
         .exp-card:hover .exp-img img { transform: scale(1.1); filter: grayscale(0%); }
 
         .exp-info { padding: 40px; flex-grow: 1; display: flex; flex-direction: column; }
         .exp-info h3 { font-family: 'Cinzel'; color: var(--auriu-gold); font-size: 1.4rem; letter-spacing: 3px; margin-bottom: 15px; text-transform: uppercase; }
         .exp-info p { color: #ccc; font-size: 0.95rem; margin-bottom: 30px; line-height: 1.8; }
 
-        /* BUTON WHATSAPP CARD */
         .btn-wa-card {
-            margin-top: auto;
-            padding: 15px 30px;
-            border: 1px solid var(--auriu-gold);
-            color: var(--auriu-gold);
-            text-decoration: none;
-            font-family: 'Cinzel';
-            letter-spacing: 2px;
-            font-size: 0.8rem;
-            text-align: center;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
+            margin-top: auto; padding: 15px 30px; border: 1px solid var(--auriu-gold); color: var(--auriu-gold); text-decoration: none; font-family: 'Cinzel'; letter-spacing: 2px; font-size: 0.8rem; text-align: center; transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 10px;
         }
         .btn-wa-card:hover { background: var(--auriu-gold); color: #000; box-shadow: 0 0 20px rgba(197, 160, 89, 0.3); }
 
@@ -80,7 +66,6 @@
         @media (max-width: 768px) {
             .exp-grid { grid-template-columns: 1fr; }
             .exp-container { padding: 60px 20px; }
-            .site-header { padding: 20px; }
         }
     </style>
 </head>
@@ -108,79 +93,79 @@
     <section class="hero-sub">
         <div class="hero-content">
             <h1>Experiențe.</h1>
-            <p>Dincolo de Găzduire, o Transformare</p>
+            <p>Rânduiala Veche & Trăiri Noi</p>
         </div>
     </section>
 
     <main class="exp-container">
 
         <div class="section-label">
-            <span>Rânduiala Nouă</span>
-            <h2>Evenimente & Trăiri</h2>
+            <span>Metanoia</span>
+            <h2>Alege-ți Calea</h2>
         </div>
 
         <div class="exp-grid">
             
             <div class="exp-card">
-                <div class="exp-img"><img src="images/rasarit.jpg" alt="Tihna"></div>
+                <div class="exp-img"><img src="https://images.unsplash.com/photo-1445510861639-5651173bc5d5?q=80&w=2000" alt="Tihna"></div>
                 <div class="exp-info">
                     <h3>Tihnă în Munte</h3>
-                    <p>O zi întreagă dedicată deconectării totale. Fără ecrane, doar sunetul pădurii și focul din șemineu.</p>
+                    <p>O zi dedicată deconectării totale. Fără ecrane, doar sunetul pădurii și focul din șemineu.</p>
                     <a href="https://wa.me/40749229686?text=Vreau%20detalii%20despre%20Tihna%20in%20Munte" class="btn-wa-card"><i class="fab fa-whatsapp"></i> REZERVĂ PE WHATSAPP</a>
                 </div>
             </div>
 
             <div class="exp-card">
-                <div class="exp-img"><img src="images/sura.jpg" alt="Traditie"></div>
+                <div class="exp-img"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2000" alt="Cununie"></div>
                 <div class="exp-info">
-                    <h3>Ateliere de Meșteșug</h3>
-                    <p>Învață rânduiala veche: de la gătitul la ceaun până la prelucrarea lemnului sau a lânii cu artizani locali.</p>
-                    <a href="https://wa.me/40749229686?text=Vreau%20detalii%20despre%20Atelierele%20de%20Mestesug" class="btn-wa-card"><i class="fab fa-whatsapp"></i> REZERVĂ PE WHATSAPP</a>
+                    <h3>Cununii & Evenimente</h3>
+                    <p>Sărbătorește viața în cel mai pur decor natural. Evenimente intime rânduite cu simplitate rustică.</p>
+                    <a href="https://wa.me/40749229686?text=Vreau%20sa%20organizez%20o%20cununie" class="btn-wa-card"><i class="fab fa-whatsapp"></i> REZERVĂ PE WHATSAPP</a>
                 </div>
             </div>
 
             <div class="exp-card">
-                <div class="exp-img"><img src="images/foc.jpg" alt="Foc sub stele"></div>
+                <div class="exp-img"><img src="https://images.unsplash.com/photo-1519622930230-0702330fe537?q=80&w=2000" alt="Baby Shower"></div>
                 <div class="exp-info">
-                    <h3>Povești la Foc</h3>
-                    <p>Seri magice sub cerul liber al Văii Dobrii. Gastronomie arhaică și legendele locului povestite la jar.</p>
-                    <a href="https://wa.me/40749229686?text=Vreau%20detalii%20despre%20Povesti%20la%20Foc" class="btn-wa-card"><i class="fab fa-whatsapp"></i> REZERVĂ PE WHATSAPP</a>
+                    <h3>Baby Shower in Natura</h3>
+                    <p>Primește noua viață într-un cadru de poveste, cu aer curat și tihnă deplină pentru mămici și prieteni.</p>
+                    <a href="https://wa.me/40749229686?text=Vreau%20detalii%20Baby%20Shower" class="btn-wa-card"><i class="fab fa-whatsapp"></i> REZERVĂ PE WHATSAPP</a>
                 </div>
             </div>
 
             <div class="exp-card">
-                <div class="exp-img"><img src="images/cununie.jpg" alt="Cununii"></div>
+                <div class="exp-img"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2000" alt="Teambuilding"></div>
                 <div class="exp-info">
-                    <h3>Cununii & Baby Shower</h3>
-                    <p>Sărbătorește viața în cel mai pur decor natural. Evenimente intime, rânduite cu bun gust și simplitate rustică.</p>
-                    <a href="https://wa.me/40749229686?text=Vreau%20sa%20organizez%20o%20cununie/baby%20shower" class="btn-wa-card"><i class="fab fa-whatsapp"></i> CERE OFERTĂ WHATSAPP</a>
+                    <h3>Teambuilding & Tabere</h3>
+                    <p>Reset total pentru echipa ta. Activități de coeziune și strategie în liniștea profundă a muntelui.</p>
+                    <a href="https://wa.me/40749229686?text=Vreau%20detalii%20Teambuilding" class="btn-wa-card"><i class="fab fa-whatsapp"></i> REZERVĂ PE WHATSAPP</a>
                 </div>
             </div>
 
             <div class="exp-card">
-                <div class="exp-img"><img src="images/teambuilding.jpg" alt="Teambuilding"></div>
+                <div class="exp-img"><img src="https://images.unsplash.com/photo-1560613200-a3525281486c?q=80&w=2000" alt="Aventura"></div>
                 <div class="exp-info">
-                    <h3>Teambuilding & Mini-tabere</h3>
-                    <p>Reset total pentru echipa ta. Activități de coeziune, strategie în liniștea muntelui și mini-tabere tematice.</p>
-                    <a href="https://wa.me/40749229686?text=Vreau%20detalii%20teambuilding/tabara" class="btn-wa-card"><i class="fab fa-whatsapp"></i> DETALII GRUPURI</a>
+                    <h3>Biciclete, Hiking & ATV</h3>
+                    <p>Explorează sălbăticia pe două sau patru roți. Trasee montane spectaculoase direct de la poartă.</p>
+                    <a href="https://wa.me/40749229686?text=Vreau%20aventura%20ATV%20sau%20Bikes" class="btn-wa-card"><i class="fab fa-whatsapp"></i> REZERVĂ PE WHATSAPP</a>
                 </div>
             </div>
 
             <div class="exp-card">
-                <div class="exp-img"><img src="images/atv.jpg" alt="Aventura"></div>
+                <div class="exp-img"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2000" alt="Metanoia"></div>
                 <div class="exp-info">
-                    <h3>Explorare: Bike, Hiking & ATV</h3>
-                    <p>Trasee sălbatice direct de la poartă. Ghidaj specializat pentru drumeții, biciclete montane sau aventură cu ATV.</p>
-                    <a href="https://wa.me/40749229686?text=Vreau%20aventura%20bike/hiking/ATV" class="btn-wa-card"><i class="fab fa-whatsapp"></i> REZERVĂ ADRENALINĂ</a>
+                    <h3>Metanoia: Artă & Gastro</h3>
+                    <p>O experiență imersivă de regăsire prin gastronomie fină, ateliere de artă și degustări de vinuri.</p>
+                    <a href="https://wa.me/40749229686?text=Vreau%20experienta%20Metanoia" class="btn-wa-card"><i class="fab fa-whatsapp"></i> REZERVĂ PE WHATSAPP</a>
                 </div>
             </div>
 
             <div class="exp-card">
-                <div class="exp-img"><img src="images/metanoia-art.jpg" alt="Metanoia"></div>
+                <div class="exp-img"><img src="https://images.unsplash.com/photo-1475518112798-86ae31822ad9?q=80&w=2000" alt="Foc"></div>
                 <div class="exp-info">
-                    <h3>Metanoia: Artă & Gastronomie</h3>
-                    <p>O experiență imersivă de regăsire. Vernisaje în șură, degustări de vinuri alese și gastronomie fină sub conceptul Metanoia.</p>
-                    <a href="https://wa.me/40749229686?text=Vreau%20experienta%20Metanoia%20Arta%20si%20Gastro" class="btn-wa-card"><i class="fab fa-whatsapp"></i> REZERVĂ CONCEPT</a>
+                    <h3>Foc de Tabără & Povești</h3>
+                    <p>Seri magice sub cerul liber. Gastronomie arhaică și legendele locului povestite la jarul încins.</p>
+                    <a href="https://wa.me/40749229686?text=Vreau%20detalii%20Seri%20de%20Foc" class="btn-wa-card"><i class="fab fa-whatsapp"></i> REZERVĂ PE WHATSAPP</a>
                 </div>
             </div>
 
