@@ -72,4 +72,162 @@
             position: absolute; bottom: 0; left: 0; width: 100%; padding: 40px;
             background: linear-gradient(transparent, rgba(0,0,0,0.9));
         }
-        .scene-info h3 { font-family: 'Cinzel'; font-size: 1.2rem; letter-spacing: 3
+        .scene-info h3 { font-family: 'Cinzel'; font-size: 1.2rem; letter-spacing: 3px; color: var(--gold); margin-bottom: 10px; }
+        .scene-info p { font-size: 0.9rem; color: #ccc; max-width: 300px; font-weight: 200; line-height: 1.6; }
+
+        /* LARGE FOCUS SCENE */
+        .focus-scene {
+            width: 100%; height: 80vh; margin: 100px 0; position: relative; overflow: hidden;
+        }
+        .focus-scene img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.7); }
+        .focus-content {
+            position: absolute; top: 50%; left: 10%; transform: translateY(-50%);
+            max-width: 500px;
+        }
+        .focus-content h2 { font-family: 'Playfair Display'; font-style: italic; font-size: 4rem; color: var(--gold); margin-bottom: 20px; }
+
+        /* FOOTER CTA */
+        .cinematic-cta {
+            height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+            background: var(--accent); text-align: center;
+        }
+        .btn-cinematic {
+            padding: 20px 60px; border: 1px solid var(--gold); color: var(--gold);
+            text-decoration: none; font-family: 'Cinzel'; letter-spacing: 5px; font-size: 0.8rem;
+            transition: 0.4s; position: relative; overflow: hidden; margin-top: 30px;
+        }
+        .btn-cinematic:hover { background: var(--gold); color: #000; box-shadow: 0 0 30px rgba(197, 160, 89, 0.3); }
+
+        footer { padding: 40px; text-align: center; font-family: 'Cinzel'; font-size: 0.6rem; letter-spacing: 4px; opacity: 0.3; }
+
+    </style>
+</head>
+<body>
+
+    <section class="hero-cinematic">
+        <div class="hero-content">
+            <p>DOMENIILE LA BULIGĂ PREZINTĂ</p>
+            <h1>Arta Focului.</h1>
+        </div>
+    </section>
+
+    <div class="container">
+
+        <div class="cinematic-label">
+            <span>Capitolul I</span>
+            <h2>Zori de Zi</h2>
+        </div>
+
+        <div class="cinematic-grid">
+            <div class="scene-card">
+                <img src="paine-in-ou.jpg" alt="Paine in ou">
+                <div class="scene-info">
+                    <h3>Pâinea în Ou</h3>
+                    <p>O rețetă moștenită, rânduită în tăcerea dimineților de munte.</p>
+                </div>
+            </div>
+            <div class="scene-card">
+                <img src="jumeri.jpg" alt="Jumeri">
+                <div class="scene-info">
+                    <h3>Jumeri Arhaici</h3>
+                    <p>Esența pură a gustului pădurenesc, pregătiți la foc iute.</p>
+                </div>
+            </div>
+            <div class="scene-card">
+                <img src="oua.jpg" alt="Oua">
+                <div class="scene-info">
+                    <h3>Ouă din Ogradă</h3>
+                    <p>Simplitatea absolută, culeasă în zorii zilei.</p>
+                </div>
+            </div>
+        </div>
+
+        <section class="focus-scene">
+            <img src="miel.jpg" alt="Miel la Ceaun">
+            <div class="focus-content">
+                <span>PIESA CENTRALĂ</span>
+                <h2>Mielul pe Jar.</h2>
+                <p>O alchimie de 6 ore între carne fragedă, fum de fag și tihnă.</p>
+            </div>
+        </section>
+
+        <div class="cinematic-label">
+            <span>Capitolul II</span>
+            <h2>Ospățul</h2>
+        </div>
+
+        <div class="cinematic-grid">
+            <div class="scene-card">
+                <img src="humus.jpg" alt="Humus">
+                <div class="scene-info">
+                    <h3>Humus Pădurenesc</h3>
+                    <p>O interpretare locală a gustului fin, cu ulei presat la rece.</p>
+                </div>
+            </div>
+            <div class="scene-card">
+                <img src="sarmale.jpg" alt="Sarmale">
+                <div class="scene-info">
+                    <h3>Sarmale Rânduite</h3>
+                    <p>Învelite în tihnă, fierte la foc domol în cuptor de lut.</p>
+                </div>
+            </div>
+            <div class="scene-card">
+                <img src="feed-virslii.jpg" alt="Virsli">
+                <div class="scene-info">
+                    <h3>Vîrșli de Hunedoara</h3>
+                    <p>Legenda pământului nostru, rumeniți în cuptor sau pe jar.</p>
+                </div>
+            </div>
+            <div class="scene-card">
+                <img src="aripioare.jpg" alt="Aripioare">
+                <div class="scene-info">
+                    <h3>Aripioare Rumenite</h3>
+                    <p>Infuzate cu miere și cimbru sălbatic de la 1100m.</p>
+                </div>
+            </div>
+            <div class="scene-card">
+                <img src="cartofi.jpg" alt="Cartofi">
+                <div class="scene-info">
+                    <h3>Cartofi în Coajă</h3>
+                    <p>Zdrobiți cu unt de casă sub privirea jarului.</p>
+                </div>
+            </div>
+            <div class="scene-card">
+                <img src="supacrema.jpg" alt="Supa Crema">
+                <div class="scene-info">
+                    <h3>Supa Cremă de Sezon</h3>
+                    <p>O mângâiere caldă pentru suflet, pregătită din roadele pământului.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cinematic-label">
+            <span>Capitolul III</span>
+            <h2>Tihna</h2>
+        </div>
+
+        <div class="cinematic-grid">
+            <div class="scene-card" style="height: 400px;">
+                <img src="orez-cu-lapte.jpg" alt="Orez cu lapte">
+                <div class="scene-info"><h3>Orez cu Lapte</h3></div>
+            </div>
+            <div class="scene-card" style="height: 400px;">
+                <img src="cafea-si-ceai.jpg" alt="Cafea si ceai">
+                <div class="scene-info"><h3>Rânduiala cafelei</h3></div>
+            </div>
+        </div>
+
+    </div>
+
+    <section class="cinematic-cta">
+        <p style="color: var(--gold); font-family: 'Cinzel'; letter-spacing: 5px; margin-bottom: 20px;">GUSTĂ EXPERIENȚA</p>
+        <h2 style="font-family: 'Playfair Display'; font-style: italic; font-size: clamp(2rem, 5vw, 4rem);">Rezervă-ți locul la masă.</h2>
+        <a href="rezervari.html" class="btn-cinematic">SOLICITĂ MENIUL</a>
+    </section>
+
+    <footer>
+        <p>HAȚEG ALTERNATIV &copy; 2026 | DAKAMIGOS MARKT SRL</p>
+    </footer>
+
+</body>
+</html>
