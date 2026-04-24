@@ -12,8 +12,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     
-    <title>Ținutul Pădurenilor | Hațeg Alternativ - Vadu Dobrii</title>
-    <meta name="description" content="Descoperă mistica Ținutului Pădurenilor: sate de marmură, biserici arhaice de lemn și gustul pur al rânduielii de la peste 1000m altitudine.">
+    <title>Ținutul Pădurenilor | Hațeg Alternativ</title>
+    <meta name="description" content="Descoperă mistica Ținutului Pădurenilor: sate de marmură, biserici arhaice și dealuri uitate de timp.">
 
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -26,9 +26,9 @@
         a, a:visited, a:hover, a:active { text-decoration: none !important; color: inherit !important; }
 
         /* HEADER */
-        .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 25px 5%; display: flex; justify-content: space-between; align-items: center; }
+        .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; }
         .brand-logo img { height: clamp(90px, 18vw, 150px); width: auto; filter: drop-shadow(0 0 15px #000); }
-        .burger { cursor: pointer; z-index: 10001; background: rgba(0,0,0,0.6); padding: 12px; border-radius: 8px; border: 1px solid var(--auriu); }
+        .burger { cursor: pointer; z-index: 10001; background: rgba(0,0,0,0.6); padding: 10px; border-radius: 8px; border: 1px solid var(--auriu); }
         .burger div { width: 28px; height: 2px; background: var(--auriu); margin: 6px; }
 
         .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: var(--negru); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.6s; z-index: 10000; }
@@ -50,24 +50,23 @@
         .story-text { flex: 1; min-width: 320px; }
         .story-text h3 { font-family: 'Playfair Display'; font-size: 3rem; color: var(--auriu); font-style: italic; margin-bottom: 25px; }
         .story-text p { color: #aaa; font-size: 1.15rem; margin-bottom: 25px; text-align: justify; }
-        .story-text ul li { padding-left: 30px; position: relative; margin-bottom: 15px; color: #eee; font-size: 1rem; }
+        .story-text ul { list-style: none; }
+        .story-text ul li { padding-left: 30px; position: relative; margin-bottom: 15px; color: #eee; }
         .story-text ul li::before { content: '◈'; position: absolute; left: 0; color: var(--auriu); }
 
         .story-img { flex: 1; min-width: 320px; height: 550px; border: 1px solid #222; overflow: hidden; position: relative; }
         .story-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: 1.5s ease; }
-        .story-block:hover .story-img img { opacity: 1; transform: scale(1.08); }
+        .story-block:hover .story-img img { opacity: 1; transform: scale(1.05); }
 
-        .gastro-banner { background: #080808; padding: 100px 5%; text-align: center; border-top: 1px solid var(--auriu); border-bottom: 1px solid var(--auriu); margin: 60px 0; }
-        .gastro-banner h2 { font-family: 'Cinzel'; color: var(--auriu); font-size: 2.5rem; margin-bottom: 30px; }
-
-        .cta-padureni { text-align: center; padding: 150px 20px; background: #030303; }
-        .btn-elite { display: inline-block; padding: 22px 60px; border: 2px solid var(--auriu); color: var(--auriu); font-family: 'Cinzel'; letter-spacing: 5px; font-weight: 900; transition: 0.4s; }
+        /* CTA */
+        .cta-padureni { text-align: center; padding: 120px 20px; background: #030303; }
+        .btn-elite { display: inline-block; padding: 20px 50px; border: 2px solid var(--auriu); color: var(--auriu); font-family: 'Cinzel'; letter-spacing: 4px; font-weight: 700; transition: 0.4s; }
         .btn-elite:hover { background: var(--auriu); color: #000; }
 
-        footer { padding: 80px 20px; text-align: center; opacity: 0.5; font-family: 'Cinzel'; font-size: 0.75rem; letter-spacing: 4px; border-top: 1px solid #111; }
-        .whatsapp-float { position: fixed; bottom: 30px; left: 30px; background: #25d366; border-radius: 50%; width: 65px; height: 65px; display: flex; align-items: center; justify-content: center; font-size: 35px; z-index: 1001; color: #fff; }
+        footer { padding: 60px 20px; text-align: center; opacity: 0.4; font-family: 'Cinzel'; font-size: 0.7rem; border-top: 1px solid #111; }
+        .whatsapp-float { position: fixed; bottom: 30px; left: 30px; background: #25d366; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 1001; color: #fff; }
 
-        @media (max-width: 768px) { .story-img { height: 400px; } .hero-padureni { height: 70vh; } }
+        @media (max-width: 768px) { .story-img { height: 350px; } .story-block { gap: 30px; } }
     </style>
 </head>
 <body>
@@ -81,87 +80,75 @@
         <div class="burger" id="burger"><div></div><div></div><div></div></div>
         <nav class="main-nav" id="nav-links">
             <a href="index.html">Acasă</a>
-            <a href="pensiune.html">Domeniile La Buligă</a>
+            <a href="pensiune.html">Pensiunea</a>
             <a href="padureni.html" style="color:var(--auriu) !important;">Ținutul Pădurenilor</a>
             <a href="metanoia.html">Metanoia</a>
             <a href="gastronomie.html">Gastronomie</a>
             <a href="evenimente.html">Evenimente</a>
-            <a href="curs.html">Ușa Secretă</a>
         </nav>
     </header>
 
     <section class="hero-padureni">
         <div class="hero-content">
-            <h1>Tăcerea Munților Poiana Ruscă</h1>
+            <h1>Tăcerea Munților</h1>
             <p class="hero-subtitle">ȚINUTUL PĂDURENILOR • VADU DOBRII</p>
         </div>
     </section>
 
     <main>
-        <section class="intro-section" style="padding: 100px 20px; text-align: center;">
-            <h2 style="font-family:'Cinzel'; color:var(--auriu); letter-spacing:6px;">O rânduială mai veche decât timpul</h2>
-            <p style="max-width:900px; margin:40px auto; color:#ccc; font-size:1.2rem;">Descoperă satele unde marmura și lemnul spun povești despre dârzenie și credință, la umbra pădurilor nesfârșite.</p>
-        </section>
+        <div class="story-block">
+            <div class="story-text">
+                <h3>Mistica Dealurilor</h3>
+                <p>Aici, timpul pare să se fi oprit între culmile Munților Poiana Ruscă. Dealurile domoale ascund rânduieli vechi și o liniște care se simte cel mai bine la răsărit.</p>
+                <ul>
+                    <li>Peisaje Arhaice: Păduri de fag și brad ce îmbracă zările.</li>
+                    <li>Altitudine: Suntem la peste 1100m, deasupra norilor.</li>
+                    <li>Izolare: O lume departe de zgomotul civilizației moderne.</li>
+                </ul>
+            </div>
+            <div class="story-img"><img src="images/rasarit.jpg" alt="Răsărit în Pădureni"></div>
+        </div>
 
         <div class="story-block">
             <div class="story-text">
                 <h3>Biserica Densuș</h3>
-                <p>O enigmă a istoriei românești, ridicată din pietre romane aduse de la Ulpia Traiana Sarmizegetusa. Este cea mai stranie și fascinantă biserică din lume, un portal către timpurile dacice și romane.</p>
+                <p>Cea mai veche biserică de piatră din România, o enigmă ridicată cu coloane și pietre romane aduse de la Sarmizegetusa. Un loc de o energie copleșitoare.</p>
                 <ul>
-                    <li>Arhitectură Unică: Coloane romane folosite drept ziduri.</li>
-                    <li>Misticism: Picturi murale care au supraviețuit secolelor.</li>
-                    <li>Energie: Un loc considerat de mulți un centru energetic al Hațegului.</li>
+                    <li>Istorie Vie: Un puzzle arhitectural unic în lume.</li>
+                    <li>Misticism: Picturi murale bizantine ce sfidează secolele.</li>
+                    <li>Legendă: Se spune că a fost pe rând templu, mausoleu și biserică.</li>
                 </ul>
             </div>
-            <div class="story-img"><img src="images/densus.jpg" alt="Biserica Densus"></div>
+            <div class="story-img"><img src="images/densus.jpg" alt="Biserica Densuș"></div>
         </div>
 
         <div class="story-block">
             <div class="story-text">
-                <h3>Interiorul Bisericii Pădureni</h3>
-                <p>Sub acoperișul de șindrilă se ascunde o lume de tăcere și miros de ceară veche. Pictura interioară și icoanele de lemn rânduiesc o atmosferă de tihnă absolută, unde rugăciunea se simte altfel.</p>
+                <h3>Rânduiala de Interior</h3>
+                <p>Sub acoperișurile de șindrilă, interiorul bisericilor din zonă păstrează mirosul de lemn vechi și ceară. Este spațiul unde tăcerea devine rugăciune.</p>
                 <ul>
-                    <li>Mestesug Arhaic: Grinzi de lemn cioplite manual dintr-un singur trunchi.</li>
-                    <li>Patina Timpului: Culori vegetale care încă mai sclipesc în semiîntuneric.</li>
-                    <li>Smerenie: Spațiul mic care invită la introspecție profundă.</li>
+                    <li>Artă Populară: Icoane pictate pe lemn și grinzi masive cioplite manual.</li>
+                    <li>Tihnă: Atmosfera de pace absolută din vatra satului.</li>
                 </ul>
             </div>
-            <div class="story-img"><img src="images/interior-biserica.jpg" alt="Interior Biserica Padureni"></div>
-        </div>
-
-        <div class="story-block">
-            <div class="story-text">
-                <h3>Satul Alun</h3>
-                <p>Singurul sat de marmură din România. Drumul de acces și fundațiile caselor sunt făcute din piatră nobilă, oferind un peisaj unic, înghețat în timp.</p>
-            </div>
-            <div class="story-img"><img src="images/padure.jpg" alt="Alun Marmura"></div>
+            <div class="story-img"><img src="images/interior-biserica.jpg" alt="Interior Biserica Pădureni"></div>
         </div>
 
         <div class="cta-padureni">
-            <h2>Ești gata să pășești în poveste?</h2>
-            <br><br>
-            <a href="contact.html" class="btn-elite">REZERVAȚI O EXPEDIȚIE GHIDATĂ</a>
+            <h2>Vrei să descoperi aceste locuri?</h2>
+            <br>
+            <a href="https://wa.me/40749229686" class="btn-elite">REZERVAȚI O EXPEDIȚIE</a>
         </div>
     </main>
 
     <footer>
-        &copy; 2026 HAȚEG ALTERNATIV | ȚINUTUL PĂDURENILOR • VADU DOBRII
+        &copy; 2026 HAȚEG ALTERNATIV | VADU DOBRII
     </footer>
 
     <script>
         const burger = document.getElementById('burger');
         const nav = document.getElementById('nav-links');
         burger.onclick = () => nav.classList.toggle('active');
-    </script>
-
-    <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true; s1.src='https://embed.tawk.to/65f013449131ed19d97a0664/1hnowvsq3';
-    s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
     </script>
 </body>
 </html>
