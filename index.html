@@ -21,68 +21,78 @@
         :root { --auriu: #c5a059; --negru: #050505; --alb: #ffffff; }
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         html, body { overflow-x: hidden; width: 100%; background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-        
-        /* HEADER */
-        .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; }
-        .brand-logo svg { height: clamp(80px, 12vw, 110px); width: auto; filter: drop-shadow(0 0 15px #000); }
-        .burger { cursor: pointer; z-index: 10001; background: rgba(0,0,0,0.6); padding: 10px; border-radius: 8px; }
-        .burger div { width: 30px; height: 2px; background: var(--auriu); margin: 6px; }
+        a, a:visited, a:active { text-decoration: none !important; color: inherit !important; }
 
-        /* HERO - REPARAT PENTRU TRANZITIE FARA NEGRU */
-        .hero-cinema { position: relative; width: 100%; height: 100vh; overflow: hidden; background: var(--negru); }
-        
+        /* HEADER & LOGO */
+        .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 30px 5%; display: flex; justify-content: space-between; align-items: center; }
+        .brand-logo svg { height: clamp(90px, 15vw, 130px); width: auto; filter: drop-shadow(0 0 15px #000); }
+        .burger { cursor: pointer; z-index: 10001; background: rgba(0,0,0,0.4); padding: 12px; border-radius: 4px; border: 1px solid rgba(197, 160, 89, 0.3); }
+        .burger div { width: 25px; height: 1px; background: var(--auriu); margin: 6px; }
+
+        /* HERO CINEMATIC - SUPRAPUNERE PERFECTA FARA NEGRU */
+        .hero-cinema { position: relative; width: 100%; height: 100vh; overflow: hidden; background: #000; }
         .cinema-slide { 
             position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
             background-size: cover; background-position: center; 
             opacity: 0; 
             z-index: 1;
-            animation: infiniteLoop 15s infinite;
+            animation: crossFade 18s infinite ease-in-out; 
         }
 
-        /* Ordinea straturilor pentru a elimina negrul */
-        .slide-1 { background-image: url('images/rasarit.jpg'); animation-delay: 0s; z-index: 3; }
-        .slide-2 { background-image: url('images/nori.jph.jpg'); animation-delay: 5s; z-index: 2; }
-        .slide-3 { background-image: url('images/apus.jpg'); animation-delay: 10s; z-index: 1; }
+        .slide-1 { background-image: url('images/rasarit.jpg'); animation-delay: 0s; }
+        .slide-2 { background-image: url('images/nori.jph.jpg'); animation-delay: 6s; }
+        .slide-3 { background-image: url('images/apus.jpg'); animation-delay: 12s; }
 
-        @keyframes infiniteLoop {
+        @keyframes crossFade {
             0% { opacity: 0; transform: scale(1); }
-            5% { opacity: 1; }
+            10% { opacity: 1; }
             33% { opacity: 1; }
-            38% { opacity: 0; transform: scale(1.1); }
+            43% { opacity: 0; transform: scale(1.08); }
             100% { opacity: 0; }
         }
 
+        /* TEXT OVERLAY STIL ERMES */
         .hero-overlay { 
             position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
-            display: flex; flex-direction: column; align-items: center; justify-content: center; 
-            text-align: center; z-index: 10; 
-            background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.7));
+            display: flex; align-items: center; justify-content: flex-start;
+            padding-left: 8%; z-index: 10;
+            background: linear-gradient(to right, rgba(0,0,0,0.6) 0%, transparent 100%);
         }
 
-        .hero-text h1 { 
-            font-family: 'Playfair Display'; font-size: clamp(2rem, 8vw, 6rem); 
-            font-style: italic; color: var(--alb); text-shadow: 0 0 30px rgba(0,0,0,0.8); 
-            margin-bottom: 10px;
+        .hero-content { max-width: 650px; text-align: left; border-left: 2px solid var(--auriu); padding-left: 30px; }
+        .hero-content span { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 5px; font-size: 0.9rem; text-transform: uppercase; }
+        .hero-content h1 { 
+            font-family: 'Playfair Display'; font-size: clamp(2.5rem, 10vw, 5rem); 
+            font-weight: 900; line-height: 1.1; margin: 20px 0; color: #fff;
         }
-        .hero-text p { 
-            font-family: 'Cinzel'; color: var(--auriu); letter-spacing: clamp(5px, 2vw, 12px); 
-            font-size: clamp(0.8rem, 2vw, 1.5rem); font-weight: 700; 
+        .hero-content p { 
+            font-size: clamp(1rem, 3vw, 1.2rem); color: rgba(255,255,255,0.8); 
+            line-height: 1.8; font-weight: 300; margin-bottom: 40px;
+        }
+        .cta-btn { 
+            display: inline-block; padding: 18px 45px; background: #ff4500;
+            color: #fff !important; font-family: 'Cinzel'; font-weight: 700; 
+            letter-spacing: 2px; font-size: 0.8rem; transition: 0.4s;
         }
 
         /* GRID CARDURI */
-        .container { width: 100%; max-width: 1450px; margin: 0 auto; padding: 60px 20px; }
-        .grid-7 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
-        .card-item { height: 500px; position: relative; overflow: hidden; border: 1px solid #1a1a1a; display: block; background: #111; }
-        .card-item img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: 1s ease; }
-        .card-item:hover img { opacity: 1; transform: scale(1.05); }
-        
+        .container { width: 100%; max-width: 1450px; margin: 0 auto; padding: 100px 20px; }
+        .grid-7 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .card-item { height: 550px; position: relative; overflow: hidden; display: block; background: #111; }
+        .card-item img { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: 1.5s ease; }
+        .card-item:hover img { opacity: 0.9; transform: scale(1.05); }
         .card-info { 
-            position: absolute; bottom: 0; left: 0; width: 100%; padding: 40px 20px; 
-            background: linear-gradient(to top, rgba(0,0,0,1), transparent); text-align: center; 
+            position: absolute; bottom: 0; left: 0; width: 100%; padding: 50px 30px; 
+            background: linear-gradient(to top, #000 60%, transparent); text-align: left; 
         }
-        .card-info h4 { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 3px; }
+        .card-info h4 { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 4px; font-size: 1.3rem; }
 
-        .whatsapp-float { position: fixed; bottom: 30px; left: 30px; background: #25d366; border-radius: 50%; width: 65px; height: 65px; display: flex; align-items: center; justify-content: center; font-size: 35px; z-index: 1001; color: #fff !important; }
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; border-radius: 50%; width: 65px; height: 65px; display: flex; align-items: center; justify-content: center; font-size: 35px; z-index: 1001; color: #fff !important; }
+
+        @media (max-width: 768px) { 
+            .hero-overlay { padding-left: 20px; align-items: flex-end; padding-bottom: 80px; }
+            .hero-content { border-left: none; padding-left: 0; }
+        }
     </style>
 </head>
 <body>
@@ -92,12 +102,12 @@
     <header class="site-header">
         <a href="index.html" class="brand-logo">
             <svg viewBox="0 0 500 500">
-                <circle cx="250" cy="250" r="230" stroke="#c5a059" fill="none" stroke-width="3"/>
+                <circle cx="250" cy="250" r="230" stroke="#c5a059" fill="none" stroke-width="2"/>
                 <path d="M250 140 L170 320 L330 320 Z" fill="#c5a059"/>
                 <text x="250" y="415" fill="#c5a059" font-family="Cinzel" font-size="44" text-anchor="middle" font-weight="900">METANOIA</text>
             </svg>
         </a>
-        <div class="burger" id="burger"><div></div><div></div><div></div></div>
+        <div class="burger"><div></div><div></div><div></div></div>
     </header>
 
     <section class="hero-cinema">
@@ -106,14 +116,16 @@
         <div class="cinema-slide slide-3"></div>
         
         <div class="hero-overlay">
-            <div class="hero-text">
+            <div class="hero-content">
+                <span>Vadu Dobrii — Hațeg Alternativ</span>
                 <h1>Simte, trăiește tăcerea.</h1>
-                <p>VADU DOBRII</p>
+                <p>Proiectul nostru s-a născut din respectul pentru rânduiala veche și din dorința de a arhitectura un refugiu mistic sub cerul liber. La Hațeg Alternativ, fiecare grindă de lemn și fiecare apus povestesc despre regăsire și despre frumusețea care se așază în straturi de tihnă.</p>
+                <a href="#proiecte" class="cta-btn">DESCOPERĂ ARHITEXTURA</a>
             </div>
         </div>
     </section>
 
-    <main class="container">
+    <main class="container" id="proiecte">
         <div class="grid-7">
             <a href="pensiune.html" class="card-item"><img src="images/IMG_20260330_160353.webp"><div class="card-info"><h4>DOMENIILE LA BULIGĂ</h4></div></a>
             <a href="metanoia.html" class="card-item"><img src="images/IMG_20260330_160344.webp"><div class="card-info"><h4>METANOIA</h4></div></a>
@@ -137,13 +149,16 @@
         </div>
     </main>
 
+    <div style="background:#000; padding:60px 0;">
+        <div class="elfsight-app-4342bef8-07d4-4bfe-9114-34160d0e96f1" data-elfsight-app-lazy></div>
+        <div class="elfsight-app-9e87d320-859d-4ef5-9a42-3eaeeaadb2d7" data-elfsight-app-lazy></div>
+        <div class="elfsight-app-8217fa9c-47ca-4b54-bb21-6a682ba7a413" data-elfsight-app-lazy></div>
+    </div>
+
     <footer style="padding: 60px 20px; text-align: center; border-top: 1px solid #111; background: #000;">
+        <p style="font-family:'Cinzel'; font-size:0.8rem; color:#444; letter-spacing:5px; margin-bottom:15px;">DAKAMIGOS MARKT SRL | CUI: RO40767794</p>
         <p style="font-family:'Cinzel'; font-size:0.7rem; color:#444; letter-spacing:3px;">HAȚEG ALTERNATIV &copy; 2026</p>
     </footer>
 
-    <script>
-        const burger = document.getElementById('burger');
-        burger.onclick = () => { /* Logica de meniu daca doresti sa o activezi */ };
-    </script>
 </body>
 </html>
