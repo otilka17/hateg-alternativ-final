@@ -15,38 +15,33 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
     <script src="https://elfsightcdn.com/platform.js" async></script>
 
     <style>
         :root { --auriu: #c5a059; --negru: #050505; --alb: #ffffff; }
-        
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         html, body { overflow-x: hidden; width: 100%; position: relative; background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
 
         /* REPARARE DEFINITIVA SCRIS MOV */
-        a, a:visited, a:active { text-decoration: none !important; color: inherit !important; transition: 0.3s; }
+        a, a:visited, a:active { text-decoration: none !important; color: inherit !important; }
         a:hover { color: var(--auriu) !important; }
 
         /* HEADER */
         .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: clamp(15px, 5vw, 30px) clamp(15px, 5vw, 50px); display: flex; justify-content: space-between; align-items: center; }
         .brand-logo svg { height: clamp(70px, 15vw, 130px); width: auto; filter: drop-shadow(0 0 15px rgba(0, 0, 0, 1)); }
-        
-        .header-controls { display: flex; align-items: center; gap: clamp(10px, 3vw, 30px); }
-        .btn-reserve-header { padding: 10px 18px; border: 2px solid var(--auriu); color: var(--auriu) !important; font-family: 'Cinzel'; font-size: 0.7rem; letter-spacing: 1px; font-weight: 700; background: rgba(0,0,0,0.5); transition: 0.3s ease; }
-        .btn-reserve-header:hover { background: var(--auriu); color: #000 !important; }
-
         .burger { cursor: pointer; z-index: 10001; background: rgba(0,0,0,0.6); padding: 10px; border-radius: 8px; }
-        .burger div { width: 28px; height: 2px; background: var(--auriu); margin: 6px; }
+        .burger div { width: 30px; height: 2px; background: var(--auriu); margin: 6px; }
 
         .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: var(--negru); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.6s; z-index: 10000; }
         .main-nav.active { right: 0; }
-        .main-nav a { font-size: 2rem; font-family: 'Cinzel'; margin: 15px 0; color: #fff !important; text-transform: uppercase; letter-spacing: 5px; text-shadow: 2px 2px 15px #000; }
+        .main-nav a { font-size: 2rem; font-family: 'Cinzel'; margin: 15px 0; letter-spacing: 5px; }
 
-        /* CINEMATIC HERO SLIDER */
-        .hero-slider { width: 100%; height: 100vh; overflow: hidden; position: relative; background: #000; }
-        .slider-track { display: flex; width: 300%; height: 100%; animation: cinemaLoop 20s infinite; }
-        .slide { width: 33.333%; height: 100%; position: relative; background-size: cover; background-position: center; }
+        /* CINEMATIC HERO HEADER */
+        .hero-cinema { position: relative; width: 100%; height: 100vh; overflow: hidden; }
+        .cinema-track { display: flex; width: 300%; height: 100%; animation: cinemaLoop 20s infinite; }
+        .cinema-slide { width: 33.333%; height: 100%; background-size: cover; background-position: center; position: relative; }
+        
+        /* CĂI REPARATE */
         .slide-1 { background-image: url('images/rasarit.jpg'); }
         .slide-2 { background-image: url('images/nori.jph.jpg'); }
         .slide-3 { background-image: url('images/apus.jpg'); }
@@ -58,127 +53,74 @@
             100% { transform: translateX(0); }
         }
 
-        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: radial-gradient(circle, transparent, var(--negru) 130%); z-index: 2; }
-        .hero-text h1 { font-family: 'Playfair Display'; font-size: clamp(2.5rem, 10vw, 7rem); font-style: italic; color: var(--auriu); text-shadow: 0 0 50px rgba(0,0,0,0.8); line-height: 1.1; }
+        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: radial-gradient(circle, transparent, var(--negru) 130%); }
+        .hero-text h1 { font-family: 'Playfair Display'; font-size: clamp(2.5rem, 10vw, 7rem); font-style: italic; color: var(--auriu); text-shadow: 0 0 50px rgba(0,0,0,0.8); }
 
-        /* TRANZITII MARI TIP FILM (JUMATATE DE PAGINA) */
-        .film-transition { width: 100%; height: 55vh; background-attachment: fixed; background-position: center; background-size: cover; border-top: 1px solid var(--auriu); border-bottom: 1px solid var(--auriu); position: relative; }
-        .img-live-1 { background-image: url('images/jeep.jpg'); }
-        .img-live-2 { background-image: url('images/padure.jpg'); }
+        /* TRANZITII MARI TIP FILM */
+        .film-transition { width: 100%; height: 50vh; background-attachment: fixed; background-position: center; background-size: cover; border-top: 1px solid var(--auriu); border-bottom: 1px solid var(--auriu); }
+        .trans-1 { background-image: url('images/jeep.jpg'); }
+        .trans-2 { background-image: url('images/padure.jpg'); }
 
-        /* GRID 7 CARDURI */
+        /* GRID 7 CARDURI REPARAT */
         .container { width: 100%; max-width: 1450px; margin: 0 auto; padding: 60px 20px; }
         .grid-7 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 80px; }
-        .card-item { height: 550px; position: relative; overflow: hidden; display: block; border: 1px solid #1a1a1a; background: #000; }
+        .card-item { height: 550px; position: relative; overflow: hidden; border: 1px solid #1a1a1a; display: block; background: #000; }
         .card-item img { width: 100%; height: 100%; object-fit: cover; opacity: 0.65; transition: 1.5s ease; }
-        .card-item:hover img { transform: scale(1.08); opacity: 0.9; }
+        .card-item:hover img { opacity: 0.9; transform: scale(1.05); }
         .card-info { position: absolute; bottom: 0; padding: 35px 25px; width: 100%; background: linear-gradient(to top, rgba(0,0,0,1) 45%, transparent); text-align: center; }
-        .card-info h4 { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 3px; font-size: 1.25rem; margin-bottom: 10px; }
-
-        .road-advisory { background: #080808; border-top: 3px solid var(--auriu); border-bottom: 3px solid var(--auriu); padding: 80px 20px; text-align: center; }
-        .road-inner i { color: var(--auriu); font-size: 3.5rem; margin-bottom: 20px; display: block; }
+        .card-info h4 { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 3px; font-size: 1.25rem; }
 
         .whatsapp-float { position: fixed; bottom: 25px; left: 25px; background: #25d366; border-radius: 50%; width: 65px; height: 65px; display: flex; align-items: center; justify-content: center; font-size: 35px; z-index: 1001; color: #fff !important; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
 
-        @media (max-width: 768px) {
-            .film-transition { height: 45vh; background-attachment: scroll; }
-            .grid-7 { grid-template-columns: 1fr; }
-        }
+        @media (max-width: 768px) { .film-transition { height: 40vh; background-attachment: scroll; } .grid-7 { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
-    <a href="https://wa.me/40749229686" class="whatsapp-float" target="_blank" aria-label="Contact WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://wa.me/40749229686" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
     
     <header class="site-header">
         <a href="index.html" class="brand-logo">
-            <svg viewBox="0 0 800 500"><circle cx="400" cy="250" r="105" fill="none" stroke="#c5a059" stroke-width="4" opacity="0.8"/><path d="M300 400 L400 200 L500 400 Z" fill="#c5a059"/></svg>
+            <svg viewBox="0 0 500 500"><circle cx="250" cy="250" r="235" stroke="#c5a059" fill="none" stroke-width="1.5"/><circle cx="250" cy="250" r="215" stroke="#c5a059" fill="none" stroke-width="3"/><polygon points="250,145 170,310 330,310" fill="#c5a059"/><text x="257" y="380" fill="#c5a059" font-family="Cinzel" font-size="40" text-anchor="middle">METANOIA</text></svg>
         </a>
-        <div class="header-controls">
-            <a href="rezervari.html" class="btn-reserve-header">REZERVĂ</a>
-            <div class="burger" id="burger"><div></div><div></div><div></div></div>
-        </div>
-        <nav class="main-nav" id="nav-links">
-            <a href="index.html">Acasă</a>
-            <a href="pensiune.html">Domeniile La Buligă</a>
-            <a href="metanoia.html">Metanoia</a>
-            <a href="gastronomie.html">Gastronomie</a>
-            <a href="evenimente.html">Evenimente</a>
-            <a href="rezervari.html">Rezervare</a>
-            <a href="contact.html">Contact</a>
-        </nav>
+        <div class="burger" id="burger"><div></div><div></div><div></div></div>
     </header>
 
-    <div class="hero-slider">
-        <div class="slider-track">
-            <div class="slide slide-1"></div>
-            <div class="slide slide-2"></div>
-            <div class="slide slide-3"></div>
+    <section class="hero-cinema">
+        <div class="cinema-track">
+            <div class="cinema-slide slide-1"></div>
+            <div class="cinema-slide slide-2"></div>
+            <div class="cinema-slide slide-3"></div>
         </div>
         <div class="hero-overlay">
             <div class="hero-text">
                 <h1>Simte, trăiește tăcerea.</h1>
                 <p style="font-family:'Cinzel'; color:var(--auriu); letter-spacing:10px; margin-top:20px; font-weight:700;">VADU DOBRII</p>
-                <div style="margin-top: 35px;">
-                    <a href="rezervari.html" style="background:var(--auriu); color:#000; padding:15px 30px; font-family:'Cinzel'; font-weight:700; letter-spacing:2px;">REZERVĂ ACUM</a>
-                </div>
             </div>
         </div>
-    </div>
+    </section>
 
     <section style="padding:100px 20px; text-align:center; max-width:900px; margin:0 auto;">
         <h2 style="font-family:'Cinzel'; color:var(--auriu); letter-spacing:6px; margin-bottom:30px;">RĂDĂCINI ȘI TIHNĂ</h2>
-        <p style="font-size:1.25rem; color:#ccc; line-height:1.8;">Am rânduit un spațiu pentru cei ce caută esența. O experiență rânduită aproape de natură și de liniștea de altădată, departe de zgomotul lumii moderne.</p>
+        <p style="font-size:1.25rem; color:#ccc; line-height:1.8;">Experiență rânduită aproape de natură și de liniștea de altădată.</p>
     </section>
 
-    <div class="film-transition img-live-1"></div>
+    <div class="film-transition trans-1"></div>
 
     <main class="container" id="experiente">
         <div class="grid-7">
-            <a href="pensiune.html" class="card-item">
-                <img src="images/IMG20260422195928.jpg" alt="Pensiunea">
-                <div class="card-info"><h4>DOMENIILE LA BULIGĂ</h4></div>
-            </a>
-            <a href="metanoia.html" class="card-item">
-                <img src="images/IMG20260419154845.jpg" alt="Metanoia">
-                <div class="card-info"><h4>METANOIA</h4></div>
-            </a>
-            <a href="gastronomie.html" class="card-item">
-                <img src="images/padure.jpg" alt="Gastronomie">
-                <div class="card-info"><h4>GASTRONOMIE</h4></div>
-            </a>
-            <a href="evenimente.html" class="card-item">
-                <img src="images/narcise.jpg" alt="Evenimente">
-                <div class="card-info"><h4>TIHNĂ ȘI TRĂIRE</h4></div>
-            </a>
-            <a href="explorare-ebike.html" class="card-item">
-                <img src="images/cardindexebike.jpg" alt="Explorare">
-                <div class="card-info"><h4>EXPLORARE</h4></div>
-            </a>
-            <a href="curs.html" class="card-item">
-                <img src="images/ai_cursuri_mistic.jpg" alt="Cursuri">
-                <div class="card-info"><h4>CURSURI</h4></div>
-            </a>
-            <a href="padureni.html" class="card-item">
-                <img src="images/IMG20260419151235.jpg" alt="Pădureni">
-                <div class="card-info"><h4>ȚINUTUL PĂDURENILOR</h4></div>
-            </a>
+            <a href="pensiune.html" class="card-item"><img src="images/IMG20260422195928.jpg"><div class="card-info"><h4>DOMENIILE LA BULIGĂ</h4></div></a>
+            <a href="metanoia.html" class="card-item"><img src="images/IMG20260419154845.jpg"><div class="card-info"><h4>METANOIA</h4></div></a>
+            <a href="gastronomie.html" class="card-item"><img src="images/padure.jpg"><div class="card-info"><h4>GASTRONOMIE</h4></div></a>
+            <a href="evenimente.html" class="card-item"><img src="images/narcise.jpg"><div class="card-info"><h4>TIHNĂ ȘI TRĂIRE</h4></div></a>
+            <a href="explorare-ebike.html" class="card-item"><img src="images/cardindexebike.jpg"><div class="card-info"><h4>EXPLORARE</h4></div></a>
+            <a href="curs.html" class="card-item"><img src="images/ai_cursuri_mistic.jpg"><div class="card-info"><h4>CURSURI</h4></div></a>
+            <a href="padureni.html" class="card-item"><img src="images/IMG20260419151235.jpg"><div class="card-info"><h4>ȚINUTUL PĂDURENILOR</h4></div></a>
         </div>
-
-        <div style="margin-top: 60px;">
-            <div class="elfsight-app-2a7a128c-e004-486e-961a-99f57d874913" data-elfsight-app-lazy></div>
-        </div>
+        <div class="elfsight-app-2a7a128c-e004-486e-961a-99f57d874913" data-elfsight-app-lazy></div>
     </main>
 
-    <div class="film-transition img-live-2"></div>
-
-    <section class="road-advisory">
-        <div class="road-inner">
-            <i class="fas fa-mountain-sun"></i>
-            <h3>RÂNDUIALA DRUMULUI</h3>
-            <p style="color:#ccc; font-size:1.2rem; max-width:800px; margin: 0 auto;">Cei 15 KM de drum forestier sunt proba ta de răbdare. Recomandăm SUV sau JEEP pentru a ajunge în siguranță deasupra norilor.</p>
-        </div>
-    </section>
+    <div class="film-transition trans-2"></div>
 
     <div style="background:#000; padding:60px 0;">
         <div class="elfsight-app-4342bef8-07d4-4bfe-9114-34160d0e96f1" data-elfsight-app-lazy></div>
@@ -192,19 +134,7 @@
 
     <script>
         const burger = document.getElementById('burger');
-        const nav = document.getElementById('nav-links');
-        burger.onclick = () => nav.classList.toggle('active');
-    </script>
-    <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-    })();
+        burger.onclick = () => document.querySelector('.main-nav').classList.toggle('active');
     </script>
 </body>
 </html>
