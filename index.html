@@ -24,7 +24,7 @@
 
         a, a:visited, a:active { text-decoration: none !important; color: inherit !important; }
 
-        /* HEADER & LOGO REPARAT */
+        /* HEADER & LOGO */
         .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; }
         .brand-logo svg { height: 110px; width: auto; filter: drop-shadow(0 0 15px #000); }
         
@@ -35,7 +35,7 @@
         .main-nav.active { right: 0; }
         .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 12px 0; letter-spacing: 4px; }
 
-        /* HERO DINAMIC REPEDE (CROSSFADE + ZOOM) */
+        /* HERO DINAMIC */
         .hero-cinema { position: relative; width: 100%; height: 100vh; overflow: hidden; background: #000; }
         .cinema-slide { 
             position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
@@ -59,12 +59,12 @@
         .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: radial-gradient(circle, transparent, var(--negru) 150%); z-index: 10; }
         .hero-text h1 { font-family: 'Playfair Display'; font-size: clamp(2.2rem, 8vw, 6.5rem); font-style: italic; color: var(--auriu); text-shadow: 0 0 30px #000; }
 
-        /* TRANZITII FILM JUMATATE PAGINA */
+        /* TRANZITII */
         .film-transition { width: 100%; height: 50vh; background-attachment: fixed; background-position: center; background-size: cover; border-top: 1px solid var(--auriu); border-bottom: 1px solid var(--auriu); }
         .trans-1 { background-image: url('images/jeep.jpg'); }
         .trans-2 { background-image: url('images/padure.jpg'); }
 
-        /* GRID CARDURI - REPARAT TEXT JOS & LIZIBILITATE */
+        /* GRID CARDURI */
         .container { width: 100%; max-width: 1450px; margin: 0 auto; padding: 60px 20px; }
         .grid-7 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
         .card-item { height: 500px; position: relative; overflow: hidden; border: 1px solid #1a1a1a; display: block; background: #000; }
@@ -129,18 +129,20 @@
     <main class="container">
         <div class="grid-7">
             <a href="pensiune.html" class="card-item"><img src="images/IMG_20260330_160353.webp"><div class="card-info"><h4>DOMENIILE LA BULIGĂ</h4></div></a>
-            
             <a href="metanoia.html" class="card-item"><img src="images/IMG_20260330_160344.webp"><div class="card-info"><h4>METANOIA</h4></div></a>
-            
             <a href="gastronomie.html" class="card-item"><img src="images/gast-supa2.jpg"><div class="card-info"><h4>GASTRONOMIE</h4></div></a>
-            
             <a href="evenimente.html" class="card-item"><img src="images/narcise.jpg"><div class="card-info"><h4>TIHNĂ ȘI TRĂIRE</h4></div></a>
-            
             <a href="explorare-ebike.html" class="card-item"><img src="images/cardindexebike.webp"><div class="card-info"><h4>EXPLORARE</h4></div></a>
             
-            <a href="curs.html" class="card-item"><img src="images/ai_cursuri_mistic.jpg"><div class="card-info"><h4>CURSURI</h4></div></a>
+            <a href="curs.html" class="card-item">
+                <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&q=80&w=1000" alt="Mistic">
+                <div class="card-info"><h4>CURSURI</h4></div>
+            </a>
             
-            <a href="padureni.html" class="card-item"><img src="images/IMG20260419151235.jpg"><div class="card-info"><h4>ȚINUTUL PĂDURENILOR</h4></div></a>
+            <a href="padureni.html" class="card-item">
+                <img src="images/exp-padureni-biserica.jpg">
+                <div class="card-info"><h4>ȚINUTUL PĂDURENILOR</h4></div>
+            </a>
         </div>
         
         <div style="margin-top:80px;">
