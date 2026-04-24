@@ -5,8 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Metanoia & Evenimente | Hațeg Alternativ</title>
     
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://elfsightcdn.com/platform.js" async></script>
 
     <style>
         :root { --gold: #c5a059; --dark: #0a0a0a; --white: #ffffff; --gray: #aaa; }
@@ -15,8 +24,8 @@
 
         /* HEADER UNITAR */
         .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 30px 50px; display: flex; justify-content: space-between; align-items: center; }
-        .brand svg { height: 80px; width: auto; filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.4)); }
-        .burger { cursor: pointer; z-index: 10000; padding: 10px; }
+        .brand-logo svg { height: 90px; width: auto; filter: drop-shadow(0 0 15px rgba(0, 0, 0, 1)); }
+        .burger { cursor: pointer; z-index: 10000; padding: 10px; background: rgba(0,0,0,0.5); border-radius: 8px; }
         .burger div { width: 35px; height: 2px; background: var(--gold); margin: 8px; }
 
         .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: rgba(0,0,0,0.98); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.6s cubic-bezier(0.7, 0, 0.3, 1); z-index: 9500; }
@@ -25,7 +34,7 @@
         .main-nav a:hover { opacity: 1; color: var(--gold); }
 
         /* HERO METANOIA */
-        .hero-metanoia { height: 80vh; position: relative; display: flex; align-items: center; justify-content: center; background: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2000') center/cover; }
+        .hero-metanoia { height: 80vh; position: relative; display: flex; align-items: center; justify-content: center; background: url('images/apus.jpg') center/cover; }
         .hero-metanoia::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to bottom, rgba(10,10,10,0.4), var(--dark)); }
         .hero-content { position: relative; z-index: 10; text-align: center; max-width: 900px; padding: 0 20px; }
         .hero-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(3.5rem, 10vw, 7rem); font-style: italic; color: var(--gold); margin-bottom: 20px; }
@@ -42,17 +51,18 @@
         .exp-card { background: #080808; border: 1px solid #1a1a1a; transition: 0.4s; overflow: hidden; display: flex; flex-direction: column; }
         .exp-card:hover { border-color: var(--gold); transform: translateY(-10px); }
         
-        .exp-img { height: 400px; overflow: hidden; position: relative; }
-        .exp-img img { width: 100%; height: 100%; object-fit: cover; transition: 1.2s; filter: brightness(0.7) grayscale(20%); }
-        .exp-card:hover .exp-img img { transform: scale(1.1); filter: brightness(0.9) grayscale(0%); }
+        .exp-img { height: 450px; overflow: hidden; position: relative; }
+        .exp-img img { width: 100%; height: 100%; object-fit: cover; transition: 1.2s; filter: brightness(0.8); }
+        .exp-card:hover .exp-img img { transform: scale(1.1); filter: brightness(1); }
 
         .exp-info { padding: 45px; flex-grow: 1; display: flex; flex-direction: column; }
         .exp-info h3 { font-family: 'Cinzel'; color: var(--gold); font-size: 1.5rem; letter-spacing: 3px; margin-bottom: 20px; }
-        .exp-info p { color: #aaa; font-size: 1rem; margin-bottom: 40px; }
+        .exp-info p { color: #aaa; font-size: 1rem; margin-bottom: 40px; min-height: 60px; }
 
-        /* BUTON WHATSAPP */
         .btn-wa { margin-top: auto; padding: 18px; border: 1px solid var(--gold); color: var(--gold); text-decoration: none; font-family: 'Cinzel'; letter-spacing: 3px; font-size: 0.85rem; text-align: center; transition: 0.4s; display: flex; align-items: center; justify-content: center; gap: 12px; }
-        .btn-wa:hover { background: var(--gold); color: #000; box-shadow: 0 0 30px rgba(197, 160, 89, 0.3); }
+        .btn-wa:hover { background: var(--gold); color: #000; }
+
+        .whatsapp-float { position: fixed; bottom: 25px; left: 25px; background: #25d366; border-radius: 50%; width: 65px; height: 65px; display: flex; align-items: center; justify-content: center; font-size: 35px; z-index: 1001; color: #fff; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
 
         footer { padding: 80px 50px; text-align: center; border-top: 1px solid #111; color: #444; font-family: 'Cinzel'; font-size: 0.7rem; letter-spacing: 4px; }
 
@@ -60,17 +70,24 @@
             .exp-grid { grid-template-columns: 1fr; }
             .exp-container, .concept-intro { padding: 80px 25px; }
             .site-header { padding: 20px; }
+            .exp-img { height: 300px; }
         }
     </style>
 </head>
 <body>
 
+    <a href="https://wa.me/40749229686" class="whatsapp-float" target="_blank" aria-label="Contact WhatsApp"><i class="fab fa-whatsapp"></i></a>
+
     <header class="site-header">
-        <a href="index.html" class="brand">
-            <svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="400" cy="280" r="105" fill="none" stroke="#c5a059" stroke-width="2" opacity="0.4"/>
-                <path d="M300 450 L400 250 L500 450 Z" fill="#c5a059"/>
-                <text x="400" y="765" font-family="'Cinzel'" text-anchor="middle" font-size="40" fill="#c5a059">HAȚEG ALTERNATIV</text>
+        <a href="index.html" class="brand-logo">
+            <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="250" cy="250" r="235" stroke="#c5a059" fill="none" stroke-width="1.5" opacity="0.6"/>
+                <circle cx="250" cy="250" r="215" stroke="#c5a059" fill="none" stroke-width="3"/>
+                <circle cx="250" cy="145" r="45" stroke="#c5a059" fill="none" stroke-width="3"/>
+                <polygon points="250,145 170,310 330,310" fill="#c5a059"/>
+                <text x="257" y="380" fill="#c5a059" font-family="Cinzel, serif" font-size="42" font-weight="600" letter-spacing="14" text-anchor="middle">METANOIA</text>
+                <text x="253" y="420" fill="#c5a059" font-family="Inter, sans-serif" font-size="14" font-weight="600" letter-spacing="7" text-anchor="middle">HAȚEG ALTERNATIV</text>
+                <circle cx="250" cy="450" r="4" fill="#c5a059"/>
             </svg>
         </a>
         <div class="burger" id="burger"><div></div><div></div><div></div></div>
@@ -79,6 +96,7 @@
             <a href="pensiune.html">Pensiunea</a>
             <a href="gastronomie.html">Gastronomie</a>
             <a href="metanoia.html">Metanoia</a>
+            <a href="rezervari.html">Rezervări</a>
         </nav>
     </header>
 
@@ -91,75 +109,95 @@
 
     <div class="concept-intro">
         <h2>MANIFEST</h2>
-        <p>Metanoia este punctul în care timpul se oprește pentru a lăsa loc regăsirii. Nu este doar un loc, ci o transformare a minții prin artă, natură brută și gastronomie arhaică.</p>
+        <p>Metanoia este punctul în care timpul se oprește pentru a lăsa loc regăsirii. Transformare prin artă, natură brută și gastronomie arhaică.</p>
     </div>
 
     <main class="exp-container">
         <div class="exp-grid">
             
             <div class="exp-card">
-                <div class="exp-img"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2000" alt="Cununie"></div>
+                <div class="exp-img"><img src="images/cununie.jpg" alt="Cununie"></div>
                 <div class="exp-info">
                     <h3>Cununii & Evenimente</h3>
-                    <p>Sărbătorește viața în cel mai pur decor natural. Evenimente intime rânduite cu simplitate rustică și bun gust.</p>
-                    <a href="https://wa.me/40749229686?text=Vreau%20sa%20rezerv%20o%20Cununie" class="btn-wa"><i class="fab fa-whatsapp"></i> REZERVĂ PE WHATSAPP</a>
+                    <p>Sărbătorește viața în cel mai pur decor natural. Evenimente intime rânduite cu simplitate rustică.</p>
+                    <a href="https://wa.me/40749229686?text=Vreau%20o%20Cununie" class="btn-wa"><i class="fab fa-whatsapp"></i> REZERVĂ PE WHATSAPP</a>
                 </div>
             </div>
 
             <div class="exp-card">
-                <div class="exp-img"><img src="https://images.unsplash.com/photo-1519622930230-0702330fe537?q=80&w=2000" alt="Baby Shower"></div>
+                <div class="exp-img"><img src="images/baby.jpg" alt="Baby Shower"></div>
                 <div class="exp-info">
                     <h3>Baby Shower în Natură</h3>
-                    <p>Primește noua viață într-un cadru de poveste. Tihnă deplină pentru mămici și prieteni, departe de zgomotul orașului.</p>
-                    <a href="https://wa.me/40749229686?text=Vreau%20detalii%20Baby%20Shower" class="btn-wa"><i class="fab fa-whatsapp"></i> REZERVĂ PE WHATSAPP</a>
+                    <p>Primește noua viață într-un cadru de poveste. Tihnă deplină departe de zgomotul orașului.</p>
+                    <a href="https://wa.me/40749229686?text=Detalii%20Baby%20Shower" class="btn-wa"><i class="fab fa-whatsapp"></i> REZERVĂ PE WHATSAPP</a>
                 </div>
             </div>
 
             <div class="exp-card">
-                <div class="exp-img"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2000" alt="Teambuilding"></div>
+                <div class="exp-img"><img src="images/teambuilding.jpg" alt="Teambuilding"></div>
                 <div class="exp-info">
                     <h3>Teambuilding & Retreat</h3>
-                    <p>Reset total pentru echipa ta. Activități de coeziune și strategie la peste 1000m altitudine. Aici se nasc liderii.</p>
-                    <a href="https://wa.me/40749229686?text=Vreau%20oferta%20Teambuilding" class="btn-wa"><i class="fab fa-whatsapp"></i> REZERVĂ PE WHATSAPP</a>
+                    <p>Reset total pentru echipa ta. Activități de coeziune și strategie la peste 1000m altitudine.</p>
+                    <a href="https://wa.me/40749229686?text=Oferta%20Teambuilding" class="btn-wa"><i class="fab fa-whatsapp"></i> REZERVĂ PE WHATSAPP</a>
                 </div>
             </div>
 
             <div class="exp-card">
-                <div class="exp-img"><img src="https://images.unsplash.com/photo-1560613200-a3525281486c?q=80&w=2000" alt="Aventura"></div>
+                <div class="exp-img"><img src="images/aventura.jpg" alt="Aventura"></div>
                 <div class="exp-info">
                     <h3>ATV, Hiking & Bikes</h3>
-                    <p>Trasee sălbatice direct de la poartă. Explorează Retezatul și împrejurimile pe două sau patru roți.</p>
-                    <a href="https://wa.me/40749229686?text=Vreau%20aventura%20ATV/Bikes" class="btn-wa"><i class="fab fa-whatsapp"></i> REZERVĂ PE WHATSAPP</a>
+                    <p>Trasee sălbatice direct de la poartă. Explorează Retezatul pe două sau patru roți.</p>
+                    <a href="https://wa.me/40749229686?text=Aventura%20ATV%20Bikes" class="btn-wa"><i class="fab fa-whatsapp"></i> REZERVĂ PE WHATSAPP</a>
                 </div>
             </div>
 
             <div class="exp-card">
-                <div class="exp-img"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?q=80&w=2000" alt="Art Gastro"></div>
+                <div class="exp-img"><img src="images/arta.jpg" alt="Art Gastro"></div>
                 <div class="exp-info">
                     <h3>Artă & Gastronomie</h3>
-                    <p>Vernisaje în șură, ateliere de meșteșug și degustări fine. Regăsește-ți echilibrul prin creație și gust pur.</p>
-                    <a href="https://wa.me/40749229686?text=Vreau%20experienta%20Metanoia" class="btn-wa"><i class="fab fa-whatsapp"></i> REZERVĂ PE WHATSAPP</a>
+                    <p>Vernisaje în șură și degustări fine. Regăsește-ți echilibrul prin creație și gust pur.</p>
+                    <a href="https://wa.me/40749229686?text=Experienta%20Metanoia" class="btn-wa"><i class="fab fa-whatsapp"></i> REZERVĂ PE WHATSAPP</a>
                 </div>
             </div>
 
             <div class="exp-card">
-                <div class="exp-img"><img src="https://images.unsplash.com/photo-1475518112798-86ae31822ad9?q=80&w=2000" alt="Foc"></div>
+                <div class="exp-img"><img src="images/foc.jpg" alt="Foc de Tabara"></div>
                 <div class="exp-info">
                     <h3>Foc de Tabără & Povești</h3>
-                    <p>Seri magice sub cerul liber. Legendele locului povestite la jar, cu arome de miel copt și vin de soi.</p>
-                    <a href="https://wa.me/40749229686?text=Vreau%20detalii%20Seri%20de%20Foc" class="btn-wa"><i class="fab fa-whatsapp"></i> REZERVĂ PE WHATSAPP</a>
+                    <p>Seri magice sub cerul liber. Legendele locului povestite la jar cu vin de soi.</p>
+                    <a href="https://wa.me/40749229686?text=Seri%20de%20Foc" class="btn-wa"><i class="fab fa-whatsapp"></i> REZERVĂ PE WHATSAPP</a>
                 </div>
             </div>
 
         </div>
+
+        <div class="elfsight-app-2a7a128c-e004-486e-961a-99f57d874913" data-elfsight-app-lazy></div>
+        
+        <div style="background:#000; padding:60px 0;">
+            <div class="elfsight-app-4342bef8-07d4-4bfe-9114-34160d0e96f1" data-elfsight-app-lazy></div>
+            <div class="elfsight-app-9e87d320-859d-4ef5-9a42-3eaeeaadb2d7" data-elfsight-app-lazy></div>
+            <div class="elfsight-app-8217fa9c-47ca-4b54-bb21-6a682ba7a413" data-elfsight-app-lazy></div>
+        </div>
     </main>
 
-    <footer>HAȚEG ALTERNATIV &copy; 2026 | DOMENIILE LA BULIGĂ</footer>
+    <footer>HAȚEG ALTERNATIV &copy; 2026</footer>
 
     <script>
         const burger = document.getElementById('burger');
         const nav = document.getElementById('nav-links');
-        burger.addEventListener('click', () => { nav.classList.toggle('active'); });
+        burger.onclick = () => nav.classList.toggle('active');
+    </script>
+    
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
     </script>
 </body>
 </html>
