@@ -29,7 +29,7 @@
         .burger { cursor: pointer; z-index: 10001; background: rgba(0,0,0,0.6); padding: 12px; border-radius: 8px; border: 1px solid var(--aur); }
         .burger div { width: 28px; height: 2px; background: var(--aur); margin: 6px; transition: 0.4s; }
 
-        /* MASTER MENU - OPTIMIZAT PENTRU MOBIL */
+        /* MENIU BURGER OPTIMIZAT PENTRU MOBIL */
         .main-nav { 
             position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; 
             background: rgba(5, 5, 5, 0.98); display: flex; flex-direction: column; 
@@ -55,39 +55,22 @@
 
         /* TIMELINE SECTION */
         .timeline-container { max-width: 1100px; margin: -60px auto 100px; padding: 0 20px; position: relative; z-index: 10; }
-        
-        .event-entry { 
-            background: var(--gri); border: 1px solid #222; margin-bottom: 80px; 
-            display: flex; flex-direction: column; overflow: hidden;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
-        }
-        
+        .event-entry { background: var(--gri); border: 1px solid #222; margin-bottom: 80px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.5); }
         .event-img { height: 400px; position: relative; overflow: hidden; }
         .event-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: 0.6s; }
         .event-entry:hover .event-img img { transform: scale(1.05); opacity: 1; }
+        .event-tag { position: absolute; top: 20px; left: 20px; background: var(--aur); color: #000; padding: 8px 15px; font-family: 'Cinzel'; font-weight: 900; font-size: 0.7rem; letter-spacing: 2px; z-index: 5; }
         
-        .event-tag { 
-            position: absolute; top: 20px; left: 20px; background: var(--aur); color: #000; 
-            padding: 8px 15px; font-family: 'Cinzel'; font-weight: 900; font-size: 0.7rem; letter-spacing: 2px; z-index: 5;
-        }
-
         .event-content { padding: 50px; }
         .event-date { font-family: 'Cinzel'; color: var(--aur); font-size: 0.85rem; letter-spacing: 4px; margin-bottom: 15px; display: block; }
         .event-content h2 { font-family: 'Playfair Display'; font-size: 2.8rem; font-style: italic; color: #fff; margin-bottom: 25px; }
         .event-content p { color: #bbb; line-height: 1.9; margin-bottom: 30px; font-weight: 300; font-size: 1.1rem; }
 
-        .tech-specs { 
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
-            gap: 20px; border-top: 1px solid #222; padding-top: 30px; margin-top: 30px;
-        }
+        .tech-specs { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px; border-top: 1px solid #222; padding-top: 30px; margin-top: 30px; }
         .spec-item { font-size: 0.8rem; font-family: 'Cinzel'; color: var(--aur); opacity: 0.7; }
         .spec-item strong { display: block; color: #fff; margin-bottom: 5px; font-size: 0.9rem; }
 
-        .btn-reserve { 
-            display: inline-block; padding: 18px 45px; border: 1px solid var(--aur); 
-            color: var(--aur); font-family: 'Cinzel'; letter-spacing: 3px; font-weight: 900; 
-            margin-top: 40px; transition: 0.3s; text-align: center;
-        }
+        .btn-reserve { display: inline-block; padding: 18px 45px; border: 1px solid var(--aur); color: var(--aur); font-family: 'Cinzel'; letter-spacing: 3px; font-weight: 900; margin-top: 40px; transition: 0.3s; text-align: center; }
         .btn-reserve:hover { background: var(--aur); color: #000; }
 
         .whatsapp-float { position: fixed; bottom: 30px; left: 30px; background: #25d366; border-radius: 50%; width: 65px; height: 65px; display: flex; align-items: center; justify-content: center; font-size: 35px; z-index: 1001; color: #fff !important; }
@@ -97,7 +80,6 @@
             .event-img { width: 45%; height: 100%; }
             .event-content { width: 55%; display: flex; flex-direction: column; justify-content: center; }
         }
-
         footer { padding: 80px 20px; text-align: center; opacity: 0.4; font-family: 'Cinzel'; font-size: 0.75rem; letter-spacing: 4px; border-top: 1px solid #111; }
     </style>
 </head>
@@ -139,9 +121,9 @@
             <div class="event-content">
                 <span class="event-date">01 MAI 2026 • VADU DOBRII</span>
                 <h2>Serată Romano-Italiană</h2>
-                <p>O fuziune între rânduiala locului și gusturile mediteraneene, totul pregătit la foc deschis. Un eveniment de tip "Social Debugging" unde tăcerea munților întâlnește poveștile la un pahar de vin bun.</p>
+                <p>O fuziune între rânduiala locului și gusturile mediteraneene, totul pregătit la foc deschis. Un eveniment unde tăcerea munților întâlnește poveștile la un pahar de vin bun.</p>
                 <div class="tech-specs">
-                    <div class="spec-item"><strong>CAPACITATE</strong>12 Useri (Filtrați)</div>
+                    <div class="spec-item"><strong>CAPACITATE</strong>12 Useri</div>
                     <div class="spec-item"><strong>METODĂ</strong>Jar Viu & Fontă</div>
                     <div class="spec-item"><strong>STATUS</strong>Locuri Limitate</div>
                 </div>
@@ -157,10 +139,10 @@
             <div class="event-content">
                 <span class="event-date">09-10 MAI 2026 • MUNȚII POIANA RUSCĂ</span>
                 <h2>Bike & Flowers</h2>
-                <p>O expediție de tip "System Reset" către Poiana Narciselor. Utilizăm E-Bike-uri de înaltă performanță pentru a accesa zone virgine ale Pădurenilor, acolo unde natura rulează cel mai pur cod al primăverii.</p>
+                <p>O expediție către Poiana Narciselor. Utilizăm E-Bike-uri de înaltă performanță pentru a accesa zone virgine ale Pădurenilor, acolo unde natura rulează cel mai pur cod al primăverii.</p>
                 <div class="tech-specs">
-                    <div class="spec-item"><strong>EFORȚ</strong>Controlat (E-Bike)</div>
-                    <div class="spec-item"><strong>DISTANȚĂ</strong>45 KM de Poveste</div>
+                    <div class="spec-item"><strong>EFORȚ</strong>E-Bike</div>
+                    <div class="spec-item"><strong>DISTANȚĂ</strong>45 KM</div>
                     <div class="spec-item"><strong>OBIECTIV</strong>Poiana Narciselor</div>
                 </div>
                 <a href="explorare-ebike.html" class="btn-reserve">VEZI PROTOCOLUL</a>
@@ -169,16 +151,16 @@
 
         <div class="event-entry">
             <div class="event-img">
-                <span class="event-tag">REGENERARE TOTALĂ</span>
-                <img src="images/Densus.jpg" alt="Go Nomad">
+                <span class="event-tag">EXPEDIȚIE MISTICĂ</span>
+                <img src="images/Sarmizegetusa.jpg" alt="Go Nomad">
             </div>
             <div class="event-content">
-                <span class="event-date">IUNIE 2026 • EXPEDIȚIE MISTICĂ</span>
+                <span class="event-date">IUNIE 2026 • REGENERARE TOTALĂ</span>
                 <h2>Go Nomad: Rădăcini de Fier</h2>
-                <p>O incursiune în istorie la cetățile Sarmizegetusa Regia si Ulpia Traiana.  Vizităm și satele de pe culmi, într-un format de retreat care combină istoria dacică cu managementul modern al stresului.</p>
+                <p>O incursiune în istorie la cetățile Sarmizegetusa Regia si Ulpia Traiana. Vizităm și satele de pe culmi, într-un format de retreat care combină istoria dacică cu managementul modern al stresului.</p>
                 <div class="tech-specs">
                     <div class="spec-item"><strong>FOCUS</strong>Istorie & Reset</div>
-                    <div class="spec-item"><strong>ACCES</strong>Prin GoNomad</div>
+                    <div class="spec-item"><strong>METODĂ</strong>La pas</div>
                     <div class="spec-item"><strong>DURATĂ</strong>48 Ore Off-Grid</div>
                 </div>
                 <a href="contact.html" class="btn-reserve">EXPRIMĂ INTERESUL</a>
