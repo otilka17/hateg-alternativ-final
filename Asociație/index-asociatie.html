@@ -19,7 +19,7 @@
     <style>
         :root { 
             --auriu-gold: #ffd700; 
-            --negru-pur: #000000; 
+            --negru-pur: #050505; 
             --alb: #ffffff;
             --overlay-card: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%);
         }
@@ -30,24 +30,24 @@
         body { background: var(--negru-pur); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
 
         /* HEADER */
-        .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; }
-        .brand svg { height: 90px; width: auto; filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.4)); }
+        .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 25px 5%; display: flex; justify-content: space-between; align-items: center; }
+        .brand svg { height: clamp(70px, 15vw, 100px); width: auto; filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.4)); }
         
         .burger { cursor: pointer; z-index: 10001; background: rgba(0,0,0,0.6); padding: 12px; border-radius: 8px; border: 1px solid var(--auriu-gold); }
         .burger div { width: 28px; height: 2px; background: var(--auriu-gold); margin: 6px; transition: 0.4s; }
 
-        /* MENIU BURGER OPTIMIZAT */
+        /* MENIU BURGER UNIFICAT */
         .main-nav { 
             position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; 
-            background: rgba(0,0,0,0.98); display: flex; flex-direction: column; 
+            background: rgba(5, 5, 5, 0.98); display: flex; flex-direction: column; 
             justify-content: center; align-items: center; transition: 0.5s ease; 
             z-index: 10000; padding: 20px;
         }
         .main-nav.active { right: 0; }
         .main-nav a { 
-            font-size: clamp(1.1rem, 5vw, 2.1rem); font-family: 'Cinzel'; 
-            margin: 15px 0; color: var(--alb) !important; text-transform: uppercase; 
-            letter-spacing: 4px; text-align: center; width: 90%; line-height: 1.3;
+            font-size: clamp(1.1rem, 5vw, 2.2rem); font-family: 'Cinzel', serif; 
+            margin: 15px 0; color: #ffffff !important; text-transform: uppercase; 
+            letter-spacing: 4px; text-align: center; width: 90%; line-height: 1.3; 
         }
         .main-nav a:hover { color: var(--auriu-gold) !important; }
 
@@ -62,12 +62,12 @@
         .slide-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 8vw, 5rem); font-style: italic; color: var(--auriu-gold); text-shadow: 2px 2px 10px rgba(0,0,0,0.8); }
 
         /* INTRO */
-        .intro-text { padding: 80px 20px; text-align: center; max-width: 900px; margin: 0 auto; }
-        .intro-text h2 { font-family: 'Cinzel'; color: var(--auriu-gold); margin-bottom: 20px; letter-spacing: 5px; font-size: 1.2rem; }
+        .intro-text { padding: 100px 20px; text-align: center; max-width: 900px; margin: 0 auto; }
+        .intro-text h2 { font-family: 'Cinzel'; color: var(--auriu-gold); margin-bottom: 25px; letter-spacing: 6px; font-size: 1.2rem; }
         .intro-text p { font-size: 1.2rem; color: #ccc; line-height: 1.8; font-style: italic; font-weight: 300; }
 
-        /* GRID */
-        .grid-lux { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; padding: 40px 5%; max-width: 1600px; margin: 0 auto; }
+        /* GRID CARDURI */
+        .grid-lux { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; padding: 40px 5% 100px; max-width: 1600px; margin: 0 auto; }
         .card-lux { height: 500px; display: flex; flex-direction: column; justify-content: flex-end; padding: 40px; border: 1px solid #1a1a1a; position: relative; overflow: hidden; background-size: cover !important; background-position: center !important; transition: 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
         .card-lux:hover { transform: translateY(-10px); border-color: var(--auriu-gold); }
         .card-lux::before { content: ""; position: absolute; inset:0; background: var(--overlay-card); z-index: 1; }
@@ -77,7 +77,12 @@
         .btn-gold { display: inline-block; padding: 12px 25px; border: 1px solid var(--auriu-gold); color: var(--auriu-gold); font-family: 'Cinzel'; font-size: 0.75rem; letter-spacing: 3px; transition: 0.3s; }
         .btn-gold:hover { background: var(--auriu-gold); color: #000; }
 
-        footer { padding: 80px 20px; text-align: center; opacity: 0.5; font-family: 'Cinzel'; font-size: 0.7rem; letter-spacing: 5px; color: var(--auriu-gold); border-top: 1px solid #111; }
+        /* FOOTER */
+        footer { padding: 80px 20px; text-align: center; border-top: 1px solid #111; }
+        .footer-legal { margin-bottom: 25px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+        .footer-legal a { font-family: 'Cinzel'; font-size: 0.7rem; color: #555 !important; letter-spacing: 2px; }
+        .footer-copy { font-family: 'Cinzel'; font-size: 0.75rem; color: var(--auriu-gold); letter-spacing: 5px; opacity: 0.6; }
+
         .whatsapp-float { position: fixed; bottom: 30px; left: 30px; background: #25d366; border-radius: 50%; width: 65px; height: 65px; display: flex; align-items: center; justify-content: center; font-size: 35px; z-index: 1001; color: #fff !important; }
     </style>
 </head>
@@ -91,7 +96,7 @@
                 <defs><linearGradient id="mtnGrad" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" style="stop-color:#ffd700;stop-opacity:1"/><stop offset="100%" style="stop-color:#b8860b;stop-opacity:1"/></linearGradient></defs>
                 <circle cx="400" cy="280" r="105" fill="none" stroke="#ffd700" stroke-width="2" opacity="0.4"/>
                 <path d="M300 450 L400 250 L500 450 Z" fill="url(#mtnGrad)"/>
-                <text x="400" y="765" font-family="'Cinzel', serif" text-anchor="middle" font-size="40" font-weight="900" letter-spacing="4" fill="#ffd700">CURCUBEU PESTE HAȚEG</text>
+                <text x="400" y="765" font-family="'Cinzel', serif" text-anchor="middle" font-size="38" font-weight="900" letter-spacing="4" fill="#ffd700">CURCUBEU PESTE HAȚEG</text>
             </svg>
         </div>
         <div class="burger" id="burger"><div></div><div></div><div></div></div>
@@ -129,7 +134,15 @@
             <div class="card-content">
                 <h3>Expediție Maramureș</h3>
                 <p>O punte mistică între Hațeg și bisericile de lemn din nord, alături de Părintele.</p>
-                <span class="btn-gold">DETALII PROIECT</span>
+                <span class="btn-gold">DETALII</span>
+            </div>
+        </a>
+
+        <a href="proiecte.html" class="card-lux" style="background-image: url('images/floripepanza.JPG');">
+            <div class="card-content">
+                <h3>Proiectele Noastre</h3>
+                <p>Inițiative dedicate conservării patrimoniului și susținerii comunității locale.</p>
+                <span class="btn-gold">VEZI TOT</span>
             </div>
         </a>
 
@@ -140,18 +153,21 @@
         <a href="metanoia.html" class="card-lux" style="background-image: url('images/rasarit.jpg');">
             <div class="card-content"><h3>Metanoia</h3><p>Retreat spiritual și transformare prin tăcere.</p><span class="btn-gold">DESCOPERĂ</span></div>
         </a>
-
-        <a href="padureni.html" class="card-lux" style="background-image: url('images/padureni.jpg');">
-            <div class="card-content"><h3>Ținutul Pădurenilor</h3><p>Protejăm misticismul și tradiția locului.</p><span class="btn-gold">EXPLOREAZĂ</span></div>
-        </a>
     </div>
 
-    <footer>ASOCIAȚIA CURCUBEU PESTE HAȚEG &copy; 2026</footer>
+    <footer>
+        <div class="footer-legal">
+            <a href="politica-cookies.html">COOKIES</a> | <a href="confidentialitate.html">GDPR</a>
+        </div>
+        <p class="footer-copy">ASOCIAȚIA CURCUBEU PESTE HAȚEG &copy; 2026</p>
+    </footer>
 
     <script>
         const burger = document.getElementById('burger');
         const nav = document.getElementById('nav-links');
-        burger.addEventListener('click', () => { nav.classList.toggle('active'); });
+        
+        burger.onclick = () => nav.classList.toggle('active');
+        nav.onclick = () => nav.classList.remove('active');
 
         let slides = document.querySelectorAll('.slide');
         let current = 0;
