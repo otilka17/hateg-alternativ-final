@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18106516696"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-18106516696');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Asociația Curcubeu peste Hațeg | Moștenirea de Aur</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root { 
+            --auriu-gold: #ffd700; 
+            --negru-pur: #000000; 
+            --alb: #ffffff;
+            --overlay-card: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        a, a:visited, a:hover, a:active { text-decoration: none !important; color: inherit !important; }
+
+        body { background: var(--negru-pur); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
+
+        /* HEADER */
+        .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; }
+        .brand svg { height: 90px; width: auto; filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.4)); }
+        
+        .burger { cursor: pointer; z-index: 10001; background: rgba(0,0,0,0.6); padding: 12px; border-radius: 8px; border: 1px solid var(--auriu-gold); }
+        .burger div { width: 28px; height: 2px; background: var(--auriu-gold); margin: 6px; transition: 0.4s; }
+
+        /* MENIU BURGER OPTIMIZAT */
+        .main-nav { 
+            position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; 
+            background: rgba(0,0,0,0.98); display: flex; flex-direction: column; 
+            justify-content: center; align-items: center; transition: 0.5s ease; 
+            z-index: 10000; padding: 20px;
+        }
+        .main-nav.active { right: 0; }
+        .main-nav a { 
+            font-size: clamp(1.1rem, 5vw, 2.1rem); font-family: 'Cinzel'; 
+            margin: 15px 0; color: var(--alb) !important; text-transform: uppercase; 
+            letter-spacing: 4px; text-align: center; width: 90%; line-height: 1.3;
+        }
+        .main-nav a:hover { color: var(--auriu-gold) !important; }
+
+        /* HERO SLIDER */
+        .hermes-viewport { position: relative; width: 100%; height: 85vh; overflow: hidden; }
+        .slide { position: absolute; width: 100%; height: 100%; opacity: 0; visibility: hidden; transition: opacity 2s ease; }
+        .slide.active { opacity: 1; visibility: visible; }
