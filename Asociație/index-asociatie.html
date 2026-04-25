@@ -18,7 +18,7 @@
 
     <style>
         :root { 
-            --auriu: #c5a059; /* AICI E CREMUL TĂU AURIU */
+            --auriu: #c5a059; /* Cremul tău auriu */
             --negru-pur: #050505; 
             --alb: #ffffff;
             --overlay-card: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.8) 100%);
@@ -36,7 +36,7 @@
         .burger { cursor: pointer; z-index: 10001; background: rgba(0,0,0,0.6); padding: 12px; border-radius: 8px; border: 1px solid var(--auriu); }
         .burger div { width: 28px; height: 2px; background: var(--auriu); margin: 6px; transition: 0.4s; }
 
-        /* MENIU BURGER UNIFICAT */
+        /* MENIU BURGER SIMPLIFICAT */
         .main-nav { 
             position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; 
             background: rgba(5, 5, 5, 0.98); display: flex; flex-direction: column; 
@@ -45,9 +45,9 @@
         }
         .main-nav.active { right: 0; }
         .main-nav a { 
-            font-size: clamp(1.1rem, 5vw, 2.2rem); font-family: 'Cinzel', serif; 
-            margin: 15px 0; color: #ffffff !important; text-transform: uppercase; 
-            letter-spacing: 4px; text-align: center; width: 90%; line-height: 1.3; 
+            font-size: clamp(1.2rem, 6vw, 2.5rem); font-family: 'Cinzel', serif; 
+            margin: 20px 0; color: #ffffff !important; text-transform: uppercase; 
+            letter-spacing: 5px; text-align: center; width: 90%; line-height: 1.3; 
         }
         .main-nav a:hover { color: var(--auriu) !important; }
 
@@ -103,19 +103,14 @@
     </header>
 
     <nav class="main-nav" id="nav-links">
-        <a href="index.html">ACASĂ</a>
-        <a href="pensiune.html">DOMENIILE LA BULIGĂ</a>
-        <a href="metanoia.html">METANOIA</a>
-        <a href="gastronomie.html">GASTRONOMIE</a>
-        <a href="evenimente.html">EVENIMENTE</a>
-        <a href="curs.html">CURSURI</a>
-        <a href="padureni.html">ȚINUTUL PĂDURENILOR</a>
+        <a href="../index.html">HAȚEG ALTERNATIV</a>
+        <a href="proiecte.html">PROIECTE</a>
     </nav>
 
     <section class="hermes-viewport">
-        <div class="slide active"><div class="slide-bg" style="background-image: url('images/rasarit.jpg');"></div><div class="slide-overlay"></div></div>
-        <div class="slide"><div class="slide-bg" style="background-image: url('images/narcise.jpg');"></div><div class="slide-overlay"></div></div>
-        <div class="slide"><div class="slide-bg" style="background-image: url('images/Sarmizegetusa.jpg');"></div><div class="slide-overlay"></div></div>
+        <div class="slide active"><div class="slide-bg" style="background-image: url('../images/rasarit.jpg');"></div><div class="slide-overlay"></div></div>
+        <div class="slide"><div class="slide-bg" style="background-image: url('../images/narcise.jpg');"></div><div class="slide-overlay"></div></div>
+        <div class="slide"><div class="slide-bg" style="background-image: url('../images/Sarmizegetusa.jpg');"></div><div class="slide-overlay"></div></div>
         <div class="hero-text-container">
             <div class="slide-content">
                 <h1>Moștenire și Spirit.</h1>
@@ -130,7 +125,7 @@
     </section>
 
     <div class="grid-lux">
-        <a href="evenimente.html" class="card-lux" style="background-image: url('images/nori.jph.jpg');">
+        <a href="../evenimente.html" class="card-lux" style="background-image: url('../images/nori.jph.jpg');">
             <div class="card-content">
                 <h3>Expediție Maramureș</h3>
                 <p>O punte mistică între Hațeg și bisericile de lemn din nord, alături de Părintele.</p>
@@ -138,7 +133,7 @@
             </div>
         </a>
 
-        <a href="curs.html" class="card-lux" style="background-image: url('images/floripepanza.JPG');">
+        <a href="proiecte.html" class="card-lux" style="background-image: url('../images/floripepanza.JPG');">
             <div class="card-content">
                 <h3>Proiectele Noastre</h3>
                 <p>Inițiative dedicate conservării patrimoniului și susținerii comunității locale.</p>
@@ -146,18 +141,18 @@
             </div>
         </a>
 
-        <a href="pensiune.html" class="card-lux" style="background-image: url('images/IMG_20260330_160353.webp');">
+        <a href="../pensiune.html" class="card-lux" style="background-image: url('../images/IMG_20260330_160353.webp');">
             <div class="card-content"><h3>Domeniile La Buligă</h3><p>Vatra asociației la peste 1100m altitudine.</p><span class="btn-gold">VIZITEAZĂ</span></div>
         </a>
 
-        <a href="metanoia.html" class="card-lux" style="background-image: url('images/rasarit.jpg');">
+        <a href="../metanoia.html" class="card-lux" style="background-image: url('../images/rasarit.jpg');">
             <div class="card-content"><h3>Metanoia</h3><p>Retreat spiritual și transformare prin tăcere.</p><span class="btn-gold">DESCOPERĂ</span></div>
         </a>
     </div>
 
     <footer>
         <div class="footer-legal">
-            <a href="politica-cookies.html">COOKIES</a> | <a href="confidentialitate.html">GDPR</a>
+            <a href="../politica-cookies.html">COOKIES</a> | <a href="../confidentialitate.html">GDPR</a>
         </div>
         <p class="footer-copy">ASOCIAȚIA CURCUBEU PESTE HAȚEG &copy; 2026</p>
     </footer>
