@@ -11,76 +11,84 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ținutul Pădurenilor | Hațeg Alternativ</title>
     
-    <title>Ținutul Pădurenilor | Hațeg Alternativ - Vadu Dobrii</title>
-    <meta name="description" content="Descoperă mistica Ținutului Pădurenilor: sate de marmură, biserici arhaice de lemn și gustul pur al rânduielii.">
-
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        :root { --auriu: #c5a059; --negru: #050505; --alb: #ffffff; }
+        :root { --auriu: #c5a059; --negru: #050505; --gri: #111; --text: #e0e0e0; }
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        html, body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; line-height: 1.8; overflow-x: hidden; scroll-behavior: smooth; }
-        
+        body { background: var(--negru); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.8; overflow-x: hidden; }
         a { text-decoration: none !important; color: inherit !important; }
 
-        /* HEADER */
+        /* HEADER & LOGO */
         .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 25px 5%; display: flex; justify-content: space-between; align-items: center; }
         .brand-logo img { height: clamp(80px, 15vw, 130px); width: auto; filter: drop-shadow(0 0 15px #000); }
         
         .burger { cursor: pointer; z-index: 10001; background: rgba(0,0,0,0.6); padding: 12px; border-radius: 8px; border: 1px solid var(--auriu); }
-        .burger div { width: 28px; height: 2px; background: var(--auriu); margin: 6px; }
+        .burger div { width: 28px; height: 2px; background: var(--auriu); margin: 6px; transition: 0.4s; }
 
-        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: var(--negru); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.6s; z-index: 10000; }
+        /* NAV */
+        .main-nav { 
+            position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; 
+            background: rgba(5, 5, 5, 0.98); display: flex; flex-direction: column; 
+            justify-content: center; align-items: center; transition: 0.5s ease; 
+            z-index: 10000; padding: 20px;
+        }
         .main-nav.active { right: 0; }
-        .main-nav a { font-size: 2rem; font-family: 'Cinzel'; margin: 15px 0; color: #fff !important; text-transform: uppercase; letter-spacing: 5px; }
+        .main-nav a { 
+            font-size: clamp(1.1rem, 5vw, 2.2rem); font-family: 'Cinzel', serif; 
+            margin: 15px 0; color: #ffffff !important; text-transform: uppercase; 
+            letter-spacing: 4px; text-align: center; width: 90%; line-height: 1.3; 
+        }
+        .main-nav a:hover { color: var(--auriu) !important; }
 
-        /* HERO */
+        /* HERO - FUNDAL DIN SCREENSHOT: rasarit.jpg */
         .hero-padureni {
-            height: 80vh;
-            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.9)), url('images/rasarit.jpg') center/cover;
+            height: 70vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.9)), url('images/rasarit.jpg') center/cover no-repeat;
             display: flex; align-items: center; justify-content: center; text-align: center; border-bottom: 2px solid var(--auriu);
         }
-        .hero-padureni h1 { font-family: 'Playfair Display'; font-size: clamp(2.5rem, 8vw, 6rem); font-style: italic; color: var(--auriu); text-shadow: 0 0 40px #000; }
-        .hero-subtitle { font-family: 'Cinzel'; letter-spacing: 8px; font-size: 1rem; color: #f0f0f0; margin-top: 20px; font-weight: 700; }
+        .hero-title h1 { font-family: 'Playfair Display'; font-size: clamp(2.5rem, 8vw, 5.5rem); font-style: italic; color: var(--auriu); text-shadow: 0 0 30px #000; }
+        .hero-title p { font-family: 'Cinzel'; letter-spacing: 6px; font-size: 1rem; color: #ccc; margin-top: 15px; text-transform: uppercase; }
 
-        /* INTRO */
-        .intro-section { padding: 100px 20px; max-width: 1000px; margin: 0 auto; text-align: center; }
-        .intro-section h2 { font-family: 'Cinzel'; color: var(--auriu); margin-bottom: 30px; letter-spacing: 6px; font-size: 2.2rem; }
-        .intro-section p { font-size: 1.3rem; color: #ccc; font-weight: 300; line-height: 2; }
+        /* CONTENT SECTIONS */
+        .content-container { max-width: 1100px; margin: -50px auto 100px; padding: 0 20px; position: relative; z-index: 10; }
+        
+        .intro-section { background: var(--gri); padding: 60px; border: 1px solid #222; box-shadow: 0 30px 60px rgba(0,0,0,0.5); }
+        .intro-section h2 { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 4px; margin-bottom: 30px; font-size: 1.8rem; }
+        .intro-section p { font-size: 1.15rem; font-weight: 300; color: #bbb; margin-bottom: 25px; }
 
-        /* STORY BLOCKS */
-        .story-block { display: flex; flex-wrap: wrap; gap: 60px; padding: 80px 5%; align-items: center; max-width: 1400px; margin: 0 auto; border-bottom: 1px solid #111; }
-        .story-block:nth-child(even) { flex-direction: row-reverse; }
-        .story-text { flex: 1; min-width: 320px; }
-        .story-text h3 { font-family: 'Playfair Display'; font-size: 2.8rem; color: var(--auriu); font-style: italic; margin-bottom: 25px; }
-        .story-text p { color: #aaa; font-size: 1.15rem; margin-bottom: 25px; text-align: justify; }
-        .story-text ul { list-style: none; margin-top: 20px; }
-        .story-text ul li { padding-left: 30px; position: relative; margin-bottom: 15px; color: #eee; font-size: 1rem; }
-        .story-text ul li::before { content: '◈'; position: absolute; left: 0; color: var(--auriu); font-size: 1.2rem; }
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 80px; }
+        .feature-item { text-align: left; }
+        .feature-img { height: 250px; width: 100%; object-fit: cover; border: 1px solid #222; margin-bottom: 25px; opacity: 0.8; transition: 0.5s; }
+        .feature-item:hover .feature-img { opacity: 1; border-color: var(--auriu); }
+        .feature-item h3 { font-family: 'Cinzel'; color: var(--auriu); margin-bottom: 15px; font-size: 1.1rem; letter-spacing: 2px; }
+        .feature-item p { font-size: 0.95rem; color: #999; font-weight: 300; }
 
-        .story-img { flex: 1; min-width: 320px; height: 500px; border: 1px solid #222; overflow: hidden; position: relative; }
-        .story-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: 1.5s ease; }
-        .story-block:hover .story-img img { opacity: 1; transform: scale(1.05); }
+        /* CTA AREA - FUNDAL DIN SCREENSHOT: bike.webp */
+        .cta-padureni { 
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('images/bike.webp') center/cover;
+            padding: 120px 20px; text-align: center; border-top: 1px solid var(--auriu); border-bottom: 1px solid var(--auriu); margin-bottom: 100px;
+        }
+        .cta-padureni h2 { font-family: 'Playfair Display'; font-size: 3rem; font-style: italic; color: #fff; margin-bottom: 20px; }
+        .btn-gold { 
+            display: inline-block; padding: 18px 45px; border: 1px solid var(--auriu); 
+            color: var(--auriu); font-family: 'Cinzel'; letter-spacing: 3px; font-weight: 900; 
+            margin-top: 30px; transition: 0.3s;
+        }
+        .btn-gold:hover { background: var(--auriu); color: #000; }
 
-        /* GASTRO */
-        .gastro-banner { background: #080808; padding: 100px 5%; text-align: center; border-top: 1px solid var(--auriu); border-bottom: 1px solid var(--auriu); margin: 60px 0; }
-        .gastro-banner h2 { font-family: 'Cinzel'; color: var(--auriu); font-size: 2.5rem; margin-bottom: 30px; }
-        .gastro-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; max-width: 1200px; margin: 50px auto 0; }
-        .gastro-item i { color: var(--auriu); font-size: 2.5rem; margin-bottom: 20px; display: block; }
-        .gastro-item h4 { font-family: 'Cinzel'; margin-bottom: 10px; color: #fff; letter-spacing: 2px; }
-        .gastro-item p { font-size: 0.9rem; color: #888; }
+        footer { padding: 80px 20px; text-align: center; border-top: 1px solid #111; opacity: 0.5; }
+        .footer-legal { font-family: 'Cinzel'; font-size: 0.75rem; letter-spacing: 4px; }
 
-        /* CTA */
-        .cta-padureni { text-align: center; padding: 120px 20px; background: #030303; }
-        .btn-elite { display: inline-block; padding: 20px 50px; border: 2px solid var(--auriu); color: var(--auriu); font-family: 'Cinzel'; letter-spacing: 5px; font-weight: 900; transition: 0.4s; }
-        .btn-elite:hover { background: var(--auriu); color: #000; }
+        .whatsapp-float { position: fixed; bottom: 30px; left: 30px; background: #25d366; border-radius: 50%; width: 65px; height: 65px; display: flex; align-items: center; justify-content: center; font-size: 35px; z-index: 1001; color: #fff !important; }
 
-        footer { padding: 60px 20px; text-align: center; opacity: 0.5; font-family: 'Cinzel'; font-size: 0.75rem; border-top: 1px solid #111; }
-        .whatsapp-float { position: fixed; bottom: 30px; left: 30px; background: #25d366; border-radius: 50%; width: 65px; height: 65px; display: flex; align-items: center; justify-content: center; font-size: 35px; z-index: 1001; color: #fff; }
-
-        @media (max-width: 768px) { .story-img { height: 350px; } .hero-padureni { height: 65vh; } .story-block { gap: 40px; } }
+        @media (max-width: 768px) {
+            .intro-section { padding: 30px; }
+            .hero-padureni { height: 60vh; }
+        }
     </style>
 </head>
 <body>
@@ -92,119 +100,70 @@
             <img src="images/logo1.svg" alt="Metanoia Logo">
         </a>
         <div class="burger" id="burger"><div></div><div></div><div></div></div>
-        <nav class="main-nav" id="nav-links">
-            <a href="index.html">Acasă</a>
-            <a href="pensiune.html">Domeniile La Buligă</a>
-            <a href="metanoia.html">Metanoia</a>
-            <a href="gastronomie.html">Gastronomie</a>
-            <a href="evenimente.html">Evenimente</a>
-            <a href="curs.html">Cursuri</a>
-            <a href="padureni.html" style="color:var(--auriu) !important;">Ținutul Pădurenilor</a>
-        </nav>
     </header>
 
-    <section class="hero-padureni">
-        <div class="hero-content">
-            <h1>Tăcerea Munților Poiana Ruscă</h1>
-            <p class="hero-subtitle">ȚINUTUL PĂDURENILOR • VADU DOBRII</p>
-        </div>
-    </section>
+    <nav class="main-nav" id="nav-links">
+        <a href="index.html">ACASĂ</a>
+        <a href="pensiune.html">DOMENIILE LA BULIGĂ</a>
+        <a href="metanoia.html">METANOIA</a>
+        <a href="gastronomie.html">GASTRONOMIE</a>
+        <a href="evenimente.html">EVENIMENTE</a>
+        <a href="curs.html">CURSURI</a>
+        <a href="padureni.html" style="color:var(--auriu) !important;">ȚINUTUL PĂDURENILOR</a>
+    </nav>
 
-    <main>
+    <header class="hero-padureni">
+        <div class="hero-title">
+            <h1>Ținutul Pădurenilor</h1>
+            <p>Mistica munților și rânduiala fierului</p>
+        </div>
+    </header>
+
+    <main class="content-container">
+        
         <section class="intro-section">
-            <h2>O rânduială mai veche decât timpul.</h2>
-            <p>Aici, la peste 1100 de metri altitudine, cerul pare mai aproape, iar pământul mai viu. Ținutul Pădurenilor este o enclave de misticism, unde satele sunt risipite pe culmi ca niște fortărețe ale liniștii.</p>
+            <h2>Vatra Arhaică</h2>
+            <p>Ținutul Pădurenilor nu este doar o destinație geografică, ci un spațiu atemporal unde pădurile de fag și brad ascund așezări rămase sub semnul unei rânduieli mistic-creștine.</p>
+            <p>La peste 1100 de metri altitudine, în sate precum Vadu Dobrii, timpul se măsoară în anotimpuri, nu în ore, iar experiența Hațeg Alternativ își are rădăcinile cele mai adânci în acest sol bogat în tradiție.</p>
         </section>
 
-        <div class="story-block">
-            <div class="story-text">
-                <h3>Alun: Satul de Marmură</h3>
-                <p>O raritate mondială aflată la doi pași de Vadu Dobrii. Alun este singurul sat din România unde drumul, fundațiile caselor și chiar grajdurile animalelor sunt tăiate din marmură extrasă din cariera ce veghează așezarea.</p>
-                <ul>
-                    <li>Biserica de Marmură: Singura din țară cu ziduri integrale din acest material nobil.</li>
-                    <li>Arhitectura Abandonului: Case masive de piatră care așteaptă întoarcerea vieții.</li>
-                    <li>Drumul Alb: 10 kilometri de marmură care strălucesc sub razele soarelui.</li>
-                </ul>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <img src="images/IMG_20260330_160344.webp" alt="Traditii" class="feature-img">
+                <h3>Rânduiala Locului</h3>
+                <p>Descoperă arhitectura unică a caselor de lemn și bisericile vechi care păstrează spiritul comunității intact.</p>
             </div>
-            <div class="story-img"><img src="images/padure.jpg" alt="Satul Alun"></div>
+            <div class="feature-item">
+                <img src="images/rasarit.jpg" alt="Peisaj" class="feature-img">
+                <h3>Peisaje de Sus</h3>
+                <p>Culmi care oferă perspective panoramice, acolo unde răsăritul spală urmele lumii moderne.</p>
+            </div>
+            <div class="feature-item">
+                <img src="images/IMG_20260330_160335.webp" alt="Gastronomie" class="feature-img">
+                <h3>Gustul Pădurii</h3>
+                <p>Ingrediente culese direct din flora spontană și rețete păstrate cu sfințenie, gătite la foc deschis.</p>
+            </div>
         </div>
 
-        <div class="story-block">
-            <div class="story-text">
-                <h3>Bisericile Tăcerii</h3>
-                <p>Ținutul este presărat cu biserici vechi de sute de ani. De la enigma de piatră din Densuș, ridicată cu coloane romane, până la altarele de lemn ascunse în cimitire uitate pe dealuri.</p>
-                <ul>
-                    <li>Biserica Densuș: O bijuterie din piatră romană, unică în lume.</li>
-                    <li>Lelese și Runcu Mare: Altare de lemn care sfidează secolele.</li>
-                    <li>Picturi bizantine murale păstrate sub streșini de șindrilă.</li>
-                </ul>
-            </div>
-            <div class="story-img"><img src="images/densus.jpg" alt="Biserica Densus"></div>
-        </div>
-
-        <div class="story-block">
-            <div class="story-text">
-                <h3>Vadu Dobrii: Credința Arhaică</h3>
-                <p>Sub acoperișul de șindrilă se ascunde o lume de tăcere. În interiorul bisericii, rugăciunea a rămas nealterată de modernitate, într-un decor unde lemnul și timpul s-au contopit.</p>
-                <ul>
-                    <li>Icoane vechi și miros de ceară rânduită.</li>
-                    <li>Dârzenia Pădurenească: Oameni crescuți între mine și stâne.</li>
-                </ul>
-            </div>
-            <div class="story-img"><img src="images/interior-biserica.jpg" alt="Interior Biserica"></div>
-        </div>
-
-        <section class="gastro-banner">
-            <h2>GUSTUL RÂNDUIELII</h2>
-            <div class="gastro-grid">
-                <div class="gastro-item">
-                    <i class="fas fa-bread-slice"></i>
-                    <h4>Pliștele Pădurenești</h4>
-                    <p>Plăcinte coapte pe lespede, cu brânză de munte.</p>
-                </div>
-                <div class="gastro-item">
-                    <i class="fas fa-mortar-pestle"></i>
-                    <h4>Sloiul de Oaie</h4>
-                    <p>Preparat arhaic păstrat în untură, esența hranei de munte.</p>
-                </div>
-                <div class="gastro-item">
-                    <i class="fas fa-coffee"></i>
-                    <h4>Cafeaua la Jar</h4>
-                    <p>Ritualul nostru de dimineață, servit deasupra norilor.</p>
-                </div>
-            </div>
-        </section>
-
-        <div class="story-block">
-            <div class="story-text">
-                <h3>Minele de Fier și Legendele</h3>
-                <p>Istoria pădurenilor este scrisă cu foc și fier. Minele de la Ghelari și furnalul de la Govăjdia au furnizat fontă chiar și pentru elementele de rezistență ale Turnului Eiffel.</p>
-                <ul>
-                    <li>Ghelari: Catedrala uriașă ridicată pe un munte de minereu.</li>
-                    <li>Govăjdia: Furnalul care a turnat istoria metalurgiei.</li>
-                    <li>Tunelurile Timpului: Guri de mină uitate în inima pădurii.</li>
-                </ul>
-            </div>
-            <div class="story-img"><img src="images/jeep.jpg" alt="Expeditie Jeep"></div>
-        </div>
-
-        <div class="cta-padureni">
-            <h2>Ești gata să pășești în poveste?</h2>
-            <br>
-            <a href="https://wa.me/40749229686" class="btn-elite">REZERVAȚI O EXPEDIȚIE</a>
-        </div>
     </main>
 
+    <section class="cta-padureni">
+        <h2>Simte Respirația Munților</h2>
+        <p>Te invităm să explorezi acest tărâm în formatul nostru "Off-Grid Reset".</p>
+        <a href="contact.html" class="btn-gold">SOLICITĂ EXPEDIȚIE</a>
+    </section>
+
     <footer>
-        &copy; 2026 HAȚEG ALTERNATIV | ȚINUTUL PĂDURENILOR • VADU DOBRII
+        <p class="footer-legal">HAȚEG ALTERNATIV &copy; 2026 | ARHITECTURA TRĂIRII</p>
     </footer>
 
     <script>
         const burger = document.getElementById('burger');
         const nav = document.getElementById('nav-links');
         burger.onclick = () => nav.classList.toggle('active');
+        nav.onclick = () => nav.classList.remove('active');
     </script>
-    
+
     <script type="text/javascript">
     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
     (function(){
