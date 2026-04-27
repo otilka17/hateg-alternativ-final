@@ -4,49 +4,90 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Gastronomie Cinematică | Hațeg Alternativ</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@200;400;600&display=swap" rel="stylesheet">
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18106516696"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-18106516696');
+    </script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@200;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
         :root { --auriu: #c5a059; --negru: #000000; --accent: #0a0a0a; --portocaliu: #e65100; }
+        
+        /* RESET TOTAL SUBILINIERI */
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        a { text-decoration: none !important; color: inherit !important; }
+        
         body { background-color: var(--negru); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-        /* HEADER */
+        /* HEADER & LOGO VIZIBIL */
         .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 25px 5%; display: flex; justify-content: space-between; align-items: center; }
         .brand-logo img { height: clamp(80px, 15vw, 120px); width: auto; filter: drop-shadow(0 0 15px #000); }
-        .burger { cursor: pointer; z-index: 10001; background: rgba(0,0,0,0.6); padding: 12px; border-radius: 8px; border: 1px solid var(--auriu); }
+        .burger { cursor: pointer; z-index: 10001; background: rgba(0,0,0,0.7); padding: 12px; border-radius: 8px; border: 1px solid var(--auriu); }
         .burger div { width: 28px; height: 2px; background: var(--auriu); margin: 6px; }
 
         /* NAV CU REZERVARE */
-        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: rgba(5,5,5,0.98); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.5s ease; z-index: 10000; }
+        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: rgba(0,0,0,0.98); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.5s ease; z-index: 10000; }
         .main-nav.active { right: 0; }
         .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 15px 0; color: #fff !important; text-transform: uppercase; letter-spacing: 4px; }
         .nav-res-btn { border: 2px solid var(--auriu); padding: 10px 30px; margin-top: 20px !important; color: var(--auriu) !important; font-weight: 900; }
 
-        /* HERO */
-        .hero-cinematic { height: 70vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(rgba(0,0,0,0.4), var(--negru)), url('images/foc.jpg') center/cover; text-align: center; }
-        .hero-cinematic h1 { font-family: 'Playfair Display'; font-style: italic; font-size: clamp(3rem, 10vw, 6rem); color: var(--auriu); padding-top: 80px; }
+        /* HERO - VIZIBILITATE MAXIMĂ */
+        .hero-cinematic {
+            height: 70vh; position: relative; display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(rgba(0,0,0,0.4), var(--negru)), url('images/foc.jpg') center/cover no-repeat;
+            text-align: center;
+        }
+        .hero-content h1 { 
+            font-family: 'Playfair Display'; font-style: italic; font-size: clamp(3rem, 12vw, 7rem); 
+            color: var(--auriu); line-height: 1; padding-top: 80px;
+            text-shadow: 2px 2px 30px rgba(0,0,0,1);
+        }
 
         /* HUB CHECKPOINT TOTEȘTI */
         .checkpoint-section { background: var(--accent); padding: 80px 5%; border-top: 1px solid #1a1a1a; }
         .hub-info { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: center; }
-        .hub-text h2 { font-family: 'Playfair Display'; font-style: italic; font-size: 2.5rem; color: var(--auriu); margin-bottom: 20px; }
+        .hub-text h2 { font-family: 'Playfair Display'; font-style: italic; font-size: 2.5rem; color: var(--auriu); margin-bottom: 20px; text-shadow: 1px 1px 10px #000; }
         .hub-text p { color: #888; line-height: 1.8; margin-bottom: 30px; }
         .hub-img img { width: 100%; border: 1px solid var(--auriu); padding: 10px; background: #000; }
 
-        .btn-cinematic { display: inline-block; padding: 18px 50px; background: var(--portocaliu); color: #fff; font-family: 'Cinzel'; letter-spacing: 3px; font-size: 0.8rem; font-weight: 700; }
+        /* GRID CINEMATIC */
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 5%; }
+        .cinematic-label { text-align: center; margin: 100px 0 50px; }
+        .cinematic-label span { font-family: 'Cinzel'; font-size: 0.8rem; letter-spacing: 10px; color: var(--auriu); font-weight: 800; }
+        .cinematic-label h2 { font-family: 'Playfair Display'; font-style: italic; font-size: 3rem; margin-top: 10px; text-shadow: 2px 2px 20px #000; }
 
-        /* GRID GASTRONOMIE */
-        .cinematic-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 20px; padding: 100px 5%; max-width: 1400px; margin: 0 auto; }
-        .scene-card { position: relative; height: 500px; overflow: hidden; border: 1px solid #111; }
-        .scene-card img { width: 100%; height: 100%; object-fit: cover; transition: 1.5s ease; filter: brightness(0.6); }
-        .scene-card:hover img { transform: scale(1.05); filter: brightness(0.8); }
+        .cinematic-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 25px; margin-bottom: 100px; }
+        .scene-card { position: relative; height: 550px; overflow: hidden; background: #000; border: 1px solid #111; }
+        .scene-card img { width: 100%; height: 100%; object-fit: cover; transition: 1.5s ease; filter: brightness(0.45); }
+        .scene-card:hover img { transform: scale(1.05); filter: brightness(0.75); }
+        
+        .scene-info { position: absolute; bottom: 0; left: 0; width: 100%; padding: 40px; background: linear-gradient(transparent, rgba(0,0,0,0.98)); }
+        .scene-info h3 { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 3px; font-size: 1.3rem; text-shadow: 2px 2px 15px #000; }
+        .scene-info p { font-size: 0.9rem; color: #ccc; margin-top: 10px; font-weight: 200; line-height: 1.6; }
 
-        footer { padding: 40px; text-align: center; opacity: 0.3; font-family: 'Cinzel'; font-size: 0.6rem; letter-spacing: 4px; }
+        /* FOCUS SCENE (MIELUL) */
+        .focus-scene { width: 100%; height: 80vh; margin: 100px 0; position: relative; overflow: hidden; }
+        .focus-scene img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.5); }
+        .focus-content { position: absolute; top: 50%; left: 10%; transform: translateY(-50%); max-width: 500px; }
+        .focus-content h2 { font-family: 'Playfair Display'; font-style: italic; font-size: clamp(3rem, 8vw, 5.5rem); color: var(--auriu); text-shadow: 2px 2px 30px #000; }
+
+        .btn-portal { display: inline-block; padding: 18px 50px; background: var(--portocaliu); color: #fff; font-family: 'Cinzel'; letter-spacing: 3px; font-size: 0.8rem; font-weight: 700; }
+
+        footer { padding: 80px 20px; text-align: center; border-top: 1px solid #111; opacity: 0.6; }
         .whatsapp-float { position: fixed; bottom: 30px; left: 30px; background: #25d366; border-radius: 50%; width: 65px; height: 65px; display: flex; align-items: center; justify-content: center; font-size: 35px; z-index: 1001; color: #fff; }
 
-        @media (max-width: 768px) { .hub-info { text-align: center; } .scene-card { height: 350px; } }
+        @media (max-width: 768px) { 
+            .hub-info { text-align: center; } 
+            .scene-card { height: 450px; } 
+            .cinematic-grid { grid-template-columns: 1fr; } 
+            .focus-content { left: 5%; text-align: center; width: 90%; }
+        }
     </style>
 </head>
 <body>
@@ -67,16 +108,19 @@
     </nav>
 
     <section class="hero-cinematic">
-        <h1>Arta Focului.</h1>
+        <div class="hero-content">
+            <p style="font-family:'Cinzel'; letter-spacing:8px; color:var(--auriu); font-weight:800; text-shadow:1px 1px 10px #000;">HAȚEG ALTERNATIV PREZINTĂ</p>
+            <h1>Arta Focului.</h1>
+        </div>
     </section>
 
     <section class="checkpoint-section">
         <div class="hub-info">
             <div class="hub-text">
-                <span style="font-family:'Cinzel'; color:var(--auriu); letter-spacing:3px; font-size:0.7rem;">HUB TOTEȘTI — DN68</span>
-                <h2>Check-point Gastronomic</h2>
-                <p>Oprește-te la Totești pentru a lua la pachet esența Pădurenilor. Rânduim pachete gourmet din microferma proprie — perfecte pentru drumul spre munte.</p>
-                <a href="rezervari.html" class="btn-cinematic">COMANDĂ PLATOU LA PACHET</a>
+                <span style="font-family:'Cinzel'; color:var(--auriu); letter-spacing:4px; font-size:0.75rem;">CHECK-POINT TOTEȘTI — DN68</span>
+                <h2>Check-point Gastronomic.</h2>
+                <p>Oprește-te la Totești pentru a lua la pachet esența Pădurenilor. Rânduim pachete gourmet din microferma proprie — perfecte pentru drumul spre munte sau expediții E-bike.</p>
+                <a href="rezervari.html" class="btn-portal">COMANDĂ PLATOU LA PACHET</a>
             </div>
             <div class="hub-img">
                 <img src="images/platou-traditional.jpg" alt="Platou Tradițional la Pachet">
@@ -84,21 +128,69 @@
         </div>
     </section>
 
-    <div class="cinematic-grid">
-        <div class="scene-card"><img src="images/paine-in-ou.jpg" alt="Mic Dejun"></div>
-        <div class="scene-card"><img src="images/miel.jpg" alt="Ospat"></div>
-        <div class="scene-card"><img src="images/sarmale.jpg" alt="Sarmale"></div>
-        <div class="scene-card"><img src="images/gast-cafea-inima.jpg" alt="Cafea"></div>
+    <div class="container">
+        <div class="cinematic-label"><span>Capitolul I</span><h2>Zori de Zi</h2></div>
+        <div class="cinematic-grid">
+            <div class="scene-card">
+                <img src="images/paine-in-ou.jpg" alt="Paine in ou">
+                <div class="scene-info"><h3>Pâinea în Ou</h3><p>O rețetă moștenită, rânduită în tăcerea dimineților de munte.</p></div>
+            </div>
+            <div class="scene-card">
+                <img src="images/jumeri.jpg" alt="Jumeri">
+                <div class="scene-info"><h3>Jumeri Arhaici</h3><p>Esența pură a gustului pădurenesc, pregătiți la foc iute.</p></div>
+            </div>
+            <div class="scene-card">
+                <img src="images/oua.jpg" alt="Oua">
+                <div class="scene-info"><h3>Ouă din Ogradă</h3><p>Simplitatea absolută, culeasă în zorii zilei.</p></div>
+            </div>
+        </div>
+
+        <section class="focus-scene">
+            <img src="images/miel.jpg" alt="Miel la Ceaun">
+            <div class="focus-content">
+                <span style="font-family:'Cinzel'; letter-spacing:5px; color:var(--auriu); font-weight:800;">PIESA CENTRALĂ</span>
+                <h2>Mielul pe Jar.</h2>
+                <p style="color:#fff; text-shadow:2px 2px 20px #000; margin-top:20px; font-size: 1.1rem;">O alchimie de 6 ore între carne fragedă, fum de fag și tihnă.</p>
+            </div>
+        </section>
+
+        <div class="cinematic-label"><span>Capitolul II</span><h2>Ospățul Pădurenesc</h2></div>
+        <div class="cinematic-grid">
+            <div class="scene-card"><img src="images/humus.jpg" alt="Humus"><div class="scene-info"><h3>Humus Pădurenesc</h3><p>O interpretare locală a gustului fin.</p></div></div>
+            <div class="scene-card"><img src="images/sarmale.jpg" alt="Sarmale"><div class="scene-info"><h3>Sarmale Rânduite</h3><p>Învelite în tihnă, fierte la foc domol.</p></div></div>
+            <div class="scene-card"><img src="images/feed-virslii.jpg" alt="Virsli"><div class="scene-info"><h3>Vîrșli de Hunedoara</h3><p>Legenda pământului nostru.</p></div></div>
+            <div class="scene-card"><img src="images/aripioare.jpg" alt="Aripioare"><div class="scene-info"><h3>Aripioare Rumenite</h3><p>Infuzate cu miere și cimbru sălbatic.</p></div></div>
+            <div class="scene-card"><img src="images/cuptor.jpg" alt="Virsli la uscat"><div class="scene-info"><h3>Vîrșli la Uscat</h3><p>Gata pentru fum și jar.</p></div></div>
+            <div class="scene-card"><img src="images/supacrema.jpg" alt="Supa Crema"><div class="scene-info"><h3>Supa Cremă de Sezon</h3><p>O mângâiere caldă pentru suflet.</p></div></div>
+        </div>
+
+        <div class="cinematic-label"><span>Capitolul III</span><h2>Tihna</h2></div>
+        <div class="cinematic-grid">
+            <div class="scene-card" style="height: 450px;"><img src="images/orez-cu-lapte.jpg" alt="Orez cu lapte"><div class="scene-info"><h3>Orez cu Lapte</h3><p>Mângâierea dulce a copilăriei la gura sobei.</p></div></div>
+            <div class="scene-card" style="height: 450px;"><img src="images/gast-cafea-inima.jpg" alt="Cafeaua"><div class="scene-info"><h3>Rânduiala Cafelei</h3><p>Boabe proaspete și liniștea dimineții de munte.</p></div></div>
+        </div>
     </div>
 
-    <footer>
-        HAȚEG ALTERNATIV &copy; 2026 | DAKAMIGOS MARKT SRL | SEDIU TOTEȘTI DN68
+    <footer style="padding: 60px 20px; text-align: center;">
+        <p style="font-family:'Cinzel'; color:#555; font-size:0.75rem; letter-spacing:2px;">HAȚEG ALTERNATIV &copy; 2026 | DAKAMIGOS MARKT SRL | TRIBUT PATRICIA</p>
     </footer>
 
+    <script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
     <script>
         const burger = document.getElementById('burger');
         const nav = document.getElementById('nav-links');
         burger.onclick = () => nav.classList.toggle('active');
+        nav.onclick = () => nav.classList.remove('active');
     </script>
 </body>
 </html>
