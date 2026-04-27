@@ -11,7 +11,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Hațeg Alternativ | Hub Turistic & Domeniile La Buligă</title>
+    <title>Hațeg Alternativ | Hub Turistic: Totești - Pădureni</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@200;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -38,20 +38,19 @@
         .main-nav.active { right: 0; }
         .main-nav a { font-size: 2rem; font-family: 'Cinzel'; margin: 15px 0; color: #fff !important; text-transform: uppercase; letter-spacing: 5px; }
 
-        /* HERO - REPARAT PENTRU PC (ALINIERE STÂNGA) */
+        /* HERO - FIX PC (TEXT STÂNGA) */
         .hero { 
             height: 100vh; position: relative; display: flex; align-items: center; justify-content: flex-start; 
-            background: linear-gradient(to right, rgba(0,0,0,0.7) 30%, transparent 100%), url('images/rasarit.jpg') center/cover no-repeat;
+            background: linear-gradient(to right, rgba(0,0,0,0.8) 20%, transparent 100%), url('images/rasarit.jpg') center/cover no-repeat;
             padding: 0 10%;
         }
 
         .hero-content { 
             max-width: 850px; text-align: left; position: relative; 
-            /* REPARAȚIE PC: Spațiu sub logo să nu se suprapună */
-            padding-top: 150px; 
+            padding-top: 150px; /* Protecție Logo */
         }
 
-        /* Linia Aurie Verticală */
+        /* Linia Aurie Verticală Signature */
         .hero-content::before {
             content: ""; position: absolute; left: -40px; top: 160px;
             width: 2.5px; height: 200px; background: var(--auriu);
@@ -68,40 +67,39 @@
             color: #fff !important; font-family: 'Cinzel'; font-size: 0.8rem; letter-spacing: 2px; font-weight: 700; transition: 0.3s;
         }
 
-        /* HUB SECTION - CATERING DN68 TOTEȘTI */
-        .road-advisory { background: #080808; border-top: 1px solid var(--auriu); padding: 60px 20px; text-align: center; }
-        .road-inner { max-width: 1000px; margin: 0 auto; }
-        .road-inner i { color: var(--auriu); font-size: 2.5rem; margin-bottom: 20px; display: block; }
-        .road-inner h3 { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 4px; margin-bottom: 10px; }
+        /* HUB CHECKPOINT TOTEȘTI */
+        .hub-advisory { background: #080808; border-top: 1px solid var(--auriu); padding: 60px 20px; text-align: center; }
+        .hub-inner { max-width: 1000px; margin: 0 auto; }
+        .hub-inner i { color: var(--auriu); font-size: 2.5rem; margin-bottom: 20px; display: block; }
+        .hub-inner h3 { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 4px; margin-bottom: 10px; }
 
-        /* GRID-UL TURISTIC (CELE 5 CARDURI) */
+        /* GRID-UL TURISTIC (6 CARDURI) */
         .container { max-width: 1400px; margin: 0 auto; padding: 80px 20px; }
-        .grid-5 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .grid-hub { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+            gap: 25px; 
+        }
         
         .card-item { height: 450px; position: relative; overflow: hidden; border: 1px solid #1a1a1a; display: block; }
-        .card-item img { width: 100%; height: 100%; object-fit: cover; opacity: 0.5; transition: 0.8s; }
-        .card-item:hover img { transform: scale(1.05); opacity: 0.8; }
+        .card-item img { width: 100%; height: 100%; object-fit: cover; opacity: 0.45; transition: 0.8s; }
+        .card-item:hover img { transform: scale(1.05); opacity: 0.75; }
         
-        .card-info { position: absolute; bottom: 0; padding: 25px; width: 100%; background: linear-gradient(to top, #000 40%, transparent); }
-        .card-info h4 { font-family: 'Cinzel'; color: var(--auriu); font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 8px; }
-        .card-info p { font-size: 0.8rem; color: #bbb; line-height: 1.4; }
+        .card-info { position: absolute; bottom: 0; padding: 30px; width: 100%; background: linear-gradient(to top, #000 50%, transparent); }
+        .card-info h4 { font-family: 'Cinzel'; color: var(--auriu); font-size: 1rem; letter-spacing: 2px; margin-bottom: 8px; }
+        .card-info p { font-size: 0.85rem; color: #bbb; line-height: 1.4; font-weight: 200; }
 
-        /* CALENDAR EVENT */
-        .event-section { padding: 100px 20px; background: #050505; }
-        .event-row { display: flex; flex-wrap: wrap; gap: 40px; max-width: 1100px; margin: 0 auto; align-items: center; }
-        .event-img { flex: 1; min-width: 300px; border: 1px solid #222; }
-        .event-img img { width: 100%; display: block; }
-        .event-content { flex: 1; min-width: 300px; }
-        .event-content h2 { font-family: 'Playfair Display'; font-style: italic; font-size: 3rem; color: var(--auriu); margin: 20px 0; }
+        /* ELFSIGHT SECTION */
+        .elf-container { background: #000; padding: 80px 0; border-top: 1px solid #111; }
 
-        /* FOOTER & ANPC (PĂSTRATE) */
+        /* FOOTER & ANPC */
         footer { padding: 80px 20px; text-align: center; border-top: 1px solid #111; background: #000; }
         .footer-legal a { color: #444; margin: 0 10px; font-size: 0.75rem; text-transform: uppercase; font-family: 'Cinzel'; }
-        .legal-badges { margin-top: 40px; display: flex; justify-content: center; gap: 20px; opacity: 0.4; }
+        .legal-badges { margin-top: 40px; display: flex; justify-content: center; gap: 20px; opacity: 0.3; }
         .legal-badges img { height: 35px; }
         .tribute { color: var(--auriu); font-weight: 900; margin-top: 40px; font-family: 'Cinzel'; font-size: 0.65rem; letter-spacing: 5px; opacity: 0.6; }
 
-        /* WIDGET WHATSAPP (PĂSTRAT) */
+        /* WIDGET WHATSAPP */
         .whatsapp-float { position: fixed; bottom: 30px; left: 30px; background: #25d366; border-radius: 50%; width: 65px; height: 65px; display: flex; align-items: center; justify-content: center; font-size: 35px; z-index: 9999; color: #fff; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
 
         @media (max-width: 768px) {
@@ -122,6 +120,7 @@
             <a href="index.html">Acasă</a>
             <a href="pensiune.html">Pensiunea</a>
             <a href="gastronomie.html">Gastronomie</a>
+            <a href="curs.html">Curs Management</a>
             <a href="metanoia.html">Metanoia</a>
             <a href="contact.html">Contact</a>
         </nav>
@@ -131,61 +130,53 @@
         <div class="hero-content">
             <span class="hero-highlight">HUB TURISTIC — HAȚEG ALTERNATIV</span>
             <h1>HațegAlternativ-<br>Metanoia. Simte,<br>trăiește tăcerea</h1>
-            <p style="color:#888; font-weight:300; margin-bottom:40px; max-width:500px;">Conexiunea cinematică între Țara Hațegului și misticul Pădurenilor. Punctul tău de plecare spre tihnă.</p>
+            <p style="color:#888; font-weight:300; margin-bottom:40px; max-width:500px;">Conectăm Țara Hațegului cu misticul Pădurenilor prin servicii de catering integrat, explorare și management sistemic.</p>
             <a href="#hub" class="btn-portal">EXPLOREAZĂ HUB-UL</a>
         </div>
     </section>
 
-    <section class="road-advisory" id="hub">
-        <div class="road-inner">
-            <i class="fas fa-utensils"></i>
-            <h3>CATERING & MICROFERMĂ TOTEȘTI</h3>
-            <p style="color:#777; max-width:700px; margin:0 auto;">Situat pe DN68, lângă biserică, sediul nostru din Totești este Check-point-ul tău. Aprovizionează-te cu pachete de drum din microferma proprie înainte de a urca spre Buligă.</p>
+    <section class="hub-advisory" id="hub">
+        <div class="hub-inner">
+            <i class="fas fa-microchip"></i>
+            <h3>CHECK-POINT TOTEȘTI — DN68</h3>
+            <p style="color:#777; max-width:750px; margin:0 auto;">Sediul nostru central și microferma proprie. Aici rânduim catering-ul pentru evenimente și pachetele de drum pentru exploratori, înainte de urcarea spre Domeniile La Buligă.</p>
         </div>
     </section>
 
     <main class="container">
-        <div class="grid-5">
+        <div class="grid-hub">
             <a href="pensiune.html" class="card-item">
                 <img src="images/la-buliga-pensiune.jpg" alt="Domeniile La Buligă">
-                <div class="card-info"><h4>DOMENIILE LA BULIGĂ</h4><p>Basecamp Premium la 1100m.</p></div>
+                <div class="card-info"><h4>DOMENIILE LA BULIGĂ</h4><p>Cazare Premium și tihnă la 1100m altitudine.</p></div>
             </a>
             <a href="metanoia.html" class="card-item">
                 <img src="images/feed-buliga.jpg" alt="Metanoia">
-                <div class="card-info"><h4>METANOIA</h4><p>Evenimente și resetare spirituală.</p></div>
+                <div class="card-info"><h4>METANOIA</h4><p>Evenimente corporative și regăsire spirituală.</p></div>
             </a>
             <a href="gastronomie.html" class="card-item">
                 <img src="images/microferma.jpg" alt="Catering Totesti">
-                <div class="card-info"><h4>CATERING DN68</h4><p>Take-away din microferma Totești.</p></div>
+                <div class="card-info"><h4>GASTRONOMIE & CATERING</h4><p>Produse bio din microfermă și pachete de drum.</p></div>
+            </a>
+            <a href="curs.html" class="card-item">
+                <img src="images/IMG_20260330_160353.webp" alt="Curs Management">
+                <div class="card-info"><h4>MANAGEMENT SISTEMIC</h4><p>Cursuri de rânduială și eficiență prin tihnă.</p></div>
             </a>
             <a href="explorare.html" class="card-item">
                 <img src="images/bike.webp" alt="Explorare Padureni">
-                <div class="card-info"><h4>EXPLORARE</h4><p>E-Bike & ATV în Ținutul Pădurenilor.</p></div>
+                <div class="card-info"><h4>EXPLORARE PĂDURENI</h4><p>Parteneriate E-Bike & ATV în sălbăticie.</p></div>
             </a>
             <a href="https://curcubeupestehateg.hategalternativ.ro" class="card-item">
                 <img src="images/narcise.jpg" alt="Asociatia">
-                <div class="card-info"><h4>ASOCIAȚIA</h4><p>Curcubeu peste Hațeg.</p></div>
+                <div class="card-info"><h4>ASOCIAȚIA</h4><p>Curcubeu peste Hațeg — Proiecte de suflet.</p></div>
             </a>
-        </div>
-
-        <div style="background:#000; padding:80px 0;">
-            <div class="elfsight-app-4342bef8-07d4-4bfe-9114-34160d0e96f1" data-elfsight-app-lazy></div>
-            <div class="elfsight-app-9e87d320-859d-4ef5-9a42-3eaeeaadb2d7" data-elfsight-app-lazy></div>
-            <div class="elfsight-app-8217fa9c-47ca-4b54-bb21-6a682ba7a413" data-elfsight-app-lazy></div>
         </div>
     </main>
 
-    <section class="event-section">
-        <div class="event-row">
-            <div class="event-img"><img src="images/foc.jpg" alt="Eveniment"></div>
-            <div class="event-content">
-                <span style="font-family:'Cinzel'; color:var(--auriu);">01 MAI 2026</span>
-                <h2>Serată Romano-Italiană</h2>
-                <p>Ospăț rânduit cu produse din microferma Totești și tihnă montană.</p>
-                <a href="contact.html" class="btn-portal" style="margin-top:20px;">REZERVARE LOC</a>
-            </div>
-        </div>
-    </section>
+    <div class="elf-container">
+        <div class="elfsight-app-4342bef8-07d4-4bfe-9114-34160d0e96f1" data-elfsight-app-lazy></div>
+        <div class="elfsight-app-9e87d320-859d-4ef5-9a42-3eaeeaadb2d7" data-elfsight-app-lazy></div>
+        <div class="elfsight-app-8217fa9c-47ca-4b54-bb21-6a682ba7a413" data-elfsight-app-lazy></div>
+    </div>
 
     <footer>
         <p style="font-size:0.8rem; color:#444; letter-spacing:2px; margin-bottom:20px;">DAKAMIGOS MARKT SRL | CUI: RO40767794</p>
