@@ -9,25 +9,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        :root { --auriu: #c5a059; --negru: #050505; --gri: #0a0a0a; --alb: #ffffff; }
-        
+        :root { --auriu: #c5a059; --negru: #050505; --alb: #ffffff; --portocaliu: #e65100; }
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         body { background-color: var(--negru); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-        a { text-decoration: none !important; color: inherit !important; }
-
-        /* HEADER */
-        .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 25px 5%; display: flex; justify-content: space-between; align-items: center; }
+        /* HEADER & LOGO */
+        .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 30px 5%; display: flex; justify-content: space-between; align-items: center; }
         .brand-logo img { height: clamp(70px, 12vw, 100px); width: auto; filter: drop-shadow(0 0 15px #000); }
         .burger { cursor: pointer; z-index: 10001; background: rgba(0,0,0,0.6); padding: 12px; border-radius: 8px; border: 1px solid var(--auriu); }
         .burger div { width: 28px; height: 2px; background: var(--auriu); margin: 6px; }
 
-        /* NAV */
-        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: rgba(5, 5, 5, 0.98); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.5s ease; z-index: 10000; }
+        /* NAV CU BUTON REZERVARE */
+        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: var(--negru); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.6s; z-index: 10000; }
         .main-nav.active { right: 0; }
-        .main-nav a { font-family: 'Cinzel'; font-size: 1.8rem; margin: 15px 0; letter-spacing: 4px; text-transform: uppercase; }
+        .main-nav a { font-family: 'Cinzel'; font-size: 1.8rem; margin: 15px 0; letter-spacing: 4px; color: #fff !important; text-transform: uppercase; }
+        .nav-res-btn { border: 2px solid var(--auriu); padding: 10px 30px; margin-top: 20px !important; color: var(--auriu) !important; font-weight: 900; }
 
-        /* HERO PENSIUNE */
+        /* HERO - REPARAT PENTRU PC */
         .hero-pensiune {
             height: 80vh; position: relative; display: flex; align-items: center; justify-content: center;
             background: linear-gradient(rgba(0,0,0,0.2), var(--negru)), url('images/IMG_20260330_160353.webp') center/cover no-repeat;
@@ -35,96 +33,24 @@
         }
         .hero-pensiune h1 {
             font-family: 'Playfair Display'; font-style: italic; font-size: clamp(3rem, 12vw, 7rem);
-            color: var(--auriu); line-height: 1; text-shadow: 0 0 50px rgba(0,0,0,0.8);
+            color: var(--auriu); line-height: 1; padding-top: 100px;
         }
 
-        /* TEXT INTRO */
-        .intro-section { max-width: 900px; margin: 100px auto; padding: 0 20px; text-align: center; }
-        .intro-section h2 { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 10px; margin-bottom: 30px; font-size: 1.2rem; }
-        .intro-section p { font-family: 'Playfair Display'; font-style: italic; font-size: clamp(1.8rem, 4vw, 2.5rem); color: #ccc; line-height: 1.4; }
+        /* GALERIE */
+        .gallery-container { max-width: 1600px; margin: 80px auto; padding: 0 2%; display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 15px; }
+        .gallery-item { position: relative; height: 500px; overflow: hidden; border: 1px solid #1a1a1a; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 1.2s; filter: brightness(0.6); }
+        .gallery-item:hover img { transform: scale(1.05); filter: brightness(0.9); }
 
-        /* GALERIE CINEMATICĂ (Multe Poze) */
-        .gallery-title { text-align: center; font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 5px; margin-bottom: 50px; }
-        .gallery-container { max-width: 1600px; margin: 0 auto; padding: 0 2%; }
-        
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 15px;
-        }
-
-        .gallery-item {
-            position: relative;
-            height: 500px;
-            overflow: hidden;
-            border: 1px solid #1a1a1a;
-            background: #000;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: 1.5s ease;
-            filter: brightness(0.6);
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.05);
-            filter: brightness(0.9);
-        }
-
-        .gallery-caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 30px;
-            background: linear-gradient(transparent, rgba(0,0,0,0.9));
-            font-family: 'Cinzel';
-            color: var(--auriu);
-            font-size: 0.7rem;
-            letter-spacing: 3px;
-            opacity: 0;
-            transition: 0.5s;
-        }
-
-        .gallery-item:hover .gallery-caption { opacity: 1; }
-
-        /* SPECS - DETALII BULIGA */
-        .specs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 100px auto;
-            padding: 0 20px;
-        }
-
-        .spec-card {
-            background: var(--gri);
-            padding: 40px;
-            border: 1px solid #1a1a1a;
-            text-align: center;
-            transition: 0.3s;
-        }
-
+        .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; max-width: 1200px; margin: 100px auto; padding: 0 20px; }
+        .spec-card { background: #0a0a0a; padding: 40px; border: 1px solid #1a1a1a; text-align: center; transition: 0.3s; }
         .spec-card:hover { border-color: var(--auriu); transform: translateY(-10px); }
         .spec-card i { color: var(--auriu); font-size: 2.5rem; margin-bottom: 20px; }
-        .spec-card h4 { font-family: 'Cinzel'; letter-spacing: 3px; margin-bottom: 10px; }
-        .spec-card p { font-size: 0.9rem; color: #888; }
 
-        /* FOOTER */
-        footer { padding: 80px 20px; text-align: center; border-top: 1px solid #111; }
-        .tribute { color: var(--auriu); font-weight: 900; margin-top: 20px; font-family: 'Cinzel'; font-size: 0.65rem; letter-spacing: 5px; opacity: 0.6; }
+        footer { padding: 60px 20px; text-align: center; border-top: 1px solid #111; opacity: 0.5; font-family: 'Cinzel'; font-size: 0.7rem; }
+        .whatsapp-float { position: fixed; bottom: 30px; left: 30px; background: #25d366; border-radius: 50%; width: 65px; height: 65px; display: flex; align-items: center; justify-content: center; font-size: 35px; z-index: 1001; color: #fff; }
 
-        /* WIDGETS */
-        .whatsapp-float { position: fixed; bottom: 30px; left: 30px; background: #25d366; border-radius: 50%; width: 65px; height: 65px; display: flex; align-items: center; justify-content: center; font-size: 35px; z-index: 1001; color: #fff; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
-
-        @media (max-width: 768px) {
-            .gallery-grid { grid-template-columns: 1fr; }
-            .gallery-item { height: 400px; }
-        }
+        @media (max-width: 768px) { .gallery-container { grid-template-columns: 1fr; } .gallery-item { height: 350px; } }
     </style>
 </head>
 <body>
@@ -132,7 +58,7 @@
     <a href="https://wa.me/40749229686" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
     <header class="site-header">
-        <a href="index.html" class="brand-logo"><img src="logo1.svg" alt="Metanoia Logo"></a>
+        <a href="index.html" class="brand-logo"><img src="images/logo1.svg" alt="Metanoia Logo"></a>
         <div class="burger" id="burger"><div></div><div></div><div></div></div>
     </header>
 
@@ -142,92 +68,34 @@
         <a href="gastronomie.html">GASTRONOMIE</a>
         <a href="metanoia.html">METANOIA</a>
         <a href="contact.html">CONTACT</a>
+        <a href="rezervari.html" class="nav-res-btn">REZERVARE</a>
     </nav>
 
     <section class="hero-pensiune">
         <h1>La Buligă.</h1>
     </section>
 
-    <main>
-        <section class="intro-section">
-            <h2>RÂNDUIALĂ ȘI TIHNĂ</h2>
-            <p>„Aici, timpul nu se grăbește. Se așază cuminte pe grinzi vechi și te invită să respiri odată cu muntele.”</p>
-        </section>
+    <div class="gallery-container">
+        <div class="gallery-item"><img src="images/IMG_20260330_160344.jpg" alt="Interior"><div style="position:absolute; bottom:20px; left:20px; font-family:'Cinzel'; color:var(--auriu);">INTERIOR</div></div>
+        <div class="gallery-item"><img src="images/sura.jpg" alt="Sura"><div style="position:absolute; bottom:20px; left:20px; font-family:'Cinzel'; color:var(--auriu);">ȘURA</div></div>
+        <div class="gallery-item"><img src="images/jeep.jpg" alt="Jeep"><div style="position:absolute; bottom:20px; left:20px; font-family:'Cinzel'; color:var(--auriu);">AVENTURĂ</div></div>
+        <div class="gallery-item"><img src="images/apus.jpg" alt="Apus"><div style="position:absolute; bottom:20px; left:20px; font-family:'Cinzel'; color:var(--auriu);">TIHNĂ</div></div>
+    </div>
 
-        <h2 class="gallery-title">GALERIE FOTO</h2>
-        <div class="gallery-container">
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="images/IMG_20260330_160344.jpg" alt="Interior Buliga">
-                    <div class="gallery-caption">INTERIOR AUTENTIC</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="images/IMG_20260330_160505.jpg" alt="Vedere Buliga">
-                    <div class="gallery-caption">ORIZONTUL PĂDURENILOR</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="images/sura.jpg" alt="Sura Buliga">
-                    <div class="gallery-caption">ȘURA - SPAȚIU DE TAIFAS</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="images/apus.jpg" alt="Apus Buliga">
-                    <div class="gallery-caption">LUMINĂ ȘI RÂNDUIALĂ</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="images/jeep.jpg" alt="Aventura Jeep">
-                    <div class="gallery-caption">EXPEDIȚII WILD</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="images/foc.jpg" alt="Foc de tabara">
-                    <div class="gallery-caption">ARTA FOCULUI</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="images/gast-masa-traditionala.jpg" alt="Ospat">
-                    <div class="gallery-caption">OSPĂȚ STRĂBUN</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="images/munti.jpg" alt="Munti">
-                    <div class="gallery-caption">IMENSITATEA RETEZATULUI</div>
-                </div>
-            </div>
-        </div>
+    <section class="specs-grid">
+        <div class="spec-card"><i class="fas fa-home"></i><h4>5 DORMITOARE</h4><p>Capacitate 10 persoane.</p></div>
+        <div class="spec-card"><i class="fas fa-mountain"></i><h4>1100M ALTITUDINE</h4><p>Vadu Dobrii, Pădureni.</p></div>
+        <div class="spec-card"><i class="fas fa-fire-alt"></i><h4>ȘEMINEU</h4><p>Căldură și rânduială.</p></div>
+    </section>
 
-        <section class="specs-grid">
-            <div class="spec-card">
-                <i class="fas fa-home"></i>
-                <h4>5 DORMITOARE</h4>
-                <p>Capacitate confortabilă de 10 persoane, închiriere integrală.</p>
-            </div>
-            <div class="spec-card">
-                <i class="fas fa-mountain"></i>
-                <h4>1100M ALTITUDINE</h4>
-                <p>Izolare totală în Vadu Dobrii, fără vecini, doar muntele.</p>
-            </div>
-            <div class="spec-card">
-                <i class="fas fa-fire-alt"></i>
-                <h4>ȘEMINEU & CEAUN</h4>
-                <p>Căldură autentică și gusturi gătite la foc deschis.</p>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <p style="font-family:'Cinzel'; font-size:0.7rem; color:#444; letter-spacing:2px;">HAȚEG ALTERNATIV &copy; 2026 | DAKAMIGOS MARKT SRL</p>
-        <p class="tribute">TRIBUT PATRICIA</p>
+    <footer style="text-align:center; padding: 40px;">
+        HAȚEG ALTERNATIV &copy; 2026 | TRIBUT PATRICIA
     </footer>
 
-    <script type="text/javascript">
-    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-    (function(){
-    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-    s1.async=true; s1.src='https://embed.tawk.to/65c5607435e8d61c3a875f21/1hklg1i9s';
-    s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0); })();
-
-    const burger = document.getElementById('burger');
-    const nav = document.getElementById('nav-links');
-    burger.onclick = () => nav.classList.toggle('active');
+    <script>
+        const burger = document.getElementById('burger');
+        const nav = document.getElementById('nav-links');
+        burger.onclick = () => nav.classList.toggle('active');
     </script>
-
 </body>
 </html>
