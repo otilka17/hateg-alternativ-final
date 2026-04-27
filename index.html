@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>HațegAlternativ-Metanoia. Simte, trăiește tăcerea</title>
-    
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18106516696"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -13,142 +9,162 @@
       gtag('config', 'AW-18106516696');
     </script>
 
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hațeg Alternativ | Portal Oficial</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="https://elfsightcdn.com/platform.js" async></script>
 
     <style>
-        :root { --auriu: #c5a059; --negru: #050505; --alb: #ffffff; --accent: #FF4500; }
+        :root { --auriu: #c5a059; --negru: #050505; --gri: #0a0a0a; --alb: #ffffff; }
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        html, body { overflow-x: hidden; width: 100%; background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-        a { text-decoration: none !important; color: inherit !important; }
+        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-        /* HEADER */
-        .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 25px 5%; display: flex; justify-content: space-between; align-items: center; }
-        .brand-logo img { height: clamp(90px, 18vw, 150px); width: auto; display: block; filter: drop-shadow(0 0 10px rgba(0,0,0,0.3)); }
-        
-        .burger { cursor: pointer; z-index: 10001; background: rgba(0,0,0,0.5); padding: 12px; border-radius: 4px; border: 1px solid var(--auriu); }
-        .burger div { width: 25px; height: 2px; background: var(--auriu); margin: 5px; transition: 0.4s; }
-
-        /* MENIU BURGER OPTIMIZAT */
-        .nav-overlay { 
-            position: fixed; top: 0; right: -100%; width: 100%; height: 100vh; 
-            background: rgba(5, 5, 5, 0.98); z-index: 10000; display: flex; 
-            flex-direction: column; justify-content: center; align-items: center; 
-            transition: 0.5s; padding: 20px;
+        /* REPARAȚIE LOGO: Spațiu fix să nu se urce pe text */
+        .site-header { 
+            position: absolute; top: 0; width: 100%; z-index: 9999; 
+            padding: 40px 5%; display: flex; justify-content: space-between; align-items: center; 
         }
-        .nav-overlay.active { right: 0; }
-        .nav-overlay a { 
-            font-family: 'Cinzel'; 
-            font-size: clamp(1.1rem, 5vw, 2.2rem); 
-            margin: 12px 0; color: var(--alb) !important; letter-spacing: 4px; 
-            text-align: center; width: 90%; line-height: 1.3;
+        .brand-logo svg { height: 90px; width: auto; filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.4)); }
+
+        /* HERO: Optimizat pentru PC/Laptop */
+        .hero {
+            height: 100vh;
+            display: flex; align-items: center; justify-content: flex-start;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('images/rasarit.jpg') center/cover no-repeat;
+            padding: 0 8%;
         }
 
-        /* HERO CINEMA */
-        .hero-cinema { position: relative; width: 100%; height: 100vh; overflow: hidden; background: #111; }
-        .bg-base { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('images/rasarit.jpg'); background-size: cover; background-position: center; z-index: 0; }
-        .cinema-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0; z-index: 1; animation: crossFadeImages 15s infinite ease-in-out; }
-        .slide-1 { background-image: url('images/rasarit.jpg'); animation-delay: 0s; }
-        .slide-2 { background-image: url('images/nori.jph.jpg'); animation-delay: 5s; }
-        .slide-3 { background-image: url('images/apus.jpg'); animation-delay: 10s; }
-
-        @keyframes crossFadeImages {
-            0% { opacity: 0; } 10% { opacity: 1; } 33% { opacity: 1; } 43% { opacity: 0; } 100% { opacity: 0; }
+        .hero-content { 
+            max-width: 850px; 
+            padding-top: 100px; /* Protecție pentru logo */
         }
 
-        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; padding-left: 8%; z-index: 10; background: linear-gradient(to right, rgba(0,0,0,0.7), transparent); }
-        .hero-content { max-width: 700px; border-left: 3px solid var(--auriu); padding-left: 30px; }
-        .hero-content span { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 5px; font-size: 0.9rem; }
-        .hero-content h1 { font-family: 'Playfair Display'; font-size: clamp(2rem, 8vw, 4rem); font-weight: 900; line-height: 1.1; margin: 15px 0; }
-        .hero-content p { font-size: 1.1rem; line-height: 1.7; color: rgba(255,255,255,0.8); margin-bottom: 30px; }
-        .cta-btn { display: inline-block; padding: 18px 40px; background: var(--accent); color: #fff !important; font-family: 'Cinzel'; font-weight: 700; letter-spacing: 2px; }
+        .hero-content h1 { 
+            font-family: 'Playfair Display'; 
+            font-size: clamp(2.5rem, 6vw, 4.8rem); 
+            font-style: italic; color: var(--alb); 
+            line-height: 1.1; margin-bottom: 25px;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
 
-        /* GRID */
-        .container { width: 100%; max-width: 1450px; margin: 0 auto; padding: 80px 20px; }
-        .grid-7 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
-        .card-item { height: 500px; position: relative; overflow: hidden; display: block; background: #000; }
-        .card-item img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: 1.2s ease; }
-        .card-item:hover img { opacity: 0.9; transform: scale(1.05); }
-        .card-info { position: absolute; bottom: 0; left: 0; width: 100%; padding: 45px 25px; background: linear-gradient(to top, #000 60%, transparent); }
-        .card-info h4 { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 3px; }
+        .hero-content p {
+            font-size: 1.2rem; color: #ccc; max-width: 550px;
+            margin-bottom: 40px; line-height: 1.6; font-weight: 300;
+        }
 
-        @media (max-width: 768px) { .hero-overlay { padding-left: 5%; align-items: flex-end; padding-bottom: 80px; } .hero-content { border-left-width: 2px; } }
+        .btn-portal {
+            display: inline-block; padding: 18px 45px;
+            background: #e65100; color: white;
+            text-decoration: none; font-family: 'Cinzel';
+            font-weight: 700; font-size: 0.85rem;
+            letter-spacing: 3px; transition: 0.3s;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .btn-portal:hover { background: #ff6d00; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.4); }
+
+        /* GRID CARDURI: Limitat pe PC (Max 1200px) */
+        .portal-grid {
+            max-width: 1200px; 
+            margin: -100px auto 100px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px; padding: 0 20px;
+            position: relative; z-index: 10;
+        }
+
+        .card {
+            background: var(--gri); height: 380px;
+            border: 1px solid #1a1a1a; overflow: hidden;
+            position: relative; transition: 0.5s;
+        }
+        .card:hover { border-color: var(--auriu); transform: translateY(-12px); }
+        .card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.5; transition: 0.7s; }
+        .card:hover img { opacity: 0.9; transform: scale(1.1); }
+
+        .card-title {
+            position: absolute; bottom: 25px; left: 25px;
+            font-family: 'Cinzel'; color: var(--auriu);
+            font-size: 0.75rem; letter-spacing: 4px; font-weight: 900;
+        }
+
+        /* 2. WHATSAPP WIDGET (RESTAURAT) */
+        .whatsapp-float { 
+            position: fixed; bottom: 30px; left: 30px; 
+            background: #25d366; color: white !important; 
+            width: 65px; height: 65px; border-radius: 50%; 
+            display: flex; align-items: center; justify-content: center; 
+            font-size: 35px; z-index: 9999; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5); 
+        }
+
+        footer { 
+            padding: 100px 20px; text-align: center; 
+            background: #030303; border-top: 1px solid #111; 
+        }
+        .footer-details { font-family: 'Cinzel'; font-size: 0.75rem; color: #555; letter-spacing: 3px; }
+        .tribute { color: var(--auriu); font-weight: 900; margin-top: 25px; opacity: 0.7; letter-spacing: 5px; }
+
+        @media (max-width: 768px) {
+            .hero { justify-content: center; text-align: center; padding: 0 20px; }
+            .hero-content { padding-top: 150px; }
+            .portal-grid { margin-top: 40px; }
+        }
     </style>
 </head>
 <body>
 
+    <a href="https://wa.me/40749229686" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
     <header class="site-header">
-        <a href="index.html" class="brand-logo">
-            <img src="images/logo1.svg" alt="Metanoia Logo">
-        </a>
-        <div class="burger" id="burger">
-            <div></div><div></div><div></div>
+        <div class="brand-logo">
+            <svg viewBox="0 0 800 500">
+                <circle cx="400" cy="250" r="105" fill="none" stroke="#c5a059" stroke-width="4" opacity="0.6"/>
+                <path d="M300 400 L400 200 L500 400 Z" fill="#c5a059"/>
+            </svg>
         </div>
     </header>
 
-    <nav class="nav-overlay" id="nav-overlay">
-        <a href="index.html">ACASĂ</a>
-        <a href="pensiune.html">DOMENIILE LA BULIGĂ</a>
-        <a href="metanoia.html">METANOIA</a>
-        <a href="gastronomie.html">GASTRONOMIE</a>
-        <a href="evenimente.html">EVENIMENTE</a>
-        <a href="curs.html">CURSURI</a>
-        <a href="padureni.html">ȚINUTUL PĂDURENILOR</a>
-    </nav>
-
-    <section class="hero-cinema">
-        <div class="bg-base"></div>
-        <div class="cinema-slide slide-1"></div>
-        <div class="cinema-slide slide-2"></div>
-        <div class="cinema-slide slide-3"></div>
-        <div class="hero-overlay">
-            <div class="hero-content">
-                <span>VADU DOBRII — HAȚEG ALTERNATIV</span>
-                <h1>HațegAlternativ-Metanoia. Simte, trăiește tăcerea</h1>
-                <p>Am rânduit un refugiu mistic unde timpul se măsoară în tihnă și arhitectură veche.</p>
-                <a href="#proiecte" class="cta-btn">DESCOPERĂ MAI MULT</a>
-            </div>
+    <section class="hero">
+        <div class="hero-content">
+            <p style="font-family:'Cinzel'; color:var(--auriu); letter-spacing:5px; margin-bottom:15px; font-weight:900;">VADU DOBRII — HAȚEG ALTERNATIV</p>
+            <h1>HațegAlternativ-<br>Metanoia. Simte,<br>trăiește tăcerea</h1>
+            <p>Un refugiu mistic rânduit pentru regăsire, unde arhitectura veche întâlnește liniștea muntelui.</p>
+            <a href="#descopera" class="btn-portal">DESCOPERĂ MAI MULT</a>
         </div>
     </section>
 
-    <main class="container" id="proiecte">
-        <div class="grid-7">
-            <a href="pensiune.html" class="card-item"><img src="images/IMG_20260330_160353.webp"><div class="card-info"><h4>DOMENIILE LA BULIGĂ</h4></div></a>
-            <a href="metanoia.html" class="card-item"><img src="images/IMG_20260330_160344.webp"><div class="card-info"><h4>METANOIA</h4></div></a>
-            <a href="gastronomie.html" class="card-item"><img src="images/gast-supa2.jpg"><div class="card-info"><h4>GASTRONOMIE</h4></div></a>
-            <a href="evenimente.html" class="card-item"><img src="images/narcise.jpg"><div class="card-info"><h4>TIHNĂ ȘI TRĂIRE</h4></div></a>
-            <a href="explorare-ebike.html" class="card-item"><img src="images/cardindexebike.webp"><div class="card-info"><h4>EXPLORARE</h4></div></a>
-            <a href="curs.html" class="card-item"><img src="images/interior-biserica.jpg"><div class="card-info"><h4>CURSURI</h4></div></a>
-            <a href="padureni.html" class="card-item"><img src="images/padureni.jpg"><div class="card-info"><h4>ȚINUTUL PĂDURENILOR</h4></div></a>
-        </div>
-
-        <div style="margin-top:80px;">
-            <div class="elfsight-app-2a7a128c-e004-486e-961a-99f57d874913" data-elfsight-app-lazy></div>
-        </div>
-    </main>
-
-    <div style="background:#000; padding:40px 0;">
-        <div class="elfsight-app-4342bef8-07d4-4bfe-9114-34160d0e96f1" data-elfsight-app-lazy></div>
-        <div class="elfsight-app-9e87d320-859d-4ef5-9a42-3eaeeaadb2d7" data-elfsight-app-lazy></div>
-        <div class="elfsight-app-8217fa9c-47ca-4b54-bb21-6a682ba7a413" data-elfsight-app-lazy></div>
+    <div class="portal-grid" id="descopera">
+        <a href="pensiune.html" class="card">
+            <img src="images/la-buliga-pensiune.jpg" alt="Pensiune">
+            <div class="card-title">DOMENIILE LA BULIGĂ</div>
+        </a>
+        <a href="metanoia.html" class="card">
+            <img src="images/feed-buliga.jpg" alt="Metanoia">
+            <div class="card-title">METANOIA</div>
+        </a>
+        <a href="gastronomie.html" class="card">
+            <img src="images/gast-masa-traditionala.jpg" alt="Gastronomie">
+            <div class="card-title">GASTRONOMIE</div>
+        </a>
+        <a href="tihnaitraire.html" class="card">
+            <img src="images/exp-fluturi.jpg" alt="Tihna">
+            <div class="card-title">TIHNĂ ȘI TRĂIRE</div>
+        </a>
     </div>
 
-    <footer style="padding: 60px 20px; text-align: center; border-top: 1px solid #111;">
-        <div style="margin-bottom:20px;">
-            <a href="politica-cookies.html" style="font-family:'Cinzel'; font-size:0.7rem; color:#444; letter-spacing:2px;">COOKIES</a> | 
-            <a href="confidentialitate.html" style="font-family:'Cinzel'; font-size:0.7rem; color:#444; letter-spacing:2px;">GDPR</a>
+    <footer>
+        <div class="footer-details">
+            <p>HAȚEG ALTERNATIV &copy; 2026 | DAKAMIGOS MARKT SRL</p>
+            <div style="margin: 20px 0;">
+                <a href="politica-cookies.html" style="color:#333 !important; margin: 0 10px;">COOKIES</a>
+                <a href="confidentialitate.html" style="color:#333 !important; margin: 0 10px;">GDPR</a>
+            </div>
+            <p class="tribute">TRIBUT PATRICIA</p>
         </div>
-        <p style="font-family:'Cinzel'; font-size:0.7rem; color:#444; letter-spacing:3px;">HAȚEG ALTERNATIV &copy; 2026</p>
     </footer>
 
-    <script>
-        const burger = document.getElementById('burger');
-        const overlay = document.getElementById('nav-overlay');
-        burger.onclick = () => { overlay.classList.toggle('active'); };
-        overlay.onclick = () => { overlay.classList.remove('active'); };
-    </script>
-    
     <script type="text/javascript">
     var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
     (function(){
@@ -157,5 +173,6 @@
     s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
     s0.parentNode.insertBefore(s1,s0); })();
     </script>
+
 </body>
 </html>
