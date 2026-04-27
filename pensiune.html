@@ -3,54 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Domeniile La Buligă | Pensiune & Galerie Cinematică</title>
+    <title>Experiențe & Pachete | Domeniile La Buligă</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@200;400;600&display=swap" rel="stylesheet">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18106516696"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-18106516696');
+    </script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@200;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
         :root { --auriu: #c5a059; --negru: #050505; --alb: #ffffff; --portocaliu: #e65100; }
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         body { background-color: var(--negru); color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        a { text-decoration: none !important; color: inherit !important; }
 
-        /* HEADER & LOGO */
         .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 30px 5%; display: flex; justify-content: space-between; align-items: center; }
         .brand-logo img { height: clamp(70px, 12vw, 100px); width: auto; filter: drop-shadow(0 0 15px #000); }
         .burger { cursor: pointer; z-index: 10001; background: rgba(0,0,0,0.6); padding: 12px; border-radius: 8px; border: 1px solid var(--auriu); }
         .burger div { width: 28px; height: 2px; background: var(--auriu); margin: 6px; }
 
-        /* NAV CU BUTON REZERVARE */
-        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: var(--negru); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.6s; z-index: 10000; }
+        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: rgba(5,5,5,0.98); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.5s ease; z-index: 10000; }
         .main-nav.active { right: 0; }
-        .main-nav a { font-family: 'Cinzel'; font-size: 1.8rem; margin: 15px 0; letter-spacing: 4px; color: #fff !important; text-transform: uppercase; }
-        .nav-res-btn { border: 2px solid var(--auriu); padding: 10px 30px; margin-top: 20px !important; color: var(--auriu) !important; font-weight: 900; }
+        .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 15px 0; color: #fff !important; text-transform: uppercase; letter-spacing: 4px; }
 
-        /* HERO - REPARAT PENTRU PC */
-        .hero-pensiune {
-            height: 80vh; position: relative; display: flex; align-items: center; justify-content: center;
-            background: linear-gradient(rgba(0,0,0,0.2), var(--negru)), url('images/IMG_20260330_160353.webp') center/cover no-repeat;
-            text-align: center; border-bottom: 2px solid var(--auriu);
-        }
-        .hero-pensiune h1 {
-            font-family: 'Playfair Display'; font-style: italic; font-size: clamp(3rem, 12vw, 7rem);
-            color: var(--auriu); line-height: 1; padding-top: 100px;
-        }
+        .hero-pensiune { height: 80vh; position: relative; display: flex; align-items: center; justify-content: center; background: linear-gradient(rgba(0,0,0,0.2), var(--negru)), url('images/IMG_20260330_160353.webp') center/cover no-repeat; text-align: center; }
+        .hero-pensiune h1 { font-family: 'Playfair Display'; font-style: italic; font-size: clamp(3rem, 10vw, 7rem); color: var(--auriu); padding-top: 100px; }
 
-        /* GALERIE */
-        .gallery-container { max-width: 1600px; margin: 80px auto; padding: 0 2%; display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 15px; }
-        .gallery-item { position: relative; height: 500px; overflow: hidden; border: 1px solid #1a1a1a; }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 1.2s; filter: brightness(0.6); }
-        .gallery-item:hover img { transform: scale(1.05); filter: brightness(0.9); }
+        .label-wrap { text-align: center; margin: 80px 0 40px; }
+        .label-wrap span { font-family: 'Cinzel'; font-size: 0.7rem; letter-spacing: 10px; color: var(--auriu); text-transform: uppercase; }
+        .label-wrap h2 { font-family: 'Playfair Display'; font-style: italic; font-size: 2.8rem; margin-top: 10px; }
 
-        .specs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; max-width: 1200px; margin: 100px auto; padding: 0 20px; }
-        .spec-card { background: #0a0a0a; padding: 40px; border: 1px solid #1a1a1a; text-align: center; transition: 0.3s; }
-        .spec-card:hover { border-color: var(--auriu); transform: translateY(-10px); }
-        .spec-card i { color: var(--auriu); font-size: 2.5rem; margin-bottom: 20px; }
+        .packages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; max-width: 1300px; margin: 0 auto 80px; padding: 0 20px; }
+        .p-card { background: #0a0a0a; border: 1px solid #1a1a1a; display: flex; flex-direction: column; transition: 0.4s; }
+        .p-card:hover { border-color: var(--auriu); transform: translateY(-10px); }
+        .p-img { height: 280px; background-size: cover; background-position: center; border-bottom: 1px solid var(--auriu); }
+        .p-body { padding: 40px; flex-grow: 1; display: flex; flex-direction: column; }
+        .p-body h3 { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 3px; font-size: 1.4rem; margin-bottom: 20px; }
+        .p-body ul { list-style: none; margin-bottom: 30px; }
+        .p-body ul li { font-size: 0.95rem; color: #ccc; margin-bottom: 12px; padding-left: 20px; position: relative; }
+        .p-body ul li::before { content: "•"; position: absolute; left: 0; color: var(--auriu); }
+        .price-tag { font-family: 'Inter'; font-weight: 800; font-size: 1.8rem; color: #fff; margin-top: auto; margin-bottom: 25px; }
+        .price-tag span { font-size: 0.9rem; color: var(--auriu); font-weight: 400; margin-left: 5px; }
+        .btn-reserve { display: block; width: 100%; text-align: center; padding: 15px; background: var(--portocaliu); color: #fff; font-family: 'Cinzel'; font-weight: 700; font-size: 0.8rem; letter-spacing: 2px; }
+
+        .p-gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 15px; padding: 0 20px; max-width: 1400px; margin: 0 auto 100px; }
+        .p-gallery-item { height: 450px; overflow: hidden; border: 1px solid #111; }
+        .p-gallery-item img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.7); transition: 1s; }
+        .p-gallery-item:hover img { filter: brightness(1); transform: scale(1.05); }
 
         footer { padding: 60px 20px; text-align: center; border-top: 1px solid #111; opacity: 0.5; font-family: 'Cinzel'; font-size: 0.7rem; }
-        .whatsapp-float { position: fixed; bottom: 30px; left: 30px; background: #25d366; border-radius: 50%; width: 65px; height: 65px; display: flex; align-items: center; justify-content: center; font-size: 35px; z-index: 1001; color: #fff; }
-
-        @media (max-width: 768px) { .gallery-container { grid-template-columns: 1fr; } .gallery-item { height: 350px; } }
+        .whatsapp-float { position: fixed; bottom: 30px; left: 30px; background: #25d366; border-radius: 50%; width: 65px; height: 65px; display: flex; align-items: center; justify-content: center; font-size: 35px; z-index: 9999; color: #fff; }
     </style>
 </head>
 <body>
@@ -67,28 +74,64 @@
         <a href="pensiune.html" style="color:var(--auriu) !important;">PENSIUNEA</a>
         <a href="gastronomie.html">GASTRONOMIE</a>
         <a href="metanoia.html">METANOIA</a>
-        <a href="contact.html">CONTACT</a>
-        <a href="rezervari.html" class="nav-res-btn">REZERVARE</a>
+        <a href="rezervari.html">REZERVARE</a>
     </nav>
 
     <section class="hero-pensiune">
         <h1>La Buligă.</h1>
     </section>
 
-    <div class="gallery-container">
-        <div class="gallery-item"><img src="images/IMG_20260330_160344.jpg" alt="Interior"><div style="position:absolute; bottom:20px; left:20px; font-family:'Cinzel'; color:var(--auriu);">INTERIOR</div></div>
-        <div class="gallery-item"><img src="images/sura.jpg" alt="Sura"><div style="position:absolute; bottom:20px; left:20px; font-family:'Cinzel'; color:var(--auriu);">ȘURA</div></div>
-        <div class="gallery-item"><img src="images/jeep.jpg" alt="Jeep"><div style="position:absolute; bottom:20px; left:20px; font-family:'Cinzel'; color:var(--auriu);">AVENTURĂ</div></div>
-        <div class="gallery-item"><img src="images/apus.jpg" alt="Apus"><div style="position:absolute; bottom:20px; left:20px; font-family:'Cinzel'; color:var(--auriu);">TIHNĂ</div></div>
-    </div>
+    <main>
+        <div class="label-wrap">
+            <span>Capitolul I</span>
+            <h2>Oferte Rânduite</h2>
+        </div>
 
-    <section class="specs-grid">
-        <div class="spec-card"><i class="fas fa-home"></i><h4>5 DORMITOARE</h4><p>Capacitate 10 persoane.</p></div>
-        <div class="spec-card"><i class="fas fa-mountain"></i><h4>1100M ALTITUDINE</h4><p>Vadu Dobrii, Pădureni.</p></div>
-        <div class="spec-card"><i class="fas fa-fire-alt"></i><h4>ȘEMINEU</h4><p>Căldură și rânduială.</p></div>
-    </section>
+        <div class="packages-grid">
+            <article class="p-card">
+                <div class="p-img" style="background-image: url('images/IMG_20260330_160353.webp');"></div>
+                <div class="p-body">
+                    <h3>Standard Hub</h3>
+                    <ul>
+                        <li>Cazare la Domeniile La Buligă</li>
+                        <li>Mic Dejun tip Catering (Hub Totești)</li>
+                        <li>Tur E-bike Explorare Pădureni</li>
+                    </ul>
+                    <div class="price-tag">3.000 <span>RON / pachet</span></div>
+                    <a href="https://wa.me/40749229686?text=Buna ziua, doresc rezervare Pachet Standard 3000 lei" class="btn-reserve">REZERVĂ STANDARD</a>
+                </div>
+            </article>
 
-    <footer style="text-align:center; padding: 40px;">
+            <article class="p-card" style="border-color: var(--auriu);">
+                <div class="p-img" style="background-image: url('images/IMG_20260330_160344.webp');"></div>
+                <div class="p-body">
+                    <h3>Metanoia Premium</h3>
+                    <ul>
+                        <li>Cazare la Domeniile La Buligă (Vadu Dobrii)</li>
+                        <li>Mic Dejun & Cină Festivă (Produse Microfermă)</li>
+                        <li>Muzică Live oferită de gazde</li>
+                        <li>Tur E-bike & Tur Ghidat la obiective</li>
+                    </ul>
+                    <div class="price-tag">6.000 <span>RON / pachet</span></div>
+                    <a href="https://wa.me/40749229686?text=Buna ziua, doresc rezervare Pachet Premium 6000 lei" class="btn-reserve">ALEGE PREMIUM</a>
+                </div>
+            </article>
+        </div>
+
+        <div class="label-wrap">
+            <span>Capitolul II</span>
+            <h2>Imagini din Arhivă</h2>
+        </div>
+
+        <div class="p-gallery">
+            <div class="p-gallery-item"><img src="images/IMG_20260330_160335.webp" alt="Vedere munte"></div>
+            <div class="p-gallery-item"><img src="images/IMG_20260330_160344.webp" alt="Interior tihnă"></div>
+            <div class="p-gallery-item"><img src="images/IMG_20260330_160353.webp" alt="Seară la Buligă"></div>
+            <div class="p-gallery-item"><img src="images/IMG_20260330_160505.webp" alt="Detaliu munte"></div>
+        </div>
+    </main>
+
+    <footer>
         HAȚEG ALTERNATIV &copy; 2026 | TRIBUT PATRICIA
     </footer>
 
