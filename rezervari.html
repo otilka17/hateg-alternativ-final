@@ -15,7 +15,6 @@
         .form-side h2 { font-family: 'Cinzel'; color: var(--auriu); margin-bottom: 25px; letter-spacing: 3px; }
         .booking-form { display: grid; gap: 20px; }
         input, select, textarea { width: 100%; background: #000; border: 1px solid #333; padding: 15px; color: #fff; font-family: 'Inter'; outline: none; border-radius: 0; }
-        input:focus { border-color: var(--auriu); }
         .date-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
         .label-mini { font-size: 0.7rem; color: var(--auriu); font-family: 'Cinzel'; display: block; margin-bottom: 5px; }
         .extras-section { margin-top: 10px; border: 1px solid #222; padding: 20px; background: rgba(255,255,255,0.02); }
@@ -48,13 +47,13 @@
 
                 <select id="pachet_base" name="Pachet_Baza" required>
                     <option value="0" disabled selected>Alege Pachetul de Bază</option>
-                    <option value="2000" data-nume="Rânduiala Veche">Rânduiala Veche - 2000 RON/noapte</option>
-                    <option value="3000" data-nume="Premium">Pachet Premium - 3000 RON/noapte</option>
-                    <option value="4000" data-nume="Metanoia All-In">Metanoia All-In - 4000 RON/noapte</option>
+                    <option value="3000" data-nume="Pachet Experiență">Experiență Hațeg (Cazare + Ateliere) - 3000 RON/noapte</option>
+                    <option value="6000" data-nume="Metanoia All-In">Metanoia All-Inclusive (Totul Inclus) - 6000 RON/noapte</option>
                 </select>
 
                 <div class="extras-section">
                     <h4 class="label-mini" style="font-size: 0.8rem; margin-bottom: 15px;">OPȚIUNI ȘI ATELIERE EXTRA</h4>
+                    <img src="images/gast-masa-traditionala.jpg" alt="Masa" style="width: 100%; height: auto; margin-bottom: 20px; border: 1px solid #333;">
                     <label class="extra-item"><input type="checkbox" class="extra-cb" name="Cina_Extra" value="150"> Cină Extra (150 RON)</label>
                     <label class="extra-item"><input type="checkbox" class="extra-cb" name="Atelier_Gastro" value="500"> Atelier Gastronomic (500 RON)</label>
                     <label class="extra-item"><input type="checkbox" class="extra-cb" name="Atelier_Daco" value="350"> Atelier de creație (Daco) (350 RON)</label>
@@ -75,11 +74,7 @@
             <div class="sum-row"><span>Nopți:</span> <span id="res_nopti">0</span></div>
             <div class="sum-row"><span>Cost Cazare:</span> <span id="res_cost_cazare">0 RON</span></div>
             <div class="sum-row"><span>Suplimente:</span> <span id="res_extras">0 RON</span></div>
-            
-            <div class="total-row">
-                <span>TOTAL:</span>
-                <span id="res_total" class="total-price">0 RON</span>
-            </div>
+            <div class="total-row"><span>TOTAL:</span> <span id="res_total" class="total-price">0 RON</span></div>
         </div>
     </div>
 
@@ -93,24 +88,18 @@
             const d1 = new Date(checkin.value);
             const d2 = new Date(checkout.value);
             let nopti = (d1 && d2 && d2 > d1) ? Math.ceil((d2 - d1) / (1000 * 60 * 60 * 24)) : 0;
-            
             const pretBazaNoapte = parseInt(pachet.value) || 0;
             const costCazareTotal = nopti * pretBazaNoapte;
-
             let pretExtras = 0;
             extras.forEach(cb => { if(cb.checked) pretExtras += parseInt(cb.value); });
-
             const numePachet = pachet.options[pachet.selectedIndex].getAttribute('data-nume') || "-";
             const grandTotal = costCazareTotal + pretExtras;
 
-            // Actualizare interfață vizuală
             document.getElementById('res_pachet').innerText = numePachet;
             document.getElementById('res_nopti').innerText = nopti;
             document.getElementById('res_cost_cazare').innerText = costCazareTotal + " RON";
             document.getElementById('res_extras').innerText = pretExtras + " RON";
             document.getElementById('res_total').innerText = grandTotal + " RON";
-
-            // Actualizare câmpuri ascunse pentru formular (ce se trimite la Make)
             document.getElementById('total_valoare').value = grandTotal;
             document.getElementById('nume_pachet_ales').value = numePachet;
         }
