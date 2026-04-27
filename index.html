@@ -25,90 +25,56 @@
         html, body { overflow-x: hidden; width: 100%; background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
 
         /* HEADER & LOGO VIZIBIL */
-        .site-header { 
-            position: absolute; top: 0; width: 100%; z-index: 9999; 
-            padding: 30px 5%; display: flex; justify-content: space-between; align-items: center; 
-        }
-        .brand-logo { display: block; z-index: 10000; }
-        .brand-logo img { 
-            height: clamp(70px, 12vw, 100px); 
-            width: auto; 
-            filter: drop-shadow(0 0 15px rgba(0,0,0,0.8)); /* Umbră pentru vizibilitate maximă */
-            display: block;
-        }
+        .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 30px 5%; display: flex; justify-content: space-between; align-items: center; }
+        .brand-logo img { height: clamp(70px, 12vw, 100px); width: auto; filter: drop-shadow(0 0 15px rgba(0,0,0,0.8)); display: block; }
         
         .burger { cursor: pointer; z-index: 10001; background: rgba(0,0,0,0.6); padding: 12px; border-radius: 8px; border: 1px solid var(--auriu); }
         .burger div { width: 28px; height: 2px; background: var(--auriu); margin: 6px; }
 
+        /* MENIU BURGER CU BUTON REZERVARE */
         .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: var(--negru); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.6s; z-index: 10000; }
         .main-nav.active { right: 0; }
-        .main-nav a { font-size: 2rem; font-family: 'Cinzel'; margin: 15px 0; color: #fff !important; text-transform: uppercase; letter-spacing: 5px; }
+        .main-nav a { font-size: clamp(1.5rem, 5vw, 2rem); font-family: 'Cinzel'; margin: 15px 0; color: #fff !important; text-transform: uppercase; letter-spacing: 5px; }
+        .nav-res-btn { border: 2px solid var(--auriu); padding: 10px 30px; margin-top: 20px !important; color: var(--auriu) !important; font-weight: 900; }
 
         /* HERO - TEXT STÂNGA PENTRU PC */
-        .hero { 
-            height: 100vh; position: relative; display: flex; align-items: center; justify-content: flex-start; 
-            background: linear-gradient(to right, rgba(0,0,0,0.8) 20%, transparent 100%), url('images/rasarit.jpg') center/cover no-repeat;
-            padding: 0 10%;
-        }
-
-        .hero-content { 
-            max-width: 850px; text-align: left; position: relative; 
-            padding-top: 150px; /* Protecție Logo */
-        }
-
-        /* Linia Aurie Verticală Signature */
-        .hero-content::before {
-            content: ""; position: absolute; left: -40px; top: 160px;
-            width: 2.5px; height: 200px; background: var(--auriu);
-        }
-
+        .hero { height: 100vh; position: relative; display: flex; align-items: center; justify-content: flex-start; background: linear-gradient(to right, rgba(0,0,0,0.8) 20%, transparent 100%), url('images/rasarit.jpg') center/cover no-repeat; padding: 0 10%; }
+        .hero-content { max-width: 850px; text-align: left; position: relative; padding-top: 150px; }
+        .hero-content::before { content: ""; position: absolute; left: -40px; top: 160px; width: 2.5px; height: 200px; background: var(--auriu); }
         .hero-highlight { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 6px; font-weight: 900; font-size: 0.9rem; display: block; margin-bottom: 10px; }
-        .hero-content h1 { 
-            font-family: 'Playfair Display'; font-size: clamp(2.2rem, 6vw, 4.2rem); font-style: italic; 
-            color: var(--alb); line-height: 1.1; margin-bottom: 25px;
-        }
+        .hero-content h1 { font-family: 'Playfair Display'; font-size: clamp(2.2rem, 6vw, 4.2rem); font-style: italic; color: var(--alb); line-height: 1.1; margin-bottom: 25px; }
+        .btn-portal { display: inline-block; padding: 18px 45px; background: var(--portocaliu); color: #fff !important; font-family: 'Cinzel'; font-size: 0.8rem; letter-spacing: 2px; font-weight: 700; transition: 0.3s; }
 
-        .btn-portal {
-            display: inline-block; padding: 18px 45px; background: var(--portocaliu);
-            color: #fff !important; font-family: 'Cinzel'; font-size: 0.8rem; letter-spacing: 2px; font-weight: 700; transition: 0.3s;
-        }
+        /* HUB SECTION - CATERING & PLATOU */
+        .hub-advisory { background: #080808; border-top: 1px solid var(--auriu); padding: 80px 5%; text-align: center; }
+        .hub-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: center; }
+        .hub-text { text-align: left; }
+        .hub-text h3 { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 4px; margin-bottom: 20px; font-size: 1.8rem; }
+        .hub-text p { color: #888; line-height: 1.8; margin-bottom: 30px; }
+        .hub-img img { width: 100%; border: 1px solid var(--auriu); padding: 10px; background: #000; }
 
-        /* HUB CHECKPOINT TOTEȘTI */
-        .hub-advisory { background: #080808; border-top: 1px solid var(--auriu); padding: 60px 20px; text-align: center; }
-        .hub-inner { max-width: 1000px; margin: 0 auto; }
-        .hub-inner i { color: var(--auriu); font-size: 2.5rem; margin-bottom: 20px; display: block; }
-        .hub-inner h3 { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 4px; margin-bottom: 10px; }
-
-        /* GRID-UL TURISTIC (6 CARDURI) */
-        .container { max-width: 1400px; margin: 0 auto; padding: 80px 20px; }
-        .grid-hub { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
-            gap: 25px; 
-        }
-        
-        .card-item { height: 450px; position: relative; overflow: hidden; border: 1px solid #1a1a1a; display: block; }
+        /* GRID-UL TURISTIC */
+        .container { max-width: 1450px; margin: 0 auto; padding: 80px 20px; }
+        .grid-hub { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        .card-item { height: 480px; position: relative; overflow: hidden; border: 1px solid #1a1a1a; display: block; }
         .card-item img { width: 100%; height: 100%; object-fit: cover; opacity: 0.45; transition: 0.8s; }
         .card-item:hover img { transform: scale(1.05); opacity: 0.75; }
-        
         .card-info { position: absolute; bottom: 0; padding: 30px; width: 100%; background: linear-gradient(to top, #000 50%, transparent); }
-        .card-info h4 { font-family: 'Cinzel'; color: var(--auriu); font-size: 1rem; letter-spacing: 2px; margin-bottom: 8px; }
-        .card-info p { font-size: 0.85rem; color: #bbb; line-height: 1.4; font-weight: 200; }
+        .card-info h4 { font-family: 'Cinzel'; color: var(--auriu); font-size: 1.1rem; letter-spacing: 2px; margin-bottom: 10px; }
+        .card-info p { font-size: 0.85rem; color: #bbb; line-height: 1.5; font-weight: 200; }
 
-        /* FOOTER & ANPC */
+        /* FOOTER */
         footer { padding: 80px 20px; text-align: center; border-top: 1px solid #111; background: #000; }
         .footer-legal a { color: #444; margin: 0 10px; font-size: 0.75rem; text-transform: uppercase; font-family: 'Cinzel'; }
-        .legal-badges { margin-top: 40px; display: flex; justify-content: center; gap: 20px; opacity: 0.3; }
-        .legal-badges img { height: 35px; }
         .tribute { color: var(--auriu); font-weight: 900; margin-top: 40px; font-family: 'Cinzel'; font-size: 0.65rem; letter-spacing: 5px; opacity: 0.6; }
 
-        /* WIDGET WHATSAPP */
         .whatsapp-float { position: fixed; bottom: 30px; left: 30px; background: #25d366; border-radius: 50%; width: 65px; height: 65px; display: flex; align-items: center; justify-content: center; font-size: 35px; z-index: 9999; color: #fff; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
 
         @media (max-width: 768px) {
             .hero { justify-content: center; text-align: center; padding: 0 20px; }
             .hero-content { padding-top: 120px; }
             .hero-content::before { display: none; }
+            .hub-text { text-align: center; }
         }
     </style>
 </head>
@@ -128,6 +94,7 @@
             <a href="curs.html">Curs Management</a>
             <a href="metanoia.html">Metanoia</a>
             <a href="contact.html">Contact</a>
+            <a href="rezervari.html" class="nav-res-btn">REZERVARE</a>
         </nav>
     </header>
 
@@ -142,9 +109,15 @@
 
     <section class="hub-advisory" id="hub">
         <div class="hub-inner">
-            <i class="fas fa-microchip"></i>
-            <h3>CHECK-POINT TOTEȘTI — DN68</h3>
-            <p style="color:#777; max-width:750px; margin:0 auto;">Sediul nostru central și microferma proprie. Aici rânduim catering-ul pentru evenimente și pachetele de drum pentru exploratori.</p>
+            <div class="hub-text">
+                <span class="hero-highlight" style="font-size:0.7rem;">HUB TOTEȘTI — DN68</span>
+                <h3>Punctul tău de Aprovizionare.</h3>
+                <p>Înainte de a urca în tăcerea Pădurenilor, oprește-te la sediul nostru din Totești. Microferma proprie alimentează bucătăria noastră de catering unde rânduim pachete gourmet — ideale pentru expedițiile tale cu E-bike sau ATV.</p>
+                <a href="rezervari.html" class="btn-portal">COMANDĂ PACHET DRUM</a>
+            </div>
+            <div class="hub-img">
+                <img src="images/platou-traditional.jpg" alt="Platou Tradițional la Pachet">
+            </div>
         </div>
     </section>
 
@@ -152,11 +125,11 @@
         <div class="grid-hub">
             <a href="pensiune.html" class="card-item">
                 <img src="images/la-buliga-pensiune.jpg" alt="Domeniile La Buligă">
-                <div class="card-info"><h4>DOMENIILE LA BULIGĂ</h4><p>Cazare Premium la 1100m altitudine.</p></div>
+                <div class="card-info"><h4>DOMENIILE LA BULIGĂ</h4><p>Cazare Premium și tihnă la 1100m altitudine.</p></div>
             </a>
             <a href="metanoia.html" class="card-item">
                 <img src="images/feed-buliga.jpg" alt="Metanoia">
-                <div class="card-info"><h4>METANOIA</h4><p>Evenimente și resetare spirituală.</p></div>
+                <div class="card-info"><h4>METANOIA</h4><p>Evenimente corporative și regăsire spirituală.</p></div>
             </a>
             <a href="gastronomie.html" class="card-item">
                 <img src="images/gast-panou.png" alt="Catering Totesti">
@@ -165,14 +138,6 @@
             <a href="curs.html" class="card-item">
                 <img src="images/IMG_20260330_160353.webp" alt="Curs Management">
                 <div class="card-info"><h4>MANAGEMENT SISTEMIC</h4><p>Cursuri de rânduială și eficiență prin tihnă.</p></div>
-            </a>
-            <a href="explorare.html" class="card-item">
-                <img src="images/bike.webp" alt="Explorare Padureni">
-                <div class="card-info"><h4>EXPLORARE PĂDURENI</h4><p>E-Bike & ATV în Ținutul Pădurenilor.</p></div>
-            </a>
-            <a href="https://curcubeupestehateg.hategalternativ.ro" class="card-item">
-                <img src="images/narcise.jpg" alt="Asociatia">
-                <div class="card-info"><h4>ASOCIAȚIA</h4><p>Curcubeu peste Hațeg.</p></div>
             </a>
         </div>
 
@@ -189,10 +154,6 @@
             <a href="confidentialitate.html">GDPR</a> | 
             <a href="politica-cookies.html">COOKIES</a>
         </div>
-        <div class="legal-badges">
-            <img src="images/anpc-sal.png" alt="ANPC SAL">
-            <img src="images/anpc-sol.png" alt="ANPC SOL">
-        </div>
         <p class="tribute">TRIBUT PATRICIA</p>
     </footer>
 
@@ -208,6 +169,5 @@
     const nav = document.getElementById('nav-links');
     burger.onclick = () => nav.classList.toggle('active');
     </script>
-
 </body>
 </html>
