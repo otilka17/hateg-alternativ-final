@@ -15,6 +15,7 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@200;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <script src="https://static.elfsight.com/platform/platform.js" async></script>
 
     <style>
@@ -23,6 +24,7 @@
         a { text-decoration: none !important; color: inherit !important; outline: none; }
         body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
+        /* HEADER */
         .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 30px 5%; display: flex; justify-content: space-between; align-items: center; }
         .brand-logo img { height: clamp(70px, 12vw, 100px); width: auto; filter: drop-shadow(0 0 20px rgba(0,0,0,1)); }
         
@@ -33,6 +35,7 @@
         .main-nav.active { right: 0; }
         .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 12px 0; letter-spacing: 4px; text-transform: uppercase; }
 
+        /* HERO */
         .hero { 
             height: 100vh; position: relative; display: flex; align-items: center; justify-content: flex-start; 
             background: linear-gradient(to right, rgba(0,0,0,0.95) 20%, rgba(0,0,0,0.3) 100%), url('images/rasarit.jpg') center/cover no-repeat;
@@ -44,32 +47,37 @@
             text-shadow: 2px 2px 30px rgba(0,0,0,1);
         }
 
-        /* CARD CHECKPOINT TOTEȘTI - FIX MOBIL */
+        /* CARD CHECKPOINT TOTEȘTI - REGLAJ MOBIL POZĂ */
         .hub-advisory { 
             background: #0a0a0a; border: 1px solid #1a1a1a; margin: 40px 5%; padding: 0; 
             display: flex; flex-direction: column; overflow: hidden;
         }
         .hub-text { padding: 40px 30px; }
         .hub-text span { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 3px; font-size: 0.8rem; display: block; margin-bottom: 15px; }
-        .hub-text h3 { font-family: 'Playfair Display'; font-size: 2rem; margin-bottom: 20px; }
-        .hub-text p { color: #ccc; line-height: 1.6; margin-bottom: 30px; }
+        .hub-text h3 { font-family: 'Playfair Display'; font-size: 2.2rem; margin-bottom: 20px; color: #fff; }
+        .hub-text p { color: #ccc; line-height: 1.6; margin-bottom: 30px; font-size: 1rem; }
         .btn-hub { display: block; width: 100%; text-align: center; padding: 18px; background: var(--albastru); color: #fff !important; font-family: 'Cinzel'; font-weight: 700; letter-spacing: 2px; }
         
-        .hub-img img { width: 100%; aspect-ratio: 16 / 9; display: block; object-fit: cover; border-top: 1px solid #1a1a1a; }
+        .hub-img img { 
+            width: 100%; 
+            aspect-ratio: 16 / 9; /* Proporție cinematică fixă pe mobil */
+            display: block; 
+            object-fit: cover; 
+            border-top: 1px solid #1a1a1a; 
+        }
 
-        /* GRID HUB - FIX ÎNĂLȚIME MOBIL */
+        /* GRID HUB */
         .container { max-width: 1450px; margin: 60px auto; padding: 0 20px; }
         .grid-hub { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 25px; }
         .card-item { height: 450px; position: relative; overflow: hidden; border: 1px solid #1a1a1a; display: block; }
         .card-item img { width: 100%; height: 100%; object-fit: cover; opacity: 0.5; transition: 0.8s; }
         .card-item:hover img { opacity: 0.8; transform: scale(1.05); }
         .card-info { position: absolute; bottom: 0; padding: 30px; width: 100%; background: linear-gradient(to top, #000 60%, transparent); }
-        .card-info h4 { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 3px; margin-bottom: 10px; font-size: 1.2rem; }
+        .card-info h4 { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 3px; font-size: 1.2rem; }
 
         @media (max-width: 768px) {
             .hero { justify-content: center; text-align: center; padding: 0 20px; }
-            .card-item { height: 300px; } /* Inălțime redusă pe mobil pentru vizibilitate */
-            .card-info { padding: 20px; }
+            .card-item { height: 350px; } /* Inălțime optimizată pe mobil */
         }
 
         @media (min-width: 768px) {
@@ -80,6 +88,7 @@
             .btn-hub { width: auto; display: inline-block; padding: 15px 40px; }
         }
 
+        /* FOOTER */
         footer { padding: 80px 20px; text-align: center; border-top: 1px solid #111; background: #000; }
         .tribute { color: var(--auriu); font-weight: 900; margin-top: 40px; font-family: 'Cinzel'; font-size: 0.8rem; letter-spacing: 6px; }
         .whatsapp-float { position: fixed; bottom: 30px; left: 30px; background: #25d366; border-radius: 50%; width: 65px; height: 65px; display: flex; align-items: center; justify-content: center; font-size: 35px; z-index: 9999; color: #fff; }
@@ -113,7 +122,7 @@
         <div class="hub-text">
             <span>CHECK-POINT TOTEȘTI — DN68</span>
             <h3>Check-Point Totești</h3>
-            <p>Oprește-te pentru pachete gourmet rânduite la pachet înainte de a urca spre munte.</p>
+            <p>Oprește-te pentru pachete gourmet rânduite la pachet înainte de a urca spre tăcerea muntelui. Gustul autentic din microferma proprie.</p>
             <a href="https://wa.me/40749229686" class="btn-hub" target="_blank">COMANDĂ PE WHATSAPP</a>
         </div>
         <div class="hub-img">
@@ -123,12 +132,35 @@
 
     <main class="container">
         <div class="grid-hub">
-            <a href="pensiune.html" class="card-item"><img src="images/la-buliga-pensiune.jpg" alt="Pensiune"><div class="card-info"><h4>DOMENIILE LA BULIGĂ</h4><p>Cazare Premium la 1100m.</p></div></a>
-            <a href="metanoia.html" class="card-item"><img src="images/feed-buliga.jpg" alt="Metanoia"><div class="card-info"><h4>METANOIA</h4><p>Evenimente și resetare.</p></div></a>
-            <a href="gastronomie.html" class="card-item"><img src="images/gast-panou.png" alt="Gastro"><div class="card-info"><h4>GASTRONOMIE</h4><p>Produse bio din microfermă.</p></div></a>
-            <a href="curs.html" class="card-item"><img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=1000&auto=format&fit=crop" alt="Curs"><div class="card-info"><h4>MANAGEMENT SISTEMIC</h4><p>Eficiență prin tihnă.</p></div></a>
-            <a href="explorare-ebike.html" class="card-item"><img src="images/bike.webp" alt="Explorare"><div class="card-info"><h4>EXPLORARE PĂDURENI</h4><p>E-Bike & ATV.</p></div></a>
-            <a href="https://otilka.github.io/CurcubeupesteHateg/index.html" class="card-item"><img src="images/narcise.jpg" alt="Asociatia"><div class="card-info"><h4>ASOCIAȚIA</h4><p>Curcubeu peste Hațeg.</p></div></a>
+            <a href="pensiune.html" class="card-item">
+                <img src="images/la-buliga-pensiune.jpg" alt="Pensiune">
+                <div class="card-info"><h4>DOMENIILE LA BULIGĂ</h4><p>Cazare Premium și tihnă la 1100m.</p></div>
+            </a>
+            
+            <a href="metanoia.html" class="card-item">
+                <img src="images/feed-buliga.jpg" alt="Metanoia">
+                <div class="card-info"><h4>METANOIA</h4><p>Evenimente și resetare strategică.</p></div>
+            </a>
+            
+            <a href="gastronomie.html" class="card-item">
+                <img src="images/gast-panou.png" alt="Gastro">
+                <div class="card-info"><h4>GASTRONOMIE</h4><p>Produse bio din microfermă.</p></div>
+            </a>
+            
+            <a href="curs.html" class="card-item">
+                <img src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=1000&auto=format&fit=crop" alt="Curs">
+                <div class="card-info"><h4>MANAGEMENT SISTEMIC</h4><p>Eficiență prin rânduială.</p></div>
+            </a>
+
+            <a href="explorare-ebike.html" class="card-item">
+                <img src="images/bike.webp" alt="Explorare">
+                <div class="card-info"><h4>EXPLORARE PĂDURENI</h4><p>E-Bike & ATV în sălbăticie.</p></div>
+            </a>
+            
+            <a href="https://otilka.github.io/CurcubeupesteHateg/index.html" class="card-item">
+                <img src="images/narcise.jpg" alt="Asociatia">
+                <div class="card-info"><h4>ASOCIAȚIA</h4><p>Curcubeu peste Hațeg.</p></div>
+            </a>
         </div>
         
         <div style="margin-top:80px;">
@@ -139,7 +171,6 @@
     </main>
 
     <footer>
-        <img src="images/logo1.svg" alt="Logo" style="height:60px; margin-bottom:20px; opacity:0.8;">
         <div class="legal-badges">
             <a href="https://anpc.ro/ce-este-sal/" target="_blank"><img src="images/anpc-sal.png" alt="ANPC SAL" style="height:45px;"></a>
             <a href="https://ec.europa.eu/consumers/odr/" target="_blank"><img src="images/anpc-sol.png" alt="ANPC SOL" style="height:45px;"></a>
