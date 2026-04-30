@@ -3,180 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Explorare E-Bike | Metanoia Hațeg Alternativ</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <title>Explorare E-Bike | Ținutul Pădurenilor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Montserrat', sans-serif; background: #000; color: #fff; }
+        /* Culori: Bronz extras din logo1_4.svg */
+        :root { --bronz: #c5a059; --negru: #0a0a0a; --gri: #b0b0b0; }
 
-        /* HEADER: Spațiu dedicat pentru logo ca să nu mai suprapună titlul */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Montserrat', sans-serif; background: var(--negru); color: #fff; line-height: 1.6; }
+
+        /* Header dedicat pentru logo1_4.svg */
         .site-header {
             width: 100%;
-            padding: 20px;
+            padding: 30px 5%;
             display: flex;
-            justify-content: center; /* Centrat pentru mobil, cum e în screenshot */
-            background: #000;
-            position: relative;
+            justify-content: flex-start;
+            position: fixed;
+            top: 0;
             z-index: 100;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
         }
+        .main-logo { height: 70px; width: auto; }
 
-        .main-logo {
-            height: 80px; /* Dimensiune echilibrată */
-            width: auto;
-        }
-
-        /* HERO: Secțiunea cu slider și text */
+        /* Slider fundal pentru poze */
         .hero-section {
             position: relative;
-            min-height: calc(100vh - 120px);
+            min-height: 100vh;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            overflow: hidden;
+            padding: 120px 20px 60px;
         }
-
-        /* SLIDER: Imaginile care rulează în fundal */
-        .experience-slider {
+        .bg-slider {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             z-index: 1;
         }
-
         .slide {
             position: absolute;
-            width: 100%;
-            height: 100%;
+            width: 100%; height: 100%;
             background-size: cover;
             background-position: center;
             opacity: 0;
-            transition: opacity 1.5s ease-in-out;
+            transition: opacity 2s ease-in-out;
         }
-        .slide.active { opacity: 0.4; } /* Fundal întunecat pentru contrast */
+        .slide.active { opacity: 0.35; } /* Pozele se văd discret în fundal */
 
-        /* CONTENT: Titlul și datele tehnice */
-        .hero-content {
-            position: relative;
-            z-index: 10;
-            padding: 20px;
-            width: 100%;
-        }
+        /* Conținut principal */
+        .content { position: relative; z-index: 10; max-width: 800px; text-align: center; }
 
-        .expedition-title {
+        .title {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(1.8rem, 8vw, 3.5rem);
+            font-size: clamp(2rem, 6vw, 3.8rem);
             font-style: italic;
-            color: #d4a017;
-            margin-bottom: 40px;
-            line-height: 1.2;
+            color: var(--bronz);
+            margin-bottom: 25px;
+            line-height: 1.1;
         }
 
-        /* STATS: Aranjate frumos ca în screenshot-ul "aproape bine" */
-        .stats-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
+        /* TEXT DESCRIPTIV adăugat */
+        .description {
+            font-size: 1.1rem;
+            color: #ddd;
             margin-bottom: 40px;
+            font-weight: 300;
+            padding: 0 10%;
         }
 
-        .stat-item {
-            border-left: 2px solid #d4a017;
-            padding-left: 15px;
+        /* Detalii tehnice cu stilul "dungă bronz" */
+        .specs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 50px;
             text-align: left;
-            max-width: 250px;
-            margin: 0 auto;
         }
+        .spec-item { border-left: 2px solid var(--bronz); padding-left: 15px; }
+        .label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--gri); }
+        .value { font-size: 1.2rem; font-weight: 700; color: #fff; }
+        .bronz-val { color: var(--bronz); }
 
-        .stat-label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #888;
-        }
-
-        .stat-value {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #d4a017;
-            margin-top: 5px;
-        }
-
-        /* BUTON REZERVARE */
-        .btn-reserve {
+        /* Buton Rezervare */
+        .btn {
             display: inline-block;
-            width: 80%;
-            max-width: 300px;
-            padding: 18px;
-            background: #d4a017;
+            padding: 20px 50px;
+            background: var(--bronz);
             color: #000;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            border-radius: 4px;
-            margin-top: 20px;
+            transition: 0.4s;
         }
+        .btn:hover { background: #fff; transform: translateY(-5px); }
     </style>
 </head>
 <body>
 
     <header class="site-header">
-        <!-- Logo-ul tău fixat să nu mai "mănânce" din titlu -->
-        <img src="logo1_4.svg" alt="Metanoia Logo" class="main-logo">
+        <img src="logo1_4.svg" alt="Logo Metanoia" class="main-logo"> <!-- Referință logo verbatim -->
     </header>
 
     <section class="hero-section">
-        <!-- Slider fundal -->
-        <div class="experience-slider">
-            <div class="slide active" style="background-image: url('fundal1.jpg');"></div>
-            <div class="slide" style="background-image: url('fundal2.jpg');"></div>
+        <!-- Verifică dacă ai pozele în folder cu aceste nume -->
+        <div class="bg-slider">
+            <div class="slide active" style="background-image: url('foto1.jpg');"></div>
+            <div class="slide" style="background-image: url('foto2.jpg');"></div>
+            <div class="slide" style="background-image: url('foto3.jpg');"></div>
         </div>
 
-        <div class="hero-content">
-            <h1 class="expedition-title">
-                Vadu Dobrii spre Roșcani:<br>
-                Explorare în Ținutul Pădurenilor
-            </h1>
+        <div class="content">
+            <h1 class="title">Vadu Dobrii spre Roșcani:<br>Explorare în Ținutul Pădurenilor</h1> <!-- Titlu -->
 
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-label">Distanță</div>
-                    <div class="stat-value">45 KM</div>
+            <!-- Text descriptiv adăugat -->
+            <p class="description">
+                Descoperă arhaicul Ținut al Pădurenilor pe două roți. O incursiune prin sate uitate de timp, pe crestele Munților Poiana Ruscă, unde tradiția și adrenalina se întâlnesc în cea mai pură formă de explorare e-bike.
+            </p>
+
+            <div class="specs">
+                <div class="spec-item">
+                    <p class="label">Distanță</p>
+                    <p class="value">45 KM</p> <!-- -->
                 </div>
-                <div class="stat-item">
-                    <div class="stat-label">Dificultate</div>
-                    <div class="stat-value">MODERAT</div>
+                <div class="spec-item">
+                    <p class="label">Dificultate</p>
+                    <p class="value">MODERAT</p> <!-- -->
                 </div>
-                <div class="stat-item">
-                    <div class="stat-label">Altitudine</div>
-                    <div class="stat-value">POIANA RUSCĂ</div>
+                <div class="spec-item">
+                    <p class="label">Altitudine</p>
+                    <p class="value bronz-val">POIANA RUSCĂ</p> <!-- -->
                 </div>
-                <div class="stat-item">
-                    <div class="stat-label">Durată</div>
-                    <div class="stat-value">1 ZI (9-10 MAI)</div>
+                <div class="spec-item">
+                    <p class="label">Durată</p>
+                    <p class="value bronz-val">1 ZI (9-10 MAI)</p> <!-- -->
                 </div>
             </div>
 
-            <a href="https://corvinebike.ro/traseu/tinutul-padurenilor/" class="btn-reserve">
-                Rezervă Acum
-            </a>
+            <a href="https://corvinebike.ro/traseu/tinutul-padurenilor/" class="btn">Rezervă Acum</a> <!-- Buton -->
         </div>
     </section>
 
     <script>
         const slides = document.querySelectorAll('.slide');
-        let current = 0;
-
-        function nextSlide() {
-            slides[current].classList.remove('active');
-            current = (current + 1) % slides.length;
-            slides[current].classList.add('active');
+        let i = 0;
+        function showNext() {
+            slides[i].classList.remove('active');
+            i = (i + 1) % slides.length;
+            slides[i].classList.add('active');
         }
-        setInterval(nextSlide, 4000);
+        setInterval(showNext, 4500);
     </script>
 </body>
 </html>
