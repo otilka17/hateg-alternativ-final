@@ -6,43 +6,38 @@
     <title>Explorare E-Bike | Metanoia Hațeg Alternativ</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* Reset și baze stilistice */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Montserrat', sans-serif; background: #000; color: #fff; overflow-x: hidden; }
+        body { font-family: 'Montserrat', sans-serif; background: #000; color: #fff; }
 
-        /* Protecție Logo Metanoia - Rezolvă suprapunerea semnalată */
+        /* HEADER: Spațiu dedicat pentru logo ca să nu mai suprapună titlul */
         .site-header {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
-            padding: 25px 5%;
-            z-index: 100;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+            padding: 20px;
             display: flex;
-            align-items: center;
+            justify-content: center; /* Centrat pentru mobil, cum e în screenshot */
+            background: #000;
+            position: relative;
+            z-index: 100;
         }
-        
-        .main-logo {
-            height: 100px; /* Dimensiune optimă pentru noul logo circular */
-            width: auto;
-            filter: drop-shadow(0px 0px 8px rgba(212, 160, 23, 0.6));
-            transition: transform 0.3s ease;
-        }
-        
-        .main-logo:hover { transform: scale(1.05); }
 
-        /* Hero Section cu Slider pentru Experiențe */
+        .main-logo {
+            height: 80px; /* Dimensiune echilibrată */
+            width: auto;
+        }
+
+        /* HERO: Secțiunea cu slider și text */
         .hero-section {
             position: relative;
-            height: 100vh;
-            width: 100%;
+            min-height: calc(100vh - 120px);
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
+            overflow: hidden;
         }
 
+        /* SLIDER: Imaginile care rulează în fundal */
         .experience-slider {
             position: absolute;
             top: 0;
@@ -61,78 +56,84 @@
             opacity: 0;
             transition: opacity 1.5s ease-in-out;
         }
-        
-        /* Opacitate optimizată pentru contrastul textului */
-        .slide.active { opacity: 0.45; } 
+        .slide.active { opacity: 0.4; } /* Fundal întunecat pentru contrast */
 
-        /* Conținut (Titlu, Date, Buton Rezervare) */
+        /* CONTENT: Titlul și datele tehnice */
         .hero-content {
             position: relative;
             z-index: 10;
-            padding: 0 20px;
-            margin-top: 120px; /* Spațiu tampon vital pentru a evita logo-ul */
+            padding: 20px;
+            width: 100%;
         }
 
         .expedition-title {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(2rem, 5.5vw, 4.2rem);
+            font-size: clamp(1.8rem, 8vw, 3.5rem);
             font-style: italic;
-            color: #d4a017; /* Auriul specific logo-ului Metanoia */
-            margin-bottom: 35px;
-            line-height: 1.1;
-            text-shadow: 2px 2px 20px rgba(0,0,0,1);
+            color: #d4a017;
+            margin-bottom: 40px;
+            line-height: 1.2;
         }
 
-        /* Stats Row - Datele din screenshot-ul original */
-        .stats-row {
+        /* STATS: Aranjate frumos ca în screenshot-ul "aproape bine" */
+        .stats-grid {
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 40px;
-            margin-bottom: 45px;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
+            flex-direction: column;
+            gap: 25px;
+            margin-bottom: 40px;
         }
-        
-        .stat-box { border-left: 1px solid rgba(212, 160, 23, 0.4); padding-left: 15px; text-align: left; }
-        .stat-box span { display: block; color: #d4a017; font-weight: bold; font-size: 1.1rem; margin-top: 5px; }
 
-        /* Butonul de Conversie Digitală */
+        .stat-item {
+            border-left: 2px solid #d4a017;
+            padding-left: 15px;
+            text-align: left;
+            max-width: 250px;
+            margin: 0 auto;
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #888;
+        }
+
+        .stat-value {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #d4a017;
+            margin-top: 5px;
+        }
+
+        /* BUTON REZERVARE */
         .btn-reserve {
             display: inline-block;
-            padding: 20px 50px;
+            width: 80%;
+            max-width: 300px;
+            padding: 18px;
             background: #d4a017;
             color: #000;
             text-decoration: none;
-            font-weight: 700;
+            font-weight: bold;
             text-transform: uppercase;
             letter-spacing: 1px;
-            border-radius: 2px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-        }
-        
-        .btn-reserve:hover { 
-            background: #fff; 
-            transform: translateY(-5px); 
-            box-shadow: 0 15px 40px rgba(212, 160, 23, 0.4);
+            border-radius: 4px;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
 
     <header class="site-header">
-        <!-- Noul Logo Metanoia inserat corect -->
-        <img src="input_file_0.png" alt="Metanoia Logo" class="main-logo">
+        <!-- Logo-ul tău fixat să nu mai "mănânce" din titlu -->
+        <img src="logo1_4.svg" alt="Metanoia Logo" class="main-logo">
     </header>
 
     <section class="hero-section">
+        <!-- Slider fundal -->
         <div class="experience-slider">
-            <!-- Imaginile experiențelor care rulează automat -->
-            <div class="slide active" style="background-image: url('bike-vadu-dobrii.jpg');"></div>
-            <div class="slide" style="background-image: url('ebike-experience-2.jpg');"></div>
-            <div class="slide" style="background-image: url('punti-padureni.jpg');"></div>
+            <div class="slide active" style="background-image: url('fundal1.jpg');"></div>
+            <div class="slide" style="background-image: url('fundal2.jpg');"></div>
         </div>
 
         <div class="hero-content">
@@ -141,33 +142,40 @@
                 Explorare în Ținutul Pădurenilor
             </h1>
 
-            <!-- Date tehnice preluate din strategia de teren -->
-            <div class="stats-row">
-                <div class="stat-box">DISTANȚĂ <span>45 KM</span></div>
-                <div class="stat-box">DIFICULTATE <span>MODERAT</span></div>
-                <div class="stat-box">ALTITUDINE <span>POIANA RUSCĂ</span></div>
-                <div class="stat-box">DURATĂ <span>1 ZI (9-10 MAI)</span></div>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-label">Distanță</div>
+                    <div class="stat-value">45 KM</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Dificultate</div>
+                    <div class="stat-value">MODERAT</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Altitudine</div>
+                    <div class="stat-value">POIANA RUSCĂ</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Durată</div>
+                    <div class="stat-value">1 ZI (9-10 MAI)</div>
+                </div>
             </div>
-            
-            <!-- Link direct către rezervarea traseului -->
+
             <a href="https://corvinebike.ro/traseu/tinutul-padurenilor/" class="btn-reserve">
-                REZERVĂ ACUM
+                Rezervă Acum
             </a>
         </div>
     </section>
 
     <script>
-        // Script pentru managementul slider-ului de imagini
         const slides = document.querySelectorAll('.slide');
-        let currentSlide = 0;
+        let current = 0;
 
         function nextSlide() {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (currentSlide + 1) % slides.length;
-            slides[currentSlide].classList.add('active');
+            slides[current].classList.remove('active');
+            current = (current + 1) % slides.length;
+            slides[current].classList.add('active');
         }
-        
-        // Interval de rulare fluidă pentru experiențe (4 secunde)
         setInterval(nextSlide, 4000);
     </script>
 </body>
