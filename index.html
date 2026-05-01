@@ -56,7 +56,7 @@
 
         .events-strip { background: #0c0c0c; padding: 60px 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; border-bottom: 1px solid #1a1a1a; }
         .event-card { border: 1px solid var(--auriu); padding: 25px; background: #000; text-align: center; display: block; transition: 0.3s; }
-        .event-card:hover { border-color: var(--alb); }
+        .event-card:hover { border-color: var(--alb); background: #111; }
         .event-card h3 { font-family: 'Playfair Display'; font-style: italic; color: var(--auriu); margin-bottom: 10px; }
         .event-card p { color: #bbb; font-size: 0.85rem; line-height: 1.5; }
 
@@ -78,8 +78,8 @@
         @media (max-width: 768px) {
             .hero { justify-content: center; text-align: center; padding: 0 20px; }
             .hero-content { padding-top: 120px; }
-            .card-item { height: 380px; } /* Înălțime stabilă pe mobil */
-            .card-item:hover img { transform: none !important; } /* Oprim mărirea pe mobil */
+            .card-item { height: 380px; }
+            .card-item:hover img { transform: none !important; }
         }
     </style>
 </head>
@@ -123,15 +123,14 @@
     </section>
 
     <section class="events-strip">
-        <div class="event-card">
+        <!-- CARD NOU: Duce către explorare-ebike.html -->
+        <a href="explorare-ebike.html" class="event-card">
             <span style="font-family:'Cinzel'; color:var(--auriu); font-size:0.7rem; letter-spacing:2px;">9-11 MAI</span>
-          <a href="explorare-ebike.html" target="_blank" class="event-card"> 
             <h3>E-Bike la Narcise</h3>
-            <p>Explorare electrică în Poiana Narciselor. Trasee ghidate și tihnă în natură.</p>
-        </div>
-        <!-- Card GoNomad cu link actualizat -->
+            <p>Explorare electrică în Poiana Narciselor. Trasee ghidate și parfumul Retezatului.</p>
+        </a>
         <a href="https://gonomad.ro/tura/400-descopera-cetatile-dacice" target="_blank" class="event-card">
-            <span style="font-family:'Cinzel'; color:var(--auriu); font-size:0.7rem; letter-spacing:2px;">IULIE</span>
+            <span style="font-family:'Cinzel'; color:var(--auriu); font-size:0.7rem; letter-spacing:2px;">IUNIE</span>
             <h3>GoNomad Metanoia</h3>
             <p>Săptămâna regenerării pentru nomazi digitali. Descoperă cetățile dacice.</p>
         </a>
