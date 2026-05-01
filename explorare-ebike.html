@@ -1,208 +1,214 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18106516696"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-18106516696');
+    </script>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Explorare E-Bike | Metanoia</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>E-Bike la Narcise | Metanoia Hațeg Alternativ</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700;1,900&family=Cinzel:wght@400;700;900&family=Inter:wght@200;400;600;800&display=swap" rel="stylesheet">
+    
     <style>
-        /* 1. Stilul Original din Index (Minimalist & Dark) */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Montserrat', sans-serif; background: #000; color: #fff; line-height: 1.6; }
-
-        /* 2. Header cu Logo1.svg în STÂNGA SUS */
-        .site-header {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 25px 5%;
-            z-index: 100;
-            display: flex;
-            justify-content: flex-start;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+        :root { --auriu: #c5a059; --negru: #050505; --portocaliu: #e65100; --alb: #ffffff; }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        
+        body { 
+            background: var(--negru); 
+            color: var(--alb); 
+            font-family: 'Inter', sans-serif; 
+            overflow-x: hidden; 
         }
 
-        .main-logo {
-            height: 75px;
-            width: auto;
-            filter: drop-shadow(0px 0px 5px rgba(197, 160, 89, 0.5));
+        /* Stil Header preluat din Index */
+        .site-header { 
+            position: absolute; 
+            top: 0; 
+            width: 100%; 
+            z-index: 9999; 
+            padding: 30px 5%; 
+            display: flex; 
+            justify-content: flex-start; 
+        }
+        .brand-logo img { 
+            height: clamp(70px, 12vw, 100px); 
+            width: auto; 
+            filter: drop-shadow(0 0 20px rgba(0,0,0,1)); 
         }
 
-        /* 3. Hero Section cu „Header-ul cu Bike” (Slider Fundal) */
         .hero-ebike {
+            height: 100vh;
             position: relative;
-            min-height: 100vh;
-            width: 100%;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
+            padding: 0 10%;
             overflow: hidden;
+            background: #000;
         }
 
-        .bg-slider {
+        /* Fundal cu Narcise */
+        .bg-fixed {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             z-index: 1;
-        }
-
-        .slide {
-            position: absolute;
-            width: 100%;
-            height: 100%;
+            background-image: url('images/narcise.jpg');
             background-size: cover;
             background-position: center;
-            opacity: 0;
-            transition: opacity 1.5s ease-in-out;
+            opacity: 0.4;
         }
         
-        /* Opacitate reglată pentru contrast maxim */
-        .slide.active { opacity: 0.4; }
+        .hero-ebike::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.9) 100%);
+            z-index: 2;
+        }
 
-        /* 4. Conținut Text Eveniment */
         .content-box {
             position: relative;
             z-index: 10;
-            max-width: 850px;
-            padding: 0 20px;
-            margin-top: 80px; /* Evităm suprapunerea cu logo-ul */
+            max-width: 900px;
+        }
+
+        .category-label {
+            font-family: 'Cinzel';
+            color: var(--auriu);
+            letter-spacing: 6px;
+            margin-bottom: 15px;
+            font-weight: 900;
+            display: block;
         }
 
         .expedition-title {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2rem, 6vw, 3.8rem);
+            font-family: 'Playfair Display';
+            font-size: clamp(2.2rem, 6vw, 4.2rem);
             font-style: italic;
-            color: #c5a059; /* Bronzul din logo */
-            margin-bottom: 25px;
             line-height: 1.1;
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+            margin-bottom: 25px;
+            text-shadow: 2px 2px 30px rgba(0,0,0,1);
         }
 
         .description {
+            color: #ccc;
             font-size: 1.1rem;
-            font-weight: 300;
-            color: #ddd;
             margin-bottom: 40px;
-            padding: 0 10%;
-        }
-
-        /* 5. Date Tehnice (Stilul cu Dungi) */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-bottom: 50px;
-            text-align: left;
-            max-width: 600px;
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
+            line-height: 1.6;
+        }
+
+        /* Grid Tehnic - Stil Index */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 0 auto 50px;
+            max-width: 550px;
+            text-align: left;
         }
 
         .stat-item {
-            border-left: 2px solid #c5a059;
-            padding-left: 15px;
+            border-left: 2px solid var(--auriu);
+            padding: 10px 15px;
+            background: rgba(255,255,255,0.03);
         }
 
         .label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
+            font-family: 'Cinzel';
+            font-size: 0.65rem;
             letter-spacing: 2px;
-            color: #888;
+            color: var(--auriu);
+            margin-bottom: 5px;
         }
 
         .value {
-            font-size: 1.1rem;
-            font-weight: 700;
+            font-size: 1.2rem;
+            font-weight: 800;
             color: #fff;
         }
 
-        .bronze-text { color: #c5a059; }
-
-        /* 6. Buton Rezervare - Link către corvinebike.ro */
-        .btn-reserve {
-            display: inline-block;
-            padding: 18px 50px;
-            background: #c5a059;
-            color: #000;
+        /* Buton Portocaliu de Conversie */
+        .btn-portal { 
+            display: inline-block; 
+            padding: 20px 55px; 
+            background: var(--portocaliu); 
+            color: #fff !important; 
+            font-family: 'Cinzel'; 
+            font-weight: 700; 
+            letter-spacing: 2px; 
             text-decoration: none;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            border-radius: 2px;
-            transition: all 0.3s ease;
+            transition: 0.3s;
+        }
+        
+        .btn-portal:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(230, 81, 0, 0.4);
         }
 
-        .btn-reserve:hover {
-            background: #fff;
-            transform: translateY(-5px);
+        @media (max-width: 768px) {
+            .stats-grid { grid-template-columns: 1fr; }
+            .hero-ebike { padding: 0 20px; }
         }
     </style>
 </head>
 <body>
 
     <header class="site-header">
-        <!-- Logo1.svg în stânga sus -->
-        <img src="logo1.svg" alt="Metanoia Logo" class="main-logo">
+        <a href="index.html" class="brand-logo">
+            <img src="images/logo1.svg" alt="Metanoia Logo">
+        </a>
     </header>
 
     <main class="hero-ebike">
-        <!-- Slider fundal cu pozele de e-bike -->
-        <div class="bg-slider">
-            <div class="slide active" style="background-image: url('bike_action_1.jpg');"></div>
-            <div class="slide" style="background-image: url('ebike_view_2.jpg');"></div>
-            <div class="slide" style="background-image: url('padureni_3.jpg');"></div>
-        </div>
+        <div class="bg-fixed"></div>
 
         <div class="content-box">
+            <span class="category-label">EVENIMENT SPECIAL</span>
+            
             <h1 class="expedition-title">
-                Vadu Dobrii spre Roșcani:<br>
-                Explorare în Ținutul Pădurenilor
+                E-Bike la Narcise:<br>
+                Parfumul Retezatului
             </h1>
 
             <p class="description">
-                Descoperă arhaicul Ținut al Pădurenilor pe două roți. O incursiune prin sate uitate de timp, pe crestele Munților Poiana Ruscă, unde tradiția se întâlnește cu explorarea modernă e-bike.
+                Traversează covoarele albe de la poalele munților. O incursiune electrică în Poiana Narciselor de la Nucșoara, unde rânduiala naturii dă tonul explorării.
             </p>
 
             <div class="stats-grid">
                 <div class="stat-item">
-                    <p class="label">Distanță</p>
-                    <p class="value">45 KM</p>
+                    <p class="label">LOCAȚIE</p>
+                    <p class="value">NUCȘOARA / SĂLAȘU</p>
                 </div>
                 <div class="stat-item">
-                    <p class="label">Dificultate</p>
-                    <p class="value">MODERAT</p>
+                    <p class="label">PERIOADA</p>
+                    <p class="value">9-11 MAI</p>
                 </div>
                 <div class="stat-item">
-                    <p class="label">Altitudine</p>
-                    <p class="value bronze-text">POIANA RUSCĂ</p>
+                    <p class="label">DESTINAȚIE</p>
+                    <p class="value">POIANA NARCISELOR</p>
                 </div>
                 <div class="stat-item">
-                    <p class="label">Durată</p>
-                    <p class="value bronze-text">1 ZI (9-10 MAI)</p>
+                    <p class="label">EXPERIENȚĂ</p>
+                    <p class="value">GHIDATĂ</p>
                 </div>
             </div>
 
-            <!-- Link rezervare directă -->
-            <a href="https://corvinebike.ro/traseu/tinutul-padurenilor/" class="btn-reserve">
-                Rezervă Acum
+            <!-- Buton Conversie Portocaliu[cite: 1] -->
+            <a href="https://corvinebike.ro/" target="_blank" class="btn-portal">
+                REZERVĂ LOCUL
             </a>
         </div>
     </main>
 
-    <script>
-        /* Script automat pentru slider-ul de fundal */
-        const slides = document.querySelectorAll('.slide');
-        let current = 0;
-        function nextSlide() {
-            slides[current].classList.remove('active');
-            current = (current + 1) % slides.length;
-            slides[current].classList.add('active');
-        }
-        setInterval(nextSlide, 4500);
-    </script>
 </body>
 </html>
