@@ -49,21 +49,20 @@
         .hero-description { color: #ccc; font-size: 1.1rem; margin-bottom: 30px; max-width: 600px; line-height: 1.5; }
         .btn-portal { display: inline-block; padding: 18px 45px; background: var(--portocaliu); color: #fff !important; font-family: 'Cinzel'; font-weight: 700; letter-spacing: 2px; }
 
-        /* TAKE AWAY - SUS */
         .hub-advisory { background: #080808; border-top: 1px solid var(--auriu); padding: 80px 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: center; }
         .hub-text h3 { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 3px; margin-bottom: 20px; font-size: 1.8rem; }
         .hub-text p { color: #aaa; line-height: 1.8; margin-bottom: 30px; }
         .hub-img img { width: 100%; max-height: 450px; object-fit: cover; border: 1px solid var(--auriu); padding: 8px; background: #000; }
 
-        /* EVENIMENTE ACTUALIZATE */
         .events-strip { background: #0c0c0c; padding: 60px 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; border-bottom: 1px solid #1a1a1a; }
-        .event-card { border: 1px solid var(--auriu); padding: 25px; background: #000; text-align: center; }
+        .event-card { border: 1px solid var(--auriu); padding: 25px; background: #000; text-align: center; display: block; transition: 0.3s; }
+        .event-card:hover { border-color: var(--alb); }
         .event-card h3 { font-family: 'Playfair Display'; font-style: italic; color: var(--auriu); margin-bottom: 10px; }
         .event-card p { color: #bbb; font-size: 0.85rem; line-height: 1.5; }
 
         .container { max-width: 1450px; margin: 80px auto; padding: 0 20px; }
         .grid-hub { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 25px; }
-        .card-item { height: 450px; position: relative; overflow: hidden; border: 1px solid #1a1a1a; display: block; }
+        .card-item { height: 450px; position: relative; overflow: hidden; border: 1px solid #1a1a1a; display: block; background: #000; }
         .card-item img { width: 100%; height: 100%; object-fit: cover; opacity: 0.5; transition: 0.8s; }
         .card-item:hover img { opacity: 0.8; transform: scale(1.05); }
         .card-info { position: absolute; bottom: 0; padding: 30px; width: 100%; background: linear-gradient(to top, #000 60%, transparent); }
@@ -79,6 +78,8 @@
         @media (max-width: 768px) {
             .hero { justify-content: center; text-align: center; padding: 0 20px; }
             .hero-content { padding-top: 120px; }
+            .card-item { height: 380px; } /* Înălțime stabilă pe mobil */
+            .card-item:hover img { transform: none !important; } /* Oprim mărirea pe mobil */
         }
     </style>
 </head>
@@ -87,7 +88,7 @@
     <a href="https://wa.me/40749229686" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
     <header class="site-header">
-        <a href="index.html" class="brand-logo"><img src="images/logo1.svg" alt="Metanoia Logo"></a> <!-- -->
+        <a href="index.html" class="brand-logo"><img src="images/logo1.svg" alt="Metanoia Logo"></a>
         <div class="burger" id="burger"><div></div><div></div><div></div></div>
         <nav class="main-nav" id="nav-links">
             <a href="index.html">Acasă</a>
@@ -103,64 +104,62 @@
     <section class="hero">
         <div class="hero-content">
             <p style="font-family:'Cinzel'; color:var(--auriu); letter-spacing:6px; margin-bottom:15px; font-weight:900;">HUB TURISTIC — HAȚEG ALTERNATIV</p>
-            <h1>Metanoia. <br>Simte și trăiește tăcerea</h1> <!-- -->
+            <h1>Metanoia. <br>Simte și trăiește tăcerea</h1>
             <p class="hero-description">Descoperă rânduiala veche și regenerarea strategică în inima Țării Hațegului. Un refugiu unde liniștea devine experiență.</p>
             <a href="#hub" class="btn-portal">DESCOPERĂ HUB-UL</a>
         </div>
     </section>
 
-    <!-- TAKE AWAY FOOD REINTEGRAT SUS[cite: 1] -->
     <section class="hub-advisory" id="hub">
         <div class="hub-text">
             <span style="font-family:'Cinzel'; color:var(--auriu); letter-spacing:4px; font-size:0.75rem;">CHECK-POINT TOTEȘTI</span>
-            <h3>Punctul tău de Aprovizionare.</h3> <!--[cite: 1] -->
-            <p>Microferma proprie alimentează bucătăria unde rânduim pachete gourmet de luat cu voi in aventură — ideale pentru călătorii sau expediții în natură.</p>
+            <h3>Punctul tău de Aprovizionare.</h3>
+            <p>Microferma proprie alimentează bucătăria unde rânduim pachete gourmet de luat la pachet — ideale pentru drum sau expediții.</p>
             <a href="https://wa.me/40749229686" class="btn-portal">COMANDĂ PE WHATSAPP</a>
         </div>
         <div class="hub-img">
-            <img src="images/gast-masa-traditionala.jpg" alt="Masa Traditionala"> <!--[cite: 1] -->
+            <img src="images/gast-masa-traditionala.jpg" alt="Masa Traditionala">
         </div>
     </section>
 
-    <!-- EVENIMENTE ACTUALIZATE: NARCISE ȘI GONOMAD[cite: 1] -->
     <section class="events-strip">
         <div class="event-card">
             <span style="font-family:'Cinzel'; color:var(--auriu); font-size:0.7rem; letter-spacing:2px;">9-11 MAI</span>
             <h3>E-Bike la Narcise</h3>
             <p>Explorare electrică în Poiana Narciselor. Trasee ghidate și tihnă în natură.</p>
         </div>
-        <div class="event-card">
-            <span style="font-family:'Cinzel'; color:var(--auriu); font-size:0.7rem; letter-spacing:2px;">IUNIE</span>
+        <!-- Card GoNomad cu link actualizat -->
+        <a href="https://gonomad.ro/tura/400-descopera-cetatile-dacice" target="_blank" class="event-card">
+            <span style="font-family:'Cinzel'; color:var(--auriu); font-size:0.7rem; letter-spacing:2px;">IULIE</span>
             <h3>GoNomad Metanoia</h3>
-            <p>Săptămâna regenerării pentru nomazi digitali. Work-ation cu rânduială.</p>
-        </div>
+            <p>Săptămâna regenerării pentru nomazi digitali. Descoperă cetățile dacice.</p>
+        </a>
     </section>
 
     <main class="container">
         <div class="grid-hub">
             <a href="pensiune.html" class="card-item">
-                <img src="images/la-buliga-pensiune.jpg" alt="Domeniile La Buligă"> <!--[cite: 1] -->
+                <img src="images/la-buliga-pensiune.jpg" alt="Domeniile La Buligă">
                 <div class="card-info"><h4>DOMENIILE LA BULIGĂ</h4><p>Cazare Premium și tihnă la 1100m altitudine.</p></div>
             </a>
             <a href="metanoia.html" class="card-item">
-                <img src="images/feed-buliga.jpg" alt="Metanoia"> <!--[cite: 1] -->
+                <img src="images/feed-buliga.jpg" alt="Metanoia">
                 <div class="card-info"><h4>METANOIA</h4><p>Evenimente corporative și resetare spirituală.</p></div>
             </a>
             <a href="gastronomie.html" class="card-item">
-                <img src="images/gast-panou.png" alt="Catering"> <!--[cite: 1] -->
+                <img src="images/gast-panou.png" alt="Catering">
                 <div class="card-info"><h4>GASTRONOMIE & CATERING</h4><p>Produse bio din microfermă și rânduială la ceaun.</p></div>
             </a>
             <a href="curs.html" class="card-item">
-                <img src="images/IMG_20260330_160353.webp" alt="Curs Management"> <!--[cite: 1] -->
+                <img src="images/IMG_20260330_160353.webp" alt="Curs Management">
                 <div class="card-info"><h4>MANAGEMENT SISTEMIC</h4><p>Cursuri de rânduială și eficiență prin tihnă.</p></div>
             </a>
-            <!-- LINK PADURENI INTEGRAT[cite: 1] -->
             <a href="https://corvinebike.ro/traseu/tinutul-padurenilor/" target="_blank" class="card-item">
-                <img src="images/bike.webp" alt="Explorare"> <!--[cite: 1] -->
+                <img src="images/bike.webp" alt="Explorare">
                 <div class="card-info"><h4>EXPLORARE PĂDURENI</h4><p>Parteneriate E-Bike & Jeep în sălbăticie.</p></div>
             </a>
             <a href="https://curcubeupestehateg.hategalternativ.ro" class="card-item">
-                <img src="images/narcise.jpg" alt="Asociatia"> <!--[cite: 1] -->
+                <img src="images/narcise.jpg" alt="Asociatia">
                 <div class="card-info"><h4>ASOCIAȚIA</h4><p>Curcubeu peste Hațeg — Proiecte de suflet.</p></div>
             </a>
         </div>
@@ -173,11 +172,11 @@
     </main>
 
     <footer>
-        <p style="font-size:0.8rem; color:#444; letter-spacing:2px; margin-bottom:20px;">DAKAMIGOS MARKT SRL | CUI: RO40767794</p> <!--[cite: 1] -->
+        <p style="font-size:0.8rem; color:#444; letter-spacing:2px; margin-bottom:20px;">DAKAMIGOS MARKT SRL | CUI: RO40767794</p>
         <div class="footer-legal">
             <a href="confidentialitate.html">GDPR</a> | <a href="politica-cookies.html">COOKIES</a>
         </div>
-        <div class="tribute">TRIBUT PATRICIA</div> <!--[cite: 1] -->
+        <div class="tribute">TRIBUT PATRICIA</div>
     </footer>
 
     <script type="text/javascript">
