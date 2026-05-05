@@ -54,12 +54,6 @@
         .hub-text p { color: #aaa; line-height: 1.8; margin-bottom: 30px; }
         .hub-img img { width: 100%; max-height: 450px; object-fit: cover; border: 1px solid var(--auriu); padding: 8px; background: #000; }
 
-        .events-strip { background: #0c0c0c; padding: 60px 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; border-bottom: 1px solid #1a1a1a; }
-        .event-card { border: 1px solid var(--auriu); padding: 25px; background: #000; text-align: center; display: block; transition: 0.3s; }
-        .event-card:hover { border-color: var(--alb); background: #111; }
-        .event-card h3 { font-family: 'Playfair Display'; font-style: italic; color: var(--auriu); margin-bottom: 10px; }
-        .event-card p { color: #bbb; font-size: 0.85rem; line-height: 1.5; }
-
         .container { max-width: 1450px; margin: 80px auto; padding: 0 20px; }
         .grid-hub { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 25px; }
         .card-item { height: 450px; position: relative; overflow: hidden; border: 1px solid #1a1a1a; display: block; background: #000; }
@@ -94,8 +88,8 @@
             <a href="index.html">Acasă</a>
             <a href="pensiune.html">Pensiunea</a>
             <a href="gastronomie.html">Gastronomie</a>
-            <!-- ACTUALIZAT: Secțiunea de Încasare Sistemică -->
-            <a href="#produse" style="color: var(--auriu) !important; font-weight: 800;">PRODUSE PREMIUM</a>
+            <!-- ACTUALIZAT: Cale injectată către pagina de produse premium -->
+            <a href="produse.html" style="color: var(--auriu) !important; font-weight: 800;">PRODUSE PREMIUM</a>
             <a href="curs.html">Curs Management</a>
             <a href="metanoia.html">Metanoia</a>
             <a href="contact.html">Contact</a>
@@ -124,37 +118,17 @@
         </div>
     </section>
 
-    <section class="events-strip">
-        <a href="explorare-ebike.html" class="event-card">
-            <span style="font-family:'Cinzel'; color:var(--auriu); font-size:0.7rem; letter-spacing:2px;">9-11 MAI</span>
-            <h3>E-Bike la Narcise</h3>
-            <p>Explorare electrică în Poiana Narciselor. Trasee ghidate și parfumul Retezatului.</p>
-        </a>
-        <a href="https://gonomad.ro/tura/400-descopera-cetatile-dacice" target="_blank" class="event-card">
-            <span style="font-family:'Cinzel'; color:var(--auriu); font-size:0.7rem; letter-spacing:2px;">IUNIE</span>
-            <h3>GoNomad Metanoia</h3>
-            <p>Săptămâna regenerării pentru nomazi digitali. Descoperă cetățile dacice.</p>
-        </a>
-    </section>
-
     <main class="container">
         <div class="grid-hub">
-            <!-- NOU: Cardul de Încasare PayPal integrat în sistem -->
-            <div id="produse" class="card-item" style="border: 2px solid var(--auriu);">
+            <!-- ACTUALIZAT: Card principal care duce spre produse.html -->
+            <a href="produse.html" class="card-item" style="border: 2px solid var(--auriu);">
                 <img src="images/gast-panou.png" alt="Produse Premium">
                 <div class="card-info">
-                    <span style="font-family:'Cinzel'; color:var(--auriu); font-size:0.7rem; letter-spacing:2px; display:block; margin-bottom:10px;">PROTECȚIA CALITĂȚII - HIGH TICKET</span>
-                    <h4>GASTRONOMIE SISTEMICĂ</h4>
-                    <p>Abonamente premium bazate pe rânduială și ingrediente de elită. Transformă nutriția în eficiență sistemică.</p>
-                    <div style="margin-top:20px;">
-                        <a href="https://www.paypal.com/ncp/payment/MH54VF92TC364" 
-                           target="_blank" 
-                           style="background:var(--auriu); color:var(--negru) !important; padding:12px 25px; font-family:'Cinzel'; font-weight:900; font-size:0.8rem; display:inline-block;">
-                           ACTIVEAZĂ SISTEMUL
-                        </a>
-                    </div>
+                    <span style="font-family:'Cinzel'; color:var(--auriu); font-size:0.7rem; letter-spacing:2px; display:block; margin-bottom:10px;">RÂNDUIALĂ ÎN CĂMARĂ</span>
+                    <h4>PRODUSE PREMIUM</h4>
+                    <p>Zacuscă, dulcețuri și rânduială artizanală. Unități de eficiență gastronomică pentru viața ta premium.</p>
                 </div>
-            </div>
+            </a>
 
             <a href="pensiune.html" class="card-item">
                 <img src="images/la-buliga-pensiune.jpg" alt="Domeniile La Buligă">
@@ -163,10 +137,6 @@
             <a href="metanoia.html" class="card-item">
                 <img src="images/feed-buliga.jpg" alt="Metanoia">
                 <div class="card-info"><h4>METANOIA</h4><p>Evenimente corporative și resetare spirituală.</p></div>
-            </a>
-            <a href="gastronomie.html" class="card-item">
-                <img src="images/gast-panou.png" alt="Catering">
-                <div class="card-info"><h4>GASTRONOMIE & CATERING</h4><p>Produse bio din microfermă și rânduială la ceaun.</p></div>
             </a>
             <a href="curs.html" class="card-item">
                 <img src="images/IMG_20260330_160353.webp" alt="Curs Management">
@@ -180,12 +150,6 @@
                 <img src="images/narcise.jpg" alt="Asociatia">
                 <div class="card-info"><h4>ASOCIAȚIA</h4><p>Curcubeu peste Hațeg — Proiecte de suflet.</p></div>
             </a>
-        </div>
-
-        <div style="margin-top:100px;">
-            <div class="elfsight-app-4342bef8-07d4-4bfe-9114-34160d0e96f1" data-elfsight-app-lazy></div>
-            <div class="elfsight-app-9e87d320-859d-4ef5-9a42-3eaeeaadb2d7" data-elfsight-app-lazy></div>
-            <div class="elfsight-app-8217fa9c-47ca-4b54-bb21-6a682ba7a413" data-elfsight-app-lazy></div>
         </div>
     </main>
 
