@@ -2,38 +2,51 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <title>Sisteme de Performanță - Otilia Sălășan</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produse Premium | Hațeg Alternativ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;600&display=swap" rel="stylesheet">
     <style>
-        body { font-family: sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: auto; padding: 20px; }
-        .card { border: 1px solid #ddd; padding: 20px; border-radius: 8px; margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        .premium-btn { background-color: #0070ba; color: white; padding: 12px 24px; text-decoration: none; border-radius: 5px; display: inline-block; font-weight: bold; }
-        h1 { color: #2c3e50; }
-        .tag { color: #27ae60; font-weight: bold; text-transform: uppercase; font-size: 0.8em; }
+        :root { --auriu: #c5a059; --negru: #050505; --alb: #ffffff; }
+        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; padding: 40px 5%; }
+        h1 { font-family: 'Cinzel'; color: var(--auriu); text-align: center; letter-spacing: 5px; margin-bottom: 50px; }
+        .grid-produse { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .produs-card { border: 1px solid #1a1a1a; padding: 20px; background: #000; transition: 0.3s; text-align: center; }
+        .produs-card:hover { border-color: var(--auriu); }
+        .produs-card h3 { font-family: 'Cinzel'; color: var(--auriu); margin-bottom: 15px; }
+        .produs-card p { color: #bbb; font-size: 0.9rem; margin-bottom: 20px; line-height: 1.6; }
+        .btn-buy { display: inline-block; padding: 12px 30px; background: var(--auriu); color: var(--negru) !important; font-weight: 900; font-family: 'Cinzel'; text-transform: uppercase; cursor: pointer; }
+        .back-link { display: block; text-align: center; margin-top: 50px; color: var(--auriu); font-family: 'Cinzel'; text-decoration: none; }
     </style>
 </head>
 <body>
 
-    <h1>Sisteme de Eficiență Sistemică</h1>
-    <p>Trecerea de la statutul de operator la cel de arhitect de sistem.</p>
+    <h1>Rânduială în Cămară</h1>
 
-    <!-- Secțiunea Gastronomie Premium -->
-    <div class="card">
-        <span class="tag">Performanță Nutrițională</span>
-        <h2>Abonament Gastronomie Sistemică</h2>
-        <p>Sistem de nutriție bazat pe ingrediente premium și proceduri standardizate (SOP) care garantează calitatea absolută. Creat pentru manageri care caută rezultate predictibile.</p>
-        <p><strong>Investiție: 1.500 LEI / lună</strong></p>
-        <!-- Aici pui link-ul tău de PayPal -->
-        <a href="https://www.paypal.com/ncp/payment/MH54VF92TC364" class="premium-btn">Activează Sistemul</a>
+    <div class="grid-produse">
+        <!-- PRODUS 1: ZACUSCĂ -->
+        <div class="produs-card">
+            <h3>Zacuscă de Gorgan</h3>
+            <p>Eficiență gastronomică din legume coapte pe jar. Fără conservanți, doar rânduială pură.</p>
+            <!-- Aici vei pune link-ul PayPal pentru acest produs specific -->
+            <a href="LINK_PAYPAL_ZACUSCA" class="btn-buy">Adaugă în Sistem</a>
+        </div>
+
+        <!-- PRODUS 2: DULCEAȚĂ -->
+        <div class="produs-card">
+            <h3>Dulceață de Nuci Verzi</h3>
+            <p>O delicatesă premium pentru momentele de tihnă strategică. Recoltată manual din Țara Hațegului.</p>
+            <a href="LINK_PAYPAL_DULCEATA" class="btn-buy">Adaugă în Sistem</a>
+        </div>
+
+        <!-- PRODUS 3: KETCHUP -->
+        <div class="produs-card">
+            <h3>Ketchup Artizanal</h3>
+            <p>Sursă de licopen pur. Gust autentic care elimină haosul industrial din dieta ta.</p>
+            <a href="LINK_PAYPAL_KETCHUP" class="btn-buy">Adaugă în Sistem</a>
+        </div>
     </div>
 
-    <!-- Secțiunea Consultanță Management (Dacă decizi să îl vinzi) -->
-    <div class="card">
-        <span class="tag">Scalare Operațională</span>
-        <h2>Masterplan High-Ticket V2</h2>
-        <p>Arhitectura completă de comunicare pentru atragerea partenerilor premium și eliminarea haosului din afacere[cite: 2, 4].</p>
-        <p><strong>Investiție: 1.000 LEI</strong></p>
-        <a href="#" class="premium-btn">Rezervă Audit Strategic</a>
-    </div>
+    <a href="index.html" class="back-link">← Înapoi la Portal</a>
 
 </body>
 </html>
