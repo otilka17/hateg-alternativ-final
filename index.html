@@ -14,7 +14,7 @@
         body { background-color: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; }
         a { text-decoration: none; outline: none; }
 
-        /* HEADER / LOGO */
+        /* HEADER / LOGO - Păstrat exact 75px conform codului tău */
         .main-header {
             position: absolute; 
             top: 0; left: 0; right: 0;
@@ -40,10 +40,11 @@
         }
         .menu-line { width: 24px; height: 2px; background-color: var(--auriu); }
 
-        /* HERO SECTION (ERMES ITALIA) */
+        /* HERO SECTION - Adăugat imaginea de munte la apus */
         .hero-section {
             position: relative; height: 100vh; min-height: 700px; display: flex; align-items: center; justify-content: flex-start;
-            padding: 0 10%; background-image: url('images/hero-bg.jpg'), url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&q=80&w=2000');
+            padding: 0 10%; 
+            background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=2000'); /* Munții tăi */
             background-size: cover; background-position: center; background-attachment: fixed; overflow: hidden;
         }
         .hero-overlay {
@@ -60,14 +61,20 @@
         .hero-btn { display: inline-block; background: transparent; color: var(--alb); border: 1px solid var(--auriu); padding: 18px 45px; font-family: 'Cinzel', serif; font-size: 0.85rem; font-weight: bold; letter-spacing: 3px; text-transform: uppercase; transition: all 0.4s ease; }
         .hero-btn:hover { background: var(--auriu); color: var(--negru); }
 
-        /* PORTILE HUB-ULUI (Sectiunile de jos restabilite) */
-        .hub-section { padding: 100px 5%; background: var(--negru); border-top: 1px solid #111; }
+        /* HUB SECTION - Adăugat textura de sol (ground/earth) */
+        .hub-section { 
+            padding: 100px 5%; 
+            background-color: var(--negru); 
+            background-image: linear-gradient(rgba(7,7,7,0.92), rgba(7,7,7,0.92)), url('https://images.unsplash.com/photo-1515514754162-811c79e64e52?auto=format&fit=crop&q=80&w=2000'); /* Textura de sol */
+            background-size: cover;
+            border-top: 1px solid #111; 
+        }
         .section-header { text-align: center; margin-bottom: 60px; }
         .section-header h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--alb); font-style: italic; margin-bottom: 15px; }
         .section-header p { font-family: 'Cinzel', serif; color: var(--auriu); font-size: 0.85rem; letter-spacing: 3px; text-transform: uppercase; }
 
         .hub-grid { display: grid; grid-template-columns: 1fr; gap: 30px; max-width: 1000px; margin: 0 auto; }
-        .hub-card { border: 1px solid #222; padding: 50px 30px; background: #0a0a0a; text-align: center; transition: 0.4s; display: flex; flex-direction: column; justify-content: space-between; min-height: 380px;}
+        .hub-card { border: 1px solid #222; padding: 50px 30px; background: rgba(10, 10, 10, 0.95); text-align: center; transition: 0.4s; display: flex; flex-direction: column; justify-content: space-between; min-height: 380px;}
         .hub-card:hover { border-color: var(--auriu); transform: translateY(-5px); }
         .hub-card i { font-size: 2.5rem; color: var(--auriu); margin-bottom: 25px; }
         .hub-card h3 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--alb); margin-bottom: 15px; }
@@ -118,7 +125,7 @@
         </div>
     </section>
 
-    <!-- SECȚIUNILE DE ACCES (REPUSE LA LOC) -->
+    <!-- SECȚIUNILE DE ACCES -->
     <section id="portile-hubului" class="hub-section">
         <div class="section-header">
             <p>Conectare Operațională</p>
@@ -126,7 +133,6 @@
         </div>
 
         <div class="hub-grid">
-            <!-- Poarta 1: Gastronomie -->
             <div class="hub-card">
                 <i class="fas fa-seedling"></i>
                 <h3>Cămara & Gospodăria</h3>
@@ -134,7 +140,6 @@
                 <a href="produse.html" class="card-btn">Intră în Cămară</a>
             </div>
 
-            <!-- Poarta 2: Masterplan -->
             <div class="hub-card">
                 <i class="fas fa-chess-knight"></i>
                 <h3>Arhitectura Trezviei</h3>
