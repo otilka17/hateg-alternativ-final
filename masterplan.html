@@ -2,11 +2,10 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <title>The Masterplan - Jocul Premium</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;600;700&family=Cinzel:wght@600&display=swap" rel="stylesheet">
+    <title>Masterplan V3 - Arhitectura Trezviei Sistemice</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;600;700&family=Cinzel:wght@400;600;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Setări generale pentru a arăta perfect și pe ecran și pe PDF */
         :root { --auriu: #c5a059; --auriu-inchis: #a88540; --text: #222; --bg: #fff; --carbune: #111; }
         * { box-sizing: border-box; margin: 0; padding: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
         body { font-family: 'Inter', sans-serif; color: var(--text); background: #f9f9f9; line-height: 1.6; }
@@ -18,157 +17,152 @@
         .tagline { font-family: 'Cinzel', serif; letter-spacing: 3px; font-size: 0.8rem; color: #888; text-transform: uppercase; }
 
         /* COPERTĂ */
-        .cover { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=2000') center/cover; color: white; padding: 0; }
-        .cover::before { content: ''; position: absolute; top:0; left:0; right:0; bottom:0; background: rgba(5, 5, 5, 0.85); z-index: 1; }
-        .cover-content { position: relative; z-index: 2; padding: 40px; border: 2px solid var(--auriu); width: 80%; }
+        .cover { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: #050505; color: white; }
+        .cover-content { position: relative; z-index: 2; padding: 50px; border: 2px solid var(--auriu); width: 85%; }
         .cover h1 { color: var(--auriu); font-size: 4rem; font-style: italic; line-height: 1; margin: 20px 0; text-shadow: 0 10px 20px rgba(0,0,0,0.5); }
-        .cover p { font-size: 1.2rem; font-family: 'Inter'; font-weight: 300; margin-bottom: 30px; }
-        .cover .logo { font-family: 'Cinzel'; font-size: 1.2rem; letter-spacing: 5px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px; margin-top: 40px; }
+        .cover p { font-size: 1.2rem; font-family: 'Inter'; font-weight: 300; margin-bottom: 30px; letter-spacing: 1px; }
+        .cover .logo { font-family: 'Cinzel'; font-size: 1.1rem; letter-spacing: 5px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px; margin-top: 40px; }
 
         /* PAGINI INTERIOARE */
         .header-page { border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 30px; display: flex; justify-content: space-between; font-family: 'Cinzel'; font-size: 0.7rem; color: #aaa; }
         .chapter-title { font-size: 2.5rem; color: var(--carbune); border-left: 5px solid var(--auriu); padding-left: 20px; margin-bottom: 30px; }
-        .text-block { margin-bottom: 20px; font-size: 1rem; color: #444; }
+        .text-block { margin-bottom: 20px; font-size: 1rem; color: #444; text-align: justify; }
         .text-block strong { color: var(--carbune); }
 
-        /* IMAGINI & HIGHLIGHTS */
-        .image-banner { width: 100%; height: 200px; object-fit: cover; margin: 30px 0; border: 1px solid #eee; filter: grayscale(20%); }
         .highlight-box { background: #fbf8f1; border-left: 3px solid var(--auriu); padding: 20px; margin: 30px 0; font-style: italic; color: #555; }
 
-        /* DIAGRAME CSS (SCHELET) */
+        /* DIAGRAME & TABELE */
         .diagram-container { margin: 40px 0; padding: 30px; background: #fafafa; border: 1px dashed #ccc; text-align: center; }
-        
-        /* Funnel Diagram */
         .funnel-step { background: var(--carbune); color: var(--auriu); padding: 15px; margin: 10px auto; width: 80%; font-family: 'Cinzel'; font-weight: bold; position: relative; }
         .funnel-step::after { content: '\f0dd'; font-family: 'Font Awesome 5 Free'; font-weight: 900; position: absolute; bottom: -22px; left: 50%; transform: translateX(-50%); color: var(--carbune); font-size: 24px; }
         .funnel-step:last-child::after { display: none; }
-        .funnel-step:nth-child(2) { width: 70%; }
-        .funnel-step:nth-child(3) { width: 60%; }
-        .funnel-step:nth-child(4) { background: var(--auriu); color: #000; width: 50%; }
-
-        /* Timeline Diagram */
-        .timeline { display: flex; justify-content: space-between; margin-top: 40px; position: relative; }
-        .timeline::before { content: ''; position: absolute; top: 20px; left: 0; width: 100%; height: 2px; background: #eee; z-index: 1; }
-        .time-box { background: white; border: 2px solid var(--auriu); padding: 20px; width: 30%; position: relative; z-index: 2; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        .time-box h4 { font-family: 'Cinzel'; color: var(--auriu); margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
-        .time-box p { font-size: 0.85rem; color: #666; }
+        
+        .master-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .master-table th { background: var(--carbune); color: var(--auriu); padding: 15px; text-align: left; font-family: 'Cinzel'; font-size: 0.8rem; }
+        .master-table td { border: 1px solid #eee; padding: 15px; font-size: 0.9rem; color: #555; }
 
         /* FOOTER PAGE */
-        .footer-cta { background: var(--carbune); color: white; text-align: center; padding: 40px; margin-top: 50px; }
+        .footer-cta { background: var(--carbune); color: white; text-align: center; padding: 40px; margin-top: 50px; border: 2px solid var(--auriu); }
         .footer-cta h2 { color: var(--auriu); margin-bottom: 20px; font-style: italic; }
 
         @media print {
             body { background: white; }
-            .page { margin: 0; box-shadow: none; border: none; }
-            .page { page-break-after: always; }
+            .page { margin: 0; box-shadow: none; border: none; width: 100%; }
         }
     </style>
 </head>
 <body>
 
+    <!-- PAGINA 1: COPERTA -->
     <div class="page cover">
         <div class="cover-content">
-            <div class="tagline">Sistemul de Vânzări High-Ticket</div>
-            <h1>JOCUL<br>PREMIUM.</h1>
-            <p>Cum să ignori algoritmul, să controlezi conversația<br>și să vinzi de mii de euro.</p>
+            <div class="tagline">Arhitectura de Control și Rânduială</div>
+            <h1>JOCUL<br>TREZVIEI.</h1>
+            <p>Sistemul de Operare pentru Arhitecți High-Ticket. <br>Ignoră algoritmul, instalează Trezvia și domină piața.</p>
             <div class="logo">HAȚEG ALTERNATIV | METANOIA</div>
         </div>
     </div>
 
+    <!-- PAGINA 2: MODUL 01 - RESETAREA SISTEMULUI -->
     <div class="page">
-        <div class="header-page">
-            <span>THE MASTERPLAN V2</span>
-            <span>MODUL 01</span>
-        </div>
+        <div class="header-page"><span>THE MASTERPLAN V3</span><span>MODUL 01</span></div>
+        <h2 class="chapter-title">Kernel-ul de Arhitect:<br>Trezvia vs. Sclavie</h2>
+        <p class="text-block">Nu ești influencer, ești **Arhitect de Sistem**. Mindfulness-ul este **Trezvia** — paza minții care monitorizează procesele interioare cu rigurozitatea unui **Software Tester**.</p>
         
-        <h2 class="chapter-title">Sclavul Algoritmului vs.<br>Arhitectul Sistemului</h2>
-        <p class="text-block">Majoritatea creatorilor trăiesc o iluzie toxică. Fac dansuri, urmăresc trenduri și se roagă la algoritmi pentru afișări, doar pentru a vinde produse ieftine. Acesta este jocul pierzătorilor.</p>
-        <p class="text-block"><strong>Jocul Premium</strong> înseamnă să joci după propriile reguli. Cu o ofertă High-Ticket (1.000 - 6.000 LEI), matematica se schimbă. Ai nevoie doar de 30 de oameni calificați și 5 conversații bune pentru a genera un venit de elită.</p>
+        <p class="text-block">Ofertarea **High-Ticket ($1.500 - 6.000$ LEI)** elimină nevoia de volum. Matematica profitului se bazează pe 30 de oameni calificați, nu pe mii de „vânători de gratuități”[cite: 1].</p>
 
-        <img src="https://images.unsplash.com/photo-1633436374961-09b92742047b?auto=format&fit=crop&q=80&w=1000" class="image-banner" alt="Chess Strategy">
-
-        <h3 style="margin-top: 30px; margin-bottom: 15px; color: var(--auriu);">Resetarea Identității (Mindset AI)</h3>
-        <p class="text-block"><strong>Ești antreprenor, nu influencer.</strong> Influencerii caută validare emoțională prin like-uri. Antreprenorii caută profit, eficiență și impact real. Nu mai crea conținut pentru a fi plăcut, creează conținut pentru a fi respectat.</p>
-        
         <div class="highlight-box">
-            "Dacă ai 100.000 de urmăritori care nu cumpără nimic, ești un angajat neplătit al platformei. Dacă ai 100 de urmăritori care au încredere în tine și îți plătesc prețul premium, ești liber."
+            "Dacă ai 100 de urmăritori care au încredere în rânduiala ta și plătesc prețul premium, ești liber. Restul e zgomot algoritmic[cite: 1]."
         </div>
+
+        <table class="master-table">
+            <tr><th>Status</th><th>Definiție Operațională</th></tr>
+            <tr><td><strong>Operator</strong></td><td>Sclavul reacțiilor; caută validare prin afișări[cite: 1].</td></tr>
+            <tr><td><strong>Arhitect</strong></td><td>Controlorul fluxului; dictează prețul și filtrează lead-urile[cite: 1].</td></tr>
+        </table>
     </div>
 
+    <!-- PAGINA 3: MODUL 02 - ELITE DM -->
     <div class="page">
-        <div class="header-page">
-            <span>THE MASTERPLAN V2</span>
-            <span>MODUL 02</span>
-        </div>
-
-        <h2 class="chapter-title">Sistemul "Elite DM"<br><span style="font-size: 1.5rem; color: var(--auriu);">Arhitectura Conversației Private</span></h2>
-        <p class="text-block">Cea mai mare greșeală este să arunci prețul din prima când cineva te întreabă "Cât costă?". Pierzi controlul și pierzi vânzarea. Preia inițiativa folosind pâlnia conversațională de mai jos.</p>
+        <div class="header-page"><span>THE MASTERPLAN V3</span><span>MODUL 02</span></div>
+        <h2 class="chapter-title">Elite DM: Arhitectura<br>Conversației Private</h2>
+        <p class="text-block">Cine pune prețul primul, pierde controlul[cite: 1]. Preia inițiativa prin diagnoză sistemică înainte de a livra soluția[cite: 1].</p>
 
         <div class="diagram-container">
-            <h3 style="font-size: 1rem; margin-bottom: 20px; color: #888;">SCHEMA 1.1: FLUXUL DE CONVERSIE DM</h3>
-            <div class="funnel-step">
-                1. MOMEALA (Postare Targetată)<br>
-                <span style="font-size: 0.7rem; font-weight: normal; color: #ccc;">Atrage doar audiența care are o problemă specifică.</span>
-            </div>
-            <div class="funnel-step">
-                2. DIAGNOZA (Controlul DM)<br>
-                <span style="font-size: 0.7rem; font-weight: normal; color: #ccc;">"Ce te blochează acum cel mai tare?"</span>
-            </div>
-            <div class="funnel-step">
-                3. VIZIUNEA (Soluția)<br>
-                <span style="font-size: 0.7rem; font-weight: normal; color: #ccc;">"Dacă rezolvăm asta în 30 de zile, cum arată succesul?"</span>
-            </div>
-            <div class="funnel-step">
-                4. APELUL LIVE / ÎNCHIDEREA<br>
-                <span style="font-size: 0.7rem; font-weight: normal; color: #111;">Vânzarea High-Ticket (Mii de Euro)</span>
-            </div>
+            <div class="funnel-step">1. MOMEALA (Postare de Autoritate)[cite: 1]</div>
+            <div class="funnel-step" style="width: 70%;">2. DIAGNOZA (Audit DM)[cite: 1]</div>
+            <div class="funnel-step" style="width: 60%;">3. VIZIUNEA (Soluția)[cite: 1]</div>
+            <div class="funnel-step" style="width: 50%; background: var(--auriu); color: #000;">4. ÎNCHIDEREA (PayPal)[cite: 1]</div>
         </div>
 
-        <p class="text-block"><strong>Gestionarea Obiecțiilor:</strong> Dacă prospectul spune că e prea scump, nu oferi reduceri. Răspunde: <em>„Înțeleg că este o investiție serioasă. Dar întreabă-te: cât te costă, de fapt, să rămâi blocat în aceeași problemă încă 6 luni de acum încolo?”</em></p>
+        <p class="text-block"><strong>Gestionarea Obiecțiilor:</strong> Când prețul „pișcă”, nu oferi reduceri[cite: 1]. Întreabă prospectul despre costul haosului în care se află[cite: 1].</p>
     </div>
 
+    <!-- PAGINA 4: MODUL 03 & 04 - EXECUȚIA -->
     <div class="page">
-        <div class="header-page">
-            <span>THE MASTERPLAN V2</span>
-            <span>MODUL 03 & 04</span>
+        <div class="header-page"><span>THE MASTERPLAN V3</span><span>MODUL 03 & 04</span></div>
+        <h2 class="chapter-title">Harta de Execuție:<br>Matematica pe 30 de Zile</h2>
+        
+        <table class="master-table">
+            <tr>
+                <th style="width: 25%;">Zile</th>
+                <th>Etapa</th>
+                <th>Acțiuni de Software Tester[cite: 1]</th>
+            </tr>
+            <tr>
+                <td><strong>1-5</strong></td>
+                <td><strong>Arhitectura</strong></td>
+                <td>Definește oferta. Validează link-ul PayPal[cite: 1].</td>
+            </tr>
+            <tr>
+                <td><strong>6-20</strong></td>
+                <td><strong>Vânătoarea</strong></td>
+                <td>5 DM-uri noi/zi. Total 75 discuții calificate[cite: 1].</td>
+            </tr>
+            <tr>
+                <td><strong>21-30</strong></td>
+                <td><strong>Follow-up</strong></td>
+                <td>Recuperează indecișii. Închide marja de profit[cite: 1].</td>
+            </tr>
+        </table>
+
+        <p class="text-block" style="margin-top: 30px;">Diploma de **Project Manager** de la Cluj și Suzuki-ul argintiu sunt logistica puterii tale[cite: 1].</p>
+    </div>
+
+    <!-- PAGINA 5: MODUL 05 - ARHITECTURA PROMOVĂRII -->
+    <div class="page">
+        <div class="header-page"><span>THE MASTERPLAN V3</span><span>MODUL 05</span></div>
+        <h2 class="chapter-title">Magnetul de Elită:<br>Arhitectura Promovării</h2>
+        <p class="text-block">Promovarea ta este filtrul tău[cite: 1]. Dacă mesajul nu „pișcă” audiența greșită, înseamnă că nu este destul de clar pentru audiența de elită[cite: 1].</p>
+
+        <h3 style="color: var(--auriu); margin-bottom: 15px;">Protocolul "Hook-ului" Sistemic</h3>
+        <table class="master-table">
+            <tr>
+                <th>Tip Hook</th>
+                <th>Logica de PM[cite: 1]</th>
+            </tr>
+            <tr>
+                <td><strong>Autoritate</strong></td>
+                <td>Demonstrează cum rigoarea din IT se aplică în Rânduială[cite: 1].</td>
+            </tr>
+            <tr>
+                <td><strong>Educațional</strong></td>
+                <td>Explică Trezvia ca proces de eliminare a bug-urilor vieții[cite: 1].</td>
+            </tr>
+            <tr>
+                <td><strong>Direct</strong></td>
+                <td>Invită direct la Audit: "Caut 3 manageri pentru Metanoia"[cite: 1].</td>
+            </tr>
+        </table>
+
+        <div class="highlight-box">
+            "Promovarea nu este despre strigat în piață, ci despre a fi farul care atrage navele care știu unde merg[cite: 1]."
         </div>
-
-        <h2 class="chapter-title">Planul de Execuție<br><span style="font-size: 1.5rem; color: var(--auriu);">Harta pe 30 de Zile</span></h2>
-        <p class="text-block">Oprim complet haosul și "speranța". Nu mai așteptăm ca algoritmul să ne salveze. Iată planul matematic detaliat de acțiune pentru luna următoare:</p>
-
-        <div class="diagram-container" style="background: transparent; border: none; padding: 0;">
-            <div class="timeline">
-                <div class="time-box">
-                    <h4>Zilele 1-5</h4>
-                    <strong>Arhitectura</strong>
-                    <p style="margin-top: 10px;">Definește oferta. Formulează problema și postează cârligul (Hook-ul) pe rețele.</p>
-                </div>
-                <div class="time-box">
-                    <h4>Zilele 6-20</h4>
-                    <strong>Vânătoarea</strong>
-                    <p style="margin-top: 10px;">5 Conversații noi (DM) pe zi. Total 75 discuții. Statistic: 3-4 vânzări garantate.</p>
-                </div>
-                <div class="time-box" style="background: var(--auriu); border-color: var(--carbune);">
-                    <h4 style="color: var(--carbune);">Zilele 21-30</h4>
-                    <strong style="color: #fff;">Follow-up</strong>
-                    <p style="margin-top: 10px; color: #111;">Recuperează prospectii indecisi. Aici se fac banii adevărați și marja de profit.</p>
-                </div>
-            </div>
-        </div>
-
-        <h3 style="margin-top: 50px; margin-bottom: 15px; color: var(--carbune);">Protocolul de Elită (Psihologia Prețului)</h3>
-        <ul style="list-style-type: square; margin-left: 20px; color: #444; margin-bottom: 30px;">
-            <li style="margin-bottom: 10px;"><strong>Refuză Clienții Toxici:</strong> Dacă negociază agresiv sau nu respectă timpul, taie legătura. Spune: <em>"Nu ne potrivim. Caută pe cineva mai ieftin."</em></li>
-            <li style="margin-bottom: 10px;"><strong>Ridică-ți Prețul:</strong> Un preț premium ridică valoarea percepută. Un client care plătește 50 lei nu aplică nimic. Cel de 5000 lei e prezent și execută.</li>
-        </ul>
 
         <div class="footer-cta">
-            <i class="fas fa-video" style="font-size: 2rem; color: var(--auriu); margin-bottom: 15px;"></i>
+            <i class="fas fa-bullhorn" style="font-size: 2rem; color: var(--auriu); margin-bottom: 15px;"></i>
             <h2>PASUL FINAL: AUDITUL LIVE</h2>
-            <p style="color: #aaa; margin-bottom: 20px;">Deoarece ai acest document, ai inclusă o sesiune de calibrare a ofertei (30 min) 1-la-1.</p>
-            <div style="background: var(--auriu); color: #000; padding: 15px; font-family: 'Cinzel'; font-weight: bold; letter-spacing: 2px;">
-                SCRIE-MI PE WHATSAPP: "VREAU AUDITUL."
-            </div>
+            <p style="color: #aaa; margin-bottom: 20px;">Scrie pe WhatsApp: "VREAU AUDITUL PROMOVĂRII" pentru calibrarea mesajului[cite: 1].</p>
         </div>
     </div>
 
