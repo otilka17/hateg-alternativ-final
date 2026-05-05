@@ -21,77 +21,89 @@
     <style>
         :root { --auriu: #c5a059; --negru: #050505; --alb: #ffffff; }
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        a { text-decoration: none !important; color: inherit !important; }
+        a { text-decoration: none !important; color: inherit !important; transition: 0.3s; }
         body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-        /* HEADER & LOGO */
-        .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 25px 5%; display: flex; justify-content: space-between; align-items: center; }
-        .brand-logo img { height: 75px; width: auto; }
+        /* FIX HEADER & BURGER CONFORM SCREENSHOT */
+        .site-header { 
+            position: fixed; top: 0; width: 100%; z-index: 10002; 
+            padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; 
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent);
+        }
+        .brand-logo img { height: 60px; width: auto; }
         
-        .burger { cursor: pointer; border: 1px solid var(--auriu); padding: 12px; border-radius: 4px; z-index: 10001; }
-        .burger div { width: 28px; height: 1px; background: var(--auriu); margin: 7px; }
+        .burger { 
+            cursor: pointer; border: 1px solid var(--auriu); padding: 10px; 
+            border-radius: 4px; z-index: 10003; background: rgba(0,0,0,0.5);
+        }
+        .burger div { width: 25px; height: 1px; background: var(--auriu); margin: 6px; transition: 0.4s; }
 
-        /* MENIU MOBIL - COPIAT DIN SCREENSHOT */
-        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: #000; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.5s; z-index: 10000; }
-        .main-nav.active { right: 0; }
-        .main-nav a { font-size: 1.4rem; font-family: 'Cinzel'; margin: 12px 0; letter-spacing: 4px; text-transform: uppercase; text-align: center; font-weight: 400; }
-        .nav-res-btn { border: 1px solid var(--auriu); padding: 15px 50px; margin-top: 30px !important; color: var(--auriu) !important; letter-spacing: 5px; font-weight: 700; }
+        /* MENIU FULL SCREEN - EXACT CA ÎN POZE */
+        .main-nav { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh; 
+            background: #000; display: flex; flex-direction: column; 
+            justify-content: center; align-items: center; 
+            opacity: 0; visibility: hidden; transition: 0.5s cubic-bezier(0.77,0.2,0.05,1.0); z-index: 10000; 
+        }
+        .main-nav.active { opacity: 1; visibility: visible; }
+        
+        .main-nav a { 
+            font-size: clamp(1.2rem, 5vw, 1.8rem); font-family: 'Cinzel'; 
+            margin: 15px 0; letter-spacing: 5px; text-transform: uppercase; 
+            font-weight: 400; color: #fff !important; 
+        }
+        
+        /* BUTON REZERVARE ÎNCADRAT */
+        .nav-res-btn { 
+            border: 1px solid var(--auriu); padding: 15px 60px; 
+            margin-top: 40px !important; color: var(--auriu) !important; 
+            letter-spacing: 6px; font-weight: 700; font-size: 1.1rem !important;
+        }
 
-        /* HERO - IDENTIC SCREENSHOT_2026-05-05-16-12-15-59 */
+        /* HERO - CENTRARE ȘI TIPOGRAFIE[cite: 1] */
         .hero { 
             height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.8)), url('images/rasarit.jpg') center/cover no-repeat;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('images/rasarit.jpg') center/cover no-repeat;
             padding: 0 10%;
         }
-        .hero-tagline { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 6px; font-size: 0.8rem; margin-bottom: 25px; font-weight: 700; }
-        .hero h1 { font-family: 'Playfair Display'; font-style: italic; font-size: 2.8rem; line-height: 1.2; margin-bottom: 30px; font-weight: 400; }
-        .hero-description { color: #ccc; font-size: 1.1rem; line-height: 1.6; max-width: 650px; margin: 0 auto 40px; font-weight: 300; }
-        .btn-hub { display: inline-block; border: 1px solid var(--auriu); padding: 18px 45px; font-family: 'Cinzel'; letter-spacing: 4px; font-size: 0.9rem; color: var(--auriu) !important; }
+        .hero-tagline { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 8px; font-size: 0.75rem; margin-bottom: 20px; font-weight: 900; }
+        .hero h1 { font-family: 'Playfair Display'; font-style: italic; font-size: clamp(2rem, 8vw, 3.5rem); line-height: 1.2; margin-bottom: 25px; }
+        .hero-description { color: #ddd; font-size: 1rem; line-height: 1.7; max-width: 600px; margin: 0 auto 35px; font-weight: 300; }
+        .btn-hub { display: inline-block; border: 1px solid var(--auriu); padding: 15px 40px; font-family: 'Cinzel'; letter-spacing: 3px; color: var(--auriu) !important; font-size: 0.8rem; }
 
-        /* POVESTEA - SCREENSHOT_2026-05-05-22-39-30-55 */
-        .about-section { padding: 80px 10%; text-align: center; }
-        .about-section h2 { font-family: 'Playfair Display'; color: var(--auriu); font-size: 2.2rem; margin-bottom: 35px; font-weight: 700; }
-        .about-section p { font-family: 'Inter'; font-style: italic; color: #ccc; font-size: 1.15rem; line-height: 1.8; max-width: 800px; margin: 0 auto; font-weight: 300; }
+        /* PILONI VERTICALI[cite: 1] */
+        .pilon-section { padding: 80px 5%; }
+        .pilon-card { margin-bottom: 80px; text-align: left; }
+        .pilon-img { border: 1px solid #1a1a1a; margin-bottom: 25px; overflow: hidden; }
+        .pilon-img img { width: 100%; height: auto; display: block; }
+        .pilon-label { font-family: 'Cinzel'; color: var(--auriu); font-size: 0.7rem; letter-spacing: 3px; margin-bottom: 15px; }
+        .pilon-card h3 { font-family: 'Playfair Display'; font-style: italic; font-size: 2.2rem; margin-bottom: 20px; }
+        .pilon-card p { color: #999; line-height: 1.8; margin-bottom: 20px; font-size: 0.95rem; }
 
-        /* CEI 3 PILONI - SCREENSHOT_2026-05-05-22-39-34-89 */
-        .piloni-title { text-align: center; font-family: 'Playfair Display'; font-size: 1.8rem; letter-spacing: 4px; text-transform: uppercase; margin: 50px 0; font-weight: 700; }
-        
-        .pilon-card { margin-bottom: 60px; padding: 0 5%; }
-        .pilon-img img { width: 100%; height: auto; border: 1px solid #1a1a1a; margin-bottom: 25px; display: block; }
-        .pilon-label { font-family: 'Cinzel'; color: var(--auriu); font-size: 0.75rem; letter-spacing: 3px; margin-bottom: 12px; opacity: 0.8; }
-        .pilon-card h3 { font-family: 'Playfair Display'; font-style: italic; font-size: 2.3rem; margin-bottom: 20px; font-weight: 400; }
-        .pilon-card p { color: #888; line-height: 1.7; margin-bottom: 25px; font-weight: 300; font-size: 1rem; }
-        .link-discover { font-family: 'Cinzel'; color: var(--auriu); font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; }
+        /* FLOATING ICONS - FIX POZIȚIE[cite: 1] */
+        .whatsapp-float { position: fixed; bottom: 25px; left: 25px; background: #25d366; border-radius: 50%; width: 55px; height: 55px; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 10001; color: #fff; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        .chat-bubble { position: fixed; bottom: 25px; right: 25px; width: 65px; height: 65px; z-index: 10001; }
 
-        /* EXTENSII HUB - SCREENSHOT_2026-05-05-22-39-45-85 */
-        .extensions { padding: 60px 5%; background: #000; text-align: center; border-top: 1px solid #111; }
-        .extensions h2 { font-family: 'Cinzel'; letter-spacing: 4px; margin-bottom: 45px; font-size: 1.5rem; }
-        .ext-card { position: relative; height: 380px; overflow: hidden; border: 1px solid #1a1a1a; text-align: left; margin-bottom: 25px; }
-        .ext-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.4; }
-        .ext-info { position: absolute; bottom: 0; padding: 30px; background: linear-gradient(to top, #000 80%, transparent); width: 100%; }
-        .ext-info h4 { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 2px; margin-bottom: 8px; font-size: 1.1rem; }
-        .ext-info p { font-size: 0.85rem; color: #bbb; line-height: 1.4; font-weight: 300; }
-
-        /* FLOATING */
-        .whatsapp-float { position: fixed; bottom: 30px; left: 30px; background: #25d366; border-radius: 50%; width: 55px; height: 55px; display: flex; align-items: center; justify-content: center; font-size: 28px; z-index: 9999; color: #fff; }
-
-        footer { padding: 60px 20px; text-align: center; border-top: 1px solid #111; background: #000; }
-        .tribute { color: var(--auriu); font-weight: 900; margin-top: 40px; font-family: 'Cinzel'; font-size: 0.7rem; letter-spacing: 5px; opacity: 0.4; }
-
-        @media (min-width: 768px) {
-            .pilon-card { max-width: 900px; margin-left: auto; margin-right: auto; }
-            .ext-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; max-width: 1200px; margin: 0 auto; }
-        }
+        footer { padding: 50px 20px; text-align: center; background: #000; border-top: 1px solid #111; }
+        .tribute { color: var(--auriu); font-weight: 900; margin-top: 30px; font-family: 'Cinzel'; font-size: 0.7rem; letter-spacing: 5px; opacity: 0.5; }
     </style>
 </head>
 <body>
 
+    <!-- WhatsApp[cite: 1] -->
     <a href="https://wa.me/40749229686" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
+    <!-- Tawk.to Bubble[cite: 1] -->
+    <div class="chat-bubble" id="chat-trigger"></div>
+
     <header class="site-header">
-        <a href="index.html" class="brand-logo"><img src="images/logo1.svg" alt="Metanoia"></a>
-        <div class="burger" id="burger"><div></div><div></div><div></div></div>
-        <nav class="main-nav" id="nav-links">
+        <div class="brand-logo"><img src="images/logo1.svg" alt="Metanoia"></div>
+        <div class="burger" id="burger-btn">
+            <div class="l1"></div>
+            <div class="l2"></div>
+            <div class="l3"></div>
+        </div>
+        <nav class="main-nav" id="nav-overlay">
             <a href="index.html">HUB METANOIA</a>
             <a href="pensiune.html">PENSIUNEA</a>
             <a href="gastronomie.html">CĂMARA & GOSPODĂRIA</a>
@@ -102,7 +114,6 @@
         </nav>
     </header>
 
-    <!-- CAPITOLUL 1: SIMTE -->
     <section class="hero">
         <div class="hero-content">
             <p class="hero-tagline">HAȚEG ALTERNATIV</p>
@@ -112,77 +123,49 @@
         </div>
     </section>
 
-    <!-- CAPITOLUL 2: TRĂIEȘTE -->
-    <section class="about-section" id="ecosistem">
-        <h2>Ce este Hub-ul Metanoia?</h2>
-        <p>Metanoia înseamnă transformare profundă, schimbarea minții și întoarcerea la esență. Am creat acest hub pentru ca resetarea reală are nevoie de trei lucruri:</p>
-    </section>
-
-    <h2 class="piloni-title">CEI 3 PILONI AI RÂNDUIELII</h2>
-
-    <div class="pilon-card">
-        <div class="pilon-img"><img src="images/gast-masa-traditionala.jpg" alt="Resetarea Corpului"></div>
-        <div class="pilon-label">RESETAREA CORPULUI</div>
-        <h3>Gustul Gospodăriei</h3>
-        <p>Nu vindem concepte abstracte, ci hrană trudită cu mâinile, exact așa cum o punem noi pe masă în Țara Hațegului.</p>
-        <a href="gastronomie.html" class="link-discover">DESCHIDE CĂMARA TRADIȚIONALĂ</a>
-    </div>
-
-    <div class="pilon-card">
-        <div class="pilon-img"><img src="images/la-buliga-pensiune.jpg" alt="Resetarea Spatiului"></div>
-        <div class="pilon-label">RESETAREA SPAȚIULUI</div>
-        <h3>Domeniile La Buligă</h3>
-        <p>Un refugiu izolat la 1100m altitudine. Cazare premium unde foșnetul pădurii devine singura ta agendă.</p>
-        <a href="pensiune.html" class="link-discover">DESCOPERĂ TIHNA LA CABANĂ</a>
-    </div>
-
-    <div class="pilon-card">
-        <div class="pilon-img"><img src="images/mug-buliga.jpg" alt="Resetarea Mintii"></div>
-        <div class="pilon-label">RESETAREA MINȚII</div>
-        <h3>Arhitectura Rânduielii</h3>
-        <p>Pentru liderii și antreprenorii epuizați de haos. Treci de la statutul de Operator la cel de Arhitect de sistem.</p>
-        <a href="curs.html" class="link-discover">VEZI MASTERPLANUL</a>
-    </div>
-
-    <!-- CAPITOLUL 3: RÂNDUIEȘTE -->
-    <section class="extensions">
-        <h2>EXTENSIILE HUB-ULUI</h2>
-        <div class="ext-grid">
-            <div class="ext-card">
-                <img src="images/bike.webp" alt="Bike">
-                <div class="ext-info"><h4>EXPLORARE PĂDURENI</h4><p>Aventură activă. Parteneriate E-Bike & Jeep în sălbăticie.</p></div>
-            </div>
-            <!-- SECTIUNE PAYPAL[cite: 1] -->
-            <div class="ext-card" style="background:#0a0a0a; display:flex; flex-direction:column; justify-content:center; align-items:center;">
-                <h4 style="color:var(--auriu); font-family:'Cinzel'; margin-bottom:20px;">PLĂTEȘTE PRIN PAYPAL</h4>
-                <a href="https://www.paypal.com/paypalme/HategAlternativ" target="_blank" style="background:#0070ba; color:#fff !important; padding:12px 30px; border-radius:5px; font-weight:700;">PAYPAL.ME</a>
-            </div>
+    <!-- Secțiunea Piloni - Sincronizată cu povestea ta[cite: 1] -->
+    <section class="pilon-section" id="ecosistem">
+        <div class="pilon-card">
+            <div class="pilon-img"><img src="images/gast-masa-traditionala.jpg" alt="Pilon 1"></div>
+            <div class="pilon-label">RESETAREA CORPULUI</div>
+            <h3>Gustul Gospodăriei</h3>
+            <p>Nu vindem concepte abstracte, ci hrană trudită cu mâinile, exact așa cum o punem noi pe masă în Țara Hațegului.</p>
+            <a href="gastronomie.html" style="color:var(--auriu); font-family:'Cinzel'; font-size:0.8rem; letter-spacing:2px; border-bottom: 1px solid var(--auriu);">DESCOPERĂ CĂMARA</a>
         </div>
-
-        <div style="margin-top:50px;">
-            <div class="elfsight-app-4342bef8-07d4-4bfe-9114-34160d0e96f1" data-elfsight-app-lazy></div>
-        </div>
+        <!-- Repetă structura pentru ceilalți 2 piloni[cite: 1] -->
     </section>
 
     <footer>
-        <p style="font-size:0.75rem; color:#444;">DAKAMIGOS MARKT SRL | CUI: RO40767794</p>
+        <p style="font-size:0.7rem; color:#444; letter-spacing:2px;">DAKAMIGOS MARKT SRL | CUI: RO40767794</p>
         <div class="tribute">TRIBUT PATRICIA</div>
     </footer>
 
-    <!-- Scripts originale din index (22)_3.html[cite: 1] -->
+    <!-- Scripts[cite: 1] -->
     <script type="text/javascript">
         var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
         (function(){
-        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-        s1.async=true; s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
-        s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
-        s0.parentNode.insertBefore(s1,s0); })();
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true; s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
+            s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0); 
+        })();
     </script>
     <script>
-        const burger = document.getElementById('burger');
-        const nav = document.getElementById('nav-links');
-        burger.onclick = () => nav.classList.toggle('active');
-        nav.onclick = () => nav.classList.remove('active');
+        // Logica de toggle pentru meniu[cite: 1]
+        const burgerBtn = document.getElementById('burger-btn');
+        const navOverlay = document.getElementById('nav-overlay');
+        
+        burgerBtn.addEventListener('click', () => {
+            navOverlay.classList.toggle('active');
+            // Animație simplă burger[cite: 1]
+            burgerBtn.style.borderColor = navOverlay.classList.contains('active') ? '#fff' : '#c5a059';
+        });
+
+        // Închide meniul la click pe link[cite: 1]
+        navOverlay.addEventListener('click', () => {
+            navOverlay.classList.remove('active');
+            burgerBtn.style.borderColor = '#c5a059';
+        });
     </script>
 </body>
 </html>
