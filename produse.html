@@ -2,216 +2,181 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Metanoia | Prezentare Gastronomie</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Cămara & Gospodăria | Hațeg Alternativ</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Cinzel:wght@400;700;900&family=Inter:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <style>
-        :root {
-            --negru: #0a0a0a;
-            --alb: #ffffff;
-            --off-white: #fcfcfc;
-            --gri-inchis: #222;
-            --gri-text: #555;
-            --accent: #c5a059;
+        :root { --auriu: #c5a059; --negru: #070707; --alb: #ffffff; --text: #333; }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        
+        /* Fundal editorial cu puncte subtile (dot grid) */
+        body { 
+            background-color: var(--alb); 
+            background-image: radial-gradient(#d5d5d5 1px, transparent 1px); 
+            background-size: 25px 25px; 
+            color: var(--text); 
+            font-family: 'Inter', sans-serif; 
+            line-height: 1.8; 
+            overflow-x: hidden; 
         }
+        
+        a { text-decoration: none !important; outline: none; }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--off-white); color: var(--negru); overflow-x: hidden; }
-        
-        /* Typography */
-        h1, h2, h3 { font-family: 'Playfair Display', serif; line-height: 1.1; }
-        .mono-tag { font-family: 'Space Mono', monospace; font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase; }
-        
-        /* Background Patterns */
-        .dotted-bg {
-            background-image: radial-gradient(#d1d1d1 1px, transparent 1px);
-            background-size: 20px 20px;
-        }
+        /* HEADER */
+        .site-header { padding: 30px 5%; display: flex; justify-content: space-between; align-items: center; background: rgba(255, 255, 255, 0.95); border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
+        .brand-logo { font-family: 'Cinzel', serif; font-size: 1.2rem; color: var(--negru); letter-spacing: 4px; font-weight: 700; }
+        .nav-back { color: #888; font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 2px; transition: 0.3s; font-weight: bold; }
+        .nav-back:hover { color: var(--negru); }
 
-        /* SECTION 1: DARK HERO (Clona primei imagini de sus) */
-        .editorial-dark {
-            background: var(--negru);
-            color: var(--alb);
-            padding: 40px 5%;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-        }
-        .top-nav { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; padding-bottom: 20px; margin-bottom: 40px; }
-        
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr 1fr;
-            gap: 40px;
-            flex-grow: 1;
-        }
-        .hero-left { display: flex; flex-direction: column; justify-content: center; border-right: 1px solid #222; padding-right: 20px; }
-        .hero-left h1 { font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 20px; }
-        .hero-left .subtitle { border: 1px solid #333; padding: 15px; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; }
-        
-        .hero-center { display: flex; justify-content: center; align-items: center; }
-        .hero-center img { width: 100%; max-height: 70vh; object-fit: cover; filter: contrast(1.1) grayscale(20%); border: 1px solid #333; padding: 10px; }
-        
-        .hero-right { display: flex; flex-direction: column; justify-content: space-between; padding-left: 20px; border-left: 1px solid #222; }
-        .hero-right .ambassador { margin-top: auto; margin-bottom: auto; }
-        .hero-right h3 { font-size: 1.5rem; letter-spacing: 2px; margin-bottom: 15px; }
-        .hero-right p { font-size: 0.9rem; color: #aaa; line-height: 1.6; }
-        .concept-box { border: 1px dashed #555; padding: 20px; text-align: center; font-family: 'Playfair Display'; font-size: 1.2rem; margin-top: 40px; }
-        .page-num { text-align: right; font-family: 'Space Mono'; color: #666; font-size: 1.2rem; margin-top: 20px; }
+        /* CONTAINER PRINCIPAL */
+        .editorial-container { max-width: 800px; margin: 80px auto; padding: 0 5%; background: var(--alb); box-shadow: 0 0 40px rgba(0,0,0,0.03); border: 1px solid #f0f0f0; padding-bottom: 80px; }
 
-        /* SECTION 2: LIGHT EDITORIAL (Clona imaginii din mijloc) */
-        .editorial-light-1 {
-            padding: 80px 5%;
-            position: relative;
-        }
-        .tags-dark { display: flex; align-items: center; gap: 15px; margin-bottom: 60px; }
-        .tags-dark span { border: 1px solid #ccc; padding: 5px 15px; }
-        
-        .grid-split { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-        
-        .crop-marks-box {
-            position: relative;
-            padding: 40px;
-        }
-        /* Corner crop marks */
-        .crop-marks-box::before, .crop-marks-box::after { content: ''; position: absolute; width: 20px; height: 20px; border: 1px solid #000; }
-        .crop-marks-box::before { top: 0; left: 0; border-right: none; border-bottom: none; }
-        .crop-marks-box::after { bottom: 0; right: 0; border-left: none; border-top: none; }
-        
-        .crop-marks-box h2 { font-size: clamp(2rem, 4vw, 3.5rem); margin-bottom: 30px; text-transform: uppercase; }
-        .crop-marks-box p { font-size: 1rem; color: var(--gri-text); line-height: 1.8; margin-bottom: 20px; }
+        .page-title { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 6vw, 4rem); color: var(--negru); text-align: center; margin: 60px 0 20px; line-height: 1.1; font-style: italic; }
+        .page-subtitle { text-align: center; font-family: 'Cinzel', serif; letter-spacing: 3px; color: #888; font-size: 0.85rem; margin-bottom: 80px; text-transform: uppercase; }
 
-        .collage-wrapper { position: relative; height: 600px; }
-        .collage-wrapper img { position: absolute; box-shadow: 0 10px 30px rgba(0,0,0,0.15); border: 5px solid #fff; object-fit: cover; }
-        .img-main { width: 60%; height: auto; top: 0; right: 0; z-index: 1; }
-        .img-sub1 { width: 50%; height: auto; bottom: 50px; left: 0; z-index: 2; }
-        .img-sub2 { width: 45%; height: auto; top: 150px; left: -10%; z-index: 3; }
-
-        /* SECTION 3: GRID DETAILS (Clona imaginii de jos) */
-        .editorial-light-2 {
-            padding: 80px 5%;
-            border-top: 1px solid #eaeaea;
-        }
-        .grid-details { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
+        /* SECTIUNI TEXT + IMAGINE */
+        .content-block { margin-bottom: 60px; padding: 40px; border: 1px dashed #ddd; background: #fff; position: relative; }
+        .block-number { position: absolute; top: -15px; left: -15px; background: var(--negru); color: var(--alb); font-family: 'Cinzel', serif; padding: 10px 15px; font-size: 1.2rem; }
         
-        .details-left h2 { font-size: clamp(2rem, 4vw, 3.2rem); text-transform: uppercase; margin-bottom: 40px; border-bottom: 1px solid #000; display: inline-block; padding-bottom: 10px; }
+        .content-text { font-size: 1.1rem; color: #555; margin-bottom: 30px; }
+        .content-text strong { color: var(--negru); font-weight: 600; font-family: 'Playfair Display', serif; font-size: 1.3rem; }
         
-        .boxes-grid { display: grid; grid-template-columns: 1fr; gap: 30px; }
-        .dashed-box { border: 1px dashed #999; padding: 25px; background: rgba(255,255,255,0.8); position: relative; }
-        .dashed-box h4 { font-family: 'Playfair Display'; color: #900; font-size: 1.2rem; margin-bottom: 10px; }
-        .dashed-box p { font-size: 0.9rem; color: #444; line-height: 1.6; }
+        .content-title { font-family: 'Playfair Display', serif; color: #8b0000; font-size: 1.8rem; margin-bottom: 20px; font-weight: 700; }
 
-        .details-right { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 15px; }
-        .details-right img { width: 100%; height: 100%; object-fit: cover; filter: sepia(20%); }
-        .img-tall { grid-row: 1 / 3; }
+        .img-container { width: 100%; border: 1px solid #eee; padding: 10px; background: #fff; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .img-container img { width: 100%; height: auto; display: block; filter: contrast(1.05); }
 
-        /* Mobile Adjustments */
-        @media (max-width: 900px) {
-            .hero-grid { grid-template-columns: 1fr; }
-            .hero-left, .hero-right { border: none; padding: 0; }
-            .grid-split, .grid-details { grid-template-columns: 1fr; }
-            .collage-wrapper { height: 400px; margin-top: 40px; }
-            .img-main { width: 70%; right: 0; }
-            .img-sub1 { width: 60%; left: 0; bottom: 0; }
-            .img-sub2 { display: none; }
-        }
+        /* BUTON PAYPAL CHECKOUT */
+        .checkout-section { border-top: 1px solid #111; padding-top: 30px; margin-top: 80px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+        .btn-paypal { background: var(--negru); color: var(--alb); padding: 20px 45px; font-family: 'Cinzel', serif; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; font-size: 0.9rem; border: 1px solid var(--negru); display: inline-block; transition: 0.4s; }
+        .btn-paypal:hover { background: #fff; color: var(--negru); }
+        .checkout-number { font-family: 'Inter', sans-serif; font-size: 1.8rem; color: #888; font-weight: 300; }
+
+        /* SECTIUNE DARK FINALĂ */
+        .dark-section { background: var(--negru); color: var(--alb); padding: 100px 5% 80px; margin-top: 0; font-family: 'Inter', sans-serif; }
+        .dark-container { max-width: 900px; margin: 0 auto; }
+        .dark-header { display: flex; justify-content: space-between; border-bottom: 1px solid #222; padding-bottom: 20px; margin-bottom: 50px; font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 3px; color: #888; }
+        .dark-presented { margin-bottom: 30px; font-family: 'Cinzel', serif; color: #888; font-size: 0.8rem; letter-spacing: 2px; }
+        .dark-presented span { color: var(--alb); font-size: 1.1rem; letter-spacing: 3px; }
+        .dark-title { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 8vw, 5rem); line-height: 1.1; margin-bottom: 40px; color: var(--alb); }
+        .dark-box { border: 1px solid #222; padding: 40px 30px; margin-bottom: 50px; background: #0a0a0a; }
+        .dark-box h3 { font-weight: 300; font-size: 1.1rem; letter-spacing: 2px; color: #ccc; text-transform: uppercase; line-height: 1.6; }
+        .tribut-title { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--alb); margin-bottom: 20px; letter-spacing: 2px; text-transform: uppercase; }
+        .concept-box { border: 1px dashed #333; padding: 50px 20px; text-align: center; }
+
+        /* FOOTER */
+        footer { padding: 60px 20px; text-align: center; border-top: 1px solid #111; background: #050505; color: var(--alb); }
+        .footer-legal a { color: #555; margin: 0 15px; font-size: 0.75rem; text-transform: uppercase; font-family: 'Cinzel', serif; letter-spacing: 1px; }
     </style>
 </head>
 <body>
 
-    <!-- SECȚIUNEA 1: DARK MODE (Hero) -->
-    <section class="editorial-dark">
-        <nav class="top-nav mono-tag">
-            <div><i class="fas fa-camera"></i> Metanoia Art</div>
-            <div>[ 2026 ]</div>
-        </nav>
+    <!-- HEADER / MENIU -->
+    <header class="site-header">
+        <div class="brand-logo">METANOIA</div>
+        <a href="index.html" class="nav-back"><i class="fas fa-arrow-left"></i> ÎNAPOI LA HUB</a>
+    </header>
 
-        <div class="hero-grid">
-            <div class="hero-left">
-                <div class="mono-tag" style="margin-bottom: 20px; color: #888;">Presented by<br><span style="color: #fff; font-size: 1rem;">Hațeg Alternativ</span></div>
-                <h1>Autentic &<br>Tradițional</h1>
-                <div class="subtitle">PARTENERIAT PENTRU EXCELENȚĂ ÎN<br>GASTRONOMIA PREMIUM</div>
-            </div>
-
-            <div class="hero-center">
-                <!-- Imagine centrala (Inlocuieste cu poza ta principala cu cosul/masa) -->
-                <img src="https://images.unsplash.com/photo-1605436247078-f0efa0f63ea4?auto=format&fit=crop&q=80&w=800" alt="Cosul Traditional Metanoia">
-            </div>
-
-            <div class="hero-right">
-                <div class="ambassador">
-                    <h3>TRIBUT PATRICIA</h3>
-                    <p>Ambasador de Rânduială pentru Hațeg Alternativ și expert în arta ospitalității autentice din Țara Hațegului.</p>
-                </div>
-                <div>
-                    <div class="concept-box">Concept Exclusiv<br>pentru<br>Experiențe de prestigiu</div>
-                    <div class="page-num">01</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECȚIUNEA 2: LIGHT MODE (Detaliere Produse 1) -->
-    <section class="editorial-light-1 dotted-bg">
-        <div class="tags-dark mono-tag">
-            <span><i class="fas fa-leaf"></i> Metanoia & Tribut Patricia</span>
-            <span>2026</span>
-        </div>
-
-        <div class="grid-split">
-            <div class="crop-marks-box">
-                <h2>GUSTUL AUTENTIC ÎN FIECARE DETALIU</h2>
-                <p>Coșul Metanoia nu este un simplu pachet alimentar, ci o scenă pentru rânduiala și tihna casei dumneavoastră. Realizat din ingrediente locale selecționate, acesta transformă protocolul de servire a mesei într-un moment memorabil.</p>
-                <p>Nu limităm experiența la standarde rigide. Baza rânduielii o dă <strong>pâinea de casă aburindă</strong>, frământată pe îndelete, alăturată unei bucăți de <strong>brânză curată</strong> și unui <strong>sângerete tradițional</strong>, exact așa cum se făcea odată în gospodăriile din Țara Hațegului.</p>
-                
-                <div class="mono-tag" style="margin-top: 40px; border-bottom: 1px solid #000; display: inline-block;">Metanoia Art</div>
-            </div>
-
-            <div class="collage-wrapper">
-                <!-- Imaginile colajului (inlocuieste cu pozele tale cu paine, branza, etc) -->
-                <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=600" class="img-main" alt="Paine de casa">
-                <img src="https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?auto=format&fit=crop&q=80&w=500" class="img-sub1" alt="Branza locala">
-                <img src="https://images.unsplash.com/photo-1628294895950-9805252327bc?auto=format&fit=crop&q=80&w=400" class="img-sub2" alt="Preparate traditionale">
-            </div>
-        </div>
-        <div class="page-num" style="text-align: right; margin-top: 20px;">02</div>
-    </section>
-
-    <!-- SECȚIUNEA 3: LIGHT MODE GRID (Detaliere Produse 2) -->
-    <section class="editorial-light-2 dotted-bg">
-        <div class="grid-details">
-            <div class="details-left">
-                <h2>PRECIZIE ȘI<br>VERSATILITATE</h2>
-                
-                <div class="boxes-grid">
-                    <div class="dashed-box">
-                        <h4>Partea din Procesul de producție</h4>
-                        <p>Excelența stă în detalii invizibile. Pe lângă preparatele din carne, cămara artizanală include <strong>Zacuscă coaptă pe jar</strong> și <strong>Dulceață aromată</strong>, preparate lent, fără scurtături industriale, respectând fibra naturală a ingredientelor.</p>
-                    </div>
-                    
-                    <div class="dashed-box">
-                        <h4>Rezultatul atenției la detalii</h4>
-                        <p>Includem <strong>Legume proaspete din gospodărie</strong>, culese la maturitate deplină, acompaniate de <strong>Ketchup și Bulion artizanal</strong>. Aceasta este semnătura noastră pentru un brand care nu face compromisuri la capitolul calitate și sănătate.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="details-right">
-                <!-- Grila de imagini (inlocuieste cu poze de detaliu: zacusca, rosii, borcane) -->
-                <img src="https://images.unsplash.com/photo-1605651357065-276686b2089b?auto=format&fit=crop&q=80&w=400" class="img-tall" alt="Legume din gospodarie">
-                <img src="https://images.unsplash.com/photo-1590412200988-a436970781fa?auto=format&fit=crop&q=80&w=400" alt="Borcane Zacusca">
-                <img src="https://images.unsplash.com/photo-1589301773822-261bd71804ce?auto=format&fit=crop&q=80&w=400" alt="Bulion de casa">
-            </div>
-        </div>
+    <!-- ZONA EDITORIALĂ ALBĂ -->
+    <main class="editorial-container">
         
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 60px; border-top: 1px solid #000; padding-top: 20px;">
-            <a href="https://wa.me/40749229686" style="background: var(--negru); color: var(--alb); padding: 15px 40px; text-decoration: none; font-family: 'Space Mono'; text-transform: uppercase; letter-spacing: 2px;">Comandă Experiența</a>
-            <div class="page-num">03</div>
+        <h1 class="page-title">Gustul Rânduielii.</h1>
+        <div class="page-subtitle">Experiența Gastronomică din Țara Hațegului</div>
+
+        <!-- BLOC 1: Pâine și Brânză -->
+        <div class="content-block">
+            <div class="block-number">01</div>
+            <p class="content-text">
+                O dă <strong>pâinea de casă aburindă</strong>, frământată pe îndelete, alăturată unei bucăți de <strong>brânză curată</strong> și unui <strong>sângerete tradițional</strong>, exact așa cum se făcea odată în gospodăriile din Țara Hațegului.
+            </p>
+            <div class="img-container">
+                <img src="images/paine-de-casa.jpg" alt="Paine de casa traditionala" onerror="this.src='https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=800'">
+            </div>
+        </div>
+
+        <!-- BLOC 2: Zacuscă și Dulceață -->
+        <div class="content-block">
+            <div class="block-number">02</div>
+            <p class="content-text">
+                Din cămară aducem <strong>Zacuscă coaptă pe jar</strong> și <strong>Dulceață aromată</strong>, preparate lent, fără scurtături industriale, respectând fibra naturală a ingredientelor.
+            </p>
+            <div class="img-container" style="display: flex; gap: 10px;">
+                <!-- Am pus două imagini mici una lângă alta pentru varietate, folosesc fallback-uri sigure -->
+                <img src="images/zacusca.jpg" alt="Zacusca traditionala" onerror="this.src='https://images.unsplash.com/photo-1589367920969-ab8e050bfc18?auto=format&fit=crop&q=80&w=400'" style="width: 50%;">
+                <img src="images/dulceata.jpg" alt="Dulceata aromata" onerror="this.src='https://images.unsplash.com/photo-1601000676634-1bf139eb292f?auto=format&fit=crop&q=80&w=400'" style="width: 50%;">
+            </div>
+        </div>
+
+        <!-- BLOC 3: Legume și Bulion -->
+        <div class="content-block" style="border-color: #8b0000; background: #fffaf0;">
+            <div class="block-number" style="background: #8b0000;">03</div>
+            <h2 class="content-title">Rezultatul atenției la detalii</h2>
+            <p class="content-text">
+                Includem <strong>Legume proaspete din gospodărie</strong>, culese la maturitate deplină, acompaniate de <strong>Ketchup și Bulion artizanal</strong>. Aceasta este semnătura noastră pentru un brand care nu face compromisuri la capitolul calitate și sănătate.
+            </p>
+            <div class="img-container">
+                <img src="images/bulion-legume.jpg" alt="Legume si Bulion" onerror="this.src='https://images.unsplash.com/photo-1590412200988-a436970781fa?auto=format&fit=crop&q=80&w=800'">
+            </div>
+        </div>
+
+        <!-- SECȚIUNEA CHECKOUT PAYPAL COȘ TRADIȚIONAL -->
+        <div class="checkout-section">
+            <a href="https://www.paypal.com/ncp/payment/MH54VF92TC364" target="_blank" class="btn-paypal">
+                ACHITĂ COȘUL TRADIȚIONAL
+            </a>
+            <span class="checkout-number">03</span>
+        </div>
+
+    </main>
+
+    <!-- SECȚIUNEA DARK FINALĂ (METANOIA ART & TRIBUT) -->
+    <section class="dark-section">
+        <div class="dark-container">
+            
+            <div class="dark-header">
+                <span>METANOIA ART</span>
+                <span>[ 2026 ]</span>
+            </div>
+
+            <div class="dark-presented">
+                PRESENTED BY<br>
+                <span>HAȚEG ALTERNATIV</span>
+            </div>
+
+            <h2 class="dark-title">Autentic &<br>Tradițional</h2>
+
+            <div class="dark-box">
+                <h3>Parteneriat pentru excelență în<br>Gastronomia Premium</h3>
+            </div>
+
+            <div style="margin-bottom: 60px; border: 1px solid #222; overflow: hidden;">
+                <img src="images/gast-masa-traditionala.jpg" alt="Cosul Traditional Metanoia" onerror="this.src='https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&q=80&w=1000'" style="width: 100%; height: auto; display: block; filter: grayscale(15%) contrast(1.1);">
+            </div>
+
+            <h2 class="tribut-title">TRIBUT PATRICIA</h2>
+            <p style="color: #888; font-size: 1.05rem; line-height: 1.8; max-width: 600px; margin-bottom: 50px;">
+                Ambasador de Rânduială pentru Hațeg Alternativ și expert în arta ospitalității autentice din Țara Hațegului.
+            </p>
+
+            <div class="concept-box">
+                <h4 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #fff; font-style: italic; margin-bottom: 10px; font-weight: 400;">Concept Exclusiv pentru</h4>
+                <h4 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--auriu); font-style: italic; font-weight: 400;">Experiențe de prestigiu</h4>
+            </div>
+
         </div>
     </section>
+
+    <!-- FOOTER SITE -->
+    <footer>
+        <p style="font-size:0.85rem; color:#666; letter-spacing:2px; margin-bottom:25px; font-family: 'Inter', sans-serif;">DAKAMIGOS MARKT SRL | CUI: 38324829</p>
+        <div class="footer-legal">
+            <a href="index.html">Înapoi la Hub</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </footer>
 
 </body>
 </html>
