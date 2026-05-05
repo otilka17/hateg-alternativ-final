@@ -12,7 +12,7 @@
         :root { --negru: #070707; --alb: #ffffff; --text: #333; --auriu: #c5a059; }
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         
-        /* Fundal editorial cu puncte subtile EXACT cum il aveai */
+        /* Fundal editorial cu puncte subtile */
         body { 
             background-color: var(--alb); 
             background-image: radial-gradient(#ddd 1px, transparent 1px); 
@@ -39,7 +39,7 @@
         .img-box { margin-bottom: 60px; border: 1px solid #eee; background: #fff; padding: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
         .img-box img { width: 100%; height: auto; display: block; filter: contrast(1.05); }
 
-        /* LISTA PRODUSELOR (NOU) */
+        /* LISTA PRODUSELOR */
         .basket-manifest { background: #fff; border: 1px solid #111; padding: 40px 30px; margin-top: 60px; margin-bottom: 40px; box-shadow: 10px 10px 0px #f0f0f0; }
         .manifest-title { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-style: italic; color: var(--negru); margin-bottom: 25px; text-align: center; border-bottom: 1px dashed #ccc; padding-bottom: 20px; }
         .manifest-list { list-style: none; padding: 0; }
@@ -49,11 +49,11 @@
         .m-name { flex-grow: 1; padding: 0 15px; font-weight: 400; color: #222; }
         .m-weight { font-family: 'Inter', sans-serif; color: #888; font-size: 0.85rem; }
 
-        /* BUTON CHECKOUT REPARAT */
+        /* BUTON CHECKOUT */
         .checkout-wrapper { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; border-top: 1px solid #111; padding-top: 30px; }
         .btn-paypal { 
-            background-color: #070707 !important; /* Fortam negrul */
-            color: #ffffff !important; /* Fortam albul */
+            background-color: #070707 !important; 
+            color: #ffffff !important; 
             padding: 18px 40px; 
             font-family: 'Cinzel', serif; 
             font-weight: 700; 
@@ -67,7 +67,7 @@
         .btn-paypal:hover { opacity: 0.8; }
         .checkout-number { font-family: 'Inter', sans-serif; font-size: 2rem; color: #aaa; font-weight: 200; }
 
-        /* SECTIUNEA DARK DE LA FINAL (FIXA SI BUNA) */
+        /* SECTIUNEA DARK FINALĂ */
         .dark-section { background: var(--negru); color: var(--alb); padding: 100px 5% 80px; margin-top: 0; font-family: 'Inter', sans-serif; }
         .dark-container { max-width: 900px; margin: 0 auto; }
         .dark-header { display: flex; justify-content: space-between; border-bottom: 1px solid #222; padding-bottom: 20px; margin-bottom: 50px; font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 3px; color: #888; }
@@ -80,6 +80,26 @@
         .tribut-title { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--alb); margin-bottom: 20px; letter-spacing: 2px; text-transform: uppercase; }
         .concept-box { border: 1px dashed #333; padding: 50px 20px; text-align: center; }
 
+        /* FOOTER */
+        footer { padding: 60px 20px; text-align: center; border-top: 1px solid #111; background: #050505; color: var(--alb); }
+        .footer-legal a { color: #555; margin: 0 15px; font-size: 0.75rem; text-transform: uppercase; font-family: 'Cinzel', serif; letter-spacing: 1px; }
+
+        /* REPARATIE HEADER PE MOBIL */
+        @media (max-width: 600px) {
+            .site-header { 
+                flex-direction: column; 
+                justify-content: center; 
+                gap: 15px; 
+                padding: 25px 5% 10px; 
+            }
+            .brand-logo { 
+                font-size: 1.3rem; 
+                letter-spacing: 3px; 
+            }
+            .nav-back { 
+                font-size: 0.75rem; 
+            }
+        }
     </style>
 </head>
 <body>
@@ -91,7 +111,6 @@
 
     <main class="editorial-container">
         
-        <!-- TEXT 1 -->
         <p class="content-text">
             O dă <strong>pâinea de casă aburindă</strong>, frământată pe îndelete, alăturată unei bucăți de <strong>brânză curată</strong> și unui <strong>sângerete tradițional</strong>, exact așa cum se făcea odată în gospodăriile din Țara Hațegului.
         </p>
@@ -100,7 +119,6 @@
             <img src="images/paine-de-casa.jpg" alt="Paine de casa traditionala" onerror="this.src='https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=800'">
         </div>
 
-        <!-- TEXT 2 -->
         <p class="content-text" style="margin-top: 80px;">
             Din cămară aducem <strong>Zacuscă coaptă pe jar</strong> și <strong>Dulceață aromată</strong>, preparate lent, fără scurtături industriale, respectând fibra naturală a ingredientelor. Includem <strong>Legume proaspete din gospodărie</strong>, acompaniate de <strong>Ketchup și Bulion artizanal</strong>.
         </p>
@@ -109,7 +127,7 @@
             <img src="images/bulion-legume.jpg" alt="Legume din curte" onerror="this.src='https://images.unsplash.com/photo-1590412200988-a436970781fa?auto=format&fit=crop&q=80&w=800'">
         </div>
 
-        <!-- MANIFESTUL COȘULUI (LISTA PRODUSE) -->
+        <!-- MANIFESTUL COȘULUI -->
         <div class="basket-manifest">
             <h3 class="manifest-title">Conținutul Coșului</h3>
             <ul class="manifest-list">
@@ -151,7 +169,7 @@
             </ul>
         </div>
 
-        <!-- BUTON PAYPAL CHECKOUT REPARAT -->
+        <!-- BUTON PAYPAL CHECKOUT -->
         <div class="checkout-wrapper">
             <a href="https://www.paypal.com/ncp/payment/MH54VF92TC364" target="_blank" class="btn-paypal">
                 ACHITĂ COȘUL TRADIȚIONAL
@@ -161,7 +179,7 @@
 
     </main>
 
-    <!-- SECȚIUNEA DARK FINALĂ (METANOIA ART & TRIBUT) -->
+    <!-- SECȚIUNEA DARK FINALĂ -->
     <section class="dark-section">
         <div class="dark-container">
             
@@ -197,6 +215,14 @@
 
         </div>
     </section>
+
+    <footer>
+        <p style="font-size:0.85rem; color:#666; letter-spacing:2px; margin-bottom:25px; font-family: 'Inter', sans-serif;">DAKAMIGOS MARKT SRL | CUI: 38324829</p>
+        <div class="footer-legal">
+            <a href="index.html">Înapoi la Hub</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </footer>
 
 </body>
 </html>
