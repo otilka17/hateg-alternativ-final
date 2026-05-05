@@ -9,121 +9,150 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        :root { --auriu: #c5a059; --negru: #070707; --alb: #ffffff; --text: #333; }
+        :root { --negru: #070707; --alb: #ffffff; --text: #333; --auriu: #c5a059; }
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         
-        /* Fundal editorial cu puncte subtile (dot grid) */
+        /* Fundal editorial cu puncte subtile EXACT cum il aveai */
         body { 
             background-color: var(--alb); 
-            background-image: radial-gradient(#d5d5d5 1px, transparent 1px); 
-            background-size: 25px 25px; 
+            background-image: radial-gradient(#ddd 1px, transparent 1px); 
+            background-size: 20px 20px; 
             color: var(--text); 
             font-family: 'Inter', sans-serif; 
-            line-height: 1.8; 
             overflow-x: hidden; 
         }
         
         a { text-decoration: none !important; outline: none; }
 
         /* HEADER */
-        .site-header { padding: 30px 5%; display: flex; justify-content: space-between; align-items: center; background: rgba(255, 255, 255, 0.95); border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 100; }
-        .brand-logo { font-family: 'Cinzel', serif; font-size: 1.2rem; color: var(--negru); letter-spacing: 4px; font-weight: 700; }
-        .nav-back { color: #888; font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 2px; transition: 0.3s; font-weight: bold; }
+        .site-header { padding: 30px 5%; display: flex; justify-content: space-between; align-items: center; background: transparent; position: relative; z-index: 100; max-width: 900px; margin: 0 auto; }
+        .brand-logo { font-family: 'Cinzel', serif; font-size: 1.5rem; color: var(--negru); font-weight: 900; letter-spacing: 5px; }
+        .nav-back { color: #888; font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 2px; transition: 0.3s; font-weight: 600; text-transform: uppercase; }
         .nav-back:hover { color: var(--negru); }
 
-        /* CONTAINER PRINCIPAL */
-        .editorial-container { max-width: 800px; margin: 80px auto; padding: 0 5%; background: var(--alb); box-shadow: 0 0 40px rgba(0,0,0,0.03); border: 1px solid #f0f0f0; padding-bottom: 80px; }
+        /* CONTINUT ALB / EDITORIAL */
+        .editorial-container { max-width: 700px; margin: 40px auto 100px; padding: 0 5%; }
 
-        .page-title { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 6vw, 4rem); color: var(--negru); text-align: center; margin: 60px 0 20px; line-height: 1.1; font-style: italic; }
-        .page-subtitle { text-align: center; font-family: 'Cinzel', serif; letter-spacing: 3px; color: #888; font-size: 0.85rem; margin-bottom: 80px; text-transform: uppercase; }
-
-        /* SECTIUNI TEXT + IMAGINE */
-        .content-block { margin-bottom: 60px; padding: 40px; border: 1px dashed #ddd; background: #fff; position: relative; }
-        .block-number { position: absolute; top: -15px; left: -15px; background: var(--negru); color: var(--alb); font-family: 'Cinzel', serif; padding: 10px 15px; font-size: 1.2rem; }
+        .content-text { font-size: 1.15rem; color: #444; margin-bottom: 30px; line-height: 1.8; font-weight: 300; }
+        .content-text strong { color: var(--negru); font-weight: 600; font-family: 'Inter', sans-serif; }
         
-        .content-text { font-size: 1.1rem; color: #555; margin-bottom: 30px; }
-        .content-text strong { color: var(--negru); font-weight: 600; font-family: 'Playfair Display', serif; font-size: 1.3rem; }
-        
-        .content-title { font-family: 'Playfair Display', serif; color: #8b0000; font-size: 1.8rem; margin-bottom: 20px; font-weight: 700; }
+        .img-box { margin-bottom: 60px; border: 1px solid #eee; background: #fff; padding: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
+        .img-box img { width: 100%; height: auto; display: block; filter: contrast(1.05); }
 
-        .img-container { width: 100%; border: 1px solid #eee; padding: 10px; background: #fff; box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
-        .img-container img { width: 100%; height: auto; display: block; filter: contrast(1.05); }
+        /* LISTA PRODUSELOR (NOU) */
+        .basket-manifest { background: #fff; border: 1px solid #111; padding: 40px 30px; margin-top: 60px; margin-bottom: 40px; box-shadow: 10px 10px 0px #f0f0f0; }
+        .manifest-title { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-style: italic; color: var(--negru); margin-bottom: 25px; text-align: center; border-bottom: 1px dashed #ccc; padding-bottom: 20px; }
+        .manifest-list { list-style: none; padding: 0; }
+        .manifest-list li { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f5f5f5; padding: 15px 0; font-size: 0.95rem; color: #555; }
+        .manifest-list li:last-child { border-bottom: none; }
+        .m-qty { font-family: 'Cinzel', serif; font-weight: 900; color: var(--negru); min-width: 30px; font-size: 1.1rem; }
+        .m-name { flex-grow: 1; padding: 0 15px; font-weight: 400; color: #222; }
+        .m-weight { font-family: 'Inter', sans-serif; color: #888; font-size: 0.85rem; }
 
-        /* BUTON PAYPAL CHECKOUT */
-        .checkout-section { border-top: 1px solid #111; padding-top: 30px; margin-top: 80px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
-        .btn-paypal { background: var(--negru); color: var(--alb); padding: 20px 45px; font-family: 'Cinzel', serif; font-weight: 700; text-transform: uppercase; letter-spacing: 3px; font-size: 0.9rem; border: 1px solid var(--negru); display: inline-block; transition: 0.4s; }
-        .btn-paypal:hover { background: #fff; color: var(--negru); }
-        .checkout-number { font-family: 'Inter', sans-serif; font-size: 1.8rem; color: #888; font-weight: 300; }
+        /* BUTON CHECKOUT REPARAT */
+        .checkout-wrapper { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; border-top: 1px solid #111; padding-top: 30px; }
+        .btn-paypal { 
+            background-color: #070707 !important; /* Fortam negrul */
+            color: #ffffff !important; /* Fortam albul */
+            padding: 18px 40px; 
+            font-family: 'Cinzel', serif; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 3px; 
+            font-size: 0.85rem; 
+            border: none; 
+            display: inline-block; 
+            transition: opacity 0.3s;
+        }
+        .btn-paypal:hover { opacity: 0.8; }
+        .checkout-number { font-family: 'Inter', sans-serif; font-size: 2rem; color: #aaa; font-weight: 200; }
 
-        /* SECTIUNE DARK FINALĂ */
+        /* SECTIUNEA DARK DE LA FINAL (FIXA SI BUNA) */
         .dark-section { background: var(--negru); color: var(--alb); padding: 100px 5% 80px; margin-top: 0; font-family: 'Inter', sans-serif; }
         .dark-container { max-width: 900px; margin: 0 auto; }
         .dark-header { display: flex; justify-content: space-between; border-bottom: 1px solid #222; padding-bottom: 20px; margin-bottom: 50px; font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 3px; color: #888; }
-        .dark-presented { margin-bottom: 30px; font-family: 'Cinzel', serif; color: #888; font-size: 0.8rem; letter-spacing: 2px; }
-        .dark-presented span { color: var(--alb); font-size: 1.1rem; letter-spacing: 3px; }
+        .dark-presented { margin-bottom: 30px; font-family: 'Cinzel', serif; color: #888; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase;}
+        .dark-presented span { color: var(--alb); font-size: 1.1rem; letter-spacing: 3px; display: block; margin-top: 5px; }
         .dark-title { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 8vw, 5rem); line-height: 1.1; margin-bottom: 40px; color: var(--alb); }
         .dark-box { border: 1px solid #222; padding: 40px 30px; margin-bottom: 50px; background: #0a0a0a; }
-        .dark-box h3 { font-weight: 300; font-size: 1.1rem; letter-spacing: 2px; color: #ccc; text-transform: uppercase; line-height: 1.6; }
+        .dark-box h3 { font-weight: 300; font-size: 1rem; letter-spacing: 2px; color: #ccc; text-transform: uppercase; line-height: 1.6; }
+        
         .tribut-title { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--alb); margin-bottom: 20px; letter-spacing: 2px; text-transform: uppercase; }
         .concept-box { border: 1px dashed #333; padding: 50px 20px; text-align: center; }
 
-        /* FOOTER */
-        footer { padding: 60px 20px; text-align: center; border-top: 1px solid #111; background: #050505; color: var(--alb); }
-        .footer-legal a { color: #555; margin: 0 15px; font-size: 0.75rem; text-transform: uppercase; font-family: 'Cinzel', serif; letter-spacing: 1px; }
     </style>
 </head>
 <body>
 
-    <!-- HEADER / MENIU -->
     <header class="site-header">
         <div class="brand-logo">METANOIA</div>
         <a href="index.html" class="nav-back"><i class="fas fa-arrow-left"></i> ÎNAPOI LA HUB</a>
     </header>
 
-    <!-- ZONA EDITORIALĂ ALBĂ -->
     <main class="editorial-container">
         
-        <h1 class="page-title">Gustul Rânduielii.</h1>
-        <div class="page-subtitle">Experiența Gastronomică din Țara Hațegului</div>
+        <!-- TEXT 1 -->
+        <p class="content-text">
+            O dă <strong>pâinea de casă aburindă</strong>, frământată pe îndelete, alăturată unei bucăți de <strong>brânză curată</strong> și unui <strong>sângerete tradițional</strong>, exact așa cum se făcea odată în gospodăriile din Țara Hațegului.
+        </p>
 
-        <!-- BLOC 1: Pâine și Brânză -->
-        <div class="content-block">
-            <div class="block-number">01</div>
-            <p class="content-text">
-                O dă <strong>pâinea de casă aburindă</strong>, frământată pe îndelete, alăturată unei bucăți de <strong>brânză curată</strong> și unui <strong>sângerete tradițional</strong>, exact așa cum se făcea odată în gospodăriile din Țara Hațegului.
-            </p>
-            <div class="img-container">
-                <img src="images/paine-de-casa.jpg" alt="Paine de casa traditionala" onerror="this.src='https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=800'">
-            </div>
+        <div class="img-box">
+            <img src="images/paine-de-casa.jpg" alt="Paine de casa traditionala" onerror="this.src='https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=800'">
         </div>
 
-        <!-- BLOC 2: Zacuscă și Dulceață -->
-        <div class="content-block">
-            <div class="block-number">02</div>
-            <p class="content-text">
-                Din cămară aducem <strong>Zacuscă coaptă pe jar</strong> și <strong>Dulceață aromată</strong>, preparate lent, fără scurtături industriale, respectând fibra naturală a ingredientelor.
-            </p>
-            <div class="img-container" style="display: flex; gap: 10px;">
-                <!-- Am pus două imagini mici una lângă alta pentru varietate, folosesc fallback-uri sigure -->
-                <img src="images/zacusca.jpg" alt="Zacusca traditionala" onerror="this.src='https://images.unsplash.com/photo-1589367920969-ab8e050bfc18?auto=format&fit=crop&q=80&w=400'" style="width: 50%;">
-                <img src="images/dulceata.jpg" alt="Dulceata aromata" onerror="this.src='https://images.unsplash.com/photo-1601000676634-1bf139eb292f?auto=format&fit=crop&q=80&w=400'" style="width: 50%;">
-            </div>
+        <!-- TEXT 2 -->
+        <p class="content-text" style="margin-top: 80px;">
+            Din cămară aducem <strong>Zacuscă coaptă pe jar</strong> și <strong>Dulceață aromată</strong>, preparate lent, fără scurtături industriale, respectând fibra naturală a ingredientelor. Includem <strong>Legume proaspete din gospodărie</strong>, acompaniate de <strong>Ketchup și Bulion artizanal</strong>.
+        </p>
+
+        <div class="img-box">
+            <img src="images/bulion-legume.jpg" alt="Legume din curte" onerror="this.src='https://images.unsplash.com/photo-1590412200988-a436970781fa?auto=format&fit=crop&q=80&w=800'">
         </div>
 
-        <!-- BLOC 3: Legume și Bulion -->
-        <div class="content-block" style="border-color: #8b0000; background: #fffaf0;">
-            <div class="block-number" style="background: #8b0000;">03</div>
-            <h2 class="content-title">Rezultatul atenției la detalii</h2>
-            <p class="content-text">
-                Includem <strong>Legume proaspete din gospodărie</strong>, culese la maturitate deplină, acompaniate de <strong>Ketchup și Bulion artizanal</strong>. Aceasta este semnătura noastră pentru un brand care nu face compromisuri la capitolul calitate și sănătate.
-            </p>
-            <div class="img-container">
-                <img src="images/bulion-legume.jpg" alt="Legume si Bulion" onerror="this.src='https://images.unsplash.com/photo-1590412200988-a436970781fa?auto=format&fit=crop&q=80&w=800'">
-            </div>
+        <!-- MANIFESTUL COȘULUI (LISTA PRODUSE) -->
+        <div class="basket-manifest">
+            <h3 class="manifest-title">Conținutul Coșului</h3>
+            <ul class="manifest-list">
+                <li>
+                    <span class="m-qty">1x</span>
+                    <span class="m-name">Pâine de casă coaptă pe vatră</span>
+                    <span class="m-weight">~800g</span>
+                </li>
+                <li>
+                    <span class="m-qty">1x</span>
+                    <span class="m-name">Brânză proaspătă curată (vacă/oaie)</span>
+                    <span class="m-weight">500g</span>
+                </li>
+                <li>
+                    <span class="m-qty">1x</span>
+                    <span class="m-name">Sângerete tradițional de casă</span>
+                    <span class="m-weight">300g</span>
+                </li>
+                <li>
+                    <span class="m-qty">1x</span>
+                    <span class="m-name">Zacuscă coaptă pe jar</span>
+                    <span class="m-weight">350g</span>
+                </li>
+                <li>
+                    <span class="m-qty">1x</span>
+                    <span class="m-name">Dulceață de casă aromată</span>
+                    <span class="m-weight">350g</span>
+                </li>
+                <li>
+                    <span class="m-qty">1x</span>
+                    <span class="m-name">Bulion / Ketchup artizanal</span>
+                    <span class="m-weight">500ml</span>
+                </li>
+                <li>
+                    <span class="m-qty">+</span>
+                    <span class="m-name">Legume proaspete din gospodărie</span>
+                    <span class="m-weight">Sezonier</span>
+                </li>
+            </ul>
         </div>
 
-        <!-- SECȚIUNEA CHECKOUT PAYPAL COȘ TRADIȚIONAL -->
-        <div class="checkout-section">
+        <!-- BUTON PAYPAL CHECKOUT REPARAT -->
+        <div class="checkout-wrapper">
             <a href="https://www.paypal.com/ncp/payment/MH54VF92TC364" target="_blank" class="btn-paypal">
                 ACHITĂ COȘUL TRADIȚIONAL
             </a>
@@ -142,7 +171,7 @@
             </div>
 
             <div class="dark-presented">
-                PRESENTED BY<br>
+                PRESENTED BY
                 <span>HAȚEG ALTERNATIV</span>
             </div>
 
@@ -168,15 +197,6 @@
 
         </div>
     </section>
-
-    <!-- FOOTER SITE -->
-    <footer>
-        <p style="font-size:0.85rem; color:#666; letter-spacing:2px; margin-bottom:25px; font-family: 'Inter', sans-serif;">DAKAMIGOS MARKT SRL | CUI: 38324829</p>
-        <div class="footer-legal">
-            <a href="index.html">Înapoi la Hub</a>
-            <a href="contact.html">Contact</a>
-        </div>
-    </footer>
 
 </body>
 </html>
