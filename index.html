@@ -49,7 +49,20 @@
         .hero-description { color: #ccc; font-size: 1.1rem; margin-bottom: 30px; max-width: 600px; line-height: 1.5; }
         .btn-portal { display: inline-block; padding: 18px 45px; background: var(--portocaliu); color: #fff !important; font-family: 'Cinzel'; font-weight: 700; letter-spacing: 2px; }
 
-        .hub-advisory { background: #080808; border-top: 1px solid var(--auriu); padding: 80px 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: center; }
+        /* SECȚIUNE NOUĂ: COȘUL DE EXPERIENȚĂ */
+        .basket-section { background: #0a0a0a; border-top: 1px solid #222; border-bottom: 1px solid #222; padding: 100px 5%; display: flex; flex-wrap: wrap; align-items: center; gap: 50px; }
+        .basket-image { flex: 1; min-width: 300px; position: relative; }
+        .basket-image img { width: 100%; border: 2px solid var(--auriu); border-radius: 4px; filter: grayscale(20%) contrast(1.1); box-shadow: 0 20px 40px rgba(0,0,0,0.8); }
+        .basket-content { flex: 1; min-width: 300px; }
+        .basket-content h2 { font-family: 'Playfair Display'; font-style: italic; font-size: 2.8rem; color: var(--auriu); margin-bottom: 15px; line-height: 1.1; }
+        .basket-content h4 { font-family: 'Cinzel'; font-size: 0.9rem; letter-spacing: 3px; color: #888; margin-bottom: 30px; }
+        .basket-list { list-style: none; padding: 0; }
+        .basket-list li { margin-bottom: 20px; display: flex; align-items: flex-start; }
+        .basket-list i { color: var(--auriu); font-size: 1.2rem; margin-right: 15px; margin-top: 5px; }
+        .basket-list strong { color: var(--alb); font-family: 'Cinzel'; font-size: 1.1rem; display: block; margin-bottom: 5px; }
+        .basket-list p { color: #aaa; font-size: 0.9rem; line-height: 1.6; }
+
+        .hub-advisory { background: #050505; padding: 80px 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; align-items: center; }
         .hub-text h3 { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 3px; margin-bottom: 20px; font-size: 1.8rem; }
         .hub-text p { color: #aaa; line-height: 1.8; margin-bottom: 30px; }
         .hub-img img { width: 100%; max-height: 450px; object-fit: cover; border: 1px solid var(--auriu); padding: 8px; background: #000; }
@@ -72,6 +85,7 @@
         @media (max-width: 768px) {
             .hero { justify-content: center; text-align: center; padding: 0 20px; }
             .hero-content { padding-top: 120px; }
+            .basket-section { padding: 60px 20px; flex-direction: column; }
             .card-item { height: 380px; }
             .card-item:hover img { transform: none !important; }
         }
@@ -88,7 +102,6 @@
             <a href="index.html">Acasă</a>
             <a href="pensiune.html">Pensiunea</a>
             <a href="gastronomie.html">Gastronomie</a>
-            <!-- ACTUALIZAT: Cale injectată către pagina de produse premium -->
             <a href="produse.html" style="color: var(--auriu) !important; font-weight: 800;">PRODUSE PREMIUM</a>
             <a href="curs.html">Curs Management</a>
             <a href="metanoia.html">Metanoia</a>
@@ -102,11 +115,51 @@
             <p style="font-family:'Cinzel'; color:var(--auriu); letter-spacing:6px; margin-bottom:15px; font-weight:900;">HUB TURISTIC — HAȚEG ALTERNATIV</p>
             <h1>Metanoia. <br>Simte și trăiește tăcerea</h1>
             <p class="hero-description">Descoperă rânduiala veche și regenerarea strategică în inima Țării Hațegului. Un refugiu unde liniștea devine experiență.</p>
-            <a href="#hub" class="btn-portal">DESCOPERĂ HUB-UL</a>
+            <a href="#experienta" class="btn-portal">DESCOPERĂ HUB-UL</a>
         </div>
     </section>
 
-    <section class="hub-advisory" id="hub">
+    <!-- SECȚIUNE NOUĂ: COȘUL DE EXPERIENȚĂ (INTEGRARE INFORMAȚII) -->
+    <section class="basket-section" id="experienta">
+        <div class="basket-image">
+            <!-- Folosim o imagine placeholder care ilustrează perfect un coș artizanal premium cu borcane și rânduială -->
+            <img src="https://images.unsplash.com/photo-1605436247078-f0efa0f63ea4?auto=format&fit=crop&q=80&w=1000" alt="Coșul Metanoia - Produse Premium din Țara Hațegului">
+        </div>
+        <div class="basket-content">
+            <h2>Coșul "Metanoia:<br>Rânduială și Tihnă"</h2>
+            <h4>O UNITATE DE EFICIENȚĂ GASTRONOMICĂ, ASAMBLATĂ ÎN ȚARA HAȚEGULUI</h4>
+            
+            <ul class="basket-list">
+                <li>
+                    <i class="fas fa-box"></i>
+                    <div>
+                        <strong>Ambalajul & Experiența Unboxing</strong>
+                        <p>Cutie robustă de lemn, așezată pe un pat de fân autentic adunat din zona Retezatului. Legată cu sfoară de iută și sigilată pentru a păstra taina rânduielii.</p>
+                    </div>
+                </li>
+                <li>
+                    <i class="fas fa-seedling"></i>
+                    <div>
+                        <strong>Asset-urile Fizice (Producători Locali & Făcute în Casă)</strong>
+                        <p>Zacuscă de Gorgan (eficiență pe jar), Dulceață de Nuci Verzi (tihnă strategică) și Ketchup Artizanal. Toate preparate lent, curate, fără scurtături.</p>
+                    </div>
+                </li>
+                <li>
+                    <i class="fas fa-qrcode"></i>
+                    <div>
+                        <strong>Asset-ul Strategic (Biletul de Aur)</strong>
+                        <p>O scrisoare de onboarding cu un cod QR exclusiv. Scanarea îți deschide accesul la <em>Masterplanul Metanoia</em> și la auditul privat de 30 de minute cu Arhitectul sistemului.</p>
+                    </div>
+                </li>
+            </ul>
+
+            <a href="produse.html" style="display: inline-block; padding: 15px 35px; background: transparent; border: 2px solid var(--auriu); color: var(--auriu); font-family: 'Cinzel'; font-weight: bold; letter-spacing: 2px; margin-top: 20px; transition: 0.3s;" onmouseover="this.style.background='var(--auriu)'; this.style.color='#000';" onmouseout="this.style.background='transparent'; this.style.color='var(--auriu)';">
+                REZERVA CĂMARA ARHITECTULUI
+            </a>
+        </div>
+    </section>
+
+    <section class="hub-advisory">
         <div class="hub-text">
             <span style="font-family:'Cinzel'; color:var(--auriu); letter-spacing:4px; font-size:0.75rem;">CHECK-POINT TOTEȘTI</span>
             <h3>Punctul tău de Aprovizionare.</h3>
@@ -120,16 +173,6 @@
 
     <main class="container">
         <div class="grid-hub">
-            <!-- ACTUALIZAT: Card principal care duce spre produse.html -->
-            <a href="produse.html" class="card-item" style="border: 2px solid var(--auriu);">
-                <img src="images/gast-panou.png" alt="Produse Premium">
-                <div class="card-info">
-                    <span style="font-family:'Cinzel'; color:var(--auriu); font-size:0.7rem; letter-spacing:2px; display:block; margin-bottom:10px;">RÂNDUIALĂ ÎN CĂMARĂ</span>
-                    <h4>PRODUSE PREMIUM</h4>
-                    <p>Zacuscă, dulcețuri și rânduială artizanală. Unități de eficiență gastronomică pentru viața ta premium.</p>
-                </div>
-            </a>
-
             <a href="pensiune.html" class="card-item">
                 <img src="images/la-buliga-pensiune.jpg" alt="Domeniile La Buligă">
                 <div class="card-info"><h4>DOMENIILE LA BULIGĂ</h4><p>Cazare Premium și tihnă la 1100m altitudine.</p></div>
