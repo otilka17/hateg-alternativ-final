@@ -24,14 +24,19 @@
         .poarta-secreta { margin-top: 80px; padding: 60px; background: var(--carbune); color: white; text-align: center; border-radius: 2px; }
         .poarta-secreta h2 { color: var(--auriu); font-family: 'Cinzel'; letter-spacing: 5px; font-size: 1.2rem; }
         
+        .action-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 40px; }
+        
         .btn-acces { 
             background: var(--auriu); color: #000; padding: 18px 40px; border: none; 
             font-family: 'Cinzel'; font-weight: 900; font-size: 1rem; letter-spacing: 2px; 
-            cursor: pointer; margin-top: 30px; transition: 0.4s;
+            cursor: pointer; transition: 0.4s; text-decoration: none; display: inline-block;
         }
         .btn-acces:hover { background: #fff; transform: scale(1.05); }
+        
+        .btn-pay { background: transparent; border: 2px solid var(--auriu); color: var(--auriu); }
+        .btn-pay:hover { background: var(--auriu); color: #000; }
 
-        #lock-screen { display: none; margin-top: 30px; }
+        #lock-screen { display: none; margin-top: 40px; }
         #key-input { 
             background: transparent; border: 1px solid var(--auriu); color: var(--auriu); 
             padding: 15px; font-family: 'Cinzel'; font-size: 1.5rem; text-align: center; 
@@ -60,11 +65,17 @@
             <p>Conversația privată este noul tău magazin exclusivist. Preia controlul și nu arunca prețul din prima.</p>
         </div>
 
+        <!-- POARTA SECRETA CU LINK DE PLATĂ INTEGRAT -->
         <section class="poarta-secreta">
             <h2>POARTA SECRETA 🏕️</h2>
-            <p style="opacity: 0.7; margin-top: 10px;">Accesul la Masterplanul Integral este rezervat exclusiv membrilor.</p>
+            <p style="opacity: 0.7; margin-top: 10px;">Accesul la Masterplanul Integral este rezervat exclusiv membrilor. Achită accesul pentru a primi Cheia.</p>
             
-            <button id="btn-poarta" class="btn-acces" onclick="showLock()">DESCHIDE POARTA</button>
+            <div class="action-buttons" id="action-panel">
+                <!-- LINKUL TĂU PAYPAL PENTRU CURS -->
+                <a href="https://www.paypal.com/ncp/payment/APFP4CR3E8ECL" target="_blank" class="btn-acces btn-pay">OBȚINE CHEIA (ACHITĂ)</a>
+                
+                <button id="btn-poarta" class="btn-acces" onclick="showLock()">AM DEJA CHEIA</button>
+            </div>
 
             <div id="lock-screen">
                 <input type="text" id="key-input" placeholder="********" oninput="checkKey(this.value)">
@@ -77,7 +88,7 @@
 
     <script>
         function showLock() {
-            document.getElementById('btn-poarta').style.display = 'none';
+            document.getElementById('action-panel').style.display = 'none';
             document.getElementById('lock-screen').style.display = 'block';
             document.getElementById('key-input').focus();
         }
