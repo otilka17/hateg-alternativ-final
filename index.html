@@ -1,177 +1,228 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <!-- Google Tag Manager -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18106516696"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'AW-18106516696');
-    </script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Hațeg Alternativ | Metanoia</title>
+    <title>Cămara & Gospodăria | Hațeg Alternativ</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Cinzel:wght@400;700;900&family=Inter:wght@200;300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="https://static.elfsight.com/platform/platform.js" async></script>
 
     <style>
-        :root { --auriu: #c5a059; --negru: #050505; --alb: #ffffff; }
+        :root { --negru: #070707; --alb: #ffffff; --text: #333; --auriu: #c5a059; }
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        a { text-decoration: none !important; color: inherit !important; }
-        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; }
-
-        /* HEADER FIX */
-        .site-header { position: fixed; top: 0; width: 100%; z-index: 10002; padding: 25px 5%; display: flex; justify-content: space-between; align-items: center; }
-        .brand-logo img { height: 65px; width: auto; }
         
-        .burger { cursor: pointer; border: 1px solid var(--auriu); padding: 12px; border-radius: 4px; z-index: 10003; background: rgba(0,0,0,0.4); }
-        .burger div { width: 28px; height: 1px; background: var(--auriu); margin: 7px; transition: 0.3s; }
-
-        /* MENIU FULL-SCREEN IDENTIC SCREENSHOT_2026-05-05-22-39-45-85 */
-        .main-nav { 
-            position: fixed; top: 0; left: 0; width: 100%; height: 100vh; 
-            background: #000; display: flex; flex-direction: column; 
-            justify-content: center; align-items: center; 
-            transform: translateY(-100%); transition: 0.6s cubic-bezier(0.7, 0, 0.3, 1); z-index: 10000; 
+        /* Fundal editorial cu puncte subtile */
+        body { 
+            background-color: var(--alb); 
+            background-image: radial-gradient(#ddd 1px, transparent 1px); 
+            background-size: 20px 20px; 
+            color: var(--text); 
+            font-family: 'Inter', sans-serif; 
+            overflow-x: hidden; 
         }
-        .main-nav.active { transform: translateY(0); }
-        .main-nav a { font-size: 1.5rem; font-family: 'Cinzel'; margin: 15px 0; letter-spacing: 4px; text-transform: uppercase; text-align: center; }
         
-        /* BUTON REZERVARE */
-        .nav-res-btn { border: 1px solid var(--auriu); padding: 18px 60px; margin-top: 40px !important; color: var(--auriu) !important; letter-spacing: 6px; font-weight: 700; }
+        a { text-decoration: none !important; outline: none; }
 
-        /* HERO[cite: 1] */
-        .hero { 
-            height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8)), url('images/rasarit.jpg') center/cover no-repeat;
-            padding: 0 10%;
+        /* HEADER */
+        .site-header { padding: 30px 5%; display: flex; justify-content: space-between; align-items: center; background: transparent; position: relative; z-index: 100; max-width: 900px; margin: 0 auto; }
+        .brand-logo { font-family: 'Cinzel', serif; font-size: 1.5rem; color: var(--negru); font-weight: 900; letter-spacing: 5px; }
+        .nav-back { color: #888; font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 2px; transition: 0.3s; font-weight: 600; text-transform: uppercase; }
+        .nav-back:hover { color: var(--negru); }
+
+        /* CONTINUT ALB / EDITORIAL */
+        .editorial-container { max-width: 700px; margin: 40px auto 100px; padding: 0 5%; }
+
+        .content-text { font-size: 1.15rem; color: #444; margin-bottom: 30px; line-height: 1.8; font-weight: 300; }
+        .content-text strong { color: var(--negru); font-weight: 600; font-family: 'Inter', sans-serif; }
+        
+        .img-box { margin-bottom: 60px; border: 1px solid #eee; background: #fff; padding: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); }
+        .img-box img { width: 100%; height: auto; display: block; filter: contrast(1.05); }
+
+        /* LISTA PRODUSELOR */
+        .basket-manifest { background: #fff; border: 1px solid #111; padding: 40px 30px; margin-top: 60px; margin-bottom: 40px; box-shadow: 10px 10px 0px #f0f0f0; }
+        .manifest-title { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-style: italic; color: var(--negru); margin-bottom: 25px; text-align: center; border-bottom: 1px dashed #ccc; padding-bottom: 20px; }
+        .manifest-list { list-style: none; padding: 0; }
+        .manifest-list li { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f5f5f5; padding: 15px 0; font-size: 0.95rem; color: #555; }
+        .manifest-list li:last-child { border-bottom: none; }
+        .m-qty { font-family: 'Cinzel', serif; font-weight: 900; color: var(--negru); min-width: 30px; font-size: 1.1rem; }
+        .m-name { flex-grow: 1; padding: 0 15px; font-weight: 400; color: #222; }
+        .m-weight { font-family: 'Inter', sans-serif; color: #888; font-size: 0.85rem; }
+
+        /* BUTON CHECKOUT */
+        .checkout-wrapper { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; border-top: 1px solid #111; padding-top: 30px; }
+        .btn-paypal { 
+            background-color: #070707 !important; 
+            color: #ffffff !important; 
+            padding: 18px 40px; 
+            font-family: 'Cinzel', serif; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 3px; 
+            font-size: 0.85rem; 
+            border: none; 
+            display: inline-block; 
+            transition: opacity 0.3s;
         }
-        .hero-tagline { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 7px; font-size: 0.8rem; margin-bottom: 25px; font-weight: 900; }
-        .hero h1 { font-family: 'Playfair Display'; font-style: italic; font-size: 2.8rem; line-height: 1.2; margin-bottom: 30px; }
-        .btn-hub { display: inline-block; border: 1px solid var(--auriu); padding: 18px 50px; font-family: 'Cinzel'; letter-spacing: 4px; color: var(--auriu) !important; }
+        .btn-paypal:hover { opacity: 0.8; }
+        .checkout-number { font-family: 'Inter', sans-serif; font-size: 2rem; color: #aaa; font-weight: 200; }
 
-        /* SECTIUNEA CE ESTE HUB-UL[cite: 1] */
-        .about-section { padding: 100px 8%; text-align: center; }
-        .about-section h2 { font-family: 'Playfair Display'; color: var(--auriu); font-size: 2.5rem; margin-bottom: 35px; }
-        .about-section p { font-family: 'Inter'; font-style: italic; color: #ccc; font-size: 1.2rem; line-height: 1.8; font-weight: 300; }
+        /* SECTIUNEA DARK FINALĂ */
+        .dark-section { background: var(--negru); color: var(--alb); padding: 100px 5% 80px; margin-top: 0; font-family: 'Inter', sans-serif; }
+        .dark-container { max-width: 900px; margin: 0 auto; }
+        .dark-header { display: flex; justify-content: space-between; border-bottom: 1px solid #222; padding-bottom: 20px; margin-bottom: 50px; font-family: 'Cinzel', serif; font-size: 0.8rem; letter-spacing: 3px; color: #888; }
+        .dark-presented { margin-bottom: 30px; font-family: 'Cinzel', serif; color: #888; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase;}
+        .dark-presented span { color: var(--alb); font-size: 1.1rem; letter-spacing: 3px; display: block; margin-top: 5px; }
+        .dark-title { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 8vw, 5rem); line-height: 1.1; margin-bottom: 40px; color: var(--alb); }
+        .dark-box { border: 1px solid #222; padding: 40px 30px; margin-bottom: 50px; background: #0a0a0a; }
+        .dark-box h3 { font-weight: 300; font-size: 1rem; letter-spacing: 2px; color: #ccc; text-transform: uppercase; line-height: 1.6; }
+        
+        .tribut-title { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--alb); margin-bottom: 20px; letter-spacing: 2px; text-transform: uppercase; }
+        .concept-box { border: 1px dashed #333; padding: 50px 20px; text-align: center; }
 
-        /* PILONI[cite: 1] */
-        .piloni-title { text-align: center; font-family: 'Cinzel'; font-size: 1.8rem; letter-spacing: 5px; margin: 60px 0; }
-        .pilon-card { margin-bottom: 90px; padding: 0 5%; }
-        .pilon-img { border: 1px solid #1a1a1a; margin-bottom: 30px; }
-        .pilon-img img { width: 100%; height: auto; display: block; }
-        .pilon-label { font-family: 'Cinzel'; color: var(--auriu); font-size: 0.75rem; letter-spacing: 4px; margin-bottom: 15px; }
-        .pilon-card h3 { font-family: 'Playfair Display'; font-style: italic; font-size: 2.4rem; margin-bottom: 25px; font-weight: 400; }
-        .pilon-card p { color: #888; line-height: 1.8; margin-bottom: 30px; font-size: 1rem; }
-        .link-discover { font-family: 'Cinzel'; color: var(--auriu); font-size: 0.8rem; letter-spacing: 3px; border-bottom: 1px solid var(--auriu); padding-bottom: 5px; }
+        /* FOOTER */
+        footer { padding: 60px 20px; text-align: center; border-top: 1px solid #111; background: #050505; color: var(--alb); }
+        .footer-legal a { color: #555; margin: 0 15px; font-size: 0.75rem; text-transform: uppercase; font-family: 'Cinzel', serif; letter-spacing: 1px; }
 
-        /* WHATSAPP FLOAT[cite: 1] */
-        .whatsapp-float { position: fixed; bottom: 30px; left: 30px; background: #25d366; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 32px; z-index: 10001; color: #fff; }
-
-        footer { padding: 80px 20px; text-align: center; border-top: 1px solid #111; }
-        .tribute { color: var(--auriu); font-weight: 900; margin-top: 40px; font-family: 'Cinzel'; font-size: 0.75rem; letter-spacing: 5px; opacity: 0.5; }
+        /* REPARATIE HEADER PE MOBIL */
+        @media (max-width: 600px) {
+            .site-header { 
+                flex-direction: column; 
+                justify-content: center; 
+                gap: 15px; 
+                padding: 25px 5% 10px; 
+            }
+            .brand-logo { 
+                font-size: 1.3rem; 
+                letter-spacing: 3px; 
+            }
+            .nav-back { 
+                font-size: 0.75rem; 
+            }
+        }
     </style>
 </head>
 <body>
 
-    <a href="https://wa.me/40749229686" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
-
     <header class="site-header">
-        <div class="brand-logo"><img src="images/logo1.svg" alt="Metanoia"></div>
-        <div class="burger" id="burger">
-            <div class="l1"></div><div class="l2"></div><div class="l3"></div>
-        </div>
-        <nav class="main-nav" id="menu">
-            <a href="index.html">HUB METANOIA</a>
-            <a href="pensiune.html">PENSIUNEA</a>
-            <a href="gastronomie.html">CĂMARA & GOSPODĂRIA</a>
-            <a href="curs.html">CURS MANAGEMENT</a>
-            <a href="evenimente.html">EVENIMENTE</a>
-            <a href="contact.html">CONTACT</a>
-            <a href="rezervari.html" class="nav-res-btn">REZERVARE</a>
-        </nav>
+        <div class="brand-logo">METANOIA</div>
+        <a href="index.html" class="nav-back"><i class="fas fa-arrow-left"></i> ÎNAPOI LA HUB</a>
     </header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <p class="hero-tagline">HAȚEG ALTERNATIV</p>
-            <h1>Metanoia.<br>Refugiul minții și al sufletului.</h1>
-            <a href="#hub" class="btn-hub">INTRĂ ÎN HUB</a>
+    <main class="editorial-container">
+        
+        <p class="content-text">
+            O dă <strong>pâinea de casă aburindă</strong>, frământată pe îndelete, alăturată unei bucăți de <strong>brânză curată</strong> și unui <strong>sângerete tradițional</strong>, exact așa cum se făcea odată în gospodăriile din Țara Hațegului.
+        </p>
+
+        <div class="img-box">
+            <img src="images/paine-de-casa.jpg" alt="Paine de casa traditionala" onerror="this.src='https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=800'">
         </div>
-    </section>
 
-    <section class="about-section" id="hub">
-        <h2>Ce este Hub-ul Metanoia?</h2>
-        <p>Metanoia înseamnă transformare profundă, schimbarea minții și întoarcerea la esență. Am creat acest hub pentru ca resetarea reală are nevoie de trei lucruri:</p>
-    </section>
+        <p class="content-text" style="margin-top: 80px;">
+            Din cămară aducem <strong>Zacuscă coaptă pe jar</strong> și <strong>Dulceață aromată</strong>, preparate lent, fără scurtături industriale, respectând fibra naturală a ingredientelor. Includem <strong>Legume proaspete din gospodărie</strong>, acompaniate de <strong>Ketchup și Bulion artizanal</strong>.
+        </p>
 
-    <h2 class="piloni-title">CEI 3 PILONI AI RÂNDUIELII</h2>
-
-    <!-- PILON 1[cite: 1] -->
-    <div class="pilon-card">
-        <div class="pilon-img"><img src="images/gast-masa-traditionala.jpg" alt="Corp"></div>
-        <div class="pilon-label">RESETAREA CORPULUI</div>
-        <h3>Gustul Gospodăriei</h3>
-        <p>Nu vindem concepte abstracte, ci hrană trudită cu mâinile, exact așa cum o punem noi pe masă în Țara Hațegului.</p>
-        <a href="gastronomie.html" class="link-discover">DESCHIDE CĂMARA TRADIȚIONALĂ</a>
-    </div>
-
-    <!-- PILON 2[cite: 1] -->
-    <div class="pilon-card">
-        <div class="pilon-img"><img src="images/la-buliga-pensiune.jpg" alt="Spatiu"></div>
-        <div class="pilon-label">RESETAREA SPAȚIULUI</div>
-        <h3>Domeniile La Buligă</h3>
-        <p>Un refugiu izolat la 1100m altitudine. Cazare premium unde foșnetul pădurii devine singura ta agendă.</p>
-        <a href="pensiune.html" class="link-discover">DESCOPERĂ TIHNA LA CABANĂ</a>
-    </div>
-
-    <!-- PILON 3[cite: 1] -->
-    <div class="pilon-card">
-        <div class="pilon-img"><img src="images/mug-buliga.jpg" alt="Minte"></div>
-        <div class="pilon-label">RESETAREA MINȚII</div>
-        <h3>Arhitectura Rânduielii</h3>
-        <p>Pentru liderii și antreprenorii epuizați de haos. Treci de la statutul de Operator la cel de Arhitect de sistem.</p>
-        <a href="curs.html" class="link-discover">VEZI MASTERPLANUL</a>
-    </div>
-
-    <section style="padding: 60px 5%; background: #080808; text-align: center;">
-        <h2 style="font-family:'Cinzel'; letter-spacing:4px; margin-bottom:40px;">EXTENSIILE HUB-ULUI</h2>
-        <div style="max-width: 600px; margin: 0 auto; border: 1px dashed var(--auriu); padding: 40px;">
-            <h3 style="font-family:'Cinzel'; color:var(--auriu); margin-bottom:20px;">PLĂTEȘTE PRIN PAYPAL</h3>
-            <a href="https://www.paypal.com/paypalme/HategAlternativ" target="_blank" style="background:#0070ba; color:#fff !important; padding:15px 40px; border-radius:5px; font-weight:700; display:inline-block;">PAYPAL.ME</a>
+        <div class="img-box">
+            <img src="images/bulion-legume.jpg" alt="Legume din curte" onerror="this.src='https://images.unsplash.com/photo-1590412200988-a436970781fa?auto=format&fit=crop&q=80&w=800'">
         </div>
-        <div style="margin-top:60px;">
-            <div class="elfsight-app-4342bef8-07d4-4bfe-9114-34160d0e96f1" data-elfsight-app-lazy></div>
+
+        <!-- MANIFESTUL COȘULUI -->
+        <div class="basket-manifest">
+            <h3 class="manifest-title">Conținutul Coșului</h3>
+            <ul class="manifest-list">
+                <li>
+                    <span class="m-qty">1x</span>
+                    <span class="m-name">Pâine de casă coaptă pe vatră</span>
+                    <span class="m-weight">~800g</span>
+                </li>
+                <li>
+                    <span class="m-qty">1x</span>
+                    <span class="m-name">Brânză proaspătă curată (vacă/oaie)</span>
+                    <span class="m-weight">500g</span>
+                </li>
+                <li>
+                    <span class="m-qty">1x</span>
+                    <span class="m-name">Sângerete tradițional de casă</span>
+                    <span class="m-weight">300g</span>
+                </li>
+                <li>
+                    <span class="m-qty">1x</span>
+                    <span class="m-name">Zacuscă coaptă pe jar</span>
+                    <span class="m-weight">350g</span>
+                </li>
+                <li>
+                    <span class="m-qty">1x</span>
+                    <span class="m-name">Dulceață de casă aromată</span>
+                    <span class="m-weight">350g</span>
+                </li>
+                <li>
+                    <span class="m-qty">1x</span>
+                    <span class="m-name">Bulion / Ketchup artizanal</span>
+                    <span class="m-weight">500ml</span>
+                </li>
+                <li>
+                    <span class="m-qty">+</span>
+                    <span class="m-name">Legume proaspete din gospodărie</span>
+                    <span class="m-weight">Sezonier</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- BUTON PAYPAL CHECKOUT -->
+        <div class="checkout-wrapper">
+            <a href="https://www.paypal.com/ncp/payment/MH54VF92TC364" target="_blank" class="btn-paypal">
+                ACHITĂ COȘUL TRADIȚIONAL
+            </a>
+            <span class="checkout-number">03</span>
+        </div>
+
+    </main>
+
+    <!-- SECȚIUNEA DARK FINALĂ -->
+    <section class="dark-section">
+        <div class="dark-container">
+            
+            <div class="dark-header">
+                <span>METANOIA ART</span>
+                <span>[ 2026 ]</span>
+            </div>
+
+            <div class="dark-presented">
+                PRESENTED BY
+                <span>HAȚEG ALTERNATIV</span>
+            </div>
+
+            <h2 class="dark-title">Autentic &<br>Tradițional</h2>
+
+            <div class="dark-box">
+                <h3>Parteneriat pentru excelență în<br>Gastronomia Premium</h3>
+            </div>
+
+            <div style="margin-bottom: 60px; border: 1px solid #222; overflow: hidden;">
+                <img src="images/gast-masa-traditionala.jpg" alt="Cosul Traditional Metanoia" onerror="this.src='https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&q=80&w=1000'" style="width: 100%; height: auto; display: block; filter: grayscale(15%) contrast(1.1);">
+            </div>
+
+            <h2 class="tribut-title">TRIBUT PATRICIA</h2>
+            <p style="color: #888; font-size: 1.05rem; line-height: 1.8; max-width: 600px; margin-bottom: 50px;">
+                Ambasador de Rânduială pentru Hațeg Alternativ și expert în arta ospitalității autentice din Țara Hațegului.
+            </p>
+
+            <div class="concept-box">
+                <h4 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: #fff; font-style: italic; margin-bottom: 10px; font-weight: 400;">Concept Exclusiv pentru</h4>
+                <h4 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--auriu); font-style: italic; font-weight: 400;">Experiențe de prestigiu</h4>
+            </div>
+
         </div>
     </section>
 
     <footer>
-        <p style="font-size:0.75rem; color:#444;">DAKAMIGOS MARKT SRL | CUI: RO40767794</p>
-        <div class="tribute">TRIBUT PATRICIA</div>
+        <p style="font-size:0.85rem; color:#666; letter-spacing:2px; margin-bottom:25px; font-family: 'Inter', sans-serif;">DAKAMIGOS MARKT SRL | CUI: 38324829</p>
+        <div class="footer-legal">
+            <a href="index.html">Înapoi la Hub</a>
+            <a href="contact.html">Contact</a>
+        </div>
     </footer>
 
-    <!-- Scripturi[cite: 1] -->
-    <script type="text/javascript">
-        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-        (function(){
-            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-            s1.async=true; s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
-            s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
-            s0.parentNode.insertBefore(s1,s0); 
-        })();
-    </script>
-    <script>
-        const burger = document.getElementById('burger');
-        const menu = document.getElementById('menu');
-        burger.onclick = () => {
-            menu.classList.toggle('active');
-            burger.style.borderColor = menu.classList.contains('active') ? '#fff' : '#c5a059';
-        };
-        menu.onclick = () => menu.classList.remove('active');
-    </script>
 </body>
 </html>
