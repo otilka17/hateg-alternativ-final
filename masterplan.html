@@ -2,8 +2,8 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <title>Masterplan V3 - Arhitectura Trezviei Sistemice (HBR Full Edition)</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;600;700&family=Cinzel:wght@400;600;900&display=swap" rel="stylesheet">
+    <title>Masterplan - Arhitectura Trezviei Sistemice</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;600;700&family=Cinzel:wght@600;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root { --auriu: #c5a059; --auriu-inchis: #a88540; --text: #222; --bg: #fff; --carbune: #111; }
@@ -17,135 +17,177 @@
         .tagline { font-family: 'Cinzel', serif; letter-spacing: 3px; font-size: 0.8rem; color: #888; text-transform: uppercase; }
 
         /* COPERTĂ */
-        .cover { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: #050505; color: white; }
-        .cover-content { position: relative; z-index: 2; padding: 50px; border: 2px solid var(--auriu); width: 85%; }
-        .cover h1 { color: var(--auriu); font-size: 4rem; font-style: italic; line-height: 1; margin: 20px 0; text-shadow: 0 10px 20px rgba(0,0,0,0.5); }
-        .cover p { font-size: 1.2rem; font-family: 'Inter'; font-weight: 300; margin-bottom: 30px; letter-spacing: 1px; }
-        .cover .logo { font-family: 'Cinzel'; font-size: 1.1rem; letter-spacing: 5px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px; margin-top: 40px; }
+        .cover { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=2000') center/cover; color: white; padding: 0; }
+        .cover::before { content: ''; position: absolute; top:0; left:0; right:0; bottom:0; background: linear-gradient(rgba(5, 5, 5, 0.85), rgba(5,5,5,0.95)); z-index: 1; }
+        .cover-content { position: relative; z-index: 2; padding: 44px; border: 2px solid var(--auriu); width: 85%; background: rgba(0,0,0,0.25); backdrop-filter: blur(5px); }
+        .cover h1 { color: var(--auriu); font-size: 3.8rem; font-style: italic; line-height: 1; margin: 18px 0 22px; text-shadow: 0 10px 20px rgba(0,0,0,0.5); }
+        .cover p { font-size: 1.1rem; font-family: 'Inter'; font-weight: 300; margin-bottom: 28px; color: #f4f0e8; }
+        .cover .logo { font-family: 'Cinzel'; font-size: 1.05rem; letter-spacing: 5px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px; margin-top: 32px; }
+        .cover-pill { display: inline-block; border: 1px solid rgba(197,160,89,0.7); color: #f0dfbf; padding: 10px 16px; font-family: 'Cinzel'; letter-spacing: 3px; font-size: 0.7rem; margin-bottom: 18px; }
 
         /* PAGINI INTERIOARE */
         .header-page { border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 30px; display: flex; justify-content: space-between; font-family: 'Cinzel'; font-size: 0.7rem; color: #aaa; }
-        .chapter-title { font-size: 2.5rem; color: var(--carbune); border-left: 5px solid var(--auriu); padding-left: 20px; margin-bottom: 30px; }
-        .text-block { margin-bottom: 20px; font-size: 1rem; color: #444; text-align: justify; }
+        .chapter-title { font-size: 2.2rem; color: var(--carbune); border-left: 5px solid var(--auriu); padding-left: 20px; margin-bottom: 30px; line-height: 1.2; }
+        .text-block { margin-bottom: 20px; font-size: 0.95rem; color: #444; text-align: justify; }
+        .text-block strong { color: var(--carbune); }
 
-        .highlight-box { background: #fbf8f1; border-left: 3px solid var(--auriu); padding: 20px; margin: 30px 0; font-style: italic; color: #555; }
+        .highlight-box { background: #fbf8f1; border-left: 3px solid var(--auriu); padding: 20px; margin: 25px 0; font-style: italic; color: #555; font-size: 0.95rem; }
 
-        /* DIAGRAME & TABELE */
-        .diagram-container { margin: 40px 0; padding: 30px; background: #fafafa; border: 1px dashed #ccc; text-align: center; }
-        .funnel-step { background: var(--carbune); color: var(--auriu); padding: 15px; margin: 10px auto; width: 80%; font-family: 'Cinzel'; font-weight: bold; position: relative; }
+        /* TABELE & DIAGRAME */
+        .master-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.85rem; }
+        .master-table th { background: var(--carbune); color: var(--auriu); padding: 12px; text-align: left; font-family: 'Cinzel'; }
+        .master-table td { border: 1px solid #eee; padding: 12px; color: #444; }
+
+        .funnel-container { margin: 30px 0; text-align: center; }
+        .funnel-step { background: var(--carbune); color: var(--auriu); padding: 15px; margin: 8px auto; width: 85%; font-family: 'Cinzel'; font-size: 0.9rem; font-weight: bold; position: relative; }
         .funnel-step::after { content: '\f0dd'; font-family: 'Font Awesome 5 Free'; font-weight: 900; position: absolute; bottom: -22px; left: 50%; transform: translateX(-50%); color: var(--carbune); font-size: 24px; }
         .funnel-step:last-child::after { display: none; }
-        
-        .master-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        .master-table th { background: var(--carbune); color: var(--auriu); padding: 15px; text-align: left; font-family: 'Cinzel'; font-size: 0.8rem; }
-        .master-table td { border: 1px solid #eee; padding: 15px; font-size: 0.9rem; color: #555; }
+        .funnel-step:nth-child(2) { width: 75%; }
+        .funnel-step:nth-child(3) { width: 65%; }
+        .funnel-step:nth-child(4) { width: 55%; background: var(--auriu); color: #000; }
 
-        /* FOOTER PAGE */
-        .footer-cta { background: var(--carbune); color: white; text-align: center; padding: 40px; margin-top: 50px; border: 2px solid var(--auriu); }
-        .footer-cta h2 { color: var(--auriu); margin-bottom: 20px; font-style: italic; }
+        .timeline { display: flex; justify-content: space-between; margin-top: 40px; position: relative; }
+        .timeline::before { content: ''; position: absolute; top: 20px; left: 0; width: 100%; height: 2px; background: #eee; z-index: 1; }
+        .time-box { background: white; border: 2px solid var(--auriu); padding: 20px; width: 31%; position: relative; z-index: 2; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .time-box h4 { font-family: 'Cinzel'; color: var(--auriu); margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 10px; font-size: 0.9rem;}
+        .time-box p { font-size: 0.8rem; color: #666; }
+
+        .footer-cta { background: var(--carbune); color: white; text-align: center; padding: 35px; margin-top: 40px; }
+        .footer-cta h2 { color: var(--auriu); margin-bottom: 15px; font-style: italic; font-size: 1.8rem;}
 
         @media print {
             body { background: white; }
-            .page { margin: 0; box-shadow: none; border: none; width: 100%; }
+            .page { margin: 0; box-shadow: none; border: none; width: 100%; height: 100%; }
         }
     </style>
 </head>
 <body>
 
-    <!-- PAGINA 1: COPERTĂ -->
+    <!-- COPERTĂ -->
     <div class="page cover">
         <div class="cover-content">
-            <div class="tagline">Harvard Business Edition • Goleman • Langer • David</div>
-            <h1>JOCUL<br>TREZVIEI.</h1>
-            <p>Arhitectura Controlului în Era Complexității. <br>Sistemul de Operare High-Ticket pentru Project Manageri.</p>
+            <div class="cover-pill">D. Goleman • E. Langer • S. David</div>
+            <div class="tagline">Inteligența Emoțională & Management Sistemic</div>
+            <h1>TREZVIA ÎN ERA<br>COMPLEXITĂȚII.</h1>
+            <p>De la sclavul algoritmului la Arhitectul sistemului. <br>Cum să controlezi conversația și să vinzi High-Ticket.</p>
             <div class="logo">HAȚEG ALTERNATIV | METANOIA</div>
         </div>
     </div>
 
-    <!-- PAGINA 2: MODUL 01 - FILOZOFIA ȘI AGILITATEA -->
+    <!-- MODUL 01 & 02: FILOZOFIA ȘI PROMOVAREA -->
     <div class="page">
-        <div class="header-page"><span>OPERATIONAL MANUAL</span><span>MODUL 01</span></div>
-        <h2 class="chapter-title">Kernel-ul de Arhitect:<br>Trezvia și Guvernanța Cognitivă</h2>
-        <p class="text-block">Mindfulness înseamnă **Trezvia** — paza minții care monitorizează sistemul cu rigurozitatea unui **Software Tester**. Conform lui **Ellen Langer**, aceasta este capacitatea de a observa activ noutatea pentru a evita "pilotul automat".</p>
+        <div class="header-page"><span>MANUAL OPERAȚIONAL V2</span><span>MODUL 01 & 02</span></div>
         
+        <h2 class="chapter-title">Arhitect vs. Operator:<br>Integrarea Agilității Emoționale</h2>
+        <p class="text-block">Trecerea de la statutul de operator la cel de arhitect de sistem este fundamentul scalării[cite: 4]. Arhitectul proiectează fluxuri care funcționează independent de prezența sa constantă, în timp ce operatorul este dependent de algoritmi și vinde timp pe unitatea de efort[cite: 4].</p>
+        
+        <p class="text-block">Aici intervine <strong>Mindfulness-ul (Trezvia) și Agilitatea Emoțională</strong>. Pentru a fi un arhitect eficient într-o eră a complexității, trebuie să îți gestionezi reacțiile automate. Nu te lăsa "încârligat" de metricile de vanitate (reach, vizualizări)[cite: 5]. Oprește-te din a fi sclavul algoritmului și ignoră complet reach-ul[cite: 5].</p>
+
+        <h3 style="margin-top: 30px; color: var(--auriu); font-family: 'Cinzel'; font-size: 1.2rem;">Promovare Sistemică (B2B Authority)</h3>
+        <p class="text-block">Algoritmii penalizează promisiunile de îmbogățire rapidă[cite: 2]. Strategia noastră se bazează pe termeni de consultanță managerială[cite: 2]. Evităm cuvinte ca "Bani rapid" sau "Garantat" și folosim concepte precum <em>"Scalare operațională"</em> și <em>"Eficiență sistemică"</em>[cite: 2].</p>
+
         <table class="master-table">
-            <tr><th>Pilon Strategic</th><th>Definiție de Sistem</th></tr>
-            <tr><td><strong>Inteligența Emoțională</strong></td><td>Capacitatea de a rămâne trează sub presiunea complexității moderne.</td></tr>
-            <tr><td><strong>Agilitate Emoțională</strong></td><td><strong>Error Handling:</strong> Navigarea printre emoții fără crash-uri decizionale.</td></tr>
-            <tr><td><strong>Trezvia (Mindfulness)</strong></td><td>Unitatea Centrală de Procesare (CPU) care elimină bug-urile de atenție.</td></tr>
+            <tr>
+                <th style="width: 30%;">Piloni de Conținut[cite: 2]</th>
+                <th>Obiectiv și Execuție[cite: 2]</th>
+            </tr>
+            <tr>
+                <td><strong>1. Analiza de Proces (30%)</strong></td>
+                <td>Demonstrează competență operațională explicând "cum" funcționează un sistem[cite: 2].</td>
+            </tr>
+            <tr>
+                <td><strong>2. Studii de Caz (50%)</strong></td>
+                <td>Dovezi brute, fotografii autentice și contrastul între haosul pieței și liniștea sistemului tău[cite: 2].</td>
+            </tr>
+            <tr>
+                <td><strong>3. Viziune și Filtrare (20%)</strong></td>
+                <td>Manifestul tău: De ce refuzi clienți și cine NU este potrivit pentru sistemul tău[cite: 2].</td>
+            </tr>
         </table>
 
         <div class="highlight-box">
-            "Detașarea cognitivă (Susan David): Gândurile tale nu sunt fapte, sunt simple date de testat. Un Arhitect le observă, dar nu le lasă să scrie codul decizional[cite: 1]."
+            "Scalarea nu vine din volum, ci din profitabilitatea pe unitatea de timp: validarea sistemului, standardizarea procedurilor (SOP) și creșterea prețului pe măsură ce raritatea crește[cite: 2]."
         </div>
     </div>
 
-    <!-- PAGINA 3: MODUL 02 - ELITE DM -->
+    <!-- MODUL 03: ELITE DM & DIAGNOZA -->
     <div class="page">
-        <div class="header-page"><span>STRATEGIC CONVERSION</span><span>MODUL 02</span></div>
-        <h2 class="chapter-title">Elite DM: Arhitectura<br>Conversației de Putere</h2>
-        <p class="text-block">Vânzarea High-Ticket (**1.500 - 6.000 LEI**) necesită un proces de diagnoză strategică înainte de orice ofertare[cite: 1]. Cine pune prețul primul, cedează controlul sistemului[cite: 1].</p>
-
-        <div class="diagram-container">
-            <div class="funnel-step">1. MOMEALA (Postare de Autoritate PM)[cite: 1]</div>
-            <div class="funnel-step" style="width: 70%;">2. DIAGNOZA (Audit Cognitiv DM)[cite: 1]</div>
-            <div class="funnel-step" style="width: 60%;">3. VIZIUNEA (Soluția Metanoia)[cite: 1]</div>
-            <div class="funnel-step" style="width: 50%; background: var(--auriu); color: #000;">4. ÎNCHIDEREA (PayPal Live)[cite: 1]</div>
-        </div>
-
-        <p class="text-block"><strong>Gestionarea Obiecțiilor:</strong> Când prețul "pișcă", folosește Agilitatea Emoțională[cite: 1]. Nu te lăsa "încârligată" de frica de respingere; rămâi fermă în valoarea rânduielii tale[cite: 1].</p>
-    </div>
-
-    <!-- PAGINA 4: MODUL 03 & 04 - EXECUȚIA -->
-    <div class="page">
-        <div class="header-page"><span>EXECUTION MAP</span><span>MODUL 03 & 04</span></div>
-        <h2 class="chapter-title">Harta pe 30 de Zile:<br>Execuția Matematică</h2>
+        <div class="header-page"><span>STRATEGIC CONVERSION</span><span>MODUL 03</span></div>
         
+        <h2 class="chapter-title">Sistemul "Elite DM"<br>și Procedura de Filtrare</h2>
+        <p class="text-block">Filtrarea nu este o barieră, ci un mecanism de protecție a calității[cite: 4]. Niciun preț sau ofertă nu se discută fără o diagnoză prealabilă[cite: 4]. Cea mai mare greșeală este să arunci prețul din prima când cineva te întreabă "Cât costă?"[cite: 5, 6]. Preia inițiativa.</p>
+
+        <div class="funnel-container">
+            <div class="funnel-step">1. MOMEALA: Atragerea audienței cu o problemă specifică[cite: 6].</div>
+            <div class="funnel-step">2. DIAGNOZA: Identificarea "Găurii Negre" din afacere[cite: 4].</div>
+            <div class="funnel-step">3. VIZIUNEA: "Cum arată succesul peste 6 luni?"[cite: 4].</div>
+            <div class="funnel-step">4. ÎNCHIDEREA: Vânzarea High-Ticket[cite: 6].</div>
+        </div>
+
+        <h3 style="margin-top: 40px; margin-bottom: 15px; color: var(--carbune); font-family: 'Cinzel'; font-size: 1.2rem;">Scriptul de Execuție în Conversații Private</h3>
         <table class="master-table">
             <tr>
-                <th style="width: 25%;">Cronologie</th>
-                <th>Etapa Arhitecturală</th>
-                <th>Obiective de Software Tester[cite: 1]</th>
+                <th style="width: 25%;">Etapa[cite: 5]</th>
+                <th>Acțiunea / Scriptul de Execuție[cite: 5]</th>
             </tr>
             <tr>
-                <td><strong>Zilele 1-5</strong></td>
-                <td><strong>Arhitectura</strong></td>
-                <td>Definește oferta. Validează link-ul PayPal (MH54VF92TC364)[cite: 1].</td>
+                <td><strong>1. Deschiderea</strong></td>
+                <td>"Salut! Prețurile variază în funcție de specificul nevoilor tale. [...] în ce punct ești acum și ce te blochează cel mai tare?"[cite: 5]</td>
             </tr>
             <tr>
-                <td><strong>Zilele 6-20</strong></td>
-                <td><strong>Vânătoarea</strong></td>
-                <td>5 DM-uri noi/zi. Total 75 discuții calificate prin Trezvie[cite: 1].</td>
+                <td><strong>2. Diagnoza</strong></td>
+                <td>"Înțeleg perfect frustrarea [...] Dacă am putea regla problema asta definitiv în următoarele 30 de zile, cum ar arăta succesul pentru tine?"[cite: 5]</td>
             </tr>
             <tr>
-                <td><strong>Zilele 21-30</strong></td>
-                <td><strong>Follow-up</strong></td>
-                <td>Recuperează indecișii. Închide marja de profit pentru chirie[cite: 1].</td>
+                <td><strong>3. Închiderea</strong></td>
+                <td>"Sună excelent și e total realizabil. [...] intrăm pe un apel de 10 minute mâine să vedem dacă ne potrivim. La ce oră ești disponibil?"[cite: 5]</td>
+            </tr>
+            <tr>
+                <td><strong>4. Obiecțiile</strong></td>
+                <td>Dacă zice că e prea scump: "Înțeleg că este o investiție serioasă. Dar întreabă-te: cât te costă, de fapt, să rămâi blocat în aceeași problemă încă 6 luni?"[cite: 5]</td>
             </tr>
         </table>
-
-        <p class="text-block" style="margin-top: 30px;">Diploma de **Project Manager** de la Cluj și Suzuki-ul argintiu reprezintă resursele tale de mobilitate și autoritate sistemică[cite: 1].</p>
     </div>
 
-    <!-- PAGINA 5: MODUL 05 - PROMOVAREA -->
+    <!-- MODUL 04 & 05: EXECUȚIE ȘI AUDIT -->
     <div class="page">
-        <div class="header-page"><span>PROMOTION PROTOCOL</span><span>MODUL 05</span></div>
-        <h2 class="chapter-title">Magnetul de Elită:<br>Arhitectura Promovării</h2>
-        <p class="text-block">Promovarea ta este filtrul tău[cite: 1]. Postează despre cum rigoarea din IT se aplică în **Gastronomia Sistemică**[cite: 1]. Mesajul trebuie să atragă audiența de elită și să "piște" pe cei ce caută scurtături[cite: 1].</p>
+        <div class="header-page"><span>EXECUTION MAP</span><span>MODUL 04 & 05</span></div>
+        
+        <h2 class="chapter-title">Harta pe 30 de Zile<br>și Protocolul de Elită</h2>
+        <p class="text-block">Oprim complet haosul și "speranța"[cite: 5, 6]. Nu mai așteptăm ca algoritmul să ne salveze; aplicăm planul matematic[cite: 5, 6].</p>
 
-        <h3 style="color: var(--auriu); margin-bottom: 15px;">Protocolul Hook-ului Sistemic</h3>
-        <table class="master-table">
-            <tr><th>Tip Hook</th><th>Logica de Project Manager[cite: 1]</th></tr>
-            <tr><td><strong>Autoritate</strong></td><td>Demonstrează controlul proceselor de regenerare[cite: 1].</td></tr>
-            <tr><td><strong>Educațional</strong></td><td>Explică Agilitatea Emoțională ca Error Handling[cite: 1].</td></tr>
-            <tr><td><strong>Direct</strong></td><td>Invită la Audit: "Caut 3 manageri pentru Metanoia"[cite: 1].</td></tr>
-        </table>
+        <div class="timeline">
+            <div class="time-box">
+                <h4>Zilele 1-5</h4>
+                <strong>Arhitectura și Capcana</strong>
+                <p style="margin-top: 10px;">Definește clar oferta ta High-Ticket și postează momeala clară pe profilul tău[cite: 5].</p>
+            </div>
+            <div class="time-box">
+                <h4>Zilele 6-20</h4>
+                <strong>Vânătoarea Activă</strong>
+                <p style="margin-top: 10px;">Inițiază minim 5 conversații noi (DM-uri) zilnic. 75 de lead-uri aduc garantat 3-4 vânzări[cite: 5].</p>
+            </div>
+            <div class="time-box" style="background: var(--auriu); border-color: var(--carbune);">
+                <h4 style="color: var(--carbune);">Zilele 21-30</h4>
+                <strong style="color: #fff;">Averea din Follow-up</strong>
+                <p style="margin-top: 10px; color: #111;">Recuperează clienții indeciși. Aici se fac restul de bani și marja reală de profit[cite: 5, 6].</p>
+            </div>
+        </div>
+
+        <h3 style="margin-top: 40px; color: var(--carbune); font-family: 'Cinzel'; font-size: 1.2rem;">Standardele de Bază (SOP)</h3>
+        <ul style="list-style-type: square; margin-left: 20px; color: #444; margin-bottom: 30px; font-size: 0.95rem;">
+            <li style="margin-bottom: 10px;"><strong>Refuză Clienții Toxici:</strong> Nu trebuie să lucrezi cu toată lumea[cite: 5]. Dacă un prospect negociază agresiv sau nu respectă timpul, taie legătura[cite: 5].</li>
+            <li style="margin-bottom: 10px;"><strong>Ridică-ți Prețul până te "Pișcă":</strong> Un preț premium ridică valoarea percepută și obligă clientul să aplice[cite: 5]. Cel care plătește 5.000 de lei va fi la birou la 6 dimineața executând planul[cite: 5].</li>
+            <li style="margin-bottom: 10px;"><strong>Onboarding și Control:</strong> Clientul primește regulile jocului (canale oficiale, limite de acces 09:00 - 17:00) pentru a păstra "Circuitul Închis"[cite: 4].</li>
+        </ul>
 
         <div class="footer-cta">
-            <i class="fas fa-brain" style="font-size: 2rem; color: var(--auriu); margin-bottom: 15px;"></i>
-            <h2>PASUL FINAL: AUDITUL TREZVIEI</h2>
-            <p style="color: #aaa; margin-bottom: 20px;">Scrie pe WhatsApp: "VREAU AUDITUL AGILITĂȚII HBR"[cite: 1].</p>
-            <div style="background: var(--auriu); color: #000; padding: 15px; font-family: 'Cinzel'; font-weight: 900; letter-spacing: 2px;">START REGENERARE</div>
+            <i class="fas fa-shield-alt" style="font-size: 2.5rem; color: var(--auriu); margin-bottom: 15px;"></i>
+            <h2>PASUL FINAL: AUDITUL LIVE</h2>
+            <p style="color: #ddd; margin-bottom: 20px; font-size: 0.95rem;">Ai inclusă o sesiune de Audit Live (30 minute) direct cu mine. Îți voi recalibra prețurile și vom seta planul de atac pentru prima vânzare de mii de lei[cite: 5].</p>
+            <div style="background: var(--auriu); color: #000; padding: 15px; font-family: 'Cinzel'; font-weight: bold; letter-spacing: 2px;">
+                SCRIE-MI PE WHATSAPP: "AM CITIT MASTERPLANUL V2. VREAU AUDITUL."[cite: 5]
+            </div>
         </div>
     </div>
 
