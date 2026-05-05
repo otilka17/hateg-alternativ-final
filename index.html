@@ -49,10 +49,9 @@
         .hero-description { color: #ccc; font-size: 1.1rem; margin-bottom: 30px; max-width: 600px; line-height: 1.5; }
         .btn-portal { display: inline-block; padding: 18px 45px; background: var(--portocaliu); color: #fff !important; font-family: 'Cinzel'; font-weight: 700; letter-spacing: 2px; }
 
-        /* SECȚIUNE NOUĂ: COȘUL DE EXPERIENȚĂ */
         .basket-section { background: #0a0a0a; border-top: 1px solid #222; border-bottom: 1px solid #222; padding: 100px 5%; display: flex; flex-wrap: wrap; align-items: center; gap: 50px; }
         .basket-image { flex: 1; min-width: 300px; position: relative; }
-        .basket-image img { width: 100%; border: 2px solid var(--auriu); border-radius: 4px; filter: grayscale(20%) contrast(1.1); box-shadow: 0 20px 40px rgba(0,0,0,0.8); }
+        .basket-image img { width: 100%; border: 2px solid var(--auriu); border-radius: 4px; filter: grayscale(10%) contrast(1.1); box-shadow: 0 20px 40px rgba(0,0,0,0.8); }
         .basket-content { flex: 1; min-width: 300px; }
         .basket-content h2 { font-family: 'Playfair Display'; font-style: italic; font-size: 2.8rem; color: var(--auriu); margin-bottom: 15px; line-height: 1.1; }
         .basket-content h4 { font-family: 'Cinzel'; font-size: 0.9rem; letter-spacing: 3px; color: #888; margin-bottom: 30px; }
@@ -119,42 +118,41 @@
         </div>
     </section>
 
-    <!-- SECȚIUNE NOUĂ: COȘUL DE EXPERIENȚĂ (INTEGRARE INFORMAȚII) -->
+    <!-- SECȚIUNE NOUĂ: COȘUL TRADIȚIONAL -->
     <section class="basket-section" id="experienta">
         <div class="basket-image">
-            <!-- Folosim o imagine placeholder care ilustrează perfect un coș artizanal premium cu borcane și rânduială -->
-            <img src="https://images.unsplash.com/photo-1605436247078-f0efa0f63ea4?auto=format&fit=crop&q=80&w=1000" alt="Coșul Metanoia - Produse Premium din Țara Hațegului">
+            <img src="images/gast-masa-traditionala.jpg" alt="Coșul Tradițional - Produse Premium din Țara Hațegului" onerror="this.src='https://images.unsplash.com/photo-1590412200988-a436970781fa?auto=format&fit=crop&q=80&w=1000'">
         </div>
         <div class="basket-content">
-            <h2>Coșul "Metanoia:<br>Rânduială și Tihnă"</h2>
-            <h4>O UNITATE DE EFICIENȚĂ GASTRONOMICĂ, ASAMBLATĂ ÎN ȚARA HAȚEGULUI</h4>
+            <h2>Coșul Tradițional:<br>Gustul Rânduielii</h2>
+            <h4>PRODUSE CURATE, FĂCUTE ÎN CASĂ ȘI DE LA PRODUCĂTORI LOCALI</h4>
             
             <ul class="basket-list">
                 <li>
-                    <i class="fas fa-box"></i>
+                    <i class="fas fa-bread-slice"></i>
                     <div>
-                        <strong>Ambalajul & Experiența Unboxing</strong>
-                        <p>Cutie robustă de lemn, așezată pe un pat de fân autentic adunat din zona Retezatului. Legată cu sfoară de iută și sigilată pentru a păstra taina rânduielii.</p>
+                        <strong>Baza Mesei</strong>
+                        <p>Pâine de casă frământată pe îndelete și brânză proaspătă (de oaie sau de vacă), exact așa cum se făcea odată în Țara Hațegului.</p>
                     </div>
                 </li>
                 <li>
-                    <i class="fas fa-seedling"></i>
+                    <i class="fas fa-jar"></i>
                     <div>
-                        <strong>Asset-urile Fizice (Producători Locali & Făcute în Casă)</strong>
-                        <p>Zacuscă de Gorgan (eficiență pe jar), Dulceață de Nuci Verzi (tihnă strategică) și Ketchup Artizanal. Toate preparate lent, curate, fără scurtături.</p>
+                        <strong>Din Cămara Gospodăriei</strong>
+                        <p>Zacuscă coaptă pe jar (cu fasole, ciuperci sau vinete), dulceață aromată (căpșuni sau prune) și ketchup de casă. Fierte încet, fără scurtături.</p>
                     </div>
                 </li>
                 <li>
-                    <i class="fas fa-qrcode"></i>
+                    <i class="fas fa-box-open"></i>
                     <div>
-                        <strong>Asset-ul Strategic (Biletul de Aur)</strong>
-                        <p>O scrisoare de onboarding cu un cod QR exclusiv. Scanarea îți deschide accesul la <em>Masterplanul Metanoia</em> și la auditul privat de 30 de minute cu Arhitectul sistemului.</p>
+                        <strong>Experiența Autentică</strong>
+                        <p>Cutie robustă de lemn, așezată pe pat de fân autentic. O rânduială completă care aduce tihna și gustul curat direct la tine pe masă.</p>
                     </div>
                 </li>
             </ul>
 
             <a href="produse.html" style="display: inline-block; padding: 15px 35px; background: transparent; border: 2px solid var(--auriu); color: var(--auriu); font-family: 'Cinzel'; font-weight: bold; letter-spacing: 2px; margin-top: 20px; transition: 0.3s;" onmouseover="this.style.background='var(--auriu)'; this.style.color='#000';" onmouseout="this.style.background='transparent'; this.style.color='var(--auriu)';">
-                REZERVA CĂMARA ARHITECTULUI
+                COMANDĂ COȘUL TRADIȚIONAL
             </a>
         </div>
     </section>
@@ -173,6 +171,31 @@
 
     <main class="container">
         <div class="grid-hub">
+            
+            <!-- CARD GASTRONOMIE - ACTUALIZAT AUTENTIC -->
+            <div class="card-item" style="height: auto; min-height: 450px; display: flex; flex-direction: column; background: #000; border: 2px solid var(--auriu); text-decoration: none;">
+                <div style="background: url('images/gast-masa-traditionala.jpg') center/cover; height: 180px; border-bottom: 2px solid var(--auriu);"></div>
+                <div style="padding: 25px; display: flex; flex-direction: column; flex-grow: 1; position: relative;">
+                    <span style="font-family:'Cinzel'; color:var(--auriu); font-size:0.7rem; letter-spacing:2px; display:block; margin-bottom:10px;">GOSPODĂRIE ȘI TIHNĂ</span>
+                    <h4 style="font-family: 'Cinzel'; font-size: 1.5rem; color: var(--alb); margin-bottom: 15px;">Gastronomie Autentică</h4>
+                    
+                    <p style="font-size: 0.9rem; color: #aaa; margin-bottom: 15px; line-height: 1.5;">
+                        Descoperă coșurile noastre tradiționale, pline cu produse curate, făcute în casă și adunate din gospodăriile Țării Hațegului:
+                    </p>
+                    
+                    <ul style="list-style: none; padding: 0; margin-bottom: 25px; font-size: 0.85rem; color: #ccc;">
+                        <li style="margin-bottom: 8px;"><i class="fas fa-check" style="color: var(--auriu); margin-right: 8px;"></i> <strong style="color: var(--alb);">Brânzeturi & Pâine</strong> (Oaie/vacă, pâine de casă)</li>
+                        <li style="margin-bottom: 8px;"><i class="fas fa-check" style="color: var(--auriu); margin-right: 8px;"></i> <strong style="color: var(--alb);">Zacuscă pe Jar</strong> (Fasole, ciuperci, vinete)</li>
+                        <li style="margin-bottom: 8px;"><i class="fas fa-check" style="color: var(--auriu); margin-right: 8px;"></i> <strong style="color: var(--alb);">Dulcețuri Aromate</strong> (Căpșuni, prune)</li>
+                        <li style="margin-bottom: 8px;"><i class="fas fa-check" style="color: var(--auriu); margin-right: 8px;"></i> <strong style="color: var(--alb);">Sosuri de Casă</strong> (Ketchup tradițional)</li>
+                    </ul>
+
+                    <a href="produse.html" style="display: block; background: var(--auriu); color: #000; text-align: center; padding: 12px; font-family: 'Cinzel'; font-weight: bold; text-decoration: none; letter-spacing: 1px; margin-top: auto;">
+                        DESCHIDE CĂMARA
+                    </a>
+                </div>
+            </div>
+
             <a href="pensiune.html" class="card-item">
                 <img src="images/la-buliga-pensiune.jpg" alt="Domeniile La Buligă">
                 <div class="card-info"><h4>DOMENIILE LA BULIGĂ</h4><p>Cazare Premium și tihnă la 1100m altitudine.</p></div>
