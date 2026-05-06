@@ -2,62 +2,177 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <title>METANOIA DIGITALĂ - HUB ELITĂ</title>
+    <title>METANOIA ELITE | Masterclass</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Cinzel:wght@600&family=Inter:wght@300;400&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #000; color: #D4AF37; font-family: 'Garamond', serif; margin: 0; padding: 40px; }
-        .main-frame { border: 2px solid #D4AF37; padding: 40px; max-width: 900px; margin: 0 auto; border-radius: 10px; }
-        h1 { text-align: center; letter-spacing: 5px; text-transform: uppercase; border-bottom: 1px solid #D4AF37; padding-bottom: 20px; }
-        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 40px 0; }
-        .box { border: 1px solid #D4AF37; padding: 15px; text-align: center; font-size: 0.8em; }
-        .box h3 { margin-top: 0; font-size: 1em; }
-        
-        /* Masterclass Section */
-        .masterclass-zone { text-align: center; border-top: 1px solid #D4AF37; padding-top: 40px; margin-top: 20px; }
-        .key-input { background: #000; border: 1px solid #D4AF37; color: #D4AF37; padding: 10px; width: 200px; text-align: center; margin-bottom: 20px; }
-        .btn-gold { background: #D4AF37; color: #000; border: none; padding: 10px 30px; font-weight: bold; cursor: pointer; text-transform: uppercase; }
-        .btn-gold:hover { background: #fff; }
-        .rule { font-size: 0.7em; letter-spacing: 2px; margin-top: 40px; text-align: center; }
+        :root { 
+            --crem-elita: #f4f0e8; 
+            --auriu-metalic: #c5a059; 
+            --negru-profund: #0a0a0a; 
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body { 
+            background-color: var(--negru-profund); 
+            color: var(--crem-elita); 
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* ANIMAȚIE POZE ȘI ELEMENTE */
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes subtlePulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
+
+        .container { 
+            max-width: 900px; 
+            margin: 50px auto; 
+            padding: 40px; 
+            border: 1px solid var(--auriu-metalic);
+            position: relative;
+            animation: slideUp 1s ease-out;
+        }
+
+        h1 { 
+            font-family: 'Playfair Display', serif; 
+            font-style: italic;
+            font-size: 3.5rem;
+            color: var(--auriu-metalic);
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            font-family: 'Cinzel', serif;
+            text-align: center;
+            letter-spacing: 4px;
+            font-size: 0.8rem;
+            margin-bottom: 40px;
+            color: var(--crem-elita);
+            opacity: 0.8;
+        }
+
+        .services-grid { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); 
+            gap: 20px; 
+            margin-bottom: 50px;
+        }
+
+        .card { 
+            border: 1px solid rgba(197, 160, 89, 0.3); 
+            padding: 25px; 
+            text-align: center;
+            background: rgba(255, 255, 255, 0.02);
+            transition: 0.4s;
+            animation: slideUp 1.2s ease-out;
+        }
+
+        .card:hover { 
+            border-color: var(--auriu-metalic);
+            background: rgba(197, 160, 89, 0.05);
+            animation: subtlePulse 2s infinite ease-in-out;
+        }
+
+        .card h3 { font-family: 'Cinzel', serif; color: var(--auriu-metalic); margin-bottom: 15px; font-size: 0.9rem; }
+        .card p { font-size: 0.85rem; font-weight: 300; line-height: 1.4; color: var(--crem-elita); }
+
+        /* ZONA DE ACCES ELITĂ */
+        .access-gate {
+            text-align: center;
+            padding: 40px;
+            border-top: 1px solid var(--auriu-metalic);
+            background: linear-gradient(to bottom, transparent, rgba(197, 160, 89, 0.05));
+        }
+
+        .key-label { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 2px; margin-bottom: 15px; display: block; }
+
+        input[type="password"] { 
+            background: transparent; 
+            border: 1px solid var(--crem-elita); 
+            color: var(--crem-elita); 
+            padding: 12px; 
+            text-align: center;
+            width: 280px;
+            font-family: 'Inter', sans-serif;
+            margin-bottom: 25px;
+            outline: none;
+        }
+
+        .btn-unlock { 
+            background: var(--auriu-metalic); 
+            color: var(--negru-profund); 
+            padding: 15px 45px; 
+            font-family: 'Cinzel', serif;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+
+        .btn-unlock:hover { 
+            background: var(--crem-elita); 
+            box-shadow: 0 0 20px rgba(197, 160, 89, 0.4);
+        }
+
+        .footer-rule {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 0.7rem;
+            font-family: 'Cinzel', serif;
+            letter-spacing: 3px;
+            opacity: 0.6;
+        }
     </style>
 </head>
 <body>
 
-<div class="main-frame">
-    <h1>METANOIA DIGITALĂ</h1>
-    <p style="text-align: center; font-style: italic; font-size: 0.9em;">Rânduială. Metamorfoză. Execuție de Elită.</p>
+<div class="container">
+    <h1>Metanoia Digitală</h1>
+    <div class="tagline">Rânduială • Metamorfoză • Execuție</div>
 
-    <div class="grid">
-        <div class="box">
-            <h3>GASTRONOMIE</h3>
+    <div class="services-grid">
+        <div class="card">
+            <h3>Gastronomie</h3>
             <p>Sistematizare prin SeniorERP. Standarde de elită.</p>
         </div>
-        <div class="box">
-            <h3>MANAGEMENT</h3>
-            <p>Learning Organization. 6 săptămâni de transformare.</p>
+        <div class="card">
+            <h3>Management</h3>
+            <p>Learning Organization. 6 săptămâni de metamorfoză asistată[cite: 1, 2].</p>
         </div>
-        <div class="box">
-            <h3>DIAGNOZĂ</h3>
-            <p>SQL & API Mining. Eliminăm bug-urile de business.</p>
+        <div class="card">
+            <h3>Diagnoză</h3>
+            <p>SQL & API Mining. Identificăm bug-urile vitale în business[cite: 1, 2].</p>
         </div>
     </div>
 
-    <div class="masterclass-zone">
-        <h3>MASTERCLASS: VOCEA EXECUȚIEI</h3>
-        <p>Introduceți cheia pentru a debloca accesul:</p>
-        <input type="password" id="pass" class="key-input" placeholder="CHEIA DE ACCES">
+    <div class="access-gate">
+        <span class="key-label">Masterclass: Vocea Execuției</span>
+        <input type="password" id="gateKey" placeholder="CHEIA DE ACCES (ELITA2026)">
         <br>
-        <button onclick="validează()" class="btn-gold">DEBLOCHEAZĂ MASTERCLASS</button>
+        <button class="btn-unlock" onclick="checkAccess()">Deblochează</button>
+        <p id="errorMsg" style="margin-top: 15px; font-size: 0.8rem; color: #e53e3e;"></p>
     </div>
 
-    <p class="rule">REGULĂ DE FIER: FĂRĂ VICTIMIZARE. NU TRAGEM DE NIMENI.</p>
+    <div class="footer-rule">REGULĂ DE FIER: FĂRĂ VICTIMIZARE. NU TRAGEM DE NIMENI.</div>
 </div>
 
 <script>
-    function validează() {
-        if(document.getElementById('pass').value === "ELITA2026") {
-            alert("Acces Granulat. Bine ai venit în Arhitectura de Elită.");
+    function checkAccess() {
+        const key = document.getElementById('gateKey').value;
+        if(key === "ELITA2026") {
             window.location.href = "masterplan.html"; 
         } else {
-            alert("Acces Respins. Verifică statusul de partener.");
+            document.getElementById('errorMsg').innerText = "ACCES RESPINS. DOAR PENTRU ELITĂ.";
         }
     }
 </script>
