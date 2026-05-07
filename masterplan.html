@@ -14,7 +14,7 @@
         body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; line-height: 1.7; overflow-x: hidden; }
         a { text-decoration: none !important; outline: none; }
 
-        /* HEADER SIMPLIFICAT PENTRU CURS */
+        /* HEADER SIMPLIFICAT */
         .site-header { padding: 30px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--gri-inchis); background: #000; }
         .brand-logo { font-family: 'Cinzel'; font-size: 1.2rem; color: var(--auriu); letter-spacing: 4px; font-weight: 700; }
         .nav-back { color: var(--gri); font-family: 'Cinzel'; font-size: 0.8rem; letter-spacing: 2px; transition: 0.3s; }
@@ -33,54 +33,40 @@
         .text-block { margin-bottom: 25px; color: #ccc; font-size: 1.05rem; font-weight: 300; }
         .text-block strong { color: var(--auriu); font-weight: 600; }
 
-        /* HIGHLIGHT BOX */
-        .highlight-box { background: #0a0a0a; border: 1px solid var(--gri-inchis); border-left: 4px solid var(--auriu); padding: 30px; margin: 40px 0; font-family: 'Playfair Display'; font-style: italic; color: var(--alb); font-size: 1.2rem; line-height: 1.6; text-align: center; }
+        /* BRAINMAP STYLES */
+        .brainmap-wrapper { margin: 60px 0; padding: 40px; border: 1px solid var(--gri-inchis); background: rgba(197, 160, 89, 0.02); text-align: center; }
+        .brainmap-core { border: 2px solid var(--auriu); padding: 30px; border-radius: 50%; width: 180px; height: 180px; display: flex; align-items: center; justify-content: center; margin: 0 auto 40px; font-family: 'Playfair Display'; font-style: italic; color: var(--auriu); font-size: 1.4rem; box-shadow: 0 0 30px rgba(197, 160, 89, 0.1); }
+        .brainmap-branches { display: flex; flex-wrap: wrap; justify-content: center; gap: 30px; }
+        .branch-item { border-left: 2px solid var(--auriu); padding: 15px 25px; text-align: left; background: rgba(255,255,255,0.02); min-width: 250px; }
+        .branch-title { font-family: 'Cinzel'; color: var(--auriu); font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 10px; display: block; }
+        .branch-tool { color: var(--gri); font-family: monospace; font-size: 0.85rem; }
 
-        /* GRID-URI IN LOC DE TABELE (PENTRU DESIGN PREMIUM) */
+        /* GRID-URI IN LOC DE TABELE */
         .grid-list { display: grid; grid-template-columns: 1fr; gap: 20px; margin: 30px 0 60px; }
         .grid-item { background: #0a0a0a; border: 1px solid var(--gri-inchis); padding: 30px; display: flex; flex-direction: column; gap: 15px; transition: 0.3s; }
         .grid-item:hover { border-color: var(--auriu); transform: translateY(-3px); }
         .grid-item-title { font-family: 'Cinzel'; color: var(--auriu); font-size: 1rem; letter-spacing: 1px; border-bottom: 1px solid var(--gri-inchis); padding-bottom: 10px; }
         .grid-item-desc { color: #aaa; font-size: 0.95rem; font-weight: 300; }
 
-        @media (min-width: 768px) {
-            .grid-list { grid-template-columns: 1fr 1fr; }
-        }
+        @media (min-width: 768px) { .grid-list { grid-template-columns: 1fr 1fr; } }
 
-        /* FUNNEL (PALNIE) */
+        /* FUNNEL & TIMELINE */
         .funnel-container { margin: 40px 0 60px; display: flex; flex-direction: column; align-items: center; gap: 10px; }
         .funnel-step { background: #111; border: 1px solid var(--gri-inchis); color: var(--alb); padding: 20px; width: 100%; max-width: 600px; text-align: center; font-family: 'Cinzel'; font-size: 0.9rem; letter-spacing: 1px; }
-        .funnel-step:nth-child(2) { max-width: 500px; }
-        .funnel-step:nth-child(3) { max-width: 400px; }
-        .funnel-step:nth-child(4) { max-width: 300px; background: var(--auriu); color: var(--negru); font-weight: bold; border-color: var(--auriu); }
+        .funnel-step:last-child { background: var(--auriu); color: var(--negru); font-weight: bold; border-color: var(--auriu); }
 
-        /* TIMELINE (HARTA 30 ZILE) */
         .timeline-grid { display: grid; grid-template-columns: 1fr; gap: 20px; margin: 40px 0 60px; }
-        .time-box { background: #000; border: 1px solid var(--gri-inchis); padding: 30px; text-align: center; position: relative; }
+        .time-box { background: #000; border: 1px solid var(--gri-inchis); padding: 30px; text-align: center; }
         .time-box h4 { font-family: 'Cinzel'; color: var(--auriu); margin-bottom: 15px; font-size: 1.1rem; letter-spacing: 2px; }
-        .time-box strong { display: block; color: var(--alb); margin-bottom: 10px; font-size: 1.1rem; }
-        .time-box p { color: var(--gri); font-size: 0.9rem; font-weight: 300; }
-        .time-box.gold { background: var(--auriu); border-color: var(--auriu); }
-        .time-box.gold h4 { color: var(--negru); }
-        .time-box.gold strong, .time-box.gold p { color: var(--negru); }
+        .time-box.gold { background: var(--auriu); color: var(--negru); }
+        .time-box.gold h4, .time-box.gold strong, .time-box.gold p { color: var(--negru); }
 
-        @media (min-width: 768px) {
-            .timeline-grid { grid-template-columns: repeat(3, 1fr); }
-        }
-
-        /* SCRIPT CHAT */
-        .script-box { background: #0a0a0a; border-left: 2px solid var(--auriu); padding: 20px 30px; margin-bottom: 15px; }
-        .script-phase { font-family: 'Cinzel'; color: var(--auriu); font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 8px; }
-        .script-text { color: #eee; font-style: italic; font-size: 1rem; }
+        @media (min-width: 768px) { .timeline-grid { grid-template-columns: repeat(3, 1fr); } }
 
         /* FOOTER CTA */
         .cta-section { background: #111; border-top: 1px solid var(--gri-inchis); padding: 80px 5%; text-align: center; margin-top: 60px; }
-        .cta-section i { font-size: 3rem; color: var(--auriu); margin-bottom: 20px; }
-        .cta-section h2 { font-family: 'Playfair Display'; font-size: 2.5rem; color: var(--alb); font-style: italic; margin-bottom: 20px; }
-        .cta-section p { color: var(--gri); max-width: 600px; margin: 0 auto 40px; font-size: 1.1rem; }
         .btn-gold { display: inline-block; padding: 18px 40px; background: var(--auriu); color: var(--negru); font-family: 'Cinzel'; font-weight: bold; letter-spacing: 2px; transition: 0.3s; }
         .btn-gold:hover { background: var(--alb); transform: translateY(-3px); }
-
     </style>
 </head>
 <body>
@@ -96,74 +82,48 @@
         <p>De la sclavul algoritmului la Arhitectul sistemului.<br>Cum să controlezi conversația și să vinzi High-Ticket.</p>
     </section>
 
-    <!-- INTRODUCERE -->
     <div class="doc-container">
         <div class="module-header"><span>INTRODUCERE</span><span>MANIFESTUL ARHITECTULUI</span></div>
         
         <h2 class="chapter-title">Cui îi este dedicat<br>acest Masterplan?</h2>
-        <p class="text-block">Acest document este un filtru în sine. <strong>NU este pentru toată lumea.</strong> El este proiectat cu precizie chirurgicală pentru a rezolva cea mai mare durere a pieței actuale: epuizarea operațională. Este dedicat exclusiv următoarelor tipologii de lideri:</p>
+        <p class="text-block">Acest document este un filtru în sine. <strong>NU este pentru toată lumea.</strong> Este proiectat pentru cei care au nevoie de Rânduială și Execuție.</p>
+
+        <div class="brainmap-wrapper">
+            <h3 style="font-family: 'Cinzel'; color: var(--auriu); font-size: 0.8rem; letter-spacing: 4px; margin-bottom: 40px;">ARHITECTURA VIZUALĂ A RÂNDUIELII</h3>
+            <div class="brainmap-core">METANOIA</div>
+            <div class="brainmap-branches">
+                <div class="branch-item">
+                    <span class="branch-title">01. GASTRONOMIE</span>
+                    <span class="branch-tool">> SeniorERP / Trasabilitate</span>
+                </div>
+                <div class="branch-item">
+                    <span class="branch-title">02. MANAGEMENT</span>
+                    <span class="branch-tool">> Atlassian Jira / Learning Org</span>
+                </div>
+                <div class="branch-item">
+                    <span class="branch-title">03. ANANGHIE</span>
+                    <span class="branch-tool">> SQL & API / Data Mining</span>
+                </div>
+            </div>
+            <p style="margin-top: 40px; font-size: 0.7rem; font-family: 'Cinzel'; color: var(--gri); letter-spacing: 2px;">"SISTEMUL DE OPERARE AL MINȚII ȘI AL AFACERII"</p>
+        </div>
 
         <div class="grid-list">
             <div class="grid-item">
                 <div class="grid-item-title">01. Creatorii Obosiți de Algoritm</div>
-                <div class="grid-item-desc">Pentru cei care s-au săturat să facă dansuri, să caute sunete virale și să se roage pentru afișări. 100.000 de urmăritori fără profit te fac doar un „angajat neplătit”.</div>
+                <div class="grid-item-desc">Pentru cei care s-au săturat să facă dansuri pentru afișări. 100.000 de urmăritori fără profit te fac doar un „angajat neplătit”.</div>
             </div>
             <div class="grid-item">
                 <div class="grid-item-title">02. Antreprenorii High-Ticket</div>
-                <div class="grid-item-desc">Dedicat celor care vând transformări reale. Matematica e simplă: nu ai nevoie de mii de clienți, ci de 30 de oameni calificați și o conversație privată de putere.</div>
+                <div class="grid-item-desc">Dedicat celor care vând transformări reale. Nu ai nevoie de mii de clienți, ci de 30 de oameni calificați.</div>
             </div>
-            <div class="grid-item">
-                <div class="grid-item-title">03. Liderii în Tranziție</div>
-                <div class="grid-item-desc">Pentru profesionistul care nu mai vrea să reacționeze haotic la cereri. Cel care vrea să proiecteze sisteme de filtrare și să controleze accesul la timpul său.</div>
-            </div>
-            <div class="grid-item">
-                <div class="grid-item-title">04. Căutătorii de Rânduială</div>
-                <div class="grid-item-desc">Pentru cei care au nevoie de Trezvie și Agilitate Emoțională pentru a nu se bloca la refuzuri, capabili să-și ridice prețul până îi „pișcă” și să refuze clienții toxici.</div>
-            </div>
-        </div>
-
-        <div class="highlight-box">
-            „Acest Masterplan nu este un simplu ghid de marketing, ci un Sistem de Operare. Îmbină tradiția și rânduiala profundă cu rigoarea de Software Tester și psihologia de la Harvard.”
         </div>
     </div>
 
-    <!-- MODUL 01 & 02 -->
     <div class="doc-container" style="padding-top: 0;">
         <div class="module-header"><span>MODUL 01 & 02</span><span>MANUAL OPERAȚIONAL V2</span></div>
-        
         <h2 class="chapter-title">Arhitect vs. Operator:<br>Integrarea Agilității Emoționale</h2>
-        <p class="text-block">Trecerea de la statutul de operator la cel de arhitect de sistem este fundamentul scalării. Arhitectul proiectează fluxuri care funcționează independent de prezența sa constantă, în timp ce operatorul este dependent de algoritmi și vinde timp pe unitatea de efort.</p>
-        <p class="text-block">Aici intervine <strong>Mindfulness-ul (Trezvia)</strong>. Pentru a fi un arhitect eficient, trebuie să îți gestionezi reacțiile automate. Oprește-te din a fi sclavul algoritmului și ignoră complet metricile de vanitate (reach, aprecieri).</p>
-
-        <h3 style="font-family: 'Cinzel'; color: var(--auriu); font-size: 1.1rem; margin: 40px 0 20px; letter-spacing: 2px;">Promovare Sistemică (B2B Authority)</h3>
-        <p class="text-block">Algoritmii penalizează promisiunile de îmbogățire rapidă. Strategia noastră se bazează pe termeni de consultanță. Evităm „Bani rapid” și folosim <strong>Scalare operațională</strong> sau <strong>Eficiență sistemică</strong>.</p>
-
-        <div class="grid-list" style="grid-template-columns: 1fr;">
-            <div class="grid-item" style="flex-direction: row; align-items: center;">
-                <div class="grid-item-title" style="border: none; padding: 0; min-width: 150px;">30% Analiză</div>
-                <div class="grid-item-desc">Demonstrează competență operațională explicând exact „cum” funcționează un sistem pe dedesubt.</div>
-            </div>
-            <div class="grid-item" style="flex-direction: row; align-items: center;">
-                <div class="grid-item-title" style="border: none; padding: 0; min-width: 150px;">50% Studii de Caz</div>
-                <div class="grid-item-desc">Dovezi brute, fotografii autentice și contrastul între haosul pieței și liniștea sistemului tău.</div>
-            </div>
-            <div class="grid-item" style="flex-direction: row; align-items: center;">
-                <div class="grid-item-title" style="border: none; padding: 0; min-width: 150px;">20% Viziune</div>
-                <div class="grid-item-desc">Manifestul tău: De ce refuzi clienți și cine NU este potrivit pentru a intra în contact cu tine.</div>
-            </div>
-        </div>
-
-        <div class="highlight-box">
-            „Scalarea nu vine din volum, ci din profitabilitatea pe unitatea de timp: validarea sistemului, standardizarea procedurilor și creșterea prețului pe măsură ce raritatea crește.”
-        </div>
-    </div>
-
-    <!-- MODUL 03 -->
-    <div class="doc-container" style="padding-top: 0;">
-        <div class="module-header"><span>MODUL 03</span><span>STRATEGIC CONVERSION</span></div>
-        
-        <h2 class="chapter-title">Sistemul "Elite DM"<br>și Procedura de Filtrare</h2>
-        <p class="text-block">Filtrarea nu este o barieră, ci un mecanism de protecție a calității. Niciun preț nu se discută fără o diagnoză prealabilă. Cea mai mare greșeală este să arunci prețul din prima. <strong>Preia inițiativa.</strong></p>
+        <p class="text-block">Trecerea de la statutul de operator la cel de arhitect de sistem este fundamentul scalării. Arhitectul proiectează fluxuri care funcționează independent.</p>
 
         <div class="funnel-container">
             <div class="funnel-step">01. MOMEALA: Atragerea cu o problemă specifică</div>
@@ -172,74 +132,29 @@
             <div class="funnel-step">04. ÎNCHIDEREA HIGH-TICKET</div>
         </div>
 
-        <h3 style="font-family: 'Cinzel'; color: var(--auriu); font-size: 1.1rem; margin: 40px 0 20px; letter-spacing: 2px;">Scriptul de Execuție în Conversații Private</h3>
-        
-        <div class="script-box">
-            <div class="script-phase">1. DESCHIDEREA</div>
-            <div class="script-text">„Salut! Prețurile variază în funcție de specificul nevoilor tale. [...] în ce punct ești acum și ce te blochează cel mai tare?”</div>
-        </div>
-        <div class="script-box">
-            <div class="script-phase">2. DIAGNOZA</div>
-            <div class="script-text">„Înțeleg perfect frustrarea. [...] Dacă am putea regla problema asta definitiv în următoarele 30 de zile, cum ar arăta succesul pentru tine?”</div>
-        </div>
-        <div class="script-box">
-            <div class="script-phase">3. ÎNCHIDEREA</div>
-            <div class="script-text">„Sună excelent și e total realizabil. [...] intrăm pe un apel de 10 minute mâine să vedem dacă ne potrivim. La ce oră ești disponibil?”</div>
-        </div>
-        <div class="script-box">
-            <div class="script-phase">4. OBIECȚIILE (PREA SCUMP)</div>
-            <div class="script-text">„Înțeleg că este o investiție serioasă. Dar întreabă-te: cât te costă, de fapt, să rămâi blocat în aceeași problemă încă 6 luni?”</div>
-        </div>
-    </div>
-
-    <!-- MODUL 04 & 05 -->
-    <div class="doc-container" style="padding-top: 0;">
-        <div class="module-header"><span>MODUL 04 & 05</span><span>EXECUTION MAP</span></div>
-        
-        <h2 class="chapter-title">Harta pe 30 de Zile<br>și Protocolul de Elită</h2>
-        <p class="text-block">Oprim complet haosul și „speranța”. Nu mai așteptăm ca algoritmul să ne salveze; aplicăm planul matematic.</p>
-
         <div class="timeline-grid">
             <div class="time-box">
                 <h4>ZILELE 1-5</h4>
-                <strong>Arhitectura și Capcana</strong>
-                <p>Definește clar oferta ta High-Ticket și postează momeala clară pe profilul tău.</p>
+                <strong>Arhitectura</strong>
+                <p>Definește clar oferta ta High-Ticket.</p>
             </div>
             <div class="time-box">
                 <h4>ZILELE 6-20</h4>
-                <strong>Vânătoarea Activă</strong>
-                <p>Inițiază minim 5 conversații noi (DM-uri) zilnic. 75 de lead-uri aduc garantat 3-4 vânzări.</p>
+                <strong>Vânătoarea</strong>
+                <p>Inițiază minim 5 conversații noi zilnic.</p>
             </div>
             <div class="time-box gold">
                 <h4>ZILELE 21-30</h4>
-                <strong>Averea din Follow-up</strong>
-                <p>Recuperează clienții indeciși. Aici se fac restul de bani și marja reală de profit.</p>
+                <strong>Follow-up</strong>
+                <p>Recuperează clienții indeciși.</p>
             </div>
         </div>
-
-        <h3 style="font-family: 'Cinzel'; color: var(--auriu); font-size: 1.1rem; margin: 40px 0 20px; letter-spacing: 2px;">Standardele de Bază (SOP)</h3>
-        <ul style="list-style-type: none; padding: 0;">
-            <li style="margin-bottom: 15px; color: #ccc; font-weight: 300; display: flex; align-items: flex-start; gap: 15px;">
-                <i class="fas fa-check" style="color: var(--auriu); margin-top: 5px;"></i>
-                <span><strong>Refuză Clienții Toxici:</strong> Nu trebuie să lucrezi cu toată lumea. Dacă un prospect negociază agresiv sau nu respectă timpul, taie legătura imediat.</span>
-            </li>
-            <li style="margin-bottom: 15px; color: #ccc; font-weight: 300; display: flex; align-items: flex-start; gap: 15px;">
-                <i class="fas fa-check" style="color: var(--auriu); margin-top: 5px;"></i>
-                <span><strong>Ridică-ți Prețul până te "Pișcă":</strong> Un preț premium ridică valoarea percepută. Cel care plătește 5.000 de lei va fi la birou la 6 dimineața executând planul.</span>
-            </li>
-            <li style="margin-bottom: 15px; color: #ccc; font-weight: 300; display: flex; align-items: flex-start; gap: 15px;">
-                <i class="fas fa-check" style="color: var(--auriu); margin-top: 5px;"></i>
-                <span><strong>Onboarding și Control:</strong> Clientul primește regulile jocului (canale oficiale, limite de acces 09:00 - 17:00) pentru a păstra "Circuitul Închis" și a proteja tihna ta.</span>
-            </li>
-        </ul>
     </div>
 
-    <!-- CTA FOOTER -->
     <section class="cta-section">
-        <i class="fas fa-shield-alt"></i>
+        <i class="fas fa-shield-alt" style="font-size: 3rem; color: var(--auriu); margin-bottom: 20px; display: block;"></i>
         <h2>PASUL FINAL: AUDITUL LIVE</h2>
-        <p>Acest Masterplan este doar arhitectura. Execuția este cea care generează profitul. Ai inclusă o sesiune de Audit Live (30 minute) direct cu mine. Îți voi recalibra prețurile și vom seta planul de atac pentru prima vânzare premium.</p>
-        
+        <p style="color: var(--gri); margin-bottom: 40px;">Solicită sesiunea de Audit Live pentru a recalibra prețurile și planul de atac.</p>
         <a href="https://wa.me/40749229686?text=Am%20citit%20Masterplanul.%20Vreau%20Auditul." target="_blank" class="btn-gold">SOLICITĂ AUDITUL LIVE</a>
     </section>
 
