@@ -1,149 +1,53 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18106516696"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'AW-18106516696');
-
-      function raportarePlata() {
-        gtag('event', 'conversion', {
-            'send_to': 'AW-18106516696/vY6pCK_X760ZELiRscsD',
-            'event_callback': function() {
-              console.log("Conversie inregistrata");
-            }
-        });
-      }
-    </script>
-
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Metanoia - Arhitectura Rânduielii</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Cinzel:wght@400;700;900&family=Inter:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <title>Studiu de Caz - Arhitectura Hațeg Alternativ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;600;700&family=Cinzel:wght@600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
     <style>
-        :root { --auriu: #c5a059; --negru: #070707; --alb: #f9f9f9; --gri: #888; --verde-tech: #48bb78; }
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; line-height: 1.7; }
-
-        .site-header { padding: 30px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #1a1a1a; }
-        .brand-logo { font-family: 'Cinzel'; font-size: 1.2rem; color: var(--auriu); letter-spacing: 4px; font-weight: 700; }
-
-        .hero { padding: 100px 5% 60px; text-align: center; background: radial-gradient(circle at center, #111 0%, #000 100%); }
-        .hero h1 { font-family: 'Playfair Display'; font-size: clamp(2.5rem, 6vw, 4rem); font-style: italic; color: var(--auriu); margin-bottom: 20px; }
-        .tagline { font-family: 'Cinzel'; letter-spacing: 5px; font-size: 0.8rem; color: var(--gri); }
-
-        .container { max-width: 1100px; margin: 0 auto; padding: 60px 5%; }
-
-        /* GRID-UL CU "INTERFAȚA" PRIETENOASĂ */
-        .benefit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 80px; }
-        .benefit-card { background: #0a0a0a; padding: 40px; border: 1px solid #1a1a1a; transition: 0.3s; position: relative; overflow: hidden; }
-        .benefit-card:hover { border-color: var(--auriu); transform: translateY(-5px); }
+        :root { --auriu: #c5a059; --auriu-inchis: #a88540; --text: #222; --bg: #fff; --carbune: #111; }
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        body { font-family: 'Inter', sans-serif; color: var(--text); background: #f9f9f9; line-height: 1.6; }
         
-        .benefit-card h3 { font-family: 'Cinzel'; color: var(--auriu); margin-bottom: 15px; font-size: 1rem; }
-        .benefit-card p { font-size: 0.9rem; color: #ccc; margin-bottom: 20px; }
+        .page { width: 210mm; min-height: 297mm; padding: 20mm; margin: 10mm auto; background: white; box-shadow: 0 0 15px rgba(0,0,0,0.1); position: relative; overflow: hidden; page-break-after: always; }
         
-        /* CONCEPTUL TEHNIC RAMANE CA "MOTOR" */
-        .tech-tag { font-family: monospace; font-size: 0.7rem; color: var(--verde-tech); border: 1px solid var(--verde-tech); padding: 4px 8px; display: inline-block; opacity: 0.7; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--carbune); }
+        .auriu { color: var(--auriu); }
+        .tagline { font-family: 'Cinzel', serif; letter-spacing: 3px; font-size: 0.8rem; color: #888; text-transform: uppercase; }
 
-        /* ZONA DE CONVERSIE */
-        .cta-box { background: #0f0f0f; border: 1px solid var(--auriu); padding: 60px 40px; text-align: center; }
-        .price-tag { font-family: 'Playfair Display'; font-size: 3rem; color: var(--alb); margin-bottom: 10px; font-style: italic; }
+        /* COPERTĂ */
+        .cover { display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; background: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=2000') center/cover; color: white; padding: 0; position: relative; }
+        .cover::before { content: ''; position: absolute; top:0; left:0; right:0; bottom:0; background: linear-gradient(rgba(5, 5, 5, 0.85), rgba(5,5,5,0.95)); z-index: 1; }
+        .cover-content { position: relative; z-index: 2; padding: 44px; border: 2px solid var(--auriu); width: 85%; background: rgba(0,0,0,0.25); backdrop-filter: blur(5px); }
+        .cover h1 { color: var(--auriu); font-size: 3.8rem; font-style: italic; line-height: 1; margin: 18px 0 22px; text-shadow: 0 10px 20px rgba(0,0,0,0.5); }
+        .cover p { font-size: 1.1rem; font-family: 'Inter'; font-weight: 300; margin-bottom: 28px; color: #f4f0e8; }
+        .cover .logo { font-family: 'Cinzel'; font-size: 1.05rem; letter-spacing: 5px; border-top: 1px solid rgba(255,255,255,0.2); padding-top: 20px; margin-top: 32px; }
+        .cover-pill { display: inline-block; border: 1px solid rgba(197,160,89,0.7); color: #f0dfbf; padding: 10px 16px; font-family: 'Cinzel'; letter-spacing: 3px; font-size: 0.7rem; margin-bottom: 18px; }
+
+        /* PAGINI INTERIOARE */
+        .header-page { border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 30px; display: flex; justify-content: space-between; font-family: 'Cinzel'; font-size: 0.7rem; color: #aaa; }
+        .chapter-title { font-size: 2.2rem; color: var(--carbune); border-left: 5px solid var(--auriu); padding-left: 20px; margin-bottom: 30px; line-height: 1.2; }
+        .text-block { margin-bottom: 20px; font-size: 1rem; color: #444; }
+        .text-block strong { color: var(--carbune); }
+
+        .highlight-box { background: #fbf8f1; border-left: 3px solid var(--auriu); padding: 20px; margin: 30px 0; font-style: italic; color: #555; }
         
-        .btn-main { 
-            display: inline-block; width: 100%; max-width: 400px; padding: 22px; 
-            background: var(--auriu); color: var(--negru); font-family: 'Cinzel'; 
-            font-weight: 900; text-decoration: none; letter-spacing: 3px; 
-            margin: 30px 0; transition: 0.3s;
+        @media print {
+            body { background: white; }
+            .page { margin: 0; box-shadow: none; }
         }
-        .btn-main:hover { background: #fff; box-shadow: 0 0 40px rgba(197, 160, 89, 0.4); }
-
-        .key-input { 
-            background: transparent; border: 1px solid #333; color: #fff; 
-            padding: 15px; width: 100%; max-width: 300px; text-align: center; 
-            margin: 20px 0; font-family: 'Inter'; 
-        }
-        .btn-key { background: transparent; border: 1px solid var(--auriu); color: var(--auriu); padding: 10px 30px; cursor: pointer; font-family: 'Cinzel'; }
-
-        footer { text-align: center; padding: 60px; font-family: 'Cinzel'; font-size: 0.7rem; color: #444; letter-spacing: 2px; }
     </style>
 </head>
 <body>
-
-    <header class="site-header">
-        <div class="brand-logo">METANOIA</div>
-        <div style="font-size: 0.7rem; color: var(--auriu); font-family: 'Cinzel';">Status: Elită 2026</div>
-    </header>
-
-    <section class="hero">
-        <div class="tagline">DE LA HAOS LA RÂNDUIALĂ</div>
-        <h1>Sistemul de Operare<br>pentru Business.</h1>
-        <p style="color: var(--gri); max-width: 650px; margin: 20px auto; font-weight: 300;">
-            Nu vindem „cursuri”. Instalăm rânduiala care îți dă înapoi controlul, profitul și timpul.
-        </p>
-    </section>
-
-    <div class="container">
-        
-        <div class="benefit-grid">
-            <div class="benefit-card">
-                <h3>01. Radiografia Profitului</h3>
-                <p>Identificăm „găurile negre” pe unde îți curge profitul. Vezi adevărul crud din spatele cifrelor tale.</p>
-                <div class="tech-tag">TEHNOLOGIE: SQL & API MINING</div>
-            </div>
-
-            <div class="benefit-card">
-                <h3>02. Manualul de Tihnă</h3>
-                <p>Transformăm afacerea dintr-o junglă într-un ceas elvețian. Angajații știu ce au de făcut, tu poți să pleci în vacanță.</p>
-                <div class="tech-tag">METODĂ: LEARNING ORGANIZATION / JIRA</div>
-            </div>
-
-            <div class="benefit-card">
-                <h3>03. Controlul Resurselor</h3>
-                <p>Uită de stocuri care dispar sau avize pierdute. Totul este rânduit, trasabil și sub controlul tău total.</p>
-                <div class="tech-tag">MOTOR: SENIORERP / GESTIUNE SISTEMICĂ</div>
-            </div>
+    <div class="page cover">
+        <div class="cover-content">
+            <div class="cover-pill">STUDIU DE CAZ EXCLUSIV</div>
+            <div class="tagline">Arhitectura Rânduielii</div>
+            <h1>Metanoia<br>Digitală.</h1>
+            <p>Cum transformăm haosul operațional în sisteme de elită<br>prin SQL, ERP și Management de Arhitect.</p>
+            <div class="logo">HAȚEG ALTERNATIV | METANOIA</div>
         </div>
-
-        <div class="cta-box">
-            <h2 style="font-family: 'Cinzel'; font-size: 0.9rem; letter-spacing: 4px; margin-bottom: 20px;">ACCES MASTERPLAN</h2>
-            <div class="price-tag">200€</div>
-            <p style="font-size: 0.8rem; color: var(--gri);">O singură investiție. Rânduială pe viață.</p>
-            
-            <a href="https://www.paypal.com/ncp/payment/MH54VF92TC364" 
-               onclick="raportarePlata();" 
-               class="btn-main">
-                DEBLOCHEAZĂ SISTEMUL
-            </a>
-
-            <div style="margin-top: 40px; border-top: 1px dashed #222; padding-top: 40px;">
-                <p style="font-family: 'Cinzel'; font-size: 0.7rem; margin-bottom: 10px;">AI DEJA CHEIA DE ARHITECT?</p>
-                <input type="password" id="gateKey" class="key-input" placeholder="••••••••">
-                <br>
-                <button class="btn-key" onclick="valideazaAcces();">INTRĂ ÎN SISTEM</button>
-            </div>
-        </div>
-
     </div>
-
-    <footer>
-        REGULĂ DE FIER: NU TRAGEM DE NIMENI. FĂRĂ VICTIMIZARE.<br>
-        DAKAMIGOS MARKT SRL | CUI: RO40767794
-    </footer>
-
-    <script>
-        function valideazaAcces() {
-            const key = document.getElementById('gateKey').value;
-            if(key === "ELITA2026") {
-                window.location.href = "masterplan.html";
-            } else {
-                alert("Acces neautorizat. Sistemul ramane inchis.");
-            }
-        }
-    </script>
 </body>
 </html>
