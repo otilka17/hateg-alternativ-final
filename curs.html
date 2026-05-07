@@ -9,96 +9,305 @@
       gtag('config', 'AW-18106516696');
 
       function raportarePlata() {
-        gtag('event', 'conversion', {'send_to': 'AW-18106516696/vY6pCK_X760ZELiRscsD'});
+        gtag('event', 'conversion', {
+            'send_to': 'AW-18106516696/vY6pCK_X760ZELiRscsD',
+            'event_callback': function() { console.log("Conversie: Click Achitare Masterplan"); }
+        });
       }
     </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Metanoia Digitală - Arhitectura Rânduielii</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Cinzel:wght@400;700&family=Inter:wght@200;300;400&display=swap" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Cinzel:wght@400;700;900&family=Inter:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     <style>
-        :root { --auriu: #c5a059; --negru: #050505; --gri: #1a1a1a; --text-muted: #888; }
-        body { background: var(--negru); color: #fff; font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; }
-        
-        /* HEADER STIL REVISTĂ */
-        header { padding: 40px 5%; border-bottom: 1px solid var(--gri); display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-family: 'Cinzel'; font-size: 1.2rem; letter-spacing: 5px; color: var(--auriu); }
+        :root {
+            --auriu: #c5a059;
+            --negru: #050505;
+            --gri-inchis: #111111;
+            --gri-border: #1a1a1a;
+            --alb: #ffffff;
+            --text-muted: #d1d1d1;
+        }
 
-        /* HERO */
-        .hero { padding: 100px 10%; text-align: center; }
-        .hero h1 { font-family: 'Playfair Display'; font-size: clamp(3rem, 8vw, 6rem); font-style: italic; margin: 0; line-height: 1; }
-        .hero p { font-family: 'Cinzel'; letter-spacing: 4px; color: var(--text-muted); margin-top: 20px; font-size: 0.8rem; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        /* CARDURI DE REVISTĂ */
-        .magazine-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; padding: 50px 10%; }
-        .card { border: 1px solid var(--gri); padding: 40px; position: relative; transition: 0.5s; background: #080808; }
-        .card:hover { border-color: var(--auriu); }
-        .card-num { font-family: 'Playfair Display'; font-size: 4rem; color: var(--gri); position: absolute; top: 10px; right: 20px; font-style: italic; }
-        .card h3 { font-family: 'Cinzel'; color: var(--auriu); font-size: 1.1rem; margin-bottom: 20px; border-bottom: 1px solid var(--gri); padding-bottom: 10px; }
-        .card p { color: #ccc; font-weight: 200; line-height: 1.8; }
-        .tech-footer { font-family: monospace; color: #2f855a; font-size: 0.7rem; margin-top: 30px; display: block; }
+        body {
+            background-color: var(--negru);
+            color: var(--alb);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-        /* CTA ZONA */
-        .cta-section { background: #080808; padding: 100px 5%; text-align: center; border-top: 1px solid var(--gri); }
-        .price { font-family: 'Playfair Display'; font-size: 4rem; font-style: italic; margin-bottom: 10px; }
-        .btn-pay { display: inline-block; padding: 25px 60px; background: var(--auriu); color: #000; text-decoration: none; font-family: 'Cinzel'; font-weight: 900; letter-spacing: 3px; margin: 40px 0; }
-        
+        /* HEADER */
+        header {
+            padding: 30px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--gri-border);
+            background: var(--negru);
+        }
+
+        .brand-logo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            color: var(--auriu);
+            letter-spacing: 5px;
+            font-weight: 700;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            padding: 120px 10%;
+            text-align: center;
+            background: radial-gradient(circle at center, #111 0%, #050505 100%);
+        }
+
+        .accent-font {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 4px;
+            color: var(--auriu);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 8vw, 5.5rem);
+            font-style: italic;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            color: var(--alb);
+        }
+
+        /* MAGAZINE GRID */
+        .magazine-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            padding: 80px 10%;
+        }
+
+        .magazine-card {
+            background-color: var(--gri-inchis);
+            border: 1px solid var(--gri-border);
+            padding: 50px 40px;
+            position: relative;
+            transition: all 0.4s ease;
+        }
+
+        .magazine-card:hover {
+            border-color: var(--auriu);
+            transform: translateY(-10px);
+        }
+
+        .card-num {
+            font-family: 'Playfair Display', serif;
+            font-size: 5rem;
+            color: #1a1a1a;
+            position: absolute;
+            top: 10px;
+            right: 30px;
+            font-style: italic;
+            z-index: 0;
+        }
+
+        .magazine-card h3 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+            color: var(--auriu);
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .magazine-card p {
+            font-size: 1rem;
+            font-weight: 200;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tech-label {
+            font-family: monospace;
+            font-size: 0.7rem;
+            color: #2f855a;
+            border-top: 1px solid var(--gri-border);
+            padding-top: 15px;
+            display: block;
+            text-transform: uppercase;
+        }
+
+        /* CTA ZONE */
+        .cta-zone {
+            padding: 100px 10%;
+            text-align: center;
+            border-top: 1px solid var(--gri-border);
+        }
+
+        .price {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5rem;
+            font-style: italic;
+            margin-bottom: 15px;
+            color: var(--alb);
+        }
+
+        .btn-pay {
+            display: inline-block;
+            padding: 25px 60px;
+            background-color: var(--auriu);
+            color: #000;
+            text-decoration: none;
+            font-family: 'Cinzel', serif;
+            font-weight: 900;
+            letter-spacing: 3px;
+            margin: 40px 0;
+            transition: 0.3s;
+        }
+
+        .btn-pay:hover {
+            background-color: var(--alb);
+            box-shadow: 0 0 30px rgba(197, 160, 89, 0.4);
+        }
+
         /* PORTAL DISCRET ACCES */
-        .access-portal { margin-top: 60px; opacity: 0.3; transition: 0.5s; }
+        .access-portal {
+            margin-top: 60px;
+            opacity: 0.3;
+            transition: 0.5s;
+        }
+
         .access-portal:hover { opacity: 1; }
-        .input-hidden { background: transparent; border: none; border-bottom: 1px solid var(--auriu); color: #fff; text-align: center; font-family: 'Inter'; padding: 10px; width: 200px; outline: none; }
+
+        .input-hidden {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--auriu);
+            color: #fff;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            padding: 10px;
+            width: 250px;
+            outline: none;
+            font-size: 0.9rem;
+        }
+
+        .btn-unlock {
+            background: transparent;
+            color: var(--auriu);
+            border: 1px solid var(--auriu);
+            padding: 8px 20px;
+            cursor: pointer;
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            margin-left: 10px;
+            transition: 0.3s;
+        }
+
+        .btn-unlock:hover {
+            background: var(--auriu);
+            color: #000;
+        }
+
+        /* FOOTER */
+        footer {
+            padding: 80px 5%;
+            text-align: center;
+            font-family: 'Cinzel', serif;
+            font-size: 0.7rem;
+            color: #444;
+            letter-spacing: 3px;
+            border-top: 1px solid var(--gri-border);
+        }
+
     </style>
 </head>
 <body>
+
     <header>
-        <div class="logo">METANOIA</div>
-        <div style="font-family: 'Cinzel'; font-size: 0.6rem; letter-spacing: 2px;">V. 2.0 / 2026</div>
+        <div class="brand-logo">METANOIA</div>
+        <div style="font-family: 'Cinzel'; font-size: 0.6rem; letter-spacing: 2px; color: var(--auriu);">STATUS: ELITĂ 2026</div>
     </header>
 
     <section class="hero">
-        <p>ARHITECTURA RÂNDUIELII</p>
+        <p class="accent-font">Metamorfoză • Rânduială • Execuție</p>
         <h1>Limbajul de<br>Programare al Afacerii.</h1>
+        <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto; font-weight: 200;">
+            De la sclavul algoritmului la Arhitectul sistemului. Instalăm rânduiala prin date, nu prin directive.
+        </p>
     </section>
 
     <div class="magazine-grid">
-        <div class="card">
+        <div class="magazine-card">
             <span class="card-num">01</span>
             <h3>Radiografia Profitului</h3>
-            <p>Intrăm în codul sursă al cifrelor tale. Identificăm unde crapă sistemul și unde se pierde marja netă prin analiză brută.</p>
-            <span class="tech-footer">> SQL_QUERY / DATA_MINING</span>
+            <p>Intrăm în codul sursă al cifrelor tale. Identificăm „bug-urile” financiare și unde se pierde marja netă prin analiză brută.</p>
+            <span class="tech-label">Engine: SQL & API Mining</span>
         </div>
-        <div class="card">
+
+        <div class="magazine-card">
             <span class="card-num">02</span>
             <h3>Manualul de Tihnă</h3>
             <p>Automatizăm deciziile. Afacerea devine un organism autonom care rulează pe proceduri de elită, nu pe stresul tău.</p>
-            <span class="tech-footer">> ATLASSIAN_JIRA / OPS_WORKFLOW</span>
+            <span class="tech-label">Stack: Atlassian Jira / Confluence</span>
         </div>
-        <div class="card">
+
+        <div class="magazine-card">
             <span class="card-num">03</span>
-            <h3>Planul de Ananghie</h3>
-            <p>Intervenție chirurgicală în fluxurile de producție și depozite. Recuperăm controlul acolo unde haosul a pus stăpânire.</p>
-            <span class="tech-footer">> SENIOR_ERP / API_INTEGRATION</span>
+            <h3>Controlul Resurselor</h3>
+            <p>Rânduială totală în fluxurile de producție și depozite. Trasabilitate impecabilă prin sisteme integrate.</p>
+            <span class="tech-label">Motor: SeniorERP / Gestiune Sistemică</span>
         </div>
     </div>
 
-    <section class="cta-section">
+    <section class="cta-zone">
+        <p class="accent-font">Investiția în Arhitectură</p>
         <div class="price">200€</div>
-        <p style="color: var(--text-muted); font-family: 'Cinzel'; font-size: 0.7rem;">INVESTIȚIE ÎN ARHITECTURĂ</p>
-        <a href="https://www.paypal.com/ncp/payment/MH54VF92TC364" onclick="raportarePlata()" class="btn-pay">DEBLOCHEAZĂ MASTERPLANUL</a>
+        <p style="color: var(--text-muted); font-size: 0.9rem; font-weight: 200;">O singură investiție. Rânduială pe viață.</p>
+        
+        <a href="https://www.paypal.com/ncp/payment/MH54VF92TC364" 
+           onclick="raportarePlata();" 
+           class="btn-pay">
+            DEBLOCHEAZĂ MASTERPLANUL
+        </a>
 
         <div class="access-portal">
-            <input type="password" id="sysKey" class="input-hidden" placeholder="PROTOCOL ACCES">
-            <button onclick="check()" style="background:transparent; color:var(--auriu); border:none; cursor:pointer; font-family:'Cinzel';">GO</button>
+            <input type="password" id="gateKey" class="input-hidden" placeholder="PROTOCOL DE ACCES">
+            <button class="btn-unlock" onclick="valideazaAcces();">AUTORIZEAZĂ</button>
+            <p id="error" style="color: #e53e3e; margin-top: 15px; font-size: 0.7rem; display: none; font-family: 'Cinzel';">ACCES NEAUTORIZAT</p>
         </div>
     </section>
 
+    <footer>
+        REGULĂ DE FIER: NU TRAGEM DE NIMENI. FĂRĂ VICTIMIZARE.<br>
+        DAKAMIGOS MARKT SRL | RÂNDUIALĂ 2026
+    </footer>
+
     <script>
-        function check() {
-            // Cheia este "ELITA2026", dar nu apare in placeholder
-            if(document.getElementById('sysKey').value === "ELITA2026") {
+        function valideazaAcces() {
+            const cheie = document.getElementById('gateKey').value;
+            const error = document.getElementById('error');
+            
+            // Cheia de elita ramane aceeasi, dar ascunsa de ochiul publicului
+            if(cheie === "ELITA2026") {
                 window.location.href = "masterplan.html";
+            } else {
+                error.style.display = "block";
+                setTimeout(() => { error.style.display = "none"; }, 3000);
             }
         }
     </script>
+
 </body>
 </html>
