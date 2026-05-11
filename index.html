@@ -15,18 +15,17 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Cinzel:wght@400;700;900&family=Inter:wght@200;300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <script src="https://static.elfsight.com/platform/platform.js" async></script>
 
     <style>
         :root { --auriu: #c5a059; --negru: #070707; --negru-card: #0c0c0c; --alb: #f9f9f9; --gri: #888; }
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-        /* HEADER & BURGER */
-        .site-header { position: fixed; top: 0; width: 100%; z-index: 9999; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; background: rgba(7,7,7,0.9); backdrop-filter: blur(10px); }
+        /* HEADER */
+        .site-header { position: fixed; top: 0; width: 100%; z-index: 9999; padding: 20px 5%; display: flex; justify-content: space-between; align-items: center; background: rgba(7,7,7,0.95); backdrop-filter: blur(10px); }
         .brand-logo img { height: 50px; width: auto; }
         .burger { cursor: pointer; z-index: 10001; background: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px; border: 1px solid var(--auriu); display: flex; flex-direction: column; gap: 6px; }
-        .burger span { display: block; width: 22px; height: 1px; background: var(--auriu); transition: 0.4s; }
+        .burger span { display: block; width: 25px; height: 1px; background: var(--auriu); transition: 0.4s; }
         .burger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
         .burger.active span:nth-child(2) { opacity: 0; }
         .burger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
@@ -35,44 +34,53 @@
         .main-nav.active { right: 0; }
         .main-nav a { font-size: 1.5rem; font-family: 'Cinzel'; margin: 15px 0; color: var(--alb); letter-spacing: 5px; text-transform: uppercase; text-decoration: none; }
 
-        /* HERO SECTION - TEXT ÎN STÂNGA RESTABILIT */
-        .hero { height: 80vh; position: relative; display: flex; align-items: center; justify-content: flex-start; padding: 0 10%; overflow: hidden; background: url('images/la-buliga-pensiune.jpg') center/cover; }
-        .hero::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(0,0,0,0.8) 20%, transparent); }
+        /* HERO - TEXT ÎN STÂNGA CU LINIE AURIE */
+        .hero { 
+            height: 90vh; position: relative; display: flex; align-items: center; justify-content: flex-start; 
+            padding: 0 10%; background: url('images/la-buliga-pensiune.jpg') center/cover; 
+        }
+        .hero::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(0,0,0,0.85) 30%, transparent); }
         
-        .hero-content { position: relative; z-index: 2; max-width: 800px; border-left: 2px solid var(--auriu); padding-left: 40px; text-align: left; }
-        .tagline { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 6px; font-size: 0.8rem; margin-bottom: 20px; display: block; font-weight: 700; }
-        .hero h1 { font-family: 'Playfair Display'; font-size: clamp(2.5rem, 8vw, 5rem); font-style: italic; color: var(--auriu); line-height: 1.1; }
+        .hero-content { position: relative; z-index: 2; max-width: 750px; border-left: 3px solid var(--auriu); padding-left: 40px; text-align: left; }
+        .tagline { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 8px; font-size: 0.9rem; margin-bottom: 20px; display: block; font-weight: 700; }
+        .hero h1 { font-family: 'Playfair Display'; font-size: clamp(2.5rem, 8vw, 4.5rem); font-style: italic; color: var(--auriu); line-height: 1.1; margin-bottom: 20px; }
+        .hero-description { color: #ddd; font-size: 1.1rem; line-height: 1.6; font-weight: 300; max-width: 600px; }
 
-        /* PROFILE SECTION - POZĂ CORECTATĂ */
-        .profile-section { padding: 120px 5% 60px; background: #0a0a0a; border-bottom: 1px solid #1a1a1a; }
+        /* PROFILE SECTION */
+        .profile-section { padding: 100px 5% 60px; background: #0a0a0a; border-bottom: 1px solid #1a1a1a; }
         .profile-container { max-width: 1100px; margin: 0 auto; text-align: center; }
-        .profile-img-wrap { width: 200px; height: 200px; border-radius: 50%; border: 1px solid var(--auriu); padding: 5px; margin: 0 auto 30px; background: #000; overflow: hidden; }
-        .profile-img-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: top; border-radius: 50%; }
+        .profile-img-wrap { width: 220px; height: 220px; border-radius: 50%; border: 1px solid var(--auriu); padding: 5px; margin: 0 auto 30px; background: #000; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        .profile-img-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center 15%; border-radius: 50%; }
         .profile-text h2 { font-family: 'Playfair Display'; font-size: 2.5rem; font-style: italic; margin-bottom: 15px; color: var(--auriu); }
         .profile-text p { color: #aaa; font-size: 1.1rem; line-height: 1.7; max-width: 800px; margin: 0 auto; font-weight: 300; }
 
-        /* PILONII - RESPONSIVITATE TEXT LUNG */
-        .hub-container { max-width: 1400px; margin: 0 auto; padding: 40px 5% 100px; }
+        /* GRID PILONI - RESPONSIV PENTRU TELEFON */
+        .hub-container { max-width: 1400px; margin: 0 auto; padding: 60px 5% 100px; }
         .pillar-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-        .pillar-card { background: var(--negru-card); border: 1px solid #1a1a1a; transition: 0.4s; text-decoration: none; display: flex; flex-direction: column; height: auto; }
+        .pillar-card { background: var(--negru-card); border: 1px solid #1a1a1a; transition: 0.4s; text-decoration: none; display: flex; flex-direction: column; min-height: 100%; }
         .pillar-card:hover { border-color: var(--auriu); transform: translateY(-10px); }
         .pillar-img { height: 300px; background-size: cover; background-position: center; filter: brightness(0.5); transition: 0.5s; }
-        .pillar-content { padding: 40px 30px; text-align: center; flex-grow: 1; display: flex; flex-direction: column; }
-        .pillar-tag { font-family: 'Cinzel'; color: var(--auriu); font-size: 0.7rem; letter-spacing: 3px; margin-bottom: 15px; display: block; }
-        .pillar-title { font-family: 'Playfair Display'; font-size: 2rem; font-style: italic; margin-bottom: 20px; color: var(--alb); }
-        .pillar-desc { color: #777; font-size: 0.95rem; line-height: 1.6; margin-bottom: 30px; overflow: visible; }
-        .btn-card { padding: 12px 30px; border: 1px solid var(--auriu); color: var(--auriu); font-family: 'Cinzel'; font-size: 0.8rem; letter-spacing: 2px; margin-top: auto; align-self: center; }
+        .pillar-card:hover .pillar-img { filter: brightness(0.8); }
 
-        /* FOOTER LEGAL & ANPC */
+        .pillar-content { padding: 40px 30px; text-align: center; flex-grow: 1; display: flex; flex-direction: column; }
+        .pillar-tag { font-family: 'Cinzel'; color: var(--auriu); font-size: 0.75rem; letter-spacing: 3px; margin-bottom: 15px; display: block; }
+        .pillar-title { font-family: 'Playfair Display'; font-size: 2rem; font-style: italic; margin-bottom: 20px; color: var(--alb); }
+        .pillar-desc { color: #777; font-size: 0.95rem; line-height: 1.6; margin-bottom: 30px; }
+        .btn-card { padding: 12px 30px; border: 1px solid var(--auriu); color: var(--auriu); font-family: 'Cinzel'; font-size: 0.8rem; letter-spacing: 2px; margin-top: auto; align-self: center; transition: 0.3s; }
+        .pillar-card:hover .btn-card { background: var(--auriu); color: #000; }
+
+        /* FOOTER LEGAL */
         footer { padding: 80px 5% 40px; text-align: center; border-top: 1px solid #111; background: #050505; }
         .legal-links { margin-bottom: 40px; display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
-        .legal-links a { color: #555; font-size: 0.75rem; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; }
+        .legal-links a { color: #555; font-size: 0.75rem; text-decoration: none; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .legal-links a:hover { color: var(--auriu); }
         .footer-logos { display: flex; justify-content: center; gap: 30px; margin-bottom: 40px; }
         .footer-logos img { height: 50px; opacity: 1; }
         .footer-bottom { font-family: 'Cinzel'; color: #333; font-size: 0.7rem; letter-spacing: 2px; }
 
         @media (max-width: 768px) {
-            .hero-content { padding-left: 20px; margin-left: 5%; }
+            .hero { padding: 0 5%; justify-content: center; text-align: center; }
+            .hero-content { padding-left: 20px; border-left-width: 2px; }
             .pillar-img { height: 220px; }
             .pillar-content { padding: 30px 20px; }
         }
@@ -100,7 +108,8 @@
     <section class="hero">
         <div class="hero-content">
             <span class="tagline">HAȚEG ALTERNATIV</span>
-            <h1>Metanoia.<br>Arhitectura Rânduielii.</h1>
+            <h1>Metanoia.<br>Refugiul minții și al sufletului.</h1>
+            <p class="hero-description">Mai mult decât un loc. Un ecosistem complet pentru cei care caută să scape de zgomot. Descoperă tihna muntelui, gustul curat al gospodăriei și rânduiala unei vieți trăite cu sens.</p>
         </div>
     </section>
 
@@ -117,6 +126,7 @@
 
     <main class="hub-container">
         <div class="pillar-grid">
+            
             <a href="metanoia.html" class="pillar-card">
                 <div class="pillar-img" style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1000');"></div>
                 <div class="pillar-content">
@@ -126,33 +136,37 @@
                     <span class="btn-card">VEZI MANIFESTUL</span>
                 </div>
             </a>
+
             <a href="curs.html" class="pillar-card">
                 <div class="pillar-img" style="background-image: url('images/IMG_20260330_160353.webp');"></div>
                 <div class="pillar-content">
                     <span class="pillar-tag">MANAGEMENT</span>
                     <h3 class="pillar-title">Masterplan</h3>
                     <p class="pillar-desc">Treci de la statutul de Operator la cel de Arhitect de sistem. Un program intensiv pentru lideri care vor să scaleze prin strategie și rigoare.</p>
-                    <span class="btn-card">DETALII PROGRAM</span>
+                    <span class="btn-card">MASTERPLAN BUSINESS</span>
                 </div>
             </a>
+
             <a href="oferta.html" class="pillar-card">
                 <div class="pillar-img" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000');"></div>
                 <div class="pillar-content">
                     <span class="pillar-tag">DIGITAL</span>
                     <h3 class="pillar-title">Vizibilitate</h3>
-                    <p class="pillar-desc">Construim oglinda digitală a excelenței tale operaționale prin sisteme web de elită, site-uri de prezentare și magazine online gata de luptă.</p>
+                    <p class="pillar-desc">Construim oglinda digitală a excelenței tale operaționale prin site-uri de elită, de la prezentare la sisteme complexe de management.</p>
                     <span class="btn-card">OFERTE WEB</span>
                 </div>
             </a>
+
             <a href="gastronomie.html" class="pillar-card">
                 <div class="pillar-img" style="background-image: url('images/gast-masa-traditionala.jpg');"></div>
                 <div class="pillar-content">
                     <span class="pillar-tag">GASTRO</span>
                     <h3 class="pillar-title">Take-Away</h3>
-                    <p class="pillar-desc">Produse artizanale și cafea de specialitate rânduite pentru performanță. Gustul autentic al gospodăriei, pregătit pentru drum.</p>
+                    <p class="pillar-desc">Produse artizanale și cafea de specialitate rânduite pentru performanța ta zilnică. Gustul autentic al gospodăriei, gata pentru drum.</p>
                     <span class="btn-card">CĂMARA HUB</span>
                 </div>
             </a>
+
             <a href="pensiune.html" class="pillar-card">
                 <div class="pillar-img" style="background-image: url('images/la-buliga-pensiune.jpg');"></div>
                 <div class="pillar-content">
@@ -162,20 +176,23 @@
                     <span class="btn-card">RESERVĂ TIHNA</span>
                 </div>
             </a>
+
         </div>
     </main>
 
     <footer>
         <div class="legal-links">
-            <a href="termeni-si-conditii.html">Termeni</a>
-            <a href="confidentialitate.html">Confidențialitate</a>
-            <a href="politica-cookies.html">Cookies</a>
+            <a href="termeni-si-conditii.html">Termeni și Condiții</a>
+            <a href="confidentialitate.html">Politică Confidențialitate</a>
+            <a href="politica-cookies.html">Politică Cookies</a>
         </div>
         <div class="footer-logos">
             <a href="https://anpc.ro/ce-este-sal/" target="_blank"><img src="images/anpc-sal.png" alt="SAL"></a>
             <a href="https://anpc.ro/" target="_blank"><img src="images/anpc-sol.png" alt="SOL"></a>
         </div>
-        <div class="footer-bottom">DAKAMIGOS MARKT SRL | CUI: 38324829 | TRIBUT PATRICIA | &copy; 2026</div>
+        <div class="footer-bottom">
+            DAKAMIGOS MARKT SRL | CUI: 38324829 | TRIBUT PATRICIA | &copy; 2026 METANOIA HUB
+        </div>
     </footer>
 
     <script>
