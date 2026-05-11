@@ -1,128 +1,57 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18106516696"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'AW-18106516696');
-    </script>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Hațeg Alternativ | Hub Metanoia</title>
+    <title>Pachete Arhitectură Digitală | Metanoia</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Cinzel:wght@400;700;900&family=Inter:wght@200;300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <script src="https://static.elfsight.com/platform/platform.js" async></script>
 
     <style>
-        :root { --auriu: #c5a059; --negru: #070707; --alb: #f9f9f9; --gri: #888; }
+        :root { --auriu: #c5a059; --negru: #070707; --alb: #f9f9f9; --gri: #222; }
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        a { text-decoration: none !important; outline: none; }
-        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; }
-
-        /* HEADER */
-        .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 30px 5%; display: flex; justify-content: space-between; align-items: center; }
-        .brand-logo img { height: clamp(60px, 10vw, 90px); width: auto; filter: drop-shadow(0 0 20px rgba(0,0,0,1)); }
-        .burger { cursor: pointer; z-index: 10001; background: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px; border: 1px solid var(--auriu); }
-        .burger div { width: 30px; height: 1px; background: var(--auriu); margin: 6px 0; }
-
-        /* NAV */
-        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: rgba(5,5,5,0.98); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.5s; z-index: 10000; }
-        .main-nav.active { right: 0; }
-        .main-nav a { font-size: 1.5rem; font-family: 'Cinzel'; margin: 15px 0; color: var(--alb); letter-spacing: 3px; text-transform: uppercase; transition: 0.3s; }
-        .main-nav a:hover { color: var(--auriu); }
-        .nav-res-btn { border: 1px solid var(--auriu); padding: 12px 40px; margin-top: 30px !important; color: var(--auriu) !important; }
-
-        /* HERO SECTION */
-        .hero { 
-            height: 100vh; position: relative; display: flex; align-items: center; justify-content: flex-start; text-align: left;
-            padding: 0 10%; overflow: hidden; background-color: var(--negru);
-        }
+        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; }
         
-        .hero-slider { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
-        .slide { 
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
-            background-size: cover; background-position: center;
-            opacity: 0; animation: slideAnim 18s infinite;
-        }
-        .slide::after { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to right, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 100%); }
+        /* HEADER SIMPLIFICAT PENTRU CONVERSIE */
+        .offer-header { padding: 40px 5%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--gri); }
+        .logo img { height: 60px; }
+        .back-link { font-family: 'Cinzel'; color: var(--auriu); font-size: 0.8rem; letter-spacing: 2px; }
+
+        /* PRICING SECTION */
+        .pricing-container { max-width: 1200px; margin: 80px auto; padding: 0 5%; }
+        .pricing-intro { text-align: center; margin-bottom: 60px; }
+        .pricing-intro h1 { font-family: 'Playfair Display'; font-style: italic; font-size: 3rem; margin-bottom: 20px; }
+        .pricing-intro p { color: #888; font-weight: 300; letter-spacing: 1px; }
+
+        .grid-pachete { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
         
-        .slide:nth-child(1) { background-image: url('images/rasarit.jpg'); animation-delay: 0s; }
-        .slide:nth-child(2) { background-image: url('images/la-buliga-pensiune.jpg'); animation-delay: 6s; }
-        .slide:nth-child(3) { background-image: url('images/IMG_20260330_160353.webp'); animation-delay: 12s; }
-
-        @keyframes slideAnim {
-            0% { opacity: 0; transform: scale(1); }
-            10% { opacity: 1; }
-            33% { opacity: 1; transform: scale(1.05); }
-            43% { opacity: 0; transform: scale(1.05); }
-            100% { opacity: 0; }
-        }
-
-        .hero-content { 
-            position: relative; z-index: 2; max-width: 800px; margin-top: 60px;
-            border-left: 2px solid var(--auriu); padding-left: 40px; 
-        }
-        .tagline { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 6px; font-size: 0.8rem; margin-bottom: 20px; font-weight: 700; display: block; }
-        .hero h1 { font-family: 'Playfair Display'; font-size: clamp(3rem, 8vw, 5rem); font-style: italic; line-height: 1.1; margin-bottom: 25px; font-weight: 400; }
-        .hero-description { color: #ddd; font-size: 1.15rem; margin-bottom: 40px; max-width: 600px; line-height: 1.6; font-weight: 300; }
-        .btn-gold { display: inline-block; padding: 18px 45px; background: transparent; border: 1px solid var(--auriu); color: var(--auriu); font-family: 'Cinzel'; letter-spacing: 2px; transition: 0.4s; text-transform: uppercase; }
-        .btn-gold:hover { background: var(--auriu); color: var(--negru); }
-
-        /* CONCEPT INTRO */
-        .concept-intro { padding: 100px 5%; text-align: center; background: #0a0a0a; border-bottom: 1px solid #1a1a1a; }
-        .concept-intro h2 { font-family: 'Playfair Display'; font-size: 2.5rem; margin-bottom: 30px; color: var(--auriu); }
-        .concept-intro p { max-width: 800px; margin: 0 auto 20px; color: #aaa; line-height: 1.8; font-size: 1.1rem; font-weight: 300; }
-
-        /* BASKET SECTION */
-        .basket-section { background: #050505; border-bottom: 1px solid #1a1a1a; padding: 100px 5%; display: flex; flex-wrap: wrap; align-items: center; gap: 50px; }
-        .basket-image { flex: 1; min-width: 300px; position: relative; }
-        .basket-image img { width: 100%; border: 1px solid var(--auriu); filter: grayscale(10%) contrast(1.1); box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
-        .basket-content { flex: 1; min-width: 300px; }
-        .basket-content h2 { font-family: 'Playfair Display'; font-style: italic; font-size: 2.5rem; color: var(--auriu); margin-bottom: 15px; }
-        .basket-content h4 { font-family: 'Cinzel'; font-size: 0.9rem; letter-spacing: 2px; color: #888; margin-bottom: 30px; }
-        .basket-list { list-style: none; padding: 0; margin-bottom: 30px; }
-        .basket-list li { margin-bottom: 20px; display: flex; align-items: flex-start; }
-        .basket-list i { color: var(--auriu); font-size: 1.2rem; margin-right: 15px; margin-top: 5px; }
-        .basket-list strong { color: var(--alb); font-family: 'Cinzel'; font-size: 1.1rem; display: block; margin-bottom: 5px; }
-        .basket-list p { color: #aaa; font-size: 0.9rem; line-height: 1.6; }
+        .pachet-card { background: #0c0c0c; border: 1px solid var(--gri); padding: 50px 40px; position: relative; transition: 0.4s; display: flex; flex-direction: column; }
+        .pachet-card:hover { border-color: var(--auriu); transform: translateY(-10px); }
+        .pachet-card.featured { border-color: var(--auriu); background: #111; }
         
-        .btn-pay { display: inline-block; padding: 15px 35px; background: var(--auriu); color: #000; font-family: 'Cinzel'; font-weight: bold; letter-spacing: 2px; transition: 0.3s; }
-        .btn-pay:hover { background: #fff; }
-
-        /* HUB GRID */
-        .hub-container { max-width: 1400px; margin: 0 auto; padding: 100px 5%; }
-        .section-title { font-family: 'Cinzel'; font-size: 2rem; color: #fff; text-align: center; margin-bottom: 60px; letter-spacing: 4px; }
-        .pillar-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .pillar-card { background: #000; border: 1px solid #222; overflow: hidden; display: flex; flex-direction: column; transition: 0.4s; }
-        .pillar-card:hover { border-color: var(--auriu); transform: translateY(-5px); }
-        .pillar-img { height: 250px; background-size: cover; background-position: center; border-bottom: 1px solid #222; }
-        .pillar-content { padding: 40px 30px; display: flex; flex-direction: column; flex-grow: 1; }
-        .pillar-tag { font-family: 'Cinzel'; color: var(--auriu); font-size: 0.75rem; letter-spacing: 3px; margin-bottom: 15px; }
-        .pillar-title { font-family: 'Playfair Display'; font-size: 2rem; margin-bottom: 20px; font-style: italic; }
-        .pillar-desc { color: #888; font-size: 0.95rem; line-height: 1.7; margin-bottom: 30px; }
+        .badge { position: absolute; top: 20px; right: 20px; font-family: 'Cinzel'; color: var(--auriu); font-size: 0.6rem; letter-spacing: 2px; border: 1px solid var(--auriu); padding: 5px 10px; }
         
-        .gastro-list { list-style: none; margin-bottom: 30px; padding-top: 20px; border-top: 1px dashed #222; }
-        .gastro-list li { color: #ccc; font-size: 0.9rem; margin-bottom: 10px; display: flex; align-items: center; }
-        .gastro-list li i { color: var(--auriu); margin-right: 12px; font-size: 0.8rem; }
+        .pachet-title { font-family: 'Cinzel'; font-size: 1.5rem; color: var(--auriu); margin-bottom: 10px; letter-spacing: 3px; }
+        .pachet-subtitle { font-size: 0.8rem; color: #666; text-transform: uppercase; margin-bottom: 30px; letter-spacing: 2px; }
+        
+        .price { font-family: 'Playfair Display'; font-size: 2.5rem; margin-bottom: 40px; }
+        .price span { font-size: 1rem; color: #555; }
 
-        .pillar-btn { margin-top: auto; display: inline-block; padding: 15px 0; border-top: 1px solid #222; color: var(--auriu); font-family: 'Cinzel'; letter-spacing: 2px; font-size: 0.85rem; text-align: center; transition: 0.3s; }
-        .pillar-card:hover .pillar-btn { background: var(--auriu); color: #000; }
+        .features-list { list-style: none; margin-bottom: 50px; flex-grow: 1; }
+        .features-list li { margin-bottom: 15px; color: #aaa; font-size: 0.9rem; display: flex; align-items: center; }
+        .features-list li i { color: var(--auriu); margin-right: 15px; font-size: 0.8rem; }
+
+        .cta-btn { display: block; text-align: center; padding: 20px; background: transparent; border: 1px solid var(--auriu); color: var(--auriu); font-family: 'Cinzel'; letter-spacing: 2px; transition: 0.3s; text-decoration: none; }
+        .pachet-card:hover .cta-btn { background: var(--auriu); color: #000; }
 
         /* WHATSAPP FLOAT */
-        .whatsapp-float { position: fixed; bottom: 30px; left: 30px; background: #25d366; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 9999; color: #fff; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
-        
-        footer { padding: 80px 20px; text-align: center; border-top: 1px solid #111; background: #050505; }
-        .footer-legal a, .footer-legal span { color: #555; margin: 0 15px; font-size: 0.75rem; text-transform: uppercase; font-family: 'Cinzel'; letter-spacing: 1px; }
-        .tribute { color: var(--auriu); font-weight: 700; margin-top: 40px; font-family: 'Cinzel'; font-size: 0.75rem; letter-spacing: 5px; opacity: 0.5; }
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 9999; color: #fff; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
 
-        @media (max-width: 900px) {
-            .hero-content { padding-left: 20px; border-left-width: 3px; }
-            .basket-section { flex-direction: column; }
+        footer { padding: 60px 5%; text-align: center; border-top: 1px solid var(--gri); margin-top: 100px; color: #444; font-size: 0.7rem; font-family: 'Cinzel'; letter-spacing: 2px; }
+
+        @media (max-width: 768px) {
+            .pricing-intro h1 { font-size: 2rem; }
         }
     </style>
 </head>
@@ -130,129 +59,66 @@
 
     <a href="https://wa.me/40749229686" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
-    <header class="site-header">
-        <a href="index.html" class="brand-logo"><img src="images/logo1.svg" alt="Metanoia Logo"></a>
-        <div class="burger" id="burger"><div></div><div></div><div></div></div>
-        <nav class="main-nav" id="nav-links">
-            <a href="index.html">Hub Metanoia</a>
-            <a href="pensiune.html">Pensiunea</a>
-            <a href="gastronomie.html">Cămara & Gospodăria</a>
-            <a href="curs.html">Curs Management</a>
-            <a href="metanoia.html">Evenimente</a>
-            <a href="https://wa.me/40749229686">Mesaj WhatsApp</a>
-            <a href="rezervari.html" class="nav-res-btn">REZERVARE</a>
-        </nav>
+    <header class="offer-header">
+        <a href="index.html" class="logo"><img src="images/logo1.svg" alt="Metanoia Logo"></a>
+        <a href="index.html" class="back-link">← ÎNAPOI ÎN HUB</a>
     </header>
 
-    <section class="hero">
-        <div class="hero-slider">
-            <div class="slide"></div>
-            <div class="slide"></div>
-            <div class="slide"></div>
+    <main class="pricing-container">
+        <div class="pricing-intro">
+            <h1>Pachete Arhitectură Digitală</h1>
+            <p>Sisteme de operare online pentru afaceri care caută Rânduiala.</p>
         </div>
-        <div class="hero-content">
-            <span class="tagline">HAȚEG ALTERNATIV</span>
-            <h1>Metanoia.<br>Refugiul minții și al sufletului.</h1>
-            <p class="hero-description">Mai mult decât un loc. Un ecosistem complet pentru cei care caută să scape de zgomot. Descoperă tihna muntelui, gustul curat al gospodăriei și rânduiala unei vieți trăite cu sens.</p>
-            <a href="#hub" class="btn-gold">INTRĂ ÎN HUB</a>
-        </div>
-    </section>
 
-    <section class="concept-intro" id="hub">
-        <h2>Ce este Hub-ul Metanoia?</h2>
-        <p><em>Metanoia</em> înseamnă transformare profundă, schimbarea minții și întoarcerea la esență.</p>
-        <p>Am creat acest hub pentru că o resetare reală are nevoie de trei lucruri: <strong>un spațiu de tihnă</strong> unde să te retragi, <strong>hrană curată</strong> care să te vindece și <strong>rânduială mentală</strong> pentru a construi mai departe.</p>
-        <div class="elfsight-app-83957262-b13c-4e8b-827c-3f9e954c4e7a" data-elfsight-app-lazy></div>
-    </section>
-
-    <section class="basket-section">
-        <div class="basket-image">
-            <img src="images/gast-masa-traditionala.jpg" alt="Coșul Tradițional" onerror="this.src='https://images.unsplash.com/photo-1590412200988-a436970781fa?auto=format&fit=crop&q=80&w=1000'">
-        </div>
-        <div class="basket-content">
-            <h2>Coșul Tradițional:<br>Gustul Rânduielii</h2>
-            <h4>PRODUSE CURATE DIN GOSPODĂRIE</h4>
+        <div class="grid-pachete">
             
-            <ul class="basket-list">
-                <li><i class="fas fa-bread-slice"></i><div><strong>Baza Mesei</strong><p>Pâine de casă și brânză proaspătă.</p></div></li>
-                <li><i class="fas fa-jar"></i><div><strong>Din Cămară</strong><p>Zacuscă coaptă pe jar și dulceață artizanală.</p></div></li>
-            </ul>
-
-            <a href="https://www.paypal.com/ncp/payment/MH54VF92TC364" target="_blank" class="btn-pay">ACHITĂ COȘUL TRADIȚIONAL</a>
-            <p style="font-size: 0.8rem; color: #666; margin-top: 15px;">Comandă confirmată prin <a href="https://wa.me/40749229686" style="color: var(--auriu);">WhatsApp</a>.</p>
-        </div>
-    </section>
-
-    <main class="hub-container">
-        <h2 class="section-title">Cei 4 Piloni ai Rânduielii</h2>
-        <div class="pillar-grid">
-            
-            <div class="pillar-card">
-                <div class="pillar-img" style="background-image: url('images/gast-masa-traditionala.jpg');"></div>
-                <div class="pillar-content">
-                    <div class="pillar-tag">RESETAREA CORPULUI</div>
-                    <h3 class="pillar-title">Meniuri Take-Away</h3>
-                    <p class="pillar-desc">Hrană curată, trudită cu mâinile. Gustul autentic al gospodăriei, gata de luat la drum prin plata securizată.</p>
-                    <a href="https://www.paypal.com/ncp/payment/MH54VF92TC364" target="_blank" class="pillar-btn">ACHITĂ MENIUL PRIN PAYPAL</a>
-                </div>
+            <div class="pachet-card">
+                <div class="pachet-title">ESSENTIAL</div>
+                <div class="pachet-subtitle">Site de Prezentare</div>
+                <div class="price">€850 <span>/ proiect</span></div>
+                <ul class="features-list">
+                    <li><i class="fas fa-check"></i> Design Custom (One-Page sau Multi-Page)</li>
+                    <li><i class="fas fa-check"></i> Optimizare Mobile & Viteză</li>
+                    <li><i class="fas fa-check"></i> Integrare Contact WhatsApp & Google Maps</li>
+                    <li><i class="fas fa-check"></i> Mentenanță 3 luni inclusă</li>
+                </ul>
+                <a href="https://wa.me/40749229686?text=Salut!%20Sunt%20interesat%20de%20pachetul%20ESSENTIAL." class="cta-btn">SOLICITĂ OFERTĂ</a>
             </div>
 
-            <div class="pillar-card">
-                <div class="pillar-img" style="background-image: url('images/la-buliga-pensiune.jpg');"></div>
-                <div class="pillar-content">
-                    <div class="pillar-tag">RESETAREA SPAȚIULUI</div>
-                    <h3 class="pillar-title">Domeniile La Buligă</h3>
-                    <p class="pillar-desc">Refugiu izolat la 1100m. Cazare premium unde tăcerea pădurii devine singura ta agendă.</p>
-                    <a href="pensiune.html" class="pillar-btn">DESCOPERĂ TIHNA</a>
-                </div>
+            <div class="pachet-card featured">
+                <div class="badge">RECOMANDAT</div>
+                <div class="pachet-title">SYSTEMIC</div>
+                <div class="pachet-subtitle">E-commerce & Management</div>
+                <div class="price">€1.850 <span>/ proiect</span></div>
+                <ul class="features-list">
+                    <li><i class="fas fa-check"></i> Magazin Online Complet (Shopify/Woo)</li>
+                    <li><i class="fas fa-check"></i> Automatizare Procese Comenzi</li>
+                    <li><i class="fas fa-check"></i> Integrare Plăți Card (Stripe/PayPal)</li>
+                    <li><i class="fas fa-check"></i> Training Management Sistemic</li>
+                </ul>
+                <a href="https://wa.me/40749229686?text=Salut!%20Sunt%20interesat%20de%20pachetul%20SYSTEMIC." class="cta-btn">SOLICITĂ OFERTĂ</a>
             </div>
 
-            <div class="pillar-card">
-                <div class="pillar-img" style="background-image: url('images/IMG_20260330_160353.webp');"></div>
-                <div class="pillar-content">
-                    <div class="pillar-tag">RESETAREA MINȚII</div>
-                    <h3 class="pillar-title">Arhitectura Rânduielii</h3>
-                    <p class="pillar-desc">Management strategic pentru lideri. Treci de la Operator la Arhitect de sistem.</p>
-                    <a href="curs.html" class="pillar-btn">VEZI MASTERPLANUL</a>
-                </div>
-            </div>
-
-            <div class="pillar-card">
-                <div class="pillar-img" style="background-image: url('https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1000');"></div>
-                <div class="pillar-content">
-                    <div class="pillar-tag">VIZIUNE DIGITALĂ</div>
-                    <h3 class="pillar-title">Metanoia AI Offers</h3>
-                    <p class="pillar-desc">Pachete exclusive și oferte sezoniere accesibile instantaneu prin sistemul de plată PayPal.</p>
-                    <a href="https://www.paypal.com/ncp/payment/MH54VF92TC364" target="_blank" class="pillar-btn">ACHITĂ OFERTA PRIN PAYPAL</a>
-                </div>
+            <div class="pachet-card">
+                <div class="pachet-title">ARCHITECT</div>
+                <div class="pachet-subtitle">Custom & IA Integration</div>
+                <div class="price">Custom <span>/ de la €3.500</span></div>
+                <ul class="features-list">
+                    <li><i class="fas fa-check"></i> Arhitectură Web Complexă</li>
+                    <li><i class="fas fa-check"></i> Integrare Formatori IA (10x Standard)</li>
+                    <li><i class="fas fa-check"></i> Branding & Strategie Visuală</li>
+                    <li><i class="fas fa-check"></i> Consultanță Excelență Operațională</li>
+                </ul>
+                <a href="https://wa.me/40749229686?text=Salut!%20Sunt%20interesat%20de%20pachetul%20ARCHITECT." class="cta-btn">CONTACTEAZĂ ARHITECTUL</a>
             </div>
 
         </div>
     </main>
 
     <footer>
-        <p style="font-size:0.85rem; color:#666; letter-spacing:2px; margin-bottom:25px;">DAKAMIGOS MARKT SRL | CUI: 38324829</p>
-        <div class="footer-legal">
-            <a href="confidentialitate.html">Politică GDPR</a>
-            <a href="politica-cookies.html">Cookies</a>
-            <a href="https://wa.me/40749229686">Contact WhatsApp</a>
-        </div>
-        <div class="tribute">TRIBUT PATRICIA</div>
+        <p>DAKAMIGOS MARKT SRL | CUI: 38324829</p>
+        <p style="margin-top: 10px; opacity: 0.5;">TRIBUT PATRICIA</p>
     </footer>
 
-    <script type="text/javascript">
-        var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-        (function(){
-        var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-        s1.async=true; s1.src='https://embed.tawk.to/69c5607435e8d61c3a875f21/1jklg1i9s';
-        s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
-        s0.parentNode.insertBefore(s1,s0); })();
-    </script>
-    <script>
-        const burger = document.getElementById('burger');
-        const nav = document.getElementById('nav-links');
-        burger.onclick = () => nav.classList.toggle('active');
-        nav.onclick = () => nav.classList.remove('active');
-    </script>
 </body>
 </html>
