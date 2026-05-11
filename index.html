@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <!-- WIDGET 1: GOOGLE TAG MANAGER[cite: 5] -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18106516696"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -17,7 +16,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Cinzel:wght@400;700;900&family=Inter:wght@200;300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
-    <!-- WIDGET 2: ELFSIGHT PLATFORM[cite: 5] -->
     <script src="https://static.elfsight.com/platform/platform.js" async></script>
 
     <style>
@@ -26,20 +24,20 @@
         a { text-decoration: none !important; outline: none; }
         body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; }
 
-        /* HEADER[cite: 5] */
+        /* HEADER */
         .site-header { position: absolute; top: 0; width: 100%; z-index: 9999; padding: 30px 5%; display: flex; justify-content: space-between; align-items: center; }
         .brand-logo img { height: clamp(60px, 10vw, 90px); width: auto; filter: drop-shadow(0 0 20px rgba(0,0,0,1)); }
         .burger { cursor: pointer; z-index: 10001; background: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px; border: 1px solid var(--auriu); }
         .burger div { width: 30px; height: 1px; background: var(--auriu); margin: 6px 0; }
 
-        /* NAV[cite: 5] */
+        /* NAV */
         .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: rgba(5,5,5,0.98); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.5s; z-index: 10000; }
         .main-nav.active { right: 0; }
         .main-nav a { font-size: 1.5rem; font-family: 'Cinzel'; margin: 15px 0; color: var(--alb); letter-spacing: 3px; text-transform: uppercase; transition: 0.3s; }
         .main-nav a:hover { color: var(--auriu); }
         .nav-res-btn { border: 1px solid var(--auriu); padding: 12px 40px; margin-top: 30px !important; color: var(--auriu) !important; }
 
-        /* HERO SECTION - SLIDER DINAMIC[cite: 5] */
+        /* HERO SECTION - SLIDER DINAMIC */
         .hero { 
             height: 100vh; position: relative; display: flex; align-items: center; justify-content: flex-start; text-align: left;
             padding: 0 10%; overflow: hidden; background-color: var(--negru);
@@ -75,19 +73,19 @@
         .btn-gold { display: inline-block; padding: 18px 45px; background: transparent; border: 1px solid var(--auriu); color: var(--auriu); font-family: 'Cinzel'; letter-spacing: 2px; transition: 0.4s; text-transform: uppercase; }
         .btn-gold:hover { background: var(--auriu); color: var(--negru); }
 
-        /* INTRO CONCEPT METANOIA[cite: 5] */
+        /* INTRO CONCEPT METANOIA */
         .concept-intro { padding: 100px 5%; text-align: center; background: #0a0a0a; border-bottom: 1px solid #1a1a1a; }
         .concept-intro h2 { font-family: 'Playfair Display'; font-size: 2.5rem; margin-bottom: 30px; color: var(--auriu); }
         .concept-intro p { max-width: 800px; margin: 0 auto 20px; color: #aaa; line-height: 1.8; font-size: 1.1rem; font-weight: 300; }
 
-        /* SECTIUNEA COȘULUI[cite: 5] */
+        /* SECTIUNEA COȘULUI */
         .basket-section { background: #050505; border-bottom: 1px solid #1a1a1a; padding: 100px 5%; display: flex; flex-wrap: wrap; align-items: center; gap: 50px; }
         .basket-image { flex: 1; min-width: 300px; position: relative; }
         .basket-image img { width: 100%; border: 1px solid var(--auriu); filter: grayscale(10%) contrast(1.1); box-shadow: 0 10px 30px rgba(0,0,0,0.8); }
         .basket-content { flex: 1; min-width: 300px; }
         .basket-content h2 { font-family: 'Playfair Display'; font-style: italic; font-size: 2.5rem; color: var(--auriu); margin-bottom: 15px; }
         .basket-content h4 { font-family: 'Cinzel'; font-size: 0.9rem; letter-spacing: 2px; color: #888; margin-bottom: 30px; }
-        .basket-list { list-style: none; padding: 0; margin-bottom: 30px; }
+        .basket-list list-style: none; padding: 0; margin-bottom: 30px; }
         .basket-list li { margin-bottom: 20px; display: flex; align-items: flex-start; }
         .basket-list i { color: var(--auriu); font-size: 1.2rem; margin-right: 15px; margin-top: 5px; }
         .basket-list strong { color: var(--alb); font-family: 'Cinzel'; font-size: 1.1rem; display: block; margin-bottom: 5px; }
@@ -96,10 +94,10 @@
         .btn-pay { display: inline-block; padding: 15px 35px; background: var(--auriu); color: #000; font-family: 'Cinzel'; font-weight: bold; letter-spacing: 2px; transition: 0.3s; }
         .btn-pay:hover { background: #fff; }
 
-        /* HUB GRID - THE 3 PILLARS[cite: 5] */
+        /* HUB GRID - THE PILLARS */
         .hub-container { max-width: 1400px; margin: 0 auto; padding: 100px 5%; }
         .section-title { font-family: 'Cinzel'; font-size: 2rem; color: #fff; text-align: center; margin-bottom: 60px; letter-spacing: 4px; }
-        .pillar-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; }
+        .pillar-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         .pillar-card { background: #000; border: 1px solid #222; overflow: hidden; display: flex; flex-direction: column; transition: 0.4s; }
         .pillar-card:hover { border-color: var(--auriu); transform: translateY(-5px); }
         .pillar-img { height: 250px; background-size: cover; background-position: center; border-bottom: 1px solid #222; }
@@ -115,7 +113,7 @@
         .pillar-btn { margin-top: auto; display: inline-block; padding: 15px 0; border-top: 1px solid #222; color: var(--auriu); font-family: 'Cinzel'; letter-spacing: 2px; font-size: 0.85rem; text-align: center; transition: 0.3s; }
         .pillar-card:hover .pillar-btn { background: var(--auriu); color: #000; }
 
-        /* SECONDARY GRID[cite: 5] */
+        /* SECONDARY GRID */
         .secondary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 40px; }
         .sec-card { position: relative; height: 300px; overflow: hidden; border: 1px solid #222; }
         .sec-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.4; transition: 0.8s; }
@@ -124,7 +122,7 @@
         .sec-info h4 { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 2px; margin-bottom: 5px; }
         .sec-info p { font-size: 0.85rem; color: #aaa; }
 
-        /* WIDGET 3: WHATSAPP FLOAT[cite: 5] */
+        /* WIDGET 3: WHATSAPP FLOAT */
         .whatsapp-float { position: fixed; bottom: 30px; left: 30px; background: #25d366; border-radius: 50%; width: 60px; height: 60px; display: flex; align-items: center; justify-content: center; font-size: 30px; z-index: 9999; color: #fff; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
         
         footer { padding: 80px 20px; text-align: center; border-top: 1px solid #111; background: #050505; }
@@ -140,7 +138,6 @@
 </head>
 <body>
 
-    <!-- WIDGET 3: WHATSAPP FLOAT[cite: 5] -->
     <a href="https://wa.me/40749229686" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
     <header class="site-header">
@@ -157,7 +154,6 @@
         </nav>
     </header>
 
-    <!-- HERO SECTION[cite: 5] -->
     <section class="hero">
         <div class="hero-slider">
             <div class="slide"></div>
@@ -172,16 +168,13 @@
         </div>
     </section>
 
-    <!-- WIDGET 4: ELFSIGHT[cite: 5] -->
     <section class="concept-intro" id="hub">
         <h2>Ce este Hub-ul Metanoia?</h2>
         <p><em>Metanoia</em> înseamnă transformare profundă, schimbarea minții și întoarcerea la esență.</p>
         <p>Am creat acest hub pentru că o resetare reală are nevoie de trei lucruri: <strong>un spațiu de tihnă</strong> unde să te retragi, <strong>hrană curată</strong> care să te vindece și <strong>rânduială mentală</strong> pentru a construi mai departe. Alege calea de care ai nevoie astăzi.</p>
-        <!-- Inserție Elfsight App[cite: 5] -->
         <div class="elfsight-app-83957262-b13c-4e8b-827c-3f9e954c4e7a" data-elfsight-app-lazy></div>
     </section>
 
-    <!-- BASKET SECTION[cite: 5] -->
     <section class="basket-section">
         <div class="basket-image">
             <img src="images/gast-masa-traditionala.jpg" alt="Coșul Tradițional - Produse din Țara Hațegului" onerror="this.src='https://images.unsplash.com/photo-1590412200988-a436970781fa?auto=format&fit=crop&q=80&w=1000'">
@@ -216,23 +209,21 @@
         </div>
     </section>
 
-    <!-- HUB CONTAINER[cite: 5] -->
     <main class="hub-container">
-        <h2 class="section-title">Cei 3 Piloni ai Rânduielii</h2>
+        <h2 class="section-title">Cei 4 Piloni ai Rânduielii</h2>
         <div class="pillar-grid">
+            
             <div class="pillar-card">
                 <div class="pillar-img" style="background-image: url('images/gast-masa-traditionala.jpg');"></div>
                 <div class="pillar-content">
                     <div class="pillar-tag">RESETAREA CORPULUI</div>
                     <h3 class="pillar-title">Meniuri Take-Away</h3>
-                    <p class="pillar-desc">Hrană curată, trudită cu mâinile, acum rânduită în pachete premium. Nu vindem fast-food, ci gustul autentic al gospodăriei, gata de luat la drum.</p>
+                    <p class="pillar-desc">Hrană curată, trudită cu mâinile, acum rânduită în pachete premium. Gustul autentic al gospodăriei, gata de luat la drum.</p>
                     <ul class="gastro-list">
                         <li><i class="fas fa-shopping-bag"></i> Pachete gourmet perfecte pentru expediții</li>
                         <li><i class="fas fa-leaf"></i> Ingrediente proaspete din microferma proprie</li>
-                        <li><i class="fas fa-fire"></i> Preparate calde și reci, pregătite pe îndelete</li>
-                        <li><i class="fas fa-box-open"></i> Ridicare rapidă din Check-Point Totești</li>
                     </ul>
-                    <a href="gastronomie.html" class="pillar-btn">DESCOPERĂ MENIURILE TAKE-AWAY</a>
+                    <a href="gastronomie.html" class="pillar-btn">DESCOPERĂ MENIURILE</a>
                 </div>
             </div>
 
@@ -241,8 +232,8 @@
                 <div class="pillar-content">
                     <div class="pillar-tag">RESETAREA SPAȚIULUI</div>
                     <h3 class="pillar-title">Domeniile La Buligă</h3>
-                    <p class="pillar-desc">Un refugiu izolat la 1100m altitudine. Aici, algoritmul vieții moderne se oprește. Cazare premium unde tăcerea pădurii devine singura ta agendă. Perfect pentru retrageri individuale sau de cuplu.</p>
-                    <a href="pensiune.html" class="pillar-btn" style="margin-top: auto;">DESCOPERĂ TIHNA LA CABANĂ</a>
+                    <p class="pillar-desc">Refugiu izolat la 1100m. Cazare premium unde tăcerea pădurii devine singura ta agendă. Resetare totală.</p>
+                    <a href="pensiune.html" class="pillar-btn" style="margin-top: auto;">DESCOPERĂ TIHNA</a>
                 </div>
             </div>
 
@@ -251,14 +242,24 @@
                 <div class="pillar-content">
                     <div class="pillar-tag">RESETAREA MINȚII</div>
                     <h3 class="pillar-title">Arhitectura Rânduielii</h3>
-                    <p class="pillar-desc">Pentru liderii și antreprenorii epuizați de haos. Treci de la statutul de Operator la cel de Arhitect de sistem. Cursuri de management strategic, agilitate emoțională și scalare High-Ticket.</p>
-                    <a href="curs.html" class="pillar-btn" style="margin-top: auto;">VEZI MASTERPLANUL DE BUSINESS</a>
+                    <p class="pillar-desc">Management strategic și agilitate emoțională pentru lideri. Treci de la Operator la Arhitect de sistem.</p>
+                    <a href="curs.html" class="pillar-btn" style="margin-top: auto;">VEZI MASTERPLANUL</a>
                 </div>
             </div>
+
+            <div class="pillar-card">
+                <div class="pillar-img" style="background-image: url('https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1000');"></div>
+                <div class="pillar-content">
+                    <div class="pillar-tag">VIZIUNE DIGITALĂ</div>
+                    <h3 class="pillar-title">Metanoia AI Offers</h3>
+                    <p class="pillar-desc">Explorați convergența dintre tradiție și tehnologie. Pachete exclusive și oferte sezoniere pentru noua ta călătorie.</p>
+                    <a href="oferta.html" class="pillar-btn" style="margin-top: auto;">VEZI OFERTA SPECIALĂ</a>
+                </div>
+            </div>
+
         </div>
     </main>
 
-    <!-- FOOTER[cite: 5] -->
     <footer>
         <p style="font-size:0.85rem; color:#666; letter-spacing:2px; margin-bottom:25px;">DAKAMIGOS MARKT SRL | CUI: 38324829</p>
         <div class="footer-legal">
@@ -269,7 +270,6 @@
         <div class="tribute">TRIBUT PATRICIA</div>
     </footer>
 
-    <!-- WIDGET 5: TAWK.TO LIVE CHAT[cite: 5] -->
     <script type="text/javascript">
         var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
         (function(){
