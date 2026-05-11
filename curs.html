@@ -33,7 +33,7 @@
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
-        /* EFECTUL DE SLIDE / PREZENTARE */
+        /* EFECT DE SNAP SCROLL */
         html {
             scroll-snap-type: y mandatory;
             scroll-behavior: smooth;
@@ -60,14 +60,14 @@
             overflow: hidden;
         }
 
-        /* TIPOGRAFIE PREMIUM */
+        /* TIPOGRAFIE */
         h1, h2 {
             font-family: 'Playfair Display', serif;
             font-style: italic;
             line-height: 1.1;
         }
 
-        .accent-header {
+        .accent-label {
             font-family: 'Cinzel', serif;
             color: var(--auriu);
             letter-spacing: 5px;
@@ -81,8 +81,8 @@
         .hero h1 { font-size: clamp(3rem, 10vw, 6.5rem); color: var(--auriu); text-align: center; }
         .subtitle { font-family: 'Cinzel'; letter-spacing: 12px; color: #555; margin-top: 25px; font-size: 0.9rem; }
 
-        /* LAYOUT DOUA COLOANE */
-        .container-box {
+        /* LAYOUT DOUĂ COLOANE */
+        .layout-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 80px;
@@ -100,26 +100,27 @@
             width: 100%;
             height: auto;
             display: block;
-            filter: contrast(1.1) grayscale(0.2);
+            filter: contrast(1.05);
         }
 
-        .profile-wrap {
+        .profile-circle {
             width: 450px;
             height: 450px;
             border-radius: 50%;
             border: 2px solid var(--auriu);
             overflow: hidden;
             box-shadow: 0 0 50px var(--accent-glow);
+            background-color: #111;
         }
 
-        .profile-wrap img {
+        .profile-circle img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
 
-        /* CARDURI / CURRICULUM */
-        .grid-tiles {
+        /* CARDURI PILONI */
+        .grid-pillars {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 25px;
@@ -127,7 +128,7 @@
             max-width: 1200px;
         }
 
-        .card-tile {
+        .pillar-card {
             background: #0a0a0a;
             border: 1px solid #1a1a1a;
             padding: 50px 30px;
@@ -135,19 +136,19 @@
             text-align: center;
         }
 
-        .card-tile:hover { 
+        .pillar-card:hover { 
             border-color: var(--auriu); 
             transform: translateY(-10px);
             background: #111;
         }
 
-        .card-tile i { color: var(--auriu); font-size: 2.5rem; margin-bottom: 25px; display: block; }
-        .card-tile h3 { font-family: 'Cinzel'; font-size: 0.9rem; color: #fff; margin-bottom: 15px; letter-spacing: 2px; }
-        .card-tile p { font-size: 0.85rem; color: #777; font-weight: 300; }
+        .pillar-card i { color: var(--auriu); font-size: 2.5rem; margin-bottom: 25px; display: block; }
+        .pillar-card h3 { font-family: 'Cinzel'; font-size: 0.9rem; color: #fff; margin-bottom: 15px; letter-spacing: 2px; }
+        .pillar-card p { font-size: 0.85rem; color: #777; font-weight: 300; }
 
         /* CTA SECTION */
-        .price-tag { font-family: 'Playfair Display'; font-size: 7rem; font-style: italic; color: var(--auriu); }
-        .main-cta {
+        .price-label { font-family: 'Playfair Display'; font-size: 7rem; font-style: italic; color: var(--auriu); }
+        .cta-main {
             display: inline-block;
             padding: 25px 80px;
             background: var(--auriu);
@@ -160,13 +161,13 @@
             transition: 0.3s;
             border: 1px solid var(--auriu);
         }
-        .main-cta:hover { 
+        .cta-main:hover { 
             background: transparent; 
             color: var(--auriu);
             box-shadow: 0 0 40px var(--accent-glow); 
         }
 
-        /* PORTAL */
+        /* PORTAL DE ACCES */
         .access-portal { margin-top: 80px; opacity: 0.2; transition: 0.8s; }
         .access-portal:hover { opacity: 1; }
         .gate-input { 
@@ -183,95 +184,96 @@
         }
 
         @media (max-width: 968px) {
-            .container-box, .grid-tiles { grid-template-columns: 1fr; }
+            .layout-container, .grid-pillars { grid-template-columns: 1fr; }
             section { height: auto; min-height: 100vh; padding: 60px 20px; }
-            .profile-wrap { width: 300px; height: 300px; }
+            .profile-circle { width: 300px; height: 300px; }
             .hero h1 { font-size: 4rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- SLIDE 1: IDENTITATE -->
+    <!-- SECȚIUNEA 1: HERO -->
     <section class="hero">
-        <p class="accent-header">Otilia Ioana Sălăşan Prezintă</p>
+        <p class="accent-label">Un Protocol de Otilia Ioana Sălăşan</p>
         <h1>Metanoia<br>Digitală</h1>
         <p class="subtitle">ARHITECTURA RÂNDUIELII</p>
     </section>
 
-    <!-- SLIDE 2: MANAGEMENT SISTEMIC (PROFIL) -->
+    <!-- SECȚIUNEA 2: MANAGEMENT SISTEMIC -->
     <section style="background-color: #080808;">
-        <div class="container-box">
-            <div class="profile-wrap">
-                <!-- Fotografia ta centrala -->
+        <div class="layout-container">
+            <div class="profile-circle">
+                <!-- S-a inserat eu.jpg conform cerinței -->
                 <img src="eu.jpg" alt="Otilia Sălăşan" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1976'">
             </div>
             <div>
-                <p class="accent-header">Viziune & Execuție</p>
+                <p class="accent-label">Eficiență • Structură • Control</p>
                 <h2 style="font-size: 3.5rem; margin-bottom: 30px;">Management<br>Sistemic</h2>
                 <p style="color: var(--text-soft); font-weight: 200; font-size: 1.1rem; margin-bottom: 25px;">
-                    Afacerea nu este un haos ce trebuie dominat, ci un sistem ce trebuie rânduit. Trecem de la statutul de sclav al urgențelor la cel de arhitect al propriului mecanism de succes.
+                    Afacerea nu este un haos ce trebuie dominat prin efort brut, ci un sistem ce trebuie rânduit prin arhitectură logică. Trecem de la managementul reactiv la cel sistemic, unde rânduiala internă devine motorul principal de creștere.
                 </p>
-                <p style="color: var(--auriu); font-family: 'Cinzel'; font-size: 0.75rem; letter-spacing: 2px;">RÂNDUIALĂ ÎN BACK-OFFICE • IMPACT ÎN FRONT-OFFICE</p>
+                <p style="color: var(--auriu); font-family: 'Cinzel'; font-size: 0.75rem; letter-spacing: 2px;">RÂNDUIALĂ ÎN FLUXURI • LIBERTATE ÎN DECIZII</p>
             </div>
         </div>
     </section>
 
-    <!-- SLIDE 3: VIZIBILITATE ONLINE -->
+    <!-- SECȚIUNEA 3: VIZIBILITATE ONLINE -->
     <section>
-        <div class="container-box">
+        <div class="layout-container">
             <div>
-                <p class="accent-header">Oglinda Excelenței</p>
+                <p class="accent-label">Proiecție & Impact</p>
                 <h2 style="font-size: 3.5rem; margin-bottom: 30px;">Vizibilitate<br>Strategică</h2>
                 <p style="color: var(--text-soft); font-weight: 200; font-size: 1.1rem; margin-bottom: 25px;">
-                    Imaginea online este extensia rânduielii tale interne. Dezvoltăm afacerea prin vizibilitate care nu doar atrage atenție, ci construiește autoritate și încredere sistemică.
+                    Imaginea online este oglinda excelenței tale operaționale. Construim o vizibilitate care atrage parteneri de elită prin branding sustenabil și o prezență digitală care respectă rânduiala valorilor tale.
                 </p>
                 <div style="display: flex; gap: 30px; margin-top: 40px;">
                     <div style="border-left: 2px solid var(--auriu); padding-left: 20px;">
-                        <h4 style="font-family: 'Cinzel'; font-size: 0.7rem; color: var(--auriu);">DIGITAL</h4>
-                        <p style="font-size: 0.9rem;">Branding Sustenabil</p>
+                        <h4 style="font-family: 'Cinzel'; font-size: 0.7rem; color: var(--auriu);">AUTORITATE</h4>
+                        <p style="font-size: 0.9rem;">Branding de Impact</p>
                     </div>
                     <div style="border-left: 2px solid var(--auriu); padding-left: 20px;">
-                        <h4 style="font-family: 'Cinzel'; font-size: 0.7rem; color: var(--auriu);">SISTEMIC</h4>
-                        <p style="font-size: 0.9rem;">Management de Elită</p>
+                        <h4 style="font-family: 'Cinzel'; font-size: 0.7rem; color: var(--auriu);">EXPANSIUNE</h4>
+                        <p style="font-size: 0.9rem;">Vizibilitate Online</p>
                     </div>
                 </div>
             </div>
             <div class="image-frame">
-                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015" alt="Strategie Digitala">
+                <!-- Imagine reprezentativă pentru strategie digitală -->
+                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015" alt="Strategie Digitală">
             </div>
         </div>
     </section>
 
-    <!-- SLIDE 4: PILONII CURSULUI -->
+    <!-- SECȚIUNEA 4: PILONII MASTERPLANULUI -->
     <section style="background-color: #030303;">
-        <p class="accent-header" style="margin-bottom: 70px;">Masterplanul Rânduielii</p>
-        <div class="grid-tiles">
-            <div class="card-tile">
-                <i class="fa-solid fa-sitemap"></i>
-                <h3>Arhitectura Fluxurilor</h3>
-                <p>Implementarea sistemelor ERP & WMS pentru o trasabilitate impecabilă a resurselor și produselor.</p>
+        <p class="accent-label" style="margin-bottom: 70px;">Pilonii Arhitecturii Digitale</p>
+        <div class="grid-pillars">
+            <div class="pillar-card">
+                <i class="fa-solid fa-microchip"></i>
+                <h3>Management de Flux</h3>
+                <p>Implementarea sistemelor ERP și WMS pentru o trasabilitate perfectă și eliminarea pierderilor sistemice.</p>
             </div>
-            <div class="card-tile">
-                <i class="fa-solid fa-eye"></i>
-                <h3>Vizibilitate Progresivă</h3>
-                <p>Construirea unei prezențe online care oglindește standardele de management și atrage parteneri de elită.</p>
+            <div class="pillar-card">
+                <i class="fa-solid fa-compass-drafting"></i>
+                <h3>Branding de Sistem</h3>
+                <p>Construirea unei identități online care comunică rânduială, rigoare și autoritate în fața pieței.</p>
             </div>
-            <div class="card-tile">
+            <div class="pillar-card">
                 <i class="fa-solid fa-vial-circle-check"></i>
-                <h3>Diagnoză QA</h3>
-                <p>Identificarea erorilor sistemice de business prin logică de Software Testing și optimizare API.</p>
+                <h3>Diagnoză & QA</h3>
+                <p>Identificarea erorilor de business prin logică de Software Testing și optimizarea constantă a proceselor.</p>
             </div>
         </div>
     </section>
 
-    <!-- SLIDE 5: ACCES MASTERPLAN -->
+    <!-- SECȚIUNEA 5: ACCES ȘI INVESTIȚIE -->
     <section class="hero">
-        <p class="accent-header">Investiția în Arhitectură</p>
-        <div class="price-tag">200€</div>
-        <p style="font-family: 'Cinzel'; letter-spacing: 6px; color: #444; font-size: 0.8rem;">PROTOCOLUL METANOIA</p>
+        <p class="accent-label">Poarta către Rânduială</p>
+        <div class="price-label">200€</div>
+        <p style="font-family: 'Cinzel'; letter-spacing: 6px; color: #444; font-size: 0.8rem;">INVESTIȚIE ÎN SISTEM</p>
         
-        <a href="https://www.paypal.com/ncp/payment/MH54VF92TC364" onclick="raportarePlata()" class="main-cta">DEBLOCHEAZĂ SISTEMUL</a>
+        <a href="https://www.paypal.com/ncp/payment/MH54VF92TC364" onclick="raportarePlata()" class="cta-main">DEBLOCHEAZĂ MASTERPLANUL</a>
 
         <div class="access-portal">
             <input type="password" id="gate-key" class="gate-input" placeholder="PROTOCOL ACCES">
