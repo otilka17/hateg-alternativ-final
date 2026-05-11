@@ -7,292 +7,194 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'AW-18106516696');
-
-      function raportarePlata() {
-        gtag('event', 'conversion', {
-            'send_to': 'AW-18106516696/vY6pCK_X760ZELiRscsD'
-        });
-      }
     </script>
 
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Metanoia Digitală - Arhitectura Rânduielii</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Metanoia Hub | Otilia Ioana Sălăşan</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Cinzel:wght@400;700;900&family=Inter:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Cinzel:wght@400;700;900&family=Inter:wght@200;300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
-        :root {
-            --auriu: #c5a059;
-            --negru: #050505;
-            --alb: #ffffff;
-            --text-soft: #a1a1a1;
-            --accent-glow: rgba(197, 160, 89, 0.2);
+        :root { --auriu: #c5a059; --negru: #070707; --negru-card: #0c0c0c; --alb: #f9f9f9; --gri: #888; }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; }
+
+        /* HEADER & BURGER */
+        .site-header { position: fixed; top: 0; width: 100%; z-index: 9999; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; background: rgba(7,7,7,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #1a1a1a; }
+        .brand-logo img { height: 45px; width: auto; }
+        
+        .burger { cursor: pointer; z-index: 10001; background: rgba(0,0,0,0.5); padding: 10px; border-radius: 5px; border: 1px solid var(--auriu); display: flex; flex-direction: column; gap: 6px; }
+        .burger span { display: block; width: 22px; height: 1px; background: var(--auriu); transition: 0.4s; }
+        .burger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .burger.active span:nth-child(2) { opacity: 0; }
+        .burger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: var(--negru); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.6s cubic-bezier(0.77, 0, 0.175, 1); z-index: 10000; }
+        .main-nav.active { right: 0; }
+        .main-nav a { font-size: 1.2rem; font-family: 'Cinzel'; margin: 12px 0; color: var(--alb); letter-spacing: 3px; text-transform: uppercase; text-decoration: none; }
+
+        /* PROFILE SECTION */
+        .profile-section { padding: 120px 5% 60px; background: #0a0a0a; border-bottom: 1px solid #1a1a1a; }
+        .profile-container { max-width: 1100px; margin: 0 auto; text-align: center; }
+        .profile-img-wrap { width: 180px; height: 180px; border-radius: 50%; border: 2px solid var(--auriu); padding: 5px; margin: 0 auto 30px; background: #000; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        .profile-img-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; border-radius: 50%; }
+        .profile-text h2 { font-family: 'Playfair Display'; font-size: 2.2rem; font-style: italic; margin-bottom: 15px; color: var(--auriu); }
+        .profile-text p { color: #aaa; font-size: 1rem; line-height: 1.7; max-width: 700px; margin: 0 auto; font-weight: 300; }
+
+        /* GRID PILONI - REZOLVARE TEXT LUNG */
+        .hub-container { max-width: 1400px; margin: 0 auto; padding: 40px 5%; }
+        .pillar-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+        
+        .pillar-card { background: var(--negru-card); border: 1px solid #1a1a1a; transition: 0.4s; text-decoration: none; display: flex; flex-direction: column; height: auto; min-height: 100%; }
+        .pillar-card:hover { border-color: var(--auriu); }
+        
+        .pillar-img { height: 280px; background-size: cover; background-position: center; filter: brightness(0.5); }
+
+        .pillar-content { padding: 35px 25px; text-align: center; flex-grow: 1; display: flex; flex-direction: column; }
+        .pillar-tag { font-family: 'Cinzel'; color: var(--auriu); font-size: 0.7rem; letter-spacing: 3px; margin-bottom: 12px; display: block; }
+        .pillar-title { font-family: 'Playfair Display'; font-size: 1.8rem; font-style: italic; margin-bottom: 15px; color: var(--alb); }
+        
+        /* AICI E FIX-UL PENTRU DESCRIERE */
+        .pillar-desc { 
+            color: #888; 
+            font-size: 0.95rem; 
+            line-height: 1.6; 
+            margin-bottom: 25px; 
+            word-wrap: break-word; 
+            overflow: visible; 
+            height: auto; 
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        .btn-card { padding: 12px 25px; border: 1px solid var(--auriu); color: var(--auriu); font-family: 'Cinzel'; font-size: 0.75rem; letter-spacing: 2px; margin-top: auto; align-self: center; }
 
-        /* EFECT DE SNAP SCROLL */
-        html {
-            scroll-snap-type: y mandatory;
-            scroll-behavior: smooth;
+        /* FOOTER */
+        footer { padding: 60px 5% 30px; text-align: center; border-top: 1px solid #111; background: #050505; }
+        .legal-links { margin-bottom: 30px; display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; }
+        .legal-links a { color: #555; font-size: 0.7rem; text-decoration: none; text-transform: uppercase; }
+        .footer-logos { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; }
+        .footer-logos img { height: 40px; }
+        .footer-bottom { font-family: 'Cinzel'; color: #333; font-size: 0.65rem; letter-spacing: 2px; }
+
+        /* MOBILE OPTIMIZATIONS */
+        @media (max-width: 768px) {
+            .profile-text h2 { font-size: 1.8rem; }
+            .pillar-img { height: 200px; } /* Imagine mai mică pe mobil ca să lase loc textului */
+            .pillar-content { padding: 25px 20px; }
+            .pillar-title { font-size: 1.6rem; }
+            .pillar-desc { font-size: 0.9rem; } /* Text ușor mai mic pentru densitate */
         }
 
-        body {
-            background-color: var(--negru);
-            color: var(--alb);
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-            line-height: 1.6;
-        }
-
-        section {
-            height: 100vh;
-            width: 100vw;
-            scroll-snap-align: start;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 60px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* TIPOGRAFIE */
-        h1, h2 {
-            font-family: 'Playfair Display', serif;
-            font-style: italic;
-            line-height: 1.1;
-        }
-
-        .accent-label {
-            font-family: 'Cinzel', serif;
-            color: var(--auriu);
-            letter-spacing: 5px;
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            margin-bottom: 25px;
-        }
-
-        /* SLIDE 1: HERO */
-        .hero { background: radial-gradient(circle at center, #1a1a1a 0%, #050505 100%); }
-        .hero h1 { font-size: clamp(3rem, 10vw, 6.5rem); color: var(--auriu); text-align: center; }
-        .subtitle { font-family: 'Cinzel'; letter-spacing: 12px; color: #555; margin-top: 25px; font-size: 0.9rem; }
-
-        /* LAYOUT DOUĂ COLOANE */
-        .layout-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            max-width: 1200px;
-            align-items: center;
-        }
-
-        .image-frame {
-            border: 1px solid var(--auriu);
-            padding: 15px;
-            position: relative;
-        }
-
-        .image-frame img {
-            width: 100%;
-            height: auto;
-            display: block;
-            filter: contrast(1.05);
-        }
-
-        .profile-circle {
-            width: 450px;
-            height: 450px;
-            border-radius: 50%;
-            border: 2px solid var(--auriu);
-            overflow: hidden;
-            box-shadow: 0 0 50px var(--accent-glow);
-            background-color: #111;
-        }
-
-        .profile-circle img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* CARDURI PILONI */
-        .grid-pillars {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-            width: 100%;
-            max-width: 1200px;
-        }
-
-        .pillar-card {
-            background: #0a0a0a;
-            border: 1px solid #1a1a1a;
-            padding: 50px 30px;
-            transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            text-align: center;
-        }
-
-        .pillar-card:hover { 
-            border-color: var(--auriu); 
-            transform: translateY(-10px);
-            background: #111;
-        }
-
-        .pillar-card i { color: var(--auriu); font-size: 2.5rem; margin-bottom: 25px; display: block; }
-        .pillar-card h3 { font-family: 'Cinzel'; font-size: 0.9rem; color: #fff; margin-bottom: 15px; letter-spacing: 2px; }
-        .pillar-card p { font-size: 0.85rem; color: #777; font-weight: 300; }
-
-        /* CTA SECTION */
-        .price-label { font-family: 'Playfair Display'; font-size: 7rem; font-style: italic; color: var(--auriu); }
-        .cta-main {
-            display: inline-block;
-            padding: 25px 80px;
-            background: var(--auriu);
-            color: #000;
-            text-decoration: none;
-            font-family: 'Cinzel';
-            font-weight: 900;
-            letter-spacing: 4px;
-            margin-top: 40px;
-            transition: 0.3s;
-            border: 1px solid var(--auriu);
-        }
-        .cta-main:hover { 
-            background: transparent; 
-            color: var(--auriu);
-            box-shadow: 0 0 40px var(--accent-glow); 
-        }
-
-        /* PORTAL DE ACCES */
-        .access-portal { margin-top: 80px; opacity: 0.2; transition: 0.8s; }
-        .access-portal:hover { opacity: 1; }
-        .gate-input { 
-            background: transparent; 
-            border: none; 
-            border-bottom: 1px solid var(--auriu); 
-            color: #fff; 
-            text-align: center; 
-            padding: 10px; 
-            width: 250px; 
-            outline: none; 
-            font-family: 'Inter';
-            letter-spacing: 5px;
-        }
-
-        @media (max-width: 968px) {
-            .layout-container, .grid-pillars { grid-template-columns: 1fr; }
-            section { height: auto; min-height: 100vh; padding: 60px 20px; }
-            .profile-circle { width: 300px; height: 300px; }
-            .hero h1 { font-size: 4rem; }
-        }
+        .whatsapp-float { position: fixed; bottom: 20px; left: 20px; background: #25d366; border-radius: 50%; width: 55px; height: 55px; display: flex; align-items: center; justify-content: center; font-size: 28px; z-index: 9999; color: #fff; }
     </style>
 </head>
 <body>
 
-    <!-- SECȚIUNEA 1: HERO -->
-    <section class="hero">
-        <p class="accent-label">Un Protocol de Otilia Ioana Sălăşan</p>
-        <h1>Metanoia<br>Digitală</h1>
-        <p class="subtitle">ARHITECTURA RÂNDUIELII</p>
-    </section>
+    <a href="https://wa.me/40749229686" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
-    <!-- SECȚIUNEA 2: MANAGEMENT SISTEMIC -->
-    <section style="background-color: #080808;">
-        <div class="layout-container">
-            <div class="profile-circle">
-                <!-- S-a inserat eu.jpg conform cerinței -->
-                <img src="eu.jpg" alt="Otilia Sălăşan" onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1976'">
+    <header class="site-header">
+        <a href="index.html" class="brand-logo"><img src="images/logo1.svg" alt="Metanoia Logo"></a>
+        <div class="burger" id="burger"><span></span><span></span><span></span></div>
+        <nav class="main-nav" id="nav-links">
+            <a href="index.html">Hub Sistemic</a>
+            <a href="metanoia.html">Manifest</a>
+            <a href="oferta.html">Oferte Web</a>
+            <a href="curs.html">Masterplan</a>
+            <a href="gastronomie.html">Take-Away</a>
+            <a href="pensiune.html">Pensiunea</a>
+        </nav>
+    </header>
+
+    <section class="profile-section">
+        <div class="profile-container">
+            <div class="profile-img-wrap">
+                <img src="images/eu.jpg" alt="Otilia Ioana Sălăşan">
             </div>
-            <div>
-                <p class="accent-label">Eficiență • Structură • Control</p>
-                <h2 style="font-size: 3.5rem; margin-bottom: 30px;">Management<br>Sistemic</h2>
-                <p style="color: var(--text-soft); font-weight: 200; font-size: 1.1rem; margin-bottom: 25px;">
-                    Afacerea nu este un haos ce trebuie dominat prin efort brut, ci un sistem ce trebuie rânduit prin arhitectură logică. Trecem de la managementul reactiv la cel sistemic, unde rânduiala internă devine motorul principal de creștere.
-                </p>
-                <p style="color: var(--auriu); font-family: 'Cinzel'; font-size: 0.75rem; letter-spacing: 2px;">RÂNDUIALĂ ÎN FLUXURI • LIBERTATE ÎN DECIZII</p>
+            <div class="profile-text">
+                <p style="font-family:'Cinzel'; color:var(--auriu); letter-spacing:3px; font-size:0.75rem; margin-bottom:10px;">EXPERT MANAGEMENT SISTEMIC</p>
+                <h2>Arhitectul Rânduielii Tale</h2>
+                <p>Am construit Metanoia Hub ca un ecosistem unde rigurozitatea tehnică (ERP, WMS, QA) se întâlnește cu fluxul natural al vieții.</p>
             </div>
         </div>
     </section>
 
-    <!-- SECȚIUNEA 3: VIZIBILITATE ONLINE -->
-    <section>
-        <div class="layout-container">
-            <div>
-                <p class="accent-label">Proiecție & Impact</p>
-                <h2 style="font-size: 3.5rem; margin-bottom: 30px;">Vizibilitate<br>Strategică</h2>
-                <p style="color: var(--text-soft); font-weight: 200; font-size: 1.1rem; margin-bottom: 25px;">
-                    Imaginea online este oglinda excelenței tale operaționale. Construim o vizibilitate care atrage parteneri de elită prin branding sustenabil și o prezență digitală care respectă rânduiala valorilor tale.
-                </p>
-                <div style="display: flex; gap: 30px; margin-top: 40px;">
-                    <div style="border-left: 2px solid var(--auriu); padding-left: 20px;">
-                        <h4 style="font-family: 'Cinzel'; font-size: 0.7rem; color: var(--auriu);">AUTORITATE</h4>
-                        <p style="font-size: 0.9rem;">Branding de Impact</p>
-                    </div>
-                    <div style="border-left: 2px solid var(--auriu); padding-left: 20px;">
-                        <h4 style="font-family: 'Cinzel'; font-size: 0.7rem; color: var(--auriu);">EXPANSIUNE</h4>
-                        <p style="font-size: 0.9rem;">Vizibilitate Online</p>
-                    </div>
+    <main class="hub-container">
+        <div class="pillar-grid">
+            
+            <a href="metanoia.html" class="pillar-card">
+                <div class="pillar-img" style="background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1000');"></div>
+                <div class="pillar-content">
+                    <span class="pillar-tag">VIZIUNE</span>
+                    <h3 class="pillar-title">Metanoia AI</h3>
+                    <p class="pillar-desc">Manifestul Arhitecturii Rânduielii. Aici explicăm cum convertim haosul operațional în sisteme digitale de elită folosind viziunea noastră tehnologică.</p>
+                    <span class="btn-card">VEZI MANIFESTUL</span>
                 </div>
-            </div>
-            <div class="image-frame">
-                <!-- Imagine reprezentativă pentru strategie digitală -->
-                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015" alt="Strategie Digitală">
-            </div>
-        </div>
-    </section>
+            </a>
 
-    <!-- SECȚIUNEA 4: PILONII MASTERPLANULUI -->
-    <section style="background-color: #030303;">
-        <p class="accent-label" style="margin-bottom: 70px;">Pilonii Arhitecturii Digitale</p>
-        <div class="grid-pillars">
-            <div class="pillar-card">
-                <i class="fa-solid fa-microchip"></i>
-                <h3>Management de Flux</h3>
-                <p>Implementarea sistemelor ERP și WMS pentru o trasabilitate perfectă și eliminarea pierderilor sistemice.</p>
-            </div>
-            <div class="pillar-card">
-                <i class="fa-solid fa-compass-drafting"></i>
-                <h3>Branding de Sistem</h3>
-                <p>Construirea unei identități online care comunică rânduială, rigoare și autoritate în fața pieței.</p>
-            </div>
-            <div class="pillar-card">
-                <i class="fa-solid fa-vial-circle-check"></i>
-                <h3>Diagnoză & QA</h3>
-                <p>Identificarea erorilor de business prin logică de Software Testing și optimizarea constantă a proceselor.</p>
-            </div>
-        </div>
-    </section>
+            <a href="curs.html" class="pillar-card">
+                <div class="pillar-img" style="background-image: url('images/IMG_20260330_160353.webp');"></div>
+                <div class="pillar-content">
+                    <span class="pillar-tag">MANAGEMENT</span>
+                    <h3 class="pillar-title">Masterplan</h3>
+                    <p class="pillar-desc">Treci de la statutul de Operator la cel de Arhitect de sistem. Un program intensiv pentru lideri care vor să scaleze prin strategie și rigoare.</p>
+                    <span class="btn-card">MASTERPLAN BUSINESS</span>
+                </div>
+            </a>
 
-    <!-- SECȚIUNEA 5: ACCES ȘI INVESTIȚIE -->
-    <section class="hero">
-        <p class="accent-label">Poarta către Rânduială</p>
-        <div class="price-label">200€</div>
-        <p style="font-family: 'Cinzel'; letter-spacing: 6px; color: #444; font-size: 0.8rem;">INVESTIȚIE ÎN SISTEM</p>
-        
-        <a href="https://www.paypal.com/ncp/payment/MH54VF92TC364" onclick="raportarePlata()" class="cta-main">DEBLOCHEAZĂ MASTERPLANUL</a>
+            <a href="oferta.html" class="pillar-card">
+                <div class="pillar-img" style="background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000');"></div>
+                <div class="pillar-content">
+                    <span class="pillar-tag">DIGITAL</span>
+                    <h3 class="pillar-title">Vizibilitate</h3>
+                    <p class="pillar-desc">Construim sisteme digitale performante care reflectă excelența business-ului tău. Site-uri de prezentare și magazine online gata de luptă.</p>
+                    <span class="btn-card">OFERTE WEB</span>
+                </div>
+            </a>
 
-        <div class="access-portal">
-            <input type="password" id="gate-key" class="gate-input" placeholder="PROTOCOL ACCES">
-            <button onclick="valideaza()" style="background:transparent; color:var(--auriu); border:none; cursor:pointer; font-family:'Cinzel'; margin-left:15px; font-weight:700;">VALIDARE</button>
+            <a href="gastronomie.html" class="pillar-card">
+                <div class="pillar-img" style="background-image: url('images/gast-masa-traditionala.jpg');"></div>
+                <div class="pillar-content">
+                    <span class="pillar-tag">GASTRO</span>
+                    <h3 class="pillar-title">Take-Away</h3>
+                    <p class="pillar-desc">Produse artizanale și cafea de specialitate rânduite pentru performanță. Gustul autentic al gospodăriei, pregătit pentru drum.</p>
+                    <span class="btn-card">CĂMARA HUB</span>
+                </div>
+            </a>
+
+            <a href="pensiune.html" class="pillar-card">
+                <div class="pillar-img" style="background-image: url('images/la-buliga-pensiune.jpg');"></div>
+                <div class="pillar-content">
+                    <span class="pillar-tag">REFUGIU</span>
+                    <h3 class="pillar-title">Pensiunea</h3>
+                    <p class="pillar-desc">Recalibrare totală la 1100m altitudine. Spațiul unde tăcerea pădurii devine singura ta agendă pentru a regăsi rânduiala minții.</p>
+                    <span class="btn-card">RESERVĂ TIHNA</span>
+                </div>
+            </a>
+
         </div>
-    </section>
+    </main>
+
+    <footer>
+        <div class="legal-links">
+            <a href="termeni-si-conditii.html">Termeni</a>
+            <a href="confidentialitate.html">Confidențialitate</a>
+            <a href="politica-cookies.html">Cookies</a>
+        </div>
+        <div class="footer-logos">
+            <a href="https://anpc.ro/ce-este-sal/" target="_blank"><img src="images/anpc-sal.png" alt="SAL"></a>
+            <a href="https://anpc.ro/" target="_blank"><img src="images/anpc-sol.png" alt="SOL"></a>
+        </div>
+        <div class="footer-bottom">
+            DAKAMIGOS MARKT SRL | CUI: 38324829 | TRIBUT PATRICIA | &copy; 2026
+        </div>
+    </footer>
 
     <script>
-        function valideaza() {
-            const key = document.getElementById('gate-key').value;
-            if(key === "ELITA2026") {
-                window.location.href = "masterplan.html";
-            } else {
-                document.getElementById('gate-key').style.borderColor = "#ff4444";
-                setTimeout(() => {
-                    document.getElementById('gate-key').style.borderColor = "#c5a059";
-                }, 1000);
-            }
-        }
+        const burger = document.getElementById('burger');
+        const nav = document.getElementById('nav-links');
+        burger.onclick = () => { nav.classList.toggle('active'); burger.classList.toggle('active'); };
+        nav.onclick = () => { nav.classList.remove('active'); burger.classList.remove('active'); };
     </script>
 </body>
 </html>
