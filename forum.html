@@ -1,97 +1,134 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
+    <!-- GOOGLE TAG MANAGER -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18106516696"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-18106516696');
+    </script>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recenzii | La Buligă</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Recenzii | Arhitectura Rânduielii</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,900&family=Cinzel:wght@400;700&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400;1,700&family=Cinzel:wght@400;700;900&family=Inter:wght@100;200;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <script src="https://static.elfsight.com/platform/platform.js" async></script>
 
     <style>
-        :root { --auriu: #c5a059; --negru: #000000; --alb: #ffffff; }
+        :root { 
+            --auriu: #c5a059; 
+            --negru-lux: #050505; 
+            --negru-pur: #000; 
+            --alb-mat: #f0f0f0; 
+            --text-muted: #666; 
+        }
+        
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; }
-        a { text-decoration: none !important; color: inherit !important; }
+        body { background: var(--negru-pur); color: var(--alb-mat); font-family: 'Inter', sans-serif; overflow-x: hidden; line-height: 1.8; }
 
-        /* HEADER & MENU BURGER COMPLET */
-        .site-header { position: relative; width: 100%; z-index: 9999; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; background: #000; border-bottom: 1px solid rgba(197,160,89,0.2); }
-        .brand-logo { height: 45px; filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.5)); }
+        /* HEADER EDITORIAL */
+        .site-header { position: sticky; top: 0; width: 100%; z-index: 9999; padding: 30px 5%; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #111; }
+        .brand-logo img { height: 40px; opacity: 0.9; }
         
-        .burger { cursor: pointer; z-index: 10001; padding: 10px; }
-        .burger div { width: 28px; height: 2px; background: var(--auriu); margin: 5px; transition: 0.3s; }
-        
-        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: rgba(0,0,0,0.98); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.5s ease; z-index: 10000; }
+        .burger { cursor: pointer; z-index: 10001; display: flex; flex-direction: column; gap: 8px; }
+        .burger span { display: block; width: 28px; height: 1px; background: var(--auriu); transition: 0.4s; }
+        .burger.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
+        .burger.active span:nth-child(2) { opacity: 0; }
+        .burger.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
+
+        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: var(--negru-pur); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.8s cubic-bezier(0.77, 0, 0.175, 1); z-index: 10000; }
         .main-nav.active { right: 0; }
-        .main-nav a { font-size: 1.3rem; font-family: 'Cinzel'; margin: 12px 0; color: #fff !important; text-transform: uppercase; letter-spacing: 2px; }
+        .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 20px 0; color: var(--alb-mat); letter-spacing: 8px; text-transform: uppercase; text-decoration: none; opacity: 0.3; transition: 0.4s; }
+        .main-nav a:hover { opacity: 1; color: var(--auriu); }
 
-        /* TITLU PAGINA */
-        .page-header { text-align: center; padding: 60px 20px; }
-        .page-header h1 { font-family: 'Playfair Display'; font-size: 3rem; color: var(--auriu); font-style: italic; }
-        .page-header p { font-family: 'Cinzel'; letter-spacing: 3px; color: #666; font-size: 0.8rem; margin-top: 10px; }
+        /* PAGINA HEADER */
+        .page-intro { padding: 100px 10% 60px; text-align: center; }
+        .page-intro span { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 8px; font-size: 0.75rem; display: block; margin-bottom: 20px; }
+        .page-intro h1 { font-family: 'Playfair Display'; font-size: clamp(3rem, 8vw, 5rem); font-style: italic; color: #fff; line-height: 1.1; font-weight: 400; }
 
         /* CONTAINER RECENZII */
-        .reviews-container { max-width: 1200px; margin: 0 auto 100px; padding: 0 20px; min-height: 600px; }
-
-        /* FOOTER SINCRONIZAT */
-        .footer-legal { padding: 60px 20px; background: #080808; border-top: 1px solid #1a1a1a; margin-top: 50px; text-align: center; }
-        .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; text-align: left; }
-        .footer-section h4 { color: var(--auriu); font-family: 'Cinzel'; margin-bottom: 20px; font-size: 0.8rem; letter-spacing: 2px; }
-        .footer-section p { font-size: 0.7rem; color: #555; line-height: 1.8; }
+        .magazine-section { padding: 60px 5%; max-width: 1200px; margin: 0 auto; min-height: 600px; }
         
-        .whatsapp-float { position: fixed; bottom: 25px; left: 20px; background: #25d366; border-radius: 50%; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; font-size: 24px; z-index: 1000; color: #fff; }
+        /* ELIMINARE BRANDING ELFSIGHT */
         a[href*="elfsight.com"] { display: none !important; opacity: 0 !important; }
+
+        /* FOOTER SIGNATURE STYLE */
+        footer { padding: 100px 10% 60px; border-top: 1px solid #111; background: #050505; text-align: center; }
+        .qr-box { background: #fff; padding: 15px; display: inline-block; border: 1px solid var(--auriu); margin-bottom: 40px; transition: 0.3s; }
+        .qr-box:hover { transform: scale(1.05); }
+        .footer-legal-text { font-family: 'Cinzel'; color: #333; font-size: 0.65rem; letter-spacing: 4px; margin-top: 30px; }
+        
+        .legal-links { display: flex; justify-content: center; gap: 30px; margin-bottom: 20px; }
+        .legal-links a { color: var(--auriu); text-decoration: none; font-family: 'Cinzel'; font-size: 0.7rem; letter-spacing: 2px; opacity: 0.5; transition: 0.3s; }
+        .legal-links a:hover { opacity: 1; }
+
+        /* WHATSAPP EDITORIAL STYLE */
+        .wa-float { position: fixed; bottom: 40px; left: 40px; color: var(--auriu); font-size: 24px; z-index: 9999; opacity: 0.5; transition: 0.3s; }
+        .wa-float:hover { opacity: 1; transform: scale(1.1); }
+
+        @media (max-width: 768px) {
+            .page-intro { padding: 80px 5% 40px; }
+            .page-intro h1 { font-size: 3rem; }
+        }
     </style>
 </head>
 <body>
 
-    <a href="https://wa.me/40749229686" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://wa.me/40749229686" class="wa-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
     <header class="site-header">
-        <div class="brand-logo">
-            <svg viewBox="0 0 800 500" style="height:100%"><circle cx="400" cy="250" r="105" fill="none" stroke="#c5a059" stroke-width="4"/><path d="M300 400 L400 200 L500 400 Z" fill="#c5a059"/></svg>
-        </div>
-        <div class="burger" id="burger"><div></div><div></div><div></div></div>
-        
+        <a href="index.html" class="brand-logo"><img src="images/logo1.svg" alt="Metanoia"></a>
+        <div class="burger" id="burger"><span></span><span></span><span></span></div>
         <nav class="main-nav" id="nav-links">
-            <a href="index.html">ACASĂ</a>
-            <a href="pensiune.html">PENSIUNEA</a>
-            <a href="metanoia.html">METANOIA</a>
-            <a href="gastronomie.html">GASTRONOMIE</a>
-            <a href="evenimente.html">EVENIMENTE</a>
-            <a href="contact.html">CONTACT</a>
-            <a href="rezervari.html">REZERVARE</a>
+            <a href="metanoia.html">Manifest</a>
+            <a href="curs.html">Masterplan</a>
+            <a href="oferta.html">Vizibilitate</a>
+            <a href="recenzii.html" style="color:var(--auriu); opacity: 1;">Gânduri Bune</a>
         </nav>
     </header>
 
-    <div class="page-header">
-        <h1>Gânduri bune</h1>
-        <p>Experiențele oaspeților noștri</p>
-    </div>
+    <main>
+        <section class="page-intro">
+            <span>VOX POPULI</span>
+            <h1>Gânduri bune.</h1>
+        </section>
 
-    <main class="reviews-container">
-        <script src="https://elfsightcdn.com/platform.js" async></script>
-        <div class="elfsight-app-5f0df1ec-e996-4d6c-8158-6ee1ad3a65bb" data-elfsight-app-lazy></div>
+        <section class="magazine-section">
+            <!-- WIDGET ELFSIGHT -->
+            <div class="elfsight-app-5f0df1ec-e996-4d6c-8158-6ee1ad3a65bb" data-elfsight-app-lazy></div>
+        </section>
     </main>
 
-    <footer class="footer-legal">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>DATE LEGALE</h4>
-                <p>DAKAMIGOS MARKT SRL<br>CUI: RO40767794<br>Hațeg, Hunedoara</p>
-            </div>
-            <div class="footer-section" style="text-align: center;">
-                <div style="background:white; padding:8px; display:inline-block; border-radius:6px;">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://hategalternativ.ro/forum.html" alt="QR Meniu">
-                </div>
-            </div>
+    <footer>
+        <div class="qr-box">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://hategalternativ.ro/feed.html" alt="QR Acces Feed">
+            <p style="color:#000; font-family:'Cinzel'; font-size:0.5rem; margin-top:10px; letter-spacing:1px;">SCAN PENTRU JURNAL</p>
         </div>
-        <div style="margin-top:40px; font-family:'Cinzel'; font-size:0.6rem; color:#333;">
-            HAȚEG ALTERNATIV &copy; 2026
+
+        <div class="legal-links">
+            <a href="confidentialitate.html">GDPR</a>
+            <a href="politica-cookies.html">COOKIES</a>
+            <a href="termeni-si-conditii.html">TERMENI</a>
+        </div>
+
+        <div class="footer-legal-text">
+            DAKAMIGOS MARKT SRL | CUI: RO40767794<br>
+            © 2026 METANOIA HUB | HOLDING META
         </div>
     </footer>
 
     <script>
+        // BURGER LOGIC
+        const burger = document.getElementById('burger');
+        const nav = document.getElementById('nav-links');
+        burger.onclick = () => { nav.classList.toggle('active'); burger.classList.toggle('active'); };
+        nav.onclick = () => { nav.classList.remove('active'); burger.classList.remove('active'); };
+
         // TAWK.TO
         var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
         (function(){
@@ -100,11 +137,6 @@
             s1.charset='UTF-8'; s1.setAttribute('crossorigin','*');
             s0.parentNode.insertBefore(s1,s0);
         })();
-
-        // BURGER MENU
-        const burger = document.getElementById('burger');
-        const nav = document.getElementById('nav-links');
-        if(burger) { burger.onclick = () => { nav.classList.toggle('active'); } }
     </script>
 </body>
 </html>
