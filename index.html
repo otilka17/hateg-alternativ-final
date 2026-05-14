@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <!-- GOOGLE TAG MANAGER -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18106516696"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -12,7 +11,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Metanoia | Arhitectura Rânduielii</title>
+    <title>Metanoia | Revista Rânduielii</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400;1,700&family=Cinzel:wght@400;700;900&family=Inter:wght@100;200;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -25,15 +24,20 @@
             --negru-lux: #050505; 
             --negru-pur: #000; 
             --alb-mat: #f0f0f0; 
-            --text-muted: #666; 
+            --text-muted: #888; 
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         body { background: var(--negru-pur); color: var(--alb-mat); font-family: 'Inter', sans-serif; overflow-x: hidden; line-height: 1.8; }
 
-        /* NAVIGAȚIE SILENȚIOASĂ */
+        /* SCROLL BAR */
+        ::-webkit-scrollbar { width: 3px; }
+        ::-webkit-scrollbar-track { background: var(--negru-pur); }
+        ::-webkit-scrollbar-thumb { background: var(--auriu); }
+
+        /* NAVIGAȚIE */
         .site-header { position: fixed; top: 0; width: 100%; z-index: 9999; padding: 40px 5%; display: flex; justify-content: space-between; align-items: center; transition: 0.5s ease; }
-        .site-header.scrolled { background: rgba(0,0,0,0.95); padding: 20px 5%; backdrop-filter: blur(10px); }
+        .site-header.scrolled { background: rgba(0,0,0,0.95); padding: 20px 5%; backdrop-filter: blur(10px); border-bottom: 1px solid #111; }
         .brand-logo img { height: 45px; opacity: 0.9; }
         
         .burger { cursor: pointer; z-index: 10001; display: flex; flex-direction: column; gap: 8px; padding: 10px; }
@@ -47,56 +51,50 @@
         .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 20px 0; color: var(--alb-mat); letter-spacing: 8px; text-transform: uppercase; text-decoration: none; opacity: 0.3; transition: 0.4s; }
         .main-nav a:hover { opacity: 1; color: var(--auriu); }
 
-        /* HERO - COPERTA REVISTEI */
+        /* HERO */
         .hero { height: 100vh; position: relative; display: flex; align-items: center; padding: 0 10%; background: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2000') center/cover no-repeat; }
-        .hero::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(0,0,0,0.98) 20%, transparent); }
+        .hero::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(0,0,0,0.9) 30%, transparent); }
         
-        .hero-content { position: relative; z-index: 2; max-width: 900px; border-left: 1px solid var(--auriu); padding: 40px 0 40px 60px; }
+        .hero-content { position: relative; z-index: 2; max-width: 900px; border-left: 2px solid var(--auriu); padding: 40px 0 40px 60px; }
         .hero h1 { font-family: 'Playfair Display'; font-size: clamp(3.5rem, 10vw, 7.5rem); font-style: italic; color: #fff; line-height: 0.9; margin-bottom: 25px; font-weight: 400; }
         .tagline { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 12px; font-size: 0.75rem; display: block; opacity: 0.8; text-transform: uppercase; font-weight: 700; }
 
-        /* CORPUL EDITORIAL */
-        .magazine-body { background: var(--negru-pur); padding-bottom: 100px; }
+        /* CORPUL EDITORIAL - IMAGINI COLORATE */
+        .magazine-body { background: var(--negru-pur); }
         .chapter { padding: 180px 10%; display: flex; align-items: center; gap: 100px; }
         .chapter:nth-child(even) { flex-direction: row-reverse; }
 
-        .chapter-media { flex: 1.4; height: 700px; overflow: hidden; border: 1px solid #0a0a0a; position: relative; }
-        .chapter-media img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(100%) brightness(0.5); transition: 1.5s cubic-bezier(0.2, 1, 0.3, 1); }
-        .chapter:hover .chapter-media img { filter: grayscale(0%) brightness(0.8); transform: scale(1.05); }
+        .chapter-media { flex: 1.4; height: 700px; overflow: hidden; border: 1px solid #111; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        .chapter-media img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.7); transition: 1.5s cubic-bezier(0.2, 1, 0.3, 1); }
+        .chapter:hover .chapter-media img { filter: brightness(1); transform: scale(1.05); }
 
         .chapter-text { flex: 1; }
         .chapter-text span { font-family: 'Cinzel'; color: var(--auriu); font-size: 0.65rem; letter-spacing: 6px; display: block; margin-bottom: 30px; opacity: 0.7; }
         .chapter-text h2 { font-family: 'Playfair Display'; font-size: 4.5rem; font-style: italic; color: #fff; line-height: 1.1; margin-bottom: 35px; }
-        .chapter-text p { color: var(--text-muted); font-size: 1.2rem; font-weight: 200; margin-bottom: 50px; max-width: 500px; }
+        .chapter-text p { color: #aaa; font-size: 1.2rem; font-weight: 200; margin-bottom: 50px; max-width: 500px; }
         
         .btn-link { font-family: 'Cinzel'; color: var(--auriu); text-decoration: none; font-size: 0.75rem; letter-spacing: 5px; border-bottom: 1px solid rgba(197, 160, 89, 0.3); padding-bottom: 12px; transition: 0.4s; }
-        .btn-link:hover { border-bottom-color: var(--auriu); padding-left: 20px; letter-spacing: 7px; }
+        .btn-link:hover { border-bottom-color: var(--auriu); padding-left: 20px; letter-spacing: 7px; color: #fff; }
 
-        /* SEMNĂTURA ARHITECTULUI */
+        /* SIGNATURE */
         .signature-section { padding: 250px 10%; background: var(--negru-lux); text-align: center; border-top: 1px solid #0a0a0a; }
         .profile-img { width: 200px; height: 200px; border-radius: 50%; margin: 0 auto 60px; border: 1px solid var(--auriu); padding: 8px; overflow: hidden; }
-        .profile-img img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; filter: contrast(1.1); object-position: center 20%; }
+        .profile-img img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; object-position: center 20%; }
         .quote { font-family: 'Playfair Display'; font-size: 2.5rem; font-style: italic; color: #ccc; max-width: 1000px; margin: 0 auto 50px; line-height: 1.6; font-weight: 200; }
-        .name { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 8px; font-size: 1rem; }
 
         /* FOOTER */
         footer { padding: 120px 10% 60px; border-top: 1px solid #111; background: #000; }
         .footer-wrap { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 60px; }
         .legal-links a { color: #333; text-decoration: none; font-family: 'Cinzel'; font-size: 0.7rem; letter-spacing: 4px; margin-right: 40px; transition: 0.3s; }
         .legal-links a:hover { color: var(--auriu); }
-        .anpc-logos { display: flex; gap: 30px; align-items: center; }
-        .anpc-logos img { height: 45px; opacity: 0.2; filter: grayscale(1); transition: 0.5s; }
-        .anpc-logos img:hover { opacity: 0.8; filter: grayscale(0); }
 
         @media (max-width: 1100px) {
             .chapter, .chapter:nth-child(even) { flex-direction: column; text-align: center; gap: 60px; padding: 120px 5%; }
             .chapter-media { width: 100%; height: 500px; }
             .chapter-text h2 { font-size: 3.5rem; }
-            .hero-content { padding-left: 35px; }
-            .footer-wrap { flex-direction: column; align-items: center; text-align: center; }
         }
 
-        .wa-float { position: fixed; bottom: 50px; left: 50px; color: var(--auriu); font-size: 24px; z-index: 9999; opacity: 0.4; transition: 0.3s; }
+        .wa-float { position: fixed; bottom: 50px; left: 50px; color: var(--auriu); font-size: 24px; z-index: 9999; opacity: 0.5; transition: 0.3s; }
         .wa-float:hover { opacity: 1; transform: scale(1.1); }
     </style>
 </head>
@@ -110,37 +108,36 @@
         <nav class="main-nav" id="nav-links">
             <a href="metanoia.html">Manifest</a>
             <a href="curs.html">Masterplan</a>
-            <a href="oferta.html">Web Services</a>
+            <a href="oferta.html">Vizibilitate</a>
+            <a href="feed.html" style="color:var(--auriu); opacity:1;">Jurnal</a>
         </nav>
     </header>
 
     <section class="hero">
         <div class="hero-content">
             <span class="tagline">METANOIA DIGITALĂ</span>
-            <h1>Arhitectura<br>Rânduielii.</h1>
-            <p style="font-family:'Cinzel'; color:var(--text-muted); letter-spacing:8px; font-size:0.85rem; margin-top:20px;">SISTEME DE ELITĂ</p>
+            <h1>Metanoia.</h1>
+            <p style="font-family:'Cinzel'; color:var(--auriu); letter-spacing:8px; font-size:0.85rem; margin-top:20px; opacity: 0.6;">ARHITECTURA RÂNDUIELII</p>
         </div>
     </section>
 
     <main class="magazine-body">
         
-        <!-- CHAPTER 01: MANIFEST / METANOIA -->
         <section class="chapter">
             <div class="chapter-media">
-                <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2000" alt="Viziune Metanoia">
+                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2000" alt="Viziune Tehnologică">
             </div>
             <div class="chapter-text">
                 <span>CHAPTER 01 / VIZIUNE</span>
                 <h2>Manifest.</h2>
-                <p>Metamorfoză asistată tehnologic. Trecerea de la efort brut la liniște operațională prin recalibrarea modului în care afacerea ta respiră.</p>
-                <a href="metanoia.html" class="btn-link">CITESTE MANIFESTUL</a>
+                <p>Metamorfoză asistată tehnologic. Trecerea definitivă de la efort brut la liniște operațională prin rânduirea modului în care afacerea ta respiră.</p>
+                <a href="metanoia.html" class="btn-link">DESCOPERĂ MANIFESTUL</a>
             </div>
         </section>
 
-        <!-- CHAPTER 02: MASTERPLAN -->
         <section class="chapter">
             <div class="chapter-media">
-                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000" alt="Masterplan Management">
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000" alt="Management de Elită">
             </div>
             <div class="chapter-text">
                 <span>CHAPTER 02 / SISTEM</span>
@@ -150,16 +147,27 @@
             </div>
         </section>
 
-        <!-- CHAPTER 03: WEB SERVICES -->
         <section class="chapter">
             <div class="chapter-media">
-                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2000" alt="Digital Visibility">
+                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2000" alt="Arhitectură Web">
             </div>
             <div class="chapter-text">
                 <span>CHAPTER 03 / PREZENȚĂ</span>
                 <h2>Vizibilitate.</h2>
-                <p>Arhitectură web care oglindește excelența ta. Sisteme digitale de înaltă performanță, construite pentru autoritate și conversie.</p>
-                <a href="oferta.html" class="btn-link">OFERTA WEB</a>
+                <p>Sisteme web de înaltă performanță care oglindesc excelența ta operațională. Oglinda digitală a autorității tale în piață.</p>
+                <a href="oferta.html" class="btn-link">OFERTA DIGITALĂ</a>
+            </div>
+        </section>
+
+        <section class="chapter">
+            <div class="chapter-media">
+                <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2000" alt="Comunitate Metanoia">
+            </div>
+            <div class="chapter-text">
+                <span>CHAPTER 04 / COMUNITATE</span>
+                <h2>Jurnalul.</h2>
+                <p>Spațiul de aliniere sistemică. Gânduri, perspective și dialog între arhitecții de sistem care au ales calea rânduielii.</p>
+                <a href="feed.html" class="btn-link">INTRA ÎN JURNAL</a>
             </div>
         </section>
 
@@ -169,13 +177,13 @@
         <div class="profile-img">
             <img src="images/eu.jpg" alt="Otilia Ioana Sălăşan">
         </div>
-        <p class="quote">"Managementul nu este despre efort brutal, ci despre rânduială logică. Am construit Metanoia ca un ecosistem unde rigoarea tehnică și viața coexistă în armonie."</p>
-        <p class="name">Otilia Ioana Sălăşan</p>
+        <p class="quote">"Managementul nu este despre efort brutal, ci despre rânduială logică. Am construit Metanoia pentru a demonstra că rigoarea și viața coexistă în armonie."</p>
+        <p style="font-family:'Cinzel'; color:var(--auriu); letter-spacing:8px; font-size:1rem;">Otilia Ioana Sălăşan</p>
     </section>
 
     <footer>
         <div class="footer-wrap">
-            <div class="footer-legal-box">
+            <div class="footer-info">
                 <div class="legal-links">
                     <a href="confidentialitate.html">GDPR</a>
                     <a href="politica-cookies.html">COOKIES</a>
@@ -184,11 +192,6 @@
                 <p style="font-family:'Cinzel'; color:#111; font-size:0.6rem; letter-spacing:5px; margin-top:40px;">
                     DAKAMIGOS MARKT SRL | CUI: RO40767794 | &copy; 2026 METANOIA HUB
                 </p>
-            </div>
-            
-            <div class="anpc-logos">
-                <a href="https://anpc.ro/ce-este-sal/" target="_blank"><img src="images/anpc-sal.png" alt="SAL"></a>
-                <a href="https://anpc.ro/" target="_blank"><img src="images/anpc-sol.png" alt="SOL"></a>
             </div>
         </div>
     </footer>
