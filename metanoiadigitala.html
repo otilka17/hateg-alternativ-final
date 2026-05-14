@@ -1,9 +1,17 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18106516696"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-18106516696');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Metanoia Digitală | Oferta Sistemică</title>
+    <title>Metanoia Digitală | Arhitectura Rânduielii</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400;1,700&family=Cinzel:wght@400;700;900&family=Inter:wght@200;300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -11,54 +19,60 @@
     <style>
         :root { --auriu: #c5a059; --negru: #000000; --gri-card: #0a0a0a; --alb: #ffffff; --rosu-ananghie: #822; }
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; line-height: 1.6; }
+        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; line-height: 1.8; }
 
         /* HEADER */
-        .site-header { position: absolute; top: 0; width: 100%; z-index: 999; padding: 30px 5%; display: flex; justify-content: space-between; align-items: center; }
+        .site-header { position: fixed; top: 0; width: 100%; z-index: 999; padding: 30px 5%; display: flex; justify-content: space-between; align-items: center; background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent); }
         .brand-logo img { height: 40px; }
         .nav-back { color: var(--auriu); font-family: 'Cinzel'; text-decoration: none; font-size: 0.7rem; letter-spacing: 2px; }
 
         /* HERO MANIFEST */
-        .hero-manifest { height: 60vh; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; background: radial-gradient(circle at center, #111 0%, #000 100%); border-bottom: 1px solid #111; }
-        .hero-content { position: relative; z-index: 2; padding: 0 5%; }
+        .hero-manifest { height: 90vh; position: relative; display: flex; align-items: center; padding: 0 10%; background: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2000') center/cover no-repeat; }
+        .hero-manifest::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(0,0,0,0.95) 40%, transparent); }
+        
+        .hero-content { position: relative; z-index: 2; max-width: 800px; border-left: 1px solid var(--auriu); padding-left: 40px; }
         .tagline { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 10px; font-size: 0.8rem; margin-bottom: 20px; display: block; }
-        .hero-manifest h1 { font-family: 'Playfair Display'; font-size: clamp(2.5rem, 8vw, 5rem); font-style: italic; color: #fff; margin-bottom: 20px; }
-        .hero-manifest p { color: #666; font-family: 'Playfair Display'; font-style: italic; font-size: 1.2rem; }
+        .hero-manifest h1 { font-family: 'Playfair Display'; font-size: clamp(2.5rem, 8vw, 5rem); font-style: italic; color: #fff; margin-bottom: 30px; line-height: 1.1; }
+        .hero-manifest p { color: #aaa; font-size: 1.2rem; font-weight: 200; font-style: italic; }
 
-        /* SERVICES GRID */
-        .services-section { padding: 100px 10%; }
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        /* VIZIUNE SECTION */
+        .vision-section { padding: 150px 10%; text-align: center; background: var(--negru); }
+        .vision-section h2 { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 5px; margin-bottom: 40px; }
+        .vision-text { max-width: 900px; margin: 0 auto; color: #888; font-size: 1.3rem; font-weight: 200; }
+        .vision-text strong { color: var(--alb); font-weight: 400; }
+
+        /* WHAT I OFFER - FLUID SECTIONS */
+        .offer-row { display: flex; align-items: center; flex-wrap: wrap; padding: 100px 0; border-bottom: 1px solid #111; }
+        .offer-row:nth-child(even) { flex-direction: row-reverse; }
         
-        .service-card { background: var(--gri-card); border: 1px solid #1a1a1a; padding: 50px 40px; transition: 0.5s; display: flex; flex-direction: column; }
-        .service-card:hover { border-color: var(--auriu); transform: translateY(-10px); }
+        .offer-img { flex: 1; min-width: 450px; height: 600px; background-size: cover; background-position: center; filter: grayscale(30%) brightness(0.7); }
+        .offer-content { flex: 1; min-width: 450px; padding: 80px; }
         
-        .service-card h3 { font-family: 'Playfair Display'; font-size: 2rem; font-style: italic; margin-bottom: 25px; color: var(--auriu); border-bottom: 1px solid #222; padding-bottom: 15px; }
-        .service-card p { color: #aaa; font-weight: 200; margin-bottom: 25px; min-height: 80px; }
-        .service-card ul { list-style: none; color: #666; font-size: 0.9rem; margin-bottom: 40px; flex-grow: 1; }
-        .service-card ul li { margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
-        .service-card ul li::before { content: '•'; color: var(--auriu); }
+        .offer-content h3 { font-family: 'Playfair Display'; font-size: 2.5rem; font-style: italic; color: var(--auriu); margin-bottom: 30px; }
+        .offer-content p { color: #aaa; margin-bottom: 30px; font-size: 1.1rem; }
+        .offer-content ul { list-style: none; }
+        .offer-content ul li { margin-bottom: 15px; color: #666; font-family: 'Cinzel'; font-size: 0.8rem; letter-spacing: 2px; display: flex; align-items: center; gap: 15px; }
+        .offer-content ul li i { color: var(--auriu); font-size: 0.6rem; }
 
-        /* SPECIAL BADGE FOR ANANGHIE */
-        .badge { background: var(--rosu-ananghie); color: #fff; font-family: 'Cinzel'; font-size: 0.6rem; padding: 4px 10px; letter-spacing: 2px; position: absolute; top: 20px; right: 20px; }
+        /* TECH ENGINE */
+        .tech-engine { padding: 120px 10%; background: #050505; }
+        .engine-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
+        .engine-text h4 { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 5px; margin-bottom: 30px; }
+        .engine-code { font-family: monospace; color: #48bb78; background: #000; padding: 40px; border: 1px solid #111; font-size: 0.9rem; line-height: 2; }
 
-        /* TECH LAYER */
-        .tech-layer { background: #050505; border: 1px solid #111; padding: 60px; margin-top: 80px; font-family: monospace; color: #48bb78; }
-        .tech-layer h4 { font-family: 'Cinzel'; color: var(--auriu); margin-bottom: 30px; letter-spacing: 3px; font-size: 0.9rem; }
-        .tech-line { margin-bottom: 10px; display: block; opacity: 0.8; }
-
-        /* PAYMENT CALL TO ACTION */
-        .pay-cta { text-align: center; padding: 120px 10%; border-top: 1px solid #111; }
+        /* CTA */
+        .pay-cta { text-align: center; padding: 150px 10%; }
         .btn-paypal { display: inline-block; padding: 25px 60px; background: var(--auriu); color: #000; font-family: 'Cinzel'; font-weight: 900; text-decoration: none; letter-spacing: 4px; transition: 0.4s; }
         .btn-paypal:hover { background: #fff; box-shadow: 0 0 50px rgba(197, 160, 89, 0.2); }
         .gate-link { display: block; margin-top: 30px; color: #444; font-family: 'Cinzel'; text-decoration: underline !important; font-size: 0.7rem; letter-spacing: 2px; }
 
-        /* RULE OF IRON FOOTER */
         .iron-rule { padding: 100px 10%; text-align: center; border-top: 1px dashed #222; }
         .iron-rule p { font-family: 'Cinzel'; color: #444; letter-spacing: 5px; font-weight: 900; font-size: 0.8rem; }
 
-        @media (max-width: 768px) {
-            .services-section { padding: 60px 5%; }
-            .tech-layer { padding: 30px; font-size: 0.8rem; }
+        @media (max-width: 900px) {
+            .offer-img, .offer-content { min-width: 100%; height: auto; padding: 40px 5%; }
+            .engine-grid { grid-template-columns: 1fr; gap: 40px; }
+            .hero-manifest { padding: 0 5%; }
         }
     </style>
 </head>
@@ -71,56 +85,76 @@
 
     <section class="hero-manifest">
         <div class="hero-content">
-            <span class="tagline">OFERTĂ SISTEMICĂ</span>
-            <h1>Metanoia Digitală.</h1>
-            <p>Arhitectură Tehnică pentru Business-uri Sistematizate</p>
+            <span class="tagline">METANOIA DIGITALĂ</span>
+            <h1>Arhitectura<br>Rânduielii.</h1>
+            <p>Sistematizarea haosului prin precizie tehnică și viziune de holding.</p>
         </div>
     </section>
 
-    <main class="services-section">
-        <div class="services-grid">
-            
-            <div class="service-card">
+    <section class="vision-section">
+        <h2>MANIFESTUL</h2>
+        <div class="vision-text">
+            <p>Într-o lume a zgomotului digital, noi construim <strong>Liniște Operațională</strong>. Metanoia nu este doar o schimbare de nume, ci o metamorfoză a modului în care business-ul tău respiră. Credem că tehnologia trebuie să fie <strong>invizibilă, dar infailibilă</strong>, servind omul, nu sclavagindu-l.</p>
+        </div>
+    </section>
+
+    <main>
+        <div class="offer-row">
+            <div class="offer-img" style="background-image: url('https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=2000');"></div>
+            <div class="offer-content">
                 <h3>Gastronomie & Recreație</h3>
-                <p>Rânduială în fluxurile de producție și servire. Utilizarea <strong>SeniorERP</strong> pentru gestiunea stocurilor și transferurilor.</p>
+                <p>Implementăm rânduiala acolo unde haosul este cel mai prezent: în fluxurile de producție și servire. Nu doar gătim, ci sistematizăm trasabilitatea.</p>
                 <ul>
-                    <li>Optimizare Avize Transfer</li>
-                    <li>Control Riguros Depozite</li>
-                    <li>Trasabilitate de la Producător la Masă</li>
+                    <li><i class="fas fa-circle"></i> OPTIMIZARE SENIOR ERP</li>
+                    <li><i class="fas fa-circle"></i> CONTROL RIGUROS DEPOZITE</li>
+                    <li><i class="fas fa-circle"></i> TRASABILITATE TOTALĂ</li>
                 </ul>
             </div>
-
-            <div class="service-card" style="border-top: 6px solid #4299e1;">
-                <h3>Curs Management Sistemic</h3>
-                <p>Program intensiv de 6 săptămâni pentru trecerea de la haos la <strong>Learning Organization</strong>.</p>
-                <ul>
-                    <li>Trezvie & Rânduială Strategică</li>
-                    <li>Automatizare prin Atlassian (Jira/Confluence)</li>
-                    <li>Mindset de Arhitect de Sistem</li>
-                </ul>
-            </div>
-
-            <div class="service-card" style="border-top: 6px solid #48bb78; position: relative;">
-                <span class="badge">URGENT</span>
-                <h3>Plan Business la Ananghie</h3>
-                <p>Diagnoză rapidă prin <strong>SQL & API</strong> pentru firmele cu indicatori critici sau bugete neraportate.</p>
-                <ul>
-                    <li>Identificare "Bug-uri" vitale de profit</li>
-                    <li>Pipeline de salvare prin Make</li>
-                    <li>Restructurarea fluxurilor de numerar</li>
-                </ul>
-            </div>
-
         </div>
 
-        <div class="tech-layer">
-            <h4>STACK-UL TEHNIC DE LIVRARE:</h4>
-            <span class="tech-line">> SQL Query: Identificare Lead-uri (Termene.ro)</span>
-            <span class="tech-line">> Automation: Make + GitHub Script (JS Processing)</span>
-            <span class="tech-line">> Workspace: Jira Project Management & Confluence Knowledge Base</span>
-            <span class="tech-line">> Team: TesterRemoteRo72 (11 Filiale)</span>
+        <div class="offer-row">
+            <div class="offer-img" style="background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000');"></div>
+            <div class="offer-content">
+                <h3>Management Sistemic</h3>
+                <p>Trecerea de la "stins incendii" la o organizație care învață autonom. Un Masterplan de 6 săptămâni pentru liderii care vor să scaleze prin rigoare.</p>
+                <ul>
+                    <li><i class="fas fa-circle"></i> PROTOCOL TREZVIE & RÂNDUIALĂ</li>
+                    <li><i class="fas fa-circle"></i> AUTOMATIZARE ATLASSIAN</li>
+                    <li><i class="fas fa-circle"></i> LEARNING ORGANIZATION V2</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="offer-row">
+            <div class="offer-img" style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2000');"></div>
+            <div class="offer-content">
+                <span class="badge" style="position: static; margin-bottom: 20px; display: inline-block;">URGENT</span>
+                <h3>Business la Ananghie</h3>
+                <p>Diagnoză chirurgicală pentru firmele aflate în puncte critice. Folosim date brute pentru a găsi scurgerile de profit și a restructura fluxul de numerar.</p>
+                <ul>
+                    <li><i class="fas fa-circle"></i> DIAGNOZĂ SQL & API</li>
+                    <li><i class="fas fa-circle"></i> PIPELINE DE SALVARE MAKE</li>
+                    <li><i class="fas fa-circle"></i> RECALIBRARE CASH-FLOW</li>
+                </ul>
+            </div>
         </div>
     </main>
+
+    <section class="tech-engine">
+        <div class="engine-grid">
+            <div class="engine-text">
+                <h4>MOTORUL TEHNIC</h4>
+                <p style="color: #666; margin-bottom: 30px;">Nu folosim unelte la modă, ci instrumente de precizie care garantează scalarea holdingului tău.</p>
+                <p style="color: #444; font-family: 'Cinzel'; font-size: 0.8rem; letter-spacing: 2px;">TEHNOREA: TESTER REMOTE RO72</p>
+            </div>
+            <div class="engine-code">
+                > SQL_QUERY: IDENTIFICARE_LEADS<br>
+                > AUTOMATION: MAKE + GITHUB_JS<br>
+                > WORKSPACE: JIRA_CONFLUENCE_PRO<br>
+                > PROTOCOL: ARHITECTURA_TREZVIEI
+            </div>
+        </div>
+    </section>
 
     <section class="pay-cta">
         <span class="tagline" style="margin-bottom: 30px;">ADMITERE CURS MANAGEMENT</span><br>
