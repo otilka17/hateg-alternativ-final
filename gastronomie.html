@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18106516696"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-18106516696');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Meniul Gospodăriei | Rânduială Sistemică</title>
@@ -11,7 +19,7 @@
     <style>
         :root { --auriu: #c5a059; --negru: #000000; --gri-card: #0a0a0a; --alb: #f9f9f9; }
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; line-height: 1.6; }
+        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; line-height: 1.6; }
 
         .site-header { position: absolute; top: 0; width: 100%; z-index: 999; padding: 30px 5%; display: flex; justify-content: space-between; align-items: center; }
         .brand-logo img { height: 45px; }
@@ -99,20 +107,20 @@
     </main>
 
     <script>
-        // Legătura cu Pipeline-ul din Make
+        // Legătura automată cu Pipeline-ul din Make
         async function actualizeazaMeniul() {
             try {
-                // Înlocuiește cu URL-ul Webhook-ului tău din Make
-                const response = await fetch('URL_WEBHOOK_MAKE'); 
+                // Webhook-ul tău activ
+                const response = await fetch('https://hook.eu1.make.com/0z9yl1g4qy7ej57zlqpm8cp8o9mczvxj'); 
                 const data = await response.json();
                 
-                // Mapare exactă pe structura ta din Google Sheet
-                document.getElementById('mic-dejun').innerText = data["Mic Dejun"];
-                document.getElementById('ciorba').innerText = data["Ciorba"];
-                document.getElementById('fel-principal').innerText = data["Fel Principal"];
-                document.getElementById('desert').innerText = data["Desert"];
-                document.getElementById('pret-meniu').innerText = data["Pret Meniu"] + " RON";
-                document.getElementById('pret-abonament').innerText = data["Pret Abonament"] + " RON";
+                // Mapare pe structura ta din Google Sheet
+                document.getElementById('mic-dejun').innerText = data["Mic Dejun"] || "Nespecificat";
+                document.getElementById('ciorba').innerText = data["Ciorba"] || "--";
+                document.getElementById('fel-principal').innerText = data["Fel Principal"] || "--";
+                document.getElementById('desert').innerText = data["Desert"] || "--";
+                document.getElementById('pret-meniu').innerText = (data["Pret Meniu"] || "0") + " RON";
+                document.getElementById('pret-abonament').innerText = (data["Pret Abonament"] || "0") + " RON";
             } catch (error) {
                 console.log("Rânduiala necesită verificare manuală.");
             }
