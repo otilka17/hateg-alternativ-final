@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Jurnalul | Metanoia</title>
+    <title>Jurnalul Rânduielii | Metanoia</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400;1,700&family=Cinzel:wght@400;700;900&family=Inter:wght@100;200;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400;1,700&family=Cinzel:wght@400;700;900&family=Inter:wght@200;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
@@ -14,70 +14,83 @@
             --negru-lux: #050505; 
             --negru-pur: #000; 
             --alb-mat: #f0f0f0; 
-            --text-muted: #666; 
+            --text-muted: #888; 
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
         body { background: var(--negru-pur); color: var(--alb-mat); font-family: 'Inter', sans-serif; line-height: 1.8; overflow-x: hidden; }
 
-        /* HEADER EDITORIAL */
-        .site-header { position: sticky; top: 0; width: 100%; z-index: 999; padding: 30px 5%; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.95); backdrop-filter: blur(15px); border-bottom: 1px solid #111; }
-        .brand-logo img { height: 35px; }
-        .nav-back { color: var(--auriu); font-family: 'Cinzel'; text-decoration: none; font-size: 0.7rem; letter-spacing: 2px; transition: 0.3s; }
-        .nav-back:hover { color: #fff; }
+        /* HEADER & BURGER */
+        .site-header { position: sticky; top: 0; width: 100%; z-index: 9999; padding: 25px 5%; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.95); backdrop-filter: blur(10px); border-bottom: 1px solid #111; }
+        .brand-logo img { height: 45px; }
+        
+        .burger { cursor: pointer; z-index: 10001; display: flex; flex-direction: column; gap: 7px; padding: 10px; }
+        .burger span { display: block; width: 30px; height: 1px; background: var(--auriu); transition: 0.4s; }
+        .burger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+        .burger.active span:nth-child(2) { opacity: 0; }
+        .burger.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
-        /* HERO SECTION */
-        .forum-hero { height: 35vh; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; background: url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2000') center/cover no-repeat; }
-        .forum-hero::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, var(--negru-pur), rgba(0,0,0,0.4)); }
+        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: var(--negru-pur); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.6s cubic-bezier(0.77, 0, 0.175, 1); z-index: 10000; }
+        .main-nav.active { right: 0; }
+        .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 15px 0; color: var(--alb-mat); letter-spacing: 5px; text-decoration: none; opacity: 0.5; transition: 0.3s; }
+        .main-nav a:hover { opacity: 1; color: var(--auriu); }
+
+        /* HERO JURNAL */
+        .forum-hero { height: 45vh; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; background: url('https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2000') center/cover no-repeat; }
+        .forum-hero::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to top, var(--negru-pur), rgba(0,0,0,0.5)); }
         
         .hero-content { position: relative; z-index: 2; }
-        .hero-content h1 { font-family: 'Playfair Display'; font-size: 3rem; font-style: italic; color: #fff; line-height: 1; }
-        .hero-content p { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 6px; font-size: 0.7rem; margin-top: 15px; }
+        .hero-content h1 { font-family: 'Playfair Display'; font-size: clamp(2.5rem, 6vw, 4.5rem); font-style: italic; color: #fff; line-height: 1; }
+        .hero-content p { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 8px; font-size: 0.75rem; margin-top: 15px; }
 
-        /* CONTAINER JURNAL */
-        .forum-container { max-width: 800px; margin: -50px auto 100px; padding: 0 20px; position: relative; z-index: 5; }
+        /* CONTAINER */
+        .forum-container { max-width: 800px; margin: -60px auto 100px; padding: 0 20px; position: relative; z-index: 5; }
 
-        /* INPUT AREA */
-        .publish-card { background: var(--negru-lux); border: 1px solid #1a1a1a; padding: 40px; margin-bottom: 80px; box-shadow: 0 30px 60px rgba(0,0,0,0.5); }
-        .publish-card textarea { width: 100%; background: transparent; border: none; border-bottom: 1px solid #222; color: #fff; font-family: 'Inter'; font-weight: 200; font-size: 1.2rem; padding: 20px 0; outline: none; resize: none; margin-bottom: 30px; transition: 0.3s; }
-        .publish-card textarea:focus { border-bottom-color: var(--auriu); }
+        /* INPUT BOX */
+        .publish-box { background: var(--negru-lux); border: 1px solid #1a1a1a; padding: 40px; margin-bottom: 80px; box-shadow: 0 30px 60px rgba(0,0,0,0.5); border-radius: 4px; }
+        textarea { width: 100%; background: transparent; border: none; border-bottom: 1px solid #222; color: #fff; font-family: 'Inter'; font-weight: 200; font-size: 1.2rem; padding: 15px 0; outline: none; resize: none; margin-bottom: 30px; transition: 0.3s; }
+        textarea:focus { border-bottom-color: var(--auriu); }
         
-        .publish-footer { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
-        .user-tag { font-family: 'Cinzel'; font-size: 0.6rem; color: #444; letter-spacing: 2px; }
+        .publish-footer { display: flex; justify-content: space-between; align-items: center; }
+        .user-id { font-family: 'Cinzel'; font-size: 0.6rem; color: #444; letter-spacing: 2px; }
         .btn-publish { background: var(--auriu); color: #000; border: none; padding: 12px 40px; font-family: 'Cinzel'; font-weight: 900; font-size: 0.75rem; letter-spacing: 3px; cursor: pointer; transition: 0.4s; }
         .btn-publish:hover { background: #fff; transform: translateY(-2px); }
         .btn-publish:disabled { opacity: 0.3; cursor: not-allowed; }
 
         /* FEED POSTS */
-        .post-entry { margin-bottom: 80px; border-left: 1px solid var(--auriu); padding-left: 40px; opacity: 0; transform: translateY(20px); animation: slideIn 0.8s ease forwards; }
-        @keyframes slideIn { to { opacity: 1; transform: translateY(0); } }
-
-        .post-meta { font-family: 'Cinzel'; font-size: 0.65rem; color: var(--auriu); letter-spacing: 4px; margin-bottom: 20px; display: flex; justify-content: space-between; opacity: 0.6; }
-        .post-body { color: #ccc; font-size: 1.2rem; font-weight: 200; line-height: 1.8; margin-bottom: 30px; white-space: pre-wrap; font-family: 'Inter'; }
+        .post-card { border-left: 1px solid var(--auriu); padding-left: 30px; margin-bottom: 70px; opacity: 0; transform: translateY(20px); animation: fadeIn 0.8s forwards; }
+        @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
         
-        .post-actions { display: flex; gap: 30px; }
-        .align-btn { background: transparent; border: 1px solid #1a1a1a; color: #555; padding: 8px 20px; font-size: 0.65rem; font-family: 'Cinzel'; letter-spacing: 2px; cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 10px; }
+        .post-meta { font-family: 'Cinzel'; font-size: 0.6rem; color: var(--auriu); letter-spacing: 3px; margin-bottom: 15px; display: flex; justify-content: space-between; opacity: 0.6; }
+        .post-text { color: #ccc; font-size: 1.15rem; font-weight: 200; line-height: 1.8; margin-bottom: 25px; white-space: pre-wrap; }
+        
+        .align-btn { background: transparent; border: 1px solid #1a1a1a; color: #555; padding: 8px 15px; font-size: 0.6rem; font-family: 'Cinzel'; cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 8px; }
         .align-btn:hover { border-color: var(--auriu); color: var(--auriu); }
-        .align-btn.active { background: rgba(197, 160, 89, 0.1); border-color: var(--auriu); color: var(--auriu); }
+        .align-btn.active { color: var(--auriu); border-color: var(--auriu); }
 
-        .empty-state { text-align: center; padding: 100px 0; color: #222; font-family: 'Cinzel'; letter-spacing: 8px; font-size: 0.8rem; }
+        .loading-state { text-align: center; color: #222; font-family: 'Cinzel'; letter-spacing: 5px; padding: 50px; }
 
-        /* NOTIFICATIONS */
-        #status-msg { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px); padding: 15px 30px; background: var(--auriu); color: #000; font-family: 'Cinzel'; font-size: 0.7rem; letter-spacing: 2px; z-index: 10000; transition: 0.5s; font-weight: 900; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        #status-msg.show { transform: translateX(-50%) translateY(0); }
-
-        @media (max-width: 600px) {
-            .chapter-media { height: 400px; }
-            .chapter-text h2 { font-size: 2.5rem; }
-            .publish-card { padding: 30px 20px; }
-        }
+        /* FOOTER */
+        footer { padding: 80px 5% 40px; border-top: 1px solid #111; background: #000; }
+        .footer-grid { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 40px; }
+        .footer-logos img { height: 40px; opacity: 0.2; filter: grayscale(1); margin-right: 20px; transition: 0.3s; }
+        .footer-logos img:hover { opacity: 0.8; filter: grayscale(0); }
+        .cui-info { font-family: 'Cinzel'; color: #222; font-size: 0.6rem; letter-spacing: 3px; line-height: 1.8; }
+        .tribute { font-family: 'Cinzel'; color: #111; font-size: 0.5rem; letter-spacing: 12px; text-align: center; display: block; margin-top: 30px; font-weight: 700; }
     </style>
 </head>
 <body>
 
     <header class="site-header">
         <a href="index.html" class="brand-logo"><img src="images/logo1.svg" alt="Metanoia"></a>
-        <a href="index.html" class="nav-back">← HUB</a>
+        <div class="burger" id="burger"><span></span><span></span><span></span></div>
+        <nav class="main-nav" id="nav-links">
+            <a href="index.html">HUB</a>
+            <a href="metanoia.html">Manifest</a>
+            <a href="curs.html">Masterplan</a>
+            <a href="tihna.html">Tihnă</a>
+            <a href="oferta.html">Vizibilitate</a>
+        </nav>
     </header>
 
     <section class="forum-hero">
@@ -88,30 +101,40 @@
     </section>
 
     <div class="forum-container">
-        <!-- ZONA DE SCRIERE -->
-        <div class="publish-card">
-            <textarea id="post-text" rows="3" placeholder="Ce adevăr rânduim astăzi?"></textarea>
+        <!-- ZONA DE INPUT -->
+        <div class="publish-box">
+            <textarea id="post-input" rows="3" placeholder="Ce adevăr rânduim astăzi?"></textarea>
             <div class="publish-footer">
-                <span id="user-display-id" class="user-tag">VERIFICARE...</span>
+                <span id="user-display" class="user-id">IDENTIFICARE...</span>
                 <button id="btn-submit" class="btn-publish" disabled>PUBLICĂ</button>
             </div>
         </div>
 
-        <!-- LISTA DE POSTĂRI -->
-        <div id="posts-list">
-            <div class="empty-state">CONECTARE LA SURSĂ...</div>
+        <!-- FEED -->
+        <div id="posts-feed">
+            <div class="loading-state">CONECTARE LA SURSĂ...</div>
         </div>
     </div>
 
-    <div id="status-msg">MESAJ ÎNREGISTRAT</div>
+    <footer>
+        <div class="footer-grid">
+            <div class="cui-info">
+                DAKAMIGOS MARKT SRL | CUI: RO40767794 | HUNEDOARA
+            </div>
+            <div class="footer-logos">
+                <a href="https://anpc.ro/ce-este-sal/" target="_blank"><img src="images/anpc-sal.png" alt="ANPC SAL"></a>
+                <a href="https://anpc.ro/" target="_blank"><img src="images/anpc-sol.png" alt="ANPC SOL"></a>
+            </div>
+        </div>
+        <span class="tribute">TRIBUT PATRICIA</span>
+    </footer>
 
-    <!-- FIREBASE INTEGRATION -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, onAuthStateChanged, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, collection, addDoc, onSnapshot, query, serverTimestamp, doc, updateDoc, arrayUnion, arrayRemove } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // Global variables provided by environment
+        // Firebase Config
         const firebaseConfig = JSON.parse(__firebase_config);
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'metanoia-jurnal';
         const app = initializeApp(firebaseConfig);
@@ -120,8 +143,8 @@
 
         let user = null;
 
-        // RULE 3 - AUTH FIRST
-        const startSession = async () => {
+        // AUTH GUARD (Rule 3)
+        const initAuth = async () => {
             try {
                 if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
                     await signInWithCustomToken(auth, __initial_auth_token);
@@ -129,79 +152,76 @@
                     await signInAnonymously(auth);
                 }
             } catch (err) {
-                console.error("Auth Failure:", err);
-                showMsg("EROARE IDENTIFICARE");
+                console.error("Auth error:", err);
             }
         };
 
         onAuthStateChanged(auth, (u) => {
             user = u;
             if (user) {
-                document.getElementById('user-display-id').innerText = `ARHITECT ID: ${user.uid.substring(0, 8)}`;
+                document.getElementById('user-display').innerText = `ARHITECT ID: ${user.uid.substring(0, 8)}`;
                 document.getElementById('btn-submit').disabled = false;
-                initFeed();
+                startFeedListener();
             }
         });
 
-        startSession();
+        initAuth();
 
-        // RULE 1 & 2 - DATA FETCHING
-        function initFeed() {
+        // FEED LISTENER (Rule 1 & 2)
+        function startFeedListener() {
             if (!user) return;
-            // RULE 1 - Strict Path
+            
+            // Path strict conform Rule 1
             const postsRef = collection(db, 'artifacts', appId, 'public', 'data', 'posts');
             
-            // RULE 2 - Simple query, sort in memory
             onSnapshot(postsRef, (snapshot) => {
-                const list = document.getElementById('posts-list');
+                const feed = document.getElementById('posts-feed');
+                // Sortare manuală în memorie conform Rule 2
                 const posts = snapshot.docs.map(d => ({ id: d.id, ...d.data() }))
                                          .sort((a, b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
 
                 if (posts.length === 0) {
-                    list.innerHTML = '<div class="empty-state">TĂCEREA ESTE PRIMUL PAS AL RÂNDUIELII.</div>';
+                    feed.innerHTML = '<div class="loading-state">TĂCEREA ESTE PRIMA FORMĂ DE RÂNDUIALĂ.</div>';
                     return;
                 }
 
-                list.innerHTML = '';
+                feed.innerHTML = '';
                 posts.forEach(post => {
-                    const time = post.createdAt ? new Date(post.createdAt.seconds * 1000).toLocaleDateString('ro-RO') : 'Acum';
+                    const date = post.createdAt ? new Date(post.createdAt.seconds * 1000).toLocaleDateString('ro-RO') : 'Acum';
                     const isAligned = post.alignments?.includes(user.uid);
                     
                     const postDiv = document.createElement('div');
-                    postDiv.className = 'post-entry';
+                    postDiv.className = 'post-card';
                     postDiv.innerHTML = `
                         <div class="post-meta">
-                            <span>AUTOR: ${post.authorId.substring(0, 6)}</span>
-                            <span>${time}</span>
+                            <span>ID: ${post.authorId.substring(0, 6)}</span>
+                            <span>${date}</span>
                         </div>
-                        <div class="post-body">${escapeHTML(post.content)}</div>
+                        <div class="post-text">${escapeHTML(post.content)}</div>
                         <div class="post-actions">
                             <button class="align-btn ${isAligned ? 'active' : ''}" onclick="window.toggleAlign('${post.id}', ${isAligned})">
                                 <i class="fas fa-link"></i> ${post.alignments?.length || 0} ALINIERI
                             </button>
                         </div>
                     `;
-                    list.appendChild(postDiv);
+                    feed.appendChild(postDiv);
                 });
             }, (err) => {
-                console.error("Feed Error:", err);
-                showMsg("EROARE FEED");
+                console.error("Feed error:", err);
             });
         }
 
-        // PUBLISH LOGIC
+        // PUBLISH ACTION
         document.getElementById('btn-submit').onclick = async () => {
-            const textarea = document.getElementById('post-text');
-            const content = textarea.value.trim();
-            const btn = document.getElementById('btn-submit');
-
+            const input = document.getElementById('post-input');
+            const content = input.value.trim();
             if (!content || !user) return;
 
+            const btn = document.getElementById('btn-submit');
             btn.disabled = true;
             btn.innerText = "TRIMITERE...";
 
             try {
-                // RULE 1 - Strict Path
                 const postsRef = collection(db, 'artifacts', appId, 'public', 'data', 'posts');
                 await addDoc(postsRef, {
                     content: content,
@@ -209,11 +229,9 @@
                     createdAt: serverTimestamp(),
                     alignments: []
                 });
-                textarea.value = '';
-                showMsg("GÂND RÂNDUIT");
+                input.value = '';
             } catch (err) {
-                console.error("Publish Error:", err);
-                showMsg("EROARE PUBLICARE");
+                console.error("Publish error:", err);
             } finally {
                 btn.disabled = false;
                 btn.innerText = "PUBLICĂ";
@@ -221,24 +239,25 @@
         };
 
         // INTERACTION
-        window.toggleAlign = async (id, active) => {
+        window.toggleAlign = async (postId, active) => {
             if (!user) return;
-            const postDoc = doc(db, 'artifacts', appId, 'public', 'data', 'posts', id);
+            const postRef = doc(db, 'artifacts', appId, 'public', 'data', 'posts', postId);
             try {
-                await updateDoc(postDoc, {
+                await updateDoc(postRef, {
                     alignments: active ? arrayRemove(user.uid) : arrayUnion(user.uid)
                 });
             } catch (err) {
-                showMsg("EROARE ALINIERE");
+                console.error("Align error:", err);
             }
         };
 
-        function showMsg(txt) {
-            const m = document.getElementById('status-msg');
-            m.innerText = txt;
-            m.classList.add('show');
-            setTimeout(() => m.classList.remove('show'), 3000);
-        }
+        // BURGER LOGIC
+        const burger = document.getElementById('burger');
+        const nav = document.getElementById('nav-links');
+        burger.onclick = () => {
+            burger.classList.toggle('active');
+            nav.classList.toggle('active');
+        };
 
         function escapeHTML(str) {
             const p = document.createElement('p');
