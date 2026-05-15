@@ -20,81 +20,85 @@
 
     <style>
         :root { 
-            --albastru-brand: #2b57f2; 
-            --alb-pur: #ffffff;
-            --gri-fundal: #f4f7ff;
-            --negru-text: #0a1029;
-            --gri-text: #5c637a;
-            --auriu: #c5a059;
+            --auriu: #c5a059; 
+            --negru-lux: #050505; 
+            --negru-pur: #000; 
+            --alb-mat: #f0f0f0; 
+            --text-muted: #666; 
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        body { background: var(--albastru-brand); color: var(--negru-text); font-family: 'Inter', sans-serif; overflow-x: hidden; line-height: 1.6; }
+        body { background: var(--negru-pur); color: var(--alb-mat); font-family: 'Inter', sans-serif; overflow-x: hidden; line-height: 1.8; }
 
-        /* SCROLLBAR */
-        ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-track { background: var(--albastru-brand); }
-        ::-webkit-scrollbar-thumb { background: var(--alb-pur); border-radius: 10px; }
+        /* SCROLL BAR */
+        ::-webkit-scrollbar { width: 3px; }
+        ::-webkit-scrollbar-track { background: var(--negru-pur); }
+        ::-webkit-scrollbar-thumb { background: var(--auriu); }
 
-        /* HEADER */
-        .site-header { position: fixed; top: 0; width: 100%; z-index: 9999; padding: 25px 5%; display: flex; justify-content: space-between; align-items: center; transition: 0.4s ease; }
-        .site-header.scrolled { background: var(--alb-pur); padding: 15px 5%; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        /* NAVIGAȚIE EDITORIALĂ */
+        .site-header { position: fixed; top: 0; width: 100%; z-index: 9999; padding: 40px 5%; display: flex; justify-content: space-between; align-items: center; transition: 0.5s ease; }
+        .site-header.scrolled { background: rgba(0,0,0,0.95); padding: 20px 5%; backdrop-filter: blur(10px); border-bottom: 1px solid #111; }
+        .brand-logo img { height: 45px; opacity: 0.9; }
         
-        .brand-logo img { height: 50px; transition: 0.3s; filter: brightness(0) invert(1); }
-        .site-header.scrolled .brand-logo img { filter: none; }
-        
-        .burger { cursor: pointer; z-index: 10001; display: flex; flex-direction: column; gap: 7px; padding: 10px; }
-        .burger span { display: block; width: 32px; height: 2px; background: var(--alb-pur); transition: 0.4s; border-radius: 2px; }
-        .site-header.scrolled .burger span { background: var(--albastru-brand); }
+        .burger { cursor: pointer; z-index: 10001; display: flex; flex-direction: column; gap: 8px; padding: 10px; }
+        .burger span { display: block; width: 30px; height: 1px; background: var(--auriu); transition: 0.4s; }
         .burger.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
         .burger.active span:nth-child(2) { opacity: 0; }
         .burger.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
 
-        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: var(--albastru-brand); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.6s cubic-bezier(0.77, 0, 0.175, 1); z-index: 10000; }
+        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: var(--negru-pur); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.8s cubic-bezier(0.77, 0, 0.175, 1); z-index: 10000; }
         .main-nav.active { right: 0; }
-        .main-nav a { font-size: 2rem; font-family: 'Playfair Display'; font-style: italic; margin: 15px 0; color: var(--alb-pur); text-decoration: none; opacity: 0.7; transition: 0.3s; }
-        .main-nav a:hover { opacity: 1; transform: scale(1.05); color: var(--auriu); }
+        .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 20px 0; color: var(--alb-mat); letter-spacing: 8px; text-transform: uppercase; text-decoration: none; opacity: 0.3; transition: 0.4s; }
+        .main-nav a:hover { opacity: 1; color: var(--auriu); }
 
-        /* HERO */
-        .hero { height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; background: var(--albastru-brand); padding: 0 10%; color: var(--alb-pur); }
-        .hero-content { z-index: 2; max-width: 900px; }
-        .hero h1 { font-family: 'Playfair Display'; font-size: clamp(3.5rem, 12vw, 8.5rem); font-style: italic; line-height: 0.9; font-weight: 400; margin-bottom: 20px; letter-spacing: -2px; }
-        .tagline { font-family: 'Cinzel'; letter-spacing: 12px; font-size: 0.8rem; display: block; margin-bottom: 30px; opacity: 0.6; }
+        /* HERO - COPERTA REVISTEI */
+        .hero { height: 100vh; position: relative; display: flex; align-items: center; padding: 0 10%; background: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2000') center/cover no-repeat; }
+        .hero::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(0,0,0,0.98) 20%, transparent); }
+        
+        .hero-content { position: relative; z-index: 2; max-width: 900px; border-left: 1px solid var(--auriu); padding: 40px 0 40px 60px; }
+        .hero h1 { font-family: 'Playfair Display'; font-size: clamp(3.5rem, 10vw, 7.5rem); font-style: italic; color: #fff; line-height: 0.9; margin-bottom: 25px; font-weight: 400; }
+        .tagline { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 12px; font-size: 0.75rem; display: block; opacity: 0.8; text-transform: uppercase; font-weight: 700; }
 
-        /* MAGAZINE BODY */
-        .magazine-body { background: var(--gri-fundal); padding: 120px 0; border-radius: 50px 50px 0 0; margin-top: -50px; position: relative; z-index: 3; }
-        .chapter { padding: 100px 10%; display: flex; align-items: center; gap: 80px; }
+        /* CORPUL EDITORIAL */
+        .magazine-body { background: var(--negru-pur); }
+        .chapter { padding: 180px 10%; display: flex; align-items: center; gap: 100px; }
         .chapter:nth-child(even) { flex-direction: row-reverse; }
 
-        .chapter-card { flex: 1.3; background: var(--alb-pur); border-radius: 40px; overflow: hidden; box-shadow: 0 30px 60px rgba(43, 87, 242, 0.08); transition: 0.6s cubic-bezier(0.2, 1, 0.3, 1); }
-        .chapter-card img { width: 100%; height: 600px; object-fit: cover; transition: 1s; filter: brightness(0.9); }
-        .chapter:hover .chapter-card img { transform: scale(1.05); filter: brightness(1); }
+        .chapter-media { flex: 1.3; background: var(--negru-lux); border: 1px solid #111; border-radius: 35px; overflow: hidden; box-shadow: 0 30px 60px rgba(197, 160, 89, 0.08); transition: 0.6s cubic-bezier(0.2, 1, 0.3, 1); }
+        .chapter-media img { width: 100%; height: 600px; object-fit: cover; transition: 1s; filter: grayscale(100%) brightness(0.5); }
+        .chapter:hover .chapter-media img { filter: grayscale(0%) brightness(0.8); transform: scale(1.05); }
 
         .chapter-text { flex: 1; }
-        .chapter-text span { font-family: 'Cinzel'; color: var(--albastru-brand); font-size: 0.75rem; letter-spacing: 5px; display: block; margin-bottom: 25px; font-weight: 800; }
-        .chapter-text h2 { font-family: 'Playfair Display'; font-size: 4rem; font-style: italic; color: var(--negru-text); line-height: 1.1; margin-bottom: 35px; }
-        .chapter-text p { color: var(--gri-text); font-size: 1.2rem; margin-bottom: 45px; font-weight: 300; }
+        .chapter-text span { font-family: 'Cinzel'; color: var(--auriu); font-size: 0.75rem; letter-spacing: 5px; display: block; margin-bottom: 25px; font-weight: 800; }
+        .chapter-text h2 { font-family: 'Playfair Display'; font-size: clamp(2.5rem, 5vw, 4rem); font-style: italic; color: #fff; line-height: 1.1; margin-bottom: 35px; }
+        .chapter-text p { color: var(--text-muted); font-size: 1.2rem; margin-bottom: 45px; font-weight: 300; }
         
-        .btn-mag { display: inline-block; padding: 20px 45px; background: var(--albastru-brand); color: var(--alb-pur); font-family: 'Cinzel'; text-decoration: none; border-radius: 60px; letter-spacing: 3px; font-size: 0.8rem; font-weight: 700; transition: 0.4s; box-shadow: 0 15px 35px rgba(43, 87, 242, 0.2); }
-        .btn-mag:hover { transform: translateY(-5px); background: var(--negru-text); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .btn-mag { display: inline-block; padding: 20px 45px; background: var(--auriu); color: var(--negru-pur); font-family: 'Cinzel'; text-decoration: none; border-radius: 60px; letter-spacing: 3px; font-size: 0.8rem; font-weight: 700; transition: 0.4s; }
+        .btn-mag:hover { transform: translateY(-5px); background: #fff; box-shadow: 0 15px 30px rgba(197, 160, 89, 0.2); }
 
-        /* SIGNATURE */
-        .signature-section { padding: 140px 10%; background: var(--albastru-brand); color: var(--alb-pur); text-align: center; border-radius: 50px; margin: 0 5% 100px; box-shadow: 0 40px 80px rgba(43, 87, 242, 0.2); }
-        .profile-img { width: 200px; height: 200px; border-radius: 50%; margin: 0 auto 50px; border: 6px solid rgba(255,255,255,0.15); overflow: hidden; }
-        .profile-img img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
-        .quote { font-family: 'Playfair Display'; font-size: 2.5rem; font-style: italic; max-width: 900px; margin: 0 auto 40px; line-height: 1.4; font-weight: 200; }
+        /* SEMNĂTURA ARHITECTULUI */
+        .signature-section { padding: 150px 10%; background: var(--negru-lux); text-align: center; border-top: 1px solid #0a0a0a; border-radius: 50px; margin: 0 5% 100px; box-shadow: 0 40px 80px rgba(197, 160, 89, 0.1); }
+        .profile-img { width: 200px; height: 200px; border-radius: 50%; margin: 0 auto 50px; border: 6px solid rgba(197, 160, 89, 0.15); overflow: hidden; }
+        .profile-img img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; object-position: center 20%; filter: grayscale(100%); transition: 0.5s; }
+        .signature-section:hover .profile-img img { filter: grayscale(0%); }
+        .quote { font-family: 'Playfair Display'; font-size: 2.5rem; font-style: italic; color: #ccc; max-width: 900px; margin: 0 auto 40px; line-height: 1.4; font-weight: 200; }
+        .name-label { font-family: 'Cinzel'; letter-spacing: 10px; font-size: 1rem; font-weight: 700; color: var(--auriu); }
+
+        /* WIDGETS */
+        .widgets-area { padding: 120px 10%; background: #000; border-top: 1px solid #111; }
 
         /* FOOTER */
-        footer { padding: 100px 10% 60px; background: var(--gri-fundal); border-top: 1px solid rgba(0,0,0,0.05); }
+        footer { padding: 100px 10% 60px; border-top: 1px solid #111; background: #000; }
         .footer-grid { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 60px; }
-        .legal-links a { color: var(--gri-text); text-decoration: none; font-size: 0.75rem; font-family: 'Cinzel'; letter-spacing: 3px; margin-right: 35px; transition: 0.3s; }
-        .legal-links a:hover { color: var(--albastru-brand); }
+        .legal-links a { color: #333; text-decoration: none; font-family: 'Cinzel'; font-size: 0.75rem; letter-spacing: 3px; margin-right: 35px; transition: 0.3s; }
+        .legal-links a:hover { color: var(--auriu); }
         
         .footer-logos { display: flex; gap: 40px; align-items: center; }
-        .footer-logos img { height: 50px; opacity: 0.9; }
+        .footer-logos img { height: 45px; opacity: 0.2; filter: grayscale(1); transition: 0.5s; }
+        .footer-logos img:hover { opacity: 0.8; filter: grayscale(0); }
         
-        .cui-info { font-family: 'Cinzel'; color: #b1b9d1; font-size: 0.65rem; letter-spacing: 5px; margin-top: 40px; border-top: 1px solid rgba(0,0,0,0.05); padding-top: 40px; }
-        .tribute { font-family: 'Cinzel'; color: #d0d7e8; font-size: 0.55rem; letter-spacing: 12px; margin-top: 20px; display: block; text-align: center; font-weight: 700; }
+        .cui-info { font-family: 'Cinzel'; color: #b1b9d1; font-size: 0.65rem; letter-spacing: 5px; margin-top: 40px; border-top: 1px solid rgba(197, 160, 89, 0.05); padding-top: 40px; }
+        .tribute { font-family: 'Cinzel'; color: #222; font-size: 0.55rem; letter-spacing: 12px; margin-top: 20px; display: block; text-align: center; font-weight: 700; }
 
         @media (max-width: 1100px) {
             .chapter, .chapter:nth-child(even) { flex-direction: column; text-align: center; gap: 50px; }
@@ -104,8 +108,8 @@
             .footer-grid { flex-direction: column; align-items: center; text-align: center; }
         }
 
-        .wa-float { position: fixed; bottom: 40px; left: 40px; background: #25d366; color: white; width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 35px; z-index: 9999; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: 0.3s; }
-        .wa-float:hover { transform: scale(1.1) rotate(10deg); }
+        .wa-float { position: fixed; bottom: 40px; left: 40px; color: var(--auriu); font-size: 35px; z-index: 9999; opacity: 0.5; transition: 0.3s; }
+        .wa-float:hover { opacity: 1; transform: scale(1.1) rotate(10deg); }
     </style>
 </head>
 <body>
@@ -128,15 +132,15 @@
         <div class="hero-content">
             <span class="tagline">METANOIA DIGITALĂ</span>
             <h1>Metanoia.</h1>
-            <p style="font-family:'Cinzel'; opacity: 0.5; letter-spacing: 6px; font-size: 0.75rem;">ARHITECTURA RÂNDUIELII</p>
+            <p style="font-family:'Cinzel'; opacity: 0.5; letter-spacing: 6px; font-size: 0.75rem; color: var(--auriu);">ARHITECTURA RÂNDUIELII</p>
         </div>
     </section>
 
     <main class="magazine-body">
         
         <section class="chapter">
-            <div class="chapter-card">
-                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2000" alt="Manifest Metanoia">
+            <div class="chapter-media">
+                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2000" alt="Viziune Metanoia">
             </div>
             <div class="chapter-text">
                 <span>CHAPTER 01 / VIZIUNE</span>
@@ -147,32 +151,32 @@
         </section>
 
         <section class="chapter">
-            <div class="chapter-card">
-                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000" alt="Masterplan Management">
+            <div class="chapter-media">
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000" alt="Sistem de Management">
             </div>
             <div class="chapter-text">
                 <span>CHAPTER 02 / SISTEM</span>
                 <h2>Masterplan.</h2>
-                <p>Protocolul de 6 săptămâni pentru lideri. Automatizare prin Atlassian, rigoare tehnică și transformarea haosului într-o organizație autonomă.</p>
+                <p>Protocolul de 6 săptămâni pentru lideri. Automatizare prin Atlassian, rigoare tehnică și transformarea haosului într-o organizație autonomă care învață.</p>
                 <a href="curs.html" class="btn-mag">PROTOCOLUL DE ELITĂ</a>
             </div>
         </section>
 
         <section class="chapter">
-            <div class="chapter-card">
+            <div class="chapter-media">
                 <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2000" alt="Tihnă prin Rânduială">
             </div>
             <div class="chapter-text">
-                <span>CHAPTER 03 / DESTINAȚIE</span>
+                <span>CHAPTER 03 / REZULTAT</span>
                 <h2>Tihnă.</h2>
                 <p>Singura dovadă a rânduielii bine implementate. Spațiul în care eficiența devine silențioasă, oferindu-ți timpul să fii prezent în propria viață.</p>
-                <a href="tihna.html" class="btn-mag">DESCOPERĂ TIHNA</a>
+                <a href="tihna.html" class="btn-mag">REZERVĂ TIHNA</a>
             </div>
         </section>
 
         <section class="chapter">
-            <div class="chapter-card">
-                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2000" alt="Vizibilitate Digitală">
+            <div class="chapter-media">
+                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2000" alt="Prezență Digitală">
             </div>
             <div class="chapter-text">
                 <span>CHAPTER 04 / PREZENȚĂ</span>
@@ -183,8 +187,8 @@
         </section>
 
         <section class="chapter">
-            <div class="chapter-card">
-                <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2000" alt="Jurnalul Rânduielii">
+            <div class="chapter-media">
+                <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2000" alt="Comunitate Arhitecți">
             </div>
             <div class="chapter-text">
                 <span>CHAPTER 05 / COMUNITATE</span>
@@ -201,7 +205,7 @@
             <img src="images/eu.jpg" alt="Otilia Ioana Sălăşan">
         </div>
         <p class="quote">"Managementul nu este despre efort brut, ci despre rânduială logică. Am construit Metanoia pentru a demonstra că rigoarea tehnică și viața coexistă în armonie."</p>
-        <p style="font-family:'Cinzel'; letter-spacing: 10px; font-size: 1rem; font-weight: 700; color: white;">OTILIA IOANA SĂLĂŞAN</p>
+        <p class="name-label">OTILIA IOANA SĂLĂŞAN</p>
     </section>
 
     <section style="padding: 120px 10%; background: var(--alb-pur);">
