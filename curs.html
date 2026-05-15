@@ -3,139 +3,210 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Metanoia Digitală | Oferta Sistemică</title>
+    <title>Metanoia Digitală - Arhitectura Rânduielii</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400;1,700&family=Cinzel:wght@400;700;900&family=Inter:wght@200;300;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        :root { --auriu: #c5a059; --negru: #000000; --gri-card: #0a0a0a; --alb: #ffffff; --rosu-ananghie: #822; }
+        :root { 
+            --auriu: #c5a059; 
+            --negru: #070707; 
+            --mocha: #1a1512;
+            --alb: #f9f9f9; 
+            --albastru-accent: #007AFF;
+            --gri-soft: #f4f4f7;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        body { background: var(--negru); color: var(--alb); font-family: 'Inter', sans-serif; overflow-x: hidden; line-height: 1.6; }
-
-        /* HEADER */
-        .site-header { position: absolute; top: 0; width: 100%; z-index: 999; padding: 30px 5%; display: flex; justify-content: space-between; align-items: center; }
-        .brand-logo img { height: 40px; }
-        .nav-back { color: var(--auriu); font-family: 'Cinzel'; text-decoration: none; font-size: 0.7rem; letter-spacing: 2px; }
-
-        /* HERO MANIFEST */
-        .hero-manifest { height: 60vh; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; background: radial-gradient(circle at center, #111 0%, #000 100%); border-bottom: 1px solid #111; }
-        .hero-content { position: relative; z-index: 2; padding: 0 5%; }
-        .tagline { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 10px; font-size: 0.8rem; margin-bottom: 20px; display: block; }
-        .hero-manifest h1 { font-family: 'Playfair Display'; font-size: clamp(2.5rem, 8vw, 5rem); font-style: italic; color: #fff; margin-bottom: 20px; }
-        .hero-manifest p { color: #666; font-family: 'Playfair Display'; font-style: italic; font-size: 1.2rem; }
-
-        /* SERVICES GRID */
-        .services-section { padding: 100px 10%; }
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
         
-        .service-card { background: var(--gri-card); border: 1px solid #1a1a1a; padding: 50px 40px; transition: 0.5s; display: flex; flex-direction: column; }
-        .service-card:hover { border-color: var(--auriu); transform: translateY(-10px); }
+        body { 
+            background: var(--gri-soft); 
+            color: var(--negru); 
+            font-family: 'Inter', sans-serif; 
+            line-height: 1.6; 
+        }
+
+        /* HEADER STIL HATEGALTERNATIV */
+        .site-header {
+            background: #fff;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .brand { font-family: 'Cinzel'; font-weight: 900; color: var(--negru); letter-spacing: 2px; }
+        .brand span { color: var(--auriu); }
+
+        /* HERO - IDENTITATEA ARHITECTULUI */
+        .hero {
+            background: #fff;
+            padding: 60px 5%;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        .badge-premium {
+            display: inline-block;
+            background: var(--mocha);
+            color: var(--auriu);
+            padding: 5px 15px;
+            font-size: 0.7rem;
+            font-family: 'Cinzel';
+            letter-spacing: 2px;
+            border-radius: 50px;
+            margin-bottom: 20px;
+        }
+
+        h1 { font-family: 'Playfair Display'; font-size: 2.5rem; font-style: italic; margin-bottom: 15px; }
+
+        /* CARDS - STRUCTURA OFERTEI */
+        .offers-container {
+            max-width: 1100px;
+            margin: -40px auto 60px;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .offer-card {
+            background: #fff;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .offer-card:hover { transform: translateY(-10px); }
+        .offer-card.featured { border: 2px solid var(--auriu); }
         
-        .service-card h3 { font-family: 'Playfair Display'; font-size: 2rem; font-style: italic; margin-bottom: 25px; color: var(--auriu); border-bottom: 1px solid #222; padding-bottom: 15px; }
-        .service-card p { color: #aaa; font-weight: 200; margin-bottom: 25px; min-height: 80px; }
-        .service-card ul { list-style: none; color: #666; font-size: 0.9rem; margin-bottom: 40px; flex-grow: 1; }
-        .service-card ul li { margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
-        .service-card ul li::before { content: '•'; color: var(--auriu); }
+        .tag-recomandat {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            background: var(--auriu);
+            color: #000;
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 900;
+            font-family: 'Cinzel';
+        }
 
-        /* SPECIAL BADGE FOR ANANGHIE */
-        .badge { background: var(--rosu-ananghie); color: #fff; font-family: 'Cinzel'; font-size: 0.6rem; padding: 4px 10px; letter-spacing: 2px; position: absolute; top: 20px; right: 20px; }
+        .offer-title { font-family: 'Cinzel'; font-size: 1.2rem; margin-bottom: 10px; display: block; }
+        .price { font-size: 2.5rem; font-weight: 900; margin: 20px 0; color: var(--mocha); }
+        .price span { font-size: 1rem; color: #888; font-weight: 400; }
 
-        /* TECH LAYER */
-        .tech-layer { background: #050505; border: 1px solid #111; padding: 60px; margin-top: 80px; font-family: monospace; color: #48bb78; }
-        .tech-layer h4 { font-family: 'Cinzel'; color: var(--auriu); margin-bottom: 30px; letter-spacing: 3px; font-size: 0.9rem; }
-        .tech-line { margin-bottom: 10px; display: block; opacity: 0.8; }
+        .benefits-list { list-style: none; margin: 30px 0; }
+        .benefits-list li { margin-bottom: 15px; display: flex; align-items: flex-start; gap: 10px; font-size: 0.95rem; color: #444; }
+        .benefits-list i { color: var(--auriu); margin-top: 4px; }
 
-        /* PAYMENT CALL TO ACTION */
-        .pay-cta { text-align: center; padding: 120px 10%; border-top: 1px solid #111; }
-        .btn-paypal { display: inline-block; padding: 25px 60px; background: var(--auriu); color: #000; font-family: 'Cinzel'; font-weight: 900; text-decoration: none; letter-spacing: 4px; transition: 0.4s; }
-        .btn-paypal:hover { background: #fff; box-shadow: 0 0 50px rgba(197, 160, 89, 0.2); }
-        .gate-link { display: block; margin-top: 30px; color: #444; font-family: 'Cinzel'; text-decoration: underline !important; font-size: 0.7rem; letter-spacing: 2px; }
+        /* BUTOANE ACTIUNE DIRECTA */
+        .btn-action {
+            display: block;
+            width: 100%;
+            padding: 18px;
+            border-radius: 12px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 700;
+            font-family: 'Inter';
+            transition: 0.3s;
+            margin-bottom: 10px;
+        }
 
-        /* RULE OF IRON FOOTER */
-        .iron-rule { padding: 100px 10%; text-align: center; border-top: 1px dashed #222; }
-        .iron-rule p { font-family: 'Cinzel'; color: #444; letter-spacing: 5px; font-weight: 900; font-size: 0.8rem; }
+        .btn-call { background: var(--albastru-accent); color: #fff; }
+        .btn-outline { border: 2px solid #eee; color: #444; }
+        .btn-gold { background: var(--mocha); color: var(--auriu); border: 1px solid var(--auriu); }
 
-        @media (max-width: 768px) {
-            .services-section { padding: 60px 5%; }
-            .tech-layer { padding: 30px; font-size: 0.8rem; }
+        /* SECTIUNEA FINALĂ (DUPE CE BAGA CHEIA) */
+        .activation-screen {
+            background: var(--negru);
+            color: #fff;
+            padding: 80px 5%;
+            text-align: center;
+            border-radius: 30px;
+            margin: 40px 20px;
+        }
+
+        .qr-box {
+            width: 120px;
+            height: 120px;
+            background: #fff;
+            margin: 0 auto 30px;
+            padding: 10px;
+            border-radius: 15px;
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2rem; }
+            .offers-container { margin-top: 20px; }
         }
     </style>
 </head>
 <body>
 
     <header class="site-header">
-        <a href="index.html" class="brand-logo"><img src="images/logo1.svg" alt="Metanoia"></a>
-        <a href="index.html" class="nav-back">← ÎNAPOI ÎN HUB</a>
+        <div class="brand">METANOIA<span>.</span></div>
+        <a href="tel:0749229686" style="color: var(--albastru-accent); font-weight: 700; text-decoration: none;">
+            <i class="fas fa-phone"></i> Sună Arhitectul
+        </a>
     </header>
 
-    <section class="hero-manifest">
-        <div class="hero-content">
-            <span class="tagline">OFERTĂ SISTEMICĂ</span>
-            <h1>Metanoia Digitală.</h1>
-            <p>Arhitectură Tehnică pentru Business-uri Sistematizate</p>
-        </div>
+    <section class="hero">
+        <div class="badge-premium">Rânduială • Tihnă • Execuție</div>
+        <h1>Construim sistemul tău<br>fără erori.</h1>
+        <p>Alege planul tău de metamorfoză și recuperează-ți timpul.</p>
     </section>
 
-    <main class="services-section">
-        <div class="services-grid">
-            
-            <div class="service-card">
-                <h3>Gastronomie & Recreație</h3>
-                <p>Rânduială în fluxurile de producție și servire. Utilizarea <strong>SeniorERP</strong> pentru gestiunea stocurilor și transferurilor.</p>
-                <ul>
-                    <li>Optimizare Avize Transfer</li>
-                    <li>Control Riguros Depozite</li>
-                    <li>Trasabilitate de la Producător la Masă</li>
-                </ul>
-            </div>
-
-            <div class="service-card" style="border-top: 6px solid #4299e1;">
-                <h3>Curs Management Sistemic</h3>
-                <p>Program intensiv de 6 săptămâni pentru trecerea de la haos la <strong>Learning Organization</strong>.</p>
-                <ul>
-                    <li>Trezvie & Rânduială Strategică</li>
-                    <li>Automatizare prin Atlassian (Jira/Confluence)</li>
-                    <li>Mindset de Arhitect de Sistem</li>
-                </ul>
-            </div>
-
-            <div class="service-card" style="border-top: 6px solid #48bb78; position: relative;">
-                <span class="badge">URGENT</span>
-                <h3>Plan Business la Ananghie</h3>
-                <p>Diagnoză rapidă prin <strong>SQL & API</strong> pentru firmele cu indicatori critici sau bugete neraportate.</p>
-                <ul>
-                    <li>Identificare "Bug-uri" vitale de profit</li>
-                    <li>Pipeline de salvare prin Make</li>
-                    <li>Restructurarea fluxurilor de numerar</li>
-                </ul>
-            </div>
-
+    <div class="offers-container">
+        <div class="offer-card">
+            <span class="offer-title">Masterplan Access</span>
+            <p style="color: #666; font-size: 0.9rem;">Diagnoza de Trezvie Sistemică</p>
+            <div class="price">200 <span>€ / fix</span></div>
+            <ul class="benefits-list">
+                <li><i class="fas fa-star"></i> Identificarea "Găurilor Negre"</li>
+                <li><i class="fas fa-star"></i> Harta de rânduială a proceselor</li>
+                <li><i class="fas fa-star"></i> Audit Live de 30 minute</li>
+            </ul>
+            <a href="https://wa.me/40749229686?text=Vreau%20Masterplan" class="btn-action btn-gold">CUMPĂRĂ CHEIA</a>
+            <a href="tel:0749229686" class="btn-action btn-outline">Întreabă Arhitectul</a>
         </div>
 
-        <div class="tech-layer">
-            <h4>STACK-UL TEHNIC DE LIVRARE:</h4>
-            <span class="tech-line">> SQL Query: Identificare Lead-uri (Termene.ro)</span>
-            <span class="tech-line">> Automation: Make + GitHub Script (JS Processing)</span>
-            <span class="tech-line">> Workspace: Jira Project Management & Confluence Knowledge Base</span>
-            <span class="tech-line">> Team: TesterRemoteRo72 (11 Filiale)</span>
+        <div class="offer-card featured">
+            <div class="tag-recomandat">RECOMANDAT</div>
+            <span class="offer-title">Execuție Sistemică</span>
+            <p style="color: #666; font-size: 0.9rem;">Transformarea Completă (Full SOP)</p>
+            <div class="price">3.000 <span>€ / proiect</span></div>
+            <ul class="benefits-list">
+                <li><i class="fas fa-check-circle"></i> Organizare fluxuri de la A la Z</li>
+                <li><i class="fas fa-check-circle"></i> Automatizare unelte de lucru</li>
+                <li><i class="fas fa-check-circle"></i> Livrare sistem "fără bug-uri"</li>
+                <li><i class="fas fa-check-circle"></i> Manual Operațional personalizat</li>
+            </ul>
+            <a href="https://wa.me/40749229686?text=Vreau%20Executie%20Sistemica" class="btn-action btn-call">ACTIVEAZĂ SISTEMUL</a>
+            <a href="tel:0749229686" class="btn-action btn-outline">Discută Detalii</a>
         </div>
-    </main>
-
-    <section class="pay-cta">
-        <span class="tagline" style="margin-bottom: 30px;">ADMITERE CURS MANAGEMENT</span><br>
-        <a href="https://www.paypal.com/ncp/payment/MH54VF92TC364" target="_blank" class="btn-paypal">ACHITĂ TAXA DE ÎNSCRIERE</a>
-        
-        <a href="curs.html" class="gate-link">AM ACHITAT DEJA. INTRĂ ÎN PROTOCOL.</a>
-    </section>
-
-    <div class="iron-rule">
-        <p>REGULĂ DE FIER: NU TRAGEM DE NIMENI. FĂRĂ VICTIMIZARE.</p>
     </div>
 
-    <footer style="padding: 40px; text-align: center; color: #222; font-family: 'Cinzel'; font-size: 0.6rem; letter-spacing: 2px;">
-        © 2026 METANOIA HUB | HOLDING META | TRIBUT PATRICIA
-    </footer>
+    <section class="activation-screen">
+        <div class="qr-box">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://wa.me/40749229686" alt="QR Code" style="width: 100%;">
+        </div>
+        <h2 style="font-family: 'Playfair Display'; font-style: italic; margin-bottom: 10px;">Sistem Activat.</h2>
+        <p style="opacity: 0.7; font-size: 0.9rem; margin-bottom: 30px;">Bine ai venit în rânduială. Arhitectul te va contacta în curând.</p>
+        <div style="font-family: 'Cinzel'; font-size: 0.6rem; letter-spacing: 3px; color: var(--auriu);">
+            METAMORFOZĂ • RÂNDUIALĂ • EXECUȚIE
+        </div>
+    </section>
 
 </body>
 </html>
