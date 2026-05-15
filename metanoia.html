@@ -11,7 +11,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Metanoia | Manifestul Rânduielii</title>
+    <title>Metanoia | Arhitectura Tihnei</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400;1,700&family=Cinzel:wght@400;700;900&family=Inter:wght@200;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -29,144 +29,182 @@
         body { background: var(--negru-pur); color: var(--alb-mat); font-family: 'Inter', sans-serif; overflow-x: hidden; line-height: 1.8; }
 
         /* HEADER */
-        .site-header { position: fixed; top: 0; width: 100%; z-index: 9999; padding: 30px 5%; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.9); backdrop-filter: blur(10px); }
-        .brand-logo img { height: 40px; }
+        .site-header { position: fixed; top: 0; width: 100%; z-index: 9999; padding: 35px 5%; display: flex; justify-content: space-between; align-items: center; transition: 0.5s ease; background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent); }
+        .site-header.scrolled { background: rgba(0,0,0,0.95); padding: 20px 5%; backdrop-filter: blur(15px); border-bottom: 1px solid #111; }
+        .brand-logo img { height: 45px; }
         
-        .burger { cursor: pointer; z-index: 10001; display: flex; flex-direction: column; gap: 8px; }
+        .burger { cursor: pointer; z-index: 10001; display: flex; flex-direction: column; gap: 8px; padding: 10px; }
         .burger span { display: block; width: 30px; height: 1px; background: var(--auriu); transition: 0.4s; }
         .burger.active span:nth-child(1) { transform: translateY(9px) rotate(45deg); }
         .burger.active span:nth-child(2) { opacity: 0; }
         .burger.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
 
-        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: var(--negru-pur); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.6s ease; z-index: 10000; }
+        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: var(--negru-pur); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.8s cubic-bezier(0.77, 0, 0.175, 1); z-index: 10000; }
         .main-nav.active { right: 0; }
-        .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 15px 0; color: #fff; text-decoration: none; opacity: 0.5; letter-spacing: 5px; }
+        .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 20px 0; color: var(--alb-mat); letter-spacing: 8px; text-transform: uppercase; text-decoration: none; opacity: 0.3; transition: 0.4s; }
         .main-nav a:hover { opacity: 1; color: var(--auriu); }
 
-        /* HERO MANIFEST */
-        .hero-manifest { height: 60vh; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; background: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2000') center/cover no-repeat; }
-        .hero-manifest::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); }
+        /* HERO - FUZIUNEA TOTALĂ */
+        .hero { height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; background: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2000') center/cover no-repeat; }
+        .hero::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); }
         
-        .hero-content { position: relative; z-index: 2; padding: 0 10%; }
-        .hero-content h1 { font-family: 'Playfair Display'; font-size: clamp(2.5rem, 8vw, 5rem); font-style: italic; color: #fff; margin-bottom: 20px; }
-        .tagline { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 10px; font-size: 0.8rem; }
+        .hero-content { position: relative; z-index: 2; max-width: 900px; animation: fadeIn 2s ease; }
+        .hero h1 { font-family: 'Playfair Display'; font-size: clamp(3rem, 10vw, 7rem); font-style: italic; color: #fff; line-height: 1; margin-bottom: 20px; }
+        .tagline { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 12px; font-size: 0.8rem; display: block; opacity: 0.8; text-transform: uppercase; }
 
-        /* GRID EXPERIENȚE */
-        .content-layer { padding: 120px 10%; background: var(--negru-pur); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* MANIFESTUL TIHNEI */
+        .manifest-layer { padding: 150px 10%; background: var(--negru-pur); text-align: center; }
+        .manifest-layer h2 { font-family: 'Playfair Display'; font-size: 3.5rem; font-style: italic; color: var(--auriu); margin-bottom: 40px; }
+        .manifest-layer p { max-width: 800px; margin: 0 auto; font-size: 1.25rem; font-weight: 200; color: var(--text-muted); line-height: 2; }
+
+        /* GRID-UL RÂNDUIELII */
+        .meta-grid { padding: 100px 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px; background: #000; }
         
-        .meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 60px; }
-        
-        .meta-card { background: var(--negru-lux); border: 1px solid #111; border-radius: 4px; overflow: hidden; transition: 0.5s; }
+        .meta-card { background: var(--negru-lux); border: 1px solid #111; border-radius: 4px; overflow: hidden; position: relative; transition: 0.5s; }
         .meta-card:hover { border-color: var(--auriu); transform: translateY(-10px); }
         
-        .meta-img { width: 100%; height: 300px; overflow: hidden; }
-        .meta-img img { width: 100%; height: 100%; object-fit: cover; transition: 1s; filter: brightness(0.8); }
+        .meta-img { width: 100%; height: 500px; overflow: hidden; position: relative; }
+        .meta-img img { width: 100%; height: 100%; object-fit: cover; transition: 1.5s ease; filter: brightness(0.7); }
         .meta-card:hover .meta-img img { filter: brightness(1); transform: scale(1.05); }
         
-        .meta-content { padding: 40px; }
-        .meta-content i { color: var(--auriu); font-size: 1.5rem; margin-bottom: 25px; display: block; }
-        .meta-content h3 { font-family: 'Cinzel'; font-size: 1rem; color: #fff; letter-spacing: 4px; margin-bottom: 20px; }
-        .meta-content p { color: var(--text-muted); font-size: 0.95rem; font-weight: 300; }
+        .meta-content { padding: 50px; position: relative; }
+        .meta-content span { font-family: 'Cinzel'; color: var(--auriu); font-size: 0.65rem; letter-spacing: 5px; display: block; margin-bottom: 25px; }
+        .meta-content h3 { font-family: 'Playfair Display'; font-size: 2.5rem; font-style: italic; color: #fff; margin-bottom: 25px; }
+        .meta-content p { color: var(--text-muted); font-size: 1rem; font-weight: 300; margin-bottom: 30px; }
+        
+        .btn-link { font-family: 'Cinzel'; color: var(--auriu); text-decoration: none; font-size: 0.75rem; letter-spacing: 4px; border-bottom: 1px solid rgba(197, 160, 89, 0.2); padding-bottom: 10px; transition: 0.3s; }
+        .btn-link:hover { color: #fff; border-bottom-color: #fff; padding-left: 10px; }
+
+        /* SEMNĂTURA */
+        .signature-section { padding: 150px 10%; background: var(--negru-lux); text-align: center; border-top: 1px solid #111; }
+        .profile-img { width: 180px; height: 180px; border-radius: 50%; margin: 0 auto 50px; border: 2px solid var(--auriu); padding: 5px; overflow: hidden; }
+        .profile-img img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; filter: contrast(1.1); }
+        .quote { font-family: 'Playfair Display'; font-size: 2.2rem; font-style: italic; color: #ccc; max-width: 800px; margin: 0 auto 40px; font-weight: 200; }
+        .name-label { font-family: 'Cinzel'; letter-spacing: 10px; font-size: 1rem; color: var(--auriu); font-weight: 700; }
 
         /* FOOTER */
-        footer { padding: 100px 10% 40px; background: #000; border-top: 1px solid #111; text-align: center; }
-        .footer-logos { display: flex; justify-content: center; gap: 40px; margin-bottom: 40px; opacity: 0.3; filter: grayscale(1); }
-        .footer-logos img { height: 40px; }
-        .cui-info { font-family: 'Cinzel'; font-size: 0.65rem; color: #222; letter-spacing: 4px; }
-        .tribute { margin-top: 30px; display: block; font-family: 'Cinzel'; letter-spacing: 12px; color: #111; font-size: 0.55rem; font-weight: 700; }
+        footer { padding: 100px 10% 40px; background: #000; border-top: 1px solid #111; }
+        .footer-grid { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 60px; }
+        .cui-info { font-family: 'Cinzel'; color: #222; font-size: 0.65rem; letter-spacing: 4px; }
+        .anpc-logos img { height: 45px; opacity: 0.2; filter: grayscale(1); margin-right: 20px; transition: 0.3s; }
+        .anpc-logos img:hover { opacity: 0.8; filter: grayscale(0); }
+        .tribute { margin-top: 40px; display: block; font-family: 'Cinzel'; letter-spacing: 12px; color: #111; font-size: 0.55rem; text-align: center; font-weight: 900; }
 
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
             .meta-grid { grid-template-columns: 1fr; }
-            .hero-content h1 { font-size: 2.5rem; }
+            .chapter-media { height: 400px; }
+            .footer-grid { flex-direction: column; align-items: center; text-align: center; }
         }
     </style>
 </head>
 <body>
 
-    <header class="site-header">
-        <a href="index.html" class="brand-logo"><img src="images/logo1.svg" alt="Metanoia"></a>
+    <header class="site-header" id="header">
+        <a href="index.html" class="brand-logo"><img src="images/logo1.svg" alt="Metanoia Logo"></a>
         <div class="burger" id="burger"><span></span><span></span><span></span></div>
         <nav class="main-nav" id="nav-links">
             <a href="index.html">HUB</a>
-            <a href="metanoia.html" style="color:var(--auriu); opacity:1;">Manifest</a>
-            <a href="curs.html">Masterplan</a>
-            <a href="tihna.html">Tihnă</a>
-            <a href="oferta.html">Vizibilitate</a>
+            <a href="metanoia.html">MANIFEST</a>
+            <a href="curs.html">MASTERPLAN</a>
+            <a href="tihna.html">TIHNĂ</a>
+            <a href="oferta.html">VIZIBILITATE</a>
         </nav>
     </header>
 
-    <section class="hero-manifest">
+    <section class="hero">
         <div class="hero-content">
             <span class="tagline">METANOIA DIGITALĂ</span>
-            <h1>Manifestul Experienței</h1>
+            <h1>Arhitectura Tihnei.</h1>
         </div>
     </section>
 
-    <main class="content-layer">
-        <div class="meta-grid">
+    <main>
+        <section class="manifest-layer">
+            <h2>Echilibrul de Fier.</h2>
+            <p>Tihna nu este absența activității, ci prezența rânduielii supreme. Metanoia este procesul prin care transformăm haosul operațional în liniște creativă. Când sistemele respiră singure, tu regăsești libertatea de a fi Arhitect.</p>
+        </section>
+
+        <section class="meta-grid">
             
             <div class="meta-card">
-                <div class="meta-img"><img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?q=80&w=1000" alt="Atelier Pictură"></div>
+                <div class="meta-img"><img src="https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1200" alt="Hiking Poiana Ruscă"></div>
                 <div class="meta-content">
-                    <i class="fas fa-palette"></i>
-                    <h3>Atelier de pictură</h3>
-                    <p>Culoare și introspecție. Spațiul unde viziunea ta devine formă, rânduind emoțiile pe pânză sub îndrumarea tăcerii muntelui.</p>
+                    <span>CAPITOLUL 01 / SPAȚIUL</span>
+                    <h3>Pelerinajul.</h3>
+                    <p>Recalibrare senzorială pe cărări de lut și păduri de fag. Munții Poiana Ruscă oferă proporția divină necesară rânduielii minții.</p>
+                    <a href="#" class="btn-link">EXPLOREAZĂ MUNTELE</a>
                 </div>
             </div>
 
             <div class="meta-card">
-                <div class="meta-img"><img src="https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=1000" alt="Pizza Dakamigos"></div>
+                <div class="meta-img"><img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?q=80&w=1200" alt="Atelier de Pictură"></div>
                 <div class="meta-content">
-                    <i class="fas fa-utensils"></i>
-                    <h3>Pelerinaj Gastronomic</h3>
-                    <p>Rânduiala gustului. O incursiune în bucătăria Dakamigos, unde ingredientele farm-to-table întâlnesc precizia artizanală a pizzei perfecte.</p>
+                    <span>CAPITOLUL 02 / EXPRESIE</span>
+                    <h3>Atelierul.</h3>
+                    <p>Culoare și introspecție. Spațiul în care starea de Flux devine formă, iar viziunea ta se materializează dincolo de cod.</p>
+                    <a href="#" class="btn-link">DESCOPERĂ ARTA</a>
                 </div>
             </div>
 
             <div class="meta-card">
-                <div class="meta-img"><img src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?q=80&w=1000" alt="Chitară Live"></div>
+                <div class="meta-img"><img src="https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=1200" alt="Gastronomie Premium"></div>
                 <div class="meta-content">
-                    <i class="fas fa-guitar"></i>
-                    <h3>Chitară Live</h3>
-                    <p>Acorduri sub stele. Seara, rânduiala devine sunet. Muzică acustică ce acompaniază dialogul sistemic la focul de tabără din Vadu Dobrii.</p>
+                    <span>CAPITOLUL 03 / RESURSA</span>
+                    <h3>Alchimia.</h3>
+                    <p>Rânduiala gustului. Punctul de întâlnire între rigoarea laboratoarelor Dakamigos și puritatea ingredientelor farm-to-table.</p>
+                    <a href="#" class="btn-link">SAVUREAZĂ TIHNA</a>
                 </div>
             </div>
 
             <div class="meta-card">
-                <div class="meta-img"><img src="https://images.unsplash.com/photo-1541625602330-2277a4c4b282?q=80&w=1000" alt="E-bike Adventure"></div>
+                <div class="meta-img"><img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200" alt="Neurobotica și IT"></div>
                 <div class="meta-content">
-                    <i class="fas fa-bicycle"></i>
-                    <h3>Pe două roți</h3>
-                    <p>Explorare conștientă. Rute de e-bike rânduite prin Munții Poiana Ruscă, unde tehnologia îți permite să atingi crestele fără efort brutal.</p>
+                    <span>CAPITOLUL 04 / MOTORUL</span>
+                    <h3>Convergența.</h3>
+                    <p>IT, Neurobotică și Psihologie. Algoritmii care învață să respecte biologia, creând sisteme care nu doar funcționează, ci evoluează.</p>
+                    <a href="#" class="btn-link">ARHITECTURA VIITORULUI</a>
                 </div>
             </div>
 
-            <div class="meta-card">
-                <div class="meta-img"><img src="https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1000" alt="Hiking Munți"></div>
-                <div class="meta-content">
-                    <i class="fas fa-shoe-prints"></i>
-                    <h3>Pas cu pas</h3>
-                    <p>Hoinăreală meditativă. Cărări de lut și păduri de fag unde fiecare pas rânduiește mintea și regăsește tăcerea esențială.</p>
-                </div>
-            </div>
-
-        </div>
+        </section>
     </main>
 
-    <footer>
-        <div class="footer-logos">
-            <img src="images/anpc-sal.png" alt="SAL">
-            <img src="images/anpc-sol.png" alt="SOL">
+    <section class="signature-section">
+        <div class="profile-img">
+            <img src="images/eu.jpg" alt="Otilia Ioana Sălăşan">
         </div>
-        <p class="cui-info">DAKAMIGOS MARKT SRL | CUI: RO40767794 | &copy; 2026 METANOIA HUB</p>
-        <span class="tribute">TRIBUT PATRICIA</span>
+        <p class="quote">"Managementul nu este despre efort brutal, ci despre rânduială logică. Tihna este singura dovadă că rigoarea a fost implementată corect."</p>
+        <p class="name-label">OTILIA IOANA SĂLĂŞAN</p>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="cui-info">
+                DAKAMIGOS MARKT SRL | CUI: RO40767794 | REG: J20/690/2019<br>
+                STR. MUNTELUI NR. 12, HAȚEG, HUNEDOARA
+            </div>
+            <div class="anpc-logos">
+                <a href="https://anpc.ro/ce-este-sal/" target="_blank"><img src="images/anpc-sal.png" alt="ANPC SAL"></a>
+                <a href="https://anpc.ro/" target="_blank"><img src="images/anpc-sol.png" alt="ANPC SOL"></a>
+            </div>
+        </div>
+        <span class="tribute">TRIBUT PATRICIA | METANOIA HUB &copy; 2026</span>
     </footer>
 
     <script>
         const burger = document.getElementById('burger');
         const nav = document.getElementById('nav-links');
-        burger.onclick = () => { burger.classList.toggle('active'); nav.classList.toggle('active'); };
-        nav.onclick = () => { burger.classList.remove('active'); nav.classList.remove('active'); };
+        const header = document.getElementById('header');
+
+        burger.onclick = () => { nav.classList.toggle('active'); burger.classList.toggle('active'); };
+        nav.onclick = () => { nav.classList.remove('active'); burger.classList.remove('active'); };
+
+        window.onscroll = () => {
+            if (window.scrollY > 80) header.classList.add('scrolled');
+            else header.classList.remove('scrolled');
+        };
     </script>
 </body>
 </html>
