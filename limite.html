@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18106516696"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-18106516696');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Metanoia | Otilia</title>
+    
+    <!-- Fonturi Premium -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400;1,700&family=Cinzel:wght@400;700;900&family=Inter:wght@200;400;500;700&display=swap" rel="stylesheet">
+    <!-- Iconițe FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        auriu: '#c5a059',
+                        rozPudrat: '#fbf4f1',
+                        rozAccent: '#f4ded6',
+                        ciocolatiu: '#261c19',
+                        fildes: '#fffcfb',
+                        textMuted: '#8c7e7a',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: var(--roz-pudrat);
+            color: var(--ciocolatiu);
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .font-cinzel { font-family: 'Cinzel', serif; }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        
+        /* Slider de lux customizat pentru energie */
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #c5a059;
+            cursor: pointer;
+            border: 2px solid #fffcfb;
+            box-shadow: 0 4px 10px rgba(38,28,25,0.15);
+            transition: 0.2s;
+        }
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.1);
+            background: #261c19;
+        }
+
+        /* Efect de întoarcere a cardurilor (Flip) */
+        .card-inner {
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .card-flipped {
+            transform: rotateY(180deg);
+        }
+        .card-front, .card-back {
+            backface-visibility: hidden;
+        }
+        .card-back {
+            transform: rotateY(180deg);
+        }
+    </style>
+</head>
+<body class="bg-rozPudrat text-ciocolatiu min-h-screen">
+
+    <!-- NOTIFICARE PERSONALIZATĂ (Sistem elegant de tip Toast, fără alerte de sistem) -->
+    <div id="customToast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-500 bg-ciocolatiu text-fildes border border-auriu px-6 py-4 rounded-xl shadow-2xl max-w-sm flex items-start gap-3">
+        <span class="text-auriu text-lg"><i class="fa-solid fa-bell-ring" id="toastIcon"></i></span>
+        <div>
+            <h4 class="font-cinzel text-[10px] tracking-wider font-bold text-auriu" id="toastTitle">SISTEM METANOIA</h4>
+            <p class="text-xs text-rozPudrat font-light mt-1" id="toastText">Modificările au fost rânduite cu succes.</p>
+        </div>
+    </div>
+
+    <!-- MODAL DE SECURITATE PENTRU ȘTERGERE -->
+    <div id="passwordModal" class="fixed inset-0 z-50 hidden bg-ciocolatiu/60 backdrop-blur-sm flex items-center justify-center p-4">
+        <div class="bg-fildes border border-rozAccent rounded-2xl p-6 md:p-8 max-w-md w-full shadow-2xl transform transition-all">
+            <h3 class="font-playfair text-xl italic mb-4">Confirmă identitatea administrativă</h3>
+            <p class="text-xs text-textMuted font-light mb-6">Pentru a șterge acest pilon de viață, introdu cuvântul tău de ordine.</p>
+            <div class="flex flex-col gap-4">
+                <input type="password" id="modalPasswordInput" class="bg-rozPudrat border border-rozAccent rounded-lg p-3 text-sm focus:outline-none focus:border-auriu" placeholder="Introdu parola secretă...">
+                <div class="flex gap-3 justify-end mt-2">
+                    <button onclick="closePasswordModal()" class="px-5 py-2.5 rounded-full font-cinzel text-[10px] tracking-wider text-textMuted border border-rozAccent hover:bg-rozPudrat transition">ANULEAZĂ</button>
+                    <button onclick="confirmPasswordDeletion()" class="px-5 py-2.5 rounded-full font-cinzel text-[10px] tracking-wider text-fildes bg-ciocolatiu hover:bg-auriu transition">CONFIRMĂ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="fixed top-0 w-full z-40 px-6 py-4 md:px-12 bg-rozPudrat/90 backdrop-blur-md border-b border-rozAccent flex justify-between items-center">
+        <a href="index.html" class="font-cinzel text-xl font-bold tracking-widest text-ciocolatiu">METANOIA<span class="text-auriu">.</span></a>
+        <a href="index.html" class="font-cinzel text-xs tracking-widest font-bold text-ciocolatiu hover:text-auriu transition flex items-center gap-2">
+            <i class="fas fa-arrow-left"></i> ÎNAPOI LA SITE
+        </a>
+    </header>
+
+    <main class="pt-28 pb-20 px-4 md:px-8 max-w-6xl mx-auto">
+        
+        <!-- INTRODUCEREA ȘI POVESTEA OTILIEI -->
+        <section class="text-center mb-16 relative">
+            <div class="absolute inset-0 flex justify-center items-center opacity-5 pointer-events-none">
+                <span class="font-cinzel text-8xl md:text-9xl font-black">OTILIA</span>
+            </div>
+            <span class="font-cinzel text-auriu text-xs tracking-[6px] block mb-4 font-bold">SPATIUL DE SUVERANITATE</span>
+            <h1 class="font-playfair text-3xl md:text-5xl italic font-light mb-6 text-ciocolatiu leading-tight">Limitele Mele, Tihna Mea</h1>
+            <p class="text-textMuted max-w-3xl mx-auto font-light text-base md:text-lg leading-relaxed">
+                Am depășit **10 ani de anxietate**. Sunt mamă a doi copii, soție, am un job stabil și o afacere pe care o construiesc pas cu pas. Pictez, fac cumpărături, mă bucur de activitățile mele manuale și refuz să mai las relațiile toxice cu socrii sau cu familia de origine să îmi dicteze liniștea. Aceasta este rânduiala mea absolută.
+            </p>
+        </section>
+
+        <!-- PILONUL DE ADAPTARE ȘI MANAGEMENTUL ENERGIEI (UTIL PENTRU PERIOADELE DE STRES / ADAPTARE MIRENA) -->
+        <section class="bg-fildes border border-rozAccent rounded-2xl p-6 md:p-8 mb-12 shadow-sm">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-6">
+                <div>
+                    <h2 class="font-playfair text-xl md:text-2xl italic mb-2">Monitorul de Energie & Stare de Spirit</h2>
+                    <p class="text-sm text-textMuted font-light">Cum te simți astăzi? Ajustează nivelul pentru a adapta comportamentul cotidian și a proteja corpul.</p>
+                </div>
+                <div class="bg-rozPudrat border border-rozAccent px-4 py-2 rounded-full font-cinzel text-xs tracking-wider font-bold text-auriu" id="statusLabel">
+                    REGLAJ: CREATIV & DESCHIS (OPT-IN)
+                </div>
+            </div>
+
+            <!-- Slider-ul -->
+            <div class="w-full relative mb-6">
+                <input type="range" id="energySlider" min="1" max="3" value="2" class="w-full h-1 bg-rozAccent rounded-lg appearance-none cursor-pointer accent-auriu">
+                <div class="flex justify-between text-[10px] font-cinzel text-textMuted tracking-widest mt-3">
+                    <span>1. EXHAUSTION / DEFENSIVĂ (SCUT)</span>
+                    <span>2. ECHILIBRU / DE CURSĂ LUNGĂ</span>
+                    <span>3. CREATIV / PLENITUDINE (PICTURĂ)</span>
+                </div>
+            </div>
+
+            <!-- Caseta dinamică de sfaturi practice -->
+            <div id="energyAdviceBox" class="p-4 rounded-xl border transition-all duration-500 flex items-start gap-4 bg-rozPudrat border-rozAccent">
+                <i class="fa-solid fa-shield-halved text-auriu text-xl mt-1"></i>
+                <div>
+                    <h4 class="font-cinzel text-xs font-bold tracking-wider mb-1" id="adviceTitle">SISTEM ACTIV: TIHNĂ ȘI ENERGIE CURATĂ</h4>
+                    <p class="text-sm text-textMuted font-light" id="adviceText">Mănâncă des și puțin pentru a păstra glicemia stabilă și a calma hormonii. Oferă-ți o oră de pictură sau de lucru manual după-amiază. Blochează apelurile din partea socrilor sau a rudelor care te consumă.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- MATRICEA PILONILOR INTERACTIVĂ (FLIP CARDS) -->
+        <div class="flex justify-between items-center mb-8 border-b border-rozAccent pb-4">
+            <h2 class="font-cinzel text-xs font-bold tracking-[3px] text-auriu uppercase">Pilonii Suveranității Mele</h2>
+            <p class="text-xs text-textMuted italic hidden md:block">Apasă pe oricare card pentru a vedea contrastul dintre dialogul tău intern și limita clară pe care o impui lumii.</p>
+        </div>
+
+        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16" id="limitsGrid">
+            <!-- Pilonii se încarcă din scriptul de mai jos pentru a fi 100% dinamici -->
+        </section>
+
+        <!-- CE FAC VS CE NU FAC (TABLOU BINAR PENTRU GHIDARE) -->
+        <section class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            
+            <!-- CE FAC (ALEGERILE MELE) -->
+            <div class="bg-fildes border border-rozAccent rounded-2xl p-6 md:p-8 shadow-sm">
+                <h3 class="font-playfair text-xl italic mb-6 text-ciocolatiu border-l-2 border-auriu pl-4 flex justify-between items-center">
+                    <span>Ce fac doar pentru mine și familia mea directă</span>
+                    <i class="fa-solid fa-circle-check text-auriu text-sm"></i>
+                </h3>
+                <ul class="space-y-4">
+                    <li class="flex items-start gap-3">
+                        <span class="text-auriu text-xs mt-1.5"><i class="fa-solid fa-apple-whole"></i></span>
+                        <div>
+                            <strong class="font-cinzel text-xs tracking-wider text-ciocolatiu block mb-1">Mănânc des și puțin</strong>
+                            <p class="text-sm text-textMuted font-light">Rânduiesc arderile mele interne, refuzând să îmi stresez metabolismul în timpul adaptării hormonale.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-auriu text-xs mt-1.5"><i class="fa-solid fa-paintbrush"></i></span>
+                        <div>
+                            <strong class="font-cinzel text-xs tracking-wider text-ciocolatiu block mb-1">Pictez & Creez manual</strong>
+                            <p class="text-sm text-textMuted font-light">Îmi folosesc mâinile pentru a da viață culorilor. Pictura este terapia mea, spațiul unde anxietatea nu are acces.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-auriu text-xs mt-1.5"><i class="fa-solid fa-people-roof"></i></span>
+                        <div>
+                            <strong class="font-cinzel text-xs tracking-wider text-ciocolatiu block mb-1">Ocrotesc echipa mea de bază</strong>
+                            <p class="text-sm text-textMuted font-light">Timpul de calitate cu soțul și cei doi copii reprezintă prioritatea mea absolută, ferită de gura lumii.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- CE NU FAC (REFUZURILE MELE FERME) -->
+            <div class="bg-fildes border border-rozAccent rounded-2xl p-6 md:p-8 shadow-sm">
+                <h3 class="font-playfair text-xl italic mb-6 text-ciocolatiu border-l-2 border-ciocolatiu pl-4 flex justify-between items-center">
+                    <span>Ce refuz ferm să mai fac</span>
+                    <i class="fa-solid fa-circle-xmark text-ciocolatiu text-sm"></i>
+                </h3>
+                <ul class="space-y-4">
+                    <li class="flex items-start gap-3">
+                        <span class="text-ciocolatiu text-xs mt-1.5"><i class="fa-solid fa-ban"></i></span>
+                        <div>
+                            <strong class="font-cinzel text-xs tracking-wider text-ciocolatiu block mb-1">Nu tolerez intruziunea socrilor sau a familiei de origine</strong>
+                            <p class="text-sm text-textMuted font-light">Gata cu reproșurile nefondate, vizitele neanunțate și criticile subtile. Casa mea, regulile mele.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-ciocolatiu text-xs mt-1.5"><i class="fa-solid fa-ban"></i></span>
+                        <div>
+                            <strong class="font-cinzel text-xs tracking-wider text-ciocolatiu block mb-1">Nu mă mai înfometez niciodată</strong>
+                            <p class="text-sm text-textMuted font-light">Chiar dacă s-a depus puțină greutate de la hormoni, nu îmi pedepsesc corpul. Îl hrănesc corect și curat.</p>
+                        </div>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <span class="text-ciocolatiu text-xs mt-1.5"><i class="fa-solid fa-ban"></i></span>
+                        <div>
+                            <strong class="font-cinzel text-xs tracking-wider text-ciocolatiu block mb-1">Nu mă justific pentru cum știu să fac lucrurile</strong>
+                            <p class="text-sm text-textMuted font-light">La job, în afacerea mea în devenire și în creșterea copiilor mei, fac exact cum știu și ce știu.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- CONSTRUIRE PILON CUSTOM (FORMULAR DE ADĂUGAT REGULI NOI) -->
+        <section class="bg-fildes border border-rozAccent rounded-2xl p-6 md:p-8 shadow-sm max-w-2xl mx-auto">
+            <h3 class="font-playfair text-xl italic mb-4 text-center">Consolidează o nouă limită de viață</h3>
+            <p class="text-xs text-textMuted text-center font-light mb-8">Personalizează-ți tabla de suveranitate pe măsură ce ridici noi scuturi de tihnă.</p>
+            
+            <form id="newLimitForm" class="space-y-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="flex flex-col gap-2">
+                        <label class="font-cinzel text-[10px] tracking-wider font-bold">Categoria Pilonului</label>
+                        <select id="limitPillar" class="bg-rozPudrat border border-rozAccent rounded-lg p-3 text-sm focus:outline-none focus:border-auriu">
+                            <option value="Credință & Suflet">Credință & Suflet</option>
+                            <option value="Biruința Anxietății">Biruința Anxietății</option>
+                            <option value="Terapie prin Artă">Terapie prin Artă</option>
+                            <option value="Familia Mea Genuină">Familia Mea Genuină</option>
+                            <option value="Autonomie Profesionistă">Autonomie Profesionistă</option>
+                            <option value="Scut Anti-Toxic">Scut Anti-Toxic</option>
+                        </select>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <label class="font-cinzel text-[10px] tracking-wider font-bold">Element Vizual (Iconiță)</label>
+                        <select id="limitIcon" class="bg-rozPudrat border border-rozAccent rounded-lg p-3 text-sm focus:outline-none focus:border-auriu">
+                            <option value="fa-hands-praying">🛐 Rugăciune / Credință</option>
+                            <option value="fa-shield-halved">🛡️ Scut / Anxietate Depășită</option>
+                            <option value="fa-palette">🎨 Paletă Culori / Pictură</option>
+                            <option value="fa-house-chimney-user">🏡 Cuibul Nostru / Familie directă</option>
+                            <option value="fa-heart-crack">💔 Graniță Relații Toxice</option>
+                            <option value="fa-briefcase">💼 Job & Afacere viitoare</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <label class="font-cinzel text-[10px] tracking-wider font-bold">Limita Interioară (Ce îți spui ție ca să te protejezi)</label>
+                    <input type="text" id="innerLimit" class="bg-rozPudrat border border-rozAccent rounded-lg p-3 text-sm focus:outline-none focus:border-auriu" placeholder="Ex: Sunt stăpână pe mintea mea, atacurile de panică aparțin trecutului." required>
+                </div>
+
+                <div class="flex flex-col gap-2">
+                    <label class="font-cinzel text-[10px] tracking-wider font-bold">Limita Exterioară (Cum spui lumii că aici se opresc ei)</label>
+                    <input type="text" id="outerLimit" class="bg-rozPudrat border border-rozAccent rounded-lg p-3 text-sm focus:outline-none focus:border-auriu" placeholder="Ex: Nu accept comentarii despre viața mea sau a copiilor mei." required>
+                </div>
+
+                <button type="submit" class="w-full bg-ciocolatiu hover:bg-auriu text-fildes font-cinzel text-xs font-bold tracking-widest py-4 rounded-full transition duration-300">
+                    ADĂUGARE PILON ÎN STRUCTURĂ
+                </button>
+            </form>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-fildes border-t border-rozAccent py-12 text-center">
+        <div class="max-w-4xl mx-auto px-6">
+            <span class="font-cinzel text-auriu text-xs tracking-widest block mb-4 font-bold">METANOIA • CARTA DE VIAȚĂ</span>
+            <p class="font-playfair text-lg italic text-ciocolatiu mb-6">"Fă ce vrei, când vrei, cum știi mai bine. Liniștea ta nu se negociază."</p>
+            <div class="cui-info text-[10px] tracking-widest text-textMuted uppercase">
+                OTILIA • MASTERPLAN STRATEGIC PERSONAL © 2026 | TOATE DREPTURILE REZERVATE TIHNEI MELE
+            </div>
+        </div>
+    </footer>
+
+    <!-- COD SCRIPT JAVASCRIPT: LOGICA ȘI INTERACȚIUNEA CARTEI METANOIA -->
+    <script {nonce}>
+        // Datele de bază adaptate complet vieții Otiliei
+        let limitsData = [
+            {
+                pillar: "Credință & Bunătate",
+                icon: "fa-hands-praying",
+                inner: "Sufletul meu se ghidează după credință. Sunt un om bun, dar bunătatea mea nu înseamnă permisiunea ca ceilalți să mă calce în picioare.",
+                outer: "Îmi ofer bunătatea și ajutorul exclusiv atunci când inima mea este liniștită, nu pentru a mulțumi oameni care mă epuizează."
+            },
+            {
+                pillar: "Biruința Anxietății",
+                icon: "fa-shield-halved",
+                inner: "Am trecut prin 10 ani de anxietate. Sunt un supraviețuitor. Îmi cunosc mintea și știu că sunt mai puternică decât orice atac de panică sau frică.",
+                outer: "Dacă simt că o situație îmi declanșează stări de anxietate, părăsesc locul sau închid conversația instantaneu. Liniștea mea fizică are prioritate absolută."
+            },
+            {
+                pillar: "Terapie prin Artă",
+                icon: "fa-palette",
+                inner: "Când pictez sau fac activități manuale, mă conectez cu divinitatea și cu liniștea mea interioară. Este un teritoriu sacru.",
+                outer: "Nu permit nimănui să îmi critice arta, pasiunile sau modul în care aleg să îmi cheltuiesc banii la cumpărături. Sunt resursele mele de fericire."
+            },
+            {
+                pillar: "Familia Mea Genuină",
+                icon: "fa-house-chimney-user",
+                inner: "Soțul meu și cei doi copii reprezintă cuibul nostru. Noi suntem echipa de bază. Îi ocrotesc cu toată forța mea.",
+                outer: "Refuz să las opinii din afară (fie de la socri, fie de la părinți) să ne spună cum să ne educăm copiii, cum să ne iubim sau cum să trăim."
+            },
+            {
+                pillar: "Job & Afacerea Mea",
+                icon: "fa-briefcase",
+                inner: "Îmi fac datoria la job, dar îmi investesc energia creatoare și în afacerea mea în devenire. Construiesc o independență reală.",
+                outer: "Mă bazez pe ce știu și cum știu să fac lucrurile. Clienții, partenerii și colegii trebuie să îmi respecte ritmul și deciziile."
+            },
+            {
+                pillar: "Scut Anti-Toxic (Socri & Familie)",
+                icon: "fa-heart-crack",
+                inner: "Faptul că îmi sunt rude biologice nu le dă dreptul să mă distrugă emoțional. Separ sarcinile: frustrările lor nu îmi aparțin.",
+                outer: "Spun „NU” fără nicio explicație vizitelor neanunțate, reproșurilor sau dramelor inutile. Nu mai particip la nicio discuție tensionată."
+            }
+        ];
+
+        let indexPendingDeletion = null;
+
+        // Randarea dinamică a cardurilor de viață
+        function renderCards() {
+            const grid = document.getElementById('limitsGrid');
+            grid.innerHTML = '';
+            
+            limitsData.forEach((item, index) => {
+                const cardHTML = `
+                    <div class="h-[280px] w-full cursor-pointer group relative">
+                        <!-- Butonul discret de ștergere, poziționat în afara mecanismului de flip pentru a nu bloca click-ul -->
+                        <button onclick="triggerDelete(${index}, event)" class="absolute top-4 right-4 z-30 text-ciocolatiu/20 hover:text-red-600 transition duration-300 p-2 text-sm">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+
+                        <div class="card-inner w-full h-full relative duration-500 transform-gpu" id="card-${index}" onclick="flipCard(this)">
+                            
+                            <!-- FAȚA CARDULUI (Limita Interioară) -->
+                            <div class="card-front absolute inset-0 bg-fildes border border-rozAccent rounded-2xl p-6 flex flex-col justify-between shadow-sm hover:border-auriu transition duration-300">
+                                <div>
+                                    <div class="flex justify-between items-start mb-4">
+                                        <span class="text-auriu text-xl"><i class="fa-solid ${item.icon}"></i></span>
+                                        <span class="font-cinzel text-[9px] tracking-widest text-textMuted bg-rozPudrat px-3 py-1 rounded-full font-bold">DIALOG INTERIOR</span>
+                                    </div>
+                                    <h3 class="font-cinzel text-xs tracking-wider text-ciocolatiu font-bold mb-3">${item.pillar}</h3>
+                                    <p class="font-playfair text-base italic text-ciocolatiu leading-relaxed font-light">
+                                        "${item.inner}"
+                                    </p>
+                                </div>
+                                <div class="text-[10px] font-cinzel text-auriu tracking-widest text-right group-hover:translate-x-1 duration-300">
+                                    VEZI SCUTUL EXTERN <i class="fas fa-arrow-right ml-1"></i>
+                                </div>
+                            </div>
+
+                            <!-- SPATELE CARDULUI (Limita Exterioară) -->
+                            <div class="card-back absolute inset-0 bg-ciocolatiu border border-ciocolatiu rounded-2xl p-6 flex flex-col justify-between shadow-md">
+                                <div>
+                                    <div class="flex justify-between items-start mb-4">
+                                        <span class="text-auriu text-xl"><i class="fa-solid ${item.icon}"></i></span>
+                                        <span class="font-cinzel text-[9px] tracking-widest text-auriu bg-fildes/5 px-3 py-1 rounded-full font-bold">GRANIȚĂ EXTERNĂ</span>
+                                    </div>
+                                    <h3 class="font-cinzel text-xs tracking-wider text-auriu font-bold mb-3">${item.pillar}</h3>
+                                    <p class="text-sm font-light text-rozPudrat leading-relaxed">
+                                        ${item.outer}
+                                    </p>
+                                </div>
+                                <div class="text-[10px] font-cinzel text-auriu tracking-widest text-right">
+                                    <i class="fas fa-arrow-left mr-1"></i> ÎNAPOI LA TIHNĂ
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                `;
+                grid.innerHTML += cardHTML;
+            });
+        }
+
+        // Funcția de întoarcere a cardului
+        function flipCard(cardInner) {
+            cardInner.classList.toggle('card-flipped');
+        }
+
+        // Afișarea notificării elegante (Toast), evitând folosirea alert()
+        function showToast(title, text, isSuccess = true) {
+            const toast = document.getElementById('customToast');
+            const toastTitle = document.getElementById('toastTitle');
+            const toastText = document.getElementById('toastText');
+            const icon = document.getElementById('toastIcon');
+
+            toastTitle.innerText = title.toUpperCase();
+            toastText.innerText = text;
+
+            if (isSuccess) {
+                toast.classList.remove('border-red-500');
+                toast.classList.add('border-auriu');
+                icon.className = "fa-solid fa-circle-check text-auriu";
+            } else {
+                toast.classList.remove('border-auriu');
+                toast.classList.add('border-red-500');
+                icon.className = "fa-solid fa-circle-exclamation text-red-500";
+            }
+
+            // Slide în ecran
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            
+            setTimeout(() => {
+                // Îndepărtare după 4 secunde
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 4000);
+        }
+
+        // Declanșator de siguranță pentru ștergere (deschide modalul de parolă)
+        function triggerDelete(index, event) {
+            event.stopPropagation(); // Oprim propagarea pentru a nu întoarce cardul
+            indexPendingDeletion = index;
+            document.getElementById('passwordModal').classList.remove('hidden');
+            document.getElementById('modalPasswordInput').focus();
+        }
+
+        function closePasswordModal() {
+            document.getElementById('passwordModal').classList.add('hidden');
+            document.getElementById('modalPasswordInput').value = '';
+            indexPendingDeletion = null;
+        }
+
+        // Confirmarea securizată cu parola 'metanoia'
+        function confirmPasswordDeletion() {
+            const password = document.getElementById('modalPasswordInput').value;
+            const corect = "metanoia";
+
+            if (password === corect) {
+                if (indexPendingDeletion !== null) {
+                    const pilonNume = limitsData[indexPendingDeletion].pillar;
+                    limitsData.splice(indexPendingDeletion, 1);
+                    renderCards();
+                    closePasswordModal();
+                    showToast("Sistem Metanoia", `Pilonul "${pilonNume}" a fost eliminat din structura ta de viață.`, true);
+                }
+            } else {
+                closePasswordModal();
+                showToast("Acces Neautorizat", "Parolă incorectă! Nu ai dreptul să deconstruiești această structură. 😅", false);
+            }
+        }
+
+        // Slider dinamic de energie pentru Otilia (cu focus pe Mirena și combaterea stărilor zilnice)
+        const slider = document.getElementById('energySlider');
+        const statusLabel = document.getElementById('statusLabel');
+        const adviceBox = document.getElementById('energyAdviceBox');
+        const adviceTitle = document.getElementById('adviceTitle');
+        const adviceText = document.getElementById('adviceText');
+
+        const protocols = {
+            1: {
+                label: "PROTOCOL 1: SCUT DE URGENȚĂ ACTIV (Low Energy)",
+                class: "bg-red-50/50 border-red-100",
+                title: "RESTRUCTURARE ȘI DEFENSIVĂ TOTALĂ",
+                text: "Astăzi mănânci obligatoriu des și puțin pentru a calma spasmele și hormonii. Pune jobul pe plan secund, rezolvă doar urgențele stricte. Blochează orice apel sau vizită neanunțată de la socri sau părinți. Soțul și copiii primesc prezența ta calmă, restul lumii așteaptă."
+            },
+            2: {
+                label: "PROTOCOL 2: ECHILIBRAT & DE CURSĂ LUNGĂ",
+                class: "bg-rozPudrat border-rozAccent",
+                title: "RÂNDUIALĂ ZILNICĂ",
+                text: "Îți împarți timpul curat între job, momentele calde cu copiii și micile task-uri pentru afacerea în devenire. Mănânci la fiecare 3 ore porții mici și proteice pentru a păstra metabolismul pornit. Menții discuțiile administrative cu familia scurte și cordiale."
+            },
+            3: {
+                label: "PROTOCOL 3: CREATIVITATE & PLENITUDINE",
+                class: "bg-green-50/50 border-green-100",
+                title: "ARMONIE PRIN CREAȚIE (TERAPIE FĂRĂ ANXIETATE)",
+                text: "Energie maximă! Este ziua perfectă pentru o sesiune lungă de pictură sau pentru activități manuale complexe. Fă cumpărături de plăcere, joacă-te activ cu cei doi copii ai tăi și lucrează la ideile strategice pentru noua ta afacere."
+            }
+        };
+
+        slider.oninput = function() {
+            const current = protocols[this.value];
+            statusLabel.innerText = current.label;
+            
+            adviceBox.className = `p-4 rounded-xl border transition-all duration-500 flex items-start gap-4 ${current.class}`;
+            adviceTitle.innerText = current.title;
+            adviceText.innerText = current.text;
+        };
+
+        // Adăugare pilon custom
+        document.getElementById('newLimitForm').onsubmit = function(e) {
+            e.preventDefault();
+            
+            const pillar = document.getElementById('limitPillar').value;
+            const icon = document.getElementById('limitIcon').value;
+            const inner = document.getElementById('innerLimit').value;
+            const outer = document.getElementById('outerLimit').value;
+            
+            limitsData.push({ pillar, icon, inner, outer });
+            renderCards();
+            
+            document.getElementById('newLimitForm').reset();
+            showToast("Pilon Nou", "O nouă barieră de siguranță a fost integrată în viața ta.", true);
+            
+            // Scroll către noul pilon adăugat
+            document.getElementById('limitsGrid').scrollIntoView({ behavior: 'smooth', block: 'end' });
+        };
+
+        // Render pe load
+        window.onload = function() {
+            renderCards();
+        };
+    </script>
+</body>
+</html>
