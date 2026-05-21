@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metanoia Boutique - PDF Interactiv 65k</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;1,6..96,400&family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --hermes-orange: #E65527;
+            --luxury-gold: #C5A059;
+            --deep-black: #111111;
+            --soft-cream: #FDFCF0;
+            --text-dark: #2A2A2A;
+            --text-muted: #555555;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            background-color: #0f0f0f;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--deep-black);
+            overflow: hidden;
+        }
+
+        /* FORMAT DE PAGINĂ FIX PENTRU EXPORT PDF EXCELENT */
+        .presentation-wrapper {
+            width: 100%;
+            max-width: 1000px;
+            height: 90vh;
+            max-height: 620px;
+            position: relative;
+            background-color: var(--soft-cream);
+            border-top: 10px solid var(--hermes-orange);
+            box-shadow: 0 30px 70px rgba(0,0,0,0.6);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .slide {
+            display: none;
+            width: 100%;
+            height: 100%;
+            padding: 40px 60px;
+            position: relative;
+            z-index: 2;
+            flex-direction: column;
+            justify-content: space-between;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .slide.active { display: flex; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .bg-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+        .bg-image { width: 100%; height: 100%; object-fit: cover; filter: blur(25px) brightness(0.95); transform: scale(1.15); }
+        .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(253, 252, 240, 0.97) 0%, rgba(253, 252, 240, 0.90) 100%); z-index: 1; }
+
+        h1 { font-family: 'Bodoni Moda', serif; font-size: clamp(2.2rem, 4.5vw, 4.2rem); font-weight: 400; text-transform: uppercase; letter-spacing: -1px; line-height: 1; color: var(--deep-black); }
+        .slide-title { font-family: 'Bodoni Moda', serif; font-size: clamp(1.6rem, 3.2vw, 2.6rem); font-style: italic; color: var(--luxury-gold); margin-bottom: 15px; line-height: 1.1; }
+        h3 { font-family: 'Bodoni Moda', serif; font-size: clamp(1.1rem, 1.8vw, 1.5rem); font-weight: 400; margin-bottom: 8px; color: var(--deep-black); }
+        p, li { font-size: clamp(0.8rem, 1.1vw, 1rem); line-height: 1.5; color: var(--text-dark); }
+        
+        .accent-orange { color: var(--hermes-orange); font-weight: 700; }
+        .accent-gold { color: var(--luxury-gold); font-weight: 600; }
+
+        .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 35px; align-items: center; flex-grow: 1; margin: 15px 0; }
+        
+        .image-frame { border: 1px solid var(--luxury-gold); height: 250px; padding: 8px; background: #fff; box-shadow: 0 10px 25px rgba(0,0,0,0.06); overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        .image-frame img { width: 100%; height: 100%; object-fit: cover; }
+
+        .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; width: 100%; margin: 10px 0; }
+        .menu-item { background: #fff; border: 1px solid rgba(197, 160, 89, 0.25); padding: 15px; display: grid; grid-template-columns: 100px 1fr; gap: 15px; align-items: center; box-shadow: 0 5px 15px rgba(0,0,0,0.02); }
+        .menu-thumb { width: 100px; height: 100px; object-fit: cover; border: 1px solid rgba(197, 160, 89, 0.1); }
+
+        .tiled-content { display: flex; gap: 20px; width: 100%; }
+        .tile { background: #fff; border-bottom: 4px solid var(--hermes-orange); padding: 25px; flex: 1; display: flex; flex-direction: column; gap: 10px; box-shadow: 0 8px 20px rgba(0,0,0,0.02); }
+        .tile .icon { color: var(--luxury-gold); font-size: 24px; }
+
+        .timeline { display: flex; justify-content: space-between; position: relative; width: 100%; margin: 30px 0; }
+        .timeline-line { position: absolute; top: 25px; left: 0; width: 100%; height: 1px; background: var(--luxury-gold); z-index: 0; }
+        .timeline-node { position: relative; width: 22%; text-align: center; z-index: 1; }
+        .timeline-node .dot { width: 12px; height: 12px; background: var(--hermes-orange); border-radius: 50%; margin: 19px auto 10px auto; }
+        .timeline-node h4 { font-size: 0.9rem; font-weight: 800; color: var(--hermes-orange); margin-bottom: 5px; }
+        .timeline-node p { font-size: 0.75rem; color: var(--text-muted); line-height: 1.3; }
+
+        .table-layout table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid rgba(197, 160, 89, 0.15); }
+        .table-layout th { background: var(--hermes-orange); color: #fff; padding: 10px 15px; text-align: left; font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; }
+        .table-layout td { padding: 10px 15px; border-bottom: 1px solid rgba(0,0,0,0.05); font-size: 0.85rem; }
+
+        .monogram-frame { width: 140px; height: 140px; border: 2px solid var(--luxury-gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto; background: #fff; box-shadow: inset 0 0 15px rgba(197, 160, 89, 0.1); }
+        .monogram-text { font-family: 'Bodoni Moda', serif; font-size: 38px; letter-spacing: 2px; font-weight: 300; }
+
+        .presentation-controls { height: 60px; background: #ffffff; border-top: 1px solid rgba(197, 160, 89, 0.15); padding: 0 40px; display: flex; justify-content: space-between; align-items: center; z-index: 5; border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; }
+        .nav-btn { background: none; border: none; font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--deep-black); cursor: pointer; display: flex; align-items: center; gap: 10px; transition: color 0.2s; }
+        .nav-btn:hover { color: var(--hermes-orange); }
+        .nav-btn:disabled { opacity: 0.25; cursor: not-allowed; }
+        
+        .dot-navigation { display: flex; gap: 8px; }
+        .nav-dot { width: 8px; height: 8px; background: rgba(197, 160, 89, 0.3); border-radius: 50%; cursor: pointer; transition: background 0.2s; }
+        .nav-dot.active { background: var(--hermes-orange); transform: scale(1.25); }
+        .slide-counter { font-size: 11px; letter-spacing: 1px; font-weight: 600; color: var(--text-muted); }
+        .slide-branding { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--text-muted); opacity: 0.6; display: flex; justify-content: space-between; border-top: 1px solid rgba(0,0,0,0.05); padding-top: 10px; margin-top: auto; }
+
+        /* ✨ GEMINI ASSISTANT STYLE */
+        .ai-assistant-trigger { position: absolute; top: 20px; right: 20px; background: linear-gradient(135deg, var(--hermes-orange) 0%, var(--luxury-gold) 100%); color: #fff; border: none; border-radius: 20px; padding: 8px 16px; font-family: 'Montserrat', sans-serif; font-size: 10px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; z-index: 100; box-shadow: 0 4px 15px rgba(230, 85, 39, 0.35); display: flex; align-items: center; gap: 6px; transition: all 0.3s ease; }
+        .ai-assistant-trigger:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(230, 85, 39, 0.5); }
+        .ai-drawer-overlay { display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(17, 17, 17, 0.85); backdrop-filter: blur(4px); z-index: 1000; justify-content: center; align-items: center; padding: 20px; }
+        .ai-drawer-content { background-color: var(--soft-cream); border: 2px solid var(--luxury-gold); border-radius: 8px; width: 100%; max-width: 580px; max-height: 90%; display: flex; flex-direction: column; overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,0.5); }
+        .ai-drawer-header { background: var(--deep-black); color: #fff; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid var(--hermes-orange); }
+        .ai-drawer-header h3 { color: #fff; font-size: 0.95rem; font-weight: 800; text-transform: uppercase; display: flex; align-items: center; gap: 8px; font-family: 'Montserrat', sans-serif; }
+        .ai-close-btn { background: none; border: none; color: #fff; font-size: 22px; cursor: pointer; }
+        .ai-drawer-body { padding: 20px; overflow-y: auto; flex-grow: 1; display: flex; flex-direction: column; gap: 15px; }
+        .ai-badge { background: rgba(197, 160, 89, 0.12); border: 1px solid var(--luxury-gold); padding: 8px 12px; border-radius: 4px; font-size: 0.8rem; font-weight: 600; color: var(--text-dark); }
+        .ai-btn-group { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        .ai-action-btn { background: #fff; border: 1.5px solid var(--luxury-gold); color: var(--deep-black); padding: 10px; border-radius: 4px; font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; cursor: pointer; }
+        .ai-custom-query { display: flex; gap: 10px; }
+        .ai-input { flex-grow: 1; padding: 10px 14px; border: 1px solid var(--luxury-gold); border-radius: 4px; font-family: 'Montserrat', sans-serif; font-size: 0.8rem; background: #fff; color: var(--deep-black); }
+        .ai-submit-btn { background: var(--hermes-orange); color: #fff; border: none; padding: 10px 16px; border-radius: 4px; font-family: 'Montserrat', sans-serif; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; cursor: pointer; }
+        .ai-output-area { background: #ffffff; border: 1px solid rgba(197, 160, 89, 0.2); border-radius: 4px; padding: 15px; min-height: 120px; max-height: 220px; overflow-y: auto; font-size: 0.8rem; line-height: 1.5; color: var(--text-dark); }
+        .ai-loader { display: none; align-items: center; justify-content: center; gap: 8px; font-size: 0.8rem; color: var(--hermes-orange); }
+        .ai-bounce-dots { display: flex; gap: 4px; }
+        .ai-bounce-dot { width: 6px; height: 6px; background-color: var(--hermes-orange); border-radius: 50%; animation: aiBounce 1.4s infinite ease-in-out both; }
+        .ai-bounce-dot:nth-child(1) { animation-delay: -0.32s; }
+        .ai-bounce-dot:nth-child(2) { animation-delay: -0.16s; }
+        @keyframes aiBounce { 0%, 80%, 100% { transform: scale(0); } 40% { transform: scale(1.0); } }
+        .ai-error-banner { background: rgba(230, 85, 39, 0.1); border-left: 4px solid var(--hermes-orange); color: var(--hermes-orange); padding: 10px; font-size: 0.8rem; display: none; }
+    </style>
+</head>
+<body>
+
+<button class="ai-assistant-trigger" onclick="openAIDrawer()">
+    <i class="fa-solid fa-sparkles"></i> ✨ Copilot Strategic
+</button>
+
+<div class="ai-drawer-overlay" id="aiDrawer">
+    <div class="ai-drawer-content">
+        <div class="ai-drawer-header">
+            <h3><i class="fa-solid fa-wand-magic-sparkles"></i> ✨ Copilot Strategic Metanoia</h3>
+            <button class="ai-close-btn" onclick="closeAIDrawer()">&times;</button>
+        </div>
+        <div class="ai-drawer-body">
+            <div class="ai-badge" id="aiSlideContext">Sincronizat cu: <strong>Slide 1 - Copertă</strong></div>
+            <p style="font-size: 0.75rem; color: var(--text-muted); font-style: italic;">Acest copilot inteligent este sincronizat cu pagina curentă. Îl poți folosi live pentru simularea discuțiilor cu finanțatorii.</p>
+            <div class="ai-btn-group">
+                <button class="ai-action-btn" onclick="generateSlideQA()"><i class="fa-solid fa-question"></i> Întrebări Investitor</button>
+                <button class="ai-action-btn" onclick="generateSlidePitch()"><i class="fa-solid fa-microphone"></i> Elevator Pitch 30s</button>
+            </div>
+            <div>
+                <p style="font-size: 0.75rem; font-weight: 800; text-transform: uppercase; margin-bottom: 6px;"><i class="fa-solid fa-bolt"></i> Întrebare din sală:</p>
+                <div class="ai-custom-query">
+                    <input type="text" class="ai-input" id="aiCustomInput" placeholder="Tastați întrebarea bancherului...">
+                    <button class="ai-submit-btn" onclick="submitCustomQuery()">Răspunde</button>
+                </div>
+            </div>
+            <div class="ai-loader" id="aiLoader">
+                <div class="ai-bounce-dots"><div class="ai-bounce-dot"></div><div class="ai-bounce-dot"></div><div class="ai-bounce-dot"></div></div>
+                <span>Se analizează datele cu Gemini...</span>
+            </div>
+            <div class="ai-error-banner" id="aiError"></div>
+            <div class="ai-output-area" id="aiOutput">Analizele strategice vor apărea aici.</div>
+        </div>
+    </div>
+</div>
+
+<div class="presentation-wrapper">
+
+    <div class="slide active" id="slide1">
+        <div class="bg-layer"><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=1200" class="bg-image"><div class="overlay"></div></div>
+        <div style="flex-grow: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+            <h3 class="accent-gold" style="letter-spacing: 10px; margin-bottom: 15px;">DAKAMIGOS MARKT SRL</h3>
+            <h1>Metanoia<br><span class="accent-orange">Boutique</span></h1>
+            <div style="width: 50px; height: 1px; background: var(--luxury-gold); margin: 25px auto;"></div>
+            <p style="font-weight: 300; letter-spacing: 3px; text-transform: uppercase; font-size: 0.75rem;">Arhitectura Rânduielii • Format PDF Interactiv</p>
+        </div>
+        <div class="slide-branding"><span>Metanoia Boutique</span><span>Pagina 1 / 11</span></div>
+    </div>
+
+    <div class="slide" id="slide2">
+        <div class="bg-layer"><img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&q=80&w=1200" class="bg-image"><div class="overlay"></div></div>
+        <div style="flex-grow: 1; display: flex; flex-direction: column; justify-content: center; text-align: center; padding: 0 40px;">
+            <h2 style="font-family: 'Bodoni Moda', serif; font-size: clamp(1.5rem, 3vw, 2.2rem); line-height: 1.4; font-weight: 400; font-style: italic;">
+                "Tradiția nu înseamnă adorarea cenușii, ci <span class="accent-orange">păstrarea focului</span> curat, sigilat pentru drum."
+            </h2>
+            <div style="width: 50px; height: 1px; background: var(--luxury-gold); margin: 30px auto;"></div>
+            <p style="font-family: 'Bodoni Moda', serif; font-style: italic; font-size: 1.2rem; color: var(--luxury-gold);">Manifestul Rânduielii</p>
+        </div>
+        <div class="slide-branding"><span>Manifest</span><span>Pagina 2 / 11</span></div>
+    </div>
+
+    <div class="slide" id="slide3">
+        <div class="slide-content">
+            <h2 class="slide-title">Contextul <span>DN-68</span></h2>
+            <div class="two-column">
+                <div>
+                    <h3 style="margin-bottom: 10px;">Haosul are nevoie de <span class="accent-orange">Tihnă.</span></h3>
+                    <p style="margin-bottom: 15px;">Drumul Național reprezintă fluxul rapid și obositor. Peste 15.000 de autovehicule tranzitează zilnic Țara Hațegului, însă oferta curentă este blocată în produse ultra-procesate de benzinărie.</p>
+                    <p>Metanoia Boutique intervine ca o structură premium ce securizează prospețimea și calitatea alimentară direct în tranzit.</p>
+                </div>
+                <div class="image-frame"><img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=800"></div>
+            </div>
+            <div class="slide-branding"><span>Oportunitate</span><span>Pagina 3 / 11</span></div>
+        </div>
+    </div>
+
+    <div class="slide" id="slide4">
+        <div class="slide-content">
+            <h2 class="slide-title">Tehnologia <span>Capsării</span></h2>
+            <div class="two-column">
+                <div class="image-frame"><img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&q=80&w=800"></div>
+                <div>
+                    <h3 class="accent-orange">Dozzele & Nespresso Professional</h3>
+                    <p style="margin-bottom: 15px;">Micro-nișa noastră rezolvă o problemă majoră de logistică auto: turnarea lichidelor și pierderea temperaturii la condus.</p>
+                    <p style="font-weight: 600; margin-bottom: 10px;">Sistem etanș de băuturi la doză:</p>
+                    <p>Capsăm mecanic sub presiune cafea de înaltă fidelitate și infuzii reci/calde în doze sigure de aluminiu. Fără riscuri de vărsare, fără oxidare pe traseu lung.</p>
+                </div>
+            </div>
+            <div class="slide-branding"><span>Micro-Nișă</span><span>Pagina 4 / 11</span></div>
+        </div>
+    </div>
+
+    <div class="slide" id="slide5">
+        <div class="slide-content">
+            <h2 class="slide-title">Meniul Semnătură <span>(Sărat)</span></h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1544982503-9f984c14501a?auto=format&fit=crop&q=80&w=300" class="menu-thumb">
+                    <div>
+                        <h3 class="accent-gold" style="font-size: 1.1rem; margin-bottom: 2px;">Sandviș Ciabatta</h3>
+                        <p style="font-size: 0.75rem;">Pâine ciabatta crocantă cu ingrediente din ferma proprie, brânzeturi maturate regional și sosuri proaspete făcute în casă.</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1624462966581-bc6d768cbce5?auto=format&fit=crop&q=80&w=300" class="menu-thumb">
+                    <div>
+                        <h3 class="accent-orange" style="font-size: 1.1rem; margin-bottom: 2px;">Meniul Zilei la Caserolă</h3>
+                        <p style="font-size: 0.75rem;">Mâncare caldă de casă, porționată riguros și închisă în caserole gourmet rezistente, ideale pentru transport fără compromisuri.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-branding"><span>Meniu Cald</span><span>Pagina 5 / 11</span></div>
+        </div>
+    </div>
+
+    <div class="slide" id="slide6">
+        <div class="slide-content">
+            <h2 class="slide-title">Meniul Semnătură <span>(Desert)</span></h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1608756687911-a151093c5f79?auto=format&fit=crop&q=80&w=300" class="menu-thumb">
+                    <div>
+                        <h3 class="accent-orange" style="font-size: 1.1rem; margin-bottom: 2px;">Cremă de Zahăr Ars</h3>
+                        <p style="font-size: 0.75rem;">Desert clasic pregătit tradițional cu ouă proaspete și lapte integral de fermă, desăvârșit de un sos bogat de zahăr ars caramelizat.</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1524351199679-46cddf530c04?auto=format&fit=crop&q=80&w=300" class="menu-thumb">
+                    <div>
+                        <h3 class="accent-gold" style="font-size: 1.1rem; margin-bottom: 2px;">Cheesecake Fin</h3>
+                        <p style="font-size: 0.75rem;">Cremă fină de brânză pe bază crocantă, finisată fin cu un strat catifelat de topping preparat din fructe de pădure culese local.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-branding"><span>Meniu Dulce</span><span>Pagina 6 / 11</span></div>
+        </div>
+    </div>
+
+    <div class="slide" id="slide7">
+        <div class="slide-content">
+            <h2 class="slide-title">Canale de <span>Scalare</span></h2>
+            <div class="content-area">
+                <div class="tiled-content">
+                    <div class="tile">
+                        <div class="icon"><i class="fa-solid fa-store"></i></div>
+                        <h3>B2C Direct</h3>
+                        <p style="font-size: 0.8rem;">Vânzare directă la punctul de lucru amenajat strategic pe DN-68, deservind fluxul auto regional și turistic.</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon"><i class="fa-solid fa-hotel"></i></div>
+                        <h3>B2B Pensiuni</h3>
+                        <p style="font-size: 0.8rem;">Abonamente integrate prin conceptul „Mic Dejun la Doză” dedicat unităților de cazare care nu dețin logistică proprie de bucătărie.</p>
+                    </div>
+                    <div class="tile">
+                        <div class="icon"><i class="fa-solid fa-laptop"></i></div>
+                        <h3>hategalternativ.ro</h3>
+                        <p style="font-size: 0.8rem;">Sistem digital de pre-order automatizat prin Make. Clienții achită online securizat și ridică pachetele instant în traseu.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-branding"><span>Strategie de Vânzări</span><span>Pagina 7 / 11</span></div>
+        </div>
+    </div>
+
+    <div class="slide" id="slide8">
+        <div class="slide-content">
+            <h2 class="slide-title">Validare și <span>Credibilitate</span></h2>
+            <div class="content-area">
+                <div class="highlight-numbers-layout">
+                    <div>
+                        <div class="number">2025</div>
+                        <div class="number-label">Bilanț Depus</div>
+                    </div>
+                    <div>
+                        <h3 style="margin-bottom: 10px;">Management Financiar SănătOS</h3>
+                        <p style="margin-bottom: 15px;">Dakamigos Markt SRL este un partener stabil, cu situațiile contabile pe anul 2025 înregistrate și închise fără datorii sau penalități active.</p>
+                        <p>Infrastructura web și fluxurile logistice sunt operaționale. Structura administrativă este complet pregătită pentru integrarea și exploatarea imediată a utilajelor solicitate.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-branding"><span>Sănătate Fiscală</span><span>Pagina 8 / 11</span></div>
+        </div>
+    </div>
+
+    <div class="slide" id="slide9">
+        <div class="slide-content">
+            <h2 class="slide-title">Etape de <span>Lansare</span></h2>
+            <div class="content-area">
+                <div class="timeline">
+                    <div class="timeline-line"></div>
+                    <div class="timeline-node">
+                        <h4>Luna 1</h4><div class="dot"></div>
+                        <p>Achiziție linie capsat și utilaje bucătărie cald/rece.</p>
+                    </div>
+                    <div class="timeline-node">
+                        <h4>Luna 2</h4><div class="dot"></div>
+                        <p>Amenajare locație DN-68, activare stocuri și meniu.</p>
+                    </div>
+                    <div class="timeline-node">
+                        <h4>Luna 4</h4><div class="dot"></div>
+                        <p>Dezvoltare segment B2B pensiuni și flux digital.</p>
+                    </div>
+                    <div class="timeline-node">
+                        <h4>Luna 6</h4><div class="dot"></div>
+                        <p>Prag de rentabilitate și optimizare rețea logistică.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-branding"><span>Plan de Acțiune</span><span>Pagina 9 / 11</span></div>
+        </div>
+    </div>
+
+    <div class="slide" id="slide10">
+        <div class="slide-content">
+            <h2 class="slide-title">Echipa de <span>Management</span></h2>
+            <div class="content-area">
+                <div class="two-column" style="grid-template-columns: 35% 65%; align-items: center;">
+                    <div>
+                        <div class="monogram-frame"><div class="monogram-text">OIS</div></div>
+                        <p style="text-align: center; margin-top: 15px; font-weight: 800; font-size: 0.8rem; letter-spacing: 2px; color: var(--luxury-gold);">DAKAMIGOS MARKT SRL</p>
+                    </div>
+                    <div>
+                        <h3 style="margin-bottom: 5px;">Otilia Ioana Sălășan</h3>
+                        <p class="accent-orange" style="font-size: 0.85rem; font-weight: 800; letter-spacing: 2px; margin-bottom: 15px;">FOUNDER & ADMINISTRATOR</p>
+                        <p style="margin-bottom: 10px;">Manager de Proiect acreditat, Web Developer și viitor Strategic Executive Assistant în cadrul Allianz.</p>
+                        <p>Garantează o execuție de proiect riguroasă, aplicând mecanisme stricte de control de calitate, optimizare fluxuri de producție și control exact asupra indicatorilor de profitabilitate ai companiei.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-branding"><span>Profil Executiv</span><span>Pagina 10 / 11</span></div>
+        </div>
+    </div>
+
+    <div class="slide" id="slide11">
+        <div class="slide-content">
+            <h2 class="slide-title">Solicitare de <span>Investiție</span></h2>
+            <div class="content-area">
+                <div class="two-column" style="grid-template-columns: 45% 55%; align-items: start; gap: 25px;">
+                    <div>
+                        <h2 style="font-size: 3.2rem; color: var(--hermes-orange); line-height: 1;">65.000 <span style="font-size: 1.3rem; vertical-align: top; color: var(--luxury-gold);">RON</span></h2>
+                        <p style="margin-top: 10px; font-size: 0.9rem; color: var(--text-dark);">
+                            Alocare optimizată de capital pentru dotarea punctului de producție culinară și implementarea liniei etanșe de capsat.
+                        </p>
+                        <div style="margin-top: 15px; border-left: 3px solid var(--hermes-orange); padding-left: 15px; background: rgba(230,85,39,0.03); padding: 8px 15px;">
+                            <p style="font-size: 0.85rem; font-weight: 700;">Echipamente integrate noi:</p>
+                            <p style="font-size: 0.8rem; color: var(--text-muted);">Masă frigorifică cu blat, Grill profesional, Hotă industrială de evacuare și Cuptor profesional.</p>
+                        </div>
+                    </div>
+                    <div class="table-layout">
+                        <table>
+                            <thead>
+                                <tr><th>Destinație Fonduri</th><th style="text-align: right;">Valoare (RON)</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><strong>Linie Dozzele & Consumabile</strong><br><span style="font-size:0.7rem; color:var(--text-muted)">Dispozitiv capsat + Stoc inițial de doze aluminiu</span></td><td style="text-align: right; font-weight: 600;">15.000</td></tr>
+                                <tr><td><strong>Materie Primă Sigură</strong><br><span style="font-size:0.7rem; color:var(--text-muted)">Aprovizionare inițială fermă, bază deserturi & cafea</span></td><td style="text-align: right; font-weight: 600;">10.000</td></tr>
+                                <tr><td><strong>Aparatură Nouă Linie Cald/Rece</strong><br><span style="font-size:0.7rem; color:var(--text-muted)">Masă frigorifică cu blat, Grill, Hotă, Cuptor</span></td><td style="text-align: right; font-weight: 600;">40.000</td></tr>
+                                <tr style="background: rgba(230, 85, 39, 0.06);"><td><strong>TOTAL INVESTIȚIE SOLICITATĂ</strong></td><td style="text-align: right; font-weight: 800; color: var(--hermes-orange); font-size: 0.95rem;">65.000 RON</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="slide-branding"><span>Dakamigos Markt SRL</span><span>Pagina 11 / 11</span></div>
+        </div>
+    </div>
+
+    <div class="presentation-controls">
+        <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)" disabled><i class="fa-solid fa-arrow-left"></i> Înapoi</button>
+        <div class="dot-navigation" id="dotNav"></div>
+        <div class="slide-counter" id="slideCounter">1 / 11</div>
+        <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Înainte <i class="fa-solid fa-arrow-right"></i></button>
+    </div>
+
+</div>
+
+<script>
+    let currentSlide = 1;
+    const totalSlides = 11;
+
+    const slideContextMap = {
+        1: { title: "Copertă Prezentare Metanoia Boutique", content: "Startup-ul Metanoia Boutique operat de Dakamigos Markt SRL. Viziunea: Arhitectura Rânduielii, imbinarea traditiei cu inovația." },
+        2: { title: "Manifestul Rânduielii", content: "Citat cheie: 'Tradiția nu înseamnă adorarea cenușii, ci păstrarea focului curat, sigilat pentru drum.' Reprezintă esența identității noastre de lux discret." },
+        3: { title: "Contextul DN-68 & Oportunitatea", content: "DN-68 are un trafic masiv de peste 15.000 autovehicule zilnic. Oferta curentă oferă doar produse ultra-procesate de benzinărie. Căutăm să aducem o oază de siguranță." },
+        4: { title: "Tehnologia Capsării Dozzele & Nespresso", content: "Sistem de capsare a băuturilor în doze etanșe de aluminiu. Folosește cafea Nespresso Professional. Protejează aroma, oferă siguranță totală la condus, înlocuiește cartonul." },
+        5: { title: "Meniul Semnătură (Sărat)", content: "Produse: Sandviș Ciabatta crocant cu ingrediente din ferma proprie, brânzeturi maturate locale. Meniul Zilei la Caserolă: mâncare de casă porționată și sigilată etanș." },
+        6: { title: "Meniul Semnătură (Desert)", content: "Produse: Cremă de Zahăr Ars tradițională (ouă și lapte proaspete de la fermă, sos caramel) și Cheesecake Fin cu sos proaspăt de fructe de pădure." },
+        7: { title: "Canale de Scalare & Model Business", content: "Motoare de tracțiune: B2C Direct la punctul de la DN-68; B2B Pensiuni ('Mic Dejun la Doză'); Marketplace digital pe hategalternativ.ro (pre-order optimizat Make)." },
+        8: { title: "Validare și Credibilitate", content: "Dakamigos Markt SRL are Bilanțul pe anul 2025 înregistrat și depus oficial la ANAF. Zero datorii. Platforma online și automatizările sunt active." },
+        9: { title: "Etape de Lansare (Roadmap)", content: "Luna 1: Achiziție linie capsare și utilaje calde/reci. Luna 2: Lansare punct DN-68. Luna 4: Extindere digitală pensiuni. Luna 6: Prag de rentabilitate." },
+        10: { title: "Echipa de Management", content: "Fondator: Otilia Ioana Sălășan. Manager de Proiect, Web Developer, viitor Strategic Executive Assistant la Allianz. Rigoare administrativă și atenție la detalii." },
+        11: { title: "Solicitarea de Capital (65.000 RON)", content: "Total: 65.000 RON. 15k Linie Dozzele, 10k Materie primă, 40k utilaje noi: masă frigorifică cu blat, grill profesional, hotă industrială, cuptor profesional." }
+    };
+
+    const dotNav = document.getElementById('dotNav');
+    for (let i = 1; i <= totalSlides; i++) {
+        const dot = document.createElement('div');
+        dot.classList.add('nav-dot');
+        if (i === 1) dot.classList.add('active');
+        dot.setAttribute('onclick', `goToSlide(${i})`);
+        dotNav.appendChild(dot);
+    }
+
+    function updateControls() {
+        document.getElementById('prevBtn').disabled = (currentSlide === 1);
+        document.getElementById('nextBtn').disabled = (currentSlide === totalSlides);
+        document.getElementById('slideCounter').innerText = `${currentSlide} / ${totalSlides}`;
+        
+        const contextBadge = document.getElementById('aiSlideContext');
+        if (contextBadge && slideContextMap[currentSlide]) {
+            contextBadge.innerHTML = `Sincronizat cu: <strong>Pagina ${currentSlide} - ${slideContextMap[currentSlide].title}</strong>`;
+        }
+
+        const dots = document.querySelectorAll('.nav-dot');
+        dots.forEach((dot, index) => {
+            if (index + 1 === currentSlide) dot.classList.add('active');
+            else dot.classList.remove('active');
+        });
+    }
+
+    function changeSlide(direction) {
+        document.getElementById(`slide${currentSlide}`).classList.remove('active');
+        currentSlide += direction;
+        document.getElementById(`slide${currentSlide}`).classList.add('active');
+        updateControls();
+    }
+
+    function goToSlide(slideNum) {
+        document.getElementById(`slide${currentSlide}`).classList.remove('active');
+        currentSlide = slideNum;
+        document.getElementById(`slide${currentSlide}`).classList.add('active');
+        updateControls();
+    }
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'ArrowRight' && currentSlide < totalSlides) changeSlide(1);
+        else if (e.key === 'ArrowLeft' && currentSlide > 1) changeSlide(-1);
+    });
+
+    function openAIDrawer() { document.getElementById('aiDrawer').style.display = 'flex'; updateControls(); }
+    function closeAIDrawer() { document.getElementById('aiDrawer').style.display = 'none'; }
+
+    async function callGemini(prompt, systemInstruction) {
+        const apiKey = ""; 
+        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+        const payload = { contents: [{ parts: [{ text: prompt }] }] };
+        if (systemInstruction) payload.systemInstruction = { parts: [{ text: systemInstruction }] };
+
+        let delay = 1000;
+        for (let i = 0; i < 5; i++) {
+            try {
+                const response = await fetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+                if (response.ok) {
+                    const data = await response.json();
+                    return data.candidates?.[0]?.content?.parts?.[0]?.text || "Eroare la generare.";
+                }
+            } catch (e) {}
+            await new Promise(r => setTimeout(r, delay));
+            delay *= 2;
+        }
+        throw new Error("Eroare de conexiune la API Gemini.");
+    }
+
+    function formatMarkdown(text) {
+        return text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>').replace(/\*(.*?)\*/g, '<em>$1</em>').replace(/\n/g, '<br>');
+    }
+
+    function toggleLoader(show) {
+        document.getElementById('aiLoader').style.display = show ? 'flex' : 'none';
+        document.getElementById('aiError').style.display = 'none';
+    }
+
+    async function generateSlideQA() {
+        toggleLoader(true);
+        const context = slideContextMap[currentSlide];
+        const prompt = `Analizează pagina: "${context.title}". Generează 2 întrebări critice de investitor și răspunsurile la persoana I pentru administratorul Otilia Sălășan (rigoare Project Manager, Allianz).`;
+        try {
+            const res = await callGemini(prompt, "Răspunde succint în română.");
+            document.getElementById('aiOutput').innerHTML = formatMarkdown(res);
+        } catch (e) { document.getElementById('aiError').innerText = e.message; document.getElementById('aiError').style.display = 'block'; }
+        toggleLoader(false);
+    }
+
+    async function generateSlidePitch() {
+        toggleLoader(true);
+        const context = slideContextMap[currentSlide];
+        const prompt = `Formulează un Elevator Pitch verbal de 30 de secunde în limba română pentru pagina: "${context.title}". Trebuie să sune profesionist, clar și axat pe 'Arhitectura Rânduielii'.`;
+        try {
+            const res = await callGemini(prompt, "Răspunde succint în română.");
+            document.getElementById('aiOutput').innerHTML = formatMarkdown(res);
+        } catch (e) { document.getElementById('aiError').innerText = e.message; document.getElementById('aiError').style.display = 'block'; }
+        toggleLoader(false);
+    }
+
+    async function submitCustomQuery() {
+        const input = document.getElementById('aiCustomInput');
+        if (!input.value.trim()) return;
+        toggleLoader(true);
+        const prompt = `Pe pagina curentă s-a primit întrebarea: "${input.value}". Oferă o strategie de răspuns la nivel corporate pentru administratorul Dakamigos Markt SRL.`;
+        try {
+            const res = await callGemini(prompt, "Răspunde succint în română.");
+            document.getElementById('aiOutput').innerHTML = formatMarkdown(res);
+            input.value = "";
+        } catch (e) { document.getElementById('aiError').innerText = e.message; document.getElementById('aiError').style.display = 'block'; }
+        toggleLoader(false);
+    }
+</script>
+</body>
+</html>
