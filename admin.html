@@ -2,74 +2,133 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Configurare Sistem | Hațeg Alternativ</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Consolă Admin | Arhitectura Rânduielii</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400;1,700&family=Cinzel:wght@400;700;900&family=JetBrains+Mono:wght@300;400&family=Inter:wght@200;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     <style>
-        :root { --accent: #c5a059; --bg: #0f0f0f; --card: #1a1a1a; --text: #e0e0e0; }
-        body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: var(--text); margin: 0; padding: 20px; }
-        .container { max-width: 800px; margin: 0 auto; }
-        header { border-bottom: 1px solid #333; padding-bottom: 20px; margin-bottom: 30px; }
-        h1 { font-size: 1.5rem; color: var(--accent); }
-        .badge { background: #2d2d2d; padding: 4px 8px; border-radius: 4px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; }
+        :root { 
+            --auriu: #c5a059; 
+            --negru-pur: #000000; 
+            --negru-lux: #050505; 
+            --alb-mat: #f0f0f0; 
+            --text-muted: #666; 
+        }
         
-        .section { background: var(--card); border-radius: 8px; padding: 20px; margin-bottom: 20px; border: 1px solid #333; }
-        h2 { font-size: 1rem; margin-top: 0; border-left: 3px solid var(--accent); padding-left: 10px; }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        body { background: var(--negru-pur); color: var(--alb-mat); font-family: 'Inter', sans-serif; overflow-x: hidden; line-height: 1.6; }
+
+        .container { max-width: 900px; margin: 80px auto 100px; padding: 0 20px; }
         
-        pre { background: #000; padding: 15px; border-radius: 5px; overflow-x: auto; border: 1px solid #222; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #888; }
-        .status { color: #4caf50; font-size: 0.8rem; font-weight: bold; }
-        .copy-btn { background: var(--accent); border: none; color: black; padding: 8px 12px; border-radius: 4px; cursor: pointer; font-weight: bold; margin-top: 10px; }
+        /* HEADER CONSOLĂ */
+        header { border-bottom: 1px solid #111; padding-bottom: 30px; margin-bottom: 50px; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px; }
+        .header-title h1 { font-family: 'Cinzel'; font-size: 1.4rem; color: #fff; letter-spacing: 3px; font-weight: 700; display: flex; align-items: center; gap: 15px; }
+        .badge { background: #111; border: 1px solid var(--auriu); color: var(--auriu); padding: 4px 10px; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 2px; font-family: 'Cinzel'; font-weight: 900; }
+        .owner-tag { font-size: 0.85rem; color: var(--text-muted); font-family: 'Cinzel'; letter-spacing: 1px; margin-top: 5px; }
+        .owner-tag span { color: var(--auriu); }
         
-        .note { font-size: 0.85rem; color: #888; font-style: italic; margin-top: 10px; }
+        .nav-hub { color: var(--text-muted); font-family: 'Cinzel'; text-decoration: none; font-size: 0.75rem; letter-spacing: 2px; transition: 0.3s; border-bottom: 1px dotted #333; padding-bottom: 5px; }
+        .nav-hub:hover { color: var(--auriu); border-bottom-color: var(--auriu); }
+
+        /* SECTIUNI DASHBOARD */
+        .section { background: var(--negru-lux); border: 1px solid #111; padding: 40px; margin-bottom: 30px; position: relative; }
+        .section:hover { border-color: #1a1a1a; }
+        
+        h2 { font-family: 'Cinzel'; font-size: 0.95rem; margin-bottom: 25px; color: var(--auriu); letter-spacing: 3px; font-weight: 700; display: flex; align-items: center; gap: 12px; }
+        h2 i { font-size: 0.85rem; }
+        
+        /* COD BLOC */
+        .code-container { position: relative; margin-bottom: 20px; }
+        pre { background: #000; padding: 25px; overflow-x: auto; border: 1px solid #151515; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: #48bb78; line-height: 1.8; }
+        
+        /* BUTOANE */
+        .copy-btn { background: transparent; border: 1px solid var(--auriu); color: var(--auriu); padding: 12px 30px; font-family: 'Cinzel'; font-weight: 700; cursor: pointer; letter-spacing: 2px; font-size: 0.75rem; transition: 0.4s; }
+        .copy-btn:hover { background: var(--auriu); color: #000; }
+        
+        /* STATUS */
+        .status { font-family: 'Cinzel'; font-size: 0.7rem; font-weight: 900; letter-spacing: 2px; color: #4caf50; display: inline-flex; align-items: center; gap: 8px; margin-bottom: 15px; }
+        .status::before { content: '●'; font-size: 0.8rem; }
+
+        /* LISTĂ STRATEGIE */
+        .strategy-list { list-style: none; }
+        .strategy-list li { padding: 12px 0; border-bottom: 1px dashed #111; font-size: 0.95rem; color: #aaa; display: flex; justify-content: space-between; font-weight: 300; }
+        .strategy-list li:last-child { border-bottom: none; }
+        .strategy-list strong { font-family: 'Cinzel'; color: #fff; font-size: 0.8rem; letter-spacing: 1px; font-weight: 400; }
+        .strategy-list span.val { font-family: 'Playfair Display'; font-style: italic; color: var(--auriu); font-size: 1.1rem; }
+
+        /* TEXTE DE NOTĂ / NOTIFICARE SUCCES */
+        .note { font-size: 0.8rem; color: var(--text-muted); font-style: italic; margin-top: 15px; font-weight: 300; line-height: 1.7; }
+        .confidential-tag { text-align: center; font-family: 'Cinzel'; color: #222; font-size: 0.7rem; letter-spacing: 4px; font-weight: 900; margin-top: 60px; border-top: 1px solid #111; padding-top: 40px; }
+
+        /* POPUP TOAST NOTIFICATION */
+        .toast { position: fixed; bottom: -50px; right: 50px; background: var(--auriu); color: #000; font-family: 'Cinzel'; font-size: 0.75rem; font-weight: 900; letter-spacing: 2px; padding: 15px 30px; transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); opacity: 0; z-index: 10000; }
+        .toast.show { bottom: 50px; opacity: 1; }
     </style>
 </head>
 <body>
 
 <div class="container">
     <header>
-        <h1>Consolă Management Sistem <span class="badge">v1.0 - Producție</span></h1>
-        <p style="font-size: 0.9rem; color: #666;">Proprietar: Otilia-Ioana Sălășan (Certified Software Tester)</p>
+        <div class="header-title">
+            <h1>Consolă Management Sistem <span class="badge">v1.0 / PROD</span></h1>
+            <p class="owner-tag">Proprietar: Otilia-Ioana Sălășan (<span>Certified Software Tester</span>)</p>
+        </div>
+        <a href="index.html" class="nav-hub">← HUB DIGITAL</a>
     </header>
 
+    <!-- SECȚIUNEA 1: TRACKING CORE-ID -->
     <div class="section">
-        <h2><i class="fas fa-chart-line"></i> Google Tag (Tracking ID: AW-16535577695)</h2>
-        <p class="status">● SENSORI ACTIVI</p>
-        <p class="note">Acest cod trebuie să fie prezent în secțiunea &lt;head&gt; a tuturor paginilor pentru a măsura conversiile.</p>
+        <div class="status">Sensori Activi și Sincronizați</div>
+        <h2><i class="fas fa-satellite-dish"></i> Google Tag (Tracking ID: AW-18106516696)</h2>
+        <p class="note">Fragment de cod global injectat automat în containerul &lt;head&gt; pentru auditul conversiilor pe holding.</p>
         
-        <pre id="googleTag">
-&lt;!-- Google tag (gtag.js) --&gt;
-&lt;script async src="https://www.googletagmanager.com/gtag/js?id=AW-16535577695"&gt;&lt;/script&gt;
+        <div class="code-container">
+            <pre id="googleTag">&lt;!-- Google tag (gtag.js) --&gt;
+&lt;script async src="https://www.googletagmanager.com/gtag/js?id=AW-18106516696"&gt;&lt;/script&gt;
 &lt;script&gt;
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', 'AW-16535577695');
-&lt;/script&gt;
-        </pre>
-        <button class="copy-btn" onclick="copyCode()">COPIAZĂ CODUL</button>
+  gtag('config', 'AW-18106516696');
+&lt;/script&gt;</pre>
+        </div>
+        <button class="copy-btn" onclick="copyCode()">COPIAZĂ CONFIGURAȚIA</button>
     </div>
 
+    <!-- SECȚIUNEA 2: METRICI DE TRAFIC -->
     <div class="section">
-        <h2>Arhitectură Campanie</h2>
-        <ul style="font-size: 0.9rem; line-height: 1.8;">
-            <li><strong>Buget Zilnic:</strong> 30 - 40 RON (Stress Test)</li>
-            <li><strong>Licitare:</strong> Maxim 3.00 RON / Click</li>
-            <li><strong>Targeting:</strong> Search Only (No Display, No Partners)</li>
-            <li><strong>Landing Page:</strong> /curs.html (Studiu de Caz)</li>
+        <h2><i class="fas fa-layer-group"></i> Parametri Campanie Search</h2>
+        <ul class="strategy-list">
+            <li><strong>Buget Zilnic Alocat</strong> <span class="val">30 - 40 RON / Stress Test</span></li>
+            <li><strong>Licitare Plafon CPC</strong> <span class="val">Maxim 3.00 RON / Click</span></li>
+            <li><strong>Filtru Trafic</strong> <span class="val">Search Only (Fără rețea Display sau Parteneri)</span></li>
+            <li><strong>Roută Destinație LP</strong> <span class="val">/curs.html (Protocol Masterplan)</span></li>
         </ul>
     </div>
 
-    <div class="note">
-        Document confidențial. Acces limitat pentru administrarea platformei Hațeg Alternativ.
+    <div class="confidential-tag">
+        DOCUMENT CONFIDENȚIAL &bull; ACCES RESTRÂNS HOLDING META
     </div>
 </div>
+
+<!-- CONTAINER NOTIFICARE ELEGANTĂ -->
+<div id="toastNotification" class="toast">SISTEM COPIAT ÎN CLIPBOARD</div>
 
 <script>
     function copyCode() {
         const code = document.getElementById('googleTag').innerText;
-        navigator.clipboard.writeText(code);
-        alert('Codul a fost copiat în clipboard!');
+        navigator.clipboard.writeText(code).then(() => {
+            const toast = document.getElementById('toastNotification');
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2500);
+        }).catch(err => {
+            console.error('Eroare la copiere: ', err);
+        });
     }
 </script>
 
