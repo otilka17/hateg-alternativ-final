@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rezervare | Hațeg Alternativ</title>
+    <title>Comandă Meniu | Hațeg Alternativ</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root { --auriu: #c5a059; --negru: #050505; --gri: #111; --alb: #fff; }
@@ -15,6 +15,7 @@
         .form-side h2 { font-family: 'Cinzel'; color: var(--auriu); margin-bottom: 25px; letter-spacing: 3px; }
         .booking-form { display: grid; gap: 20px; }
         input, select, textarea { width: 100%; background: #000; border: 1px solid #333; padding: 15px; color: #fff; font-family: 'Inter'; outline: none; border-radius: 0; }
+        input:focus, select:focus, textarea:focus { border-color: var(--auriu); }
         .date-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
         .label-mini { font-size: 0.7rem; color: var(--auriu); font-family: 'Cinzel'; display: block; margin-bottom: 5px; }
         .extras-section { margin-top: 10px; border: 1px solid #222; padding: 20px; background: rgba(255,255,255,0.02); }
@@ -35,77 +36,114 @@
 
     <div class="main-container">
         <div class="form-side">
-            <h2>CERERE REZERVARE</h2>
-            <form id="bookingForm" action="https://hook.eu1.make.com/1ojlwd2tys2fa6rcp39oauobwe8sebzk" method="POST" class="booking-form">
-                <input type="text" name="Nume" placeholder="Numele tău" required>
+            <h2>COMANDĂ MENIU</h2>
+            <form id="menuForm" action="https://hook.eu1.make.com/1ojlwd2tys2fa6rcp39oauobwe8sebzk" method="POST" class="booking-form">
+                <!-- Date Contact -->
+                <input type="text" name="Nume" placeholder="Numele tău complet" required>
                 <input type="text" name="Telefon" placeholder="Telefon / WhatsApp" required>
+                <input type="text" name="Adresa_Livrare" placeholder="Adresa de livrare (sau Specifică Ridicare Personală)" required>
                 
+                <!-- Planificare Livrare -->
                 <div class="date-grid">
-                    <div><span class="label-mini">Check-In</span><input type="date" id="checkin" name="Check_in" required></div>
-                    <div><span class="label-mini">Check-Out</span><input type="date" id="checkout" name="Check_out" required></div>
+                    <div><span class="label-mini">Data Servire</span><input type="date" id="data_livrare" name="Data_Livrare" required></div>
+                    <div><span class="label-mini">Ora Dorită</span><input type="time" id="ora_livrare" name="Ora_Livrare" required></div>
                 </div>
 
-                <select id="pachet_base" name="Pachet_Baza" required>
-                    <option value="0" disabled selected>Alege Pachetul de Bază</option>
-                    <option value="3000" data-nume="Pachet Experiență">Experiență Hațeg (Cazare + Ateliere) - 3000 RON/noapte</option>
-                    <option value="6000" data-nume="Metanoia All-In">Metanoia All-Inclusive (Totul Inclus) - 6000 RON/noapte</option>
-                </select>
+                <!-- Selectie Meniu Principal -->
+                <div>
+                    <span class="label-mini">Alege structura de bază</span>
+                    <select id="meniu_baza" name="Meniu_Baza" required>
+                        <option value="0" disabled selected>Alege Meniul Principal</option>
+                        <option value="85" data-nume="Meniu Tradițional">Meniu Țară (Tradițional) - 85 RON / porție</option>
+                        <option value="120" data-nume="Metanoia Gourmet">Metanoia Gourmet Experiență - 120 RON / porție</option>
+                        <option value="65" data-nume="Meniu Pizza Alternativ">Meniu Pizza Bună & Noile Doze - 65 RON / porție</option>
+                    </select>
+                </div>
 
+                <!-- Cantitate (Numar portii) -->
+                <div>
+                    <span class="label-mini">Număr de porții / meniuri</span>
+                    <input type="number" id="nr_portii" name="Numar_Portii" min="1" value="1" placeholder="Număr porții" required>
+                </div>
+
+                <!-- Optiuni si Suplimente Fine Dining / Bauturi -->
                 <div class="extras-section">
-                    <h4 class="label-mini" style="font-size: 0.8rem; margin-bottom: 15px;">OPȚIUNI ȘI ATELIERE EXTRA</h4>
+                    <h4 class="label-mini" style="font-size: 0.8rem; margin-bottom: 15px;">SUPLIMENTE & BĂUTURI LA DOZĂ</h4>
                     <img src="images/gast-masa-traditionala.jpg" alt="Masa" style="width: 100%; height: auto; margin-bottom: 20px; border: 1px solid #333;">
-                    <label class="extra-item"><input type="checkbox" class="extra-cb" name="Cina_Extra" value="150"> Cină Extra (150 RON)</label>
-                    <label class="extra-item"><input type="checkbox" class="extra-cb" name="Atelier_Gastro" value="500"> Atelier Gastronomic (500 RON)</label>
-                    <label class="extra-item"><input type="checkbox" class="extra-cb" name="Atelier_Daco" value="350"> Atelier de creație (Daco) (350 RON)</label>
+                    
+                    <label class="extra-item"><input type="checkbox" class="extra-cb" name="Selectie_Desert" value="25"> Desertul Casei (+25 RON / porție)</label>
+                    <label class="extra-item"><input type="checkbox" class="extra-cb" name="Doza_Craft" value="18"> Băutură Artizanală la Doză (+18 RON / porție)</label>
+                    <label class="extra-item"><input type="checkbox" class="extra-cb" name="Cafea_Nespresso" value="12"> Cafea Premium Nespresso (+12 RON / porție)</label>
                 </div>
 
-                <input type="number" name="Persoane" placeholder="Nr. persoane" required>
+                <!-- Mentiuni Speciale (Alergii, Preferinte) -->
+                <textarea name="Note_Speciale" rows="3" placeholder="Mențiuni speciale (alergii, preferințe preparare sau detalii livrare)"></textarea>
                 
+                <!-- Trimitem si datele calculate ascuns catre Make (Integromat) -->
                 <input type="hidden" id="total_valoare" name="Total_Estimativ" value="0">
-                <input type="hidden" id="nume_pachet_ales" name="Nume_Pachet" value="">
+                <input type="hidden" id="nume_meniu_ales" name="Nume_Meniu" value="">
+                <input type="hidden" id="suplimente_alese" name="Suplimente_Selectate" value="">
 
-                <button type="submit" class="btn-send">TRIMITE REZERVAREA</button>
+                <button type="submit" class="btn-send">TRIMITE COMANDA</button>
             </form>
         </div>
 
+        <!-- Sumar Comanda (Se actualizeaza in timp real dinamic) -->
         <div class="summary-side">
-            <h3>SUMAR ESTIMATIV</h3>
-            <div class="sum-row"><span>Pachet:</span> <span id="res_pachet">-</span></div>
-            <div class="sum-row"><span>Nopți:</span> <span id="res_nopti">0</span></div>
-            <div class="sum-row"><span>Cost Cazare:</span> <span id="res_cost_cazare">0 RON</span></div>
-            <div class="sum-row"><span>Suplimente:</span> <span id="res_extras">0 RON</span></div>
+            <h3>SUMAR COMANDĂ</h3>
+            <div class="sum-row"><span>Meniu Selectat:</span> <span id="res_meniu">-</span></div>
+            <div class="sum-row"><span>Nr. Porții:</span> <span id="res_portii">1</span></div>
+            <div class="sum-row"><span>Preț unitar:</span> <span id="res_pret_unitar">0 RON</span></div>
+            <div class="sum-row"><span>Cost Bază:</span> <span id="res_cost_baza">0 RON</span></div>
+            <div class="sum-row"><span>Suplimente / porție:</span> <span id="res_extras">0 RON</span></div>
             <div class="total-row"><span>TOTAL:</span> <span id="res_total" class="total-price">0 RON</span></div>
         </div>
     </div>
 
     <script>
-        const checkin = document.getElementById('checkin');
-        const checkout = document.getElementById('checkout');
-        const pachet = document.getElementById('pachet_base');
+        const meniuBaza = document.getElementById('meniu_baza');
+        const nrPortiiInput = document.getElementById('nr_portii');
         const extras = document.querySelectorAll('.extra-cb');
 
-        function calculate() {
-            const d1 = new Date(checkin.value);
-            const d2 = new Date(checkout.value);
-            let nopti = (d1 && d2 && d2 > d1) ? Math.ceil((d2 - d1) / (1000 * 60 * 60 * 24)) : 0;
-            const pretBazaNoapte = parseInt(pachet.value) || 0;
-            const costCazareTotal = nopti * pretBazaNoapte;
-            let pretExtras = 0;
-            extras.forEach(cb => { if(cb.checked) pretExtras += parseInt(cb.value); });
-            const numePachet = pachet.options[pachet.selectedIndex].getAttribute('data-nume') || "-";
-            const grandTotal = costCazareTotal + pretExtras;
+        function calculateMenu() {
+            const pretMeniuBaza = parseInt(meniuBaza.value) || 0;
+            const nrPortii = parseInt(nrPortiiInput.value) || 1;
+            
+            // Calcul suplimente per porție
+            let pretSuplimentePerPortie = 0;
+            let suplimenteTexte = [];
+            
+            extras.forEach(cb => { 
+                if(cb.checked) {
+                    pretSuplimentePerPortie += parseInt(cb.value);
+                    suplimenteTexte.push(cb.parentNode.textContent.trim());
+                } 
+            });
 
-            document.getElementById('res_pachet').innerText = numePachet;
-            document.getElementById('res_nopti').innerText = nopti;
-            document.getElementById('res_cost_cazare').innerText = costCazareTotal + " RON";
-            document.getElementById('res_extras').innerText = pretExtras + " RON";
+            const costBazaTotal = pretMeniuBaza * nrPortii;
+            const costSuplimenteTotal = pretSuplimentePerPortie * nrPortii;
+            const grandTotal = costBazaTotal + costSuplimenteTotal;
+            const numeMeniu = meniuBaza.options[meniuBaza.selectedIndex].getAttribute('data-nume') || "-";
+
+            // Actualizare Interfață Vizuală (Sumar)
+            document.getElementById('res_meniu').innerText = numeMeniu;
+            document.getElementById('res_portii').innerText = nrPortii;
+            document.getElementById('res_pret_unitar').innerText = pretMeniuBaza + " RON";
+            document.getElementById('res_cost_baza').innerText = costBazaTotal + " RON";
+            document.getElementById('res_extras').innerText = costSuplimenteTotal + " RON (" + pretSuplimentePerPortie + " RON/pers)";
             document.getElementById('res_total').innerText = grandTotal + " RON";
+            
+            // Actualizare Câmpuri Ascunse pentru trimitere webhook Make
             document.getElementById('total_valoare').value = grandTotal;
-            document.getElementById('nume_pachet_ales').value = numePachet;
+            document.getElementById('nume_meniu_ales').value = numeMeniu;
+            document.getElementById('suplimente_alese').value = suplimenteTexte.join(', ');
         }
 
-        [checkin, checkout, pachet].forEach(el => el.addEventListener('change', calculate));
-        extras.forEach(cb => cb.addEventListener('change', calculate));
+        // Event Listeners pentru recalculare automată la orice modificare
+        meniuBaza.addEventListener('change', calculateMenu);
+        nrPortiiInput.addEventListener('input', calculateMenu);
+        nrPortiiInput.addEventListener('change', calculateMenu);
+        extras.forEach(cb => cb.addEventListener('change', calculateMenu));
     </script>
 </body>
 </html>
