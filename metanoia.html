@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
+    <!-- GOOGLE TAG MANAGER -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18106516696"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -11,22 +12,22 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Metanoia | Arhitectura Tihnei</title>
+    <title>Metanoia | Arhitectura Rânduielii</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400;1,700&family=Cinzel:wght@400;700;900&family=Inter:wght@200;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400;1,700&family=Cinzel:wght@400;700;900&family=Inter:wght@200;300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
         :root { 
             --auriu: #c5a059; 
+            --negru: #000000; 
             --negru-lux: #050505; 
-            --negru-pur: #000; 
             --alb-mat: #f0f0f0; 
             --text-muted: #888; 
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        body { background: var(--negru-pur); color: var(--alb-mat); font-family: 'Inter', sans-serif; overflow-x: hidden; line-height: 1.8; }
+        body { background: var(--negru); color: var(--alb-mat); font-family: 'Inter', sans-serif; overflow-x: hidden; line-height: 1.8; }
 
         /* HEADER */
         .site-header { position: fixed; top: 0; width: 100%; z-index: 9999; padding: 35px 5%; display: flex; justify-content: space-between; align-items: center; transition: 0.5s ease; background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent); }
@@ -39,62 +40,80 @@
         .burger.active span:nth-child(2) { opacity: 0; }
         .burger.active span:nth-child(3) { transform: translateY(-9px) rotate(-45deg); }
 
-        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: var(--negru-pur); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.8s cubic-bezier(0.77, 0, 0.175, 1); z-index: 10000; }
+        .main-nav { position: fixed; top: 0; right: -100%; height: 100vh; width: 100%; background: var(--negru); display: flex; flex-direction: column; justify-content: center; align-items: center; transition: 0.8s cubic-bezier(0.77, 0, 0.175, 1); z-index: 10000; }
         .main-nav.active { right: 0; }
         .main-nav a { font-size: 1.8rem; font-family: 'Cinzel'; margin: 20px 0; color: var(--alb-mat); letter-spacing: 8px; text-transform: uppercase; text-decoration: none; opacity: 0.3; transition: 0.4s; }
         .main-nav a:hover { opacity: 1; color: var(--auriu); }
 
-        /* HERO - FUZIUNEA TOTALĂ */
-        .hero { height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; text-align: center; background: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2000') center/cover no-repeat; }
-        .hero::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); }
+        /* HERO FUZIUNE */
+        .hero-manifest { height: 95vh; position: relative; display: flex; align-items: center; padding: 0 10%; background: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2000') center/cover no-repeat; }
+        .hero-manifest::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(0,0,0,0.95) 40%, rgba(0,0,0,0.6)); }
         
-        .hero-content { position: relative; z-index: 2; max-width: 900px; animation: fadeIn 2s ease; }
-        .hero h1 { font-family: 'Playfair Display'; font-size: clamp(3rem, 10vw, 7rem); font-style: italic; color: #fff; line-height: 1; margin-bottom: 20px; }
-        .tagline { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 12px; font-size: 0.8rem; display: block; opacity: 0.8; text-transform: uppercase; }
+        .hero-content { position: relative; z-index: 2; max-width: 850px; border-left: 1px solid var(--auriu); padding-left: 40px; }
+        .tagline { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 10px; font-size: 0.8rem; margin-bottom: 20px; display: block; text-transform: uppercase; }
+        .hero-manifest h1 { font-family: 'Playfair Display'; font-size: clamp(2.5rem, 8vw, 5.5rem); font-style: italic; color: #fff; margin-bottom: 30px; line-height: 1.1; font-weight: 400; }
+        .hero-manifest p { color: #aaa; font-size: 1.25rem; font-weight: 200; font-style: italic; }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        /* TEXT VIZIUNE COMPACT */
+        .vision-section { padding: 140px 10%; text-align: center; background: var(--negru); border-bottom: 1px solid #111; }
+        .vision-section h2 { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 5px; margin-bottom: 40px; font-size: 1.8rem; }
+        .vision-text { max-width: 900px; margin: 0 auto; color: var(--text-muted); font-size: 1.3rem; font-weight: 200; line-height: 2; }
+        .vision-text strong { color: #fff; font-weight: 400; }
 
-        /* MANIFESTUL TIHNEI */
-        .manifest-layer { padding: 150px 10%; background: var(--negru-pur); text-align: center; }
-        .manifest-layer h2 { font-family: 'Playfair Display'; font-size: 3.5rem; font-style: italic; color: var(--auriu); margin-bottom: 40px; }
-        .manifest-layer p { max-width: 800px; margin: 0 auto; font-size: 1.25rem; font-weight: 200; color: var(--text-muted); line-height: 2; }
+        /* RANDURI FLUIDE - STRUCTURA DE SOLUȚII */
+        .offer-row { display: flex; align-items: center; flex-wrap: wrap; padding: 0; border-bottom: 1px solid #111; }
+        .offer-row:nth-child(even) { flex-direction: row-reverse; }
+        
+        .offer-img { flex: 1; min-width: 450px; height: 650px; background-size: cover; background-position: center; filter: grayscale(20%) brightness(0.5); transition: 1s ease; }
+        .offer-row:hover .offer-img { filter: grayscale(0%) brightness(0.7); }
+        .offer-content { flex: 1; min-width: 450px; padding: 80px; background: var(--negru); }
+        
+        .offer-content h3 { font-family: 'Playfair Display'; font-size: 2.6rem; font-style: italic; color: var(--auriu); margin-bottom: 25px; font-weight: 400; }
+        .offer-content p { color: #aaa; margin-bottom: 35px; font-size: 1.1rem; font-weight: 300; }
+        .offer-content ul { list-style: none; }
+        .offer-content ul li { margin-bottom: 18px; color: #888; font-family: 'Cinzel'; font-size: 0.8rem; letter-spacing: 2px; display: flex; align-items: center; gap: 15px; }
+        .offer-content ul li i { color: var(--auriu); font-size: 0.6rem; }
 
-        /* GRID-UL RÂNDUIELII */
-        .meta-grid { padding: 100px 5%; display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 40px; background: #000; }
-        
-        .meta-card { background: var(--negru-lux); border: 1px solid #111; border-radius: 4px; overflow: hidden; position: relative; transition: 0.5s; }
-        .meta-card:hover { border-color: var(--auriu); transform: translateY(-10px); }
-        
-        .meta-img { width: 100%; height: 500px; overflow: hidden; position: relative; }
-        .meta-img img { width: 100%; height: 100%; object-fit: cover; transition: 1.5s ease; filter: brightness(0.7); }
-        .meta-card:hover .meta-img img { filter: brightness(1); transform: scale(1.05); }
-        
-        .meta-content { padding: 50px; position: relative; }
-        .meta-content span { font-family: 'Cinzel'; color: var(--auriu); font-size: 0.65rem; letter-spacing: 5px; display: block; margin-bottom: 25px; }
-        .meta-content h3 { font-family: 'Playfair Display'; font-size: 2.5rem; font-style: italic; color: #fff; margin-bottom: 25px; }
-        .meta-content p { color: var(--text-muted); font-size: 1rem; font-weight: 300; margin-bottom: 30px; }
-        
-        .btn-link { font-family: 'Cinzel'; color: var(--auriu); text-decoration: none; font-size: 0.75rem; letter-spacing: 4px; border-bottom: 1px solid rgba(197, 160, 89, 0.2); padding-bottom: 10px; transition: 0.3s; }
-        .btn-link:hover { color: #fff; border-bottom-color: #fff; padding-left: 10px; }
+        /* BADGE URGENT */
+        .badge-ananghie { font-family: 'Cinzel'; background: #822; color: #fff; padding: 4px 12px; font-size: 0.65rem; letter-spacing: 2px; font-weight: 900; display: inline-block; margin-bottom: 20px; }
 
-        /* SEMNĂTURA */
-        .signature-section { padding: 150px 10%; background: var(--negru-lux); text-align: center; border-top: 1px solid #111; }
-        .profile-img { width: 180px; height: 180px; border-radius: 50%; margin: 0 auto 50px; border: 2px solid var(--auriu); padding: 5px; overflow: hidden; }
-        .profile-img img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; filter: contrast(1.1); }
-        .quote { font-family: 'Playfair Display'; font-size: 2.2rem; font-style: italic; color: #ccc; max-width: 800px; margin: 0 auto 40px; font-weight: 200; }
+        /* MOTORUL TEHNIC INTEGRAT */
+        .tech-engine { padding: 120px 10%; background: var(--negru-lux); border-bottom: 1px solid #111; }
+        .engine-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: center; }
+        .engine-text h4 { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 5px; margin-bottom: 30px; }
+        .engine-text p { color: #888; font-size: 1.1rem; font-weight: 300; margin-bottom: 20px; }
+        .engine-code { font-family: monospace; color: #48bb78; background: #000; padding: 40px; border: 1px solid #151515; font-size: 0.9rem; line-height: 2; letter-spacing: 1px; }
+
+        /* CALL TO ACTION BUTTON PAYPAL */
+        .pay-cta { text-align: center; padding: 150px 10%; background: var(--negru); }
+        .btn-paypal { display: inline-block; padding: 25px 60px; background: var(--auriu); color: #000; font-family: 'Cinzel'; font-weight: 900; text-decoration: none; letter-spacing: 4px; transition: 0.4s; }
+        .btn-paypal:hover { background: #fff; box-shadow: 0 0 50px rgba(197, 160, 89, 0.2); transform: translateY(-3px); }
+        .gate-link { display: block; margin-top: 35px; color: #666; font-family: 'Cinzel'; text-decoration: underline !important; font-size: 0.75rem; letter-spacing: 2px; transition: 0.3s; }
+        .gate-link:hover { color: var(--auriu); }
+
+        .iron-rule { padding: 100px 10%; text-align: center; border-top: 1px dashed #222; background: var(--negru-lux); }
+        .iron-rule p { font-family: 'Cinzel'; color: #555; letter-spacing: 5px; font-weight: 900; font-size: 0.8rem; }
+
+        /* ANCORĂ DE AUTORITATE - SEMNĂTURĂ */
+        .signature-section { padding: 140px 10%; background: var(--negru-lux); text-align: center; border-top: 1px solid #111; }
+        .profile-img { width: 180px; height: 180px; border-radius: 50%; margin: 0 auto 40px; border: 2px solid var(--auriu); padding: 5px; overflow: hidden; }
+        .profile-img img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; filter: contrast(1.05); }
+        .quote { font-family: 'Playfair Display'; font-size: clamp(1.8rem, 3vw, 2.6rem); font-style: italic; color: #ccc; max-width: 900px; margin: 0 auto 35px; font-weight: 200; line-height: 1.5; }
         .name-label { font-family: 'Cinzel'; letter-spacing: 10px; font-size: 1rem; color: var(--auriu); font-weight: 700; }
 
-        /* FOOTER */
-        footer { padding: 100px 10% 40px; background: #000; border-top: 1px solid #111; }
+        /* REPARARE CONTRAST FOOTER */
+        footer { padding: 100px 10% 60px; background: #000; border-top: 1px solid #1a1a1a; }
         .footer-grid { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 60px; }
-        .cui-info { font-family: 'Cinzel'; color: #222; font-size: 0.65rem; letter-spacing: 4px; }
-        .anpc-logos img { height: 45px; opacity: 0.2; filter: grayscale(1); margin-right: 20px; transition: 0.3s; }
-        .anpc-logos img:hover { opacity: 0.8; filter: grayscale(0); }
-        .tribute { margin-top: 40px; display: block; font-family: 'Cinzel'; letter-spacing: 12px; color: #111; font-size: 0.55rem; text-align: center; font-weight: 900; }
+        .cui-info { font-family: 'Cinzel'; color: #888888; font-size: 0.65rem; letter-spacing: 4px; line-height: 2; }
+        .anpc-logos img { height: 45px; opacity: 0.5; filter: grayscale(1); margin-right: 20px; transition: 0.3s; }
+        .anpc-logos img:hover { opacity: 1; filter: grayscale(0); }
+        .tribute { margin-top: 50px; display: block; font-family: 'Cinzel'; letter-spacing: 12px; color: #444444; font-size: 0.65rem; text-align: center; font-weight: 900; }
 
-        @media (max-width: 900px) {
-            .meta-grid { grid-template-columns: 1fr; }
-            .chapter-media { height: 400px; }
+        @media (max-width: 950px) {
+            .offer-img, .offer-content { min-width: 100%; height: auto; padding: 50px 25px; }
+            .offer-img { height: 400px; }
+            .engine-grid { grid-template-columns: 1fr; gap: 50px; }
+            .hero-manifest { padding: 0 5%; }
             .footer-grid { flex-direction: column; align-items: center; text-align: center; }
         }
     </style>
@@ -107,78 +126,116 @@
         <nav class="main-nav" id="nav-links">
             <a href="index.html">HUB</a>
             <a href="metanoia.html">MANIFEST</a>
-            <a href="curs.html">MASTERPLAN</a>
-            <a href="tihna.html">TIHNĂ</a>
-            <a href="oferta.html">VIZIBILITATE</a>
+            <a href="masterplan.html">MASTERPLAN</a>
+            <a href="gastronomie.html">LIFESTYLE</a>
+            <a href="oferta.html">OFERTE</a>
         </nav>
     </header>
 
-    <section class="hero">
+    <!-- HERO MANIFEST UNITAR -->
+    <section class="hero-manifest">
         <div class="hero-content">
             <span class="tagline">METANOIA DIGITALĂ</span>
-            <h1>Arhitectura Tihnei.</h1>
+            <h1>Arhitectura<br>Rânduielii.</h1>
+            <p>Sistematizarea haosului structural prin precizie tehnică, rigoare biologică și viziune de holding.</p>
         </div>
     </section>
 
+    <!-- TRANZIȚIE / MANIFESTUL VIZIUNII -->
+    <section class="vision-section">
+        <h2>MANIFESTUL</h2>
+        <div class="vision-text">
+            <p>Într-o lume sufocată de zgomot digital și agitație operațională, noi clădim <strong>Liniște Operațională</strong>. Metanoia reprezintă metamorfoza completă a modului în care afacerea ta respiră. Credem cu tărie că tehnologia de vârf trebuie să fie <strong>invizibilă, dar infailibilă</strong>, servind viața, nu înlănțuind-o.</p>
+        </div>
+    </section>
+
+    <!-- CORP EXCLUSIV FLUID (PILULE DE CONȚINUT COMBINATE) -->
     <main>
-        <section class="manifest-layer">
-            <h2>Echilibrul de Fier.</h2>
-            <p>Tihna nu este absența activității, ci prezența rânduielii supreme. Metanoia este procesul prin care transformăm haosul operațional în liniște creativă. Când sistemele respiră singure, tu regăsești libertatea de a fi Arhitect.</p>
-        </section>
-
-        <section class="meta-grid">
-            
-            <div class="meta-card">
-                <div class="meta-img"><img src="https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1200" alt="Hiking Poiana Ruscă"></div>
-                <div class="meta-content">
-                    <span>CAPITOLUL 01 / SPAȚIUL</span>
-                    <h3>Pelerinajul.</h3>
-                    <p>Recalibrare senzorială pe cărări de lut și păduri de fag. Munții Poiana Ruscă oferă proporția divină necesară rânduielii minții.</p>
-                    <a href="#" class="btn-link">EXPLOREAZĂ MUNTELE</a>
-                </div>
+        
+        <!-- ROW 1: MANAGEMENT & CONFIGURARE SISTEM -->
+        <div class="offer-row">
+            <div class="offer-img" style="background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2000');"></div>
+            <div class="offer-content">
+                <h3>Management Sistemic</h3>
+                <p>Trecerea definitivă de la efort brut la o organizație stabilă ce învață și funcționează autonom. Un protocol integrat pentru liderii care vor să scaleze prin rigoare logică.</p>
+                <ul>
+                    <li><i class="fas fa-circle"></i> PROTOCOL TREZVIE OPERAȚIONALĂ</li>
+                    <li><i class="fas fa-circle"></i> STRUCTURI ȘI AUTOMATIZĂRI ATLASSIAN</li>
+                    <li><i class="fas fa-circle"></i> REORGANIZARE FLUXURI ÎN SĂPTĂMÂNI</li>
+                </ul>
             </div>
+        </div>
 
-            <div class="meta-card">
-                <div class="meta-img"><img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?q=80&w=1200" alt="Atelier de Pictură"></div>
-                <div class="meta-content">
-                    <span>CAPITOLUL 02 / EXPRESIE</span>
-                    <h3>Atelierul.</h3>
-                    <p>Culoare și introspecție. Spațiul în care starea de Flux devine formă, iar viziunea ta se materializează dincolo de cod.</p>
-                    <a href="#" class="btn-link">DESCOPERĂ ARTA</a>
-                </div>
+        <!-- ROW 2: ECHILIBRU ȘI BIOLOGIE (DIN TIHNA) -->
+        <div class="offer-row">
+            <div class="offer-img" style="background-image: url('https://images.unsplash.com/photo-1551632811-561732d1e306?q=80&w=1200');"></div>
+            <div class="offer-content">
+                <h3>Echilibru de Fier & Conectare</h3>
+                <p>Tihna nu este absența muncii, ci dovada rânduielii supreme. Când infrastructura digitală preia micro-managementul, tu recâștigi spațiul vital de recalibrare senzorială în natură și arta fluxului creativ.</p>
+                <ul>
+                    <li><i class="fas fa-circle"></i> DETOX OPERAȚIONAL PROFUND</li>
+                    <li><i class="fas fa-circle"></i> PURITATE TRASABILĂ FARM-TO-TABLE</li>
+                    <li><i class="fas fa-circle"></i> STARE DE FLUX DINCOLO DE COD</li>
+                </ul>
             </div>
+        </div>
 
-            <div class="meta-card">
-                <div class="meta-img"><img src="https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=1200" alt="Gastronomie Premium"></div>
-                <div class="meta-content">
-                    <span>CAPITOLUL 03 / RESURSA</span>
-                    <h3>Alchimia.</h3>
-                    <p>Rânduiala gustului. Punctul de întâlnire între rigoarea laboratoarelor Dakamigos și puritatea ingredientelor farm-to-table.</p>
-                    <a href="#" class="btn-link">SAVUREAZĂ TIHNA</a>
-                </div>
+        <!-- ROW 3: STRATEGIE DE SALVARE LA CRITIC -->
+        <div class="offer-row">
+            <div class="offer-img" style="background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=2000');"></div>
+            <div class="offer-content">
+                <span class="badge-ananghie">CRITIC / URGENT</span>
+                <h3>Business la Ananghie</h3>
+                <p>Diagnoză chirurgicală și corecții reci pentru structurile aflate în blocaj major. Extras de date brute din backend, eliminarea scurgerilor de profit și securizarea directă a fluxului de numerar.</p>
+                <ul>
+                    <li><i class="fas fa-circle"></i> DIAGNOZĂ AVANSATĂ SQL & API</li>
+                    <li><i class="fas fa-circle"></i> ARHITECTURĂ DE RECONCILIERE DATE</li>
+                    <li><i class="fas fa-circle"></i> PIPELINE-URI DE SALVARE PRIN UTRE ALDE MAKE</li>
+                </ul>
             </div>
+        </div>
 
-            <div class="meta-card">
-                <div class="meta-img"><img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1200" alt="Neurobotica și IT"></div>
-                <div class="meta-content">
-                    <span>CAPITOLUL 04 / MOTORUL</span>
-                    <h3>Convergența.</h3>
-                    <p>IT, Neurobotică și Psihologie. Algoritmii care învață să respecte biologia, creând sisteme care nu doar funcționează, ci evoluează.</p>
-                    <a href="#" class="btn-link">ARHITECTURA VIITORULUI</a>
-                </div>
-            </div>
-
-        </section>
     </main>
 
+    <!-- SECȚIUNE MOTOR TEHNIC -->
+    <section class="tech-engine">
+        <div class="engine-grid">
+            <div class="engine-text">
+                <h4>MOTORUL TEHNIC</h4>
+                <p>Nu ne ghidăm după unelte efemere la modă, ci implementăm instrumente de inginerie de înaltă performanță ce garantează stabilitatea holdingului tău.</p>
+                <p style="color: var(--auriu); font-family: 'Cinzel'; font-size: 0.8rem; letter-spacing: 2px;">TEHNOREA: CONTROL INTEGRAT</p>
+            </div>
+            <div class="engine-code">
+                > SQL_QUERY: IDENTIFICARE_PIERDERI_CASHFLOW<br>
+                > AUTOMATION: MAKE + GITHUB_JS_ENGINE<br>
+                > WORKSPACE: JIRA_CONFLUENCE_PRO_WORKSPACE<br>
+                > PROTOCOL: ARHITECTURA_TREZVIEI_DIGITALE
+            </div>
+        </div>
+    </section>
+
+    <!-- SECȚIUNE CONVERSIE / PAYPAL -->
+    <section class="pay-cta">
+        <span class="tagline" style="margin-bottom: 30px;">ADMITERE PROTOCOL MANAGEMENT</span><br>
+        <a href="https://www.paypal.com/ncp/payment/MH54VF92TC364" target="_blank" class="btn-paypal">ACHITĂ TAXA DE ÎNSCRIERE</a>
+        <a href="curs.html" class="gate-link">AM ACHITAT DEJA. INTRĂ ÎN PROTOCOL.</a>
+    </section>
+
+    <!-- REGULA DE AUR -->
+    <div class="iron-rule">
+        <p>REGULĂ DE FIER: NU TRAGEM DE NIMENI. FĂRĂ VICTIMIZARE. EXCELENȚĂ LOGICĂ.</p>
+    </div>
+
+    <!-- SEMNĂTURĂ AUTORITATE -->
     <section class="signature-section">
         <div class="profile-img">
             <img src="images/eu.jpg" alt="Otilia Ioana Sălăşan">
         </div>
-        <p class="quote">"Managementul nu este despre efort brutal, ci despre rânduială logică. Tihna este singura dovadă că rigoarea a fost implementată corect."</p>
+        <p class="quote">"Managementul nu este despre efort brut, ci despre rânduială logică. Tihna obținută rămâne singura dovadă a succesului."</p>
         <p class="name-label">OTILIA IOANA SĂLĂŞAN</p>
     </section>
 
+    <!-- FOOTER ULTRA-LIZIBIL -->
     <footer>
         <div class="footer-grid">
             <div class="cui-info">
@@ -193,13 +250,21 @@
         <span class="tribute">TRIBUT PATRICIA | METANOIA HUB &copy; 2026</span>
     </footer>
 
+    <!-- LOGICĂ HEADER & MENIU MOBIL -->
     <script>
         const burger = document.getElementById('burger');
         const nav = document.getElementById('nav-links');
         const header = document.getElementById('header');
 
-        burger.onclick = () => { nav.classList.toggle('active'); burger.classList.toggle('active'); };
-        nav.onclick = () => { nav.classList.remove('active'); burger.classList.remove('active'); };
+        burger.onclick = () => { 
+            nav.classList.toggle('active'); 
+            burger.classList.toggle('active'); 
+        };
+        
+        nav.onclick = () => { 
+            nav.classList.remove('active'); 
+            burger.classList.remove('active'); 
+        };
 
         window.onscroll = () => {
             if (window.scrollY > 80) header.classList.add('scrolled');
