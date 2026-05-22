@@ -2,187 +2,37 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Metanoia Boutique | Arhitectura Rânduielii</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;1,6..96,400&family=Montserrat:wght@200;400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Metanoia | Boutique</title>
     <style>
-        :root {
-            --hermes-orange: #E65527;
-            --luxury-gold: #C5A059;
-            --deep-black: #0a0a0a;
-            --soft-cream: #FDFCF0;
-            --white: #ffffff;
+        :root { --auriu: #C5A059; --negru: #050505; --cream: #FDFCF0; }
+        body, html { margin: 0; height: 100%; background: var(--negru); font-family: 'Montserrat', sans-serif; }
+        
+        .hero { 
+            height: 100vh; display: flex; flex-direction: column; justify-content: center; 
+            align-items: center; text-align: center;
+            background: linear-gradient(rgba(5,5,5,0.7), rgba(5,5,5,0.7)), url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2000');
+            background-size: cover;
         }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { background-color: var(--soft-cream); color: var(--deep-black); font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
-
-        /* Navigation Header */
-        header {
-            padding: 40px 60px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: absolute;
-            width: 100%;
-            z-index: 10;
+        
+        h1 { font-family: 'Bodoni Moda'; font-size: 5rem; color: #fff; margin: 0; letter-spacing: 10px; }
+        p { color: var(--auriu); letter-spacing: 5px; text-transform: uppercase; margin-bottom: 40px; }
+        
+        .btn-master { 
+            padding: 20px 40px; border: 1px solid var(--auriu); color: var(--auriu); 
+            text-decoration: none; font-size: 0.9rem; letter-spacing: 3px; transition: 0.4s;
         }
-        .logo {
-            font-family: 'Bodoni Moda', serif;
-            font-size: 2rem;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            text-decoration: none;
-            color: var(--deep-black);
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: linear-gradient(rgba(253, 252, 240, 0.8), rgba(253, 252, 240, 0.8)), 
-                        url('http://googleusercontent.com/image_collection/image_retrieval/13788735005854150945') center/cover no-repeat;
-            padding: 0 20px;
-        }
-        .hero span {
-            font-size: 0.8rem;
-            letter-spacing: 10px;
-            text-transform: uppercase;
-            color: var(--luxury-gold);
-            margin-bottom: 20px;
-            font-weight: 800;
-        }
-        .hero h1 {
-            font-family: 'Bodoni Moda', serif;
-            font-size: clamp(3rem, 10vw, 8rem);
-            line-height: 0.9;
-            text-transform: uppercase;
-            margin-bottom: 40px;
-        }
-        .hero h1 i { font-weight: 400; font-style: italic; }
-
-        /* CTA Button - Către Masterplan */
-        .cta-masterplan {
-            display: inline-flex;
-            align-items: center;
-            padding: 20px 45px;
-            background-color: var(--hermes-orange);
-            color: var(--white);
-            text-decoration: none;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 800;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            transition: all 0.4s ease;
-            box-shadow: 0 15px 35px rgba(230, 85, 39, 0.2);
-        }
-        .cta-masterplan:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 45px rgba(230, 85, 39, 0.4);
-            background-color: var(--deep-black);
-        }
-        .cta-masterplan i { margin-left: 15px; font-size: 1rem; }
-
-        /* Manifesto Section */
-        .manifesto {
-            padding: 140px 10%;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 100px;
-            align-items: center;
-            background: var(--white);
-        }
-        .manifesto-text h2 {
-            font-family: 'Bodoni Moda', serif;
-            font-size: 3.5rem;
-            line-height: 1.1;
-            margin-bottom: 40px;
-        }
-        .manifesto-text p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #555;
-            margin-bottom: 30px;
-        }
-        .manifesto-img {
-            height: 600px;
-            border: 1px solid var(--luxury-gold);
-            padding: 15px;
-        }
-        .manifesto-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* Footer */
-        footer {
-            padding: 80px 60px;
-            background: var(--deep-black);
-            color: var(--soft-cream);
-            text-align: center;
-        }
-        .footer-logo {
-            font-family: 'Bodoni Moda', serif;
-            font-size: 1.5rem;
-            letter-spacing: 10px;
-            margin-bottom: 30px;
-        }
-        .copy {
-            font-size: 0.7rem;
-            letter-spacing: 3px;
-            opacity: 0.5;
-            text-transform: uppercase;
-        }
-
-        @media (max-width: 900px) {
-            .manifesto { grid-template-columns: 1fr; padding: 80px 5%; gap: 50px; }
-            header { padding: 30px; }
-        }
+        .btn-master:hover { background: var(--auriu); color: var(--negru); }
     </style>
 </head>
 <body>
 
-    <header>
-        <a href="#" class="logo">Metanoia</a>
-        <div style="font-size: 0.7rem; letter-spacing: 3px; font-weight: 800;">EST. 2019</div>
-    </header>
-
     <section class="hero">
-        <span>Arhitectura Rânduielii</span>
-        <h1>Boutique <i>Pitch</i></h1>
-        <a href="masterplan_prezentare.html" class="cta-masterplan">
-            Explorează Masterplanul <i class="fa-solid fa-arrow-right"></i>
-        </a>
+        <p>Arhitectura Rânduielii</p>
+        <h1>METANOIA</h1>
+        <p style="font-size: 0.7rem; color: #aaa; margin-top: 10px;">Boutique & Masterplan</p>
+        
+        <a href="masterplan.html" class="btn-master">VEZI PREZENTAREA STRATEGICĂ</a>
     </section>
-
-    <section class="manifesto">
-        <div class="manifesto-text">
-            <h2>Gastronomia ca <span>Arta</span>,<br>Business-ul ca <span>Rigoare</span>.</h2>
-            <p>
-                Metanoia Boutique transformă haosul operațional în liniște creativă. La Hub-ul nostru din DN68 Totești, îmbinăm tradiția <i>slow cooking</i>-ului cu precizia tehnologică a standardelor Nespresso.
-            </p>
-            <p>
-                Nu suntem un restaurant. Suntem un sistem de rânduială gastronomică dedicat instituțiilor, grădinițelor și viitorului hub corporate ISHO Timișoara.
-            </p>
-        </div>
-        <div class="manifesto-img">
-            <img src="http://googleusercontent.com/image_collection/image_retrieval/14140172531274962246" alt="Professional Kitchen Metanoia">
-        </div>
-    </section>
-
-    <footer>
-        <div class="footer-logo">DAKAMIGOS MARKT</div>
-        <div class="copy">© 2026 Metanoia Boutique • Arhitectura Rânduielii</div>
-    </footer>
 
 </body>
 </html>
