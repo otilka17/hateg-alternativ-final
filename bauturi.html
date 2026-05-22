@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Cămara cu Băuturi | Hațeg Alternativ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        body { background: #000; color: #fff; font-family: 'Inter'; }
+        .drink-card { border: 1px solid #1a1a1a; padding: 20px; transition: 0.4s; }
+        .drink-card:hover { border-color: #c5a059; background: #050505; }
+        .gold-text { color: #c5a059; }
+    </style>
+</head>
+<body class="p-6 md:p-12">
+
+    <header class="flex justify-between items-center mb-20 border-b border-[#1a1a1a] pb-8">
+        <a href="index.html" class="font-cinzel text-2xl font-black text-[#c5a059] tracking-[5px]">METANOIA</a>
+        <a href="meniu.html" class="text-xs uppercase text-gray-500 hover:text-[#c5a059]">← Înapoi la Meniu</a>
+    </header>
+
+    <main class="max-w-4xl mx-auto">
+        <h1 class="font-playfair text-5xl italic mb-16 text-center">Rânduiala Băuturilor</h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            
+            <div class="space-y-8">
+                <h2 class="font-cinzel text-gold text-sm tracking-[4px] uppercase mb-6">Artizanale la Doză</h2>
+                <div class="drink-card flex justify-between items-center">
+                    <div>
+                        <h3 class="font-serif italic text-xl">Limonadă cu Mentă</h3>
+                        <p class="text-xs text-gray-500 uppercase mt-1">Rețetă proprie</p>
+                    </div>
+                    <span class="gold-text font-bold">15 RON</span>
+                </div>
+                <div class="drink-card flex justify-between items-center">
+                    <div>
+                        <h3 class="font-serif italic text-xl">Ceai Rece (Ice Tea)</h3>
+                        <p class="text-xs text-gray-500 uppercase mt-1">Fructe de pădure</p>
+                    </div>
+                    <span class="gold-text font-bold">12 RON</span>
+                </div>
+            </div>
+
+            <div class="space-y-8">
+                <h2 class="font-cinzel text-gold text-sm tracking-[4px] uppercase mb-6">Cafea & Specialități</h2>
+                <div class="drink-card flex justify-between items-center">
+                    <div>
+                        <h3 class="font-serif italic text-xl">Espresso Premium</h3>
+                        <p class="text-xs text-gray-500 uppercase mt-1">Blend artizanal</p>
+                    </div>
+                    <span class="gold-text font-bold">10 RON</span>
+                </div>
+                <div class="drink-card flex justify-between items-center">
+                    <div>
+                        <h3 class="font-serif italic text-xl">Specialitatea Casei</h3>
+                        <p class="text-xs text-gray-500 uppercase mt-1">Mix sezonier</p>
+                    </div>
+                    <span class="gold-text font-bold">22 RON</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-20 text-center border-t border-[#1a1a1a] pt-20">
+            <p class="text-gray-400 mb-8 italic">"Fiecare doză este sigilată și pregătită pentru a-ți oferi prospețimea exactă a naturii."</p>
+            <a href="rezervare.html" class="bg-gold text-black px-10 py-4 font-cinzel font-bold text-[10px] tracking-widest hover:bg-white transition">ADĂUGĂ BĂUTURI LA COMANDĂ</a>
+        </div>
+    </main>
+
+</body>
+</html>
