@@ -2,62 +2,68 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <title>Metanoia Boutique - Pitch Strategic</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital@0;1&family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Masterplan Strategic | Dakamigos</title>
     <style>
-        /* CSS-ul tău stilizat pentru Metanoia Boutique + Logica schemei interactive */
-        :root { --hermes-orange: #E65527; --luxury-gold: #C5A059; --soft-cream: #FDFCF0; }
-        body { background: #000; color: #111; font-family: 'Montserrat', sans-serif; display: flex; flex-direction: column; align-items: center; padding: 20px; }
+        :root { --auriu: #C5A059; --negru: #050505; --cream: #FDFCF0; }
+        body { background: var(--negru); font-family: 'Montserrat', sans-serif; margin: 0; color: #fff; }
         
-        /* Schema Interactivă (Modelul din Screenshot) */
-        .schema-container { display: flex; gap: 15px; margin: 30px 0; }
-        .pas { width: 200px; background: var(--soft-cream); border: 2px solid var(--luxury-gold); padding: 20px; border-radius: 8px; cursor: pointer; text-align: center; transition: 0.3s; }
-        .pas:hover { border-color: var(--hermes-orange); transform: scale(1.05); }
-        .pas h3 { color: var(--luxury-gold); font-family: 'Bodoni Moda'; }
-        
-        .slide-container { width: 1000px; height: 600px; background: var(--soft-cream); padding: 50px; position: relative; border-top: 10px solid var(--hermes-orange); }
-        
-        #modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); justify-content: center; align-items: center; z-index: 1000; }
-        .modal-content { background: var(--soft-cream); padding: 40px; max-width: 600px; border: 3px solid var(--luxury-gold); text-align: center; }
+        .container { padding: 60px; max-width: 1200px; margin: auto; }
+        h1 { font-family: 'Bodoni Moda', serif; color: var(--auriu); text-align: center; margin-bottom: 50px; }
+
+        .cards-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .card { 
+            background: var(--cream); color: #000; padding: 30px; border: 2px solid var(--auriu); 
+            text-align: center; cursor: pointer; transition: 0.3s; border-radius: 8px;
+        }
+        .card:hover { transform: translateY(-10px); background: #fff; }
+        .card h3 { font-family: 'Bodoni Moda'; margin-bottom: 15px; }
+
+        /* Panoul lateral dinamic */
+        #panel { 
+            position: fixed; top: 0; right: -400px; width: 350px; height: 100%; 
+            background: var(--cream); color: #000; padding: 40px; transition: 0.5s; 
+            box-shadow: -10px 0 30px rgba(0,0,0,0.5); z-index: 100; overflow-y: auto;
+        }
+        #panel.active { right: 0; }
+        .close-btn { cursor: pointer; font-weight: bold; font-size: 1.2rem; }
     </style>
 </head>
 <body>
 
-<h1>Metanoia Boutique</h1>
-
-<div class="schema-container">
-    <div class="pas" onclick="openModal('Managementul Timpului', 'Livrări precise din Totești. Standarde Nespresso pentru eficiență.')">
-        <h3>01. Timp</h3>
-    </div>
-    <div class="pas" onclick="openModal('Idei Inovatoare', '80% ingrediente proprii. Slow cooking tehnologizat în doze etanșe.')">
-        <h3>02. Inovație</h3>
-    </div>
-    <div class="pas" onclick="openModal('Brainstorming', 'Parteneriate pentru grădinițe și instituții publice fără risipă.')">
-        <h3>03. Consultanță</h3>
-    </div>
-    <div class="pas" onclick="openModal('Succes', 'Investiție 65.000 RON pentru Hub Gastronomic ISHO Timișoara.')">
-        <h3>04. Succes</h3>
+<div class="container">
+    <h1>STRATEGIA DE CREȘTERE DAKAMIGOS</h1>
+    
+    <div class="cards-grid">
+        <div class="card" onclick="show('01. MANAGEMENTUL TIMPULUI', 'Flux de Precizie în Totești: Dakamigos utilizează Senior ERP pentru un control riguros al trasabilității. Când o instituție plasează o pre-comandă, ERP-ul realizează o explozie a rețetarului (BOM). Automatizează bonul de consum, scăzând cantitățile din gestiunea Materie Primă. Rezultat: standardizarea gustului și eliminarea totală a risipei.')">
+            <h3>01. TIMP</h3>
+            <p>Precizie în Totești.</p>
+        </div>
+        <div class="card" onclick="show('02. INOVAȚIE ȘI TEHNOLOGIE', 'Standarde Nespresso: Doze etanșe, control total al calității. 80% din ingrediente provin din microferma proprie, garantând trasabilitatea de la sursă la produsul finit.')">
+            <h3>02. INOVAȚIE</h3>
+            <p>Standarde Nespresso.</p>
+        </div>
+        <div class="card" onclick="show('03. SCALARE ȘI INSTITUȚII', 'Piața țintă: Grădinițe și Instituții Publice. Sistem digital de pre-comandă automatizat care generează facturi și rapoarte nutriționale pentru clienții B2G.')">
+            <h3>03. SCALARE</h3>
+            <p>Piața țintă.</p>
+        </div>
+        <div class="card" onclick="show('04. SUCCES ȘI INVESTIȚIE', '65.000 RON necesar pentru: Echipamente (Grill, Hotă, Cuptor), Linie Capsat și Aprovizionare Fermă. Orizont: Hub Gastronomic ISHO Timișoara.')">
+            <h3>04. SUCCES</h3>
+            <p>Solicitare investiție.</p>
+        </div>
     </div>
 </div>
 
-<div class="slide-container">
-    <h2>Strategia de Business</h2>
-    <p>Aceasta este arhitectura rânduielii tale. Apasă pe pașii de sus pentru a vedea detaliile fiecărei etape.</p>
-</div>
-
-<div id="modal" onclick="this.style.display='none'">
-    <div class="modal-content">
-        <h2 id="m-title" style="color: var(--hermes-orange);"></h2>
-        <p id="m-text" style="font-size: 1.2rem;"></p>
-    </div>
+<div id="panel">
+    <div class="close-btn" onclick="document.getElementById('panel').classList.remove('active')">ÎNCHIDE X</div>
+    <h2 id="p-title" style="color:var(--auriu); margin: 20px 0;"></h2>
+    <p id="p-text" style="line-height: 1.6;"></p>
 </div>
 
 <script>
-    function openModal(t, txt) {
-        document.getElementById('m-title').innerText = t;
-        document.getElementById('m-text').innerText = txt;
-        document.getElementById('modal').style.display = 'flex';
+    function show(t, txt) {
+        document.getElementById('p-title').innerText = t;
+        document.getElementById('p-text').innerText = txt;
+        document.getElementById('panel').classList.add('active');
     }
 </script>
 
