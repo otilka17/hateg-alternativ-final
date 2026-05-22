@@ -2,75 +2,83 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <title>Meniu Hațeg Alternativ | Prezentare</title>
+    <title>Hațeg Alternativ | Luxury Menu</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
     <style>
-        body { background: #000; color: #fff; font-family: 'Inter'; }
-        .lux-card { border: 1px solid #1a1a1a; background: #050505; transition: 0.3s; }
+        body { background: #000; color: #fff; font-family: 'Cinzel', serif; }
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: 30px; padding: 40px; }
+        .lux-card { border: 1px solid #c5a059; background: #050505; transition: 0.5s; position: relative; overflow: hidden; }
+        .lux-card:hover { border-color: #fff; }
         .gold { color: #c5a059; }
-        .page { display: none; animation: fadeIn 0.5s; }
-        .active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .btn-lux { background: #c5a059; color: #000; padding: 20px; text-transform: uppercase; font-weight: 900; width: 100%; text-align: center; display: block; margin-top: auto; }
     </style>
 </head>
-<body class="p-4 md:p-12">
+<body>
 
-    <div class="max-w-4xl mx-auto">
-        <h1 class="text-4xl italic font-serif text-center mb-10 gold">Meniu Săptămânal</h1>
-        
-        <div id="container-zile">
-            <script>
-                // Aici stocăm meniul tău. Editezi o singură dată și totul se actualizează.
-                const meniu = [
-                    { zi: "LUNI", fel1: "Ciorbă de găină cu tăieței", calorii1: "150 kcal", p1: "12g", g1: "5g", fel2: "Tocăniță de porc", calorii2: "650 kcal", p2: "45g", g2: "25g", img: "romanian-food" },
-                    { zi: "MARȚI", fel1: "Ciorbă de văcuță", calorii1: "180 kcal", p1: "15g", g1: "6g", fel2: "Pulpă de pui la ceaun", calorii2: "580 kcal", p2: "48g", g2: "20g", img: "roasted-chicken" },
-                    { zi: "MIERCURI", fel1: "Supă cremă de legume", calorii1: "120 kcal", p1: "5g", g1: "3g", fel2: "Mușchiuleț grătar", calorii2: "450 kcal", p2: "42g", g2: "10g", img: "grilled-meat" },
-                    { zi: "JOI", fel1: "Ciorbă rădăuțeană", calorii1: "220 kcal", p1: "18g", g1: "9g", fel2: "Sărmăluțe în varză", calorii2: "620 kcal", p2: "35g", g2: "30g", img: "cabbage-rolls" },
-                    { zi: "VINERI", fel1: "Ciorbă de burtă", calorii1: "250 kcal", p1: "20g", g1: "12g", fel2: "Pui cu smântână", calorii2: "550 kcal", p2: "40g", g2: "22g", img: "tripe-soup" }
-                ];
+<h1 class="text-center text-6xl gold mt-12 mb-20 italic">RÂNDUIALA GUSTULUI</h1>
 
-                meniu.forEach((m, index) => {
-                    document.write(`
-                        <div id="page-${index + 1}" class="page ${index === 0 ? 'active' : ''}">
-                            <div class="lux-card p-8">
-                                <h2 class="text-3xl text-gold mb-8 font-cinzel italic">${m.zi}</h2>
-                                <img src="https://source.unsplash.com/800x400/?${m.img}" class="w-full h-64 object-cover mb-8 grayscale hover:grayscale-0 transition">
-                                
-                                <div class="space-y-6">
-                                    <div class="flex justify-between border-b border-[#1a1a1a] pb-4">
-                                        <div><h3 class="font-bold">${m.fel1}</h3><p class="text-[10px] uppercase text-gray-500">Gramaj: 400g</p></div>
-                                        <div class="text-[10px] text-right uppercase gold">${m.calorii1} | ${m.p1} Proteine | ${m.g1} Grăsimi</div>
-                                    </div>
-                                    <div class="flex justify-between border-b border-[#1a1a1a] pb-4">
-                                        <div><h3 class="font-bold">${m.fel2}</h3><p class="text-[10px] uppercase text-gray-500">Gramaj: 300g</p></div>
-                                        <div class="text-[10px] text-right uppercase gold">${m.calorii2} | ${m.p2} Proteine | ${m.g2} Grăsimi</div>
-                                    </div>
-                                </div>
-                                <a href="rezervare.html?zi=${m.zi}&pret=40" class="block mt-10 text-center border border-gold py-4 text-gold hover:bg-gold hover:text-black transition uppercase text-xs tracking-widest font-bold">
-                                    COMANDĂ PENTRU ${m.zi}
-                                </a>
-                            </div>
-                        </div>
-                    `);
-                });
-            </script>
-        </div>
-
-        <div class="flex justify-center gap-4 mt-10">
-            <button class="border border-gold px-8 py-3 text-gold hover:bg-gold hover:text-black uppercase text-xs" onclick="schimbaZi(-1)">ÎNAPOI</button>
-            <button class="border border-gold px-8 py-3 text-gold hover:bg-gold hover:text-black uppercase text-xs" onclick="schimbaZi(1)">ZIUA URMĂTOARE</button>
+<div class="grid-container">
+    <div class="lux-card flex flex-col">
+        <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&q=80&w=1200" class="h-64 object-cover mb-6">
+        <div class="px-6 pb-6 flex-grow">
+            <h2 class="text-3xl gold mb-4">LUNI</h2>
+            <p class="text-xl italic mb-6">Supă de găină • Tocăniță de pui la ceaun cu pireu</p>
+            <div class="bg-[#111] p-4 text-[13px] border border-[#222] mb-6">
+                <p>Gramaj: 600g | Calorii: 850 kcal | Proteine: 55g | Carbohidrați: 70g</p>
+            </div>
+            <a href="rezervare.html?zi=Luni" class="btn-lux">Rezervă Luni</a>
         </div>
     </div>
 
-    <script>
-        let pag = 1;
-        function schimbaZi(step) {
-            document.getElementById('page-' + pag).classList.remove('active');
-            pag += step;
-            if(pag > 5) pag = 1;
-            if(pag < 1) pag = 5;
-            document.getElementById('page-' + pag).classList.add('active');
-        }
-    </script>
+    <div class="lux-card flex flex-col">
+        <img src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?auto=format&fit=crop&q=80&w=1200" class="h-64 object-cover mb-6">
+        <div class="px-6 pb-6 flex-grow">
+            <h2 class="text-3xl gold mb-4">MARȚI</h2>
+            <p class="text-xl italic mb-6">Ciorbă de perișoare • Pomana porcului cu mămăligă</p>
+            <div class="bg-[#111] p-4 text-[13px] border border-[#222] mb-6">
+                <p>Gramaj: 650g | Calorii: 920 kcal | Proteine: 48g | Carbohidrați: 60g</p>
+            </div>
+            <a href="rezervare.html?zi=Marti" class="btn-lux">Rezervă Marți</a>
+        </div>
+    </div>
+
+    <div class="lux-card flex flex-col">
+        <img src="https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&q=80&w=1200" class="h-64 object-cover mb-6">
+        <div class="px-6 pb-6 flex-grow">
+            <h2 class="text-3xl gold mb-4">MIERCURI</h2>
+            <p class="text-xl italic mb-6">Ciorbă de pui a la grec • Mazăre bob cu piept de pui</p>
+            <div class="bg-[#111] p-4 text-[13px] border border-[#222] mb-6">
+                <p>Gramaj: 600g | Calorii: 780 kcal | Proteine: 52g | Carbohidrați: 55g</p>
+            </div>
+            <a href="rezervare.html?zi=Miercuri" class="btn-lux">Rezervă Miercuri</a>
+        </div>
+    </div>
+
+    <div class="lux-card flex flex-col">
+        <img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&q=80&w=1200" class="h-64 object-cover mb-6">
+        <div class="px-6 pb-6 flex-grow">
+            <h2 class="text-3xl gold mb-4">JOI</h2>
+            <p class="text-xl italic mb-6">Ciorbă de cartofi cu costiță • Friptură cu legume și pireu</p>
+            <div class="bg-[#111] p-4 text-[13px] border border-[#222] mb-6">
+                <p>Gramaj: 700g | Calorii: 880 kcal | Proteine: 45g | Carbohidrați: 80g</p>
+            </div>
+            <a href="rezervare.html?zi=Joi" class="btn-lux">Rezervă Joi</a>
+        </div>
+    </div>
+
+    <div class="lux-card flex flex-col">
+        <img src="https://images.unsplash.com/photo-1596560548657-f027876a3e5c?auto=format&fit=crop&q=80&w=1200" class="h-64 object-cover mb-6">
+        <div class="px-6 pb-6 flex-grow">
+            <h2 class="text-3xl gold mb-4">VINERI</h2>
+            <p class="text-xl italic mb-6">Ciorbă de văcuță • Pilaf de orez cu pulpe la tavă</p>
+            <div class="bg-[#111] p-4 text-[13px] border border-[#222] mb-6">
+                <p>Gramaj: 650g | Calorii: 820 kcal | Proteine: 42g | Carbohidrați: 75g</p>
+            </div>
+            <a href="rezervare.html?zi=Vineri" class="btn-lux">Rezervă Vineri</a>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
