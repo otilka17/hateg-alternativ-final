@@ -2,61 +2,107 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <title>Hațeg Alternativ | Metanoia</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metanoia | Hațeg Alternativ</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;1,700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
     <style>
-        body { background: #000; color: #fff; font-family: 'Inter', sans-serif; }
-        .gold { color: #c5a059; }
-        .lux-card { border: 1px solid #1a1a1a; padding: 30px; transition: 0.4s; background: #050505; display: flex; flex-direction: column; }
-        .lux-card:hover { border-color: #c5a059; transform: translateY(-5px); }
-        .btn-main { border: 1px solid #c5a059; color: #c5a059; padding: 12px 20px; text-transform: uppercase; font-size: 11px; letter-spacing: 2px; text-align: center; margin-top: auto; transition: 0.3s; }
-        .btn-main:hover { background: #c5a059; color: #000; }
+        body { background-color: #020202; color: #ffffff; font-family: 'Inter', sans-serif; }
+        .hero-gradient { background: radial-gradient(circle at center, #1a1a1a 0%, #020202 70%); }
+        .lux-card { border: 1px solid #1a1a1a; transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1); background: #080808; position: relative; }
+        .lux-card:hover { border-color: #c5a059; transform: translateY(-15px); box-shadow: 0 20px 40px rgba(197, 160, 89, 0.1); }
+        .gold-accent { color: #c5a059; }
+        .btn-luxury { border: 1px solid #c5a059; color: #fff; padding: 15px 30px; text-transform: uppercase; letter-spacing: 3px; font-family: 'Cinzel'; font-size: 0.75rem; transition: 0.4s; background: transparent; }
+        .btn-luxury:hover { background: #c5a059; color: #000; letter-spacing: 5px; }
+        .magazine-dropcap::first-letter { font-size: 4rem; font-family: 'Playfair Display'; color: #c5a059; float: left; margin-right: 15px; line-height: 0.8; }
     </style>
 </head>
-<body class="p-4 md:p-16">
+<body class="selection:bg-[#c5a059] selection:text-black">
 
-    <header class="text-center mb-20">
-        <h1 class="text-5xl font-cinzel italic gold mb-4">METANOIA</h1>
-        <p class="text-gray-500 uppercase tracking-[5px] text-xs">Hațeg Alternativ | Culinary Experience</p>
-    </header>
+    <!-- Hero Section -->
+    <section class="hero-gradient min-h-[60vh] flex flex-col items-center justify-center text-center px-6 border-b border-[#1a1a1a]">
+        <span class="gold-accent uppercase tracking-[8px] text-xs mb-6">Culinary Excellence</span>
+        <h1 class="text-7xl md:text-9xl font-playfair italic font-bold mb-8">Metanoia</h1>
+        <p class="max-w-2xl text-gray-400 text-lg italic leading-relaxed">„Rânduiala gustului nu este doar o rețetă, ci o stare de spirit. Redescoperă plăcerea hranei autentice, livrată cu precizie și eleganță.”</p>
+    </section>
 
-    <main class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Main Content Hub -->
+    <main class="max-w-7xl mx-auto px-6 py-24">
         
-        <div class="lux-card">
-            <h2 class="text-xl font-cinzel mb-4">Meniu Săptămânal</h2>
-            <p class="text-sm text-gray-400 mb-6 italic">Rânduiala gustului: gătit artizanal, nutriție de precizie.</p>
-            <a href="meniu_luxury.html" class="btn-main">Vezi Meniul</a>
+        <!-- Text introductiv stil revistă -->
+        <div class="mb-24 max-w-4xl mx-auto text-center border-l-4 border-[#c5a059] pl-8">
+            <p class="text-2xl font-light magazine-dropcap leading-relaxed italic text-gray-300">
+                Fiecare prânz este o promisiune. În lumea Hațeg Alternativ, am transformat logistica cateringului într-o artă a continuității. Nu livrăm doar hrană, livrăm timp câștigat, sănătate și liniștea unei agende fără grija prânzului.
+            </p>
         </div>
 
-        <div class="lux-card">
-            <h2 class="text-xl font-cinzel mb-4">Rezervări</h2>
-            <p class="text-sm text-gray-400 mb-6 italic">Securizează masa pentru echipa ta sau pentru grădiniță.</p>
-            <a href="rezervare.html" class="btn-main">Rezervă Acum</a>
-        </div>
+        <!-- Grid de Lux -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Card 1 -->
+            <div class="lux-card p-8 group">
+                <div class="h-64 mb-8 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <h2 class="text-3xl font-cinzel mb-4">Meniu Săptămânal</h2>
+                <p class="text-gray-500 mb-8 italic text-sm">Gătit artizanal, calculat nutrițional, fără compromisuri.</p>
+                <a href="meniu.html" class="btn-luxury w-full block text-center">Explorare Meniu</a>
+            </div>
 
-        <div class="lux-card">
-            <h2 class="text-xl font-cinzel mb-4">Băuturi & Cafea</h2>
-            <p class="text-sm text-gray-400 mb-6 italic">Selecție Nespresso și dozele.ro pentru momente de pauză.</p>
-            <a href="bauturi.html" class="btn-main">Vezi Băuturi</a>
-        </div>
+            <!-- Card 2 -->
+            <div class="lux-card p-8 group">
+                <div class="h-64 mb-8 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <h2 class="text-3xl font-cinzel mb-4">Rezervări</h2>
+                <p class="text-gray-500 mb-8 italic text-sm">Securizează livrările pentru birou sau grădiniță.</p>
+                <a href="rezervari.html" class="btn-luxury w-full block text-center">Rezervă Acum</a>
+            </div>
 
-        <div class="lux-card">
-            <h2 class="text-xl font-cinzel mb-4">Metanoia</h2>
-            <p class="text-sm text-gray-400 mb-6 italic">Viziunea și misiunea noastră dincolo de farfurie.</p>
-            <a href="metanoia.html" class="btn-main">Descoperă Viziunea</a>
-        </div>
+            <!-- Card 3 -->
+            <div class="lux-card p-8 group">
+                <div class="h-64 mb-8 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <h2 class="text-3xl font-cinzel mb-4">Băuturi Premium</h2>
+                <p class="text-gray-500 mb-8 italic text-sm">Selecție Nespresso și dozele.ro pentru momente de pauză.</p>
+                <a href="bauturi.html" class="btn-luxury w-full block text-center">Catalog Băuturi</a>
+            </div>
 
-        <div class="lux-card">
-            <h2 class="text-xl font-cinzel mb-4">Contact</h2>
-            <p class="text-sm text-gray-400 mb-6 italic">Suntem la un click distanță pentru orice întrebare.</p>
-            <a href="contact.html" class="btn-main">Trimite Mesaj</a>
-        </div>
+            <!-- Card 4 -->
+            <div class="lux-card p-8 group">
+                <div class="h-64 mb-8 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1506084868230-bb9d95c24f56?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <h2 class="text-3xl font-cinzel mb-4">Metanoia</h2>
+                <p class="text-gray-500 mb-8 italic text-sm">Misiunea noastră de a restabili rânduiala în alimentație.</p>
+                <a href="metanoia.html" class="btn-luxury w-full block text-center">Viziunea Noastră</a>
+            </div>
 
+            <!-- Card 5 -->
+            <div class="lux-card p-8 group">
+                <div class="h-64 mb-8 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1423666639041-f56000c27a9a?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                </div>
+                <h2 class="text-3xl font-cinzel mb-4">Contact</h2>
+                <p class="text-gray-500 mb-8 italic text-sm">Direct, simplu, eficient. Suntem pregătiți să vă servim.</p>
+                <a href="contact.html" class="btn-luxury w-full block text-center">Trimite Mesaj</a>
+            </div>
+
+        </div>
     </main>
 
-    <footer class="text-center mt-20 border-t border-[#1a1a1a] pt-10 text-gray-600 text-[10px] uppercase tracking-[2px]">
-        © 2026 Dakamigos Markt SRL | Hațeg, Hunedoara
+    <!-- Footer de revistă -->
+    <footer class="text-center py-20 border-t border-[#1a1a1a]">
+        <div class="flex flex-col items-center gap-6">
+            <h3 class="font-cinzel text-2xl gold-accent italic">Metanoia</h3>
+            <p class="text-gray-500 text-[10px] uppercase tracking-[5px]">Hațeg, Județul Hunedoara • Rânduială și Gust</p>
+            <div class="flex gap-8 text-[11px] uppercase tracking-[2px] text-gray-400">
+                <a href="#" class="hover:text-[#c5a059] transition">Termeni</a>
+                <a href="#" class="hover:text-[#c5a059] transition">Livrare</a>
+                <a href="#" class="hover:text-[#c5a059] transition">Securitate</a>
+            </div>
+        </div>
     </footer>
 
 </body>
