@@ -343,51 +343,37 @@
 
         // Randarea dinamică a cardurilor de viață
       function renderCards() {
-            const grid = document.getElementById('limitsGrid');
-            grid.innerHTML = '';
-            
-            limitsData.forEach((item, index) => {
-                const cardHTML = `
-                    <div class="h-[280px] w-full cursor-pointer group relative">
-                        <button onclick="triggerDelete(${index}, event)" class="absolute top-4 right-4 z-30 text-ciocolatiu/20 hover:text-red-600 transition duration-300 p-2 text-sm">
-                            <i class="fa-solid fa-trash"></i>
-                        </button>
+    const grid = document.getElementById('limitsGrid');
+    grid.innerHTML = '';
+    
+    limitsData.forEach((item, index) => {
+        grid.innerHTML += `
+            <div class="h-[280px] w-full relative group">
+                <button onclick="triggerDelete(${index}, event)" class="absolute top-4 right-4 z-30 text-ciocolatiu/20 hover:text-red-600 transition duration-300 p-2 text-sm">
+                    <i class="fa-solid fa-trash"></i>
+                </button>
 
-                        <div class="card-inner w-full h-full relative duration-500 transform-gpu" id="card-${index}" onclick="this.classList.toggle('card-flipped')">
-                            
-                            <div class="card-front absolute inset-0 bg-fildes border border-rozAccent rounded-2xl p-6 flex flex-col justify-between shadow-sm hover:border-auriu transition duration-300">
-                                <div>
-                                    <div class="flex justify-between items-start mb-4">
-                                        <span class="text-auriu text-xl"><i class="fa-solid ${item.icon}"></i></span>
-                                        <span class="font-cinzel text-[9px] tracking-widest text-textMuted bg-rozPudrat px-3 py-1 rounded-full font-bold">DIALOG INTERIOR</span>
-                                    </div>
-                                    <h3 class="font-cinzel text-xs tracking-wider text-ciocolatiu font-bold mb-3">${item.pillar}</h3>
-                                    <p class="font-playfair text-base italic text-ciocolatiu leading-relaxed font-light">"${item.inner}"</p>
-                                </div>
-                                <div class="text-[10px] font-cinzel text-auriu tracking-widest text-right group-hover:translate-x-1 duration-300">
-                                    VEZI SCUTUL EXTERN <i class="fas fa-arrow-right ml-1"></i>
-                                </div>
-                            </div>
-
-                            <div class="card-back absolute inset-0 bg-ciocolatiu border border-ciocolatiu rounded-2xl p-6 flex flex-col justify-between shadow-md">
-                                <div>
-                                    <div class="flex justify-between items-start mb-4">
-                                        <span class="text-auriu text-xl"><i class="fa-solid ${item.icon}"></i></span>
-                                        <span class="font-cinzel text-[9px] tracking-widest text-auriu bg-fildes/5 px-3 py-1 rounded-full font-bold">GRANIȚĂ EXTERNĂ</span>
-                                    </div>
-                                    <h3 class="font-cinzel text-xs tracking-wider text-auriu font-bold mb-3">${item.pillar}</h3>
-                                    <p class="text-sm font-light text-rozPudrat leading-relaxed">${item.outer}</p>
-                                </div>
-                                <div class="text-[10px] font-cinzel text-auriu tracking-widest text-right">
-                                    <i class="fas fa-arrow-left mr-1"></i> ÎNAPOI LA TIHNĂ
-                                </div>
-                            </div>
+                <div class="card-inner w-full h-full relative duration-500 transform-gpu cursor-pointer" id="card-${index}" onclick="this.classList.toggle('card-flipped')">
+                    
+                    <div class="card-front absolute inset-0 bg-fildes border border-rozAccent rounded-2xl p-6 flex flex-col justify-between shadow-sm">
+                        <div>
+                            <i class="fa-solid ${item.icon} text-auriu text-xl mb-4"></i>
+                            <h3 class="font-cinzel text-xs font-bold text-ciocolatiu mb-3">${item.pillar}</h3>
+                            <p class="font-playfair text-base italic text-ciocolatiu leading-relaxed">"${item.inner}"</p>
                         </div>
+                        <span class="text-[10px] text-auriu tracking-widest text-right font-bold uppercase">Vezi scutul ➔</span>
                     </div>
-                `;
-                grid.innerHTML += cardHTML;
-            });
-        }
+
+                    <div class="card-back absolute inset-0 bg-ciocolatiu border border-ciocolatiu rounded-2xl p-6 flex flex-col justify-center text-rozPudrat shadow-md">
+                        <h3 class="text-auriu font-bold mb-3 text-xs tracking-widest uppercase">Graniță Externă</h3>
+                        <p class="text-sm font-light leading-relaxed">${item.outer}</p>
+                        <span class="text-[10px] text-auriu tracking-widest mt-4 uppercase font-bold">➔ Înapoi la Tihnă</span>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+}
 
         // Funcția de întoarcere a cardului
         function flipCard(cardInner) {
