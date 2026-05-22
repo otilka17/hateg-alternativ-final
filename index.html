@@ -1,71 +1,83 @@
-<!DOCTYPE html>
-<html lang="ro">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Metanoia | Hațeg Alternativ</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:ital,wght@0,400;1,700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
-    <style>
-        body { background-color: #020202; color: #ffffff; font-family: 'Inter', sans-serif; }
-        .lux-card { background: #080808; border: 1px solid #1a1a1a; transition: all 0.5s ease; }
-        .lux-card:hover { border-color: #c5a059; transform: translateY(-5px); }
-        .gold-text { color: #c5a059; }
-        .btn-luxury { border: 1px solid #c5a059; color: #fff; padding: 12px 24px; text-transform: uppercase; letter-spacing: 2px; font-family: 'Cinzel'; font-size: 0.75rem; transition: 0.3s; }
-        .btn-luxury:hover { background: #c5a059; color: #000; }
-    </style>
-</head>
-<body>
+import React, { useState } from 'react';
+import { Menu, X, ArrowRight, Star, Coffee, ShieldCheck, MapPin } from 'lucide-react';
 
-    <!-- Header / Nav -->
-    <nav class="max-w-6xl mx-auto px-8 py-10 flex justify-between items-center">
-        <div class="text-2xl font-cinzel tracking-widest">METANOIA</div>
-        <div class="space-x-8 text-xs uppercase tracking-[0.2em] text-gray-400">
-            <a href="#" class="hover:text-[#c5a059]">Meniu</a>
-            <a href="#" class="hover:text-[#c5a059]">Poveste</a>
-            <a href="#" class="hover:text-[#c5a059]">Contact</a>
+/**
+ * Aplicația Metanoia Hub - O interfață modernă, responsivă.
+ * Optimizată pentru a evita aspectul de "schelet" și a oferi o experiență premium.
+ */
+export default function App() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  return (
+    <div className="min-h-screen bg-[#050505] text-white font-sans selection:bg-[#c5a059] selection:text-black">
+      {/* Navigație */}
+      <nav className="fixed w-full z-50 bg-[#050505]/80 backdrop-blur-md border-b border-white/10">
+        <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+          <div className="text-2xl font-bold tracking-tighter italic">METANOIA</div>
+          
+          {/* Desktop Nav */}
+          <div className="hidden md:flex space-x-10 text-sm uppercase tracking-widest text-gray-400">
+            {['Meniu', 'Poveste', 'Evenimente', 'Contact'].map((item) => (
+              <a key={item} href="#" className="hover:text-[#c5a059] transition-colors">{item}</a>
+            ))}
+          </div>
+
+          <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            {isMenuOpen ? <X /> : <Menu />}
+          </button>
         </div>
-    </nav>
+      </nav>
 
-    <!-- Main Section - Grid adaptabil -->
-    <main class="max-w-6xl mx-auto px-8 py-12">
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
-            
-            <!-- Coloana Stânga: Text -->
-            <div class="md:col-span-5 flex flex-col justify-center">
-                <span class="gold-text uppercase tracking-[0.3em] text-[10px] mb-4">Gastronomie și Rânduială</span>
-                <h1 class="text-5xl md:text-7xl font-playfair italic mb-8 leading-tight">Hațeg Alternativ</h1>
-                <p class="text-gray-400 text-lg mb-10 leading-relaxed font-light">
-                    Redefinim prânzul. O experiență curată, livrată cu precizie. Nu este doar catering, este modul în care alegem să ne hrănim timpul și sănătatea.
-                </p>
-                <button class="btn-luxury w-max">Comandă Săptămâna Aceasta</button>
+      {/* Hero Section */}
+      <main className="pt-32 pb-20 px-6 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-16 items-center">
+          <div>
+            <div className="inline-flex items-center space-x-2 bg-white/5 px-4 py-1 rounded-full mb-8">
+              <Star size={14} className="text-[#c5a059]" />
+              <span className="text-[10px] uppercase tracking-[0.2em]">Hațeg Alternativ</span>
             </div>
-
-            <!-- Coloana Dreapta: Grid Carduri -->
-            <div class="md:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
-                <!-- Card -->
-                <div class="lux-card p-6">
-                    <div class="h-40 bg-gray-900 mb-6 flex items-center justify-center text-gray-700 italic">Imagine Meniu</div>
-                    <h3 class="font-cinzel text-lg mb-2">Meniu Artizanal</h3>
-                    <p class="text-gray-500 text-sm italic">Gătit zilnic, ingrediente locale.</p>
-                </div>
-                <!-- Card -->
-                <div class="lux-card p-6">
-                    <div class="h-40 bg-gray-900 mb-6 flex items-center justify-center text-gray-700 italic">Imagine Livrare</div>
-                    <h3 class="font-cinzel text-lg mb-2">Logistica Precisă</h3>
-                    <p class="text-gray-500 text-sm italic">Punctualitate în Hațeg.</p>
-                </div>
+            <h1 className="text-6xl md:text-8xl font-serif italic mb-8 leading-[0.9]">
+              Gastronomie <br /> cu Suflet.
+            </h1>
+            <p className="text-gray-400 text-lg mb-10 max-w-md leading-relaxed">
+              O experiență culinară inedită, născută din dorința de a aduce rânduială și gust autentic în rutina zilnică.
+            </p>
+            <div className="flex space-x-4">
+              <button className="bg-[#c5a059] text-black px-8 py-4 uppercase text-xs font-bold tracking-widest hover:bg-white transition-all flex items-center">
+                Rezervă Masa <ArrowRight className="ml-2" size={16} />
+              </button>
+              <button className="border border-white/20 px-8 py-4 uppercase text-xs font-bold tracking-widest hover:bg-white/5 transition-all">
+                Vezi Meniul
+              </button>
             </div>
-        </div>
-    </main>
+          </div>
 
-    <!-- Footer -->
-    <footer class="max-w-6xl mx-auto px-8 py-20 border-t border-[#1a1a1a] mt-20 text-center md:text-left md:flex justify-between items-center">
-        <p class="text-[10px] uppercase tracking-[0.2em] text-gray-500 italic">© 2026 Metanoia Hațeg. Toate drepturile rezervate.</p>
-        <div class="flex space-x-6 mt-6 md:mt-0">
-            <span class="text-[10px] text-gray-600">Strada Principala, Hațeg</span>
+          {/* Grid de Carduri - Layout Desktop */}
+          <div className="grid sm:grid-cols-2 gap-6">
+            {[
+              { icon: Coffee, title: 'Cafea de Specialitate', desc: 'Prăjită local, cu respect pentru origine.' },
+              { icon: ShieldCheck, title: 'Ingrediente Curate', desc: 'Producători locali selectați atent.' },
+              { icon: MapPin, title: 'Locație Centrală', desc: 'În inima orașului Hațeg.' },
+              { icon: Star, title: 'Atmosferă Metanoia', desc: 'Spațiul unde timpul stă pe loc.' }
+            ].map((feature, i) => (
+              <div key={i} className="bg-white/5 p-8 border border-white/5 hover:border-[#c5a059] transition-all group">
+                <feature.icon className="text-[#c5a059] mb-6" size={32} />
+                <h3 className="text-xl font-serif mb-2">{feature.title}</h3>
+                <p className="text-gray-500 text-sm">{feature.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
-    </footer>
+      </main>
 
-</body>
-</html>
+      {/* Footer Minimalist */}
+      <footer className="max-w-7xl mx-auto px-6 py-12 border-t border-white/10 text-gray-600 text-xs uppercase tracking-widest flex justify-between">
+        <p>© 2026 Metanoia Hub. Toate drepturile rezervate.</p>
+        <div className="flex space-x-6">
+          <span>Instagram</span>
+          <span>Facebook</span>
+        </div>
+      </footer>
+    </div>
+  );
+}
