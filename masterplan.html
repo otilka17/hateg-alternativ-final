@@ -2,70 +2,74 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <title>Masterplan Strategic | Dakamigos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roadmap Catering Automatat</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        :root { --auriu: #C5A059; --negru: #050505; --cream: #FDFCF0; }
-        body { background: var(--negru); font-family: 'Montserrat', sans-serif; margin: 0; color: #fff; }
-        
-        .container { padding: 60px; max-width: 1200px; margin: auto; }
-        h1 { font-family: 'Bodoni Moda', serif; color: var(--auriu); text-align: center; margin-bottom: 50px; }
-
-        .cards-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-        .card { 
-            background: var(--cream); color: #000; padding: 30px; border: 2px solid var(--auriu); 
-            text-align: center; cursor: pointer; transition: 0.3s; border-radius: 8px;
-        }
-        .card:hover { transform: translateY(-10px); background: #fff; }
-        .card h3 { font-family: 'Bodoni Moda'; margin-bottom: 15px; }
-
-        /* Panoul lateral dinamic */
-        #panel { 
-            position: fixed; top: 0; right: -400px; width: 350px; height: 100%; 
-            background: var(--cream); color: #000; padding: 40px; transition: 0.5s; 
-            box-shadow: -10px 0 30px rgba(0,0,0,0.5); z-index: 100; overflow-y: auto;
-        }
-        #panel.active { right: 0; }
-        .close-btn { cursor: pointer; font-weight: bold; font-size: 1.2rem; }
+        .step-card { transition: all 0.3s ease; }
+        .step-card:hover { transform: scale(1.02); }
+        .active { border-left: 4px solid #3b82f6; }
     </style>
 </head>
-<body>
+<body class="bg-gray-50 p-4 md:p-10">
 
-<div class="container">
-    <h1>STRATEGIA DE CREȘTERE DAKAMIGOS</h1>
-    
-    <div class="cards-grid">
-        <div class="card" onclick="show('01. MANAGEMENTUL TIMPULUI', 'Flux de Precizie în Totești: Dakamigos utilizează Senior ERP pentru un control riguros al trasabilității. Când o instituție plasează o pre-comandă, ERP-ul realizează o explozie a rețetarului (BOM). Automatizează bonul de consum, scăzând cantitățile din gestiunea Materie Primă. Rezultat: standardizarea gustului și eliminarea totală a risipei.')">
-            <h3>01. TIMP</h3>
-            <p>Precizie în Totești.</p>
-        </div>
-        <div class="card" onclick="show('02. INOVAȚIE ȘI TEHNOLOGIE', 'Standarde Nespresso: Doze etanșe, control total al calității. 80% din ingrediente provin din microferma proprie, garantând trasabilitatea de la sursă la produsul finit.')">
-            <h3>02. INOVAȚIE</h3>
-            <p>Standarde Nespresso.</p>
-        </div>
-        <div class="card" onclick="show('03. SCALARE ȘI INSTITUȚII', 'Piața țintă: Grădinițe și Instituții Publice. Sistem digital de pre-comandă automatizat care generează facturi și rapoarte nutriționale pentru clienții B2G.')">
-            <h3>03. SCALARE</h3>
-            <p>Piața țintă.</p>
-        </div>
-        <div class="card" onclick="show('04. SUCCES ȘI INVESTIȚIE', '65.000 RON necesar pentru: Echipamente (Grill, Hotă, Cuptor), Linie Capsat și Aprovizionare Fermă. Orizont: Hub Gastronomic ISHO Timișoara.')">
-            <h3>04. SUCCES</h3>
-            <p>Solicitare investiție.</p>
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold text-gray-800 mb-2">Roadmap: Catering 2.0</h1>
+        <p class="text-gray-600 mb-8">Click pe o etapă pentru a vedea detaliile. Automatizăm, deci economisim timp.</p>
+
+        <div class="space-y-4" id="roadmap">
+            <!-- Etapa 1 -->
+            <div class="step-card bg-white p-6 rounded-xl shadow-sm border-l-4 border-blue-500 cursor-pointer" onclick="toggleDetails('d1')">
+                <div class="flex justify-between items-center">
+                    <h2 class="text-xl font-semibold">1. Platforma Web & Clienti</h2>
+                    <span class="text-blue-500 font-bold">LUNA 1</span>
+                </div>
+                <div id="d1" class="hidden mt-4 text-gray-600">
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>Interfață de comandă ultra-rapidă (mobile-first).</li>
+                        <li>Conturi clienți cu istoric și favorite.</li>
+                        <li>Plăți integrate automat (Stripe/Netopia).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Etapa 2 -->
+            <div class="step-card bg-white p-6 rounded-xl shadow-sm border-l-4 border-yellow-500 cursor-pointer" onclick="toggleDetails('d2')">
+                <div class="flex justify-between items-center">
+                    <h2 class="text-xl font-semibold">2. Automatizare Bucătărie</h2>
+                    <span class="text-yellow-500 font-bold">LUNA 2</span>
+                </div>
+                <div id="d2" class="hidden mt-4 text-gray-600">
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>Printare automată tichete în bucătărie.</li>
+                        <li>Calcul automat de ingrediente necesare (inventar smart).</li>
+                        <li>Dashboard pentru șeful de bucătărie.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Etapa 3 -->
+            <div class="step-card bg-white p-6 rounded-xl shadow-sm border-l-4 border-green-500 cursor-pointer" onclick="toggleDetails('d3')">
+                <div class="flex justify-between items-center">
+                    <h2 class="text-xl font-semibold">3. Logistică & Livrare</h2>
+                    <span class="text-green-500 font-bold">LUNA 3</span>
+                </div>
+                <div id="d3" class="hidden mt-4 text-gray-600">
+                    <ul class="list-disc pl-5 space-y-1">
+                        <li>Optimizarea rutelor prin GPS.</li>
+                        <li>Notificări SMS clienți (Status: "În livrare").</li>
+                        <li>Confirmare livrare digitală (semnătură pe ecran).</li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 
-<div id="panel">
-    <div class="close-btn" onclick="document.getElementById('panel').classList.remove('active')">ÎNCHIDE X</div>
-    <h2 id="p-title" style="color:var(--auriu); margin: 20px 0;"></h2>
-    <p id="p-text" style="line-height: 1.6;"></p>
-</div>
-
-<script>
-    function show(t, txt) {
-        document.getElementById('p-title').innerText = t;
-        document.getElementById('p-text').innerText = txt;
-        document.getElementById('panel').classList.add('active');
-    }
-</script>
-
+    <script>
+        function toggleDetails(id) {
+            const el = document.getElementById(id);
+            el.classList.toggle('hidden');
+        }
+    </script>
 </body>
 </html>
