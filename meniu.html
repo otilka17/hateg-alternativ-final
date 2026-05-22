@@ -2,45 +2,52 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <title>Hațeg Alternativ | Meniu Săptămânal</title>
+    <title>Meniu Hațeg Alternativ | Prezentare</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background: #050505; color: #fff; font-family: 'Inter', sans-serif; }
-        .page { display: none; }
-        .active { display: block; }
-        .lux-card { border: 1px solid #1a1a1a; background: #000; padding: 20px; margin-bottom: 20px; }
+        body { background: #000; color: #fff; font-family: 'Inter'; }
+        .lux-card { border: 1px solid #1a1a1a; background: #050505; transition: 0.3s; }
         .gold { color: #c5a059; }
-        .nav-btn { cursor: pointer; border: 1px solid #c5a059; padding: 12px 24px; color: #c5a059; font-family: 'Cinzel'; font-size: 12px; text-transform: uppercase; letter-spacing: 2px; }
-        .nav-btn:hover { background: #c5a059; color: #000; }
+        .page { display: none; animation: fadeIn 0.5s; }
+        .active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <body class="p-4 md:p-12">
-    <div class="max-w-3xl mx-auto">
-        <h1 class="text-4xl italic font-serif text-center mb-10 gold">Rânduiala Săptămânală</h1>
 
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl italic font-serif text-center mb-10 gold">Meniu Săptămânal</h1>
+        
         <div id="container-zile">
             <script>
-                const zile = ["Luni", "Marti", "Miercuri", "Joi", "Vineri"];
-                zile.forEach((zi, index) => {
+                // Aici stocăm meniul tău. Editezi o singură dată și totul se actualizează.
+                const meniu = [
+                    { zi: "LUNI", fel1: "Ciorbă de găină cu tăieței", calorii1: "150 kcal", p1: "12g", g1: "5g", fel2: "Tocăniță de porc", calorii2: "650 kcal", p2: "45g", g2: "25g", img: "romanian-food" },
+                    { zi: "MARȚI", fel1: "Ciorbă de văcuță", calorii1: "180 kcal", p1: "15g", g1: "6g", fel2: "Pulpă de pui la ceaun", calorii2: "580 kcal", p2: "48g", g2: "20g", img: "roasted-chicken" },
+                    { zi: "MIERCURI", fel1: "Supă cremă de legume", calorii1: "120 kcal", p1: "5g", g1: "3g", fel2: "Mușchiuleț grătar", calorii2: "450 kcal", p2: "42g", g2: "10g", img: "grilled-meat" },
+                    { zi: "JOI", fel1: "Ciorbă rădăuțeană", calorii1: "220 kcal", p1: "18g", g1: "9g", fel2: "Sărmăluțe în varză", calorii2: "620 kcal", p2: "35g", g2: "30g", img: "cabbage-rolls" },
+                    { zi: "VINERI", fel1: "Ciorbă de burtă", calorii1: "250 kcal", p1: "20g", g1: "12g", fel2: "Pui cu smântână", calorii2: "550 kcal", p2: "40g", g2: "22g", img: "tripe-soup" }
+                ];
+
+                meniu.forEach((m, index) => {
                     document.write(`
                         <div id="page-${index + 1}" class="page ${index === 0 ? 'active' : ''}">
-                            <h2 class="text-3xl text-gold mb-6 font-cinzel italic">${zi}</h2>
-                            <div class="lux-card">
-                                <h3 class="text-xl font-bold italic mb-2">Mic Dejun</h3>
-                                <div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-[10px] text-gray-400 uppercase">
-                                    <span>Gramaj: 180g</span> <span>Calorii: 310 kcal</span> <span>Proteine: 22g</span> <span>Grăsimi: 11g</span>
+                            <div class="lux-card p-8">
+                                <h2 class="text-3xl text-gold mb-8 font-cinzel italic">${m.zi}</h2>
+                                <img src="https://source.unsplash.com/800x400/?${m.img}" class="w-full h-64 object-cover mb-8 grayscale hover:grayscale-0 transition">
+                                
+                                <div class="space-y-6">
+                                    <div class="flex justify-between border-b border-[#1a1a1a] pb-4">
+                                        <div><h3 class="font-bold">${m.fel1}</h3><p class="text-[10px] uppercase text-gray-500">Gramaj: 400g</p></div>
+                                        <div class="text-[10px] text-right uppercase gold">${m.calorii1} | ${m.p1} Proteine | ${m.g1} Grăsimi</div>
+                                    </div>
+                                    <div class="flex justify-between border-b border-[#1a1a1a] pb-4">
+                                        <div><h3 class="font-bold">${m.fel2}</h3><p class="text-[10px] uppercase text-gray-500">Gramaj: 300g</p></div>
+                                        <div class="text-[10px] text-right uppercase gold">${m.calorii2} | ${m.p2} Proteine | ${m.g2} Grăsimi</div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="lux-card">
-                                <h3 class="text-xl font-bold italic mb-2">Prânz (Fel 1 + 2)</h3>
-                                <div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-[10px] text-gray-400 uppercase">
-                                    <span>Gramaj: 400g</span> <span>Calorii: 650 kcal</span> <span>Proteine: 45g</span> <span>Grăsimi: 25g</span>
-                                </div>
-                            </div>
-                            <div class="mt-8 p-6 border-gold border text-center">
-                                <p class="text-xl font-serif italic mb-4">Total: 40 RON</p>
-                                <a href="rezervare.html?zi=${zi}&pret=40" class="block w-full bg-[#c5a059] text-black font-bold py-4 uppercase tracking-widest hover:bg-white">
-                                    COMANDĂ PENTRU ${zi.toUpperCase()}
+                                <a href="rezervare.html?zi=${m.zi}&pret=40" class="block mt-10 text-center border border-gold py-4 text-gold hover:bg-gold hover:text-black transition uppercase text-xs tracking-widest font-bold">
+                                    COMANDĂ PENTRU ${m.zi}
                                 </a>
                             </div>
                         </div>
@@ -50,19 +57,19 @@
         </div>
 
         <div class="flex justify-center gap-4 mt-10">
-            <button class="nav-btn" onclick="schimbaZi(-1)">← ZIUA ANTERIOARĂ</button>
-            <button class="nav-btn" onclick="schimbaZi(1)">ZIUA URMĂTOARE →</button>
+            <button class="border border-gold px-8 py-3 text-gold hover:bg-gold hover:text-black uppercase text-xs" onclick="schimbaZi(-1)">ÎNAPOI</button>
+            <button class="border border-gold px-8 py-3 text-gold hover:bg-gold hover:text-black uppercase text-xs" onclick="schimbaZi(1)">ZIUA URMĂTOARE</button>
         </div>
     </div>
 
     <script>
-        let pagCurenta = 1;
+        let pag = 1;
         function schimbaZi(step) {
-            document.getElementById('page-' + pagCurenta).classList.remove('active');
-            pagCurenta += step;
-            if(pagCurenta > 5) pagCurenta = 1;
-            if(pagCurenta < 1) pagCurenta = 5;
-            document.getElementById('page-' + pagCurenta).classList.add('active');
+            document.getElementById('page-' + pag).classList.remove('active');
+            pag += step;
+            if(pag > 5) pag = 1;
+            if(pag < 1) pag = 5;
+            document.getElementById('page-' + pag).classList.add('active');
         }
     </script>
 </body>
