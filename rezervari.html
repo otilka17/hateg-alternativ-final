@@ -145,5 +145,14 @@
         nrPortiiInput.addEventListener('change', calculateMenu);
         extras.forEach(cb => cb.addEventListener('change', calculateMenu));
     </script>
+    <script>
+    // Preia parametrul din URL (ex: rezervare.html?meniu=85)
+    const urlParams = new URLSearchParams(window.location.search);
+    const meniuPret = urlParams.get('meniu');
+    if(meniuPret) {
+        document.getElementById('meniu_baza').value = meniuPret;
+        calculateMenu(); // Recalculează suma imediat
+    }
+</script>
 </body>
 </html>
