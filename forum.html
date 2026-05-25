@@ -3,74 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jurnalul Rânduielii | Metanoia</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,700&family=Cinzel:wght@400;900&family=Inter:wght@200;400;800&display=swap" rel="stylesheet">
+    <title>Jurnal SOulmeal | Metanoia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
-        body { background: #000; color: #f0f0f0; font-family: 'Inter', sans-serif; margin: 0; padding: 0; }
-        .hero { padding: 80px 20px; text-align: center; border-bottom: 1px solid #222; }
-        h1 { font-family: 'Playfair Display'; font-style: italic; font-size: 3rem; color: #fff; margin-bottom: 10px; }
-        p { font-family: 'Cinzel'; color: #c5a059; letter-spacing: 4px; font-size: 0.7rem; }
-        .container { max-width: 600px; margin: 40px auto; padding: 20px; }
-        textarea { width: 100%; background: #050505; border: 1px solid #333; color: #fff; padding: 20px; font-family: 'Inter'; font-size: 1rem; outline: none; margin-bottom: 15px; }
-        textarea:focus { border-color: #c5a059; }
-        button { background: #c5a059; color: #000; border: none; padding: 15px 30px; font-family: 'Cinzel'; font-weight: 900; cursor: pointer; width: 100%; }
-        .post { border-left: 2px solid #c5a059; padding-left: 20px; margin-top: 40px; }
-        .post-content { font-size: 1.1rem; line-height: 1.6; margin-bottom: 10px; }
-        .post-date { font-size: 0.6rem; color: #666; font-family: 'Cinzel'; }
+        :root { --verde: #1b3022; --auriu: #c5a059; --crem: #fdfcf8; }
+        body { font-family: 'Inter', sans-serif; background: var(--crem); color: var(--verde); margin: 0; }
+        .container { max-width: 700px; margin: 0 auto; padding: 20px; }
+        
+        h1 { font-family: 'Playfair Display'; font-size: 2.5rem; text-align: center; margin-top: 50px; color: var(--verde); }
+        .subtitle { text-align: center; color: var(--auriu); font-family: 'Cinzel', serif; letter-spacing: 2px; font-size: 0.8rem; margin-bottom: 40px; }
+        
+        .input-box { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin: 30px 0; border: 1px solid #f0f0f0; }
+        textarea { width: 100%; height: 100px; border: 1px solid #eee; border-radius: 12px; padding: 15px; background: #fafafa; outline: none; margin-bottom: 10px; font-family: 'Inter'; }
+        
+        .btn-gold { background: var(--auriu); color: white; padding: 12px 30px; border-radius: 30px; border: none; font-weight: 600; cursor: pointer; transition: 0.3s; width: 100%; }
+        .btn-gold:hover { background: var(--verde); }
+
+        .post-card { background: white; padding: 25px; border-radius: 15px; margin-bottom: 20px; border-left: 4px solid var(--auriu); animation: aparitie 0.5s ease-out; }
+        @keyframes aparitie { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .post-meta { font-size: 0.75rem; color: var(--auriu); font-weight: 700; margin-top: 10px; display: block; text-transform: uppercase; }
     </style>
 </head>
 <body>
 
-    <div class="hero">
-        <h1>Jurnalul Rânduielii</h1>
-        <p>SPAȚIUL DE ALINIERE SISTEMICĂ</p>
+<div class="container">
+    <h1>Jurnal SOulmeal</h1>
+    <div class="subtitle">EXPERIENȚA ALIMENTAȚIEI CONȘTIENTE</div>
+
+    <div class="input-box">
+        <textarea id="mesajForum" placeholder="Cum te-a transformat gustul de astăzi?"></textarea>
+        <button onclick="posteaza()" class="btn-gold">Rânduiește experiența</button>
     </div>
 
-    <div class="container">
-        <textarea id="post-textarea" rows="3" placeholder="Scrie gândul tău..."></textarea>
-        <button id="btn-submit">PUBLICĂ</button>
-
-        <div id="posts-list">
-            </div>
+    <div id="lista">
+        <div class="post-card">
+            <p>"SOulmeal nu este doar hrană, este un reset mental. Claritatea pe care o am după masa de prânz este incredibilă."</p>
+            <span class="post-meta">Arhitect, comunitatea Metanoia</span>
+        </div>
     </div>
+</div>
 
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getFirestore, collection, addDoc, onSnapshot, serverTimestamp, query, orderBy } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+<script>
+function posteaza(){
+    const input = document.getElementById("mesajForum");
+    if(!input.value) return;
+    
+    const div = document.createElement("div");
+    div.className = "post-card";
+    
+    div.innerHTML = `
+        <p>"${input.value}"</p>
+        <span class="post-meta">Tu, în fluxul Metanoia</span>
+    `;
+    
+    document.getElementById("lista").prepend(div);
+    input.value = "";
+}
+</script>
 
-        // Configurația ta (asigură-te că este corectă)
-        const firebaseConfig = { /* introdu aici config-ul tău */ };
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-
-        const btn = document.getElementById('btn-submit');
-        const list = document.getElementById('posts-list');
-
-        // Publicare
-        btn.onclick = async () => {
-            const content = document.getElementById('post-textarea').value;
-            if (!content) return;
-            await addDoc(collection(db, "posts"), {
-                content: content,
-                createdAt: serverTimestamp()
-            });
-            document.getElementById('post-textarea').value = '';
-        };
-
-        // Citire
-        const q = query(collection(db, "posts"), orderBy("createdAt", "desc"));
-        onSnapshot(q, (snapshot) => {
-            list.innerHTML = '';
-            snapshot.forEach(doc => {
-                const data = doc.data();
-                list.innerHTML += `
-                    <div class="post">
-                        <div class="post-content">${data.content}</div>
-                        <div class="post-date">POSTARE RÂNDUITĂ</div>
-                    </div>
-                `;
-            });
-        });
-    </script>
 </body>
 </html>
