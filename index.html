@@ -1,102 +1,227 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ro">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>METANOIA | Configurator Gourmet</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap');
-        body { background: #050505; color: #fff; font-family: 'Inter', sans-serif; }
-        .font-brand { font-family: 'Cinzel', serif; }
-        .gold { color: #c5a059; }
-        .bg-gourmet { background: #0c0c0c; border: 1px solid #1a1a1a; }
-        .active-card { border: 1px solid #c5a059; background: #14110a; }
-        #menu-overlay { transition: all 0.4s ease; }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Meniuri | Negru–Auriu</title>
+  <link href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Cinzel:wght@400;900&family=Inter:wght@300;400;700&display=swap)" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#050505; --panel:#0b0b0b; --ink:#e8e6e3;
+      --gold:#c8a657; --gold-2:#b69345; --muted:#9b9b9b; --line:#1a1a1a;
+      --ok:#35c46b; --err:#ff5a5a;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; background:var(--bg); color:var(--ink);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+    }
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:1120px; margin:0 auto; padding:24px}
+    /* header */
+    .header{border-bottom:1px solid var(--line); padding:18px 0 22px; display:flex; align-items:center; justify-content:space-between}
+    .brand{font-family:Cinzel, serif; font-weight:900; letter-spacing:5px; color:var(--gold); font-size:24px}
+    .nav a{font-size:12px; text-transform:uppercase; color:#aaa; margin-left:18px}
+    .nav a:hover{color:var(--gold)}
+    /* hero */
+    .hero{display:grid; grid-template-columns:1.1fr 1fr; gap:28px; align-items:center; padding:48px 0}
+    .hero h1{font-family:Cinzel, serif; font-weight:900; letter-spacing:2px; font-size:44px; margin:0 0 12px}
+    .hero p{color:#bbb; margin:0 0 18px}
+    .hero img{width:100%; height:360px; object-fit:cover; border:1px solid var(--line)}
+    /* cards grid */
+    .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px}
+    @media (max-width:980px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}}
+    @media (max-width:640px){.grid{grid-template-columns:1fr}}
+    .card{background:var(--panel); border:1px solid var(--line); padding:18px; transition:border-color .25s}
+    .card:hover{border-color:var(--gold)}
+    .card img{width:100%; height:180px; object-fit:cover; margin-bottom:14px}
+    .card h3{font-family:Cinzel, serif; color:var(--gold); letter-spacing:2px; font-size:18px; margin:0 0 8px}
+    .muted{color:var(--muted); font-size:13px}
+    .note{color:#8a8a8a; font-size:11px; font-style:italic; margin-top:8px}
+    /* buttons */
+    .btn{display:inline-flex; align-items:center; justify-content:center; gap:8px;
+         border:1px solid var(--gold); color:var(--gold); background:transparent;
+         padding:10px 18px; font-size:12px; text-transform:uppercase; letter-spacing:2px; cursor:pointer}
+    .btn.block{width:100%; text-align:center}
+    .btn:hover{background:var(--gold); color:#000}
+    .cta{background:var(--gold); color:#000; border-color:var(--gold)}
+    .cta:hover{background:var(--gold-2)}
+    /* sections */
+    .section{padding:40px 0}
+    .section.-border{border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
+    .title{font-family:Cinzel, serif; font-size:24px; letter-spacing:2px; color:var(--gold); margin:0 0 12px}
+    /* coverage */
+    .cover-wrap{display:grid; grid-template-columns:1fr 360px; gap:20px}
+    @media (max-width:980px){.cover-wrap{grid-template-columns:1fr}}
+    .panel{background:var(--panel); border:1px solid var(--line); padding:14px}
+    .input, .select{
+      width:100%; background:#000; color:var(--ink); border:1px solid #2a2a2a;
+      padding:10px 12px; outline:none
+    }
+    .input:focus, .select:focus{border-color:var(--gold)}
+    .hint{font-size:12px; color:#8a8a8a}
+    .ok{color:var(--ok)} .err{color:var(--err)}
+    /* pricing area */
+    .row{display:flex; align-items:center; gap:10px}
+    .price{font-size:28px; font-weight:800; color:#9dd08d}
+    .small{font-size:12px; color:#aaa}
+    .divider{height:1px; background:#121212; margin:12px 0}
+    footer{border-top:1px solid var(--line); color:#8a8a8a; font-size:12px; padding:18px 0; margin-top:40px}
+  </style>
 </head>
-<body class="pb-24">
+<body>
+  <div class="wrap">
+    <!-- Header -->
+    <header class="header">
+      <a class="brand" href="#">METANOIA</a>
+      <nav class="nav">
+        <a href="#meniuri">Meniuri</a>
+        <a href="#cum">Cum funcționează</a>
+        <a href="#zona">Suntem în zonă?</a>
+      </nav>
+    </header>
 
-    <nav class="fixed w-full z-50 p-6 flex justify-between items-center bg-black/80 backdrop-blur-lg">
-        <h1 class="text-2xl tracking-[0.2em] font-brand gold">METANOIA</h1>
-        <button onclick="document.getElementById('menu-overlay').classList.remove('hidden')" class="gold"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg></button>
-    </nav>
+    <!-- Hero -->
+    <section class="hero">
+      <div>
+        <h1>Meniuri proaspete. Livrare dimineața.</h1>
+        <p>3 mese + 2 gustări / zi. Alege 1–4 săptămâni. Stil vizual negru–auriu.</p>
+        <a class="btn cta" href="#meniuri">Comandă →</a>
+      </div>
+      <img src="[images.unsplash.com](https://images.unsplash.com/photo-1543353071-10c8ba85a904?q=80&w=1200&auto=format&fit=crop)" alt="">
+    </section>
 
-    <div id="menu-overlay" class="hidden fixed inset-0 bg-black z-[100] flex flex-col items-center justify-center space-y-10 font-brand text-3xl gold">
-        <button onclick="document.getElementById('menu-overlay').classList.add('hidden')" class="absolute top-8 right-8">✕</button>
-        <p>Configurator</p>
-        <p>Harta GPS</p>
-        <p>Povestea Rânduielii</p>
-    </div>
+    <!-- Suntem în zonă -->
+    <section id="zona" class="section">
+      <h2 class="title">Suntem în zonă.</h2>
+      <p class="muted" style="margin-bottom:14px">Introdu adresa și îți spunem dacă livrăm.</p>
+      <div class="cover-wrap">
+        <img src="[images.unsplash.com](https://images.unsplash.com/photo-1528909514045-2fa4ac7a08ba?q=80&w=1200&auto=format&fit=crop)" style="width:100%; height:320px; object-fit:cover; border:1px solid var(--line)" alt="">
+        <div class="panel">
+          <label class="small">Adresa ta</label>
+          <input id="adresa" class="input" placeholder="Str. Exemplu 1, București">
+          <button class="btn block" style="margin-top:10px" onclick="verificaZona()">Verifică acoperirea</button>
+          <p id="rezZona" class="small" style="margin-top:10px"></p>
+          <p class="hint" style="margin-top:6px">Program livrare: 05:00–09:00.</p>
+        </div>
+      </div>
+    </section>
 
-    <main class="max-w-2xl mx-auto pt-28 p-6 space-y-12">
-        
-        <section class="bg-gourmet p-8 rounded-3xl shadow-xl">
-            <h2 class="font-brand text-3xl mb-6">OptimBox Metanoia</h2>
-            
-            <div class="space-y-6">
-                <div>
-                    <label class="text-[10px] uppercase tracking-widest opacity-50 block mb-3">Durată (Săptămâni)</label>
-                    <div class="grid grid-cols-4 gap-2">
-                        <button onclick="select(this, 'sapt')" class="bg-[#1a1a1a] py-3 rounded-lg hover:border-[#c5a059] border border-transparent transition-all">1</button>
-                        <button onclick="select(this, 'sapt')" class="bg-[#1a1a1a] py-3 rounded-lg hover:border-[#c5a059] border border-transparent transition-all">2</button>
-                        <button onclick="select(this, 'sapt')" class="bg-[#1a1a1a] py-3 rounded-lg hover:border-[#c5a059] border border-transparent transition-all">3</button>
-                        <button onclick="select(this, 'sapt')" class="bg-[#1a1a1a] py-3 rounded-lg hover:border-[#c5a059] border border-transparent transition-all">4</button>
-                    </div>
-                </div>
+    <!-- Cum funcționează -->
+    <section id="cum" class="section -border">
+      <h2 class="title">Cum funcționează</h2>
+      <div class="grid">
+        <div class="card">
+          <div style="font-size:40px">🖥️</div>
+          <h3 class="title" style="font-size:16px; margin-top:6px">Plasezi comanda</h3>
+          <p class="muted">Până la ora 14:00 pentru livrare din ziua următoare.</p>
+        </div>
+        <div class="card">
+          <div style="font-size:40px">📧</div>
+          <h3 class="title" style="font-size:16px; margin-top:6px">Primești confirmarea</h3>
+          <p class="muted">Email/SMS cu detaliile abonamentului.</p>
+        </div>
+        <div class="card">
+          <div style="font-size:40px">⏰</div>
+          <h3 class="title" style="font-size:16px; margin-top:6px">Aștepți curierul</h3>
+          <p class="muted">În intervalul ales, 05:00–09:00.</p>
+        </div>
+      </div>
+    </section>
 
-                <div>
-                    <label class="text-[10px] uppercase tracking-widest opacity-50 block mb-3">Aport Caloric</label>
-                    <div class="grid grid-cols-2 gap-2">
-                        <button onclick="select(this, 'kcal')" class="bg-[#1a1a1a] py-4 rounded-lg hover:border-[#c5a059] border border-transparent transition-all">1500 kcal</button>
-                        <button onclick="select(this, 'kcal')" class="bg-[#1a1a1a] py-4 rounded-lg hover:border-[#c5a059] border border-transparent transition-all">2000 kcal</button>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <!-- Meniuri + calculator -->
+    <section id="meniuri" class="section">
+      <h2 class="title">Meniuri</h2>
+      <div class="grid">
+        <!-- Plan 1 -->
+        <article class="card">
+          <img src="[images.unsplash.com](https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?q=80&w=1200&auto=format&fit=crop)" alt="">
+          <h3>OPTIMBOX</h3>
+          <p class="muted">3 mese + 2 gustări / zi</p>
 
-        <section>
-            <h3 class="font-brand text-2xl gold mb-6">Meniu Săptămânal</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div class="bg-gourmet p-6 rounded-2xl">
-                    <h4 class="font-bold">Vita Angus Gourmet</h4>
-                    <p class="text-[10px] uppercase text-gray-400 mt-1">Carne premium • Sos vin sec</p>
-                    <p class="mt-4 text-sm gold font-bold">45.00 RON</p>
-                </div>
-                <div class="bg-gourmet p-6 rounded-2xl">
-                    <h4 class="font-bold">Somon Sălbatic</h4>
-                    <p class="text-[10px] uppercase text-gray-400 mt-1">Omega 3 • Legume la abur</p>
-                    <p class="mt-4 text-sm gold font-bold">52.00 RON</p>
-                </div>
-            </div>
-        </section>
+          <div class="divider"></div>
 
-        <section class="border-t border-[#1a1a1a] pt-10">
-            <h3 class="font-brand text-2xl gold mb-6">Locație GPS</h3>
-            <div class="bg-[#1a1a1a] h-60 rounded-3xl flex items-center justify-center opacity-50">
-                [Harta Hațeg - Totești / Localizare Interactivă]
-            </div>
-        </section>
-    </main>
+          <label class="small">Săptămâni</label>
+          <input id="w" type="range" min="1" max="4" value="1" style="width:100%">
+          <div class="small" style="display:flex; justify-content:space-between"><span>1</span><span>2</span><span>3</span><span>4</span></div>
 
-    <div class="fixed bottom-0 w-full p-6 bg-gradient-to-t from-black to-transparent border-t border-[#1a1a1a]">
-        <button onclick="sendOrder()" class="w-full bg-[#c5a059] text-black font-bold py-5 rounded-2xl uppercase tracking-widest text-sm hover:opacity-90">
-            Trimite Configurația
-        </button>
-    </div>
+          <div style="height:10px"></div>
+          <label class="small">Include weekend</label>
+          <select id="d" class="select">
+            <option value="5">Nu (5 zile)</option>
+            <option value="7">Da (7 zile)</option>
+          </select>
 
-    <script>
-        function select(el, group) {
-            document.querySelectorAll(`[onclick*="${group}"]`).forEach(btn => btn.classList.remove('active-card'));
-            el.classList.add('active-card');
-        }
+          <div class="divider"></div>
 
-        async function sendOrder() {
-            // AICI PUI LINK-UL DE WEBHOOK DIN MAKE
-            const WEBHOOK = "AICI_PUNE_LINKUL_MAKE_COM";
-            
-            alert("Configurația a fost trimisă către bucătărie!");
-        }
-    </script>
+          <div class="small">Preț/masă: <b id="pmeal">29.0</b> RON</div>
+          <div class="row"><span class="small">TOTAL/săptămână:</span> <span class="price" id="pweek">—</span> <span>RON</span></div>
+          <div class="small">Prețurile sunt calculate per masă.</div>
+          <div class="small" style="margin-top:6px">Total pentru <span id="wlabel">1</span> săpt.: <b id="grand">—</b> RON</div>
+          <button class="btn cta block" style="margin-top:12px">Comandă OptimBox</button>
+        </article>
+
+        <!-- Plan 2 -->
+        <article class="card">
+          <img src="[images.unsplash.com](https://images.unsplash.com/photo-1478145046317-39f10e56b5e9?q=80&w=1200&auto=format&fit=crop)" alt="">
+          <h3>COMFORTBOX</h3>
+          <p class="muted">Rețete clasice, hrănitoare.</p>
+          <div class="divider"></div>
+          <button class="btn block">Comandă</button>
+        </article>
+
+        <!-- Plan 3 -->
+        <article class="card">
+          <img src="[images.unsplash.com](https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?q=80&w=1200&auto=format&fit=crop)" alt="">
+          <h3>CUSTOM</h3>
+          <p class="muted">Îți creezi propriul meniu.</p>
+          <div class="divider"></div>
+          <button class="btn block">Configurează</button>
+        </article>
+      </div>
+    </section>
+
+    <footer>© Metanoia. Prețuri în RON. Imagini ilustrative.</footer>
+  </div>
+
+  <script>
+    // Parametri simpli
+    const mealsPerDay = 5;          // 3 mese + 2 gustări
+    const pricePerMeal = 29.0;      // RON/masă
+    const discount = {1:0, 2:0.03, 3:0.05, 4:0.08};
+
+    const w = document.getElementById('w');
+    const d = document.getElementById('d');
+    const pmeal = document.getElementById('pmeal');
+    const pweek = document.getElementById('pweek');
+    const grand = document.getElementById('grand');
+    const wlabel = document.getElementById('wlabel');
+    pmeal.textContent = pricePerMeal.toFixed(1);
+
+    function calc(){
+      const days = parseInt(d.value,10);
+      const weeks = parseInt(w.value,10);
+      const baseWeek = Math.round(mealsPerDay * pricePerMeal * days);
+      const afterDisc = Math.round(baseWeek * (1 - (discount[weeks]||0)));
+      pweek.textContent = afterDisc.toString();
+      wlabel.textContent = weeks.toString();
+      grand.textContent = (afterDisc * weeks).toString();
+    }
+    w.addEventListener('input', calc);
+    d.addEventListener('change', calc);
+    calc();
+
+    // Verificare zonă foarte simplă
+    function verificaZona(){
+      const v = document.getElementById('adresa').value.toLowerCase();
+      const ok = v.includes('bucure');
+      const out = document.getElementById('rezZona');
+      out.textContent = ok ? 'Livrăm în zona ta.' : 'Încă nu livrăm aici.';
+      out.className = 'small ' + (ok ? 'ok' : 'err');
+    }
+    window.verificaZona = verificaZona;
+  </script>
 </body>
 </html>
