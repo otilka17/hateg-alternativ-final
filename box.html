@@ -2,39 +2,58 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <title>METANOIA | Box Engine</title>
+    <title>METANOIA | Hub Gastronomic</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;900&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;900&family=Inter:wght@200;400&family=Playfair+Display:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
     <style>
         body { background: #050505; color: #fff; font-family: 'Inter', sans-serif; }
-        .card-zi { border: 1px solid #1a1a1a; background: #000; transition: 0.3s; }
-        .btn-meniu { cursor: pointer; border: 1px solid #c5a059; padding: 10px 20px; color: #c5a059; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; transition: 0.3s; }
-        .btn-meniu:hover { background: #c5a059; color: #000; }
+        .card-produs { border: 1px solid #1a1a1a; transition: 0.4s; background: #000; }
+        .card-produs:hover { border-color: #c5a059; }
+        .btn-add { border: 1px solid #c5a059; color: #c5a059; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; transition: 0.3s; }
+        .btn-add:hover { background: #c5a059; color: #000; }
     </style>
 </head>
-<body class="p-8 pb-32">
+<body class="pb-32">
 
-    <main class="max-w-4xl mx-auto">
-        <h1 class="font-cinzel text-3xl text-[#c5a059] mb-12 text-center">CONFIGURARE BOX</h1>
+    <!-- Header -->
+    <header class="p-8 border-b border-[#1a1a1a] text-center">
+        <h1 class="font-cinzel text-4xl text-[#c5a059] tracking-[8px]">METANOIA</h1>
+        <p class="text-[10px] uppercase tracking-[4px] text-gray-500 mt-2">Sistem Integrat de Hrană</p>
+    </header>
+
+    <!-- Meniu Grid -->
+    <main class="max-w-5xl mx-auto p-6">
+        <h2 class="font-playfair italic text-2xl text-gray-300 mb-10 text-center">Configurările Săptămânii</h2>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="meniu-grid">
-            <div class="card-zi p-6" data-nume="Meniu Luni" data-pret="20.5">
-                <h2 class="font-cinzel text-lg mb-2">LUNI</h2>
-                <p class="text-sm text-gray-400 mb-6">Supă pui, Ceaun cu piure</p>
-                <button class="btn-meniu w-full" onclick="adaugaProdus(this)">Adaugă (20.5 RON)</button>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="meniu-container">
+            <!-- Card Produs -->
+            <div class="card-produs p-6" data-nume="Ceaun Pui" data-pret="20.50">
+                <h3 class="font-bold mb-2">Ceaun de pui cu piure</h3>
+                <p class="text-[10px] text-gray-500 mb-6 uppercase">Gătit lent / SOul meal</p>
+                <button onclick="adaugaProdus(this)" class="btn-add w-full py-3">Adaugă (20.50 RON)</button>
             </div>
 
-            <div class="card-zi p-6" data-nume="Doza Proteică" data-pret="15.0">
-                <h2 class="font-cinzel text-lg mb-2">ENERGIE</h2>
-                <p class="text-sm text-gray-400 mb-6">Doza Proteică „Metanoia”</p>
-                <button class="btn-meniu w-full" onclick="adaugaProdus(this)">Adaugă (15.0 RON)</button>
+            <div class="card-produs p-6" data-nume="Tochitură" data-pret="25.00">
+                <h3 class="font-bold mb-2">Tochitură de porc</h3>
+                <p class="text-[10px] text-gray-500 mb-6 uppercase">Tradiție / SOul meal</p>
+                <button onclick="adaugaProdus(this)" class="btn-add w-full py-3">Adaugă (25.00 RON)</button>
+            </div>
+
+            <div class="card-produs p-6" data-nume="Doza Metanoia" data-pret="15.00">
+                <h3 class="font-bold mb-2">Doza Proteică</h3>
+                <p class="text-[10px] text-gray-500 mb-6 uppercase">Energie / Metanoia</p>
+                <button onclick="adaugaProdus(this)" class="btn-add w-full py-3">Adaugă (15.00 RON)</button>
             </div>
         </div>
     </main>
 
-    <div class="fixed bottom-0 left-0 w-full bg-[#0a0a0a] border-t border-[#c5a059] p-6 text-center">
-        <p class="text-[10px] uppercase text-gray-500 tracking-[3px]">Total Selectat</p>
-        <p id="total-box" class="font-cinzel text-2xl text-[#c5a059]">0 RON</p>
+    <!-- Rezumat Vizual (Motorul) -->
+    <div class="fixed bottom-0 left-0 w-full bg-[#0a0a0a] border-t border-[#c5a059] p-6 flex justify-between items-center px-12">
+        <div>
+            <p class="text-[9px] uppercase tracking-[2px] text-gray-500">Total Box Selectat</p>
+            <p id="display-total" class="font-cinzel text-2xl text-[#c5a059]">0.00 RON</p>
+        </div>
+        <button class="btn-add px-8 py-3 bg-[#c5a059] text-black hover:bg-white transition-all">Finalizează Comanda</button>
     </div>
 
     <script>
@@ -43,11 +62,15 @@
             const card = btn.parentElement;
             const pret = parseFloat(card.getAttribute('data-pret'));
             total += pret;
-            document.getElementById('total-box').innerText = total.toFixed(2) + ' RON';
+            document.getElementById('display-total').innerText = total.toFixed(2) + ' RON';
             
-            // Efect vizual de confirmare
-            btn.innerText = "Adăugat!";
-            setTimeout(() => btn.innerText = "Adaugă (" + pret + " RON)", 1000);
+            // Feedback vizual
+            btn.innerText = "✓ Adăugat";
+            btn.classList.add('bg-[#c5a059]', 'text-black');
+            setTimeout(() => {
+                btn.innerText = "Adaugă (" + pret.toFixed(2) + " RON)";
+                btn.classList.remove('bg-[#c5a059]', 'text-black');
+            }, 1000);
         }
     </script>
 </body>
