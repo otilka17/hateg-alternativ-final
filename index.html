@@ -2,32 +2,51 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <title>Metanoia - Portal Principal</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <title>Metanoia | Admin Engine</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background: #000; color: #fff; font-family: 'Inter', sans-serif; margin: 0; padding: 0; }
-        header { display: flex; justify-content: space-between; padding: 30px 5%; align-items: center; }
-        .logo { font-family: 'Cinzel'; font-size: 1.5rem; color: #c5a059; letter-spacing: 5px; }
-        nav a { color: #fff; text-decoration: none; font-size: 0.7rem; margin-left: 20px; letter-spacing: 2px; }
-        .hero { padding: 80px 20px; text-align: center; }
-        h1 { font-family: 'Cinzel'; color: #c5a059; margin-bottom: 20px; }
-        .btn { border: 1px solid #c5a059; color: #c5a059; padding: 15px 30px; text-decoration: none; display: inline-block; margin-top: 20px; }
+        .box-card { border: 1px solid #1a1a1a; transition: 0.3s; }
+        .box-card:hover { border-color: #c5a059; }
+        .bg-metanoia { background: #050505; }
+        .gold-btn { border: 1px solid #c5a059; color: #c5a059; }
     </style>
 </head>
-<body>
-    <header>
-        <div class="logo">METANOIA</div>
-        <nav>
-            <a href="index.html">ACASĂ</a>
-            <a href="meniu.html">MENIU</a>
-            <a href="metanoia.html">FILOZOFIE</a>
-            <a href="rezervari.html">REZERVĂRI</a>
-        </nav>
-    </header>
-    <section class="hero">
-        <h1>Rânduiala Gustului</h1>
-        <p>Echilibru. Performanță. Rafinament.</p>
-        <a href="meniu.html" class="btn">DESCOPERĂ PROTOCOLUL</a>
-    </section>
+<body class="bg-metanoia text-white p-8">
+
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-2xl font-bold mb-8 text-[#c5a059]">CONFIGURARE BOX PERSONALIZAT</h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <div class="box-card p-6 rounded-lg">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <h2 class="font-bold">Shot Vitamina D</h2>
+                        <p class="text-xs text-gray-500">60ml / Urban Monkey</p>
+                    </div>
+                    <span class="text-[#c5a059] font-bold">10 RON</span>
+                </div>
+                <button class="gold-btn w-full py-2 text-xs uppercase tracking-widest hover:bg-[#c5a059] hover:text-black">Adaugă în Box</button>
+            </div>
+
+            <div class="box-card p-6 rounded-lg">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <h2 class="font-bold">Fru Limonadă</h2>
+                        <p class="text-xs text-gray-500">Cu bule / 250ml</p>
+                    </div>
+                    <span class="text-[#c5a059] font-bold">10 RON</span>
+                </div>
+                <button class="gold-btn w-full py-2 text-xs uppercase tracking-widest hover:bg-[#c5a059] hover:text-black">Adaugă în Box</button>
+            </div>
+        </div>
+
+        <div class="mt-12 p-6 border-t border-[#1a1a1a]">
+            <div class="flex justify-between items-center text-xl">
+                <span>Total Box:</span>
+                <span class="font-bold text-[#c5a059]">120 RON</span>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
