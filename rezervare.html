@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Metanoia | Rezervare</title>
+  <link href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Cinzel:wght@400;900&family=Inter:wght@300;400;700&display=swap)" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="header">
+      <a class="brand" href="index.html">METANOIA</a>
+      <nav class="nav"><a href="meniuri.html">Meniuri</a></nav>
+    </header>
+
+    <section class="section">
+      <h2 class="brand" style="font-size:22px">Rezervare</h2>
+      <div class="card">
+        <p class="small">Plan selectat: <b id="plan">—</b></p>
+        <p class="small">Total estimat: <b id="total">—</b> RON</p>
+        <div class="divider"></div>
+        <form onsubmit="return trimite()">
+          <input class="input" id="nume" placeholder="Nume" required>
+          <div style="height:10px"></div>
+          <input class="input" id="tel" placeholder="Telefon" required>
+          <div style="height:10px"></div>
+          <input class="input" id="email" type="email" placeholder="Email (opțional)">
+          <div style="height:10px"></div>
+          <textarea class="input" id="obs" placeholder="Observații" rows="4"></textarea>
+          <div style="height:14px"></div>
+          <button class="btn cta">Trimite rezervarea</button>
+        </form>
+        <p id="msg" class="small" style="margin-top:10px"></p>
+      </div>
+    </section>
+
+    <footer>© Metanoia.</footer>
+  </div>
+
+  <script>
+    // Citește parametrii din URL
+    const sp = new URLSearchParams(location.search);
+    document.getElementById('plan').textContent = sp.get('plan') || '—';
+    document.getElementById('total').textContent = sp.get('total') || '—';
+
+    function trimite(){
+      // Pentru demo, doar afișăm mesaj. Integrarea reală ar trimite spre un email/webhook.
+      document.getElementById('msg').textContent = 'Rezervarea a fost trimisă. Te contactăm pentru confirmare.';
+      return false; // prevenim reload
+    }
+  </script>
+</body>
+</html>
