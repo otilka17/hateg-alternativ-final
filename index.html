@@ -2,96 +2,104 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>METANOIA | Rânduiala Hranei</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Cinzel:wght@400;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap');
         body { background: #050505; color: #fff; font-family: 'Inter', sans-serif; }
         .font-brand { font-family: 'Cinzel', serif; }
         .gold { color: #c5a059; }
-        .bg-card { background: #0c0c0c; border: 1px solid #1a1a1a; }
-        .premium-shadow { box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
+        .card-gourmet { background: #0a0a0a; border: 1px solid #1a1a1a; transition: all 0.4s ease; }
+        .card-gourmet:hover { border-color: #c5a059; transform: translateY(-5px); }
+        .selected { border: 1px solid #c5a059; background: #14110a; }
+        .overlay { transition: opacity 0.3s; }
     </style>
 </head>
-<body class="pb-32">
+<body class="selection:bg-[#c5a059] selection:text-black">
 
-    <header class="p-6 text-center sticky top-0 bg-[#050505]/80 backdrop-blur-md z-50">
-        <h1 class="text-2xl tracking-[0.3em] font-brand gold">METANOIA</h1>
+    <nav class="fixed w-full z-50 p-6 flex justify-between items-center bg-black/50 backdrop-blur-md">
+        <h1 class="text-xl tracking-[0.3em] font-brand gold">METANOIA</h1>
+        <button onclick="document.getElementById('menu').classList.toggle('hidden')" class="gold"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg></button>
+    </nav>
+
+    <div id="menu" class="hidden fixed inset-0 bg-black z-40 flex items-center justify-center">
+        <div class="text-center space-y-8 font-brand text-3xl gold">
+            <p onclick="document.getElementById('menu').classList.toggle('hidden')" class="cursor-pointer">Povestea Noastră</p>
+            <p onclick="document.getElementById('menu').classList.toggle('hidden')" class="cursor-pointer">Meniu Gourmet</p>
+            <p onclick="document.getElementById('menu').classList.toggle('hidden')" class="cursor-pointer">Contact</p>
+        </div>
+    </div>
+
+    <header class="h-[90vh] flex flex-col justify-end p-10 bg-[url('https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1600')] bg-cover bg-center">
+        <div class="bg-black/40 backdrop-blur-sm p-8 border-l-2 border-[#c5a059]">
+            <h2 class="text-5xl font-brand mb-4">Rânduiala Hranei</h2>
+            <p class="max-w-md italic opacity-90">Artizanal. Local. Intenționat. Descoperă selecția de preparate pregătite cu respect pentru natură.</p>
+        </div>
     </header>
 
-    <main class="max-w-md mx-auto p-4 space-y-8">
+    <main class="max-w-4xl mx-auto p-6 py-20">
         
-        <div class="h-64 rounded-3xl overflow-hidden relative premium-shadow">
-            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200" class="w-full h-full object-cover opacity-80">
-            <div class="absolute bottom-6 left-6">
-                <h2 class="text-3xl font-bold font-brand">Meniul Zilei</h2>
-                <p class="text-sm opacity-80">Rânduiala hranei în Hațeg</p>
-            </div>
-        </div>
+        <h3 class="font-brand text-3xl gold mb-12 text-center">Selecția Gourmet</h3>
 
-        <div class="space-y-4">
-            <div class="bg-card p-5 rounded-3xl">
-                <div class="flex justify-between items-start">
-                    <div>
-                        <h3 class="font-bold">Ceaun de Pui</h3>
-                        <p class="text-xs opacity-60">450 kcal • 300g</p>
-                    </div>
-                    <p class="gold font-bold">20.50 RON</p>
-                </div>
-                <div class="mt-4 flex gap-2">
-                    <button onclick="updateCart('Ceaun de Pui', 20.50, 450)" class="w-full py-2 border border-white/10 rounded-xl text-xs hover:bg-[#c5a059] hover:text-black transition-all">Adaugă</button>
-                </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div onclick="select(this, 'Ceaun de Pui Artizanal')" class="card-gourmet p-8 cursor-pointer">
+                <span class="text-[10px] uppercase tracking-widest gold border border-[#c5a059] px-2 py-1">450 kcal</span>
+                <h4 class="font-brand text-2xl mt-4">Ceaun de Pui</h4>
+                <p class="text-sm opacity-60 mt-2">Pui crescut liber, gătit lent în sos de vin sec cu ierburi aromatice din grădină.</p>
+                <p class="mt-4 font-bold text-[#c5a059]">20.50 RON</p>
             </div>
 
-            <div class="bg-card p-5 rounded-3xl">
-                <div class="flex justify-between items-start">
-                    <div>
-                        <h3 class="font-bold">Tochitură Metanoia</h3>
-                        <p class="text-xs opacity-60">650 kcal • 400g</p>
-                    </div>
-                    <p class="gold font-bold">25.00 RON</p>
-                </div>
-                <div class="mt-4 flex gap-2">
-                    <button onclick="updateCart('Tochitură', 25.00, 650)" class="w-full py-2 border border-white/10 rounded-xl text-xs hover:bg-[#c5a059] hover:text-black transition-all">Adaugă</button>
-                </div>
+            <div onclick="select(this, 'Tochitură Metanoia')" class="card-gourmet p-8 cursor-pointer">
+                <span class="text-[10px] uppercase tracking-widest gold border border-[#c5a059] px-2 py-1">650 kcal</span>
+                <h4 class="font-brand text-2xl mt-4">Tochitură Metanoia</h4>
+                <p class="text-sm opacity-60 mt-2">Carne de porc selectată, mălai fin, brânză maturată de la stână.</p>
+                <p class="mt-4 font-bold text-[#c5a059]">25.00 RON</p>
+            </div>
+            
+            <div onclick="select(this, 'Desertul Zilei')" class="card-gourmet p-8 cursor-pointer">
+                <span class="text-[10px] uppercase tracking-widest gold border border-[#c5a059] px-2 py-1">300 kcal</span>
+                <h4 class="font-brand text-2xl mt-4">Desert Artizanal</h4>
+                <p class="text-sm opacity-60 mt-2">Mousse de ciocolată neagră cu fructe de pădure culese din zonă.</p>
+                <p class="mt-4 font-bold text-[#c5a059]">15.00 RON</p>
             </div>
         </div>
     </main>
 
-    <div class="fixed bottom-0 w-full p-6 bg-[#050505] border-t border-white/10 flex justify-between items-center z-50">
-        <div>
-            <p class="text-[10px] uppercase tracking-widest opacity-60">Total & Calorii</p>
-            <p class="text-lg font-bold"><span id="total-price" class="gold">0.00</span> RON | <span id="total-kcal">0</span> kcal</p>
-        </div>
-        <button onclick="sendOrder()" class="bg-[#c5a059] text-black font-bold px-8 py-4 rounded-2xl text-xs uppercase tracking-widest hover:opacity-90 transition-all">Finalizare</button>
+    <div class="fixed bottom-0 w-full p-8 bg-[#050505] border-t border-white/10 text-center">
+        <button onclick="sendOrder()" class="w-full max-w-sm bg-[#c5a059] text-black font-bold py-5 rounded-full uppercase tracking-widest hover:opacity-90 transition-all">
+            Trimite Comanda
+        </button>
     </div>
 
     <script>
-        let cart = { price: 0, kcal: 0, items: [] };
-
-        function updateCart(name, price, kcal) {
-            cart.price += price;
-            cart.kcal += kcal;
-            cart.items.push(name);
-            document.getElementById('total-price').innerText = cart.price.toFixed(2);
-            document.getElementById('total-kcal').innerText = cart.kcal;
+        let selected = [];
+        function select(el, name) {
+            el.classList.toggle('selected');
+            if (selected.includes(name)) {
+                selected = selected.filter(i => i !== name);
+            } else {
+                selected.push(name);
+            }
         }
 
         async function sendOrder() {
-            if(cart.price === 0) return alert("Selectează un produs!");
+            if(selected.length === 0) return alert("Selectează preparatele dorite.");
+            
+            const payload = {
+                items: selected.join(", "),
+                timestamp: new Date().toLocaleString('ro-RO')
+            };
 
-            // AICI PUI LINKUL DE WEBHOOK DIN MAKE.COM
-            const WEBHOOK_URL = "AICI_PUII_LINKUL_DE_LA_MAKE";
+            const WEBHOOK = "AICI_PUII_LINKUL_DE_LA_MAKE";
 
-            const res = await fetch(WEBHOOK_URL, {
+            const res = await fetch(WEBHOOK, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ ...cart, timestamp: new Date().toLocaleString() })
+                body: JSON.stringify(payload)
             });
 
             if(res.ok) {
-                alert("Comanda Metanoia a fost trimisă!");
+                alert("Rânduiala a fost trimisă cu succes!");
                 location.reload();
             }
         }
