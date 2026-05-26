@@ -2,99 +2,100 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <title>METANOIA HUB | Configurator Gourmet</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>METANOIA | Configurator Gourmet</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap');
         body { background: #050505; color: #fff; font-family: 'Inter', sans-serif; }
         .font-brand { font-family: 'Cinzel', serif; }
         .gold { color: #c5a059; }
-        .bg-dark { background: #0c0c0c; border: 1px solid #1a1a1a; }
-        .option-active { border: 2px solid #c5a059 !important; background: #14110a !important; }
-        .map-placeholder { background: linear-gradient(135deg, #0c0c0c, #1a1a1a); }
+        .bg-gourmet { background: #0c0c0c; border: 1px solid #1a1a1a; }
+        .active-card { border: 1px solid #c5a059; background: #14110a; }
+        #menu-overlay { transition: all 0.4s ease; }
     </style>
 </head>
-<body class="pb-32">
+<body class="pb-24">
 
-    <nav class="fixed w-full z-50 p-6 flex justify-between items-center bg-black/80 backdrop-blur-md">
-        <h1 class="text-xl tracking-[0.3em] font-brand gold">METANOIA</h1>
-        <button onclick="toggleMenu()" class="gold"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg></button>
+    <nav class="fixed w-full z-50 p-6 flex justify-between items-center bg-black/80 backdrop-blur-lg">
+        <h1 class="text-2xl tracking-[0.2em] font-brand gold">METANOIA</h1>
+        <button onclick="document.getElementById('menu-overlay').classList.remove('hidden')" class="gold"><svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg></button>
     </nav>
 
-    <div id="menu" class="hidden fixed inset-0 bg-black z-50 flex flex-col items-center justify-center space-y-8 font-brand text-2xl gold">
-        <p onclick="toggleMenu()" class="cursor-pointer">Configurator</p>
-        <p onclick="toggleMenu()" class="cursor-pointer">Zonă Livrare</p>
-        <p onclick="toggleMenu()" class="cursor-pointer">Contact</p>
+    <div id="menu-overlay" class="hidden fixed inset-0 bg-black z-[100] flex flex-col items-center justify-center space-y-10 font-brand text-3xl gold">
+        <button onclick="document.getElementById('menu-overlay').classList.add('hidden')" class="absolute top-8 right-8">✕</button>
+        <p>Configurator</p>
+        <p>Harta GPS</p>
+        <p>Povestea Rânduielii</p>
     </div>
 
-    <main class="max-w-2xl mx-auto p-6 pt-28 space-y-12">
+    <main class="max-w-2xl mx-auto pt-28 p-6 space-y-12">
         
-        <section class="bg-dark p-8 rounded-3xl">
-            <h2 class="font-brand text-2xl gold mb-6">OptimBox Metanoia</h2>
+        <section class="bg-gourmet p-8 rounded-3xl shadow-xl">
+            <h2 class="font-brand text-3xl mb-6">OptimBox Metanoia</h2>
             
-            <label class="block text-xs uppercase opacity-60 mb-2">Săptămâni</label>
-            <div class="grid grid-cols-4 gap-2 mb-6">
-                <button onclick="select(this, 'saptamani')" class="bg-[#1a1a1a] p-3 rounded-xl border border-transparent">1</button>
-                <button onclick="select(this, 'saptamani')" class="bg-[#1a1a1a] p-3 rounded-xl border border-transparent">2</button>
-                <button onclick="select(this, 'saptamani')" class="bg-[#1a1a1a] p-3 rounded-xl border border-transparent">3</button>
-                <button onclick="select(this, 'saptamani')" class="bg-[#1a1a1a] p-3 rounded-xl border border-transparent">4</button>
-            </div>
+            <div class="space-y-6">
+                <div>
+                    <label class="text-[10px] uppercase tracking-widest opacity-50 block mb-3">Durată (Săptămâni)</label>
+                    <div class="grid grid-cols-4 gap-2">
+                        <button onclick="select(this, 'sapt')" class="bg-[#1a1a1a] py-3 rounded-lg hover:border-[#c5a059] border border-transparent transition-all">1</button>
+                        <button onclick="select(this, 'sapt')" class="bg-[#1a1a1a] py-3 rounded-lg hover:border-[#c5a059] border border-transparent transition-all">2</button>
+                        <button onclick="select(this, 'sapt')" class="bg-[#1a1a1a] py-3 rounded-lg hover:border-[#c5a059] border border-transparent transition-all">3</button>
+                        <button onclick="select(this, 'sapt')" class="bg-[#1a1a1a] py-3 rounded-lg hover:border-[#c5a059] border border-transparent transition-all">4</button>
+                    </div>
+                </div>
 
-            <label class="block text-xs uppercase opacity-60 mb-2">Aport Caloric</label>
-            <div class="grid grid-cols-2 gap-2">
-                <button onclick="select(this, 'kcal')" class="bg-[#1a1a1a] p-4 rounded-xl border border-transparent">1500 kcal</button>
-                <button onclick="select(this, 'kcal')" class="bg-[#1a1a1a] p-4 rounded-xl border border-transparent">2000 kcal</button>
+                <div>
+                    <label class="text-[10px] uppercase tracking-widest opacity-50 block mb-3">Aport Caloric</label>
+                    <div class="grid grid-cols-2 gap-2">
+                        <button onclick="select(this, 'kcal')" class="bg-[#1a1a1a] py-4 rounded-lg hover:border-[#c5a059] border border-transparent transition-all">1500 kcal</button>
+                        <button onclick="select(this, 'kcal')" class="bg-[#1a1a1a] py-4 rounded-lg hover:border-[#c5a059] border border-transparent transition-all">2000 kcal</button>
+                    </div>
+                </div>
             </div>
         </section>
 
         <section>
-            <h3 class="font-brand text-xl gold mb-6">Meniu Săptămânal</h3>
-            <div class="space-y-4">
-                <div class="bg-dark p-6 rounded-2xl flex items-center gap-4">
-                    <div class="w-16 h-16 bg-[#1a1a1a] rounded-lg"></div>
-                    <div>
-                        <h4 class="font-bold">Ceaun de Pui</h4>
-                        <p class="text-[10px] text-gray-500 uppercase">Proteine, Legume, Ierburi</p>
-                        <p class="gold mt-1 text-sm font-bold">28 RON</p>
-                    </div>
+            <h3 class="font-brand text-2xl gold mb-6">Meniu Săptămânal</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-gourmet p-6 rounded-2xl">
+                    <h4 class="font-bold">Vita Angus Gourmet</h4>
+                    <p class="text-[10px] uppercase text-gray-400 mt-1">Carne premium • Sos vin sec</p>
+                    <p class="mt-4 text-sm gold font-bold">45.00 RON</p>
                 </div>
-                <div class="bg-dark p-6 rounded-2xl flex items-center gap-4">
-                    <div class="w-16 h-16 bg-[#1a1a1a] rounded-lg"></div>
-                    <div>
-                        <h4 class="font-brand">Tochitură Metanoia</h4>
-                        <p class="text-[10px] text-gray-500 uppercase">Tradiție, Mălai, Brânză</p>
-                        <p class="gold mt-1 text-sm font-bold">35 RON</p>
-                    </div>
+                <div class="bg-gourmet p-6 rounded-2xl">
+                    <h4 class="font-bold">Somon Sălbatic</h4>
+                    <p class="text-[10px] uppercase text-gray-400 mt-1">Omega 3 • Legume la abur</p>
+                    <p class="mt-4 text-sm gold font-bold">52.00 RON</p>
                 </div>
             </div>
         </section>
 
-        <section id="harta">
-            <h3 class="font-brand text-xl gold mb-4">Aria de Livrare (Hațeg)</h3>
-            <div class="map-placeholder h-64 rounded-3xl border border-[#c5a059]/20 flex items-center justify-center">
-                <p class="text-sm opacity-50">Hartă interactivă zone livrare</p>
+        <section class="border-t border-[#1a1a1a] pt-10">
+            <h3 class="font-brand text-2xl gold mb-6">Locație GPS</h3>
+            <div class="bg-[#1a1a1a] h-60 rounded-3xl flex items-center justify-center opacity-50">
+                [Harta Hațeg - Totești / Localizare Interactivă]
             </div>
         </section>
-
     </main>
 
-    <footer class="fixed bottom-0 w-full p-6 bg-[#050505] border-t border-white/10 text-center z-40">
-        <button onclick="trimite()" class="w-full bg-[#c5a059] text-black font-bold py-4 rounded-2xl uppercase tracking-widest text-xs hover:opacity-90 transition-all">
+    <div class="fixed bottom-0 w-full p-6 bg-gradient-to-t from-black to-transparent border-t border-[#1a1a1a]">
+        <button onclick="sendOrder()" class="w-full bg-[#c5a059] text-black font-bold py-5 rounded-2xl uppercase tracking-widest text-sm hover:opacity-90">
             Trimite Configurația
         </button>
-    </footer>
+    </div>
 
     <script>
-        function toggleMenu() { document.getElementById('menu').classList.toggle('hidden'); }
-        
         function select(el, group) {
-            document.querySelectorAll(`[onclick*="${group}"]`).forEach(btn => btn.classList.remove('option-active'));
-            el.classList.add('option-active');
+            document.querySelectorAll(`[onclick*="${group}"]`).forEach(btn => btn.classList.remove('active-card'));
+            el.classList.add('active-card');
         }
 
-        async function trimite() {
-            const webhook = "AICI_LINK_MAKE";
-            alert("Sistemul prelucrează configurația...");
+        async function sendOrder() {
+            // AICI PUI LINK-UL DE WEBHOOK DIN MAKE
+            const WEBHOOK = "AICI_PUNE_LINKUL_MAKE_COM";
+            
+            alert("Configurația a fost trimisă către bucătărie!");
         }
     </script>
 </body>
