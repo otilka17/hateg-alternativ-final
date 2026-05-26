@@ -2,51 +2,57 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <title>Metanoia | Admin Engine</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>METANOIA | Gust Autentic</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        .box-card { border: 1px solid #1a1a1a; transition: 0.3s; }
-        .box-card:hover { border-color: #c5a059; }
-        .bg-metanoia { background: #050505; }
-        .gold-btn { border: 1px solid #c5a059; color: #c5a059; }
+        .image-container { overflow: hidden; position: relative; }
+        .image-container img { transition: transform 0.7s ease; }
+        .image-container:hover img { transform: scale(1.1); }
+        .card-blur { background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); }
     </style>
 </head>
-<body class="bg-metanoia text-white p-8">
+<body class="bg-black text-white">
 
-    <div class="max-w-4xl mx-auto">
-        <h1 class="text-2xl font-bold mb-8 text-[#c5a059]">CONFIGURARE BOX PERSONALIZAT</h1>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <header class="relative h-[80vh] flex items-center justify-center overflow-hidden">
+        <img src="https://source.unsplash.com/1600x900/?gourmet-food" class="absolute w-full h-full object-cover opacity-60">
+        <div class="relative text-center z-10">
+            <h1 class="text-6xl md:text-8xl font-bold tracking-tighter text-[#c5a059]">METANOIA</h1>
+            <p class="text-xl mt-4 italic">Rânduiala hranei în Hațeg</p>
+            <a href="metanoia_hub.html" class="mt-8 inline-block border border-[#c5a059] px-10 py-4 uppercase tracking-[3px] hover:bg-[#c5a059] hover:text-black transition-all">Alege Meniul</a>
+        </div>
+    </header>
+
+    <section class="max-w-6xl mx-auto py-20 px-6">
+        <h2 class="text-3xl mb-12 text-center text-[#c5a059]">DIN BUCĂTĂRIA NOASTRĂ</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             
-            <div class="box-card p-6 rounded-lg">
-                <div class="flex justify-between items-start mb-4">
-                    <div>
-                        <h2 class="font-bold">Shot Vitamina D</h2>
-                        <p class="text-xs text-gray-500">60ml / Urban Monkey</p>
-                    </div>
-                    <span class="text-[#c5a059] font-bold">10 RON</span>
+            <div class="image-container h-80">
+                <img src="https://source.unsplash.com/600x800/?roasted-chicken" class="w-full h-full object-cover">
+                <div class="absolute bottom-0 p-6 card-blur w-full">
+                    <h3 class="text-xl font-bold">Pui la Cuptor</h3>
+                    <p class="text-sm">Gătit lent cu ierburi locale.</p>
                 </div>
-                <button class="gold-btn w-full py-2 text-xs uppercase tracking-widest hover:bg-[#c5a059] hover:text-black">Adaugă în Box</button>
             </div>
 
-            <div class="box-card p-6 rounded-lg">
-                <div class="flex justify-between items-start mb-4">
-                    <div>
-                        <h2 class="font-bold">Fru Limonadă</h2>
-                        <p class="text-xs text-gray-500">Cu bule / 250ml</p>
-                    </div>
-                    <span class="text-[#c5a059] font-bold">10 RON</span>
+            <div class="image-container h-80">
+                <img src="https://source.unsplash.com/600x800/?fresh-salad" class="w-full h-full object-cover">
+                <div class="absolute bottom-0 p-6 card-blur w-full">
+                    <h3 class="text-xl font-bold">Salate de Sezon</h3>
+                    <p class="text-sm">Farm-to-table, proaspăt zilnic.</p>
                 </div>
-                <button class="gold-btn w-full py-2 text-xs uppercase tracking-widest hover:bg-[#c5a059] hover:text-black">Adaugă în Box</button>
             </div>
-        </div>
 
-        <div class="mt-12 p-6 border-t border-[#1a1a1a]">
-            <div class="flex justify-between items-center text-xl">
-                <span>Total Box:</span>
-                <span class="font-bold text-[#c5a059]">120 RON</span>
+            <div class="image-container h-80">
+                <img src="https://source.unsplash.com/600x800/?dessert" class="w-full h-full object-cover">
+                <div class="absolute bottom-0 p-6 card-blur w-full">
+                    <h3 class="text-xl font-bold">Desertul Metanoia</h3>
+                    <p class="text-sm">Răsfăț după rânduială.</p>
+                </div>
             </div>
+
         </div>
-    </div>
+    </section>
+
 </body>
 </html>
