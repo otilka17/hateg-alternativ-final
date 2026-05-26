@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Metanoia | Rânduială și Gastronomie</title>
+    <title>Metanoia | Rânduială, Gourmet & Ritual</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400;1,700&family=Inter:wght@200;400;600&display=swap" rel="stylesheet">
     <style>
@@ -13,46 +13,48 @@
             --ciocolatiu: #261c19;
             --roz-accent: #f4ded6;
         }
-        body { background: var(--roz-pudrat); color: var(--ciocolatiu); font-family: 'Inter', sans-serif; }
+        body { background: var(--roz-pudrat); color: var(--ciocolatiu); font-family: 'Inter', sans-serif; line-height: 1.6; }
         .font-brand { font-family: 'Playfair Display', serif; }
-        .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); }
-        .option-btn { border: 1px solid var(--roz-accent); transition: all 0.3s; }
-        .option-active { background: var(--ciocolatiu) !important; color: var(--auriu) !important; border-color: var(--ciocolatiu) !important; }
+        .glass { background: rgba(255, 255, 255, 0.5); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.3); }
+        .option-btn { border: 1px solid var(--roz-accent); transition: all 0.4s ease; }
+        .option-active { background: var(--ciocolatiu) !important; color: var(--auriu) !important; border-color: var(--ciocolatiu) !important; transform: scale(1.02); }
         .gold { color: var(--auriu); }
+        .section-padding { padding-top: 5rem; padding-bottom: 5rem; }
     </style>
 </head>
 <body>
 
-    <nav class="max-w-6xl mx-auto py-8 px-6 flex justify-between items-center">
+    <nav class="max-w-6xl mx-auto py-8 px-6 flex justify-between items-center sticky top-0 bg-transparent z-50">
         <h1 class="font-brand text-2xl italic">Metanoia</h1>
-        <div class="space-x-8 text-xs uppercase tracking-widest font-bold opacity-60">
-            <a href="#">Concept</a>
-            <a href="#">Meniu</a>
-            <a href="#">Contact</a>
+        <div class="hidden md:flex space-x-10 text-[10px] uppercase tracking-[0.2em] font-bold opacity-60">
+            <a href="#concept" class="hover:gold transition">Concept</a>
+            <a href="#configurator" class="hover:gold transition">OptimBox</a>
+            <a href="#rituals" class="hover:gold transition">Ritualuri</a>
         </div>
     </nav>
 
-    <main class="max-w-4xl mx-auto px-6 py-12">
+    <main class="max-w-5xl mx-auto px-6">
         
-        <section class="text-center mb-24">
-            <h2 class="font-brand text-6xl italic mb-6">Gastronomie cu Rânduială</h2>
-            <p class="text-lg opacity-70 max-w-lg mx-auto leading-relaxed">
-                Metanoia nu este doar mâncare. Este un sistem de nutriție gândit pentru claritate, livrat direct la tine în Hațeg.
+        <section id="concept" class="text-center section-padding">
+            <h2 class="font-brand text-7xl italic mb-8">Gastronomie cu Rânduială</h2>
+            <p class="text-xl opacity-70 max-w-2xl mx-auto leading-relaxed">
+                Metanoia nu este doar mâncare. Este un ecosistem creat pentru a-ți oferi timp, claritate și gust desăvârșit. O experiență gourmet livrată direct în inima Hațegului.
             </p>
         </section>
 
-        <section class="glass p-10 rounded-3xl border border-white shadow-xl mb-24">
+        <section id="configurator" class="glass p-12 rounded-[2rem] shadow-2xl mb-24">
             <div class="grid md:grid-cols-2 gap-16 items-center">
                 <div>
-                    <h3 class="font-brand text-3xl italic mb-8" style="color: var(--ciocolatiu);">OptimBox</h3>
+                    <h3 class="font-brand text-4xl italic mb-2">OptimBox</h3>
+                    <p class="text-sm opacity-60 mb-10 uppercase tracking-widest">Configurează-ți săptămâna</p>
                     <div class="space-y-8">
                         <div>
                             <label class="text-[10px] uppercase tracking-widest opacity-60 mb-3 block font-bold">Durată (Săptămâni)</label>
                             <div class="grid grid-cols-4 gap-2">
-                                <button onclick="pick(this, 'sapt', 1)" class="option-btn py-3 rounded-lg font-bold">1</button>
-                                <button onclick="pick(this, 'sapt', 2)" class="option-btn py-3 rounded-lg font-bold">2</button>
-                                <button onclick="pick(this, 'sapt', 3)" class="option-btn py-3 rounded-lg font-bold">3</button>
-                                <button onclick="pick(this, 'sapt', 4)" class="option-btn py-3 rounded-lg font-bold">4</button>
+                                <button onclick="pick(this, 'sapt', 1)" class="option-btn py-3 rounded-lg font-bold text-sm">1</button>
+                                <button onclick="pick(this, 'sapt', 2)" class="option-btn py-3 rounded-lg font-bold text-sm">2</button>
+                                <button onclick="pick(this, 'sapt', 3)" class="option-btn py-3 rounded-lg font-bold text-sm">3</button>
+                                <button onclick="pick(this, 'sapt', 4)" class="option-btn py-3 rounded-lg font-bold text-sm">4</button>
                             </div>
                         </div>
                         <div>
@@ -65,49 +67,54 @@
                     </div>
                 </div>
 
-                <div class="border-l border-[#f4ded6] pl-10">
-                    <div class="mb-8">
-                        <p class="text-[10px] uppercase opacity-60 tracking-widest">Total Estimativ</p>
-                        <p class="text-4xl font-brand italic gold" id="totalPrice">0 RON</p>
+                <div class="bg-white/30 p-8 rounded-2xl border border-white">
+                    <div class="mb-8 text-center md:text-left">
+                        <p class="text-[10px] uppercase opacity-60 tracking-widest mb-2">Total Estimativ</p>
+                        <p class="text-5xl font-brand italic gold" id="totalPrice">0 RON</p>
                     </div>
-                    <button onclick="sendOrder()" class="w-full bg-[#261c19] text-[#c5a059] py-4 rounded-full uppercase text-xs tracking-widest font-bold hover:opacity-90 transition">Trimite Cerere de Abonament</button>
-                    <p class="text-[10px] text-center mt-4 opacity-50">Gata de livrare în Hațeg</p>
+                    <button onclick="sendOrder()" class="w-full bg-[#261c19] text-[#c5a059] py-5 rounded-full uppercase text-xs tracking-[0.2em] font-bold hover:bg-opacity-90 transition transform hover:scale-[1.02]">Trimite Cerere</button>
+                    <p class="text-[10px] text-center mt-6 opacity-40 uppercase tracking-widest">Livrare inclusă în Hațeg</p>
                 </div>
             </div>
         </section>
 
-        <section class="grid md:grid-cols-3 gap-12 text-center opacity-80">
-            <div>
-                <h4 class="font-bold mb-2">Ingrediente Locale</h4>
-                <p class="text-sm">Proveniență controlată din Țara Hațegului.</p>
+        <section id="rituals" class="section-padding border-t border-[#f4ded6]">
+            <div class="text-center mb-16">
+                <h2 class="font-brand text-4xl italic gold mb-4">Rânduiala Gustului</h2>
+                <p class="opacity-60 text-sm max-w-md mx-auto">Colaborăm cu lideri ai calității pentru a garanta că fiecare moment petrecut în Metanoia este un act de grijă față de sine.</p>
             </div>
-            <div>
-                <h4 class="font-bold mb-2">Echilibru Nutrițional</h4>
-                <p class="text-sm">Macro-nutrienți calculați pentru performanță.</p>
-            </div>
-            <div>
-                <h4 class="font-bold mb-2">Livrare Directă</h4>
-                <p class="text-sm">Confortul de a avea totul pregătit.</p>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="glass p-10 rounded-3xl text-center hover:border-auriu transition-all">
+                    <div class="mb-6 text-3xl opacity-80">☕</div>
+                    <h3 class="font-brand text-2xl italic mb-3">Tihna Nespresso</h3>
+                    <p class="text-sm opacity-70 leading-relaxed">Ritualul tău de prezență. Selecția premium inclusă pentru a marca pauzele necesare în rânduiala ta zilnică.</p>
+                </div>
+                <div class="glass p-10 rounded-3xl text-center hover:border-auriu transition-all">
+                    <div class="mb-6 text-3xl opacity-80">🥣</div>
+                    <h3 class="font-brand text-2xl italic mb-3">Nutriția Dozele</h3>
+                    <p class="text-sm opacity-70 leading-relaxed">Ovăz, chia și vitalitate. Porții inteligente, bogate în nutrienți, pregătite cu grijă pentru o minte limpede.</p>
+                </div>
             </div>
         </section>
     </main>
 
-    <footer class="py-20 text-center opacity-40 text-xs uppercase tracking-widest">
-        Metanoia Hub © 2026
+    <footer class="py-20 text-center opacity-40 text-[10px] uppercase tracking-[0.2em]">
+        Metanoia Hub © 2026 | Gourmet Artistry | Totul pentru Tihnă
     </footer>
 
     <script>
         let config = { sapt: 0, kcal: 0 };
         
         function pick(el, group, val) {
-            // Reset clase active
+            // Reset clase active din grup
             document.querySelectorAll(`[onclick*="${group}"]`).forEach(btn => btn.classList.remove('option-active'));
             el.classList.add('option-active');
             
             // Setează configurare
             config[group] = val;
             
-            // Calculează preț (ex: 500/700 per sapt)
+            // Calculează preț (logică simulată)
             if(config.sapt > 0 && config.kcal > 0) {
                 let pret = (config.kcal === 1500 ? 500 : 700) * config.sapt;
                 document.getElementById('totalPrice').innerText = pret + " RON";
@@ -115,7 +122,7 @@
         }
 
         function sendOrder() {
-            if(config.sapt === 0 || config.kcal === 0) return alert("Te rugăm să alegi și perioada și caloriile.");
+            if(config.sapt === 0 || config.kcal === 0) return alert("Te rugăm să selectezi perioada și caloriile.");
             const msg = `Bună! Doresc un abonament Metanoia: ${config.sapt} săptămâni, ${config.kcal} kcal. Total: ${document.getElementById('totalPrice').innerText}`;
             window.open(`https://wa.me/40749229686?text=${encodeURIComponent(msg)}`, '_blank');
         }
