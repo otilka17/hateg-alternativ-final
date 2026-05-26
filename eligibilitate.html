@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18106516696"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-18106516696');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Metanoia - Audit de Scoring Interactiv ADR Vest 1.2.A</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400;1,700&family=Cinzel:wght@400;700;900&family=Inter:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        :root { 
+            --auriu: #c5a059; 
+            --auriu-soft: #f4e3c1;
+            --negru-lux: #050505; 
+            --negru-pur: #000000; 
+            --negru-card: #0a0a0a;
+            --alb-mat: #f5f5f7; 
+            --text-muted: #86868b; 
+            --border-culoare: rgba(197, 160, 89, 0.15);
+            --verde-lux: #122116;
+            --verde-text: #25d366;
+            --rosu-lux: #2c1414;
+            --rosu-text: #ff453a;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        html { scroll-behavior: smooth; background-color: var(--negru-pur); }
+        body { background: var(--negru-pur); color: var(--alb-mat); font-family: 'Inter', sans-serif; overflow-x: hidden; line-height: 1.6; padding-top: 120px; }
+
+        /* SCROLLBAR PREMIUM */
+        ::-webkit-scrollbar { width: 3px; }
+        ::-webkit-scrollbar-track { background: var(--negru-pur); }
+        ::-webkit-scrollbar-thumb { background: var(--auriu); }
+
+        /* HEADER MINIMALIST AUDIT */
+        .site-header { 
+            position: fixed; 
+            top: 0; 
+            width: 100%; 
+            z-index: 9999; 
+            padding: 25px; 
+            display: flex; 
+            justify-content: center;
+            align-items: center; 
+            background: rgba(0, 0, 0, 0.94); 
+            backdrop-filter: blur(30px); 
+            border-bottom: 1px solid #111; 
+        }
+        
+        .brand-logo-container {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+        }
+
+        .metanoia-logo-svg {
+            width: 44px;
+            height: 44px;
+            fill: none;
+            stroke: url(#goldGradient);
+            stroke-width: 2.3;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .brand-logo { 
+            text-transform: uppercase; 
+            font-size: 1.2rem; 
+            font-family: 'Cinzel'; 
+            font-weight: 900; 
+            letter-spacing: 6px; 
+            color: #fff; 
+        }
+
+        /* WORKSPACE GRID */
+        .eligibilitate-container { 
+            max-width: 1200px; 
+            margin: 40px auto 100px; 
+            padding: 0 20px; 
+            display: grid; 
+            grid-template-columns: 1fr; 
+            gap: 40px; 
+        }
+        @media (min-width: 992px) { 
+            .eligibilitate-container { grid-template-columns: 1.5fr 1fr; } 
+        }
+
+        .eligibilitate-wizard { background: var(--negru-card); border: 1px solid var(--border-culoare); border-radius: 28px; padding: 40px; }
+        .manifest-header { margin-bottom: 40px; }
+        .manifest-header h2 { font-family: 'Playfair Display'; font-style: italic; font-size: clamp(2rem, 5vw, 2.6rem); color: #fff; line-height: 1.2; margin-bottom: 10px; }
+        .manifest-header p { font-family: 'Cinzel'; color: var(--auriu); letter-spacing: 3px; font-size: 0.75rem; font-weight: 700; }
+        
+        .wizard-section-title { font-family: 'Cinzel'; font-size: 0.8rem; letter-spacing: 2px; color: var(--auriu); margin-bottom: 25px; border-bottom: 1px solid rgba(197, 160, 89, 0.2); padding-bottom: 10px; font-weight: bold; text-transform: uppercase; }
+        .wizard-question { margin-bottom: 45px; }
+        .wizard-question h4 { font-family: 'Playfair Display'; font-style: italic; font-size: 1.25rem; color: #fff; margin-bottom: 18px; font-weight: 400; }
+        
+        .scoring-option { background: #040404; border: 1px solid #1c1c1c; border-radius: 16px; padding: 20px 22px; display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); margin-bottom: 12px; }
+        .scoring-option:hover { border-color: rgba(197, 160, 89, 0.3); background: #080808; }
+        .scoring-option.selected { border-color: var(--auriu); background: #110e0a; }
+        
+        .scoring-text h5 { font-size: 1rem; color: #fff; font-weight: 600; margin-bottom: 4px; }
+        .scoring-text p { font-size: 0.85rem; color: var(--text-muted); }
+        .scoring-badge { font-family: 'Cinzel'; font-size: 0.65rem; color: var(--auriu); font-weight: bold; border: 1px solid rgba(197,160,89,0.3); padding: 4px 12px; border-radius: 50px; background: rgba(197,160,89,0.05); white-space: nowrap; }
+
+        /* SIDEBAR CHEKOUT / SCORE */
+        .eligibilitate-sidebar { background: #080808; border: 1px solid var(--border-culoare); border-radius: 28px; padding: 40px; height: fit-content; position: sticky; top: 140px; }
+        .scoring-gauge-box { display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 30px; border-bottom: 1px solid #1a1a1a; padding-bottom: 30px; }
+        
+        .gauge-svg { width: 150px; height: 150px; transform: rotate(-90deg); }
+        .gauge-bg { fill: none; stroke: #121212; stroke-width: 10; }
+        .gauge-fill { fill: none; stroke: url(#gaugeGold); stroke-width: 10; stroke-dasharray: 440; stroke-dashoffset: 440; transition: stroke-dashoffset 0.6s cubic-bezier(0.16, 1, 0.3, 1); stroke-linecap: round; }
+        
+        .gauge-text { position: absolute; font-family: 'Cinzel'; font-size: 2rem; color: #fff; font-weight: bold; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .gauge-text span { font-size: 0.65rem; color: var(--text-muted); letter-spacing: 1px; margin-top: -3px; font-family: 'Inter'; }
+
+        .sidebar-diagnostic h4 { font-family: 'Cinzel'; font-size: 0.95rem; letter-spacing: 2px; color: #fff; margin-bottom: 15px; text-transform: uppercase; }
+        .sidebar-diagnostic p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 30px; }
+        
+        .status-badge { display: inline-flex; align-items: center; gap: 8px; font-family: 'Cinzel'; font-size: 0.65rem; letter-spacing: 1.5px; font-weight: 900; padding: 8px 18px; border-radius: 50px; margin-bottom: 20px; }
+        .status-badge.success { background: var(--verde-lux); color: var(--verde-text); border: 1px solid var(--verde-text); }
+        .status-badge.warning { background: var(--rosu-lux); color: var(--rosu-text); border: 1px solid var(--rosu-text); }
+
+        .btn-app-action { background: var(--auriu); color: var(--negru-pur); border: none; padding: 18px; border-radius: 50px; font-family: 'Cinzel'; font-weight: 900; font-size: 0.8rem; letter-spacing: 2px; cursor: pointer; width: 100%; transition: 0.3s; text-align: center; text-decoration: none; display: block; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+        .btn-app-action:hover { background: #fff; transform: translateY(-2px); }
+
+        /* ACTION MODAL DE REDIRECTARE */
+        .custom-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 10000; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: 0.4s ease; padding: 20px; }
+        .custom-modal.active { opacity: 1; visibility: visible; }
+        .modal-card { background: var(--negru-lux); border: 1px solid var(--auriu); border-radius: 28px; max-width: 520px; width: 100%; padding: 50px 40px; text-align: center; }
+        .modal-card h3 { font-family: 'Playfair Display'; font-style: italic; font-size: 2rem; color: #fff; margin-bottom: 15px; }
+        .modal-card p { font-size: 1rem; color: var(--text-muted); margin-bottom: 35px; line-height: 1.6; }
+        .btn-modal-close { background: transparent; border: 1px solid var(--text-muted); color: var(--text-muted); padding: 14px 35px; border-radius: 50px; cursor: pointer; font-family: 'Cinzel'; font-size: 0.75rem; transition: 0.3s; }
+        .btn-modal-close:hover { border-color: #fff; color: #fff; }
+
+        footer { padding: 60px 25px; background: #000; color: #444; font-size: 0.7rem; text-align: center; border-top: 1px solid #111; font-family: 'Cinzel'; letter-spacing: 2px; }
+    </style>
+</head>
+<body>
+
+    <header class="site-header" id="header">
+        <svg width="0" height="0">
+            <defs>
+                <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#f3e5ab" />
+                    <stop offset="50%" stop-color="#c5a059" />
+                    <stop offset="100%" stop-color="#947435" />
+                </linearGradient>
+                <linearGradient id="gaugeGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#c5a059" />
+                    <stop offset="100%" stop-color="#ebd3a3" />
+                </linearGradient>
+            </defs>
+        </svg>
+
+        <div class="brand-logo-container">
+            <svg class="metanoia-logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18,63 C23,73 36,79 48,79 C60,79 73,70 73,59 C73,54 68,50 62,50 C55,50 53,54 49,57 C45,59 41,57 39,51 C37,45 41,40 48,38" />
+                <path d="M48,56 C41,49 33,42 33,33 C33,26 39,20 48,27 C57,20 63,26 63,33 C63,42 55,49 48,56 Z" />
+                <path d="M48,24 C48,17 51,12 54,9" />
+                <path d="M48,19 C44,17 41,12 43,8 C46,7 48,11 48,16" />
+                <path d="M50,14 C54,13 58,9 56,5 C53,5 51,9 50,12" />
+            </svg>
+            <span class="brand-logo">Metanoia Asset Management</span>
+        </div>
+    </header>
+
+    <div class="eligibilitate-container">
+        
+        <div class="eligibilitate-wizard">
+            <div class="manifest-header">
+                <h2>Simulator Oficial de Punctaj</h2>
+                <p>APEL REGIONAL VEST 1.2.A — GRILA TEHNICĂ DE CRITERII</p>
+            </div>
+
+            <div class="wizard-question">
+                <div class="wizard-section-title">01. Indicatorul de Profitabilitate (Max 25 Pct)</div>
+                <h4>Care a fost marja profitului operațional înregistrată de entitatea juridică în ultimul bilanț depus?</h4>
+                
+                <div class="scoring-option" onclick="registerScore('q1', 25, 'profit_mare', this)">
+                    <div class="scoring-text">
+                        <h5>Marja profitului operațional &ge; 10%</h5>
+                        <p>Structură fiscală solidă, punctaj maxim pe componenta de rentabilitate.</p>
+                    </div>
+                    <div class="scoring-badge">+25 Puncte</div>
+                </div>
+
+                <div class="scoring-option" onclick="registerScore('q1', 15, 'profit_mediu', this)">
+                    <div class="scoring-text">
+                        <h5>Marja profitului operațional între 5% și 10%</h5>
+                        <p>Stabilitate financiară medie acceptată în mod optim de ghid.</p>
+                    </div>
+                    <div class="scoring-badge">+15 Puncte</div>
+                </div>
+
+                <div class="scoring-option" onclick="registerScore('q1', 0, 'pierdere', this)">
+                    <div class="scoring-text">
+                        <h5>Firma a înregistrat Pierdere Netă / Activitate Zero (Risc major)</h5>
+                        <p>Bilanț negativ. Criteriu eliminatoriu direct din scoring-ul automat.</p>
+                    </div>
+                    <div class="scoring-badge" style="color: var(--rosu-text); border-color: var(--rosu-text);">0 Puncte</div>
+                </div>
+            </div>
+
+            <div class="wizard-question">
+                <div class="wizard-section-title">02. Sustenabilitate Socială & Angajați (Max 20 Pct)</div>
+                <h4>Câte noi locuri de muncă cu normă întreagă vă asumați contractual prin proiect?</h4>
+                
+                <div class="scoring-option" onclick="registerScore('q2', 20, 'jobs_multe', this)">
+                    <div class="scoring-text">
+                        <h5>Minimum 3 locuri de muncă (inclusiv 1 persoană din categorii vulnerabile)</h5>
+                        <p>Punctaj maxim acordat pentru crearea de oportunități sociale în regiune.</p>
+                    </div>
+                    <div class="scoring-badge">+20 Puncte</div>
+                </div>
+
+                <div class="scoring-option" onclick="registerScore('q2', 10, 'jobs_standard', this)">
+                    <div class="scoring-text">
+                        <h5>1 - 2 noi locuri de muncă cu normă întreagă pe perioadă nedeterminată</h5>
+                        <p>Asumare operațională optimă pentru o microîntreprindere de 100 mp.</p>
+                    </div>
+                    <div class="scoring-badge">+10 Puncte</div>
+                </div>
+
+                <div class="scoring-option" onclick="registerScore('q2', 0, 'jobs_zero', this)">
+                    <div class="scoring-text">
+                        <h5>Nu ne asumăm înființarea de noi posturi (Scor zero)</h5>
+                        <p>Depunere fără aport social (Scade dramatic șansele la finanțare).</p>
+                    </div>
+                    <div class="scoring-badge">0 Puncte</div>
+                </div>
+            </div>
+
+            <div class="wizard-question">
+                <div class="wizard-section-title">03. Economie Verde & Eficiență Energetică (Max 15 Pct)</div>
+                <h4>Includeți echipamente verzi sau surse regenerabile în planul de dotare al brutăriei?</h4>
+                
+                <div class="scoring-option" onclick="registerScore('q3', 15, 'verde_complet', this)">
+                    <div class="scoring-text">
+                        <h5>Peste 10% din buget alocat energiei regenerabile (Panouri Fotovoltaice)</h5>
+                        <p>Finanțarea de panouri solare pe spațiu + cuptoare eco-friendly.</p>
+                    </div>
+                    <div class="scoring-badge">+15 Puncte</div>
+                </div>
+
+                <div class="scoring-option" onclick="registerScore('q3', 5, 'verde_mediu', this)">
+                    <div class="scoring-text">
+                        <h5>Echipamente standard cu optimizare energetică Clasa A+</h5>
+                        <p>Consum redus la nivel de utilaje individuale de laborator, fără panouri.</p>
+                    </div>
+                    <div class="scoring-badge">+5 Puncte</div>
+                </div>
+            </div>
+
+            <div class="wizard-question">
+                <div class="wizard-section-title">04. Digitalizare & Gestiune Tehnologică (Max 15 Pct)</div>
+                <h4>Ce tip de sisteme IT și automatizări doriți să implementați în noul spațiu?</h4>
+                
+                <div class="scoring-option" onclick="registerScore('q4', 15, 'digital_total', this)">
+                    <div class="scoring-text">
+                        <h5>Sistem complet ERP/CRM de gestiune stocuri + automatizare computerizată</h5>
+                        <p>Monitorizare digitală integrată de la malaxor până la vitrina de la bulevard.</p>
+                    </div>
+                    <div class="scoring-badge">+15 Puncte</div>
+                </div>
+
+                <div class="scoring-option" onclick="registerScore('q4', 5, 'digital_partial', this)">
+                    <div class="scoring-text">
+                        <h5>Doar platformă web simplă de comenzi/magazin digital online</h5>
+                        <p>Fără automatizare internă a fluxului de laborator, doar interfață retail.</p>
+                    </div>
+                    <div class="scoring-badge">+5 Puncte</div>
+                </div>
+            </div>
+
+            <div class="wizard-question">
+                <div class="wizard-section-title">05. Situarea și Situația Juridică a Spațiului (Max 25 Pct)</div>
+                <h4>Dețineți un drept legal de folosință securizat asupra spațiului de 100 mp?</h4>
+                
+                <div class="scoring-option" onclick="registerScore('q5', 25, 'spatiu_securizat', this)">
+                    <div class="scoring-text">
+                        <h5>Spațiu deținut legal (Proprietate, Chirie/Comodat întabulat pe 5 ani) în Timișoara</h5>
+                        <p>Criteriu urbanistic îndeplinit cu punctaj maxim pe realismul implementării.</p>
+                    </div>
+                    <div class="scoring-badge">+25 Puncte</div>
+                </div>
+
+                <div class="scoring-option" onclick="registerScore('q5', 0, 'spatiu_neclar', this)">
+                    <div class="scoring-text">
+                        <h5>Spațiu identificat la bulevard, dar fără acte semnate și întabulate</h5>
+                        <p>Criteriu eliminatoriu direct din ghidul oficial. Dosarul nu poate fi depus.</p>
+                    </div>
+                    <div class="scoring-badge" style="color: var(--rosu-text); border-color: var(--rosu-text);">0 Puncte</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="eligibilitate-sidebar">
+            <div class="scoring-gauge-box">
+                <div style="position: relative; display: flex; align-items: center; justify-content: center;">
+                    <svg class="gauge-svg">
+                        <circle class="gauge-bg" cx="70" cy="70" r="65"></circle>
+                        <circle class="gauge-fill" id="live-gauge-fill" cx="70" cy="70" r="65"></circle>
+                    </svg>
+                    <div class="gauge-text" id="live-score-text">
+                        0
+                        <span>PUNCTE</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-diagnostic" id="diagnostic-result-panel">
+                <div class="status-badge warning"><i class="fas fa-database"></i> COLECTARE DATE INTRARE</div>
+                <h4>Sistemul așteaptă configurarea.</h4>
+                <p>Vă rugăm să selectați opțiunile corespunzătoare situației dumneavoastră din panoul din stânga pentru a rândui scorul live.</p>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="custom-modal" id="order-modal">
+        <div class="modal-card">
+            <h3>Protocol de Diagnostic Înregistrat</h3>
+            <p>Selecția dumneavoastră tehnică a fost transmisă consultantului de caz. Vă redirecționăm acum în mod securizat pe WhatsApp pentru analiza vectorilor legali și generarea contractului de finanțare.</p>
+            <button class="btn-modal-close" onclick="executeRedirect()">DEMAREAZĂ CONTRACTAREA</button>
+        </div>
+    </div>
+
+    <footer>
+        METANOIA ASSET MANAGEMENT &copy; 2026 | TOATE DREPTURILE REZERVATE CONFORM GRILIILOR AM ADR VEST
+    </footer>
+
+    <script>
+        let scoringResponses = { q1: null, q2: null, q3: null, q4: null, q5: null };
+        let pointsBreakdown = { q1: 0, q2: 0, q3: 0, q4: 0, q5: 0 };
+        let vulnerabilities = { pierdere: false, spatiu_neclar: false };
+        let activeStrategy = "standard";
+
+        function registerScore(question, points, optionId, element) {
+            // Curățare stiluri vechi în interiorul întrebării curente
+            const parent = element.parentElement;
+            parent.querySelectorAll('.scoring-option').forEach(opt => opt.classList.remove('selected'));
+            
+            // Aplicare stil activ pe opțiunea selectată de client
+            element.classList.add('selected');
+
+            // Salvare date în motorul de calcul
+            scoringResponses[question] = optionId;
+            pointsBreakdown[question] = points;
+
+            // Filtre de risc critic pentru Adrian (Bilanț negativ sau Lipsă acte spațiu)
+            if (question === 'q1') { vulnerabilities.pierdere = (optionId === 'pierdere'); }
+            if (question === 'q5') { vulnerabilities.spatiu_neclar = (optionId === 'spatiu_neclar'); }
+
+            runScoringEngine();
+        }
+
+        function runScoringEngine() {
+            let score = pointsBreakdown.q1 + pointsBreakdown.q2 + pointsBreakdown.q3 + pointsBreakdown.q4 + pointsBreakdown.q5;
+            
+            // Actualizare cifre în interiorul donut-ului SVG
+            document.getElementById('live-score-text').innerHTML = `${score} <span>PUNCTE</span>`;
+
+            // Calculare umplere inel auriu (circumferința cercului la r=65 este ~408px)
+            const strokeDashOffset = 408 - (score / 100) * 408;
+            document.getElementById('live-gauge-fill').style.strokeDashoffset = strokeDashOffset;
+
+            const diagnosticPanel = document.getElementById('diagnostic-result-panel');
+
+            // FILTRUL SUPREM: Dacă clientul a bifat vulnerabilitate critică (Ex: Bilanț pe minus)
+            if (vulnerabilities.pierdere || vulnerabilities.spatiu_neclar) {
+                activeStrategy = "restructurare";
+                let motivRisc = vulnerabilities.pierdere 
+                    ? "Înregistrarea de pierderi nete în ultimul exercițiu financiar depus vă descalifică direct din cauza criteriilor de bonitate minimă impuse de AM ADR Vest."
+                    : "Lipsa unui contract de chirie/comodat întabulat pe minimum 5 ani reprezintă un criteriu eliminatoriu direct din ghidul tehnic 1.2.A.";
+
+                diagnosticPanel.innerHTML = `
+                    <div class="status-badge warning"><i class="fas fa-exclamation-triangle"></i> RISC DE RESPINGERE: RESTRUCTURARE OBLIGATORIE</div>
+                    <h4>SOLUȚIE: PROTOCOL START-UP NOU</h4>
+                    <p>${motivRisc} Pentru a nu pierde oportunitatea de aur a spațiului de 100 mp la bulevard, soluția legală este înființarea de urgență a unei entități noi (Start-up) și calibrarea acționariatului pentru punctaj maxim.</p>
+                    <button class="btn-app-action" style="background:#fff; color:#000;" onclick="triggerActionModal()">SOLICITĂ PROTOCOLUL DE RESTRUCTURARE</button>
+                `;
+            } 
+            // Cazul B: Toate capitolele sunt completate fără riscuri critice
+            else if (scoringResponses.q1 && scoringResponses.q2 && scoringResponses.q3 && scoringResponses.q4 && scoringResponses.q5) {
+                if (score >= 80) {
+                    activeStrategy = "depunere_directa";
+                    diagnosticPanel.innerHTML = `
+                        <div class="status-badge success"><i class="fas fa-check-circle"></i> EXCELENT: INSULA DE FINANȚARE ASIGURATĂ</div>
+                        <h4>Proiect Foarte Competitiv: ${score} Puncte</h4>
+                        <p>Felicitări! Acest scor vă plasează direct în zona proiectelor cu finanțare aprobată pe Regiunea Vest. Structura de producție și magazin poate fi depusă direct în aplicația MySMIS.</p>
+                        <button class="btn-app-action" onclick="triggerActionModal()">DEMAREAZĂ SCRIEREA DOSARULUI</button>
+                    `;
+                } else {
+                    activeStrategy = "optimizare";
+                    diagnosticPanel.innerHTML = `
+                        <div class="status-badge success" style="background:#261d0d; color:var(--auriu); border-color:var(--auriu);"><i class="fas fa-tools"></i> ELIGIBIL DAR CU RISC DE DEPARTAJARE</div>
+                        <h4>Scor Limită de Siguranță: ${score} Puncte</h4>
+                        <p>Sunteți în zona eligibilă, dar pragul istoric de tăiere pe Timișoara este ridicat. Putem urca instant scorul cu încă +15 puncte prin optimizarea rețetelor verzi sau extinderea sistemului ERP.</p>
+                        <button class="btn-app-action" onclick="triggerActionModal()">OPTIMIZEAZĂ DOSARUL ACUM</button>
+                    `;
+                }
+            } 
+            // Cazul C: Încă bifează elemente
+            else {
+                diagnosticPanel.innerHTML = `
+                    <div class="status-badge warning"><i class="fas fa-spinner fa-spin"></i> SE CALCULEAZĂ...</div>
+                    <h4>Scor parțial: ${score} puncte.</h4>
+                    <p>Vă rugăm să selectați opțiunile din toate cele 5 capitole de analiză pentru a debloca diagnosticul final de eligibilitate.</p>
+                `;
+            }
+        }
+
+        function triggerActionModal() {
+            document.getElementById('order-modal').classList.add('active');
+        }
+
+        function executeRedirect() {
+            document.getElementById('order-modal').classList.remove('active');
+            let mesajWhatsApp = "";
+            
+            if (activeStrategy === "restructurare") {
+                mesajWhatsApp = encodeURIComponent("Bună ziua! Am finalizat auditul automat 1.2.A și am primit alertă de restructurare. Doresc să stabilim strategia pentru deschiderea unui Start-up Nou pentru spațiul de 100 mp din Timișoara.");
+            } else {
+                mesajWhatsApp = encodeURIComponent(`Bună ziua! Am rulat simulatorul de scoring ADR Vest 1.2.A și am obținut o structură de dosar. Doresc să validăm datele pentru brutăria-patiseria mea.`);
+            }
+            
+            window.open(`https://wa.me/40749229686?text=${mesajWhatsApp}`, '_blank');
+        }
+    </script>
+</body>
+</html>
