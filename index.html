@@ -338,4 +338,327 @@
         .btn-app-action { background: var(--auriu); color: var(--negru-pur); border: none; padding: 18px; border-radius: 50px; font-family: 'Cinzel'; font-weight: 900; font-size: 0.8rem; letter-spacing: 2px; cursor: pointer; width: 100%; transition: 0.3s; text-align: center; text-decoration: none; }
         .btn-app-action:hover { background: #fff; transform: translateY(-2px); }
 
-        .custom-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.88); z-index: 10000; display: flex; align-items: ce
+        .custom-modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.88); z-index: 10000; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: 0.4s ease; padding: 20px; }
+        .custom-modal.active { opacity: 1; visibility: visible; }
+        .modal-card { background: var(--negru-lux); border: 1px solid var(--auriu); border-radius: 28px; max-width: 500px; width: 100%; padding: 45px 35px; text-align: center; }
+        .btn-modal-close { background: transparent; border: 1px solid var(--text-muted); color: var(--text-muted); padding: 14px 35px; border-radius: 50px; cursor: pointer; font-family: 'Cinzel'; font-size: 0.75rem; }
+        
+        .wa-float { position: fixed; bottom: 35px; right: 35px; color: var(--auriu); font-size: 30px; z-index: 9999; opacity: 0.82; transition: 0.3s; }
+        .wa-float:hover { transform: scale(1.1); color: #25d366; }
+
+        @media (min-width: 992px) {
+            .site-header { padding: 25px 5%; flex-direction: row; justify-content: space-between; gap: 0; }
+            .hero { padding: 0 10%; }
+            .app-workspace { grid-template-columns: 1.4fr 1fr; }
+            .footer-grid { flex-direction: row; justify-content: space-between; align-items: flex-end; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="https://wa.me/40749229686" class="wa-float" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <header class="site-header" id="header">
+        <svg width="0" height="0">
+            <defs>
+                <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#f3e5ab" />
+                    <stop offset="50%" stop-color="#c5a059" />
+                    <stop offset="100%" stop-color="#947435" />
+                </linearGradient>
+            </defs>
+        </svg>
+
+        <div class="brand-logo-container" onclick="navigateTo('home')">
+            <svg class="metanoia-logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18,63 C23,73 36,79 48,79 C60,79 73,70 73,59 C73,54 68,50 62,50 C55,50 53,54 49,57 C45,59 41,57 39,51 C37,45 41,40 48,38" />
+                <path d="M48,56 C41,49 33,42 33,33 C33,26 39,20 48,27 C57,20 63,26 63,33 C63,42 55,49 48,56 Z" />
+                <path d="M48,24 C48,17 51,12 54,9" />
+                <path d="M48,19 C44,17 41,12 43,8 C46,7 48,11 48,16" />
+                <path d="M50,14 C54,13 58,9 56,5 C53,5 51,9 50,12" />
+            </svg>
+            <span class="brand-logo">Metanoia</span>
+        </div>
+        <nav class="main-nav" id="nav-links">
+            <span id="nav-home" class="active" onclick="navigateTo('home')">Acasă</span>
+            <span id="nav-eligibilitate" onclick="navigateTo('eligibilitate')">Verifică Eligibilitatea</span>
+            <span id="nav-manifest" onclick="navigateTo('manifest')">Manifest</span>
+            <span id="nav-masterplan" onclick="navigateTo('masterplan')">Masterplan</span>
+            <span id="nav-tihna" onclick="navigateTo('tihna')">Tihnă</span>
+            <span id="nav-oferta" onclick="navigateTo('oferta')">Vizibilitate</span>
+            <span id="nav-jurnal" onclick="navigateTo('jurnal')">Jurnal</span>
+        </nav>
+    </header>
+
+    <div id="view-home" class="spa-view active-view">
+        <section class="hero" id="hero-sec">
+            <div class="hero-bg-container" id="parallax-bg"><div class="hero-bg-image"></div></div>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <span class="tagline">HAȚEG ALTERNATIV - METANOIA</span>
+                <h1>Când rutina zilnică devine un compromis, soluția este Rânduiala Gustului.</h1>
+                <p>Sisteme gastronomice automate și meniuri logistice de elită pentru liderii inteligenți care refuză să facă rabat de la calitatea resurselor din lipsă de timp.</p>
+                <button onclick="navigateTo('eligibilitate')" class="btn-hero">PORNEȘTE DIAGNOSTICUL FISCAL</button>
+            </div>
+        </section>
+    </div>
+
+    <div id="view-eligibilitate" class="spa-view">
+        <div class="survey-container">
+            <div class="manifest-header">
+                <h2>Filtru Inteligent de Finanțare</h2>
+                <p>BIFEAZĂ SITUAȚIA FACTUALĂ A COMPANIEI TALE</p>
+            </div>
+
+            <div class="survey-card">
+                <div class="survey-step">
+                    <label>01. Istoricul Financiar pe Anul Trecut</label>
+                    <div class="checkbox-option" id="opt-profit" onclick="selectSurveyOpt('q1', 'profit', this)">
+                        <div class="option-text">
+                            <h4>Compania a înregistrat Profit Net</h4>
+                            <p>Bilanțul contabil depus la ANAF este pozitiv, pe plus.</p>
+                        </div>
+                        <div class="radio-dot"><span></span></div>
+                    </div>
+                    <div class="checkbox-option" id="opt-pierdere" onclick="selectSurveyOpt('q1', 'pierdere', this)">
+                        <div class="option-text">
+                            <h4>Compania a înregistrat Pierdere (Pe Minus) / Fără Activitate</h4>
+                            <p>Activitatea a fost pe zero sau bilanțul a ieșit negativ.</p>
+                        </div>
+                        <div class="radio-dot"><span></span></div>
+                    </div>
+                </div>
+
+                <div class="survey-step">
+                    <label>02. Structura de Acționariat actuală</label>
+                    <div class="checkbox-option" onclick="selectSurveyOpt('q2', 'femei', this)">
+                        <div class="option-text">
+                            <h4>Acționariat Feminin majoritar (minimum 50%)</h4>
+                            <p>Firma este deținută sau poate fi controlată de o doamnă antreprenor.</p>
+                        </div>
+                        <div class="radio-dot"><span></span></div>
+                    </div>
+                    <div class="checkbox-option" onclick="selectSurveyOpt('q2', 'barbati', this)">
+                        <div class="option-text">
+                            <h4>Acționariat exclusiv Masculin</h4>
+                            <p>Firma este controlată în totalitate de bărbați.</p>
+                        </div>
+                        <div class="radio-dot"><span></span></div>
+                    </div>
+                </div>
+
+                <div class="survey-step">
+                    <label>03. Stadiul Spațiului de Producție (100 mp Timișoara)</label>
+                    <div class="checkbox-option" onclick="selectSurveyOpt('q3', 'detinut', this)">
+                        <div class="option-text">
+                            <h4>Deținem spațiul (Proprietate, Chirie sau Comodat încheiat)</h4>
+                            <p>Avem drept legal de folosință pe termen lung asupra celor 100 mp.</p>
+                        </div>
+                        <div class="radio-dot"><span></span></div>
+                    </div>
+                    <div class="checkbox-option" onclick="selectSurveyOpt('q3', 'cautare', this)">
+                        <div class="option-text">
+                            <h4>Nu deținem încă acte pe spațiu</h4>
+                            <p>Locația este doar identificată, nu există contract legal semnat.</p>
+                        </div>
+                        <div class="radio-dot"><span></span></div>
+                    </div>
+                </div>
+
+                <button class="btn-app-action" style="margin-top: 20px;" onclick="evaluateEligibility()">GENEREAZĂ DIAGNOSTICUL OFICIAL</button>
+                
+                <div class="diagnostic-box" id="diagnostic-output">
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="view-manifest" class="spa-view">
+        <div class="manifest-container">
+            <div class="manifest-header"><h2>Viziunea Biologiei Curate</h2><p>MANIFESTUL NUTRIȚIEI DE ELITĂ</p></div>
+            <div class="manifest-accordion">
+                <div class="accordion-item active" onclick="toggleAccordion(this)">
+                    <div class="accordion-header"><h3>01. Puritatea Surselor Locale</h3><i class="fas fa-chevron-down"></i></div>
+                    <div class="accordion-content" style="display:block;">Utilizăm doar ingrediente curate. Zero conservanți, zero coloranți artificiali, zero uleiuri trans. Doar biochimie naturală pură.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="view-masterplan" class="spa-view">
+        <div class="masterplan-container">
+            <div class="manifest-header"><h2>Arhitectura Schimbării</h2><p>CAPCANA VS METODA MULTI-ETAPĂ</p></div>
+            <div class="deck-tabs-container">
+                <button class="deck-tab active" onclick="switchDeckTab('problema')">PROBLEMA: CATERING CLASIC</button>
+                <button class="deck-tab" onclick="switchDeckTab('solutia')">SOLUȚIA: FAST-SLOW METANOIA</button>
+            </div>
+            <div id="deck-problema" class="deck-content-card active">
+                <div class="deck-grid">
+                    <div class="deck-text"><h3>Capcana lipsei de timp</h3><p>Mâncarea la birou este adesea o înșiruire haotică de livrări reci și sandwich-uri industrializate.</p></div>
+                </div>
+            </div>
+            <div id="deck-solutia" class="deck-content-card">
+                <div class="deck-grid">
+                    <div class="deck-text"><h3>Sistemul Automatizat Fast-Slow</h3><p>Gătim extrem de lent, la temperaturi optime, apoi îți livrăm preparatele ambalate etanș.</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="view-tihna" class="spa-view">
+        <div class="tihna-container">
+            <div class="app-container">
+                <div class="app-calendar">
+                    <div class="calendar-day active" onclick="switchDay(this, 'Luni')"><span>Luni</span><span>25 MAI</span></div>
+                    <div class="calendar-day" onclick="switchDay(this, 'Marți')"><span>Marți</span><span>26 MAI</span></div>
+                </div>
+                <div class="app-workspace">
+                    <div class="meal-selector-panel"><div class="meal-category-block"><div class="meal-category-title">Prânz de Elită</div><div id="lunch-list"></div></div></div>
+                    <div class="app-checkout-panel">
+                        <div class="checkout-header"><h3>Sumar Protocol</h3><p id="active-day-label">Luni - Aliniere conștientă</p></div>
+                        <div class="checkout-stats">
+                            <div class="checkout-stat-row"><span>Total Calorii</span><span id="app-kcal">0 kcal</span></div>
+                            <div class="checkout-stat-row total"><span>Preț Total</span><span id="app-price">0 Lei</span></div>
+                        </div>
+                        <button class="btn-app-action" onclick="orderNow()">REZERVARE PROTOCOL</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="view-oferta" class="spa-view">
+        <div class="oferta-container">
+            <div class="generator-grid">
+                <div class="can-preview-box">
+                    <div class="simulated-can">
+                        <div class="can-cap"></div>
+                        <div class="can-label" id="interactive-label">
+                            <svg viewBox="0 0 100 100" stroke="#c5a059" stroke-width="2.5" fill="none"><path d="M18,63 C23,73 36,79 48,79 C60,79 73,70 73,59 C73,54 68,50 62,50 C55,50 53,54 49,57 C45,59 41,57 39,51 C37,45 41,40 48,38" /></svg>
+                            <span class="can-label-title" id="can-beverage-name">SIGNATURE COLD BREW</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="generator-controls">
+                    <div class="option-pills">
+                        <span class="option-pill active" onclick="customizeCan('Signature Cold Brew', '#050505', '#c5a059')">Cold Brew</span>
+                        <span class="option-pill" onclick="customizeCan('Iced Oat Latte', '#141c16', '#ebd3a3')">Oat Latte</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="view-jurnal" class="spa-view">
+        <div class="jurnal-container">
+            <div class="input-box">
+                <textarea id="mesajForum" placeholder="Cum te-a influențat masa astăzi?"></textarea>
+                <button onclick="posteazaGand()" class="btn-hero" style="width: 100%;">TRIMITE ÎN JURNAL</button>
+            </div>
+            <div id="lista-ganduri"></div>
+        </div>
+    </div>
+
+    <div class="custom-modal" id="order-modal">
+        <div class="modal-card">
+            <h3>Protocol Înregistrat!</h3>
+            <p>Selecția ta a fost salvată în sistem. Te redirecționăm pe WhatsApp-ul oficial pentru detalii.</p>
+            <button class="btn-modal-close" onclick="closeModal()">ÎNCHIDE</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="cui-info">DAKAMIGOS MARKT SRL | CUI: RO40767794<br>STR. MUNTELUI NR. 12, HAȚEG</div>
+        </div>
+        <span class="tribute">METANOIA CULINARĂ &copy; 2026</span>
+    </footer>
+
+    <script>
+        // Logica de calcul eligibilitate pe baza checkbox-urilor selectate
+        let userResponses = { q1: null, q2: null, q3: null };
+
+        function selectSurveyOpt(question, value, element) {
+            const parent = element.parentElement;
+            parent.querySelectorAll('.checkbox-option').forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
+            userResponses[question] = value;
+        }
+
+        function evaluateEligibility() {
+            const output = document.getElementById('diagnostic-output');
+            output.classList.add('active');
+
+            if (!userResponses.q1 || !userResponses.q2 || !userResponses.q3) {
+                output.innerHTML = `<h3>Date incomplete</h3><p>Vă rugăm să bifați câte o opțiune pentru fiecare dintre cele 3 capitole tehnice de mai sus.</p>`;
+                return;
+            }
+
+            // SCENARIUL 1: Bilanț pe minus (Problema semnalată de tine) -> Declanșare Strategie Alternativă
+            if (userResponses.q1 === 'pierdere') {
+                output.innerHTML = `
+                    <div class="status-badge warning"><i class="fas fa-exclamation-triangle"></i> ALERTĂ: RESTRUCTURARE NECESARĂ</div>
+                    <h3>Strategia Alternativă: Înființare Start-up Nou</h3>
+                    <p>Deoarece bilanțul pe anul fiscal anterior a înregistrat pierderi, firma curentă nu întrunește criteriile de filtrare automată pentru apelurile ADR Vest sau liniile de producție active. <strong>Soluția de succes:</strong> Pentru a nu pierde poziția premium a spațiului de 100 mp de la bulevard, vom înființa o entitate juridică nouă (Start-up) și vom mapa acționariatul pentru a obține punctaj maxim pe liniile de finanțare de debut.</p>
+                    <button class="btn-app-action" style="background:#fff; color:#000;" onclick="orderNow()">SOLICITĂ PROTOCOLUL DE RESTRUCTURARE</button>
+                `;
+            } 
+            // SCENARIUL 2: Bilanț pe profit + Femei în acționariat + Spațiu deținut -> Eligibilitate Maximă directă
+            else if (userResponses.q1 === 'profit' && userResponses.q2 === 'femei' && userResponses.q3 === 'detinot') {
+                output.innerHTML = `
+                    <div class="status-badge success"><i class="fas fa-check-circle"></i> SCORING EXCELENT (ELIGIBIL)</div>
+                    <h3>Finanțare Directă: Programul Femeia Antreprenor / ADR Vest</h3>
+                    <p>Felicitări! Compania dumneavoastră întrunește cumulat condițiile tehnice pentru depunerea directă a dosarului. Putem atrage un grant nerambursabil de până la 200.000 de lei pentru achiziția utilajelor premium germane (MIWE, Diosna) și finisarea laboratorului.</p>
+                    <button class="btn-app-action" onclick="orderNow()">DEMAREAZĂ PROTOCOLUL DE ACHIZIȚIE</button>
+                `;
+            } 
+            // SCENARIUL 3: Alte variații (Eligibilitate parțială)
+            else {
+                output.innerHTML = `
+                    <div class="status-badge success"><i class="fas fa-info-circle"></i> ELIGIBILITATE CONDIȚIONATĂ</div>
+                    <h3>Strategie Mix: Linie Regională ADR Vest</h3>
+                    <p>Firma are un istoric curat, dar structura de acționariat sau stadiul juridic al spațiului necesită ajustări tehnice în planul de afaceri pentru a asigura un punctaj de trecere de peste 85 de puncte. Avem soluțiile pregătite în cadrul ghidului 1.2.A.</p>
+                    <button class="btn-app-action" onclick="orderNow()">REZERVĂ AUDITUL DE SCORING</button>
+                `;
+            }
+        }
+
+        // SPA Navigation logic
+        function navigateTo(viewId) {
+            document.querySelectorAll('.spa-view').forEach(v => v.classList.remove('active-view'));
+            const target = document.getElementById(`view-${viewId}`);
+            if (target) target.classList.add('active-view');
+            
+            document.querySelectorAll('.main-nav span').forEach(s => s.classList.remove('active'));
+            const tab = document.getElementById(`nav-${viewId}`);
+            if (tab) tab.classList.add('active');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleAccordion(el) {
+            const act = el.classList.contains('active');
+            el.parentElement.querySelectorAll('.accordion-item').forEach(i => { i.classList.remove('active'); i.querySelector('.accordion-content').style.display='none'; });
+            if(!act) { el.classList.add('active'); el.querySelector('.accordion-content').style.display='block'; }
+        }
+
+        function switchDeckTab(name) {
+            document.querySelectorAll('.deck-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.deck-content-card').forEach(c => c.classList.remove('active'));
+            event.target.classList.add('active');
+            document.getElementById(`deck-${name}`).classList.add('active');
+        }
+
+        function customizeCan(n, b, s) {
+            document.getElementById('can-beverage-name').innerText = n.toUpperCase();
+            document.getElementById('interactive-label').style.background = b;
+            document.getElementById('interactive-label').style.borderColor = s;
+        }
+
+        function orderNow() { document.getElementById('order-modal').classList.add('active'); }
+        function closeModal() { document.getElementById('order-modal').classList.remove('active'); window.open('https://wa.me/40749229686', '_blank'); }
+        function closePromo() { document.getElementById('promo-popup-card').classList.remove('active'); }
+    </script>
+</body>
+</html>
