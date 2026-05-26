@@ -3,58 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>METANOIA HUB</title>
+    <title>METANOIA | Meniu Premium</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Cinzel:wght@400;700&display=swap');
         body { background: #050505; color: #fff; font-family: 'Inter', sans-serif; }
-        .product-card { transition: all 0.3s ease; }
-        .product-card:hover { transform: translateY(-5px); border-color: #c5a059; }
-        .pulse-effect { animation: pulse 0.5s ease-in-out; }
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(0.95); } 100% { transform: scale(1); } }
+        .font-brand { font-family: 'Cinzel', serif; }
+        .gold-border { border: 1px solid #c5a059; }
+        .gold-text { color: #c5a059; }
+        .bg-gold { background: #c5a059; }
+        .product-card { background: #0c0c0c; border: 1px solid #1a1a1a; transition: all 0.3s ease; }
+        .product-card:hover { border-color: #c5a059; }
     </style>
 </head>
-<body class="pb-24">
+<body class="pb-32">
 
-    <header class="p-6 text-center border-b border-[#1a1a1a]">
-        <h1 class="text-2xl tracking-[0.3em] text-[#c5a059] font-serif">METANOIA</h1>
+    <header class="p-6 text-center border-b border-[#1a1a1a] bg-black sticky top-0 z-50">
+        <h1 class="text-2xl tracking-[0.3em] font-brand gold-text">METANOIA</h1>
     </header>
 
-    <main class="p-6 max-w-sm mx-auto space-y-6">
-        
-        <div class="product-card border border-[#1a1a1a] p-4 rounded-xl flex items-center gap-4 bg-[#0a0a0a]">
-            <div class="w-16 h-16 bg-gray-800 rounded-lg"></div> <div class="flex-grow">
-                <h3 class="font-bold text-sm">Ceaun de Pui</h3>
-                <p class="text-[#c5a059] text-xs">20.50 RON</p>
-            </div>
-            <button onclick="adaugaProdus(this, 20.50)" class="border border-[#c5a059] px-4 py-2 text-xs uppercase hover:bg-[#c5a059] hover:text-black transition-all">Add</button>
+    <main class="max-w-md mx-auto p-4 space-y-6">
+        <div class="h-40 rounded-xl bg-[#111] border border-[#1a1a1a] flex items-center justify-center text-gray-600 italic">
+            [Meniu Săptămânal]
         </div>
 
-        <div class="product-card border border-[#1a1a1a] p-4 rounded-xl flex items-center gap-4 bg-[#0a0a0a]">
-            <div class="w-16 h-16 bg-gray-800 rounded-lg"></div>
-            <div class="flex-grow">
-                <h3 class="font-bold text-sm">Tochitură</h3>
-                <p class="text-[#c5a059] text-xs">25.00 RON</p>
+        <div id="product-list" class="space-y-3">
+            <div class="product-card p-4 rounded-xl flex justify-between items-center">
+                <div>
+                    <h3 class="font-semibold text-sm">Ceaun de Pui</h3>
+                    <p class="gold-text text-xs">20.50 RON</p>
+                </div>
+                <button onclick="add(20.50, 'Ceaun de Pui')" class="gold-border px-4 py-1 text-[10px] uppercase hover:bg-[#c5a059] hover:text-black transition-all rounded">Adaugă</button>
             </div>
-            <button onclick="adaugaProdus(this, 25.00)" class="border border-[#c5a059] px-4 py-2 text-xs uppercase hover:bg-[#c5a059] hover:text-black transition-all">Add</button>
+            <div class="product-card p-4 rounded-xl flex justify-between items-center">
+                <div>
+                    <h3 class="font-semibold text-sm">Tochitură Metanoia</h3>
+                    <p class="gold-text text-xs">25.00 RON</p>
+                </div>
+                <button onclick="add(25.00, 'Tochitură')" class="gold-border px-4 py-1 text-[10px] uppercase hover:bg-[#c5a059] hover:text-black transition-all rounded">Adaugă</button>
+            </div>
         </div>
-
     </main>
 
-    <div id="sticky-cart" class="fixed bottom-0 w-full p-4 bg-[#0a0a0a] border-t border-[#c5a059] flex justify-between items-center z-50">
-        <div class="text-xs uppercase tracking-widest">Total: <span id="total-val" class="text-xl text-[#c5a059]">0.00</span> RON</div>
-        <button class="bg-[#c5a059] text-black px-6 py-2 text-xs font-bold uppercase hover:opacity-90">Checkout</button>
+    <div class="fixed bottom-0 w-full bg-black border-t border-[#1a1a1a] p-5 flex justify-between items-center z-50">
+        <div>
+            <p class="text-[9px] text-gray-500 uppercase">Total</p>
+            <p class="text-lg font-bold"><span id="total" class="gold-text">0.00</span> RON</p>
+        </div>
+        <button onclick="finalizare()" class="bg-[#c5a059] text-black font-bold px-8 py-3 rounded-full text-xs uppercase hover:opacity-90 transition-all">Finalizare</button>
     </div>
 
     <script>
         let total = 0;
-        function adaugaProdus(btn, pret) {
+        let produse = [];
+
+        function add(pret, nume) {
             total += pret;
-            document.getElementById('total-val').innerText = total.toFixed(2);
-            
-            // Efect vizual
-            btn.classList.add('pulse-effect');
-            setTimeout(() => btn.classList.remove('pulse-effect'), 500);
+            produse.push(nume);
+            document.getElementById('total').innerText = total.toFixed(2);
+        }
+
+        async function finalizare() {
+            if(total === 0) return alert("Nu ai selectat nimic!");
+
+            const dataComanda = {
+                total: total,
+                produse: produse.join(", "),
+                timestamp: new Date().toLocaleString('ro-RO')
+            };
+
+            try {
+                const response = await fetch("AICI_PUII_LINKUL_DE_LA_MAKE", { // <-- AICI PUI LINKUL TĂU DE LA MAKE
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(dataComanda)
+                });
+
+                if (response.ok) {
+                    alert("Comanda a fost trimisă!");
+                }
+            } catch (e) {
+                alert("Eroare de conexiune.");
+            }
         }
     </script>
 </body>
