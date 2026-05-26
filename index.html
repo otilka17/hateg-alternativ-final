@@ -3,56 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>METANOIA | Gust Autentic</title>
+    <title>METANOIA HUB</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
     <style>
-        .image-container { overflow: hidden; position: relative; }
-        .image-container img { transition: transform 0.7s ease; }
-        .image-container:hover img { transform: scale(1.1); }
-        .card-blur { background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); }
+        body { background: #050505; color: #fff; font-family: 'Inter', sans-serif; }
+        .product-card { transition: all 0.3s ease; }
+        .product-card:hover { transform: translateY(-5px); border-color: #c5a059; }
+        .pulse-effect { animation: pulse 0.5s ease-in-out; }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(0.95); } 100% { transform: scale(1); } }
     </style>
 </head>
-<body class="bg-black text-white">
+<body class="pb-24">
 
-    <header class="relative h-[80vh] flex items-center justify-center overflow-hidden">
-        <img src="https://source.unsplash.com/1600x900/?gourmet-food" class="absolute w-full h-full object-cover opacity-60">
-        <div class="relative text-center z-10">
-            <h1 class="text-6xl md:text-8xl font-bold tracking-tighter text-[#c5a059]">METANOIA</h1>
-            <p class="text-xl mt-4 italic">Rânduiala hranei în Hațeg</p>
-            <a href="metanoia_hub.html" class="mt-8 inline-block border border-[#c5a059] px-10 py-4 uppercase tracking-[3px] hover:bg-[#c5a059] hover:text-black transition-all">Alege Meniul</a>
-        </div>
+    <header class="p-6 text-center border-b border-[#1a1a1a]">
+        <h1 class="text-2xl tracking-[0.3em] text-[#c5a059] font-serif">METANOIA</h1>
     </header>
 
-    <section class="max-w-6xl mx-auto py-20 px-6">
-        <h2 class="text-3xl mb-12 text-center text-[#c5a059]">DIN BUCĂTĂRIA NOASTRĂ</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            
-            <div class="image-container h-80">
-                <img src="https://source.unsplash.com/600x800/?roasted-chicken" class="w-full h-full object-cover">
-                <div class="absolute bottom-0 p-6 card-blur w-full">
-                    <h3 class="text-xl font-bold">Pui la Cuptor</h3>
-                    <p class="text-sm">Gătit lent cu ierburi locale.</p>
-                </div>
+    <main class="p-6 max-w-sm mx-auto space-y-6">
+        
+        <div class="product-card border border-[#1a1a1a] p-4 rounded-xl flex items-center gap-4 bg-[#0a0a0a]">
+            <div class="w-16 h-16 bg-gray-800 rounded-lg"></div> <div class="flex-grow">
+                <h3 class="font-bold text-sm">Ceaun de Pui</h3>
+                <p class="text-[#c5a059] text-xs">20.50 RON</p>
             </div>
-
-            <div class="image-container h-80">
-                <img src="https://source.unsplash.com/600x800/?fresh-salad" class="w-full h-full object-cover">
-                <div class="absolute bottom-0 p-6 card-blur w-full">
-                    <h3 class="text-xl font-bold">Salate de Sezon</h3>
-                    <p class="text-sm">Farm-to-table, proaspăt zilnic.</p>
-                </div>
-            </div>
-
-            <div class="image-container h-80">
-                <img src="https://source.unsplash.com/600x800/?dessert" class="w-full h-full object-cover">
-                <div class="absolute bottom-0 p-6 card-blur w-full">
-                    <h3 class="text-xl font-bold">Desertul Metanoia</h3>
-                    <p class="text-sm">Răsfăț după rânduială.</p>
-                </div>
-            </div>
-
+            <button onclick="adaugaProdus(this, 20.50)" class="border border-[#c5a059] px-4 py-2 text-xs uppercase hover:bg-[#c5a059] hover:text-black transition-all">Add</button>
         </div>
-    </section>
 
+        <div class="product-card border border-[#1a1a1a] p-4 rounded-xl flex items-center gap-4 bg-[#0a0a0a]">
+            <div class="w-16 h-16 bg-gray-800 rounded-lg"></div>
+            <div class="flex-grow">
+                <h3 class="font-bold text-sm">Tochitură</h3>
+                <p class="text-[#c5a059] text-xs">25.00 RON</p>
+            </div>
+            <button onclick="adaugaProdus(this, 25.00)" class="border border-[#c5a059] px-4 py-2 text-xs uppercase hover:bg-[#c5a059] hover:text-black transition-all">Add</button>
+        </div>
+
+    </main>
+
+    <div id="sticky-cart" class="fixed bottom-0 w-full p-4 bg-[#0a0a0a] border-t border-[#c5a059] flex justify-between items-center z-50">
+        <div class="text-xs uppercase tracking-widest">Total: <span id="total-val" class="text-xl text-[#c5a059]">0.00</span> RON</div>
+        <button class="bg-[#c5a059] text-black px-6 py-2 text-xs font-bold uppercase hover:opacity-90">Checkout</button>
+    </div>
+
+    <script>
+        let total = 0;
+        function adaugaProdus(btn, pret) {
+            total += pret;
+            document.getElementById('total-val').innerText = total.toFixed(2);
+            
+            // Efect vizual
+            btn.classList.add('pulse-effect');
+            setTimeout(() => btn.classList.remove('pulse-effect'), 500);
+        }
+    </script>
 </body>
 </html>
