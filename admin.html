@@ -1,224 +1,35 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <!-- GOOGLE TAG MANAGER -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18106516696"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'AW-18106516696');
-    </script>
-
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Consolă Management | Monitorizare Comenzi</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400;1,700&family=Cinzel:wght@400;700;900&family=Inter:wght@200;400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
+    <title>METANOIA | ADMIN</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        :root { 
-            --auriu: #c5a059; 
-            --negru-pur: #000000; 
-            --negru-lux: #050505; 
-            --alb-mat: #f0f0f0; 
-            --text-muted: #666; 
-        }
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-        body { background: var(--negru-pur); color: var(--alb-mat); font-family: 'Inter', sans-serif; overflow-x: hidden; line-height: 1.6; }
-
-        .container { max-width: 1400px; margin: 80px auto 100px; padding: 0 30px; }
-        
-        /* HEADER CONSOLĂ */
-        header { border-bottom: 1px solid #111; padding-bottom: 30px; margin-bottom: 50px; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px; }
-        .header-title h1 { font-family: 'Cinzel'; font-size: 1.4rem; color: #fff; letter-spacing: 3px; font-weight: 700; display: flex; align-items: center; gap: 15px; }
-        .badge { background: #111; border: 1px solid var(--auriu); color: var(--auriu); padding: 4px 10px; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 2px; font-family: 'Cinzel'; font-weight: 900; }
-        .owner-tag { font-size: 0.85rem; color: var(--text-muted); font-family: 'Cinzel'; letter-spacing: 1px; margin-top: 5px; }
-        
-        .refresh-btn { background: transparent; border: 1px solid var(--auriu); color: var(--auriu); padding: 10px 20px; font-family: 'Cinzel'; font-size: 0.75rem; letter-spacing: 2px; cursor: pointer; transition: 0.4s; font-weight: bold; }
-        .refresh-btn:hover { background: var(--auriu); color: #000; }
-
-        /* LIVE METRICS OVERVIEW */
-        .metrics-bar { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 40px; }
-        .metric-card { background: var(--negru-lux); border: 1px solid #111; padding: 25px; text-align: center; }
-        .metric-card span { font-family: 'Cinzel'; font-size: 0.65rem; color: var(--text-muted); letter-spacing: 2px; display: block; margin-bottom: 5px; }
-        .metric-card p { font-family: 'Playfair Display'; font-size: 2rem; color: var(--auriu); font-style: italic; }
-
-        /* TABEL LOGISTIC REZERVĂRI / COMENZI */
-        .table-container { background: var(--negru-lux); border: 1px solid #111; padding: 40px; overflow-x: auto; }
-        .table-container h2 { font-family: 'Cinzel'; font-size: 0.95rem; margin-bottom: 25px; color: #fff; letter-spacing: 3px; font-weight: 700; }
-        
-        table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.9rem; }
-        th { font-family: 'Cinzel'; color: var(--auriu); font-size: 0.75rem; letter-spacing: 2px; padding: 15px 10px; border-bottom: 2px solid var(--auriu); font-weight: 700; }
-        td { padding: 18px 10px; border-bottom: 1px solid #111; color: #ccc; font-weight: 300; }
-        tr:hover td { color: #fff; background: rgba(255,255,255,0.01); }
-        
-        /* STATUS PILLS */
-        .status-pill { font-family: 'Cinzel'; font-size: 0.6rem; letter-spacing: 1px; padding: 4px 10px; font-weight: 900; background: #111; border: 1px solid #333; color: #aaa; }
-        .status-pill.confirmed { border-color: #4caf50; color: #4caf50; }
-        .status-pill.pending { border-color: #ff9800; color: #ff9800; }
-
-        .note-text { font-size: 0.8rem; color: var(--text-muted); font-style: italic; }
-        .confidential-tag { text-align: center; font-family: 'Cinzel'; color: #1a1a1a; font-size: 0.7rem; letter-spacing: 4px; font-weight: 900; margin-top: 60px; }
+        body { background: #030303; color: #fff; font-family: 'Inter', sans-serif; }
+        .row-table { border-bottom: 1px solid #1a1a1a; }
     </style>
 </head>
-<body>
-
-<div class="container">
-    <header>
-        <div class="header-title">
-            <h1>Consolă Management Sistem <span class="badge">Live Orders</span></h1>
-            <p class="owner-tag">Gestiune Flux Logistic | <span>Dakamigos Markt SRL</span></p>
-        </div>
-        <button class="refresh-btn" onclick="fetchOrders()"><i class="fas fa-sync-alt"></i> REÎNCARCĂ DATELE</button>
-    </header>
-
-    <!-- METRICI RAPIDE (SUMAR AUTOMAT) -->
-    <div class="metrics-bar">
-        <div class="metric-card">
-            <span>Total Comenzi</span>
-            <p id="metric-total">0</p>
-        </div>
-        <div class="metric-card">
-            <span>Valoare Estimată</span>
-            <p id="metric-value">0 RON</p>
-        </div>
-        <div class="metric-card">
-            <span>Status Conexiune</span>
-            <p id="metric-status" style="font-size: 1.2rem; margin-top: 10px; font-family: 'Cinzel'; font-style: normal; color: #4caf50;">ONLINE</p>
-        </div>
-    </div>
-
-    <!-- PANOU CENTRAL COMERCIALE -->
-    <div class="table-container">
-        <h2><i class="fas fa-utensils"></i> CERERI DE REZERVARE ȘI COMENZI MENIURI</h2>
+<body class="p-8">
+    <div class="max-w-5xl mx-auto">
+        <h1 class="text-[#c5a059] font-cinzel text-2xl mb-8">ACTIVITATE RECENTĂ</h1>
         
-        <table>
+        <table class="w-full text-left text-sm">
             <thead>
-                <tr>
-                    <th>Client / Contact</th>
-                    <th>Dată / Oră Servire</th>
-                    <th>Pachet / Meniu Solicitat</th>
-                    <th>Porții</th>
-                    <th>Suplimente Selectate</th>
-                    <th>Total Estimativ</th>
-                    <th>Status</th>
+                <tr class="text-gray-500 uppercase text-[10px] tracking-widest">
+                    <th class="pb-4">Client</th>
+                    <th class="pb-4">Comandă</th>
+                    <th class="pb-4">Status</th>
                 </tr>
             </thead>
-            <tbody id="ordersTableBody">
-                <tr>
-                    <td colspan="7" style="text-align: center; padding: 40px; color: var(--text-muted); font-family: 'Cinzel'; letter-spacing: 1px;">
-                        Se încarcă registrul de comenzi din sistem...
-                    </td>
+            <tbody id="comenzi-list">
+                <!-- Aici se vor popula datele din WhatsApp -->
+                <tr class="row-table">
+                    <td class="py-4">Ion Popescu</td>
+                    <td class="py-4">Ceaun Pui</td>
+                    <td class="py-4 text-[#c5a059]">În lucru</td>
                 </tr>
             </tbody>
         </table>
     </div>
-
-    <div class="confidential-tag">
-        PANOU ADMINISTRATIV CONFIDENȚIAL &bull; ACCES INTERN SECURIZAT
-    </div>
-</div>
-
-<script>
-    // URL-ul Webhook-ului din Make care va CITI datele salvate (din Google Sheets, de exemplu)
-    // Înlocuiește cu webhook-ul tău de GET/READ din Make
-    const MAKE_READ_WEBHOOK = 'https://hook.eu1.make.com/0z9yl1g4qy7ej57zlqpm8cp8o9mczvxj';
-
-    async function fetchOrders() {
-        const tableBody = document.getElementById('ordersTableBody');
-        const totalMetric = document.getElementById('metric-total');
-        const valueMetric = document.getElementById('metric-value');
-        
-        try {
-            const response = await fetch(MAKE_READ_WEBHOOK);
-            if (!response.ok) throw new Error("Eroare rețea");
-            const orders = await response.json(); // Așteaptă un Array de obiecte (comenzi)
-            
-            tableBody.innerHTML = '';
-            let totalValue = 0;
-            
-            if (!orders || orders.length === 0) {
-                tableBody.innerHTML = `<tr><td colspan="7" style="text-align:center; padding:30px; color:#555;">Nicio comandă activă în sistem în acest moment.</td></tr>`;
-                return;
-            }
-
-            orders.forEach(order => {
-                // Presupunem structura returnată de Make (aliniată cu câmpurile din formularul tău din rezervari.html)
-                const nume = order["Nume"] || "Nespecificat";
-                const telefon = order["Telefon"] || "-";
-                const dataServire = order["Data_Livrare"] || order["Check_in"] || "-";
-                const oraServire = order["Ora_Livrare"] || "-";
-                const pachet = order["Nume_Pachet"] || order["Nume_Meniu"] || "-";
-                const portii = order["Numar_Portii"] || order["Persoane"] || "1";
-                const suplimente = order["Suplimente_Selectate"] || "-";
-                const total = parseInt(order["Total_Estimativ"]) || 0;
-                const status = order["Status"] || "În așteptare"; // Pliculeț status confirmat/neconfirmat
-                
-                totalValue += total;
-
-                let statusClass = 'pending';
-                if(status.toLowerCase() === 'confirmat' || status.toLowerCase() === 'platit') statusClass = 'confirmed';
-
-                const row = `
-                    <tr>
-                        <td><strong>${nume}</strong><br><span class="note-text">${telefon}</span></td>
-                        <td>${dataServire}<br><span class="note-text">${oraServire}</span></td>
-                        <td>${pachet}</td>
-                        <td style="font-family: 'Cinzel'; font-weight:700; color:var(--auriu);">${portii}</td>
-                        <td class="note-text">${suplimente}</td>
-                        <td style="font-family: 'Playfair Display'; font-style:italic; font-weight:bold; color:#fff;">${total} RON</td>
-                        <td><span class="status-pill ${statusClass}">${status.toUpperCase()}</span></td>
-                    </tr>
-                `;
-                tableBody.innerHTML += row;
-            });
-
-            totalMetric.innerText = orders.length;
-            valueMetric.innerText = totalValue + " RON";
-            document.getElementById('metric-status').innerText = "CONECTAT";
-            document.getElementById('metric-status').style.color = "#4caf50";
-
-        } catch (error) {
-            console.error("Eroare la parsarea datelor logistice:", error);
-            document.getElementById('metric-status').innerText = "EROARE EXTRACTIE";
-            document.getElementById('metric-status').style.color = "#822";
-            
-            // Afișăm o simulare curată (Mock data) ca model, în caz că webhook-ul nu e încă configurat în Make
-            showMockData();
-        }
-    }
-
-    function showMockData() {
-        const tableBody = document.getElementById('ordersTableBody');
-        tableBody.innerHTML = `
-            <tr>
-                <td><strong>Mihai Popescu</strong><br><span class="note-text">0740XXXXXX</span></td>
-                <td>2026-06-01<br><span class="note-text">14:30</span></td>
-                <td>Meniu Pizza Alternativ</td>
-                <td style="font-family: 'Cinzel'; font-weight:700; color:var(--auriu);">4</td>
-                <td class="note-text">Doza Craft, Cafea Nespresso</td>
-                <td style="font-family: 'Playfair Display'; font-style:italic; font-weight:bold; color:#fff;">380 RON</td>
-                <td><span class="status-pill confirmed">PLATIT (PAYPAL)</span></td>
-            </tr>
-            <tr>
-                <td><strong>Radu Antonescu (Holding)</strong><br><span class="note-text">0722XXXXXX</span></td>
-                <td>2026-06-03<br><span class="note-text">19:00</span></td>
-                <td>Metanoia Gourmet</td>
-                <td style="font-family: 'Cinzel'; font-weight:700; color:var(--auriu);">12</td>
-                <td class="note-text">Selectie Desert, Cafea Premium</td>
-                <td style="font-family: 'Playfair Display'; font-style:italic; font-weight:bold; color:#fff;">1640 RON</td>
-                <td><span class="status-pill pending">IN ASTEPTARE</span></td>
-            </tr>
-        `;
-        document.getElementById('metric-total').innerText = "2";
-        document.getElementById('metric-value').innerText = "2020 RON";
-    }
-
-    window.onload = fetchOrders;
-</script>
-
 </body>
 </html>
