@@ -11,67 +11,62 @@
         .card-produs:hover { border-color: #c5a059; }
         .btn-add { border: 1px solid #c5a059; color: #c5a059; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; transition: 0.3s; }
         .btn-add:hover { background: #c5a059; color: #000; }
+        /* Stil modal */
+        #modal { display: none; background: rgba(0,0,0,0.9); }
     </style>
 </head>
 <body class="pb-32">
 
-    <!-- Header -->
     <header class="p-8 border-b border-[#1a1a1a] text-center">
         <h1 class="font-cinzel text-4xl text-[#c5a059] tracking-[8px]">METANOIA</h1>
         <p class="text-[10px] uppercase tracking-[4px] text-gray-500 mt-2">Sistem Integrat de Hrană</p>
     </header>
 
-    <!-- Meniu Grid -->
     <main class="max-w-5xl mx-auto p-6">
         <h2 class="font-playfair italic text-2xl text-gray-300 mb-10 text-center">Configurările Săptămânii</h2>
-        
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="meniu-container">
-            <!-- Card Produs -->
             <div class="card-produs p-6" data-nume="Ceaun Pui" data-pret="20.50">
                 <h3 class="font-bold mb-2">Ceaun de pui cu piure</h3>
-                <p class="text-[10px] text-gray-500 mb-6 uppercase">Gătit lent / SOul meal</p>
                 <button onclick="adaugaProdus(this)" class="btn-add w-full py-3">Adaugă (20.50 RON)</button>
             </div>
-
             <div class="card-produs p-6" data-nume="Tochitură" data-pret="25.00">
                 <h3 class="font-bold mb-2">Tochitură de porc</h3>
-                <p class="text-[10px] text-gray-500 mb-6 uppercase">Tradiție / SOul meal</p>
                 <button onclick="adaugaProdus(this)" class="btn-add w-full py-3">Adaugă (25.00 RON)</button>
             </div>
-
             <div class="card-produs p-6" data-nume="Doza Metanoia" data-pret="15.00">
                 <h3 class="font-bold mb-2">Doza Proteică</h3>
-                <p class="text-[10px] text-gray-500 mb-6 uppercase">Energie / Metanoia</p>
                 <button onclick="adaugaProdus(this)" class="btn-add w-full py-3">Adaugă (15.00 RON)</button>
             </div>
         </div>
     </main>
 
-    <!-- Rezumat Vizual (Motorul) -->
     <div class="fixed bottom-0 left-0 w-full bg-[#0a0a0a] border-t border-[#c5a059] p-6 flex justify-between items-center px-12">
         <div>
-            <p class="text-[9px] uppercase tracking-[2px] text-gray-500">Total Box Selectat</p>
+            <p class="text-[9px] uppercase tracking-[2px] text-gray-500">Total</p>
             <p id="display-total" class="font-cinzel text-2xl text-[#c5a059]">0.00 RON</p>
         </div>
-        <button class="btn-add px-8 py-3 bg-[#c5a059] text-black hover:bg-white transition-all">Finalizează Comanda</button>
+        <button onclick="deschideModal()" class="btn-add px-8 py-3 bg-[#c5a059] text-black">Finalizează Comanda</button>
+    </div>
+
+    <!-- Modal Formular -->
+    <div id="modal" class="fixed inset-0 z-50 flex items-center justify-center p-6">
+        <div class="bg-[#050505] border border-[#c5a059] p-8 w-full max-w-md">
+            <h2 class="font-cinzel text-xl text-[#c5a059] mb-6">DATE LIVRARE</h2>
+            <input type="text" placeholder="Numele tău" class="w-full bg-transparent border border-[#1a1a1a] p-3 mb-4 text-white">
+            <input type="text" placeholder="Adresa în Hațeg" class="w-full bg-transparent border border-[#1a1a1a] p-3 mb-6 text-white">
+            <button onclick="inchideModal()" class="btn-add w-full py-3 bg-[#c5a059] text-black">Trimite Comanda</button>
+        </div>
     </div>
 
     <script>
         let total = 0;
         function adaugaProdus(btn) {
-            const card = btn.parentElement;
-            const pret = parseFloat(card.getAttribute('data-pret'));
+            const pret = parseFloat(btn.parentElement.getAttribute('data-pret'));
             total += pret;
             document.getElementById('display-total').innerText = total.toFixed(2) + ' RON';
-            
-            // Feedback vizual
-            btn.innerText = "✓ Adăugat";
-            btn.classList.add('bg-[#c5a059]', 'text-black');
-            setTimeout(() => {
-                btn.innerText = "Adaugă (" + pret.toFixed(2) + " RON)";
-                btn.classList.remove('bg-[#c5a059]', 'text-black');
-            }, 1000);
         }
+        function deschideModal() { document.getElementById('modal').style.display = 'flex'; }
+        function inchideModal() { alert('Comanda a fost trimisă cu succes!'); document.getElementById('modal').style.display = 'none'; }
     </script>
 </body>
 </html>
