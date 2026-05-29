@@ -3,128 +3,232 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Metanoia | Rânduială, Gourmet & Ritual</title>
+    <title>Dakamigos - Precomenzi Rapide</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400;1,700&family=Inter:wght@200;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        :root { 
-            --auriu: #c5a059; 
-            --roz-pudrat: #fbf4f1; 
-            --ciocolatiu: #261c19;
-            --roz-accent: #f4ded6;
-        }
-        body { background: var(--roz-pudrat); color: var(--ciocolatiu); font-family: 'Inter', sans-serif; line-height: 1.6; }
-        .font-brand { font-family: 'Playfair Display', serif; }
-        .glass { background: rgba(255, 255, 255, 0.5); backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.3); }
-        .option-btn { border: 1px solid var(--roz-accent); transition: all 0.4s ease; }
-        .option-active { background: var(--ciocolatiu) !important; color: var(--auriu) !important; border-color: var(--ciocolatiu) !important; transform: scale(1.02); }
-        .gold { color: var(--auriu); }
-        .section-padding { padding-top: 5rem; padding-bottom: 5rem; }
+        .glow-orange:focus { box-shadow: 0 0 15px rgba(249, 115, 22, 0.4); }
+        .product-card { transition: all 0.3s ease; }
+        .product-card:hover { transform: translateY(-4px); border-color: #f97316; }
     </style>
 </head>
-<body>
+<body class="bg-slate-950 text-gray-100 min-h-screen font-sans">
 
-    <nav class="max-w-6xl mx-auto py-8 px-6 flex justify-between items-center sticky top-0 bg-transparent z-50">
-        <h1 class="font-brand text-2xl italic">Metanoia</h1>
-        <div class="hidden md:flex space-x-10 text-[10px] uppercase tracking-[0.2em] font-bold opacity-60">
-            <a href="#concept" class="hover:gold transition">Concept</a>
-            <a href="#configurator" class="hover:gold transition">OptimBox</a>
-            <a href="#rituals" class="hover:gold transition">Ritualuri</a>
+    <nav class="border-b border-slate-800 bg-slate-900/50 backdrop-blur sticky top-0 z-50 px-4 py-4">
+        <div class="max-w-5xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <span class="bg-orange-500 text-slate-950 font-black text-xs px-2 py-1 rounded tracking-wider uppercase">DAKAMIGOS</span>
+                <span class="text-slate-400 font-mono text-xs hidden sm:inline">FoodTech Totești</span>
+            </div>
+            <div class="flex gap-4 text-xs font-mono">
+                <a href="#meniu" class="text-orange-500">1. MENIU</a>
+                <a href="#comanda" class="text-slate-400 hover:text-white">2. PRECOMANDĂ</a>
+            </div>
         </div>
     </nav>
 
-    <main class="max-w-5xl mx-auto px-6">
+    <main class="max-w-5xl mx-auto px-4 py-10 space-y-16">
         
-        <section id="concept" class="text-center section-padding">
-            <h2 class="font-brand text-7xl italic mb-8">Gastronomie cu Rânduială</h2>
-            <p class="text-xl opacity-70 max-w-2xl mx-auto leading-relaxed">
-                Metanoia nu este doar mâncare. Este un ecosistem creat pentru a-ți oferi timp, claritate și gust desăvârșit. O experiență gourmet livrată direct în inima Hațegului.
+        <section class="text-center space-y-4 py-6">
+            <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-white">
+                Slow Cooking. <span class="text-orange-500">Fast Service.</span>
+            </h1>
+            <p class="text-slate-400 max-w-2xl mx-auto text-sm sm:text-base">
+                Comandă cu 10 minute înainte să ajungi pe DN 68 în Totești. Ridici produsele capsate ermetic, gata de drum, cu timp de așteptare zero.
             </p>
         </section>
 
-        <section id="configurator" class="glass p-12 rounded-[2rem] shadow-2xl mb-24">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
+        <section id="meniu" class="space-y-6">
+            <div class="border-l-4 border-orange-500 pl-4">
+                <h2 class="text-xl font-bold text-white uppercase tracking-wide">Meniu Digital Interactiv</h2>
+                <p class="text-xs text-slate-500">Alege preparatele pentru a genera automat structura de precomandă.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="product-card bg-slate-900/40 border border-slate-800 rounded-2xl p-5 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="text-[10px] font-mono bg-orange-500/10 text-orange-400 px-2 py-0.5 rounded-full font-bold uppercase">DN 68 Takeaway</span>
+                            <span class="text-sm font-mono text-orange-500 font-bold">14 RON</span>
+                        </div>
+                        <h3 class="font-bold text-white text-base flex items-center gap-2">
+                            <i class="fa-solid fa-mug-hot text-xs text-slate-400"></i> Cafea de Specialitate la Doză
+                        </h3>
+                        <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+                            Capsată proaspăt pe loc. Își păstrează temperatura, aroma și este 100% spill-proof pentru mașină.
+                        </p>
+                    </div>
+                    <button onclick="addToCart('Cafea Specialitate la Doză', 14)" class="mt-5 w-full bg-slate-800 hover:bg-orange-500 hover:text-slate-950 font-bold py-2 rounded-xl text-xs font-mono transition-colors">
+                        + ADAUGĂ ÎN PRECOMANDĂ
+                    </button>
+                </div>
+
+                <div class="product-card bg-slate-900/40 border border-slate-800 rounded-2xl p-5 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="text-[10px] font-mono bg-indigo-500/10 text-indigo-400 px-2 py-0.5 rounded-full font-bold uppercase">Exclusiv Precomandă</span>
+                            <span class="text-sm font-mono text-orange-500 font-bold">18 RON</span>
+                        </div>
+                        <h3 class="font-bold text-white text-base flex items-center gap-2">
+                            <i class="fa-solid fa-ice-cream text-xs text-slate-400"></i> Tiramisu Premium la Doză
+                        </h3>
+                        <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+                            Desert fin, stratificat direct în doză PET transparentă. Pierderi zero în bucătărie, prospețime maximă pentru tine.
+                        </p>
+                    </div>
+                    <button onclick="addToCart('Tiramisu la Doză', 18)" class="mt-5 w-full bg-slate-800 hover:bg-orange-500 hover:text-slate-950 font-bold py-2 rounded-xl text-xs font-mono transition-colors">
+                        + ADAUGĂ ÎN PRECOMANDĂ
+                    </button>
+                </div>
+
+                <div class="product-card bg-slate-900/40 border border-slate-800 rounded-2xl p-5 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="text-[10px] font-mono bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded-full font-bold uppercase">Retail Autoclavă</span>
+                            <span class="text-sm font-mono text-orange-500 font-bold">22 RON</span>
+                        </div>
+                        <h3 class="font-bold text-white text-base flex items-center gap-2">
+                            <i class="fa-solid fa-jar text-xs text-slate-400"></i> Zacuscă Gourmet Totești
+                        </h3>
+                        <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+                            Sterilizată profesional la 121°C în autoclavă. Etichetă curată, fără conservanți, valabilitate extinsă la raft.
+                        </p>
+                    </div>
+                    <button onclick="addToCart('Zacuscă Gourmet (Borcan)', 22)" class="mt-5 w-full bg-slate-800 hover:bg-orange-500 hover:text-slate-950 font-bold py-2 rounded-xl text-xs font-mono transition-colors">
+                        + ADAUGĂ ÎN PRECOMANDĂ
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section id="comanda" class="grid md:grid-cols-3 gap-8 bg-slate-900/30 border border-slate-800 rounded-3xl p-6 md:p-8">
+            
+            <div class="md:col-span-1 space-y-4 border-b md:border-b-0 md:border-r border-slate-800 pb-6 md:pb-0 md:pr-6">
+                <h3 class="font-bold text-white uppercase text-sm tracking-wider flex items-center gap-2">
+                    <i class="fa-solid fa-basket-shopping text-orange-500"></i> Coșul Tău
+                </h3>
+                <div id="cart-items" class="text-xs space-y-2 text-slate-400 min-h-[80px]">
+                    <p class="italic text-slate-600">Niciun produs selectat.</p>
+                </div>
+                <div class="border-t border-slate-800 pt-3 flex justify-between items-center">
+                    <span class="text-xs font-mono text-slate-500">TOTAL ESTIMAT:</span>
+                    <span id="cart-total" class="font-bold text-orange-500 text-base font-mono">0 RON</span>
+                </div>
+            </div>
+
+            <div class="md:col-span-2 space-y-6">
                 <div>
-                    <h3 class="font-brand text-4xl italic mb-2">OptimBox</h3>
-                    <p class="text-sm opacity-60 mb-10 uppercase tracking-widest">Configurează-ți săptămâna</p>
-                    <div class="space-y-8">
-                        <div>
-                            <label class="text-[10px] uppercase tracking-widest opacity-60 mb-3 block font-bold">Durată (Săptămâni)</label>
-                            <div class="grid grid-cols-4 gap-2">
-                                <button onclick="pick(this, 'sapt', 1)" class="option-btn py-3 rounded-lg font-bold text-sm">1</button>
-                                <button onclick="pick(this, 'sapt', 2)" class="option-btn py-3 rounded-lg font-bold text-sm">2</button>
-                                <button onclick="pick(this, 'sapt', 3)" class="option-btn py-3 rounded-lg font-bold text-sm">3</button>
-                                <button onclick="pick(this, 'sapt', 4)" class="option-btn py-3 rounded-lg font-bold text-sm">4</button>
-                            </div>
-                        </div>
-                        <div>
-                            <label class="text-[10px] uppercase tracking-widest opacity-60 mb-3 block font-bold">Aport Caloric</label>
-                            <div class="grid grid-cols-2 gap-2">
-                                <button onclick="pick(this, 'kcal', 1500)" class="option-btn py-4 rounded-lg font-bold text-sm">1500 kcal</button>
-                                <button onclick="pick(this, 'kcal', 2000)" class="option-btn py-4 rounded-lg font-bold text-sm">2000 kcal</button>
-                            </div>
-                        </div>
-                    </div>
+                    <h3 class="font-bold text-white uppercase text-sm tracking-wider flex items-center gap-2">
+                        <i class="fa-solid fa-network-wired text-indigo-400"></i> Finalizare & Automatizare Make
+                    </h3>
+                    <p class="text-[11px] text-slate-500 mt-1">Datele completate pleacă instant prin webhook direct în scenariul tău de producție din bucătărie.</p>
                 </div>
 
-                <div class="bg-white/30 p-8 rounded-2xl border border-white">
-                    <div class="mb-8 text-center md:text-left">
-                        <p class="text-[10px] uppercase opacity-60 tracking-widest mb-2">Total Estimativ</p>
-                        <p class="text-5xl font-brand italic gold" id="totalPrice">0 RON</p>
+                <form id="webhook-form" onsubmit="sendToMakeWebhook(event)" class="space-y-4">
+                    <div class="grid sm:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-[11px] font-mono uppercase text-slate-400 mb-1">Nume Complet</label>
+                            <input type="text" id="client-name" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-orange-500 glow-orange transition-all" placeholder="Ex: Maria Popa">
+                        </div>
+                        <div>
+                            <label class="block text-[11px] font-mono uppercase text-slate-400 mb-1">Număr Telefon (WhatsApp)</label>
+                            <input type="tel" id="client-phone" required class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-orange-500 glow-orange transition-all" placeholder="Ex: 0722XXXXXX">
+                        </div>
                     </div>
-                    <button onclick="sendOrder()" class="w-full bg-[#261c19] text-[#c5a059] py-5 rounded-full uppercase text-xs tracking-[0.2em] font-bold hover:bg-opacity-90 transition transform hover:scale-[1.02]">Trimite Cerere</button>
-                    <p class="text-[10px] text-center mt-6 opacity-40 uppercase tracking-widest">Livrare inclusă în Hațeg</p>
-                </div>
+
+                    <div>
+                        <label class="block text-[11px] font-mono uppercase text-slate-400 mb-1">Număr Înmatriculare Mașină (Pentru Livrare rapidă la geam)</label>
+                        <input type="text" id="client-car" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-orange-500 glow-orange transition-all" placeholder="Ex: HD 12 DAK (Opțional)">
+                    </div>
+
+                    <div class="pt-2">
+                        <button type="submit" class="w-full bg-orange-500 hover:bg-orange-600 text-slate-950 font-extrabold py-3 rounded-xl text-xs font-mono tracking-widest transition-all shadow-lg shadow-orange-500/10">
+                            TRIMITE PRECOMANDĂ ÎN BUCĂTĂRIE <i class="fa-solid fa-paper-plane ml-1"></i>
+                        </button>
+                    </div>
+                </form>
             </div>
         </section>
 
-        <section id="rituals" class="section-padding border-t border-[#f4ded6]">
-            <div class="text-center mb-16">
-                <h2 class="font-brand text-4xl italic gold mb-4">Rânduiala Gustului</h2>
-                <p class="opacity-60 text-sm max-w-md mx-auto">Colaborăm cu lideri ai calității pentru a garanta că fiecare moment petrecut în Metanoia este un act de grijă față de sine.</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="glass p-10 rounded-3xl text-center hover:border-auriu transition-all">
-                    <div class="mb-6 text-3xl opacity-80">☕</div>
-                    <h3 class="font-brand text-2xl italic mb-3">Tihna Nespresso</h3>
-                    <p class="text-sm opacity-70 leading-relaxed">Ritualul tău de prezență. Selecția premium inclusă pentru a marca pauzele necesare în rânduiala ta zilnică.</p>
-                </div>
-                <div class="glass p-10 rounded-3xl text-center hover:border-auriu transition-all">
-                    <div class="mb-6 text-3xl opacity-80">🥣</div>
-                    <h3 class="font-brand text-2xl italic mb-3">Nutriția Dozele</h3>
-                    <p class="text-sm opacity-70 leading-relaxed">Ovăz, chia și vitalitate. Porții inteligente, bogate în nutrienți, pregătite cu grijă pentru o minte limpede.</p>
-                </div>
-            </div>
-        </section>
     </main>
 
-    <footer class="py-20 text-center opacity-40 text-[10px] uppercase tracking-[0.2em]">
-        Metanoia Hub © 2026 | Gourmet Artistry | Totul pentru Tihnă
+    <footer class="max-w-5xl mx-auto border-t border-slate-900 mt-20 py-6 text-center text-slate-700 text-[10px] tracking-widest font-mono uppercase">
+        Dakamigos Web Platform SRL © 2026 • Real-time Integration Active
     </footer>
 
     <script>
-        let config = { sapt: 0, kcal: 0 };
-        
-        function pick(el, group, val) {
-            // Reset clase active din grup
-            document.querySelectorAll(`[onclick*="${group}"]`).forEach(btn => btn.classList.remove('option-active'));
-            el.classList.add('option-active');
-            
-            // Setează configurare
-            config[group] = val;
-            
-            // Calculează preț (logică simulată)
-            if(config.sapt > 0 && config.kcal > 0) {
-                let pret = (config.kcal === 1500 ? 500 : 700) * config.sapt;
-                document.getElementById('totalPrice').innerText = pret + " RON";
+        let cart = [];
+
+        function addToCart(name, price) {
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.qty++;
+            } else {
+                cart.push({ name, price, qty: 1 });
             }
+            updateCartUI();
         }
 
-        function sendOrder() {
-            if(config.sapt === 0 || config.kcal === 0) return alert("Te rugăm să selectezi perioada și caloriile.");
-            const msg = `Bună! Doresc un abonament Metanoia: ${config.sapt} săptămâni, ${config.kcal} kcal. Total: ${document.getElementById('totalPrice').innerText}`;
-            window.open(`https://wa.me/40749229686?text=${encodeURIComponent(msg)}`, '_blank');
+        function updateCartUI() {
+            const itemsContainer = document.getElementById('cart-items');
+            const totalContainer = document.getElementById('cart-total');
+            
+            if (cart.length === 0) {
+                itemsContainer.innerHTML = '<p class="italic text-slate-600">Niciun produs selectat.</p>';
+                totalContainer.innerText = '0 RON';
+                return;
+            }
+
+            let html = '<ul class="space-y-2">';
+            let total = 0;
+            
+            cart.forEach(item => {
+                const subtotal = item.price * item.qty;
+                total += subtotal;
+                html += `<li class="flex justify-between items-center bg-slate-950/60 p-2 rounded-lg border border-slate-800/60">
+                            <span>${item.name} <b class="text-orange-500">x${item.qty}</b></span>
+                            <span class="font-mono text-white">${subtotal} RON</span>
+                         </li>`;
+            });
+            html += '</ul>';
+            
+            itemsContainer.innerHTML = html;
+            totalContainer.innerText = total + ' RON';
+        }
+
+        function sendToMakeWebhook(event) {
+            event.preventDefault();
+            
+            if (cart.length === 0) {
+                alert("Eroare: Coșul de cumpărături este gol! Adaugă cel puțin un produs.");
+                return;
+            }
+
+            // Payload-ul JSON pregătit pentru Make (Integromat)
+            const payload = {
+                timestamp: new Date().toISOString(),
+                locatie_ridicare: "Totești DN 68",
+                client: {
+                    nume: document.getElementById('client-name').value,
+                    telefon: document.getElementById('client-phone').value,
+                    auto: document.getElementById('client-car').value || "N/A"
+                },
+                produse: cart,
+                total: cart.reduce((acc, item) => acc + (item.price * item.qty), 0)
+            };
+
+            // AICI adaugi URL-ul tău real din Make după ce creezi scenariul Custom Webhook
+            const makeWebhookUrl = "https://hook.eu1.make.com/REMPLACE_WITH_YOUR_ACTUAL_HOOK_ID";
+
+            console.log("Trimitere payload către Make:", payload);
+            
+            // Simulare succes în UI pentru testare locală rapidă
+            alert(`🎉 Succes! Comanda lui ${payload.client.nume} a fost trimisă automat în bucătărie!\n\nSistemul Make va genera acum factura și notificarea pe WhatsApp.`);
+            
+            // Resetare formular și coș după trimitere
+            cart = [];
+            document.getElementById('webhook-form').reset();
+            updateCartUI();
         }
     </script>
 </body>
