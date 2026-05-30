@@ -227,18 +227,18 @@
             background: #f8fafc;
             border: 1px solid #e2e8f0;
             border-radius: 12px;
-            padding: 20px;
+            padding: 15px;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
         }
 
         .card-tile .tile-icon {
-            font-size: 22px;
+            font-size: 20px;
             color: #0f766e;
             background: #e6f4f1;
-            width: 45px;
-            height: 45px;
+            width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -263,7 +263,7 @@
         }
 
         .stat-value {
-            font-size: 30px;
+            font-size: 28px;
             font-weight: 700;
             color: #0f766e;
         }
@@ -352,31 +352,31 @@
                 <div class="slide-body">
                     <div id="quizBlock" class="quiz-container">
                         <div style="text-align: center; margin-bottom: 20px;">
-                            <h2 style="font-size: 20px; color: #0f172a;">Inginerie Financiară Start-Up: 100.000 €</h2>
-                            <p style="font-size: 13px; color: #64748b;">Validăm arhitectura de finanțare mixtă (Grant Stat + Credit Cofinanțare).</p>
+                            <h2 style="font-size: 20px; color: #0f172a;">Calificare Finanțare Start-Up Medical: 100.000 €</h2>
+                            <p style="font-size: 13px; color: #64748b;">Verificăm conformitatea tehnică inițială a SRL-ului dumneavoastră.</p>
                         </div>
 
                         <div class="quiz-step active" id="qStep1">
-                            <p class="quiz-question">1. Istoricul de creditare personal al asociaților este curat (fără incidente active în Biroul de Credit)?</p>
+                            <p class="quiz-question">1. Istoricul de creditare personal al asociaților este curat (fără raportări în Biroul de Credit)?</p>
                             <div class="quiz-options">
-                                <label class="quiz-option"><input type="radio" name="q1" value="yes"> Da, istoric curat (permite accesarea liniilor de finanțare bancară start-up)</label>
-                                <label class="quiz-option"><input type="radio" name="q1" value="no"> Există raportări negative active în Biroul de Credit</label>
+                                <label class="quiz-option"><input type="radio" name="q1" value="yes"> Da, istoric curat (permite accesarea liniilor bancare start-up)</label>
+                                <label class="quiz-option"><input type="radio" name="q1" value="no"> Există raportări negative active</label>
                             </div>
                         </div>
 
                         <div class="quiz-step" id="qStep2">
-                            <p class="quiz-question">2. Spațiul din Baia Mare în care se vor instala echipamentele medicale este identificat?</p>
+                            <p class="quiz-question">2. SRL-ul este nou înființat (înregistrat după 1 ianuarie 2024) și fără bilanț depus?</p>
                             <div class="quiz-options">
-                                <label class="quiz-option"><input type="radio" name="q2" value="yes"> Da (deținut sau chirie/comodat securizat pe termen de minimum 3-5 ani)</label>
-                                <label class="quiz-option"><input type="radio" name="q2" value="no"> Încă nu a fost aleasă locația fizică a cabinetului medical</label>
+                                <label class="quiz-option"><input type="radio" name="q2" value="yes"> Da, este start-up curat (criteriu obligatoriu de eligibilitate)</label>
+                                <label class="quiz-option"><input type="radio" name="q2" value="no"> Firma are istoric fiscal/bilanțuri depuse pe anii anteriori</label>
                             </div>
                         </div>
 
                         <div class="quiz-step" id="qStep3">
-                            <p class="quiz-question">3. Sunteți de acord ca aparatura achiziționată să constituie gaj pentru asigurarea diferenței de fonduri?</p>
+                            <p class="quiz-question">3. Sunteți de acord ca viitoarea aparatură medicală să fie utilizată drept gaj bancar?</p>
                             <div class="quiz-options">
-                                <label class="quiz-option"><input type="radio" name="q3" value="yes"> Da, este structura standard de garantare prin fondurile europene/naționale</label>
-                                <label class="quiz-option"><input type="radio" name="q3" value="no"> Nu, refuzăm complet utilizarea unei linii de creditare bancară</label>
+                                <label class="quiz-option"><input type="radio" name="q3" value="yes"> Da, acceptăm mecanismul de garantare pentru diferența de buget</label>
+                                <label class="quiz-option"><input type="radio" name="q3" value="no"> Nu dorim nicio linie de creditare sau cofinanțare mixtă</label>
                             </div>
                         </div>
 
@@ -386,42 +386,48 @@
                     </div>
 
                     <div id="quizSuccessBlock" style="display: none; text-align: center; width: 100%;">
-                        <div style="font-size: 50px; color: #10b981; margin-bottom: 15px;"><i class="fa-solid fa-calculator"></i></div>
-                        <h2>Strategie Optimizată Fără Cash Inițial Masiv</h2>
-                        <p style="color: #64748b; margin-bottom: 20px;">Am recalibrat structura de finanțare prin pârghia creditului punte special pentru start-up-uri.</p>
-                        <button onclick="startPresentation()" style="background: #0f766e; color: white; border: none; padding: 12px 25px; border-radius: 6px; font-weight: 600; cursor: pointer;">Afișează Mecanismul Financiar</button>
+                        <div style="font-size: 50px; color: #10b981; margin-bottom: 15px;"><i class="fa-solid fa-square-poll-vertical"></i></div>
+                        <h2>Profil Eligibil Validat</h2>
+                        <p style="color: #64748b; margin-bottom: 20px;">Datele preliminare confirmă compatibilitatea cu axa de finanțare Start-Up Nation.</p>
+                        <button onclick="startPresentation()" style="background: #0f766e; color: white; border: none; padding: 12px 25px; border-radius: 6px; font-weight: 600; cursor: pointer;">Deschide Rezumatul Ghidului Oficial</button>
                     </div>
                 </div>
             </div>
 
             <div class="slide" id="s2">
                 <div class="slide-header">
-                    <span class="logo-consultant"><i class="fa-solid fa-building-columns"></i> Mecanism Tehnic</span>
-                    <span class="client-tag">Fără efort cash de 50.000€</span>
+                    <span class="logo-consultant"><i class="fa-solid fa-file-invoice"></i> Ghid Start-Up Nation</span>
+                    <span class="client-tag">Criterii de Eligibilitate</span>
                 </div>
                 <div class="slide-body">
                     <div class="grid-2">
                         <div class="column-left">
-                            <h2 class="slide-title">Cum obținem 100.000 € fără capital propriu masiv?</h2>
-                            <p>Majoritatea cabinetelor start-up se dezvoltă utilizând **mecanismul mixt credit punte + cofinanțare**, integrat direct în protocoalele de finanțare guvernamentale din România:</p>
+                            <h2 class="slide-title">Reguli și Condiții Obligatorii Solicitant</h2>
+                            <p>Programul este dedicat exclusiv companiilor aflate la început de drum, sprijinind dezvoltarea în regiuni cu potențial de creștere precum Maramureș:</p>
                             <ul class="custom-list">
                                 <li>
-                                    <i class="fa-solid fa-shield-halved"></i>
+                                    <i class="fa-solid fa-calendar-check"></i>
                                     <div>
-                                        <strong>Garanții Publice de Stat/Europene:</strong> Până la 80% din valoarea creditului este acoperită direct de fondurile de garantare. Nu sunt necesare garanții imobiliare personale (case sau terenuri).
+                                        <strong>Vechime Companie:</strong> IMM-uri (SRL) înființate recent. Condiția eliminatorie este să nu aibă bilanț contabil depus pentru activități anterioare.
                                     </div>
                                 </li>
                                 <li>
-                                    <i class="fa-solid fa-gavel"></i>
+                                    <i class="fa-solid fa-users"></i>
                                     <div>
-                                        <strong>Ipotecă pe Echipamente:</strong> Diferența de garantare solicitată se instituie direct pe activele și aparatura medicală nouă achiziționată prin proiect.
+                                        <strong>Creare Locuri de Muncă:</strong> Obligația legală de a angaja și menține **minimum 2 persoane** cu normă întreagă (8h/zi) pe o perioadă determinată de ghid.
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-graduation-cap"></i>
+                                    <div>
+                                        <strong>Pregătire Antreprenorială:</strong> Reprezentantul legal (administrator/asociat) va parcurge modulele scurte de formare specifice programului.
                                     </div>
                                 </li>
                             </ul>
                         </div>
                         <div class="column-right" style="text-align: center;">
-                            <i class="fa-solid fa-piggy-bank" style="font-size: 80px; color: #0f766e;"></i>
-                            <p style="font-size: 11px; color: #64748b; margin-top: 10px;">Aportul de lichidități rămâne strict cel operațional curent (avize, proiectare, consultanță).</p>
+                            <i class="fa-solid fa-id-card-clip" style="font-size: 70px; color: #0f766e;"></i>
+                            <p style="font-size: 11px; color: #64748b; margin-top: 10px;">Sectorul medical se încadrează la valoare adăugată mare, oferind punctaj maxim automat.</p>
                         </div>
                     </div>
                 </div>
@@ -429,25 +435,27 @@
 
             <div class="slide" id="s3">
                 <div class="slide-header">
-                    <span class="logo-consultant"><i class="fa-solid fa-chart-pie"></i> Plan de Finanțare</span>
-                    <span class="client-tag">Arhitectura Cifrelor</span>
+                    <span class="logo-consultant"><i class="fa-solid fa-list-check"></i> Structură Ghid</span>
+                    <span class="client-tag">Cheltuieli Permise</span>
                 </div>
                 <div class="slide-body">
-                    <div style="width: 100%; text-align: center;">
-                        <h2 style="margin-bottom: 15px; color: #0f172a;">Structura Bugetului de 100.000 € Propus</h2>
-                        <p style="max-width: 750px; margin: 0 auto 20px auto; font-size: 14px; line-height: 1.5; color: #475569;">
-                            Prin majorarea cofinanțării din pachetul bancar dedicat, proiectul obține punctaj maxim pe grila oficială de evaluare și devine prioritar la selectare.
-                        </p>
-                        <div class="stats-container">
-                            <div class="stat-box">
-                                <div style="font-weight: 700; color: #0f766e; font-size: 15px;">Grant de Stat (Neranbursabil)</div>
-                                <div class="stat-value" style="margin: 8px 0; color: #0f766e;">50.000 €</div>
-                                <p style="font-size: 11px; color: #64748b;">Finanțare nerambursabilă directă acordată prin programul național de sprijin (250.000 RON).</p>
+                    <div style="width: 100%;">
+                        <h2 class="slide-title" style="margin-bottom: 12px;">Cum impune Ghidul distribuția celor 100.000 €?</h2>
+                        <div class="grid-3">
+                            <div class="card-tile">
+                                <div class="tile-icon"><i class="fa-solid fa-kit-medical"></i></div>
+                                <h3>Echipamente (Min 60%)</h3>
+                                <p style="font-size: 12px; color: #64748b;">Active corporale: aparatură medicală de specialitate, instrumentar cabinet, unituri sau sisteme de diagnosticare.</p>
                             </div>
-                            <div class="stat-box">
-                                <div style="font-weight: 700; color: #b45309; font-size: 15px;">Credit de Cofinanțare</div>
-                                <div class="stat-value" style="margin: 8px 0; color: #b45309;">50.000 €</div>
-                                <p style="font-size: 11px; color: #64748b;">Linie de credit securizată automat la aprobare, garantată cu echipamentele cabinetului.</p>
+                            <div class="card-tile">
+                                <div class="tile-icon"><i class="fa-solid fa-laptop-medical"></i></div>
+                                <h3>Digitalizare (Obligatoriu)</h3>
+                                <p style="font-size: 12px; color: #64748b;">Aplicații software de gestiune pacienți (CRM medical), licențe operaționale, echipamente IT și rețea securizată.</p>
+                            </div>
+                            <div class="card-tile">
+                                <div class="tile-icon"><i class="fa-solid fa-leaf"></i></div>
+                                <h3>Tranziție Verde (Obligatoriu)</h3>
+                                <p style="font-size: 12px; color: #64748b;">Sisteme cu eficiență energetică înaltă (climatizare ecologică, iluminat LED clasa A) pentru punctaj de departajare.</p>
                             </div>
                         </div>
                     </div>
@@ -456,34 +464,25 @@
 
             <div class="slide" id="s4">
                 <div class="slide-header">
-                    <span class="logo-consultant"><i class="fa-solid fa-handshake"></i> Structură Costuri</span>
-                    <span class="client-tag">Eșalonare Fixă</span>
+                    <span class="logo-consultant"><i class="fa-solid fa-scale-balanced"></i> Inginerie Financiară</span>
+                    <span class="client-tag">Mecanismul de Finanțare</span>
                 </div>
                 <div class="slide-body">
-                    <div class="grid-2">
-                        <div class="column-left">
-                            <h2 class="slide-title">Costuri Elaborare Dosar Medical</h2>
-                            <p>Onorariul tehnic acoperă integral scrierea planului de afaceri, modelarea fluxurilor financiare solicitate de bănci și încărcarea documentației în platforma electronică:</p>
-                            <ul class="custom-list">
-                                <li>
-                                    <i class="fa-solid fa-file-signature"></i>
-                                    <div>
-                                        <strong>Tranșa 1 (500 EUR) - Avans:</strong> Se achită la demararea lucrului (pornește analiza juridică, corelarea CAEN medical și structura listei de dotări).
-                                    </div>
-                                </li>
-                                <li>
-                                    <i class="fa-solid fa-cloud-arrow-up"></i>
-                                    <div>
-                                        <strong>Tranșa 2 (500 EUR) - Depunere:</strong> Se achită în momentul în care aplicația este complet finalizată, validată și transmisă oficial în sistem.
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="column-right">
-                            <div class="stat-box" style="border-color: #0f766e;">
-                                <div class="stat-value" style="font-size: 26px;">1.000 EUR</div>
-                                <div style="font-size: 12px; font-weight: 600; color: #0f172a; margin: 5px 0;">Total Onorariu Fix</div>
-                                <div style="font-size: 11px; color: #64748b;">Singurul efort financiar direct solicitat pentru faza de proiectare și depunere a aplicației.</div>
+                    <div style="width: 100%; text-align: center;">
+                        <h2 style="margin-bottom: 15px; color: #0f172a;">Structura Planului de Finanțare pentru Proiect</h2>
+                        <p style="max-width: 750px; margin: 0 auto 20px auto; font-size: 14px; line-height: 1.5; color: #475569;">
+                            Ghidul acordă un grant fix de maximum 250.000 RON (~50.000 EUR). Pentru a atinge obiectivul total de 100.000 EUR, diferența se completează prin credit de cofinanțare, crescând masiv punctajul dosarului.
+                        </p>
+                        <div class="stats-container">
+                            <div class="stat-box">
+                                <div style="font-weight: 700; color: #0f766e; font-size: 15px;">Grant Nerambursabil Stat</div>
+                                <div class="stat-value" style="margin: 8px 0; color: #0f766e;">50.000 €</div>
+                                <p style="font-size: 11px; color: #64748b;">Reprezintă cota de 90% finanțare publică din pilonul național de sprijin.</p>
+                            </div>
+                            <div class="stat-box">
+                                <div style="font-weight: 700; color: #b45309; font-size: 15px;">Credit Punte / Cofinanțare</div>
+                                <div class="stat-value" style="margin: 8px 0; color: #b45309;">50.000 €</div>
+                                <p style="font-size: 11px; color: #64748b;">Linie bancară dedicată contractată la aprobare, garantată cu aparatura achiziționată.</p>
                             </div>
                         </div>
                     </div>
@@ -492,25 +491,34 @@
 
             <div class="slide" id="s5">
                 <div class="slide-header">
-                    <span class="logo-consultant"><i class="fa-solid fa-percentage"></i> Comision de Succes</span>
-                    <span class="client-tag">Risc Împărțit</span>
+                    <span class="logo-consultant"><i class="fa-solid fa-coins"></i> Structură Garanții & Costuri</span>
+                    <span class="client-tag">Onorarii Colaborare</span>
                 </div>
                 <div class="slide-body">
-                    <div style="width: 100%; text-align: center;">
-                        <h2 style="margin-bottom: 15px; color: #0f172a;">Parteneriat Orientat pe Rezultat</h2>
-                        <p style="max-width: 750px; margin: 0 auto 20px auto; font-size: 14px; line-height: 1.5; color: #475569;">
-                            Cea mai mare parte a procesului de consultanță este condiționată direct de succesul dosarului dumneavoastră.
-                        </p>
-                        <div class="stats-container">
-                            <div class="stat-box">
-                                <div style="font-weight: 700; color: #0f766e; font-size: 16px;">Comision Succes</div>
-                                <div class="stat-value" style="margin: 8px 0; color: #0f766e;">La Aprobare</div>
-                                <p style="font-size: 11px; color: #64748b;">Se facturează exclusiv după ce dosarul a fost selectat și a primit decizia oficială de aprobare.</p>
-                            </div>
-                            <div class="stat-box">
-                                <div style="font-weight: 700; color: #10b981; font-size: 16px;">Decontare Directă</div>
-                                <div class="stat-value" style="margin: 8px 0; color: #10b981;">Eligibil în Proiect</div>
-                                <p style="font-size: 11px; color: #64748b;">Această cheltuială este bugetată direct în proiect, fiind rambursată ulterior din fondurile atrase.</p>
+                    <div class="grid-2">
+                        <div class="column-left">
+                            <h2 class="slide-title">Eșalonare Taxă Scriere Dosar</h2>
+                            <p>Onorariul fix acoperă planul de afaceri, modelarea fluxurilor financiare cerute de finanțatori și încărcarea documentelor pe platforma MySMIS:</p>
+                            <ul class="custom-list">
+                                <li>
+                                    <i class="fa-solid fa-file-signature"></i>
+                                    <div>
+                                        <strong>Tranșa 1 (500 EUR) - Avans:</strong> Se achită la semnarea contractului pentru demararea corelării CAEN și stabilirea listei de dotări.
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                                    <div>
+                                        <strong>Tranșa 2 (500 EUR) - La Depunere:</strong> Se achită strict când dosarul este complet încărcat și transmis în sistemul electronic.
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="column-right">
+                            <div class="stat-box" style="border-color: #0f766e;">
+                                <div class="stat-value" style="font-size: 24px;">1.000 EUR</div>
+                                <div style="font-size: 12px; font-weight: 600; color: #0f172a; margin: 5px 0;">Total Onorariu Fix</div>
+                                <p style="font-size: 11px; color: #64748b;">Comisionul final de succes se achită separat, exclusiv la aprobare, fiind cheltuială eligibilă în proiect.</p>
                             </div>
                         </div>
                     </div>
@@ -519,15 +527,15 @@
 
             <div class="slide" id="s6">
                 <div class="slide-header">
-                    <span class="logo-consultant"><i class="fa-solid fa-list-check"></i> Procedură Tehnică</span>
-                    <span class="client-tag">Lansare Dosar</span>
+                    <span class="logo-consultant"><i class="fa-solid fa-square-check"></i> Procedură Lansare</span>
+                    <span class="client-tag">Plan Calendaristic</span>
                 </div>
                 <div class="slide-body">
                     <div style="text-align: center; width: 100%;">
-                        <h2 style="font-size: 26px; color: #0f172a; margin-bottom: 10px;">Demararea Procedurii de Lucru (Baia Mare)</h2>
-                        <p style="color: #64748b; max-width: 600px; margin: 0 auto 25px auto; font-size: 14px;">Pentru a bloca și securiza structura mixtă de finanțare, primul pas constă în verificarea actelor constitutive eliberate de ONRC pentru noul SRL.</p>
+                        <h2 style="font-size: 24px; color: #0f172a; margin-bottom: 10px;">Lansarea Dosarului de Finanțare</h2>
+                        <p style="color: #64748b; max-width: 600px; margin: 0 auto 25px auto; font-size: 14px;">Pentru a securiza structura bugetară optimizată conform ghidului, pornim analiza tehnică imediat după validarea actelor juridice.</p>
                         <div style="background: #f1f5f9; padding: 15px; border-radius: 8px; display: inline-block; font-weight: 700; color: #0f766e;">
-                            Pregătit pentru redactarea contractului de consultanță și maparea listei de echipamente medicale.
+                            Următorul pas tehnic: Transmiterea Certificatului Constatator al SRL-ului pentru verificarea codului CAEN medical.
                         </div>
                     </div>
                 </div>
@@ -537,7 +545,7 @@
 
         <div class="presentation-footer">
             <div id="lockNotice" class="locked-notice">
-                <i class="fa-solid fa-lock"></i> Completați chestionarul pentru navigare
+                <i class="fa-solid fa-lock"></i> Parcurgeți chestionarul pentru deblocarea ghidului
             </div>
             
             <div class="nav-buttons" id="navBlock" style="display: none; gap: 10px; align-items: center;">
