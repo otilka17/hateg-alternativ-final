@@ -486,4 +486,137 @@
                     <div style="width: 100%; text-align: center;">
                         <h2 style="margin-bottom: 15px; color: #0f172a;">De ce trebuie optimizat bugetul total?</h2>
                         <p style="max-width: 750px; margin: 0 auto 20px auto; font-size: 14px; line-height: 1.5; color: #475569;">
-                            Dacă valoarea totală a echipamentelor dorite este de d
+                            Dacă valoarea totală a echipamentelor dorite este de doar 15.000 lei (~3.000 EUR), costurile administrative (scrierea proiectului, arhitectură MySMIS, auditul obligatoriu) pot face proiectul nejustificat din punct de vedere economic. 
+                        </p>
+                        <div class="stats-container">
+                            <div class="stat-box">
+                                <div style="font-weight: 700; color: #ef4444; font-size: 18px;">Prag Minim Recomandat</div>
+                                <div class="stat-value" style="margin: 8px 0;">15.000 €</div>
+                                <p style="font-size: 11px; color: #64748b;">Valoare totală proiect pentru ca dosarul să fie sustenabil economic.</p>
+                            </div>
+                            <div class="stat-box">
+                                <div style="font-weight: 700; color: #10b981; font-size: 18px;">Efortul Dumneavoastră</div>
+                                <div class="stat-value" style="margin: 8px 0; color: #10b981;">1.500 €</div>
+                                <p style="font-size: 11px; color: #64748b;">Aproximativ 7.500 lei cofinanțare proprie la o intensitate a sprijinului de 90%.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide" id="s6">
+                <div class="slide-header">
+                    <span class="logo-consultant"><i class="fa-solid fa-flag"></i> Lansare Colaborare</span>
+                    <span class="client-tag">Plan de acțiune</span>
+                </div>
+                <div class="slide-body">
+                    <div style="text-align: center; width: 100%;">
+                        <h2 style="font-size: 26px; color: #0f172a; margin-bottom: 10px;">Următorul pas: Întâlnirea Tehnică</h2>
+                        <p style="color: #64748b; max-width: 600px; margin: 0 auto 25px auto; font-size: 14px;">Vom stabili o discuție telefonică sau fizică pentru a analiza codul CAEN și lista exactă de dotări de care aveți nevoie la cabinet.</p>
+                        <div style="background: #f1f5f9; padding: 15px; border-radius: 8px; display: inline-block; font-weight: 700; color: #0f766e;">
+                            Strategie pregătită pentru implementare promptă.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="presentation-footer">
+            <div id="lockNotice" class="locked-notice">
+                <i class="fa-solid fa-lock"></i> Completați chestionarul pentru navigare
+            </div>
+            
+            <div class="nav-buttons" id="navBlock" style="display: none; gap: 10px; align-items: center;">
+                <button class="btn-nav" id="prevBtn" disabled><i class="fa-solid fa-chevron-left"></i></button>
+                <div style="font-size: 13px; font-weight: 600; min-width: 50px; text-align: center;" id="counter">1 / 6</div>
+                <button class="btn-nav" id="nextBtn"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+            
+            <div style="font-size: 11px; color: #64748b; font-weight: 600;">Necesit.ro Consultant Intermediary © 2026</div>
+        </div>
+
+    </div>
+
+    <script>
+        // Logica Chestionarului
+        let currentQuizStep = 1;
+        const totalQuizSteps = 3;
+        
+        const quizNextBtn = document.getElementById('quizNextBtn');
+        const quizBlock = document.getElementById('quizBlock');
+        const quizSuccessBlock = document.getElementById('quizSuccessBlock');
+        
+        // Ascultă selecțiile din chestionar pentru a activa butonul "Next"
+        document.querySelectorAll('.quiz-option input').forEach(input => {
+            input.addEventListener('change', () => {
+                quizNextBtn.disabled = false;
+            });
+        });
+
+        quizNextBtn.addEventListener('click', () => {
+            if (currentQuizStep < totalQuizSteps) {
+                document.getElementById(`qStep${currentQuizStep}`).classList.remove('active');
+                currentQuizStep++;
+                document.getElementById(`qStep${currentQuizStep}`).classList.add('active');
+                quizNextBtn.disabled = true; // resetează pentru pasul următor
+                
+                if (currentQuizStep === totalQuizSteps) {
+                    quizNextBtn.innerText = "Finalizează analiza";
+                }
+            } else {
+                // S-a terminat chestionarul
+                quizBlock.style.display = 'none';
+                quizSuccessBlock.style.display = 'block';
+            }
+        });
+
+        // Logica Prezentării (Slide-uri)
+        let currentSlide = 1;
+        const totalSlides = 6;
+        let isUnlocked = false;
+
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const counter = document.getElementById('counter');
+        const navBlock = document.getElementById('navBlock');
+        const lockNotice = document.getElementById('lockNotice');
+
+        function startPresentation() {
+            isUnlocked = true;
+            quizSuccessBlock.style.display = 'none';
+            lockNotice.style.display = 'none';
+            navBlock.style.display = 'flex';
+            
+            // Trecem automat la Slide-ul 2 (Analiza)
+            changeSlide(1);
+        }
+
+        prevBtn.addEventListener('click', () => changeSlide(-1));
+        nextBtn.addEventListener('click', () => changeSlide(1));
+
+        function changeSlide(direction) {
+            if (!isUnlocked) return;
+            
+            let nextActive = currentSlide + direction;
+            if (nextActive >= 1 && nextActive <= totalSlides) {
+                document.getElementById(`s${currentSlide}`).classList.remove('active');
+                document.getElementById(`s${nextActive}`).classList.add('active');
+                currentSlide = nextActive;
+
+                // Actualizare elemente interfață
+                counter.innerText = `${currentSlide} / ${totalSlides}`;
+                prevBtn.disabled = currentSlide === 1;
+                nextBtn.disabled = currentSlide === totalSlides;
+            }
+        }
+
+        // Navigare tastatură
+        document.addEventListener('keydown', (e) => {
+            if (!isUnlocked) return;
+            if (e.key === 'ArrowRight') changeSlide(1);
+            if (e.key === 'ArrowLeft') changeSlide(-1);
+        });
+    </script>
+</body>
+</html>
