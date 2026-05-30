@@ -3,148 +3,274 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HAȚEG ALTERNATIV | Soul Meal & Drink TO GO</title>
+    <title>METANOIA | Hub Gastronomic & FoodTech</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@200;400;600;700&family=Playfair+Display:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Inter:wght@200;300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <style>
-        body { background: #050505; color: #fff; font-family: 'Inter', sans-serif; }
-        .card-produs { border: 1px solid #1a1a1a; transition: 0.4s; background: #000; }
-        .card-produs:hover { border-color: #c5a059; }
-        .btn-add { border: 1px solid #c5a059; color: #c5a059; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; transition: 0.3s; }
-        .btn-add:hover { background: #c5a059; color: #000; }
-        #modal { display: none; background: rgba(0,0,0,0.95); }
+        body { background: #020202; color: #fff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        .font-cinzel { font-family: 'Cinzel', serif; }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        
+        .glow-gold { box-shadow: 0 0 20px rgba(197, 160, 89, 0.1); }
+        .card-produs { 
+            border: 1px solid #161616; 
+            background: linear-gradient(145deg, #070707, #020202);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+        .card-produs:hover { 
+            border-color: #c5a059; 
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px rgba(197, 160, 89, 0.08);
+        }
+        
+        .btn-add { 
+            border: 1px solid #c5a059; 
+            color: #c5a059; 
+            text-transform: uppercase; 
+            font-size: 0.75rem; 
+            letter-spacing: 2px; 
+            transition: all 0.3s ease; 
+        }
+        .btn-add:hover { background: #c5a059; color: #000; box-shadow: 0 0 15px rgba(197, 160, 89, 0.4); }
+        
+        .blob {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: rgba(197, 160, 89, 0.03);
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+        }
+
+        #modal { display: none; background: rgba(0, 0, 0, 0.98); backdrop-filter: blur(10px); }
+        
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #020202; }
+        ::-webkit-scrollbar-thumb { background: #1c1c1c; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #c5a059; }
+        
         .luxury-hero {
-            background: linear-gradient(rgba(5, 5, 5, 0.75), rgba(5, 5, 5, 0.95)), url('6a64c03b-9dc8-40d7-9b4b-180645bc875e.jpeg') no-repeat center center/cover;
+            background: linear-gradient(rgba(2, 2, 2, 0.7), rgba(2, 2, 2, 0.95)), url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80') no-repeat center center/cover;
         }
     </style>
 </head>
-<body class="pb-32">
+<body class="pb-32 tracking-wide">
 
-    <header class="p-8 border-b border-[#1a1a1a] text-center sticky top-0 bg-[#050505] z-40">
-        <h1 class="font-cinzel text-3xl md:text-4xl text-[#c5a059] tracking-[8px] font-black">METANOIA DIGITALĂ</h1>
-        <p class="text-[10px] uppercase tracking-[4px] text-gray-500 mt-2">Hațeg Alternativ • Soul Meal & Drink TO GO</p>
+    <div class="blob top-40 left-[-100px]"></div>
+    <div class="blob bottom-80 right-[-100px]"></div>
+
+    <div class="bg-[#c5a059] text-black text-[10px] uppercase tracking-[3px] font-bold text-center py-2 px-4">
+        Hub Logistic Activ • Livrări Rapide în Țara Hațegului direct din Bucătăria Centrală Totești
+    </div>
+
+    <header class="p-6 md:p-8 border-b border-[#111] text-center sticky top-0 bg-[#020202]/90 backdrop-blur-md z-40">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="text-left md:block hidden">
+                <p class="text-[9px] uppercase tracking-widest text-gray-500">Platformă Web</p>
+                <p class="text-xs text-white font-medium">hategalternativ.ro</p>
+            </div>
+            <div>
+                <h1 class="font-cinzel text-3xl md:text-4xl text-[#c5a059] tracking-[10px] font-black">METANOIA</h1>
+                <p class="text-[9px] uppercase tracking-[5px] text-gray-400 mt-1">Soul Meal & Drink TO GO</p>
+            </div>
+            <div class="text-right">
+                <a href="tel:0700000000" class="text-xs border border-[#222] px-4 py-2 rounded-full hover:border-[#c5a059] transition text-gray-300">
+                    Suport Operativ: <span class="text-[#c5a059] font-bold">07xx xxx xxx</span>
+                </a>
+            </div>
+        </div>
     </header>
 
-    <section class="luxury-hero text-center py-24 px-6 border-b border-[#1a1a1a]">
-        <div class="max-w-3xl mx-auto">
-            <span class="text-[#c5a059] text-xs font-bold tracking-[3px] uppercase block mb-4">Hub Turistic & Operațional 2026</span>
-            <h2 class="font-playfair italic text-4xl md:text-5xl text-white mb-6">Mâncare gătită curat, vidată modern & băuturi la doză.</h2>
-            <p class="text-gray-400 text-sm md:text-base font-light max-w-xl mx-auto mb-10">
-                Ecosistemul FoodTech de pe ruta DN 68. Gătit tradițional în Bucătăria Centrală Totești, securizat instant pentru drum sau birou.
+    <section class="luxury-hero text-center py-28 px-6 border-b border-[#111]">
+        <div class="max-w-4xl mx-auto">
+            <span class="text-[#c5a059] text-xs font-bold tracking-[4px] uppercase bg-[#c5a059]/10 px-4 py-1.5 rounded-full inline-block mb-6">
+                Ecosistem FoodTech • Gătit Curat & Vidat
+            </span>
+            <h2 class="font-playfair text-4xl md:text-6xl text-white font-medium mb-6 leading-tight">
+                Gustul de origine securizat în <span class="italic text-[#c5a059]">vid profesional</span>.
+            </h2>
+            <p class="text-gray-400 text-sm md:text-lg font-light max-w-2xl mx-auto mb-12 leading-relaxed">
+                Fără compromisuri corporatiste. Păstrăm sufletul rețetelor tradiționale din Totești (DN 68), livrate sau capsate pe loc la doză pentru ritmul tău dinamic.
             </p>
-            <div class="grid grid-cols-3 gap-2 max-w-lg mx-auto text-[9px] md:text-[11px] uppercase tracking-widest text-gray-400">
-                <div class="border border-[#1a1a1a] py-3 bg-black">Aventură</div>
-                <div class="border border-[#1a1a1a] py-3 bg-black">Comunitate</div>
-                <div class="border border-[#1a1a1a] py-3 bg-black">Patrimoniu</div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto text-[11px] uppercase tracking-widest text-gray-400">
+                <div class="border border-[#111] p-4 bg-[#050505] rounded-sm"><span class="block text-[#c5a059] font-bold text-lg mb-1">100%</span>Fără Conservanți</div>
+                <div class="border border-[#111] p-4 bg-[#050505] rounded-sm"><span class="block text-[#c5a059] font-bold text-lg mb-1">0%</span>Oxidare Hrană</div>
+                <div class="border border-[#111] p-4 bg-[#050505] rounded-sm"><span class="block text-[#c5a059] font-bold text-lg mb-1">330ml</span>Doze Capsate pe Loc</div>
+                <div class="border border-[#111] p-4 bg-[#050505] rounded-sm"><span class="block text-[#c5a059] font-bold text-lg mb-1">Pro</span>Nespresso Extracție</div>
             </div>
         </div>
     </section>
 
-    <main class="max-w-5xl mx-auto p-6 mt-12">
+    <main class="max-w-6xl mx-auto p-4 md:p-8 mt-12">
         
-        <div class="mb-20">
-            <div class="text-center mb-10">
-                <span class="text-[#c5a059] text-[10px] tracking-[4px] uppercase block mb-2">Tehnologie Totești</span>
-                <h2 class="font-cinzel text-2xl tracking-[2px]">1. Soul Meal — Vidat Premium</h2>
-                <p class="text-xs text-gray-500 max-w-md mx-auto mt-2">Sistem care blochează prospețimea tocănițelor și a sosurilor artizanale instant, direct din oală, fără conservanți.</p>
+        <div class="mb-24">
+            <div class="flex flex-col md:flex-row justify-between items-center md:items-end border-b border-[#111] pb-6 mb-12 gap-4">
+                <div>
+                    <span class="text-[#c5a059] text-xs tracking-[4px] uppercase block mb-1">Bucătăria Centrală Totești</span>
+                    <h2 class="font-cinzel text-2xl md:text-3xl tracking-[2px] text-white">1. Mâncare Gătită (Vidată Premium)</h2>
+                </div>
+                <p class="text-xs text-gray-500 max-w-sm md:text-right">
+                    Mâncarea fierbinte este coborâtă în temperatură și vidată instant. Sosurile își păstrează textura perfectă, iar bacteriile sunt eliminate complet natural.
+                </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="card-produs overflow-hidden flex flex-col justify-between" data-nume="OptimBox 1500 kcal" data-pret="65.00">
-                    <img src="Screenshot_2026-05-26-21-49-55-51_e307a3f9df9f380ebaf106e1dc980bb6.jpg" alt="OptimBox" class="w-full h-64 object-cover filter grayscale-[10%]">
-                    <div class="p-6 flex-1 flex flex-col justify-between">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="card-produs overflow-hidden flex flex-col justify-between rounded-sm" data-nume="OptimBox Meniu Complet" data-pret="65.00">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=600&q=80" alt="OptimBox Meal Prep" class="w-full h-56 object-cover">
+                        <span class="absolute top-3 left-3 bg-[#c5a059] text-black text-[9px] font-bold px-2 py-0.5 uppercase tracking-wider rounded-sm">Stil LifeBox</span>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
                         <div>
-                            <div class="flex justify-between items-baseline mb-2">
-                                <h3 class="font-bold text-lg text-white">OptimBox 1500 kcal</h3>
-                                <span class="text-[#c5a059] font-bold">65.00 RON</span>
+                            <div class="flex justify-between items-start mb-2 gap-2">
+                                <h3 class="font-bold text-base text-white font-cinzel">OptimBox 1500 kcal</h3>
+                                <span class="text-[#c5a059] font-bold text-sm whitespace-nowrap">65.00 RON</span>
                             </div>
-                            <p class="text-xs text-gray-400 mb-6 font-light">Meniu zilnic complet (3 mese principale, 2 gustări). Rețete curate cu macro-nutrienți calibrați.</p>
-                            <div class="grid grid-cols-4 gap-2 bg-[#0a0a0a] p-3 text-center text-xs border border-[#1a1a1a] mb-6">
-                                <div><span class="block font-bold text-white">1552</span><span class="text-[9px] text-gray-500 uppercase">Kcal</span></div>
-                                <div><span class="block font-bold text-[#c5a059]">151g</span><span class="text-[9px] text-gray-500 uppercase">Prot</span></div>
-                                <div><span class="block font-bold text-white">125g</span><span class="text-[9px] text-gray-500 uppercase">Carbo</span></div>
-                                <div><span class="block font-bold text-white">49g</span><span class="text-[9px] text-gray-500 uppercase">Grăsimi</span></div>
+                            <p class="text-xs text-gray-400 mb-6 font-light leading-relaxed">Meniu complet pentru o zi întreagă: 3 mese principale consistente și 2 gustări energice, perfect calibrate.</p>
+                            <div class="grid grid-cols-4 gap-1 bg-[#050505] p-2 text-center text-[11px] border border-[#111] mb-6 rounded-sm">
+                                <div><span class="block font-bold text-white text-xs">1552</span><span class="text-[8px] text-gray-500 uppercase">Kcal</span></div>
+                                <div><span class="block font-bold text-[#c5a059] text-xs">151g</span><span class="text-[8px] text-gray-500 uppercase">Prot</span></div>
+                                <div><span class="block font-bold text-white text-xs">125g</span><span class="text-[8px] text-gray-500 uppercase">Carbo</span></div>
+                                <div><span class="block font-bold text-white text-xs">49g</span><span class="text-[8px] text-gray-500 uppercase">Grăs</span></div>
                             </div>
                         </div>
-                        <button onclick="adaugaProdus(this)" class="btn-add w-full py-3">Adaugă în coș</button>
+                        <button onclick="adaugaProdus(this)" class="btn-add w-full py-3 font-semibold">Adaugă în coș</button>
                     </div>
                 </div>
 
-                <div class="card-produs overflow-hidden flex flex-col justify-between" data-nume="Ceaun de Pui cu Piure Artizanal" data-pret="26.00">
-                    <img src="ChatGPT Image 20 mar. 2026, 09_34_51.png" alt="Gustul de acasa" class="w-full h-64 object-cover filter grayscale-[10%]">
-                    <div class="p-6 flex-1 flex flex-col justify-between">
+                <div class="card-produs overflow-hidden flex flex-col justify-between rounded-sm" data-nume="Gulaș de Vită cu Mămăligă" data-pret="29.00">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=600&q=80" alt="Gulas de vita traditional" class="w-full h-56 object-cover">
+                        <span class="absolute top-3 left-3 bg-red-900 text-white text-[9px] font-bold px-2 py-0.5 uppercase tracking-wider rounded-sm">Gătit Lent 8h</span>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
                         <div>
-                            <div class="flex justify-between items-baseline mb-2">
-                                <h3 class="font-bold text-lg text-white">Ceaun Pui & Piure</h3>
-                                <span class="text-[#c5a059] font-bold">26.00 RON</span>
+                            <div class="flex justify-between items-start mb-2 gap-2">
+                                <h3 class="font-bold text-base text-white font-cinzel">Gulaș de Vită cu Mămăligă</h3>
+                                <span class="text-[#c5a059] font-bold text-sm whitespace-nowrap">29.00 RON</span>
                             </div>
-                            <p class="text-xs text-gray-400 mb-6 font-light">Mâncare caldă de origine, gătită lent în gospodărie și vidată premium pentru păstrarea sosului texturat.</p>
-                            <div class="grid grid-cols-4 gap-2 bg-[#0a0a0a] p-3 text-center text-xs border border-[#1a1a1a] mb-6">
-                                <div><span class="block font-bold text-white">620</span><span class="text-[9px] text-gray-500 uppercase">Kcal</span></div>
-                                <div><span class="block font-bold text-[#c5a059]">42g</span><span class="text-[9px] text-gray-500 uppercase">Prot</span></div>
-                                <div><span class="block font-bold text-white">55g</span><span class="text-[9px] text-gray-500 uppercase">Carbo</span></div>
-                                <div><span class="block font-bold text-white">18g</span><span class="text-[9px] text-gray-500 uppercase">Grăsimi</span></div>
+                            <p class="text-xs text-gray-400 mb-6 font-light leading-relaxed">Carne fragedă de vită cu sos dens de ardei, servit alături de mămăligă tradițională preparată la bucătărie.</p>
+                            <div class="grid grid-cols-4 gap-1 bg-[#050505] p-2 text-center text-[11px] border border-[#111] mb-6 rounded-sm">
+                                <div><span class="block font-bold text-white text-xs">680</span><span class="text-[8px] text-gray-500 uppercase">Kcal</span></div>
+                                <div><span class="block font-bold text-[#c5a059] text-xs">46g</span><span class="text-[8px] text-gray-500 uppercase">Prot</span></div>
+                                <div><span class="block font-bold text-white text-xs">58g</span><span class="text-[8px] text-gray-500 uppercase">Carbo</span></div>
+                                <div><span class="block font-bold text-white text-xs">22g</span><span class="text-[8px] text-gray-500 uppercase">Grăs</span></div>
                             </div>
                         </div>
-                        <button onclick="adaugaProdus(this)" class="btn-add w-full py-3">Adaugă în coș</button>
+                        <button onclick="adaugaProdus(this)" class="btn-add w-full py-3 font-semibold">Adaugă în coș</button>
+                    </div>
+                </div>
+
+                <div class="card-produs overflow-hidden flex flex-col justify-between rounded-sm" data-nume="Ceaun de Pui cu Piure" data-pret="26.00">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=600&q=80" alt="Pui la ceaun cu piure" class="w-full h-56 object-cover">
+                        <span class="absolute top-3 left-3 bg-[#1e4638] text-white text-[9px] font-bold px-2 py-0.5 uppercase tracking-wider rounded-sm">Rețetă Curată</span>
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col justify-between">
+                        <div>
+                            <div class="flex justify-between items-start mb-2 gap-2">
+                                <h3 class="font-bold text-base text-white font-cinzel">Ceaun de Pui cu Piure</h3>
+                                <span class="text-[#c5a059] font-bold text-sm whitespace-nowrap">26.00 RON</span>
+                            </div>
+                            <p class="text-xs text-gray-400 mb-6 font-light leading-relaxed">Mâncare autentică de origine, cu carne fragedă și piure fin din cartofi zdrobiți. Vidul sigilează sosul fin.</p>
+                            <div class="grid grid-cols-4 gap-1 bg-[#050505] p-2 text-center text-[11px] border border-[#111] mb-6 rounded-sm">
+                                <div><span class="block font-bold text-white text-xs">620</span><span class="text-[8px] text-gray-500 uppercase">Kcal</span></div>
+                                <div><span class="block font-bold text-[#c5a059] text-xs">42g</span><span class="text-[8px] text-gray-500 uppercase">Prot</span></div>
+                                <div><span class="block font-bold text-white text-xs">55g</span><span class="text-[8px] text-gray-500 uppercase">Carbo</span></div>
+                                <div><span class="block font-bold text-white text-xs">18g</span><span class="text-[8px] text-gray-500 uppercase">Grăs</span></div>
+                            </div>
+                        </div>
+                        <button onclick="adaugaProdus(this)" class="btn-add w-full py-3 font-semibold">Adaugă în coș</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="mb-12">
-            <div class="text-center mb-10">
-                <span class="text-[#c5a059] text-[10px] tracking-[4px] uppercase block mb-2">FoodTech la Doză</span>
-                <h2 class="font-cinzel text-2xl tracking-[2px]">2. Drink & Desert TO GO</h2>
-                <p class="text-xs text-gray-500 max-w-md mx-auto mt-2">Sistem de capsare mecanică instantanee în doze de Aluminiu/PET, alături de extracția premium Nespresso Professional.</p>
+        <div class="mb-20">
+            <div class="flex flex-col md:flex-row justify-between items-center md:items-end border-b border-[#111] pb-6 mb-12 gap-4">
+                <div>
+                    <span class="text-[#c5a059] text-xs tracking-[4px] uppercase block mb-1">Tehnologie Capsare Mecanică</span>
+                    <h2 class="font-cinzel text-2xl md:text-3xl tracking-[2px] text-white">2. Drinks & Deserturi la Doză</h2>
+                </div>
+                <p class="text-xs text-gray-500 max-w-sm md:text-right">
+                    Lichidele și prăjiturile stratificate sunt introduse în recipiente speciale și capsate mecanic etanș pe loc. Fără scurgeri, perfect pentru mașină.
+                </p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="space-y-4">
-                    <h4 class="font-cinzel text-xs tracking-widest text-[#c5a059] mb-2 uppercase">Capsate pe loc (PET/Aluminiu)</h4>
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="h-1 w-6 bg-[#c5a059]"></span>
+                        <h4 class="font-cinzel text-xs tracking-widest text-[#c5a059] uppercase">Proaspăt Capsate (330ml / 250ml)</h4>
+                    </div>
                     
-                    <div class="card-produs p-4 flex justify-between items-center" data-nume="Limonadă cu Mentă la Doză" data-pret="15.00">
+                    <div class="card-produs p-5 flex justify-between items-center rounded-sm" data-nume="Limonadă cu Mentă la Doză" data-pret="15.00">
                         <div>
-                            <h5 class="font-medium text-sm text-white">Limonadă cu Mentă</h5>
-                            <p class="text-[11px] text-gray-500">Fresh proaspăt turnat și sigilat mecanic</p>
+                            <div class="flex items-center gap-2">
+                                <h5 class="font-bold text-sm text-white font-cinzel">Limonadă Presată cu Mentă</h5>
+                                <span class="text-[8px] text-green-500 font-bold tracking-wider uppercase border border-green-500/30 px-1 rounded-sm">Fresh</span>
+                            </div>
+                            <p class="text-[11px] text-gray-400 mt-1 font-light">Limonadă reală, extrasă la rece, turnată și sigilată sub presiune.</p>
                         </div>
-                        <button onclick="adaugaProdus(this)" class="btn-add px-4 py-2">15.00 RON</button>
+                        <button onclick="adaugaProdus(this)" class="btn-add px-5 py-2.5 font-bold whitespace-nowrap">15.00 RON</button>
                     </div>
 
-                    <div class="card-produs p-4 flex justify-between items-center" data-nume="Doza Proteică Metanoia" data-pret="18.00">
+                    <div class="card-produs p-5 flex justify-between items-center rounded-sm" data-nume="Doza Proteică Metanoia" data-pret="18.00">
                         <div>
-                            <h5 class="font-medium text-sm text-white">Doza Proteică „Metanoia”</h5>
-                            <p class="text-[11px] text-gray-500">Combustibil curat, izolat complet de aer</p>
+                            <div class="flex items-center gap-2">
+                                <h5 class="font-bold text-sm text-white font-cinzel">Doza Proteică „Metanoia”</h5>
+                                <span class="text-[8px] text-[#c5a059] font-bold tracking-wider uppercase border border-[#c5a059]/30 px-1 rounded-sm">Pure Fuel</span>
+                            </div>
+                            <p class="text-[11px] text-gray-400 mt-1 font-light">Mix proteic curat, ideal postsport, izolat de oxigen până la deschidere.</p>
                         </div>
-                        <button onclick="adaugaProdus(this)" class="btn-add px-4 py-2">18.00 RON</button>
+                        <button onclick="adaugaProdus(this)" class="btn-add px-5 py-2.5 font-bold whitespace-nowrap">18.00 RON</button>
                     </div>
 
-                    <div class="card-produs p-4 flex justify-between items-center" data-nume="Desert la Doză Premium" data-pret="22.00">
+                    <div class="card-produs p-5 flex justify-between items-center rounded-sm" data-nume="Desert la Doză Premium" data-pret="22.00">
                         <div>
-                            <h5 class="font-medium text-sm text-white">Desert la Doză</h5>
-                            <p class="text-[11px] text-gray-500">Prăjitură gourmet stratificată (Precomandă)</p>
+                            <div class="flex items-center gap-2">
+                                <h5 class="font-bold text-sm text-white font-cinzel">Desert Stratificat Gourmet</h5>
+                                <span class="text-[8px] text-purple-400 font-bold tracking-wider uppercase border border-purple-400/30 px-1 rounded-sm">Precomandă</span>
+                            </div>
+                            <p class="text-[11px] text-gray-400 mt-1 font-light">Prăjitură artizanală cu creme fine, montată direct în strat securizat.</p>
                         </div>
-                        <button onclick="adaugaProdus(this)" class="btn-add px-4 py-2">22.00 RON</button>
+                        <button onclick="adaugaProdus(this)" class="btn-add px-5 py-2.5 font-bold whitespace-nowrap">22.00 RON</button>
                     </div>
                 </div>
 
                 <div class="space-y-4">
-                    <h4 class="font-cinzel text-xs tracking-widest text-[#c5a059] mb-2 uppercase">Sisteme Premium Cafea</h4>
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="h-1 w-6 bg-[#c5a059]"></span>
+                        <h4 class="font-cinzel text-xs tracking-widest text-[#c5a059] uppercase">Sisteme Extracție Cafea</h4>
+                    </div>
                     
-                    <div class="card-produs p-4 flex justify-between items-center" data-nume="Espresso Signature" data-pret="10.00">
+                    <div class="card-produs p-5 flex justify-between items-center rounded-sm" data-nume="Espresso Signature" data-pret="10.00">
                         <div>
-                            <h5 class="font-medium text-sm text-white">Espresso „Signature”</h5>
-                            <p class="text-[11px] text-gray-500">Extracție standard Nespresso Professional</p>
+                            <h5 class="font-bold text-sm text-white font-cinzel">Espresso „Signature”</h5>
+                            <p class="text-[11px] text-gray-400 mt-1 font-light">Extracție profesională etalon Nespresso Professional Selection.</p>
                         </div>
-                        <button onclick="adaugaProdus(this)" class="btn-add px-4 py-2">10.00 RON</button>
+                        <button onclick="adaugaProdus(this)" class="btn-add px-5 py-2.5 font-bold whitespace-nowrap">10.00 RON</button>
                     </div>
 
-                    <div class="card-produs p-4 flex justify-between items-center" data-nume="Specialitatea Casei Milk" data-pret="14.00">
+                    <div class="card-produs p-5 flex justify-between items-center rounded-sm" data-nume="Specialitatea Casei Milk" data-pret="14.00">
                         <div>
-                            <h5 class="font-medium text-sm text-white">Specialitatea Casei</h5>
-                            <p class="text-[11px] text-gray-500">Rețetă cu cremă fină de lapte pe flux rapid</p>
+                            <h5 class="font-bold text-sm text-white font-cinzel">Specialitatea Casei Milk</h5>
+                            <p class="text-[11px] text-gray-400 mt-1 font-light">Shot dublu Nespresso cu emulsie densă din cremă fină de lapte.</p>
                         </div>
-                        <button onclick="adaugaProdus(this)" class="btn-add px-4 py-2">14.00 RON</button>
+                        <button onclick="adaugaProdus(this)" class="btn-add px-5 py-2.5 font-bold whitespace-nowrap">14.00 RON</button>
+                    </div>
+
+                    <div class="border border-dashed border-[#c5a059]/30 p-5 flex justify-between items-center rounded-sm bg-[#c5a059]/5" data-nume="Pachet Combo Tranzit" data-pret="48.00">
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <h5 class="font-bold text-sm text-[#c5a059] font-cinzel">Pachet „Combo Tranzit”</h5>
+                                <span class="bg-[#c5a059] text-black text-[8px] font-black px-1 rounded-sm">Save Value</span>
+                            </div>
+                            <p class="text-[11px] text-gray-300 mt-1 font-light">Orice Mâncare Vidată la alegere + Limonadă la Doză + Espresso.</p>
+                        </div>
+                        <button onclick="adaugaProdus(this)" class="btn-add bg-[#c5a059] text-black px-5 py-2.5 font-bold whitespace-nowrap">48.00 RON</button>
                     </div>
                 </div>
             </div>
@@ -152,25 +278,43 @@
 
     </main>
 
-    <div class="fixed bottom-0 left-0 w-full bg-[#0a0a0a] border-t border-[#c5a059] p-6 flex justify-between items-center px-6 md:px-12 z-50">
+    <div class="fixed bottom-0 left-0 w-full bg-[#070707] border-t border-[#c5a059] p-5 flex justify-between items-center px-6 md:px-16 z-50 shadow-2xl glow-gold">
         <div>
-            <p class="text-[9px] uppercase tracking-[2px] text-gray-500">Total Comandă</p>
-            <p id="display-total" class="font-cinzel text-xl md:text-2xl text-[#c5a059]">0.00 RON</p>
+            <p class="text-[9px] uppercase tracking-[3px] text-gray-400 font-semibold">Total Centralizat</p>
+            <p id="display-total" class="font-cinzel text-xl md:text-3xl text-[#c5a059] font-black">0.00 RON</p>
         </div>
-        <button onclick="deschideModal()" class="btn-add px-6 md:px-10 py-3 bg-[#c5a059] text-black font-bold text-xs">Finalizează Comanda</button>
+        <div class="flex items-center gap-4">
+            <span id="cart-count" class="text-xs text-gray-400 hidden md:inline"><span class="text-white font-bold" id="items-num">0</span> produse selectate</span>
+            <button onclick="deschideModal()" class="btn-add px-6 md:px-12 py-3.5 bg-[#c5a059] text-black font-bold text-xs rounded-sm transition-all duration-300">
+                Finalizează Comanda
+            </button>
+        </div>
     </div>
 
-    <div id="modal" class="fixed inset-0 z-50 flex items-center justify-center p-6">
-        <div class="bg-[#050505] border border-[#c5a059] p-8 w-full max-w-md">
-            <h2 class="font-cinzel text-xl text-[#c5a059] mb-4 tracking-wider">DATE LIVRARE OPERATIVE</h2>
-            <p class="text-xs text-gray-500 mb-6">Mâncarea pleacă direct de la Bucătăria Centrală Totești (DN 68).</p>
+    <div id="modal" class="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div class="bg-[#050505] border border-[#c5a059] p-6 md:p-8 w-full max-w-md rounded-sm glow-gold">
+            <h2 class="font-cinzel text-lg text-[#c5a059] mb-1 tracking-wider font-bold">FLUX LOGISTIC LIVRARE</h2>
+            <p class="text-[11px] text-gray-500 mb-6 uppercase tracking-wider">Unitatea centrală operativă Totești • DN 68</p>
             
-            <input type="text" id="client-name" placeholder="Numele tău complet" class="w-full bg-transparent border border-[#1a1a1a] p-3 mb-4 text-white text-sm focus:outline-none focus:border-[#c5a059]">
-            <input type="text" id="client-address" placeholder="Adresa de livrare în Hațeg / Totești" class="w-full bg-transparent border border-[#1a1a1a] p-3 mb-6 text-white text-sm focus:outline-none focus:border-[#c5a059]">
+            <div class="mb-6 bg-[#090909] p-4 border border-[#111] rounded-sm max-h-36 overflow-y-auto">
+                <p class="text-xs text-gray-400 uppercase tracking-widest font-bold mb-2 border-b border-[#1f1f1f] pb-1">Articole în Comandă:</p>
+                <div id="lista-produse-modal" class="text-xs text-gray-300 space-y-1.5 font-light"></div>
+            </div>
+
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-[10px] uppercase tracking-widest text-gray-400 mb-1">Identificare Client</label>
+                    <input type="text" id="client-name" placeholder="Numele tău complet" class="w-full bg-black border border-[#1c1c1c] p-3 text-white text-sm focus:outline-none focus:border-[#c5a059] rounded-sm">
+                </div>
+                <div>
+                    <label class="block text-[10px] uppercase tracking-widest text-gray-400 mb-1">Punct de descărcare</label>
+                    <input type="text" id="client-address" placeholder="Adresa exactă (Hațeg, Totești sau KM DN68)" class="w-full bg-black border border-[#1c1c1c] p-3 text-white text-sm focus:outline-none focus:border-[#c5a059] rounded-sm">
+                </div>
+            </div>
             
-            <div class="grid grid-cols-2 gap-4">
-                <button onclick="inchideModal(false)" class="border border-gray-600 text-gray-400 text-xs uppercase tracking-widest py-3 hover:bg-gray-900">Anulează</button>
-                <button onclick="inchideModal(true)" class="btn-add py-3 bg-[#c5a059] text-black font-bold">Trimite</button>
+            <div class="grid grid-cols-2 gap-4 mt-8">
+                <button onclick="inchideModal(false)" class="border border-[#222] text-gray-400 text-xs uppercase tracking-widest py-3.5 hover:bg-[#090909] rounded-sm">Anulează</button>
+                <button onclick="inchideModal(true)" class="btn-add py-3.5 bg-[#c5a059] text-black font-bold rounded-sm">Trimite Comandă</button>
             </div>
         </div>
     </div>
@@ -185,25 +329,39 @@
             const pret = parseFloat(card.getAttribute('data-pret'));
             
             total += pret;
-            cartItems.push(nume);
+            cartItems.push({ name: nume, price: pret });
             
             document.getElementById('display-total').innerText = total.toFixed(2) + ' RON';
+            document.getElementById('items-num').innerText = cartItems.length;
             
-            // Feedback vizual rapid pe buton la adaugare
             const originalText = btn.innerText;
+            btn.style.backgroundColor = "#c5a059";
+            btn.style.color = "#000";
             btn.innerText = "Adăugat ✓";
-            btn.style.borderColor = "#fff";
+            
             setTimeout(() => {
+                btn.style.backgroundColor = "transparent";
+                btn.style.color = "#c5a059";
                 btn.innerText = originalText;
-                btn.style.borderColor = "#c5a059";
-            }, 800);
+            }, 700);
         }
 
         function deschideModal() { 
             if (total === 0) {
-                alert('Coșul tău este gol. Adaugă un meniu sau o băutură.');
+                alert('Eroare: Coșul este gol. Selectează produse din flux.');
                 return;
             }
+            
+            const containerLista = document.getElementById('lista-produse-modal');
+            containerLista.innerHTML = '';
+            
+            cartItems.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'flex justify-between items-center text-gray-300';
+                div.innerHTML = `<span>• ${item.name}</span><span class="text-[#c5a059] font-medium">${item.price.toFixed(2)} RON</span>`;
+                containerLista.appendChild(div);
+            });
+            
             document.getElementById('modal').style.display = 'flex'; 
         }
         
@@ -212,14 +370,16 @@
                 const nume = document.getElementById('client-name').value;
                 const adresa = document.getElementById('client-address').value;
                 if (!nume || !adresa) {
-                    alert('Te rugăm să completezi numele și adresa pentru livrare.');
+                    alert('Eroare: Te rugăm să introduci numele și adresa de descărcare.');
                     return;
                 }
-                alert('Comandă preluată cu succes! Total: ' + total.toFixed(2) + ' RON.\nPregătim produsele vidate și băuturile la doză în Totești.');
-                // Resetare total după trimitere
+                
+                alert('Sistem Integrat Metanoia: Comanda a fost transmisă operativ!\nValoare totală: ' + total.toFixed(2) + ' RON.\nPregătim procesul de livrare direct din unitatea centrală.');
+                
                 total = 0;
                 cartItems = [];
                 document.getElementById('display-total').innerText = '0.00 RON';
+                document.getElementById('items-num').innerText = '0';
                 document.getElementById('client-name').value = '';
                 document.getElementById('client-address').value = '';
             }
