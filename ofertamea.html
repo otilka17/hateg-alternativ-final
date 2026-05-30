@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategie Finantare Start-Up Medical - Dakamigos Markt</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* DESIGN SYSTEM & RESET */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            background-color: #0f172a;
+            color: #334155;
+            font-family: 'Open Sans', sans-serif;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 10px;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: #0f766e;
+        }
+
+        .presentation-deck {
+            width: 100%;
+            max-width: 1080px;
+            height: 85vh;
+            min-height: 540px;
+            max-height: 660px;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slides-container {
+            flex-grow: 1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform: translateX(20px);
+            padding: 35px 45px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 1;
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+            z-index: 2;
+        }
+
+        /* HEADER SLIDE */
+        .slide-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .slide-header .logo-consultant {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #d97706;
+        }
+
+        .slide-header .client-tag {
+            font-size: 11px;
+            background: #f0fdfa;
+            color: #0f766e;
+            padding: 3px 10px;
+            border-radius: 9999px;
+            font-weight: 600;
+            border: 1px solid #ccfbf1;
+        }
+
+        .slide-title {
+            font-size: 24px;
+            color: #0f172a;
+            position: relative;
+            padding-left: 12px;
+            margin-bottom: 10px;
+        }
+
+        .slide-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 15%;
+            height: 70%;
+            width: 4px;
+            background-color: #0f766e;
+            border-radius: 2px;
+        }
+
+        .slide-body {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-y: auto;
+            padding: 5px 0;
+        }
+
+        /* CHESTIONAR INTERACTIV */
+        .quiz-container {
+            width: 100%;
+            max-width: 700px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 25px;
+        }
+
+        .quiz-step {
+            display: none;
+        }
+
+        .quiz-step.active {
+            display: block;
+        }
+
+        .quiz-question {
+            font-size: 16px;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 15px;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .quiz-option {
+            background: white;
+            border: 1px solid #cbd5e1;
+            padding: 12px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quiz-option:hover {
+            border-color: #0f766e;
+            background: #f0fdfa;
+        }
+
+        .quiz-option input {
+            cursor: pointer;
+        }
+
+        /* GRIDS & LAYOUTS */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 30px;
+            width: 100%;
+            align-items: center;
+        }
+
+        .custom-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .custom-list li {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            font-size: 14px;
+        }
+
+        .custom-list li i {
+            color: #0f766e;
+            background: #e6f4f1;
+            padding: 6px;
+            border-radius: 6px;
+            flex-shrink: 0;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            width: 100%;
+        }
+
+        .card-tile {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .card-tile .tile-icon {
+            font-size: 22px;
+            color: #0f766e;
+            background: #e6f4f1;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+        }
+
+        /* VALORI FINANCIARE */
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            gap: 20px;
+        }
+
+        .stat-box {
+            text-align: center;
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px dashed #cbd5e1;
+            flex: 1;
+        }
+
+        .stat-value {
+            font-size: 34px;
+            font-weight: 700;
+            color: #0f766e;
+        }
+
+        /* FOOTER & NAVIGARE */
+        .presentation-footer {
+            background-color: #f8fafc;
+            border-top: 1px solid #e2e8f0;
+            padding: 10px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .btn-nav {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            color: #334155;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .btn-nav:hover:not(:disabled) {
+            background-color: #0f766e;
+            color: #ffffff;
+            border-color: #0f766e;
+        }
+
+        .btn-nav:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .locked-notice {
+            font-size: 13px;
+            color: #ef4444;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-quiz-next {
+            background: #cbd5e1;
+            color: #64748b;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: not-allowed;
+            transition: all 0.2s;
+        }
+
+        .btn-quiz-next.enabled {
+            background: #0f766e;
+            color: white;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .presentation-deck { height: auto; max-height: none; }
+            .slide { position: relative; display: none; height: auto; padding: 20px; }
+            .slide.active { display: flex; }
+            .grid-2, .grid-3, .stats-container { grid-template-columns: 1fr; flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="presentation-deck">
+        
+        <div class="slides-container">
+
+            <div class="slide active" id="s1">
+                <div class="slide-header">
+                    <span class="logo-consultant"><i class="fa-solid fa-briefcase"></i> Dakamigos Markt SRL</span>
+                    <span class="client-tag">Tunas Bogdan / Baia Mare</span>
+                </div>
+                <div class="slide-body">
+                    <div id="quizBlock" class="quiz-container">
+                        <div style="text-align: center; margin-bottom: 20px;">
+                            <h2 style="font-size: 20px; color: #0f172a;">Validare Obiectiv Financiar: 100.000 €</h2>
+                            <p style="font-size: 13px; color: #64748b;">Răspundeți la cele 3 întrebări de conformitate pentru calificarea dosarului.</p>
+                        </div>
+
+                        <div class="quiz-step active" id="qStep1">
+                            <p class="quiz-question">1. Structura noului SRL permite susținerea cheltuielilor neeligibile sau cofinanțare?</p>
+                            <div class="quiz-options">
+                                <label class="quiz-option"><input type="radio" name="q1" value="yes"> Da, deținem aport propriu / posibilitate creditare punte</label>
+                                <label class="quiz-option"><input type="radio" name="q1" value="no"> Căutăm linii de finanțare 100% fără niciun aport</label>
+                            </div>
+                        </div>
+
+                        <div class="quiz-step" id="qStep2">
+                            <p class="quiz-question">2. Spațiul în care veți instala echipamentele din Baia Mare este asigurat?</p>
+                            <div class="quiz-options">
+                                <label class="quiz-option"><input type="radio" name="q2" value="own"> Proprietate deținută / spațiu personal</label>
+                                <label class="quiz-option"><input type="radio" name="q2" value="rent"> Închiriere / comodat pe termen lung (minimum 3-5 ani)</label>
+                            </div>
+                        </div>
+
+                        <div class="quiz-step" id="qStep3">
+                            <p class="quiz-question">3. Echipamentele medicale planificate vizează o specializare unică?</p>
+                            <div class="quiz-options">
+                                <label class="quiz-option"><input type="radio" name="q3" value="single"> Da, cabinet unic (ex. Stomatologie, Ecografie, Cardiologie)</label>
+                                <label class="quiz-option"><input type="radio" name="q3" value="multi"> Nu, clinică integrată cu multiple specialități</label>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 25px; display: flex; justify-content: flex-end;">
+                            <button id="quizNextBtn" class="btn-quiz-next" disabled>Următorul pas</button>
+                        </div>
+                    </div>
+
+                    <div id="quizSuccessBlock" style="display: none; text-align: center; width: 100%;">
+                        <div style="font-size: 50px; color: #10b981; margin-bottom: 15px;"><i class="fa-solid fa-chart-line"></i></div>
+                        <h2>Strategie Dakamigos Markt Activă</h2>
+                        <p style="color: #64748b; margin-bottom: 20px;">Dosarul a fost calibrat cu succes pentru un proiect start-up de 100.000 EUR.</p>
+                        <button onclick="startPresentation()" style="background: #0f766e; color: white; border: none; padding: 12px 25px; border-radius: 6px; font-weight: 600; cursor: pointer;">Afișează Ghidurile Eligibile 2026</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide" id="s2">
+                <div class="slide-header">
+                    <span class="logo-consultant"><i class="fa-solid fa-stethoscope"></i> Analiză Expert</span>
+                    <span class="client-tag">Dakamigos Markt SRL</span>
+                </div>
+                <div class="slide-body">
+                    <div class="grid-2">
+                        <div class="column-left">
+                            <h2 class="slide-title">Calibrarea Proiectului la Valoarea de 100.000 EUR</h2>
+                            <p>Trecerea la un buget solid de <strong>100.000 €</strong> deschide accesul la axele majore guvernamentale și europene destinate start-up-urilor în 2026. Structura tehnică elaborată de firma noastră va pune accent pe două pârghii:</p>
+                            <ul class="custom-list">
+                                <li>
+                                    <i class="fa-solid fa-gears"></i>
+                                    <div>
+                                        <strong>Tehnologie Medicală Premium:</strong> Bugetul permite achiziția de unituri performante, scanere medicale, ecografe de ultimă generație sau aparatură radiologică.
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-bolt"></i>
+                                    <div>
+                                        <strong>Componenta Green & Digital:</strong> Direcționăm elemente de buget către digitalizarea cabinetului și echipamente eficiente energetic pentru a asigura punctaj maxim.
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="column-right" style="text-align: center;">
+                            <i class="fa-solid fa-user-tie" style="font-size: 80px; color: #0f766e;"></i>
+                            <p style="font-size: 11px; color: #64748b; margin-top: 10px;">Analiză profesională generată pentru servicii medicale (Baia Mare).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide" id="s3">
+                <div class="slide-header">
+                    <span class="logo-consultant"><i class="fa-solid fa-rocket"></i> Linia 1: Pilonul Național</span>
+                    <span class="client-tag">Start-Up 2026</span>
+                </div>
+                <div class="slide-body">
+                    <div style="width: 100%;">
+                        <h2 class="slide-title" style="margin-bottom: 15px;">Programul Național Start-Up (Sector Medical)</h2>
+                        <div class="grid-3">
+                            <div class="card-tile">
+                                <div class="tile-icon"><i class="fa-solid fa-business-time"></i></div>
+                                <h3>Condiție Firmă</h3>
+                                <p>SRL înființat recent, care nu a mai beneficiat de alte măsuri de sprijin similare din fonduri publice.</p>
+                            </div>
+                            <div class="card-tile">
+                                <div class="tile-icon"><i class="fa-solid fa-truck-medical"></i></div>
+                                <h3>Alocare Fonduri</h3>
+                                <p>Destinat exclusiv achiziției de active corporale (aparatură), licențe software medicale și mobilier de specialitate.</p>
+                            </div>
+                            <div class="card-tile">
+                                <div class="tile-icon"><i class="fa-solid fa-coins"></i></div>
+                                <h3>Finanțare</h3>
+                                <p>Acoperă o pondere majoră din investiție. Grantul este optimizat special pentru proiecte cu valoare adăugată mare.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide" id="s4">
+                <div class="slide-header">
+                    <span class="logo-consultant"><i class="fa-solid fa-handshake"></i> Oferta Comercială</span>
+                    <span class="client-tag">Eșalonare Sigură</span>
+                </div>
+                <div class="slide-body">
+                    <div class="grid-2">
+                        <div class="column-left">
+                            <h2 class="slide-title">Costuri Proiect Dakamigos Markt SRL</h2>
+                            <p>Pentru realizarea cap-coadă a dosarului, scrierea planului de afaceri și încărcarea în MySMIS, structura de cost este fixă și transparentă:</p>
+                            <ul class="custom-list">
+                                <li>
+                                    <i class="fa-solid fa-file-signature"></i>
+                                    <div>
+                                        <strong>Tranșa 1 (500 EUR) - Avans de Pornire:</strong> Se achită la semnarea contractului pentru deblocarea analizei tehnico-economice.
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                                    <div>
+                                        <strong>Tranșa 2 (500 EUR) - La Depunere:</strong> Se achită strict când dosarul este complet încărcat și trimis spre evaluare.
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="column-right">
+                            <div class="stat-box" style="border-color: #0f766e;">
+                                <div class="stat-value" style="font-size: 26px;">1.000 EUR</div>
+                                <div style="font-size: 12px; font-weight: 600; color: #0f172a; margin: 5px 0;">Total Taxă Scriere</div>
+                                <div style="font-size: 11px; color: #64748b;">Eșalonată 50% avans / 50% la depunerea finală a proiectului.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide" id="s5">
+                <div class="slide-header">
+                    <span class="logo-consultant"><i class="fa-solid fa-percentage"></i> Comision de Succes</span>
+                    <span class="client-tag">Risc Împărțit</span>
+                </div>
+                <div class="slide-body">
+                    <div style="width: 100%; text-align: center;">
+                        <h2 style="margin-bottom: 15px; color: #0f172a;">Parteneriat bazat pe Performanță</h2>
+                        <p style="max-width: 750px; margin: 0 auto 20px auto; font-size: 14px; line-height: 1.5; color: #475569;">
+                            Cea mai mare parte a colaborării noastre este legată direct de rezultatul pozitiv. Comisionul de succes se aplică doar la aprobarea celor 100.000 EUR.
+                        </p>
+                        <div class="stats-container">
+                            <div class="stat-box">
+                                <div style="font-weight: 700; color: #0f766e; font-size: 16px;">Finanțare Nerambursabilă</div>
+                                <div class="stat-value" style="margin: 8px 0; color: #0f766e;">100.000 €</div>
+                                <p style="font-size: 11px; color: #64748b;">Valoarea totală a dotărilor medicale ce vor fi atrase pe noul SRL.</p>
+                            </div>
+                            <div class="stat-box">
+                                <div style="font-weight: 700; color: #10b981; font-size: 16px;">Decontare Comision</div>
+                                <div class="stat-value" style="margin: 8px 0; color: #10b981;">Eligibil din Fonduri</div>
+                                <p style="font-size: 11px; color: #64748b;">Comisionul de succes poate fi inclus în proiect și decontat direct din grant.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide" id="s6">
+                <div class="slide-header">
+                    <span class="logo-consultant"><i class="fa-solid fa-list-check"></i> Procedură Tehnică</span>
+                    <span class="client-tag">Lansare Dosar</span>
+                </div>
+                <div class="slide-body">
+                    <div style="text-align: center; width: 100%;">
+                        <h2 style="font-size: 26px; color: #0f172a; margin-bottom: 10px;">Următorii Pași în Colaborare</h2>
+                        <p style="color: #64748b; max-width: 600px; margin: 0 auto 25px auto; font-size: 14px;">Pentru a securiza bugetul pe noul SRL, demarăm imediat analiza tehnică a codului CAEN principal ales la înființare.</p>
+                        <div style="background: #f1f5f9; padding: 15px; border-radius: 8px; display: inline-block; font-weight: 700; color: #0f766e;">
+                            Pregătit pentru structurarea listei de echipamente și emiterea contractului.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="presentation-footer">
+            <div id="lockNotice" class="locked-notice">
+                <i class="fa-solid fa-lock"></i> Completați chestionarul pentru navigare
+            </div>
+            
+            <div class="nav-buttons" id="navBlock" style="display: none; gap: 10px; align-items: center;">
+                <button class="btn-nav" id="prevBtn" disabled><i class="fa-solid fa-chevron-left"></i></button>
+                <div style="font-size: 13px; font-weight: 600; min-width: 50px; text-align: center;" id="counter">1 / 6</div>
+                <button class="btn-nav" id="nextBtn"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+            
+            <div style="font-size: 11px; color: #64748b; font-weight: 600;">Necesit.ro Consultant Intermediary © 2026</div>
+        </div>
+
+    </div>
+
+    <script>
+        let currentQuizStep = 1;
+        const totalQuizSteps = 3;
+        
+        const quizNextBtn = document.getElementById('quizNextBtn');
+        const quizBlock = document.getElementById('quizBlock');
+        const quizSuccessBlock = document.getElementById('quizSuccessBlock');
+        
+        function checkStepValidation() {
+            const currentInputs = document.querySelectorAll(`#qStep${currentQuizStep} input[type="radio"]`);
+            let isChecked = false;
+            
+            currentInputs.forEach(input => {
+                if (input.checked) {
+                    isChecked = true;
+                }
+            });
+
+            if (isChecked) {
+                quizNextBtn.disabled = false;
+                quizNextBtn.classList.add('enabled');
+            } else {
+                quizNextBtn.disabled = true;
+                quizNextBtn.classList.remove('enabled');
+            }
+        }
+
+        document.querySelectorAll('.quiz-option input').forEach(input => {
+            input.addEventListener('change', () => {
+                checkStepValidation();
+            });
+        });
+
+        quizNextBtn.addEventListener('click', () => {
+            if (quizNextBtn.disabled) return;
+
+            if (currentQuizStep < totalQuizSteps) {
+                document.getElementById(`qStep${currentQuizStep}`).classList.remove('active');
+                currentQuizStep++;
+                document.getElementById(`qStep${currentQuizStep}`).classList.add('active');
+                
+                checkStepValidation();
+                
+                if (currentQuizStep === totalQuizSteps) {
+                    quizNextBtn.innerText = "Finalizează analiza";
+                }
+            } else {
+                quizBlock.style.display = 'none';
+                quizSuccessBlock.style.display = 'block';
+            }
+        });
+
+        let currentSlide = 1;
+        const totalSlides = 6;
+        let isUnlocked = false;
+
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const counter = document.getElementById('counter');
+        const navBlock = document.getElementById('navBlock');
+        const lockNotice = document.getElementById('lockNotice');
+
+        function startPresentation() {
+            isUnlocked = true;
+            quizSuccessBlock.style.display = 'none';
+            lockNotice.style.display = 'none';
+            navBlock.style.display = 'flex';
+            
+            changeSlide(1);
+        }
+
+        prevBtn.addEventListener('click', () => changeSlide(-1));
+        nextBtn.addEventListener('click', () => changeSlide(1));
+
+        function changeSlide(direction) {
+            if (!isUnlocked) return;
+            
+            let nextActive = currentSlide + direction;
+            if (nextActive >= 1 && nextActive <= totalSlides) {
+                document.getElementById(`s${currentSlide}`).classList.remove('active');
+                document.getElementById(`s${nextActive}`).classList.add('active');
+                currentSlide = nextActive;
+
+                counter.innerText = `${currentSlide} / ${totalSlides}`;
+                prevBtn.disabled = currentSlide === 1;
+                nextBtn.disabled = currentSlide === totalSlides;
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (!isUnlocked) return;
+            if (e.key === 'ArrowRight') changeSlide(1);
+            if (e.key === 'ArrowLeft') changeSlide(-1);
+        });
+    </script>
+</body>
+</html>
