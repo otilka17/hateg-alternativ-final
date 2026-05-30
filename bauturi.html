@@ -2,70 +2,331 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <title>Cămara cu Băuturi | Hațeg Alternativ</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:ital,wght@0,400;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hațeg Alternativ | Soul Meal & Drink TO GO</title>
     <style>
-        body { background: #000; color: #fff; font-family: 'Inter'; }
-        .drink-card { border: 1px solid #1a1a1a; padding: 20px; transition: 0.4s; }
-        .drink-card:hover { border-color: #c5a059; background: #050505; }
-        .gold-text { color: #c5a059; }
+        :root {
+            --green: #007A48;
+            --yellow: #FFDE00;
+            --dark: #111111;
+            --gray-bg: #f9f9f9;
+            --text-muted: #555555;
+            --border: #eeeeee;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: var(--dark);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        header {
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            background: #fff;
+            z-index: 100;
+        }
+
+        .logo {
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 1.1rem;
+        }
+
+        .logo span { color: var(--green); }
+
+        .hero {
+            background-color: var(--green);
+            color: #ffffff;
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 25px;
+        }
+
+        .btn-yellow {
+            display: inline-block;
+            background-color: var(--yellow);
+            color: var(--dark);
+            text-decoration: none;
+            padding: 15px 40px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            border-radius: 4px;
+        }
+
+        .container {
+            padding: 30px 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            text-align: center;
+            margin: 20px 0 30px 0;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: var(--dark);
+            letter-spacing: 0.5px;
+        }
+
+        /* --- CARD PRODUS (Stil LifeBox) --- */
+        .food-card {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 35px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+
+        .food-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .food-details {
+            padding: 20px;
+        }
+
+        .food-details h3 {
+            font-size: 1.5rem;
+            color: var(--green);
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .price-info {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .description {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .tech-box {
+            background: #edf7f4;
+            border-left: 4px solid var(--green);
+            padding: 12px;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            color: #1e4638;
+        }
+
+        .macro-container {
+            background: var(--gray-bg);
+            padding: 15px;
+            border-radius: 6px;
+        }
+
+        .macro-total {
+            font-weight: 700;
+            font-size: 0.9rem;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 6px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .macro-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            text-align: center;
+        }
+
+        .macro-item .num {
+            display: block;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        .macro-item .label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* --- SECTIUNE SIMPLĂ BĂUTURI & DESERTURI (Direct în flux) --- */
+        .drink-list {
+            margin-bottom: 35px;
+        }
+
+        .drink-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .drink-info h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .drink-info p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .drink-price {
+            font-weight: 700;
+            color: var(--green);
+            font-size: 1.1rem;
+        }
+
+        .btn-green {
+            display: block;
+            width: 100%;
+            background-color: var(--green);
+            color: #ffffff;
+            text-align: center;
+            text-decoration: none;
+            padding: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            border-radius: 4px;
+            margin-top: 25px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .info-zone {
+            background: var(--gray-bg);
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        footer {
+            padding: 25px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #999999;
+            border-top: 1px solid var(--border);
+        }
     </style>
 </head>
-<body class="p-6 md:p-12">
+<body>
 
-    <header class="flex justify-between items-center mb-20 border-b border-[#1a1a1a] pb-8">
-        <a href="index.html" class="font-cinzel text-2xl font-black text-[#c5a059] tracking-[5px]">METANOIA</a>
-        <a href="meniu.html" class="text-xs uppercase text-gray-500 hover:text-[#c5a059]">← Înapoi la Meniu</a>
+    <header>
+        <div class="logo">HAȚEG <span>ALTERNATIV</span></div>
     </header>
 
-    <main class="max-w-4xl mx-auto">
-        <h1 class="font-playfair text-5xl italic mb-16 text-center">Rânduiala Băuturilor</h1>
+    <section class="hero">
+        <h1>Soul Meal & Drink TO GO</h1>
+        <p>Gătit curat, vidat modern. Comandă rapid pentru birou sau drum.</p>
+        <a href="#flux-meniu" class="btn-yellow">Vezi Meniul de Azi</a>
+    </section>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-            
-            <div class="space-y-8">
-                <h2 class="font-cinzel text-gold text-sm tracking-[4px] uppercase mb-6">Artizanale la Doză</h2>
-                <div class="drink-card flex justify-between items-center">
-                    <div>
-                        <h3 class="font-serif italic text-xl">Limonadă cu Mentă</h3>
-                        <p class="text-xs text-gray-500 uppercase mt-1">Rețetă proprie</p>
-                    </div>
-                    <span class="gold-text font-bold">15 RON</span>
-                </div>
-                <div class="drink-card flex justify-between items-center">
-                    <div>
-                        <h3 class="font-serif italic text-xl">Doza Proteică „Metanoia”</h3>
-                        <p class="text-xs text-gray-500 uppercase mt-1">Combustibil curat</p>
-                    </div>
-                    <span class="gold-text font-bold">18 RON</span>
-                </div>
-            </div>
+    <div class="container" id="flux-meniu">
+        
+        <h2 class="section-title">1. Mâncare Gătită (Vidată)</h2>
 
-            <div class="space-y-8">
-                <h2 class="font-cinzel text-gold text-sm tracking-[4px] uppercase mb-6">Cafea & Specialități</h2>
-                <div class="drink-card flex justify-between items-center">
-                    <div>
-                        <h3 class="font-serif italic text-xl">Espresso „Signature”</h3>
-                        <p class="text-xs text-gray-500 uppercase mt-1">Nespresso Selection</p>
+        <div class="food-card">
+            <img src="Screenshot_2026-05-26-21-49-55-51_e307a3f9df9f380ebaf106e1dc980bb6.jpg" alt="OptimBox" class="food-image">
+            <div class="food-details">
+                <h3>OptimBox 1500 kcal</h3>
+                <div class="price-info" style="color: var(--text-muted); font-size: 0.95rem;">Meniu complet / zi (3 mese + 2 gustări)</div>
+                <p class="description">Tocănițe texturate și rețete curate gătite tradițional în Bucătăria Centrală Totești. Securizate în vid direct din oală pentru prospețime absolută.</p>
+                
+                <div class="macro-container">
+                    <div class="macro-total">Macro Total / Zi</div>
+                    <div class="macro-grid">
+                        <div class="macro-item"><span class="num">1552</span><span class="label">Calorii</span></div>
+                        <div class="macro-item"><span class="num">151g</span><span class="label">Proteine</span></div>
+                        <div class="macro-item"><span class="num">125g</span><span class="label">Carbo</span></div>
+                        <div class="macro-item"><span class="num">49g</span><span class="label">Grăsimi</span></div>
                     </div>
-                    <span class="gold-text font-bold">10 RON</span>
-                </div>
-                <div class="drink-card flex justify-between items-center">
-                    <div>
-                        <h3 class="font-serif italic text-xl">Specialitatea Casei</h3>
-                        <p class="text-xs text-gray-500 uppercase mt-1">Mix sezonier</p>
-                    </div>
-                    <span class="gold-text font-bold">22 RON</span>
                 </div>
             </div>
         </div>
 
-        <div class="mt-20 text-center border-t border-[#1a1a1a] pt-20">
-            <p class="text-gray-400 mb-8 italic">"Fiecare doză este sigilată și pregătită pentru a-ți oferi prospețimea exactă a naturii."</p>
-            <a href="rezervare.html" class="bg-[#c5a059] text-black px-10 py-4 font-cinzel font-bold text-[10px] tracking-widest hover:bg-white transition">ADĂUGĂ BĂUTURI LA COMANDĂ</a>
+        <h2 class="section-title">2. Băuturi & Deserturi la Doză</h2>
+        
+        <div class="tech-box" style="margin-bottom: 15px;">
+            <strong>Tehnologie Capsare pe Loc:</strong> Sucurile proaspete și deserturile sunt sigilate mecanic în doze de Aluminiu/PET în fața ta. Perfecte pentru mașină.
         </div>
-    </main>
+
+        <div class="drink-list">
+            <div class="drink-item">
+                <div class="drink-info">
+                    <h4>Limonadă cu Mentă</h4>
+                    <p>Doza 330ml — Suc fresh preparat pe loc</p>
+                </div>
+                <div class="drink-price">15 RON</div>
+            </div>
+
+            <div class="drink-item">
+                <div class="drink-info">
+                    <h4>Doza Proteică „Metanoia”</h4>
+                    <p>Doza 330ml — Combustibil curat postsport</p>
+                </div>
+                <div class="drink-price">18 RON</div>
+            </div>
+
+            <div class="drink-item">
+                <div class="drink-info">
+                    <h4>Desert la Doză (Precomandă)</h4>
+                    <p>Doza 250ml — Prăjitură stratificată gourmet</p>
+                </div>
+                <div class="drink-price">22 RON</div>
+            </div>
+
+            <div class="drink-item">
+                <div class="drink-info">
+                    <h4>Espresso Signature</h4>
+                    <p>Standard Nespresso Professional</p>
+                </div>
+                <div class="drink-price">10 RON</div>
+            </div>
+        </div>
+
+        <a href="tel:0700000000" class="btn-green">Trimite Comanda Prin Telefon</a>
+
+    </div>
+
+    <section class="info-zone">
+        <h4>Suntem pe DN 68</h4>
+        <p>Bucătăria Centrală Totești. Livrare rapidă și ridicare direct din Hub.</p>
+    </section>
+
+    <footer>
+        &copy; 2026 Hațeg Alternativ. Toate drepturile rezervate.
+    </footer>
 
 </body>
 </html>
