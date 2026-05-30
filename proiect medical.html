@@ -188,7 +188,7 @@
         /* GRIDS & LAYOUTS */
         .grid-2 {
             display: grid;
-            grid-template-columns: 1.3fr 0.7fr;
+            grid-template-columns: 1.2fr 0.8fr;
             gap: 30px;
             width: 100%;
             align-items: center;
@@ -263,7 +263,7 @@
         }
 
         .stat-value {
-            font-size: 36px;
+            font-size: 34px;
             font-weight: 700;
             color: #0f766e;
         }
@@ -346,37 +346,37 @@
 
             <div class="slide active" id="s1">
                 <div class="slide-header">
-                    <span class="logo-consultant"><i class="fa-solid fa-user-md"></i> Analiză Start-Up</span>
+                    <span class="logo-consultant"><i class="fa-solid fa-user-md"></i> Strategie Start-Up</span>
                     <span class="client-tag">Tunas Bogdan / Baia Mare</span>
                 </div>
                 <div class="slide-body">
                     <div id="quizBlock" class="quiz-container">
                         <div style="text-align: center; margin-bottom: 20px;">
-                            <h2 style="font-size: 20px; color: #0f172a;">Chestionar de Calificare Start-Up</h2>
-                            <p style="font-size: 13px; color: #64748b;">Confirmați detaliile noului SRL pentru a genera strategia corectă de lansare.</p>
+                            <h2 style="font-size: 20px; color: #0f172a;">Validare Obiectiv Financiar: 100.000 €</h2>
+                            <p style="font-size: 13px; color: #64748b;">Răspundeți la cele 3 întrebări de conformitate pentru calificarea dosarului.</p>
                         </div>
 
                         <div class="quiz-step active" id="qStep1">
-                            <p class="quiz-question">1. Care este stadiul curent al noului SRL înființat?</p>
+                            <p class="quiz-question">1. Structura noului SRL permite cofinanțarea sau susținerea cheltuielilor neeligibile?</p>
                             <div class="quiz-options">
-                                <label class="quiz-option"><input type="radio" name="q1" value="new"> Actele emise recent la ONRC (fără istoric fiscal / 2026)</label>
-                                <label class="quiz-option"><input type="radio" name="q1" value="active"> Înființat recent dar am achiziționat deja spațiul/active</label>
+                                <label class="quiz-option"><input type="radio" name="q1" value="yes"> Da, deținem aport propriu sau posibilitate de creditare punte</label>
+                                <label class="quiz-option"><input type="radio" name="q1" value="no"> Căutăm linii cu finanțare de 100% fără aport propriu</label>
                             </div>
                         </div>
 
                         <div class="quiz-step" id="qStep2">
-                            <p class="quiz-question">2. Administratorul sau asocierile dețin acțiuni în alte firme medicale?</p>
+                            <p class="quiz-question">2. Spațiul în care veți instala echipamentele din Baia Mare este deținut sau închiriat?</p>
                             <div class="quiz-options">
-                                <label class="quiz-option"><input type="radio" name="q2" value="no"> Nu, este singurul SRL deținut (criteriu excelent pentru Start-Up)</label>
-                                <label class="quiz-option"><input type="radio" name="q2" value="yes"> Da, mai dețin participații și în alte societăți active</label>
+                                <label class="quiz-option"><input type="radio" name="q2" value="own"> Proprietate personală / deținută de firmă</label>
+                                <label class="quiz-option"><input type="radio" name="q2" value="rent"> Contract de închiriere / comodat pe termen lung (minimum 3-5 ani)</label>
                             </div>
                         </div>
 
                         <div class="quiz-step" id="qStep3">
-                            <p class="quiz-question">3. Suma de 15.000 lei reprezintă capitalul propriu disponibil imediat?</p>
+                            <p class="quiz-question">3. Echipamentele medicale planificate vizează o singură specializare sau o clinică integrată?</p>
                             <div class="quiz-options">
-                                <label class="quiz-option"><input type="radio" name="q3" value="yes"> Da, sunt fondurile proprii alocate pentru start și cofinanțare</label>
-                                <label class="quiz-option"><input type="radio" name="q3" value="no"> Nu, este doar valoarea estimată a primelor dotări de bază</label>
+                                <label class="quiz-option"><input type="radio" name="q3" value="single"> Cabinet de specialitate unic (ex. Stomatologie, Ecografie, Cardiologie)</label>
+                                <label class="quiz-option"><input type="radio" name="q3" value="multi"> Centru medical integrat cu multiple coduri CAEN</label>
                             </div>
                         </div>
 
@@ -386,42 +386,42 @@
                     </div>
 
                     <div id="quizSuccessBlock" style="display: none; text-align: center; width: 100%;">
-                        <div style="font-size: 50px; color: #10b981; margin-bottom: 15px;"><i class="fa-solid fa-rocket"></i></div>
-                        <h2>Profil Start-Up Medical Validat</h2>
-                        <p style="color: #64748b; margin-bottom: 20px;">Am recalibrat criteriile conform statutului de firmă nouă fără istoric.</p>
-                        <button onclick="startPresentation()" style="background: #0f766e; color: white; border: none; padding: 12px 25px; border-radius: 6px; font-weight: 600; cursor: pointer;">Afișează Soluțiile Start-Up 2026</button>
+                        <div style="font-size: 50px; color: #10b981; margin-bottom: 15px;"><i class="fa-solid fa-chart-line"></i></div>
+                        <h2>Strategie Activă: 100.000 €</h2>
+                        <p style="color: #64748b; margin-bottom: 20px;">Dosarul a fost calibrat pentru un proiect de anvergură pe sectorul medical.</p>
+                        <button onclick="startPresentation()" style="background: #0f766e; color: white; border: none; padding: 12px 25px; border-radius: 6px; font-weight: 600; cursor: pointer;">Afișează Ghidurile Eligibile 2026</button>
                     </div>
                 </div>
             </div>
 
             <div class="slide" id="s2">
                 <div class="slide-header">
-                    <span class="logo-consultant"><i class="fa-solid fa-compass"></i> Strategie Start-Up</span>
-                    <span class="client-tag">Fără istoric financiar</span>
+                    <span class="logo-consultant"><i class="fa-solid fa-stethoscope"></i> Analiză Expert</span>
+                    <span class="client-tag">Obiectiv Realist de Business</span>
                 </div>
                 <div class="slide-body">
                     <div class="grid-2">
                         <div class="column-left">
-                            <h2 class="slide-title">Filtru de Eligibilitate pentru Firme Noi</h2>
-                            <p>Deoarece SRL-ul este abia deschis, axele de finanțare regională (destinate IMM-urilor cu vechime) se închid temporar. **Strategia de succes se mută pe Programele Naționale de Start-Up și microgranturi specifice:**</p>
+                            <h2 class="slide-title">Calibrarea Proiectului la Valoarea de 100.000 EUR</h2>
+                            <p>Trecerea de la micro-dotări la un proiect solid de <strong>100.000 €</strong> deschide accesul la axele majore de finanțare guvernamentale și europene destinate start-up-urilor în 2026. Structura tehnică a dosarului va pune accent pe două pârghii:</p>
                             <ul class="custom-list">
                                 <li>
-                                    <i class="fa-solid fa-check-double"></i>
+                                    <i class="fa-solid fa-gears"></i>
                                     <div>
-                                        <strong>Avantaj Start-Up:</strong> Firmele noi primesc punctaj maxim pe criteriul noutății și al lipsei altor finanțări primite anterior.
+                                        <strong>Tehnologie Medicală de Înaltă Performanță:</strong> Bugetul permite achiziția de unituri premium, scanere intraorale, ecografe de ultimă generație sau aparatură radiologică.
                                     </div>
                                 </li>
                                 <li>
-                                    <i class="fa-solid fa-stethoscope"></i>
+                                    <i class="fa-solid fa-bolt"></i>
                                     <div>
-                                        <strong>Punctaj CAEN:</strong> Serviciile medicale și cabinetele de specialitate reprezintă domenii cu valoare adăugată mare, prioritare la finanțare.
+                                        <strong>Componenta Green & Digital:</strong> Minimum 20% din buget va fi direcționat către digitalizarea cabinetului și echipamente cu amprentă redusă de carbon pentru punctaj maxim.
                                     </div>
                                 </li>
                             </ul>
                         </div>
                         <div class="column-right" style="text-align: center;">
-                            <i class="fa-solid fa-building-shield" style="font-size: 80px; color: #cbd5e1;"></i>
-                            <p style="font-size: 11px; color: #64748b; margin-top: 10px;">Filtru aplicat: SRL înființat în 2026 (Maramureș).</p>
+                            <i class="fa-solid fa-user-tie" style="font-size: 80px; color: #0f766e;"></i>
+                            <p style="font-size: 11px; color: #64748b; margin-top: 10px;">Analiză premium elaborată pentru furnizori de servicii medicale (Baia Mare).</p>
                         </div>
                     </div>
                 </div>
@@ -429,27 +429,27 @@
 
             <div class="slide" id="s3">
                 <div class="slide-header">
-                    <span class="logo-consultant"><i class="fa-solid fa-seedling"></i> Oportunitatea 1</span>
-                    <span class="client-tag">Finanțare Guvernamentală</span>
+                    <span class="logo-consultant"><i class="fa-solid fa-rocket"></i> Linia 1: Pilonul Național</span>
+                    <span class="client-tag">Start-Up 2026</span>
                 </div>
                 <div class="slide-body">
                     <div style="width: 100%;">
-                        <h2 class="slide-title" style="margin-bottom: 15px;">Programul Național Start-Up 2026</h2>
+                        <h2 class="slide-title" style="margin-bottom: 15px;">Programul Național Start-Up (Sector Medical)</h2>
                         <div class="grid-3">
                             <div class="card-tile">
-                                <div class="tile-icon"><i class="fa-solid fa-baby-carriage"></i></div>
-                                <h3>Vechime Firmă</h3>
-                                <p>Eligibile exclusiv firme înființate recent, care nu au depus bilanț pe ani anteriori.</p>
+                                <div class="tile-icon"><i class="fa-solid fa-business-time"></i></div>
+                                <h3>Condiție Firmă</h3>
+                                <p>SRL înființat în anul curent (2026), care nu a mai beneficiat de alte măsuri de sprijin similare din fonduri publice.</p>
                             </div>
                             <div class="card-tile">
-                                <div class="tile-icon"><i class="fa-solid fa-ultrasound"></i></div>
-                                <h3>Ce poți achiziționa</h3>
-                                <p>Echipamente medicale de bază, mobilier specific, sisteme IT și acoperirea parțială a salariilor în primele luni.</p>
+                                <div class="tile-icon"><i class="fa-solid fa-truck-medical"></i></div>
+                                <h3>Alocare Buget</h3>
+                                <p>Destinat achiziției de active corporale (aparatură), licențe software medicale, mobilier de specialitate și crearea de noi locuri de muncă.</p>
                             </div>
                             <div class="card-tile">
-                                <div class="tile-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
-                                <h3>Intensitate</h3>
-                                <p>Granturi cu intensitate ridicată, solicitând o cofinanțare proprie minimă, perfect adaptabilă bugetului dumneavoastră.</p>
+                                <div class="tile-icon"><i class="fa-solid fa-coins"></i></div>
+                                <h3>Finanțare</h3>
+                                <p>Acoperă o pondere masivă din investiție. Grantul este optimizat special pentru proiecte cu valoare adăugată mare.</p>
                             </div>
                         </div>
                     </div>
@@ -458,34 +458,34 @@
 
             <div class="slide" id="s4">
                 <div class="slide-header">
-                    <span class="logo-consultant"><i class="fa-solid fa-scale-balanced"></i> Oportunitatea 2</span>
-                    <span class="client-tag">Garanții Instrumente Financiare</span>
+                    <span class="logo-consultant"><i class="fa-solid fa-building-columns"></i> Linia 2: Garanții Europene</span>
+                    <span class="client-tag">Fonduri Structurale</span>
                 </div>
                 <div class="slide-body">
                     <div class="grid-2">
                         <div class="column-left">
-                            <h2 class="slide-title">Linii de Microcreditare cu Garanție Europeană</h2>
-                            <p>Dacă nevoile de dotare sunt urgente și nu se poate aștepta sesiunea de depunere a granturilor naționale, soluția optimă constă în axele bancare garantate de Fondul European de Investiții (FEI):</p>
+                            <h2 class="slide-title">Microcreditare Investițională cu Grant Parțial</h2>
+                            <p>Pentru bugetul de 100.000 EUR, o opțiune extrem de stabilă o reprezintă axele de finanțare prin intermediari bancari, susținute de pachetele de recuperare și reziliență (programe tip instrumente financiare):</p>
                             <ul class="custom-list">
                                 <li>
-                                    <i class="fa-solid fa-coins"></i>
+                                    <i class="fa-solid fa-percent"></i>
                                     <div>
-                                        <strong>Dobânzi Subvenționate:</strong> Linii dedicate exclusiv firmelor noi, fără solicitare de garanții imobiliare masive.
+                                        <strong>Dobândă Preferențială:</strong> Subvenționată integral sau parțial prin programele europene de coeziune.
                                     </div>
                                 </li>
                                 <li>
-                                    <i class="fa-solid fa-shield-halved"></i>
+                                    <i class="fa-solid fa-gift"></i>
                                     <div>
-                                        <strong>Garanție UE:</strong> Fondul European acoperă până la 80% din riscul creditului pentru achiziții de tehnică medicală.
+                                        <strong>Componenta de Grant (Iertare de datorie):</strong> Anumite instrumente permit transformarea a până la 20-30% din valoarea creditului în grant nerambursabil la finalizarea cu succes a achizițiilor.
                                     </div>
                                 </li>
                             </ul>
                         </div>
                         <div class="column-right">
                             <div class="stat-box" style="border-color: #0f766e;">
-                                <div class="stat-value" style="font-size: 24px;">Garanție 80%</div>
-                                <div style="font-size: 12px; font-weight: 600; color: #0f172a; margin: 5px 0;">Acoperire de la UE</div>
-                                <div style="font-size: 11px; color: #64748b;">pentru credite de echipamente luate pe firme noi (Start-up).</div>
+                                <div class="stat-value">100.000 €</div>
+                                <div style="font-size: 12px; font-weight: 600; color: #0f172a; margin: 5px 0;">Plafon Maxim Eligibil</div>
+                                <div style="font-size: 11px; color: #64748b;">pentru dotarea completă a unui cabinet medical start-up fără istoric fiscal.</div>
                             </div>
                         </div>
                     </div>
@@ -494,25 +494,25 @@
 
             <div class="slide" id="s5">
                 <div class="slide-header">
-                    <span class="logo-consultant"><i class="fa-solid fa-chart-line"></i> Recomandarea Expertului</span>
-                    <span class="client-tag">Planificare Financiară</span>
+                    <span class="logo-consultant"><i class="fa-solid fa-chart-pie"></i> Plan de Finanțare</span>
+                    <span class="client-tag">Sustenabilitate Economică</span>
                 </div>
                 <div class="slide-body">
                     <div style="width: 100%; text-align: center;">
-                        <h2 style="margin-bottom: 15px; color: #0f172a;">Corelarea capitalului de pornire (15.000 lei)</h2>
+                        <h2 style="margin-bottom: 15px; color: #0f172a;">Structura Bugetului Propus</h2>
                         <p style="max-width: 750px; margin: 0 auto 20px auto; font-size: 14px; line-height: 1.5; color: #475569;">
-                            Suma de 15.000 lei reprezintă o bază excelentă de cofinanțare proprie. Utilizând această sumă ca procent de participare obligatoriu (ex. 10%-15%), bugetul total generat prin proiect devine considerabil mai mare.
+                            La un nivel de 100.000 EUR, proiectul devine un activ strategic în Baia Mare. Planul de eșalonare a fondurilor va asigura fluxul de numerar pe parcursul achizițiilor:
                         </p>
                         <div class="stats-container">
                             <div class="stat-box">
-                                <div style="font-weight: 700; color: #0f766e; font-size: 16px;">Capitalul Dumneavoastră</div>
-                                <div class="stat-value" style="margin: 8px 0;">15.000 lei</div>
-                                <p style="font-size: 11px; color: #64748b;">Folosit integral ca aport propriu / cheltuieli neeligibile de pornire.</p>
+                                <div style="font-weight: 700; color: #0f766e; font-size: 16px;">Echipament Tehnologic</div>
+                                <div class="stat-value" style="margin: 8px 0; color: #0f766e;">75.000 €</div>
+                                <p style="font-size: 11px; color: #64748b;">Destinat strict liniei principale de diagnostic / tratament medical.</p>
                             </div>
                             <div class="stat-box">
-                                <div style="font-weight: 700; color: #10b981; font-size: 16px;">Valoare Proiect Generat</div>
-                                <div class="stat-value" style="margin: 8px 0; color: #10b981;">100.000 lei+</div>
-                                <p style="font-size: 11px; color: #64748b;">Valoarea reală a dotărilor medicale ce pot fi atrase prin multiplicare.</p>
+                                <div style="font-weight: 700; color: #10b981; font-size: 16px;">Digitalizare & Green</div>
+                                <div class="stat-value" style="margin: 8px 0; color: #10b981;">25.000 €</div>
+                                <p style="font-size: 11px; color: #64748b;">Software management, echipamente IT și soluții de eficientizare energetică.</p>
                             </div>
                         </div>
                     </div>
@@ -521,15 +521,15 @@
 
             <div class="slide" id="s6">
                 <div class="slide-header">
-                    <span class="logo-consultant"><i class="fa-solid fa-flag"></i> Lansare Proiect</span>
-                    <span class="client-tag">Plan de lucru</span>
+                    <span class="logo-consultant"><i class="fa-solid fa-list-check"></i> Procedură Tehnică</span>
+                    <span class="client-tag">Lansare Dosar</span>
                 </div>
                 <div class="slide-body">
                     <div style="text-align: center; width: 100%;">
-                        <h2 style="font-size: 26px; color: #0f172a; margin-bottom: 10px;">Plan de Acțiune Imediat</h2>
-                        <p style="color: #64748b; max-width: 600px; margin: 0 auto 25px auto; font-size: 14px;">SRL-ul fiind înființat, următorul pas tehnic este verificarea extrasului constatator ONRC pentru a ne asigura că codul CAEN ales permite autorizarea la locație.</p>
+                        <h2 style="font-size: 26px; color: #0f172a; margin-bottom: 10px;">Următorii Pași în Colaborare</h2>
+                        <p style="color: #64748b; max-width: 600px; margin: 0 auto 25px auto; font-size: 14px;">Pentru a securiza bugetul de 100.000 EUR pe noul SRL, demarăm imediat analiza tehnică a codului CAEN principal ales la înființare.</p>
                         <div style="background: #f1f5f9; padding: 15px; border-radius: 8px; display: inline-block; font-weight: 700; color: #0f766e;">
-                            Pregătit pentru analiza codului CAEN și a listei de dotări.
+                            Pregătit pentru structurarea listei de echipamente și a ofertelor de preț.
                         </div>
                     </div>
                 </div>
