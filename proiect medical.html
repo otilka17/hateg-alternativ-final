@@ -28,7 +28,7 @@
         h1, h2, h3, h4 {
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
-            color: #0f766e; /* Culoare specifică sectorului medical (Teal) */
+            color: #0f766e;
         }
 
         .presentation-deck {
@@ -313,6 +313,23 @@
             gap: 6px;
         }
 
+        .btn-quiz-next {
+            background: #cbd5e1;
+            color: #64748b;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: not-allowed;
+            transition: all 0.2s;
+        }
+
+        .btn-quiz-next.enabled {
+            background: #0f766e;
+            color: white;
+            cursor: pointer;
+        }
+
         @media (max-width: 768px) {
             .presentation-deck { height: auto; max-height: none; }
             .slide { position: relative; display: none; height: auto; padding: 20px; }
@@ -366,7 +383,7 @@
                         </div>
 
                         <div style="margin-top: 25px; display: flex; justify-content: flex-end;">
-                            <button id="quizNextBtn" class="btn-nav" style="width: auto; padding: 0 20px; border-radius: 6px; font-weight: 600; background: #0f766e; color: white;" disabled>Următorul pas</button>
+                            <button id="quizNextBtn" class="btn-quiz-next" disabled>Următorul pas</button>
                         </div>
                     </div>
 
@@ -539,7 +556,6 @@
     </div>
 
     <script>
-        // Logica Chestionarului
         let currentQuizStep = 1;
         const totalQuizSteps = 3;
         
@@ -547,31 +563,58 @@
         const quizBlock = document.getElementById('quizBlock');
         const quizSuccessBlock = document.getElementById('quizSuccessBlock');
         
-        // Ascultă selecțiile din chestionar pentru a activa butonul "Next"
+        // Funcție care verifică dacă s-a selectat ceva strict pe PASUL CURENT
+        function checkStepValidation() {
+            const currentInputs = document.querySelectorAll(`#qStep${currentQuizStep} input[type="radio"]`);
+            let isChecked = false;
+            
+            currentInputs.forEach(input => {
+                if (input.checked) {
+                    isChecked = true;
+                }
+            });
+
+            if (isChecked) {
+                quizNextBtn.disabled = false;
+                quizNextBtn.classList.add('enabled');
+            } else {
+                quizNextBtn.disabled = true;
+                quizNextBtn.classList.remove('enabled');
+            }
+        }
+
+        // Ascultă selectările pe absolut toate butoanele radio din pagină
         document.querySelectorAll('.quiz-option input').forEach(input => {
             input.addEventListener('change', () => {
-                quizNextBtn.disabled = false;
+                checkStepValidation();
             });
         });
 
+        // Logica click pe butonul de trecere mai departe în quiz
         quizNextBtn.addEventListener('click', () => {
+            if (quizNextBtn.disabled) return; // Siguranță suplimentară
+
             if (currentQuizStep < totalQuizSteps) {
+                // Ascundem pasul vechi
                 document.getElementById(`qStep${currentQuizStep}`).classList.remove('active');
                 currentQuizStep++;
+                // Afișăm pasul nou
                 document.getElementById(`qStep${currentQuizStep}`).classList.add('active');
-                quizNextBtn.disabled = true; // resetează pentru pasul următor
+                
+                // Resetăm starea butonului pentru noul pas
+                checkStepValidation();
                 
                 if (currentQuizStep === totalQuizSteps) {
                     quizNextBtn.innerText = "Finalizează analiza";
                 }
             } else {
-                // S-a terminat chestionarul
+                // S-a finalizat ultimul pas al chestionarului
                 quizBlock.style.display = 'none';
                 quizSuccessBlock.style.display = 'block';
             }
         });
 
-        // Logica Prezentării (Slide-uri)
+        // Logica Navigării Slide-urilor după deblocare
         let currentSlide = 1;
         const totalSlides = 6;
         let isUnlocked = false;
@@ -588,7 +631,7 @@
             lockNotice.style.display = 'none';
             navBlock.style.display = 'flex';
             
-            // Trecem automat la Slide-ul 2 (Analiza)
+            // Forțează mutarea la Slide-ul 2 (Analiza propriu-zisă)
             changeSlide(1);
         }
 
@@ -604,14 +647,13 @@
                 document.getElementById(`s${nextActive}`).classList.add('active');
                 currentSlide = nextActive;
 
-                // Actualizare elemente interfață
                 counter.innerText = `${currentSlide} / ${totalSlides}`;
                 prevBtn.disabled = currentSlide === 1;
                 nextBtn.disabled = currentSlide === totalSlides;
             }
         }
 
-        // Navigare tastatură
+        // Navigare tastatură activează doar dacă quiz-ul e trecut
         document.addEventListener('keydown', (e) => {
             if (!isUnlocked) return;
             if (e.key === 'ArrowRight') changeSlide(1);
