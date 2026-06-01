@@ -1,1158 +1,398 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SOul meal, drinks & coffee — Ecosistem Gastronomic Avansat</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --black: #0a0a0a;
-    --espresso: #160f0a;
-    --gold: #c5a059;
-    --gold-light: #dfb975;
-    --cream: #f4f0ea;
-    --warm-white: #fbfbfa;
-    --sage: #4a6547;
-    --sage-light: #e8ece7;
-    --text-dark: #1c1611;
-    --text-mid: #554b41;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'Outfit', sans-serif;
-    background: var(--warm-white);
-    color: var(--text-dark);
-    overflow-x: hidden;
-  }
-
-  /* ── NAV ── */
-  nav {
-    position: fixed; top: 0; width: 100%; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 18px 32px;
-    background: rgba(10,10,10,0.95);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(197,160,89,0.2);
-  }
-  .logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem; font-weight: 900;
-    color: var(--gold);
-    letter-spacing: 2px;
-    display: flex; align-items: center; gap: 10px;
-    text-decoration: none;
-  }
-  .logo span { color: #fff; font-weight: 300; }
-  .logo-icon {
-    width: 36px; height: 36px;
-    background: var(--gold);
-    border-radius: 6px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.1rem;
-    transform: rotate(-8deg);
-    color: var(--black);
-  }
-  .nav-links { display: flex; gap: 28px; list-style: none; }
-  .nav-links a {
-    color: rgba(255,255,255,0.75);
-    text-decoration: none;
-    font-size: 0.85rem;
-    font-weight: 500;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--gold); }
-  .nav-cta {
-    background: var(--gold); color: var(--black);
-    padding: 10px 22px; border-radius: 4px;
-    font-weight: 700; font-size: 0.8rem;
-    letter-spacing: 1px; text-transform: uppercase;
-    cursor: pointer; border: none;
-    transition: background 0.2s, transform 0.1s;
-  }
-  .nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
-
-  /* ── HERO ── */
-  .hero {
-    min-height: 100vh;
-    background: var(--black);
-    display: flex; flex-direction: column;
-    justify-content: center;
-    position: relative;
-    overflow: hidden;
-    padding: 120px 5% 60px;
-  }
-  .hero::before {
-    content: '';
-    position: absolute; inset: 0;
-    background:
-      radial-gradient(ellipse 60% 50% at 70% 50%, rgba(74,101,71,0.15) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 60% at 20% 80%, rgba(22,15,10,0.8) 0%, transparent 60%);
-  }
-  .hero-bg-text {
-    position: absolute;
-    right: -2%;
-    top: 50%;
-    transform: translateY(-50%);
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(120px, 20vw, 260px);
-    font-weight: 900;
-    color: rgba(197,160,89,0.04);
-    line-height: 1;
-    pointer-events: none;
-    letter-spacing: -5px;
-  }
-  .hero-content { position: relative; z-index: 2; max-width: 750px; }
-  .hero-tag {
-    display: inline-block;
-    border: 1px solid var(--gold);
-    color: var(--gold);
-    padding: 6px 16px;
-    font-size: 0.72rem;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin-bottom: 28px;
-  }
-  .hero h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.8rem, 5.5vw, 5rem);
-    font-weight: 900;
-    line-height: 1.1;
-    color: #fff;
-    margin-bottom: 16px;
-  }
-  .hero h1 em {
-    font-style: italic;
-    color: var(--gold);
-    font-weight: 400;
-  }
-  .hero-sub {
-    font-size: clamp(1rem, 1.4vw, 1.2rem);
-    color: rgba(255,255,255,0.6);
-    max-width: 580px;
-    line-height: 1.7;
-    margin-bottom: 44px;
-  }
-  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
-
-  .hero-stats {
-    position: absolute; bottom: 50px; right: 5%;
-    display: flex; gap: 40px;
-  }
-  .stat { text-align: right; }
-  .stat-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.2rem; font-weight: 900;
-    color: var(--gold); line-height: 1;
-  }
-  .stat-label {
-    font-size: 0.75rem; color: rgba(255,255,255,0.4);
-    letter-spacing: 1px; text-transform: uppercase; margin-top: 4px;
-  }
-
-  /* ── SCROLL STRIP ── */
-  .marquee-strip {
-    background: var(--gold);
-    padding: 14px 0;
-    overflow: hidden;
-    white-space: nowrap;
-  }
-  .marquee-inner {
-    display: inline-flex; gap: 60px;
-    animation: marquee 25s linear infinite;
-  }
-  .marquee-item {
-    font-size: 0.75rem; font-weight: 700;
-    letter-spacing: 3px; text-transform: uppercase;
-    color: var(--black);
-  }
-  .marquee-sep { color: rgba(0,0,0,0.3); }
-
-  /* ── CAPSULES SECTION ── */
-  .capsules-section {
-    background: var(--warm-white);
-    padding: 100px 5%;
-  }
-  .section-intro {
-    display: flex; justify-content: space-between; align-items: flex-end;
-    margin-bottom: 60px; flex-wrap: wrap; gap: 20px;
-  }
-  .section-tag {
-    font-size: 0.72rem; letter-spacing: 3px;
-    text-transform: uppercase; color: var(--sage);
-    margin-bottom: 12px;
-    font-weight: 700;
-  }
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 900; line-height: 1.1;
-    color: var(--text-dark);
-  }
-  .section-title em { font-style: italic; color: var(--gold); font-weight: 400; }
-  .section-desc {
-    max-width: 360px;
-    color: var(--text-mid);
-    font-size: 0.95rem; line-height: 1.7;
-  }
-
-  .capsules-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 24px;
-  }
-  .capsule-card {
-    background: #fff;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-    transition: transform 0.25s, box-shadow 0.25s;
-    cursor: pointer;
-    position: relative;
-    border: 1px solid rgba(0,0,0,0.03);
-  }
-  .capsule-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
-  .capsule-img {
-    height: 180px;
-    display: flex; align-items: center; justify-content: center;
-    position: relative;
-    overflow: hidden;
-    background: var(--espresso);
-  }
-  .capsule-img img { width: 100%; height: 100%; object-fit: cover; }
-  .capsule-badge {
-    position: absolute; top: 14px; right: 14px;
-    background: var(--gold); color: var(--black);
-    font-size: 0.65rem; font-weight: 700;
-    padding: 4px 10px; border-radius: 20px;
-    letter-spacing: 1px; text-transform: uppercase;
-    z-index: 2;
-  }
-  .capsule-body { padding: 22px; }
-  .capsule-intensity {
-    display: flex; gap: 4px; margin-bottom: 12px; align-items: center;
-  }
-  .intensity-label { font-size: 0.7rem; uppercase; color: var(--text-mid); margin-right: 4px; font-weight: 600; }
-  .intensity-dot {
-    width: 6px; height: 6px; border-radius: 50%; background: #e0e0e0;
-  }
-  .intensity-dot.filled { background: var(--gold); }
-  
-  .capsule-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.25rem; font-weight: 700;
-    margin-bottom: 6px; color: var(--text-dark);
-  }
-  .capsule-desc { font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 20px; }
-  .capsule-price-row {
-    display: flex; align-items: center; justify-content: space-between;
-  }
-  .capsule-price { font-size: 1.15rem; font-weight: 700; color: var(--text-dark); }
-  .capsule-price span { font-size: 0.78rem; font-weight: 400; color: var(--text-mid); }
-  .add-btn {
-    background: var(--black); color: #fff;
-    border: none; width: 36px; height: 36px; border-radius: 50%;
-    font-size: 1.2rem; cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    transition: background 0.2s, transform 0.1s;
-  }
-  .add-btn:hover { background: var(--gold); color: var(--black); transform: scale(1.05); }
-
-  /* ── HOW IT WORKS ── */
-  .how-section {
-    background: var(--black);
-    padding: 100px 5%;
-    position: relative;
-    overflow: hidden;
-  }
-  .how-section::before {
-    content: 'FLUX';
-    position: absolute; left: -1%; top: 50%;
-    transform: translateY(-50%) rotate(-90deg);
-    font-family: 'Playfair Display', serif;
-    font-size: 16rem; font-weight: 900;
-    color: rgba(197,160,89,0.02);
-    pointer-events: none;
-  }
-  .how-section .section-title { color: #fff; }
-  .how-section .section-tag { color: var(--gold-light); }
-
-  .steps-track {
-    display: flex; gap: 24px;
-    margin-top: 60px;
-    position: relative;
-    flex-wrap: wrap;
-  }
-  .step {
-    flex: 1; min-width: 250px;
-    background: rgba(255,255,255,0.02);
-    border: 1px solid rgba(255,255,255,0.05);
-    padding: 40px 28px; border-radius: 8px;
-    position: relative;
-  }
-  .step-icon {
-    width: 64px; height: 64px;
-    background: rgba(197,160,89,0.1);
-    border: 1px solid var(--gold);
-    border-radius: 8px;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.8rem;
-    margin-bottom: 24px;
-    color: var(--gold);
-  }
-  .step-num {
-    position: absolute; top: 24px; right: 28px;
-    color: rgba(255,255,255,0.1);
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5rem; font-weight: 900;
-  }
-  .step h3 {
-    font-weight: 700; font-size: 1rem; letter-spacing: 1.5px;
-    text-transform: uppercase; color: #fff; margin-bottom: 12px;
-  }
-  .step p { font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
-
-  /* ── MENU SECTION ── */
-  .menu-section {
-    background: var(--cream);
-    padding: 100px 5%;
-  }
-  .tabs-container {
-    display: flex; flex-direction: column; gap: 16px; margin: 40px 0 32px;
-  }
-  .week-tabs {
-    display: flex; gap: 10px; overflow-x: auto; padding-bottom: 4px;
-  }
-  .week-tabs::-webkit-scrollbar, .day-tabs::-webkit-scrollbar { display: none; }
-  .week-tab {
-    padding: 12px 24px; border-radius: 4px;
-    font-size: 0.8rem; font-weight: 600;
-    letter-spacing: 1px; cursor: pointer;
-    border: 1px solid rgba(0,0,0,0.12);
-    background: transparent; color: var(--text-mid);
-    white-space: nowrap; transition: all 0.15s;
-    text-transform: uppercase;
-  }
-  .week-tab.active {
-    background: var(--black); color: var(--gold);
-    border-color: var(--black);
-  }
-  .day-tabs {
-    display: flex; gap: 6px; overflow-x: auto;
-  }
-  .day-tab {
-    padding: 10px 20px; border-radius: 4px;
-    font-size: 0.85rem; font-weight: 500;
-    cursor: pointer; border: none;
-    background: rgba(0,0,0,0.05); color: var(--text-mid);
-    white-space: nowrap; transition: all 0.15s;
-  }
-  .day-tab.active { background: var(--gold); color: var(--black); font-weight: 700; }
-  .day-tab:hover:not(.active) { background: rgba(0,0,0,0.08); }
-
-  .filter-row {
-    display: flex; justify-content: space-between; align-items: center;
-    margin-bottom: 32px; flex-wrap: wrap; gap: 16px;
-    background: rgba(255,255,255,0.5); padding: 16px 24px; border-radius: 8px;
-  }
-  .kcal-selectors { display: flex; gap: 8px; align-items: center; }
-  .kcal-label { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--text-mid); letter-spacing: 0.5px; }
-  .kcal-btn {
-    padding: 6px 14px; border-radius: 20px; border: 1px solid rgba(0,0,0,0.1);
-    background: #fff; font-size: 0.78rem; font-weight: 600; cursor: pointer; color: var(--text-mid);
-  }
-  .kcal-btn.active { background: var(--sage); color: #fff; border-color: var(--sage); }
-
-  .menu-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 24px;
-  }
-  .menu-item {
-    background: #fff; border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-    transition: transform 0.2s;
-    display: flex; flex-direction: column;
-    border: 1px solid rgba(0,0,0,0.02);
-  }
-  .menu-item:hover { transform: translateY(-4px); }
-  .menu-item-img {
-    height: 190px; width: 100%;
-    position: relative; overflow: hidden;
-    background: var(--espresso);
-  }
-  .menu-item-img img { width: 100%; height: 100%; object-fit: cover; }
-  .menu-item-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
-  .meal-meta {
-    display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;
-  }
-  .meal-type {
-    font-size: 0.65rem; font-weight: 700; letter-spacing: 2px;
-    text-transform: uppercase; color: var(--sage);
-  }
-  .meal-weight { font-size: 0.72rem; color: var(--text-mid); font-weight: 500; }
-  .meal-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; color: var(--text-dark);
-  }
-  .meal-desc { font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 16px; flex: 1; }
-  
-  .meal-macros {
-    display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px;
-    padding: 10px 0; border-top: 1px dashed rgba(0,0,0,0.08); border-bottom: 1px dashed rgba(0,0,0,0.08);
-  }
-  .macro-pill {
-    background: var(--warm-white); border-radius: 4px;
-    padding: 4px 8px; font-size: 0.72rem; font-weight: 600; color: var(--text-dark);
-  }
-  .macro-pill.kcal { background: #fdf2f2; color: #a82c2c; }
-
-  .meal-footer {
-    display: flex; justify-content: space-between; align-items: center; margin-top: auto;
-  }
-  .pairing-box {
-    display: flex; align-items: center; gap: 8px; background: var(--espresso);
-    padding: 6px 12px; border-radius: 6px;
-  }
-  .pairing-icon { font-size: 1rem; }
-  .pairing-info { line-height: 1.2; }
-  .pairing-title { font-size: 0.75rem; font-weight: 700; color: var(--gold); }
-  .pairing-desc { font-size: 0.6rem; color: rgba(255,255,255,0.4); text-transform: uppercase; }
-
-  /* ── DELIVERY ZONE ── */
-  .zone-section {
-    background: var(--warm-white);
-    padding: 100px 5%;
-    display: grid; grid-template-columns: 1fr;
-    gap: 40px; align-items: center;
-  }
-  @media (min-width: 850px) { .zone-section { grid-template-columns: 1fr 1fr; gap: 60px; } }
-  .zone-map {
-    background: var(--espresso);
-    border-radius: 16px;
-    aspect-ratio: 1.1;
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    position: relative; overflow: hidden; border: 1px solid rgba(197,160,89,0.1);
-  }
-  .zone-map-bg {
-    position: absolute; inset: 0; opacity: 0.15;
-    background-image: radial-gradient(var(--gold) 1px, transparent 0);
-    background-size: 24px 24px;
-  }
-  .zone-map-graphics {
-    position: relative; z-index: 2; text-align: center;
-  }
-  .zone-hub-ring {
-    width: 100px; height: 100px; border-radius: 50%;
-    border: 2px dashed var(--gold); display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 20px; animation: spin 40s linear infinite;
-  }
-  @keyframes spin { 100% { transform: rotate(300deg); } }
-  .zone-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 900;
-    margin-bottom: 12px; line-height: 1.1;
-  }
-  .zone-subtitle { font-size: 2rem; font-weight: 700; color: var(--sage); margin-bottom: 20px; }
-  .zone-desc { color: var(--text-mid); line-height: 1.7; margin-bottom: 30px; font-size: 0.95rem; }
-  .zone-cities { display: flex; flex-wrap: wrap; gap: 8px; }
-  .city-tag {
-    background: var(--cream); border-radius: 4px;
-    padding: 8px 16px; font-size: 0.8rem; font-weight: 600;
-    color: var(--text-dark); border: 1px solid rgba(0,0,0,0.04);
-  }
-
-  /* ── PRICING ── */
-  .pricing-section {
-    background: var(--espresso);
-    padding: 100px 5%;
-    position: relative;
-  }
-  .pricing-section .section-title { color: #fff; }
-  .pricing-section .section-tag { color: var(--gold-light); }
-
-  .plans-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 24px; margin-top: 60px;
-  }
-  .plan-card {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(197,160,89,0.15);
-    border-radius: 12px; padding: 40px 32px;
-    position: relative; transition: all 0.25s;
-    display: flex; flex-direction: column;
-  }
-  .plan-card.featured {
-    background: #fff;
-    border-color: #fff;
-  }
-  .plan-card:hover:not(.featured) {
-    border-color: rgba(197,160,89,0.4);
-    transform: translateY(-4px);
-  }
-  .plan-label {
-    font-size: 0.7rem; letter-spacing: 3px; font-weight: 700;
-    text-transform: uppercase; color: var(--gold); margin-bottom: 16px;
-  }
-  .plan-card.featured .plan-label { color: var(--sage); }
-  .plan-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.8rem; font-weight: 900;
-    color: #fff; margin-bottom: 8px;
-  }
-  .plan-card.featured .plan-name { color: var(--text-dark); }
-  .plan-desc { font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-bottom: 32px; line-height: 1.6; }
-  .plan-card.featured .plan-desc { color: var(--text-mid); }
-  .plan-price {
-    font-family: 'Playfair Display', serif;
-    font-size: 3rem; font-weight: 900;
-    color: var(--gold); line-height: 1; margin-bottom: 6px;
-  }
-  .plan-card.featured .plan-price { color: var(--text-dark); }
-  .plan-period { font-size: 0.8rem; color: rgba(255,255,255,0.4); margin-bottom: 32px; }
-  .plan-card.featured .plan-period { color: var(--text-mid); }
-  
-  .plan-features { list-style: none; margin-bottom: 40px; margin-top: auto; }
-  .plan-features li {
-    padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
-    font-size: 0.88rem; color: rgba(255,255,255,0.7);
-    display: flex; align-items: center; gap: 10px;
-  }
-  .plan-card.featured .plan-features li { color: var(--text-dark); border-color: rgba(0,0,0,0.05); }
-  .plan-features li::before { content: '✓'; color: var(--gold); font-weight: 700; }
-  .plan-card.featured .plan-features li::before { color: var(--sage); }
-  
-  .plan-btn {
-    width: 100%; padding: 16px;
-    border-radius: 6px; cursor: pointer;
-    font-weight: 700; font-size: 0.85rem;
-    letter-spacing: 1.5px; text-transform: uppercase;
-    transition: all 0.2s; border: none;
-  }
-  .plan-btn-outline {
-    background: transparent; color: var(--gold);
-    border: 1px solid var(--gold);
-  }
-  .plan-btn-outline:hover { background: var(--gold); color: var(--black); }
-  .plan-btn-solid { background: var(--black); color: var(--gold); }
-  .plan-btn-solid:hover { background: #1a1a1a; }
-  
-  .featured-badge {
-    position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
-    background: var(--black); color: var(--gold);
-    font-size: 0.65rem; font-weight: 700; letter-spacing: 2px;
-    text-transform: uppercase; padding: 6px 20px; border-radius: 20px;
-    white-space: nowrap;
-  }
-
-  /* ── TIPS SECTION ── */
-  .tips-section {
-    background: var(--warm-white);
-    padding: 100px 5%;
-  }
-  .tips-grid {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 24px; margin-top: 60px;
-  }
-  .tip-card {
-    border-radius: 12px; overflow: hidden;
-    background: #fff; box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-    border: 1px solid rgba(0,0,0,0.02); transition: transform 0.2s;
-  }
-  .tip-card:hover { transform: translateY(-5px); }
-  .tip-img {
-    height: 180px; display: flex; align-items: center; justify-content: center;
-    position: relative; background: var(--espresso); overflow: hidden;
-  }
-  .tip-img img { width: 100%; height: 100%; object-fit: cover; }
-  .tip-img-overlay {
-    position: absolute; bottom: 16px; left: 16px;
-    background: var(--sage); color: #fff;
-    font-size: 0.65rem; font-weight: 700; letter-spacing: 2px;
-    padding: 5px 12px; border-radius: 20px; text-transform: uppercase;
-  }
-  .tip-body { padding: 24px; }
-  .tip-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.2rem; font-weight: 700;
-    margin-bottom: 10px; line-height: 1.3; color: var(--text-dark);
-  }
-  .tip-excerpt { font-size: 0.88rem; color: var(--text-mid); line-height: 1.6; }
-
-  /* ── FOOTER ── */
-  footer {
-    background: var(--black);
-    padding: 80px 5% 40px;
-    color: rgba(255,255,255,0.4);
-    font-size: 0.9rem;
-  }
-  .footer-top {
-    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px;
-    padding-bottom: 50px; border-bottom: 1px solid rgba(255,255,255,0.07);
-    margin-bottom: 40px;
-  }
-  .footer-logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.8rem; font-weight: 900;
-    color: var(--gold); margin-bottom: 14px;
-  }
-  .footer-tagline { font-size: 0.88rem; max-width: 280px; line-height: 1.6; }
-  .footer-col h4 {
-    color: #fff; font-size: 0.8rem; letter-spacing: 2px;
-    text-transform: uppercase; margin-bottom: 20px; font-weight: 600;
-  }
-  .footer-col ul { list-style: none; }
-  .footer-col ul li { margin-bottom: 12px; }
-  .footer-col ul li a {
-    color: rgba(255,255,255,0.5); text-decoration: none;
-    transition: color 0.2s;
-  }
-  .footer-col ul li a:hover { color: var(--gold); }
-  .footer-bottom {
-    display: flex; justify-content: space-between; align-items: center;
-    flex-wrap: wrap; gap: 16px; font-size: 0.8rem;
-  }
-  .footer-bottom a { color: var(--gold); text-decoration: none; }
-
-  /* ── FLOATING ACTION DOCK PENTRU MOBIL ── */
-  .float-order {
-    position: fixed; bottom: 28px; right: 28px;
-    background: var(--gold); color: var(--black);
-    padding: 16px 28px; border-radius: 50px;
-    font-weight: 700; font-size: 0.85rem;
-    letter-spacing: 1.5px; text-transform: uppercase;
-    cursor: pointer; border: none;
-    box-shadow: 0 8px 30px rgba(197,160,89,0.4);
-    z-index: 99;
-    display: flex; align-items: center; gap: 10px;
-    transition: transform 0.2s, background-color 0.2s;
-  }
-  /* Completarea comportamentului hover cerut în structură */
-  .float-order:hover { 
-    transform: translateY(-2px) scale(1.02); 
-    background-color: var(--gold-light); 
-  }
-
-  @keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-
-  @media (max-width: 768px) {
-    nav { padding: 14px 20px; }
-    .nav-links { display: none; }
-    .hero { padding-top: 100px; }
-    .float-order { left: 20px; right: 20px; bottom: 20px; justify-content: center; }
-    body { padding-bottom: 60px; }
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>METANOIA DIGITALĂ | Hațeg Alternativ • Soul Meal & Drink TO GO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@200;400;600;700&family=Playfair+Display:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
+    <style>
+        body { background: #050505; color: #fff; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .card-produs, .lux-card { border: 1px solid #1a1a1a; transition: 0.4s; background: #000; }
+        .card-produs:hover, .lux-card:hover { border-color: #c5a059; }
+        .btn-add { border: 1px solid #c5a059; color: #c5a059; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; transition: 0.3s; }
+        .btn-add:hover { background: #c5a059; color: #000; }
+        #modal { display: none; background: rgba(0,0,0,0.96); }
+        .luxury-hero {
+            background: linear-gradient(rgba(5, 5, 5, 0.8), rgba(5, 5, 5, 0.98)), url('6a64c03b-9dc8-40d7-9b4b-180645bc875e.jpeg') no-repeat center center/cover;
+        }
+        .page { display: none; animation: fadeIn 0.4s ease-in-out; }
+        .page.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
 </head>
-<body>
+<body class="pb-40">
 
-  <nav>
-    <a href="#" class="logo"><div class="logo-icon">🍲</div>SOul <span>meal</span></a>
-    <ul class="nav-links">
-      <li><a href="#experienta-nespresso">Sinergii Cafea</a></li>
-      <li><a href="#arhitectura-flux">Sistem Logistic</a></li>
-      <li><a href="#meniu-saptamanal">Meniuri Smart</a></li>
-      <li><a href="#planuri-tarifare">Abonamente</a></li>
-    </ul>
-    <button class="nav-cta" onclick="handleCheckout()">Hub Colectare</button>
-  </nav>
+    <!-- HEADER LOGO -->
+    <header class="p-6 border-b border-[#1a1a1a] text-center sticky top-0 bg-[#050505]/90 backdrop-blur-md z-40">
+        <h1 class="font-cinzel text-2xl md:text-3xl text-[#c5a059] tracking-[6px] font-black">METANOIA DIGITALĂ</h1>
+        <p class="text-[9px] uppercase tracking-[4px] text-gray-500 mt-1">Hațeg Alternativ • Soul Meal & Drink TO GO</p>
+    </header>
 
-  <section class="hero">
-    <div class="hero-bg-text">SOUL</div>
-    <div class="hero-content">
-      <div class="hero-tag">Metanoia Digitală · Tehnologie Alimentară</div>
-      <h1>Suflet în rețetă.<br><em>Precizie structurală</em> în logistică.</h1>
-      <p class="hero-sub">Planificare fără risipă bazată pe precomandă strictă. Preparate de înaltă densitate nutritivă, conservate prin vacuum în containere sigure de inox alimentar.</p>
-      <div class="hero-btns">
-        <button class="btn-primary" onclick="document.getElementById('meniu-saptamanal').scrollIntoView({behavior:'smooth'})">Explorează Meniul Smart</button>
-        <button class="btn-secondary" onclick="document.getElementById('arhitectura-flux').scrollIntoView({behavior:'smooth'})">Proces Tehnic</button>
-      </div>
-    </div>
-    <div class="hero-stats">
-      <div class="stat">
-        <div class="stat-num">0%</div>
-        <div class="stat-label">Risipă Gătită</div>
-      </div>
-      <div class="stat">
-        <div class="stat-num">100%</div>
-        <div class="stat-label">Inox Circular</div>
-      </div>
-    </div>
-  </section>
-
-  <div class="marquee-strip">
-    <div class="marquee-inner">
-      <span class="marquee-item">📍 Hub Logistic Central: Totești, DN68</span><span class="marquee-sep">✦</span>
-      <span class="marquee-item">🔒 Recipiente Inox Vidate Spill-Proof</span><span class="marquee-sep">✦</span>
-      <span class="marquee-item">☕ Pairing Dedicat Nespresso Professional</span><span class="marquee-sep">✦</span>
-      <span class="marquee-item">📅 Gătit Inteligent Exclusiv Pe Bază De Precomandă</span><span class="marquee-sep">✦</span>
-    </div>
-  </div>
-
-  <section class="capsules-section" id="experienta-nespresso">
-    <div class="section-intro">
-      <div>
-        <div class="section-tag">Sinergii Aromatice</div>
-        <h2 class="section-title">Matricea de <em>Pairing Nespresso</em></h2>
-      </div>
-      <p class="section-desc">Fiecare profil aromatic este calibrat algoritmic pentru a susține starea de focus mental sau relaxare profundă după masă.</p>
-    </div>
-
-    <div class="capsules-grid">
-      <div class="capsule-card" onclick="addCapsuleToCart('Nespresso Ristretto', 2.80)">
-        <div class="capsule-img">
-          <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600&auto=format&fit=crop&q=80" alt="Ristretto">
-          <span class="capsule-badge">Intens</span>
-        </div>
-        <div class="capsule-body">
-          <div class="capsule-intensity">
-            <span class="intensity-label">Intensitate:</span>
-            <div class="intensity-dot filled"></div><div class="intensity-dot filled"></div><div class="intensity-dot filled"></div><div class="intensity-dot filled"></div><div class="intensity-dot filled"></div><div class="intensity-dot filled"></div><div class="intensity-dot filled"></div><div class="intensity-dot filled"></div><div class="intensity-dot filled"></div><div class="intensity-dot filled"></div>
-          </div>
-          <h3 class="capsule-name">Ristretto Core</h3>
-          <p class="capsule-desc">Note pronunțate de prăjire, corp dens, ideal alături de preparatele bogate din carne roșie sau tocănițe.</p>
-          <div class="capsule-price-row">
-            <div class="capsule-price">2.80 <span>RON / doză</span></div>
-            <button class="add-btn">+</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="capsule-card" onclick="addCapsuleToCart('Nespresso Arpeggio', 2.80)">
-        <div class="capsule-img">
-          <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=600&auto=format&fit=crop&q=80" alt="Arpeggio">
-          <span class="capsule-badge">Echilibrat</span>
-        </div>
-        <div class="capsule-body">
-          <div class="capsule-intensity">
-            <span class="intensity-label">Intensitate:</span>
-            <div class="intensity-dot filled"></div><div class="intensity-dot filled"></div><div class="intensity-dot filled"></div><div class="intensity-dot filled"></div><div class="intensity-dot filled"></div><div class="intensity-dot filled"></div><div class="intensity-dot filled"></div><div class="intensity-dot filled"></div><div class="intensity-dot"></div><div class="intensity-dot"></div>
-          </div>
-          <h3 class="capsule-name">Arpeggio Velvet</h3>
-          <p class="capsule-desc">Caracter puternic, note distincte de cacao amară. Destinat asocierii cu deserturile dense tip cremă de zahăr ars.</p>
-          <div class="capsule-price-row">
-            <div class="capsule-price">2.80 <span>RON / doză</span></div>
-            <button class="add-btn">+</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="capsule-card" onclick="addCapsuleToCart('Nespresso Volluto', 2.90)">
-        <div class="capsule-img">
-          <img src="https://images.unsplash.com/photo-1507133750040-4a8f57021571?w=600&auto=format&fit=crop&q=80" alt="Volluto">
-          <span class="capsule-badge">Gourmet</span>
-        </div>
-        <div class="capsule-body">
-          <div class="capsule-intensity">
-            <span class="intensity-label">Intensitate:</span>
-            <div class="intensity-dot filled"></div><div class="intensity-dot filled"></div><div class="intensity-dot filled"></div><div class="intensity-dot filled"></div><div class="intensity-dot"></div><div class="intensity-dot"></div><div class="intensity-dot"></div><div class="intensity-dot"></div><div class="intensity-dot"></div><div class="intensity-dot"></div>
-          </div>
-          <h3 class="capsule-name">Volluto Light</h3>
-          <p class="capsule-desc">Note dulci de biscuiți și accente subtile de fructe. Recomandat dimineața, alături de cereale complexe.</p>
-          <div class="capsule-price-row">
-            <div class="capsule-price">2.90 <span>RON / doză</span></div>
-            <button class="add-btn">+</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="how-section" id="arhitectura-flux">
-    <div>
-      <div class="section-tag">Arhitectura Fluxului Circular</div>
-      <h2 class="section-title">Trasabilitate Zero Risk</h2>
-    </div>
-    
-    <div class="steps-track">
-      <div class="step">
-        <div class="step-num">01</div>
-        <div class="step-icon">📅</div>
-        <h3>Precomandă predictivă</h3>
-        <p>Alegerea structurii de meniuri în avans permite achiziția exactă a ingredientelor, eliminând pierderile operaționale în bucătărie.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">02</div>
-        <div class="step-icon">🛡️</div>
-        <h3>Etanșare sub vid în Inox</h3>
-        <p>Gătit tradițional curat, porționat fierbinte și vidat instant în caserole etanșe de inox, eliminând contactul cu micro-plasticele.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">03</div>
-        <div class="step-icon">📦</div>
-        <h3>Predare Controlată la Hub</h3>
-        <p>Sistem rapid de preluare securizată din Hub-ul fizic strategic, integrat cu dozele de Nespresso selectate special pentru meniu.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="menu-section" id="meniu-saptamanal">
-    <div>
-      <div class="section-tag">Planificare Nutrițională</div>
-      <h2 class="section-title">Structura Alimentației <em>Sistemice</em></h2>
-    </div>
-
-    <div class="tabs-container">
-      <div class="week-tabs">
-        <button class="week-tab active" data-week="w1">Săptămâna I (25 Mai – 31 Mai)</button>
-        <button class="week-tab" data-week="w2">Săptămâna II (01 Iun – 07 Iun)</button>
-      </div>
-
-      <div class="day-tabs">
-        <button class="day-tab active" data-day="luni">Luni</button>
-        <button class="day-tab" data-day="marti">Marți</button>
-        <button class="day-tab" data-day="miercuri">Miercuri</button>
-        <button class="day-tab" data-day="joi">Joi</button>
-        <button class="day-tab" data-day="vineri">Vineri</button>
-      </div>
-    </div>
-
-    <div class="filter-row">
-      <div class="kcal-selectors">
-        <span class="kcal-label">Filtrare Țintă Calorică:</span>
-        <button class="kcal-btn" data-kcal="1200">1200 kcal</button>
-        <button class="kcal-btn active" data-kcal="1600">1600 kcal</button>
-        <button class="kcal-btn" data-kcal="2000">2000 kcal</button>
-      </div>
-      <div style="font-size: 0.85rem; color: var(--text-mid); font-weight: 500;">
-        Recipiente din inox alimentar incluse în circuit logistic reglementat.
-      </div>
-    </div>
-
-    <div class="menu-grid" id="main-menu-injector"></div>
-  </section>
-
-  <section class="zone-section">
-    <div class="zone-map">
-      <div class="zone-map-bg"></div>
-      <div class="zone-map-graphics">
-        <div class="zone-hub-ring">
-          <span style="font-size: 2rem;">📍</span>
-        </div>
-        <div style="font-family:'Playfair Display', serif; font-weight:900; color:#fff; font-size:1.4rem; tracking:1px;">HUB CENTRAL</div>
-        <div style="font-size:0.75rem; color:var(--gold); font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-top:4px;">Totești, România</div>
-      </div>
-    </div>
-    <div>
-      <div class="section-tag">Areal de Distribuție</div>
-      <h2 class="zone-title">Sistem de Colectare</h2>
-      <div class="zone-subtitle">Depresiunea Hațegului & Hub Logistic</div>
-      <p class="zone-desc">Punct logistic fix optimizat pentru ridicarea pachetelor zilnice fără timp de așteptare. Pentru comenzi consolidate corporate, asigurăm livrare în puncte de descărcare securizate.</p>
-      <div class="zone-cities">
-        <span class="city-tag">Totești Hub</span>
-        <span class="city-tag">Hațeg Alternativ</span>
-        <span class="city-tag">Sântămăria-Orlea</span>
-        <span class="city-tag">Linii Corporate Dedicate</span>
-      </div>
-    </div>
-  </section>
-
-  <section class="pricing-section" id="planuri-tarifare">
-    <div style="text-align: center; margin-bottom: 40px;">
-      <div class="section-tag">Management Energetic Continuu</div>
-      <h2 class="section-title">Structuri de <em>Abonament</em></h2>
-    </div>
-
-    <div class="plans-grid">
-      <div class="plan-card">
-        <div class="plan-label">Eficiență Calorică</div>
-        <h3 class="plan-name">Lean Setup</h3>
-        <p class="plan-desc">Planificare optimizată pentru controlul greutății corporale și stabilitate metabolică.</p>
-        <div class="plan-price">75 <span>RON / zi</span></div>
-        <div class="plan-period">Facturat săptămânal · Luni-Vineri</div>
-        <ul class="plan-features">
-          <li>Mese optimizate caloric (1200 kcal)</li>
-          <li>Vidate ermetic la cald în inox</li>
-          <li>1 x Doză Nespresso dedicată pe zi</li>
-          <li>Ridicarea directă din Hub Totești</li>
-        </ul>
-        <button class="plan-btn plan-btn-outline" onclick="selectAbonament('Lean Setup', 75)">Selectează Structură</button>
-      </div>
-
-      <div class="plan-card featured">
-        <div class="featured-badge">Bestseller Sistemic</div>
-        <div class="plan-label">Echilibru & Performanță</div>
-        <h3 class="plan-name">Optimal Energy</h3>
-        <p class="plan-desc">Corelația ideală între densitatea nutrițională, gust tradițional și capacitatea de focus cognitiv.</p>
-        <div class="plan-price">95 <span>RON / zi</span></div>
-        <div class="plan-period">Facturat săptămânal · Luni-Vineri</div>
-        <ul class="plan-features">
-          <li>Mese complete echilibrate (1600 kcal)</li>
-          <li>Include opțiunea Varză Călită / Tocăniță</li>
-          <li>2 x Doze Nespresso potrivite profilului</li>
-          <li>Prioritate maximă la punctul de ridicare</li>
-        </ul>
-        <button class="plan-btn plan-btn-solid" onclick="selectAbonament('Optimal Energy', 95)">Selectează Structură</button>
-      </div>
-
-      <div class="plan-card">
-        <div class="plan-label">Putere & Forță</div>
-        <h3 class="plan-name">Hyper Focus</h3>
-        <p class="plan-desc">Alimentație complexă pentru un volum ridicat de activitate fizică sau intelectuală intensă.</p>
-        <div class="plan-price">115 <span>RON / zi</span></div>
-        <div class="plan-period">Facturat săptămânal · Luni-Vineri</div>
-        <ul class="plan-features">
-          <li>Aport proteic ridicat (2000 kcal)</li>
-          <li>Caserole inox de capacitate mare</li>
-          <li>2 x Doze Premium Nespresso Ristretto</li>
-          <li>Consultare periodică a fișei macro</li>
-        </ul>
-        <button class="plan-btn plan-btn-outline" onclick="selectAbonament('Hyper Focus', 115)">Selectează Structură</button>
-      </div>
-    </div>
-  </section>
-
-  <section class="tips-section">
-    <div style="margin-bottom: 40px;">
-      <div class="section-tag">Abordare Sistemică</div>
-      <h2 class="section-title">Neuro-nutriție și <em>Biologie Aplicată</em></h2>
-    </div>
-
-    <div class="tips-grid">
-      <div class="tip-card">
-        <div class="tip-img">
-          <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&auto=format&fit=crop&q=80" alt="Neuro">
-          <span class="tip-img-overlay">Neurobotics</span>
-        </div>
-        <div class="tip-body">
-          <h3 class="tip-title">Corelația dintre digestie și axa neuronală</h3>
-          <p class="tip-excerpt">Evitarea alimentelor procesate industrial și conservarea prin vacuum protejează microbiota intestinală, reducând stările de oboseală cronică.</p>
-        </div>
-      </div>
-
-      <div class="tip-card">
-        <div class="tip-img">
-          <img src="https://images.unsplash.com/photo-1516685018646-549198525c1b?w=600&auto=format&fit=crop&q=80" alt="Tradition">
-          <span class="tip-img-overlay">Gastronomie Curată</span>
-        </div>
-        <div class="tip-body">
-          <h3 class="tip-title">Zahărul ars tradițional ca experiență aromatică controlată</h3>
-          <p class="tip-excerpt">Un desert clasic nu trebuie eliminat, ci sincronizat cu momentul de maximă eficiență metabolică și acompaniat de cafeaua potrivită.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <div class="footer-top">
-      <div>
-        <div class="footer-logo">SOul meal</div>
-        <p class="footer-tagline">Arhitectură digitală aplicată în industria alimentară. Dezvoltat structural sub umbrela Dakamigos.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Sistem</h4>
-        <ul>
-          <li><a href="#meniu-saptamanal">Meniuri Predictive</a></li>
-          <li><a href="#experienta-nespresso">Matrice Nespresso</a></li>
-          <li><a href="#planuri-tarifare">Abonamente Solide</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Reglementări</h4>
-        <ul>
-          <li><a href="#">Siguranță Alimentară HACCP</a></li>
-          <li><a href="#">Inox Circular Reutilizabil</a></li>
-          <li><a href="#">Termeni și Condiții Operative</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <div>&copy; 2026 DAKAMIGOS MARKT SRL · Metanoia Digitală. Toate drepturile rezervate.</div>
-      <div>Origine structurală: <a href="#">Totești, Depresiunea Hațegului</a></div>
-    </div>
-  </footer>
-
-  <button class="float-order" id="floating-cart-bar" onclick="handleCheckout()">
-    🛒 Precomandă în curs (0 repere)
-  </button>
-
-  <script>
-    // Baza de date structurală a meniurilor cu preparate tradiționale și macro-nutrienți complecși
-    const menuEngineDataset = {
-      luni: [
-        { type: "Mic Dejun", name: "Overnight Oats cu Nucă și Miere", weight: "240g", desc: "Fulgi de ovăz hidratați în lapte vegetal, îmbogățiți cu sâmburi zdrobiți de nucă și miere de munte.", kcal: 380, p: "12g", c: "52g", g: "10g", img: "https://images.unsplash.com/photo-1517881917431-1348889736cd?w=600&auto=format&fit=crop&q=80", pair: "Volluto Core", pairDesc: "Corp lejer îndulcit" },
-        { type: "Prânz", name: "Tocăniță de Vițel cu Mămăliguță la Cuptor", weight: "420g", desc: "Carne fragedă de vițel gătită lent în sos reductiv de roșii și ierburi, servită cu mămăligă densă.", kcal: 640, p: "44g", c: "58g", g: "16g", img: "https://images.unsplash.com/photo-1547592180-85f173990554?w=600&auto=format&fit=crop&q=80", pair: "Ristretto Intense", pairDesc: "Aciditate contrastantă" },
-        { type: "Cină", name: "Sauté de Varză Călită cu Mărar", weight: "380g", desc: "Varză albă fâșii subțiri, înăbușită lent cu ulei presat la rece, roșii proaspete și mărar proaspăt.", kcal: 420, p: "11g", c: "48g", g: "14g", img: "https://images.unsplash.com/photo-1608897013039-887f21d8c804?w=600&auto=format&fit=crop&q=80", pair: "Arpeggio Velvet", pairDesc: "Echilibrare aromatică" }
-      ],
-      marti: [
-        { type: "Mic Dejun", name: "Omletă Securizată la Cuptor cu Spanac", weight: "210g", desc: "Ouă integrale coapte în tăvi gastrice cu frunze tinere de spanac și cuburi fine de brânză locală.", kcal: 390, p: "26g", c: "6g", g: "24g", img: "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=600&auto=format&fit=crop&q=80", pair: "Volluto Core", pairDesc: "Bază cremoasă" },
-        { type: "Prânz", name: "Pui Suprem cu Orez Sălbatic", weight: "400g", desc: "Piept de pui feliat, pregătit la temperatură controlată, asortat cu mix de orez sălbatic și ierburi.", kcal: 590, p: "46g", c: "54g", g: "11g", img: "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=600&auto=format&fit=crop&q=80", pair: "Ristretto Intense", pairDesc: "Digestie accelerată" },
-        { type: "Cină", name: "Supă Cremă Concentrată de Rădăcinoase", weight: "400g", desc: "Țelină, morcov, păstârnac coapte și transformate în emulsie fină cu ulei de măsline și semințe.", kcal: 350, p: "8g", c: "42g", g: "12g", img: "https://images.unsplash.com/photo-1547592165-e1d17fed6005?w=600&auto=format&fit=crop&q=80", pair: "Arpeggio Velvet", pairDesc: "Note lemnoase fine" }
-      ],
-      miercuri: [
-        { type: "Mic Dejun", name: "Terci Termic de Ovăz cu Scorțișoară", weight: "250g", desc: "Sursă stabilă de carbohidrați lenți gătiți cu lapte de migdale și infuzați cu scorțișoară Ceylon.", kcal: 370, p: "12g", c: "50g", g: "8g", img: "https://images.unsplash.com/photo-1517881917431-1348889736cd?w=600&auto=format&fit=crop&q=80", pair: "Volluto Core", pairDesc: "Echilibru matinal" },
-        { type: "Prânz", name: "Tocăniță de Vițel cu Mămăliguță la Cuptor", weight: "420g", desc: "Varianta cu surplus caloric controlat pentru stabilitate energetică postprandială pe parcursul zilei.", kcal: 640, p: "44g", c: "58g", g: "16g", img: "https://images.unsplash.com/photo-1547592180-85f173990554?w=600&auto=format&fit=crop&q=80", pair: "Ristretto Intense", pairDesc: "Saturare optimă" },
-        { type: "Cină", name: "Sauté de Varză Călită cu Mărar", weight: "380g", desc: "Rețetă curată, optimizată pentru digestie ușoară înainte de instalarea ciclului de somn.", kcal: 420, p: "11g", c: "48g", g: "14g", img: "https://images.unsplash.com/photo-1608897013039-887f21d8c804?w=600&auto=format&fit=crop&q=80", pair: "Arpeggio Velvet", pairDesc: "Calmare organică" }
-      ],
-      joi: [
-        { type: "Mic Dejun", name: "Omletă Securizată la Cuptor cu Spanac", weight: "210g", desc: "Proteine și grăsimi sănătoase izolate pentru protecția indicelui glicemic în primele ore.", kcal: 390, p: "26g", c: "6g", g: "24g", img: "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=600&auto=format&fit=crop&q=80", pair: "Volluto Core", pairDesc: "Sursă lipidică caldă" },
-        { type: "Prânz", name: "Pui Suprem cu Orez Sălbatic", weight: "400g", desc: "Gătit curat, fără adaosuri grase artificiale, ambalat etanș în inox direct de pe flacără.", kcal: 590, p: "46g", c: "54g", g: "11g", img: "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=600&auto=format&fit=crop&q=80", pair: "Ristretto Intense", pairDesc: "Sinergie musculară" },
-        { type: "Cină", name: "Supă Cremă Concentrată de Rădăcinoase", weight: "400g", desc: "Aport optim de microelemente minerale din rădăcinoase coapte pe vatră uscată.", kcal: 350, p: "8g", c: "42g", g: "12g", img: "https://images.unsplash.com/photo-1547592165-e1d17fed6005?w=600&auto=format&fit=crop&q=80", pair: "Arpeggio Velvet", pairDesc: "Relaxare digestivă" }
-      ],
-      vineri: [
-        { type: "Mic Dejun", name: "Overnight Oats cu Nucă și Miere", weight: "240g", desc: "Fibre solubile excelente pentru asigurarea metabolismului bazal crescut de final de săptămână.", kcal: 380, p: "12g", c: "52g", g: "10g", img: "https://images.unsplash.com/photo-1517881917431-1348889736cd?w=600&auto=format&fit=crop&q=80", pair: "Volluto Core", pairDesc: "Focus curat" },
-        { type: "Prânz", name: "Tocăniță de Vițel cu Mămăliguță la Cuptor", weight: "420g", desc: "Mâncare consistentă preparată conform standardelor stricte de siguranță alimentară Dakamigos.", kcal: 640, p: "44g", c: "58g", g: "16g", img: "https://images.unsplash.com/photo-1547592180-85f173990554?w=600&auto=format&fit=crop&q=80", pair: "Ristretto Intense", pairDesc: "Energie susținută" },
-        { type: "Cină", name: "Sauté de Varză Călită cu Mărar", weight: "380g", desc: "Preparat hipocaloric natural cu un volum ridicat de fibre pentru tranzit intestinal excelent.", kcal: 420, p: "11g", c: "48g", g: "14g", img: "https://images.unsplash.com/photo-1608897013039-887f21d8c804?w=600&auto=format&fit=crop&q=80", pair: "Arpeggio Velvet", pairDesc: "Echilibru final" }
-      ]
-    };
-
-    // Database centralizată pe săptămâni și ținte calorice
-    const databaseMasterMap = {
-      "w1": {
-        "luni": { "1200": [menuEngineDataset.luni[1]], "1600": [menuEngineDataset.luni[0], menuEngineDataset.luni[1]], "2000": menuEngineDataset.luni },
-        "marti": { "1200": [menuEngineDataset.marti[1]], "1600": [menuEngineDataset.marti[0], menuEngineDataset.marti[1]], "2000": menuEngineDataset.marti },
-        "miercuri": { "1200": [menuEngineDataset.miercuri[1]], "1600": [menuEngineDataset.miercuri[0], menuEngineDataset.miercuri[1]], "2000": menuEngineDataset.miercuri },
-        "joi": { "1200": [menuEngineDataset.joi[1]], "1600": [menuEngineDataset.joi[0], menuEngineDataset.joi[1]], "2000": menuEngineDataset.joi },
-        "vineri": { "1200": [menuEngineDataset.vineri[1]], "1600": [menuEngineDataset.vineri[0], menuEngineDataset.vineri[1]], "2000": menuEngineDataset.vineri }
-      },
-      "w2": {
-        "luni": { "1200": [menuEngineDataset.luni[1]], "1600": [menuEngineDataset.luni[0], menuEngineDataset.luni[1]], "2000": menuEngineDataset.luni },
-        "marti": { "1200": [menuEngineDataset.marti[1]], "1600": [menuEngineDataset.marti[0], menuEngineDataset.marti[1]], "2000": menuEngineDataset.marti },
-        "miercuri": { "1200": [menuEngineDataset.miercuri[1]], "1600": [menuEngineDataset.miercuri[0], menuEngineDataset.miercuri[1]], "2000": menuEngineDataset.miercuri },
-        "joi": { "1200": [menuEngineDataset.joi[1]], "1600": [menuEngineDataset.joi[0], menuEngineDataset.joi[1]], "2000": menuEngineDataset.joi },
-        "vineri": { "1200": [menuEngineDataset.vineri[1]], "1600": [menuEngineDataset.vineri[0], menuEngineDataset.vineri[1]], "2000": menuEngineDataset.vineri }
-      }
-    };
-
-    // Variabile de stare ale aplicației
-    let activeWeek = "w1";
-    let activeDay = "luni";
-    let activeKcalTarget = "1600";
-    let internalCart = [];
-
-    // Injectarea dinamică a elementelor în interfață
-    function executeMenuRendering() {
-      const targetContainer = document.getElementById("main-menu-injector");
-      if (!targetContainer) return;
-      targetContainer.innerHTML = "";
-
-      const selectedWeekBlock = databaseMasterMap[activeWeek] || databaseMasterMap["w1"];
-      const selectedDayBlock = selectedWeekBlock[activeDay] || {};
-      const actualMeals = selectedDayBlock[activeKcalTarget] || [];
-
-      if (actualMeals.length === 0) {
-        targetContainer.innerHTML = `
-          <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-mid);">
-            ⚠️ Configurația selectată se află în curs de validare nutrițională primară.
-          </div>`;
-        return;
-      }
-
-      actualMeals.forEach(meal => {
-        targetContainer.innerHTML += `
-          <div class="menu-item">
-            <div class="menu-item-img">
-              <img src="${meal.img}" alt="${meal.name}">
+    <!-- HERO SECTION -->
+    <section class="luxury-hero text-center py-20 px-6 border-b border-[#1a1a1a]">
+        <div class="max-w-3xl mx-auto">
+            <span class="text-[#c5a059] text-xs font-bold tracking-[3px] uppercase block mb-4">Hub Turistic & Operațional 2026</span>
+            <h2 class="font-playfair italic text-3xl md:text-5xl text-white mb-6">Mâncare gătită curat, vidată modern & băuturi la doză.</h2>
+            <p class="text-gray-400 text-xs md:text-sm font-light max-w-xl mx-auto mb-8">
+                Ecosistemul FoodTech de pe ruta DN 68. Gătit tradițional în Bucătăria Centrală Totești, securizat instant pentru drum sau birou.
+            </p>
+            <div class="grid grid-cols-3 gap-2 max-w-md mx-auto text-[9px] uppercase tracking-widest text-gray-400">
+                <div class="border border-[#1a1a1a] py-3 bg-black/50">Aventură</div>
+                <div class="border border-[#1a1a1a] py-3 bg-black/50">Comunitate</div>
+                <div class="border border-[#1a1a1a] py-3 bg-black/50">Patrimoniu</div>
             </div>
-            <div class="menu-item-body">
-              <div class="meal-meta">
-                <span class="meal-type">${meal.type}</span>
-                <span class="meal-weight">${meal.weight}</span>
-              </div>
-              <h3 class="meal-name">${meal.name}</h3>
-              <p class="meal-desc">${meal.desc}</p>
-              
-              <div class="meal-macros">
-                <span class="macro-pill kcal">🔥 ${meal.kcal} kcal</span>
-                <span class="macro-pill">🥩 P: ${meal.p}</span>
-                <span class="macro-pill">🌾 C: ${meal.c}</span>
-                <span class="macro-pill">🥑 G: ${meal.g}</span>
-              </div>
+        </div>
+    </section>
 
-              <div class="meal-footer">
-                <div class="pairing-box">
-                  <span class="pairing-icon">☕</span>
-                  <div class="pairing-info">
-                    <div class="pairing-title">${meal.pair}</div>
-                    <div class="pairing-desc">${meal.pairDesc}</div>
-                  </div>
+    <!-- ARHITECTURĂ ȘI VIZIUNE STRATEGICĂ (INTEGRARE IMAGINI) -->
+    <section class="max-w-5xl mx-auto p-6 mt-12 border-b border-[#1a1a1a] pb-16">
+        <div class="text-center mb-12">
+            <span class="text-[#c5a059] text-[10px] tracking-[4px] uppercase block mb-2">Ecosistemul Dakamigos</span>
+            <h2 class="font-cinzel text-xl tracking-[2px]">Arhitectura Brandului & Flux Operațional</h2>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+            <!-- Imaginea 1: Avatar / Hartă Mentală -->
+            <div class="border border-[#1a1a1a] bg-black p-4 flex flex-col justify-between">
+                <div>
+                    <h3 class="font-cinzel text-xs text-[#c5a059] tracking-wider mb-3 uppercase">1. Alinierea Avatarului & Poziționare</h3>
+                    <p class="text-xs text-gray-400 mb-4 font-light">Segmentarea clară a clienților: căutătorii de calitate premium, călătorii de pe DN 68 și vizionarii digitali.</p>
                 </div>
-                <button class="nav-cta" style="padding: 8px 14px; font-size:0.75rem;" onclick="addMealToCart('${meal.name}')">Adaugă</button>
-              </div>
+                <div class="bg-[#0a0a0a] border border-[#1a1a1a] rounded overflow-hidden">
+                    <img src="Code_Generated_Image.jpg" alt="Alinierea Avatarului Dakamigos" class="w-full h-auto object-contain filter brightness-95 contrast-105">
+                </div>
             </div>
-          </div>
-        `;
-      });
-    }
 
-    // Funcții de manipulare a stării coșului de achiziții
-    function addMealToCart(mealName) {
-      internalCart.push({ type: "preparat", identity: mealName });
-      updateCartFloatingBar();
-    }
+            <!-- Imaginea 2: Diagramă Gastronomie & FoodTech -->
+            <div class="border border-[#1a1a1a] bg-black p-4 flex flex-col justify-between">
+                <div>
+                    <h3 class="font-cinzel text-xs text-[#c5a059] tracking-wider mb-3 uppercase">2. Fluxul Tehnologic și Scalabilitatea</h3>
+                    <p class="text-xs text-gray-400 mb-4 font-light">De la Bucătăria Centrală Totești la automatizări prin Make, conserve premium cu etichetă curată și hub regional.</p>
+                </div>
+                <div class="bg-[#0a0a0a] border border-[#1a1a1a] rounded overflow-hidden">
+                    <img src="Gemini_Generated_Image_l5af7l5af7l5af7l_2.png" alt="Gastronomie Premium & FoodTech Diagram" class="w-full h-auto object-contain filter brightness-95 contrast-105">
+                </div>
+            </div>
+        </div>
+    </section>
 
-    function addCapsuleToCart(capsuleName, price) {
-      internalCart.push({ type: "capsula", identity: capsuleName });
-      updateCartFloatingBar();
-    }
+    <!-- MAIN APP CONTENT -->
+    <main class="max-w-5xl mx-auto p-6 mt-12">
+        
+        <!-- SECTION 1: MENIU SĂPTĂMÂNAL DINAMIC (INTEGRAT & ACTUALIZAT CU PIURE) -->
+        <div class="mb-24">
+            <div class="text-center mb-10">
+                <span class="text-[#c5a059] text-[10px] tracking-[4px] uppercase block mb-2">Abonamente & Rotație</span>
+                <h2 class="font-cinzel text-2xl tracking-[2px]">1. Meniu Săptămânal la Caserolă</h2>
+                <p class="text-xs text-gray-500 max-w-md mx-auto mt-2">Prânz complet (Ciorbă + Fel Principal) optimizat caloric. Felul doi este servit întotdeauna alături de piure artizanal catifelat cu unt.</p>
+            </div>
 
-    function selectAbonament(planName, dailyRate) {
-      internalCart.push({ type: "abonament", identity: planName });
-      updateCartFloatingBar();
-      alert(`Structura de abonament "${planName}" a fost mapată în vectorul de selecție.`);
-    }
+            <!-- Container Zile Meniu -->
+            <div id="container-zile" class="max-w-2xl mx-auto">
+                <!-- Generat dinamic prin JS pentru mentenanță ultra-rapidă -->
+            </div>
 
-    function updateCartFloatingBar() {
-      const bar = document.getElementById("floating-cart-bar");
-      if (bar) {
-        bar.innerText = `🛒 Precomandă în curs (${internalCart.length} repere selectate)`;
-      }
-    }
+            <!-- Navigație Zile Meniu -->
+            <div class="flex justify-center items-center gap-4 mt-8">
+                <button class="border border-[#1a1a1a] text-gray-400 px-6 py-2.5 hover:border-[#c5a059] hover:text-[#c5a059] transition uppercase text-[11px] tracking-wider font-semibold" onclick="schimbaZi(-1)">« Înapoi</button>
+                <span id="indicator-zi" class="font-cinzel text-xs tracking-widest text-[#c5a059] bg-[#101010] px-4 py-2.5 border border-[#1a1a1a]">LUNI</span>
+                <button class="border border-[#1a1a1a] text-gray-400 px-6 py-2.5 hover:border-[#c5a059] hover:text-[#c5a059] transition uppercase text-[11px] tracking-wider font-semibold" onclick="schimbaZi(1)">Înainte »</button>
+            </div>
+        </div>
 
-    function handleCheckout() {
-      if (internalCart.length === 0) {
-        alert("Matricea de selecție este goală. Adaugă repere din meniu sau planuri tarifare.");
-        return;
-      }
-      alert(`Se inițializează transmisia securizată pentru cele ${internalCart.length} repere către webhook-ul de automatizare Dakamigos Engine.`);
-      internalCart = [];
-      updateCartFloatingBar();
-    }
 
-    // Inițializare evenimente după încărcarea DOM
-    document.addEventListener("DOMContentLoaded", function() {
-      executeMenuRendering();
+        <!-- SECTION 2: SOUL MEAL — BOX & EXTRA (VIDAT PREMIUM) -->
+        <div class="mb-24">
+            <div class="text-center mb-10">
+                <span class="text-[#c5a059] text-[10px] tracking-[4px] uppercase block mb-2">Tehnologie Totești</span>
+                <h2 class="font-cinzel text-2xl tracking-[2px]">2. Soul Meal — Calibrare & Tradiție</h2>
+                <p class="text-xs text-gray-500 max-w-md mx-auto mt-2">Sistem FoodTech care blochează prospețimea instant, direct din oală, garantând savoarea deplină.</p>
+            </div>
 
-      // Control tab-uri săptămână
-      document.querySelectorAll(".week-tab").forEach(tab => {
-        tab.addEventListener("click", function() {
-          document.querySelectorAll(".week-tab").forEach(t => t.classList.remove("active"));
-          this.classList.add("active");
-          activeWeek = this.getAttribute("data-week");
-          executeMenuRendering();
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- OptimBox -->
+                <div class="card-produs overflow-hidden flex flex-col justify-between" data-nume="OptimBox 1500 kcal" data-pret="65.00">
+                    <div class="p-6 border-b border-[#1a1a1a] bg-[#0a0a0a]">
+                        <span class="text-[9px] uppercase tracking-widest text-emerald-500 font-bold block mb-1">Meniu Complet 24h</span>
+                        <div class="flex justify-between items-baseline">
+                            <h3 class="font-bold text-lg text-white">OptimBox 1500 kcal</h3>
+                            <span class="text-[#c5a059] font-bold">65.00 RON</span>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <p class="text-xs text-gray-400 mb-6 font-light">Meniu zilnic complet (3 mese principale, 2 gustări calibrate) care integrează supe clare și fripturi fragede cu baze de legume.</p>
+                            <div class="grid grid-cols-4 gap-2 bg-[#0a0a0a] p-3 text-center text-xs border border-[#1a1a1a] mb-6">
+                                <div><span class="block font-bold text-white">1552</span><span class="text-[9px] text-gray-500 uppercase">Kcal</span></div>
+                                <div><span class="block font-bold text-[#c5a059]">151g</span><span class="text-[9px] text-gray-500 uppercase">Prot</span></div>
+                                <div><span class="block font-bold text-white">125g</span><span class="text-[9px] text-gray-500 uppercase">Carbo</span></div>
+                                <div><span class="block font-bold text-white">49g</span><span class="text-[9px] text-gray-500 uppercase">Grăsimi</span></div>
+                            </div>
+                        </div>
+                        <button onclick="adaugaProdus(this)" class="btn-add w-full py-3">Adaugă în coș</button>
+                    </div>
+                </div>
+
+                <!-- Ceaun Pui & Piure Artizanal -->
+                <div class="card-produs overflow-hidden flex flex-col justify-between" data-nume="Ceaun de Pui cu Piure Artizanal" data-pret="26.00">
+                    <div class="p-6 border-b border-[#1a1a1a] bg-[#0a0a0a]">
+                        <span class="text-[9px] uppercase tracking-widest text-[#c5a059] font-bold block mb-1">Produs Semnătură</span>
+                        <div class="flex justify-between items-baseline">
+                            <h3 class="font-bold text-lg text-white">Ceaun Pui & Piure</h3>
+                            <span class="text-[#c5a059] font-bold">26.00 RON</span>
+                        </div>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                            <p class="text-xs text-gray-400 mb-6 font-light">Mâncare caldă de origine, gătită lent în gospodărie, servită pe un pat generos de piure de cartofi fin și cremos, stins cu unt aromatic.</p>
+                            <div class="grid grid-cols-4 gap-2 bg-[#0a0a0a] p-3 text-center text-xs border border-[#1a1a1a] mb-6">
+                                <div><span class="block font-bold text-white">620</span><span class="text-[9px] text-gray-500 uppercase">Kcal</span></div>
+                                <div><span class="block font-bold text-[#c5a059]">42g</span><span class="text-[9px] text-gray-500 uppercase">Prot</span></div>
+                                <div><span class="block font-bold text-white">55g</span><span class="text-[9px] text-gray-500 uppercase">Carbo</span></div>
+                                <div><span class="block font-bold text-white">18g</span><span class="text-[9px] text-gray-500 uppercase">Grăsimi</span></div>
+                            </div>
+                        </div>
+                        <button onclick="adaugaProdus(this)" class="btn-add w-full py-3">Adaugă în coș</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- SECTION 3: DRINK & DESERT TO GO -->
+        <div class="mb-12">
+            <div class="text-center mb-10">
+                <span class="text-[#c5a059] text-[10px] tracking-[4px] uppercase block mb-2">FoodTech la Doză</span>
+                <h2 class="font-cinzel text-2xl tracking-[2px]">3. Drink & Desert TO GO</h2>
+                <p class="text-xs text-gray-500 max-w-md mx-auto mt-2">Sistem avansat de capsare mecanică etanșă în doze din Aluminiu/PET, ideal pentru păstrarea prospețimii absolute pe drum.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Capsate pe loc -->
+                <div class="space-y-4">
+                    <h4 class="font-cinzel text-xs tracking-widest text-[#c5a059] mb-2 uppercase">Capsate pe loc (PET/Aluminiu)</h4>
+                    
+                    <div class="card-produs p-4 flex justify-between items-center" data-nume="Limonadă cu Mentă la Doză" data-pret="15.00">
+                        <div>
+                            <h5 class="font-medium text-sm text-white">Limonadă cu Mentă</h5>
+                            <p class="text-[11px] text-gray-500">Fresh proaspăt turnat și sigilat mecanic</p>
+                        </div>
+                        <button onclick="adaugaProdus(this)" class="btn-add px-4 py-2">15.00 RON</button>
+                    </div>
+
+                    <div class="card-produs p-4 flex justify-between items-center" data-nume="Doza Proteică Metanoia" data-pret="18.00">
+                        <div>
+                            <h5 class="font-medium text-sm text-white">Doza Proteică „Metanoia”</h5>
+                            <p class="text-[11px] text-gray-500">Combustibil curat, izolat complet de aer</p>
+                        </div>
+                        <button onclick="adaugaProdus(this)" class="btn-add px-4 py-2">18.00 RON</button>
+                    </div>
+
+                    <div class="card-produs p-4 flex justify-between items-center" data-nume="Desert la Doză Premium" data-pret="22.00">
+                        <div>
+                            <h5 class="font-medium text-sm text-white">Desert la Doză</h5>
+                            <p class="text-[11px] text-gray-500">Prăjitură gourmet stratificată (Precomandă)</p>
+                        </div>
+                        <button onclick="adaugaProdus(this)" class="btn-add px-4 py-2">22.00 RON</button>
+                    </div>
+                </div>
+
+                <!-- Sisteme Cafea -->
+                <div class="space-y-4">
+                    <h4 class="font-cinzel text-xs tracking-widest text-[#c5a059] mb-2 uppercase">Sisteme Premium Cafea</h4>
+                    
+                    <div class="card-produs p-4 flex justify-between items-center" data-nume="Espresso Signature" data-pret="10.00">
+                        <div>
+                            <h5 class="font-medium text-sm text-white">Espresso „Signature”</h5>
+                            <p class="text-[11px] text-gray-500">Extracție standard Nespresso Professional</p>
+                        </div>
+                        <button onclick="adaugaProdus(this)" class="btn-add px-4 py-2">10.00 RON</button>
+                    </div>
+
+                    <div class="card-produs p-4 flex justify-between items-center" data-nume="Specialitatea Casei Milk" data-pret="14.00">
+                        <div>
+                            <h5 class="font-medium text-sm text-white">Specialitatea Casei</h5>
+                            <p class="text-[11px] text-gray-500">Rețetă cu cremă fină de lapte pe flux rapid</p>
+                        </div>
+                        <button onclick="adaugaProdus(this)" class="btn-add px-4 py-2">14.00 RON</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- STICKY FOOTER (BARĂ COMANDĂ GLOBALĂ) -->
+    <div class="fixed bottom-0 left-0 w-full bg-[#0a0a0a]/95 backdrop-blur-md border-t border-[#c5a059] p-5 flex justify-between items-center px-6 md:px-12 z-50 shadow-2xl">
+        <div>
+            <p class="text-[9px] uppercase tracking-[2px] text-gray-500">Total Acumulat Coș</p>
+            <p id="display-total" class="font-cinzel text-xl md:text-2xl text-[#c5a059] font-bold">0.00 RON</p>
+        </div>
+        <button onclick="deschideModal()" class="btn-add px-6 md:px-10 py-3 bg-[#c5a059] text-black font-black text-xs tracking-[2px] transition hover:bg-white hover:text-black">Finalizează Comanda</button>
+    </div>
+
+    <!-- MODAL DATE LIVRARE -->
+    <div id="modal" class="fixed inset-0 z-50 flex items-center justify-center p-6">
+        <div class="bg-[#050505] border border-[#c5a059] p-8 w-full max-w-md shadow-2xl">
+            <h2 class="font-cinzel text-lg text-[#c5a059] mb-2 tracking-wider">DATE LIVRARE OPERATIVE</h2>
+            <p class="text-xs text-gray-500 mb-6">Mâncarea pleacă direct de la Bucătăria Centrală Totești (DN 68).</p>
+            
+            <input type="text" id="client-name" placeholder="Numele tău complet" class="w-full bg-transparent border border-[#1a1a1a] p-3 mb-4 text-white text-sm focus:outline-none focus:border-[#c5a059] transition">
+            <input type="text" id="client-address" placeholder="Adresa de livrare în Hațeg / Totești" class="w-full bg-transparent border border-[#1a1a1a] p-3 mb-6 text-white text-sm focus:outline-none focus:border-[#c5a059] transition">
+            
+            <div class="grid grid-cols-2 gap-4">
+                <button onclick="inchideModal(false)" class="border border-gray-800 text-gray-400 text-xs uppercase tracking-widest py-3 hover:bg-gray-900 transition">Anulează</button>
+                <button onclick="inchideModal(true)" class="btn-add py-3 bg-[#c5a059] text-black font-bold">Trimite Comanda</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPT LOGICĂ MENIU ȘI COȘ GLOBAL -->
+    <script>
+        // Sursă unică de adevăr pentru meniul zilnic cu garnitură de piure integrată
+        const meniuSaptamanal = [
+            { zi: "LUNI", fel1: "Ciorbă de găină cu tăieței", calorii1: "150 kcal", p1: "12g", g1: "5g", fel2: "Tocăniță de porc cu piure artizanal", calorii2: "650 kcal", p2: "45g", g2: "25g", pret: 40.00 },
+            { zi: "MARȚI", fel1: "Ciorbă de văcuță", calorii1: "180 kcal", p1: "15g", g1: "6g", fel2: "Pulpă de pui la ceaun cu piure catifelat", calorii2: "580 kcal", p2: "48g", g2: "20g", pret: 40.00 },
+            { zi: "MIERCURI", fel1: "Supă cremă de legume", calorii1: "120 kcal", p1: "5g", g1: "3g", fel2: "Mușchiuleț la grătar cu piure fin cu unt", calorii2: "450 kcal", p2: "42g", g2: "10g", pret: 40.00 },
+            { zi: "JOI", fel1: "Ciorbă rădăuțeană", calorii1: "220 kcal", p1: "18g", g1: "9g", fel2: "Friptură tradițională în sos cu piure fin", calorii2: "620 kcal", p2: "35g", g2: "30g", pret: 40.00 },
+            { zi: "VINERI", fel1: "Ciorbă de burtă", calorii1: "250 kcal", p1: "20g", g1: "12g", fel2: "Pui cremos cu smântână și piure artizanal", calorii2: "550 kcal", p2: "40g", g2: "22g", pret: 40.00 }
+        ];
+
+        // Ransarea dinamică a elementelor din meniul săptămânal în stilul Metanoia Premium
+        const container = document.getElementById('container-zile');
+        meniuSaptamanal.forEach((m, index) => {
+            container.innerHTML += `
+                <div id="page-${index + 1}" class="page ${index === 0 ? 'active' : ''}">
+                    <div class="lux-card p-6 md:p-8">
+                        <div class="flex justify-between items-center mb-6 border-b border-[#1a1a1a] pb-4">
+                            <h3 class="text-2xl text-[#c5a059] font-cinzel tracking-wider font-bold">${m.zi}</h3>
+                            <span class="text-sm font-semibold text-gray-400">Pachet Prânz: <span class="text-white">${m.pret.toFixed(2)} RON</span></span>
+                        </div>
+                        
+                        <div class="space-y-6">
+                            <!-- Felul 1 -->
+                            <div class="bg-[#050505] p-4 border border-[#121212]">
+                                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
+                                    <div>
+                                        <h4 class="font-bold text-white text-sm md:text-base">${m.fel1}</h4>
+                                        <p class="text-[10px] uppercase text-gray-500 mt-0.5">Felul I • Gramaj: 400g</p>
+                                    </div>
+                                    <div class="text-[10px] uppercase text-[#c5a059] font-medium bg-[#101010] px-2 py-1 border border-[#1a1a1a] self-start mt-1 sm:mt-0">
+                                        ${m.calorii1} | Prot: ${m.p1} | Grăsimi: ${m.g1}
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Felul 2 (Integrat complet cu Piure) -->
+                            <div class="bg-[#050505] p-4 border border-[#121212]">
+                                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
+                                    <div>
+                                        <h4 class="font-bold text-white text-sm md:text-base">${m.fel2}</h4>
+                                        <p class="text-[10px] uppercase text-gray-500 mt-0.5">Felul II + Garnitură • Gramaj: 300g</p>
+                                    </div>
+                                    <div class="text-[10px] uppercase text-[#c5a059] font-medium bg-[#101010] px-2 py-1 border border-[#1a1a1a] self-start mt-1 sm:mt-0">
+                                        ${m.calorii2} | Prot: ${m.p2} | Grăsimi: ${m.g2}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button onclick="adaugaPachetSaptamanal('${m.zi}', ${m.pret})" class="w-full mt-8 text-center bg-transparent border border-[#c5a059] py-3.5 text-[#c5a059] hover:bg-[#c5a059] hover:text-black transition uppercase text-xs tracking-widest font-black">
+                            Adaugă Meniu ${m.zi} în Coș
+                        </button>
+                    </div>
+                </div>
+            `;
         });
-      });
 
-      // Control tab-uri zi
-      document.querySelectorAll(".day-tab").forEach(tab => {
-        tab.addEventListener("click", function() {
-          document.querySelectorAll(".day-tab").forEach(t => t.classList.remove("active"));
-          this.classList.add("active");
-          activeDay = this.getAttribute("data-day");
-          executeMenuRendering();
-        });
-      });
+        // Schimbare file zi meniu saptamanal
+        let pag = 1;
+        function schimbaZi(step) {
+            document.getElementById('page-' + pag).classList.remove('active');
+            pag += step;
+            if(pag > 5) pag = 1;
+            if(pag < 1) pag = 5;
+            document.getElementById('page-' + pag).classList.add('active');
+            
+            // Actualizare indicator text central
+            document.getElementById('indicator-zi').innerText = meniuSaptamanal[pag - 1].zi;
+        }
 
-      // Control filtre calorice
-      document.querySelectorAll(".kcal-btn").forEach(btn => {
-        btn.addEventListener("click", function() {
-          document.querySelectorAll(".kcal-btn").forEach(b => b.classList.remove("active"));
-          this.classList.add("active");
-          activeKcalTarget = this.getAttribute("data-kcal");
-          executeMenuRendering();
-        });
-      });
-    });
-  </script>
+        // State Coș global
+        let total = 0;
+        let cartItems = [];
+
+        // Adăugare din listă statică (Meniu Casete/Băuturi)
+        function adaugaProdus(btn) {
+            const card = btn.closest('[data-pret]');
+            const nume = card.getAttribute('data-nume');
+            const pret = parseFloat(card.getAttribute('data-pret'));
+            
+            executaAdaugare(nume, pret, btn);
+        }
+
+        // Adăugare din meniu săptămânal dinamic
+        function adaugaPachetSaptamanal(zi, pret) {
+            const nume = `Meniu Complet ${zi} (cu Piure)`;
+            // Găsim butonul generat dinamic pentru feedback vizual rapid
+            const btn = document.querySelector(`#page-${meniuSaptamanal.findIndex(m => m.zi === zi) + 1} button`);
+            executaAdaugare(nume, pret, btn);
+        }
+
+        // Funcția de procesare coș
+        function executaAdaugare(nume, pret, elementButon) {
+            total += pret;
+            cartItems.push(nume);
+            
+            document.getElementById('display-total').innerText = total.toFixed(2) + ' RON';
+            
+            // Feedback vizual pe butonul apăsat
+            if (elementButon) {
+                const originalText = elementButon.innerText;
+                elementButon.innerText = "Adăugat în Coș ✓";
+                elementButon.style.borderColor = "#fff";
+                if(!elementButon.classList.contains('bg-[#c5a059]')) {
+                    elementButon.style.color = "#fff";
+                }
+                setTimeout(() => {
+                    elementButon.innerText = originalText;
+                    elementButon.style.borderColor = "#c5a059";
+                    if(!elementButon.classList.contains('bg-[#c5a059]')) {
+                        elementButon.style.color = "#c5a059";
+                    }
+                }, 800);
+            }
+        }
+
+        // Gestionare Modale operative
+        function deschideModal() { 
+            if (total === 0) {
+                alert('Coșul operațional este gol. Adaugă un meniu complet, o caserolă sau o licoare la doză.');
+                return;
+            }
+            document.getElementById('modal').style.display = 'flex'; 
+        }
+        
+        function inchideModal(sendOrder) { 
+            if (sendOrder) {
+                const nume = document.getElementById('client-name').value;
+                const adresa = document.getElementById('client-address').value;
+                if (!nume || !adresa) {
+                    alert('Te rugăm să completezi numele și adresa pentru livrare.');
+                    return;
+                }
+                alert('Comandă transmisă securizat! Total: ' + total.toFixed(2) + ' RON.\nBucătăria Centrală Totești procesează și videază instant preparatele tale.');
+                
+                // Reset totalizare post-trimitere
+                total = 0;
+                cartItems = [];
+                document.getElementById('display-total').innerText = '0.00 RON';
+                document.getElementById('client-name').value = '';
+                document.getElementById('client-address').value = '';
+            }
+            document.getElementById('modal').style.display = 'none'; 
+        }
+    </script>
 </body>
 </html>
