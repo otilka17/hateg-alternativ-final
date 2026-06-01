@@ -1,10 +1,10 @@
 /**
  * METANOIA DIGITALĂ | HațegAlternativ • SOul meal, drinks & coffee
- * Creier Central Operativ (script.js) - Cu Integrare Matrice Bogdan
+ * Creier Central Operativ (script.js) - Versiune Comercială Curată
  */
 
-// 1. COMPONENTA LOGISTICĂ BOGDAN: MATRICEA OFICIALĂ DE CALORII PENTRU TRANSPARENȚĂ FOODTECH
-const bazaDateBogdan = {
+// 1. COMPONENTA LOGISTICĂ: MATRICEA OFICIALĂ DE CALORII PENTRU TRANSPARENȚĂ FOODTECH
+const matriceCaloriiProspezime = {
     legume: {
         sub30: ["Spanac", "Brocolli", "Conopida", "Salata verde", "Dovlecel", "Zuchinni", "Vinete", "Varza", "Sparanghel", "Andive", "Castraveti", "Ardei Verde/Rosu", "Ridichi", "Ruccola", "Ciuperci", "Rosie", "Telina", "Fenicul"],
         de30_50: ["Anghinare", "Ceapa", "Ceapa Rosie", "Fasole verde", "Bame", "Sfecla Rosie", "Hrean", "Morcov", "Varză de Bruxelles", "Lupini", "Praz", "Porumb", "Pastarnac", "Mazare"],
@@ -18,13 +18,6 @@ const bazaDateBogdan = {
         de170_210: ["Pulpe de pui file"],
         de210_plus: ["Aripi de pui cu piele", "Ceafa de porc", "Antricot de vita", "Ciolan de porc", "Pastrama de oaie", "Carne tocata porc", "Carne tocata vita/porc", "Carne tocata vita"]
     },
-    peste: {
-        sub100: ["Biban", "Caracatita", "Creveti", "Cod", "Pastrav", "Salau", "Ton in suc propriu", "Ton proaspat"],
-        de100_130: ["Biban de mare", "Crap"],
-        de130_160: ["Somn", "Macrou proaspat"],
-        de160_200: ["Anchois", "Macrou Afumat", "Somon Oceanic"],
-        de200_plus: ["Ton in Ulei", "Somon de crescatorie"]
-    },
     gustari: {
         sub100: ["Iaurt Grecesc 150g (2%)", "1 Mar", "1 para", "150 grame fructe de padure", "200 grame capsuni", "300 grame pepene verde", "200 grame mure", "150 grame afine", "1 portocala", "Kefir (150 ML)", "Cafea (cu lapte, fara zahar)"],
         de100_150: ["Perlute branza 200 grame", "1 banana medie", "Budinca Proteica 200 grame"],
@@ -32,42 +25,42 @@ const bazaDateBogdan = {
     }
 };
 
-// 2. SURSA UNICĂ DE ADEVĂR PENTRU MENIUL SĂPTĂMÂNAL (Aliniat la ingredientele din fișiere)
+// 2. SURSA UNICĂ DE ADEVĂR PENTRU MENIUL SĂPTĂMÂNAL
 const meniuSaptamanal = [
     { 
         zi: "LUNI", 
         fel1: "Ciorbă de găină cu tăieței de casă", calorii1: "150 kcal", p1: "12g", g1: "5g", 
         fel2: "Tocăniță de porc la ceaun cu piure artizanal catifelat", calorii2: "650 kcal", p2: "45g", g2: "25g", 
         pret: 40.00,
-        bogdanEngine: "Găină slabă (tier <110 kcal) + Cartofi piure (tier 50-80 kcal) + Ceapă și Morcov (tier 30-50 kcal)."
+        analizaMetrica: "Găină slabă (tier <110 kcal) + Cartofi piure (tier 50-80 kcal) + Ceapă și Morcov (tier 30-50 kcal)."
     },
     { 
         zi: "MARȚI", 
         fel1: "Ciorbă țărănească de văcuță", calorii1: "180 kcal", p1: "15g", g1: "6g", 
         fel2: "Pulpă de pui fragedă la ceaun cu piure catifelat cu unt", calorii2: "580 kcal", p2: "48g", g2: "20g", 
         pret: 40.00,
-        bogdanEngine: "Pulpa de pui file (tier 170-210 kcal) + Pulpă de vită (tier <110 kcal) + Roșii & Ardei (tier <30 kcal)."
+        analizaMetrica: "Pulpa de pui file (tier 170-210 kcal) + Pulpă de vită (tier <110 kcal) + Roșii & Ardei (tier <30 kcal)."
     },
     { 
         zi: "MIERCURI", 
         fel1: "Supă cremă din legume din grădină", calorii1: "120 kcal", p1: "5g", g1: "3g", 
         fel2: "Mușchiuleț de porc la grătar cu piure fin și sos redus", calorii2: "450 kcal", p2: "42g", g2: "10g", 
         pret: 40.00,
-        bogdanEngine: "Cotlet de porc (tier <110 kcal) + Brocolli, Dovlecel & Țelină (tier <30 kcal)."
+        analizaMetrica: "Cotlet de porc (tier <110 kcal) + Brocolli, Dovlecel & Țelină (tier <30 kcal)."
     },
     { 
         zi: "JOI", 
         fel1: "Ciorbă rădăuțeană dreaptă cu usturoi", calorii1: "220 kcal", p1: "18g", g1: "9g", 
         fel2: "Friptură tradițională la tavă în sos cu piure fin", calorii2: "620 kcal", p2: "35g", g2: "30g", 
         pret: 40.00,
-        bogdanEngine: "Piept de pui File (tier <110 kcal) + Usturoi calibrare (tier 80-150 kcal) + Ciuperci (tier <30 kcal)."
+        analizaMetrica: "Piept de pui File (tier <110 kcal) + Usturoi calibrare (tier 80-150 kcal) + Ciuperci (tier <30 kcal)."
     },
     { 
         zi: "VINERI", 
         fel1: "Ciorbă de burtă ca la mama acasă", calorii1: "250 kcal", p1: "20g", g1: "12g", 
         fel2: "Pui cremos cu ciuperci, smântână și piure artizanal", calorii2: "550 kcal", p2: "40g", g2: "22g", 
         pret: 40.00,
-        bogdanEngine: "Burta de vită (tier <110 kcal) + Ciuperci proaspete (tier <30 kcal) + Bază de Praz (tier 30-50 kcal)."
+        analizaMetrica: "Burta de vită (tier <110 kcal) + Ciuperci proaspete (tier <30 kcal) + Bază de Praz (tier 30-50 kcal)."
     }
 ];
 
@@ -134,7 +127,7 @@ function executaAdaugare(nume, pret, elementButon) {
     }
 }
 
-// 4. RANDAREA PREMIUM MULTI-PAGINĂ CU AFIȘAREA MATRICEI NUTRIȚIONALE BOGDAN
+// 4. RANDAREA ÎN INTERFAȚĂ PENTRU MENIUL SĂPTĂMÂNAL
 function generareMeniuDinamica(container) {
     container.innerHTML = '';
     
@@ -174,13 +167,13 @@ function generareMeniuDinamica(container) {
                             </div>
                         </div>
 
-                        <!-- MODULUL INTEGRAT BOGDAN ENGINE (TRASABILITATE COMPONENTE) -->
+                        <!-- MODULUL LOGISTIC REBRANDUIT (FĂRĂ NUANȚE INTERNE) -->
                         <div class="bg-[#0a0a0a] p-4 border border-[#c5a059]/20 rounded-none">
                             <div class="flex items-center gap-2 mb-1.5">
-                                <span class="text-xs">🤖</span>
-                                <h5 class="text-[10px] font-bold text-[#c5a059] uppercase tracking-widest">Algoritm Calibrare Bogdan</h5>
+                                <span class="text-xs">⚙️</span>
+                                <h5 class="text-[10px] font-bold text-[#c5a059] uppercase tracking-widest">Sistem Calibrare Metrică</h5>
                             </div>
-                            <p class="text-[11px] text-gray-400 font-light leading-relaxed">${m.bogdanEngine}</p>
+                            <p class="text-[11px] text-gray-400 font-light leading-relaxed">${m.analizaMetrica}</p>
                         </div>
                     </div>
                     
