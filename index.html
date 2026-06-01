@@ -1,961 +1,654 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DozaCafé — Cafea & Meniuri To-Go</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-:root {
-  --ink:        #120e09;
-  --espresso:  #1e1108;
-  --roast:     #3b2009;
-  --caramel:   #c07c2a;
-  --gold:      #e6aa4c;
-  --gold-pale: #f5d88a;
-  --cream:     #faf5ee;
-  --warm:      #f2ead8;
-  --mist:      #ede8df;
-  --sage:      #4a6741;
-  --red-berry: #a82c2c;
-  --text:      #1e1a14;
-  --mid:       #6b5e4a;
-  --light:     #a39882;
-}
-*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior: smooth; }
-body {
-  font-family: 'DM Sans', sans-serif;
-  background: var(--cream);
-  color: var(--text);
-  overflow-x: hidden;
-}
-/* ════ NAV ════ */
-nav {
-  position: fixed; top:0; width:100%; z-index:200;
-  background: rgba(18,14,9,0.96);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(230,170,76,0.15);
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 5%;
-  height: 64px;
-}
-.nav-logo {
-  font-family: 'DM Serif Display', serif;
-  font-size: 1.45rem; color: var(--gold);
-  display: flex; align-items: center; gap: 10px;
-  letter-spacing: .5px;
-}
-.nav-logo-dot {
-  width: 10px; height: 10px; border-radius: 50%;
-  background: var(--gold);
-  box-shadow: 0 0 10px var(--gold);
-}
-.nav-links { display: flex; gap: 28px; list-style: none; }
-.nav-links a {
-  color: rgba(255,255,255,.55); text-decoration: none;
-  font-size: .82rem; font-weight: 500; letter-spacing: 1.2px;
-  text-transform: uppercase; transition: color .2s;
-}
-.nav-links a:hover { color: var(--gold); }
-.nav-order {
-  background: var(--gold); color: var(--ink);
-  border: none; padding: 9px 22px; border-radius: 3px;
-  font-weight: 700; font-size: .78rem; letter-spacing: 1.5px;
-  text-transform: uppercase; cursor: pointer; transition: all .2s;
-}
-.nav-order:hover { background: var(--gold-pale); }
-/* ════ HERO ════ */
-.hero {
-  min-height: 100svh;
-  background: var(--espresso);
-  display: grid; grid-template-columns: 1fr 1fr;
-  align-items: center;
-  padding: 100px 5% 60px;
-  gap: 40px;
-  position: relative; overflow: hidden;
-}
-.hero::after {
-  content: '';
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse 50% 70% at 80% 50%, rgba(192,124,42,.12), transparent);
-  pointer-events: none;
-}
-.hero-text { position: relative; z-index: 2; }
-.hero-pill {
-  display: inline-flex; align-items: center; gap: 8px;
-  border: 1px solid rgba(230,170,76,.35);
-  color: var(--gold-pale); font-size: .72rem;
-  letter-spacing: 2px; text-transform: uppercase;
-  padding: 6px 16px; border-radius: 100px;
-  margin-bottom: 28px;
-  animation: up .7s ease both;
-}
-.hero-pill span { width:7px; height:7px; border-radius:50%; background:var(--gold); }
-.hero h1 {
-  font-family: 'DM Serif Display', serif;
-  font-size: clamp(2.6rem, 5.5vw, 5rem);
-  line-height: 1.05; color: #fff;
-  margin-bottom: 20px;
-  animation: up .7s .12s ease both;
-}
-.hero h1 em { font-style: italic; color: var(--gold); }
-.hero-sub {
-  font-size: 1rem; color: rgba(255,255,255,.5);
-  line-height: 1.75; max-width: 460px; margin-bottom: 40px;
-  animation: up .7s .24s ease both;
-}
-.hero-ctas {
-  display: flex; gap: 12px; flex-wrap: wrap;
-  animation: up .7s .36s ease both;
-}
-.btn-gold {
-  background: var(--gold); color: var(--ink);
-  border: none; padding: 14px 32px; border-radius: 3px;
-  font-weight: 700; font-size: .88rem; letter-spacing: 1px;
-  text-transform: uppercase; cursor: pointer; transition: all .2s;
-}
-.btn-gold:hover { background: var(--gold-pale); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(230,170,76,.3); }
-.btn-ghost {
-  background: transparent; color: rgba(255,255,255,.7);
-  border: 1px solid rgba(255,255,255,.2); padding: 14px 32px; border-radius: 3px;
-  font-weight: 500; font-size: .88rem; letter-spacing: 1px;
-  text-transform: uppercase; cursor: pointer; transition: all .2s;
-}
-.btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
-/* hero visual */
-.hero-visual {
-  position: relative; z-index: 2;
-  display: flex; flex-direction: column; gap: 16px;
-  animation: up .7s .2s ease both;
-}
-.hero-card {
-  background: rgba(255,255,255,.06);
-  border: 1px solid rgba(255,255,255,.1);
-  border-radius: 10px; padding: 16px 20px;
-  display: flex; align-items: center; gap: 16px;
-  backdrop-filter: blur(8px);
-  transition: transform .2s;
-}
-.hero-card:hover { transform: translateX(6px); }
-.hc-icon {
-  width: 52px; height: 52px; border-radius: 8px;
-  background: var(--caramel);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1.5rem; flex-shrink: 0;
-}
-.hc-name { font-weight: 600; color: #fff; font-size: .95rem; }
-.hc-sub { font-size: .78rem; color: rgba(255,255,255,.45); margin-top: 2px; }
-.hc-kcal {
-  margin-left: auto; background: rgba(230,170,76,.15);
-  color: var(--gold); font-size: .75rem; font-weight: 700;
-  padding: 4px 10px; border-radius: 100px; white-space: nowrap;
-}
-/* ════ TICKER ════ */
-.ticker {
-  background: var(--gold); padding: 12px 0;
-  overflow: hidden; white-space: nowrap;
-}
-.ticker-inner {
-  display: inline-flex; gap: 52px;
-  animation: slide 20s linear infinite;
-}
-.t-item { font-size: .72rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--ink); }
-.t-dot { color: rgba(0,0,0,.3); }
-/* ════ MENU TO-GO ════ */
-.menu-section {
-  background: var(--cream);
-  padding: 96px 5%;
-}
-.section-head { margin-bottom: 52px; }
-.s-tag { font-size: .7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--caramel); margin-bottom: 10px; }
-.s-title {
-  font-family: 'DM Serif Display', serif;
-  font-size: clamp(2rem, 4vw, 3.2rem);
-  line-height: 1.1; color: var(--text);
-}
-.s-title em { font-style: italic; color: var(--caramel); }
-.s-desc { color: var(--mid); max-width: 480px; line-height: 1.7; margin-top: 14px; font-size: .94rem; }
-/* week / day tabs */
-.week-row {
-  display: flex; gap: 6px; margin-bottom: 10px; overflow-x: auto; padding-bottom: 4px;
-}
-.day-row {
-  display: flex; gap: 6px; margin-bottom: 40px; overflow-x: auto; padding-bottom: 4px;
-}
-.week-tab, .day-tab {
-  padding: 9px 20px; border-radius: 3px; cursor: pointer;
-  font-size: .78rem; font-weight: 600; letter-spacing: .8px;
-  text-transform: uppercase; white-space: nowrap;
-  border: 1px solid rgba(0,0,0,.12); background: transparent;
-  color: var(--mid); transition: all .15s;
-}
-.week-tab.active { background: var(--ink); color: var(--gold); border-color: var(--ink); }
-.day-tab.active  { background: var(--gold); color: var(--ink); border-color: var(--gold); }
-.week-tab:hover:not(.active), .day-tab:hover:not(.active) { background: var(--mist); }
-/* kcal selector */
-.kcal-selector {
-  display: flex; align-items: center; gap: 10px;
-  margin-bottom: 36px; flex-wrap: wrap;
-}
-.kcal-label { font-size: .78rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--mid); }
-.kcal-pill-btn {
-  padding: 7px 18px; border-radius: 100px;
-  border: 1px solid rgba(0,0,0,.12); background: transparent;
-  font-size: .8rem; font-weight: 600; cursor: pointer; color: var(--mid);
-  transition: all .15s;
-}
-.kcal-pill-btn.active { background: var(--caramel); color: #fff; border-color: var(--caramel); }
-.kcal-pill-btn:hover:not(.active) { background: var(--mist); }
-/* menu grid */
-.menu-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-  gap: 20px;
-}
-.m-card {
-  background: #fff; border-radius: 10px;
-  overflow: hidden; box-shadow: 0 1px 14px rgba(0,0,0,.06);
-  display: flex; flex-direction: column;
-  transition: transform .22s, box-shadow .22s;
-}
-.m-card:hover { transform: translateY(-5px); box-shadow: 0 10px 32px rgba(0,0,0,.1); }
-.m-img {
-  height: 170px; display: flex; align-items: center; justify-content: center;
-  font-size: 4rem; position: relative; overflow: hidden;
-}
-.m-img-label {
-  position: absolute; bottom: 12px; left: 12px;
-  background: var(--ink); color: var(--gold);
-  font-size: .62rem; font-weight: 700; letter-spacing: 1.5px;
-  padding: 4px 10px; border-radius: 2px; text-transform: uppercase;
-}
-.m-body { padding: 18px 20px 22px; flex: 1; display: flex; flex-direction: column; }
-.m-type { font-size: .65rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--caramel); margin-bottom: 6px; }
-.m-name { font-family: 'DM Serif Display', serif; font-size: 1.15rem; margin-bottom: 7px; }
-.m-desc { font-size: .83rem; color: var(--mid); line-height: 1.58; flex: 1; margin-bottom: 16px; }
-/* kcal + weight bar */
-.m-macros { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-bottom: 14px; }
-.macro-chip {
-  display: flex; align-items: center; gap: 5px;
-  background: var(--cream); border-radius: 100px;
-  padding: 4px 10px; font-size: .73rem; font-weight: 600;
-}
-.macro-icon { font-size: .8rem; }
-.macro-kcal { color: var(--red-berry); }
-.macro-weight { color: var(--sage); }
-.macro-protein { color: var(--caramel); }
-/* doza pairing */
-.m-pairing {
-  display: flex; align-items: center; gap: 10px;
-  background: var(--espresso); border-radius: 6px;
-  padding: 10px 14px; margin-top: auto;
-}
-.pairing-icon { font-size: 1.2rem; }
-.pairing-text { flex: 1; }
-.pairing-name { font-size: .8rem; font-weight: 600; color: var(--gold); }
-.pairing-sub { font-size: .7rem; color: rgba(255,255,255,.4); margin-top: 1px; }
-.pairing-int {
-  display: flex; gap: 2px;
-}
-.int-dot { width: 6px; height: 6px; border-radius: 50%; }
-/* ════ DESERTURI ════ */
-.desserts-section {
-  background: var(--espresso);
-  padding: 96px 5%;
-  position: relative; overflow: hidden;
-}
-.desserts-section::before {
-  content: 'DULCE';
-  position: absolute; right: -2%; bottom: -2%;
-  font-family: 'DM Serif Display', serif;
-  font-size: 18vw; color: rgba(230,170,76,.04);
-  line-height: 1; pointer-events: none;
-}
-.desserts-section .s-title { color: #fff; }
-.desserts-section .s-tag { color: var(--gold-pale); }
-.desserts-section .s-desc { color: rgba(255,255,255,.45); }
-.desserts-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 20px; margin-top: 52px;
-}
-.d-card {
-  background: rgba(255,255,255,.05);
-  border: 1px solid rgba(255,255,255,.08);
-  border-radius: 10px; overflow: hidden;
-  transition: all .22s; cursor: pointer;
-}
-.d-card:hover {
-  background: rgba(255,255,255,.09);
-  border-color: rgba(230,170,76,.3);
-  transform: translateY(-4px);
-}
-.d-img {
-  height: 160px; display: flex; align-items: center; justify-content: center;
-  font-size: 3.8rem; position: relative;
-}
-.d-badge {
-  position: absolute; top: 12px; right: 12px;
-  font-size: .62rem; font-weight: 700; letter-spacing: 1.5px;
-  padding: 4px 10px; border-radius: 2px; text-transform: uppercase;
-}
-.d-badge-rec  { background: var(--gold); color: var(--ink); }
-.d-badge-new  { background: var(--red-berry); color: #fff; }
-.d-body { padding: 16px 18px 20px; }
-.d-dose-tag {
-  display: flex; align-items: center; gap: 7px;
-  margin-bottom: 10px;
-}
-.d-dose-tag span {
-  font-size: .68rem; font-weight: 700; letter-spacing: 1.5px;
-  text-transform: uppercase; color: var(--gold);
-}
-.d-dose-intensity { display: flex; gap: 3px; }
-.d-name {
-  font-family: 'DM Serif Display', serif;
-  font-size: 1.1rem; color: #fff; margin-bottom: 7px;
-}
-.d-desc { font-size: .82rem; color: rgba(255,255,255,.45); line-height: 1.55; margin-bottom: 14px; }
-.d-footer { display: flex; justify-content: space-between; align-items: center; }
-.d-macros { display: flex; gap: 8px; }
-.d-chip {
-  font-size: .72rem; font-weight: 600; padding: 3px 9px;
-  border-radius: 100px; background: rgba(255,255,255,.07);
-}
-.d-chip-kcal { color: var(--gold-pale); }
-.d-chip-gr   { color: rgba(255,255,255,.45); }
-.d-price { font-size: 1rem; font-weight: 700; color: var(--gold); }
-/* ════ HOW IT WORKS ════ */
-.how-section {
-  background: var(--warm);
-  padding: 96px 5%;
-}
-.how-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 32px; margin-top: 52px;
-  position: relative;
-}
-.how-grid::before {
-  content: '';
-  position: absolute; top: 44px; left: 5%; right: 5%; height: 1px;
-  background: linear-gradient(to right, transparent, var(--caramel), transparent);
-  pointer-events: none;
-}
-.how-step { text-align: center; }
-.how-icon {
-  width: 88px; height: 88px; border-radius: 10px;
-  background: var(--ink); color: var(--gold);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 2rem; margin: 0 auto 20px;
-  position: relative; z-index: 2;
-  transition: transform .2s;
-}
-.how-step:hover .how-icon { transform: scale(1.07) rotate(-3deg); }
-.how-n {
-  position: absolute; top: -8px; right: -8px;
-  background: var(--gold); color: var(--ink);
-  width: 22px; height: 22px; border-radius: 50%;
-  font-size: .65rem; font-weight: 800;
-  display: flex; align-items: center; justify-content: center;
-}
-.how-step h3 {
-  font-weight: 700; font-size: .82rem; letter-spacing: 2px;
-  text-transform: uppercase; color: var(--ink); margin-bottom: 8px;
-}
-.how-step p { font-size: .85rem; color: var(--mid); line-height: 1.65; max-width: 180px; margin: 0 auto; }
-/* ════ ABONAMENTE ════ */
-.plans-section {
-  background: var(--cream);
-  padding: 96px 5%;
-}
-.plans-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px; margin-top: 52px;
-}
-.p-card {
-  border-radius: 10px; padding: 34px 28px;
-  border: 1px solid rgba(0,0,0,.1);
-  background: #fff; position: relative;
-  transition: all .22s;
-}
-.p-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,.08); }
-.p-card.hot {
-  background: var(--ink); border-color: var(--ink);
-}
-.p-card.hot *:not(.p-feat li)::before { color: var(--gold) !important; }
-.p-badge {
-  position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
-  background: var(--gold); color: var(--ink);
-  font-size: .62rem; font-weight: 800; letter-spacing: 2px;
-  text-transform: uppercase; padding: 4px 16px; border-radius: 100px;
-  white-space: nowrap;
-}
-.p-tag { font-size: .68rem; letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 10px; }
-.p-card:not(.hot) .p-tag { color: var(--caramel); }
-.p-card.hot .p-tag { color: var(--gold-pale); }
-.p-name {
-  font-family: 'DM Serif Display', serif; font-size: 1.9rem;
-  margin-bottom: 8px;
-}
-.p-card:not(.hot) .p-name { color: var(--text); }
-.p-card.hot .p-name { color: #fff; }
-.p-sub { font-size: .84rem; line-height: 1.6; margin-bottom: 24px; }
-.p-card:not(.hot) .p-sub { color: var(--mid); }
-.p-card.hot .p-sub { color: rgba(255,255,255,.5); }
-.p-price { font-family: 'DM Serif Display', serif; font-size: 2.8rem; line-height: 1; margin-bottom: 4px; }
-.p-card:not(.hot) .p-price { color: var(--caramel); }
-.p-card.hot .p-price { color: var(--gold); }
-.p-period { font-size: .78rem; margin-bottom: 24px; }
-.p-card:not(.hot) .p-period { color: var(--light); }
-.p-card.hot .p-period { color: rgba(255,255,255,.35); }
-.p-feat { list-style: none; margin-bottom: 28px; }
-.p-feat li {
-  padding: 8px 0; border-bottom: 1px solid;
-  font-size: .84rem; display: flex; align-items: center; gap: 9px;
-}
-.p-card:not(.hot) .p-feat li { border-color: rgba(0,0,0,.07); color: var(--mid); }
-.p-card.hot .p-feat li { border-color: rgba(255,255,255,.08); color: rgba(255,255,255,.65); }
-.p-feat li::before { content: '✓'; font-weight: 700; }
-.p-card:not(.hot) .p-feat li::before { color: var(--caramel); }
-.p-card.hot .p-feat li::before { color: var(--gold); }
-.p-btn {
-  width: 100%; padding: 13px;
-  border-radius: 4px; font-weight: 700; font-size: .82rem;
-  letter-spacing: 1.5px; text-transform: uppercase;
-  cursor: pointer; border: none; transition: all .2s;
-}
-.p-btn-out { background: transparent; color: var(--caramel); border: 1px solid var(--caramel); }
-.p-btn-out:hover { background: var(--caramel); color: #fff; }
-.p-btn-fill { background: var(--gold); color: var(--ink); }
-.p-btn-fill:hover { background: var(--gold-pale); }
-/* ════ FOOTER ════ */
-footer {
-  background: var(--espresso);
-  padding: 60px 5% 28px;
-}
-.ft {
-  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px;
-  padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,.08);
-  margin-bottom: 28px;
-}
-.ft-brand { font-family: 'DM Serif Display', serif; font-size: 1.9rem; color: var(--gold); margin-bottom: 10px; }
-.ft-tag { font-size: .84rem; color: rgba(255,255,255,.4); max-width: 200px; line-height: 1.6; }
-.ft-col h4 { color: rgba(255,255,255,.7); font-size: .72rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 14px; }
-.ft-col ul { list-style: none; }
-.ft-col li { margin-bottom: 9px; }
-.ft-col a { color: rgba(255,255,255,.35); text-decoration: none; font-size: .84rem; transition: color .2s; }
-.ft-col a:hover { color: var(--gold); }
-.ft-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; font-size: .76rem; color: rgba(255,255,255,.25); }
-/* ════ FLOAT ════ */
-.fab-order {
-  position: fixed; bottom: 24px; right: 24px; z-index: 300;
-  background: var(--gold); color: var(--ink);
-  border: none; padding: 13px 24px; border-radius: 100px;
-  font-weight: 800; font-size: .78rem; letter-spacing: 1.5px;
-  text-transform: uppercase; cursor: pointer;
-  box-shadow: 0 6px 24px rgba(230,170,76,.4);
-  display: flex; align-items: center; gap: 8px;
-  transition: all .2s;
-}
-.fab-order:hover { background: var(--gold-pale); transform: translateY(-3px); box-shadow: 0 10px 32px rgba(230,170,76,.5); }
-/* ════ KEYFRAMES ════ */
-@keyframes up {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes slide {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-/* ════ RESPONSIVE ════ */
-@media (max-width: 768px) {
-  .hero { grid-template-columns: 1fr; padding-top: 90px; }
-  .hero-visual { display: none; }
-  .nav-links { display: none; }
-  .how-grid::before { display: none; }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SOul meal, drinks & coffee — Meniuri Smart & Cafea</title>
+  
+  <!-- Favicon Fallback -->
+  <link rel="icon" type="image/svg+xml" href="logo1.svg">
+  
+  <!-- Meta Tags SEO & Open Graph (Social Media) -->
+  <meta name="description" content="Meniuri calorice personalizate spill-proof și cafea de specialitate. Ridicare din punctul de colectare SOul meal sau livrare planificată.">
+  <meta property="og:title" content="SOul meal, drinks & coffee — Gătit inteligent, protejat complet">
+  <meta property="og:description" content="Sistem inovator de precomandă cu preparate sigilate în inox și pairing de cafea premium.">
+  <meta property="og:image" content="logo1.svg">
+  <meta property="og:type" content="website">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --ink:        #120e09;
+      --espresso:  #1e1108;
+      --roast:     #3b2009;
+      --caramel:   #c07c2a;
+      --gold:      #e6aa4c;
+      --gold-pale: #f5d88a;
+      --cream:     #faf5ee;
+      --warm:      #f2ead8;
+      --mist:      #ede8df;
+      --sage:      #4a6741;
+      --red-berry: #a82c2c;
+      --text:      #1e1a14;
+      --mid:       #6b5e4a;
+      --light:     #a39882;
+    }
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+    /* ════ NAV ════ */
+    nav {
+      position: fixed; top:0; width:100%; z-index:200;
+      background: rgba(18,14,9,0.96);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(230,170,76,0.15);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%;
+      height: 70px;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 12px;
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.35rem; color: #fff;
+      text-decoration: none;
+    }
+    .nav-logo img {
+      width: 32px; height: 32px;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,.55); text-decoration: none;
+      font-size: .82rem; font-weight: 500; letter-spacing: 1.2px;
+      text-transform: uppercase; transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-order {
+      background: var(--gold); color: var(--ink);
+      border: none; padding: 9px 22px; border-radius: 3px;
+      font-weight: 700; font-size: .78rem; letter-spacing: 1.5px;
+      text-transform: uppercase; cursor: pointer; transition: all .2s;
+    }
+    .nav-order:hover { background: var(--gold-pale); }
+
+    /* ════ HERO ════ */
+    .hero {
+      min-height: 100svh;
+      background: var(--espresso);
+      display: grid; grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 110px 5% 60px;
+      gap: 40px;
+      position: relative; overflow: hidden;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 50% 70% at 80% 50%, rgba(192,124,42,.12), transparent);
+      pointer-events: none;
+    }
+    .hero-text { position: relative; z-index: 2; }
+    .hero-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      border: 1px solid rgba(230,170,76,.35);
+      color: var(--gold-pale); font-size: .72rem;
+      letter-spacing: 2px; text-transform: uppercase;
+      padding: 6px 16px; border-radius: 100px;
+      margin-bottom: 28px;
+    }
+    .hero-pill span { width:7px; height:7px; border-radius:50%; background:var(--gold); }
+    .hero h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.4rem, 5vw, 4.5rem);
+      line-height: 1.1; color: #fff;
+      margin-bottom: 20px;
+    }
+    .hero h1 em { font-style: italic; color: var(--gold); }
+    .hero-sub {
+      font-size: 1rem; color: rgba(255,255,255,.5);
+      line-height: 1.75; max-width: 480px; margin-bottom: 40px;
+    }
+    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn-gold {
+      background: var(--gold); color: var(--ink);
+      border: none; padding: 14px 32px; border-radius: 3px;
+      font-weight: 700; font-size: .88rem; letter-spacing: 1px;
+      text-transform: uppercase; cursor: pointer; transition: all .2s;
+    }
+    .btn-gold:hover { background: var(--gold-pale); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(230,170,76,.3); }
+    .btn-ghost {
+      background: transparent; color: rgba(255,255,255,.7);
+      border: 1px solid rgba(255,255,255,.2); padding: 14px 32px; border-radius: 3px;
+      font-weight: 500; font-size: .88rem; letter-spacing: 1px;
+      text-transform: uppercase; cursor: pointer; transition: all .2s;
+    }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+    .hero-visual { position: relative; z-index: 2; display: flex; flex-direction: column; gap: 16px; }
+    .hero-card {
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
+      border-radius: 10px; padding: 16px 20px; display: flex; align-items: center; gap: 16px;
+      backdrop-filter: blur(8px); transition: transform .2s;
+    }
+    .hero-card:hover { transform: translateX(6px); }
+    .hc-icon { width: 52px; height: 52px; border-radius: 8px; background: var(--caramel); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0; }
+    .hc-name { font-weight: 600; color: #fff; font-size: .95rem; }
+    .hc-sub { font-size: .78rem; color: rgba(255,255,255,.45); margin-top: 2px; }
+    .hc-kcal { margin-left: auto; background: rgba(230,170,76,.15); color: var(--gold); font-size: .75rem; font-weight: 700; padding: 4px 10px; border-radius: 100px; white-space: nowrap; }
+
+    /* ════ TICKER ════ */
+    .ticker { background: var(--gold); padding: 12px 0; overflow: hidden; white-space: nowrap; }
+    .ticker-inner { display: inline-flex; gap: 52px; animation: slide 25s linear infinite; }
+    .t-item { font-size: .72rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--ink); }
+    .t-dot { color: rgba(0,0,0,.3); }
+
+    /* ════ MENU TO-GO ════ */
+    .menu-section { background: var(--cream); padding: 96px 5%; }
+    .section-head { margin-bottom: 52px; }
+    .s-tag { font-size: .7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--caramel); margin-bottom: 10px; }
+    .s-title { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.1; color: var(--text); }
+    .s-title em { font-style: italic; color: var(--caramel); }
+    .s-desc { color: var(--mid); max-width: 480px; line-height: 1.7; margin-top: 14px; font-size: .94rem; }
+
+    .week-row { display: flex; gap: 6px; margin-bottom: 10px; overflow-x: auto; padding-bottom: 4px; }
+    .day-row { display: flex; gap: 6px; margin-bottom: 40px; overflow-x: auto; padding-bottom: 4px; }
+    .week-tab, .day-tab {
+      padding: 9px 20px; border-radius: 3px; cursor: pointer; font-size: .78rem; font-weight: 600; letter-spacing: .8px;
+      text-transform: uppercase; white-space: nowrap; border: 1px solid rgba(0,0,0,.12); background: transparent; color: var(--mid); transition: all .15s;
+    }
+    .week-tab.active { background: var(--ink); color: var(--gold); border-color: var(--ink); }
+    .day-tab.active  { background: var(--gold); color: var(--ink); border-color: var(--gold); }
+    .week-tab:hover:not(.active), .day-tab:hover:not(.active) { background: var(--mist); }
+
+    .kcal-selector { display: flex; align-items: center; gap: 10px; margin-bottom: 36px; flex-wrap: wrap; }
+    .kcal-label { font-size: .78rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--mid); }
+    .kcal-pill-btn {
+      padding: 7px 18px; border-radius: 100px; border: 1px solid rgba(0,0,0,.12); background: transparent;
+      font-size: .8rem; font-weight: 600; cursor: pointer; color: var(--mid); transition: all .15s;
+    }
+    .kcal-pill-btn.active { background: var(--caramel); color: #fff; border-color: var(--caramel); }
+    .kcal-pill-btn:hover:not(.active) { background: var(--mist); }
+
+    .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 20px; min-height: 400px; }
+    .m-card { background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 1px 14px rgba(0,0,0,.06); display: flex; flex-direction: column; transition: transform .22s, box-shadow .22s; }
+    .m-card:hover { transform: translateY(-5px); box-shadow: 0 10px 32px rgba(0,0,0,.1); }
+    .m-img { height: 170px; display: flex; align-items: center; justify-content: center; font-size: 4rem; position: relative; overflow: hidden; }
+    .m-img-label { position: absolute; bottom: 12px; left: 12px; background: var(--ink); color: var(--gold); font-size: .62rem; font-weight: 700; letter-spacing: 1.5px; padding: 4px 10px; border-radius: 2px; text-transform: uppercase; }
+    .m-body { padding: 18px 20px 22px; flex: 1; display: flex; flex-direction: column; }
+    .m-type { font-size: .65rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--caramel); margin-bottom: 6px; }
+    .m-name { font-family: 'DM Serif Display', serif; font-size: 1.15rem; margin-bottom: 7px; }
+    .m-desc { font-size: .83rem; color: var(--mid); line-height: 1.58; flex: 1; margin-bottom: 16px; }
+    .m-macros { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-bottom: 14px; }
+    .macro-chip { display: flex; align-items: center; gap: 5px; background: var(--cream); border-radius: 100px; padding: 4px 10px; font-size: .73rem; font-weight: 600; }
+    .macro-kcal { color: var(--red-berry); }
+    .macro-weight { color: var(--text); }
+    .macro-protein { color: var(--caramel); }
+    .m-pairing { display: flex; align-items: center; gap: 10px; background: var(--espresso); border-radius: 6px; padding: 10px 14px; margin-top: auto; }
+    .pairing-name { font-size: .8rem; font-weight: 600; color: var(--gold); }
+    .pairing-sub { font-size: .7rem; color: rgba(255,255,255,.4); margin-top: 1px; }
+
+    /* ════ DESERTURI ════ */
+    .desserts-section { background: var(--espresso); padding: 96px 5%; position: relative; overflow: hidden; }
+    .desserts-section::before { content: 'SOUL'; position: absolute; right: -2%; bottom: -2%; font-family: 'DM Serif Display', serif; font-size: 18vw; color: rgba(230,170,76,.03); line-height: 1; pointer-events: none; }
+    .desserts-section .s-title { color: #fff; }
+    .desserts-section .s-tag { color: var(--gold-pale); }
+    .desserts-section .s-desc { color: rgba(255,255,255,.45); }
+    .desserts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; margin-top: 52px; }
+    .d-card { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08); border-radius: 10px; overflow: hidden; transition: all .22s; }
+    .d-card:hover { background: rgba(255,255,255,.09); border-color: rgba(230,170,76,.3); transform: translateY(-4px); }
+    .d-img { height: 160px; display: flex; align-items: center; justify-content: center; font-size: 3.8rem; position: relative; }
+    .d-badge { position: absolute; top: 12px; right: 12px; font-size: .62rem; font-weight: 700; letter-spacing: 1.5px; padding: 4px 10px; border-radius: 2px; text-transform: uppercase; }
+    .d-badge-rec  { background: var(--gold); color: var(--ink); }
+    .d-body { padding: 16px 18px 20px; }
+    .d-dose-tag span { font-size: .68rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); }
+    .d-name { font-family: 'DM Serif Display', serif; font-size: 1.1rem; color: #fff; margin-bottom: 7px; }
+    .d-desc { font-size: .82rem; color: rgba(255,255,255,.45); line-height: 1.55; margin-bottom: 14px; }
+    .d-footer { display: flex; justify-content: space-between; align-items: center; }
+    .d-chip { font-size: .72rem; font-weight: 600; padding: 3px 9px; border-radius: 100px; background: rgba(255,255,255,.07); color: var(--gold-pale); }
+    .d-price { font-size: 1rem; font-weight: 700; color: var(--gold); }
+
+    /* ════ CUM FUNCTIONEAZA ════ */
+    .how-section { background: var(--warm); padding: 96px 5%; }
+    .how-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 32px; margin-top: 52px; position: relative; }
+    .how-grid::before { content: ''; position: absolute; top: 44px; left: 5%; right: 5%; height: 1px; background: linear-gradient(to right, transparent, var(--caramel), transparent); pointer-events: none; }
+    .how-step { text-align: center; }
+    .how-icon { width: 88px; height: 88px; border-radius: 10px; background: var(--ink); color: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 20px; position: relative; z-index: 2; transition: transform .2s; }
+    .how-step:hover .how-icon { transform: scale(1.07) rotate(-3deg); }
+    .how-n { position: absolute; top: -8px; right: -8px; background: var(--gold); color: var(--ink); width: 22px; height: 22px; border-radius: 50%; font-size: .65rem; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+    .how-step h3 { font-weight: 700; font-size: .85rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink); margin-bottom: 8px; }
+    .how-step p { font-size: .85rem; color: var(--mid); line-height: 1.65; max-width: 220px; margin: 0 auto; }
+
+    /* ════ ABONAMENTE ════ */
+    .plans-section { background: var(--cream); padding: 96px 5%; }
+    .plans-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 52px; }
+    .p-card { border-radius: 10px; padding: 34px 28px; border: 1px solid rgba(0,0,0,.1); background: #fff; position: relative; transition: all .22s; }
+    .p-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,.08); }
+    .p-card.hot { background: var(--ink); border-color: var(--ink); }
+    .p-card.hot *:not(.p-feat li)::before { color: var(--gold) !important; }
+    .p-badge { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: var(--gold); color: var(--ink); font-size: .62rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; padding: 4px 16px; border-radius: 100px; white-space: nowrap; }
+    .p-tag { font-size: .68rem; letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 10px; }
+    .p-card:not(.hot) .p-tag { color: var(--caramel); }
+    .p-card.hot .p-tag { color: var(--gold-pale); }
+    .p-name { font-family: 'DM Serif Display', serif; font-size: 1.9rem; margin-bottom: 8px; }
+    .p-card:not(.hot) .p-name { color: var(--text); }
+    .p-card.hot .p-name { color: #fff; }
+    .p-sub { font-size: .84rem; line-height: 1.6; margin-bottom: 24px; }
+    .p-card:not(.hot) .p-sub { color: var(--mid); }
+    .p-card.hot .p-sub { color: rgba(255,255,255,.5); }
+    .p-price { font-family: 'DM Serif Display', serif; font-size: 2.8rem; line-height: 1; margin-bottom: 4px; }
+    .p-card:not(.hot) .p-price { color: var(--caramel); }
+    .p-card.hot .p-price { color: var(--gold); }
+    .p-period { font-size: .78rem; margin-bottom: 24px; }
+    .p-card:not(.hot) .p-period { color: var(--light); }
+    .p-card.hot .p-period { color: rgba(255,255,255,.35); }
+    .p-feat { list-style: none; margin-bottom: 28px; }
+    .p-feat li { padding: 8px 0; border-bottom: 1px solid; font-size: .84rem; display: flex; align-items: center; gap: 9px; }
+    .p-card:not(.hot) .p-feat li { border-color: rgba(0,0,0,.07); color: var(--mid); }
+    .p-card.hot .p-feat li { border-color: rgba(255,255,255,.08); color: rgba(255,255,255,.65); }
+    .p-feat li::before { content: '✓'; font-weight: 700; }
+    .p-card:not(.hot) .p-feat li::before { color: var(--caramel); }
+    .p-card.hot .p-feat li::before { color: var(--gold); }
+    .p-btn { width: 100%; padding: 13px; border-radius: 4px; font-weight: 700; font-size: .82rem; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; border: none; transition: all .2s; }
+    .p-btn-out { background: transparent; color: var(--caramel); border: 1px solid var(--caramel); }
+    .p-btn-out:hover { background: var(--caramel); color: #fff; }
+    .p-btn-fill { background: var(--gold); color: var(--ink); }
+    .p-btn-fill:hover { background: var(--gold-pale); }
+
+    /* ════ FOOTER ════ */
+    footer { background: var(--espresso); padding: 60px 5% 28px; color: rgba(255,255,255,.6); }
+    .ft { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,.08); margin-bottom: 28px; }
+    .ft-brand { font-family: 'DM Serif Display', serif; font-size: 1.8rem; color: var(--gold); margin-bottom: 10px; }
+    .ft-tag { font-size: .84rem; color: rgba(255,255,255,.4); max-width: 240px; line-height: 1.6; }
+    .ft-col h4 { color: rgba(255,255,255,.85); font-size: .72rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 14px; }
+    .ft-col ul { list-style: none; }
+    .ft-col li { margin-bottom: 9px; }
+    .ft-col a { color: rgba(255,255,255,.4); text-decoration: none; font-size: .84rem; transition: color .2s; }
+    .ft-col a:hover { color: var(--gold); }
+    .ft-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; font-size: .76rem; color: rgba(255,255,255,.25); }
+
+    /* ════ FLOAT BUTTONS ════ */
+    .fab-order {
+      position: fixed; bottom: 24px; right: 24px; z-index: 300;
+      background: var(--gold); color: var(--ink); border: none; padding: 13px 24px; border-radius: 100px;
+      font-weight: 800; font-size: .78rem; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer;
+      box-shadow: 0 6px 24px rgba(230,170,76,.4); display: flex; align-items: center; gap: 8px; transition: all .2s;
+    }
+    .fab-order:hover { background: var(--gold-pale); transform: translateY(-3px); }
+
+    .fab-whatsapp {
+      position: fixed; bottom: 24px; left: 24px; z-index: 300;
+      background: #25D366; color: #fff; text-decoration: none; padding: 12px 20px; border-radius: 100px;
+      font-weight: 700; font-size: .78rem; letter-spacing: 1px; display: flex; align-items: center; gap: 8px;
+      box-shadow: 0 6px 20px rgba(37,211,102,.3); transition: all .2s;
+    }
+    .fab-whatsapp:hover { transform: translateY(-3px); background: #20ba5a; }
+
+    @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; padding-top: 100px; text-align: center; }
+      .hero-sub { margin: 0 auto 40px; }
+      .hero-ctas { justify-content: center; }
+      .hero-visual, .nav-links { display: none; }
+      .how-grid::before { display: none; }
+    }
+  </style>
 </head>
 <body>
-<!-- NAV -->
-<nav>
-  <div class="nav-logo">
-    <div class="nav-logo-dot"></div>
-    DozaCafé
-  </div>
-  <ul class="nav-links">
-    <li><a href="#menu">Meniu To-Go</a></li>
-    <li><a href="#deserturi">Deserturi</a></li>
-    <li><a href="#how">Cum funcționează</a></li>
-    <li><a href="#abonamente">Abonamente</a></li>
-  </ul>
-  <button class="nav-order">Comandă Acum →</button>
-</nav>
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-text">
-    <div class="hero-pill"><span></span> Cafea & Meniuri To-Go · București</div>
-    <h1>Gătit cu grijă.<br><em>Livrat</em> cu precizie.</h1>
-    <p class="hero-sub">Meniuri calorice personalizate și deserturi paired cu doza perfectă de Nespresso — livrate zilnic, gata de consum, direct la birou sau acasă.</p>
-    <div class="hero-ctas">
-      <button class="btn-gold">Vezi Meniul →</button>
-      <button class="btn-ghost">Cum funcționează</button>
-    </div>
-  </div>
-  <div class="hero-visual">
-    <div class="hero-card">
-      <div class="hc-icon">🥗</div>
-      <div>
-        <div class="hc-name">Bowl Mediteranean</div>
-        <div class="hc-sub">Prânz · 380 gr · paired Ristretto</div>
-      </div>
-      <div class="hc-kcal">520 kcal</div>
-    </div>
-    <div class="hero-card">
-      <div class="hc-icon" style="background:#3b2009">🍰</div>
-      <div>
-        <div class="hc-name">Tiramisu Espresso</div>
-        <div class="hc-sub">Desert · 150 gr · paired Kazaar</div>
-      </div>
-      <div class="hc-kcal">310 kcal</div>
-    </div>
-    <div class="hero-card">
-      <div class="hc-icon" style="background:#2d4a2d">🥩</div>
-      <div>
-        <div class="hc-name">Somon cu Quinoa</div>
-        <div class="hc-sub">Cină · 420 gr · paired Livanto</div>
-      </div>
-      <div class="hc-kcal">640 kcal</div>
-    </div>
-    <div class="hero-card" style="border-color:rgba(230,170,76,.2)">
-      <div class="hc-icon" style="background:#1a3a5c">☕</div>
-      <div>
-        <div class="hc-name">OptimBox 1500 kcal</div>
-        <div class="hc-sub">3 mese + 2 gustări + 2 doze/zi</div>
-      </div>
-      <div class="hc-kcal" style="background:rgba(230,170,76,.25)">Bestseller</div>
-    </div>
-  </div>
-</section>
-<!-- TICKER -->
-<div class="ticker">
-  <div class="ticker-inner">
-    <span class="t-item">MENIU TO-GO</span><span class="t-dot">✦</span>
-    <span class="t-item">CALORII AFIȘATE</span><span class="t-dot">✦</span>
-    <span class="t-item">DESERTURI CU DOZE</span><span class="t-dot">✦</span>
-    <span class="t-item">LIVRARE ZILNICĂ</span><span class="t-dot">✦</span>
-    <span class="t-item">NESPRESSO ORIGINAL</span><span class="t-dot">✦</span>
-    <span class="t-item">BUCUREȘTI & ILFOV</span><span class="t-dot">✦</span>
-    <span class="t-item">MENIU TO-GO</span><span class="t-dot">✦</span>
-    <span class="t-item">CALORII AFIȘATE</span><span class="t-dot">✦</span>
-    <span class="t-item">DESERTURI CU DOZE</span><span class="t-dot">✦</span>
-    <span class="t-item">LIVRARE ZILNICĂ</span><span class="t-dot">✦</span>
-    <span class="t-item">NESPRESSO ORIGINAL</span><span class="t-dot">✦</span>
-    <span class="t-item">BUCUREȘTI & ILFOV</span><span class="t-dot">✦</span>
-  </div>
-</div>
-<!-- MENIU TO-GO -->
-<section class="menu-section" id="menu">
-  <div class="section-head">
-    <div class="s-tag">🍱 Meniu săptămânal</div>
-    <h2 class="s-title">To-Go, dar<br><em>ca acasă</em></h2>
-    <p class="s-desc">Fiecare masă vine gata preambalată, cu calorii afișate clar și o doză Nespresso recomandată pentru pairing perfect.</p>
-  </div>
-  <div class="week-row">
-    <button class="week-tab active">25–31 MAI</button>
-    <button class="week-tab">01–07 IUN</button>
-    <button class="week-tab">08–14 IUN</button>
-    <button class="week-tab">15–21 IUN</button>
-  </div>
-  <div class="day-row">
-    <button class="day-tab active">Luni</button>
-    <button class="day-tab">Marți</button>
-    <button class="day-tab">Miercuri</button>
-    <button class="day-tab">Joi</button>
-    <button class="day-tab">Vineri</button>
-  </div>
-  <div class="kcal-selector">
-    <span class="kcal-label">Plan caloric:</span>
-    <button class="kcal-pill-btn">1000 kcal</button>
-    <button class="kcal-pill-btn active">1500 kcal</button>
-    <button class="kcal-pill-btn">2000 kcal</button>
-    <button class="kcal-pill-btn">2500 kcal</button>
-  </div>
-  <div class="menu-grid">
-    <!-- MIC DEJUN -->
-    <div class="m-card">
-      <div class="m-img" style="background:linear-gradient(135deg,#3b1a00,#7a3800)">
-        🥣
-        <div class="m-img-label">Mic Dejun</div>
-      </div>
-      <div class="m-body">
-        <div class="m-type">☀️ Mic Dejun · 08:00</div>
-        <div class="m-name">Overnight Oats cu Fructe</div>
-        <p class="m-desc">Fulgi de ovăz cu lapte de cocos, fructe de pădure deshidratate, semințe de dovleac și miere de salcâm.</p>
-        <div class="m-macros">
-          <div class="macro-chip macro-kcal"><span class="macro-icon">🔥</span> 380 kcal</div>
-          <div class="macro-chip macro-weight"><span class="macro-icon">⚖️</span> 250 gr</div>
-          <div class="macro-chip macro-protein"><span class="macro-icon">💪</span> 12g prot</div>
-        </div>
-        <div class="m-pairing">
-          <div class="pairing-icon">☕</div>
-          <div class="pairing-text">
-            <div class="pairing-name">Volluto Smooth · intensitate 4</div>
-            <div class="pairing-sub">Aromă blândă, perfect cu fructele de pădure</div>
-          </div>
-          <div class="pairing-int">
-            <div class="int-dot" style="background:var(--gold)"></div>
-            <div class="int-dot" style="background:var(--gold)"></div>
-            <div class="int-dot" style="background:var(--gold)"></div>
-            <div class="int-dot" style="background:rgba(255,255,255,.2)"></div>
-            <div class="int-dot" style="background:rgba(255,255,255,.2)"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- GUSTARE 1 -->
-    <div class="m-card">
-      <div class="m-img" style="background:linear-gradient(135deg,#1a300a,#2d5a14)">
-        🥜
-        <div class="m-img-label">Gustare #1</div>
-      </div>
-      <div class="m-body">
-        <div class="m-type">🌿 Gustare · 10:30</div>
-        <div class="m-name">Budincă Tapioca & Migdale</div>
-        <p class="m-desc">Budincă de tapioca cu merișoare, fulgi de migdale prăjite și vanilie bourbon. Fără zahăr adăugat.</p>
-        <div class="m-macros">
-          <div class="macro-chip macro-kcal"><span class="macro-icon">🔥</span> 210 kcal</div>
-          <div class="macro-chip macro-weight"><span class="macro-icon">⚖️</span> 215 gr</div>
-          <div class="macro-chip macro-protein"><span class="macro-icon">💪</span> 6g prot</div>
-        </div>
-        <div class="m-pairing">
-          <div class="pairing-icon">☕</div>
-          <div class="pairing-text">
-            <div class="pairing-name">Livanto Mellow · intensitate 6</div>
-            <div class="pairing-sub">Note caramel, echilibrat cu vanilia</div>
-          </div>
-          <div class="pairing-int">
-            <div class="int-dot" style="background:var(--gold)"></div>
-            <div class="int-dot" style="background:var(--gold)"></div>
-            <div class="int-dot" style="background:var(--gold)"></div>
-            <div class="int-dot" style="background:var(--gold)"></div>
-            <div class="int-dot" style="background:rgba(255,255,255,.2)"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- PRANZ -->
-    <div class="m-card">
-      <div class="m-img" style="background:linear-gradient(135deg,#0d2015,#1a4025)">
-        🥗
-        <div class="m-img-label">Prânz</div>
-      </div>
-      <div class="m-body">
-        <div class="m-type">🍽️ Prânz · 13:00</div>
-        <div class="m-name">Plăcintă Carne & Salată</div>
-        <p class="m-desc">Plăcintă cu carne tocată, brânzeturi maturate, salată verde cu roșii cherry și dressing de lămâie.</p>
-        <div class="m-macros">
-          <div class="macro-chip macro-kcal"><span class="macro-icon">🔥</span> 540 kcal</div>
-          <div class="macro-chip macro-weight"><span class="macro-icon">⚖️</span> 380 gr</div>
-          <div class="macro-chip macro-protein"><span class="macro-icon">💪</span> 28g prot</div>
-        </div>
-        <div class="m-pairing">
-          <div class="pairing-icon">☕</div>
-          <div class="pairing-text">
-            <div class="pairing-name">Ristretto Intenso · intensitate 10</div>
-            <div class="pairing-sub">Corp puternic, taie grăsimea din carne</div>
-          </div>
-          <div class="pairing-int">
-            <div class="int-dot" style="background:var(--gold)"></div>
-            <div class="int-dot" style="background:var(--gold)"></div>
-            <div class="int-dot" style="background:var(--gold)"></div>
-            <div class="int-dot" style="background:var(--gold)"></div>
-            <div class="int-dot" style="background:var(--gold)"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- GUSTARE 2 -->
-    <div class="m-card">
-      <div class="m-img" style="background:linear-gradient(135deg,#1a0a00,#4a1a00)">
-        🍎
-        <div class="m-img-label">Gustare #2</div>
-      </div>
-      <div class="m-body">
-        <div class="m-type">🍏 Gustare · 16:00</div>
-        <div class="m-name">Labneh cu Rodie & Nuci</div>
-        <p class="m-desc">Cremă de iaurt strecurata cu semințe de rodie, nuci caramelizate, ulei de măsline și cimbru proaspăt.</p>
-        <div class="m-macros">
-          <div class="macro-chip macro-kcal"><span class="macro-icon">🔥</span> 190 kcal</div>
-          <div class="macro-chip macro-weight"><span class="macro-icon">⚖️</span> 180 gr</div>
-          <div class="macro-chip macro-protein"><span class="macro-icon">💪</span> 9g prot</div>
-        </div>
-        <div class="m-pairing">
-          <div class="pairing-icon">☕</div>
-          <div class="pairing-text">
-            <div class="pairing-name">Capriccio Lungo · intensitate 5</div>
-            <div class="pairing-sub">Aciditate medie, completează rodia</div>
-          </div>
-          <div class="pairing-int">
-            <div class="int-dot" style="background:var(--gold)"></div>
-            <div class="int-dot" style="background:var(--gold)"></div>
-            <div class="int-dot" style="background:var(--gold)"></div>
-            <div class="int-dot" style="background:rgba(255,255,255,.2)"></div>
-            <div class="int-dot" style="background:rgba(255,255,255,.2)"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- CINA -->
-    <div class="m-card">
-      <div class="m-img" style="background:linear-gradient(135deg,#0a1020,#1a2540)">
-        🐟
-        <div class="m-img-label">Cină</div>
-      </div>
-      <div class="m-body">
-        <div class="m-type">🌙 Cină · 19:00</div>
-        <div class="m-name">Somon Teriyaki & Quinoa</div>
-        <p class="m-desc">File de somon glazurat cu sos teriyaki artizanal, quinoa tricolor, edamame și semințe de susan negru.</p>
-        <div class="m-macros">
-          <div class="macro-chip macro-kcal"><span class="macro-icon">🔥</span> 580 kcal</div>
-          <div class="macro-chip macro-weight"><span class="macro-icon">⚖️</span> 420 gr</div>
-          <div class="macro-chip macro-protein"><span class="macro-icon">💪</span> 38g prot</div>
-        </div>
-        <div class="m-pairing">
-          <div class="pairing-icon">☕</div>
-          <div class="pairing-text">
-            <div class="pairing-name">Indriya Lungo · intensitate 10</div>
-            <div class="pairing-sub">Note condimentate, amplifică sosul teriyaki</div>
-          </div>
-          <div class="pairing-int">
-            <div class="int-dot" style="background:var(--gold)"></div>
-            <div class="int-dot" style="background:var(--gold)"></div>
-            <div class="int-dot" style="background:var(--gold)"></div>
-            <div class="int-dot" style="background:var(--gold)"></div>
-            <div class="int-dot" style="background:var(--gold)"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- DESERTURI -->
-<section class="desserts-section" id="deserturi">
-  <div class="section-head">
-    <div class="s-tag">🍰 Deserturi la doză</div>
-    <h2 class="s-title">Fiecare desert,<br><em style="color:var(--gold)">o doză perfectă</em></h2>
-    <p class="s-desc">Am creat fiecare rețetă de desert pornind de la profilul aromatic al capsulei pereche. Nu e coincidență — e gastronomy.</p>
-  </div>
-  <div class="desserts-grid">
-    <div class="d-card">
-      <div class="d-img" style="background:linear-gradient(135deg,#1a0f00,#4a2a00)">
-        🍮
-        <div class="d-badge d-badge-rec">Recomandat</div>
-      </div>
-      <div class="d-body">
-        <div class="d-dose-tag">
-          <span>☕ Kazaar · Intensitate 12</span>
-          <div class="d-dose-intensity">
-            <div class="int-dot" style="background:var(--gold);width:7px;height:7px"></div>
-            <div class="int-dot" style="background:var(--gold);width:7px;height:7px"></div>
-            <div class="int-dot" style="background:var(--gold);width:7px;height:7px"></div>
-            <div class="int-dot" style="background:var(--gold);width:7px;height:7px"></div>
-            <div class="int-dot" style="background:var(--gold);width:7px;height:7px"></div>
-          </div>
-        </div>
-        <div class="d-name">Tiramisu Nero</div>
-        <p class="d-desc">Tiramisu cu mascarpone italian, pișcoturi de Savoie, cacao neagră 100% și espresso dublu extras din Kazaar.</p>
-        <div class="d-footer">
-          <div class="d-macros">
-            <div class="d-chip d-chip-kcal">🔥 310 kcal</div>
-            <div class="d-chip d-chip-gr">⚖️ 150 gr</div>
-          </div>
-          <div class="d-price">18 lei</div>
-        </div>
-      </div>
-    </div>
-    <div class="d-card">
-      <div class="d-img" style="background:linear-gradient(135deg,#42240c,#6e3f1b)">
-        🍋
-        <div class="d-badge d-badge-new">Nou</div>
-      </div>
-      <div class="d-body">
-        <div class="d-dose-tag">
-          <span>☕ Cosi · Intensitate 4</span>
-          <div class="d-dose-intensity">
-            <div class="int-dot" style="background:var(--gold);width:7px;height:7px"></div>
-            <div class="int-dot" style="background:var(--gold);width:7px;height:7px"></div>
-            <div class="int-dot" style="background:rgba(255,255,255,.2);width:7px;height:7px"></div>
-            <div class="int-dot" style="background:rgba(255,255,255,.2);width:7px;height:7px"></div>
-            <div class="int-dot" style="background:rgba(255,255,255,.2);width:7px;height:7px"></div>
-          </div>
-        </div>
-        <div class="d-name">Tartă Citron & Bezea</div>
-        <p class="d-desc">Tartă crocantă cu cremă fină de lămâie, bezea elvețiană și note citrice efervescente.</p>
-        <div class="d-footer">
-          <div class="d-macros">
-            <div class="d-chip d-chip-kcal">🔥 240 kcal</div>
-            <div class="d-chip d-chip-gr">⚖️ 120 gr</div>
-          </div>
-          <div class="d-price">16 lei</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- CUM FUNCTIONEAZA -->
-<section class="how-section" id="how">
-  <div class="section-head" style="text-align: center; margin-bottom: 40px;">
-    <div class="s-tag">Procesul Nostru</div>
-    <h2 class="s-title">Cum funcționează</h2>
-    <p class="s-desc" style="margin: 14px auto 0;">Livrare zilnică simplificată pentru rutina ta matinală.</p>
-  </div>
-  
-  <div class="how-grid">
-    <div class="how-step">
-      <div class="how-icon">📋<div class="how-n">1</div></div>
-      <h3>Alegi Planul</h3>
-      <p>Selectezi abonamentul potrivit obiectivelor tale calorice.</p>
-    </div>
-    <div class="how-step">
-      <div class="how-icon">🍳<div class="how-n">2</div></div>
-      <h3>Gătim Proaspăt</h3>
-      <p>Chefii noștri prepară mâncarea în fiecare noapte utilizând ingrediente locale premium.</p>
-    </div>
-    <div class="how-step">
-      <div class="how-icon">🛵<div class="how-n">3</div></div>
-      <h3>Livrare Matinală</h3>
-      <p>Mâncarea ajunge la ușa ta în fiecare dimineață, înainte de ora 07:30.</p>
-    </div>
-  </div>
-</section>
-<!-- ABONAMENTE -->
-<section class="plans-section" id="abonamente">
-  <div class="section-head" style="text-align: center;">
-    <div class="s-tag">Prețuri flexibile</div>
-    <h2 class="s-title">Abonamente Lunare</h2>
-    <p class="s-desc" style="margin: 14px auto 0;">Fără contracte stricte. Schimbi sau anulezi planul oricând dorești.</p>
-  </div>
-  <div class="plans-grid">
-    <div class="p-card">
-      <div class="p-tag">Starter Pack</div>
-      <h3 class="p-name">Essential Doza</h3>
-      <p class="p-sub">Ideal pentru un stil de viață dinamic și un plus de energie la birou.</p>
-      <div class="p-price">65 lei</div>
-      <div class="p-period">pe zi / livrat zilnic</div>
-      <ul class="p-feat">
-        <li>Meniu prânz complet</li>
-        <li>1 Gustare dulce asortată</li>
-        <li>1 Doză Nespresso Original</li>
-        <li>Livrare gratuită inclusă</li>
-      </ul>
-      <button class="p-btn p-btn-out">Selectează Plan</button>
-    </div>
-    <div class="p-card hot">
-      <div class="p-badge">Cel mai popular</div>
-      <div class="p-tag">Total Control</div>
-      <h3 class="p-name">OptimBox 1500</h3>
-      <p class="p-sub">Nutriție completă și calibrare energetică pe parcursul întregii zile.</p>
-      <div class="p-price">95 lei</div>
-      <div class="p-period">pe zi / livrat zilnic</div>
-      <ul class="p-feat">
-        <li>3 Mese principale echilibrate</li>
-        <li>2 Gustări nutritive bogate</li>
-        <li>2 Doze Nespresso dedicate</li>
-        <li>Consiliere nutrițională gratuită</li>
-      </ul>
-      <button class="p-btn p-btn-fill">Comandă Bestseller</button>
-    </div>
-  </div>
-</section>
-<!-- FOOTER -->
-<footer>
-  <div class="ft">
-    <div>
-      <div class="ft-brand">DozaCafé</div>
-      <p class="ft-tag">Reinventăm pauza de masă printr-o fuziune perfectă de gastronomie și cafea de specialitate.</p>
-    </div>
-    <div class="ft-col">
-      <h4>Navigare</h4>
-      <ul>
-        <li><a href="#menu">Meniu Săptămânal</a></li>
-        <li><a href="#deserturi">Deserturi Speciale</a></li>
-        <li><a href="#how">Cum Funcționăm</a></li>
-        <li><a href="#abonamente">Planuri Tarifare</a></li>
-      </ul>
-    </div>
-    <div class="ft-col">
-      <h4>Contact</h4>
-      <ul>
-        <li><a href="#">București, România</a></li>
-        <li><a href="mailto:hello@dozacafe.ro">hello@dozacafe.ro</a></li>
-        <li><a href="tel:+40722000000">+40 722 000 000</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="ft-bottom">
-    <div>&copy; 2026 DozaCafé. Toate drepturile rezervate.</div>
-    <div>Creat cu atenție pentru detalii.</div>
-  </div>
-</footer>
-<!-- FLOAT BUTTON -->
-<button class="fab-order">
-  <span>🛒</span> Comandă
-</button>
 
-<!-- ════ SCRIPTURI JAVASCRIPT PENTRU FUNCTIONALITATE ════ -->
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  
-  // 1. Schimbare tab-uri pentru Săptămână
-  const weekTabs = document.querySelectorAll(".week-tab");
-  weekTabs.forEach(tab => {
-    tab.addEventListener("click", function() {
-      weekTabs.forEach(t => t.classList.remove("active"));
-      this.classList.add("active");
-    });
-  });
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">
+      <img src="logo1.svg" alt="SOul meal Logo">
+      SOul <span>meal</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#menu">Meniu To-Go</a></li>
+      <li><a href="#deserturi">Deserturi</a></li>
+      <li><a href="#how">Sistem Smart</a></li>
+      <li><a href="#abonamente">Planuri</a></li>
+    </ul>
+    <button class="nav-order">Precomandă →</button>
+  </nav>
 
-  // 2. Schimbare tab-uri pentru Zile
-  const dayTabs = document.querySelectorAll(".day-tab");
-  dayTabs.forEach(tab => {
-    tab.addEventListener("click", function() {
-      dayTabs.forEach(t => t.classList.remove("active"));
-      this.classList.add("active");
-    });
-  });
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <div class="hero-pill"><span></span> Punct de colectare fix · Totești</div>
+      <h1>Suflet în rețetă.<br><em>Precizie</em> în logistică.</h1>
+      <p class="hero-sub">Planificare strategică fără risipă alimentară. Preparate premium sigilate la cald și doza ta ideală de espresso — pregătite complet pentru ridicare sau distribuție controlată.</p>
+      <div class="hero-ctas">
+        <button class="btn-gold">Vezi Meniu Săptămânal →</button>
+        <button class="btn-ghost">Tehnologia Noastră</button>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card">
+        <div class="hc-icon">🥗</div>
+        <div>
+          <div class="hc-name">Bowl Mediteranean</div>
+          <div class="hc-sub">Protejat prin vidare · paired Ristretto</div>
+        </div>
+        <div class="hc-kcal">520 kcal</div>
+      </div>
+      <div class="hero-card">
+        <div class="hc-icon" style="background:#3b2009">🍰</div>
+        <div>
+          <div class="hc-name">Tiramisu Nero</div>
+          <div class="hc-sub">Desert Artizanal · paired Kazaar</div>
+        </div>
+        <div class="hc-kcal">310 kcal</div>
+      </div>
+    </div>
+  </section>
 
-  // 3. Schimbare selector Calorii
-  const kcalBtns = document.querySelectorAll(".kcal-pill-btn");
-  kcalBtns.forEach(btn => {
-    btn.addEventListener("click", function() {
-      kcalBtns.forEach(b => b.classList.remove("active"));
-      this.classList.add("active");
-    });
-  });
+  <!-- TICKER -->
+  <div class="ticker">
+    <div class="ticker-inner">
+      <span class="t-item">📍 LOCAȚIE: TOTEȘTI 31, DN68</span><span class="t-dot">✦</span>
+      <span class="t-item">🍱 SOUL MEAL, DRINKS & COFFEE</span><span class="t-dot">✦</span>
+      <span class="t-item">🔒 CONTAINER INOX SPILL-PROOF</span><span class="t-dot">✦</span>
+      <span class="t-item">📅 PRECOMANDĂ STRUCTURATĂ</span><span class="t-dot">✦</span>
+      <span class="t-item">📍 LOCAȚIE: TOTEȘTI 31, DN68</span><span class="t-dot">✦</span>
+      <span class="t-item">🍱 SOUL MEAL, DRINKS & COFFEE</span><span class="t-dot">✦</span>
+    </div>
+  </div>
 
-  // 4. Acțiune butoane de Comandă / Scroll la Abonamente
-  const orderButtons = document.querySelectorAll(".nav-order, .btn-gold, .fab-order, .p-btn");
-  orderButtons.forEach(button => {
-    button.addEventListener("click", function() {
-      const target = document.getElementById("abonamente");
-      if(target) {
-        target.scrollIntoView({ behavior: "smooth" });
+  <!-- MENIU TO-GO -->
+  <section class="menu-section" id="menu">
+    <div class="section-head">
+      <div class="s-tag">🍱 Management Nutrițional</div>
+      <h2 class="s-title">Meniul tău,<br><em>gătit cu sens</em></h2>
+      <p class="s-desc">Fiecare preparat este sigilat etanș, oferind transparență totală macro și pairing precis cu capsule Nespresso selectate.</p>
+    </div>
+    
+    <div class="week-row">
+      <button class="week-tab active" data-week="w1">25–31 MAI</button>
+      <button class="week-tab" data-week="w2">01–07 IUN</button>
+    </div>
+    
+    <div class="day-row">
+      <button class="day-tab active" data-day="luni">Luni</button>
+      <button class="day-tab" data-day="marti">Marți</button>
+      <button class="day-tab" data-day="miercuri">Miercuri</button>
+    </div>
+    
+    <div class="kcal-selector">
+      <span class="kcal-label">Target caloric:</span>
+      <button class="kcal-pill-btn" data-kcal="1000">1000 kcal</button>
+      <button class="kcal-pill-btn active" data-kcal="1500">1500 kcal</button>
+      <button class="kcal-pill-btn" data-kcal="2000">2000 kcal</button>
+    </div>
+
+    <div class="menu-grid" id="dynamic-menu-grid"></div>
+  </section>
+
+  <!-- DESERTURI -->
+  <section class="desserts-section" id="deserturi">
+    <div class="section-head">
+      <div class="s-tag">🍰 Deserturi la sticlă & doză</div>
+      <h2 class="s-title">Profiluri aromatice<br><em style="color:var(--gold)">perfect corelate</em></h2>
+      <p class="s-desc">Dulciuri structurate de la zero pentru a pune în valoare notele specifice de prăjire ale cafelei.</p>
+    </div>
+    <div class="desserts-grid">
+      <div class="d-card">
+        <div class="d-img" style="background:linear-gradient(135deg,#1a0f00,#4a2a00)">🍮<div class="d-badge d-badge-rec">Recomandat</div></div>
+        <div class="d-body">
+          <div class="d-dose-tag"><span>☕ Kazaar · Intensitate 12</span></div>
+          <div class="d-name">Tiramisu Nero</div>
+          <p class="d-desc">Tiramisu intens cu mascarpone premium și extra-infuzie de espresso.</p>
+          <div class="d-footer">
+            <div class="d-chip">🔥 310 kcal</div>
+            <div class="d-price">18 lei</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CUM FUNCTIONEAZA (ACTUALIZAT COMPLET) -->
+  <section class="how-section" id="how">
+    <div class="section-head" style="text-align: center; margin-bottom: 40px;">
+      <div class="s-tag">Arhitectura Logisticii Noastre</div>
+      <h2 class="s-title">Sistemul de Gătit & Colectare</h2>
+    </div>
+    <div class="how-grid">
+      <div class="how-step">
+        <div class="how-icon">📅<div class="how-n">1</div></div>
+        <h3>Precomandă și Planificare</h3>
+        <p>Procesăm comenzi exclusiv bazate pe planificare anticipată. Zero speculă, zero risipă alimentară, prospețime garantată 100%.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-icon">🛡️<div class="how-n">2</div></div>
+        <h3>Tehnologie Spill-Proof</h3>
+        <p>Mâncarea este transferată fierbinte și etanșată prin vidare în containere speciale de inox. Fără scurgeri, izolare termică perfectă.</p>
+      </div>
+      <div class="how-step">
+        <div class="how-icon">☕<div class="how-n">3</div></div>
+        <h3>Hub Fix Totești DN68</h3>
+        <p>Ridicarea se face direct de la punctul nostru de colectare **SOul meal, drinks&coffee** sau prin fluxul logistic dedicat.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABONAMENTE -->
+  <section class="plans-section" id="abonamente">
+    <div class="section-head" style="text-align: center;">
+      <div class="s-tag">Eficiență pe termen lung</div>
+      <h2 class="s-title">Abonamente Lunare</h2>
+    </div>
+    <div class="plans-grid">
+      <div class="p-card hot">
+        <div class="p-badge">Recomandat Hub</div>
+        <div class="p-tag">Abonament Complet</div>
+        <h3 class="p-name">OptimBox 1500</h3>
+        <div class="p-price">95 lei</div>
+        <div class="p-period">pe zi / ridicare din punct fix</div>
+        <ul class="p-feat">
+          <li>3 Mese principale în regim spill-proof</li>
+          <li>2 Gustări macro-echilibrate</li>
+          <li>2 Doze Nespresso dedicate pairing-ului</li>
+        </ul>
+        <button class="p-btn p-btn-fill">Alege Planul</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="ft">
+      <div>
+        <div class="ft-brand">SOul meal</div>
+        <p class="ft-tag">O viziune digitală și sistemică aplicată gastronomiei curate și managementului energetic.</p>
+      </div>
+      <div class="ft-col">
+        <h4>Punct de Colectare</h4>
+        <p style="color: rgba(255,255,255,.45); font-size: .84rem; line-height: 1.6; font-style: normal;">
+          <strong>SOul meal, drinks&coffee</strong><br>
+          Totești, Nr. 31<br>
+          DN68, Jud. Hunedoara
+        </p>
+      </div>
+      <div class="ft-col">
+        <h4>Comenzi Utile</h4>
+        <ul>
+          <li><a href="#menu">Meniu Zile</a></li>
+          <li><a href="#abonamente">Prețuri Contracte</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <div>&copy; 2026 SOul meal. Toate drepturile rezervate. Realizat prin Metanoia Digitală.</div>
+    </div>
+  </footer>
+
+  <!-- ACTION FLOATS -->
+  <a href="https://wa.me/40700000000?text=Salut!%20Vreau%20detalii%20despre%20meniul%20SOul%20meal" class="fab-whatsapp" target="_blank">
+    <span>💬</span> WhatsApp Direct
+  </a>
+  <button class="fab-order"><span>🛒</span> Trimite Precomandă</button>
+
+  <!-- INTELECTUL PAGINII -->
+  <script>
+    const menuDatabase = {
+      "w1": {
+        "luni": {
+          "1000": [
+            { type: "Mic Dejun", name: "Iaurt Grecesc cu Chia", desc: "Iaurt slab, semințe de chia și vanilie.", kcal: 210, weight: "180g", prot: "12g", icon: "🥣", pair: "Volluto (Intensitate 4)" },
+            { type: "Prânz", name: "Salată de Curcan", desc: "Piept de curcan la grătar, mix de frunze verzi.", kcal: 430, weight: "300g", prot: "35g", icon: "🥗", pair: "Capriccio (Intensitate 5)" }
+          ],
+          "1500": [
+            { type: "Mic Dejun", name: "Overnight Oats cu Fructe", desc: "Fulgi de ovăz cu lapte de cocos și fructe de pădure.", kcal: 380, weight: "250g", prot: "12g", icon: "🥣", pair: "Volluto (Intensitate 4)" },
+            { type: "Prânz", name: "Plăcintă Carne & Salată", desc: "Plăcintă echilibrată cu carne tocată slabă și brânzeturi.", kcal: 540, weight: "380g", prot: "28g", icon: "🥗", pair: "Ristretto (Intensitate 10)" },
+            { type: "Cină", name: "Somon Teriyaki & Quinoa", desc: "File de somon premium și quinoa tricolor.", kcal: 580, weight: "420g", prot: "38g", icon: "🐟", pair: "Indriya (Intensitate 10)" }
+          ],
+          "2000": [
+            { type: "Mic Dejun", name: "Omletă cu Avocado", desc: "3 ouă, avocado, brânză feta și pâine integrală.", kcal: 550, weight: "300g", prot: "26g", icon: "🍳", pair: "Kazaar (Intensitate 12)" }
+          ]
+        },
+        "marti": {
+          "1500": [
+            { type: "Mic Dejun", name: "Frittata cu Legume", desc: "Ouă coapte cu spanac și brânză de capră.", kcal: 390, weight: "220g", prot: "18g", icon: "🍳", pair: "Cosi (Intensitate 4)" }
+          ]
+        },
+        "miercuri": {
+          "1500": [
+            { type: "Mic Dejun", name: "Clătite Proteice", desc: "Clătite cu pudră proteică și miere organică.", kcal: 410, weight: "200g", prot: "22g", icon: "🥞", pair: "Volluto (Intensitate 4)" }
+          ]
+        }
+      },
+      "w2": {
+        "luni": {
+          "1500": [
+            { type: "Mic Dejun", name: "Granola Crunch", desc: "Iaurt cremos cu granola artizanală.", kcal: 420, weight: "240g", prot: "11g", icon: "🥣", pair: "Cosi (Intensitate 4)" }
+          ]
+        }
       }
-    });
-  });
+    };
 
-  // 5. Butonul Ghost din Hero trimite la "Cum funcționează"
-  const ghostBtn = document.querySelector(".btn-ghost");
-  if(ghostBtn) {
-    ghostBtn.addEventListener("click", function() {
-      const target = document.getElementById("how");
-      if(target) {
-        target.scrollIntoView({ behavior: "smooth" });
+    let selectedWeek = "w1";
+    let selectedDay = "luni";
+    let selectedKcal = "1500";
+
+    function renderMenu() {
+      const grid = document.getElementById("dynamic-menu-grid");
+      if(!grid) return;
+      grid.innerHTML = "";
+      
+      const weekData = menuDatabase[selectedWeek] || menuDatabase["w1"];
+      const dayData = weekData[selectedDay] || weekData["luni"];
+      const items = dayData[selectedKcal] || dayData["1500"] || [];
+      
+      if(items.length === 0) {
+        grid.innerHTML = `<p style="grid-column: 1/-1; color: var(--light); text-align: center; padding: 40px;">Meniul pentru această selecție se încarcă în curând.</p>`;
+        return;
       }
-    });
-  });
 
-});
-</script>
+      items.forEach(item => {
+        grid.innerHTML += `
+          <div class="m-card">
+            <div class="m-img" style="background: linear-gradient(135deg, var(--espresso), var(--roast))">
+              ${item.icon}
+              <div class="m-img-label">${item.type}</div>
+            </div>
+            <div class="m-body">
+              <div class="m-type">🔒 Sigilat sub vidare</div>
+              <div class="m-name">${item.name}</div>
+              <p class="m-desc">${item.desc}</p>
+              <div class="m-macros">
+                <div class="macro-chip macro-kcal">🔥 ${item.kcal} kcal</div>
+                <div class="macro-chip macro-weight">⚖️ ${item.weight}</div>
+                <div class="macro-chip macro-protein">💪 ${item.prot}</div>
+              </div>
+              <div class="m-pairing">
+                <div style="font-size:1.1rem; margin-right:4px;">☕</div>
+                <div>
+                  <div class="pairing-name">${item.pair}</div>
+                  <div class="pairing-sub">Pachetul include capsula potrivită.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    // Integrare Webhook Make (Placeholder configurat pentru execuție stabilă)
+    function sendOrderToMakeWebhook(orderData) {
+      const webhookUrl = "https://hook.eu1.make.com/YOUR_WEBHOOK_ID_HERE";
+      
+      console.log("Date trimise către Make:", orderData);
+      /*
+      fetch(webhookUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(orderData)
+      })
+      .then(res => alert("Precomandă înregistrată! Vă contactăm pe WhatsApp."))
+      .catch(err => console.error("Eroare webhook:", err));
+      */
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+      renderMenu();
+
+      // Evenimente Săptămâni
+      document.querySelectorAll(".week-tab").forEach(tab => {
+        tab.addEventListener("click", function() {
+          document.querySelectorAll(".week-tab").forEach(t => t.classList.remove("active"));
+          this.classList.add("active");
+          selectedWeek = this.getAttribute("data-week");
+          renderMenu();
+        });
+      });
+
+      // Evenimente Zile
+      document.querySelectorAll(".day-tab").forEach(tab => {
+        tab.addEventListener("click", function() {
+          document.querySelectorAll(".day-tab").forEach(t => t.classList.remove("active"));
+          this.classList.add("active");
+          selectedDay = this.getAttribute("data-day");
+          renderMenu();
+        });
+      });
+
+      // Evenimente Target Caloric
+      document.querySelectorAll(".kcal-pill-btn").forEach(btn => {
+        btn.addEventListener("click", function() {
+          document.querySelectorAll(".kcal-pill-btn").forEach(b => b.classList.remove("active"));
+          this.classList.add("active");
+          selectedKcal = this.getAttribute("data-kcal");
+          renderMenu();
+        });
+      });
+
+      // Scroll Lin
+      document.querySelectorAll(".nav-order, .btn-gold, .fab-order, .p-btn").forEach(button => {
+        button.addEventListener("click", function() {
+          document.getElementById("abonamente").scrollIntoView({ behavior: "smooth" });
+          
+          // Exemplu apel webhook la interacțiune principală
+          sendOrderToMakeWebhook({
+            action: "click_checkout",
+            timestamp: new Date().toISOString(),
+            context: { selectedWeek, selectedDay, selectedKcal }
+          });
+        });
+      });
+
+      const ghostBtn = document.querySelector(".btn-ghost");
+      if (ghostBtn) {
+        ghostBtn.addEventListener("click", function() {
+          document.getElementById("how").scrollIntoView({ behavior: "smooth" });
+        });
+      } // Bug-ul de paranteză a fost complet lichidat aici
+    });
+  </script>
 </body>
 </html>
