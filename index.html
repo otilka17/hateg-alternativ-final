@@ -1,398 +1,627 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>METANOIA DIGITALĂ | Hațeg Alternativ • Soul Meal & Drink TO GO</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@200;400;600;700&family=Playfair+Display:ital,wght@0,400;1,700&display=swap" rel="stylesheet">
-    <style>
-        body { background: #050505; color: #fff; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-        .card-produs, .lux-card { border: 1px solid #1a1a1a; transition: 0.4s; background: #000; }
-        .card-produs:hover, .lux-card:hover { border-color: #c5a059; }
-        .btn-add { border: 1px solid #c5a059; color: #c5a059; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 2px; transition: 0.3s; }
-        .btn-add:hover { background: #c5a059; color: #000; }
-        #modal { display: none; background: rgba(0,0,0,0.96); }
-        .luxury-hero {
-            background: linear-gradient(rgba(5, 5, 5, 0.8), rgba(5, 5, 5, 0.98)), url('6a64c03b-9dc8-40d7-9b4b-180645bc875e.jpeg') no-repeat center center/cover;
-        }
-        .page { display: none; animation: fadeIn 0.4s ease-in-out; }
-        .page.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HațegAlternativ — SOul meal, drinks & coffee</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink:        #050505;
+  --espresso:  #0a0a0a;
+  --roast:     #1a1a1a;
+  --caramel:   #c5a059;
+  --gold:      #c5a059;
+  --gold-pale: #e5c483;
+  --cream:     #050505;
+  --warm:      #0a0a0a;
+  --mist: #101010;
+  --sage:      #4a6741;
+  --red-berry: #a82c2c;
+  --text:      #ffffff;
+  --mid:       #a3a3a3;
+  --light:     #525252;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  overflow-x: hidden;
+}
+/* ════ NAV ════ */
+nav {
+  position: fixed; top:0; width:100%; z-index:200;
+  background: rgba(5,5,5,0.92);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(197,160,89,0.15);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5%;
+  height: 64px;
+}
+.nav-logo {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.25rem; color: var(--gold);
+  display: flex; align-items: center; gap: 12px;
+  letter-spacing: 2px; text-transform: uppercase; font-weight: 900;
+}
+.nav-links { display: flex; gap: 28px; list-style: none; }
+.nav-links a {
+  color: rgba(255,255,255,.55); text-decoration: none;
+  font-size: .78rem; font-weight: 500; letter-spacing: 1.5px;
+  text-transform: uppercase; transition: color .2s;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--gold); }
+.nav-order {
+  background: var(--gold); color: #000;
+  border: none; padding: 9px 22px; border-radius: 0px;
+  font-weight: 700; font-size: .75rem; letter-spacing: 1.5px;
+  text-transform: uppercase; cursor: pointer; transition: all .2s;
+}
+.nav-order:hover { background: var(--gold-pale); }
+/* ════ HERO ════ */
+.hero {
+  min-height: 100svh;
+  background: var(--espresso);
+  display: grid; grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 100px 5% 60px;
+  gap: 40px;
+  position: relative; overflow: hidden;
+  border-bottom: 1px solid var(--roast);
+}
+.hero::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 50% 70% at 80% 50%, rgba(197,160,89,.08), transparent);
+  pointer-events: none;
+}
+.hero-text { position: relative; z-index: 2; }
+.hero-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 1px solid rgba(197,160,89,.35);
+  color: var(--gold-pale); font-size: .68rem;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 6px 16px; border-radius: 100px;
+  margin-bottom: 28px;
+  animation: up .7s ease both;
+}
+.hero-pill span { width:7px; height:7px; border-radius:50%; background:var(--gold); }
+.hero h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(2.4rem, 5vw, 4.5rem);
+  line-height: 1.1; color: #fff;
+  margin-bottom: 20px;
+  animation: up .7s .12s ease both;
+}
+.hero h1 em { font-style: italic; color: var(--gold); }
+.hero-sub {
+  font-size: .92rem; color: rgba(255,255,255,.5);
+  line-height: 1.75; max-width: 480px; margin-bottom: 40px;
+  animation: up .7s .24s ease both;
+}
+.hero-ctas {
+  display: flex; gap: 12px; flex-wrap: wrap;
+  animation: up .7s .36s ease both;
+}
+.btn-gold {
+  background: var(--gold); color: #000;
+  border: none; padding: 14px 32px; border-radius: 0px;
+  font-weight: 700; font-size: .82rem; letter-spacing: 1.5px;
+  text-transform: uppercase; cursor: pointer; transition: all .2s;
+}
+.btn-gold:hover { background: var(--gold-pale); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(197,160,89,.2); }
+.btn-ghost {
+  background: transparent; color: rgba(255,255,255,.7);
+  border: 1px solid rgba(255,255,255,.2); padding: 14px 32px; border-radius: 0px;
+  font-weight: 500; font-size: .82rem; letter-spacing: 1.5px;
+  text-transform: uppercase; cursor: pointer; transition: all .2s;
+}
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+/* hero visual */
+.hero-visual {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column; gap: 16px;
+  animation: up .7s .2s ease both;
+}
+.hero-card {
+  background: rgba(255,255,255,.02);
+  border: 1px solid rgba(255,255,255,.05);
+  border-radius: 0px; padding: 16px 20px;
+  display: flex; align-items: center; gap: 16px;
+  backdrop-filter: blur(8px);
+  transition: transform .2s;
+}
+.hero-card:hover { transform: translateX(6px); border-color: rgba(197,160,89,.3); }
+.hc-icon {
+  width: 52px; height: 52px; border-radius: 0px;
+  background: #111; border: 1px solid var(--roast);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; flex-shrink: 0;
+}
+.hc-name { font-weight: 600; color: #fff; font-size: .95rem; font-family: 'DM Serif Display', serif; letter-spacing: 0.5px; }
+.hc-sub { font-size: .78rem; color: rgba(255,255,255,.45); margin-top: 2px; }
+.hc-kcal {
+  margin-left: auto; background: rgba(197,160,89,.1);
+  color: var(--gold); font-size: .75rem; font-weight: 700;
+  padding: 4px 10px; border-radius: 0px; border: 1px solid rgba(197,160,89,.2); white-space: nowrap;
+}
+/* ════ TICKER ════ */
+.ticker {
+  background: var(--gold); padding: 12px 0;
+  overflow: hidden; white-space: nowrap;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.ticker-inner {
+  display: inline-flex; gap: 52px;
+  animation: slide 25s linear infinite;
+}
+.t-item { font-size: .7rem; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: #000; }
+.t-dot { color: rgba(0,0,0,.4); }
+/* ════ SECTION BASIC ════ */
+.menu-section {
+  background: var(--cream);
+  padding: 96px 5%;
+  border-bottom: 1px solid var(--roast);
+}
+.section-head { margin-bottom: 52px; }
+.s-tag { font-size: .68rem; letter-spacing: 3px; text-transform: uppercase; color: var(--caramel); margin-bottom: 10px; font-weight: 700; }
+.s-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.1; color: var(--text);
+}
+.s-title em { font-style: italic; color: var(--caramel); }
+.s-desc { color: var(--mid); max-width: 480px; line-height: 1.7; margin-top: 14px; font-size: .9rem; }
+
+/* menu grid preview */
+.menu-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+.m-card {
+  background: #0a0a0a; border-radius: 0px;
+  overflow: hidden; border: 1px solid var(--roast);
+  display: flex; flex-direction: column;
+  transition: all .22s;
+}
+.m-card:hover { transform: translateY(-5px); border-color: var(--gold); }
+.m-img {
+  height: 160px; display: flex; align-items: center; justify-content: center;
+  font-size: 3.5rem; position: relative; overflow: hidden;
+  border-bottom: 1px solid var(--roast);
+}
+.m-img-label {
+  position: absolute; bottom: 12px; left: 12px;
+  background: #000; color: var(--gold);
+  font-size: .6rem; font-weight: 700; letter-spacing: 1.5px;
+  padding: 4px 10px; border: 1px solid var(--roast); text-transform: uppercase;
+}
+.m-body { padding: 18px 20px 22px; flex: 1; display: flex; flex-direction: column; }
+.m-type { font-size: .62rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--caramel); margin-bottom: 6px; }
+.m-name { font-family: 'DM Serif Display', serif; font-size: 1.2rem; margin-bottom: 7px; color: #fff; }
+.m-desc { font-size: .82rem; color: var(--mid); line-height: 1.6; flex: 1; margin-bottom: 16px; }
+
+.m-macros { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-bottom: 14px; }
+.macro-chip {
+  display: flex; align-items: center; gap: 5px;
+  background: #111; border: 1px solid var(--roast);
+  padding: 4px 10px; font-size: .72rem; font-weight: 600; border-radius: 0px;
+}
+.macro-icon { font-size: .8rem; }
+.macro-kcal { color: var(--gold-pale); }
+.macro-weight { color: var(--sage); }
+.macro-protein { color: var(--caramel); }
+
+.m-pairing {
+  display: flex; align-items: center; gap: 10px;
+  background: #000; border: 1px solid var(--roast);
+  padding: 10px 14px; margin-top: auto;
+}
+.pairing-icon { font-size: 1.1rem; }
+.pairing-text { flex: 1; }
+.pairing-name { font-size: .78rem; font-weight: 600; color: var(--gold); }
+.pairing-sub { font-size: .68rem; color: rgba(255,255,255,.4); margin-top: 1px; }
+
+/* ════ HOW IT WORKS ════ */
+.how-section {
+  background: var(--warm);
+  padding: 96px 5%;
+  border-bottom: 1px solid var(--roast);
+}
+.how-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 32px; margin-top: 52px;
+  position: relative;
+}
+.how-step { text-align: center; }
+.how-icon {
+  width: 80px; height: 80px; border-radius: 0px;
+  background: #111; border: 1px solid var(--roast); color: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.8rem; margin: 0 auto 20px;
+  position: relative; z-index: 2;
+  transition: transform .2s;
+}
+.how-step:hover .how-icon { transform: scale(1.05) rotate(-2deg); border-color: var(--gold); }
+.how-n {
+  position: absolute; top: -8px; right: -8px;
+  background: var(--gold); color: #000;
+  width: 20px; height: 20px; border-radius: 50%;
+  font-size: .65rem; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+}
+.how-step h3 {
+  font-weight: 700; font-size: .8rem; letter-spacing: 2px;
+  text-transform: uppercase; color: #fff; margin-bottom: 8px;
+  font-family: 'DM Serif Display', serif;
+}
+.how-step p { font-size: .82rem; color: var(--mid); line-height: 1.65; max-width: 200px; margin: 0 auto; }
+
+/* ════ PLANS ════ */
+.plans-section {
+  background: var(--cream);
+  padding: 96px 5%;
+  border-bottom: 1px solid var(--roast);
+}
+.plans-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px; margin-top: 52px;
+}
+.p-card {
+  border-radius: 0px; padding: 34px 28px;
+  border: 1px solid var(--roast);
+  background: #0a0a0a; position: relative;
+  transition: all .22s;
+}
+.p-card:hover { transform: translateY(-4px); border-color: rgba(197,160,89,0.4); }
+.p-card.hot {
+  border-color: var(--gold);
+  background: #0d0d0d;
+}
+.p-badge {
+  position: absolute; top: -11px; left: 50%; transform: translateX(-50%);
+  background: var(--gold); color: #000;
+  font-size: .6rem; font-weight: 800; letter-spacing: 2px;
+  text-transform: uppercase; padding: 4px 16px; border-radius: 0px;
+  white-space: nowrap;
+}
+.p-tag { font-size: .65rem; letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 10px; font-weight: 700; color: var(--caramel); }
+.p-name { font-family: 'DM Serif Display', serif; font-size: 1.75rem; margin-bottom: 8px; color: #fff; }
+.p-sub { font-size: .82rem; line-height: 1.6; margin-bottom: 24px; color: var(--mid); }
+.p-price { font-family: 'DM Serif Display', serif; font-size: 2.5rem; line-height: 1; margin-bottom: 4px; color: var(--gold); }
+.p-period { font-size: .75rem; margin-bottom: 24px; color: var(--light); text-transform: uppercase; tracking-spacing: 1px; }
+.p-feat { list-style: none; margin-bottom: 28px; }
+.p-feat li {
+  padding: 8px 0; border-bottom: 1px solid var(--roast);
+  font-size: .82rem; display: flex; align-items: center; gap: 9px; color: var(--mid);
+}
+.p-feat li::before { content: '✓'; font-weight: 700; color: var(--gold); }
+.p-btn {
+  width: 100%; padding: 13px; border-radius: 0px; font-weight: 700; font-size: .8rem;
+  letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; border: none; transition: all .2s;
+}
+.p-btn-out { background: transparent; color: var(--gold); border: 1px solid var(--gold); }
+.p-btn-out:hover { background: var(--gold); color: #000; }
+.p-btn-fill { background: var(--gold); color: #000; }
+.p-btn-fill:hover { background: var(--gold-pale); }
+
+/* ════ FOOTER ════ */
+footer {
+  background: #000;
+  padding: 60px 5% 28px;
+  border-top: 1px solid var(--roast);
+}
+.ft {
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px;
+  padding-bottom: 40px; border-bottom: 1px solid var(--roast);
+  margin-bottom: 28px;
+}
+.ft-brand { font-family: 'DM Serif Display', serif; font-size: 1.5rem; color: var(--gold); margin-bottom: 10px; letter-spacing: 2px; }
+.ft-tag { font-size: .82rem; color: rgba(255,255,255,.4); max-width: 240px; line-height: 1.6; }
+.ft-col h4 { color: #fff; font-size: .68rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 14px; font-weight: 700; }
+.ft-col ul { list-style: none; }
+.ft-col li { margin-bottom: 9px; }
+.ft-col a { color: var(--mid); text-decoration: none; font-size: .82rem; transition: color .2s; }
+.ft-col a:hover { color: var(--gold); }
+.ft-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; font-size: .72rem; color: var(--light); }
+
+/* ════ FLOATING COȘ BUTTON ════ */
+.fab-order {
+  position: fixed; bottom: 24px; right: 24px; z-index: 300;
+  background: var(--gold); color: #000;
+  border: none; padding: 13px 24px; border-radius: 0px;
+  font-weight: 800; font-size: .75rem; letter-spacing: 1.5px;
+  text-transform: uppercase; cursor: pointer;
+  box-shadow: 0 6px 24px rgba(197,160,89,.2);
+  display: flex; align-items: center; gap: 8px;
+  transition: all .2s;
+}
+.fab-order:hover { background: var(--gold-pale); transform: translateY(-3px); }
+
+/* ════ MODAL LOGISTIC OVERLAY ════ */
+#modal {
+  position: fixed; inset: 0; z-index: 500;
+  background: rgba(0,0,0,0.95);
+  display: none; align-items: center; justify-content: center; padding: 24px;
+}
+.modal-content {
+  background: #050505; border: 1px solid var(--gold);
+  padding: 32px; width: 100%; max-width: 440px;
+}
+.modal-content input {
+  width: 100%; background: transparent; border: 1px solid var(--roast);
+  padding: 12px; margin-bottom: 16px; color: #fff; font-size: .85rem;
+}
+.modal-content input:focus { outline: none; border-color: var(--gold); }
+
+/* ════ KEYFRAMES ════ */
+@keyframes up {
+  from { opacity: 0; transform: translateY(15px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slide {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+/* ════ RESPONSIVE ════ */
+@media (max-width: 768px) {
+  .hero { grid-template-columns: 1fr; padding-top: 90px; }
+  .hero-visual { display: none; }
+  .nav-links { display: none; }
+}
+</style>
 </head>
-<body class="pb-40">
+<body>
 
-    <!-- HEADER LOGO -->
-    <header class="p-6 border-b border-[#1a1a1a] text-center sticky top-0 bg-[#050505]/90 backdrop-blur-md z-40">
-        <h1 class="font-cinzel text-2xl md:text-3xl text-[#c5a059] tracking-[6px] font-black">METANOIA DIGITALĂ</h1>
-        <p class="text-[9px] uppercase tracking-[4px] text-gray-500 mt-1">Hațeg Alternativ • Soul Meal & Drink TO GO</p>
-    </header>
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <img src="logo1_3.svg" alt="HațegAlternativ Logo" style="height: 38px; width: auto; display: block;">
+    HațegAlternativ
+  </div>
+  <ul class="nav-links">
+    <li><a href="meniu.html">Meniu Săptămânal</a></li>
+    <li><a href="box.html">Soul Meal Box</a></li>
+    <li><a href="bauturi.html">Drink & Desert</a></li>
+    <li><a href="#how">Cum funcționează</a></li>
+  </ul>
+  <button class="nav-order" onclick="deschideModal()">Comandă →</button>
+</nav>
 
-    <!-- HERO SECTION -->
-    <section class="luxury-hero text-center py-20 px-6 border-b border-[#1a1a1a]">
-        <div class="max-w-3xl mx-auto">
-            <span class="text-[#c5a059] text-xs font-bold tracking-[3px] uppercase block mb-4">Hub Turistic & Operațional 2026</span>
-            <h2 class="font-playfair italic text-3xl md:text-5xl text-white mb-6">Mâncare gătită curat, vidată modern & băuturi la doză.</h2>
-            <p class="text-gray-400 text-xs md:text-sm font-light max-w-xl mx-auto mb-8">
-                Ecosistemul FoodTech de pe ruta DN 68. Gătit tradițional în Bucătăria Centrală Totești, securizat instant pentru drum sau birou.
-            </p>
-            <div class="grid grid-cols-3 gap-2 max-w-md mx-auto text-[9px] uppercase tracking-widest text-gray-400">
-                <div class="border border-[#1a1a1a] py-3 bg-black/50">Aventură</div>
-                <div class="border border-[#1a1a1a] py-3 bg-black/50">Comunitate</div>
-                <div class="border border-[#1a1a1a] py-3 bg-black/50">Patrimoniu</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ARHITECTURĂ ȘI VIZIUNE STRATEGICĂ (INTEGRARE IMAGINI) -->
-    <section class="max-w-5xl mx-auto p-6 mt-12 border-b border-[#1a1a1a] pb-16">
-        <div class="text-center mb-12">
-            <span class="text-[#c5a059] text-[10px] tracking-[4px] uppercase block mb-2">Ecosistemul Dakamigos</span>
-            <h2 class="font-cinzel text-xl tracking-[2px]">Arhitectura Brandului & Flux Operațional</h2>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
-            <!-- Imaginea 1: Avatar / Hartă Mentală -->
-            <div class="border border-[#1a1a1a] bg-black p-4 flex flex-col justify-between">
-                <div>
-                    <h3 class="font-cinzel text-xs text-[#c5a059] tracking-wider mb-3 uppercase">1. Alinierea Avatarului & Poziționare</h3>
-                    <p class="text-xs text-gray-400 mb-4 font-light">Segmentarea clară a clienților: căutătorii de calitate premium, călătorii de pe DN 68 și vizionarii digitali.</p>
-                </div>
-                <div class="bg-[#0a0a0a] border border-[#1a1a1a] rounded overflow-hidden">
-                    <img src="Code_Generated_Image.jpg" alt="Alinierea Avatarului Dakamigos" class="w-full h-auto object-contain filter brightness-95 contrast-105">
-                </div>
-            </div>
-
-            <!-- Imaginea 2: Diagramă Gastronomie & FoodTech -->
-            <div class="border border-[#1a1a1a] bg-black p-4 flex flex-col justify-between">
-                <div>
-                    <h3 class="font-cinzel text-xs text-[#c5a059] tracking-wider mb-3 uppercase">2. Fluxul Tehnologic și Scalabilitatea</h3>
-                    <p class="text-xs text-gray-400 mb-4 font-light">De la Bucătăria Centrală Totești la automatizări prin Make, conserve premium cu etichetă curată și hub regional.</p>
-                </div>
-                <div class="bg-[#0a0a0a] border border-[#1a1a1a] rounded overflow-hidden">
-                    <img src="Gemini_Generated_Image_l5af7l5af7l5af7l_2.png" alt="Gastronomie Premium & FoodTech Diagram" class="w-full h-auto object-contain filter brightness-95 contrast-105">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- MAIN APP CONTENT -->
-    <main class="max-w-5xl mx-auto p-6 mt-12">
-        
-        <!-- SECTION 1: MENIU SĂPTĂMÂNAL DINAMIC (INTEGRAT & ACTUALIZAT CU PIURE) -->
-        <div class="mb-24">
-            <div class="text-center mb-10">
-                <span class="text-[#c5a059] text-[10px] tracking-[4px] uppercase block mb-2">Abonamente & Rotație</span>
-                <h2 class="font-cinzel text-2xl tracking-[2px]">1. Meniu Săptămânal la Caserolă</h2>
-                <p class="text-xs text-gray-500 max-w-md mx-auto mt-2">Prânz complet (Ciorbă + Fel Principal) optimizat caloric. Felul doi este servit întotdeauna alături de piure artizanal catifelat cu unt.</p>
-            </div>
-
-            <!-- Container Zile Meniu -->
-            <div id="container-zile" class="max-w-2xl mx-auto">
-                <!-- Generat dinamic prin JS pentru mentenanță ultra-rapidă -->
-            </div>
-
-            <!-- Navigație Zile Meniu -->
-            <div class="flex justify-center items-center gap-4 mt-8">
-                <button class="border border-[#1a1a1a] text-gray-400 px-6 py-2.5 hover:border-[#c5a059] hover:text-[#c5a059] transition uppercase text-[11px] tracking-wider font-semibold" onclick="schimbaZi(-1)">« Înapoi</button>
-                <span id="indicator-zi" class="font-cinzel text-xs tracking-widest text-[#c5a059] bg-[#101010] px-4 py-2.5 border border-[#1a1a1a]">LUNI</span>
-                <button class="border border-[#1a1a1a] text-gray-400 px-6 py-2.5 hover:border-[#c5a059] hover:text-[#c5a059] transition uppercase text-[11px] tracking-wider font-semibold" onclick="schimbaZi(1)">Înainte »</button>
-            </div>
-        </div>
-
-
-        <!-- SECTION 2: SOUL MEAL — BOX & EXTRA (VIDAT PREMIUM) -->
-        <div class="mb-24">
-            <div class="text-center mb-10">
-                <span class="text-[#c5a059] text-[10px] tracking-[4px] uppercase block mb-2">Tehnologie Totești</span>
-                <h2 class="font-cinzel text-2xl tracking-[2px]">2. Soul Meal — Calibrare & Tradiție</h2>
-                <p class="text-xs text-gray-500 max-w-md mx-auto mt-2">Sistem FoodTech care blochează prospețimea instant, direct din oală, garantând savoarea deplină.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- OptimBox -->
-                <div class="card-produs overflow-hidden flex flex-col justify-between" data-nume="OptimBox 1500 kcal" data-pret="65.00">
-                    <div class="p-6 border-b border-[#1a1a1a] bg-[#0a0a0a]">
-                        <span class="text-[9px] uppercase tracking-widest text-emerald-500 font-bold block mb-1">Meniu Complet 24h</span>
-                        <div class="flex justify-between items-baseline">
-                            <h3 class="font-bold text-lg text-white">OptimBox 1500 kcal</h3>
-                            <span class="text-[#c5a059] font-bold">65.00 RON</span>
-                        </div>
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col justify-between">
-                        <div>
-                            <p class="text-xs text-gray-400 mb-6 font-light">Meniu zilnic complet (3 mese principale, 2 gustări calibrate) care integrează supe clare și fripturi fragede cu baze de legume.</p>
-                            <div class="grid grid-cols-4 gap-2 bg-[#0a0a0a] p-3 text-center text-xs border border-[#1a1a1a] mb-6">
-                                <div><span class="block font-bold text-white">1552</span><span class="text-[9px] text-gray-500 uppercase">Kcal</span></div>
-                                <div><span class="block font-bold text-[#c5a059]">151g</span><span class="text-[9px] text-gray-500 uppercase">Prot</span></div>
-                                <div><span class="block font-bold text-white">125g</span><span class="text-[9px] text-gray-500 uppercase">Carbo</span></div>
-                                <div><span class="block font-bold text-white">49g</span><span class="text-[9px] text-gray-500 uppercase">Grăsimi</span></div>
-                            </div>
-                        </div>
-                        <button onclick="adaugaProdus(this)" class="btn-add w-full py-3">Adaugă în coș</button>
-                    </div>
-                </div>
-
-                <!-- Ceaun Pui & Piure Artizanal -->
-                <div class="card-produs overflow-hidden flex flex-col justify-between" data-nume="Ceaun de Pui cu Piure Artizanal" data-pret="26.00">
-                    <div class="p-6 border-b border-[#1a1a1a] bg-[#0a0a0a]">
-                        <span class="text-[9px] uppercase tracking-widest text-[#c5a059] font-bold block mb-1">Produs Semnătură</span>
-                        <div class="flex justify-between items-baseline">
-                            <h3 class="font-bold text-lg text-white">Ceaun Pui & Piure</h3>
-                            <span class="text-[#c5a059] font-bold">26.00 RON</span>
-                        </div>
-                    </div>
-                    <div class="p-6 flex-1 flex flex-col justify-between">
-                        <div>
-                            <p class="text-xs text-gray-400 mb-6 font-light">Mâncare caldă de origine, gătită lent în gospodărie, servită pe un pat generos de piure de cartofi fin și cremos, stins cu unt aromatic.</p>
-                            <div class="grid grid-cols-4 gap-2 bg-[#0a0a0a] p-3 text-center text-xs border border-[#1a1a1a] mb-6">
-                                <div><span class="block font-bold text-white">620</span><span class="text-[9px] text-gray-500 uppercase">Kcal</span></div>
-                                <div><span class="block font-bold text-[#c5a059]">42g</span><span class="text-[9px] text-gray-500 uppercase">Prot</span></div>
-                                <div><span class="block font-bold text-white">55g</span><span class="text-[9px] text-gray-500 uppercase">Carbo</span></div>
-                                <div><span class="block font-bold text-white">18g</span><span class="text-[9px] text-gray-500 uppercase">Grăsimi</span></div>
-                            </div>
-                        </div>
-                        <button onclick="adaugaProdus(this)" class="btn-add w-full py-3">Adaugă în coș</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <!-- SECTION 3: DRINK & DESERT TO GO -->
-        <div class="mb-12">
-            <div class="text-center mb-10">
-                <span class="text-[#c5a059] text-[10px] tracking-[4px] uppercase block mb-2">FoodTech la Doză</span>
-                <h2 class="font-cinzel text-2xl tracking-[2px]">3. Drink & Desert TO GO</h2>
-                <p class="text-xs text-gray-500 max-w-md mx-auto mt-2">Sistem avansat de capsare mecanică etanșă în doze din Aluminiu/PET, ideal pentru păstrarea prospețimii absolute pe drum.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Capsate pe loc -->
-                <div class="space-y-4">
-                    <h4 class="font-cinzel text-xs tracking-widest text-[#c5a059] mb-2 uppercase">Capsate pe loc (PET/Aluminiu)</h4>
-                    
-                    <div class="card-produs p-4 flex justify-between items-center" data-nume="Limonadă cu Mentă la Doză" data-pret="15.00">
-                        <div>
-                            <h5 class="font-medium text-sm text-white">Limonadă cu Mentă</h5>
-                            <p class="text-[11px] text-gray-500">Fresh proaspăt turnat și sigilat mecanic</p>
-                        </div>
-                        <button onclick="adaugaProdus(this)" class="btn-add px-4 py-2">15.00 RON</button>
-                    </div>
-
-                    <div class="card-produs p-4 flex justify-between items-center" data-nume="Doza Proteică Metanoia" data-pret="18.00">
-                        <div>
-                            <h5 class="font-medium text-sm text-white">Doza Proteică „Metanoia”</h5>
-                            <p class="text-[11px] text-gray-500">Combustibil curat, izolat complet de aer</p>
-                        </div>
-                        <button onclick="adaugaProdus(this)" class="btn-add px-4 py-2">18.00 RON</button>
-                    </div>
-
-                    <div class="card-produs p-4 flex justify-between items-center" data-nume="Desert la Doză Premium" data-pret="22.00">
-                        <div>
-                            <h5 class="font-medium text-sm text-white">Desert la Doză</h5>
-                            <p class="text-[11px] text-gray-500">Prăjitură gourmet stratificată (Precomandă)</p>
-                        </div>
-                        <button onclick="adaugaProdus(this)" class="btn-add px-4 py-2">22.00 RON</button>
-                    </div>
-                </div>
-
-                <!-- Sisteme Cafea -->
-                <div class="space-y-4">
-                    <h4 class="font-cinzel text-xs tracking-widest text-[#c5a059] mb-2 uppercase">Sisteme Premium Cafea</h4>
-                    
-                    <div class="card-produs p-4 flex justify-between items-center" data-nume="Espresso Signature" data-pret="10.00">
-                        <div>
-                            <h5 class="font-medium text-sm text-white">Espresso „Signature”</h5>
-                            <p class="text-[11px] text-gray-500">Extracție standard Nespresso Professional</p>
-                        </div>
-                        <button onclick="adaugaProdus(this)" class="btn-add px-4 py-2">10.00 RON</button>
-                    </div>
-
-                    <div class="card-produs p-4 flex justify-between items-center" data-nume="Specialitatea Casei Milk" data-pret="14.00">
-                        <div>
-                            <h5 class="font-medium text-sm text-white">Specialitatea Casei</h5>
-                            <p class="text-[11px] text-gray-500">Rețetă cu cremă fină de lapte pe flux rapid</p>
-                        </div>
-                        <button onclick="adaugaProdus(this)" class="btn-add px-4 py-2">14.00 RON</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </main>
-
-    <!-- STICKY FOOTER (BARĂ COMANDĂ GLOBALĂ) -->
-    <div class="fixed bottom-0 left-0 w-full bg-[#0a0a0a]/95 backdrop-blur-md border-t border-[#c5a059] p-5 flex justify-between items-center px-6 md:px-12 z-50 shadow-2xl">
-        <div>
-            <p class="text-[9px] uppercase tracking-[2px] text-gray-500">Total Acumulat Coș</p>
-            <p id="display-total" class="font-cinzel text-xl md:text-2xl text-[#c5a059] font-bold">0.00 RON</p>
-        </div>
-        <button onclick="deschideModal()" class="btn-add px-6 md:px-10 py-3 bg-[#c5a059] text-black font-black text-xs tracking-[2px] transition hover:bg-white hover:text-black">Finalizează Comanda</button>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-pill"><span></span> Metanoia foodtech · SOul meal, drinks & coffee</div>
+    <h1>Mâncare cu suflet.<br><em>Vidată</em> cu precizie.</h1>
+    <p class="hero-sub">Preparate artizanale livrate inteligent pe ruta DN68 (Totești). Conservăm intactă valoarea nutritivă și gustul autentic prin tehnologie avansată de vidare sub umbrela Metanoia foodtech.</p>
+    <div class="hero-ctas">
+      <a href="box.html" class="btn-gold" style="text-decoration:none; display:inline-block;">Vezi Casetoane →</a>
+      <a href="#how" class="btn-ghost" style="text-decoration:none; display:inline-block;">Procesul Nostru</a>
     </div>
-
-    <!-- MODAL DATE LIVRARE -->
-    <div id="modal" class="fixed inset-0 z-50 flex items-center justify-center p-6">
-        <div class="bg-[#050505] border border-[#c5a059] p-8 w-full max-w-md shadow-2xl">
-            <h2 class="font-cinzel text-lg text-[#c5a059] mb-2 tracking-wider">DATE LIVRARE OPERATIVE</h2>
-            <p class="text-xs text-gray-500 mb-6">Mâncarea pleacă direct de la Bucătăria Centrală Totești (DN 68).</p>
-            
-            <input type="text" id="client-name" placeholder="Numele tău complet" class="w-full bg-transparent border border-[#1a1a1a] p-3 mb-4 text-white text-sm focus:outline-none focus:border-[#c5a059] transition">
-            <input type="text" id="client-address" placeholder="Adresa de livrare în Hațeg / Totești" class="w-full bg-transparent border border-[#1a1a1a] p-3 mb-6 text-white text-sm focus:outline-none focus:border-[#c5a059] transition">
-            
-            <div class="grid grid-cols-2 gap-4">
-                <button onclick="inchideModal(false)" class="border border-gray-800 text-gray-400 text-xs uppercase tracking-widest py-3 hover:bg-gray-900 transition">Anulează</button>
-                <button onclick="inchideModal(true)" class="btn-add py-3 bg-[#c5a059] text-black font-bold">Trimite Comanda</button>
-            </div>
-        </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-card">
+      <div class="hc-icon">🍲</div>
+      <div>
+        <div class="hc-name">Ceaun de Pui cu Piure</div>
+        <div class="hc-sub">Prânz · 380 gr · Sos unt artizanal</div>
+      </div>
+      <div class="hc-kcal">730 kcal</div>
     </div>
+    <div class="hero-card">
+      <div class="hc-icon">🍮</div>
+      <div>
+        <div class="hc-name">Cremă de Zahăr Ars</div>
+        <div class="hc-sub">Desert · 150 gr · Rețetă tradițională</div>
+      </div>
+      <div class="hc-kcal">310 kcal</div>
+    </div>
+    <div class="hero-card">
+      <div class="hc-icon">🥬</div>
+      <div>
+        <div class="hc-name">Varză Călită cu Ciolan</div>
+        <div class="hc-sub">Cină · 420 gr · Gătit lent la foc mic</div>
+      </div>
+      <div class="hc-kcal">640 kcal</div>
+    </div>
+    <div class="hero-card" style="border-color:rgba(197,160,89,.3)">
+      <div class="hc-icon">🍱</div>
+      <div>
+        <div class="hc-name">OptimBox 1500 kcal</div>
+        <div class="hc-sub">3 mese principale + 2 gustări dense</div>
+      </div>
+      <div class="hc-kcal" style="background:rgba(197,160,89,.2)">Bestseller</div>
+    </div>
+  </div>
+</section>
 
-    <!-- SCRIPT LOGICĂ MENIU ȘI COȘ GLOBAL -->
-    <script>
-        // Sursă unică de adevăr pentru meniul zilnic cu garnitură de piure integrată
-        const meniuSaptamanal = [
-            { zi: "LUNI", fel1: "Ciorbă de găină cu tăieței", calorii1: "150 kcal", p1: "12g", g1: "5g", fel2: "Tocăniță de porc cu piure artizanal", calorii2: "650 kcal", p2: "45g", g2: "25g", pret: 40.00 },
-            { zi: "MARȚI", fel1: "Ciorbă de văcuță", calorii1: "180 kcal", p1: "15g", g1: "6g", fel2: "Pulpă de pui la ceaun cu piure catifelat", calorii2: "580 kcal", p2: "48g", g2: "20g", pret: 40.00 },
-            { zi: "MIERCURI", fel1: "Supă cremă de legume", calorii1: "120 kcal", p1: "5g", g1: "3g", fel2: "Mușchiuleț la grătar cu piure fin cu unt", calorii2: "450 kcal", p2: "42g", g2: "10g", pret: 40.00 },
-            { zi: "JOI", fel1: "Ciorbă rădăuțeană", calorii1: "220 kcal", p1: "18g", g1: "9g", fel2: "Friptură tradițională în sos cu piure fin", calorii2: "620 kcal", p2: "35g", g2: "30g", pret: 40.00 },
-            { zi: "VINERI", fel1: "Ciorbă de burtă", calorii1: "250 kcal", p1: "20g", g1: "12g", fel2: "Pui cremos cu smântână și piure artizanal", calorii2: "550 kcal", p2: "40g", g2: "22g", pret: 40.00 }
-        ];
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="t-item">HațegAlternativ</span><span class="t-dot">✦</span>
+    <span class="t-item">Metanoia foodtech</span><span class="t-dot">✦</span>
+    <span class="t-item">SOul meal</span><span class="t-dot">✦</span>
+    <span class="t-item">Drinks & Coffee</span><span class="t-dot">✦</span>
+    <span class="t-item">Ruta Logistică DN68</span><span class="t-dot">✦</span>
+    <span class="t-item">Totești</span><span class="t-dot">✦</span>
+    <span class="t-item">HațegAlternativ</span><span class="t-dot">✦</span>
+    <span class="t-item">SOul meal</span><span class="t-dot">✦</span>
+    <span class="t-item">Drinks & Coffee</span><span class="t-dot">✦</span>
+    <span class="t-item">Metanoia foodtech</span><span class="t-dot">✦</span>
+  </div>
+</div>
 
-        // Ransarea dinamică a elementelor din meniul săptămânal în stilul Metanoia Premium
-        const container = document.getElementById('container-zile');
-        meniuSaptamanal.forEach((m, index) => {
-            container.innerHTML += `
-                <div id="page-${index + 1}" class="page ${index === 0 ? 'active' : ''}">
-                    <div class="lux-card p-6 md:p-8">
-                        <div class="flex justify-between items-center mb-6 border-b border-[#1a1a1a] pb-4">
-                            <h3 class="text-2xl text-[#c5a059] font-cinzel tracking-wider font-bold">${m.zi}</h3>
-                            <span class="text-sm font-semibold text-gray-400">Pachet Prânz: <span class="text-white">${m.pret.toFixed(2)} RON</span></span>
-                        </div>
-                        
-                        <div class="space-y-6">
-                            <!-- Felul 1 -->
-                            <div class="bg-[#050505] p-4 border border-[#121212]">
-                                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
-                                    <div>
-                                        <h4 class="font-bold text-white text-sm md:text-base">${m.fel1}</h4>
-                                        <p class="text-[10px] uppercase text-gray-500 mt-0.5">Felul I • Gramaj: 400g</p>
-                                    </div>
-                                    <div class="text-[10px] uppercase text-[#c5a059] font-medium bg-[#101010] px-2 py-1 border border-[#1a1a1a] self-start mt-1 sm:mt-0">
-                                        ${m.calorii1} | Prot: ${m.p1} | Grăsimi: ${m.g1}
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!-- Felul 2 (Integrat complet cu Piure) -->
-                            <div class="bg-[#050505] p-4 border border-[#121212]">
-                                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1">
-                                    <div>
-                                        <h4 class="font-bold text-white text-sm md:text-base">${m.fel2}</h4>
-                                        <p class="text-[10px] uppercase text-gray-500 mt-0.5">Felul II + Garnitură • Gramaj: 300g</p>
-                                    </div>
-                                    <div class="text-[10px] uppercase text-[#c5a059] font-medium bg-[#101010] px-2 py-1 border border-[#1a1a1a] self-start mt-1 sm:mt-0">
-                                        ${m.calorii2} | Prot: ${m.p2} | Grăsimi: ${m.g2}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <button onclick="adaugaPachetSaptamanal('${m.zi}', ${m.pret})" class="w-full mt-8 text-center bg-transparent border border-[#c5a059] py-3.5 text-[#c5a059] hover:bg-[#c5a059] hover:text-black transition uppercase text-xs tracking-widest font-black">
-                            Adaugă Meniu ${m.zi} în Coș
-                        </button>
-                    </div>
-                </div>
-            `;
-        });
+<!-- PREVIEW PRODUSE -->
+<section class="menu-section" id="preview">
+  <div class="section-head">
+    <div class="s-tag">🍱 Arhitectură Alimentară</div>
+    <h2 class="s-title">Sisteme integrate,<br><em>gust neschimbat</em></h2>
+    <p class="s-desc">Fiecare preparat este sigilat asincron la temperatură optimă în recipiente sigure. Gata de consum oricând, fără pierderi nutritive.</p>
+  </div>
+  
+  <div class="menu-grid">
+    <!-- PRODUS 1 -->
+    <div class="m-card">
+      <div class="m-img" style="background:linear-gradient(135deg,#111,#222)">🍲</div>
+      <div class="m-body">
+        <div class="m-type">🍽️ Prânz / Cină</div>
+        <div class="m-name">Ceaun de Pui cu Piure Artizanal</div>
+        <p class="m-desc">Carne fragedă preparată lent în suc propriu, așezată pe un pat catifelat de piure fin cu unt aromatic.</p>
+        <div class="m-macros">
+          <div class="macro-chip macro-kcal"><span class="macro-icon">🔥</span> 730 kcal</div>
+          <div class="macro-chip macro-weight"><span class="macro-icon">⚖️</span> 380 gr</div>
+        </div>
+        <div class="m-pairing">
+          <div class="pairing-icon">🔒</div>
+          <div class="pairing-text">
+            <div class="pairing-name">Ambalare Vid Premium</div>
+            <div class="pairing-sub">Etanșeitate absolută pentru conservarea aromei</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- PRODUS 2 -->
+    <div class="m-card">
+      <div class="m-img" style="background:linear-gradient(135deg,#111,#222)">🍮</div>
+      <div class="m-body">
+        <div class="m-type">🍰 Desert Artizanal</div>
+        <div class="m-name">Cremă de Zahăr Ars</div>
+        <p class="m-desc">Desert clasic fin cu zahăr caramelizat lent, pregătit respectând cu strictețe rețeta tradițională de casă.</p>
+        <div class="m-macros">
+          <div class="macro-chip macro-kcal"><span class="macro-icon">🔥</span> 310 kcal</div>
+          <div class="macro-chip macro-weight"><span class="macro-icon">⚖️</span> 150 gr</div>
+        </div>
+        <div class="m-pairing">
+          <div class="pairing-icon">🔒</div>
+          <div class="pairing-text">
+            <div class="pairing-name">Izolare Prospețime</div>
+            <div class="pairing-sub">Structură cremoasă protejată mecanic</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        // Schimbare file zi meniu saptamanal
-        let pag = 1;
-        function schimbaZi(step) {
-            document.getElementById('page-' + pag).classList.remove('active');
-            pag += step;
-            if(pag > 5) pag = 1;
-            if(pag < 1) pag = 5;
-            document.getElementById('page-' + pag).classList.add('active');
-            
-            // Actualizare indicator text central
-            document.getElementById('indicator-zi').innerText = meniuSaptamanal[pag - 1].zi;
-        }
+<!-- CUM FUNCTIONEAZA -->
+<section class="how-section" id="how">
+  <div class="section-head" style="text-align: center; margin-bottom: 40px;">
+    <div class="s-tag">Integrare Proces</div>
+    <h2 class="s-title">Cum funcționează</h2>
+    <p class="s-desc" style="margin: 14px auto 0;">Sistem logistic simplificat, gândit pentru eficiență zilnică totală.</p>
+  </div>
+  
+  <div class="how-grid">
+    <div class="how-step">
+      <div class="how-icon">📋<div class="how-n">1</div></div>
+      <h3>Alegi Volumul</h3>
+      <p>Selectezi structura calorică optimă din compartimentele dedicate.</p>
+    </div>
+    <div class="how-step">
+      <div class="how-icon">🍳<div class="how-n">2</div></div>
+      <h3>Gătit cu Suflet</h3>
+      <p>Păstrăm calitatea tradițională vie în Bucătăria Centrală, refuzând procesele industriale rigide.</p>
+    </div>
+    <div class="how-step">
+      <div class="how-icon">🛵<div class="how-n">3</div></div>
+      <h3>Vidat & Livrat</h3>
+      <p>Mâncarea este vidată etanș și distribuită controlat pe ruta logistică DN68.</p>
+    </div>
+  </div>
+</section>
 
-        // State Coș global
-        let total = 0;
-        let cartItems = [];
+<!-- ABONAMENTE -->
+<section class="plans-section" id="abonamente">
+  <div class="section-head" style="text-align: center;">
+    <div class="s-tag">Sisteme de Abonament</div>
+    <h2 class="s-title">Calibrare Calorică</h2>
+    <p class="s-desc" style="margin: 14px auto 0;">Planuri configurate pentru performanță cognitivă și control metabolic stabil.</p>
+  </div>
+  <div class="plans-grid">
+    <div class="p-card">
+      <div class="p-tag">Starter Flex</div>
+      <h3 class="p-name">Essential Lunch</h3>
+      <p class="p-sub">Ideal pentru menținerea focusului maxim în perioadele intense de birou.</p>
+      <div class="p-price">26.00 lei</div>
+      <div class="p-period">Per Preparat de bază</div>
+      <ul class="p-feat">
+        <li>Preparat principal gătit lent</li>
+        <li>Calibrare exactă macronutrienți</li>
+        <li>Vidare asincronă în caseton</li>
+        <li>Livrare pe segmentul DN68</li>
+      </ul>
+      <a href="box.html" class="p-btn p-btn-out" style="text-decoration:none; display:block; text-align:center;">Selectează Componentă</a>
+    </div>
+    <div class="p-card hot">
+      <div class="p-badge">Recomandat Optimal</div>
+      <div class="p-tag">Sistem Complet</div>
+      <h3 class="p-name">OptimBox 1500</h3>
+      <p class="p-sub">Control total al rației energetice zilnice prin nutriție celulară densă.</p>
+      <div class="p-price">65.00 lei</div>
+      <div class="p-period">Pe Zi / Livrare Integrată</div>
+      <ul class="p-feat">
+        <li>3 Mese principale tradiționale</li>
+        <li>2 Gustări dense micro-nutritiv</li>
+        <li>Ambalare structurală etanșă sub vid</li>
+        <li>Prioritate pe fluxul de distribuție</li>
+      </ul>
+      <a href="box.html" class="p-btn p-btn-fill" style="text-decoration:none; display:block; text-align:center;">Comandă Structură</a>
+    </div>
+  </div>
+</section>
 
-        // Adăugare din listă statică (Meniu Casete/Băuturi)
-        function adaugaProdus(btn) {
-            const card = btn.closest('[data-pret]');
-            const nume = card.getAttribute('data-nume');
-            const pret = parseFloat(card.getAttribute('data-pret'));
-            
-            executaAdaugare(nume, pret, btn);
-        }
+<!-- FOOTER -->
+<footer>
+  <div class="ft">
+    <div>
+      <img src="logo1_3.svg" alt="HațegAlternativ Logo" style="height: 52px; width: auto; margin-bottom: 16px; display: block;">
+      <div class="ft-brand">HațegAlternativ</div>
+      <p class="ft-tag">Un proiect Metanoia foodtech. Reinventăm logistica alimentară în comunitate printr-o fuziune controlată de gastronomie tradițională și tehnologie curată.</p>
+    </div>
+    <div class="ft-col">
+      <h4>Platformă</h4>
+      <ul>
+        <li><a href="meniu.html">Meniu Săptămânal</a></li>
+        <li><a href="box.html">Soul Meal Box</a></li>
+        <li><a href="bauturi.html">Drink & Desert</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Logistcă DN68</h4>
+      <ul>
+        <li><a href="#">Comuna Totești, România</a></li>
+        <li><a href="#">Administrat de DAKAMIGOS MARKT SRL</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <div>&copy; 2026 HațegAlternativ. Toate drepturile rezervate.</div>
+    <div>Sistem curat, asamblat minimalist.</div>
+  </div>
+</footer>
 
-        // Adăugare din meniu săptămânal dinamic
-        function adaugaPachetSaptamanal(zi, pret) {
-            const nume = `Meniu Complet ${zi} (cu Piure)`;
-            // Găsim butonul generat dinamic pentru feedback vizual rapid
-            const btn = document.querySelector(`#page-${meniuSaptamanal.findIndex(m => m.zi === zi) + 1} button`);
-            executaAdaugare(nume, pret, btn);
-        }
+<!-- FLOATING TOTAL / DECLANȘATOR COȘ PERSISTENT -->
+<button class="fab-order" onclick="deschideModal()">
+  <span>🛒</span> <span id="display-total">0.00 RON</span>
+</button>
 
-        // Funcția de procesare coș
-        function executaAdaugare(nume, pret, elementButon) {
-            total += pret;
-            cartItems.push(nume);
-            
-            document.getElementById('display-total').innerText = total.toFixed(2) + ' RON';
-            
-            // Feedback vizual pe butonul apăsat
-            if (elementButon) {
-                const originalText = elementButon.innerText;
-                elementButon.innerText = "Adăugat în Coș ✓";
-                elementButon.style.borderColor = "#fff";
-                if(!elementButon.classList.contains('bg-[#c5a059]')) {
-                    elementButon.style.color = "#fff";
-                }
-                setTimeout(() => {
-                    elementButon.innerText = originalText;
-                    elementButon.style.borderColor = "#c5a059";
-                    if(!elementButon.classList.contains('bg-[#c5a059]')) {
-                        elementButon.style.color = "#c5a059";
-                    }
-                }, 800);
-            }
-        }
+<!-- MODAL VALIDARE LOGISTICĂ -->
+<div id="modal">
+  <div class="modal-content">
+    <h2 style="font-family:'DM Serif Display',serif; color:var(--gold); font-size:1.4rem; margin-bottom:8px; tracking-spacing:1px;">LIVRARE DIN TOTEȘTI</h2>
+    <p style="font-size:.7rem; color:var(--mid); text-transform: uppercase; margin-bottom:24px; letter-spacing:1px;">Validare rută logistică DN68</p>
+    <input type="text" id="client-name" placeholder="Nume complet">
+    <input type="text" id="client-address" placeholder="Adresă exactă de livrare">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:8px;">
+      <button onclick="inchideModal(false)" style="background:transparent; border:1px solid var(--light); color:var(--mid); font-size:.75rem; font-weight:700; text-transform:uppercase; cursor:pointer; padding:12px 0;">Anulează</button>
+      <button onclick="inchideModal(true)" style="background:var(--gold); color:#000; border:none; font-size:.75rem; font-weight:700; text-transform:uppercase; cursor:pointer; padding:12px 0;">Trimite Comandă</button>
+    </div>
+  </div>
+</div>
 
-        // Gestionare Modale operative
-        function deschideModal() { 
-            if (total === 0) {
-                alert('Coșul operațional este gol. Adaugă un meniu complet, o caserolă sau o licoare la doză.');
-                return;
-            }
-            document.getElementById('modal').style.display = 'flex'; 
-        }
-        
-        function inchideModal(sendOrder) { 
-            if (sendOrder) {
-                const nume = document.getElementById('client-name').value;
-                const adresa = document.getElementById('client-address').value;
-                if (!nume || !adresa) {
-                    alert('Te rugăm să completezi numele și adresa pentru livrare.');
-                    return;
-                }
-                alert('Comandă transmisă securizat! Total: ' + total.toFixed(2) + ' RON.\nBucătăria Centrală Totești procesează și videază instant preparatele tale.');
-                
-                // Reset totalizare post-trimitere
-                total = 0;
-                cartItems = [];
-                document.getElementById('display-total').innerText = '0.00 RON';
-                document.getElementById('client-name').value = '';
-                document.getElementById('client-address').value = '';
-            }
-            document.getElementById('modal').style.display = 'none'; 
-        }
-    </script>
+<script src="script.js"></script>
 </body>
 </html>
