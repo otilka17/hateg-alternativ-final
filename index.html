@@ -42,7 +42,7 @@
       background: var(--cream);
       color: var(--text);
       overflow-x: hidden;
-      padding-bottom: 70px; /* Spațiu pentru dock-ul de mobil */
+      padding-bottom: 80px; /* Spațiu pentru dock-ul de mobil */
     }
     
     /* ════ NAV ════ */
@@ -59,7 +59,7 @@
       font-family: 'DM Serif Display', serif;
       font-size: 1.35rem; color: #fff; text-decoration: none;
     }
-    .nav-logo svg, .nav-logo img {
+    .nav-logo svg {
       width: 32px; height: 32px; fill: var(--gold);
     }
     .nav-logo span { color: var(--gold); }
@@ -80,7 +80,7 @@
 
     /* ════ HERO ════ */
     .hero {
-      min-height: 90vh;
+      min-height: 85vh;
       background: var(--espresso);
       display: grid; grid-template-columns: 1fr 1fr;
       align-items: center; padding: 110px 5% 60px; gap: 40px;
@@ -127,15 +127,6 @@
     .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
 
     .hero-visual { position: relative; z-index: 2; display: flex; flex-direction: column; gap: 16px; }
-    .hero-card {
-      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
-      border-radius: 10px; padding: 16px 20px; display: flex; align-items: center; gap: 16px;
-      backdrop-filter: blur(8px); transition: transform .2s;
-    }
-    .hc-icon { width: 52px; height: 52px; border-radius: 8px; background: var(--caramel); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; flex-shrink: 0; }
-    .hc-name { font-weight: 600; color: #fff; font-size: .95rem; }
-    .hc-sub { font-size: .78rem; color: rgba(255,255,255,.45); margin-top: 2px; }
-    .hc-kcal { margin-left: auto; background: rgba(230,170,76,.15); color: var(--gold); font-size: .75rem; font-weight: 700; padding: 4px 10px; border-radius: 100px; }
 
     /* ════ TICKER ════ */
     .ticker { background: var(--gold); padding: 12px 0; overflow: hidden; white-space: nowrap; }
@@ -154,7 +145,7 @@
     .week-row, .day-row { display: flex; gap: 8px; margin-bottom: 15px; overflow-x: auto; padding-bottom: 6px; -webkit-overflow-scrolling: touch; }
     .week-tab, .day-tab {
       padding: 10px 22px; border-radius: 4px; cursor: pointer; font-size: .78rem; font-weight: 600; letter-spacing: .8px;
-      text-transform: uppercase; white-space: nowrap; border: 1px solid rgba(0,0,0,.12); background: #fff; color: var(--mid); transition: all .15s;
+      text-transform: uppercase; white-space: nowrap; border: 1px solid rgba(0,0,0,0.12); background: #fff; color: var(--mid); transition: all .15s;
     }
     .week-tab.active { background: var(--ink); color: var(--gold); border-color: var(--ink); }
     .day-tab.active  { background: var(--gold); color: var(--ink); border-color: var(--gold); }
@@ -198,6 +189,7 @@
     .d-img { height: 150px; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; position: relative; }
     .d-badge { position: absolute; top: 12px; right: 12px; font-size: .62rem; font-weight: 700; padding: 4px 10px; border-radius: 2px; text-transform: uppercase; background: var(--gold); color: var(--ink); }
     .d-body { padding: 18px; }
+    .d-dose-tag { margin-bottom: 4px; }
     .d-dose-tag span { font-size: .68rem; font-weight: 700; color: var(--gold); text-transform: uppercase; }
     .d-name { font-family: 'DM Serif Display', serif; font-size: 1.15rem; color: #fff; margin: 6px 0; }
     .d-desc { font-size: .82rem; color: rgba(255,255,255,.45); line-height: 1.5; margin-bottom: 14px; }
@@ -247,7 +239,7 @@
     .ft-col a:hover { color: var(--gold); }
     .ft-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; font-size: .75rem; margin-top: 30px; }
 
-    /* ════ NOUA STRUCTURĂ DOCK PT. MOBIL (EVITĂ SUPRAPUNEREA) ════ */
+    /* ════ DOCK NAV PENTRU MOBIL ════ */
     .action-dock {
       position: fixed; bottom: 0; left: 0; right: 0; z-index: 400;
       background: rgba(18, 14, 9, 0.98); backdrop-filter: blur(10px);
@@ -281,7 +273,6 @@
   <!-- NAV -->
   <nav>
     <a href="#" class="nav-logo">
-      <!-- Fallback SVG integrat direct în caz că fișierul fizic nu e încă pe server -->
       <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
         <circle cx="50" cy="50" r="45" stroke="#e6aa4c" stroke-width="2" fill="none"/>
         <polygon points="50,25 25,65 75,65" fill="#e6aa4c"/>
@@ -338,6 +329,8 @@
       <button class="day-tab active" data-day="luni">Luni</button>
       <button class="day-tab" data-day="marti">Marți</button>
       <button class="day-tab" data-day="miercuri">Miercuri</button>
+      <button class="day-tab" data-day="joi">Joi</button>
+      <button class="day-tab" data-day="vineri">Vineri</button>
     </div>
     
     <div class="kcal-selector">
@@ -358,11 +351,24 @@
     </div>
     <div class="desserts-grid">
       <div class="d-card">
-        <div class="d-img" style="background:linear-gradient(135deg,#1a0f00,#4a2a00)">🍮<div class="d-badge">Recomandat</div></div>
+        <div class="d-img" style="background:linear-gradient(135deg,#1a0f00,#4a2a00)">🍮<div class="d-badge">Semnătură</div></div>
+        <div class="d-body">
+          <div class="d-dose-tag"><span>☕ Livanto · Intensitate 6</span></div>
+          <div class="d-name">Cremă de Zahăr Ars</div>
+          <p class="d-desc">Desertul copilăriei făcut perfect fin, cu caramel fluid și aromă intensă de vanilie autentică.</p>
+          <div class="d-footer">
+            <div class="d-chip">🔥 240 kcal</div>
+            <div class="d-price">16 lei</div>
+            <button class="btn-add-cart" onclick="addItemToCart('Cremă de Zahăr Ars', 240)">Adaugă +</button>
+          </div>
+        </div>
+      </div>
+      <div class="d-card">
+        <div class="d-img" style="background:linear-gradient(135deg,#2b1f13,#120e09)">🧁</div>
         <div class="d-body">
           <div class="d-dose-tag"><span>☕ Kazaar · Intensitate 12</span></div>
           <div class="d-name">Tiramisu Nero</div>
-          <p class="d-desc">Tiramisu intens cu mascarpone premium și extra-infuzie de espresso.</p>
+          <p class="d-desc">Crema fină de mascarpone cu biscuiți însiropați puternic în espresso ristretto.</p>
           <div class="d-footer">
             <div class="d-chip">🔥 310 kcal</div>
             <div class="d-price">18 lei</div>
@@ -441,7 +447,7 @@
     </div>
   </footer>
 
-  <!-- ACTION DOCK (SISTEM REZISTENT ȘI SCALABIL PENTRU MOBIL) -->
+  <!-- ACTION DOCK (MOBIL DOCK BAR REZISTENT LA SUPRAPUNERI) -->
   <div class="action-dock">
     <a href="https://wa.me/40700000000?text=Salut!%20Vreau%20detalii%20despre%20meniul%20SOul%20meal" class="dock-btn-wa" target="_blank">
       💬 WhatsApp
@@ -451,38 +457,54 @@
     </button>
   </div>
 
-  <!-- SCRIPT INTEGRAL ACTUALIZAT -->
+  <!-- SCRIPT INTEGRAL DINAMIC -->
   <script>
     const menuDatabase = {
       "w1": {
         "luni": {
-          "1000": [
-            { type: "Mic Dejun", name: "Iaurt Grecesc cu Chia", desc: "Iaurt slab, semințe de chia și vanilie.", kcal: 210, weight: "180g", prot: "12g", icon: "🥣", pair: "Volluto" }
-          ],
+          "1000": [{ type: "Masa 1", name: "Iaurt Grecesc cu Chia", desc: "Iaurt slab bogat în proteine cu semințe de chia și vanilie.", kcal: 250, weight: "200g", prot: "15g", icon: "🥣", pair: "Volluto" }],
           "1500": [
-            { type: "Mic Dejun", name: "Overnight Oats cu Fructe", desc: "Fulgi de ovăz cu lapte de cocos și fructe de pădure.", kcal: 380, weight: "250g", prot: "12g", icon: "🥣", pair: "Volluto" },
-            { type: "Prânz", name: "Plăcintă Carne & Salată", desc: "Plăcintă echilibrată cu carne tocată slabă și brânzeturi.", kcal: 540, weight: "380g", prot: "28g", icon: "🥗", pair: "Ristretto" },
-            { type: "Cină", name: "Somon Teriyaki & Quinoa", desc: "File de somon premium și quinoa tricolor.", kcal: 580, weight: "420g", prot: "38g", icon: "🐟", pair: "Indriya" }
+            { type: "Mic Dejun", name: "Overnight Oats cu Fructe", desc: "Fulgi de ovăz hidratați în lapte de cocos, bogați în fibre.", kcal: 380, weight: "250g", prot: "12g", icon: "🥣", pair: "Volluto" },
+            { type: "Prânz", name: "Plăcintă de Carne cu Salată", desc: "Gătită la cald și sigilată etanș pentru păstrarea sucurilor naturale.", kcal: 540, weight: "380g", prot: "28g", icon: "🥗", pair: "Ristretto" },
+            { type: "Cină", name: "Somon Teriyaki & Quinoa", desc: "File de somon premium cu garnitură ușoară de quinoa tricolor.", kcal: 580, weight: "420g", prot: "38g", icon: "🐟", pair: "Indriya" }
           ],
-          "2000": [
-            { type: "Mic Dejun", name: "Omletă cu Avocado", desc: "3 ouă, avocado, brânză feta și pâine integrală.", kcal: 550, weight: "300g", prot: "26g", icon: "🍳", pair: "Kazaar" }
-          ]
+          "2000": [{ type: "Masa Full", name: "Omletă Imperială cu Avocado", desc: "3 ouă, avocado, feta și pâine artizanală integrală.", kcal: 650, weight: "350g", prot: "32g", icon: "🍳", pair: "Kazaar" }]
         },
         "marti": {
+          "1000": [{ type: "Prânz", name: "Curcan în sos de salvie", desc: "Piept de curcan fraged cu sos fin aromatizat.", kcal: 350, weight: "250g", prot: "30g", icon: "🍗", pair: "Livanto" }],
           "1500": [
-            { type: "Prânz", name: "Curcan în sos de salvie", desc: "Suflet transilvănean cu tehnologie modernă de gătire.", kcal: 490, weight: "350g", prot: "34g", icon: "🍗", pair: "Livanto" }
-          ]
+            { type: "Mic Dejun", name: "Budincă de hrișcă și miere", desc: "Alternativă nutritivă excelentă pentru energie curată.", kcal: 390, weight: "220g", prot: "10g", icon: "🥣", pair: "Cosi" },
+            { type: "Prânz", name: "Tocăniță de vițel cu mămăligă", desc: "Rețetă tradițională lent gătită, stabilă structural în containerul vidat.", kcal: 610, weight: "450g", prot: "42g", icon: "🍲", pair: "Ristretto" },
+            { type: "Cină", name: "Supă cremă de linte", desc: "Textură fină, catifelată, perfect protejată spill-proof.", kcal: 500, weight: "400g", prot: "20g", icon: "🍜", pair: "Decaffeinato" }
+          ],
+          "2000": [{ type: "Prânz Max", name: "Tocăniță de vițel cu mămăligă Double", desc: "Porție mărită pentru suport caloric extins.", kcal: 820, weight: "550g", prot: "55g", icon: "🍲", pair: "Kazaar" }]
         },
         "miercuri": {
           "1500": [
-            { type: "Cină", name: "Sauté de varză cu mămăligă", desc: "Rețetă tradițională reinterpretată cu macro-nutrienți stabili.", kcal: 420, weight: "400g", prot: "14g", icon: "🍲", pair: "Roma" }
+            { type: "Mic Dejun", name: "Frittata cu spanac și capră", desc: "Echilibru perfect între proteine și grăsimi sănătoase.", kcal: 410, weight: "200g", prot: "22g", icon: "🍳", pair: "Volluto" },
+            { type: "Prânz", name: "Pui Supreme cu orez negru", desc: "Piept de pui suculent cu orez intergral negru exotic.", kcal: 580, weight: "400g", prot: "39g", icon: "🍗", pair: "Roma" },
+            { type: "Cină", name: "Sauté de varză călită cu mămăliguță", desc: "Mâncare tradițională făcută fără grăsimi în exces, gata de savurat fierbinte.", kcal: 510, weight: "420g", prot: "16g", icon: "🍲", pair: "Arpeggio" }
+          ]
+        },
+        "joi": {
+          "1500": [
+            { type: "Mic Dejun", name: "Eggs Benedict Reinterpretation", desc: "Ouă poșate pe pat de spanac sote și sos fin ușor.", kcal: 420, weight: "210g", prot: "18g", icon: "🍳", pair: "Livanto" },
+            { type: "Prânz", name: "Musaca de cartofi și curcan", desc: "Straturi perfect coapte, asamblate chirurgical.", kcal: 590, weight: "400g", prot: "31g", icon: "🥘", pair: "Ristretto" },
+            { type: "Cină", name: "Salată Nicoise cu Ton Premium", desc: "Proaspătă, crocantă, cu dressing fin servit separat.", kcal: 490, weight: "380g", prot: "34g", icon: "🥗", pair: "Cosi" }
+          ]
+        },
+        "vineri": {
+          "1500": [
+            { type: "Mic Dejun", name: "Pancakes cu proteine și afine", desc: "Clătite americane pufoase cu îndulcitor natural.", kcal: 400, weight: "180g", prot: "25g", icon: "🥞", pair: "Volluto" },
+            { type: "Prânz", name: "Păstrăv la grătar cu legume", desc: "Pește local curat cu mix de legume la abur.", kcal: 520, weight: "410g", prot: "40g", icon: "🐟", pair: "Envivo" },
+            { type: "Cină", name: "Paste Integrale Bolognese light", desc: "Sos bogat de roșii cu carne slabă de vită și ierburi.", kcal: 580, weight: "390g", prot: "29g", icon: "🍝", pair: "Arpeggio" }
           ]
         }
       },
       "w2": {
         "luni": {
           "1500": [
-            { type: "Mic Dejun", name: "Granola Crunch", desc: "Iaurt cremos cu granola artizanală.", kcal: 420, weight: "240g", prot: "11g", icon: "🥣", pair: "Cosi" }
+            { type: "Mic Dejun", name: "Granola Crunch Premium", desc: "Iaurt cremos cu amestec de nuci și semințe coapte.", kcal: 420, weight: "240g", prot: "11g", icon: "🥣", pair: "Cosi" }
           ]
         }
       }
@@ -491,19 +513,16 @@
     let selectedWeek = "w1";
     let selectedDay = "luni";
     let selectedKcal = "1500";
-    
-    // MANAGEMENT COȘ DE CUMPĂRĂTURI
     let shoppingCart = [];
 
     function addItemToCart(name, kcal) {
       shoppingCart.push({ name, kcal });
       updateCartUI();
       
-      // Feedback vizual rapid pe buton
       let btn = event.target;
       let originalText = btn.innerText;
       btn.innerText = "Adăugat! ✓";
-      btn.style.background = "#4a6741";
+      btn.style.background = "var(--sage)";
       setTimeout(() => {
         btn.innerText = originalText;
         btn.style.background = "";
@@ -512,10 +531,11 @@
 
     function updateCartUI() {
       const count = shoppingCart.length;
-      // Actualizare butoane checkout
       document.querySelectorAll(".context-checkout").forEach(el => {
         if(el.tagName === "BUTTON") {
           el.innerText = count > 0 ? `🛒 Precomandă (${count})` : "🛒 Coș gol";
+        } else {
+          el.innerText = `Coș (${count}) →`;
         }
       });
     }
@@ -526,11 +546,11 @@
       grid.innerHTML = "";
       
       const weekData = menuDatabase[selectedWeek] || menuDatabase["w1"];
-      const dayData = weekData[selectedDay] || weekData["luni"];
-      const items = dayData[selectedKcal] || dayData["1500"] || [];
+      const dayData = weekData[selectedDay] || [];
+      const items = dayData[selectedKcal] || [];
       
       if(items.length === 0) {
-        grid.innerHTML = `<p style="grid-column: 1/-1; color: var(--light); text-align: center; padding: 40px; font-size:0.9rem;">Meniul pentru această zi urmează să fie optimizat.</p>`;
+        grid.innerHTML = `<p style="grid-column: 1/-1; color: var(--light); text-align: center; padding: 40px; font-size:0.9rem;">Meniul pentru această selecție este în curs de calibrare nutrițională.</p>`;
         return;
       }
 
@@ -568,20 +588,20 @@
 
     function sendToWebhook() {
       if(shoppingCart.length === 0) {
-        alert("Coșul este gol. Adaugă preparate din meniu înainte de a trimite.");
+        alert("Coșul este gol. Adaugă produse înainte de a trimite precomanda.");
         return;
       }
       
       const webhookUrl = "https://hook.eu1.make.com/YOUR_WEBHOOK_ID_HERE";
       const payload = {
-        source: "SOul meal App",
+        source: "SOul meal WebApp",
         timestamp: new Date().toISOString(),
         items: shoppingCart,
         summary: { totalItems: shoppingCart.length }
       };
 
-      console.log("Trimitere payload către Make:", payload);
-      alert(`Precomandă trimisă cu succes pentru cele ${shoppingCart.length} produse!`);
+      console.log("Trimitere date către Make Webhook:", payload);
+      alert(`Precomandă înregistrată! S-au trimis ${shoppingCart.length} repere către procesare.`);
       shoppingCart = [];
       updateCartUI();
     }
@@ -589,7 +609,6 @@
     document.addEventListener("DOMContentLoaded", function() {
       renderMenu();
 
-      // Interacțiune Săptămâni
       document.querySelectorAll(".week-tab").forEach(tab => {
         tab.addEventListener("click", function() {
           document.querySelectorAll(".week-tab").forEach(t => t.classList.remove("active"));
@@ -599,7 +618,6 @@
         });
       });
 
-      // Interacțiune Zile
       document.querySelectorAll(".day-tab").forEach(tab => {
         tab.addEventListener("click", function() {
           document.querySelectorAll(".day-tab").forEach(t => t.classList.remove("active"));
@@ -609,7 +627,6 @@
         });
       });
 
-      // Interacțiune Target Caloric
       document.querySelectorAll(".kcal-pill-btn").forEach(btn => {
         btn.addEventListener("click", function() {
           document.querySelectorAll(".kcal-pill-btn").forEach(b => b.classList.remove("active"));
@@ -619,7 +636,6 @@
         });
       });
 
-      // Acțiune finalizare comandă
       document.querySelectorAll(".context-checkout").forEach(btn => {
         btn.addEventListener("click", sendToWebhook);
       });
