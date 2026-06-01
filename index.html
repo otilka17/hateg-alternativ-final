@@ -1,584 +1,1083 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SOul meal, drinks & coffee — Meniuri Smart & Cafea</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOul meal, drinks & coffee — Ecosistem Gastronomic Avansat</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --espresso: #160f0a;
+    --gold: #c5a059;
+    --gold-light: #dfb975;
+    --cream: #f4f0ea;
+    --warm-white: #fbfbfa;
+    --sage: #4a6547;
+    --sage-light: #e8ece7;
+    --text-dark: #1c1611;
+    --text-mid: #554b41;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--warm-white);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 32px;
+    background: rgba(10,10,10,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(197,160,89,0.2);
+  }
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem; font-weight: 900;
+    color: var(--gold);
+    letter-spacing: 2px;
+    display: flex; align-items: center; gap: 10px;
+    text-decoration: none;
+  }
+  .logo span { color: #fff; font-weight: 300; }
+  .logo-icon {
+    width: 36px; height: 36px;
+    background: var(--gold);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    transform: rotate(-8deg);
+    color: var(--black);
+  }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    background: var(--gold); color: var(--black);
+    padding: 10px 22px; border-radius: 4px;
+    font-weight: 700; font-size: 0.8rem;
+    letter-spacing: 1px; text-transform: uppercase;
+    cursor: pointer; border: none;
+    transition: background 0.2s, transform 0.1s;
+  }
+  .nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--black);
+    display: flex; flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 120px 5% 60px;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 70% 50%, rgba(74,101,71,0.15) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 60% at 20% 80%, rgba(22,15,10,0.8) 0%, transparent 60%);
+  }
+  .hero-bg-text {
+    position: absolute;
+    right: -2%;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(120px, 20vw, 260px);
+    font-weight: 900;
+    color: rgba(197,160,89,0.04);
+    line-height: 1;
+    pointer-events: none;
+    letter-spacing: -5px;
+  }
+  .hero-content { position: relative; z-index: 2; max-width: 750px; }
+  .hero-tag {
+    display: inline-block;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 6px 16px;
+    font-size: 0.72rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 5.5vw, 5rem);
+    font-weight: 900;
+    line-height: 1.1;
+    color: #fff;
+    margin-bottom: 16px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold);
+    font-weight: 400;
+  }
+  .hero-sub {
+    font-size: clamp(1rem, 1.4vw, 1.2rem);
+    color: rgba(255,255,255,0.6);
+    max-width: 580px;
+    line-height: 1.7;
+    margin-bottom: 44px;
+  }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+
+  .hero-stats {
+    position: absolute; bottom: 50px; right: 5%;
+    display: flex; gap: 40px;
+  }
+  .stat { text-align: right; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem; font-weight: 900;
+    color: var(--gold); line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.75rem; color: rgba(255,255,255,0.4);
+    letter-spacing: 1px; text-transform: uppercase; margin-top: 4px;
+  }
+
+  /* ── SCROLL STRIP ── */
+  .marquee-strip {
+    background: var(--gold);
+    padding: 14px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .marquee-inner {
+    display: inline-flex; gap: 60px;
+    animation: marquee 25s linear infinite;
+  }
+  .marquee-item {
+    font-size: 0.75rem; font-weight: 700;
+    letter-spacing: 3px; text-transform: uppercase;
+    color: var(--black);
+  }
+  .marquee-sep { color: rgba(0,0,0,0.3); }
+
+  /* ── CAPSULES SECTION ── */
+  .capsules-section {
+    background: var(--warm-white);
+    padding: 100px 5%;
+  }
+  .section-intro {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 60px; flex-wrap: wrap; gap: 20px;
+  }
+  .section-tag {
+    font-size: 0.72rem; letter-spacing: 3px;
+    text-transform: uppercase; color: var(--sage);
+    margin-bottom: 12px;
+    font-weight: 700;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 900; line-height: 1.1;
+    color: var(--text-dark);
+  }
+  .section-title em { font-style: italic; color: var(--gold); font-weight: 400; }
+  .section-desc {
+    max-width: 360px;
+    color: var(--text-mid);
+    font-size: 0.95rem; line-height: 1.7;
+  }
+
+  .capsules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 24px;
+  }
+  .capsule-card {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    transition: transform 0.25s, box-shadow 0.25s;
+    cursor: pointer;
+    position: relative;
+    border: 1px solid rgba(0,0,0,0.03);
+  }
+  .capsule-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+  .capsule-img {
+    height: 180px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background: var(--espresso);
+  }
+  .capsule-img img { width: 100%; height: 100%; object-fit: cover; }
+  .capsule-badge {
+    position: absolute; top: 14px; right: 14px;
+    background: var(--gold); color: var(--black);
+    font-size: 0.65rem; font-weight: 700;
+    padding: 4px 10px; border-radius: 20px;
+    letter-spacing: 1px; text-transform: uppercase;
+    z-index: 2;
+  }
+  .capsule-body { padding: 22px; }
+  .capsule-intensity {
+    display: flex; gap: 4px; margin-bottom: 12px; align-items: center;
+  }
+  .intensity-label { font-size: 0.7rem; uppercase; color: var(--text-mid); margin-right: 4px; font-weight: 600; }
+  .intensity-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: #e0e0e0;
+  }
+  .intensity-dot.filled { background: var(--gold); }
   
-  <!-- Favicon Link -->
-  <link rel="icon" type="image/svg+xml" href="logo1.svg">
+  .capsule-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem; font-weight: 700;
+    margin-bottom: 6px; color: var(--text-dark);
+  }
+  .capsule-desc { font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 20px; }
+  .capsule-price-row {
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .capsule-price { font-size: 1.15rem; font-weight: 700; color: var(--text-dark); }
+  .capsule-price span { font-size: 0.78rem; font-weight: 400; color: var(--text-mid); }
+  .add-btn {
+    background: var(--black); color: #fff;
+    border: none; width: 36px; height: 36px; border-radius: 50%;
+    font-size: 1.2rem; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s, transform 0.1s;
+  }
+  .add-btn:hover { background: var(--gold); color: var(--black); transform: scale(1.05); }
+
+  /* ── HOW IT WORKS ── */
+  .how-section {
+    background: var(--black);
+    padding: 100px 5%;
+    position: relative;
+    overflow: hidden;
+  }
+  .how-section::before {
+    content: 'FLUX';
+    position: absolute; left: -1%; top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+    font-family: 'Playfair Display', serif;
+    font-size: 16rem; font-weight: 900;
+    color: rgba(197,160,89,0.02);
+    pointer-events: none;
+  }
+  .how-section .section-title { color: #fff; }
+  .how-section .section-tag { color: var(--gold-light); }
+
+  .steps-track {
+    display: flex; gap: 24px;
+    margin-top: 60px;
+    position: relative;
+    flex-wrap: wrap;
+  }
+  .step {
+    flex: 1; min-width: 250px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.05);
+    padding: 40px 28px; border-radius: 8px;
+    position: relative;
+  }
+  .step-icon {
+    width: 64px; height: 64px;
+    background: rgba(197,160,89,0.1);
+    border: 1px solid var(--gold);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.8rem;
+    margin-bottom: 24px;
+    color: var(--gold);
+  }
+  .step-num {
+    position: absolute; top: 24px; right: 28px;
+    color: rgba(255,255,255,0.1);
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem; font-weight: 900;
+  }
+  .step h3 {
+    font-weight: 700; font-size: 1rem; letter-spacing: 1.5px;
+    text-transform: uppercase; color: #fff; margin-bottom: 12px;
+  }
+  .step p { font-size: 0.88rem; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+  /* ── MENU SECTION ── */
+  .menu-section {
+    background: var(--cream);
+    padding: 100px 5%;
+  }
+  .tabs-container {
+    display: flex; flex-direction: column; gap: 16px; margin: 40px 0 32px;
+  }
+  .week-tabs {
+    display: flex; gap: 10px; overflow-x: auto; padding-bottom: 4px;
+  }
+  .week-tabs::-webkit-scrollbar, .day-tabs::-webkit-scrollbar { display: none; }
+  .week-tab {
+    padding: 12px 24px; border-radius: 4px;
+    font-size: 0.8rem; font-weight: 600;
+    letter-spacing: 1px; cursor: pointer;
+    border: 1px solid rgba(0,0,0,0.12);
+    background: transparent; color: var(--text-mid);
+    white-space: nowrap; transition: all 0.15s;
+    text-transform: uppercase;
+  }
+  .week-tab.active {
+    background: var(--black); color: var(--gold);
+    border-color: var(--black);
+  }
+  .day-tabs {
+    display: flex; gap: 6px; overflow-x: auto;
+  }
+  .day-tab {
+    padding: 10px 20px; border-radius: 4px;
+    font-size: 0.85rem; font-weight: 500;
+    cursor: pointer; border: none;
+    background: rgba(0,0,0,0.05); color: var(--text-mid);
+    white-space: nowrap; transition: all 0.15s;
+  }
+  .day-tab.active { background: var(--gold); color: var(--black); font-weight: 700; }
+  .day-tab:hover:not(.active) { background: rgba(0,0,0,0.08); }
+
+  .filter-row {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 32px; flex-wrap: wrap; gap: 16px;
+    background: rgba(255,255,255,0.5); padding: 16px 24px; border-radius: 8px;
+  }
+  .kcal-selectors { display: flex; gap: 8px; align-items: center; }
+  .kcal-label { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--text-mid); letter-spacing: 0.5px; }
+  .kcal-btn {
+    padding: 6px 14px; border-radius: 20px; border: 1px solid rgba(0,0,0,0.1);
+    background: #fff; font-size: 0.78rem; font-weight: 600; cursor: pointer; color: var(--text-mid);
+  }
+  .kcal-btn.active { background: var(--sage); color: #fff; border-color: var(--sage); }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+  }
+  .menu-item {
+    background: #fff; border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    transition: transform 0.2s;
+    display: flex; flex-direction: column;
+    border: 1px solid rgba(0,0,0,0.02);
+  }
+  .menu-item:hover { transform: translateY(-4px); }
+  .menu-item-img {
+    height: 190px; width: 100%;
+    position: relative; overflow: hidden;
+    background: var(--espresso);
+  }
+  .menu-item-img img { width: 100%; height: 100%; object-fit: cover; }
+  .menu-item-body { padding: 24px; flex: 1; display: flex; flex-direction: column; }
+  .meal-meta {
+    display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;
+  }
+  .meal-type {
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--sage);
+  }
+  .meal-weight { font-size: 0.72rem; color: var(--text-mid); font-weight: 500; }
+  .meal-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; color: var(--text-dark);
+  }
+  .meal-desc { font-size: 0.85rem; color: var(--text-mid); line-height: 1.6; margin-bottom: 16px; flex: 1; }
   
-  <!-- Meta Tags SEO & Open Graph (Social Media) -->
-  <meta name="description" content="Meniuri calorice personalizate spill-proof și cafea de specialitate. Ridicare din punctul de colectare SOul meal sau livrare planificată.">
-  <meta property="og:title" content="SOul meal, drinks & coffee — Gătit inteligent, protejat complet">
-  <meta property="og:description" content="Sistem inovator de precomandă cu preparate sigilate în inox și pairing de cafea premium.">
-  <meta property="og:image" content="logo1.svg">
-  <meta property="og:type" content="website">
+  .meal-macros {
+    display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px;
+    padding: 10px 0; border-top: 1px dashed rgba(0,0,0,0.08); border-bottom: 1px dashed rgba(0,0,0,0.08);
+  }
+  .macro-pill {
+    background: var(--warm-white); border-radius: 4px;
+    padding: 4px 8px; font-size: 0.72rem; font-weight: 600; color: var(--text-dark);
+  }
+  .macro-pill.kcal { background: #fdf2f2; color: #a82c2c; }
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  .meal-footer {
+    display: flex; justify-content: space-between; align-items: center; margin-top: auto;
+  }
+  .pairing-box {
+    display: flex; align-items: center; gap: 8px; background: var(--espresso);
+    padding: 6px 12px; border-radius: 6px;
+  }
+  .pairing-icon { font-size: 1rem; }
+  .pairing-info { line-height: 1.2; }
+  .pairing-title { font-size: 0.75rem; font-weight: 700; color: var(--gold); }
+  .pairing-desc { font-size: 0.6rem; color: rgba(255,255,255,0.4); text-transform: uppercase; }
+
+  /* ── DELIVERY ZONE ── */
+  .zone-section {
+    background: var(--warm-white);
+    padding: 100px 5%;
+    display: grid; grid-template-columns: 1fr;
+    gap: 40px; align-items: center;
+  }
+  @media (min-width: 850px) { .zone-section { grid-template-columns: 1fr 1fr; gap: 60px; } }
+  .zone-map {
+    background: var(--espresso);
+    border-radius: 16px;
+    aspect-ratio: 1.1;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    position: relative; overflow: hidden; border: 1px solid rgba(197,160,89,0.1);
+  }
+  .zone-map-bg {
+    position: absolute; inset: 0; opacity: 0.15;
+    background-image: radial-gradient(var(--gold) 1px, transparent 0);
+    background-size: 24px 24px;
+  }
+  .zone-map-graphics {
+    position: relative; z-index: 2; text-align: center;
+  }
+  .zone-hub-ring {
+    width: 100px; height: 100px; border-radius: 50%;
+    border: 2px dashed var(--gold); display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px; animation: spin 40s linear infinite;
+  }
+  @keyframes spin { 100% { transform: rotate(300deg); } }
+  .zone-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 900;
+    margin-bottom: 12px; line-height: 1.1;
+  }
+  .zone-subtitle { font-size: 2rem; font-weight: 700; color: var(--sage); margin-bottom: 20px; }
+  .zone-desc { color: var(--text-mid); line-height: 1.7; margin-bottom: 30px; font-size: 0.95rem; }
+  .zone-cities { display: flex; flex-wrap: wrap; gap: 8px; }
+  .city-tag {
+    background: var(--cream); border-radius: 4px;
+    padding: 8px 16px; font-size: 0.8rem; font-weight: 600;
+    color: var(--text-dark); border: 1px solid rgba(0,0,0,0.04);
+  }
+
+  /* ── PRICING ── */
+  .pricing-section {
+    background: var(--espresso);
+    padding: 100px 5%;
+    position: relative;
+  }
+  .pricing-section .section-title { color: #fff; }
+  .pricing-section .section-tag { color: var(--gold-light); }
+
+  .plans-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px; margin-top: 60px;
+  }
+  .plan-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(197,160,89,0.15);
+    border-radius: 12px; padding: 40px 32px;
+    position: relative; transition: all 0.25s;
+    display: flex; flex-direction: column;
+  }
+  .plan-card.featured {
+    background: #fff;
+    border-color: #fff;
+  }
+  .plan-card:hover:not(.featured) {
+    border-color: rgba(197,160,89,0.4);
+    transform: translateY(-4px);
+  }
+  .plan-label {
+    font-size: 0.7rem; letter-spacing: 3px; font-weight: 700;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 16px;
+  }
+  .plan-card.featured .plan-label { color: var(--sage); }
+  .plan-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem; font-weight: 900;
+    color: #fff; margin-bottom: 8px;
+  }
+  .plan-card.featured .plan-name { color: var(--text-dark); }
+  .plan-desc { font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-bottom: 32px; line-height: 1.6; }
+  .plan-card.featured .plan-desc { color: var(--text-mid); }
+  .plan-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem; font-weight: 900;
+    color: var(--gold); line-height: 1; margin-bottom: 6px;
+  }
+  .plan-card.featured .plan-price { color: var(--text-dark); }
+  .plan-period { font-size: 0.8rem; color: rgba(255,255,255,0.4); margin-bottom: 32px; }
+  .plan-card.featured .plan-period { color: var(--text-mid); }
   
-  <style>
-    :root {
-      --ink:        #120e09;
-      --espresso:  #1e1108;
-      --roast:     #3b2009;
-      --caramel:   #c07c2a;
-      --gold:      #e6aa4c;
-      --gold-pale: #f5d88a;
-      --cream:     #faf5ee;
-      --warm:      #f2ead8;
-      --mist:      #ede8df;
-      --sage:      #4a6741;
-      --red-berry: #a82c2c;
-      --text:      #1e1a14;
-      --mid:       #6b5e4a;
-      --light:     #a39882;
-    }
-    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--cream);
-      color: var(--text);
-      overflow-x: hidden;
-      padding-bottom: 80px; /* Spațiu pentru dock-ul de mobil */
-    }
-    
-    /* ════ NAV ════ */
-    nav {
-      position: fixed; top:0; width:100%; z-index:200;
-      background: rgba(18,14,9,0.96);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(230,170,76,0.15);
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 5%; height: 70px;
-    }
-    .nav-logo {
-      display: flex; align-items: center; gap: 12px;
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.35rem; color: #fff; text-decoration: none;
-    }
-    .nav-logo svg {
-      width: 32px; height: 32px; fill: var(--gold);
-    }
-    .nav-logo span { color: var(--gold); }
-    .nav-links { display: flex; gap: 28px; list-style: none; }
-    .nav-links a {
-      color: rgba(255,255,255,.55); text-decoration: none;
-      font-size: .82rem; font-weight: 500; letter-spacing: 1.2px;
-      text-transform: uppercase; transition: color .2s;
-    }
-    .nav-links a:hover { color: var(--gold); }
-    .nav-order {
-      background: var(--gold); color: var(--ink);
-      border: none; padding: 9px 22px; border-radius: 3px;
-      font-weight: 700; font-size: .78rem; letter-spacing: 1.5px;
-      text-transform: uppercase; cursor: pointer; transition: all .2s;
-    }
-    .nav-order:hover { background: var(--gold-pale); }
+  .plan-features { list-style: none; margin-bottom: 40px; margin-top: auto; }
+  .plan-features li {
+    padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 0.88rem; color: rgba(255,255,255,0.7);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .plan-card.featured .plan-features li { color: var(--text-dark); border-color: rgba(0,0,0,0.05); }
+  .plan-features li::before { content: '✓'; color: var(--gold); font-weight: 700; }
+  .plan-card.featured .plan-features li::before { color: var(--sage); }
+  
+  .plan-btn {
+    width: 100%; padding: 16px;
+    border-radius: 6px; cursor: pointer;
+    font-weight: 700; font-size: 0.85rem;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    transition: all 0.2s; border: none;
+  }
+  .plan-btn-outline {
+    background: transparent; color: var(--gold);
+    border: 1px solid var(--gold);
+  }
+  .plan-btn-outline:hover { background: var(--gold); color: var(--black); }
+  .plan-btn-solid { background: var(--black); color: var(--gold); }
+  .plan-btn-solid:hover { background: #1a1a1a; }
+  
+  .featured-badge {
+    position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+    background: var(--black); color: var(--gold);
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 2px;
+    text-transform: uppercase; padding: 6px 20px; border-radius: 20px;
+    white-space: nowrap;
+  }
 
-    /* ════ HERO ════ */
-    .hero {
-      min-height: 85vh;
-      background: var(--espresso);
-      display: grid; grid-template-columns: 1fr 1fr;
-      align-items: center; padding: 110px 5% 60px; gap: 40px;
-      position: relative; overflow: hidden;
-    }
-    .hero::after {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse 50% 70% at 80% 50%, rgba(192,124,42,.12), transparent);
-      pointer-events: none;
-    }
-    .hero-text { position: relative; z-index: 2; }
-    .hero-pill {
-      display: inline-flex; align-items: center; gap: 8px;
-      border: 1px solid rgba(230,170,76,.35);
-      color: var(--gold-pale); font-size: .72rem;
-      letter-spacing: 2px; text-transform: uppercase;
-      padding: 6px 16px; border-radius: 100px; margin-bottom: 28px;
-    }
-    .hero-pill span { width:7px; height:7px; border-radius:50%; background:var(--gold); }
-    .hero h1 {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(2.2rem, 5vw, 4.2rem);
-      line-height: 1.25; color: #fff; margin-bottom: 20px;
-    }
-    .hero h1 em { font-style: italic; color: var(--gold); }
-    .hero-sub {
-      font-size: 1rem; color: rgba(255,255,255,.5);
-      line-height: 1.75; max-width: 480px; margin-bottom: 40px;
-    }
-    .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
-    .btn-gold {
-      background: var(--gold); color: var(--ink);
-      border: none; padding: 14px 32px; border-radius: 3px;
-      font-weight: 700; font-size: .88rem; letter-spacing: 1px;
-      text-transform: uppercase; cursor: pointer; transition: all .2s;
-    }
-    .btn-gold:hover { background: var(--gold-pale); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(230,170,76,.3); }
-    .btn-ghost {
-      background: transparent; color: rgba(255,255,255,.7);
-      border: 1px solid rgba(255,255,255,.2); padding: 14px 32px; border-radius: 3px;
-      font-weight: 500; font-size: .88rem; letter-spacing: 1px;
-      text-transform: uppercase; cursor: pointer; transition: all .2s;
-    }
-    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+  /* ── TIPS SECTION ── */
+  .tips-section {
+    background: var(--warm-white);
+    padding: 100px 5%;
+  }
+  .tips-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px; margin-top: 60px;
+  }
+  .tip-card {
+    border-radius: 12px; overflow: hidden;
+    background: #fff; box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    border: 1px solid rgba(0,0,0,0.02); transition: transform 0.2s;
+  }
+  .tip-card:hover { transform: translateY(-5px); }
+  .tip-img {
+    height: 180px; display: flex; align-items: center; justify-content: center;
+    position: relative; background: var(--espresso); overflow: hidden;
+  }
+  .tip-img img { width: 100%; height: 100%; object-fit: cover; }
+  .tip-img-overlay {
+    position: absolute; bottom: 16px; left: 16px;
+    background: var(--sage); color: #fff;
+    font-size: 0.65rem; font-weight: 700; letter-spacing: 2px;
+    padding: 5px 12px; border-radius: 20px; text-transform: uppercase;
+  }
+  .tip-body { padding: 24px; }
+  .tip-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem; font-weight: 700;
+    margin-bottom: 10px; line-height: 1.3; color: var(--text-dark);
+  }
+  .tip-excerpt { font-size: 0.88rem; color: var(--text-mid); line-height: 1.6; }
 
-    .hero-visual { position: relative; z-index: 2; display: flex; flex-direction: column; gap: 16px; }
+  /* ── FOOTER ── */
+  footer {
+    background: var(--black);
+    padding: 80px 5% 40px;
+    color: rgba(255,255,255,0.4);
+    font-size: 0.9rem;
+  }
+  .footer-top {
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px;
+    padding-bottom: 50px; border-bottom: 1px solid rgba(255,255,255,0.07);
+    margin-bottom: 40px;
+  }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem; font-weight: 900;
+    color: var(--gold); margin-bottom: 14px;
+  }
+  .footer-tagline { font-size: 0.88rem; max-width: 280px; line-height: 1.6; }
+  .footer-col h4 {
+    color: #fff; font-size: 0.8rem; letter-spacing: 2px;
+    text-transform: uppercase; margin-bottom: 20px; font-weight: 600;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 12px; }
+  .footer-col ul li a {
+    color: rgba(255,255,255,0.5); text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-col ul li a:hover { color: var(--gold); }
+  .footer-bottom {
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 16px; font-size: 0.8rem;
+  }
+  .footer-bottom a { color: var(--gold); text-decoration: none; }
 
-    /* ════ TICKER ════ */
-    .ticker { background: var(--gold); padding: 12px 0; overflow: hidden; white-space: nowrap; }
-    .ticker-inner { display: inline-flex; gap: 52px; animation: slide 25s linear infinite; }
-    .t-item { font-size: .72rem; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; color: var(--ink); }
-    .t-dot { color: rgba(0,0,0,.3); }
+  /* ── FLOATING ACTION DOCK PENTRU MOBIL ── */
+  .float-order {
+    position: fixed; bottom: 28px; right: 28px;
+    background: var(--gold); color: var(--black);
+    padding: 16px 28px; border-radius: 50px;
+    font-weight: 700; font-size: 0.85rem;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    cursor: pointer; border: none;
+    box-shadow: 0 8px 30px rgba(197,160,89,0.4);
+    z-index: 99;
+    display: flex; align-items: center; gap: 10px;
+    transition: transform 0.2s, background-color 0.2s;
+  }
+  /* Completarea comportamentului hover cerut în structură */
+  .float-order:hover { 
+    transform: translateY(-2px) scale(1.02); 
+    background-color: var(--gold-light); 
+  }
 
-    /* ════ MENU TO-GO ════ */
-    .menu-section { background: var(--cream); padding: 80px 5%; }
-    .section-head { margin-bottom: 40px; }
-    .s-tag { font-size: .7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--caramel); margin-bottom: 10px; }
-    .s-title { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.1; color: var(--text); }
-    .s-title em { font-style: italic; color: var(--caramel); }
-    .s-desc { color: var(--mid); max-width: 480px; line-height: 1.7; margin-top: 14px; font-size: .94rem; }
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
 
-    .week-row, .day-row { display: flex; gap: 8px; margin-bottom: 15px; overflow-x: auto; padding-bottom: 6px; -webkit-overflow-scrolling: touch; }
-    .week-tab, .day-tab {
-      padding: 10px 22px; border-radius: 4px; cursor: pointer; font-size: .78rem; font-weight: 600; letter-spacing: .8px;
-      text-transform: uppercase; white-space: nowrap; border: 1px solid rgba(0,0,0,0.12); background: #fff; color: var(--mid); transition: all .15s;
-    }
-    .week-tab.active { background: var(--ink); color: var(--gold); border-color: var(--ink); }
-    .day-tab.active  { background: var(--gold); color: var(--ink); border-color: var(--gold); }
-
-    .kcal-selector { display: flex; align-items: center; gap: 10px; margin-bottom: 36px; flex-wrap: wrap; }
-    .kcal-label { font-size: .78rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--mid); }
-    .kcal-pill-btn {
-      padding: 7px 18px; border-radius: 100px; border: 1px solid rgba(0,0,0,.12); background: transparent;
-      font-size: .8rem; font-weight: 600; cursor: pointer; color: var(--mid);
-    }
-    .kcal-pill-btn.active { background: var(--caramel); color: #fff; border-color: var(--caramel); }
-
-    .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
-    .m-card { background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,.04); display: flex; flex-direction: column; transition: transform .22s; }
-    .m-card:hover { transform: translateY(-4px); }
-    .m-img { height: 160px; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; position: relative; }
-    .m-img-label { position: absolute; bottom: 12px; left: 12px; background: var(--ink); color: var(--gold); font-size: .62rem; font-weight: 700; letter-spacing: 1.5px; padding: 4px 10px; border-radius: 2px; text-transform: uppercase; }
-    .m-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
-    .m-type { font-size: .65rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--caramel); margin-bottom: 6px; }
-    .m-name { font-family: 'DM Serif Display', serif; font-size: 1.25rem; margin-bottom: 8px; color: var(--ink); }
-    .m-desc { font-size: .85rem; color: var(--mid); line-height: 1.55; flex: 1; margin-bottom: 16px; }
-    .m-macros { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; margin-bottom: 16px; }
-    .macro-chip { display: flex; align-items: center; gap: 4px; background: var(--cream); border-radius: 100px; padding: 4px 10px; font-size: .72rem; font-weight: 600; }
-    .macro-kcal { color: var(--red-berry); }
-    
-    .m-action-row { display: flex; gap: 10px; margin-top: 14px; align-items: center; }
-    .m-pairing { display: flex; align-items: center; gap: 8px; background: var(--espresso); border-radius: 6px; padding: 8px 12px; flex: 1; }
-    .pairing-name { font-size: .75rem; font-weight: 600; color: var(--gold); }
-    .pairing-sub { font-size: .65rem; color: rgba(255,255,255,.4); }
-    
-    .btn-add-cart {
-      background: var(--caramel); color: #fff; border: none; padding: 10px 16px; border-radius: 6px;
-      font-weight: 700; font-size: .8rem; cursor: pointer; transition: background .2s; text-transform: uppercase;
-    }
-    .btn-add-cart:hover { background: var(--roast); }
-
-    /* ════ DESERTURI ════ */
-    .desserts-section { background: var(--espresso); padding: 80px 5%; position: relative; overflow: hidden; }
-    .desserts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; margin-top: 40px; }
-    .d-card { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08); border-radius: 10px; overflow: hidden; }
-    .d-img { height: 150px; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; position: relative; }
-    .d-badge { position: absolute; top: 12px; right: 12px; font-size: .62rem; font-weight: 700; padding: 4px 10px; border-radius: 2px; text-transform: uppercase; background: var(--gold); color: var(--ink); }
-    .d-body { padding: 18px; }
-    .d-dose-tag { margin-bottom: 4px; }
-    .d-dose-tag span { font-size: .68rem; font-weight: 700; color: var(--gold); text-transform: uppercase; }
-    .d-name { font-family: 'DM Serif Display', serif; font-size: 1.15rem; color: #fff; margin: 6px 0; }
-    .d-desc { font-size: .82rem; color: rgba(255,255,255,.45); line-height: 1.5; margin-bottom: 14px; }
-    .d-footer { display: flex; justify-content: space-between; align-items: center; }
-    .d-chip { font-size: .72rem; padding: 3px 9px; border-radius: 100px; background: rgba(255,255,255,.07); color: var(--gold-pale); }
-    .d-price { font-size: 1.1rem; font-weight: 700; color: var(--gold); }
-
-    /* ════ CUM FUNCTIONEAZA ════ */
-    .how-section { background: var(--warm); padding: 80px 5%; }
-    .how-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 32px; margin-top: 40px; }
-    .how-step { text-align: center; }
-    .how-icon { width: 80px; height: 80px; border-radius: 10px; background: var(--ink); color: var(--gold); display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin: 0 auto 16px; position: relative; }
-    .how-n { position: absolute; top: -6px; right: -6px; background: var(--gold); color: var(--ink); width: 22px; height: 22px; border-radius: 50%; font-size: .65rem; font-weight: 800; display: flex; align-items: center; justify-content: center; }
-    .how-step h3 { font-weight: 700; font-size: .85rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink); margin-bottom: 8px; }
-    .how-step p { font-size: .88rem; color: var(--mid); line-height: 1.6; max-width: 240px; margin: 0 auto; }
-
-    /* ════ ABONAMENTE ════ */
-    .plans-section { background: var(--cream); padding: 80px 5%; }
-    .plans-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 40px; }
-    .p-card { border-radius: 10px; padding: 34px 28px; border: 1px solid rgba(0,0,0,0.08); background: #fff; position: relative; }
-    .p-card.hot { background: var(--ink); border-color: var(--ink); color: #fff; }
-    .p-badge { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: var(--gold); color: var(--ink); font-size: .62rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; padding: 4px 16px; border-radius: 100px; }
-    .p-tag { font-size: .68rem; letter-spacing: 2.5px; text-transform: uppercase; color: var(--caramel); margin-bottom: 10px; }
-    .p-card.hot .p-tag { color: var(--gold-pale); }
-    .p-name { font-family: 'DM Serif Display', serif; font-size: 1.8rem; margin-bottom: 8px; }
-    .p-sub { font-size: .85rem; line-height: 1.6; margin-bottom: 24px; color: var(--mid); }
-    .p-card.hot .p-sub { color: rgba(255,255,255,0.5); }
-    .p-price { font-family: 'DM Serif Display', serif; font-size: 2.8rem; color: var(--caramel); line-height: 1; }
-    .p-card.hot .p-price { color: var(--gold); }
-    .p-period { font-size: .78rem; margin-bottom: 24px; color: var(--light); }
-    .p-feat { list-style: none; margin-bottom: 28px; }
-    .p-feat li { padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.05); font-size: .85rem; display: flex; align-items: center; gap: 8px; }
-    .p-card.hot .p-feat li { border-color: rgba(255,255,255,0.08); }
-    .p-feat li::before { content: '✓'; color: var(--caramel); font-weight: 700; }
-    .p-card.hot .p-feat li::before { color: var(--gold); }
-    .p-btn { width: 100%; padding: 13px; border-radius: 4px; font-weight: 700; font-size: .82rem; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; border: none; }
-    .p-btn-fill { background: var(--gold); color: var(--ink); }
-
-    /* ════ FOOTER ════ */
-    footer { background: var(--espresso); padding: 60px 5% 30px; color: rgba(255,255,255,.5); }
-    .ft { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,.08); }
-    .ft-brand { font-family: 'DM Serif Display', serif; font-size: 1.8rem; color: var(--gold); margin-bottom: 10px; }
-    .ft-col h4 { color: #fff; font-size: .72rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 14px; }
-    .ft-col ul { list-style: none; }
-    .ft-col li { margin-bottom: 8px; }
-    .ft-col a { color: rgba(255,255,255,.4); text-decoration: none; font-size: .85rem; }
-    .ft-col a:hover { color: var(--gold); }
-    .ft-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; font-size: .75rem; margin-top: 30px; }
-
-    /* ════ DOCK NAV PENTRU MOBIL ════ */
-    .action-dock {
-      position: fixed; bottom: 0; left: 0; right: 0; z-index: 400;
-      background: rgba(18, 14, 9, 0.98); backdrop-filter: blur(10px);
-      border-top: 1px solid rgba(230, 170, 76, 0.25);
-      padding: 12px 20px; display: flex; gap: 12px;
-    }
-    .dock-btn-wa {
-      background: #25D366; color: #fff; text-decoration: none;
-      padding: 12px 18px; border-radius: 6px; font-weight: 700;
-      font-size: .85rem; display: flex; align-items: center; gap: 6px; justify-content: center; flex: 1;
-    }
-    .dock-btn-order {
-      background: var(--gold); color: var(--ink); border: none;
-      padding: 12px 20px; border-radius: 6px; font-weight: 800;
-      font-size: .85rem; display: flex; align-items: center; gap: 6px; justify-content: center; flex: 1.3;
-      cursor: pointer; text-transform: uppercase; letter-spacing: 0.5px;
-    }
-
-    @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-    
-    @media (max-width: 768px) {
-      .hero { grid-template-columns: 1fr; padding-top: 100px; text-align: center; }
-      .hero-sub { margin: 0 auto 30px; }
-      .hero-ctas { justify-content: center; }
-      .hero-visual, .nav-links { display: none; }
-    }
-  </style>
+  @media (max-width: 768px) {
+    nav { padding: 14px 20px; }
+    .nav-links { display: none; }
+    .hero { padding-top: 100px; }
+    .float-order { left: 20px; right: 20px; bottom: 20px; justify-content: center; }
+    body { padding-bottom: 60px; }
+  }
+</style>
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
-    <a href="#" class="nav-logo">
-      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="50" cy="50" r="45" stroke="#e6aa4c" stroke-width="2" fill="none"/>
-        <polygon points="50,25 25,65 75,65" fill="#e6aa4c"/>
-        <circle cx="50" cy="35" r="12" stroke="#e6aa4c" stroke-width="1.5" fill="none"/>
-      </svg>
-      SOul <span>meal</span>
-    </a>
+    <a href="#" class="logo"><div class="logo-icon">🍲</div>SOul <span>meal</span></a>
     <ul class="nav-links">
-      <li><a href="#menu">Meniu To-Go</a></li>
-      <li><a href="#deserturi">Deserturi</a></li>
-      <li><a href="#how">Sistem Smart</a></li>
-      <li><a href="#abonamente">Planuri</a></li>
+      <li><a href="#experienta-nespresso">Sinergii Cafea</a></li>
+      <li><a href="#arhitectura-flux">Sistem Logistic</a></li>
+      <li><a href="#meniu-saptamanal">Meniuri Smart</a></li>
+      <li><a href="#planuri-tarifare">Abonamente</a></li>
     </ul>
-    <button class="nav-order context-checkout">Coș (0) →</button>
+    <button class="nav-cta" onclick="handleCheckout()">Hub Colectare</button>
   </nav>
 
-  <!-- HERO -->
   <section class="hero">
-    <div class="hero-text">
-      <div class="hero-pill"><span></span> Punct de colectare fix · Totești</div>
-      <h1>Suflet în rețetă.<br><em>Precizie</em> în logistică.</h1>
-      <p class="hero-sub">Planificare strategică fără risipă alimentară. Preparate premium sigilate la cald și doza ta ideală de espresso — pregătite complet pentru ridicare sau distribuție controlată.</p>
-      <div class="hero-ctas">
-        <button class="btn-gold" onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">Vezi Meniu Săptămânal →</button>
-        <button class="btn-ghost" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})">Tehnologia Noastră</button>
+    <div class="hero-bg-text">SOUL</div>
+    <div class="hero-content">
+      <div class="hero-tag">Metanoia Digitală · Tehnologie Alimentară</div>
+      <h1>Suflet în rețetă.<br><em>Precizie structurală</em> în logistică.</h1>
+      <p class="hero-sub">Planificare fără risipă bazată pe precomandă strictă. Preparate de înaltă densitate nutritivă, conservate prin vacuum în containere sigure de inox alimentar.</p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="document.getElementById('meniu-saptamanal').scrollIntoView({behavior:'smooth'})">Explorează Meniul Smart</button>
+        <button class="btn-secondary" onclick="document.getElementById('arhitectura-flux').scrollIntoView({behavior:'smooth'})">Proces Tehnic</button>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">0%</div>
+        <div class="stat-label">Risipă Gătită</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Inox Circular</div>
       </div>
     </div>
   </section>
 
-  <!-- TICKER -->
-  <div class="ticker">
-    <div class="ticker-inner">
-      <span class="t-item">📍 LOCAȚIE: TOTEȘTI 31, DN68</span><span class="t-dot">✦</span>
-      <span class="t-item">🍱 SOUL MEAL, DRINKS & COFFEE</span><span class="t-dot">✦</span>
-      <span class="t-item">🔒 CONTAINER INOX SPILL-PROOF</span><span class="t-dot">✦</span>
-      <span class="t-item">📅 PRECOMANDĂ STRUCTURATĂ</span><span class="t-dot">✦</span>
+  <div class="marquee-strip">
+    <div class="marquee-inner">
+      <span class="marquee-item">📍 Hub Logistic Central: Totești, DN68</span><span class="marquee-sep">✦</span>
+      <span class="marquee-item">🔒 Recipiente Inox Vidate Spill-Proof</span><span class="marquee-sep">✦</span>
+      <span class="marquee-item">☕ Pairing Dedicat Nespresso Professional</span><span class="marquee-sep">✦</span>
+      <span class="marquee-item">📅 Gătit Inteligent Exclusiv Pe Bază De Precomandă</span><span class="marquee-sep">✦</span>
     </div>
   </div>
 
-  <!-- MENIU TO-GO -->
-  <section class="menu-section" id="menu">
-    <div class="section-head">
-      <div class="s-tag">🍱 Management Nutrițional</div>
-      <h2 class="s-title">Meniul tău,<br><em>gătit cu sens</em></h2>
-      <p class="s-desc">Fiecare preparat este sigilat etanș, oferind transparență totală macro și pairing precis cu capsule Nespresso selectate.</p>
-    </div>
-    
-    <div class="week-row">
-      <button class="week-tab active" data-week="w1">25–31 MAI</button>
-      <button class="week-tab" data-week="w2">01–07 IUN</button>
-    </div>
-    
-    <div class="day-row">
-      <button class="day-tab active" data-day="luni">Luni</button>
-      <button class="day-tab" data-day="marti">Marți</button>
-      <button class="day-tab" data-day="miercuri">Miercuri</button>
-      <button class="day-tab" data-day="joi">Joi</button>
-      <button class="day-tab" data-day="vineri">Vineri</button>
-    </div>
-    
-    <div class="kcal-selector">
-      <span class="kcal-label">Target caloric:</span>
-      <button class="kcal-pill-btn" data-kcal="1000">1000 kcal</button>
-      <button class="kcal-pill-btn active" data-kcal="1500">1500 kcal</button>
-      <button class="kcal-pill-btn" data-kcal="2000">2000 kcal</button>
-    </div>
-
-    <div class="menu-grid" id="dynamic-menu-grid"></div>
-  </section>
-
-  <!-- DESERTURI -->
-  <section class="desserts-section" id="deserturi">
-    <div class="section-head">
-      <div class="s-tag">🍰 Deserturi la sticlă & doză</div>
-      <h2 class="s-title" style="color:#fff">Profiluri aromatice<br><em style="color:var(--gold)">perfect corelate</em></h2>
-    </div>
-    <div class="desserts-grid">
-      <div class="d-card">
-        <div class="d-img" style="background:linear-gradient(135deg,#1a0f00,#4a2a00)">🍮<div class="d-badge">Semnătură</div></div>
-        <div class="d-body">
-          <div class="d-dose-tag"><span>☕ Livanto · Intensitate 6</span></div>
-          <div class="d-name">Cremă de Zahăr Ars</div>
-          <p class="d-desc">Desertul copilăriei făcut perfect fin, cu caramel fluid și aromă intensă de vanilie autentică.</p>
-          <div class="d-footer">
-            <div class="d-chip">🔥 240 kcal</div>
-            <div class="d-price">16 lei</div>
-            <button class="btn-add-cart" onclick="addItemToCart('Cremă de Zahăr Ars', 240)">Adaugă +</button>
-          </div>
-        </div>
-      </div>
-      <div class="d-card">
-        <div class="d-img" style="background:linear-gradient(135deg,#2b1f13,#120e09)">🧁</div>
-        <div class="d-body">
-          <div class="d-dose-tag"><span>☕ Kazaar · Intensitate 12</span></div>
-          <div class="d-name">Tiramisu Nero</div>
-          <p class="d-desc">Crema fină de mascarpone cu biscuiți însiropați puternic în espresso ristretto.</p>
-          <div class="d-footer">
-            <div class="d-chip">🔥 310 kcal</div>
-            <div class="d-price">18 lei</div>
-            <button class="btn-add-cart" onclick="addItemToCart('Tiramisu Nero', 310)">Adaugă +</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CUM FUNCTIONEAZA -->
-  <section class="how-section" id="how">
-    <div class="section-head" style="text-align: center; margin-bottom: 40px;">
-      <div class="s-tag">Arhitectura Logisticii Noastre</div>
-      <h2 class="s-title">Sistemul de Gătit & Colectare</h2>
-    </div>
-    <div class="how-grid">
-      <div class="how-step">
-        <div class="how-icon">📅<div class="how-n">1</div></div>
-        <h3>Precomandă și Planificare</h3>
-        <p>Procesăm comenzi exclusiv bazate pe planificare anticipată. Zero risipă alimentară, prospețime garantată 100%.</p>
-      </div>
-      <div class="how-step">
-        <div class="how-icon">🛡️<div class="how-n">2</div></div>
-        <h3>Tehnologie Spill-Proof</h3>
-        <p>Mâncarea este transferată fierbinte și etanșată prin vidare în containere speciale de inox. Fără scurgeri, izolare termică perfectă.</p>
-      </div>
-      <div class="how-step">
-        <div class="how-icon">☕<div class="how-n">3</div></div>
-        <h3>Hub Fix Totești DN68</h3>
-        <p>Ridicarea se face direct de la punctul nostru de colectare <strong>SOul meal, drinks&coffee</strong> sau prin fluxul logistic dedicat.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABONAMENTE -->
-  <section class="plans-section" id="abonamente">
-    <div class="section-head" style="text-align: center;">
-      <div class="s-tag">Eficiență pe termen lung</div>
-      <h2 class="s-title">Abonamente Lunare</h2>
-    </div>
-    <div class="plans-grid">
-      <div class="p-card hot">
-        <div class="p-badge">Recomandat Hub</div>
-        <div class="p-tag">Abonament Complet</div>
-        <h3 class="p-name">OptimBox 1500</h3>
-        <div class="p-price">95 lei <span style="font-size:1rem; font-family:'DM Sans'">/ zi</span></div>
-        <ul class="p-feat">
-          <li>3 Mese principale în regim spill-proof</li>
-          <li>2 Gustări macro-echilibrate</li>
-          <li>2 Doze Nespresso dedicate pairing-ului</li>
-        </ul>
-        <button class="p-btn p-btn-fill" onclick="addItemToCart('Abonament OptimBox 1500', 1500)">Alege Planul</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <div class="ft">
+  <section class="capsules-section" id="experienta-nespresso">
+    <div class="section-intro">
       <div>
-        <div class="ft-brand">SOul meal</div>
-        <p style="font-size:0.9rem; max-width:260px; line-height:1.6">O viziune digitală și sistemică aplicată gastronomiei curate și managementului energetic.</p>
+        <div class="section-tag">Sinergii Aromatice</div>
+        <h2 class="section-title">Matricea de <em>Pairing Nespresso</em></h2>
       </div>
-      <div class="ft-col">
-        <h4>Punct de Colectare</h4>
-        <p style="font-size:.85rem; line-height:1.6; color:rgba(255,255,255,0.4)">
-          <strong>SOul meal, drinks&coffee</strong><br>
-          Totești, Nr. 31, DN68<br>
-          Jud. Hunedoara
-        </p>
+      <p class="section-desc">Fiecare profil aromatic este calibrat algoritmic pentru a susține starea de focus mental sau relaxare profundă după masă.</p>
+    </div>
+
+    <div class="capsules-grid">
+      <div class="capsule-card" onclick="addCapsuleToCart('Nespresso Ristretto', 2.80)">
+        <div class="capsule-img">
+          <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600&auto=format&fit=crop&q=80" alt="Ristretto">
+          <span class="capsule-badge">Intens</span>
+        </div>
+        <div class="capsule-body">
+          <div class="capsule-intensity">
+            <span class="intensity-label">Intensitate:</span>
+            <div class="intensity-dot filled"></div><div class="intensity-dot filled"></div><div class="intensity-dot filled"></div><div class="intensity-dot filled"></div><div class="intensity-dot filled"></div><div class="intensity-dot filled"></div><div class="intensity-dot filled"></div><div class="intensity-dot filled"></div><div class="intensity-dot filled"></div><div class="intensity-dot filled"></div>
+          </div>
+          <h3 class="capsule-name">Ristretto Core</h3>
+          <p class="capsule-desc">Note pronunțate de prăjire, corp dens, ideal alături de preparatele bogate din carne roșie sau tocănițe.</p>
+          <div class="capsule-price-row">
+            <div class="capsule-price">2.80 <span>RON / doză</span></div>
+            <button class="add-btn">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="capsule-card" onclick="addCapsuleToCart('Nespresso Arpeggio', 2.80)">
+        <div class="capsule-img">
+          <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=600&auto=format&fit=crop&q=80" alt="Arpeggio">
+          <span class="capsule-badge">Echilibrat</span>
+        </div>
+        <div class="capsule-body">
+          <div class="capsule-intensity">
+            <span class="intensity-label">Intensitate:</span>
+            <div class="intensity-dot filled"></div><div class="intensity-dot filled"></div><div class="intensity-dot filled"></div><div class="intensity-dot filled"></div><div class="intensity-dot filled"></div><div class="intensity-dot filled"></div><div class="intensity-dot filled"></div><div class="intensity-dot filled"></div><div class="intensity-dot"></div><div class="intensity-dot"></div>
+          </div>
+          <h3 class="capsule-name">Arpeggio Velvet</h3>
+          <p class="capsule-desc">Caracter puternic, note distincte de cacao amară. Destinat asocierii cu deserturile dense tip cremă de zahăr ars.</p>
+          <div class="capsule-price-row">
+            <div class="capsule-price">2.80 <span>RON / doză</span></div>
+            <button class="add-btn">+</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="capsule-card" onclick="addCapsuleToCart('Nespresso Volluto', 2.90)">
+        <div class="capsule-img">
+          <img src="https://images.unsplash.com/photo-1507133750040-4a8f57021571?w=600&auto=format&fit=crop&q=80" alt="Volluto">
+          <span class="capsule-badge">Gourmet</span>
+        </div>
+        <div class="capsule-body">
+          <div class="capsule-intensity">
+            <span class="intensity-label">Intensitate:</span>
+            <div class="intensity-dot filled"></div><div class="intensity-dot filled"></div><div class="intensity-dot filled"></div><div class="intensity-dot filled"></div><div class="intensity-dot"></div><div class="intensity-dot"></div><div class="intensity-dot"></div><div class="intensity-dot"></div><div class="intensity-dot"></div><div class="intensity-dot"></div>
+          </div>
+          <h3 class="capsule-name">Volluto Light</h3>
+          <p class="capsule-desc">Note dulci de biscuiți și accente subtile de fructe. Recomandat dimineața, alături de cereale complexe.</p>
+          <div class="capsule-price-row">
+            <div class="capsule-price">2.90 <span>RON / doză</span></div>
+            <button class="add-btn">+</button>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="ft-bottom">
-      <div>&copy; 2026 SOul meal. Realizat prin Metanoia Digitală.</div>
+  </section>
+
+  <section class="how-section" id="arhitectura-flux">
+    <div>
+      <div class="section-tag">Arhitectura Fluxului Circular</div>
+      <h2 class="section-title">Trasabilitate Zero Risk</h2>
+    </div>
+    
+    <div class="steps-track">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-icon">📅</div>
+        <h3>Precomandă predictivă</h3>
+        <p>Alegerea structurii de meniuri în avans permite achiziția exactă a ingredientelor, eliminând pierderile operaționale în bucătărie.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-icon">🛡️</div>
+        <h3>Etanșare sub vid în Inox</h3>
+        <p>Gătit tradițional curat, porționat fierbinte și vidat instant în caserole etanșe de inox, eliminând contactul cu micro-plasticele.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-icon">📦</div>
+        <h3>Predare Controlată la Hub</h3>
+        <p>Sistem rapid de preluare securizată din Hub-ul fizic strategic, integrat cu dozele de Nespresso selectate special pentru meniu.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="menu-section" id="meniu-saptamanal">
+    <div>
+      <div class="section-tag">Planificare Nutrițională</div>
+      <h2 class="section-title">Structura Alimentației <em>Sistemice</em></h2>
+    </div>
+
+    <div class="tabs-container">
+      <div class="week-tabs">
+        <button class="week-tab active" data-week="w1">Săptămâna I (25 Mai – 31 Mai)</button>
+        <button class="week-tab" data-week="w2">Săptămâna II (01 Iun – 07 Iun)</button>
+      </div>
+
+      <div class="day-tabs">
+        <button class="day-tab active" data-day="luni">Luni</button>
+        <button class="day-tab" data-day="marti">Marți</button>
+        <button class="day-tab" data-day="miercuri">Miercuri</button>
+        <button class="day-tab" data-day="joi">Joi</button>
+        <button class="day-tab" data-day="vineri">Vineri</button>
+      </div>
+    </div>
+
+    <div class="filter-row">
+      <div class="kcal-selectors">
+        <span class="kcal-label">Filtrare Țintă Calorică:</span>
+        <button class="kcal-btn" data-kcal="1200">1200 kcal</button>
+        <button class="kcal-btn active" data-kcal="1600">1600 kcal</button>
+        <button class="kcal-btn" data-kcal="2000">2000 kcal</button>
+      </div>
+      <div style="font-size: 0.85rem; color: var(--text-mid); font-weight: 500;">
+        Recipiente din inox alimentar incluse în circuit logistic reglementat.
+      </div>
+    </div>
+
+    <div class="menu-grid" id="main-menu-injector"></div>
+  </section>
+
+  <section class="zone-section">
+    <div class="zone-map">
+      <div class="zone-map-bg"></div>
+      <div class="zone-map-graphics">
+        <div class="zone-hub-ring">
+          <span style="font-size: 2rem;">📍</span>
+        </div>
+        <div style="font-family:'Playfair Display', serif; font-weight:900; color:#fff; font-size:1.4rem; tracking:1px;">HUB CENTRAL</div>
+        <div style="font-size:0.75rem; color:var(--gold); font-weight:700; letter-spacing:2px; text-transform:uppercase; margin-top:4px;">Totești, România</div>
+      </div>
+    </div>
+    <div>
+      <div class="section-tag">Areal de Distribuție</div>
+      <h2 class="zone-title">Sistem de Colectare</h2>
+      <div class="zone-subtitle">Depresiunea Hațegului & Hub Logistic</div>
+      <p class="zone-desc">Punct logistic fix optimizat pentru ridicarea pachetelor zilnice fără timp de așteptare. Pentru comenzi consolidate corporate, asigurăm livrare în puncte de descărcare securizate.</p>
+      <div class="zone-cities">
+        <span class="city-tag">Totești Hub</span>
+        <span class="city-tag">Hațeg Alternativ</span>
+        <span class="city-tag">Sântămăria-Orlea</span>
+        <span class="city-tag">Linii Corporate Dedicate</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing-section" id="planuri-tarifare">
+    <div style="text-align: center; margin-bottom: 40px;">
+      <div class="section-tag">Management Energetic Continuu</div>
+      <h2 class="section-title">Structuri de <em>Abonament</em></h2>
+    </div>
+
+    <div class="plans-grid">
+      <div class="plan-card">
+        <div class="plan-label">Eficiență Calorică</div>
+        <h3 class="plan-name">Lean Setup</h3>
+        <p class="plan-desc">Planificare optimizată pentru controlul greutății corporale și stabilitate metabolică.</p>
+        <div class="plan-price">75 <span>RON / zi</span></div>
+        <div class="plan-period">Facturat săptămânal · Luni-Vineri</div>
+        <ul class="plan-features">
+          <li>Mese optimizate caloric (1200 kcal)</li>
+          <li>Vidate ermetic la cald în inox</li>
+          <li>1 x Doză Nespresso dedicată pe zi</li>
+          <li>Ridicarea directă din Hub Totești</li>
+        </ul>
+        <button class="plan-btn plan-btn-outline" onclick="selectAbonament('Lean Setup', 75)">Selectează Structură</button>
+      </div>
+
+      <div class="plan-card featured">
+        <div class="featured-badge">Bestseller Sistemic</div>
+        <div class="plan-label">Echilibru & Performanță</div>
+        <h3 class="plan-name">Optimal Energy</h3>
+        <p class="plan-desc">Corelația ideală între densitatea nutrițională, gust tradițional și capacitatea de focus cognitiv.</p>
+        <div class="plan-price">95 <span>RON / zi</span></div>
+        <div class="plan-period">Facturat săptămânal · Luni-Vineri</div>
+        <ul class="plan-features">
+          <li>Mese complete echilibrate (1600 kcal)</li>
+          <li>Include opțiunea Varză Călită / Tocăniță</li>
+          <li>2 x Doze Nespresso potrivite profilului</li>
+          <li>Prioritate maximă la punctul de ridicare</li>
+        </ul>
+        <button class="plan-btn plan-btn-solid" onclick="selectAbonament('Optimal Energy', 95)">Selectează Structură</button>
+      </div>
+
+      <div class="plan-card">
+        <div class="plan-label">Putere & Forță</div>
+        <h3 class="plan-name">Hyper Focus</h3>
+        <p class="plan-desc">Alimentație complexă pentru un volum ridicat de activitate fizică sau intelectuală intensă.</p>
+        <div class="plan-price">115 <span>RON / zi</span></div>
+        <div class="plan-period">Facturat săptămânal · Luni-Vineri</div>
+        <ul class="plan-features">
+          <li>Aport proteic ridicat (2000 kcal)</li>
+          <li>Caserole inox de capacitate mare</li>
+          <li>2 x Doze Premium Nespresso Ristretto</li>
+          <li>Consultare periodică a fișei macro</li>
+        </ul>
+        <button class="plan-btn plan-btn-outline" onclick="selectAbonament('Hyper Focus', 115)">Selectează Structură</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="tips-section">
+    <div style="margin-bottom: 40px;">
+      <div class="section-tag">Abordare Sistemică</div>
+      <h2 class="section-title">Neuro-nutriție și <em>Biologie Aplicată</em></h2>
+    </div>
+
+    <div class="tips-grid">
+      <div class="tip-card">
+        <div class="tip-img">
+          <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&auto=format&fit=crop&q=80" alt="Neuro">
+          <span class="tip-img-overlay">Neurobotics</span>
+        </div>
+        <div class="tip-body">
+          <h3 class="tip-title">Corelația dintre digestie și axa neuronală</h3>
+          <p class="tip-excerpt">Evitarea alimentelor procesate industrial și conservarea prin vacuum protejează microbiota intestinală, reducând stările de oboseală cronică.</p>
+        </div>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-img">
+          <img src="https://images.unsplash.com/photo-1516685018646-549198525c1b?w=600&auto=format&fit=crop&q=80" alt="Tradition">
+          <span class="tip-img-overlay">Gastronomie Curată</span>
+        </div>
+        <div class="tip-body">
+          <h3 class="tip-title">Zahărul ars tradițional ca experiență aromatică controlată</h3>
+          <p class="tip-excerpt">Un desert clasic nu trebuie eliminat, ci sincronizat cu momentul de maximă eficiență metabolică și acompaniat de cafeaua potrivită.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">SOul meal</div>
+        <p class="footer-tagline">Arhitectură digitală aplicată în industria alimentară. Dezvoltat structural sub umbrela Dakamigos.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Sistem</h4>
+        <ul>
+          <li><a href="#meniu-saptamanal">Meniuri Predictive</a></li>
+          <li><a href="#experienta-nespresso">Matrice Nespresso</a></li>
+          <li><a href="#planuri-tarifare">Abonamente Solide</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Reglementări</h4>
+        <ul>
+          <li><a href="#">Siguranță Alimentară HACCP</a></li>
+          <li><a href="#">Inox Circular Reutilizabil</a></li>
+          <li><a href="#">Termeni și Condiții Operative</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>&copy; 2026 DAKAMIGOS MARKT SRL · Metanoia Digitală. Toate drepturile rezervate.</div>
+      <div>Origine structurală: <a href="#">Totești, Depresiunea Hațegului</a></div>
     </div>
   </footer>
 
-  <!-- ACTION DOCK (MOBIL DOCK BAR REZISTENT LA SUPRAPUNERI) -->
-  <div class="action-dock">
-    <a href="https://wa.me/40700000000?text=Salut!%20Vreau%20detalii%20despre%20meniul%20SOul%20meal" class="dock-btn-wa" target="_blank">
-      💬 WhatsApp
-    </a>
-    <button class="dock-btn-order context-checkout" id="floating-checkout-btn">
-      🛒 Precomandă (0)
-    </button>
-  </div>
+  <button class="float-order" id="floating-cart-bar" onclick="handleCheckout()">
+    🛒 Precomandă în curs (0 repere)
+  </button>
 
-  <!-- SCRIPT INTEGRAL DINAMIC -->
   <script>
-    const menuDatabase = {
+    // Baza de date structurală a meniurilor cu preparate tradiționale și macro-nutrienți complecși
+    const menuEngineDataset = {
+      luni: [
+        { type: "Mic Dejun", name: "Overnight Oats cu Nucă și Miere", weight: "240g", desc: "Fulgi de ovăz hidratați în lapte vegetal, îmbogățiți cu sâmburi zdrobiți de nucă și miere de munte.", kcal: 380, p: "12g", c: "52g", g: "10g", img: "https://images.unsplash.com/photo-1517881917431-1348889736cd?w=600&auto=format&fit=crop&q=80", pair: "Volluto Core", pairDesc: "Corp lejer îndulcit" },
+        { type: "Prânz", name: "Tocăniță de Vițel cu Mămăliguță la Cuptor", weight: "420g", desc: "Carne fragedă de vițel gătită lent în sos reductiv de roșii și ierburi, servită cu mămăligă densă.", kcal: 640, p: "44g", c: "58g", g: "16g", img: "https://images.unsplash.com/photo-1547592180-85f173990554?w=600&auto=format&fit=crop&q=80", pair: "Ristretto Intense", pairDesc: "Aciditate contrastantă" },
+        { type: "Cină", name: "Sauté de Varză Călită cu Mărar", weight: "380g", desc: "Varză albă fâșii subțiri, înăbușită lent cu ulei presat la rece, roșii proaspete și mărar proaspăt.", kcal: 420, p: "11g", c: "48g", g: "14g", img: "https://images.unsplash.com/photo-1608897013039-887f21d8c804?w=600&auto=format&fit=crop&q=80", pair: "Arpeggio Velvet", pairDesc: "Echilibrare aromatică" }
+      ],
+      marti: [
+        { type: "Mic Dejun", name: "Omletă Securizată la Cuptor cu Spanac", weight: "210g", desc: "Ouă integrale coapte în tăvi gastrice cu frunze tinere de spanac și cuburi fine de brânză locală.", kcal: 390, p: "26g", c: "6g", g: "24g", img: "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=600&auto=format&fit=crop&q=80", pair: "Volluto Core", pairDesc: "Bază cremoasă" },
+        { type: "Prânz", name: "Pui Suprem cu Orez Sălbatic", weight: "400g", desc: "Piept de pui feliat, pregătit la temperatură controlată, asortat cu mix de orez sălbatic și ierburi.", kcal: 590, p: "46g", c: "54g", g: "11g", img: "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=600&auto=format&fit=crop&q=80", pair: "Ristretto Intense", pairDesc: "Digestie accelerată" },
+        { type: "Cină", name: "Supă Cremă Concentrată de Rădăcinoase", weight: "400g", desc: "Țelină, morcov, păstârnac coapte și transformate în emulsie fină cu ulei de măsline și semințe.", kcal: 350, p: "8g", c: "42g", g: "12g", img: "https://images.unsplash.com/photo-1547592165-e1d17fed6005?w=600&auto=format&fit=crop&q=80", pair: "Arpeggio Velvet", pairDesc: "Note lemnoase fine" }
+      ],
+      miercuri: [
+        { type: "Mic Dejun", name: "Terci Termic de Ovăz cu Scorțișoară", weight: "250g", desc: "Sursă stabilă de carbohidrați lenți gătiți cu lapte de migdale și infuzați cu scorțișoară Ceylon.", kcal: 370, p: "12g", c: "50g", g: "8g", img: "https://images.unsplash.com/photo-1517881917431-1348889736cd?w=600&auto=format&fit=crop&q=80", pair: "Volluto Core", pairDesc: "Echilibru matinal" },
+        { type: "Prânz", name: "Tocăniță de Vițel cu Mămăliguță la Cuptor", weight: "420g", desc: "Varianta cu surplus caloric controlat pentru stabilitate energetică postprandială pe parcursul zilei.", kcal: 640, p: "44g", c: "58g", g: "16g", img: "https://images.unsplash.com/photo-1547592180-85f173990554?w=600&auto=format&fit=crop&q=80", pair: "Ristretto Intense", pairDesc: "Saturare optimă" },
+        { type: "Cină", name: "Sauté de Varză Călită cu Mărar", weight: "380g", desc: "Rețetă curată, optimizată pentru digestie ușoară înainte de instalarea ciclului de somn.", kcal: 420, p: "11g", c: "48g", g: "14g", img: "https://images.unsplash.com/photo-1608897013039-887f21d8c804?w=600&auto=format&fit=crop&q=80", pair: "Arpeggio Velvet", pairDesc: "Calmare organică" }
+      ],
+      joi: [
+        { type: "Mic Dejun", name: "Omletă Securizată la Cuptor cu Spanac", weight: "210g", desc: "Proteine și grăsimi sănătoase izolate pentru protecția indicelui glicemic în primele ore.", kcal: 390, p: "26g", c: "6g", g: "24g", img: "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=600&auto=format&fit=crop&q=80", pair: "Volluto Core", pairDesc: "Sursă lipidică caldă" },
+        { type: "Prânz", name: "Pui Suprem cu Orez Sălbatic", weight: "400g", desc: "Gătit curat, fără adaosuri grase artificiale, ambalat etanș în inox direct de pe flacără.", kcal: 590, p: "46g", c: "54g", g: "11g", img: "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?w=600&auto=format&fit=crop&q=80", pair: "Ristretto Intense", pairDesc: "Sinergie musculară" },
+        { type: "Cină", name: "Supă Cremă Concentrată de Rădăcinoase", weight: "400g", desc: "Aport optim de microelemente minerale din rădăcinoase coapte pe vatră uscată.", kcal: 350, p: "8g", c: "42g", g: "12g", img: "https://images.unsplash.com/photo-1547592165-e1d17fed6005?w=600&auto=format&fit=crop&q=80", pair: "Arpeggio Velvet", pairDesc: "Relaxare digestivă" }
+      ],
+      vineri: [
+        { type: "Mic Dejun", name: "Overnight Oats cu Nucă și Miere", weight: "240g", desc: "Fibre solubile excelente pentru asigurarea metabolismului bazal crescut de final de săptămână.", kcal: 380, p: "12g", c: "52g", g: "10g", img: "https://images.unsplash.com/photo-1517881917431-1348889736cd?w=600&auto=format&fit=crop&q=80", pair: "Volluto Core", pairDesc: "Focus curat" },
+        { type: "Prânz", name: "Tocăniță de Vițel cu Mămăliguță la Cuptor", weight: "420g", desc: "Mâncare consistentă preparată conform standardelor stricte de siguranță alimentară Dakamigos.", kcal: 640, p: "44g", c: "58g", g: "16g", img: "https://images.unsplash.com/photo-1547592180-85f173990554?w=600&auto=format&fit=crop&q=80", pair: "Ristretto Intense", pairDesc: "Energie susținută" },
+        { type: "Cină", name: "Sauté de Varză Călită cu Mărar", weight: "380g", desc: "Preparat hipocaloric natural cu un volum ridicat de fibre pentru tranzit intestinal excelent.", kcal: 420, p: "11g", c: "48g", g: "14g", img: "https://images.unsplash.com/photo-1608897013039-887f21d8c804?w=600&auto=format&fit=crop&q=80", pair: "Arpeggio Velvet", pairDesc: "Echilibru final" }
+      ]
+    };
+
+    // Database centralizată pe săptămâni și ținte calorice
+    const databaseMasterMap = {
       "w1": {
-        "luni": {
-          "1000": [{ type: "Masa 1", name: "Iaurt Grecesc cu Chia", desc: "Iaurt slab bogat în proteine cu semințe de chia și vanilie.", kcal: 250, weight: "200g", prot: "15g", icon: "🥣", pair: "Volluto" }],
-          "1500": [
-            { type: "Mic Dejun", name: "Overnight Oats cu Fructe", desc: "Fulgi de ovăz hidratați în lapte de cocos, bogați în fibre.", kcal: 380, weight: "250g", prot: "12g", icon: "🥣", pair: "Volluto" },
-            { type: "Prânz", name: "Plăcintă de Carne cu Salată", desc: "Gătită la cald și sigilată etanș pentru păstrarea sucurilor naturale.", kcal: 540, weight: "380g", prot: "28g", icon: "🥗", pair: "Ristretto" },
-            { type: "Cină", name: "Somon Teriyaki & Quinoa", desc: "File de somon premium cu garnitură ușoară de quinoa tricolor.", kcal: 580, weight: "420g", prot: "38g", icon: "🐟", pair: "Indriya" }
-          ],
-          "2000": [{ type: "Masa Full", name: "Omletă Imperială cu Avocado", desc: "3 ouă, avocado, feta și pâine artizanală integrală.", kcal: 650, weight: "350g", prot: "32g", icon: "🍳", pair: "Kazaar" }]
-        },
-        "marti": {
-          "1000": [{ type: "Prânz", name: "Curcan în sos de salvie", desc: "Piept de curcan fraged cu sos fin aromatizat.", kcal: 350, weight: "250g", prot: "30g", icon: "🍗", pair: "Livanto" }],
-          "1500": [
-            { type: "Mic Dejun", name: "Budincă de hrișcă și miere", desc: "Alternativă nutritivă excelentă pentru energie curată.", kcal: 390, weight: "220g", prot: "10g", icon: "🥣", pair: "Cosi" },
-            { type: "Prânz", name: "Tocăniță de vițel cu mămăligă", desc: "Rețetă tradițională lent gătită, stabilă structural în containerul vidat.", kcal: 610, weight: "450g", prot: "42g", icon: "🍲", pair: "Ristretto" },
-            { type: "Cină", name: "Supă cremă de linte", desc: "Textură fină, catifelată, perfect protejată spill-proof.", kcal: 500, weight: "400g", prot: "20g", icon: "🍜", pair: "Decaffeinato" }
-          ],
-          "2000": [{ type: "Prânz Max", name: "Tocăniță de vițel cu mămăligă Double", desc: "Porție mărită pentru suport caloric extins.", kcal: 820, weight: "550g", prot: "55g", icon: "🍲", pair: "Kazaar" }]
-        },
-        "miercuri": {
-          "1500": [
-            { type: "Mic Dejun", name: "Frittata cu spanac și capră", desc: "Echilibru perfect între proteine și grăsimi sănătoase.", kcal: 410, weight: "200g", prot: "22g", icon: "🍳", pair: "Volluto" },
-            { type: "Prânz", name: "Pui Supreme cu orez negru", desc: "Piept de pui suculent cu orez intergral negru exotic.", kcal: 580, weight: "400g", prot: "39g", icon: "🍗", pair: "Roma" },
-            { type: "Cină", name: "Sauté de varză călită cu mămăliguță", desc: "Mâncare tradițională făcută fără grăsimi în exces, gata de savurat fierbinte.", kcal: 510, weight: "420g", prot: "16g", icon: "🍲", pair: "Arpeggio" }
-          ]
-        },
-        "joi": {
-          "1500": [
-            { type: "Mic Dejun", name: "Eggs Benedict Reinterpretation", desc: "Ouă poșate pe pat de spanac sote și sos fin ușor.", kcal: 420, weight: "210g", prot: "18g", icon: "🍳", pair: "Livanto" },
-            { type: "Prânz", name: "Musaca de cartofi și curcan", desc: "Straturi perfect coapte, asamblate chirurgical.", kcal: 590, weight: "400g", prot: "31g", icon: "🥘", pair: "Ristretto" },
-            { type: "Cină", name: "Salată Nicoise cu Ton Premium", desc: "Proaspătă, crocantă, cu dressing fin servit separat.", kcal: 490, weight: "380g", prot: "34g", icon: "🥗", pair: "Cosi" }
-          ]
-        },
-        "vineri": {
-          "1500": [
-            { type: "Mic Dejun", name: "Pancakes cu proteine și afine", desc: "Clătite americane pufoase cu îndulcitor natural.", kcal: 400, weight: "180g", prot: "25g", icon: "🥞", pair: "Volluto" },
-            { type: "Prânz", name: "Păstrăv la grătar cu legume", desc: "Pește local curat cu mix de legume la abur.", kcal: 520, weight: "410g", prot: "40g", icon: "🐟", pair: "Envivo" },
-            { type: "Cină", name: "Paste Integrale Bolognese light", desc: "Sos bogat de roșii cu carne slabă de vită și ierburi.", kcal: 580, weight: "390g", prot: "29g", icon: "🍝", pair: "Arpeggio" }
-          ]
-        }
+        "luni": { "1200": [menuEngineDataset.luni[1]], "1600": [menuEngineDataset.luni[0], menuEngineDataset.luni[1]], "2000": menuEngineDataset.luni },
+        "marti": { "1200": [menuEngineDataset.marti[1]], "1600": [menuEngineDataset.marti[0], menuEngineDataset.marti[1]], "2000": menuEngineDataset.marti },
+        "miercuri": { "1200": [menuEngineDataset.miercuri[1]], "1600": [menuEngineDataset.miercuri[0], menuEngineDataset.miercuri[1]], "2000": menuEngineDataset.miercuri },
+        "joi": { "1200": [menuEngineDataset.joi[1]], "1600": [menuEngineDataset.joi[0], menuEngineDataset.joi[1]], "2000": menuEngineDataset.joi },
+        "vineri": { "1200": [menuEngineDataset.vineri[1]], "1600": [menuEngineDataset.vineri[0], menuEngineDataset.vineri[1]], "2000": menuEngineDataset.vineri }
       },
       "w2": {
-        "luni": {
-          "1500": [
-            { type: "Mic Dejun", name: "Granola Crunch Premium", desc: "Iaurt cremos cu amestec de nuci și semințe coapte.", kcal: 420, weight: "240g", prot: "11g", icon: "🥣", pair: "Cosi" }
-          ]
-        }
+        "luni": { "1200": [menuEngineDataset.luni[1]], "1600": [menuEngineDataset.luni[0], menuEngineDataset.luni[1]], "2000": menuEngineDataset.luni },
+        "marti": { "1200": [menuEngineDataset.marti[1]], "1600": [menuEngineDataset.marti[0], menuEngineDataset.marti[1]], "2000": menuEngineDataset.marti },
+        "miercuri": { "1200": [menuEngineDataset.miercuri[1]], "1600": [menuEngineDataset.miercuri[0], menuEngineDataset.miercuri[1]], "2000": menuEngineDataset.miercuri },
+        "joi": { "1200": [menuEngineDataset.joi[1]], "1600": [menuEngineDataset.joi[0], menuEngineDataset.joi[1]], "2000": menuEngineDataset.joi },
+        "vineri": { "1200": [menuEngineDataset.vineri[1]], "1600": [menuEngineDataset.vineri[0], menuEngineDataset.vineri[1]], "2000": menuEngineDataset.vineri }
       }
     };
 
-    let selectedWeek = "w1";
-    let selectedDay = "luni";
-    let selectedKcal = "1500";
-    let shoppingCart = [];
+    // Variabile de stare ale aplicației
+    let activeWeek = "w1";
+    let activeDay = "luni";
+    let activeKcalTarget = "1600";
+    let internalCart = [];
 
-    function addItemToCart(name, kcal) {
-      shoppingCart.push({ name, kcal });
-      updateCartUI();
-      
-      let btn = event.target;
-      let originalText = btn.innerText;
-      btn.innerText = "Adăugat! ✓";
-      btn.style.background = "var(--sage)";
-      setTimeout(() => {
-        btn.innerText = originalText;
-        btn.style.background = "";
-      }, 800);
-    }
+    // Injectarea dinamică a elementelor în interfață
+    function executeMenuRendering() {
+      const targetContainer = document.getElementById("main-menu-injector");
+      if (!targetContainer) return;
+      targetContainer.innerHTML = "";
 
-    function updateCartUI() {
-      const count = shoppingCart.length;
-      document.querySelectorAll(".context-checkout").forEach(el => {
-        if(el.tagName === "BUTTON") {
-          el.innerText = count > 0 ? `🛒 Precomandă (${count})` : "🛒 Coș gol";
-        } else {
-          el.innerText = `Coș (${count}) →`;
-        }
-      });
-    }
+      const selectedWeekBlock = databaseMasterMap[activeWeek] || databaseMasterMap["w1"];
+      const selectedDayBlock = selectedWeekBlock[activeDay] || {};
+      const actualMeals = selectedDayBlock[activeKcalTarget] || [];
 
-    function renderMenu() {
-      const grid = document.getElementById("dynamic-menu-grid");
-      if(!grid) return;
-      grid.innerHTML = "";
-      
-      const weekData = menuDatabase[selectedWeek] || menuDatabase["w1"];
-      const dayData = weekData[selectedDay] || [];
-      const items = dayData[selectedKcal] || [];
-      
-      if(items.length === 0) {
-        grid.innerHTML = `<p style="grid-column: 1/-1; color: var(--light); text-align: center; padding: 40px; font-size:0.9rem;">Meniul pentru această selecție este în curs de calibrare nutrițională.</p>`;
+      if (actualMeals.length === 0) {
+        targetContainer.innerHTML = `
+          <div style="grid-column: 1/-1; text-align: center; padding: 40px; color: var(--text-mid);">
+            ⚠️ Configurația selectată se află în curs de validare nutrițională primară.
+          </div>`;
         return;
       }
 
-      items.forEach(item => {
-        grid.innerHTML += `
-          <div class="m-card">
-            <div class="m-img" style="background: linear-gradient(135deg, var(--espresso), var(--roast))">
-              ${item.icon}
-              <div class="m-img-label">${item.type}</div>
+      actualMeals.forEach(meal => {
+        targetContainer.innerHTML += `
+          <div class="menu-item">
+            <div class="menu-item-img">
+              <img src="${meal.img}" alt="${meal.name}">
             </div>
-            <div class="m-body">
-              <div class="m-type">🔒 Sigilat Spill-Proof</div>
-              <div class="m-name">${item.name}</div>
-              <p class="m-desc">${item.desc}</p>
-              <div class="m-macros">
-                <div class="macro-chip macro-kcal">🔥 ${item.kcal} kcal</div>
-                <div class="macro-chip">⚖️ ${item.weight}</div>
-                <div class="macro-chip">💪 P: ${item.prot}</div>
+            <div class="menu-item-body">
+              <div class="meal-meta">
+                <span class="meal-type">${meal.type}</span>
+                <span class="meal-weight">${meal.weight}</span>
               </div>
-              <div class="m-action-row">
-                <div class="m-pairing">
-                  <div style="font-size:1.1rem;">☕</div>
-                  <div>
-                    <div class="pairing-name">${item.pair}</div>
-                    <div class="pairing-sub">Pairing inclus</div>
+              <h3 class="meal-name">${meal.name}</h3>
+              <p class="meal-desc">${meal.desc}</p>
+              
+              <div class="meal-macros">
+                <span class="macro-pill kcal">🔥 ${meal.kcal} kcal</span>
+                <span class="macro-pill">🥩 P: ${meal.p}</span>
+                <span class="macro-pill">🌾 C: ${meal.c}</span>
+                <span class="macro-pill">🥑 G: ${meal.g}</span>
+              </div>
+
+              <div class="meal-footer">
+                <div class="pairing-box">
+                  <span class="pairing-icon">☕</span>
+                  <div class="pairing-info">
+                    <div class="pairing-title">${meal.pair}</div>
+                    <div class="pairing-desc">${meal.pairDesc}</div>
                   </div>
                 </div>
-                <button class="btn-add-cart" onclick="addItemToCart('${item.name}', ${item.kcal})">Adaugă +</button>
+                <button class="nav-cta" style="padding: 8px 14px; font-size:0.75rem;" onclick="addMealToCart('${meal.name}')">Adaugă</button>
               </div>
             </div>
           </div>
@@ -586,58 +1085,72 @@
       });
     }
 
-    function sendToWebhook() {
-      if(shoppingCart.length === 0) {
-        alert("Coșul este gol. Adaugă produse înainte de a trimite precomanda.");
-        return;
-      }
-      
-      const webhookUrl = "https://hook.eu1.make.com/YOUR_WEBHOOK_ID_HERE";
-      const payload = {
-        source: "SOul meal WebApp",
-        timestamp: new Date().toISOString(),
-        items: shoppingCart,
-        summary: { totalItems: shoppingCart.length }
-      };
-
-      console.log("Trimitere date către Make Webhook:", payload);
-      alert(`Precomandă înregistrată! S-au trimis ${shoppingCart.length} repere către procesare.`);
-      shoppingCart = [];
-      updateCartUI();
+    // Funcții de manipulare a stării coșului de achiziții
+    function addMealToCart(mealName) {
+      internalCart.push({ type: "preparat", identity: mealName });
+      updateCartFloatingBar();
     }
 
-    document.addEventListener("DOMContentLoaded", function() {
-      renderMenu();
+    function addCapsuleToCart(capsuleName, price) {
+      internalCart.push({ type: "capsula", identity: capsuleName });
+      updateCartFloatingBar();
+    }
 
+    function selectAbonament(planName, dailyRate) {
+      internalCart.push({ type: "abonament", identity: planName });
+      updateCartFloatingBar();
+      alert(`Structura de abonament "${planName}" a fost mapată în vectorul de selecție.`);
+    }
+
+    function updateCartFloatingBar() {
+      const bar = document.getElementById("floating-cart-bar");
+      if (bar) {
+        bar.innerText = `🛒 Precomandă în curs (${internalCart.length} repere selectate)`;
+      }
+    }
+
+    function handleCheckout() {
+      if (internalCart.length === 0) {
+        alert("Matricea de selecție este goală. Adaugă repere din meniu sau planuri tarifare.");
+        return;
+      }
+      alert(`Se inițializează transmisia securizată pentru cele ${internalCart.length} repere către webhook-ul de automatizare Dakamigos Engine.`);
+      internalCart = [];
+      updateCartFloatingBar();
+    }
+
+    // Inițializare evenimente după încărcarea DOM
+    document.addEventListener("DOMContentLoaded", function() {
+      executeMenuRendering();
+
+      // Control tab-uri săptămână
       document.querySelectorAll(".week-tab").forEach(tab => {
         tab.addEventListener("click", function() {
           document.querySelectorAll(".week-tab").forEach(t => t.classList.remove("active"));
           this.classList.add("active");
-          selectedWeek = this.getAttribute("data-week");
-          renderMenu();
+          activeWeek = this.getAttribute("data-week");
+          executeMenuRendering();
         });
       });
 
+      // Control tab-uri zi
       document.querySelectorAll(".day-tab").forEach(tab => {
         tab.addEventListener("click", function() {
           document.querySelectorAll(".day-tab").forEach(t => t.classList.remove("active"));
           this.classList.add("active");
-          selectedDay = this.getAttribute("data-day");
-          renderMenu();
+          activeDay = this.getAttribute("data-day");
+          executeMenuRendering();
         });
       });
 
-      document.querySelectorAll(".kcal-pill-btn").forEach(btn => {
+      // Control filtre calorice
+      document.querySelectorAll(".kcal-btn").forEach(btn => {
         btn.addEventListener("click", function() {
-          document.querySelectorAll(".kcal-pill-btn").forEach(b => b.classList.remove("active"));
+          document.querySelectorAll(".kcal-btn").forEach(b => b.classList.remove("active"));
           this.classList.add("active");
-          selectedKcal = this.getAttribute("data-kcal");
-          renderMenu();
+          activeKcalTarget = this.getAttribute("data-kcal");
+          executeMenuRendering();
         });
-      });
-
-      document.querySelectorAll(".context-checkout").forEach(btn => {
-        btn.addEventListener("click", sendToWebhook);
       });
     });
   </script>
