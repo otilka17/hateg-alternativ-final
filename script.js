@@ -1,60 +1,90 @@
 /**
- * METANOIA DIGITALĂ | Hațeg Alternativ • Soul Meal & Drink TO GO
- * Creier Central Operativ (script.js) - Versiune Multi-Pagina Persistentă
+ * METANOIA DIGITALĂ | HațegAlternativ • SOul meal, drinks & coffee
+ * Creier Central Operativ (script.js) - Cu Integrare Matrice Bogdan
  */
 
-// 1. SURSA UNICĂ DE ADEVĂR PENTRU MENIUL SĂPTĂMÂNAL (Cu garnitură de piure artizanal inclusă)
+// 1. COMPONENTA LOGISTICĂ BOGDAN: MATRICEA OFICIALĂ DE CALORII PENTRU TRANSPARENȚĂ FOODTECH
+const bazaDateBogdan = {
+    legume: {
+        sub30: ["Spanac", "Brocolli", "Conopida", "Salata verde", "Dovlecel", "Zuchinni", "Vinete", "Varza", "Sparanghel", "Andive", "Castraveti", "Ardei Verde/Rosu", "Ridichi", "Ruccola", "Ciuperci", "Rosie", "Telina", "Fenicul"],
+        de30_50: ["Anghinare", "Ceapa", "Ceapa Rosie", "Fasole verde", "Bame", "Sfecla Rosie", "Hrean", "Morcov", "Varză de Bruxelles", "Lupini", "Praz", "Porumb", "Pastarnac", "Mazare"],
+        de50_80: ["Cartofi", "Cartof Dulce", "Cicoare"],
+        de80_150: ["Usturoi", "Masline verzi", "Masline negre", "Masline Kalamata", "Avocado"]
+    },
+    carne: {
+        sub110: ["Cal", "Caprioara", "Cerb", "Burta de vita", "Ficat de pui", "Ficat de porc", "Piept de pui File", "Cotlet de porc", "Pulpa de porc", "Pulpa de vita", "Vrabioara de vita", "Muschiuyket de vita slab", "Miel Slab"],
+        de110_140: ["Muschi file Porc"],
+        de140_170: ["Aripi de pui fara piele", "Iepure"],
+        de170_210: ["Pulpe de pui file"],
+        de210_plus: ["Aripi de pui cu piele", "Ceafa de porc", "Antricot de vita", "Ciolan de porc", "Pastrama de oaie", "Carne tocata porc", "Carne tocata vita/porc", "Carne tocata vita"]
+    },
+    peste: {
+        sub100: ["Biban", "Caracatita", "Creveti", "Cod", "Pastrav", "Salau", "Ton in suc propriu", "Ton proaspat"],
+        de100_130: ["Biban de mare", "Crap"],
+        de130_160: ["Somn", "Macrou proaspat"],
+        de160_200: ["Anchois", "Macrou Afumat", "Somon Oceanic"],
+        de200_plus: ["Ton in Ulei", "Somon de crescatorie"]
+    },
+    gustari: {
+        sub100: ["Iaurt Grecesc 150g (2%)", "1 Mar", "1 para", "150 grame fructe de padure", "200 grame capsuni", "300 grame pepene verde", "200 grame mure", "150 grame afine", "1 portocala", "Kefir (150 ML)", "Cafea (cu lapte, fara zahar)"],
+        de100_150: ["Perlute branza 200 grame", "1 banana medie", "Budinca Proteica 200 grame"],
+        de150_200: ["Iaurt Grecesc 300 grame (2%)", "Kefir (330 ML)"]
+    }
+};
+
+// 2. SURSA UNICĂ DE ADEVĂR PENTRU MENIUL SĂPTĂMÂNAL (Aliniat la ingredientele din fișiere)
 const meniuSaptamanal = [
     { 
         zi: "LUNI", 
         fel1: "Ciorbă de găină cu tăieței de casă", calorii1: "150 kcal", p1: "12g", g1: "5g", 
         fel2: "Tocăniță de porc la ceaun cu piure artizanal catifelat", calorii2: "650 kcal", p2: "45g", g2: "25g", 
-        pret: 40.00 
+        pret: 40.00,
+        bogdanEngine: "Găină slabă (tier <110 kcal) + Cartofi piure (tier 50-80 kcal) + Ceapă și Morcov (tier 30-50 kcal)."
     },
     { 
         zi: "MARȚI", 
         fel1: "Ciorbă țărănească de văcuță", calorii1: "180 kcal", p1: "15g", g1: "6g", 
         fel2: "Pulpă de pui fragedă la ceaun cu piure catifelat cu unt", calorii2: "580 kcal", p2: "48g", g2: "20g", 
-        pret: 40.00 
+        pret: 40.00,
+        bogdanEngine: "Pulpa de pui file (tier 170-210 kcal) + Pulpă de vită (tier <110 kcal) + Roșii & Ardei (tier <30 kcal)."
     },
     { 
         zi: "MIERCURI", 
         fel1: "Supă cremă din legume din grădină", calorii1: "120 kcal", p1: "5g", g1: "3g", 
         fel2: "Mușchiuleț de porc la grătar cu piure fin și sos redus", calorii2: "450 kcal", p2: "42g", g2: "10g", 
-        pret: 40.00 
+        pret: 40.00,
+        bogdanEngine: "Cotlet de porc (tier <110 kcal) + Brocolli, Dovlecel & Țelină (tier <30 kcal)."
     },
     { 
         zi: "JOI", 
         fel1: "Ciorbă rădăuțeană dreaptă cu usturoi", calorii1: "220 kcal", p1: "18g", g1: "9g", 
         fel2: "Friptură tradițională la tavă în sos cu piure fin", calorii2: "620 kcal", p2: "35g", g2: "30g", 
-        pret: 40.00 
+        pret: 40.00,
+        bogdanEngine: "Piept de pui File (tier <110 kcal) + Usturoi calibrare (tier 80-150 kcal) + Ciuperci (tier <30 kcal)."
     },
     { 
         zi: "VINERI", 
         fel1: "Ciorbă de burtă ca la mama acasă", calorii1: "250 kcal", p1: "20g", g1: "12g", 
         fel2: "Pui cremos cu ciuperci, smântână și piure artizanal", calorii2: "550 kcal", p2: "40g", g2: "22g", 
-        pret: 40.00 
+        pret: 40.00,
+        bogdanEngine: "Burta de vită (tier <110 kcal) + Ciuperci proaspete (tier <30 kcal) + Bază de Praz (tier 30-50 kcal)."
     }
 ];
 
-// 2. STĂRI GLOBALE PERSISTENTE (Se încarcă automat la schimbarea paginii)
+// 3. STĂRI GLOBALE PERSISTENTE
 let total = parseFloat(localStorage.getItem('metanoia_total')) || 0;
 let cartItems = JSON.parse(localStorage.getItem('metanoia_items')) || [];
-let pag = 1; // Indicatorul zilei curente din meniu (1 = Luni, 5 = Vineri)
+let pag = 1;
 
-// 3. INIȚIALIZARE AUTOMATĂ LA ÎNCĂRCAREA PAGINII CURENTE
 document.addEventListener("DOMContentLoaded", () => {
-    // Sincronizează afișajul prețului în Sticky Footer pe oricare pagină ne-am afla
     actualizeazaAfisajCos();
     
-    // Auto-detectare: dacă pagina curentă are containerul de meniu, îl randează instant
     const containerZile = document.getElementById('container-zile');
     if (containerZile) {
         generareMeniuDinamica(containerZile);
     }
 });
 
-// 4. MANAGEMENTUL COȘULUI DE CUMPĂRĂTURI
 function actualizeazaAfisajCos() {
     const displayTotal = document.getElementById('display-total');
     if (displayTotal) {
@@ -67,7 +97,6 @@ function salveazaCosState() {
     localStorage.setItem('metanoia_items', JSON.stringify(cartItems));
 }
 
-// Adăugare produse din paginile cu structură fixă/statică (box.html, bauturi.html)
 function adaugaProdus(btn) {
     const card = btn.closest('[data-pret]');
     if (!card) return;
@@ -78,26 +107,21 @@ function adaugaProdus(btn) {
     executaAdaugare(nume, pret, btn);
 }
 
-// Adăugare produse din interfața dinamică (meniu.html)
 function adaugaPachetSaptamanal(zi, pret) {
     const nume = `Meniu Complet ${zi} (cu Piure)`;
-    // Găsește butonul corespunzător zilei active pentru feedback vizual
     const indexZi = meniuSaptamanal.findIndex(m => m.zi === zi);
     const btn = document.querySelector(`#page-${indexZi + 1} button`);
     
     executaAdaugare(nume, pret, btn);
 }
 
-// Nucleul de procesare al coșului
 function executaAdaugare(nume, pret, elementButon) {
     total += pret;
     cartItems.push(nume);
     
-    // Salvare în stocul browserului și actualizare interfață
     salveazaCosState();
     actualizeazaAfisajCos();
     
-    // Feedback vizual premium (Tranziție text buton)
     if (elementButon) {
         const originalText = elementButon.innerText;
         elementButon.innerText = "Adăugat în Coș ✓";
@@ -110,9 +134,9 @@ function executaAdaugare(nume, pret, elementButon) {
     }
 }
 
-// 5. LOGICA DE RANDARE ȘI NAVIGARE PENTRU MENIUL SĂPTĂMÂNAL (meniu.html)
+// 4. RANDAREA PREMIUM MULTI-PAGINĂ CU AFIȘAREA MATRICEI NUTRIȚIONALE BOGDAN
 function generareMeniuDinamica(container) {
-    container.innerHTML = ''; // Curăță eventualele reziduuri HTML
+    container.innerHTML = '';
     
     meniuSaptamanal.forEach((m, index) => {
         container.innerHTML += `
@@ -149,6 +173,15 @@ function generareMeniuDinamica(container) {
                                 </div>
                             </div>
                         </div>
+
+                        <!-- MODULUL INTEGRAT BOGDAN ENGINE (TRASABILITATE COMPONENTE) -->
+                        <div class="bg-[#0a0a0a] p-4 border border-[#c5a059]/20 rounded-none">
+                            <div class="flex items-center gap-2 mb-1.5">
+                                <span class="text-xs">🤖</span>
+                                <h5 class="text-[10px] font-bold text-[#c5a059] uppercase tracking-widest">Algoritm Calibrare Bogdan</h5>
+                            </div>
+                            <p class="text-[11px] text-gray-400 font-light leading-relaxed">${m.bogdanEngine}</p>
+                        </div>
                     </div>
                     
                     <button onclick="adaugaPachetSaptamanal('${m.zi}', ${m.pret})" class="w-full mt-6 border border-[#c5a059] py-3.5 text-[#c5a059] hover:bg-[#c5a059] hover:text-black transition-all uppercase text-xs tracking-widest font-black">
@@ -179,7 +212,6 @@ function schimbaZi(step) {
     }
 }
 
-// 6. MANAGEMENT MODAL LIVRARE OPERATIVĂ (Bucătăria Centrală Totești - DN 68)
 function deschideModal() { 
     if (total === 0) {
         alert('Coșul operațional este gol. Adăugați produse înainte de a finaliza.');
@@ -205,16 +237,13 @@ function inchideModal(sendOrder) {
             return;
         }
         
-        // Confirmare plasare comandă
         alert(`Comandă transmisă securizat!\nTotal de plată: ${total.toFixed(2)} RON.\nBucătăria Centrală Totești procesează, videază și pregătește livrarea pe ruta dumneavoastră.`);
         
-        // Resetarea stării coșului global după finalizarea cu succes
         total = 0;
         cartItems = [];
         salveazaCosState();
         actualizeazaAfisajCos();
         
-        // Resetare câmpuri input formular
         document.getElementById('client-name').value = '';
         document.getElementById('client-address').value = '';
     }
