@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategie Finanțare Apicultură - Ion Georgescu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* DESIGN SYSTEM & RESET */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            background-color: #0f172a;
+            color: #334155;
+            font-family: 'Open Sans', sans-serif;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 10px;
+            padding-bottom: 120px;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: #d97706; /* Ton auriu/miere apicol */
+        }
+
+        .presentation-deck {
+            width: 100%;
+            max-width: 1080px;
+            height: 85vh;
+            min-height: 540px;
+            max-height: 660px;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slides-container {
+            flex-grow: 1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform: translateX(20px);
+            padding: 35px 45px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 1;
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+            z-index: 2;
+        }
+
+        /* HEADER SLIDE */
+        .slide-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .slide-header .logo-consultant {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #d97706;
+        }
+
+        .slide-header .client-tag {
+            font-size: 11px;
+            background: #fffbeb;
+            color: #b45309;
+            padding: 3px 10px;
+            border-radius: 9999px;
+            font-weight: 600;
+            border: 1px solid #fde68a;
+        }
+
+        .slide-title {
+            font-size: 24px;
+            color: #0f172a;
+            position: relative;
+            padding-left: 12px;
+            margin-bottom: 10px;
+        }
+
+        .slide-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 15%;
+            height: 70%;
+            width: 4px;
+            background-color: #d97706;
+            border-radius: 2px;
+        }
+
+        .slide-body {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-y: auto;
+            padding: 5px 0;
+        }
+
+        /* CHESTIONAR INTERACTIV */
+        .quiz-container {
+            width: 100%;
+            max-width: 700px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 25px;
+        }
+
+        .quiz-step {
+            display: none;
+        }
+
+        .quiz-step.active {
+            display: block;
+        }
+
+        .quiz-question {
+            font-size: 16px;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 15px;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .quiz-option {
+            background: white;
+            border: 1px solid #cbd5e1;
+            padding: 12px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quiz-option:hover {
+            border-color: #d97706;
+            background: #fffbeb;
+        }
+
+        .quiz-option input {
+            cursor: pointer;
+        }
+
+        /* GRIDS & LAYOUTS */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 30px;
+            width: 100%;
+            align-items: center;
+        }
+
+        .custom-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .custom-list li {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            font-size: 14px;
+        }
+
+        .custom-list li i {
+            color: #d97706;
+            background: #fffbeb;
+            padding: 6px;
+            border-radius: 6px;
+            flex-shrink: 0;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            width: 100%;
+        }
+
+        .card-tile {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .card-tile .tile-icon {
+            font-size: 20px;
+            color: #d97706;
+            background: #fffbeb;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+        }
+
+        /* VALORI FINANCIARE */
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            gap: 20px;
+        }
+
+        .stat-box {
+            text-align: center;
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px dashed #cbd5e1;
+            flex: 1;
+        }
+
+        .stat-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: #d97706;
+        }
+
+        /* FOOTER & NAVIGARE */
+        .presentation-footer {
+            background-color: #f8fafc;
+            border-top: 1px solid #e2e8f0;
+            padding: 10px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .btn-nav {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            color: #334155;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .btn-nav:hover:not(:disabled) {
+            background-color: #d97706;
+            color: #ffffff;
+            border-color: #d97706;
+        }
+
+        .btn-nav:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .locked-notice {
+            font-size: 13px;
+            color: #ef4444;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-quiz-next {
+            background: #cbd5e1;
+            color: #64748b;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: not-allowed;
+            transition: all 0.2s;
+        }
+
+        .btn-quiz-next.enabled {
+            background: #d97706;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* CLOSING BAR PREMIUM FOR WHATSAPP */
+        .sticky-closing-bar {
+            position: fixed; bottom: 0; left: 0; width: 100%;
+            background-color: #0f172a; border-top: 2px solid #d97706;
+            padding: 15px 30px; display: none; justify-content: space-between;
+            align-items: center; z-index: 100; box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
+        }
+        .sticky-closing-bar.visible { display: flex; }
+        .closing-text { color: #ffffff; font-size: 14px; font-weight: 600; }
+        .btn-whatsapp-close {
+            background-color: #25d366; color: white; text-decoration: none;
+            padding: 10px 20px; border-radius: 6px; font-weight: 700; font-size: 13px;
+            text-transform: uppercase; display: flex; align-items: center; gap: 8px;
+            transition: background 0.2s;
+        }
+        .btn-whatsapp-close:hover { background-color: #128c7e; }
+
+        @media (max-width: 768px) {
+            .presentation-deck { height: auto; max-height: none; }
+            .slide { position: relative; display: none; height: auto; padding: 20px; }
+            .slide.active { display: flex; }
+            .grid-2, .grid-3, .stats-container { grid-template-columns: 1fr; flex-direction: column; }
+            .sticky-closing-bar { flex-direction: column; gap: 12px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="presentation-deck">
+        
+        <div class="slides-container">
+
+            <!-- SLIDE 1: Chestionar Calificare -->
+            <div class="slide active" id="s1">
+                <div class="slide-header">
+                    <span class="logo-consultant"><i class="fa-solid fa-briefcase"></i> DAKAMIGOS MARKT / Soluții Europene</span>
+                    <span class="client-tag">Ion Georgescu / Vâlcea</span>
+                </div>
+                <div class="slide-body">
+                    <div id="quizBlock" class="quiz-container">
+                        <div style="text-align: center; margin-bottom: 20px;">
+                            <h2 style="font-size: 20px; color: #0f172a;">Calificare Finanțare Fonduri Europene Apicultură</h2>
+                            <p style="font-size: 13px; color: #64748b;">Verificăm dimensiunea minimă a exploatației pentru accesarea liniilor AFIR / GAL.</p>
+                        </div>
+
+                        <div class="quiz-step active" id="qStep1">
+                            <p class="quiz-question">1. Dețineți în acest moment familii de albine înregistrate oficial în Registrul Agricol / ANSVSA?</p>
+                            <div class="quiz-options">
+                                <label class="quiz-option"><input type="radio" name="q1" value="yes"> Da, avem stupi înregistrați (bază excelentă pentru calculul dimensiunii economice - SO)</label>
+                                <label class="quiz-option"><input type="radio" name="q1" value="no"> Nu, pornim complet de la zero ca persoană fizică (necesită achiziție inițială minimă)</label>
+                            </div>
+                        </div>
+
+                        <div class="quiz-step" id="qStep2">
+                            <p class="quiz-question">2. Suma de 3.000 lei din solicitare reprezintă capitalul propriu alocat pentru pornire și consultanță?</p>
+                            <div class="quiz-options">
+                                <label class="quiz-option"><input type="radio" name="q2" value="yes"> Da, este bugetul nostru alocat fazei inițiale. Vizăm un grant nerambursabil mult mai mare.</label>
+                                <label class="quiz-option"><input type="radio" name="q2" value="no"> Nu, 3.000 lei doream să fie valoarea totală a achizițiilor din proiect.</label>
+                            </div>
+                        </div>
+
+                        <div class="quiz-step" id="qStep3">
+                            <p class="quiz-question">3. Aveți sub 40 de ani sau dețineți competențe/cursuri recunoscute în domeniul apiculturii?</p>
+                            <div class="quiz-options">
+                                <label class="quiz-option"><input type="radio" name="q3" value="yes"> Da, ne încadrăm la criterii de prioritate (Tânăr Fermier / Studii de profil)</label>
+                                <label class="quiz-option"><input type="radio" name="q3" value="no"> Nu, dar suntem dispuși să parcurgem un curs calificare rapid în timpul proiectului</label>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 25px; display: flex; justify-content: flex-end;">
+                            <button id="quizNextBtn" class="btn-quiz-next" disabled>Următorul pas</button>
+                        </div>
+                    </div>
+
+                    <div id="quizSuccessBlock" style="display: none; text-align: center; width: 100%;">
+                        <div style="font-size: 50px; color: #d97706; margin-bottom: 15px;"><i class="fa-solid fa-hive"></i></div>
+                        <h2>Profil Apicol Eligibil Validat</h2>
+                        <p style="color: #64748b; margin-bottom: 20px;">Localitatea Mateești (Vâlcea) este situată în spațiul rural eligibil pentru sprijinul instalării fermierilor.</p>
+                        <button onclick="startPresentation()" style="background: #d97706; color: white; border: none; padding: 12px 25px; border-radius: 6px; font-weight: 600; cursor: pointer;">Deschide Ghidul de Finanțare Personalizat</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 2: Reguli Ghid -->
+            <div class="slide" id="s2">
+                <div class="slide-header">
+                    <span class="logo-consultant"><i class="fa-solid fa-book"></i> Ghidul Solicitantului AFIR</span>
+                    <span class="client-tag">Criterii de Bază</span>
+                </div>
+                <div class="slide-body">
+                    <div class="grid-2">
+                        <div class="column-left">
+                            <h2 class="slide-title">Condiții Obligatorii Sector Apicol</h2>
+                            <p>Pentru a accesa schemele rurale nerambursabile (ex: Instalarea Tinerilor Fermieri sau Dezvoltarea Fermelor Mici), trebuie îndeplinite următoarele reguli:</p>
+                            <ul class="custom-list">
+                                <li>
+                                    <i class="fa-solid fa-calculator"></i>
+                                    <div>
+                                        <strong>Dimensiunea Economică (SO):</strong> Exploatația trebuie să aibă o dimensiune minimă exprimată în Standard Output (calculată în funcție de numărul de stupi declarați la Direcția Sanitar-Veterinară).
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-signature"></i>
+                                    <div>
+                                        <strong>Forma Juridică:</strong> Finanțarea se acordă după transformarea formei de organizare în PFA, ÎI, ÎF sau SRL în mediul rural.
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-chart-line"></i>
+                                    <div>
+                                        <strong>Planul de Afaceri:</strong> Banii se acordă în tranșe, condiționați de creșterea numărului de familii de albine și comercializarea producției într-un procent stabilit.
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="column-right" style="text-align: center;">
+                            <i class="fa-solid fa-jar" style="font-size: 70px; color: #d97706;"></i>
+                            <p style="font-size: 11px; color: #64748b; margin-top: 10px;">Apicultura beneficiază de punctaje excelente datorită impactului pozitiv asupra biodiversității.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 3: Cheltuieli Permise -->
+            <div class="slide" id="s3">
+                <div class="slide-header">
+                    <span class="logo-consultant"><i class="fa-solid fa-list-check"></i> Management Buget</span>
+                    <span class="client-tag">Cheltuieli Decontate</span>
+                </div>
+                <div class="slide-body">
+                    <div style="width: 100%;">
+                        <h2 class="slide-title" style="margin-bottom: 12px;">Ce echipamente puteți achiziționa din fonduri europene?</h2>
+                        <div class="grid-3">
+                            <div class="card-tile">
+                                <div class="tile-icon"><i class="fa-solid fa-bug"></i></div>
+                                <h3>Familii și Stupi</h3>
+                                <p style="font-size: 12px; color: #64748b;">Achiziția de mătci, familii noi de albine certificate, stupi verticali sau orizontali complet echipați.</p>
+                            </div>
+                            <div class="card-tile">
+                                <div class="tile-icon"><i class="fa-solid fa-industry"></i></div>
+                                <h3>Utilaje Extracție</h3>
+                                <p style="font-size: 12px; color: #64748b;">Centrifuge radiale sau tangențiale electrice, bazine de decantare, topitoare de ceară și unelte specifice.</p>
+                            </div>
+                            <div class="card-tile">
+                                <div class="tile-icon"><i class="fa-solid fa-truck-ramp-box"></i></div>
+                                <h3>Logistică / Pavilioane</h3>
+                                <p style="font-size: 12px; color: #64748b;">Remorci apicole adaptate, motostivuitoare pentru stupi sau echipamente de digitalizare a monitorizării stupinei.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 4: Mecanism Financiar -->
+            <div class="slide" id="s4">
+                <div class="slide-header">
+                    <span class="logo-consultant"><i class="fa-solid fa-coins"></i> Valori Fonduri</span>
+                    <span class="client-tag">Alocări Financiare Realiste</span>
+                </div>
+                <div class="slide-body">
+                    <div style="width: 100%; text-align: center;">
+                        <h2 style="margin-bottom: 15px; color: #0f172a;">Recalibrarea Bugetului de la 3.000 lei la Sumele Reale Europene</h2>
+                        <p style="max-width: 750px; margin: 0 auto 20px auto; font-size: 14px; line-height: 1.5; color: #475569;">
+                            Suma de 3.000 lei acoperă taxele inițiale sau înființarea formei juridice. Ghidurile oficiale AFIR și măsurile de sprijin local (GAL) oferă sume fixe cu o rată de finanțare de până la 100% nerambursabilă:
+                        </p>
+                        <div class="stats-container">
+                            <div class="stat-box">
+                                <div styl
