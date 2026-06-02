@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DAKAMIGOS MARKT — Analiză Metrică Fast-Food Rural</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- Leaflet.js pentru Harta Regională Botoșani -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<style>
+:root {
+  --ink:        #050505;
+  --espresso:  #0a0a0a;
+  --roast:     #141414;
+  --caramel:   #c5a059;
+  --gold:      #c5a059;
+  --gold-pale: #ebdcb9;
+  --text:      #ffffff;
+  --mid:       #a3a3a3;
+  --light:     #262626;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--ink);
+  color: var(--text);
+  overflow-x: hidden;
+  padding-bottom: 120px;
+}
+/* ════ NAV ════ */
+nav {
+  position: sticky; top:0; width:100%; z-index:200;
+  background: rgba(5,5,5,0.98); backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(197,160,89,0.15);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5%; height: 75px;
+}
+.nav-logo {
+  font-family: 'DM Serif Display', serif; font-size: 1.25rem; color: var(--gold);
+  display: flex; align-items: center; gap: 12px; letter-spacing: 1.5px; text-transform: uppercase;
+}
+.nav-logo span { font-weight: 300; color: #fff; font-size: 0.85rem; font-family: 'DM Sans'; border-left: 1px solid #333; padding-left: 12px; }
+.badge-status { background: rgba(197,160,89,0.1); color: var(--gold); border: 1px solid rgba(197,160,89,0.3); font-size: 0.65rem; padding: 6px 14px; text-transform: uppercase; letter-spacing: 1px; font-weight: 700; }
+
+/* ════ HERO ════ */
+.hero {
+  background: linear-gradient(180deg, var(--espresso) 0%, var(--ink) 100%);
+  padding: 80px 5% 40px; border-bottom: 1px solid var(--roast);
+}
+.hero-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 1px solid rgba(197,160,89,.25); color: var(--gold-pale); font-size: .68rem;
+  letter-spacing: 2px; text-transform: uppercase; padding: 6px 16px; margin-bottom: 24px; background: rgba(197,160,89,0.02);
+}
+.hero-pill span { width:6px; height:6px; border-radius:50%; background:var(--gold); }
+.hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2.2rem, 5vw, 3.8rem); line-height: 1.1; margin-bottom: 16px; }
+.hero h1 em { font-style: italic; color: var(--gold); font-weight: 400; }
+.hero p { font-size: 0.95rem; color: var(--mid); max-width: 600px; line-height: 1.6; font-weight: 300; }
+
+/* ════ MATRIX INTERACTIVA ════ */
+.matrix-section { padding: 60px 5%; display: grid; grid-template-columns: 1fr 360px; gap: 40px; }
+.main-panel { display: flex; flex-direction: column; gap: 44px; }
+
+.section-title { font-family: 'DM Serif Display', serif; font-size: 1.6rem; color: #fff; margin-bottom: 8px; letter-spacing: 0.5px; }
+.section-tag { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; color: var(--caramel); font-weight: 700; display: block; margin-bottom: 6px; }
+
+/* PACHETE FINANȚARE */
+.scenarios-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.sc-card {
+  background: #0a0a0a; border: 1px solid var(--roast); padding: 24px; cursor: pointer; transition: all 0.3s ease;
+  display: flex; flex-direction: column; justify-content: space-between; position: relative;
+}
+.sc-card:hover { border-color: rgba(197,160,89, 0.4); }
+.sc-card.active { border-color: var(--gold); background: #0f0f0f; }
+.sc-card.active::before {
+  content: 'AXA STRUCTURALĂ'; position: absolute; top: 12px; right: 12px; font-family: monospace; font-size: 8px; background: var(--gold); color: #000; padding: 2px 6px; font-weight: bold;
+}
+.sc-tag { font-size: 0.6rem; text-transform: uppercase; color: var(--mid); letter-spacing: 1px; margin-bottom: 8px; display: block; }
+.sc-title { font-family: 'DM Serif Display', serif; font-size: 1.25rem; color: #fff; margin-bottom: 12px; }
+.sc-value { font-size: 1.5rem; font-weight: 700; color: var(--gold); font-family: 'DM Serif Display', serif; }
+
+/* CHESTIONAR DE ELIGIBILITATE INTERACTIV */
+.form-section-box { background: #0a0a0a; border: 1px solid var(--roast); padding: 32px; display: flex; flex-direction: column; gap: 24px; }
+.form-group-block { border-bottom: 1px solid #141414; padding-bottom: 20px; }
+.form-group-block:last-child { border-bottom: none; padding-bottom: 0; }
+.form-question-label { font-size: 0.85rem; font-weight: 600; color: #fff; margin-bottom: 12px; display: block; letter-spacing: 0.5px; }
+.form-options-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.opt-btn {
+  background: #050505; border: 1px solid var(--roast); color: var(--mid); padding: 14px; text-align: left;
+  font-size: 0.8rem; cursor: pointer; transition: all Image0.2s; transition: all 0.2s; display: flex; flex-direction: column; gap: 4px;
+}
+.opt-btn:hover { border-color: rgba(197,160,89, 0.3); color: #fff; }
+.opt-btn.active { border-color: var(--gold); background: rgba(197,160,89, 0.04); color: #fff; }
+.opt-btn strong { font-size: 0.85rem; color: #fff; }
+.opt-btn span { font-size: 0.72rem; color: var(--mid); font-weight: 300; }
+
+/* SIDEBAR CALCULATOR */
+.sidebar-panel { display: flex; flex-direction: column; gap: 24px; }
+.computing-box { background: #0d0d0d; border: 1px solid var(--gold); padding: 32px 24px; position: sticky; top: 100px; text-align: center; }
+.comp-label { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; color: var(--mid); }
+.comp-grant { font-family: 'DM Serif Display', serif; font-size: 2.5rem; color: var(--gold); font-weight: 700; margin: 12px 0 6px; }
+.comp-subtext { font-size: 0.78rem; color: var(--mid); line-height: 1.5; font-weight: 300; margin-bottom: 24px; }
+.comp-divider { border-top: 1px dashed var(--roast); margin: 20px 0; }
+.metric-row { display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 8px; color: var(--mid); }
+.metric-row span:last-child { color: #fff; font-weight: 600; }
+
+/* HARTA */
+.map-container { height: 320px; border: 1px solid var(--roast); background: #050505; position: relative; margin-top: 16px; }
+#map { width: 100%; height: 100%; }
+
+/* STICKY ACTION BAR */
+.sticky-action-bar {
+  position: fixed; bottom: 0; left: 0; width: 100%; z-index: 150;
+  background: rgba(10,10,10,0.98); backdrop-filter: blur(15px);
+  border-top: 1px solid var(--gold); padding: 16px 5%;
+  display: flex; justify-content: space-between; align-items: center;
+  box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
+}
+.sab-btn { background: var(--gold); color: #000; border: none; padding: 14px 28px; font-weight: 700; font-size: 0.8rem; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; transition: all .2s; text-decoration: none; }
+.sab-btn:hover { background: var(--gold-pale); }
+
+@media (max-width: 992px) {
+  .matrix-section { grid-template-columns: 1fr; }
+  .scenarios-grid { grid-template-columns: 1fr; }
+  .form-options-row { grid-template-columns: 1fr; }
+  .computing-box { position: static; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<nav>
+  <div class="nav-logo">
+    DAKAMIGOS MARKT <span>Sistemul Central de Eligibilitate</span>
+  </div>
+  <div class="badge-status">ID Proiect: #AFIR-RURAL-5610</div>
+</nav>
+
+<!-- HERO CONTEXTUAL -->
+<section class="hero">
+  <div class="hero-pill"><span></span> Notă Tehnică Propunere Finanțare</div>
+  <h1>Diversificare Rurală: <em>Fast-Food Foodtech</em> Oneaga</h1>
+  <p>Analiză configurată exclusiv pentru structura de business raportată de <b>Ana-Maria Roșcăneanu</b>. Evaluăm extinderea pragului simbolic de 6.000 RON în linii de finanțare nerambursabile destinate procesării alimentare rurale.</p>
+</section>
+
+<!-- MATRIX SECTIUNE -->
+<section class="matrix-section">
+  
+  <div class="main-panel">
+    <!-- BLOCUL 1: SCENARII CALIBRARE FINANȚARE -->
+    <div>
+      <span class="section-tag">Pasul 1 // Configurații Structurale Active</span>
+      <h2 class="section-title">Selectați Scenariul de Finanțare Evaluat</h2>
+      <div class="scenarios-grid">
+        <div class="sc-card active" onclick="schimbaScenariu(this, 40000, 90, 'Startup Guvernamental Rural', '4.000 EUR (10%)')">
+          <div>
+            <span class="sc-tag">Axa Micro-Startup</span>
+            <h3 class="sc-title">Pachet Național Startup Rural</h3>
+          </div>
+          <div class="sc-value">40.000 EUR</div>
+        </div>
+        <div class="sc-card" onclick="schimbaScenariu(this, 70000, 85, 'AFIR — Activități Non-Agricole Rurale', '10.500 EUR (15%)')">
+          <div>
+            <span class="sc-tag">Axa Europeană AFIR</span>
+            <h3 class="sc-title">AFIR Diversificare Rurală</h3>
+          </div>
+          <div class="sc-value">70.000 EUR</div>
+        </div>
+        <div class="sc-card" onclick="schimbaScenariu(this, 120000, 85, 'PR Nord-Est — Servicii Alimentație', '18.000 EUR (15%)')">
+          <div>
+            <span class="sc-tag">Axa Regională Nord-Est</span>
+            <h3 class="sc-title">PR NE Micro-Bucătării</h3>
+          </div>
+          <div class="sc-value">120.000 EUR</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BLOCUL 2: CHESTIONAR TEHNIC DE CALIFCARE -->
+    <div>
+      <span class="section-tag">Pasul 2 // Matrice Calificare Tehnică</span>
+      <h2 class="section-title">Chestionar Premisă de Eligibilitate Client</h2>
+      <div class="form-section-box">
+        
+        <!-- INTREBAREA 1: FORMA JURIDICA -->
+        <div class="form-group-block">
+          <label class="form-question-label">1. Structură Juridică Aplicant</label>
+          <div class="form-options-row">
+            <button class="opt-btn active" onclick="selectOption(this, 'lbl-status-firma', 'Persoană Fizică (Necesită SRL)')">
+              <strong>Persoană Fizică (Fără Firmă)</strong>
+              <span>Necesită constituire de urgență a unui SRL/SRL-D curat.</span>
+            </button>
+            <button class="opt-btn" onclick="selectOption(this, 'lbl-status-firma', 'SRL Nou Înființat (Startup)')">
+              <strong>Entitate Juridică Există deja</strong>
+              <span>SRL înființat recent fără istoric fiscal negativ.</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- INTREBAREA 2: TIP FINANȚARE MOBILITATE -->
+        <div class="form-group-block">
+          <label class="form-question-label">2. Infrastructură Modul Gătire / Amplasament</label>
+          <div class="form-options-row">
+            <button class="opt-btn active" onclick="selectOption(this, 'lbl-status-spatiu', 'Food Truck Mobil (Fără CU)')">
+              <strong>Unitate Mobilă (Food Truck Tech)</strong>
+              <span>Flux rapid de aprobare, fără autorizații de construire.</span>
+            </button>
+            <button class="opt-btn" onclick="selectOption(this, 'lbl-status-spatiu', 'Clădire Fixă (Necesită ISU)')">
+              <strong>Locație Fixă (Construcție/Chirie)</strong>
+              <span>Spațiu comercial tradițional cu intabulare și recompartimentări.</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- INTREBAREA 3: UTILITATI SANITARE -->
+        <div class="form-group-block">
+          <label class="form-question-label">3. Conexiuni Utilități Tehnice în Oneaga</label>
+          <div class="form-options-row">
+            <button class="opt-btn active" onclick="selectOption(this, 'lbl-status-lucrari', 'Apă Curentă și Curent Disponibil')">
+              <strong>Utilități de Bază Active</strong>
+              <span>Acces direct la apă curentă și curent electric stabil.</span>
+            </button>
+            <button class="opt-btn" onclick="selectOption(this, 'lbl-status-lucrari', 'Necesită Extindere Trifazic')">
+              <strong>Necesită branșamente noi</strong>
+              <span>Zona nu dispune de putere electrică trifazică (necesită bugete).</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- INTREBAREA 4: ALOCARE RESURSE -->
+        <div class="form-group-block">
+          <label class="form-question-label">4. Destinație Fonduri Alocate Inițial (6.000 lei)</label>
+          <div class="form-options-row">
+            <button class="opt-btn active" onclick="selectOption(this, 'lbl-status-buget', 'Capital Social și Taxe Înființare')">
+              <strong>Capital social + Dosar Consultanță</strong>
+              <span>Banii se folosesc pentru securizarea actelor de pornire ale SRL-ului.</span>
+            </button>
+            <button class="opt-btn" onclick="selectOption(this, 'lbl-status-buget', 'Eroare Capital de Lucru Fix')">
+              <strong>Buget Brut total blocat</strong>
+              <span>Nu există alte resurse colaterale de capital (risc operațional).</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- BLOCUL 3: HARTĂ BOTOȘANI -->
+    <div>
+      <span class="section-tag">Harta Satelit // Validare Rurală Regională</span>
+      <h2 class="section-title">Localizare Punct de Lucru (Sat Oneaga, Botoșani)</h2>
+      <div class="map-container">
+        <div id="map"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIDEBAR CALCULATOR -->
+  <div class="sidebar-panel">
+    <div class="computing-box">
+      <span class="comp-label">Finanțare Nerambursabilă Estimă</span>
+      <div id="display-grant" class="comp-grant">36.000 EUR</div>
+      <p class="comp-subtext">Calcul efectuat pe baza intensității de sprijin curente din ghidurile AFIR/PRNE 2026.</p>
+      
+      <div class="comp-divider"></div>
+      
+      <div class="metric-row"><span>Linia de Finanțare:</span><span id="lbl-linie">Startup Guvernamental Rural</span></div>
+      <div class="metric-row"><span>Intensitate Grant:</span><span id="lbl-procent">90%</span></div>
+      <div class="metric-row"><span>Cofinanțare Proiect:</span><span id="lbl-cofinantare">4.000 EUR (10%)</span></div>
+      
+      <div class="comp-divider"></div>
+      <h4 style="font-size: 0.65rem; text-transform: uppercase; color: var(--gold); text-align: left; margin-bottom: 12px; letter-spacing: 1px;">Sinteză Răspunsuri Chestionar:</h4>
+      
+      <div class="metric-row"><span>Status Solicitant:</span><span id="lbl-status-firma">Persoană Fizică (Necesită SRL)</span></div>
+      <div class="metric-row"><span>Logisitică Amplasament:</span><span id="lbl-status-spatiu">Food Truck Mobil (Fără CU)</span></div>
+      <div class="metric-row"><span>Infrastructură Zone:</span><span id="lbl-status-lucrari">Apă Curentă și Curent Disponibil</span></div>
+      <div class="metric-row"><span>Destinație Aport:</span><span id="lbl-status-buget">Capital Social și Taxe Înființare</span></div>
+      
+      <div class="comp-divider"></div>
+      <div class="metric-row"><span>Eligibilitate Mediu:</span><span>Rural (Comuna Cristești)</span></div>
+      <div class="metric-row"><span>Consultant Lider:</span><span>DAKAMIGOS MARKT SRL</span></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- STICKY BOTTOM ACTION BAR -->
+<div class="sticky-action-bar">
+  <div>
+    <p style="font-size: 0.65rem; text-transform: uppercase; color: var(--mid); letter-spacing: 1px;">Status Documentație</p>
+    <p style="font-size: 1rem; color: #fff; font-weight: 600;">Schiță Foodtech Aliniată la Matricile AFIR</p>
+  </div>
+  <a href="tel:0040746695955" class="sab-btn">Inițiază Apel Calificare Lead (5 min)</a>
+</div>
+
+<!-- LEAFLET MAP ENGINE -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  let harta;
+  let markerPunct;
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // Inițializare hartă centrată exact pe coordonatele din Oneaga, Botoșani
+    harta = L.map('map', { zoomControl: false }).setView([47.6253, 26.7125], 12);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      maxZoom: 18
+    }).addTo(harta);
+
+    markerPunct = L.marker([47.6253, 26.7125]).addTo(harta)
+      .bindPopup('<b>Ana-Maria Roșcăneanu // Fast-Food Oneaga</b><br>Locație rurală eligibilă pentru diversificare economică.')
+      .openPopup();
+  });
+
+  function schimbaScenariu(element, valoareTotala, procentGrant, numeLinie, textCofinantare) {
+    const carduri = document.querySelectorAll('.sc-card');
+    carduri.forEach(c => c.classList.remove('active'));
+    element.classList.add('active');
+
+    const grantCalculat = (valoareTotala * procentGrant) / 100;
+
+    document.getElementById('display-grant').innerText = grantCalculat.toLocaleString('ro-RO') + ' EUR';
+    document.getElementById('lbl-linie').innerText = numeLinie;
+    document.getElementById('lbl-procent').innerText = procentGrant + '%';
+    document.getElementById('lbl-cofinantare').innerText = textCofinantare;
+  }
+
+  function selectOption(btnElement, labelTargetId, valoareText) {
+    const parinte = btnElement.parentElement;
+    const optiuni = parinte.querySelectorAll('.opt-btn');
+    optiuni.forEach(o => o.classList.remove('active'));
+    
+    btnElement.classList.add('active');
+    document.getElementById(labelTargetId).innerText = valoareText;
+  }
+</script>
+
+<script src="script.js"></script>
+</body>
+</html>
