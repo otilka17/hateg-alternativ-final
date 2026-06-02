@@ -27,7 +27,7 @@ body {
   background: var(--ink);
   color: var(--text);
   overflow-x: hidden;
-  padding-bottom: 120px;
+  padding-bottom: 140px;
 }
 /* ════ NAV ════ */
 nav {
@@ -109,7 +109,7 @@ nav {
 .map-container { height: 320px; border: 1px solid var(--roast); background: #050505; position: relative; margin-top: 16px; }
 #map { width: 100%; height: 100%; }
 
-/* STICKY ACTION BAR */
+/* REPARARE CONVERSIE PREMIUM ȘI RESET STRUCTURĂ MOBIL */
 .sticky-action-bar {
   position: fixed; bottom: 0; left: 0; width: 100%; z-index: 150;
   background: rgba(10,10,10,0.98); backdrop-filter: blur(15px);
@@ -117,7 +117,12 @@ nav {
   display: flex; justify-content: space-between; align-items: center;
   box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
 }
-.sab-btn { background: var(--gold); color: #000; border: none; padding: 14px 28px; font-weight: 700; font-size: 0.8rem; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; transition: all .2s; text-decoration: none; }
+.sab-btn { 
+  background: var(--gold); color: #000; border: none; padding: 14px 28px; 
+  font-weight: 700; font-size: 0.8rem; letter-spacing: 1.5px; text-transform: uppercase; 
+  cursor: pointer; transition: all .2s; text-decoration: none; display: inline-block;
+  appearance: none; -webkit-appearance: none; border-radius: 4px;
+}
 .sab-btn:hover { background: var(--gold-pale); }
 
 @media (max-width: 992px) {
@@ -125,6 +130,8 @@ nav {
   .scenarios-grid { grid-template-columns: 1fr; }
   .form-options-row { grid-template-columns: 1fr; }
   .computing-box { position: static; }
+  .sticky-action-bar { flex-direction: column; gap: 12px; text-align: center; padding: 20px 5%; }
+  .sab-btn { width: 100%; text-align: center; padding: 16px 20px; font-size: 0.85rem; }
 }
 </style>
 </head>
@@ -257,7 +264,7 @@ nav {
     </div>
   </div>
 
-  <!-- SIDEBAR COMPUTING (CALCULATOR DINAMIC ȘI METRICI DIN CHESTIONAR) -->
+  <!-- SIDEBAR COMPUTING -->
   <div class="sidebar-panel">
     <div class="computing-box">
       <span class="comp-label">Finanțare Nerambursabilă Estimă</span>
@@ -286,13 +293,15 @@ nav {
 
 </section>
 
-<!-- STICKY BOTTOM ACTION BAR -->
+<!-- STICKY ACTION BAR CONVERTITĂ PAS CU PAS PENTRU WHATSAPP CONVERSIV -->
 <div class="sticky-action-bar">
   <div>
     <p style="font-size: 0.65rem; text-transform: uppercase; color: var(--mid); letter-spacing: 1px;">Status Documentație</p>
-    <p style="font-size: 1rem; color: #fff; font-weight: 600;">Chestionar Tehnic Sincronizat cu Baza de Date</p>
+    <p style="font-size: 1rem; color: #fff; font-weight: 600;">Analiză Sincronizată cu Ghidurile Regionale</p>
   </div>
-  <a href="tel:0040728882239" class="sab-btn">Inițiază Apel Calificare Lead (5 min)</a>
+  <a id="waLinkBacău" href="#" class="sab-btn" target="_blank" style="background-color: #25d366; color: white;">
+    <i class="fa-brands fa-whatsapp" style="margin-right: 6px;"></i> Trimite opțiunea mea pe WhatsApp
+  </a>
 </div>
 
 <!-- LEAFLET MAP ENGINE -->
@@ -310,6 +319,9 @@ nav {
     punctBacu = L.marker([46.567, 26.914]).addTo(harta)
       .bindPopup('<b>Cristina Gălățeanu // Solicitare Bacău</b><br>Eligibilitate verificată în Regiunea PR NE.')
       .openPopup();
+      
+    // Inițializează link-ul de WhatsApp la prima încărcare a paginii
+    actualizeazăFișăTehnicăWhatsApp();
   });
 
   function schimbaScenariu(element, valoareTotala, procentGrant, numeLinie, textCofinantare) {
@@ -323,23 +335,50 @@ nav {
     document.getElementById('lbl-linie').innerText = numeLinie;
     document.getElementById('lbl-procent').innerText = procentGrant + '%';
     document.getElementById('lbl-cofinantare').innerText = textCofinantare;
+    
+    actualizeazăFișăTehnicăWhatsApp();
   }
 
-  // Interactivitate selector opțiuni chestionar tehnic
   function selectOption(btnElement, labelTargetId, valoareText) {
-    // Selectează doar frații din același rând de opțiuni
     const parinte = btnElement.parentElement;
     const optiuni = parinte.querySelectorAll('.opt-btn');
     optiuni.forEach(o => o.classList.remove('active'));
     
-    // Activează butonul curent
     btnElement.classList.add('active');
-    
-    // Actualizează eticheta corespunzătoare din sidebar-ul tehnic din dreapta
     document.getElementById(labelTargetId).innerText = valoareText;
+    
+    actualizeazăFișăTehnicăWhatsApp();
+  }
+
+  // GENERATOR DINAMIC DE FIȘĂ TEHNICĂ DIRECT PE NUMĂRUL TĂU FIX
+  function actualizeazăFișăTehnicăWhatsApp() {
+    let liniaFinantare = document.getElementById('lbl-linie').innerText;
+    let grantEstimat = document.getElementById('display-grant').innerText;
+    let intensitateSprijin = document.getElementById('lbl-procent').innerText;
+    let cofinantareText = document.getElementById('lbl-cofinantare').innerText;
+    
+    let statusFirma = document.getElementById('lbl-status-firma').innerText;
+    let regimSpatiu = document.getElementById('lbl-status-spatiu').innerText;
+    let tipInvestitie = document.getElementById('lbl-status-lucrari').innerText;
+    let rolBuget = document.getElementById('lbl-status-buget').innerText;
+
+    const baseUrl = "https://wa.me/40749229686?text=";
+    const textMesaj = `Strategie Regională PR NE — Grădiniță Privată\n` +
+                      `----------------------------------------------\n` +
+                      `• Client: Cristina Gălățeanu (Bacău)\n` +
+                      `• Linie Finanțare: ${liniaFinantare}\n` +
+                      `• Grant Estimat: ${grantEstimat} (${intensitateSprijin})\n` +
+                      `• Cofinanțare Solicitată: ${cofinantareText}\n` +
+                      `----------------------------------------------\n` +
+                      `• Profil Firmă: ${statusFirma}\n` +
+                      `• Regim Spațiu imobil: ${regimSpatiu}\n` +
+                      `• Structură Lucrări: ${tipInvestitie}\n` +
+                      `• Destinație Buget (25.000 lei): ${rolBuget}\n` +
+                      `----------------------------------------------\n` +
+                      `Bună! Am configurat matricea de eligibilitate. Sunt de acord ca bugetul meu să devină cofinanțare într-un proiect de scalare regională. Când ne auzim la telefon pentru a stabili planul de afaceri și contractul?`;
+
+    document.getElementById('waLinkBacău').href = baseUrl + encodeURIComponent(textMesaj);
   }
 </script>
-
-<script src="script.js"></script>
 </body>
-  </html>
+</html>
