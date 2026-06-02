@@ -498,4 +498,208 @@
                         </p>
                         <div class="stats-container">
                             <div class="stat-box">
-                                <div styl
+                                <div style="font-weight: 700; color: #b45309; font-size: 15px;">Sprijin Ferme Mici / Medii</div>
+                                <div class="stat-value" style="margin: 8px 0; color: #b45309;">15.000 € - 70.000 €</div>
+                                <p style="font-size: 11px; color: #64748b;">Valoare fixă acordată sub formă de primă (grant 100% nerambursabil), plătită de regulă în două tranșe (75% și 25%).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 5: Servicii si Onorarii -->
+            <div class="slide" id="s5">
+                <div class="slide-header">
+                    <span class="logo-consultant"><i class="fa-solid fa-file-invoice-dollar"></i> Pași Implementare</span>
+                    <span class="client-tag">Costuri Consultanță</span>
+                </div>
+                <div class="slide-body">
+                    <div class="grid-2">
+                        <div class="column-left">
+                            <h2 class="slide-title">Structura Serviciilor Noastre</h2>
+                            <p>Ne ocupăm în totalitate de procesul birocratic pentru a vă asigura un dosar cu punctaj maxim:</p>
+                            <ul class="custom-list">
+                                <li>
+                                    <i class="fa-solid fa-calculator"></i>
+                                    <div>
+                                        <strong>Faza 1 - Diagnoză:</strong> Calculul coeficienților SO pe baza datelor din Registrul Agricol și proiectarea structurii viitoarei exploatații.
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-paste"></i>
+                                    <div>
+                                        <strong>Faza 2 - Scriere:</strong> Redactarea planului de afaceri cerut de AFIR, completarea anexelor tehnice și încărcarea pe portalul electronic.
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="column-right">
+                            <div class="stat-box" style="border-color: #d97706;">
+                                <div class="stat-value" style="font-size: 22px;">Onorariu Etapizat</div>
+                                <div style="font-size: 12px; font-weight: 600; color: #0f172a; margin: 5px 0;">Fără Risc Total / Clauze Ascunse</div>
+                                <p style="font-size: 11px; color: #64748b;">Percepem un avans minim de pornire la semnarea contractului, iar diferența principală se achită drept comision de succes la aprobarea dosarului dumneavoastră.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 6: Planificare si Call To Action -->
+            <div class="slide" id="s6">
+                <div class="slide-header">
+                    <span class="logo-consultant"><i class="fa-solid fa-calendar-days"></i> Lansare Proiect</span>
+                    <span class="client-tag">Următorul Pas Strategic</span>
+                </div>
+                <div class="slide-body">
+                    <div style="text-align: center; width: 100%;">
+                        <h2 style="font-size: 24px; color: #0f172a; margin-bottom: 10px;">Demararea Proiectului Apicol în Mateești</h2>
+                        <p style="color: #64748b; max-width: 600px; margin: 0 auto 25px auto; font-size: 14px;">Pentru a prinde următoarea sesiune de depunere a proiectelor prin GAL sau AFIR, confirmați profilul dumneavoastră utilizând declanșatorul securizat de mai jos.</p>
+                        <div style="background: #f8fafc; border: 1px solid #fde68a; padding: 15px; border-radius: 8px; display: inline-block; font-weight: 700; color: #b45309;">
+                            Pasul tehnic următor: Apăsați butonul de trimitere pentru corelarea efectivului de stupi cu grila de punctaj.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- FOOTER NAVIGARE -->
+        <div class="presentation-footer">
+            <div id="lockNotice" class="locked-notice">
+                <i class="fa-solid fa-lock"></i> Parcurgeți mini-chestionarul pentru a vizualiza strategia apicolă
+            </div>
+            
+            <div class="nav-buttons" id="navBlock" style="display: none; gap: 10px; align-items: center;">
+                <button class="btn-nav" id="prevBtn" disabled><i class="fa-solid fa-chevron-left"></i></button>
+                <div style="font-size: 13px; font-weight: 600; min-width: 50px; text-align: center;" id="counter">1 / 6</div>
+                <button class="btn-nav" id="nextBtn"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+            
+            <div style="font-size: 11px; color: #64748b; font-weight: 600;">DAKAMIGOS MARKT SRL © 2026</div>
+        </div>
+
+    </div>
+
+    <!-- CLOSING BAR DINAMICĂ CU RESPONSIVITATE DIRECT CĂTRE WHATSAPP-UL TĂU -->
+    <div class="sticky-closing-bar" id="closingBar">
+        <div class="closing-text">
+            <i class="fa-solid fa-circle-check" style="color: #25d366; margin-right: 6px;"></i> 
+            Rezultate stocate pentru Mateești (Vâlcea)
+        </div>
+        <a id="waLink" href="https://wa.me/40749229686?text=Bun%C4%83%20ziua%2C%20am%20parcurs%20analiza%20apicol%C4%83%20DAKAMIGOS.%20Sunt%20Ion%20Georgescu.%20Cum%20stabilim%20urm%C4%83torii%20pa%C8%99i%20pentru%20stupin%C4%83%3F" 
+           class="btn-whatsapp-close" 
+           target="_blank">
+            <i class="fa-brands fa-whatsapp" style="font-size: 16px;"></i> Trimite rezultatul pe WhatsApp
+        </a>
+    </div>
+
+    <script>
+        let currentQuizStep = 1;
+        const totalQuizSteps = 3;
+        
+        const quizNextBtn = document.getElementById('quizNextBtn');
+        const quizBlock = document.getElementById('quizBlock');
+        const quizSuccessBlock = document.getElementById('quizSuccessBlock');
+        
+        function checkStepValidation() {
+            const currentInputs = document.querySelectorAll(`#qStep${currentQuizStep} input[type="radio"]`);
+            let isChecked = false;
+            
+            currentInputs.forEach(input => {
+                if (input.checked) {
+                    isChecked = true;
+                }
+            });
+
+            if (isChecked) {
+                quizNextBtn.disabled = false;
+                quizNextBtn.classList.add('enabled');
+            } else {
+                quizNextBtn.disabled = true;
+                quizNextBtn.classList.remove('enabled');
+            }
+        }
+
+        document.querySelectorAll('.quiz-option input').forEach(input => {
+            input.addEventListener('change', () => {
+                checkStepValidation();
+            });
+        });
+
+        quizNextBtn.addEventListener('click', () => {
+            if (quizNextBtn.disabled) return;
+
+            if (currentQuizStep < totalQuizSteps) {
+                document.getElementById(`qStep${currentQuizStep}`).classList.remove('active');
+                currentQuizStep++;
+                document.getElementById(`qStep${currentQuizStep}`).classList.add('active');
+                
+                checkStepValidation();
+                
+                if (currentQuizStep === totalQuizSteps) {
+                    quizNextBtn.innerText = "Finalizează evaluarea";
+                }
+            } else {
+                quizBlock.style.display = 'none';
+                quizSuccessBlock.style.display = 'block';
+            }
+        });
+
+        let currentSlide = 1;
+        const totalSlides = 6;
+        let isUnlocked = false;
+
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const counter = document.getElementById('counter');
+        const navBlock = document.getElementById('navBlock');
+        const lockNotice = document.getElementById('lockNotice');
+        const closingBar = document.getElementById('closingBar');
+
+        function startPresentation() {
+            isUnlocked = true;
+            quizSuccessBlock.style.display = 'none';
+            lockNotice.style.display = 'none';
+            navBlock.style.display = 'flex';
+            closingBar.classList.add('visible');
+            
+            // COMPILATOR DINAMIC REZULTATE CHESTIONAR
+            let q1Value = document.querySelector('input[name="q1"]:checked')?.value || 'no';
+            let q3Value = document.querySelector('input[name="q3"]:checked')?.value || 'no';
+            
+            let statusStupi = q1Value === 'yes' ? 'Dețin stupi înregistrați' : 'Pornesc de la zero';
+            let statusCompetente = q3Value === 'yes' ? 'Tânăr Fermier / Studii profil' : 'Necesită curs calificare';
+            
+            const baseUrl = "https://wa.me/40749229686?text=";
+            const mesajIncodat = encodeURIComponent(`Bună ziua, am parcurs analiza apicolă DAKAMIGOS. Profil: ${statusStupi}, Calificare: ${statusCompetente}. Sunt Ion Georgescu din Vâlcea. Cum procedăm pentru dosarul de grant?`);
+            document.getElementById('waLink').href = baseUrl + mesajIncodat;
+            
+            changeSlide(1);
+        }
+
+        prevBtn.addEventListener('click', () => changeSlide(-1));
+        nextBtn.addEventListener('click', () => changeSlide(1));
+
+        function changeSlide(direction) {
+            if (!isUnlocked) return;
+            
+            let nextActive = currentSlide + direction;
+            if (nextActive >= 1 && nextActive <= totalSlides) {
+                document.getElementById(`s${currentSlide}`).classList.remove('active');
+                document.getElementById(`s${nextActive}`).classList.add('active');
+                currentSlide = nextActive;
+
+                counter.innerText = `${currentSlide} / ${totalSlides}`;
+                prevBtn.disabled = currentSlide === 1;
+                nextBtn.disabled = currentSlide === totalSlides;
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (!isUnlocked) return;
+            if (e.key === 'ArrowRight') changeSlide(1);
+            if (e.key === 'ArrowLeft') changeSlide(-1);
+        });
+    </script>
+</body>
+</html>
