@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HațegAlternativ — SOul meal, drinks & coffee</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- Leaflet.js pentru Harta Interactivă Premium -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <style>
 :root {
   --ink:        #050505;
@@ -19,8 +21,8 @@
   --sage:      #4a6741;
   --red-berry: #a82c2c;
   --text:      #ffffff;
-  --mid:       #8a8a8a;
-  --light:     #333333;
+  --mid:       #a3a3a3;
+  --light:     #262626;
 }
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior: smooth; }
@@ -33,224 +35,119 @@ body {
 /* ════ NAV ════ */
 nav {
   position: fixed; top:0; width:100%; z-index:200;
-  background: rgba(5,5,5,0.98);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(197,160,89,0.12);
+  background: rgba(5,5,5,0.98); backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(197,160,89,0.15);
   display: flex; align-items: center; justify-content: space-between;
-  padding: 0 5%;
-  height: 70px;
+  padding: 0 5%; height: 70px;
 }
 .nav-logo {
-  font-family: 'DM Serif Display', serif;
-  font-size: 1.2rem; color: var(--gold);
-  display: flex; align-items: center; gap: 10px;
-  letter-spacing: 1.5px; font-weight: 700;
+  font-family: 'DM Serif Display', serif; font-size: 1.35rem; color: var(--gold);
+  display: flex; align-items: center; gap: 12px; letter-spacing: 1px; font-weight: 700;
 }
-.nav-logo img {
-  height: 32px; width: auto; object-fit: contain;
-}
-.nav-links { display: flex; gap: 24px; list-style: none; }
+.nav-logo img { height: 36px; width: auto; object-fit: contain; }
+.nav-links { display: flex; gap: 28px; list-style: none; }
 .nav-links a {
-  color: rgba(255,255,255,.45); text-decoration: none;
-  font-size: .8rem; font-weight: 500; letter-spacing: 1.2px;
+  color: rgba(255,255,255,.55); text-decoration: none;
+  font-size: .82rem; font-weight: 500; letter-spacing: 1.2px;
   text-transform: uppercase; transition: color .2s;
 }
 .nav-links a:hover { color: var(--gold); }
 .nav-order {
-  background: transparent; color: var(--gold);
-  border: 1px solid var(--gold); padding: 8px 18px; border-radius: 0px;
-  font-weight: 700; font-size: .72rem; letter-spacing: 1.5px;
-  text-transform: uppercase; cursor: pointer; transition: all .2s;
+  background: var(--gold); color: #000; border: none; padding: 10px 24px;
+  font-weight: 700; font-size: .78rem; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; transition: all .2s;
 }
-.nav-order:hover { background: var(--gold); color: #000; }
+.nav-order:hover { background: var(--gold-pale); }
 
 /* ════ HERO ════ */
 .hero {
   min-height: 100svh; background: var(--espresso);
-  display: grid; grid-template-columns: 1fr 1fr;
-  align-items: center; padding: 120px 5% 60px; gap: 60px;
-  position: relative; overflow: hidden;
+  display: grid; grid-template-columns: 1fr 1fr; align-items: center;
+  padding: 120px 5% 60px; gap: 50px; position: relative; overflow: hidden;
 }
 .hero::after {
   content: ''; position: absolute; inset: 0;
-  background: radial-gradient(circle at 80% 50%, rgba(197,160,89,.05), transparent 60%);
-  pointer-events: none;
+  background: radial-gradient(circle at 80% 50%, rgba(197,160,89,.06), transparent 60%); pointer-events: none;
 }
 .hero-text { position: relative; z-index: 2; }
 .hero-pill {
   display: inline-flex; align-items: center; gap: 8px;
-  border: 1px solid rgba(197,160,89,.25); color: var(--gold-pale); font-size: .68rem;
-  letter-spacing: 2px; text-transform: uppercase; padding: 6px 16px; margin-bottom: 28px;
-  background: rgba(197,160,89,0.03);
+  border: 1px solid rgba(197,160,89,.35); color: var(--gold-pale); font-size: .72rem;
+  letter-spacing: 2px; text-transform: uppercase; padding: 6px 16px; border-radius: 100px; margin-bottom: 28px;
 }
-.hero-pill span { width:6px; height:6px; border-radius:50%; background:var(--gold); }
+.hero-pill span { width:7px; height:7px; border-radius:50%; background:var(--gold); }
 .hero h1 {
-  font-family: 'DM Serif Display', serif; font-size: clamp(2.4rem, 5vw, 4.2rem);
-  line-height: 1.1; color: #fff; margin-bottom: 24px; animation: up .7s ease both;
+  font-family: 'DM Serif Display', serif; font-size: clamp(2.6rem, 5.5vw, 4.5rem); line-height: 1.05; color: #fff; margin-bottom: 20px;
 }
 .hero h1 em { font-style: italic; color: var(--gold); font-weight: 400; }
-.hero-sub {
-  font-size: .95rem; color: var(--mid); line-height: 1.75; max-width: 480px; margin-bottom: 40px;
-}
+.hero-sub { font-size: 1rem; color: rgba(255,255,255,.5); line-height: 1.75; max-width: 460px; margin-bottom: 40px; }
 .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
-.btn-gold {
-  background: var(--gold); color: #000; border: none; padding: 14px 32px;
-  font-weight: 700; font-size: .8rem; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; transition: all .2s;
-}
-.btn-gold:hover { background: var(--gold-pale); transform: translateY(-1px); }
-.btn-ghost {
-  background: transparent; color: rgba(255,255,255,.6); border: 1px solid rgba(255,255,255,.15);
-  padding: 14px 32px; font-weight: 500; font-size: .8rem; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; transition: all .2s;
-}
-.btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
 
-/* hero visual - CONCEPT DESIGN INLOCUITOR EMOJI */
-.hero-visual { position: relative; z-index: 2; display: flex; flex-direction: column; gap: 14px; }
-.hero-card {
-  background: #0d0d0d; border: 1px solid var(--roast); padding: 16px 20px;
-  display: flex; align-items: center; gap: 16px; transition: all .3s;
+/* ════ INTERACTIVE MENU NAVIGATION BUTTONS ════ */
+.btn-menu-master {
+  background: radial-gradient(circle at center, #c5a059 0%, #a47e3b 100%);
+  color: #000; border: none; padding: 16px 36px; font-weight: 800; font-size: .9rem;
+  letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all .3s;
+  box-shadow: 0 8px 32px rgba(197,160,89, 0.2); display: inline-flex; align-items: center; gap: 10px;
 }
-.hero-card:hover { border-color: rgba(197,160,89, 0.3); transform: translateX(4px); }
-.hc-icon-tech {
-  width: 44px; height: 44px; border: 1px solid rgba(197,160,89,0.2);
-  background: radial-gradient(circle, #1a1a1a, #050505);
-  display: flex; align-items: center; justify-content: center;
-  font-size: .75rem; color: var(--gold); font-weight: bold; font-family: monospace;
-}
-.hc-name { font-weight: 600; color: #fff; font-size: .95rem; font-family: 'DM Serif Display', serif; letter-spacing: 0.5px; }
-.hc-sub { font-size: .78rem; color: rgba(255,255,255,.4); margin-top: 2px; }
-.hc-kcal {
-  margin-left: auto; background: rgba(197,160,89,.08); color: var(--gold);
-  font-size: .72rem; font-weight: 700; padding: 4px 12px; border: 1px solid rgba(197,160,89,0.15); white-space: nowrap;
+.btn-menu-master:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(197,160,89, 0.4); background: #fff; color: #000; }
+
+/* ════ HERO VISUAL CARDS (PREMIUM IMAGES) ════ */
+.hero-visual { position: relative; z-index: 2; display: flex; flex-direction: column; gap: 16px; }
+.hero-showcase-img {
+  width: 100%; height: 320px; object-fit: cover; border: 1px solid var(--roast);
+  background-image: url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=800&q=80');
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
 }
 
 /* ════ TICKER ════ */
-.ticker { background: var(--gold); padding: 10px 0; overflow: hidden; white-space: nowrap; }
+.ticker { background: var(--gold); padding: 12px 0; overflow: hidden; white-space: nowrap; border-y: 1px solid rgba(0,0,0,0.1); }
 .ticker-inner { display: inline-flex; gap: 52px; animation: slide 25s linear infinite; }
-.t-item { font-size: .68rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #000; }
-.t-dot { color: rgba(0,0,0,.3); }
+.t-item { font-size: .72rem; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; color: #000; }
+.t-dot { color: rgba(0,0,0,.4); }
 
-/* ════ SECTIUNI TEXT ════ */
+/* ════ GRID DE PRODUSE INTERACTIVE CU POZE REALE ════ */
 .menu-section { background: var(--cream); padding: 96px 5%; }
 .section-head { margin-bottom: 52px; }
-.s-tag { font-size: .65rem; letter-spacing: 3px; text-transform: uppercase; color: var(--caramel); margin-bottom: 12px; font-weight: 700; }
-.s-title { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 4vw, 3rem); line-height: 1.1; color: var(--text); }
+.s-tag { font-size: .7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--caramel); margin-bottom: 10px; font-weight: 700; }
+.s-title { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.1; color: var(--text); }
 .s-title em { font-style: italic; color: var(--caramel); font-weight: 400; }
-.s-desc { color: var(--mid); max-width: 480px; line-height: 1.7; margin-top: 16px; font-size: .9rem; font-weight: 300; }
+.s-desc { color: var(--mid); max-width: 480px; line-height: 1.7; margin-top: 14px; font-size: .94rem; }
 
-.week-row, .day-row { display: flex; gap: 8px; margin-bottom: 12px; overflow-x: auto; padding-bottom: 4px; }
-.week-tab, .day-tab {
-  padding: 10px 22px; cursor: pointer; font-size: .75rem; font-weight: 600; letter-spacing: 1px;
-  text-transform: uppercase; white-space: nowrap; border: 1px solid var(--roast); background: #0a0a0a; color: var(--mid); transition: all .2s;
-}
-.week-tab.active { background: var(--roast); color: var(--gold); border-color: var(--gold); }
-.day-tab.active  { background: var(--gold); color: #000; border-color: var(--gold); }
-.week-tab:hover:not(.active), .day-tab:hover:not(.active) { border-color: rgba(197,160,89,0.3); color: #fff; }
-
-.kcal-selector { display: flex; align-items: center; gap: 10px; margin-bottom: 44px; flex-wrap: wrap; }
-.kcal-label { font-size: .75rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--mid); }
-.kcal-pill-btn {
-  padding: 8px 20px; border-radius: 100px; border: 1px solid var(--roast); background: #0a0a0a;
-  font-size: .78rem; font-weight: 600; cursor: pointer; color: var(--mid); transition: all .2s;
-}
-.kcal-pill-btn.active { background: var(--caramel); color: #fff; border-color: var(--caramel); }
-
-/* GRID DESIGN FĂRĂ EMOJI (TEHNIC / LUXURY) */
-.menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 24px; }
-.m-card {
-  background: #0a0a0a; border: 1px solid var(--roast); display: flex; flex-direction: column; transition: all .3s; position: relative;
-}
-.m-card:hover { border-color: var(--gold); transform: translateY(-4px); }
-.m-img-abstract {
-  height: 140px; position: relative; overflow: hidden;
-  background: linear-gradient(180deg, #111111 0%, #050505 100%);
-  border-bottom: 1px solid var(--roast); display: flex; align-items: center; justify-content: center;
-}
-/* Fundal abstract geometric discret in loc de imagini proaste */
-.m-img-abstract::before {
-  content: ''; position: absolute; width: 80px; height: 80px; border: 1px dashed rgba(197,160,89, 0.08); border-radius: 50%;
-}
-.m-img-abstract::after {
-  content: '// METANOIA FOODTECH SYST'; position: absolute; bottom: 12px; right: 12px; font-family: monospace; font-size: 8px; color: rgba(255,255,255,0.15); letter-spacing: 1px;
-}
-.m-img-label {
-  position: absolute; bottom: 12px; left: 12px; background: #050505; color: var(--gold);
-  font-size: .6rem; font-weight: 700; letter-spacing: 1.5px; padding: 4px 10px; border: 1px solid var(--roast); text-transform: uppercase;
-}
+.menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
+.m-card { background: #0a0a0a; border: 1px solid var(--roast); overflow: hidden; display: flex; flex-direction: column; transition: all .3s; }
+.m-card:hover { transform: translateY(-5px); border-color: var(--gold); }
+.m-img-holder { height: 200px; width: 100%; position: relative; overflow: hidden; background-size: cover; background-position: center; border-bottom: 1px solid var(--roast); }
+.m-img-label { position: absolute; bottom: 12px; left: 12px; background: #000; color: var(--gold); font-size: .62rem; font-weight: 700; letter-spacing: 1.5px; padding: 4px 10px; border: 1px solid var(--roast); text-transform: uppercase; }
 .m-body { padding: 22px; flex: 1; display: flex; flex-direction: column; }
-.m-type { font-size: .62rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--caramel); margin-bottom: 8px; }
-.m-name { font-family: 'DM Serif Display', serif; font-size: 1.25rem; margin-bottom: 8px; color: #fff; }
-.m-desc { font-size: .85rem; color: var(--mid); line-height: 1.6; flex: 1; margin-bottom: 20px; font-weight: 300; }
-
+.m-name { font-family: 'DM Serif Display', serif; font-size: 1.3rem; margin-bottom: 8px; color: #fff; }
+.m-desc { font-size: .85rem; color: var(--mid); line-height: 1.6; flex: 1; margin-bottom: 16px; font-weight: 300; }
 .m-macros { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-bottom: 16px; }
-.macro-chip {
-  display: flex; align-items: center; gap: 5px; background: #050505; border: 1px solid var(--roast);
-  padding: 4px 12px; font-size: .7rem; font-weight: 600; color: #fff;
-}
-.macro-kcal { color: var(--gold-pale); border-color: rgba(197,160,89, 0.15); }
-.macro-weight { color: var(--mid); }
+.macro-chip { display: flex; align-items: center; gap: 6px; background: #111; border: 1px solid var(--roast); padding: 4px 12px; font-size: .72rem; font-weight: 600; border-radius: 100px; color: var(--gold-pale); }
 
-.m-pairing {
-  display: flex; align-items: center; gap: 12px; background: #050505; border: 1px solid var(--roast); padding: 12px; margin-top: auto;
-}
-.pairing-icon { font-size: .8rem; color: var(--gold); font-family: monospace; font-weight: bold; }
-.pairing-text { flex: 1; }
-.pairing-name { font-size: .78rem; font-weight: 600; color: #fff; }
-.pairing-sub { font-size: .68rem; color: rgba(255,255,255,.35); margin-top: 2px; }
+/* ════ INTERACTIVE MAP SYSTEM (LEAFLET ENGINE) ════ */
+.map-section { background: var(--espresso); padding: 96px 5%; border-top: 1px solid var(--roast); }
+.map-container-layout { display: grid; grid-template-columns: 1fr 340px; gap: 30px; height: 450px; margin-top: 40px; border: 1px solid var(--roast); background: #000; }
+#map { width: 100%; height: 100%; background: #0c0c0c; }
+.map-sidebar { padding: 24px; display: flex; flex-direction: column; gap: 16px; border-left: 1px solid var(--roast); justify-content: center; }
+.zone-selector-btn { width: 100%; text-align: left; padding: 12px 16px; background: #050505; border: 1px solid var(--roast); color: var(--mid); font-size: .85rem; font-weight: 600; cursor: pointer; transition: all .2s; }
+.zone-selector-btn.active { background: var(--roast); color: var(--gold); border-color: var(--gold); }
 
-/* ════ DESERTURI ════ */
-.desserts-section { background: var(--espresso); padding: 96px 5%; position: relative; overflow: hidden; border-top: 1px solid var(--roast); }
-.desserts-section::before {
-  content: 'METANOIA'; position: absolute; right: -2%; bottom: -5%;
-  font-family: 'DM Serif Display', serif; font-size: 16vw; color: rgba(197,160,89,.02); line-height: 1; pointer-events: none;
-}
-.desserts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; margin-top: 52px; }
-.d-card { background: #0a0a0a; border: 1px solid var(--roast); overflow: hidden; transition: all .3s; }
-.d-card:hover { border-color: var(--gold); transform: translateY(-4px); }
-.d-body { padding: 22px; }
-.d-dose-tag { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; border-b: 1px dashed var(--roast); padding-bottom: 8px; }
-.d-dose-tag span { font-size: .65rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); }
-.d-name { font-family: 'DM Serif Display', serif; font-size: 1.2rem; color: #fff; margin-bottom: 8px; }
-.d-desc { font-size: .85rem; color: var(--mid); line-height: 1.55; margin-bottom: 18px; font-weight: 300; }
-.d-footer { display: flex; justify-content: space-between; align-items: center; }
-.d-chip { font-size: .7rem; font-weight: 600; padding: 4px 10px; background: #050505; border: 1px solid var(--roast); color: var(--gold-pale); }
-.d-price { font-size: 1.05rem; font-weight: 700; color: var(--gold); font-family: 'DM Serif Display', serif; }
-
-/* ════ HOW IT WORKS ════ */
-.how-section { background: var(--cream); padding: 96px 5%; border-top: 1px solid var(--roast); }
-.how-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px; margin-top: 52px; position: relative; }
-.how-step { text-align: center; }
-.how-icon {
-  width: 70px; height: 70px; border: 1px solid var(--roast); background: #0a0a0a; color: var(--gold);
-  display: flex; align-items: center; justify-content: center; font-size: 1.1rem; font-family: monospace; font-weight: bold; margin: 0 auto 24px; position: relative; z-index: 2;
-}
-.how-step:hover .how-icon { border-color: var(--gold); color: #fff; }
-.how-n {
-  position: absolute; top: -6px; right: -6px; background: var(--gold); color: #000; width: 18px; height: 18px; border-radius: 50%; font-size: .6rem; font-weight: 800; display: flex; align-items: center; justify-content: center;
-}
-.how-step h3 { font-weight: 700; font-size: .85rem; letter-spacing: 2px; text-transform: uppercase; color: #fff; margin-bottom: 10px; font-family: 'DM Serif Display', serif; }
-.how-step p { font-size: .85rem; color: var(--mid); line-height: 1.65; max-width: 220px; margin: 0 auto; font-weight: 300; }
-
-/* ════ ABONAMENTE ════ */
+/* ════ 3 STRUCTURI DE PACHETE COMANDABILE DIRECT ════ */
 .plans-section { background: var(--cream); padding: 96px 5%; border-top: 1px solid var(--roast); }
 .plans-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 52px; }
-.p-card { padding: 40px 30px; border: 1px solid var(--roast); background: #0a0a0a; position: relative; transition: all .3s; }
-.p-card:hover { border-color: rgba(197,160,89,0.3); }
+.p-card { border-radius: 0px; padding: 40px 30px; border: 1px solid var(--roast); background: #0a0a0a; position: relative; transition: all .3s; display: flex; flex-direction: column; justify-content: space-between; }
+.p-card:hover { border-color: rgba(197,160,89,0.4); }
 .p-card.hot { border-color: var(--gold); background: #0d0d0d; }
-.p-badge {
-  position: absolute; top: -11px; left: 50%; transform: translateX(-50%); background: var(--gold); color: #000; font-size: .6rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; padding: 4px 16px; white-space: nowrap;
-}
-.p-tag { font-size: .65rem; letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 12px; font-weight: 700; color: var(--caramel); }
+.p-badge { position: absolute; top: -11px; left: 50%; transform: translateX(-50%); background: var(--gold); color: #000; font-size: .62rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; padding: 4px 16px; white-space: nowrap; }
+.p-tag { font-size: .68rem; letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 12px; font-weight: 700; color: var(--caramel); }
 .p-name { font-family: 'DM Serif Display', serif; font-size: 1.8rem; margin-bottom: 10px; color: #fff; }
-.p-sub { font-size: .85rem; line-height: 1.6; margin-bottom: 30px; color: var(--mid); font-weight: 300; }
-.p-price { font-family: 'DM Serif Display', serif; font-size: 2.6rem; line-height: 1; margin-bottom: 6px; color: var(--gold); }
-.p-period { font-size: .75rem; margin-bottom: 30px; color: var(--light); text-transform: uppercase; letter-spacing: 1px; }
+.p-sub { font-size: .88rem; line-height: 1.6; margin-bottom: 24px; color: var(--mid); font-weight: 300; }
+.p-price { font-family: 'DM Serif Display', serif; font-size: 2.8rem; line-height: 1; margin-bottom: 4px; color: var(--gold); }
+.p-period { font-size: .78rem; margin-bottom: 30px; color: var(--light); text-transform: uppercase; }
 .p-feat { list-style: none; margin-bottom: 34px; }
 .p-feat li { padding: 9px 0; border-bottom: 1px solid var(--roast); font-size: .85rem; display: flex; align-items: center; gap: 10px; color: var(--mid); font-weight: 300; }
 .p-feat li::before { content: '✓'; font-weight: 700; color: var(--gold); }
-.p-btn {
-  width: 100%; padding: 14px; font-weight: 700; font-size: .8rem; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; border: none; transition: all .2s;
-}
+.p-btn { width: 100%; padding: 14px; font-weight: 700; font-size: .82rem; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; border: none; transition: all .2s; text-align: center; text-decoration: none; display: block; }
 .p-btn-out { background: transparent; color: var(--gold); border: 1px solid var(--gold); }
 .p-btn-out:hover { background: var(--gold); color: #000; }
 .p-btn-fill { background: var(--gold); color: #000; }
@@ -259,20 +156,19 @@ nav {
 /* ════ FOOTER ════ */
 footer { background: #000; padding: 60px 5% 30px; border-top: 1px solid var(--roast); }
 .ft { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid var(--roast); margin-bottom: 30px; }
-.ft-logo-area { display: flex; flex-direction: column; gap: 12px; }
-.ft-brand { font-family: 'DM Serif Display', serif; font-size: 1.6rem; color: var(--gold); letter-spacing: 1px; display: flex; align-items: center; gap: 10px; }
-.ft-brand img { height: 36px; width: auto; object-fit: contain; }
-.ft-tag { font-size: .85rem; color: rgba(255,255,255,.35); max-width: 260px; line-height: 1.6; font-weight: 300; }
-.ft-col h4 { color: #fff; font-size: .7rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; font-weight: 700; }
+.ft-brand { font-family: 'DM Serif Display', serif; font-size: 1.9rem; color: var(--gold); margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+.ft-brand img { height: 42px; width: auto; object-fit: contain; }
+.ft-tag { font-size: .84rem; color: rgba(255,255,255,.35); max-width: 240px; line-height: 1.6; font-weight: 300; }
+.ft-col h4 { color: rgba(255,255,255,.7); font-size: .72rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 16px; }
 .ft-col ul { list-style: none; }
 .ft-col li { margin-bottom: 10px; }
-.ft-col a { color: var(--mid); text-decoration: none; font-size: .85rem; transition: color .2s; font-weight: 300; }
+.ft-col a { color: var(--mid); text-decoration: none; font-size: .85rem; transition: color .2s; }
 .ft-col a:hover { color: var(--gold); }
-.ft-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; font-size: .75rem; color: rgba(255,255,255,0.2); }
+.ft-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; font-size: .76rem; color: var(--light); }
 
-/* ════ MOBILE PERSISTENT FOOOTER ════ */
+/* ════ STICKY CART FOOTER BAR ════ */
 .sticky-cart-footer {
-  position: fixed; bottom: 0; left: 0; w-full; width: 100%; z-index: 150;
+  position: fixed; bottom: 0; left: 0; width: 100%; z-index: 150;
   background: rgba(10,10,10,0.98); backdrop-filter: blur(15px);
   border-top: 1px solid var(--gold); padding: 16px 5%;
   display: flex; justify-content: space-between; align-items: center;
@@ -280,47 +176,35 @@ footer { background: #000; padding: 60px 5% 30px; border-top: 1px solid var(--ro
 }
 .sc-label { font-size: .65rem; text-transform: uppercase; color: var(--mid); letter-spacing: 1px; }
 .sc-total { font-family: 'DM Serif Display', serif; font-size: 1.3rem; color: var(--gold); font-weight: 700; margin-top: 2px; }
-.sc-btn {
-  background: var(--gold); color: #000; border: none; padding: 12px 24px;
-  font-weight: 700; font-size: .75rem; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; transition: all .2s;
-}
+.sc-btn { background: var(--gold); color: #000; border: none; padding: 12px 24px; font-weight: 700; font-size: .75rem; letter-spacing: 1.5px; text-transform: uppercase; cursor: pointer; transition: all .2s; }
 .sc-btn:hover { background: var(--gold-pale); }
 
-/* ════ MODAL ════ */
-#modal {
-  position: fixed; inset: 0; z-index: 500; background: rgba(0,0,0,0.96);
-  display: none; align-items: center; justify-content: center; padding: 24px;
-}
-.modal-content {
-  background: #050505; border: 1px solid var(--gold); padding: 32px; width: 100%; max-width: 420px;
-}
+/* ════ MODAL VALIDARE LOGISTICĂ ════ */
+#modal { position: fixed; inset: 0; z-index: 500; background: rgba(0,0,0,0.96); display: none; align-items: center; justify-content: center; padding: 24px; }
+.modal-content { background: #050505; border: 1px solid var(--gold); padding: 32px; width: 100%; max-width: 440px; }
 .modal-content h2 { font-family: 'DM Serif Display', serif; color: var(--gold); font-size: 1.4rem; margin-bottom: 4px; }
 .modal-content p { font-size: .7rem; color: var(--mid); text-transform: uppercase; margin-bottom: 24px; letter-spacing: 1px; }
-.modal-content input {
-  width: 100%; background: transparent; border: 1px solid var(--roast); padding: 12px; margin-bottom: 16px; color: #fff; font-size: .85rem;
-}
+.modal-content input { width: 100%; background: transparent; border: 1px solid var(--roast); padding: 12px; margin-bottom: 16px; color: #fff; font-size: .85rem; }
 .modal-content input:focus { outline: none; border-color: var(--gold); }
 .modal-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 8px; }
 .modal-btn-cancel { background: transparent; border: 1px solid #333; color: var(--mid); font-size: .75rem; font-weight: 700; text-transform: uppercase; cursor: pointer; padding: 12px 0; }
 .modal-btn-confirm { background: var(--gold); color: #000; border: none; font-size: .75rem; font-weight: 700; text-transform: uppercase; cursor: pointer; padding: 12px 0; }
 
-/* ════ KEYFRAMES & RESPONSIVE ════ */
-@keyframes up { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
 @media (max-width: 992px) {
-  .hero { grid-template-columns: 1fr; padding-top: 100px; gap: 40px; }
-  .hero-visual { display: flex; }
+  .hero { grid-template-columns: 1fr; padding-top: 100px; }
   .nav-links { display: none; }
 }
 </style>
 </head>
-<body class="bg-black text-white">
+<body>
 
 <!-- NAV -->
 <nav>
   <div class="nav-logo">
-    <img src="logo1_3.svg" alt="" onerror="this.style.display='none'">
+    <img src="logo1_3.svg" alt="Logo">
     HațegAlternativ
   </div>
   <ul class="nav-links">
@@ -331,43 +215,23 @@ footer { background: #000; padding: 60px 5% 30px; border-top: 1px solid var(--ro
   <button class="nav-order" onclick="deschideModal()">Comandă →</button>
 </nav>
 
-<!-- HERO -->
+<!-- HERO SECTION INTELIGENTĂ -->
 <section class="hero">
   <div class="hero-text">
     <div class="hero-pill"><span></span> Metanoia foodtech · SOul meal, drinks & coffee</div>
     <h1>Mâncare cu suflet.<br><em>Vidată</em> cu precizie.</h1>
     <p class="hero-sub">Meniuri calorice configurate pe baza matricelor tehnologice și deserturi artizanale — vidate etanș în casetoane speciale direct din oală, gata de livrare zilnică pe segmentul DN68 (Totești).</p>
+    
+    <!-- MASTER INTERACTIVE BUTTON (Meniu Complet) -->
     <div class="hero-ctas">
-      <a href="meniu.html" class="btn-gold" style="text-decoration:none;">Vezi Meniul →</a>
-      <a href="#how" class="btn-ghost" style="text-decoration:none;">Cum funcționează</a>
+      <a href="meniu.html" class="btn-menu-master">
+        <span>📋</span> Accesează Meniul Complet (Mâncare & Băuturi)
+      </a>
     </div>
   </div>
   
   <div class="hero-visual">
-    <div class="hero-card">
-      <div class="hc-icon-tech">SYS.1</div>
-      <div>
-        <div class="hc-name">Ciorbă de salată verde cu leurdă</div>
-        <div class="hc-sub">Aperitiv · 400 gr · Tehnologie Vid</div>
-      </div>
-      <div class="hc-kcal">73.38 kcal</div>
-    </div>
-    <div class="hero-card">
-      <div class="hc-icon-tech">SYS.2</div>
-      <div>
-        <div class="hc-name">Ciocănele de pui cu sos de roșii</div>
-        <div class="hc-sub">Prânz · 300 gr · Piure Catifelat</div>
-      </div>
-      <div class="hc-kcal">239.90 kcal</div>
-    </div>
-    <div class="hero-card">
-      <div class="hc-icon-tech">SYS.3</div>
-      <div>
-        <div class="hc-name">Lava cake proteic</div>
-        <div class="hc-sub">Desert · 120 gr · Izolare mecanică</div>
-      </div>
-      <div class="hc-kcal">190.34 kcal</div>
-    </div>
+    <div class="hero-showcase-img"></div>
   </div>
 </section>
 
@@ -378,157 +242,129 @@ footer { background: #000; padding: 60px 5% 30px; border-top: 1px solid var(--ro
     <span class="t-item">Metanoia foodtech</span><span class="t-dot">✦</span>
     <span class="t-item">SOul meal</span><span class="t-dot">✦</span>
     <span class="t-item">Calibrare Metrică</span><span class="t-dot">✦</span>
-    <span class="t-item">Fără Pește</span><span class="t-dot">✦</span>
     <span class="t-item">Bucătăria Centrală Totești</span><span class="t-dot">✦</span>
   </div>
 </div>
 
-<!-- PREVIEW PRODUSE TRASABILE -->
-<section class="menu-section" id="menu">
+<!-- PREVIEW PRODUSE CU POZE REALE INTERACTIVE -->
+<section class="menu-section">
   <div class="section-head">
-    <div class="s-tag">🍱 Arhitectură Alimentară</div>
-    <h2 class="s-title">To-Go, dar<br><em>ca acasă</em></h2>
-    <p class="s-desc">Fiecare casetă vine gata preambalată din gospodărie, cu macro-nutrienți afișați clar pentru control metabolic total.</p>
+    <div class="s-tag">🍱 Selecție Bucătărie</div>
+    <h2 class="s-title">Ingrediente calibrate,<br><em>gătite asincron</em></h2>
   </div>
 
   <div class="menu-grid">
     <!-- PRODUS 1 -->
     <div class="m-card">
-      <div class="m-img-abstract">
-        <div class="m-img-label">Prânz // Unitate active</div>
+      <div class="m-img-holder" style="background-image: url('https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=600&q=80');">
+        <div class="m-img-label">Prânz complet</div>
       </div>
       <div class="m-body">
-        <div class="m-type">☀️ Dimineață · Rotație Diurnă</div>
-        <div class="m-name">Mic dejun cu fulgi de ovăz la cuptor</div>
-        <p class="m-desc">Fulgi fini de ovăz calibrați, pregătiți la cuptor cu baze de fructe dense și textură stabilă.</p>
+        <div class="m-type">🍽️ Unitate de Bază</div>
+        <h3 class="m-name">Ciocănele de pui cu sos de roșii</h3>
+        <p class="m-desc">Ciocănele fragede în sos bogat redus de roșii, servite pe pat fin de piure artizanal catifelat cu unt.</p>
         <div class="m-macros">
-          <div class="macro-chip macro-kcal">🔥 478 kcal</div>
-          <div class="macro-chip macro-weight">⚖️ 250 gr</div>
-        </div>
-        <div class="m-pairing">
-          <div class="pairing-icon">[SYS]</div>
-          <div class="pairing-text">
-            <div class="pairing-name">Sistem Calibrare Metrică</div>
-            <div class="pairing-sub">Glucide cu eliberare lentă pentru focus lung</div>
-          </div>
+          <div class="macro-chip">🔥 239 kcal</div>
+          <div class="macro-chip">⚖️ 380 gr</div>
         </div>
       </div>
     </div>
 
     <!-- PRODUS 2 -->
     <div class="m-card">
-      <div class="m-img-abstract">
-        <div class="m-img-label">Prânz // Unitate active</div>
+      <div class="m-img-holder" style="background-image: url('https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=600&q=80');">
+        <div class="m-img-label">Desert Artizanal</div>
       </div>
       <div class="m-body">
-        <div class="m-type">🍽️ Prânz · Unitate de bază</div>
-        <div class="m-name">Ciocănele de pui cu sos de roșii</div>
-        <p class="m-desc">Ciocănele fragede în sos bogat redus de roșii, servite pe pat fin de piure artizanal catifelat cu unt.</p>
+        <div class="m-type">🍰 Protecție Mecanică</div>
+        <h3 class="m-name">Cheesecake brownies</h3>
+        <p class="m-desc">O fuziune sănătoasă între blatul dens de brownie și crema fină de cheesecake cu vișine.</p>
         <div class="m-macros">
-          <div class="macro-chip macro-kcal">🔥 239 kcal</div>
-          <div class="macro-chip macro-weight">⚖️ 380 gr</div>
-        </div>
-        <div class="m-pairing">
-          <div class="pairing-icon">[SYS]</div>
-          <div class="pairing-text">
-            <div class="pairing-name">Sistem Calibrare Metrică</div>
-            <div class="pairing-sub">Proteine din pui (tier sub 110 kcal)</div>
-          </div>
+          <div class="macro-chip">🔥 266 kcal</div>
+          <div class="macro-chip">⚖️ 140 gr</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- DESERTURI REALE -->
-<section class="desserts-section" id="deserturi">
-  <div class="section-head">
-    <div class="s-tag">currentItem // 🍰 Deserturi Proaspete</div>
-    <h2 class="s-title">Fiecare casetă,<br><em style="color:var(--gold)">calibrare dulce</em></h2>
-    <p class="s-desc">Formule gourmet stratificate, asamblate în recipiente închise mecanic pentru drum sau birou.</p>
+<!-- HARTA LOGISTICĂ INTERACTIVĂ LIVE (Leaflet.js) -->
+<section class="map-section" id="how">
+  <div class="section-head" style="text-align: center;">
+    <div class="s-tag">Sistem Localizare Segment Logistic</div>
+    <h2 class="s-title">Harta de acoperire <em>DN68</em></h2>
+    <p class="s-desc" style="margin: 14px auto 0;">Selectează zona ta pe hartă pentru a valida prioritatea de livrare din Totești.</p>
   </div>
-  <div class="desserts-grid">
-    <div class="d-card">
-      <div class="d-body">
-        <div class="d-dose-tag"><span>⚙️ Izolare Prospețime</span></div>
-        <div class="d-name">Tiramisu cu cremă de afine</div>
-        <p class="d-desc">Mascarpone fin combinat cu pișcoturi însiropate și un strat dens aromatic din afine proaspete.</p>
-        <div class="d-footer">
-          <div class="d-chip">🔥 165 kcal / 150 gr</div>
-          <div class="d-price">18 RON</div>
-        </div>
-      </div>
-    </div>
-    <div class="d-card">
-      <div class="d-body">
-        <div class="d-dose-tag"><span>⚙️ Protecție Mecanică</span></div>
-        <div class="d-name">Cheesecake brownies</div>
-        <p class="d-desc">O fuziune sănătoasă între blatul dens de brownie și crema fină de cheesecake cu vișine.</p>
-        <div class="d-footer">
-          <div class="d-chip">🔥 266 kcal / 140 gr</div>
-          <div class="d-price">16 RON</div>
-        </div>
-      </div>
+  
+  <div class="map-container-layout">
+    <div id="map"></div>
+    <div class="map-sidebar">
+      <h4 style="font-size: .75rem; letter-spacing: 1px; text-transform: uppercase; color: var(--gold);">Zone Selectabile:</h4>
+      <button class="zone-selector-btn active" onclick="focalizeazaLocatie(45.5672, 22.8885, 'Totești')">📍 Bucătăria Centrală Totești</button>
+      <button class="zone-selector-btn" onclick="focalizeazaLocatie(45.6075, 22.9472, 'Hațeg')">📍 Orașul Hațeg</button>
+      <button class="zone-selector-btn" onclick="focalizeazaLocatie(45.5492, 22.8258, 'Clopotiva')">📍 Segment Rute DN68 Clopotiva</button>
     </div>
   </div>
 </section>
 
-<!-- CUM FUNCTIONEAZA -->
-<section class="how-section" id="how">
-  <div class="section-head" style="text-align: center; margin-bottom: 40px;">
-    <div class="s-tag">Logistica rută flow</div>
-    <h2 class="s-title">Cum funcționează</h2>
+<!-- CELE 3 PACHETE COMANDABILE DIRECT -->
+<section class="plans-section">
+  <div class="section-head" style="text-align: center;">
+    <div class="s-tag">Configurații Structurale</div>
+    <h2 class="s-title">Abonamente Comandabile Live</h2>
   </div>
-  <div class="how-grid">
-    <div class="how-step">
-      <div class="how-icon">01<div class="how-n">✓</div></div>
-      <h3>Alegi Planul</h3>
-      <p>Selectezi pachetul potrivit rației sau caseta individuală dorită.</p>
-    </div>
-    <div class="how-step">
-      <div class="how-icon">02<div class="how-n">✓</div></div>
-      <h3>Gătim cu Suflet</h3>
-      <p>Păstrăm calitatea tradițională vie în Bucătăria Centrală Totești.</p>
-    </div>
-    <div class="how-step">
-      <div class="how-icon">03<div class="how-n">✓</div></div>
-      <h3>Vidat & Livrat</h3>
-      <p>Mâncarea este securizată etanș sub vid și distribuită pe segmentul DN68.</p>
-    </div>
-  </div>
-</section>
-
-<!-- PLANS -->
-<section class="plans-section" id="abonamente">
+  
   <div class="plans-grid">
-    <div class="p-card">
-      <div class="p-tag">Starter Pack</div>
-      <h3 class="p-name">Essential Doza</h3>
-      <p class="p-sub">Ideal pentru un stil de viață dinamic și un plus de energie la birou.</p>
-      <div class="p-price">65 lei</div>
-      <div class="p-period">pe zi / livrat zilnic</div>
-      <ul class="p-feat">
-        <li>Meniu prânz complet</li>
-        <li>1 Gustare dulce asortată</li>
-        <li>1 Doză specială lichidă</li>
-        <li>Livrare gratuită inclusă</li>
-      </ul>
-      <a href="box.html" class="p-btn p-btn-out" style="text-decoration:none; display:block; text-align:center;">Selectează Plan</a>
+    <!-- PACHET 1 -->
+    <div class="p-card" data-nume="Essential Lunch Box" data-pret="26">
+      <div>
+        <div class="p-tag">Starter Pack</div>
+        <h3 class="p-name">Essential Lunch</h3>
+        <p class="p-sub">Ideal pentru menținerea focusului maxim în perioadele intense la birou.</p>
+        <div class="p-price">26 lei</div>
+        <div class="p-period">per zi / livrat diurn</div>
+        <ul class="p-feat">
+          <li>1 Preparat principal gătit lent</li>
+          <li>Amprentă garnitură piure artizanal</li>
+          <li>Ambalare etanșă sub vid</li>
+        </ul>
+      </div>
+      <button onclick="adaugaProdus(this)" class="p-btn p-btn-out">Adaugă în coș</button>
     </div>
-    <div class="p-card hot">
+
+    <!-- PACHET 2 -->
+    <div class="p-card hot" data-nume="OptimBox 1500 Multi-Meal" data-pret="65">
       <div class="p-badge">Cel mai popular</div>
-      <div class="p-tag">Total Control</div>
-      <h3 class="p-name">OptimBox 1500</h3>
-      <p class="p-sub">Nutriție celulară completă și calibrare energetică pe parcursul întregii zile.</p>
-      <div class="p-price">95 lei</div>
-      <div class="p-period">pe zi / livrat zilnic</div>
-      <ul class="p-feat">
-        <li>3 Mese principale echilibrate</li>
-        <li>2 Gustări nutritive bogate</li>
-        <li>2 Doze speciali lichide</li>
-        <li>Consiliere metrică gratuită</li>
-      </ul>
-      <a href="box.html" class="p-btn p-btn-fill" style="text-decoration:none; display:block; text-align:center;">Comandă Bestseller</a>
+      <div>
+        <div class="p-tag">Total Control</div>
+        <h3 class="p-name">OptimBox 1500</h3>
+        <p class="p-sub">Nutriție celulară completă și calibrare energetică pe parcursul întregii zile.</p>
+        <div class="p-price">65 lei</div>
+        <div class="p-period">pe zi / structură integrată</div>
+        <ul class="p-feat">
+          <li>3 Mese principale echilibrate</li>
+          <li>2 Gustări nutritive bogate</li>
+          <li>Vidare structurală direct din oală</li>
+        </ul>
+      </div>
+      <button onclick="adaugaProdus(this)" class="p-btn p-btn-fill">Adaugă în coș</button>
+    </div>
+
+    <!-- PACHET 3 -->
+    <div class="p-card" data-nume="Metanoia Pro Full Fuel" data-pret="95">
+      <div>
+        <div class="p-tag">Performance Fuel</div>
+        <h3 class="p-name">Metanoia Pro</h3>
+        <p class="p-sub">Sistem macro-nutritiv complet adăugat cu băuturi și shot-uri izolate de cafea.</p>
+        <div class="p-price">95 lei</div>
+        <div class="p-period">pe zi / pachet complet</div>
+        <ul class="p-feat">
+          <li>Tot ce conține OptimBox 1500</li>
+          <li>2 Doze speciale lichide la alegere</li>
+          <li>Consiliere metrică dedicată</li>
+        </ul>
+      </div>
+      <button onclick="adaugaProdus(this)" class="p-btn p-btn-out">Adaugă în coș</button>
     </div>
   </div>
 </section>
@@ -538,7 +374,7 @@ footer { background: #000; padding: 60px 5% 30px; border-top: 1px solid var(--ro
   <div class="ft">
     <div class="ft-logo-area">
       <div class="ft-brand">
-        <img src="logo1_3.svg" alt="" onerror="this.style.display='none'">
+        <img src="logo1_3.svg" alt="Logo">
         HațegAlternativ
       </div>
       <p class="ft-tag">Un proiect Metanoia foodtech. Reinventăm logistica alimentară în comunitate printr-o fuziune de gastronomie tradițională și tehnologie curată.</p>
@@ -560,12 +396,11 @@ footer { background: #000; padding: 60px 5% 30px; border-top: 1px solid var(--ro
     </div>
   </div>
   <div class="ft-bottom">
-    <div>&copy; 2026 HațegAlternativ.</div>
-    <div>Sistem operativ asamblat discret.</div>
+    <div>&copy; 2026 HațegAlternativ. Toate drepturile rezervate.</div>
   </div>
 </footer>
 
-<!-- FIXED LOGISTIC mobile FOOTER STRIP (Așezare premium fixă) -->
+<!-- FIXED LOGISTIC mobile FOOTER STRIP -->
 <div class="sticky-cart-footer">
   <div>
     <div class="sc-label">Total Coș Persistent</div>
@@ -587,6 +422,38 @@ footer { background: #000; padding: 60px 5% 30px; border-top: 1px solid var(--ro
     </div>
   </div>
 </div>
+
+<!-- LEAFLET MAP ENGINE CORE INJECTION -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  let map;
+  let marker;
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // Inițializare hartă centrată pe Totești cu stilizare Dark Matter de la CartoDB
+    map = L.map('map').setView([45.5672, 22.8885], 12);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+      maxZoom: 19
+    }).addTo(map);
+
+    // Markerul principal pe Bucătăria Centrală
+    marker = L.marker([45.5672, 22.8885]).addTo(map)
+      .bindPopup('<b>Bucătăria Centrală Metanoia</b><br>Totești, DN68. Hub de vidare.')
+      .openPopup();
+  });
+
+  function focalizeazaLocatie(lat, lng, numeZona) {
+    map.flyTo([lat, lng], 14, { duration: 1.5 });
+    marker.setLatLng([lat, lng]);
+    marker.bindPopup(`<b>Punct Livrare: ${numeZona}</b><br>Validat pe segmentul activ DN68.`).openPopup();
+    
+    // Schimbare stare vizuală butoane
+    const butoane = document.querySelectorAll('.zone-selector-btn');
+    butoane.forEach(b => b.classList.remove('active'));
+    event.currentTarget.classList.add('active');
+  }
+</script>
 
 <script src="script.js"></script>
 </body>
