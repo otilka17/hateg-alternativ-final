@@ -9,62 +9,306 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
+        /* DESIGN SYSTEM & RESET */
         * { box-sizing: border-box; margin: 0; padding: 0; }
+        
         body {
-            background-color: #0f172a; color: #334155; font-family: 'Open Sans', sans-serif;
-            overflow-x: hidden; display: flex; flex-direction: column; justify-content: center;
-            align-items: center; min-height: 100vh; padding: 10px; padding-bottom: 120px;
+            background-color: #0f172a;
+            color: #334155;
+            font-family: 'Open Sans', sans-serif;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 10px;
+            padding-bottom: 120px;
         }
-        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 700; color: #0f766e; }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: #0f766e;
+        }
+
         .presentation-deck {
-            width: 100%; max-width: 1080px; height: 85vh; min-height: 560px; max-height: 680px;
-            background: #ffffff; border-radius: 16px; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            position: relative; overflow: hidden; display: flex; flex-direction: column;
+            width: 100%;
+            max-width: 1080px;
+            height: 85vh;
+            min-height: 560px;
+            max-height: 680px;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
-        .slides-container { flex-grow: 1; position: relative; overflow: hidden; }
+
+        .slides-container {
+            flex-grow: 1;
+            position: relative;
+            overflow: hidden;
+        }
+
         .slide {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; visibility: hidden;
-            transition: opacity 0.3s ease, transform 0.3s ease; transform: translateX(20px);
-            padding: 35px 45px; display: flex; flex-direction: column; justify-content: space-between; z-index: 1;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform: translateX(20px);
+            padding: 35px 45px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 1;
         }
-        .slide.active { opacity: 1; visibility: visible; transform: translateX(0); z-index: 2; }
-        .slide-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px; margin-bottom: 15px; }
-        .slide-header .logo-consultant { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: #d97706; }
-        .slide-header .client-tag { font-size: 11px; background: #f0fdfa; color: #0f766e; padding: 3px 10px; border-radius: 9999px; font-weight: 600; border: 1px solid #ccfbf1; }
-        .slide-title { font-size: 24px; color: #0f172a; position: relative; padding-left: 12px; margin-bottom: 10px; }
-        .slide-title::before { content: ''; position: absolute; left: 0; top: 15%; height: 70%; width: 4px; background-color: #0f766e; border-radius: 2px; }
-        .slide-body { flex-grow: 1; display: flex; align-items: center; justify-content: center; overflow-y: auto; padding: 5px 0; }
-        .comparison-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-        .comparison-table th { background: #0f766e; color: white; padding: 12px; font-size: 14px; font-family: 'Montserrat', sans-serif; }
-        .comparison-table td { padding: 12px; border-bottom: 1px solid #e2e8f0; font-size: 13px; }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+            z-index: 2;
+        }
+
+        /* HEADER SLIDE */
+        .slide-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .slide-header .logo-consultant {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #d97706;
+        }
+
+        .slide-header .client-tag {
+            font-size: 11px;
+            background: #f0fdfa;
+            color: #0f766e;
+            padding: 3px 10px;
+            border-radius: 9999px;
+            font-weight: 600;
+            border: 1px solid #ccfbf1;
+        }
+
+        .slide-title {
+            font-size: 24px;
+            color: #0f172a;
+            position: relative;
+            padding-left: 12px;
+            margin-bottom: 10px;
+        }
+
+        .slide-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 15%;
+            height: 70%;
+            width: 4px;
+            background-color: #0f766e;
+            border-radius: 2px;
+        }
+
+        .slide-body {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-y: auto;
+            padding: 5px 0;
+        }
+
+        /* TABEL COMPARATIV ULTRA SIMPLU */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 5px;
+        }
+        .comparison-table th {
+            background: #0f766e;
+            color: white;
+            padding: 12px;
+            font-size: 14px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .comparison-table td {
+            padding: 12px;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 13px;
+        }
         .comparison-table tr:nth-child(even) { background: #f8fafc; }
-        .quiz-container { width: 100%; max-width: 700px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; }
+
+        /* CHESTIONAR INTERACTIV */
+        .quiz-container {
+            width: 100%;
+            max-width: 700px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 25px;
+        }
+
         .quiz-step { display: none; }
         .quiz-step.active { display: block; }
-        .quiz-question { font-size: 16px; font-weight: 600; color: #0f172a; margin-bottom: 15px; }
-        .quiz-options { display: flex; flex-direction: column; gap: 10px; }
-        .quiz-option { background: white; border: 1px solid #cbd5e1; padding: 12px 15px; border-radius: 8px; cursor: pointer; transition: all 0.2s; font-size: 14px; display: flex; align-items: center; gap: 10px; }
-        .quiz-option:hover { border-color: #0f766e; background: #f0fdfa; }
-        .grid-2 { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 30px; width: 100%; align-items: center; }
-        .custom-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-        .custom-list li { display: flex; gap: 12px; align-items: flex-start; font-size: 14px; }
-        .custom-list li i { color: #0f766e; background: #e6f4f1; padding: 6px; border-radius: 6px; flex-shrink: 0; }
-        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; width: 100%; }
-        .card-tile { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 15px; display: flex; flex-direction: column; gap: 8px; }
-        .card-tile .tile-icon { font-size: 20px; color: #0f766e; background: #e6f4f1; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 8px; }
-        .stats-container { display: flex; justify-content: space-around; width: 100%; gap: 20px; }
-        .stat-box { text-align: center; background: #f8fafc; padding: 20px; border-radius: 12px; border: 1px dashed #cbd5e1; flex: 1; transition: all 0.2s ease; }
-        .stat-value { font-size: 28px; font-weight: 700; color: #0f766e; }
-        .presentation-footer { background-color: #f8fafc; border-top: 1px solid #e2e8f0; padding: 10px 30px; display: flex; justify-content: space-between; align-items: center; z-index: 10; }
-        .btn-nav { background: #ffffff; border: 1px solid #cbd5e1; color: #334155; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 12px; }
-        .btn-nav:hover:not(:disabled) { background-color: #0f766e; color: #ffffff; border-color: #0f766e; }
+
+        .quiz-question {
+            font-size: 16px;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 15px;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .quiz-option {
+            background: white;
+            border: 1px solid #cbd5e1;
+            padding: 12px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quiz-option:hover {
+            border-color: #0f766e;
+            background: #f0fdfa;
+        }
+
+        /* GRIDS & LAYOUTS */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 30px;
+            width: 100%;
+            align-items: center;
+        }
+
+        .custom-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .custom-list li {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            font-size: 14px;
+        }
+
+        .custom-list li i {
+            color: #0f766e;
+            background: #e6f4f1;
+            padding: 6px;
+            border-radius: 6px;
+            flex-shrink: 0;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            gap: 20px;
+        }
+
+        .stat-box {
+            text-align: center;
+            background: #f8fafc;
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px dashed #cbd5e1;
+            flex: 1;
+            transition: all 0.2s ease;
+        }
+
+        .stat-value {
+            font-size: 26px;
+            font-weight: 700;
+            color: #0f766e;
+        }
+
+        /* FOOTER & NAVIGARE */
+        .presentation-footer {
+            background-color: #f8fafc;
+            border-top: 1px solid #e2e8f0;
+            padding: 10px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .btn-nav {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            color: #334155;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .btn-nav:hover:not(:disabled) {
+            background-color: #0f766e;
+            color: #ffffff;
+            border-color: #0f766e;
+        }
+
         .btn-nav:disabled { opacity: 0.3; cursor: not-allowed; }
-        .quiz-lock-notice { font-size: 13px; color: #ef4444; font-weight: 600; display: none; align-items: center; gap: 6px; }
+
+        .quiz-lock-notice {
+            font-size: 13px;
+            color: #ef4444;
+            font-weight: 600;
+            display: none;
+            align-items: center;
+            gap: 6px;
+        }
         .quiz-lock-notice.visible { display: flex; }
-        .sticky-closing-bar { position: fixed; bottom: 0; left: 0; width: 100%; background-color: #0f172a; border-top: 2px solid #d97706; padding: 15px 30px; display: none; justify-content: space-between; align-items: center; z-index: 100; box-shadow: 0 -10px 30px rgba(0,0,0,0.5); }
+
+        /* CLOSING BAR PREMIUM FOR WHATSAPP */
+        .sticky-closing-bar {
+            position: fixed; bottom: 0; left: 0; width: 100%;
+            background-color: #0f172a; border-top: 2px solid #d97706;
+            padding: 15px 30px; display: none; justify-content: space-between;
+            align-items: center; z-index: 100; box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
+        }
         .sticky-closing-bar.visible { display: flex; }
         .closing-text { color: #ffffff; font-size: 14px; font-weight: 600; }
-        .btn-whatsapp-close { background-color: #25d366; color: white; text-decoration: none; padding: 10px 20px; border-radius: 6px; font-weight: 700; font-size: 13px; text-transform: uppercase; display: flex; align-items: center; gap: 8px; }
+        .btn-whatsapp-close {
+            background-color: #25d366; color: white; text-decoration: none;
+            padding: 10px 20px; border-radius: 6px; font-weight: 700; font-size: 13px;
+            text-transform: uppercase; display: flex; align-items: center; gap: 8px;
+        }
+
         @media (max-width: 768px) {
             .presentation-deck { height: auto; max-height: none; }
             .slide { position: relative; display: none; height: auto; padding: 20px; }
@@ -74,8 +318,12 @@
     </style>
 </head>
 <body>
+
     <div class="presentation-deck">
+        
         <div class="slides-container">
+
+            <!-- SLIDE 1: INTRODUCERE (POVESTEA TA) -->
             <div class="slide active" id="s1">
                 <div class="slide-header">
                     <span class="logo-consultant"><i class="fa-solid fa-briefcase"></i> DAKAMIGOS MARKT / Soluții Directe</span>
@@ -86,36 +334,15 @@
                         <i class="fa-solid fa-spa" style="font-size: 55px; color: #0f766e; margin-bottom: 15px;"></i>
                         <h1 style="font-size: 28px; color: #0f172a; margin-bottom: 10px;">Planul Tău de Finanțare: Pe Înțelesul Tuturor</h1>
                         <p style="color: #475569; font-size: 15px; line-height: 1.6;">
-                            Nicoleta, ești <b>psihoterapeut & coach</b> și ai <b>două livezi minunate</b> în Arad[cite: 2]. Hai să vedem cum transformăm totul într-un proiect european de succes, explicat pas cu pas, simplu și fără bătăi de cap![cite: 2]
+                            Nicoleta, ești <b>psihoterapeut & coach</b> și deții <b>două livezi minunate</b> în Arad. 
+                            Hai să vedem cum transformăm totul într-un proiect european de succes, explicat simplu, ca o poveste!
                         </p>
                     </div>
                 </div>
             </div>
+
+            <!-- SLIDE 2: VESTEA CEA MARE - NOUA LEGE -->
             <div class="slide" id="s2">
-                <div class="slide-header">
-                    <span class="logo-consultant"><i class="fa-solid fa-graduation-cap"></i> Diferențe Majore</span>
-                    <span class="client-tag">Unde te încadrezi</span>
-                </div>
-                <div class="slide-body" style="flex-direction: column; justify-content: flex-start;">
-                    <h2 class="slide-title" style="align-self: flex-start; margin-bottom: 15px;">Cum funcționează cele două opțiuni?</h2>
-                    <table class="comparison-table">
-                        <thead>
-                            <tr>
-                                <th>Criteriu</th>
-                                <th>Varianta A: Agroturism & Cabinete</th>
-                                <th>Varianta B: Tânăr Fermier (Livezi)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td><b>Ce primești?</b></td><td>Bani pentru căsuțe modulare + săli de terapie.[cite: 2]</td><td>Bani pentru modernizat livezile și utilaje.[cite: 2]</td></tr>
-                            <tr><td><b>Cât sunt decontate?</b></td><td>Statul pune 85%-90%, restul pui tu.[cite: 2]</td><td><b>100% Bani Gratis</b> (pui zero lei din buzunar).[cite: 2]</td></tr>
-                            <tr><td><b>Valoare totală</b></td><td>Între 50.000 € și 100.000 €.[cite: 2]</td><td><b>Fix 70.000 €</b> cash.[cite: 2]</td></tr>
-                            <tr><td><b>Marele avantaj</b></td><td>Construiești direct spațiul de retreat.[cite: 2]</td><td>Bani rapizi, fără cofinanțare proprie.[cite: 2]</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="slide" id="s3">
                 <div class="slide-header">
                     <span class="logo-consultant"><i class="fa-solid fa-gavel"></i> Schimbare Legislativă</span>
                     <span class="client-tag">Noul Cod al Urbanismului</span>
@@ -123,20 +350,74 @@
                 <div class="slide-body">
                     <div class="grid-2">
                         <div class="column-left">
-                            <h2 class="slide-title">Portița ta unică din Livezi</h2>
-                            <p style="margin-bottom: 15px; font-size: 14px; line-height: 1.5;">Vechile reguli grele s-au schimbat! Noul Cod al Urbanismului aduce un avantaj uriaș pentru profilul tău:[cite: 2]</p>
+                            <h2 class="slide-title">Portița ta unică direct din Livadă</h2>
+                            <p style="margin-bottom: 15px; font-size: 14px; line-height: 1.5;">Vechile reguli grele s-au schimbat! Noul Cod al Urbanismului aduce un avantaj uriaș special pentru tine:</p>
                             <ul class="custom-list">
-                                <li><i class="fa-solid fa-circle-check"></i><div><strong>Liber la căsuțe pe piloni:</strong> Acum ai voie să pui structuri modulare ușoare <b>direct pe teren agricol (în livadă)</b>, fără să mai scoți pământul din circuitul agricol![cite: 2]</div></li>
-                                <li><i class="fa-solid fa-clock"></i><div><strong>Fără birocrație lungă:</strong> Se elimină PUZ-urile obositoare care durau ani de zile, dacă proiectul este integrat inteligent cu exploatarea livezii.[cite: 2]</div></li>
+                                <li>
+                                    <i class="fa-solid fa-circle-check"></i>
+                                    <div>
+                                        <strong>Liber la căsuțe pe piloni:</strong> Acum ai voie să pui structuri modulare ușoare <b>direct pe teren agricol (în livadă)</b>, fără să mai scoți pământul din circuitul agricol!
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-clock"></i>
+                                    <div>
+                                        <strong>Fustă scurtă la birocrație:</strong> Se elimină PUZ-urile obositoare care durau ani de zile, dacă proiectul este integrat inteligent cu exploatarea livezii tale.
+                                    </div>
+                                </li>
                             </ul>
                         </div>
                         <div class="column-right" style="text-align: center;">
                             <i class="fa-solid fa-house-lock" style="font-size: 70px; color: #0f766e;"></i>
-                            <p style="font-size: 11px; color: #64748b; margin-top: 10px;">Livezile tale din Măderat / Căsoaia devin automat cheia deblocării rapide.[cite: 2]</p>
+                            <p style="font-size: 11px; color: #64748b; margin-top: 10px;">Livezile tale din Măderat / Căsoaia devin automat cheia deblocării rapide.</p>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- SLIDE 3: CELE DOUĂ DRUMURI EXPLICATE SIMPLU -->
+            <div class="slide" id="s3">
+                <div class="slide-header">
+                    <span class="logo-consultant"><i class="fa-solid fa-graduation-cap"></i> Diferențe Majore</span>
+                    <span class="client-tag">Clasa 1: Opțiuni</span>
+                </div>
+                <div class="slide-body" style="flex-direction: column; justify-content: flex-start;">
+                    <h2 class="slide-title" style="align-self: flex-start; margin-bottom: 15px;">Cum funcționează liniile de finanțare?</h2>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Criteriu</th>
+                                <th>Drumul A: Retreat Complet</th>
+                                <th>Drumul B: Fermier Isteț</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><b>Ce construiești?</b></td>
+                                <td>Căsuțe modulare + cabinete de terapie direct.</td>
+                                <td>Modernizezi livada și utilajele mai întâi.</td>
+                            </tr>
+                            <tr>
+                                <td><b>Banii tăi</b></td>
+                                <td>Statul pune 90%, tu pui o mică parte (10%).</td>
+                                <td><b>100% Bani Gratis</b> (pui zero lei din buzunar).</td>
+                            </tr>
+                            <tr>
+                                <td><b>Valoare Grant</b></td>
+                                <td>Între 50.000 € și 100.000 €.</td>
+                                <td><b>Fix 70.000 €</b> cash primiți prin primă.</td>
+                            </tr>
+                            <tr>
+                                <td><b>Strategia</b></td>
+                                <td>Deschizi direct centrul de Hortiterapie.</td>
+                                <td>Bani rapizi de pornire, căsuțele vin la Pasul 2.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- SLIDE 4: CHESTIONARUL DE CALIFICARE -->
             <div class="slide" id="s4">
                 <div class="slide-header">
                     <span class="logo-consultant"><i class="fa-solid fa-list-check"></i> Pasul Tehnic</span>
@@ -146,120 +427,118 @@
                     <div id="quizBlock" class="quiz-container">
                         <div style="text-align: center; margin-bottom: 20px;">
                             <h2 style="font-size: 18px; color: #0f172a;">Mini-Chestionar de Validare</h2>
-                            <p style="font-size: 12px; color: #64748b;">Răspunde la cele 3 întrebări scurte pentru a merge mai departe.[cite: 2]</p>
+                            <p style="font-size: 12px; color: #64748b;">Răspunde la cele 3 întrebări scurte pentru a activa simulatorul final.</p>
                         </div>
+
                         <div class="quiz-step active" id="qStep1">
-                            <p class="quiz-question">1. Livezile sunt înregistrate curat pe numele tău în Registrul Agricol local?[cite: 2]</p>
+                            <p class="quiz-question">1. Livezile sunt înregistrate curat pe numele tău în Registrul Agricol local?</p>
                             <div class="quiz-options">
-                                <label class="quiz-option"><input type="radio" name="q1" value="yes"> Da, actele sunt în regulă (asigură baza legală a fermei)[cite: 2]</label>
-                                <label class="quiz-option"><input type="radio" name="q1" value="no"> Nu sunt încă înregistrate corect[cite: 2]</label>
+                                <label class="quiz-option"><input type="radio" name="q1" value="yes"> Da, actele sunt în regulă (asigură baza legală a fermei)</label>
+                                <label class="quiz-option"><input type="radio" name="q1" value="no"> Nu sunt încă înregistrate corect</label>
                             </div>
                         </div>
+
                         <div class="quiz-step" id="qStep2">
-                            <p class="quiz-question">2. Ești de acord să deschidem o firmă nouă (SRL/ÎI) pentru a accesa statutul de Tânăr Fermier?[cite: 2]</p>
+                            <p class="quiz-question">2. Ești de acord să deschidem o firmă nouă (SRL/ÎI) pentru a accesa statutul de Tânăr Fermier sub 40 de ani?</p>
                             <div class="quiz-options">
-                                <label class="quiz-option"><input type="radio" name="q2" value="yes"> Da, sunt de acord (încadrarea ca Tânăr Fermier sub 40 de ani este perfectă pentru punctaj)[cite: 2]</label>
-                                <label class="quiz-option"><input type="radio" name="q2" value="no"> Nu, doresc doar pe persoană fizică simplă (neeligibil)[cite: 2]</label>
+                                <label class="quiz-option"><input type="radio" name="q2" value="yes"> Da, sunt de acord (vârsta mea este perfectă pentru criteriile de prioritate)</label>
+                                <label class="quiz-option"><input type="radio" name="q2" value="no"> Nu, doresc doar pe persoană fizică simplă (neeligibil)</label>
                             </div>
                         </div>
+
                         <div class="quiz-step" id="qStep3">
-                            <p class="quiz-question">3. Înțelegi că cei 15.000 lei din aplicație vor fi doar avansul pentru acte/proiectare, iar restul de zeci de mii de euro vin de la UE?[cite: 2]</p>
+                            <p class="quiz-question">3. Înțelegi că cei 15.000 lei din aplicație vor fi doar avansul pentru acte/proiectare, iar restul de zeci de mii de euro vin de la UE?</p>
                             <div class="quiz-options">
-                                <label class="quiz-option"><input type="radio" name="q3" value="yes"> Da, perfect de acord. Vreau să aducem bugetul european mare![cite: 2]</label>
-                                <label class="quiz-option"><input type="radio" name="q3" value="no"> Nu, doream ca 15.000 lei să fie tot bugetul[cite: 2]</label>
+                                <label class="quiz-option"><input type="radio" name="q3" value="yes"> Da, perfect de acord. Vreau să aducem bugetul european mare!</label>
+                                <label class="quiz-option"><input type="radio" name="q3" value="no"> Nu, doream ca 15.000 lei să fie tot bugetul</label>
                             </div>
                         </div>
+
                         <div style="margin-top: 25px; display: flex; justify-content: flex-end;">
-                            <button id="quizNextBtn" class="btn-quiz-next" disabled>Următorul pas[cite: 2]</button>
+                            <button id="quizNextBtn" class="btn-quiz-next" disabled>Următorul pas</button>
                         </div>
                     </div>
+
                     <div id="quizSuccessBlock" style="display: none; text-align: center; width: 100%;">
                         <div style="font-size: 45px; color: #10b981; margin-bottom: 10px;"><i class="fa-solid fa-square-check"></i></div>
                         <h2>Validare Reușită!</h2>
-                        <p style="color: #64748b; margin-bottom: 15px; font-size: 14px;">Datele tale sunt perfecte. Acum alege varianta care îți place cel mai mult![cite: 2]</p>
-                        <button onclick="startPresentation()" style="background: #0f766e; color: white; border: none; padding: 12px 25px; border-radius: 6px; font-weight: 600; cursor: pointer;">Vezi Simulatorul și Selectează Varianta[cite: 2]</button>
+                        <p style="color: #64748b; margin-bottom: 15px; font-size: 14px;">Datele tale sunt ideale. Acum selectează varianta preferată în simulator!</p>
+                        <button onclick="startPresentation()" style="background: #0f766e; color: white; border: none; padding: 12px 25px; border-radius: 6px; font-weight: 600; cursor: pointer;">Alege Varianta Optimă</button>
                     </div>
                 </div>
             </div>
+
+            <!-- SLIDE 5: SELECTORUL INTERACTIV DE DECIZIE FINALĂ (SIMULATOR) -->
             <div class="slide" id="s5">
                 <div class="slide-header">
                     <span class="logo-consultant"><i class="fa-solid fa-toggle-on"></i> Decizie Strategică</span>
                     <span class="client-tag">Simulator Live</span>
                 </div>
                 <div class="slide-body" style="flex-direction: column; justify-content: flex-start; gap: 15px; width: 100%;">
-                    <h2 style="font-size: 18px; color: #0f172a; text-align: center;">Pe ce drum vrei să pornim proiectul?</h2>
+                    <h2 style="font-size: 18px; color: #0f172a; text-align: center;">Pe ce drum vrei să pornim proiectul la cheie?</h2>
+                    
                     <div style="display: flex; gap: 15px; width: 100%;">
                         <div id="btnVarA" class="stat-box" style="border: 2px solid #0f766e; cursor: pointer; background: #f0fdfa;" 
-                             onclick="selecteazaRutaFinantare('A', '50.000€ - 100.000€', 'Doar 10% - 15%', 'Alegi să facem direct Retreatul Terapeutic: căsuțe modulare pe piloni + cabinete pentru sesiunile tale de psihoterapie și coaching printre pomi.[cite: 2]', 'Ruta A (Retreat Terapeutic direct pe GAL/AFIR)')">
+                             onclick="selecteazaRutaFinantare('A', '50.000€ - 100.000€', 'Doar 10% - 15%', 'Alegi să facem direct Retreatul Terapeutic: căsuțe modulare pe piloni + cabinete pentru sesiunile tale de psihoterapie și coaching printre pomi.', 'Ruta A (Retreat Terapeutic complet pe GAL/AFIR)')">
                             <h3 style="font-size: 13px; color: #0f766e;"><i class="fa-solid fa-spa"></i> Varianta A</h3>
-                            <strong style="font-size: 13px; display: block; margin-top: 5px; color: #0f172a;">Retreat Terapeutic direct (Căsuțe + Cabinete)[cite: 2]</strong>
+                            <strong style="font-size: 13px; display: block; margin-top: 5px; color: #0f172a;">Retreat direct (Căsuțe + Cabinete Terapie)</strong>
                         </div>
                         <div id="btnVarB" class="stat-box" style="border: 1px dashed #cbd5e1; cursor: pointer; background: white;" 
-                             onclick="selecteazaRutaFinantare('B', '70.000 €', '100% GRATIS', 'Alegi să iei mai întâi cei 70.000€ curați ca Tânăr Fermier pentru modernizarea livezilor și utilaje. Căsuțele le facem imediat ca Pasul 2.[cite: 2]', 'Ruta B (Instalare Tânăr Fermier 100% Grant)')">
+                             onclick="selecteazaRutaFinantare('B', '70.000 €', '100% GRATIS', 'Alegi să iei mai întâi cei 70.000€ curați ca Tânăr Fermier pentru modernizarea livezilor și utilaje. Spațiile de cazare le ridicăm imediat ca Pasul 2.', 'Ruta B (Instalare Tânăr Fermier 100% Grant)')">
                             <h3 style="font-size: 13px; color: #b45309;"><i class="fa-solid fa-apple-whole"></i> Varianta B</h3>
-                            <strong style="font-size: 13px; display: block; margin-top: 5px; color: #0f172a;">Tânăr Fermier sub 40 de ani (Bani rapizi livezi)[cite: 2]</strong>
+                            <strong style="font-size: 13px; display: block; margin-top: 5px; color: #0f172a;">Tânăr Fermier (Bani rapizi livezi, zero cofinanțare)</strong>
                         </div>
                     </div>
+
                     <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 15px; border-radius: 12px; width: 100%;">
                         <p id="descVarianta" style="font-size: 13px; color: #475569; text-align: center; margin-bottom: 10px; min-height: 40px;">
-                            Alegi să facem direct Retreatul Terapeutic: căsuțe modulare pe piloni + cabinete pentru sesiunile tale de psihoterapie și coaching printre pomi.[cite: 2]
+                            Alegi să facem direct Retreatul Terapeutic: căsuțe modulare pe piloni + cabinete pentru sesiunile tale de psihoterapie și coaching printre pomi.
                         </p>
                         <div class="stats-container">
                             <div class="stat-box" style="background: white; padding: 10px;">
                                 <div style="font-size: 11px; color: #64748b;">Fonduri Europene</div>
-                                <div id="valGrant" class="stat-value" style="font-size: 20px;">50.000€ - 100.000€[cite: 2]</div>
+                                <div id="valGrant" class="stat-value" style="font-size: 20px;">50.000€ - 100.000€</div>
                             </div>
                             <div class="stat-box" style="background: white; padding: 10px;">
                                 <div style="font-size: 11px; color: #64748b;">Banii Tăi (Cofinanțare)</div>
-                                <div id="valIntensitate" class="stat-value" style="font-size: 20px; color: #b45309;">Doar 10% - 15%[cite: 2]</div>
+                                <div id="valIntensitate" class="stat-value" style="font-size: 20px; color: #b45309;">Doar 10% - 15%</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="slide" id="s6">
-                <div class="slide-header">
-                    <span class="logo-consultant"><i class="fa-solid fa-handshake"></i> Colaborare Sigură</span>
-                    <span class="client-tag">Etape Următoare</span>
-                </div>
-                <div class="slide-body">
-                    <div class="grid-2" style="width: 100%;">
-                        <div class="column-left">
-                            <h2 class="slide-title">Cum pornim la drum cu succes?</h2>
-                            <p style="font-size: 14px; line-height: 1.5; margin-bottom: 10px;">Serviciul nostru DAKAMIGOS acoperă totul la cheie:[cite: 2]</p>
-                            <ul class="custom-list">
-                                <li><i class="fa-solid fa-check"></i><div>Înființăm noul SRL pomicol/terapeutic curat.[cite: 2]</div></li>
-                                <li><i class="fa-solid fa-check"></i><div>Calculăm dimensiunea livezilor și facem actele de urbanism.[cite: 2]</div></li>
-                                <li><i class="fa-solid fa-check"></i><div>Scriem planul de afaceri și depunem dosarul în aplicația de granturi.[cite: 2]</div></li>
-                            </ul>
-                        </div>
-                        <div class="column-right">
-                            <div class="stat-box" style="border-color: #0f766e; background: #f0fdfa;">
-                                <div class="stat-value" style="font-size: 24px;">Fără Riscuri[cite: 2]</div>
-                                <div style="font-size: 12px; font-weight: 600; margin: 5px 0;">Avans fix mic + Comision Succes[cite: 2]</div>
-                                <p style="font-size: 11px; color: #64748b;">Plata principală se face doar când proiectul tău este aprobat de comisie.[cite: 2]</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
         </div>
+
+        <!-- FOOTER INTEGRAT -->
         <div class="presentation-footer">
-            <div id="lockNotice" class="quiz-lock-notice"><i class="fa-solid fa-lock"></i> Răspundeți la întrebări pentru a debloca simulatorul final[cite: 2]</div>
+            <div id="lockNotice" class="quiz-lock-notice">
+                <i class="fa-solid fa-lock"></i> Răspundeți la întrebări la pasul 4 pentru a debloca simulatorul final
+            </div>
+            
             <div class="nav-buttons" id="navBlock" style="display: flex; gap: 10px; align-items: center;">
                 <button class="btn-nav" id="prevBtn" disabled><i class="fa-solid fa-chevron-left"></i></button>
-                <div style="font-size: 13px; font-weight: 600; min-width: 50px; text-align: center;" id="counter">1 / 6[cite: 2]</div>
+                <div style="font-size: 13px; font-weight: 600; min-width: 50px; text-align: center;" id="counter">1 / 5</div>
                 <button class="btn-nav" id="nextBtn"><i class="fa-solid fa-chevron-right"></i></button>
             </div>
-            <div style="font-size: 11px; color: #64748b; font-weight: 600;">DAKAMIGOS MARKT SRL © 2026[cite: 2]</div>
+            
+            <div style="font-size: 11px; color: #64748b; font-weight: 600;">DAKAMIGOS MARKT SRL © 2026</div>
         </div>
+
     </div>
 
+    <!-- CLOSING BAR CONVERTIT ÎN FIȘĂ TEHNICĂ DETALIATĂ MAI JOS -->
     <div class="sticky-closing-bar" id="closingBar">
-        <div class="closing-text"><i class="fa-solid fa-circle-check" style="color: #10b981; margin-right: 6px;"></i> Configurație activă pentru livezile din Arad[cite: 2]</div>
-        <a id="waLink" href="#" class="btn-whatsapp-close" target="_blank"><i class="fa-brands fa-whatsapp" style="font-size: 16px;"></i> Trimite opțiunea mea pe WhatsApp[cite: 2]</a>
+        <div class="closing-text">
+            <i class="fa-solid fa-circle-check" style="color: #10b981; margin-right: 6px;"></i> 
+            Configurație activă pentru livezile din Arad
+        </div>
+        <a id="waLink" href="#" class="btn-whatsapp-close" target="_blank">
+            <i class="fa-brands fa-whatsapp" style="font-size: 16px;"></i> Trimite opțiunea mea pe WhatsApp
+        </a>
     </div>
 
+    <!-- ENGINE SCRIPT -->
     <script>
         let currentQuizStep = 1; const totalQuizSteps = 3; let quizDone = false;
         const quizNextBtn = document.getElementById('quizNextBtn'); const quizBlock = document.getElementById('quizBlock'); const quizSuccessBlock = document.getElementById('quizSuccessBlock');
@@ -271,6 +550,7 @@
             else { quizNextBtn.disabled = true; quizNextBtn.classList.remove('enabled'); }
         }
         document.querySelectorAll('.quiz-option input').forEach(input => { input.addEventListener('change', () => { checkStepValidation(); }); });
+        
         quizNextBtn.addEventListener('click', () => {
             if (quizNextBtn.disabled) return;
             if (currentQuizStep < totalQuizSteps) {
@@ -280,15 +560,16 @@
             } else { quizBlock.style.display = 'none'; quizSuccessBlock.style.display = 'block'; }
         });
 
-        let currentSlide = 1; const totalSlides = 6;
+        let currentSlide = 1; const totalSlides = 5;
         const prevBtn = document.getElementById('prevBtn'); const nextBtn = document.getElementById('nextBtn'); const counter = document.getElementById('counter');
         const lockNotice = document.getElementById('lockNotice'); const closingBar = document.getElementById('closingBar');
 
         function startPresentation() {
             quizDone = true; quizSuccessBlock.style.display = 'none'; lockNotice.classList.remove('visible'); closingBar.classList.add('visible');
-            selecteazaRutaFinantare('A', '50.000€ - 100.000€', 'Doar 10% - 15%', 'Alegi să facem direct Retreatul Terapeutic: căsuțe modulare pe piloni + cabinete pentru sesiunile tale de psihoterapie și coaching printre pomi.', 'Ruta A (Retreat Terapeutic direct pe GAL/AFIR)');
-            changeSlide(1);
+            selecteazaRutaFinantare('A', '50.000€ - 100.000€', 'Doar 10% - 15%', 'Alegi să facem direct Retreatul Terapeutic: căsuțe modulare pe piloni + cabinete pentru sesiunile tale de psihoterapie și coaching printre pomi.', 'Ruta A (Retreat Terapeutic complet pe GAL/AFIR)');
+            changeSlide(1); 
         }
+
         prevBtn.addEventListener('click', () => changeSlide(-1)); nextBtn.addEventListener('click', () => changeSlide(1));
 
         function changeSlide(direction) {
@@ -305,12 +586,20 @@
         function selecteazaRutaFinantare(tip, grant, cofinantare, descriere, textWhatsApp) {
             document.getElementById('btnVarA').style.border = "1px dashed #cbd5e1"; document.getElementById('btnVarA').style.background = "white";
             document.getElementById('btnVarB').style.border = "1px dashed #cbd5e1"; document.getElementById('btnVarB').style.background = "white";
-            if(tip === 'A') { document.getElementById('btnVarA').style.border = "2px solid #0f766e"; document.getElementById('btnVarA').style.background = "#f0fdfa"; } 
-            else { document.getElementById('btnVarB').style.border = "2px solid #b45309"; document.getElementById('btnVarB').style.background = "#fffbeb"; }
-            document.getElementById('descVarianta').innerText = descriere; document.getElementById('valGrant').innerText = grant; document.getElementById('valIntensitate').innerText = cofinantare;
 
-            let q1Val = document.querySelector('input[name="q1"]:checked')?.value === 'yes' ? 'Livezi înregistrate curat în Registrul Agricol' : 'Necesită corelare acte Registrul Agricol';
+            if(tip === 'A') {
+                document.getElementById('btnVarA').style.border = "2px solid #0f766e"; document.getElementById('btnVarA').style.background = "#f0fdfa";
+            } else {
+                document.getElementById('btnVarB').style.border = "2px solid #b45309"; document.getElementById('btnVarB').style.background = "#fffbeb";
+            }
+
+            document.getElementById('descVarianta').innerText = descriere;
+            document.getElementById('valGrant').innerText = grant;
+            document.getElementById('valIntensitate').innerText = cofinantare;
+
+            let q1Val = document.querySelector('input[name="q1"]:checked')?.value === 'yes' ? 'Livezi active înregistrate în Registrul Agricol' : 'Necesită înregistrare / corelare acte';
             
+            // Compilator de fișă tehnică curată pentru WhatsApp
             const baseUrl = "https://wa.me/40749229686?text=";
             const textMesaj = `Strategie Well-being DAKAMIGOS — Fișă Tehnică\n` +
                               `----------------------------------------------\n` +
@@ -320,8 +609,13 @@
                               `• Opțiune Aleasă: ${textWhatsApp}\n` +
                               `----------------------------------------------\n` +
                               `Bună! Am parcurs simulatorul de Hortiterapie. Vreau să luăm o decizie strategică informată și proactivă conform noului Cod al Urbanismului pentru amplasarea modulelor pe piloni. Când ne auzim la telefon pentru a demara actele firmei și dosarul de grant?`;
+            
             document.getElementById('waLink').href = baseUrl + encodeURIComponent(textMesaj);
         }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') changeSlide(1); if (e.key === 'ArrowLeft') changeSlide(-1);
+        });
     </script>
 </body>
 </html>
