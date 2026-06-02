@@ -35,8 +35,8 @@
             width: 100%;
             max-width: 1080px;
             height: 85vh;
-            min-height: 540px;
-            max-height: 660px;
+            min-height: 560px;
+            max-height: 680px;
             background: #ffffff;
             border-radius: 16px;
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
@@ -132,6 +132,26 @@
             padding: 5px 0;
         }
 
+        /* TABEL COMPARATIV ULTRA SIMPLU */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        .comparison-table th {
+            background: #0f766e;
+            color: white;
+            padding: 12px;
+            font-size: 14px;
+            font-family: 'Montserrat', sans-serif;
+        }
+        .comparison-table td {
+            padding: 12px;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 13px;
+        }
+        .comparison-table tr:nth-child(even) { background: #f8fafc; }
+
         /* CHESTIONAR INTERACTIV */
         .quiz-container {
             width: 100%;
@@ -142,13 +162,8 @@
             padding: 25px;
         }
 
-        .quiz-step {
-            display: none;
-        }
-
-        .quiz-step.active {
-            display: block;
-        }
+        .quiz-step { display: none; }
+        .quiz-step.active { display: block; }
 
         .quiz-question {
             font-size: 16px;
@@ -179,10 +194,6 @@
         .quiz-option:hover {
             border-color: #0f766e;
             background: #f0fdfa;
-        }
-
-        .quiz-option input {
-            cursor: pointer;
         }
 
         /* GRIDS & LAYOUTS */
@@ -216,36 +227,6 @@
             flex-shrink: 0;
         }
 
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            width: 100%;
-        }
-
-        .card-tile {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .card-tile .tile-icon {
-            font-size: 20px;
-            color: #0f766e;
-            background: #e6f4f1;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-        }
-
-        /* VALORI FINANCIARE INTERACTIVE */
         .stats-container {
             display: flex;
             justify-content: space-around;
@@ -300,10 +281,7 @@
             border-color: #0f766e;
         }
 
-        .btn-nav:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-        }
+        .btn-nav:disabled { opacity: 0.3; cursor: not-allowed; }
 
         .locked-notice {
             font-size: 13px;
@@ -350,8 +328,7 @@
             .presentation-deck { height: auto; max-height: none; }
             .slide { position: relative; display: none; height: auto; padding: 20px; }
             .slide.active { display: flex; }
-            .grid-2, .grid-3, .stats-container { grid-template-columns: 1fr; flex-direction: column; }
-            .sticky-closing-bar { flex-direction: column; gap: 12px; text-align: center; }
+            .grid-2, .sticky-closing-bar { flex-direction: column; gap: 12px; text-align: center; }
         }
     </style>
 </head>
@@ -361,40 +338,134 @@
         
         <div class="slides-container">
 
-            <!-- SLIDE 1: QUIZ VALIDARE STRUCTURĂ -->
+            <!-- SLIDE 1: INTRODUCERE SIMPLĂ -->
             <div class="slide active" id="s1">
                 <div class="slide-header">
-                    <span class="logo-consultant"><i class="fa-solid fa-briefcase"></i> DAKAMIGOS MARKT / Soluții Europene</span>
+                    <span class="logo-consultant"><i class="fa-solid fa-briefcase"></i> DAKAMIGOS MARKT / Soluții Directe</span>
                     <span class="client-tag">Simandan Nicoleta / Arad</span>
+                </div>
+                <div class="slide-body">
+                    <div style="text-align: center; width: 100%; max-width: 750px;">
+                        <i class="fa-solid fa-spa" style="font-size: 55px; color: #0f766e; margin-bottom: 15px;"></i>
+                        <h1 style="font-size: 28px; color: #0f172a; margin-bottom: 10px;">Planul Tău de Finanțare: Pe Înțelesul Tuturor</h1>
+                        <p style="color: #475569; font-size: 15px; line-height: 1.6;">
+                            Nicoleta, ai <b>38 de ani</b>, ești <b>psihoterapeut & coach</b> și ai <b>două livezi minunate</b> în Arad. 
+                            Hai să vedem cum transformăm totul într-un proiect european de succes, explicat pas cu pas, simplu și fără bătăi de cap!
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 2: CLASA 1 - L_INIIL_E DE FINANȚARE EXPLICATE SIMPLU -->
+            <div class="slide" id="s2">
+                <div class="slide-header">
+                    <span class="logo-consultant"><i class="fa-solid fa-graduation-cap"></i> Diferențe Majore</span>
+                    <span class="client-tag">Unde te încadrezi</span>
+                </div>
+                <div class="slide-body" style="flex-direction: column; justify-content: flex-start;">
+                    <h2 class="slide-title" style="align-self: flex-start; margin-bottom: 15px;">Cum funcționează cele două opțiuni?</h2>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Criteriu</th>
+                                <th>Varianta A: Agroturism & Cabinete</th>
+                                <th>Varianta B: Tânăr Fermier (Livezi)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><b>Ce primești?</b></td>
+                                <td>Bani pentru căsuțe modulare + săli de terapie.</td>
+                                <td>Bani pentru modernizat livezile și utilaje.</td>
+                            </tr>
+                            <tr>
+                                <td><b>Cât sunt decontate?</b></td>
+                                <td>Statul pune 85%-90%, restul pui tu.</td>
+                                <td><b>100% Bani Gratis</b> (pui zero lei din buzunar).</td>
+                            </tr>
+                            <tr>
+                                <td><b>Valoare totală</b></td>
+                                <td>Între 50.000 € și 100.000 €.</td>
+                                <td><b>Fix 70.000 €</b> cash.</td>
+                            </tr>
+                            <tr>
+                                <td><b>Marele avantaj</b></td>
+                                <td>Construiești direct spațiul de retreat.</td>
+                                <td>Bani rapizi, fără cofinanțare proprie.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- SLIDE 3: VESTEA CEA MARE - LEGEA MODIFICATĂ -->
+            <div class="slide" id="s3">
+                <div class="slide-header">
+                    <span class="logo-consultant"><i class="fa-solid fa-gavel"></i> Schimbare Legislativă</span>
+                    <span class="client-tag">Noul Cod al Urbanismului</span>
+                </div>
+                <div class="slide-body">
+                    <div class="grid-2">
+                        <div class="column-left">
+                            <h2 class="slide-title">Portița ta unică din Livezi</h2>
+                            <p style="margin-bottom: 15px; font-size: 14px; line-height: 1.5;">Vechile reguli grele s-au schimbat! Noul Cod al Urbanismului aduce un avantaj uriaș pentru profilul tău:</p>
+                            <ul class="custom-list">
+                                <li>
+                                    <i class="fa-solid fa-circle-check"></i>
+                                    <div>
+                                        <strong>Liber la căsuțe pe piloni:</strong> Acum ai voie să pui structuri modulare ușoare <b>direct pe teren agricol (în livadă)</b>, fără să mai scoți pământul din circuitul agricol!
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-clock"></i>
+                                    <div>
+                                        <strong>Fără birocrație lungă:</strong> Se elimină PUZ-urile obositoare care durau ani de zile, dacă proiectul este integrat inteligent cu exploatarea livezii.
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="column-right" style="text-align: center;">
+                            <i class="fa-solid fa-house-lock" style="font-size: 70px; color: #0f766e;"></i>
+                            <p style="font-size: 11px; color: #64748b; margin-top: 10px;">Livezile tale din Măderat / Căsoaia devin automat cheia deblocării rapide.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 4: CHESTIONARUL DE CALIFICARE -->
+            <div class="slide" id="s4">
+                <div class="slide-header">
+                    <span class="logo-consultant"><i class="fa-solid fa-list-check"></i> Pasul Tehnic</span>
+                    <span class="client-tag">Verificare Structură</span>
                 </div>
                 <div class="slide-body">
                     <div id="quizBlock" class="quiz-container">
                         <div style="text-align: center; margin-bottom: 20px;">
-                            <h2 style="font-size: 20px; color: #0f172a;">Retreat de Psihoterapie, Coaching & Hortiterapie</h2>
-                            <p style="font-size: 13px; color: #64748b;">Corectăm limitele aplicației și mapăm activele pomicole + profesionale.</p>
+                            <h2 style="font-size: 18px; color: #0f172a;">Mini-Chestionar de Validare</h2>
+                            <p style="font-size: 12px; color: #64748b;">Răspunde la cele 3 întrebări scurte pentru a merge mai departe.</p>
                         </div>
 
                         <div class="quiz-step active" id="qStep1">
-                            <p class="quiz-question">1. Dețineți în Registrul Agricol cele două livezi active (Măderat / Căsoaia) pe numele dumneavoastră?</p>
+                            <p class="quiz-question">1. Livezile sunt înregistrate curat pe numele tău în Registrul Agricol local?</p>
                             <div class="quiz-options">
-                                <label class="quiz-option"><input type="radio" name="q1" value="yes"> Da, livezile sunt în proprietate/folosință (asigură baza agricolă obligatorie)</label>
-                                <label class="quiz-option"><input type="radio" name="q1" value="no"> Nu dețin active agricole înregistrate</label>
+                                <label class="quiz-option"><input type="radio" name="q1" value="yes"> Da, actele sunt în regulă (asigură baza legală a fermei)</label>
+                                <label class="quiz-option"><input type="radio" name="q1" value="no"> Nu sunt încă înregistrate corect</label>
                             </div>
                         </div>
 
                         <div class="quiz-step" id="qStep2">
-                            <p class="quiz-question">2. Corelăm certificările dumneavoastră în Psihoterapie/Coaching cu livezile într-un profil de „Tânăr Fermier” sub 40 de ani?</p>
+                            <p class="quiz-question">2. Ești de acord să deschidem o firmă nouă (SRL/ÎI) pentru a accesa statutul de Tânăr Fermier?</p>
                             <div class="quiz-options">
-                                <label class="quiz-option"><input type="radio" name="q2" value="yes"> Da, accept structura integrată (vârsta de 38 de ani deblochează axa DR-30)</label>
-                                <label class="quiz-option"><input type="radio" name="q2" value="no"> Doresc depunere simplă pe persoană fizică neautorizată (neeligibil)</label>
+                                <label class="quiz-option"><input type="radio" name="q2" value="yes"> Da, sunt de acord (vârsta de 38 de ani este perfectă pentru punctaj)</label>
+                                <label class="quiz-option"><input type="radio" name="q2" value="no"> Nu, doresc doar pe persoană fizică simplă (neeligibil)</label>
                             </div>
                         </div>
 
                         <div class="quiz-step" id="qStep3">
-                            <p class="quiz-question">3. Acceptați ca suma inițială de 15.000 lei să fie utilizată exclusiv ca avans pentru înființare, PUZ și proiectare urbană?</p>
+                            <p class="quiz-question">3. Înțelegi că cei 15.000 lei din aplicație vor fi doar avansul pentru acte/proiectare, iar restul de zeci de mii de euro vin de la UE?</p>
                             <div class="quiz-options">
-                                <label class="quiz-option"><input type="radio" name="q3" value="yes"> Da, înțeleg că aplicația a impus o valoare standard și că bugetul real adus este european</label>
-                                <label class="quiz-option"><input type="radio" name="q3" value="no"> Nu, 15.000 lei este bugetul maxim alocat</label>
+                                <label class="quiz-option"><input type="radio" name="q3" value="yes"> Da, perfect de acord. Vreau să aducem bugetul european mare!</label>
+                                <label class="quiz-option"><input type="radio" name="q3" value="no"> Nu, doream ca 15.000 lei să fie tot bugetul</label>
                             </div>
                         </div>
 
@@ -404,173 +475,77 @@
                     </div>
 
                     <div id="quizSuccessBlock" style="display: none; text-align: center; width: 100%;">
-                        <div style="font-size: 50px; color: #10b981; margin-bottom: 15px;"><i class="fa-solid fa-spa"></i></div>
-                        <h2>Concept Well-being de Top Validat</h2>
-                        <p style="color: #64748b; margin-bottom: 20px;">Fuziunea dintre specializarea în psihoterapie/coaching și cele 2 livezi asigură punctaj maxim la selecție.</p>
-                        <button onclick="startPresentation()" style="background: #0f766e; color: white; border: none; padding: 12px 25px; border-radius: 6px; font-weight: 600; cursor: pointer;">Deschide Rezumatul Strategiei Ghidului</button>
+                        <div style="font-size: 45px; color: #10b981; margin-bottom: 10px;"><i class="fa-solid fa-square-check"></i></div>
+                        <h2>Validare Reușită!</h2>
+                        <p style="color: #64748b; margin-bottom: 15px; font-size: 14px;">Datele tale sunt perfecte. Acum alege varianta care îți place cel mai mult!</p>
+                        <button onclick="startPresentation()" style="background: #0f766e; color: white; border: none; padding: 12px 25px; border-radius: 6px; font-weight: 600; cursor: pointer;">Vezi Simulatorul și Selectează Varianta</button>
                     </div>
                 </div>
             </div>
 
-            <!-- SLIDE 2: INTEGRARE LIVEZI SI SPECIALIZĂRI -->
-            <div class="slide" id="s2">
+            <!-- SLIDE 5: SELECTORUL INTERACTIV DE DECIZIE FINALĂ -->
+            <div class="slide" id="s5">
                 <div class="slide-header">
-                    <span class="logo-consultant"><i class="fa-solid fa-map-location-dot"></i> Integrare Livezi și Specializări</span>
-                    <span class="client-tag">Strategie Exploatație</span>
-                </div>
-                <div class="slide-body">
-                    <div class="grid-2">
-                        <div class="column-left">
-                            <h2 class="slide-title">Hortiterapie și Sănătate Mentală la Sat</h2>
-                            <p>Livezile din Măderat și Căsoaia constituie baza economică (exprimată în SO) obligatorie pentru obținerea banilor europeni:</p>
-                            <ul class="custom-list">
-                                <li>
-                                    <i class="fa-solid fa-brain"></i>
-                                    <div>
-                                        <strong>Valoare Adăugată Mare:</strong> Profilul dumneavoastră de psihoterapeut și coach transformă pensiunea clasică într-un centru exclusiv de retreat mental și reconectare cu natura.
-                                    </div>
-                                </li>
-                                <li>
-                                    <i class="fa-solid fa-apple-whole"></i>
-                                    <div>
-                                        <strong>Mecanismul de Hortiterapie:</strong> Turiștii participă activ la activitățile livezii ca parte integrantă din procesul terapeutic și din atelierele de well-being.
-                                    </div>
-                                </li>
-                                <li>
-                                    <i class="fa-solid fa-file-shield"></i>
-                                    <div>
-                                        <strong>Procedură Urbanism (PUZ):</strong> Terenul aferent livezilor va fi trecut parțial în intravilan prin PUZ pentru amplasarea legală a modulelor premium pe piloni.
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="column-right" style="text-align: center;">
-                            <i class="fa-solid fa-heart-pulse" style="font-size: 70px; color: #0f766e;"></i>
-                            <p style="font-size: 11px; color: #64748b; margin-top: 10px;">Fuziunea dintre agricultură pomicolă existentă și serviciile clinice/coaching garantează succesul dosarului.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SLIDE 3: DISTRIBUTIE FONDURI -->
-            <div class="slide" id="s3">
-                <div class="slide-header">
-                    <span class="logo-consultant"><i class="fa-solid fa-campground"></i> Arhitectură Retreat</span>
-                    <span class="client-tag">Cheltuieli Permise</span>
-                </div>
-                <div class="slide-body">
-                    <div style="width: 100%;">
-                        <h2 class="slide-title" style="margin-bottom: 12px;">Cum distribuim bugetul european în livezile din Arad?</h2>
-                        <div class="grid-3">
-                            <div class="card-tile">
-                                <div class="tile-icon"><i class="fa-solid fa-house-chimney-window"></i></div>
-                                <h3>Căsuțe Modulare Piloni</h3>
-                                <p style="font-size: 12px; color: #64748b;">Achiziția și montarea de structuri modulare premium eco-friendly, amplasate strategic printre pomii fructiferi pentru cazare de lux.</p>
-                            </div>
-                            <div class="card-tile">
-                                <div class="tile-icon"><i class="fa-solid fa-comments"></i></div>
-                                <h3>Săli Terapie & Cabinete</h3>
-                                <p style="font-size: 12px; color: #64748b;">Echiparea spațiilor centrale pentru sesiuni de psihoterapie de grup, cabinete de coaching individual și dotări logistice specifice.</p>
-                            </div>
-                            <div class="card-tile">
-                                <div class="tile-icon"><i class="fa-solid fa-bolt"></i></div>
-                                <h3>Sistem Verde Independent</h3>
-                                <p style="font-size: 12px; color: #64748b;">Sisteme fotovoltaice dedicate, pompe de căldură și management ecologic complet al resurselor din livadă.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SLIDE 4: CELE 2 VARIANTE LA ALEGERE ACTUALIZATE CU RETREAT CLINIC -->
-            <div class="slide" id="s4">
-                <div class="slide-header">
-                    <span class="logo-consultant"><i class="fa-solid fa-calculator"></i> Inginerie Financiară</span>
-                    <span class="client-tag">Alege Strategia Dorită</span>
+                    <span class="logo-consultant"><i class="fa-solid fa-toggle-on"></i> Decizie Strategică</span>
+                    <span class="client-tag">Simulator Live</span>
                 </div>
                 <div class="slide-body" style="flex-direction: column; justify-content: flex-start; gap: 15px; width: 100%;">
-                    <h2 style="font-size: 18px; color: #0f172a; text-align: center; margin-bottom: 5px;">Alegeți varianta optimă pentru livezile și specializările dumneavoastră:</h2>
+                    <h2 style="font-size: 18px; color: #0f172a; text-align: center;">Pe ce drum vrei să pornim proiectul?</h2>
                     
                     <div style="display: flex; gap: 15px; width: 100%;">
                         <div id="btnVarA" class="stat-box" style="border: 2px solid #0f766e; cursor: pointer; background: #f0fdfa;" 
-                             onclick="selecteazaRutaFinantare('A', '50.000€ - 100.000€', '85% - 90%', 'Finanțare mixtă: construcție căsuțe modulare + săli de psihoterapie și cabinete de coaching integrate direct în structura livezilor active. Necesită cofinanțare mică.', 'Ruta A: Centru Terapeutic și Agroturism (GAL/AFIR)')">
-                            <h3 style="font-size: 14px; color: #0f766e;"><i class="fa-solid fa-user-doctor"></i> Varianta A</h3>
-                            <strong style="font-size: 14px; display: block; margin-top: 5px; color: #0f172a;">Retreat Terapeutic & Coaching direct (GAL / AFIR)</strong>
+                             onclick="selecteazaRutaFinantare('A', '50.000€ - 100.000€', '85% - 90%', 'Alegi să facem direct Retreatul Terapeutic: căsuțe modulare pe piloni + cabinete pentru sesiunile tale de psihoterapie și coaching printre pomi.', 'Ruta A: Retreat Terapeutic & Agroturism')">
+                            <h3 style="font-size: 13px; color: #0f766e;"><i class="fa-solid fa-spa"></i> Varianta A</h3>
+                            <strong style="font-size: 13px; display: block; margin-top: 5px; color: #0f172a;">Retreat Terapeutic direct (Căsuțe + Cabinete)</strong>
                         </div>
                         <div id="btnVarB" class="stat-box" style="border: 1px dashed #cbd5e1; cursor: pointer; background: white;" 
-                             onclick="selecteazaRutaFinantare('B', '70.000 €', '100% (Zero Cofinanțare)', 'Bani primiți integral pe criteriul de Tânăr Fermier (38 ani) pentru utilaje, modernizare livezi și picurare. Infrastructura de cabinete se dezvoltă ca Pasul 2.', 'Ruta B: Instalare Tânăr Fermier (Axa DR-30)')">
-                            <h3 style="font-size: 14px; color: #b45309;"><i class="fa-solid fa-apple-whole"></i> Varianta B</h3>
-                            <strong style="font-size: 14px; display: block; margin-top: 5px; color: #0f172a;">Tânăr Fermier (Dezvoltare Bază Pomicolă DR-30)</strong>
+                             onclick="selecteazaRutaFinantare('B', '70.000 €', '100% GRATIS', 'Alegi să iei mai întâi cei 70.000€ curați ca Tânăr Fermier pentru modernizarea livezilor și utilaje. Căsuțele le facem imediat ca Pasul 2.', 'Ruta B: Instalare Tânăr Fermier')">
+                            <h3 style="font-size: 13px; color: #b45309;"><i class="fa-solid fa-apple-whole"></i> Varianta B</h3>
+                            <strong style="font-size: 13px; display: block; margin-top: 5px; color: #0f172a;">Tânăr Fermier sub 40 ani (Bani rapizi livezi)</strong>
                         </div>
                     </div>
 
-                    <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 20px; border-radius: 12px; width: 100%; text-align: center;">
-                        <p id="descVarianta" style="font-size: 13px; color: #475569; margin-bottom: 15px; min-height: 40px; line-height: 1.5;">
-                            Finanțare mixtă: construcție căsuțe modulare + săli de psihoterapie și cabinete de coaching integrate direct în structura livezilor active. Necesită cofinanțare mică.
+                    <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 15px; border-radius: 12px; width: 100%;">
+                        <p id="descVarianta" style="font-size: 13px; color: #475569; text-align: center; margin-bottom: 10px; min-height: 40px;">
+                            Alegi să facem direct Retreatul Terapeutic: căsuțe modulare pe piloni + cabinete pentru sesiunile tale de psihoterapie și coaching printre pomi.
                         </p>
                         <div class="stats-container">
-                            <div class="stat-box" style="background: white; padding: 12px;">
-                                <div style="font-size: 11px; color: #64748b;">Grant Estimativ</div>
-                                <div id="valGrant" class="stat-value" style="font-size: 22px;">50.000€ - 100.000€</div>
+                            <div class="stat-box" style="background: white; padding: 10px;">
+                                <div style="font-size: 11px; color: #64748b;">Fonduri Europene</div>
+                                <div id="valGrant" class="stat-value" style="font-size: 20px;">50.000€ - 100.000€</div>
                             </div>
-                            <div class="stat-box" style="background: white; padding: 12px;">
-                                <div style="font-size: 11px; color: #64748b;">Intensitate Sprijin</div>
-                                <div id="valIntensitate" class="stat-value" style="font-size: 22px; color: #b45309;">85% - 90%</div>
+                            <div class="stat-box" style="background: white; padding: 10px;">
+                                <div style="font-size: 11px; color: #64748b;">Banii Tăi (Cofinanțare)</div>
+                                <div id="valIntensitate" class="stat-value" style="font-size: 20px; color: #b45309;">Doar 10% - 15%</div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- SLIDE 5: ONORARII DAKAMIGOS -->
-            <div class="slide" id="s5">
+            <!-- SLIDE 6: ONORARIU ȘI START PROIECT -->
+            <div class="slide" id="s6">
                 <div class="slide-header">
-                    <span class="logo-consultant"><i class="fa-solid fa-handshake"></i> Etape Lucru DAKAMIGOS</span>
-                    <span class="client-tag">Management de Proiect</span>
+                    <span class="logo-consultant"><i class="fa-solid fa-handshake"></i> Colaborare Sigură</span>
+                    <span class="client-tag">Etape Următoare</span>
                 </div>
                 <div class="slide-body">
-                    <div class="grid-2">
+                    <div class="grid-2" style="width: 100%;">
                         <div class="column-left">
-                            <h2 class="slide-title">Servicii Complete de Arhitectură și Scriere</h2>
-                            <p>Firma noastră preia întreaga presiune birocratică, securizând încărcarea dosarului în platformele oficiale:</p>
+                            <h2 class="slide-title">Cum pornim la drum cu succes?</h2>
+                            <p style="font-size: 14px; line-height: 1.5; margin-bottom: 10px;">Serviciul nostru DAKAMIGOS acoperă totul la cheie:</p>
                             <ul class="custom-list">
-                                <li>
-                                    <i class="fa-solid fa-stamp"></i>
-                                    <div>
-                                        <strong>Faza I - Înființare și Mapare:</strong> Calculul dimensiunii economice a livezilor (hectare/SO), deschidere SRL pomicol/servicii și consultanță urbanism primărie.
-                                    </div>
-                                </li>
-                                <li>
-                                    <i class="fa-solid fa-feather-pointed"></i>
-                                    <div>
-                                        <strong>Faza II - Redactare Plan de Afaceri:</strong> Modelarea fluxului financiar pentru cabinetele de psihoterapie/coaching și modulele pe piloni.
-                                    </div>
-                                </li>
+                                <li><i class="fa-solid fa-check"></i><div>Înființăm noul SRL pomicol/terapeutic curat.</div></li>
+                                <li><i class="fa-solid fa-check"></i><div>Calculăm dimensiunea livezilor și facem actele de urbanism.</div></li>
+                                <li><i class="fa-solid fa-check"></i><div>Scriem planul de afaceri și depunem dosarul în aplicația de granturi.</div></li>
                             </ul>
                         </div>
                         <div class="column-right">
-                            <div class="stat-box" style="border-color: #0f766e;">
-                                <div class="stat-value" style="font-size: 22px;">Etapizat Corect</div>
-                                <div style="font-size: 12px; font-weight: 600; color: #0f172a; margin: 5px 0;">Onorariu Fix Avans + Succes</div>
-                                <p style="font-size: 11px; color: #64748b;">Comisionul majorat de succes se achită exclusiv la aprobarea proiectului, fiind parțial decontat din fonduri.</p>
+                            <div class="stat-box" style="border-color: #0f766e; background: #f0fdfa;">
+                                <div class="stat-value" style="font-size: 24px;">Fără Riscuri</div>
+                                <div style="font-size: 12px; font-weight: 600; margin: 5px 0;">Avans fix mic + Comision Succes</div>
+                                <p style="font-size: 11px; color: #64748b;">Plata principală se face doar când proiectul tău este aprobat de comisie.</p>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SLIDE 6: URMATORII PASI -->
-            <div class="slide" id="s6">
-                <div class="slide-header">
-                    <span class="logo-consultant"><i class="fa-solid fa-hourglass-start"></i> Decizie Operativă</span>
-                    <span class="client-tag">Plan Lucru</span>
-                </div>
-                <div class="slide-body">
-                    <div style="text-align: center; width: 100%;">
-                        <h2 style="font-size: 24px; color: #0f172a; margin-bottom: 10px;">Lansarea Evaluării de Oportunitate</h2>
-                        <p style="color: #64748b; max-width: 600px; margin: 0 auto 25px auto; font-size: 14px;">Pentru a lansa faza de analiză pomicolă-terapeutică, confirmă opțiunea ta selectată utilizând butonul securizat de mai jos.</p>
-                        <div style="background: #f1f5f9; padding: 15px; border-radius: 8px; display: inline-block; font-weight: 700; color: #0f766e;">
-                            Pasul următor: O scurtă analiză a extraselor de carte funciară pentru cele două livezi din județul Arad.
                         </div>
                     </div>
                 </div>
@@ -578,10 +553,10 @@
 
         </div>
 
-        <!-- FOOTER INTEGRAT -->
+        <!-- FOOTER INTEGRAT PENTRU CONTROL SLIDER -->
         <div class="presentation-footer">
             <div id="lockNotice" class="locked-notice">
-                <i class="fa-solid fa-lock"></i> Parcurgeți mini-chestionarul pentru deblocarea analizei livezilor
+                <i class="fa-solid fa-lock"></i> Parcurgeți mini-chestionarul de la pasul 4 pentru a debloca restul paginilor
             </div>
             
             <div class="nav-buttons" id="navBlock" style="display: none; gap: 10px; align-items: center;">
@@ -595,20 +570,20 @@
 
     </div>
 
-    <!-- CLOSING BAR PREMIUM ACTUAlIZATĂ CU NUMĂRUL TĂU REAL -->
+    <!-- CLOSING BAR DIRECT CĂTRE WHATSAPP-UL TĂU REPARAT: 0749229686 -->
     <div class="sticky-closing-bar" id="closingBar">
         <div class="closing-text">
             <i class="fa-solid fa-circle-check" style="color: #10b981; margin-right: 6px;"></i> 
-            Opțiune configurată pentru Măderat / Căsoaia
+            Configurație activă pentru livezile din Arad
         </div>
-        <a id="waLink" href="https://wa.me/40749229686?text=Bun%C4%83%20ziua%2C%20am%20parcurs%20analiza%20DAKAMIGOS%20pentru%20livezi%20%C8%99i%20retreat.%20Sunt%20Nicoleta.%20Am%20selectat%20din%20simulator%20Ruta%20A%3A%20Centru%20Terapeutic%20%C8%99i%20Agroturism%20(GAL%2FAFIR).%20Cum%20stabilim%20urm%C4%83torii%20pa%C8%99i%3F" 
+        <a id="waLink" href="https://wa.me/40749229686?text=Bun%C4%83%20ziua%2C%20am%20parcurs%20analiza%20simplificat%C4%83%20pentru%20livezi%20%C8%99i%20retreat.%20Sunt%20Nicoleta.%20Am%20selectat%20din%20simulator%20Ruta%20A%3A%20Retreat%20Terapeutic%20%C8%99i%20Agroturism.%20Cum%20stabilim%20urm%C4%83torii%20pa%C8%99i%3F" 
            class="btn-whatsapp-close" 
            target="_blank">
-            <i class="fa-brands fa-whatsapp" style="font-size: 16px;"></i> Trimite opțiunea pe WhatsApp
+            <i class="fa-brands fa-whatsapp" style="font-size: 16px;"></i> Trimite opțiunea mea pe WhatsApp
         </a>
     </div>
 
-    <!-- SCRIPT DE CONTROL SYNC -->
+    <!-- ENGINE CODE CORE SCRIPT -->
     <script>
         let currentQuizStep = 1;
         const totalQuizSteps = 3;
@@ -622,9 +597,7 @@
             let isChecked = false;
             
             currentInputs.forEach(input => {
-                if (input.checked) {
-                    isChecked = true;
-                }
+                if (input.checked) { isChecked = true; }
             });
 
             if (isChecked) {
@@ -637,9 +610,7 @@
         }
 
         document.querySelectorAll('.quiz-option input').forEach(input => {
-            input.addEventListener('change', () => {
-                checkStepValidation();
-            });
+            input.addEventListener('change', () => { checkStepValidation(); });
         });
 
         quizNextBtn.addEventListener('click', () => {
@@ -653,7 +624,7 @@
                 checkStepValidation();
                 
                 if (currentQuizStep === totalQuizSteps) {
-                    quizNextBtn.innerText = "Finalizează analiza preliminară";
+                    quizNextBtn.innerText = "Finalizează verificarea";
                 }
             } else {
                 quizBlock.style.display = 'none';
@@ -700,8 +671,8 @@
             }
         }
 
-        // GENERATOR DINAMIC CU HISTORICUL ADĂUGAT DE PSIHOTERAPIE ȘI COACHING
-        function selecteazaRutaFinantare(tip, grant, intensitate, descriere, textWhatsApp) {
+        // FUNCȚIE LIVE CARE SINCRO_NIZEAZĂ DECIZIA EI CU LINKUL TĂU REAL DE WHATSAPP
+        function selecteazaRutaFinantare(tip, grant, cofinantare, descriere, textWhatsApp) {
             document.getElementById('btnVarA').style.border = "1px dashed #cbd5e1";
             document.getElementById('btnVarA').style.background = "white";
             document.getElementById('btnVarB').style.border = "1px dashed #cbd5e1";
@@ -717,11 +688,11 @@
 
             document.getElementById('descVarianta').innerText = descriere;
             document.getElementById('valGrant').innerText = grant;
-            document.getElementById('valIntensitate').innerText = intensitate;
+            document.getElementById('valIntensitate').innerText = cofinantare;
 
-            // Legătură directă securizată pe numărul tău fix: 0749229686
+            // Numărul tău propriu este bătut în cuie aici securizat: 0749229686
             const baseUrl = "https://wa.me/40749229686?text=";
-            const mesajIncodat = encodeURIComponent(`Bună ziua, am parcurs analiza DAKAMIGOS pentru livezi și retreat terapeutic. Sunt Nicoleta. Am selectat din simulator ${textWhatsApp}. Cum stabilim următorii pași pentru cabinete și module?`);
+            const mesajIncodat = encodeURIComponent(`Bună ziua, am parcurs analiza simplificată pentru livezi și retreat. Sunt Nicoleta. Am selectat din simulator ${textWhatsApp}. Cum stabilim următorii pași pentru cabinete și module?`);
             document.getElementById('waLink').href = baseUrl + mesajIncodat;
         }
 
