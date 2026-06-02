@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Strategie Finantare Fast-Food Rural - DAKAMIGOS MARKT</title>
+    <title>Strategie Finanțare Fast-Food Rural - DAKAMIGOS MARKT</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
@@ -23,6 +23,7 @@
             align-items: center;
             min-height: 100vh;
             padding: 10px;
+            padding-bottom: 120px;
         }
 
         h1, h2, h3, h4 {
@@ -150,10 +151,6 @@
             display: block;
         }
 
-        .quiz-step.active {
-            display: block;
-        }
-
         .quiz-question {
             font-size: 16px;
             font-weight: 600;
@@ -180,7 +177,7 @@
             gap: 10px;
         }
 
-        .quiz-option hover {
+        .quiz-option:hover {
             border-color: #0f766e;
             background: #f0fdfa;
         }
@@ -297,7 +294,7 @@
             font-size: 12px;
         }
 
-        .btn-nav hover:not(:disabled) {
+        .btn-nav:hover:not(:disabled) {
             background-color: #0f766e;
             color: #ffffff;
             border-color: #0f766e;
@@ -334,11 +331,29 @@
             cursor: pointer;
         }
 
+        /* CLOSING BAR PREMIUM FOR WHATSAPP */
+        .sticky-closing-bar {
+            position: fixed; bottom: 0; left: 0; width: 100%;
+            background-color: #0f172a; border-top: 2px solid #d97706;
+            padding: 15px 30px; display: none; justify-content: space-between;
+            align-items: center; z-index: 100; box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
+        }
+        .sticky-closing-bar.visible { display: flex; }
+        .closing-text { color: #ffffff; font-size: 14px; font-weight: 600; }
+        .btn-whatsapp-close {
+            background-color: #25d366; color: white; text-decoration: none;
+            padding: 10px 20px; border-radius: 6px; font-weight: 700; font-size: 13px;
+            text-transform: uppercase; display: flex; align-items: center; gap: 8px;
+            transition: background 0.2s;
+        }
+        .btn-whatsapp-close:hover { background-color: #128c7e; }
+
         @media (max-width: 768px) {
             .presentation-deck { height: auto; max-height: none; }
             .slide { position: relative; display: none; height: auto; padding: 20px; }
             .slide.active { display: flex; }
             .grid-2, .grid-3, .stats-container { grid-template-columns: 1fr; flex-direction: column; }
+            .sticky-closing-bar { flex-direction: column; gap: 12px; text-align: center; }
         }
     </style>
 </head>
@@ -348,40 +363,40 @@
         
         <div class="slides-container">
 
-            <!-- SLIDE 1: CHESTIONAR VALIDARE LOGICĂ APLICAȚIE -->
+            <!-- SLIDE 1: Chestionar Calificare -->
             <div class="slide active" id="s1">
                 <div class="slide-header">
-                    <span class="logo-consultant"><i class="fa-solid fa-briefcase"></i> DAKAMIGOS MARKT SRL — Sistem Central</span>
-                    <span class="client-tag">Ana-Maria Roșcăneanu / Oneaga</span>
+                    <span class="logo-consultant"><i class="fa-solid fa-briefcase"></i> DAKAMIGOS MARKT / Soluții Europene</span>
+                    <span class="client-tag">Ana-Maria Roșcăneanu / Botoșani</span>
                 </div>
                 <div class="slide-body">
                     <div id="quizBlock" class="quiz-container">
                         <div style="text-align: center; margin-bottom: 20px;">
                             <h2 style="font-size: 20px; color: #0f172a;">Calificare Finanțare Fast-Food Rural: 50.000 €</h2>
-                            <p style="font-size: 13px; color: #64748b;">Corectăm eroarea mecanică din aplicație și verificăm eligibilitatea premisă.</p>
+                            <p style="font-size: 13px; color: #64748b;">Corectăm limitele tehnice din aplicații și mapăm punctele de lucru active.</p>
                         </div>
 
                         <div class="quiz-step active" id="qStep1">
-                            <p class="quiz-question">1. Sunteți de acord cu înființarea gratuită a unui SRL curat în mediul rural (Botoșani) pentru depunerea dosarului?</p>
+                            <p class="quiz-question">1. Sunteți de acord cu înființarea unui SRL curat în mediul rural (Botoșani) pentru depunerea dosarului?</p>
                             <div class="quiz-options">
                                 <label class="quiz-option"><input type="radio" name="q1" value="yes"> Da, accept deschiderea firmei (criteriu obligatoriu, aplicantul actual este persoană fizică)</label>
-                                <label class="quiz-option"><input type="radio" name="q1" value="no"> Nu, doresc finanțare strict pe persoană fizică (neeligibil)</label>
+                                <label class="quiz-option"><input type="radio" name="q1" value="no"> Nu, doresc finanțare exclusiv pe persoană fizică neautorizată (neeligibil)</label>
                             </div>
                         </div>
 
                         <div class="quiz-step" id="qStep2">
-                            <p class="quiz-question">2. Istoricul de creditare personal al asociaților este curat (fără raportări active în Biroul de Credit)?</p>
+                            <p class="quiz-question">2. Pentru o viteză maximă de aprobare și eliminarea birocrației, acceptați varianta unui Food Truck mobil complet carosat?</p>
                             <div class="quiz-options">
-                                <label class="quiz-option"><input type="radio" name="q2" value="yes"> Da, istoric curat (permite accesarea cofinanțării flexibile)</label>
-                                <label class="quiz-option"><input type="radio" name="q2" value="no"> Există incidente bancare majore raportate în prezent</label>
+                                <label class="quiz-option"><input type="radio" name="q2" value="yes"> Da, prefer modul mobil (elimină necesitatea CU și a Autorizației de Construire)</label>
+                                <label class="quiz-option"><input type="radio" name="q2" value="no"> Nu, insist pe o clădire fixă (necesită recompartimentări și avize complexe)</label>
                             </div>
                         </div>
 
                         <div class="quiz-step" id="qStep3">
-                            <p class="quiz-question">3. Pentru o aprobare rapidă și zero birocrație la construcții, acceptați varianta unui Food Truck complet utilat digital?</p>
+                            <p class="quiz-question">3. Înțelegeți că cei 6.000 lei din aplicație vor reprezenta doar avansul structural pentru înființare și acte, restul de fonduri fiind europene?</p>
                             <div class="quiz-options">
-                                <label class="quiz-option"><input type="radio" name="q3" value="yes"> Da, prefer modul mobil (elimină necesitatea CU și a Autorizației de Construire)</label>
-                                <label class="quiz-option"><input type="radio" name="q3" value="no"> Nu, insist pe construcție fixă de la zero (necesită avize complexe)</label>
+                                <label class="quiz-option"><input type="radio" name="q3" value="yes"> Da, înțeleg că sistemul platformei a pus o sumă minimă implicită și vizăm un grant mare.</label>
+                                <label class="quiz-option"><input type="radio" name="q3" value="no"> Nu, doream ca 6.000 lei să fie valoarea totală brută a afacerii.</label>
                             </div>
                         </div>
 
@@ -391,161 +406,156 @@
                     </div>
 
                     <div id="quizSuccessBlock" style="display: none; text-align: center; width: 100%;">
-                        <div style="font-size: 50px; color: #10b981; margin-bottom: 15px;"><i class="fa-solid fa-square-poll-vertical"></i></div>
-                        <h2>Profil Micro-Întreprindere Validat</h2>
-                        <p style="color: #64748b; margin-bottom: 20px;">Suma de 6.000 lei a fost recalibrată ca taxă structurală și capital de pornire pentru axa de business.</p>
-                        <button onclick="startPresentation()" style="background: #0f766e; color: white; border: none; padding: 12px 25px; border-radius: 6px; font-weight: 600; cursor: pointer;">Deschide Rezumatul Ghidului Oficial</button>
+                        <div style="font-size: 50px; color: #0f766e; margin-bottom: 15px;"><i class="fa-solid fa-store"></i></div>
+                        <h2>Profil Fast-Food Rural Validat</h2>
+                        <p style="color: #64748b; margin-bottom: 20px;">Localitatea Oneaga (Botoșani) face parte din spațiul rural prioritar pentru diversificare economică non-agricolă.</p>
+                        <button onclick="startPresentation()" style="background: #0f766e; color: white; border: none; padding: 12px 25px; border-radius: 6px; font-weight: 600; cursor: pointer;">Deschide Ghidul de Finanțare Personalizat</button>
                     </div>
                 </div>
             </div>
 
-            <!-- SLIDE 2: CRITERII REALE GHID -->
+            <!-- SLIDE 2: Reguli Ghid -->
             <div class="slide" id="s2">
                 <div class="slide-header">
-                    <span class="logo-consultant"><i class="fa-solid fa-file-invoice"></i> Ghid Finanțare Rurală non-Agricolă</span>
-                    <span class="client-tag">Criterii Obligatorii</span>
+                    <span class="logo-consultant"><i class="fa-solid fa-book"></i> Ghidul Solicitantului</span>
+                    <span class="client-tag">Criterii de Bază</span>
                 </div>
                 <div class="slide-body">
                     <div class="grid-2">
                         <div class="column-left">
-                            <h2 class="slide-title">Reguli și Condiții Eliminatorii Solicitant</h2>
-                            <p>Programele curente sprijină dezvoltarea alimentației publice în regiuni rurale cu potențial mare de proximitate precum satul Oneaga:</p>
+                            <h2 class="slide-title">Condiții Obligatorii Sector Alimentație</h2>
+                            <p>Pentru a accesa schemele rurale nerambursabile (AFIR / Ghiduri Naționale), noul SRL trebuie să îndeplinească următoarele criterii operative:</p>
                             <ul class="custom-list">
                                 <li>
                                     <i class="fa-solid fa-map-pin"></i>
                                     <div>
-                                        <strong>Amplasare Proiect:</strong> Sediul social și punctul de lucru (Food Truck) trebuie localizate obligatoriu în mediul rural (Comuna Cristești, Botoșani).
+                                        <strong>Localizare Punct de Lucru:</strong> Sediul și spațiul de preparare rapidă trebuie înregistrate obligatoriu în spațiul rural (Comuna Cristești, Botoșani).
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-signature"></i>
+                                    <div>
+                                        <strong>Cod CAEN Eligibil:</strong> Autorizarea codului CAEN 5610 (Restaurante și alte activități de servire a mâncării) la locul de implementare.
                                     </div>
                                 </li>
                                 <li>
                                     <i class="fa-solid fa-users"></i>
                                     <div>
-                                        <strong>Creare Locuri de Muncă:</strong> Obligația de a angaja și menține **minimum 1-2 persoane** cu normă întreagă din comunitatea locală.
-                                    </div>
-                                </li>
-                                <li>
-                                    <i class="fa-solid fa-utensils"></i>
-                                    <div>
-                                        <strong>Conformitate Sanitară:</strong> Structura achiziționată trebuie să respecte standardele de flux asincron impuse de DSVSA și DSP.
+                                        <strong>Locuri de Muncă:</strong> Obligația de a angaja minimum 1-2 persoane din comunitate cu normă întreagă după finalizarea achizițiilor.
                                     </div>
                                 </li>
                             </ul>
                         </div>
                         <div class="column-right" style="text-align: center;">
-                            <i class="fa-solid fa-store" style="font-size: 70px; color: #0f766e;"></i>
-                            <p style="font-size: 11px; color: #64748b; margin-top: 10px;">Diversificarea non-agricolă în Botoșani primește punctaj maxim la departajarea europeană.</p>
+                            <i class="fa-solid fa-utensils" style="font-size: 70px; color: #0f766e;"></i>
+                            <p style="font-size: 11px; color: #64748b; margin-top: 10px;">Sectorul alimentației publice de proximitate are punctaj maxim în ariile rurale Nord-Est.</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- SLIDE 3: DISTRIBUTIE CHELTUIELI -->
+            <!-- SLIDE 3: Cheltuieli Permise -->
             <div class="slide" id="s3">
                 <div class="slide-header">
-                    <span class="logo-consultant"><i class="fa-solid fa-list-check"></i> Structură Alocare Buget</span>
-                    <span class="client-tag">Cheltuieli Permise</span>
+                    <span class="logo-consultant"><i class="fa-solid fa-list-check"></i> Management Buget</span>
+                    <span class="client-tag">Cheltuieli Decontate</span>
                 </div>
                 <div class="slide-body">
                     <div style="width: 100%;">
-                        <h2 class="slide-title" style="margin-bottom: 12px;">Cum impune Ghidul distribuția celor 50.000 €?</h2>
+                        <h2 class="slide-title" style="margin-bottom: 12px;">Ce echipamente puteți achiziționa din fonduri europene?</h2>
                         <div class="grid-3">
                             <div class="card-tile">
-                                <div class="tile-icon"><i class="fa-solid fa-truck-field"></i></div>
-                                <h3>Food Truck / Modul (Min 60%)</h3>
-                                <p style="font-size: 12px; color: #64748b;">Unitate mobilă complet carosată, echipată cu linii calde profesionale, hote de extracție și suprafețe din inox.</p>
+                                <div class="tile-icon"><i class="fa-solid fa-truck-monster"></i></div>
+                                <h3>Food Truck / Echipamente</h3>
+                                <p style="font-size: 12px; color: #64748b;">Structură mobilă complet carosată, dotată cu plite profesionale, friteuze, hote de extracție și suprafețe din inox.</p>
                             </div>
                             <div class="card-tile">
                                 <div class="tile-icon"><i class="fa-solid fa-cash-register"></i></div>
-                                <h3>Digitalizare (Obligatoriu)</h3>
-                                <p style="font-size: 12px; color: #64748b;">Sisteme POS de marcat, soft gestiune stocuri alimente, aplicație preluare comenzi online și rețea locală.</p>
+                                <h3>Digitalizare Soft</h3>
+                                <p style="font-size: 12px; color: #64748b;">Sisteme POS de marcat moderne, soft de gestiune stocuri ingrediente și aplicație dedicată pentru preluare comenzi rapide.</p>
                             </div>
                             <div class="card-tile">
-                                <div class="tile-icon"><i class="fa-solid fa-solar-panel"></i></div>
-                                <h3>Eficiență Verde (Obligatoriu)</h3>
-                                <p style="font-size: 12px; color: #64748b;">Sisteme de refrigerare cu consum redus clasa energetică înaltă, iluminat LED și opțiune panouri fotovoltaice.</p>
+                                <div class="tile-icon"><i class="fa-solid fa-leaf"></i></div>
+                                <h3>Tranziție Eco-Verde</h3>
+                                <p style="font-size: 12px; color: #64748b;">Echipamente frigorifice cu consum redus (clasa energetică înaltă), iluminat LED și opțiuni de panouri solare.</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- SLIDE 4: INGINERIE FINANCIARĂ -->
+            <!-- SLIDE 4: Mecanism Financiar -->
             <div class="slide" id="s4">
                 <div class="slide-header">
-                    <span class="logo-consultant"><i class="fa-solid fa-scale-balanced"></i> Inginerie Financiară</span>
-                    <span class="client-tag">Mecanismul de Calibrare</span>
+                    <span class="logo-consultant"><i class="fa-solid fa-coins"></i> Valori Fonduri</span>
+                    <span class="client-tag">Alocări Financiare Realiste</span>
                 </div>
                 <div class="slide-body">
                     <div style="width: 100%; text-align: center;">
-                        <h2 style="margin-bottom: 15px; color: #0f172a;">Structura Planului de Finanțare pentru Proiect</h2>
+                        <h2 style="margin-bottom: 15px; color: #0f172a;">Recalibrarea Bugetului de la 6.000 lei la Sumele Reale Europene</h2>
                         <p style="max-width: 750px; margin: 0 auto 20px auto; font-size: 14px; line-height: 1.5; color: #475569;">
-                            Aplicația a limitat din rațiuni tehnice introducerea bugetelor mari. Prin redistribuirea celor 6.000 lei ca fond inițial de lucru, deblocăm pachetul complet structural de 50.000 EUR.
+                            Suma de 6.000 lei introdusă forțat de limitele platformei reprezintă capitalul ideal de pornire pentru taxe. Structura reală a grantului european oferă bugete substanțiale:
                         </p>
                         <div class="stats-container">
                             <div class="stat-box">
-                                <div style="font-weight: 700; color: #0f766e; font-size: 15px;">Grant Public Public (90%)</div>
-                                <div class="stat-value" style="margin: 8px 0; color: #0f766e;">45.000 €</div>
-                                <p style="font-size: 11px; color: #64748b;">Finanțare europeană/națională nerambursabilă directă alocată la aprobarea dosarului.</p>
-                            </div>
-                            <div class="stat-box">
-                                <div style="font-weight: 700; color: #b45309; font-size: 15px;">Cofinanțare Micro-Punte (10%)</div>
-                                <div class="stat-value" style="margin: 8px 0; color: #b45309;">5.000 €</div>
-                                <p style="font-size: 11px; color: #64748b;">Aport acoperit prin linie dedicată, garantat direct cu structura Food Truck-ului achiziționat.</p>
+                                <div style="font-weight: 700; color: #0f766e; font-size: 15px;">Axa Startup / Diversificare Rurală</div>
+                                <div class="stat-value" style="margin: 8px 0; color: #0f766e;">40.000 € - 50.000 €</div>
+                                <p style="font-size: 11px; color: #64748b;">Rată de finanțare nerambursabilă de până la 90%, avansul cerut de 10% fiind acoperit strategic în planul de afaceri.</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- SLIDE 5: ONORARII FIRMĂ -->
+            <!-- SLIDE 5: Servicii si Onorarii -->
             <div class="slide" id="s5">
                 <div class="slide-header">
-                    <span class="logo-consultant"><i class="fa-solid fa-coins"></i> Structură Contractuală</span>
-                    <span class="client-tag">Onorarii Colaborare</span>
+                    <span class="logo-consultant"><i class="fa-solid fa-file-invoice-dollar"></i> Pași Implementare</span>
+                    <span class="client-tag">Costuri Consultanță</span>
                 </div>
                 <div class="slide-body">
                     <div class="grid-2">
                         <div class="column-left">
-                            <h2 class="slide-title">Eșalonare Taxă Scriere Dosar</h2>
-                            <p>Onorariul acoperă scrierea planului de afaceri, înființarea SRL-ului în Botoșani, modelarea bugetelor și încărcarea documentelor pe platforma electronică:</p>
+                            <h2 class="slide-title">Structura Serviciilor Noastre</h2>
+                            <p>Preluăm întreaga complexitate birocratică pentru a livra un dosar digital impecabil:</p>
                             <ul class="custom-list">
                                 <li>
-                                    <i class="fa-solid fa-file-signature"></i>
+                                    <i class="fa-solid fa-bolt"></i>
                                     <div>
-                                        <strong>Tranșa 1 (500 EUR) - Avans Contract:</strong> Demararea procedurilor juridice de rezervare nume firmă, cod CAEN 5610 și configurare arhitectură bucătărie mobilă.
+                                        <strong>Faza 1 - Design Juridic:</strong> Rezervare nume, înființare SRL în Botoșani și maparea fluxului de autorizare DSVSA / DSP pentru bucătării mobile.
                                     </div>
                                 </li>
                                 <li>
-                                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                                    <i class="fa-solid fa-paste"></i>
                                     <div>
-                                        <strong>Tranșa 2 (500 EUR) - Transmitere Sistem:</strong> Se achită în momentul în care dosarul este încărcat complet și semnat digital pentru depunere.
+                                        <strong>Faza 2 - Plan de Afaceri:</strong> Modelarea arhitecturii financiare a proiectului și încărcarea documentelor în sistemele electronice de depunere.
                                     </div>
                                 </li>
                             </ul>
                         </div>
                         <div class="column-right">
                             <div class="stat-box" style="border-color: #0f766e;">
-                                <div class="stat-value" style="font-size: 24px;">1.000 EUR</div>
-                                <div style="font-size: 12px; font-weight: 600; color: #0f172a; margin: 5px 0;">Total Onorariu Fix Scriere</div>
-                                <p style="font-size: 11px; color: #64748b;">Comisionul major de succes se achită exclusiv la aprobare, fiind rambursat integral din banii europeni ai proiectului.</p>
+                                <div class="stat-value" style="font-size: 22px;">Onorariu Etapizat</div>
+                                <div style="font-size: 12px; font-weight: 600; color: #0f172a; margin: 5px 0;">Transparență Totală / Succes Garantat</div>
+                                <p style="font-size: 11px; color: #64748b;">Percepem un avans minim fix la demararea dosarului, restul onorariului fiind de tip comision de succes, achitat exclusiv după aprobare.</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- SLIDE 6: PROCEDURĂ LANSARE -->
+            <!-- SLIDE 6: Planificare si Call To Action -->
             <div class="slide" id="s6">
                 <div class="slide-header">
-                    <span class="logo-consultant"><i class="fa-solid fa-square-check"></i> Procedură Lansare</span>
-                    <span class="client-tag">Plan Lucru</span>
+                    <span class="logo-consultant"><i class="fa-solid fa-calendar-days"></i> Lansare Proiect</span>
+                    <span class="client-tag">Următorul Pas Strategic</span>
                 </div>
                 <div class="slide-body">
                     <div style="text-align: center; width: 100%;">
-                        <h2 style="font-size: 24px; color: #0f172a; margin-bottom: 10px;">Demararea Dosarului Fast-Food</h2>
-                        <p style="color: #64748b; max-width: 600px; margin: 0 auto 25px auto; font-size: 14px;">Pentru a prinde sesiunea de depunere activă din Regiunea Nord-Est, lansăm faza de proiectare juridică imediat după confirmare.</p>
-                        <div style="background: #f1f5f9; padding: 15px; border-radius: 8px; display: inline-block; font-weight: 700; color: #0f766e;">
-                            Următorul pas operativ: Inițierea discuției pentru stabilirea denumirii noului SRL rural.
+                        <h2 style="font-size: 24px; color: #0f172a; margin-bottom: 10px;">Demararea Proiectului Fast-Food în Oneaga</h2>
+                        <p style="color: #64748b; max-width: 600px; margin: 0 auto 25px auto; font-size: 14px;">Pentru a prinde deschiderile de axe curente din Regiunea Nord-Est, este esențial să confirmăm intenția tehnică a structurii noului SRL rural.</p>
+                        <div style="background: #f8fafc; border: 1px solid #ccfbf1; padding: 15px; border-radius: 8px; display: inline-block; font-weight: 700; color: #0f766e;">
+                            Pasul tehnic următor: Apăsați pe declanșatorul de mai jos pentru a transmite opțiunea dumneavoastră direct către consultantul lider.
                         </div>
                     </div>
                 </div>
@@ -553,10 +563,10 @@
 
         </div>
 
-        <!-- FOOTER COȘ / STATUS NAVIGARE INTERACTIVĂ -->
+        <!-- FOOTER NAVIGARE -->
         <div class="presentation-footer">
             <div id="lockNotice" class="locked-notice">
-                <i class="fa-solid fa-lock"></i> Parcurgeți chestionarul tehnic pentru deblocarea strategiei
+                <i class="fa-solid fa-lock"></i> Parcurgeți mini-chestionarul pentru a vizualiza strategia fast-food rurale
             </div>
             
             <div class="nav-buttons" id="navBlock" style="display: none; gap: 10px; align-items: center;">
@@ -570,7 +580,19 @@
 
     </div>
 
-    <!-- CODE SCRIPT LOGIC DEPOZITAT INTEGRAL -->
+    <!-- CLOSING BAR DINAMICĂ ADAPTATĂ PE NUMĂRUL TĂU REAL: 0749229686 -->
+    <div class="sticky-closing-bar" id="closingBar">
+        <div class="closing-text">
+            <i class="fa-solid fa-circle-check" style="color: #25d366; margin-right: 6px;"></i> 
+            Rezultate stocate pentru Oneaga (Botoșani)
+        </div>
+        <a id="waLink" href="https://wa.me/40749229686?text=Bun%C4%83%20ziua%2C%20am%20parcurs%20analiza%20fast-food%20DAKAMIGOS.%20Sunt%20Ana-Maria%20Ro%C8%99c%C4%83neanu.%20Cum%20stabilim%20urm%C4%83torii%20pa%C8%99i%20pentru%20dosar%3F" 
+           class="btn-whatsapp-close" 
+           target="_blank">
+            <i class="fa-brands fa-whatsapp" style="font-size: 16px;"></i> Trimite rezultatul pe WhatsApp
+        </a>
+    </div>
+
     <script>
         let currentQuizStep = 1;
         const totalQuizSteps = 3;
@@ -615,7 +637,7 @@
                 checkStepValidation();
                 
                 if (currentQuizStep === totalQuizSteps) {
-                    quizNextBtn.innerText = "Finalizează analiza";
+                    quizNextBtn.innerText = "Finalizează evaluarea";
                 }
             } else {
                 quizBlock.style.display = 'none';
@@ -632,12 +654,25 @@
         const counter = document.getElementById('counter');
         const navBlock = document.getElementById('navBlock');
         const lockNotice = document.getElementById('lockNotice');
+        const closingBar = document.getElementById('closingBar');
 
         function startPresentation() {
             isUnlocked = true;
             quizSuccessBlock.style.display = 'none';
             lockNotice.style.display = 'none';
             navBlock.style.display = 'flex';
+            closingBar.classList.add('visible');
+            
+            // COMPILATOR DINAMIC AL REZULTATELOR DIN CHESTIONAR
+            let q1Value = document.querySelector('input[name="q1"]:checked')?.value || 'no';
+            let q2Value = document.querySelector('input[name="q2"]:checked')?.value || 'no';
+            
+            let statusFirma = q1Value === 'yes' ? 'Înființare SRL Rural Botoșani' : 'Fără firmă activă';
+            let statusStructura = q2Value === 'yes' ? 'Food Truck Mobil' : 'Locație Fixă Clădire';
+            
+            const baseUrl = "https://wa.me/40749229686?text=";
+            const mesajIncodat = encodeURIComponent(`Bună ziua, am parcurs analiza fast-food DAKAMIGOS. Profil SRL: ${statusFirma}, Opțiune: ${statusStructura}. Sunt Ana-Maria Roșcăneanu din Oneaga. Cum procedăm pentru dosarul de grant european?`);
+            document.getElementById('waLink').href = baseUrl + mesajIncodat;
             
             changeSlide(1);
         }
