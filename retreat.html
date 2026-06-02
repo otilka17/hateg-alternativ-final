@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategie Finanțare Retreat Rural - Simandan Nicoleta</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* DESIGN SYSTEM & RESET */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            background-color: #0f172a;
+            color: #334155;
+            font-family: 'Open Sans', sans-serif;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 10px;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: #0f766e;
+        }
+
+        .presentation-deck {
+            width: 100%;
+            max-width: 1080px;
+            height: 85vh;
+            min-height: 540px;
+            max-height: 660px;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slides-container {
+            flex-grow: 1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform: translateX(20px);
+            padding: 35px 45px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 1;
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+            z-index: 2;
+        }
+
+        /* HEADER SLIDE */
+        .slide-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .slide-header .logo-consultant {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #d97706;
+        }
+
+        .slide-header .client-tag {
+            font-size: 11px;
+            background: #f0fdfa;
+            color: #0f766e;
+            padding: 3px 10px;
+            border-radius: 9999px;
+            font-weight: 600;
+            border: 1px solid #ccfbf1;
+        }
+
+        .slide-title {
+            font-size: 24px;
+            color: #0f172a;
+            position: relative;
+            padding-left: 12px;
+            margin-bottom: 10px;
+        }
+
+        .slide-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 15%;
+            height: 70%;
+            width: 4px;
+            background-color: #0f766e;
+            border-radius: 2px;
+        }
+
+        .slide-body {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-y: auto;
+            padding: 5px 0;
+        }
+
+        /* CHESTIONAR INTERACTIV */
+        .quiz-container {
+            width: 100%;
+            max-width: 700px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 25px;
+        }
+
+        .quiz-step {
+            display: none;
+        }
+
+        .quiz-step.active {
+            display: block;
+        }
+
+        .quiz-question {
+            font-size: 16px;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 15px;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .quiz-option {
+            background: white;
+            border: 1px solid #cbd5e1;
+            padding: 12px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quiz-option:hover {
+            border-color: #0f766e;
+            background: #f0fdfa;
+        }
+
+        .quiz-option input {
+            cursor: pointer;
+        }
+
+        /* GRIDS & LAYOUTS */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 30px;
+            width: 100%;
+            align-items: center;
+        }
+
+        .custom-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .custom-list li {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            font-size: 14px;
+        }
+
+        .custom-list li i {
+            color: #0f766e;
+            background: #e6f4f1;
+            padding: 6px;
+            border-radius: 6px;
+            flex-shrink: 0;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            width: 100%;
+        }
+
+        .card-tile {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .card-tile .tile-icon {
+            font-size: 20px;
+            color: #0f766e;
+            background: #e6f4f1;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+        }
+
+        /* VALORI FINANCIARE */
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            gap: 20px;
+        }
+
+        .stat-box {
+            text-align: center;
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px dashed #cbd5e1;
+            flex: 1;
+        }
+
+        .stat-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: #0f766e;
+        }
+
+        /* FOOTER & NAVIGARE */
+        .presentation-footer {
+            background-color: #f8fafc;
+            border-top: 1px solid #e2e8f0;
+            padding: 10px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .btn-nav {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            color: #334155;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .btn-nav:hover:not(:disabled) {
+            background-color: #0f766e;
+            color: #ffffff;
+            border-color: #0f766e;
+        }
+
+        .btn-nav:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .locked-notice {
+            font-size: 13px;
+            color: #ef4444;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-quiz-next {
+            background: #cbd5e1;
+            color: #64748b;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: not-allowed;
+            transition: all 0.2s;
+        }
+
+        .btn-quiz-next.enabled {
+            background: #0f766e;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* CLOSING BAR PREMIUM FOR WHATSAPP */
+        .sticky-closing-bar {
+            position: fixed; bottom: 0; left: 0; width: 100%;
+            background-color: #0f172a; border-top: 2px solid #d97706;
+            padding: 15px 30px; display: none; justify-content: space-between;
+            align-items: center; z-index: 100; box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
+        }
+        .sticky-closing-bar.visible { display: flex; }
+        .closing-text { color: #ffffff; font-size: 14px; font-weight: 600; }
+        .btn-whatsapp-close {
+            background-color: #25d366; color: white; text-decoration: none;
+            padding: 10px 20px; border-radius: 6px; font-weight: 700; font-size: 13px;
+            text-transform: uppercase; display: flex; align-items: center; gap: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .presentation-deck { height: auto; max-height: none; }
+            .slide { position: relative; display: none; height: auto; padding: 20px; }
+            .slide.active { display: flex; }
+            .grid-2, .grid-3, .stats-container { grid-template-columns: 1fr; flex-direction: column; }
+            .sticky-closing-bar { flex-direction: column; gap: 12px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="presentation-deck">
+        
+        <div class="slides-container">
+
+            <!-- SLIDE 1: QUIZ INTELIGENT ADAPTAT -->
+            <div class="slide active" id="s1">
+                <div class="slide-header">
+                    <span class="logo-consultant"><i class="fa-solid fa-briefcase"></i> DAKAMIGOS MARKT / Soluții Europene</span>
+                    <span class="client-tag">Simandan Nicoleta / Arad</span>
+                </div>
+                <div class="slide-body">
+                    <div id="quizBlock" class="quiz-container">
+                        <div style="text-align: center; margin-bottom: 20px;">
+                            <h2 style="font-size: 20px; color: #0f172a;">Calificare Finanțare Agroturism & Livezi: 70.000 €</h2>
+                            <p style="font-size: 13px; color: #64748b;">Corectăm limitele aplicației și mapăm activele agricole existente.</p>
+                        </div>
+
+                        <div class="quiz-step active" id="qStep1">
+                            <p class="quiz-question">1. Dețineți în Registrul Agricol cele două livezi (Măderat / Căsoaia) pe numele dumneavoastră?</p>
+                            <div class="quiz-options">
+                                <label class="quiz-option"><input type="radio" name="q1" value="yes"> Da, livezile sunt în proprietate/folosință (asigură punctaj maxim instant)</label>
+                                <label class="quiz-option"><input type="radio" name="q1" value="no"> Nu, terenurile nu au destinație de livadă pomicolă în acte</label>
+                            </div>
+                        </div>
+
+                        <div class="quiz-step" id="qStep2">
+                            <p class="quiz-question">2. Având 38 de ani, sunteți de acord să înființăm o firmă cu profil de „Tânăr Fermier” pentru finanțare 100% nerambursabilă?</p>
+                            <div class="quiz-options">
+                                <label class="quiz-option"><input type="radio" name="q2" value="yes"> Da, accept structura de SRL/ÎI (vârsta de sub 40 de ani deschide axa DR-30)</label>
+                                <label class="quiz-option"><input type="radio" name="q2" value="no"> Nu, insist să aplic ca persoană fizică neautorizată (neeligibil)</label>
+                            </div>
+                        </div>
+
+                        <div class="quiz-step" id="qStep3">
+                            <p class="quiz-question">3. Acceptați ca suma inițială de 15.000 lei să fie utilizată exclusiv ca avans pentru înființare, PUZ și urbanism?</p>
+                            <div class="quiz-options">
+                                <label class="quiz-option"><input type="radio" name="q3" value="yes"> Da, înțeleg că aplicația a pus o sumă implicită și că bugetul real adus este european</label>
+                                <label class="quiz-option"><input type="radio" name="q3" value="no"> Nu, doresc ca 15.000 lei să fie bugetul total al întregii afaceri</label>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 25px; display: flex; justify-content: flex-end;">
+                            <button id="quizNextBtn" class="btn-quiz-next" disabled>Următorul pas</button>
+                        </div>
+                    </div>
+
+                    <div id="quizSuccessBlock" style="display: none; text-align: center; width: 100%;">
+                        <div style="font-size: 50px; color: #10b981; margin-bottom: 15px;"><i class="fa-solid fa-spa"></i></div>
+                        <h2>Profil Agroturistic Validat</h2>
+                        <p style="color: #64748b; margin-bottom: 20px;">Vârsta (38 ani) și cele 2 livezi active deblochează axa europeană pentru Micro-Ferme de Top.</p>
+                        <button onclick="startPresentation()" style="background: #0f766e; color: white; border: none; padding: 12px 25px; border-radius: 6px; font-weight: 600; cursor: pointer;">Deschide Rezumatul Strategiei Ghidului</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 2: CONDITII EXPLICATE LIVEZI -->
+            <div class="slide" id="s2">
+                <div class="slide-header">
+                    <span class="logo-consultant"><i class="fa-solid fa-map-location-dot"></i> Integrare Livezi Active</span>
+                    <span class="client-tag">Strategie Exploatație</span>
+                </div>
+                <div class="slide-body">
+                    <div class="grid-2">
+                        <div class="column-left">
+                            <h2 class="slide-title">Reguli Obligatorii de Agroturism Pomicol</h2>
+                            <p>Livezile din Măderat și Căsoaia constituie baza economică (exprimată în SO) obligatorie pentru obținerea banilor europeni:</p>
+                            <ul class="custom-list">
+                                <li>
+                                    <i class="fa-solid fa-apple-whole"></i>
+                                    <div>
+                                        <strong>Integrare Proiect:</strong> Pensiunea/Retreatul va fi legat direct de livezi. Turiștii vor participa la cules, degustări și ateliere de sucuri artizanale.
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-baby"></i>
+                                    <div>
+                                        <strong>Avantaj Vârstă (38 ani):</strong> Încadrarea la pragul de „Tânăr Fermier” aduce punctaj de departajare masiv în fața comisiilor AFIR.
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-file-shield"></i>
+                                    <div>
+                                        <strong>Procedură Urbanism (PUZ):</strong> Pentru amplasarea de căsuțe modulare pe piloni, terenul aferent va fi trecut în intravilan prin PUZ cu sprijinul primăriei.
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="column-right" style="text-align: center;">
+                            <i class="fa-solid fa-wheat-awn" style="font-size: 70px; color: #0f766e;"></i>
+                            <p style="font-size: 11px; color: #64748b; margin-top: 10px;">Fuziunea dintre agricultură pomicolă existentă și turismul de retreat garantează succesul dosarului.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 3: DISTRIBUTIE FONDURI -->
+            <div class="slide" id="s3">
+                <div class="slide-header">
+                    <span class="logo-consultant"><i class="fa-solid fa-campground"></i> Arhitectură Retreat</span>
+                    <span class="client-tag">Cheltuieli Permise</span>
+                </div>
+                <div class="slide-body">
+                    <div style="width: 100%;">
+                        <h2 class="slide-title" style="margin-bottom: 12px;">Cum distribuim bugetul european în livezile din Arad?</h2>
+                        <div class="grid-3">
+                            <div class="card-tile">
+                                <div class="tile-icon"><i class="fa-solid fa-house-chimney-window"></i></div>
+                                <h3>Căsuțe Modulare Piloni</h3>
+                                <p style="font-size: 12px; color: #64748b;">Achiziția și montarea de structuri modulare premium eco-friendly, amplasate strategic pe piloni printre pomii fructiferi.</p>
+                            </div>
+                            <div class="card-tile">
+                                <div class="tile-icon"><i class="fa-solid fa-mortar-pestle"></i></div>
+                                <h3>Procesare & Ateliere</h3>
+                                <p style="font-size: 12px; color: #64748b;">Echipamente mini-linie pentru procesarea fructelor din livadă și dotarea zonei de consiliere/retreat terapeutic.</p>
+                            </div>
+                            <div class="card-tile">
+                                <div class="tile-icon"><i class="fa-solid fa-bolt"></i></div>
+                                <h3>Sistem Verde Independent</h3>
+                                <p style="font-size: 12px; color: #64748b;">Sisteme fotovoltaice dedicate, pompe de căldură și management ecologic al resurselor de apă din extravilan.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 4: INGINERIE FINANCIARĂ CORECTATĂ -->
+            <div class="slide" id="s4">
+                <div class="slide-header">
+                    <span class="logo-consultant"><i class="fa-solid fa-calculator"></i> Inginerie Financiară</span>
+                    <span class="client-tag">Reconfigurare Aplicație</span>
+                </div>
+                <div class="slide-body">
+                    <div style="width: 100%; text-align: center;">
+                        <h2 style="margin-bottom: 15px; color: #0f172a;">Plan Structural Real de Finanțare Pomicolă-Turism</h2>
+                        <p style="max-width: 750px; margin: 0 auto 20px auto; font-size: 14px; line-height: 1.5; color: #475569;">
+                            Suma de 15.000 lei generată de platformă acoperă exclusiv taxele inițiale de rezervare, deschidere firmă și avize primărie. Bugetul capital de investiție este asigurat prin axele AFIR / GAL:
+                        </p>
+                        <div class="stats-container">
+                            <div class="stat-box">
+                                <div style="font-weight: 700; color: #0f766e; font-size: 15px;">Grant Tânăr Fermier (DR-30)</div>
+                                <div class="stat-value" style="margin: 8px 0; color: #0f766e;">70.000 €</div>
+                                <p style="font-size: 11px; color: #64748b;"><b>100% bani nerambursabili</b>, fără cofinanțare proprie. Se acordă pe baza celor două livezi active.</p>
+                            </div>
+                            <div class="stat-box">
+                                <div style="font-weight: 700; color: #b45309; font-size: 15px;">Grant Agroturism Integrat</div>
+                                <div class="stat-value" style="margin: 8px 0; color: #b45309;">50.000€ - 100.000€</div>
+                                <p style="font-size: 11px; color: #64748b;">Intensitate de sprijin de 85-90% pentru structuri de primire turistică la sate.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 5: ONORARII DAKAMIGOS -->
+            <div class="slide" id="s5">
+                <div class="slide-header">
+                    <span class="logo-consultant"><i class="fa-solid fa-handshake"></i> Etape Lucru DAKAMIGOS</span>
+                    <span class="client-tag">Management de Proiect</span>
+                </div>
+                <div class="slide-body">
+                    <div class="grid-2">
+                        <div class="column-left">
+                            <h2 class="slide-title">Servicii Complete de Arhitectură și Scriere</h2>
+                            <p>Firma noastră preia întreaga presiune birocratică, securizând încărcarea dosarului în platformele oficiale:</p>
+                            <ul class="custom-list">
+                                <li>
+                                    <i class="fa-solid fa-stamp"></i>
+                                    <div>
+                                        <strong>Faza I - Înființare și Mapare:</strong> Calculul dimensiunii economice a livezilor (hectare/SO), deschidere SRL pomicol și consultanță urbanism primărie.
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="fa-solid fa-feather-pointed"></i>
+                                    <div>
+                                        <strong>Faza II - Redactare Plan de Afaceri:</strong> Modelarea fluxului financiar pentru căsuțele pe piloni și încărcarea documentației complete.
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="column-right">
+                            <div class="stat-box" style="border-color: #0f766e;">
+                                <div class="stat-value" style="font-size: 22px;">Etapizat Corect</div>
+                                <div style="font-size: 12px; font-weight: 600; color: #0f172a; margin: 5px 0;">Onorariu Fix Avans + Succes</div>
+                                <p style="font-size: 11px; color: #64748b;">Comisionul majorat de succes se achită exclusiv la aprobarea proiectului, fiind parțial decontat din fonduri.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 6: URMATORII PASI -->
+            <div class="slide" id="s6">
+                <div class="slide-header">
+                    <span class="logo-consultant"><i class="fa-solid fa-hourglass-start"></i> Decizie Operativă</span>
+                    <span class="client-tag">Plan Lucru</span>
+                </div>
+                <div class="slide-body">
+                    <div style="text-align: center; width: 100%;">
+                        <h2 style="font-size: 24px; color: #0f172a; margin-bottom: 10px;">Lansarea Evaluării de Oportunitate</h2>
+                        <p style="color: #64748b; max-width: 600px; margin: 0 auto 25px auto; font-size: 14px;">Pentru a stabili care axă (Tânăr Fermier sau Agroturism GAL) aduce cel mai rapid capitalul pentru modulele pe piloni, demarăm diagnoza actelor.</p>
+                        <div style="background: #f1f5f9; padding: 15px; border-radius: 8px; display: inline-block; font-weight: 700; color: #0f766e;">
+                            Pasul următor: O scurtă analiză a extraselor de carte funciară pentru cele două livezi din județul Arad.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- FOOTER INTEGRAT -->
+        <div class="presentation-footer">
+            <div id="lockNotice" class="locked-notice">
+                <i class="fa-solid fa-lock"></i> Parcurgeți mini-chestionarul pentru deblocarea analizei livezilor
+            </div>
+            
+            <div class="nav-buttons" id="navBlock" style="display: none; gap: 10px; align-items: center;">
+                <button class="btn-nav" id="prevBtn" disabled><i class="fa-solid fa-chevron-left"></i></button>
+                <div style="font-size: 13px; font-weight: 600; min-width: 50px; text-align: center;" id="counter">1 / 6</div>
+                <button class="btn-nav" id="nextBtn"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+            
+            <div style="font-size: 11px; color: #64748b; font-weight: 600;">DAKAMIGOS MARKT SRL © 2026</div>
+        </div>
+
+    </div>
+
+    <!-- CLOSING BAR PENTRU WHATSAPP CONVERSION -->
+    <div class="sticky-closing-bar" id="closingBar">
+        <div class="closing-text">
+            <i class="fa-solid fa-circle-check" style="color: #10b981; margin-right: 6px;"></i> 
+            Strategie deblocată pentru livezile din Măderat / Căsoaia
+        </div>
+        <a href="https://wa.me/40728882239?text=Bună%20ziua,%20am%20parcurs%20analiza%20DAKAMIGOS%20pentru%20livezi%20și%20retreat.%20Sunt%20Nicoleta.%20Cum%20stabilim%20detaliile?" 
+           class="btn-whatsapp-close" 
+           target="_blank">
+            <i class="fa-brands fa-whatsapp" style="font-size: 16px;"></i> Discutăm pe WhatsApp
+        </a>
+    </div>
+
+    <!-- SCRIPT DE CONTROL NATIV -->
+    <script>
+        let currentQuizStep = 1;
+        const totalQuizSteps = 3;
+        
+        const quizNextBtn = document.getElementById('quizNextBtn');
+        const quizBlock = document.getElementById('quizBlock');
+        const quizSuccessBlock = document.getElementById('quizSuccessBlock');
+        
+        function checkStepValidation() {
+            const currentInputs = document.querySelectorAll(`#qStep${currentQuizStep} input[type="radio"]`);
+            let isChecked = false;
+            
+            currentInputs.forEach(input => {
+                if (input.checked) {
+                    isChecked = true;
+                }
+            });
+
+            if (isChecked) {
+                quizNextBtn.disabled = false;
+                quizNextBtn.classList.add('enabled');
+            } else {
+                quizNextBtn.disabled = true;
+                quizNextBtn.classList.remove('enabled');
+            }
+        }
+
+        document.querySelectorAll('.quiz-option input').forEach(input => {
+            input.addEventListener('change', () => {
+                checkStepValidation();
+            });
+        });
+
+        quizNextBtn.addEventListener('click', () => {
+            if (quizNextBtn.disabled) return;
+
+            if (currentQuizStep < totalQuizSteps) {
+                document.getElementById(`qStep${currentQuizStep}`).classList.remove('active');
+                currentQuizStep++;
+                document.getElementById(`qStep${currentQuizStep}`).classList.add('active');
+                
+                checkStepValidation();
+                
+                if (currentQuizStep === totalQuizSteps) {
+                    quizNextBtn.innerText = "Finalizează analiza preliminară";
+                }
+            } else {
+                quizBlock.style.display = 'none';
+                quizSuccessBlock.style.display = 'block';
+            }
+        });
+
+        let currentSlide = 1;
+        const totalSlides = 6;
+        let isUnlocked = false;
+
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const counter = document.getElementById('counter');
+        const navBlock = document.getElementById('navBlock');
+        const lockNotice = document.getElementById('lockNotice');
+        const closingBar = document.getElementById('closingBar');
+
+        function startPresentation() {
+            isUnlocked = true;
+            quizSuccessBlock.style.display = 'none';
+            lockNotice.style.display = 'none';
+            navBlock.style.display = 'flex';
+            closingBar.classList.add('visible');
+            
+            changeSlide(1);
+        }
+
+        prevBtn.addEventListener('click', () => changeSlide(-1));
+        nextBtn.addEventListener('click', () => changeSlide(1));
+
+        function changeSlide(direction) {
+            if (!isUnlocked) return;
+            
+            let nextActive = currentSlide + direction;
+            if (nextActive >= 1 && nextActive <= totalSlides) {
+                document.getElementById(`s${currentSlide}`).classList.remove('active');
+                document.getElementById(`s${nextActive}`).classList.add('active');
+                currentSlide = nextActive;
+
+                counter.innerText = `${currentSlide} / ${totalSlides}`;
+                prevBtn.disabled = currentSlide === 1;
+                nextBtn.disabled = currentSlide === totalSlides;
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (!isUnlocked) return;
+            if (e.key === 'ArrowRight') changeSlide(1);
+            if (e.key === 'ArrowLeft') changeSlide(-1);
+        });
+    </script>
+</body>
+</html>
