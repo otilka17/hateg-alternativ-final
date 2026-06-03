@@ -36,7 +36,7 @@
             width: 100%;
             max-width: 1080px;
             height: 85vh;
-            min-height: 560px;
+            min-height: 580px;
             max-height: 680px;
             background: #ffffff;
             border-radius: 16px;
@@ -251,7 +251,7 @@
             color: #0f766e;
         }
 
-        /* REPARARE ABSOLUTĂ BUTON URMĂTORUL PAS */
+        /* BUTON URMATORUL PAS */
         .btn-quiz-next {
             width: 100%;
             background-color: #cbd5e1;
@@ -266,9 +266,6 @@
             transition: all 0.2s ease;
             display: block;
             text-align: center;
-            box-shadow: none;
-            appearance: none;
-            -webkit-appearance: none;
         }
 
         .btn-quiz-next.enabled {
@@ -312,13 +309,16 @@
 
         .quiz-lock-notice {
             font-size: 13px;
-            color: #ef4444;
+            color: #d97706;
             font-weight: 600;
-            display: none;
+            display: flex;
             align-items: center;
             gap: 6px;
         }
-        .quiz-lock-notice.visible { display: flex; }
+        
+        .quiz-lock-notice.unlocked {
+            color: #10b981;
+        }
 
         /* CLOSING BAR PREMIUM FOR WHATSAPP */
         .sticky-closing-bar {
@@ -362,6 +362,9 @@
                         <p style="color: #475569; font-size: 15px; line-height: 1.6;">
                             Domnule Dumitrache, aveți un proiect cu un <b>grad ridicat de maturitate</b> în Comuna Cocorăștii Colț. 
                             Hai să analizăm tehnic modul în care transformăm Autorizația actuală și componenta verde într-o finanțare europeană de succes!
+                        </p>
+                        <p style="color: #0f766e; font-weight: 600; margin-top: 15px; font-size: 14px;">
+                            <i class="fa-solid fa-circle-arrow-right"></i> Folosiți butoanele de navigare de mai jos pentru a parcurge prezentarea.
                         </p>
                     </div>
                 </div>
@@ -429,7 +432,7 @@
                                 <td>Poate oferi procente similare, dar pe bugete limitate.</td>
                             </tr>
                             <tr>
-                                <td><b>Plafona Maxima</b></td>
+                                <td><b>Plafoane Maxime</b></td>
                                 <td>Valori superioare pentru construcții de anvergură.</td>
                                 <td>Plafoane de obicei reduse (ex: 50k€ - 200k€).</td>
                             </tr>
@@ -453,14 +456,14 @@
                     <div id="quizBlock" class="quiz-container">
                         <div style="text-align: center; margin-bottom: 20px;">
                             <h2 style="font-size: 18px; color: #0f172a;">Mini-Chestionar de Validare a Profilului</h2>
-                            <p style="font-size: 12px; color: #64748b;">Confirmați detaliile de structură juridică pentru calibrarea bugetului final.</p>
+                            <p style="font-size: 12px; color: #64748b;">Confirmați detaliile de structură juridică pentru deblocarea simulării financiare.</p>
                         </div>
 
                         <div class="quiz-step active" id="qStep1">
                             <p class="quiz-question">1. Modificarea de temă cu arhitectul va fi gata din punct de vedere urbanistic înainte de lansarea apelului ales?</p>
                             <div class="quiz-options">
                                 <label class="quiz-option"><input type="radio" name="q1" value="yes"> Da, arhitectul poate corela documentația la timp comercial</label>
-                                <label class="quiz-option"><input type="radio" name="q1" value="no"> Nu, procesul de modificare va dura mai mult de 6 luni</label>
+                                <label class="quiz-option"><input type="radio" name="q1" value="no"> Nu, procesul de modificare va dura mai mult de 6流入</label>
                             </div>
                         </div>
 
@@ -489,10 +492,191 @@
                     <div id="quizSuccessBlock" style="display: none; text-align: center; width: 100%;">
                         <div style="font-size: 45px; color: #10b981; margin-bottom: 10px;"><i class="fa-solid fa-square-check"></i></div>
                         <h2>Parametri Validați cu Succes!</h2>
-                        <p style="color: #64748b; margin-bottom: 15px; font-size: 14px;">Datele tehnice preliminare confirmă oportunitatea depunerii. Accesați simularea de structură financiară.</p>
-                        <button onclick="startPresentation()" style="background: #0f766e; color: white; border: none; padding: 12px 25px; border-radius: 6px; font-weight: 600; cursor: pointer;">Vezi Configurația Financiară</button>
+                        <p style="color: #64748b; margin-bottom: 15px; font-size: 14px;">Datele tehnice preliminare confirmă oportunitatea depunerii. Faceți clic pe butonul de mai jos pentru a debloca restul prezentării.</p>
+                        <button onclick="unlockNextSlides()" style="background: #0f766e; color: white; border: none; padding: 12px 25px; border-radius: 6px; font-weight: 600; cursor: pointer; font-family: 'Open Sans', sans-serif;">Deblochează Configurația Financiară</button>
                     </div>
                 </div>
             </div>
 
-            <!-- SLIDE 5: SIMULATORUL FINAL -
+            <!-- SLIDE 5: SIMULATORUL FINAL -->
+            <div class="slide" id="s5">
+                <div class="slide-header">
+                    <span class="logo-consultant"><i class="fa-solid fa-coins"></i> Structură Bugetară</span>
+                    <span class="client-tag">Simulare Indicatori</span>
+                </div>
+                <div class="slide-body">
+                    <div style="width: 100%; text-align: center;">
+                        <h2 style="margin-bottom: 15px; color: #0f172a;">Configurația Estimativă a Investiției în Turism Rural</h2>
+                        <p style="max-width: 750px; margin: 0 auto 20px auto; font-size: 14px; line-height: 1.5; color: #475569;">
+                            Integrarea dotărilor verzi (panouri, pompă de căldură) direct în devizul general crește eligibilitatea pe ambele canale potențiale de finanțare.
+                        </p>
+                        <div class="stats-container">
+                            <div class="stat-box" style="border-color: #0f766e;">
+                                <div style="font-weight: 700; color: #0f766e; font-size: 14px;">Scenariul Pensiune (AFIR Național)</div>
+                                <div class="stat-value" style="margin: 8px 0;">Până la 65%</div>
+                                <p style="font-size: 11px; color: #64748b;">Rată maximă de cofinanțare nerambursabilă din valoarea totală a cheltuielilor eligibile.</p>
+                            </div>
+                            <div class="stat-box" style="border-color: #d97706;">
+                                <div style="font-weight: 700; color: #d97706; font-size: 14px;">Vârstă Solicitant (Punctaj)</div>
+                                <div class="stat-value" style="margin: 8px 0; color: #d97706;">38 Ani</div>
+                                <p style="font-size: 11px; color: #64748b;">Asigură poziționarea în categoria prioritară a tinerilor antreprenori (sub 40 de ani).</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 6: URMATORII PASI -->
+            <div class="slide" id="s6">
+                <div class="slide-header">
+                    <span class="logo-consultant"><i class="fa-solid fa-calendar-days"></i> Lansare Calendar</span>
+                    <span class="client-tag">Planificare</span>
+                </div>
+                <div class="slide-body">
+                    <div style="text-align: center; width: 100%;">
+                        <h2 style="font-size: 22px; color: #0f172a; margin-bottom: 10px;">Pașii Următori pentru Stabilirea Colaborării</h2>
+                        <p style="color: #64748b; max-width: 650px; margin: 0 auto 20px auto; font-size: 14px;">
+                            Pentru a elabora analiza de eligibilitate detaliată pe ghidurile specifice GAL Ogoarele Vlăsiei și liniile naționale AFIR, vom programa o scurtă analiză a certificatului de urbanism actual.
+                        </p>
+                        <div style="background: #f1f5f9; padding: 15px; border-radius: 8px; display: inline-block; font-weight: 700; color: #0f766e; font-size: 13px;">
+                            Următorul pas: Scurtă discuție telefonică de aliniere tehnică privind forma juridică de depunere.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- FOOTER NAVIGARE -->
+        <div class="presentation-footer">
+            <div id="lockNotice" class="quiz-lock-notice">
+                <i class="fa-solid fa-circle-info"></i> Parcurgeți slide-urile. Slide-ul 5 și 6 necesită validarea mini-chestionarului de la Slide 4.
+            </div>
+            
+            <div class="nav-buttons" id="navBlock" style="display: flex; gap: 10px; align-items: center;">
+                <button class="btn-nav" id="prevBtn" disabled><i class="fa-solid fa-chevron-left"></i></button>
+                <div style="font-size: 13px; font-weight: 600; min-width: 50px; text-align: center;" id="counter">1 / 6</div>
+                <button class="btn-nav" id="nextBtn"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+            
+            <div style="font-size: 11px; color: #64748b; font-weight: 600;">DAKAMIGOS MARKT © 2026</div>
+        </div>
+
+    </div>
+
+    <!-- CLOSING BAR PREMIUM FOR WHATSAPP ACTUALIZAT -->
+    <div id="closingBar" class="sticky-closing-bar">
+        <div class="closing-text">Ați parcurs propunerea de strategie? Trimiteți rezumatul înapoi către consultant!</div>
+        <a href="https://api.whatsapp.com/send?phone=40749229866&text=Buna%20ziua!%20Am%20parcurs%20prezentarea%20si%20va%20trimit%20rezumatul%20strategiei%20pentru%20proiectul%20din%20Satul%20Piatra%3A%0A%0A%F0%9F%93%8D%201.%20Puncte%20forte%3A%20Teren%202600%20mp%20adiacent%20padurii%2C%20deschidere%2070%20m.%20Scor%20maxim%20pe%20componenta%20verde%20(fotovoltaice%2C%20pompa%20de%20caldura).%0A%0A%F0%9F%93%88%202.%20Canale%20finantare%3A%20Analiza%20intre%20Linia%20Nationala%20AFIR%20(DR-24%2C%20pana%20la%2065%25%20nerambursabil)%20si%20Sesiunea%20Locala%20GAL%20Ogoarele%20Vlasiei.%0A%0A%F0%9F%91%A4%203.%20Profil%3A%20Varsta%20de%2038%20de%20ani%20asigura%20punctaj%20prioritar%20ca%20Tanar%20Antreprenor.%20Se%20recomanda%20infiintarea%20unui%20Start-up%20SRL.%0A%0A%F0%9F%92%BC%204.%20Structura%3A%20Agreat%20sistemul%20mixt%20standard%20(Avans%20scriere%20%2B%20Success%20fee).%0A%0A%F0%9F%93%85%20Urmatorul%20pas%3A%20Stabilirea%20unei%20discutii%20telefonice%20pentru%20analiza%20certificatului%20de%20urbanism%20actual." 
+           class="btn-whatsapp-close" 
+           target="_blank">
+            <i class="fa-brands fa-whatsapp" style="font-size: 16px;"></i> Trimite Rezumatul
+        </a>
+    </div>
+
+    <script>
+        let currentSlide = 1;
+        const totalSlides = 6;
+        let isQuizCompleted = false;
+
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const counter = document.getElementById('counter');
+        const lockNotice = document.getElementById('lockNotice');
+        const closingBar = document.getElementById('closingBar');
+
+        // NAVIGATION LOGIC
+        prevBtn.addEventListener('click', () => changeSlide(-1));
+        nextBtn.addEventListener('click', () => changeSlide(1));
+
+        function changeSlide(direction) {
+            let nextActive = currentSlide + direction;
+            
+            // If trying to go to slide 5 or 6 without completing the quiz on slide 4, block it
+            if (nextActive > 4 && !isQuizCompleted) {
+                alert("Vă rugăm să finalizați mini-chestionarul de la Slide-ul 4 pentru a debloca analiza financiară!");
+                return;
+            }
+
+            if (nextActive >= 1 && nextActive <= totalSlides) {
+                document.getElementById(`s${currentSlide}`).classList.remove('active');
+                document.getElementById(`s${nextActive}`).classList.add('active');
+                currentSlide = nextActive;
+
+                counter.innerText = `${currentSlide} / ${totalSlides}`;
+                prevBtn.disabled = currentSlide === 1;
+                
+                // Disable next button if on slide 4 and quiz not completed
+                if (currentSlide === 4 && !isQuizCompleted) {
+                    nextBtn.disabled = true;
+                } else {
+                    nextBtn.disabled = currentSlide === totalSlides;
+                }
+
+                // Sticky footer bar on the last slide
+                if (currentSlide === totalSlides) {
+                    closingBar.classList.add('visible');
+                } else {
+                    closingBar.classList.remove('visible');
+                }
+            }
+        }
+
+        // QUIZ LOGIC
+        let currentQuizStep = 1;
+        const totalQuizSteps = 3;
+        const quizNextBtn = document.getElementById('quizNextBtn');
+        const quizBlock = document.getElementById('quizBlock');
+        const quizSuccessBlock = document.getElementById('quizSuccessBlock');
+
+        function checkStepValidation() {
+            const currentInputs = document.querySelectorAll(`#qStep${currentQuizStep} input[type="radio"]`);
+            let isChecked = false;
+            currentInputs.forEach(input => { if (input.checked) isChecked = true; });
+
+            if (isChecked) {
+                quizNextBtn.disabled = false;
+                quizNextBtn.classList.add('enabled');
+            } else {
+                quizNextBtn.disabled = true;
+                quizNextBtn.classList.remove('enabled');
+            }
+        }
+
+        document.querySelectorAll('.quiz-option input').forEach(input => {
+            input.addEventListener('change', checkStepValidation);
+        });
+
+        quizNextBtn.addEventListener('click', () => {
+            if (quizNextBtn.disabled) return;
+
+            if (currentQuizStep < totalQuizSteps) {
+                document.getElementById(`qStep${currentQuizStep}`).classList.remove('active');
+                currentQuizStep++;
+                document.getElementById(`qStep${currentQuizStep}`).classList.add('active');
+                checkStepValidation();
+                if (currentQuizStep === totalQuizSteps) {
+                    quizNextBtn.innerText = "Finalizează verificarea";
+                }
+            } else {
+                quizBlock.style.display = 'none';
+                quizSuccessBlock.style.display = 'block';
+            }
+        });
+
+        function unlockNextSlides() {
+            isQuizCompleted = true;
+            quizSuccessBlock.style.display = 'none';
+            lockNotice.innerHTML = '<i class="fa-solid fa-square-check"></i> Chestionar validat! Secțiunile financiare sunt acum complet accesibile.';
+            lockNotice.classList.add('unlocked');
+            nextBtn.disabled = false;
+            changeSlide(1);
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' && !nextBtn.disabled) changeSlide(1);
+            if (e.key === 'ArrowLeft' && !prevBtn.disabled) changeSlide(-1);
+        });
+    </script>
+</body>
+</html>
