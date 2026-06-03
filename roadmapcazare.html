@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PM Roadmap: Proiect Satul Piatra</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-main: #0f172a;
+            --surface: #1e293b;
+            --surface-light: #334155;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --coral-accent: #ff7f50;
+            --teal-accent: #0d9488;
+            --success: #10b981;
+            --danger: #ef4444;
+            --border: #334155;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1000px;
+            width: 100%;
+            background: var(--surface);
+            padding: 24px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 35px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
+        }
+
+        header h1 {
+            font-family: 'Comfortaa', cursive;
+            font-size: 1.8em;
+            color: var(--text-main);
+            margin-bottom: 6px;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 0.95em;
+        }
+
+        .section-title {
+            font-family: 'Comfortaa', cursive;
+            font-size: 1.25em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--text-main);
+        }
+
+        .section-title i {
+            color: var(--coral-accent);
+        }
+
+        /* --- 1. VISUAL PIPELINE (ROADMAP STYLE) --- */
+        .pipeline {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .pipe-step {
+            background: var(--surface-light);
+            border: 1px solid var(--border);
+            padding: 16px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            position: relative;
+        }
+
+        .pipe-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,127,80,0.15);
+            color: var(--coral-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            flex-shrink: 0;
+        }
+
+        .pipe-info h4 {
+            font-size: 1em;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .pipe-info p {
+            font-size: 0.85em;
+            color: var(--text-muted);
+        }
+
+        .pipe-status {
+            margin-left: auto;
+            font-size: 0.8em;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+
+        .status-passed { background: rgba(16,185,129,0.15); color: var(--success); }
+        .status-blocked { background: rgba(239,68,68,0.15); color: var(--danger); }
+
+        /* --- 2. INTERACTIVE ARCHITECTURE SELECTOR --- */
+        .tab-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .tab-btn {
+            background: var(--surface-light);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 14px;
+            font-weight: 600;
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.2s ease;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        .tab-btn.active {
+            background: var(--coral-accent);
+            color: var(--text-main);
+            border-color: var(--coral-accent);
+            box-shadow: 0 4px 15px rgba(255,127,80,0.25);
+        }
+
+        .route-card {
+            background: #1e293b;
+            border: 2px solid var(--border);
+            border-radius: 14px;
+            padding: 20px;
+            display: none;
+        }
+
+        .route-card.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .route-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px dashed var(--border);
+            padding-bottom: 12px;
+            margin-bottom: 16px;
+        }
+
+        .route-title {
+            font-size: 1.15em;
+            font-weight: 700;
+        }
+
+        .intensity-badge {
+            background: rgba(13,148,136,0.15);
+            color: var(--teal-accent);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.85em;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .metric-item {
+            background: var(--surface-light);
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 0.9em;
+        }
+
+        .metric-item strong {
+            color: var(--text-muted);
+            display: block;
+            font-size: 0.8em;
+            text-transform: uppercase;
+            margin-bottom: 2px;
+        }
+
+        .bug-box {
+            background: rgba(239,68,68,0.06);
+            border-left: 4px solid var(--danger);
+            padding: 12px;
+            border-radius: 4px 8px 8px 4px;
+            font-size: 0.9em;
+        }
+
+        .bug-box strong {
+            color: var(--danger);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 4px;
+        }
+
+        /* --- 3. QA RISK MATRIX --- */
+        .matrix-box {
+            background: var(--surface-light);
+            border: 1px solid var(--border);
+            padding: 18px;
+            border-radius: 14px;
+            margin-top: 35px;
+        }
+
+        .matrix-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.9em;
+        }
+
+        .matrix-row:last-child { border: none; }
+        .matrix-row span { color: var(--text-muted); }
+        .matrix-row strong { color: var(--text-main); font-weight: 600; }
+
+        .btn-action {
+            background: linear-gradient(135deg, #0d9488 0%, #0f766e 100%);
+            color: white;
+            border: none;
+            padding: 16px;
+            font-size: 1em;
+            font-weight: 600;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100%;
+            font-family: 'Comfortaa', cursive;
+            margin-top: 30px;
+            box-shadow: 0 4px 15px rgba(13,148,136,0.2);
+            text-align: center;
+            text-decoration: none;
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (min-width: 768px) {
+            .pipeline { flex-direction: row; }
+            .pipe-step { flex: 1; flex-direction: column; text-align: center; padding: 20px; }
+            .pipe-status { margin-left: 0; margin-top: 10px; }
+            .metrics-grid { grid-template-columns: 1fr 1fr; }
+            body { padding: 40px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Arhitectură Proiect: Satul Piatra</h1>
+        <p>Sistem Mixt Agreat: Avans Scriere + Success Fee</p>
+    </header>
+
+    <!-- 1. PIPELINE PIPELINE -->
+    <div class="section-title"><i class="fa-solid fa-route"></i> Pipeline Vizual Proiect</div>
+    <div class="pipeline">
+        <div class="pipe-step">
+            <div class="pipe-icon"><i class="fa-solid fa-map-location-dot"></i></div>
+            <div class="pipe-info">
+                <h4>Teren 2600mp</h4>
+                <p>Adiacent Pădurii, Desg. 70m</p>
+            </div>
+            <span class="pipe-status status-passed">PASSED</span>
+        </div>
+
+        <div class="pipe-step">
+            <div class="pipe-icon"><i class="fa-solid fa-id-card"></i></div>
+            <div class="pipe-info">
+                <h4>Profil Client</h4>
+                <p>38 Ani, Tânăr Antreprenor</p>
+            </div>
+            <span class="pipe-status status-passed">PASSED</span>
+        </div>
+
+        <div class="pipe-step">
+            <div class="pipe-icon"><i class="fa-solid fa-seedling"></i></div>
+            <div class="pipe-info">
+                <h4>Scor Verde</h4>
+                <p>☀️ Foto + ♨️ Pompă Căldură</p>
+            </div>
+            <span class="pipe-status status-passed">PASSED</span>
+        </div>
+
+        <div class="pipe-step">
+            <div class="pipe-icon"><i class="fa-solid fa-file-shield"></i></div>
+            <div class="pipe-info">
+                <h4>Certificat Urbanism</h4>
+                <p>Analiză restricții pădure</p>
+            </div>
+            <span class="pipe-status status-blocked">BLOCKED</span>
+        </div>
+    </div>
+
+    <!-- 2. TRASARE INTEGRATĂ GHIDURI -->
+    <div class="section-title"><i class="fa-solid fa-gauge-high"></i> Selectează Linia de Finanțare pentru Analiză</div>
+    
+    <div class="tab-buttons">
+        <button class="tab-btn active" onclick="switchRoute('afir', this)">Traseul I: AFIR DR-24 (Național)</button>
+        <button class="tab-btn" onclick="switchRoute('gal', this)">Traseul II: GAL Ogoarele Vlăsiei</button>
+    </div>
+
+    <!-- CARD AFIR -->
+    <div id="afir" class="route-card active">
+        <div class="route-header">
+            <span class="route-title">Ghidul Național AFIR DR-24</span>
+            <span class="intensity-badge">65% Nerambursabil</span>
+        </div>
+        <div class="metrics-grid">
+            <div class="metric-item"><strong>Buget Proiect</strong>Sute de mii de euro (Capacitate mare de scalare)</div>
+            <div class="metric-item"><strong>Concurență Ghid</strong>Severă (Evaluare la nivel național, punctaj strâns)</div>
+            <div class="metric-item"><strong>Timp Evaluare (Lead Time)</strong>6 - 12 Luni până la faza de contractare</div>
+            <div class="metric-item"><strong>Cofinanțare Necesară</strong>35% din valoarea eligibilă + asig. flux cash intermediar</div>
+        </div>
+        <div class="bug-box">
+            <strong><i class="fa-solid fa-bug"></i> Risc PM Detectat:</strong>
+            Timpul lung de așteptare poate bloca executarea lucrărilor din cauza ferestrelor de oportunitate sau modificării costurilor materialelor.
+        </div>
+    </div>
+
+    <!-- CARD GAL -->
+    <div id="gal" class="route-card">
+        <div class="route-header">
+            <span class="route-title">Ghidul Local GAL Ogoarele Vlăsiei</span>
+            <span class="intensity-badge">Sesiune Micro-Regională</span>
+        </div>
+        <div class="metrics-grid">
+            <div class="metric-item"><strong>Buget Proiect</strong>Limitat (Plafoane estimative ~50k - 100k euro)</div>
+            <div class="metric-item"><strong>Concurență Ghid</strong>Foarte Mică (Doar firme din comunitățile partenere local)</div>
+            <div class="metric-item"><strong>Timp Evaluare (Lead Time)</strong>Rapid și predictibil (Proceduri simplificate local)</div>
+            <div class="metric-item"><strong>Aliniere Tactică</strong>Trebuie testat dacă activitatea SRL-ului are punctaj prioritar local</div>
+        </div>
+        <div class="bug-box">
+            <strong><i class="fa-solid fa-bug"></i> Risc PM Detectat:</strong>
+            Bugetul redus s-ar putea să nu acopere costurile de infrastructură grele necesare pentru cei 2600 mp, crescând infuzia de capital privat.
+        </div>
+    </div>
+
+    <!-- 3. QA RISK MATRIX TABLE -->
+    <div class="matrix-box">
+        <div class="section-title" style="margin-bottom:12px;"><i class="fa-solid fa-table-cells-with-holes"></i> QA Matrix & Resursă</div>
+        <div class="matrix-row"><span>Entitate Nouă propusă:</span> <strong>Start-up SRL (Eligibilitate administrativă optimă)</strong></div>
+        <div class="matrix-row"><span>Criteriu Vârstă:</span> <strong>38 Ani (Bifează punctaj maxim ca Tânăr Antreprenor)</strong></div>
+        <div class="matrix-row"><span>Risc Blocker de Mediu:</span> <strong>Liziera pădurii (Necesită verificare retrageri/avize)</strong></div>
+    </div>
+
+    <!-- CTA ACTION -->
+    <a href="tel:#" class="btn-action"><i class="fa-solid fa-phone-volume"></i> Lansează Sprintul: Apel telefonic Review Urbanism</a>
+</div>
+
+<script>
+    function switchRoute(routeId, element) {
+        // Ascunde toate cardurile
+        document.querySelectorAll('.route-card').forEach(card => {
+            card.classList.remove('active');
+        });
+        // Deconvinge butoanele active
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        
+        // Activează elementele selectate
+        document.getElementById(routeId).classList.add('active');
+        element.classList.add('active');
+    }
+</script>
+
+</body>
+</html>
