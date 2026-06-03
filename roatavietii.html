@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roata Vieții & Succesul în 7 Pași | Premium Dashboard</title>
+    <title>Roata Vieții & Succesul în 7 Pași</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -15,10 +15,10 @@
             --surface: #ffffff;
             --text-main: #0f172a;
             --text-muted: #64748b;
-            --primary-accent: #ff7f50; /* Coral Modern */
+            --primary-accent: #ff7f50;
             --secondary-accent: #3b82f6;
             --success-color: #10b981;
-            --border-color: #f1f5f9;
+            --border-color: #e2e8f0;
         }
 
         * {
@@ -31,7 +31,7 @@
             font-family: 'Inter', sans-serif;
             background-color: var(--bg-neutral);
             color: var(--text-main);
-            padding: 40px 20px;
+            padding: 15px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -39,83 +39,73 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1100px;
             width: 100%;
             background: var(--surface);
-            padding: 50px;
-            border-radius: 24px;
-            box-shadow: 0 20px 40px rgba(15, 23, 42, 0.04);
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.03);
         }
 
         header {
             text-align: center;
-            margin-bottom: 50px;
-            position: relative;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
         }
 
         header h1 {
             font-family: 'Comfortaa', cursive;
-            font-size: 2.8em;
+            font-size: 1.8em;
             font-weight: 700;
             color: var(--text-main);
-            margin-bottom: 12px;
-            letter-spacing: -0.5px;
+            margin-bottom: 8px;
         }
 
         header p {
             color: var(--text-muted);
-            font-size: 1.15em;
-            font-weight: 400;
+            font-size: 0.95em;
         }
 
         .section-title {
             font-family: 'Comfortaa', cursive;
-            font-size: 1.6em;
+            font-size: 1.3em;
             font-weight: 700;
-            margin-bottom: 30px;
+            margin-top: 10px;
+            margin-bottom: 20px;
             color: var(--text-main);
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 10px;
+            flex-wrap: wrap;
         }
 
         .section-title i {
             color: var(--primary-accent);
         }
 
-        /* Layout Grid Principal */
+        /* Layout Responsiv Flexibil */
         .main-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 50px;
-            margin-bottom: 50px;
-            align-items: start;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-bottom: 40px;
         }
 
-        @media (max-width: 968px) {
-            .main-grid { grid-template-columns: 1fr; }
-        }
-
-        /* Sectiunea Slidere Defalcate */
+        /* Sectiunea Slidere */
         .sliders-sect {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 16px;
+            width: 100%;
         }
 
         .input-group {
             background: var(--surface);
             border: 1px solid var(--border-color);
-            padding: 24px;
-            border-radius: 16px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(15, 23, 42, 0.01);
-        }
-
-        .input-group:hover {
-            border-color: #e2e8f0;
-            box-shadow: 0 10px 15px rgba(15, 23, 42, 0.03);
-            transform: translateY(-2px);
+            padding: 16px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.01);
         }
 
         .input-header {
@@ -126,147 +116,128 @@
         }
 
         .input-header label {
-            font-size: 1.1em;
+            font-size: 1em;
             font-weight: 600;
             color: var(--text-main);
             display: flex;
             align-items: center;
-            gap: 10px;
-        }
-
-        .input-header label i {
-            width: 24px;
-            color: var(--primary-accent);
-            text-align: center;
+            gap: 8px;
         }
 
         .score-display {
             font-family: 'Comfortaa', cursive;
             font-weight: 700;
-            font-size: 1.2em;
+            font-size: 1em;
             color: var(--primary-accent);
             background: rgba(255, 127, 80, 0.1);
-            padding: 4px 12px;
-            border-radius: 20px;
+            padding: 2px 10px;
+            border-radius: 12px;
         }
 
         .input-group input[type="range"] {
             width: 100%;
             accent-color: var(--primary-accent);
             height: 6px;
-            border-radius: 5px;
+            margin-bottom: 12px;
             cursor: pointer;
-            margin-bottom: 14px;
         }
 
-        /* Defalcarea categoriilor (Sub-puncte) */
         .breakdown-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            border-top: 1px dashed var(--border-color);
-            padding-top: 12px;
+            gap: 6px;
+            border-top: 1px dashed #f1f5f9;
+            padding-top: 10px;
         }
 
         .tag {
-            font-size: 0.85em;
+            font-size: 0.8em;
             color: var(--text-muted);
             background: #f8fafc;
-            padding: 4px 10px;
+            padding: 4px 8px;
             border-radius: 6px;
             display: flex;
             align-items: center;
-            gap: 6px;
-            font-weight: 500;
+            gap: 4px;
         }
 
-        .tag i {
-            font-size: 0.8em;
-            color: #94a3b8;
-        }
-
-        /* Panou Grafic Fix pe Scroll */
-        .chart-sticky-panel {
-            position: sticky;
-            top: 40px;
+        /* Panou Grafic */
+        .chart-panel {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 30px;
+            gap: 20px;
+            width: 100%;
         }
 
         .chart-box {
             background: var(--surface);
             border: 1px solid var(--border-color);
-            padding: 30px;
-            border-radius: 24px;
-            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.02);
+            padding: 15px;
+            border-radius: 16px;
             width: 100%;
+            max-width: 360px;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        /* Diagnoza Inteligenta */
+        canvas {
+            width: 100% !important;
+            height: auto !important;
+            max-width: 320px;
+        }
+
         .diagnosis-box {
             background: #fffaf7;
             border: 1px solid #ffe4d6;
-            padding: 24px;
-            border-radius: 16px;
-            font-size: 1em;
-            line-height: 1.6;
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 0.95em;
+            line-height: 1.5;
             color: #6c2e12;
             width: 100%;
-            box-shadow: 0 4px 12px rgba(255, 127, 80, 0.03);
         }
 
-        /* Quizul în 7 Pasi */
+        /* Quiz Obiective */
         .quiz-sect {
             background: var(--surface);
             border: 1px solid var(--border-color);
-            padding: 40px;
-            border-radius: 24px;
+            padding: 20px;
+            border-radius: 16px;
             margin-top: 20px;
-            box-shadow: 0 10px 25px rgba(15, 23, 42, 0.01);
         }
 
         .quiz-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
         }
 
         .quiz-step {
             background: #f8fafc;
-            padding: 24px;
-            border-radius: 16px;
+            padding: 16px;
+            border-radius: 12px;
             border-left: 4px solid var(--success-color);
         }
 
         .quiz-step label {
             display: block;
             font-weight: 600;
-            font-size: 1.05em;
-            margin-bottom: 12px;
+            font-size: 0.95em;
+            margin-bottom: 8px;
             color: var(--text-main);
         }
 
         .quiz-step input[type="text"], .quiz-step textarea {
             width: 100%;
-            padding: 14px;
+            padding: 12px;
             border: 1px solid #e2e8f0;
-            border-radius: 10px;
+            border-radius: 8px;
             background: var(--surface);
             font-family: inherit;
-            font-size: 0.98em;
+            font-size: 0.95em;
             color: var(--text-main);
-            transition: all 0.2s;
-        }
-
-        .quiz-step input[type="text"]:focus, .quiz-step textarea:focus {
-            outline: none;
-            border-color: var(--success-color);
-            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
         }
 
         .quiz-step textarea { resize: vertical; height: 80px; }
@@ -275,62 +246,74 @@
             background: linear-gradient(135deg, #10b981 0%, #059669 100%);
             color: white;
             border: none;
-            padding: 18px 30px;
-            font-size: 1.1em;
+            padding: 16px;
+            font-size: 1em;
             font-weight: 600;
-            border-radius: 12px;
+            border-radius: 10px;
             cursor: pointer;
             width: 100%;
-            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.15);
-            transition: all 0.2s;
             font-family: 'Comfortaa', cursive;
+            margin-top: 20px;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
         }
 
-        .btn-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 24px rgba(16, 185, 129, 0.25);
-        }
-
-        /* Fisa Finala Stilizata */
+        /* Fisa Finala */
         .final-plan {
-            margin-top: 50px;
+            margin-top: 30px;
             background: var(--surface);
             border: 2px dashed #cbd5e1;
-            padding: 40px;
-            border-radius: 20px;
+            padding: 20px;
+            border-radius: 16px;
             display: none;
-            position: relative;
         }
 
         .final-plan h3 {
             font-family: 'Comfortaa', cursive;
-            font-size: 1.8em;
-            margin-bottom: 25px;
-            color: var(--text-main);
+            font-size: 1.4em;
+            margin-bottom: 20px;
             text-align: center;
         }
 
         .print-card {
             background: #f8fafc;
-            padding: 24px;
-            border-radius: 12px;
-            margin-bottom: 16px;
-            border: 1px solid var(--border-color);
+            padding: 16px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            border: 1px solid #edf2f7;
         }
 
         .print-card strong {
             display: block;
-            font-size: 0.9em;
+            font-size: 0.8em;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             color: var(--text-muted);
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
 
         .print-card p {
-            font-size: 1.1em;
+            font-size: 1em;
             font-weight: 500;
-            color: var(--text-main);
+        }
+
+        /* Optimizări ecrane mari (Desktop-uri și Tablete Landscape) */
+        @media (min-width: 850px) {
+            body { padding: 40px 20px; }
+            .container { padding: 40px; border-radius: 24px; }
+            header h1 { font-size: 2.6em; }
+            .section-title { font-size: 1.6em; }
+            
+            .main-grid {
+                display: grid;
+                grid-template-columns: 1.25fr 0.75fr;
+                gap: 40px;
+            }
+            .chart-panel {
+                position: sticky;
+                top: 20px;
+            }
+            .quiz-sect { padding: 35px; border-radius: 24px; }
+            .final-plan { padding: 40px; }
         }
     </style>
 </head>
@@ -339,14 +322,17 @@
 <div class="container">
     <header>
         <h1>Roata Vieții & Succesul</h1>
-        <p>Echilibrează-ți viața și creează-ți strategia de acțiune în 7 Pași</p>
+        <p>Echilibrează-ți cei 6 piloni și construiește-ți strategia în 7 pași</p>
     </header>
 
+    <!-- ETAPA I -->
     <div class="section-title"><i class="fa-solid fa-chart-pie"></i> Pasul I: Diagnoza celor 6 Piloni</div>
     
     <div class="main-grid">
+        <!-- Coloana Slidere -->
         <div class="sliders-sect">
             
+            <!-- 1. FIZIC -->
             <div class="input-group">
                 <div class="input-header">
                     <label><i class="fa-solid fa-heart-pulse"></i> 1. Aspectul Fizic</label>
@@ -354,12 +340,13 @@
                 </div>
                 <input type="range" id="asp1" min="1" max="10" value="5" oninput="updateEverything()">
                 <div class="breakdown-tags">
-                    <span class="tag"><i class="fa-solid fa-bed"></i> Somn & Regenerare</span>
-                    <span class="tag"><i class="fa-solid fa-apple-whole"></i> Nutriție Conștientă</span>
-                    <span class="tag"><i class="fa-solid fa-dumbbell"></i> Energie & Mișcare</span>
+                    <span class="tag"><i class="fa-solid fa-bed"></i> Somn & Odihnă</span>
+                    <span class="tag"><i class="fa-solid fa-apple-whole"></i> Nutriție</span>
+                    <span class="tag"><i class="fa-solid fa-dumbbell"></i> Mișcare</span>
                 </div>
             </div>
 
+            <!-- 2. SPIRITUAL -->
             <div class="input-group">
                 <div class="input-header">
                     <label><i class="fa-solid fa-leaf"></i> 2. Aspectul Spiritual</label>
@@ -369,10 +356,11 @@
                 <div class="breakdown-tags">
                     <span class="tag"><i class="fa-solid fa-om"></i> Pace Interioară</span>
                     <span class="tag"><i class="fa-solid fa-hands-praying"></i> Recunoștință</span>
-                    <span class="tag"><i class="fa-solid fa-scale-balanced"></i> Aliniere Valori</span>
+                    <span class="tag"><i class="fa-solid fa-scale-balanced"></i> Valori Aliniate</span>
                 </div>
             </div>
 
+            <!-- 3. MENTAL -->
             <div class="input-group">
                 <div class="input-header">
                     <label><i class="fa-solid fa-brain"></i> 3. Aspectul Mental</label>
@@ -380,12 +368,13 @@
                 </div>
                 <input type="range" id="asp3" min="1" max="10" value="5" oninput="updateEverything()">
                 <div class="breakdown-tags">
-                    <span class="tag"><i class="fa-solid fa-book-open"></i> Educație & Lectură</span>
-                    <span class="tag"><i class="fa-solid fa-bullseye"></i> Claritate Gândire</span>
-                    <span class="tag"><i class="fa-solid fa-head-side-virus"></i> Reziliență Psihică</span>
+                    <span class="tag"><i class="fa-solid fa-book-open"></i> Lectură & Studiu</span>
+                    <span class="tag"><i class="fa-solid fa-bullseye"></i> Claritate</span>
+                    <span class="tag"><i class="fa-solid fa-head-side-virus"></i> Reziliență</span>
                 </div>
             </div>
 
+            <!-- 4. FAMILIAL -->
             <div class="input-group">
                 <div class="input-header">
                     <label><i class="fa-solid fa-house-chimney-user"></i> 4. Aspectul Familial</label>
@@ -393,12 +382,13 @@
                 </div>
                 <input type="range" id="asp4" min="1" max="10" value="5" oninput="updateEverything()">
                 <div class="breakdown-tags">
-                    <span class="tag"><i class="fa-solid fa-comments"></i> Comunicare Relații</span>
-                    <span class="tag"><i class="fa-solid fa-hourglass-half"></i> Timp de Calitate</span>
-                    <span class="tag"><i class="fa-solid fa-hand-holding-heart"></i> Suport Reciproc</span>
+                    <span class="tag"><i class="fa-solid fa-comments"></i> Comunicare</span>
+                    <span class="tag"><i class="fa-solid fa-hourglass-half"></i> Timp Împreună</span>
+                    <span class="tag"><i class="fa-solid fa-hand-holding-heart"></i> Suport</span>
                 </div>
             </div>
 
+            <!-- 5. PERSONAL -->
             <div class="input-group">
                 <div class="input-header">
                     <label><i class="fa-solid fa-user-astronaut"></i> 5. Aspectul Personal</label>
@@ -406,12 +396,13 @@
                 </div>
                 <input type="range" id="asp5" min="1" max="10" value="5" oninput="updateEverything()">
                 <div class="breakdown-tags">
-                    <span class="tag"><i class="fa-solid fa-palette"></i> Hobby-uri & Creație</span>
+                    <span class="tag"><i class="fa-solid fa-palette"></i> Hobby-uri</span>
                     <span class="tag"><i class="fa-solid fa-mug-hot"></i> Timp cu Tine</span>
-                    <span class="tag"><i class="fa-solid fa-masks-theater"></i> Libertate Mentală</span>
+                    <span class="tag"><i class="fa-solid fa-masks-theater"></i> Recreere</span>
                 </div>
             </div>
 
+            <!-- 6. PROFESIONAL -->
             <div class="input-group">
                 <div class="input-header">
                     <label><i class="fa-solid fa-briefcase"></i> 6. Aspectul Profesional</label>
@@ -419,17 +410,18 @@
                 </div>
                 <input type="range" id="asp6" min="1" max="10" value="6" oninput="updateEverything()">
                 <div class="breakdown-tags">
-                    <span class="tag"><i class="fa-solid fa-arrow-up-right-dots"></i> Carieră / Afacere</span>
-                    <span class="tag"><i class="fa-solid fa-chart-line"></i> Performanță (KPI)</span>
-                    <span class="tag"><i class="fa-solid fa-gem"></i> Brand Personal / Leadership</span>
+                    <span class="tag"><i class="fa-solid fa-arrow-up-right-dots"></i> Carieră / Business</span>
+                    <span class="tag"><i class="fa-solid fa-chart-line"></i> Obiective KPI</span>
+                    <span class="tag"><i class="fa-solid fa-gem"></i> Leadership</span>
                 </div>
             </div>
 
         </div>
 
-        <div class="chart-sticky-panel">
+        <!-- Coloana Grafic / Diagnoza -->
+        <div class="chart-panel">
             <div class="chart-box">
-                <canvas id="wheelCanvas" width="360" height="360"></canvas>
+                <canvas id="wheelCanvas" width="320" height="320"></canvas>
             </div>
             <div class="diagnosis-box" id="diagnosisBox">
                 Calculăm starea de echilibru...
@@ -437,59 +429,61 @@
         </div>
     </div>
 
+    <!-- ETAPA II -->
     <div class="quiz-sect" id="quizSection">
-        <div class="section-title" style="margin-bottom:10px;"><i class="fa-solid fa-wand-magic-sparkles" style="color:var(--success-color);"></i> Pasul II: Strategia în 7 Pași pentru <span id="targetAreaName" style="color: var(--primary-accent);">...</span></div>
-        <p style="color: var(--text-muted); margin-bottom: 30px; font-style: italic; font-size: 0.95em;">Ne focusăm eforturile pe spița cea mai scurtă a roții pentru a redresa echilibrul întregului sistem.</p>
+        <div class="section-title"><i class="fa-solid fa-wand-magic-sparkles" style="color:var(--success-color);"></i> Pasul II: Strategia în 7 Pași pentru <span id="targetAreaName" style="color: var(--primary-accent); margin-left: 5px;">...</span></div>
+        <p style="color: var(--text-muted); margin-bottom: 24px; font-style: italic; font-size: 0.9em; line-height: 1.4;">Ne focusăm energia pe spița cea mai scurtă a roții pentru a redresa eficient întregul echilibru.</p>
         
         <form id="ziglarForm" onsubmit="generatePlan(event)">
             <div class="quiz-grid">
                 <div class="quiz-step">
                     <label><i class="fa-solid fa-feather-pointed"></i> 1. Setează Obiectivul Clar (Numire exactă):</label>
-                    <input type="text" id="q1" placeholder="Ex: Să integrez batch-cooking în fluxul de organizare săptămânal" required>
+                    <input type="text" id="q1" placeholder="Ex: Să citesc 20 de pagini zilnic din domeniul meu" required>
                 </div>
 
                 <div class="quiz-step">
-                    <label><i class="fa-solid fa-heart"></i> 2. Care sunt Beneficiile atingerii lui? (De ce-ul tău profund):</label>
-                    <textarea id="q2" placeholder="Ex: Câștig timp prețios cu familia, reduc stresul zilnic și optimizez resursele" required></textarea>
+                    <label><i class="fa-solid fa-heart"></i> 2. Care sunt Beneficiile atingerii lui? (De ce-ul tău):</label>
+                    <textarea id="q2" placeholder="Ex: Dobândesc expertiză, îmi cresc încrederea și claritatea decizională" required></textarea>
                 </div>
 
                 <div class="quiz-step">
-                    <label><i class="fa-solid fa-triangle-exclamation"></i> 3. Identifică Obstacolele majore pe care le anticipezi:</label>
-                    <textarea id="q3" placeholder="Ex: Lipsa de organizare inițială în weekend, procrastinarea de duminică" required></textarea>
+                    <label><i class="fa-solid fa-triangle-exclamation"></i> 3. Identifică Obstacolele majore pe care le prevezi:</label>
+                    <textarea id="q3" placeholder="Ex: Oboseala de seară, distragerea provocată de notificările telefonului" required></textarea>
                 </div>
 
                 <div class="quiz-step">
                     <label><i class="fa-solid fa-graduation-cap"></i> 4. Ce Aptitudini sau Cunoștințe îți sunt necesare?:</label>
-                    <input type="text" id="q4" placeholder="Ex: Tehnici de line balancing aplicate la bucătărie, managementul timpului" required>
+                    <input type="text" id="q4" placeholder="Ex: Tehnici de citire rapidă și extragere idei principale, focus" required>
                 </div>
 
                 <div class="quiz-step">
-                    <label><i class="fa-solid fa-users"></i> 5. Ce Oameni, Grupuri de lucru sau Mentori te pot ajuta?:</label>
-                    <input type="text" id="q5" placeholder="Ex: Partenerul de viață, comunități de mastermind, experți în nișă" required>
+                    <label><i class="fa-solid fa-users"></i> 5. Ce Oameni, Grupuri sau Mentori te pot susține?:</label>
+                    <input type="text" id="q5" placeholder="Ex: Un club de carte local, un partener de responsabilitate" required>
                 </div>
 
                 <div class="quiz-step">
-                    <label><i class="fa-solid fa-list-check"></i> 6. Creează un Plan de Acțiune (Pașii imediați concreți):</label>
-                    <textarea id="q6" placeholder="Pasul 1: Stabilesc meniul joi. Pasul 2: Cumpăr ingredientele vineri..." required></textarea>
+                    <label><i class="fa-solid fa-list-check"></i> 6. Schițează Planul de Acțiune (Pași concreți):</label>
+                    <textarea id="q6" placeholder="Pasul 1: Aleg cartea duminică. Pasul 2: Pun cartea fizic pe noptieră..." required></textarea>
                 </div>
 
                 <div class="quiz-step">
-                    <label><i class="fa-solid fa-calendar-days"></i> 7. Stabilește un Termen Limită (Data exactă de finalizare):</label>
+                    <label><i class="fa-solid fa-calendar-days"></i> 7. Stabilește un Termen Limită Asumat:</label>
                     <input type="text" id="q7" placeholder="Ex: Până la data de 31 Octombrie 2026" required>
                 </div>
             </div>
 
-            <button type="submit" class="btn-submit" style="margin-top: 30px;">Generează Planul de Performanță</button>
+            <button type="submit" class="btn-submit">Generează Planul de Performanță</button>
         </form>
     </div>
 
+    <!-- REZULTAT FIȘĂ -->
     <div class="final-plan" id="finalPlanBox">
-        <h3><i class="fa-solid fa-trophy" style="color:#f59e0b;"></i> Fișa de Obiectiv Personalizată</h3>
-        <p style="text-align:center; color: var(--text-muted); font-style:italic; margin-bottom:30px;">"Dacă țintești spre nimic, o să o nimerești de fiecare dată. Felicitări că ai ales să ai un plan!"</p>
+        <h3><i class="fa-solid fa-trophy" style="color:#f59e0b;"></i> Fișa ta de Obiectiv (Model Zig Ziglar)</h3>
+        <p style="text-align:center; color: var(--text-muted); font-style:italic; margin-bottom:24px; font-size:0.9em;">"Dacă țintești spre nimic, o să o nimerești de fiecare dată."</p>
         
         <div id="planContent"></div>
         
-        <button onclick="window.print()" class="btn-submit" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); box-shadow: 0 10px 20px rgba(15,23,42,0.15); max-width: 250px; margin: 30px auto 0 auto; display: block;">
+        <button onclick="window.print()" class="btn-submit" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); margin: 20px auto 0 auto; max-width: 250px; display: block;">
             <i class="fa-solid fa-print"></i> Printează Planul
         </button>
     </div>
@@ -521,7 +515,6 @@
 
         renderWheel(values);
 
-        // Identifică aria critică
         let minVal = values[0];
         let minIndex = 0;
         for(let i=1; i<values.length; i++) {
@@ -535,12 +528,12 @@
         const diagnosisBox = document.getElementById('diagnosisBox');
 
         if(minVal >= 8) {
-            diagnosisBox.innerHTML = `✨ <strong>Echilibru Excelent!</strong> Roata ta este armonioasă și extinsă uniformly (toate ariile sunt la minim ${minVal}/10). Continuă să menții acest ritm remarcabil!`;
+            diagnosisBox.innerHTML = `✨ <strong>Echilibru Excelent!</strong> Roata ta este armonioasă și extinsă (toate ariile sunt la minim ${minVal}/10). Menține acest ritm excelent!`;
             diagnosisBox.style.background = "#f0fdf4";
             diagnosisBox.style.borderColor = "#bbf7d0";
             diagnosisBox.style.color = "#166534";
         } else {
-            diagnosisBox.innerHTML = `⚠️ <strong>Focus Recomandat:</strong> Spița cea mai scurtă se află în zona <strong>${criticalArea} (${minVal}/10)</strong>. Pentru ca vehiculul vieții tale să ruleze lin și eficient, folosește quiz-ul de mai jos adaptat special pentru această zonă.`;
+            diagnosisBox.innerHTML = `⚠️ <strong>Focus Recomandat:</strong> Spița cea mai scurtă se află în zona <strong>${criticalArea} (${minVal}/10)</strong>. Pentru ca vehiculul vieții tale să ruleze stabil și lin, completează formularul de mai jos adaptat special pentru acest pilon.`;
             diagnosisBox.style.background = "#fffaf7";
             diagnosisBox.style.borderColor = "#ffe4d6";
             diagnosisBox.style.color = "#6c2e12";
@@ -556,13 +549,13 @@
         const height = canvas.height;
         const centerX = width / 2;
         const centerY = height / 2;
-        const maxRadius = 120;
+        const maxRadius = 100; // Dimensiune optimizată mobil
 
         ctx.clearRect(0, 0, width, height);
         const numSlices = 6;
         const anglePerSlice = (2 * Math.PI) / numSlices;
 
-        // Cercuri concentrice de ghidaj (Scurse fin pe fundal)
+        // Cercuri concentrice fundal
         ctx.strokeStyle = '#f1f5f9';
         ctx.lineWidth = 1;
         for (let i = 1; i <= 10; i++) {
@@ -571,7 +564,7 @@
             ctx.stroke();
         }
 
-        // Spițe și Text Etichete
+        // Axe spițe + text etichete
         ctx.strokeStyle = '#e2e8f0';
         for (let i = 0; i < numSlices; i++) {
             const angle = i * anglePerSlice - Math.PI / 2;
@@ -580,12 +573,12 @@
             ctx.lineTo(centerX + maxRadius * Math.cos(angle), centerY + maxRadius * Math.sin(angle));
             ctx.stroke();
 
-            // Stil Etichete Text (Curat și lizibil)
+            // Etichete text compacte și centrate perfect
             ctx.fillStyle = '#475569';
-            ctx.font = '600 12px Inter';
+            ctx.font = '600 11px Inter';
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
-            const labelDist = maxRadius + 24;
+            const labelDist = maxRadius + 20;
             const labelX = centerX + labelDist * Math.cos(angle);
             const labelY = centerY + labelDist * Math.sin(angle);
             
@@ -593,10 +586,10 @@
             ctx.fillText(shortLabel, labelX, labelY);
         }
 
-        // Graficul Poligon - Roata Reală (Instagrammable Coral Accent)
-        ctx.fillStyle = 'rgba(255, 127, 80, 0.2)';
+        // Grafic Poligon (Coral Accent)
+        ctx.fillStyle = 'rgba(255, 127, 80, 0.18)';
         ctx.strokeStyle = '#ff7f50';
-        ctx.lineWidth = 3;
+        ctx.lineWidth = 2.5;
         ctx.beginPath();
 
         for (let i = 0; i < numSlices; i++) {
@@ -612,7 +605,7 @@
         ctx.fill();
         ctx.stroke();
 
-        // Noduri stilizate pe fiecare colț
+        // Puncte noduri
         for (let i = 0; i < numSlices; i++) {
             const angle = i * anglePerSlice - Math.PI / 2;
             const currentRadius = (maxRadius / 10) * values[i];
@@ -621,7 +614,7 @@
             
             ctx.fillStyle = '#ff7f50';
             ctx.beginPath();
-            ctx.arc(x, y, 4, 0, 2 * Math.PI);
+            ctx.arc(x, y, 3.5, 0, 2 * Math.PI);
             ctx.fill();
         }
     }
@@ -639,14 +632,14 @@
         const q7 = document.getElementById('q7').value;
 
         const contentHtml = `
-            <div class="print-card"><strong>Domeniul vizat pentru Schimbare</strong><p>${targetArea}</p></div>
-            <div class="print-card"><strong>1. Obiectiv Specific Clar (Numire)</strong><p>${q1}</p></div>
-            <div class="print-card"><strong>2. Beneficii Directe (De ce contează)</strong><p>${q2}</p></div>
-            <div class="print-card"><strong>3. Obstacole anticipate și mecanisme de control</strong><p>${q3}</p></div>
-            <div class="print-card"><strong>4. Abilități sau cunoștințe noi de dobândit</strong><p>${q4}</p></div>
-            <div class="print-card"><strong>5. Alianțe Strategice (Oameni / Mentorat)</strong><p>${q5}</p></div>
-            <div class="print-card"><strong>6. Plan de Acțiune Concret</strong><p style="white-space: pre-wrap; font-weight: normal; margin-top:5px; color:#334155;">${q6}</p></div>
-            <div class="print-card" style="border-left: 4px solid #ff7f50;"><strong>7. Termen Limită Asumat</strong><p style="color:#ff7f50; font-weight:700;">📅 ${q7}</p></div>
+            <div class="print-card"><strong>Domeniul Schimbării</strong><p>${targetArea}</p></div>
+            <div class="print-card"><strong>1. Obiectiv Specific Clar</strong><p>${q1}</p></div>
+            <div class="print-card"><strong>2. Beneficii Directe (De ce)</strong><p>${q2}</p></div>
+            <div class="print-card"><strong>3. Obstacole anticipate</strong><p>${q3}</p></div>
+            <div class="print-card"><strong>4. Abilități/Cunoștințe de dobândit</strong><p>${q4}</p></div>
+            <div class="print-card"><strong>5. Alianțe Strategice / Suport</strong><p>${q5}</p></div>
+            <div class="print-card"><strong>6. Plan de Acțiune</strong><p style="white-space: pre-wrap; font-weight: normal; color:#334155; margin-top:4px;">${q6}</p></div>
+            <div class="print-card" style="border-left: 4px solid #ff7f50;"><strong>7. Termen Limită</strong><p style="color:#ff7f50; font-weight:700;">📅 ${q7}</p></div>
         `;
 
         const finalBox = document.getElementById('finalPlanBox');
