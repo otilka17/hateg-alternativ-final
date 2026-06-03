@@ -542,6 +542,9 @@
             punctBacu = L.marker([46.567, 26.914]).addTo(harta)
                 .bindPopup('<b>Cristina Gălățeanu // Bacău</b><br>Eligibilitate verificată în Regiunea PR NE.')
                 .openPopup();
+                
+            // Sincronizare inițială automată pentru prima încărcare
+            actualizeazaLinkWhatsApp();
         });
 
         function schimbaScenariu(element, valoareTotala, procentGrant, numeLinie, textCofinantare) {
@@ -576,13 +579,15 @@
             const firma = document.getElementById('lbl-status-firma').innerText;
             const spatiu = document.getElementById('lbl-status-spatiu').innerText;
             const lucrari = document.getElementById('lbl-status-lucrari').innerText;
+            const buget = document.getElementById('lbl-status-buget').innerText;
             
             const textBase = `Bună ziua! Am parcurs nota de eligibilitate structurală DAKAMIGOS pentru proiectul din Bacău (Grădiniță Privată).\n\n` +
-                             `• Linia evaluată: ${linie}\n` +
-                             `• Estimare Grant: ${grant}\n` +
+                             `• Scenariu Finanțare: ${linie}\n` +
+                             `• Valoare Grant Estimat: ${grant}\n` +
                              `• Profil firmă: ${firma}\n` +
                              `• Regim spațiu: ${spatiu}\n` +
-                             `• Tip investiție: ${lucrari}\n\n` +
+                             `• Tip investiție: ${lucrari}\n` +
+                             `• Destinație capital propriu (25.000 lei): ${buget}\n\n` +
                              `Doresc să stabilim discuția telefonică de calificare pentru a demara structura dosarului.`;
                              
             document.getElementById('waLink').href = "https://api.whatsapp.com/send?phone=40728882239&text=" + encodeURIComponent(textBase);
