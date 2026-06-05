@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meniu Săptămânal · Metanoia · Hațeg Alternativ</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Source+Serif+4:ital,wght@0,300;1,300&family=Karla:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --v1:#1e3d1a; --v2:#2d5a27; --v3:#4a7c3f; --v4:#7aaa6a; --v5:#d4edcc;
+  --c1:#faf5ec; --c2:#f2e8d0; --c3:#e8d5b0;
+  --t1:#c4622d; --t2:#e07840; --t3:#f5a06a; --t4:#fde8d8;
+  --e1:#1e1108; --e2:#2e1a0a; --e3:#5c3517; --e4:#a0622a;
+  --tx1:#1a1208; --tx2:#3d2e1a; --tx3:#7a6048; --tx4:rgba(26,18,8,.4);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Karla',sans-serif;background:var(--c1);color:var(--tx1);overflow-x:hidden}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:var(--v2)}
+
+/* ── NAV ── */
+.nav{
+  background:var(--e1);
+  border-bottom:2px solid var(--v2);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 5%;height:64px;
+  position:sticky;top:0;z-index:100;
+}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo{width:38px;height:38px}
+.nav-name{font-family:'Playfair Display',serif;font-size:1rem;font-weight:900;color:var(--t3);letter-spacing:2px;text-transform:uppercase}
+.nav-sub{font-size:.55rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:1px}
+.nav-back{
+  background:var(--v2);color:#fff;border:none;
+  padding:8px 18px;font-family:'Karla',sans-serif;
+  font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;
+  cursor:pointer;transition:background .2s;text-decoration:none;
+  display:inline-flex;align-items:center;gap:6px;
+}
+.nav-back:hover{background:var(--v3)}
+
+/* ── HEADER ── */
+.pg-header{
+  background:linear-gradient(150deg,var(--v1) 0%,#2d4a20 60%,var(--e2) 100%);
+  padding:48px 5% 40px;
+  position:relative;overflow:hidden;
+}
+.pg-header::before{
+  content:'MENIU';
+  position:absolute;right:-1%;top:50%;transform:translateY(-50%);
+  font-family:'Playfair Display',serif;font-weight:900;
+  font-size:clamp(80px,15vw,180px);
+  color:rgba(255,255,255,.04);pointer-events:none;
+}
+.pg-tag{font-size:.62rem;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--v4);margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.pg-tag::before{content:'';width:20px;height:2px;background:var(--t2)}
+.pg-title{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(2rem,4vw,3.2rem);color:#fff;line-height:1.05;margin-bottom:10px}
+.pg-title em{font-style:italic;color:var(--t3)}
+.pg-desc{font-family:'Source Serif 4',serif;font-style:italic;font-size:.98rem;color:rgba(255,255,255,.55);max-width:560px;line-height:1.7}
+
+/* ── CONTROLS ── */
+.controls{
+  background:var(--c2);
+  border-bottom:2px solid var(--c3);
+  padding:20px 5%;
+  display:flex;flex-direction:column;gap:12px;
+  position:sticky;top:64px;z-index:99;
+}
+.ctrl-row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.ctrl-lbl{font-size:.65rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--tx3);white-space:nowrap;min-width:80px}
+.tab-row{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;flex:1}
+.tab-row::-webkit-scrollbar{display:none}
+.tab{
+  padding:7px 16px;cursor:pointer;
+  font-family:'Karla',sans-serif;font-size:.68rem;font-weight:700;
+  letter-spacing:1px;text-transform:uppercase;white-space:nowrap;
+  border:2px solid var(--c3);background:transparent;color:var(--tx3);
+  transition:all .15s;
+}
+.tab.w-on{background:var(--e1);color:var(--t3);border-color:var(--e1)}
+.tab.d-on{background:var(--v2);color:#fff;border-color:var(--v2)}
+.tab:hover:not(.w-on):not(.d-on){background:var(--c1);border-color:var(--v3)}
+.kp{
+  padding:6px 14px;cursor:pointer;
+  font-family:'Karla',sans-serif;font-size:.68rem;font-weight:700;
+  letter-spacing:1px;text-transform:uppercase;
+  border:2px solid var(--c3);background:transparent;color:var(--tx3);
+  transition:all .15s;
+}
+.kp.on{background:var(--t1);color:#fff;border-color:var(--t1)}
+.kp:hover:not(.on){border-color:var(--t1);color:var(--t1)}
+
+/* ── DAY SUMMARY BAR ── */
+.day-summary{
+  background:var(--e1);
+  padding:14px 5%;
+  display:flex;align-items:center;gap:0;flex-wrap:wrap;
+}
+.ds-item{
+  display:flex;flex-direction:column;align-items:center;
+  padding:0 20px;border-right:1px solid rgba(255,255,255,.08);
+}
+.ds-item:last-child{border-right:none}
+.ds-val{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:var(--t3);line-height:1}
+.ds-lbl{font-size:.55rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:2px}
+.ds-note{margin-left:auto;font-family:'Source Serif 4',serif;font-style:italic;font-size:.82rem;color:rgba(255,255,255,.35)}
+
+/* ── MEAL GRID ── */
+.meals-wrap{padding:28px 5% 60px;display:flex;flex-direction:column;gap:16px}
+.meal-card{
+  background:#fff;border:2px solid var(--c3);
+  overflow:hidden;transition:all .2s;
+}
+.meal-card:hover{border-color:var(--v3);box-shadow:0 6px 24px rgba(30,61,26,.08)}
+
+.meal-header{
+  display:flex;align-items:stretch;
+  border-bottom:2px solid var(--c3);
+}
+.meal-time-col{
+  width:90px;flex-shrink:0;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:16px 8px;
+  border-right:2px solid var(--c3);
+}
+.meal-emoji{font-size:2rem;margin-bottom:6px}
+.meal-time{font-size:.6rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--tx4);text-align:center}
+.meal-type-col{
+  flex:1;padding:14px 20px;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:8px;
+}
+.meal-type{font-size:.65rem;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--v3)}
+.meal-name{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--tx1);margin-top:2px}
+.meal-badges{display:flex;gap:6px;align-items:center;flex-shrink:0}
+.badge-vacuum{
+  background:var(--v5);color:var(--v1);
+  font-size:.55rem;font-weight:800;letter-spacing:1.5px;
+  padding:3px 9px;text-transform:uppercase;
+}
+.badge-capsat{
+  background:var(--t4);color:var(--t1);
+  font-size:.55rem;font-weight:800;letter-spacing:1.5px;
+  padding:3px 9px;text-transform:uppercase;
+}
+
+.meal-body{display:grid;grid-template-columns:1fr auto}
+.meal-main{padding:16px 20px;border-right:2px solid var(--c3)}
+.meal-desc{
+  font-family:'Source Serif 4',serif;font-style:italic;
+  font-size:.9rem;color:var(--tx3);line-height:1.65;margin-bottom:14px;
+}
+
+/* MACRO TABLE */
+.macro-table{
+  display:grid;grid-template-columns:repeat(5,1fr);
+  gap:1px;background:var(--c3);border:2px solid var(--c3);
+  margin-bottom:14px;
+}
+.mt-cell{background:var(--c1);padding:8px 6px;text-align:center}
+.mt-val{font-size:.88rem;font-weight:800;line-height:1}
+.mt-lbl{font-size:.52rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--tx4);margin-top:2px}
+.mt-kcal .mt-val{color:var(--t1)}
+.mt-gr   .mt-val{color:var(--tx2)}
+.mt-prot .mt-val{color:var(--v2)}
+.mt-carb .mt-val{color:var(--e3)}
+.mt-fat  .mt-val{color:var(--e4)}
+
+/* PAIRING */
+.pair{
+  background:var(--e1);padding:12px 16px;
+  display:flex;align-items:center;gap:12px;
+}
+.pair-ico{font-size:1.3rem}
+.pair-info{flex:1}
+.pair-name{font-size:.78rem;font-weight:700;color:var(--t3)}
+.pair-sub{font-size:.66rem;color:rgba(255,255,255,.3);margin-top:1px}
+.pair-int{display:flex;gap:3px}
+.di{width:6px;height:6px;border-radius:50%}
+
+/* meal side — price / order */
+.meal-side{
+  width:140px;flex-shrink:0;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:20px 16px;gap:10px;
+}
+.meal-price{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:var(--t1);line-height:1}
+.meal-price-sub{font-size:.6rem;color:var(--tx4);text-align:center;margin-top:2px}
+.meal-btn{
+  width:100%;background:var(--v2);color:#fff;border:none;
+  padding:10px;font-family:'Karla',sans-serif;
+  font-size:.65rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
+  cursor:pointer;transition:background .2s;
+}
+.meal-btn:hover{background:var(--v1)}
+.meal-btn-sec{background:transparent;color:var(--v2);border:2px solid var(--v2)}
+.meal-btn-sec:hover{background:var(--v2);color:#fff}
+
+/* ── NAVIGARE ZIUA ── */
+.day-nav{
+  background:var(--c2);border-top:2px solid var(--c3);
+  padding:20px 5%;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.day-nav-btn{
+  background:var(--e1);color:var(--t3);border:none;
+  padding:12px 28px;font-family:'Karla',sans-serif;
+  font-size:.72rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;
+  cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:8px;
+}
+.day-nav-btn:hover{background:var(--v1);color:#fff}
+.day-nav-info{text-align:center}
+.day-nav-name{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:var(--tx1)}
+.day-nav-date{font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:var(--tx4);margin-top:2px}
+
+/* ── DESKTOP ONLY COLUMNS ── */
+@media(max-width:768px){
+  .meal-body{grid-template-columns:1fr}
+  .meal-main{border-right:none;border-bottom:2px solid var(--c3)}
+  .meal-side{width:100%;flex-direction:row;justify-content:space-between;padding:14px 16px}
+  .macro-table{grid-template-columns:repeat(3,1fr)}
+  .controls{top:0}
+  .day-summary{gap:0}
+  .ds-note{display:none}
+  .nav{position:relative}
+}
+</style>
+</head>
+<body>
+
+<!-- SVG logo def -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="L" viewBox="0 0 500 500">
+      <circle cx="250" cy="250" r="235" stroke="#c5a059" fill="none" stroke-width="1.5" opacity="0.6"/>
+      <circle cx="250" cy="250" r="215" stroke="#c5a059" fill="none" stroke-width="3"/>
+      <circle cx="250" cy="145" r="45" stroke="#c5a059" fill="none" stroke-width="3"/>
+      <polygon points="250,145 170,310 330,310" fill="#c5a059"/>
+      <text x="257" y="380" fill="#c5a059" font-family="Cinzel,serif" font-size="40" font-weight="600" letter-spacing="14" text-anchor="middle">METANOIA</text>
+      <text x="253" y="420" fill="#c5a059" font-family="Inter,sans-serif" font-size="14" font-weight="600" letter-spacing="7" text-anchor="middle">HAȚEG ALTERNATIV</text>
+      <circle cx="250" cy="450" r="4" fill="#c5a059"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- NAV -->
+<nav class="nav">
+  <a class="nav-brand" href="metanoia-nou.html">
+    <svg class="nav-logo"><use href="#L"/></svg>
+    <div><div class="nav-name">Metanoia</div><div class="nav-sub">Hațeg Alternativ · DN 68</div></div>
+  </a>
+  <a class="nav-back" href="metanoia-nou.html">← Înapoi la Site</a>
+</nav>
+
+<!-- HEADER -->
+<div class="pg-header">
+  <div class="pg-tag">Meniu Săptămânal</div>
+  <h1 class="pg-title">Gătit azi.<br><em>Ridicat mâine.</em></h1>
+  <p class="pg-desc">Mâncare tradițională gătită slow în Bucătăria Centrală Totești, ambalată în vacuum la 121°C. Macronutrienți calculați precis pentru planul tău caloric.</p>
+</div>
+
+<!-- CONTROLS -->
+<div class="controls">
+  <div class="ctrl-row">
+    <span class="ctrl-lbl">Săptămâna:</span>
+    <div class="tab-row" id="wTabs">
+      <button class="tab w-on">25–31 MAI</button>
+      <button class="tab">01–07 IUN</button>
+      <button class="tab">08–14 IUN</button>
+      <button class="tab">15–21 IUN</button>
+    </div>
+  </div>
+  <div class="ctrl-row">
+    <span class="ctrl-lbl">Ziua:</span>
+    <div class="tab-row" id="dTabs">
+      <button class="tab d-on" data-zi="0">Luni</button>
+      <button class="tab" data-zi="1">Marți</button>
+      <button class="tab" data-zi="2">Miercuri</button>
+      <button class="tab" data-zi="3">Joi</button>
+      <button class="tab" data-zi="4">Vineri</button>
+      <button class="tab" data-zi="5">Sâmbătă</button>
+      <button class="tab" data-zi="6">Duminică</button>
+    </div>
+  </div>
+  <div class="ctrl-row">
+    <span class="ctrl-lbl">Plan kcal:</span>
+    <button class="kp" data-plan="1000">1000 kcal</button>
+    <button class="kp on" data-plan="1500">1500 kcal</button>
+    <button class="kp" data-plan="2000">2000 kcal</button>
+    <button class="kp" data-plan="2500">2500 kcal</button>
+  </div>
+</div>
+
+<!-- DAY SUMMARY -->
+<div class="day-summary" id="daySummary"></div>
+
+<!-- MEALS -->
+<div class="meals-wrap" id="mealsWrap"></div>
+
+<!-- DAY NAV -->
+<div class="day-nav">
+  <button class="day-nav-btn" id="btnPrev">← Ziua Anterioară</button>
+  <div class="day-nav-info">
+    <div class="day-nav-name" id="dayNavName">Luni</div>
+    <div class="day-nav-date">25 Mai 2026</div>
+  </div>
+  <button class="day-nav-btn" id="btnNext">Ziua Următoare →</button>
+</div>
+
+<script>
+// ═══ DATE MENIU ═══
+// Structura: pentru fiecare zi avem 5 mese × 4 planuri calorice
+// Planuri: 1000 / 1500 / 2000 / 2500
+
+const ZILE = ['Luni','Marți','Miercuri','Joi','Vineri','Sâmbătă','Duminică'];
+const DATES = ['25 Mai','26 Mai','27 Mai','28 Mai','29 Mai','30 Mai','31 Mai'];
+
+// Pairing-uri capsule
+const PAIR = {
+  volluto:  { name:'Volluto Smooth · Int. 4',  sub:'Blând, floral, perfect dimineața',   int:2 },
+  livanto:  { name:'Livanto Mellow · Int. 6',  sub:'Caramel rotund, echilibrat',         int:3 },
+  capriccio:{ name:'Capriccio Lungo · Int. 5', sub:'Aciditate medie, fructat',           int:2 },
+  ristretto:{ name:'Ristretto Intenso · Int.10',sub:'Corp puternic, taie grăsimea',      int:5 },
+  kazaar:   { name:'Kazaar · Int. MAX 12',     sub:'Intensitate maximă, afumat',         int:5 },
+  indriya:  { name:'Indriya Lungo · Int. 10',  sub:'Condimentat, tropical, profund',     int:5 },
+  dharkan:  { name:'Dharkan · Int. 11',        sub:'Lemn, caramel ars, persistent',      int:5 },
+  cosi:     { name:'Cosi Lungo · Int. 4',      sub:'Ușor, cereale, perfect cu dulciuri', int:2 },
+};
+
+// Meniu complet pe 7 zile × 5 mese
+// Fiecare masă are variante pentru planurile [1000, 1500, 2000, 2500] kcal
+const MENIU = [
+  // LUNI
+  { zi:'Luni', mese:[
+    { tip:'Mic Dejun', ora:'07:00', emoji:'🥛', ambalaj:'vacuum',
+      variante:[
+        { name:'Iaurt cu Miere & Nuci',desc:'Iaurt de capră de fermă, miere de tei din Retezat, nuci prăjite. 150 ml.',kcal:180,gr:150,prot:8,carb:18,fat:8,pret:12,pair:'cosi' },
+        { name:'Mămăligă cu Brânză de Burduf',desc:'Mămăligă din mălai de moară, brânză de burduf din Retezat, smântână grasă de fermă.',kcal:410,gr:300,prot:18,carb:52,fat:14,pret:18,pair:'volluto' },
+        { name:'Omletă cu Legume & Pâine',desc:'3 ouă de la găini hrănite cu porumb, roșii, ardei kapia, ceapă verde, pâine de casă.',kcal:520,gr:380,prot:24,carb:38,fat:26,pret:22,pair:'volluto' },
+        { name:'Mic Dejun Complet Tradițional',desc:'Omletă 3 ouă + mămăligă mică + brânză burduf + smântână + pâine de casă + ceai plante.',kcal:680,gr:520,prot:32,carb:65,fat:30,pret:28,pair:'livanto' },
+      ]},
+    { tip:'Gustare #1', ora:'10:30', emoji:'🍎', ambalaj:'capsat',
+      variante:[
+        { name:'Măr & Nucă',desc:'Măr Ionatan din livada proprie, 5 nuci.',kcal:90,gr:120,prot:2,carb:18,fat:4,pret:6,pair:'cosi' },
+        { name:'Budincă de Mei cu Mere',desc:'Mei organic, lapte de capră, mere coapte cu scorțișoară, miere de tei.',kcal:190,gr:200,prot:7,carb:34,fat:4,pret:14,pair:'livanto' },
+        { name:'Lapte de Capră cu Miere',desc:'Lapte integral de capră de la ferma locală, cald, cu o linguriță de miere de salcâm.',kcal:230,gr:250,prot:9,carb:28,fat:9,pret:12,pair:'cosi' },
+        { name:'Gustare Energizantă',desc:'Budincă mei + fructe de pădure + nuci + lapte de capră + miere.',kcal:320,gr:300,prot:12,carb:48,fat:10,pret:18,pair:'livanto' },
+      ]},
+    { tip:'Prânz', ora:'13:00', emoji:'🍲', ambalaj:'vacuum',
+      variante:[
+        { name:'Ciorbă de Găină',desc:'Găină de curte gătită 3 ore, morcov, pătrunjel, tăieței de casă, leuștean proaspăt.',kcal:220,gr:350,prot:18,carb:22,fat:6,pret:16,pair:'capriccio' },
+        { name:'Ciorbă de Burtă + Pâine',desc:'Burtă de vițel de la fermă locală, smântână groasă, usturoi, oțet de mere, pâine de casă.',kcal:420,gr:400,prot:28,carb:20,fat:22,pret:24,pair:'ristretto' },
+        { name:'Tocăniță de Porc cu Mămăligă',desc:'Porc de la crescătorul local, ceapă multă, roșii, ardei, cimbru, mămăligă.',kcal:620,gr:480,prot:38,carb:54,fat:24,pret:28,pair:'ristretto' },
+        { name:'Prânz Complet Tradițional',desc:'Ciorbă de burtă + tocăniță porc + mămăligă mare + castraveți murați + pâine.',kcal:840,gr:650,prot:52,carb:74,fat:32,pret:36,pair:'indriya' },
+      ]},
+    { tip:'Gustare #2', ora:'16:30', emoji:'🧀', ambalaj:'capsat',
+      variante:[
+        { name:'Brânză cu Roșii',desc:'Brânză de vacă de fermă, 1 roșie de grădină, sare roz.',kcal:110,gr:120,prot:8,carb:6,fat:6,pret:8,pair:'capriccio' },
+        { name:'Caș Proaspăt cu Rodie',desc:'Caș proaspăt de oaie, semințe de rodie, ulei de măsline, cimbru de munte.',kcal:200,gr:160,prot:12,carb:10,fat:12,pret:16,pair:'capriccio' },
+        { name:'Salată de Fasole',desc:'Fasole boabe din grădină, ceapă roșie, cimbru, ulei de floarea soarelui presat la rece, oțet.',kcal:280,gr:250,prot:14,carb:38,fat:8,pret:14,pair:'capriccio' },
+        { name:'Platou Brânzeturi',desc:'Caș + brânză burduf + telemea + roșii + ardei + pâine de casă + ulei de măsline.',kcal:420,gr:350,prot:22,carb:28,fat:22,pret:24,pair:'livanto' },
+      ]},
+    { tip:'Cină', ora:'19:00', emoji:'🥩', ambalaj:'vacuum',
+      variante:[
+        { name:'Supă Cremă de Legume',desc:'Dovlecel, morcov, cartofi, ceapă, smântână light. Fără gluten.',kcal:120,gr:280,prot:4,carb:20,fat:4,pret:14,pair:'cosi' },
+        { name:'Pui la Ceaun cu Cartofi',desc:'Pulpă de pui de curte rumenită la ceaun, cartofi noi cu coajă, usturoi, rozmarin.',kcal:480,gr:420,prot:38,carb:34,fat:18,pret:26,pair:'dharkan' },
+        { name:'Mușchi de Porc la Grătar',desc:'Mușchi de porc de la crescătorul local, grătar cu ierburi de munte, salată de roșii.',kcal:580,gr:380,prot:46,carb:12,fat:28,pret:30,pair:'kazaar' },
+        { name:'Cină Tradițională Completă',desc:'Mușchi porc grătar + salată de roșii + cartofi copți + sos de usturoi + pâine de casă.',kcal:760,gr:580,prot:56,carb:52,fat:34,pret:38,pair:'indriya' },
+      ]},
+  ]},
+  // MARȚI
+  { zi:'Marți', mese:[
+    { tip:'Mic Dejun', ora:'07:00', emoji:'🍳', ambalaj:'vacuum',
+      variante:[
+        { name:'Ou Fiert cu Roșie',desc:'Ou de găină de curte fiert moale, roșie de grădină, sare roz, ulei de măsline.',kcal:160,gr:140,prot:8,carb:4,fat:10,pret:10,pair:'cosi' },
+        { name:'Omletă cu Caș & Ceapă Verde',desc:'2 ouă, caș proaspăt de oaie, ceapă verde, unt de fermă, pâine de casă.',kcal:390,gr:280,prot:22,carb:28,fat:20,pret:18,pair:'volluto' },
+        { name:'Clătite cu Brânză de Vaci',desc:'Clătite fine din aluat de casă, umplute cu brânză de vaci și stafide, smântână.',kcal:520,gr:350,prot:18,carb:62,fat:20,pret:22,pair:'livanto' },
+        { name:'Mic Dejun Complet',desc:'Clătite brânză + ou fiert + caș + roșii + ceapă verde + pâine + lapte.',kcal:680,gr:500,prot:32,carb:72,fat:28,pret:28,pair:'livanto' },
+      ]},
+    { tip:'Gustare #1', ora:'10:30', emoji:'🫐', ambalaj:'capsat',
+      variante:[
+        { name:'Fructe de Pădure',desc:'Afine, fragi și mure culese din Retezat. Proaspete sau congelate la șoc termic.',kcal:80,gr:150,prot:1,carb:18,fat:0,pret:10,pair:'cosi' },
+        { name:'Iaurt cu Fructe de Pădure',desc:'Iaurt gras de capră, afine și fragi din Retezat, puțină miere de salcâm.',kcal:180,gr:220,prot:8,carb:22,fat:6,pret:14,pair:'volluto' },
+        { name:'Cozonac cu Nucă',desc:'O felie generoasă de cozonac de casă cu nucă prăjită și cacao. Rețeta bunicii.',kcal:280,gr:120,prot:6,carb:42,fat:10,pret:12,pair:'cosi' },
+        { name:'Gustare Dulce Completă',desc:'Cozonac nucă + iaurt fructe pădure + miere + ceai de plante.',kcal:380,gr:320,prot:12,carb:58,fat:12,pret:20,pair:'volluto' },
+      ]},
+    { tip:'Prânz', ora:'13:00', emoji:'🍜', ambalaj:'vacuum',
+      variante:[
+        { name:'Ciorbă Rădăuțeană',desc:'Pui de curte, smântână, usturoi, ardei iuți, oțet. Rețetă autentică din Bucovina.',kcal:240,gr:380,prot:20,carb:16,fat:10,pret:18,pair:'capriccio' },
+        { name:'Sarmale în Foi de Viță',desc:'Carne de porc + orez, foi de viță murată, smântână de fermă. Gătit 5 ore.',kcal:580,gr:450,prot:32,carb:40,fat:28,pret:26,pair:'indriya' },
+        { name:'Sarmale + Mămăligă',desc:'Sarmale în foi de viță, mămăligă prielnică, smântână, ardei iuți murați.',kcal:740,gr:580,prot:40,carb:64,fat:32,pret:32,pair:'indriya' },
+        { name:'Prânz Festiv',desc:'Ciorbă rădăuțeană + sarmale + mămăligă + smântână + murături + pâine.',kcal:920,gr:780,prot:52,carb:82,fat:40,pret:42,pair:'dharkan' },
+      ]},
+    { tip:'Gustare #2', ora:'16:30', emoji:'🥕', ambalaj:'capsat',
+      variante:[
+        { name:'Morcovi cu Hummus',desc:'Morcovi baby din grădina proprie, hummus de casă din naut, lămâie, tahini.',kcal:120,gr:160,prot:5,carb:20,fat:4,pret:10,pair:'cosi' },
+        { name:'Salată de Sfeclă cu Nuci',desc:'Sfeclă roșie coaptă, nuci, brânză de capră, miere, oțet balsamic.',kcal:210,gr:200,prot:7,carb:26,fat:10,pret:15,pair:'capriccio' },
+        { name:'Plăcintă cu Cartofi',desc:'Plăcintă de casă cu cartofi, ceapă, mărar. Coaptă în cuptor pe lemne.',kcal:320,gr:180,prot:8,carb:48,fat:10,pret:14,pair:'livanto' },
+        { name:'Gustare Consistentă',desc:'Plăcintă cartofi + salată sfeclă + nuci + caș + apă minerală.',kcal:460,gr:400,prot:18,carb:60,fat:16,pret:24,pair:'livanto' },
+      ]},
+    { tip:'Cină', ora:'19:00', emoji:'🐟', ambalaj:'vacuum',
+      variante:[
+        { name:'Supă de Legume cu Vermicelli',desc:'Zarzavaturi din grădina proprie, vermicelli fini, leuștean, smântână light.',kcal:130,gr:300,prot:5,carb:22,fat:3,pret:12,pair:'cosi' },
+        { name:'Păstrăv la Grătar',desc:'Păstrăv curcubeu din apele Retezatului, grătar cu ierburi de munte, lămâie, mujdei.',kcal:460,gr:380,prot:42,carb:8,fat:22,pret:28,pair:'ristretto' },
+        { name:'Păstrăv + Legume la Cuptor',desc:'Păstrăv grătar + cartofi noi la cuptor + roșii coapte + usturoi + pâine.',kcal:620,gr:520,prot:48,carb:48,fat:24,pret:34,pair:'kazaar' },
+        { name:'Cină de Munte',desc:'Păstrăv grătar dublu + cartofi + legume coapte + mujdei + salată + pâine de casă.',kcal:800,gr:680,prot:60,carb:62,fat:30,pret:44,pair:'dharkan' },
+      ]},
+  ]},
+  // MIERCURI
+  { zi:'Miercuri', mese:[
+    { tip:'Mic Dejun', ora:'07:00', emoji:'🥣', ambalaj:'vacuum',
+      variante:[
+        { name:'Terci de Ovăz',desc:'Fulgi de ovăz bio, lapte de capră, un pic de miere. 200 ml.',kcal:190,gr:200,prot:7,carb:34,fat:4,pret:10,pair:'cosi' },
+        { name:'Terci de Ovăz cu Fructe',desc:'Fulgi ovăz bio, lapte capră, afine, nuci, miere de tei.',kcal:380,gr:300,prot:12,carb:56,fat:10,pret:16,pair:'volluto' },
+        { name:'Pâine cu Unt & Gem',desc:'Pâine de casă coaptă pe lemne, unt de vacă, gem de prune făcut în casă.',kcal:480,gr:280,prot:10,carb:68,fat:18,pret:16,pair:'volluto' },
+        { name:'Mic Dejun Dulce Complet',desc:'Terci ovăz + fructe pădure + cozonac + lapte + gem prune + pâine + unt.',kcal:660,gr:480,prot:20,carb:96,fat:20,pret:26,pair:'livanto' },
+      ]},
+    { tip:'Gustare #1', ora:'10:30', emoji:'🌰', ambalaj:'capsat',
+      variante:[
+        { name:'Castane Coapte',desc:'Castane dulci din pădurile Retezatului, coapte în jar. Sezonier.',kcal:100,gr:80,prot:2,carb:22,fat:1,pret:8,pair:'cosi' },
+        { name:'Mix Semințe & Fructe Uscate',desc:'Semințe de dovleac, floarea soarelui, merișoare, curmale, migdale.',kcal:210,gr:60,prot:7,carb:24,fat:11,pret:12,pair:'livanto' },
+        { name:'Brioșă de Casă',desc:'Brioșă cu afine și scorțișoară, coaptă în dimineața zilei. Fără conservanți.',kcal:290,gr:120,prot:6,carb:48,fat:8,pret:10,pair:'cosi' },
+        { name:'Gustare de Drum',desc:'Brioșă + mix semințe + fructe uscate + lapte cald.',kcal:400,gr:280,prot:12,carb:64,fat:14,pret:20,pair:'livanto' },
+      ]},
+    { tip:'Prânz', ora:'13:00', emoji:'🍗', ambalaj:'vacuum',
+      variante:[
+        { name:'Supă Cremă de Cartofi',desc:'Cartofi copți, smântână, cheddar afumat, ceapă caramelizată, tarhon.',kcal:210,gr:320,prot:7,carb:32,fat:7,pret:16,pair:'capriccio' },
+        { name:'Pulpă de Pui la Ceaun',desc:'Pulpă de pui de curte rumenită în untura proprie, cartofi noi, rozmarin, usturoi.',kcal:560,gr:460,prot:44,carb:36,fat:24,pret:26,pair:'ristretto' },
+        { name:'Pui Înăbușit cu Legume',desc:'Pui cu smântână, morcovi, mazăre, ceapă + mămăligă + castraveți murați.',kcal:700,gr:580,prot:50,carb:52,fat:28,pret:30,pair:'ristretto' },
+        { name:'Prânz Complet',desc:'Supă cremă + pui ceaun + mămăligă + legume + murături + pâine.',kcal:890,gr:760,prot:56,carb:76,fat:36,pret:40,pair:'indriya' },
+      ]},
+    { tip:'Gustare #2', ora:'16:30', emoji:'🧆', ambalaj:'capsat',
+      variante:[
+        { name:'Roșii cu Busuioc',desc:'Roșii de grădină, busuioc proaspăt, ulei de măsline, sare roz.',kcal:70,gr:150,prot:2,carb:10,fat:4,pret:6,pair:'cosi' },
+        { name:'Drob de Miel',desc:'Drob de miel tradițional, tăiat felie, cu roșii și ceapă verde.',kcal:240,gr:180,prot:16,carb:8,fat:16,pret:18,pair:'capriccio' },
+        { name:'Piftie de Porc',desc:'Piftie de casă cu picior de porc, usturoi, frunze de dafin.',kcal:180,gr:200,prot:18,carb:2,fat:10,pret:14,pair:'capriccio' },
+        { name:'Gustare Proteică',desc:'Drob + piftie + roșii + ceapă + pâine de secară.',kcal:380,gr:380,prot:30,carb:24,fat:20,pret:26,pair:'livanto' },
+      ]},
+    { tip:'Cină', ora:'19:00', emoji:'🫕', ambalaj:'vacuum',
+      variante:[
+        { name:'Salată de Roșii cu Brânză',desc:'Roșii de grădină, brânză de vacă, ceapă roșie, ulei de măsline, oregano.',kcal:140,gr:240,prot:8,carb:12,fat:7,pret:12,pair:'volluto' },
+        { name:'Fasole cu Cârnați Afumați',desc:'Fasole boabe din grădină, cârnați afumați de casă, ceapă, cimbru, roșii.',kcal:520,gr:420,prot:30,carb:48,fat:20,pret:24,pair:'dharkan' },
+        { name:'Fasole + Pâine de Casă',desc:'Fasole cu cârnați + tocătură de ceapă + murături + pâine de casă coaptă azi.',kcal:660,gr:540,prot:36,carb:68,fat:22,pret:28,pair:'kazaar' },
+        { name:'Cină Consistentă',desc:'Fasole cârnați + varză murată + cârnați la grătar + mujdei + pâine.',kcal:820,gr:660,prot:44,carb:78,fat:30,pret:36,pair:'dharkan' },
+      ]},
+  ]},
+  // JOI
+  { zi:'Joi', mese:[
+    { tip:'Mic Dejun', ora:'07:00', emoji:'🧇', ambalaj:'vacuum',
+      variante:[
+        { name:'Smântână cu Miere',desc:'Smântână grasă de fermă, lingură de miere de salcâm.',kcal:150,gr:100,prot:2,carb:12,fat:10,pret:8,pair:'cosi' },
+        { name:'Balmoș Tradițional',desc:'Mămăligă fiartă în zer de brânză cu smântână și caș de oaie. Rețetă de cioban.',kcal:420,gr:320,prot:16,carb:44,fat:20,pret:20,pair:'livanto' },
+        { name:'Jumări cu Ouă',desc:'Jumări de porc, 2 ouă prăjite în untură, ceapă verde, pâine de casă.',kcal:560,gr:280,prot:26,carb:20,fat:38,pret:22,pair:'ristretto' },
+        { name:'Mic Dejun de Munte',desc:'Balmoș + jumări + ouă prăjite + brânză + ceapă + pâine + lapte.',kcal:740,gr:520,prot:34,carb:56,fat:44,pret:32,pair:'dharkan' },
+      ]},
+    { tip:'Gustare #1', ora:'10:30', emoji:'🍇', ambalaj:'capsat',
+      variante:[
+        { name:'Struguri de Vie',desc:'Struguri din via proprie. Sezonier din august.',kcal:90,gr:150,prot:1,carb:22,fat:0,pret:8,pair:'cosi' },
+        { name:'Compot de Fructe',desc:'Compot de mere, pere și prune din livada proprie. Fără zahăr adăugat.',kcal:160,gr:280,prot:1,carb:40,fat:0,pret:10,pair:'cosi' },
+        { name:'Pâine cu Jumări',desc:'Pâine de casă coaptă pe lemne, jumări de porc, ceapă verde.',kcal:320,gr:160,prot:10,carb:36,fat:14,pret:14,pair:'capriccio' },
+        { name:'Gustare Sățioasă',desc:'Pâine jumări + brânză + compot fructe + ceai de munte.',kcal:440,gr:480,prot:14,carb:60,fat:16,pret:20,pair:'livanto' },
+      ]},
+    { tip:'Prânz', ora:'13:00', emoji:'🍖', ambalaj:'vacuum',
+      variante:[
+        { name:'Ciorbă de Perișoare',desc:'Perișoare de vită și orez, morcov, rădăcini, smântână, leuștean.',kcal:260,gr:380,prot:18,carb:24,fat:10,pret:18,pair:'capriccio' },
+        { name:'Coaste de Porc la Cuptor',desc:'Coaste de porc de la crescătorul local, marinată cu ierburi de munte, cartofi.',kcal:620,gr:480,prot:42,carb:36,fat:30,pret:28,pair:'kazaar' },
+        { name:'Coaste + Varză Murată',desc:'Coaste porc copte + varză murată înăbușită + mămăligă + mujdei.',kcal:780,gr:620,prot:50,carb:54,fat:36,pret:34,pair:'kazaar' },
+        { name:'Prânz de Joi',desc:'Ciorbă perișoare + coaste porc + varză murată + mămăligă + murături + pâine.',kcal:960,gr:820,prot:58,carb:76,fat:46,pret:44,pair:'dharkan' },
+      ]},
+    { tip:'Gustare #2', ora:'16:30', emoji:'🫙', ambalaj:'capsat',
+      variante:[
+        { name:'Zacuscă pe Pâine',desc:'Zacuscă premium Metanoia pe felie de pâine de casă.',kcal:130,gr:100,prot:3,carb:20,fat:4,pret:10,pair:'capriccio' },
+        { name:'Murături Asortate',desc:'Castraveți, gogonele, ardei, varză murată de casă. Probiotice naturale.',kcal:60,gr:200,prot:2,carb:10,fat:0,pret:8,pair:'capriccio' },
+        { name:'Zacuscă + Brânză + Pâine',desc:'Zacuscă premium, caș proaspăt, pâine de casă, ulei de măsline.',kcal:280,gr:250,prot:12,carb:32,fat:12,pret:18,pair:'livanto' },
+        { name:'Gustare Gourmet',desc:'Platou: zacuscă + brânzeturi + murături + pâine + olives + ulei de măsline.',kcal:400,gr:400,prot:18,carb:40,fat:18,pret:26,pair:'livanto' },
+      ]},
+    { tip:'Cină', ora:'19:00', emoji:'🐄', ambalaj:'vacuum',
+      variante:[
+        { name:'Lapte Cald cu Miere',desc:'Lapte integral de vacă de la fermă locală, cald, o linguriță de miere.',kcal:140,gr:250,prot:7,carb:18,fat:5,pret:8,pair:'cosi' },
+        { name:'Ficăței de Pui cu Ceapă',desc:'Ficăței de pui de curte, ceapă caramelizată, cimbru, smântână, mămăligă.',kcal:440,gr:380,prot:36,carb:28,fat:20,pret:22,pair:'ristretto' },
+        { name:'Ficăței + Mămăligă + Salată',desc:'Ficăței + mămăligă + salată verde + roșii + castraveți + ulei.',kcal:580,gr:500,prot:42,carb:44,fat:22,pret:26,pair:'ristretto' },
+        { name:'Cină Proteică',desc:'Ficăței + ficat de vită + mămăligă + legume înăbușite + salată + pâine.',kcal:740,gr:640,prot:54,carb:56,fat:26,pret:34,pair:'indriya' },
+      ]},
+  ]},
+  // VINERI
+  { zi:'Vineri', mese:[
+    { tip:'Mic Dejun', ora:'07:00', emoji:'🥞', ambalaj:'vacuum',
+      variante:[
+        { name:'Cereale cu Lapte',desc:'Cereale integrale cu lapte de capră de fermă, fructe uscate.',kcal:200,gr:200,prot:8,carb:38,fat:4,pret:10,pair:'cosi' },
+        { name:'Papanași Prăjiți',desc:'Papanași din brânză de vaci, smântână bătută, dulceață de afine din Retezat.',kcal:440,gr:280,prot:14,carb:58,fat:16,pret:20,pair:'livanto' },
+        { name:'Clătite cu Dulceață',desc:'Clătite fine din aluat de casă, unt, dulceață de prune și caise.',kcal:520,gr:320,prot:12,carb:78,fat:16,pret:18,pair:'livanto' },
+        { name:'Mic Dejun de Weekend',desc:'Papanași + clătite + dulceață asortată + smântână + lapte + cafea.',kcal:720,gr:520,prot:24,carb:108,fat:22,pret:30,pair:'livanto' },
+      ]},
+    { tip:'Gustare #1', ora:'10:30', emoji:'🌿', ambalaj:'capsat',
+      variante:[
+        { name:'Ceai de Plante',desc:'Amestec mentă + sunătoare + cimbrișor din Retezat. 300 ml cald.',kcal:5,gr:300,prot:0,carb:1,fat:0,pret:6,pair:'cosi' },
+        { name:'Labneh cu Nucă',desc:'Iaurt strecurat, nuci caramelizate, ulei de măsline, cimbru de munte.',kcal:200,gr:160,prot:9,carb:12,fat:13,pret:14,pair:'capriccio' },
+        { name:'Gogoși de Casă',desc:'Gogoși pufoase cu gem de vișine, zahăr pudră. Prăjite în ulei de floarea soarelui.',kcal:320,gr:180,prot:5,carb:52,fat:10,pret:14,pair:'cosi' },
+        { name:'Gustare de Vineri',desc:'Gogoși + labneh + ceai de plante + fructe de sezon.',kcal:480,gr:540,prot:12,carb:72,fat:16,pret:24,pair:'volluto' },
+      ]},
+    { tip:'Prânz', ora:'13:00', emoji:'🐟', ambalaj:'vacuum',
+      variante:[
+        { name:'Borș de Pește',desc:'Pește din râurile Retezatului, borș acru, leuștean, rădăcini.',kcal:190,gr:360,prot:20,carb:16,fat:4,pret:18,pair:'capriccio' },
+        { name:'Crap la Grătar',desc:'Crap crescut natural, grătar cu lămâie și ierburi, mujdei de usturoi, mămăligă.',kcal:480,gr:440,prot:44,carb:28,fat:18,pret:28,pair:'ristretto' },
+        { name:'Crap + Mămăligă + Murături',desc:'Crap grătar + mămăligă + murături + mujdei + salată de varză.',kcal:640,gr:580,prot:52,carb:52,fat:20,pret:32,pair:'ristretto' },
+        { name:'Prânz de Vineri',desc:'Borș pește + crap grătar + mămăligă + murături + salată + pâine de casă.',kcal:820,gr:780,prot:62,carb:72,fat:24,pret:42,pair:'indriya' },
+      ]},
+    { tip:'Gustare #2', ora:'16:30', emoji:'🍰', ambalaj:'capsat',
+      variante:[
+        { name:'Felie de Cozonac',desc:'Cozonac cu nucă și cacao, rețeta casei din 1965.',kcal:180,gr:80,prot:4,carb:28,fat:6,pret:10,pair:'cosi' },
+        { name:'Tartă cu Vișine',desc:'Tartă de casă cu vișine din livada proprie, blat crocant, cremă de unt.',kcal:280,gr:120,prot:5,carb:42,fat:10,pret:16,pair:'cosi' },
+        { name:'Prăjitură de Casă',desc:'Prăjitură cu foi și cremă de zahăr ars, nuci și stafide.',kcal:380,gr:180,prot:7,carb:58,fat:14,pret:18,pair:'livanto' },
+        { name:'Desert Complet',desc:'Tartă vișine + prăjitură + cozonac + compot + ceai de plante.',kcal:560,gr:480,prot:14,carb:88,fat:18,pret:30,pair:'livanto' },
+      ]},
+    { tip:'Cină', ora:'19:00', emoji:'🥘', ambalaj:'vacuum',
+      variante:[
+        { name:'Salată de Vinete',desc:'Vinete coapte pe jar, usturoi, ulei de măsline, roșii. Fără gluten.',kcal:120,gr:200,prot:3,carb:14,fat:6,pret:12,pair:'capriccio' },
+        { name:'Miel la Ceaun',desc:'Miel de la crescătorul local, ceaun cu legume de sezon și ierburi de munte.',kcal:540,gr:420,prot:46,carb:18,fat:28,pret:34,pair:'kazaar' },
+        { name:'Miel + Vinete + Mămăligă',desc:'Miel ceaun + salată vinete + mămăligă + usturoi + pâine de casă.',kcal:700,gr:580,prot:52,carb:40,fat:34,pret:40,pair:'kazaar' },
+        { name:'Cină de Vineri',desc:'Miel ceaun + vinete + mămăligă + salată de roșii + usturoi + pâine + vin roșu sec.',kcal:880,gr:740,prot:60,carb:56,fat:40,pret:50,pair:'dharkan' },
+      ]},
+  ]},
+  // SAMBATA
+  { zi:'Sâmbătă', mese:[
+    { tip:'Mic Dejun', ora:'08:00', emoji:'🥚', ambalaj:'vacuum',
+      variante:[
+        { name:'Iaurt cu Miere',desc:'Iaurt de oaie, miere de flori de munte.',kcal:160,gr:150,prot:7,carb:20,fat:5,pret:10,pair:'cosi' },
+        { name:'Mic Dejun Tradițional',desc:'Mămăligă cu brânză + slănină afumată + ou + roșii + ceapă verde.',kcal:520,gr:380,prot:24,carb:42,fat:26,pret:24,pair:'ristretto' },
+        { name:'Mic Dejun Robust',desc:'Slănină + ouă + cârnați + roșii + ardei + pâine de casă proaspătă.',kcal:680,gr:480,prot:32,carb:36,fat:40,pret:28,pair:'dharkan' },
+        { name:'Mic Dejun de Sâmbătă',desc:'Tot ce avem la fermă: ouă + slănină + cârnați + brânzeturi + roșii + mămăligă + lapte.',kcal:860,gr:620,prot:44,carb:52,fat:50,pret:36,pair:'dharkan' },
+      ]},
+    { tip:'Gustare #1', ora:'11:00', emoji:'🍓', ambalaj:'capsat',
+      variante:[
+        { name:'Căpșune din Grădină',desc:'Căpșune cultivate fără pesticide. Sezonier mai–iunie.',kcal:70,gr:200,prot:1,carb:16,fat:0,pret:10,pair:'cosi' },
+        { name:'Fragi cu Smântână',desc:'Fragi de munte, smântână grasă, un praf de zahăr vanilat.',kcal:180,gr:200,prot:3,carb:22,fat:9,pret:14,pair:'volluto' },
+        { name:'Griș cu Lapte & Fructe',desc:'Griș fiert în lapte de capră, fructe de sezon, scorțișoară.',kcal:280,gr:250,prot:9,carb:44,fat:7,pret:14,pair:'cosi' },
+        { name:'Gustare de Weekend',desc:'Fragi smântână + griș lapte + biscuiți de casă + suc de fructe.',kcal:420,gr:480,prot:12,carb:64,fat:14,pret:22,pair:'volluto' },
+      ]},
+    { tip:'Prânz', ora:'13:00', emoji:'🍲', ambalaj:'vacuum',
+      variante:[
+        { name:'Ciorbă de Legume',desc:'Ciorba simplă de zarzavaturi, fără carne. Curată, curativă.',kcal:110,gr:350,prot:4,carb:22,fat:2,pret:12,pair:'capriccio' },
+        { name:'Tocăniță de Vită',desc:'Vită de la ferma locală, gătită 4 ore cu roșii, ceapă, ardei, cimbru, mămăligă.',kcal:600,gr:480,prot:48,carb:44,fat:24,pret:30,pair:'kazaar' },
+        { name:'Vită + Mămăligă + Varză',desc:'Tocăniță vită + mămăligă + varză murată + ardei iuți + pâine.',kcal:780,gr:640,prot:56,carb:68,fat:28,pret:36,pair:'kazaar' },
+        { name:'Prânz de Sâmbătă',desc:'Ciorbă legume + tocăniță vită + mămăligă + varză + murături + pâine de casă.',kcal:960,gr:860,prot:62,carb:88,fat:32,pret:46,pair:'dharkan' },
+      ]},
+    { tip:'Gustare #2', ora:'17:00', emoji:'🧁', ambalaj:'capsat',
+      variante:[
+        { name:'Biscuiți de Casă',desc:'Biscuiți cu unt și vanilie, coaptă azi dimineață.',kcal:140,gr:60,prot:2,carb:20,fat:6,pret:8,pair:'cosi' },
+        { name:'Tort de Casă',desc:'Felie din tortul casei — foi cu smântână și nuci, rețeta bunicii.',kcal:340,gr:150,prot:6,carb:48,fat:14,pret:18,pair:'cosi' },
+        { name:'Cozonac + Lapte',desc:'Cozonac cu nucă și stafide + pahar de lapte de capră cald.',kcal:440,gr:280,prot:12,carb:68,fat:14,pret:18,pair:'cosi' },
+        { name:'Desert de Sâmbătă',desc:'Tort casă + cozonac + biscuiți + lapte + ceai + dulceață asortată.',kcal:660,gr:540,prot:18,carb:102,fat:20,pret:30,pair:'livanto' },
+      ]},
+    { tip:'Cină', ora:'19:30', emoji:'🪵', ambalaj:'vacuum',
+      variante:[
+        { name:'Supă de Roșii',desc:'Roșii din grădina proprie, bazilicum, smântână, pâine crocantă.',kcal:150,gr:280,prot:4,carb:24,fat:4,pret:12,pair:'volluto' },
+        { name:'Friptură la Grătar',desc:'Ceafă de porc marinată cu ierburi de munte, grătar pe lemne, salată de varză.',kcal:560,gr:420,prot:44,carb:10,fat:32,pret:30,pair:'kazaar' },
+        { name:'Grătar Mixt',desc:'Ceafă + cârnați + mici + mujdei + muștar + salată + pâine de casă.',kcal:720,gr:560,prot:52,carb:24,fat:42,pret:36,pair:'kazaar' },
+        { name:'Grătar de Sâmbătă Seara',desc:'Platou grătar complet + legume la grătar + mujdei + tzatziki + pâine + murături.',kcal:920,gr:740,prot:62,carb:40,fat:52,pret:48,pair:'dharkan' },
+      ]},
+  ]},
+  // DUMINICA
+  { zi:'Duminică', mese:[
+    { tip:'Mic Dejun', ora:'09:00', emoji:'☕', ambalaj:'vacuum',
+      variante:[
+        { name:'Cafea & Biscuiți',desc:'Espresso de specialitate + 2 biscuiți de casă cu unt.',kcal:120,gr:80,prot:2,carb:16,fat:4,pret:12,pair:'ristretto' },
+        { name:'Mic Dejun Leneș',desc:'Ouă jumări + slănină + roșii + ceapă + pâine de casă caldă + cafea.',kcal:480,gr:380,prot:22,carb:32,fat:28,pret:22,pair:'ristretto' },
+        { name:'Mic Dejun Festiv',desc:'Cozonac + ouă fierte + brânzeturi + gem + lapte + cafea.',kcal:640,gr:480,prot:28,carb:78,fat:22,pret:26,pair:'dharkan' },
+        { name:'Mic Dejun Duminical',desc:'Mese lente de duminică: toate clasicele casei + cafea de specialitate + suc de portocale.',kcal:820,gr:640,prot:36,carb:96,fat:30,pret:34,pair:'dharkan' },
+      ]},
+    { tip:'Gustare #1', ora:'11:30', emoji:'🍰', ambalaj:'capsat',
+      variante:[
+        { name:'Felie Prăjitură',desc:'Prăjitură de casă cu foi și cremă, rețeta bunicii.',kcal:200,gr:100,prot:4,carb:32,fat:7,pret:10,pair:'cosi' },
+        { name:'Savarina',desc:'Savarina înmuiată în sirop de rom, frișcă naturală bătută, vișine.',kcal:310,gr:160,prot:5,carb:48,fat:10,pret:14,pair:'cosi' },
+        { name:'Tort Diplomat',desc:'Tort diplomat cu frișcă și fructe din conserva proprie.',kcal:400,gr:200,prot:7,carb:58,fat:16,pret:18,pair:'cosi' },
+        { name:'Desert Duminical',desc:'Savarina + tort + prăjitură + frișcă + compot + cafea.',kcal:600,gr:560,prot:14,carb:92,fat:22,pret:30,pair:'livanto' },
+      ]},
+    { tip:'Prânz', ora:'14:00', emoji:'🍗', ambalaj:'vacuum',
+      variante:[
+        { name:'Ciorbă de Pui',desc:'Ciorba clasică de pui cu legume, leuștean, smântână.',kcal:200,gr:360,prot:16,carb:18,fat:6,pret:16,pair:'capriccio' },
+        { name:'Pui Întreg la Cuptor',desc:'Pui de curte întreg, copt 2 ore cu cartofi, rozmarin, usturoi, lămâie.',kcal:640,gr:520,prot:50,carb:40,fat:28,pret:32,pair:'ristretto' },
+        { name:'Prânz Duminical',desc:'Ciorbă + pui la cuptor + cartofi copți + salată + pâine + compot.',kcal:840,gr:720,prot:58,carb:72,fat:32,pret:40,pair:'indriya' },
+        { name:'Masa Mare de Duminică',desc:'Supă + ciorbă + pui la cuptor + sarmale + mămăligă + salate + deserturi.',kcal:1100,gr:980,prot:72,carb:100,fat:42,pret:55,pair:'dharkan' },
+      ]},
+    { tip:'Gustare #2', ora:'17:00', emoji:'🫖', ambalaj:'capsat',
+      variante:[
+        { name:'Ceai de Munte',desc:'Amestec de plante culese din Retezat. Cald, aromat, curativ.',kcal:5,gr:300,prot:0,carb:1,fat:0,pret:6,pair:'cosi' },
+        { name:'Compot & Biscuiți',desc:'Compot de mere din livada proprie, biscuiți de casă cu unt.',kcal:210,gr:320,prot:3,carb:44,fat:4,pret:12,pair:'cosi' },
+        { name:'Plăcintă cu Dovleac',desc:'Plăcintă foietată cu dovleac, scorțișoară, stafide. Coaptă azi.',kcal:340,gr:200,prot:7,carb:56,fat:10,pret:16,pair:'livanto' },
+        { name:'Gustare de Seară',desc:'Plăcintă + compot + biscuiți + ceai + frișcă.',kcal:500,gr:580,prot:10,carb:84,fat:14,pret:24,pair:'livanto' },
+      ]},
+    { tip:'Cină', ora:'19:00', emoji:'🌙', ambalaj:'vacuum',
+      variante:[
+        { name:'Brânză cu Roșii',desc:'Brânză de vacă + roșii de grădină + ulei de măsline. Simplu și curat.',kcal:130,gr:180,prot:9,carb:8,fat:7,pret:10,pair:'volluto' },
+        { name:'Ciulama de Pui',desc:'Bucăți de pui în sos alb cu smântână și ciuperci, mămăligă.',kcal:480,gr:400,prot:38,carb:32,fat:20,pret:24,pair:'ristretto' },
+        { name:'Ciulama + Mămăligă + Salată',desc:'Ciulama pui + mămăligă + salată de castraveți + roșii + pâine.',kcal:620,gr:540,prot:44,carb:52,fat:22,pret:28,pair:'ristretto' },
+        { name:'Cina de Duminică',desc:'Ciulama + sarmale rămase + mămăligă + salate diverse + pâine.',kcal:800,gr:700,prot:54,carb:72,fat:28,pret:36,pair:'indriya' },
+      ]},
+  ]},
+];
+
+const PLANURI = [1000, 1500, 2000, 2500];
+const PLAN_IDX = { 1000:0, 1500:1, 2000:2, 2500:3 };
+
+let ziCurenta = 0;
+let planCurent = 1500;
+
+// Randare dot intensitate
+function dots(int) {
+  let h = '';
+  for(let i=0;i<5;i++){
+    const on = i < int ? 'background:var(--t3)' : 'background:rgba(255,255,255,.12)';
+    h += `<div class="di" style="${on}"></div>`;
+  }
+  return h;
+}
+
+function render() {
+  const zi = MENIU[ziCurenta];
+  const pidx = PLAN_IDX[planCurent];
+
+  // Calculează totaluri zi
+  let totKcal=0, totProt=0, totCarb=0, totFat=0;
+  zi.mese.forEach(m => {
+    const v = m.variante[pidx];
+    totKcal += v.kcal; totProt += v.prot;
+    totCarb += v.carb; totFat += v.fat;
+  });
+
+  // Summary bar
+  document.getElementById('daySummary').innerHTML = `
+    <div class="ds-item"><div class="ds-val">${totKcal}</div><div class="ds-lbl">kcal total</div></div>
+    <div class="ds-item"><div class="ds-val">${totProt}g</div><div class="ds-lbl">proteine</div></div>
+    <div class="ds-item"><div class="ds-val">${totCarb}g</div><div class="ds-lbl">carbohidrați</div></div>
+    <div class="ds-item"><div class="ds-val">${totFat}g</div><div class="ds-lbl">grăsimi</div></div>
+    <div class="ds-item"><div class="ds-val">5</div><div class="ds-lbl">mese/zi</div></div>
+    <span class="ds-note">📅 ${zi.zi} · ${DATES[ziCurenta]} · Plan ${planCurent} kcal</span>
+  `;
+
+  // Meal cards
+  const wrap = document.getElementById('mealsWrap');
+  wrap.innerHTML = '';
+
+  zi.mese.forEach(masa => {
+    const v = masa.variante[pidx];
+    const p = PAIR[v.pair];
+    const intVal = p.int;
+
+    const card = document.createElement('div');
+    card.className = 'meal-card';
+    card.innerHTML = `
+      <div class="meal-header">
+        <div class="meal-time-col">
+          <div class="meal-emoji">${masa.emoji}</div>
+          <div class="meal-time">${masa.ora}</div>
+        </div>
+        <div class="meal-type-col">
+          <div>
+            <div class="meal-type">${masa.tip}</div>
+            <div class="meal-name">${v.name}</div>
+          </div>
+          <div class="meal-badges">
+            <span class="${masa.ambalaj === 'vacuum' ? 'badge-vacuum' : 'badge-capsat'}">
+              ${masa.ambalaj === 'vacuum' ? '🫙 Vacuum' : '📦 Capsată'}
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="meal-body">
+        <div class="meal-main">
+          <p class="meal-desc">${v.desc}</p>
+          <div class="macro-table">
+            <div class="mt-cell mt-kcal">
+              <div class="mt-val">${v.kcal}</div>
+              <div class="mt-lbl">kcal</div>
+            </div>
+            <div class="mt-cell mt-gr">
+              <div class="mt-val">${v.gr}g</div>
+              <div class="mt-lbl">gramaj</div>
+            </div>
+            <div class="mt-cell mt-prot">
+              <div class="mt-val">${v.prot}g</div>
+              <div class="mt-lbl">prot</div>
+            </div>
+            <div class="mt-cell mt-carb">
+              <div class="mt-val">${v.carb}g</div>
+              <div class="mt-lbl">carb</div>
+            </div>
+            <div class="mt-cell mt-fat">
+              <div class="mt-val">${v.fat}g</div>
+              <div class="mt-lbl">grăs</div>
+            </div>
+          </div>
+          <div class="pair">
+            <div class="pair-ico">☕</div>
+            <div class="pair-info">
+              <div class="pair-name">${p.name}</div>
+              <div class="pair-sub">${p.sub}</div>
+            </div>
+            <div class="pair-int">${dots(intVal)}</div>
+          </div>
+        </div>
+        <div class="meal-side">
+          <div>
+            <div class="meal-price">${v.pret} lei</div>
+            <div class="meal-price-sub">per porție</div>
+          </div>
+          <button class="meal-btn" onclick="precomanda('${v.name}')">Adaugă →</button>
+          <button class="meal-btn meal-btn-sec" onclick="precomanda('${v.name} + ${p.name.split('·')[0].trim()}')">+ Cafea</button>
+        </div>
+      </div>
+    `;
+    wrap.appendChild(card);
+  });
+
+  // Day nav
+  document.getElementById('dayNavName').textContent = zi.zi;
+}
+
+function precomanda(produs) {
+  const msg = 'Buna ziua! Vreau sa comand: ' + produs + ' pentru ' + ZILE[ziCurenta];
+  window.open('https://wa.me/40749229686?text=' + encodeURIComponent(msg), '_blank');
+}
+
+// Week tabs
+document.querySelectorAll('#wTabs .tab').forEach(function(t) {
+  t.addEventListener('click', function() {
+    document.querySelectorAll('#wTabs .tab').forEach(function(x){ x.classList.remove('w-on'); });
+    t.classList.add('w-on');
+  });
+});
+
+// Day tabs
+document.querySelectorAll('#dTabs .tab').forEach(function(t) {
+  t.addEventListener('click', function() {
+    document.querySelectorAll('#dTabs .tab').forEach(function(x){ x.classList.remove('d-on'); });
+    t.classList.add('d-on');
+    ziCurenta = parseInt(t.getAttribute('data-zi'));
+    render();
+  });
+});
+
+// Kcal tabs
+document.querySelectorAll('.kp').forEach(function(b) {
+  b.addEventListener('click', function() {
+    document.querySelectorAll('.kp').forEach(function(x){ x.classList.remove('on'); });
+    b.classList.add('on');
+    planCurent = parseInt(b.getAttribute('data-plan'));
+    render();
+  });
+});
+
+// Nav buttons
+document.getElementById('btnPrev').addEventListener('click', function() {
+  ziCurenta = (ziCurenta - 1 + 7) % 7;
+  document.querySelectorAll('#dTabs .tab').forEach(function(t, i) {
+    t.classList.toggle('d-on', i === ziCurenta);
+  });
+  render();
+});
+document.getElementById('btnNext').addEventListener('click', function() {
+  ziCurenta = (ziCurenta + 1) % 7;
+  document.querySelectorAll('#dTabs .tab').forEach(function(t, i) {
+    t.classList.toggle('d-on', i === ziCurenta);
+  });
+  render();
+});
+
+// Init
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Metanoia · Mâncare Tradițională To-Go · DN 68</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Karla:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════
+   TOKENS PSIHOLOGICE
+═══════════════════════════ */
+:root {
+  /* Verzi — natură, sănătate, pădure Retezat */
+  --v1: #1e3d1a;   /* verde pădure profund */
+  --v2: #2d5a27;   /* verde activ */
+  --v3: #4a7c3f;   /* verde mediu */
+  --v4: #7aaa6a;   /* verde clar */
+  --v5: #d4edcc;   /* verde palid */
+
+  /* Crem & cald — tradiție, acasă, confort */
+  --c1: #faf5ec;   /* crem bază */
+  --c2: #f2e8d0;   /* crem cald */
+  --c3: #e8d5b0;   /* crem bronz */
+
+  /* Teracotă & ambra — apetit, pământ, tradiție */
+  --t1: #c4622d;   /* teracotă principal */
+  --t2: #e07840;   /* teracotă deschis */
+  --t3: #f5a06a;   /* somon cald */
+  --t4: #fde8d8;   /* teracotă palid */
+
+  /* Espresso — cafea, premium */
+  --e1: #1e1108;   /* espresso adânc */
+  --e2: #2e1a0a;   /* maro cald */
+  --e3: #5c3517;   /* maro mediu */
+  --e4: #a0622a;   /* ambră */
+
+  /* Texte */
+  --tx1: #1a1208;
+  --tx2: #3d2e1a;
+  --tx3: #7a6048;
+  --tx4: rgba(26,18,8,.4);
+
+  --radius: 0px;
+}
+
+*,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family:'Karla',sans-serif;
+  background:var(--c1);
+  color:var(--tx1);
+  overflow-x:hidden;
+}
+::-webkit-scrollbar { width:3px; }
+::-webkit-scrollbar-track { background:var(--c2); }
+::-webkit-scrollbar-thumb { background:var(--v2); }
+
+/* texture overlay */
+body::after {
+  content:''; position:fixed; inset:0; z-index:0; pointer-events:none;
+  opacity:.03;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:200px;
+}
+
+/* ═══ NAV ═══ */
+.nav {
+  position:fixed; top:0; width:100%; z-index:999;
+  background:rgba(250,245,236,.97);
+  backdrop-filter:blur(12px);
+  border-bottom:2px solid var(--v2);
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 5%; height:68px;
+}
+.nav-brand {
+  display:flex; align-items:center; gap:10px;
+  text-decoration:none;
+}
+.nav-logo { width:42px; height:42px; }
+.nav-name {
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem; font-weight:900;
+  color:var(--v1); letter-spacing:2px; text-transform:uppercase;
+}
+.nav-sub {
+  font-size:.58rem; letter-spacing:2px; text-transform:uppercase;
+  color:var(--tx3); font-weight:500; margin-top:1px;
+}
+.nav-links { display:flex; gap:24px; list-style:none; }
+.nav-links a {
+  font-size:.75rem; font-weight:600; letter-spacing:1px;
+  text-transform:uppercase; color:var(--tx2); text-decoration:none;
+  transition:color .2s; padding-bottom:2px;
+  border-bottom:2px solid transparent;
+}
+.nav-links a:hover { color:var(--v2); border-bottom-color:var(--v2); }
+.nav-cta {
+  background:var(--v2); color:#fff;
+  border:none; padding:10px 22px;
+  font-family:'Karla',sans-serif;
+  font-size:.78rem; font-weight:700; letter-spacing:1.5px; text-transform:uppercase;
+  cursor:pointer; transition:all .2s;
+}
+.nav-cta:hover { background:var(--v1); }
+
+/* ═══ HERO ═══ */
+.hero {
+  min-height:100svh;
+  background: linear-gradient(160deg, var(--v1) 0%, #2d4a20 55%, var(--e2) 100%);
+  display:grid; grid-template-columns:1fr 1fr;
+  align-items:center; gap:48px;
+  padding:100px 5% 60px;
+  position:relative; overflow:hidden;
+}
+/* pattern organic */
+.hero::before {
+  content:'';
+  position:absolute; inset:0; pointer-events:none;
+  background:
+    radial-gradient(ellipse 60% 70% at 80% 30%, rgba(122,170,106,.15), transparent 60%),
+    radial-gradient(ellipse 40% 50% at 10% 80%, rgba(196,98,45,.12), transparent 55%),
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.hero-left { position:relative; z-index:2; }
+.hero-badge {
+  display:inline-flex; align-items:center; gap:9px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.2);
+  padding:7px 18px; margin-bottom:28px;
+  font-size:.68rem; font-weight:700; letter-spacing:2.5px;
+  text-transform:uppercase; color:rgba(255,255,255,.85);
+  animation:fadeUp .7s ease both;
+}
+.hero-badge-dot {
+  width:7px; height:7px; border-radius:50%;
+  background:var(--t2); animation:blink 2s infinite;
+}
+.hero h1 {
+  font-family:'Playfair Display',serif; font-weight:900;
+  font-size:clamp(2.4rem,5vw,5rem);
+  line-height:1.05; color:#fff; margin-bottom:16px;
+  animation:fadeUp .7s .1s ease both;
+}
+.hero h1 em {
+  font-style:italic; color:var(--t3);
+  display:block;
+}
+.hero-desc {
+  font-family:'Source Serif 4',serif; font-style:italic;
+  font-size:clamp(.95rem,1.4vw,1.15rem);
+  color:rgba(255,255,255,.6); line-height:1.75;
+  max-width:460px; margin-bottom:44px;
+  animation:fadeUp .7s .2s ease both;
+}
+.hero-btns {
+  display:flex; gap:12px; flex-wrap:wrap;
+  animation:fadeUp .7s .3s ease both;
+}
+.btn-terra {
+  background:var(--t1); color:#fff; border:none;
+  padding:14px 32px;
+  font-family:'Karla',sans-serif; font-size:.82rem;
+  font-weight:700; letter-spacing:1.5px; text-transform:uppercase;
+  cursor:pointer; transition:all .22s;
+}
+.btn-terra:hover { background:var(--t2); transform:translateY(-2px); box-shadow:0 8px 24px rgba(196,98,45,.4); }
+.btn-outline-w {
+  background:transparent; color:#fff;
+  border:2px solid rgba(255,255,255,.3); padding:14px 32px;
+  font-family:'Karla',sans-serif; font-size:.82rem;
+  font-weight:500; letter-spacing:1.5px; text-transform:uppercase;
+  cursor:pointer; transition:all .22s;
+}
+.btn-outline-w:hover { border-color:#fff; background:rgba(255,255,255,.07); }
+
+/* hero cards */
+.hero-right {
+  position:relative; z-index:2;
+  display:flex; flex-direction:column; gap:12px;
+  animation:fadeUp .7s .15s ease both;
+}
+.hc {
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.12);
+  padding:14px 18px;
+  display:flex; align-items:center; gap:14px;
+  backdrop-filter:blur(8px);
+  transition:all .2s;
+}
+.hc:hover { background:rgba(255,255,255,.13); transform:translateX(4px); }
+.hc-ico {
+  width:46px; height:46px; border-radius:8px;
+  background:rgba(255,255,255,.1);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.4rem; flex-shrink:0;
+}
+.hc-name { font-weight:700; color:#fff; font-size:.88rem; }
+.hc-sub { font-size:.72rem; color:rgba(255,255,255,.45); margin-top:2px; }
+.hc-kcal {
+  margin-left:auto;
+  background:rgba(196,98,45,.3); color:var(--t3);
+  font-size:.72rem; font-weight:700; padding:4px 10px; white-space:nowrap;
+}
+/* hero stats */
+.hero-stats {
+  position:absolute; bottom:40px; right:5%;
+  display:flex; gap:32px; z-index:2;
+  animation:fadeUp .7s .4s ease both;
+}
+.hs { text-align:right; }
+.hs-n {
+  font-family:'Playfair Display',serif; font-size:2.2rem; font-weight:900;
+  color:var(--t3); line-height:1;
+}
+.hs-l { font-size:.58rem; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.3); margin-top:3px; }
+
+/* ═══ TICKER ═══ */
+.ticker {
+  background:var(--t1); padding:11px 0;
+  overflow:hidden; white-space:nowrap;
+}
+.ticker-track { display:inline-flex; gap:52px; animation:slide 22s linear infinite; }
+.ti { font-size:.65rem; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#fff; }
+.ts { color:rgba(255,255,255,.35); }
+
+/* ═══ SECTION COMMONS ═══ */
+.sec { padding:88px 5%; position:relative; overflow:hidden; }
+.sec-cream { background:var(--c1); }
+.sec-warm  { background:var(--c2); }
+.sec-green { background:var(--v1); }
+.sec-green-light { background:var(--v2); }
+
+.s-tag {
+  font-size:.65rem; font-weight:700; letter-spacing:3px;
+  text-transform:uppercase; color:var(--v3); margin-bottom:10px;
+  display:flex; align-items:center; gap:8px;
+}
+.s-tag::before { content:''; width:24px; height:2px; background:var(--t1); }
+.sec-green .s-tag, .sec-green-light .s-tag { color:var(--v4); }
+.sec-green .s-tag::before, .sec-green-light .s-tag::before { background:var(--t2); }
+
+.s-title {
+  font-family:'Playfair Display',serif; font-weight:900;
+  font-size:clamp(2rem,3.8vw,3.2rem); line-height:1.1;
+}
+.s-title em { font-style:italic; color:var(--t1); }
+.sec-green .s-title, .sec-green-light .s-title { color:#fff; }
+.sec-green .s-title em, .sec-green-light .s-title em { color:var(--t3); }
+.s-lead {
+  font-family:'Source Serif 4',serif; font-style:italic;
+  font-size:.98rem; color:var(--tx3); max-width:520px;
+  line-height:1.75; margin-top:12px;
+}
+.sec-green .s-lead, .sec-green-light .s-lead { color:rgba(255,255,255,.5); }
+
+/* ═══ TABS ═══ */
+.tab-row {
+  display:flex; gap:4px; overflow-x:auto; scrollbar-width:none;
+  padding-bottom:4px; margin-bottom:6px;
+}
+.tab-row::-webkit-scrollbar { display:none; }
+.tab {
+  padding:9px 20px; cursor:pointer;
+  font-size:.72rem; font-weight:700; letter-spacing:1px;
+  text-transform:uppercase; white-space:nowrap;
+  border:2px solid var(--c3); background:transparent;
+  color:var(--tx3); transition:all .15s; font-family:'Karla',sans-serif;
+}
+.tab.w-on { background:var(--e1); color:var(--c2); border-color:var(--e1); }
+.tab.d-on { background:var(--v2); color:#fff; border-color:var(--v2); }
+.tab:hover:not(.w-on):not(.d-on) { background:var(--c2); border-color:var(--v3); }
+
+/* kcal pills */
+.kcal-row { display:flex; align-items:center; gap:8px; margin:16px 0 32px; flex-wrap:wrap; }
+.kcal-lbl { font-size:.7rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--tx3); }
+.kp {
+  padding:6px 16px; cursor:pointer;
+  font-size:.72rem; font-weight:700; letter-spacing:1px; text-transform:uppercase;
+  border:2px solid var(--c3); background:transparent; color:var(--tx3);
+  transition:all .15s; font-family:'Karla',sans-serif;
+}
+.kp.on { background:var(--t1); color:#fff; border-color:var(--t1); }
+.kp:hover:not(.on) { border-color:var(--t1); color:var(--t1); }
+
+/* ═══ MENIU GRID ═══ */
+.menu-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(290px,1fr)); gap:20px; }
+.mc {
+  background:#fff;
+  border:2px solid var(--c3);
+  overflow:hidden;
+  transition:all .22s;
+  display:flex; flex-direction:column;
+}
+.mc:hover { border-color:var(--v3); transform:translateY(-4px); box-shadow:0 12px 32px rgba(30,61,26,.1); }
+.mc-top {
+  height:180px; display:flex; align-items:center; justify-content:center;
+  font-size:4rem; position:relative;
+}
+.mc-lbl {
+  position:absolute; bottom:0; left:0; right:0;
+  background:linear-gradient(to top, rgba(30,61,26,.85), transparent);
+  padding:18px 16px 10px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.mc-lbl-txt {
+  font-size:.6rem; font-weight:800; letter-spacing:2px;
+  text-transform:uppercase; color:#fff;
+}
+.mc-spill {
+  background:var(--t1); color:#fff;
+  font-size:.52rem; font-weight:700; letter-spacing:1px;
+  padding:3px 8px; text-transform:uppercase;
+}
+.mc-body { padding:18px 20px 22px; flex:1; display:flex; flex-direction:column; }
+.mc-type {
+  font-size:.62rem; font-weight:800; letter-spacing:2.5px;
+  text-transform:uppercase; color:var(--v3); margin-bottom:6px;
+}
+.mc-name {
+  font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700;
+  color:var(--tx1); margin-bottom:8px; line-height:1.2;
+}
+.mc-desc {
+  font-family:'Source Serif 4',serif; font-style:italic;
+  font-size:.88rem; color:var(--tx3); line-height:1.6;
+  flex:1; margin-bottom:16px;
+}
+/* MACROS BLOCK */
+.macro-block {
+  display:grid; grid-template-columns:repeat(4,1fr);
+  gap:1px; margin-bottom:16px;
+  background:var(--c3);
+  border:2px solid var(--c3);
+}
+.macro-cell {
+  background:var(--c1);
+  padding:8px 6px; text-align:center;
+}
+.macro-val { font-size:.82rem; font-weight:700; color:var(--tx1); line-height:1; }
+.macro-lbl { font-size:.56rem; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--tx4); margin-top:2px; }
+.macro-cell.m-kcal .macro-val { color:var(--t1); }
+.macro-cell.m-prot .macro-val { color:var(--v2); }
+.macro-cell.m-carb .macro-val { color:var(--e3); }
+.macro-cell.m-fat  .macro-val { color:var(--e4); }
+
+/* capsulă pairing */
+.pair-strip {
+  background:var(--e1);
+  padding:11px 14px;
+  display:flex; align-items:center; gap:12px;
+}
+.ps-ico { font-size:1.3rem; }
+.ps-info { flex:1; }
+.ps-name { font-size:.75rem; font-weight:700; color:var(--t3); }
+.ps-sub { font-size:.66rem; color:rgba(255,255,255,.35); margin-top:1px; }
+.ps-dots { display:flex; gap:3px; }
+.dot { width:6px; height:6px; border-radius:50%; }
+
+/* ═══ DESERTURI ═══ */
+.des-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr)); gap:16px; margin-top:48px; }
+.dc {
+  background:rgba(255,255,255,.06);
+  border:2px solid rgba(255,255,255,.1);
+  overflow:hidden; transition:all .22s; cursor:pointer;
+}
+.dc:hover { background:rgba(255,255,255,.1); border-color:rgba(255,255,255,.3); transform:translateY(-4px); }
+.dc-top { height:160px; display:flex; align-items:center; justify-content:center; font-size:3.8rem; position:relative; }
+.dc-badge {
+  position:absolute; top:12px; left:12px;
+  font-size:.58rem; font-weight:800; letter-spacing:1.5px;
+  padding:4px 10px; text-transform:uppercase;
+}
+.badge-v { background:var(--v2); color:#fff; }
+.badge-t { background:var(--t1); color:#fff; }
+.dc-body { padding:14px 16px 18px; }
+.dc-dose { display:flex; align-items:center; gap:8px; margin-bottom:8px; }
+.dc-dose-lbl { font-size:.6rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--t3); }
+.dc-name {
+  font-family:'Playfair Display',serif; font-size:1rem; font-weight:700;
+  color:#fff; margin-bottom:6px;
+}
+.dc-desc { font-family:'Source Serif 4',serif; font-style:italic; font-size:.85rem; color:rgba(255,255,255,.45); line-height:1.55; margin-bottom:12px; }
+.dc-foot { display:flex; justify-content:space-between; align-items:center; }
+.dc-macros { display:flex; gap:6px; }
+.dc-chip { font-size:.68rem; font-weight:700; padding:3px 9px; }
+.dc-chip-k { background:rgba(196,98,45,.2); color:var(--t3); }
+.dc-chip-g { background:rgba(255,255,255,.07); color:rgba(255,255,255,.4); }
+.dc-price { font-family:'Playfair Display',serif; font-size:1.05rem; font-weight:700; color:var(--t3); }
+
+/* ═══ BĂUTURI ═══ */
+.baut-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:16px; margin-top:48px; }
+.bc {
+  background:#fff; border:2px solid var(--c3);
+  padding:24px 20px; text-align:center;
+  transition:all .22s;
+}
+.bc:hover { border-color:var(--v3); transform:translateY(-3px); box-shadow:0 8px 24px rgba(30,61,26,.1); }
+.bc-icon { font-size:2.6rem; margin-bottom:12px; }
+.bc-title { font-family:'Playfair Display',serif; font-size:1rem; font-weight:700; color:var(--tx1); margin-bottom:6px; }
+.bc-desc { font-size:.82rem; color:var(--tx3); line-height:1.55; margin-bottom:14px; }
+.bc-tag {
+  display:inline-block;
+  background:var(--v5); color:var(--v1);
+  font-size:.6rem; font-weight:700; letter-spacing:1.5px;
+  padding:4px 12px; text-transform:uppercase;
+}
+
+/* ═══ CUM FUNCȚIONEAZĂ ═══ */
+.how-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:0; margin-top:56px; position:relative; }
+.how-grid::before {
+  content:'';
+  position:absolute; top:40px; left:10%; right:10%; height:2px;
+  background:linear-gradient(to right, transparent, var(--v4) 20%, var(--v4) 80%, transparent);
+  opacity:.4;
+}
+.hstep { text-align:center; padding:0 10px; position:relative; z-index:1; }
+.hstep-ico {
+  width:80px; height:80px; margin:0 auto 18px;
+  background:var(--v1);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.8rem; position:relative; transition:all .22s;
+  border:2px solid rgba(255,255,255,.15);
+}
+.hstep:hover .hstep-ico { background:var(--v2); transform:scale(1.06) rotate(-3deg); }
+.hstep-n {
+  position:absolute; top:-10px; right:-10px;
+  background:var(--t1); color:#fff;
+  width:22px; height:22px;
+  font-size:.62rem; font-weight:800;
+  display:flex; align-items:center; justify-content:center;
+}
+.hstep h3 {
+  font-size:.7rem; font-weight:800; letter-spacing:1.5px;
+  text-transform:uppercase; color:#fff; margin-bottom:7px;
+}
+.hstep p { font-size:.8rem; color:rgba(255,255,255,.5); line-height:1.6; max-width:150px; margin:0 auto; }
+.hstep-hl { color:var(--t3); font-weight:700; }
+
+/* ═══ ABONAMENTE ═══ */
+.plans-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:52px; }
+.pc {
+  background:#fff; border:2px solid var(--c3);
+  padding:34px 28px; position:relative; transition:all .22s;
+}
+.pc:hover:not(.pc-hot) { border-color:var(--v3); }
+.pc-hot {
+  background:var(--v1); border-color:var(--v1);
+}
+.pc-hot-badge {
+  position:absolute; top:-13px; left:50%; transform:translateX(-50%);
+  background:var(--t1); color:#fff;
+  font-size:.58rem; font-weight:800; letter-spacing:1.5px;
+  padding:4px 16px; text-transform:uppercase; white-space:nowrap;
+}
+.pc-tag { font-size:.62rem; font-weight:800; letter-spacing:2.5px; text-transform:uppercase; margin-bottom:10px; }
+.pc:not(.pc-hot) .pc-tag { color:var(--v3); }
+.pc-hot .pc-tag { color:var(--v4); }
+.pc-name { font-family:'Playfair Display',serif; font-size:1.8rem; font-weight:900; margin-bottom:10px; }
+.pc:not(.pc-hot) .pc-name { color:var(--tx1); }
+.pc-hot .pc-name { color:#fff; }
+.pc-desc { font-family:'Source Serif 4',serif; font-style:italic; font-size:.9rem; line-height:1.65; margin-bottom:24px; }
+.pc:not(.pc-hot) .pc-desc { color:var(--tx3); }
+.pc-hot .pc-desc { color:rgba(255,255,255,.5); }
+.pc-price { font-family:'Playfair Display',serif; font-size:2.8rem; font-weight:900; line-height:1; }
+.pc:not(.pc-hot) .pc-price { color:var(--t1); }
+.pc-hot .pc-price { color:var(--t3); }
+.pc-period { font-size:.75rem; margin-bottom:24px; }
+.pc:not(.pc-hot) .pc-period { color:var(--tx4); }
+.pc-hot .pc-period { color:rgba(255,255,255,.35); }
+.pc-ul { list-style:none; margin-bottom:28px; }
+.pc-ul li { padding:8px 0; border-bottom:1px solid; font-size:.84rem; display:flex; gap:10px; align-items:flex-start; }
+.pc:not(.pc-hot) .pc-ul li { border-color:var(--c3); color:var(--tx3); }
+.pc-hot .pc-ul li { border-color:rgba(255,255,255,.08); color:rgba(255,255,255,.6); }
+.pc-ul li::before { content:'✓'; font-weight:900; flex-shrink:0; }
+.pc:not(.pc-hot) .pc-ul li::before { color:var(--v3); }
+.pc-hot .pc-ul li::before { color:var(--t3); }
+.pc-btn {
+  width:100%; padding:13px;
+  font-family:'Karla',sans-serif; font-size:.76rem;
+  font-weight:800; letter-spacing:2px; text-transform:uppercase;
+  cursor:pointer; border:none; transition:all .2s;
+}
+.pc-btn-out { background:transparent; color:var(--v2); border:2px solid var(--v2); }
+.pc-btn-out:hover { background:var(--v2); color:#fff; }
+.pc-btn-fill { background:var(--t1); color:#fff; }
+.pc-btn-fill:hover { background:var(--t2); }
+
+/* ═══ PRECOMANDĂ ═══ */
+.prec-wrap {
+  display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start;
+}
+.prec-steps { display:flex; flex-direction:column; gap:0; margin-top:32px; }
+.pstep {
+  display:flex; gap:16px; padding:18px 0;
+  border-bottom:1px solid var(--c3);
+}
+.pstep:last-child { border-bottom:none; }
+.pstep-n {
+  width:32px; height:32px; flex-shrink:0;
+  background:var(--v2); color:#fff;
+  font-size:.72rem; font-weight:800;
+  display:flex; align-items:center; justify-content:center;
+  margin-top:2px;
+}
+.pstep-title { font-size:.8rem; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:var(--tx1); margin-bottom:4px; }
+.pstep-desc { font-size:.84rem; color:var(--tx3); line-height:1.6; }
+.pstep-hl { color:var(--v2); font-weight:700; }
+
+/* form */
+.prec-form { display:flex; flex-direction:column; gap:14px; }
+.fl { font-size:.65rem; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:var(--tx3); margin-bottom:5px; display:block; }
+.fi {
+  width:100%;
+  background:var(--c1); border:2px solid var(--c3);
+  padding:12px 16px; color:var(--tx1);
+  font-family:'Karla',sans-serif; font-size:.9rem;
+  outline:none; transition:border-color .2s; -webkit-appearance:none;
+}
+.fi:focus { border-color:var(--v2); background:#fff; }
+.fi::placeholder { color:var(--tx4); }
+.frow { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.fsub {
+  background:var(--v2); color:#fff; border:none;
+  padding:16px; width:100%; margin-top:4px;
+  font-family:'Karla',sans-serif; font-size:.8rem;
+  font-weight:800; letter-spacing:2px; text-transform:uppercase;
+  cursor:pointer; transition:all .2s;
+}
+.fsub:hover { background:var(--v1); }
+.fsub:disabled { opacity:.5; cursor:not-allowed; }
+.fnote { font-size:.74rem; color:var(--tx3); text-align:center; margin-top:6px; line-height:1.5; }
+.ferr {
+  display:none; padding:12px;
+  background:rgba(196,98,45,.08); border:1px solid rgba(196,98,45,.3);
+  font-size:.8rem; color:var(--t1);
+}
+.fok {
+  display:none; padding:24px;
+  background:var(--v5); border:2px solid var(--v3);
+  text-align:center;
+}
+.fok-title { font-family:'Playfair Display',serif; font-size:1.3rem; font-weight:700; color:var(--v1); margin-bottom:6px; }
+.fok-sub { font-size:.85rem; color:var(--tx3); }
+
+/* ═══ FOOTER ═══ */
+footer {
+  background:var(--e1);
+  padding:56px 5% 24px;
+}
+.ft-grid { display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:40px; padding-bottom:36px; border-bottom:1px solid rgba(255,255,255,.08); margin-bottom:24px; }
+.ft-logo { width:52px; height:52px; margin-bottom:12px; }
+.ft-brand { font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:900; color:var(--t3); letter-spacing:2px; text-transform:uppercase; }
+.ft-sub { font-size:.58rem; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.25); margin-top:2px; }
+.ft-tagline { font-family:'Source Serif 4',serif; font-style:italic; font-size:.88rem; color:rgba(255,255,255,.35); max-width:200px; line-height:1.65; margin-top:10px; }
+.ft-col h4 { font-size:.6rem; font-weight:800; letter-spacing:2.5px; text-transform:uppercase; color:rgba(255,255,255,.3); margin-bottom:12px; }
+.ft-col ul { list-style:none; }
+.ft-col li { margin-bottom:8px; }
+.ft-col a { color:rgba(255,255,255,.25); font-size:.82rem; text-decoration:none; transition:color .2s; }
+.ft-col a:hover { color:var(--t3); }
+.ft-bottom { display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:.72rem; color:rgba(255,255,255,.15); }
+
+/* ═══ FAB ═══ */
+.fab {
+  position:fixed; bottom:24px; right:24px; z-index:500;
+  background:var(--v2); color:#fff; border:none;
+  padding:14px 24px;
+  font-family:'Karla',sans-serif; font-size:.72rem; font-weight:800;
+  letter-spacing:1.5px; text-transform:uppercase;
+  cursor:pointer; box-shadow:0 6px 24px rgba(45,90,39,.4);
+  display:flex; align-items:center; gap:8px; transition:all .2s;
+}
+.fab:hover { background:var(--v1); transform:translateY(-3px); box-shadow:0 10px 32px rgba(45,90,39,.5); }
+
+/* ═══ KEYFRAMES ═══ */
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+@keyframes slide  { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+@keyframes blink  { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+/* ═══ RESPONSIVE ═══ */
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr}
+  .hero-right,.hero-stats{display:none}
+  .how-grid{grid-template-columns:repeat(2,1fr);gap:28px}
+  .how-grid::before{display:none}
+  .plans-grid{grid-template-columns:1fr}
+  .prec-wrap{grid-template-columns:1fr}
+  .ft-grid{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+  .macro-block{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:480px){
+  .ft-grid{grid-template-columns:1fr}
+  .frow{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- LOGO SVG def -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="L" viewBox="0 0 500 500">
+      <circle cx="250" cy="250" r="235" stroke="#c5a059" fill="none" stroke-width="1.5" opacity="0.6"/>
+      <circle cx="250" cy="250" r="215" stroke="#c5a059" fill="none" stroke-width="3"/>
+      <circle cx="250" cy="145" r="45" stroke="#c5a059" fill="none" stroke-width="3"/>
+      <polygon points="250,145 170,310 330,310" fill="#c5a059"/>
+      <text x="257" y="380" fill="#c5a059" font-family="Cinzel,serif" font-size="40" font-weight="600" letter-spacing="14" text-anchor="middle">METANOIA</text>
+      <text x="253" y="420" fill="#c5a059" font-family="Inter,sans-serif" font-size="14" font-weight="600" letter-spacing="7" text-anchor="middle">HAȚEG ALTERNATIV</text>
+      <circle cx="250" cy="450" r="4" fill="#c5a059"/>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ═════ NAV ═════ -->
+<nav class="nav">
+  <a class="nav-brand" href="#">
+    <svg class="nav-logo"><use href="#L"/></svg>
+    <div>
+      <div class="nav-name">Metanoia</div>
+      <div class="nav-sub">Hațeg Alternativ · DN 68</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#meniu">Meniu</a></li>
+    <li><a href="#deserturi">Deserturi</a></li>
+    <li><a href="#bauturi">Băuturi</a></li>
+    <li><a href="#how">Cum funcționează</a></li>
+    <li><a href="#abonamente">Abonamente</a></li>
+    <li><a href="#precomanda">Precomandă</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('precomanda').scrollIntoView({behavior:'smooth'})">Precomandă Acum →</button>
+</nav>
+
+<!-- ═════ HERO ═════ -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-badge"><div class="hero-badge-dot"></div>DN 68 · Totești · Vacuum & Spill-Proof</div>
+    <h1>Mâncare de<br>bunica.<br><em>La drum.</em></h1>
+    <p class="hero-desc">Preparate tradiționale gătite slow, ambalate în vacuum, cu macronutrienți afișați și o doză Nespresso paired perfect. Precomandă — ridici în 5 secunde fără să cobori din mașină.</p>
+    <div class="hero-btns">
+      <button class="btn-terra" onclick="document.getElementById('meniu').scrollIntoView({behavior:'smooth'})">Vezi Meniul Săptămânii →</button>
+      <button class="btn-outline-w" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})">Cum funcționează</button>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hc">
+      <div class="hc-ico">🍲</div>
+      <div>
+        <div class="hc-name">Ciorbă de Burtă cu Smântână</div>
+        <div class="hc-sub">Prânz · 380 gr · Vacuum · paired Ristretto</div>
+      </div>
+      <div class="hc-kcal">420 kcal</div>
+    </div>
+    <div class="hc">
+      <div class="hc-ico">🥩</div>
+      <div>
+        <div class="hc-name">Sarmale Tradiționale</div>
+        <div class="hc-sub">Cină · 450 gr · Vacuum · paired Indriya</div>
+      </div>
+      <div class="hc-kcal">580 kcal</div>
+    </div>
+    <div class="hc">
+      <div class="hc-ico">🍮</div>
+      <div>
+        <div class="hc-name">Papanași cu Dulceață + Kazaar</div>
+        <div class="hc-sub">Desert la doză · 180 gr · paired Kazaar</div>
+      </div>
+      <div class="hc-kcal">340 kcal</div>
+    </div>
+    <div class="hc" style="border-color:rgba(255,255,255,.25)">
+      <div class="hc-ico">📦</div>
+      <div>
+        <div class="hc-name">Box Complet 1500 kcal</div>
+        <div class="hc-sub">3 mese + 2 gustări + 3 doze / zi</div>
+      </div>
+      <div class="hc-kcal" style="background:rgba(196,98,45,.4)">Bestseller</div>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hs"><div class="hs-n">100%</div><div class="hs-l">Vacuum Seal</div></div>
+    <div class="hs"><div class="hs-n">5s</div><div class="hs-l">Schimb geam</div></div>
+    <div class="hs"><div class="hs-n">Macro</div><div class="hs-l">Afișate precis</div></div>
+  </div>
+</section>
+
+<!-- ═════ TICKER ═════ -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ti">MÂNCARE TRADIȚIONALĂ</span><span class="ts">✦</span>
+    <span class="ti">AMBALAJ VACUUM</span><span class="ts">✦</span>
+    <span class="ti">MACRONUTRIENȚI AFIȘAȚI</span><span class="ts">✦</span>
+    <span class="ti">DESERT LA DOZĂ NESPRESSO</span><span class="ts">✦</span>
+    <span class="ti">PRECOMANDĂ ONLINE</span><span class="ts">✦</span>
+    <span class="ti">DN 68 · TOTEȘTI · HAȚEG</span><span class="ts">✦</span>
+    <span class="ti">RIDICI ÎN 5 SECUNDE</span><span class="ts">✦</span>
+    <span class="ti">MÂNCARE TRADIȚIONALĂ</span><span class="ts">✦</span>
+    <span class="ti">AMBALAJ VACUUM</span><span class="ts">✦</span>
+    <span class="ti">MACRONUTRIENȚI AFIȘAȚI</span><span class="ts">✦</span>
+    <span class="ti">DESERT LA DOZĂ NESPRESSO</span><span class="ts">✦</span>
+    <span class="ti">PRECOMANDĂ ONLINE</span><span class="ts">✦</span>
+    <span class="ti">DN 68 · TOTEȘTI · HAȚEG</span><span class="ts">✦</span>
+    <span class="ti">RIDICI ÎN 5 SECUNDE</span><span class="ts">✦</span>
+  </div>
+</div>
+
+<!-- ═════ MENIU ═════ -->
+<section class="sec sec-cream" id="meniu">
+  <div class="s-tag">Meniu Săptămânal</div>
+  <h2 class="s-title">Gătit azi.<br><em>Ridicat mâine.</em></h2>
+  <p class="s-lead">Ingrediente locale Retezat & Hațeg. Rețete tradiționale autentice. Ambalat în vacuum la 121°C — valabilitate 5 zile la rece, proaspăt ca din oală.</p>
+
+  <div class="tab-row" id="wTabs" style="margin-top:36px">
+    <button class="tab w-on">25–31 MAI</button>
+    <button class="tab">01–07 IUN</button>
+    <button class="tab">08–14 IUN</button>
+    <button class="tab">15–21 IUN</button>
+  </div>
+  <div class="tab-row" id="dTabs">
+    <button class="tab d-on">Luni</button>
+    <button class="tab">Marți</button>
+    <button class="tab">Miercuri</button>
+    <button class="tab">Joi</button>
+    <button class="tab">Vineri</button>
+  </div>
+  <div class="kcal-row">
+    <span class="kcal-lbl">Plan:</span>
+    <button class="kp">1000 kcal</button>
+    <button class="kp on">1500 kcal</button>
+    <button class="kp">2000 kcal</button>
+    <button class="kp">2500 kcal</button>
+  </div>
+
+  <div class="menu-grid">
+
+    <!-- MIC DEJUN -->
+    <div class="mc">
+      <div class="mc-top" style="background:linear-gradient(135deg,#3d2800,#7a5010)">
+        🥛
+        <div class="mc-lbl">
+          <span class="mc-lbl-txt">☀️ Mic Dejun · 07:00</span>
+          <span class="mc-spill">Vacuum</span>
+        </div>
+      </div>
+      <div class="mc-body">
+        <div class="mc-type">Mic Dejun Tradițional</div>
+        <div class="mc-name">Mămăligă cu Brânză de Burduf & Smântână</div>
+        <p class="mc-desc">Mămăligă fierbinte, brânză de burduf din Retezat, smântână grasă de fermă. Ambalat vacuum — reîncălzești în 4 minute.</p>
+        <div class="macro-block">
+          <div class="macro-cell m-kcal"><div class="macro-val">410</div><div class="macro-lbl">kcal</div></div>
+          <div class="macro-cell m-prot"><div class="macro-val">18g</div><div class="macro-lbl">prot</div></div>
+          <div class="macro-cell m-carb"><div class="macro-val">52g</div><div class="macro-lbl">carb</div></div>
+          <div class="macro-cell m-fat"><div class="macro-val">14g</div><div class="macro-lbl">grăs</div></div>
+        </div>
+        <div class="pair-strip">
+          <div class="ps-ico">☕</div>
+          <div class="ps-info">
+            <div class="ps-name">Volluto Smooth · Int. 4</div>
+            <div class="ps-sub">Blând, completează laptele din brânză</div>
+          </div>
+          <div class="ps-dots">
+            <div class="dot" style="background:var(--t3)"></div>
+            <div class="dot" style="background:var(--t3)"></div>
+            <div class="dot" style="background:var(--t3)"></div>
+            <div class="dot" style="background:rgba(255,255,255,.15)"></div>
+            <div class="dot" style="background:rgba(255,255,255,.15)"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GUSTARE -->
+    <div class="mc">
+      <div class="mc-top" style="background:linear-gradient(135deg,#1e3d1a,#2d6025)">
+        🥗
+        <div class="mc-lbl">
+          <span class="mc-lbl-txt">🌿 Gustare · 10:30</span>
+          <span class="mc-spill">Vacuum</span>
+        </div>
+      </div>
+      <div class="mc-body">
+        <div class="mc-type">Gustare Sănătoasă</div>
+        <div class="mc-name">Salată de Fasole cu Ceapă & Cimbru</div>
+        <p class="mc-desc">Fasole boabe din grădina proprie, ceapă roșie, cimbru de munte, ulei de floarea soarelui presat la rece.</p>
+        <div class="macro-block">
+          <div class="macro-cell m-kcal"><div class="macro-val">220</div><div class="macro-lbl">kcal</div></div>
+          <div class="macro-cell m-prot"><div class="macro-val">11g</div><div class="macro-lbl">prot</div></div>
+          <div class="macro-cell m-carb"><div class="macro-val">32g</div><div class="macro-lbl">carb</div></div>
+          <div class="macro-cell m-fat"><div class="macro-val">6g</div><div class="macro-lbl">grăs</div></div>
+        </div>
+        <div class="pair-strip">
+          <div class="ps-ico">☕</div>
+          <div class="ps-info">
+            <div class="ps-name">Capriccio Lungo · Int. 5</div>
+            <div class="ps-sub">Aciditate medie, echilibrează fasolea</div>
+          </div>
+          <div class="ps-dots">
+            <div class="dot" style="background:var(--t3)"></div>
+            <div class="dot" style="background:var(--t3)"></div>
+            <div class="dot" style="background:var(--t3)"></div>
+            <div class="dot" style="background:rgba(255,255,255,.15)"></div>
+            <div class="dot" style="background:rgba(255,255,255,.15)"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRÂNZ -->
+    <div class="mc">
+      <div class="mc-top" style="background:linear-gradient(135deg,#2a1500,#5a2a00)">
+        🍲
+        <div class="mc-lbl">
+          <span class="mc-lbl-txt">🍽️ Prânz · 13:00</span>
+          <span class="mc-spill">Vacuum</span>
+        </div>
+      </div>
+      <div class="mc-body">
+        <div class="mc-type">Prânz Principal</div>
+        <div class="mc-name">Ciorbă de Burtă Autentică cu Smântână</div>
+        <p class="mc-desc">Rețeta bunicii — burtă de vită de la fermă locală, smântână groasă, usturoi, oțet de mere. Gătit 4 ore. Vacuum la 121°C.</p>
+        <div class="macro-block">
+          <div class="macro-cell m-kcal"><div class="macro-val">420</div><div class="macro-lbl">kcal</div></div>
+          <div class="macro-cell m-prot"><div class="macro-val">28g</div><div class="macro-lbl">prot</div></div>
+          <div class="macro-cell m-carb"><div class="macro-val">18g</div><div class="macro-lbl">carb</div></div>
+          <div class="macro-cell m-fat"><div class="macro-val">26g</div><div class="macro-lbl">grăs</div></div>
+        </div>
+        <div class="pair-strip">
+          <div class="ps-ico">☕</div>
+          <div class="ps-info">
+            <div class="ps-name">Ristretto Intenso · Int. 10</div>
+            <div class="ps-sub">Corp puternic, curăță palatul după ciorba grasă</div>
+          </div>
+          <div class="ps-dots">
+            <div class="dot" style="background:var(--t3)"></div>
+            <div class="dot" style="background:var(--t3)"></div>
+            <div class="dot" style="background:var(--t3)"></div>
+            <div class="dot" style="background:var(--t3)"></div>
+            <div class="dot" style="background:var(--t3)"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- GUSTARE 2 -->
+    <div class="mc">
+      <div class="mc-top" style="background:linear-gradient(135deg,#3a2800,#6a4a10)">
+        🍎
+        <div class="mc-lbl">
+          <span class="mc-lbl-txt">🍏 Gustare · 16:30</span>
+          <span class="mc-spill">Capsată</span>
+        </div>
+      </div>
+      <div class="mc-body">
+        <div class="mc-type">Gustare Dulce</div>
+        <div class="mc-name">Budincă de Mei cu Mere Coapte</div>
+        <p class="mc-desc">Mei organic cu lapte de capră local, mere coapte cu scorțișoară, miere de tei de la stupinele din Retezat.</p>
+        <div class="macro-block">
+          <div class="macro-cell m-kcal"><div class="macro-val">190</div><div class="macro-lbl">kcal</div></div>
+          <div class="macro-cell m-prot"><div class="macro-val">7g</div><div class="macro-lbl">prot</div></div>
+          <div class="macro-cell m-carb"><div class="macro-val">34g</div><div class="macro-lbl">carb</div></div>
+          <div class="macro-cell m-fat"><div class="macro-val">4g</div><div class="macro-lbl">grăs</div></div>
+        </div>
+        <div class="pair-strip">
+          <div class="ps-ico">☕</div>
+          <div class="ps-info">
+            <div class="ps-name">Livanto Mellow · Int. 6</div>
+            <div class="ps-sub">Caramel rotund, armonios cu scorțișoara</div>
+          </div>
+          <div class="ps-dots">
+            <div class="dot" style="background:var(--t3)"></div>
+            <div class="dot" style="background:var(--t3)"></div>
+            <div class="dot" style="background:var(--t3)"></div>
+            <div class="dot" style="background:var(--t3)"></div>
+            <div class="dot" style="background:rgba(255,255,255,.15)"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CINA -->
+    <div class="mc">
+      <div class="mc-top" style="background:linear-gradient(135deg,#1a2e10,#2a5018)">
+        🥩
+        <div class="mc-lbl">
+          <span class="mc-lbl-txt">🌙 Cină · 19:00</span>
+          <span class="mc-spill">Vacuum</span>
+        </div>
+      </div>
+      <div class="mc-body">
+        <div class="mc-type">Cina Tradițională</div>
+        <div class="mc-name">Sarmale în Foi de Viță cu Smântână</div>
+        <p class="mc-desc">Carne de porc și orez, foi de viță murată, smântână de fermă. Gătit 5 ore în oală sub presiune. Vacuum sigilat.</p>
+        <div class="macro-block">
+          <div class="macro-cell m-kcal"><div class="macro-val">580</div><div class="macro-lbl">kcal</div></div>
+          <div class="macro-cell m-prot"><div class="macro-val">32g</div><div class="macro-lbl">prot</div></div>
+          <div class="macro-cell m-carb"><div class="macro-val">40g</div><div class="macro-lbl">carb</div></div>
+          <div class="macro-cell m-fat"><div class="macro-val">28g</div><div class="macro-lbl">grăs</div></div>
+        </div>
+        <div class="pair-strip">
+          <div class="ps-ico">☕</div>
+          <div class="ps-info">
+            <div class="ps-name">Indriya Lungo · Int. 10</div>
+            <div class="ps-sub">Condimentat, amplifică carnea de porc</div>
+          </div>
+          <div class="ps-dots">
+            <div class="dot" style="background:var(--t3)"></div>
+            <div class="dot" style="background:var(--t3)"></div>
+            <div class="dot" style="background:var(--t3)"></div>
+            <div class="dot" style="background:var(--t3)"></div>
+            <div class="dot" style="background:var(--t3)"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DESERT ZI -->
+    <div class="mc">
+      <div class="mc-top" style="background:linear-gradient(135deg,#2e1000,#5a2200)">
+        🍮
+        <div class="mc-lbl">
+          <span class="mc-lbl-txt">🍮 Desert la Doză</span>
+          <span class="mc-spill">Capsată + Doză</span>
+        </div>
+      </div>
+      <div class="mc-body">
+        <div class="mc-type">Desert Tradițional</div>
+        <div class="mc-name">Papanași cu Smântână & Dulceață de Afine</div>
+        <p class="mc-desc">Papanași prăjiți, smântână bătută, dulceață de afine din Retezat. Capsate cu doza Kazaar — ridici una, ai tot.</p>
+        <div class="macro-block">
+          <div class="macro-cell m-kcal"><div class="macro-val">340</div><div class="macro-lbl">kcal</div></div>
+          <div class="macro-cell m-prot"><div class="macro-val">9g</div><div class="macro-lbl">prot</div></div>
+          <div class="macro-cell m-carb"><div class="macro-val">48g</div><div class="macro-lbl">carb</div></div>
+          <div class="macro-cell m-fat"><div class="macro-val">12g</div><div class="macro-lbl">grăs</div></div>
+        </div>
+        <div class="pair-strip" style="border:1px solid rgba(196,98,45,.4)">
+          <div class="ps-ico">🟫</div>
+          <div class="ps-info">
+            <div class="ps-name">Kazaar · Int. MAX 12</div>
+            <div class="ps-sub">Creat special pentru dulceața de afine</div>
+          </div>
+          <div class="ps-dots">
+            <div class="dot" style="background:var(--t3)"></div>
+            <div class="dot" style="background:var(--t3)"></div>
+            <div class="dot" style="background:var(--t3)"></div>
+            <div class="dot" style="background:var(--t3)"></div>
+            <div class="dot" style="background:var(--t3)"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═════ DESERTURI ═════ -->
+<section class="sec sec-green" id="deserturi">
+  <div class="s-tag">Deserturi la Doză</div>
+  <h2 class="s-title">Fiecare desert —<br><em>o doză pereche.</em></h2>
+  <p class="s-lead">Rețete tradiționale din zona Hațeg, capsate împreună cu capsula Nespresso potrivită. Ridici două, ai o experiență completă.</p>
+  <div class="des-grid">
+
+    <div class="dc">
+      <div class="dc-top" style="background:linear-gradient(135deg,#2e1800,#5a3000)">🍮<div class="dc-badge badge-t">Bestseller</div></div>
+      <div class="dc-body">
+        <div class="dc-dose"><span class="dc-dose-lbl">☕ Kazaar · Int. 12</span><div class="ps-dots"><div class="dot" style="background:var(--t3);width:7px;height:7px"></div><div class="dot" style="background:var(--t3);width:7px;height:7px"></div><div class="dot" style="background:var(--t3);width:7px;height:7px"></div><div class="dot" style="background:var(--t3);width:7px;height:7px"></div><div class="dot" style="background:var(--t3);width:7px;height:7px"></div></div></div>
+        <div class="dc-name">Papanași cu Dulceață Afine</div>
+        <p class="dc-desc">Papanași prăjiți, smântână de fermă, dulceață afine Retezat. Kazaar taie dulceața și creează contrast perfect.</p>
+        <div class="dc-foot"><div class="dc-macros"><div class="dc-chip dc-chip-k">🔥 340 kcal</div><div class="dc-chip dc-chip-g">⚖️ 180 gr</div></div><div class="dc-price">16 lei</div></div>
+      </div>
+    </div>
+
+    <div class="dc">
+      <div class="dc-top" style="background:linear-gradient(135deg,#1e3818,#2a5a22)">🍰<div class="dc-badge badge-v">Nou</div></div>
+      <div class="dc-body">
+        <div class="dc-dose"><span class="dc-dose-lbl">☕ Cosi · Int. 4</span><div class="ps-dots"><div class="dot" style="background:var(--t3);width:7px;height:7px"></div><div class="dot" style="background:var(--t3);width:7px;height:7px"></div><div class="dot" style="background:rgba(255,255,255,.15);width:7px;height:7px"></div><div class="dot" style="background:rgba(255,255,255,.15);width:7px;height:7px"></div><div class="dot" style="background:rgba(255,255,255,.15);width:7px;height:7px"></div></div></div>
+        <div class="dc-name">Cozonac cu Nucă & Cacao</div>
+        <p class="dc-desc">Cozonac pufos cu nucă prăjită și cacao amară. Cosi blând completează dulceața aluatului fermentat natural.</p>
+        <div class="dc-foot"><div class="dc-macros"><div class="dc-chip dc-chip-k">🔥 280 kcal</div><div class="dc-chip dc-chip-g">⚖️ 120 gr</div></div><div class="dc-price">14 lei</div></div>
+      </div>
+    </div>
+
+    <div class="dc">
+      <div class="dc-top" style="background:linear-gradient(135deg,#2a1a00,#4e3000)">🍯<div class="dc-badge badge-t">Clasic</div></div>
+      <div class="dc-body">
+        <div class="dc-dose"><span class="dc-dose-lbl">☕ Livanto · Int. 6</span><div class="ps-dots"><div class="dot" style="background:var(--t3);width:7px;height:7px"></div><div class="dot" style="background:var(--t3);width:7px;height:7px"></div><div class="dot" style="background:var(--t3);width:7px;height:7px"></div><div class="dot" style="background:var(--t3);width:7px;height:7px"></div><div class="dot" style="background:rgba(255,255,255,.15);width:7px;height:7px"></div></div></div>
+        <div class="dc-name">Colțunași cu Brânză & Miere</div>
+        <p class="dc-desc">Colțunași fierți cu brânză de vaci, miere de tei, nucă pisată. Livanto caramelat completează mierea local.</p>
+        <div class="dc-foot"><div class="dc-macros"><div class="dc-chip dc-chip-k">🔥 310 kcal</div><div class="dc-chip dc-chip-g">⚖️ 200 gr</div></div><div class="dc-price">15 lei</div></div>
+      </div>
+    </div>
+
+    <div class="dc">
+      <div class="dc-top" style="background:linear-gradient(135deg,#1a1000,#3a2800)">🎂<div class="dc-badge badge-v">Sezonier</div></div>
+      <div class="dc-body">
+        <div class="dc-dose"><span class="dc-dose-lbl">☕ Ristretto · Int. 10</span><div class="ps-dots"><div class="dot" style="background:var(--t3);width:7px;height:7px"></div><div class="dot" style="background:var(--t3);width:7px;height:7px"></div><div class="dot" style="background:var(--t3);width:7px;height:7px"></div><div class="dot" style="background:var(--t3);width:7px;height:7px"></div><div class="dot" style="background:rgba(255,255,255,.15);width:7px;height:7px"></div></div></div>
+        <div class="dc-name">Prăjitură de Casă cu Vișine</div>
+        <p class="dc-desc">Blat pufos cu vișine din livada proprie, cremă de unt, glazură de ciocolată. Ristretto amplifică fructul acru.</p>
+        <div class="dc-foot"><div class="dc-macros"><div class="dc-chip dc-chip-k">🔥 350 kcal</div><div class="dc-chip dc-chip-g">⚖️ 150 gr</div></div><div class="dc-price">17 lei</div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═════ BĂUTURI ═════ -->
+<section class="sec sec-warm" id="bauturi">
+  <div class="s-tag">Cafea & Băuturi Capsate</div>
+  <h2 class="s-title">La doză.<br><em>Sigilat ermetic.</em></h2>
+  <p class="s-lead">Fiecare băutură e capsată pe loc în ambalaj PET sau aluminiu — etanș, steril, fără nicio picătură în mașină.</p>
+  <div class="baut-grid">
+    <div class="bc">
+      <div class="bc-icon">☕</div>
+      <div class="bc-title">Espresso de Specialitate</div>
+      <p class="bc-desc">Single-origin, extras la presiune optimă, capsată în PET sigilat. Intensități 4–12 disponibile.</p>
+      <div class="bc-tag">Capsată la Doză</div>
+    </div>
+    <div class="bc">
+      <div class="bc-icon">🥛</div>
+      <div class="bc-title">Cappuccino Artizanal</div>
+      <p class="bc-desc">Espresso + lapte integral spumat, capsate împreună în proporție 1:2. Sigilat ermetic, spuma se reface la agitare.</p>
+      <div class="bc-tag">Spill-Proof 100%</div>
+    </div>
+    <div class="bc">
+      <div class="bc-icon">🍊</div>
+      <div class="bc-title">Fresh Portocale & Ghimbir</div>
+      <p class="bc-desc">Presat la rece în dimineața livrării. Portocale locale + ghimbir proaspăt. PET alimentar, fără oxidare.</p>
+      <div class="bc-tag">Presat la Rece</div>
+    </div>
+    <div class="bc">
+      <div class="bc-icon">🌿</div>
+      <div class="bc-title">Ceai de Plante de Munte</div>
+      <p class="bc-desc">Amestec de plante curculeților din Retezat — mentă, sunătoare, cimbrișor. Infuzat la 85°C, capsate cald.</p>
+      <div class="bc-tag">Plante Locale</div>
+    </div>
+    <div class="bc">
+      <div class="bc-icon">🍵</div>
+      <div class="bc-title">Matcha Latte</div>
+      <p class="bc-desc">Matcha ceremonial grad A + lapte de ovăz, capsate în aluminiu. 95 kcal, 0 zahăr adăugat.</p>
+      <div class="bc-tag">95 kcal</div>
+    </div>
+    <div class="bc">
+      <div class="bc-icon">🫚</div>
+      <div class="bc-title">RedBoost Artizanal</div>
+      <p class="bc-desc">Sfeclă roșie + morcov + măr + lămâie + turmeric. Presat la rece, capsate în PET de 330 ml.</p>
+      <div class="bc-tag">Boost Natural</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════ HOW IT WORKS ═════ -->
+<section class="sec sec-green" id="how">
+  <div style="text-align:center; position:relative; z-index:1">
+    <div class="s-tag" style="justify-content:center">Procesul Nostru</div>
+    <h2 class="s-title" style="text-align:center">Precomandă.<br><em>Ridici în 5 secunde.</em></h2>
+    <p class="s-lead" style="margin:12px auto 0;text-align:center">Platforma noastră automatizată face tot — tu dai click, noi pregătim, tu ridici fără să cobori din mașină.</p>
+  </div>
+  <div class="how-grid" style="margin-top:56px">
+    <div class="hstep">
+      <div class="hstep-ico" style="position:relative"><div class="hstep-n">1</div>📱</div>
+      <h3>Precomandă</h3>
+      <p>Trimiți comanda cu <span class="hstep-hl">10–15 minute</span> înainte să ajungi pe DN 68 Totești.</p>
+    </div>
+    <div class="hstep">
+      <div class="hstep-ico" style="position:relative"><div class="hstep-n">2</div>🤖</div>
+      <h3>Automat</h3>
+      <p>Sistemul notifică bucătăria instantaneu. <span class="hstep-hl">Zero muncă manuală.</span></p>
+    </div>
+    <div class="hstep">
+      <div class="hstep-ico" style="position:relative"><div class="hstep-n">3</div>📦</div>
+      <h3>Capsare & Vacuum</h3>
+      <p>Mâncarea e capsată vacuum. Doza Nespresso e sigilată <span class="hstep-hl">alături.</span></p>
+    </div>
+    <div class="hstep">
+      <div class="hstep-ico" style="position:relative"><div class="hstep-n">4</div>🚗</div>
+      <h3>Schimb la Geam</h3>
+      <p>Oprești. Îți întindem pachetul. <span class="hstep-hl">5 secunde.</span> Pleci.</p>
+    </div>
+    <div class="hstep">
+      <div class="hstep-ico" style="position:relative"><div class="hstep-n">5</div>🍽️</div>
+      <h3>Mănânci în Mașină</h3>
+      <p>100% etanș. <span class="hstep-hl">Nicio picătură.</span> Roadtrip-ul continuă.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════ ABONAMENTE ═════ -->
+<section class="sec sec-cream" id="abonamente">
+  <div class="s-tag">Abonamente Săptămânale</div>
+  <h2 class="s-title">Alege planul<br><em>care ți se potrivește.</em></h2>
+  <p class="s-lead">Macronutrienți calculați precis pentru planul tău caloric. Schimbi sau oprești oricând.</p>
+  <div class="plans-grid">
+    <div class="pc">
+      <div class="pc-tag">☕ Simplu</div>
+      <div class="pc-name">CaféRoad</div>
+      <p class="pc-desc">Cafea de specialitate + o gustare tradițională. Perfect pentru oprirea rapidă pe drum.</p>
+      <div class="pc-price">79</div>
+      <div class="pc-period">RON / săptămână · L–V</div>
+      <ul class="pc-ul">
+        <li>2 doze capsule Nespresso / zi</li>
+        <li>1 gustare tradițională vacuum</li>
+        <li>Macronutrienți afișați</li>
+        <li>Ridicare DN 68 · 5 secunde</li>
+      </ul>
+      <button class="pc-btn pc-btn-out" onclick="document.getElementById('precomanda').scrollIntoView({behavior:'smooth'})">Comandă →</button>
+    </div>
+
+    <div class="pc pc-hot">
+      <div class="pc-hot-badge">⭐ Cel mai ales</div>
+      <div class="pc-tag">🍲 Complet</div>
+      <div class="pc-name">TradiBox 1500</div>
+      <p class="pc-desc">Meniu tradițional complet 1500 kcal/zi cu macronutrienți, 3 doze capsule și desert la doză inclus.</p>
+      <div class="pc-price">179</div>
+      <div class="pc-period">RON / săptămână · L–D</div>
+      <ul class="pc-ul">
+        <li>3 mese + 2 gustări / zi</li>
+        <li>Toate vacuum sau capsate</li>
+        <li>3 doze Nespresso / zi</li>
+        <li>Desert la doză inclus</li>
+        <li>1500 kcal · macro complete</li>
+      </ul>
+      <button class="pc-btn pc-btn-fill" onclick="document.getElementById('precomanda').scrollIntoView({behavior:'smooth'})">Comandă Acum →</button>
+    </div>
+
+    <div class="pc">
+      <div class="pc-tag">🏋️ Sport</div>
+      <div class="pc-name">MacroBox 2500</div>
+      <p class="pc-desc">Plan de 2000–2500 kcal cu proteină ridicată, potrivit pentru sporturi de anduranță sau muncă fizică.</p>
+      <div class="pc-price">249</div>
+      <div class="pc-period">RON / săptămână · L–D</div>
+      <ul class="pc-ul">
+        <li>5 mese / zi · 2000–2500 kcal</li>
+        <li>Proteină 140g+ / zi</li>
+        <li>5 doze capsule specialty</li>
+        <li>Desert artizanal zilnic</li>
+        <li>Plan nutrițional personalizat</li>
+      </ul>
+      <button class="pc-btn pc-btn-out" onclick="document.getElementById('precomanda').scrollIntoView({behavior:'smooth'})">Comandă →</button>
+    </div>
+  </div>
+  <p style="margin-top:28px;text-align:center;font-size:.76rem;color:var(--tx4)">
+    *Economisești în medie <strong style="color:var(--v2)">10 ore / săptămână</strong> față de cumpărăturile și gătitul propriu.
+  </p>
+</section>
+
+<!-- ═════ PRECOMANDĂ ═════ -->
+<section class="sec sec-warm" id="precomanda">
+  <div class="prec-wrap">
+    <div>
+      <div class="s-tag">Precomandă</div>
+      <h2 class="s-title">Trimiți acum.<br><em>Ridici în 5 secunde.</em></h2>
+      <p class="s-lead">Completezi formularul, noi pregătim totul. Când ajungi pe DN 68 în Totești — pachetul te așteaptă sigilat la geam.</p>
+      <div class="prec-steps">
+        <div class="pstep">
+          <div class="pstep-n">1</div>
+          <div><div class="pstep-title">Completezi formularul</div><div class="pstep-desc">Alegi produsele, trimiți numărul mașinii și cât durezi.</div></div>
+        </div>
+        <div class="pstep">
+          <div class="pstep-n">2</div>
+          <div><div class="pstep-title">Bucătăria e notificată automat</div><div class="pstep-desc"><span class="pstep-hl">Zero timp de așteptare</span> — pregătim exact când pleci.</div></div>
+        </div>
+        <div class="pstep">
+          <div class="pstep-n">3</div>
+          <div><div class="pstep-title">Oprești · 5 secunde · Pleci</div><div class="pstep-desc">Pachetul <span class="pstep-hl">100% vacuum</span> te așteaptă gata la geam.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="prec-form" id="pForm">
+        <div><label class="fl">Numele tău</label><input class="fi" id="fN" type="text" placeholder="Ion Popescu"></div>
+        <div class="frow">
+          <div><label class="fl">Nr. Mașină</label><input class="fi" id="fM" type="text" placeholder="HD 01 ABC"></div>
+          <div><label class="fl">Telefon / WA</label><input class="fi" id="fT" type="tel" placeholder="+40 7xx xxx xxx"></div>
+        </div>
+        <div>
+          <label class="fl">Ce dorești?</label>
+          <select class="fi" id="fP">
+            <option value="">— Alege —</option>
+            <option>☕ Espresso de Specialitate</option>
+            <option>🍲 Ciorbă de Burtă + Espresso</option>
+            <option>🥩 Sarmale Tradiționale + Cafea</option>
+            <option>🍮 Papanași + Doză Kazaar</option>
+            <option>🎂 Prăjitură Vișine + Doză</option>
+            <option>📦 TradiBox 1500 kcal (complet)</option>
+            <option>📦 MacroBox 2500 kcal (complet)</option>
+            <option>🍊 Fresh Portocale & Ghimbir</option>
+            <option>🌿 Ceai de Plante de Munte</option>
+          </select>
+        </div>
+        <div>
+          <label class="fl">Ajung în:</label>
+          <select class="fi" id="fE">
+            <option value="10">~10 minute</option>
+            <option value="15">~15 minute</option>
+            <option value="20">~20 minute</option>
+            <option value="30">~30 minute</option>
+          </select>
+        </div>
+        <div><label class="fl">Observații (opțional)</label><input class="fi" id="fO" type="text" placeholder="Fără ceapă, alergie etc."></div>
+        <div class="ferr" id="fErr">⚠️ Completează câmpurile obligatorii.</div>
+        <button class="fsub" id="fBtn">📱 Trimite Precomanda</button>
+        <p class="fnote">Vei fi redirecționat pe WhatsApp · <strong style="color:var(--v2)">+40 749 229 686</strong></p>
+      </div>
+      <div class="fok" id="fOk">
+        <div class="fok-title">✓ Comanda a fost trimisă!</div>
+        <p class="fok-sub">Verifică WhatsApp pentru confirmare.<br>Te așteptăm pe DN 68, Totești!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════ FOOTER ═════ -->
+<footer>
+  <div class="ft-grid">
+    <div>
+      <svg class="ft-logo"><use href="#L"/></svg>
+      <div class="ft-brand">Metanoia</div>
+      <div class="ft-sub">Hațeg Alternativ · DN 68</div>
+      <p class="ft-tagline">Mâncare tradițională vacuum to-go cu macronutrienți. Cafea specialitate. Desert la doză.</p>
+    </div>
+    <div class="ft-col">
+      <h4>Meniu</h4>
+      <ul>
+        <li><a href="#meniu">Meniu Săptămânal</a></li>
+        <li><a href="#deserturi">Deserturi la Doză</a></li>
+        <li><a href="#bauturi">Cafea & Băuturi</a></li>
+        <li><a href="#abonamente">Abonamente</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Info</h4>
+      <ul>
+        <li><a href="#how">Cum funcționează</a></li>
+        <li><a href="#">Ingrediente Locale</a></li>
+        <li><a href="#">Retail Gourmet</a></li>
+        <li><a href="#">Catering B2B</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="https://wa.me/40749229686">WhatsApp +40 749 229 686</a></li>
+        <li><a href="#">DN 68 · Totești · Hunedoara</a></li>
+        <li><a href="#">Metanoia · Hațeg Alternativ</a></li>
+        <li><a href="#">GDPR & Termeni</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <span>© 2026 Metanoia · Hațeg Alternativ · Toate drepturile rezervate.</span>
+    <span>Gătit lent. Sigilat ermetic. Ridicat în 5 secunde.</span>
+  </div>
+</footer>
+
+<button class="fab" onclick="document.getElementById('precomanda').scrollIntoView({behavior:'smooth'})">🍲 Precomandă Acum</button>
+
+<script>
+// Week tabs
+document.querySelectorAll('#wTabs .tab').forEach(function(t){
+  t.addEventListener('click',function(){
+    document.querySelectorAll('#wTabs .tab').forEach(function(x){x.classList.remove('w-on')});
+    t.classList.add('w-on');
+  });
+});
+// Day tabs
+document.querySelectorAll('#dTabs .tab').forEach(function(t){
+  t.addEventListener('click',function(){
+    document.querySelectorAll('#dTabs .tab').forEach(function(x){x.classList.remove('d-on')});
+    t.classList.add('d-on');
+  });
+});
+// Kcal
+document.querySelectorAll('.kp').forEach(function(b){
+  b.addEventListener('click',function(){
+    document.querySelectorAll('.kp').forEach(function(x){x.classList.remove('on')});
+    b.classList.add('on');
+  });
+});
+// Form
+var WH = 'https://hook.eu2.make.com/ADAUGA_WEBHOOK_REAL_AICI';
+document.getElementById('fBtn').addEventListener('click',function(){
+  var n=document.getElementById('fN').value.trim();
+  var m=document.getElementById('fM').value.trim();
+  var t=document.getElementById('fT').value.trim();
+  var p=document.getElementById('fP').value;
+  var e=document.getElementById('fE').value;
+  var o=document.getElementById('fO').value.trim();
+  var err=document.getElementById('fErr');
+  err.style.display='none';
+  if(!n||!m||!t||!p){err.style.display='block';return;}
+  var btn=document.getElementById('fBtn');
+  btn.disabled=true; btn.textContent='⏳ Se trimite...';
+  var data={nume:n,masina:m,telefon:t,produs:p,eta:e,obs:o,data:new Date().toLocaleString('ro-RO'),sursa:'Metanoia Site'};
+  fetch(WH,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
+  .then(function(){done()}).catch(function(){done()});
+  function done(){
+    document.getElementById('pForm').style.display='none';
+    document.getElementById('fOk').style.display='block';
+    var msg='Buna ziua! Precomanda:\nNume: '+n+'\nMasina: '+m+'\nProdus: '+p+'\nETA: '+e+' minute'+(o?'\nObs: '+o:'');
+    setTimeout(function(){window.open('https://wa.me/40749229686?text='+encodeURIComponent(msg),'_blank');},700);
+  }
+});
+</script>
+</body>
+</html>
