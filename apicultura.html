@@ -3,13 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Validator Oficial Eligibilitate - Fonduri Europene Apicultură</title>
+    <title>Simularea Ta de Finanțare Apicolă</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* DESIGN SYSTEM PREMIUM */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
         :root {
@@ -21,284 +20,354 @@
             --bg-light: #f8fafc;
             --white: #ffffff;
             --radius: 16px;
-            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
         }
 
         body {
             background-color: var(--bg-light);
             color: var(--text-dark);
             font-family: 'Plus Jakarta Sans', sans-serif;
-            line-height: 1.6;
-            padding: 40px 20px;
+            line-height: 1.5;
+            padding: 30px 15px;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
         }
 
-        .wrapper {
+        .quiz-card {
             width: 100%;
-            max-width: 680px;
+            max-width: 600px;
             background: var(--white);
             border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            padding: 40px;
-            border-top: 8px solid var(--primary);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            padding: 35px;
+            border-top: 6px solid var(--primary);
         }
 
-        /* HEADER */
-        .header-block {
-            text-align: center;
-            margin-bottom: 35px;
+        /* PROGRESS BAR */
+        .progress-container {
+            width: 100%;
+            height: 6px;
+            background: #e2e8f0;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            overflow: hidden;
         }
 
-        .header-block i {
-            font-size: 45px;
-            color: var(--primary-dark);
-            margin-bottom: 15px;
-            background: var(--primary-light);
-            width: 80px;
-            height: 80px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
+        .progress-bar {
+            height: 100%;
+            width: 25%;
+            background: var(--primary-dark);
+            transition: width 0.3s ease;
         }
 
-        h1 {
-            font-size: 22px;
+        /* STEPS MANAGEMENT */
+        .step {
+            display: none;
+        }
+
+        .step.active {
+            display: block;
+            animation: slideIn 0.3s ease forwards;
+        }
+
+        h2 {
+            font-size: 20px;
             font-weight: 700;
+            margin-bottom: 20px;
             color: var(--text-dark);
-            margin-bottom: 8px;
         }
 
-        .subtitle {
-            color: var(--text-muted);
-            font-size: 14px;
-        }
-
-        /* CARDURI INTERACTIVE / OPȚIUNI */
-        .setup-box {
-            background: var(--bg-light);
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 25px;
-        }
-
-        .setup-title {
-            font-size: 14px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--text-dark);
-            margin-bottom: 15px;
+        /* OPTIONS & INPUTS */
+        .options-list {
             display: flex;
-            align-items: center;
-            gap: 8px;
+            flex-direction: column;
+            gap: 12px;
         }
 
-        .grid-options {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 10px;
-        }
-
-        .option-card {
+        .btn-option {
             background: var(--white);
             border: 2px solid #e2e8f0;
-            border-radius: 10px;
-            padding: 14px 16px;
+            padding: 16px;
+            border-radius: 12px;
             cursor: pointer;
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 14px;
+            text-align: left;
+            font-size: 15px;
+            font-weight: 500;
+            transition: all 0.2s;
+            color: var(--text-dark);
         }
 
-        .option-card:hover {
+        .btn-option:hover {
             border-color: var(--primary);
             background: #fffbeb;
         }
 
-        .option-card input[type="radio"] {
-            accent-color: var(--primary-dark);
-            width: 18px;
-            height: 18px;
-            cursor: pointer;
+        .input-group {
+            margin-top: 10px;
         }
 
-        /* ACTIONS */
-        .btn-submit {
-            background: var(--primary-dark);
-            color: var(--white);
-            border: none;
+        .input-box {
             width: 100%;
             padding: 16px;
-            border-radius: 10px;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
             font-size: 16px;
+            font-family: inherit;
+            font-weight: 600;
+            margin-bottom: 15px;
+            outline: none;
+        }
+
+        .input-box:focus {
+            border-color: var(--primary-dark);
+        }
+
+        .btn-next {
+            background: var(--text-dark);
+            color: var(--white);
+            border: none;
+            padding: 14px 28px;
+            border-radius: 10px;
+            font-size: 15px;
             font-weight: 600;
             cursor: pointer;
-            transition: background 0.2s;
-            display: flex;
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            gap: 10px;
+            gap: 8px;
         }
 
-        .btn-submit:hover {
-            background: #b45309;
+        .btn-next:hover {
+            background: #0f172a;
         }
 
-        /* REZULTAT DINAMIC */
+        /* REZULTAT */
         .result-box {
             display: none;
-            margin-top: 30px;
-            padding: 25px;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .status-badge.success { background: #d1fae5; color: #065f46; }
+        .status-badge.warning { background: #fee2e2; color: #991b1b; }
+
+        .result-title { font-size: 22px; font-weight: 700; margin-bottom: 15px; }
+        
+        .summary-card {
+            background: var(--bg-light);
+            border: 1px solid #e2e8f0;
             border-radius: 12px;
-            animation: fadeIn 0.4s ease forwards;
+            padding: 20px;
+            margin-bottom: 20px;
         }
 
-        .result-box.eligible {
-            background: #ecfdf5;
-            border: 1px solid #10b981;
-            color: #065f46;
-        }
-
-        .result-box h3 {
-            font-size: 16px;
-            margin-bottom: 10px;
+        .summary-line {
             display: flex;
-            align-items: center;
-            gap: 10px;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px dashed #e2e8f0;
+            font-size: 14px;
         }
+        .summary-line:last-child { border-bottom: none; }
 
-        .result-box ul {
-            list-style-type: none;
-            margin-top: 15px;
-        }
+        .explanation { font-size: 14px; color: var(--text-muted); margin-bottom: 20px; }
 
-        .result-box ul li {
-            font-size: 13.5px;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        @keyframes fadeIn {
+        @keyframes slideIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <body>
 
-<div class="wrapper">
+<div class="quiz-card">
     
-    <!-- HEADER -->
-    <div class="header-block">
-        <i class="fa-solid fa-calculator"></i>
-        <h1>Sistem Calificare Proiecte Apicole</h1>
-        <p class="subtitle">Evaluare preliminară conform ghidurilor oficiale AFIR / Pilonul II</p>
+    <!-- Bara de progres de sus -->
+    <div class="progress-container" id="progressNav">
+        <div class="progress-bar" id="progressBar"></div>
     </div>
 
-    <form id="eligibilityForm" onsubmit="calculateEligibility(event)">
+    <!-- PASUL 1: LOCALIZARE -->
+    <div class="step active" id="step1">
+        <h2>Unde aveți vatra stupinei și sediul?</h2>
+        <div class="options-list">
+            <button class="btn-option" onclick="nextStep(2, 'rural')"><i class="fa-solid fa-tree" style="color: #10b981; margin-right: 10px;"></i> La țară (Sat / Comună)</button>
+            <button class="btn-option" onclick="nextStep(2, 'urban')"><i class="fa-solid fa-city" style="color: #ef4444; margin-right: 10px;"></i> La oraș (Municipiu / Urban)</button>
+        </div>
+    </div>
+
+    <!-- PASUL 2: INREGISTRARE DSV -->
+    <div class="step" id="step2">
+        <h2>Sunt stupii înregistrați la DSV / Registrul Agricol?</h2>
+        <div class="options-list">
+            <button class="btn-option" onclick="nextStep(3, 'da')"><i class="fa-solid fa-file-circle-check" style="color: #10b981; margin-right: 10px;"></i> Da, am documente și număr de stupină oficial</button>
+            <button class="btn-option" onclick="nextStep(3, 'nu')"><i class="fa-solid fa-file-circle-xmark" style="color: #ef4444; margin-right: 10px;"></i> Nu, îi am doar în curte, fără acte în momentul ăsta</button>
+        </div>
+    </div>
+
+    <!-- PASUL 3: NUMAR STUPI (CALCULATOR INTELIGENT) -->
+    <div class="step" id="step3">
+        <h2>Câte familii de albine (stupi) aveți în total în acte?</h2>
+        <div class="input-group">
+            <input type="number" id="stupiCount" class="input-box" placeholder="Ex: 80" min="0">
+            <button class="btn-next" onclick="processStupiStep()">
+                <span>Continuă</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+        <p style="font-size: 12px; color: var(--text-muted); margin-top: 10px;">*Introdu numărul exact. Sistemul va calcula automat dimensiunea economică din ghidurile AFIR.</p>
+    </div>
+
+    <!-- PASUL 4: FORMA JURIDICA -->
+    <div class="step" id="step4">
+        <h2>Aveți firmă sau sunteți autorizat în agricultură?</h2>
+        <div class="options-list">
+            <button class="btn-option" onclick="calculateFinal('autorizat')"><i class="fa-solid fa-building" style="color: var(--primary-dark); margin-right: 10px;"></i> Am deja PFA / ÎI / SRL cu activitate apicolă</button>
+            <button class="btn-option" onclick="calculateFinal('fizica')"><i class="fa-solid fa-user" style="color: var(--primary-dark); margin-right: 10px;"></i> Sunt Persoană Fizică (dar sunt dispus să mă autorizez)</button>
+        </div>
+    </div>
+
+    <!-- BLOC REZULTAT FINAL -->
+    <div class="result-box" id="resultBlock">
+        <div id="statusBadge" class="status-badge">Se încarcă...</div>
+        <div class="result-title" id="resultTitle">Analiză Finanțare</div>
         
-        <!-- CRITERIUL 1: SEDIUL SOCIAL / VATRA -->
-        <div class="setup-box">
-            <span class="setup-title"><i class="fa-solid fa-map-location-dot"></i> 1. Localizare Proiect (Sediu Social & Vatră Stupină)</span>
-            <div class="grid-options">
-                <label class="option-card">
-                    <input type="radio" name="localizare" value="rural" required>
-                    <span>Mediul Rural (Comună / Sat din România — Criteriu obligatoriu)</span>
-                </label>
-                <label class="option-card">
-                    <input type="radio" name="localizare" value="urban">
-                    <span>Mediul Urban (Oraș / Municipiu — Restricționat pe majoritatea axelor)</span>
-                </label>
+        <div class="summary-card">
+            <div class="summary-line">
+                <span>Locație proiect:</span>
+                <strong id="resLoc">Mod rural</strong>
+            </div>
+            <div class="summary-line">
+                <span>Stupi înregistrați:</span>
+                <strong id="resStupi">0 familii</strong>
+            </div>
+            <div class="summary-line">
+                <span>Calcul Dimensiune (SO) în spate:</span>
+                <strong id="resSO" style="color: var(--primary-dark);">0 SO</strong>
             </div>
         </div>
 
-        <!-- CRITERIUL 2: DIMENSIUNE ECONOMICA -->
-        <div class="setup-box">
-            <span class="setup-title"><i class="fa-solid fa-chart-pie"></i> 2. Dimensiune Economică Actuală (Valoare SO)</span>
-            <div class="grid-options">
-                <label class="option-card">
-                    <input type="radio" name="dimensiune" value="mica" required>
-                    <span>Sub pragul minim legal (Sub 4.000 - 12.000 SO / Prea puține familii declarate)</span>
-                </label>
-                <label class="option-card">
-                    <input type="radio" name="dimensiune" value="optima">
-                    <span>Prag optim eligibil (Între 4.000 SO și 50.000 SO — Familii de albine înregistrate la ANZ/DSV)</span>
-                </label>
-                <label class="option-card">
-                    <input type="radio" name="dimensiune" value="mare">
-                    <span>Peste pragul de fermă mică/medie (Peste 50.000 SO — Necesită alte linii de finanțare)</span>
-                </label>
-            </div>
-        </div>
-
-        <!-- CRITERIUL 3: FORMA JURIDICA -->
-        <div class="setup-box">
-            <span class="setup-title"><i class="fa-solid fa-id-card"></i> 3. Forma de Organizare Juridică actuală sau asumată</span>
-            <div class="grid-options">
-                <label class="option-card">
-                    <input type="radio" name="forma" value="autorizat" required>
-                    <span>Entitate economică înregistrată (PFA, ÎI, ÎF, SRL, Cooperativă Agricolă)</span>
-                </label>
-                <label class="option-card">
-                    <input type="radio" name="forma" value="fizica">
-                    <span>Persoană Fizică simplă (Necesită autorizare înainte de depunerea dosarului)</span>
-                </label>
-            </div>
-        </div>
-
-        <!-- CRITERIUL 4: INREGISTRARE DSV -->
-        <div class="setup-box">
-            <span class="setup-title"><i class="fa-solid fa-file-shield"></i> 4. Înregistrare Sanitar-Veterinară (ANSVSA / Registrul Agricol)</span>
-            <div class="grid-options">
-                <label class="option-card">
-                    <input type="radio" name="dsv" value="da" required>
-                    <span>Da, stupii sunt înregistrați oficial, deținem număr de stupină valid</span>
-                </label>
-                <label class="option-card">
-                    <input type="radio" name="dsv" value="nu">
-                    <span>Nu, familiile de albine nu sunt înregistrate în documente oficiale</span>
-                </label>
-            </div>
-        </div>
-
-        <!-- BUTTON -->
-        <button type="submit" class="btn-submit">
-            <span>Calculează Indicatori Ghid</span>
-            <i class="fa-solid fa-chevron-right"></i>
+        <p class="explanation" id="resExplanation">Text dinamic...</p>
+        
+        <button class="btn-option" style="width: 100%; text-align: center; background: var(--primary-light); border-color: var(--primary); font-weight: 700;" onclick="window.location.reload()">
+            <i class="fa-solid fa-rotate-left"></i> Reia simularea de la început
         </button>
-    </form>
-
-    <!-- CONTAINER REZULTAT -->
-    <div id="resultBox" class="result-box eligible">
-        <h3><i class="fa-solid fa-square-poll-horizontal"></i> Diagnostic Raport Eligibilitate</h3>
-        <p style="font-size: 13.5px;">Datele introduse au fost mapate conform Ghidului Solicitantului pentru schemele de finanțare active din sectorul apicol:</p>
-        <ul>
-            <li><i class="fa-solid fa-check" style="color: #10b981;"></i> <strong>Localizare:</strong> Localizarea în mediul rural reprezintă condiția eliminatorie de bază bifată cu succes.</li>
-            <li><i class="fa-solid fa-check" style="color: #10b981;"></i> <strong>Standard Output (SO):</strong> Numărul de familii de albine declarate oficial generează coeficientul de calcul obligatoriu pentru încadrarea în tranșele de sprijin nerambursabil (15.000€, 44.000€ sau 60.000€).</li>
-            <li><i class="fa-solid fa-check" style="color: #10b981;"></i> <strong>Conformitate:</strong> Înregistrarea DSV și forma juridică comercială sunt pilonii principali ceruți la vizita Agenției (AFIR).</li>
-        </ul>
-        <p style="margin-top: 15px; font-size: 12px; font-weight: 700; text-transform: uppercase; color: var(--primary-dark);">Raportul preliminar este finalizat. Date gata pentru simularea punctajului din Planul de Afaceri.</p>
     </div>
 
 </div>
 
 <script>
-    function calculateEligibility(event) {
-        event.preventDefault();
+    // Salvăm răspunsurile clientului ca să calculăm logic la final
+    let dateProiect = {
+        locatie: '',
+        acte: '',
+        stupi: 0,
+        so: 0,
+        formaJuridica: ''
+    };
+
+    function nextStep(currentStep, value) {
+        // Mapăm răspunsurile primite pe pași
+        if(currentStep === 2) dateProiect.locatie = value;
+        if(currentStep === 3) dateProiect.acte = value;
+
+        // Schimbăm vizibilitatea ecranelor
+        document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+        document.getElementById('step' + currentStep).classList.add('active');
+
+        // Actualizăm bara de progres de sus
+        let progresPct = (currentStep === 2) ? 50 : (currentStep === 3) ? 75 : 100;
+        document.getElementById('progressBar').style.width = progresPct + '%';
+    }
+
+    function processStupiStep() {
+        const nrStupi = parseInt(document.getElementById('stupiCount').value);
+        if (isNaN(nrStupi) || nrStupi < 0) {
+            alert('Te rog introdu un număr valid de stupi.');
+            return;
+        }
         
-        const resultBox = document.getElementById('resultBox');
-        resultBox.style.display = 'block';
+        dateProiect.stupi = nrStupi;
+        // Calcul tehnic real conform regulilor europene: un stup produce o valoare medie calculată în jur de 30 - 45 de euro Standard Output (SO) în grilele oficiale
+        dateProiect.so = Math.round(nrStupi * 42); 
+
+        // Trecem la pasul 4
+        document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+        document.getElementById('step4').classList.add('active');
+        document.getElementById('progressBar').style.width = '95%';
+    }
+
+    function calculateFinal(forma) {
+        dateProiect.formaJuridica = forma;
+
+        // Ascundem bara de progres și ultimul pas ca să lăsăm loc ecranului final
+        document.getElementById('progressNav').style.display = 'none';
+        document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
         
-        resultBox.scrollIntoView({ behavior: 'smooth' });
+        const resultBlock = document.getElementById('resultBlock');
+        resultBlock.style.display = 'block';
+
+        // Completăm datele calculate în tabelul gri
+        document.getElementById('resLoc').innerText = dateProiect.locatie === 'rural' ? 'Eligibil (Mediul Rural)' : 'Restricționat (Mediul Urban)';
+        document.getElementById('resStupi').innerText = dateProiect.stupi + ' familii de albine';
+        document.getElementById('resSO').innerText = dateProiect.so + ' € (Standard Output)';
+
+        // LOGICA DE CALIFICARE PE LIMBA PRODUCĂTORULUI
+        const badge = document.getElementById('statusBadge');
+        const title = document.getElementById('resultTitle');
+        const explanation = document.getElementById('resExplanation');
+
+        // Caz de respingere directă (Urbis sau Fără acte deloc)
+        if (dateProiect.locatie === 'urban') {
+            badge.className = "status-badge warning";
+            badge.innerText = "Barieră de Mediu";
+            title.innerText = "Fondurile de Dezvoltare Rurală nu se aplică la oraș";
+            explanation.innerText = "Majoritatea liniilor europene (AFIR) cer ca stupina și sediul să fie înregistrate într-o comună sau sat. Pentru stupinele din oraș, finanțările sunt limitate doar dacă aveți o procesare mare sau prin asociații naționale.";
+            return;
+        }
+
+        if (dateProiect.acte === 'nu') {
+            badge.className = "status-badge warning";
+            badge.innerText = "Necesită Înregistrare Urgentă";
+            title.innerText = "Stupii trebuie prinși în acte";
+            explanation.innerText = "Pentru a cere bani europeni, numărul de stupi trebuie să fie extras oficial din Registrul Agricol și din actele DSV. Primul pas înainte de orice proiect este depunerea actelor la medicul veterinar.";
+            return;
+        }
+
+        // Cazuri bazate pe numărul de stupi / Valoare SO generată automat
+        if (dateProiect.so < 4000) {
+            badge.className = "status-badge warning";
+            badge.innerText = "Dimensiune Prea Mică";
+            title.innerText = "Aveți sub pragul minim cerut de ghiduri";
+            explanation.innerText = "Pentru fondurile de modernizare, ghidul cere o dimensiune economică minimă de 4.000 SO (adică în jur de minimum 90-100 de stupi înregistrați). Soluția: pentru a deveni eligibil, trebuie achiziționate restul de familii de albine pe cont propriu până la pragul minim.";
+        } 
+        else if (dateProiect.so >= 4000 && dateProiect.so <= 11999) {
+            badge.className = "status-badge success";
+            badge.innerText = "Eligibilitate Validă (Ferme Mici)";
+            title.innerText = "Sunteți perfect încadrat pentru Linia de Ferme Mici";
+            explanation.innerText = "Felicitări! Numărul de stupi generează o dimensiune economică optimă. Sunteți eligibil pentru măsura destinată fermelor mici, unde puteți accesa fonduri nerambursabile (valori între 15.000€ și 44.000€) cu finanțare de până la 100% pentru achiziție de utilaje de extracție, lăzi noi sau sisteme de transport.";
+        } 
+        else if (dateProiect.so >= 12000 && dateProiect.so <= 50000) {
+            badge.className = "status-badge success";
+            badge.innerText = "Eligibilitate Maximă (Instalare / Dezvoltare)";
+            title.innerText = "Sunteți în zona de punctaj ridicat";
+            explanation.innerText = "Numărul de stupi este excelent! Vă încadrați la pragul superior de finanțare. Dacă aveți sub 40 de ani, puteți accesa linia de Instalare Tânăr Fermier (până la 70.000€ complet nerambursabili), iar dacă depășiți vârsta, aveți acces la liniile mari de modernizare unde puteți deconta remorci apicole mari, pavilioane și linii industriale de îmbuteliere.";
+        } 
+        else {
+            badge.className = "status-badge success";
+            badge.innerText = "Exploatație Mare comercială";
+            title.innerText = "Fermă Apicolă Consolidată";
+            explanation.innerText = "Depășiți pragul fermelor mici. Vă calificați direct pe proiectele mari de investiții cu cofinanțare, perfect pentru construirea unei fabrici de procesare a mierii sau achiziția de flote logistice mari.";
+        }
     }
 </script>
 
