@@ -3,610 +3,349 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Configurator Plan de Afaceri Apicol - DAKAMIGOS</title>
+    <title>Ghidul tău de 44.000€ - Cu Energie Verde</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        /* DESIGN SYSTEM & RESET */
+        /* DESIGN SYSTEM PPTX PRESETS */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
         body {
             background-color: #0f172a;
             color: #334155;
             font-family: 'Open Sans', sans-serif;
-            overflow-x: hidden;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             padding: 10px;
-            padding-bottom: 120px;
         }
 
-        h1, h2, h3, h4 {
+        h1, h2, h3 {
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
-            color: #d97706; /* Ton auriu/miere apicol */
         }
 
-        .presentation-deck {
+        .presentation-container {
             width: 100%;
-            max-width: 1080px;
-            height: 85vh;
-            min-height: 560px;
-            max-height: 680px;
+            max-width: 960px;
+            height: 80vh;
+            min-height: 520px;
+            max-height: 620px;
             background: #ffffff;
-            border-radius: 16px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border-radius: 20px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
             position: relative;
             overflow: hidden;
             display: flex;
             flex-direction: column;
         }
 
-        .slides-container {
+        .slides-wrapper {
             flex-grow: 1;
             position: relative;
-            overflow: hidden;
         }
 
         .slide {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease, transform 0.3s ease;
-            transform: translateX(20px);
-            padding: 35px 45px;
+            top: 0; left: 0; width: 100%; height: 100%;
+            opacity: 0; visibility: hidden;
+            transition: all 0.4s ease-in-out;
+            padding: 40px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            z-index: 1;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: #ffffff;
         }
 
         .slide.active {
-            opacity: 1;
-            visibility: visible;
-            transform: translateX(0);
-            z-index: 2;
+            opacity: 1; visibility: visible;
         }
 
-        /* HEADER SLIDE */
-        .slide-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 2px solid #f1f5f9;
-            padding-bottom: 10px;
-            margin-bottom: 15px;
-        }
-
-        .slide-header .logo-consultant {
-            font-size: 13px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
+        /* CARDURI ȘI ELEMENTE VIZUALE COPII */
+        .icon-large {
+            font-size: 70px;
             color: #d97706;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
         }
 
-        .slide-header .client-tag {
-            font-size: 11px;
-            background: #fffbeb;
-            color: #b45309;
-            padding: 3px 10px;
-            border-radius: 9999px;
-            font-weight: 600;
-            border: 1px solid #fde68a;
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
         .slide-title {
-            font-size: 24px;
-            color: #0f172a;
-            position: relative;
-            padding-left: 12px;
-            margin-bottom: 10px;
-        }
-
-        .slide-title::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 15%;
-            height: 70%;
-            width: 4px;
-            background-color: #d97706;
-            border-radius: 2px;
-        }
-
-        .slide-body {
-            flex-grow: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow-y: auto;
-            padding: 5px 0;
-        }
-
-        /* TEXTAREA STUPI STILIZAT */
-        .custom-input-wrapper {
-            margin: 10px 0;
-            text-align: left;
-            width: 100%;
-        }
-        .custom-textarea {
-            width: 100%;
-            height: 90px;
-            padding: 12px;
-            border: 2px solid #cbd5e1;
-            border-radius: 8px;
-            font-size: 15px;
-            font-family: inherit;
-            font-weight: 600;
-            outline: none;
-            resize: none;
-        }
-        .custom-textarea:focus { border-color: #d97706; }
-
-        /* CHESTIONAR INTERACTIV */
-        .quiz-container {
-            width: 100%;
-            max-width: 750px;
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            padding: 25px;
-        }
-
-        .quiz-step { display: none; }
-        .quiz-step.active { display: block; }
-
-        .quiz-question {
-            font-size: 16px;
-            font-weight: 600;
-            color: #0f172a;
+            font-size: 28px;
+            color: #1e293b;
             margin-bottom: 15px;
         }
 
-        .quiz-options {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+        .slide-text {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #475569;
+            max-width: 650px;
         }
 
-        .quiz-option {
-            background: white;
-            border: 1px solid #cbd5e1;
-            padding: 12px 15px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .quiz-option:hover {
-            border-color: #d97706;
+        .accent-box {
             background: #fffbeb;
+            border: 2px dashed #f59e0b;
+            padding: 15px 25px;
+            border-radius: 12px;
+            margin-top: 15px;
+            font-weight: 700;
+            color: #b45309;
+            font-size: 20px;
         }
 
-        /* LAYOUTS & GRIDS */
-        .grid-2 {
+        .grid-3 {
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 30px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
             width: 100%;
-            align-items: center;
+            margin-top: 20px;
         }
 
-        .custom-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .custom-list li {
-            display: flex;
-            gap: 12px;
-            align-items: flex-start;
-            font-size: 14px;
-        }
-
-        .custom-list li i {
-            color: #d97706;
-            background: #fffbeb;
-            padding: 6px;
-            border-radius: 6px;
-            flex-shrink: 0;
-        }
-
-        .summary-card {
+        .mini-card {
             background: #f8fafc;
             border: 1px solid #e2e8f0;
-            border-radius: 12px;
             padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .mini-card i { font-size: 30px; color: #d97706; margin-bottom: 10px; }
+        .mini-card h3 { font-size: 15px; color: #0f172a; margin-bottom: 5px; }
+        .mini-card p { font-size: 13px; color: #64748b; }
+
+        /* CALCULATOR DINAMIC */
+        .calc-container {
+            background: #f1f5f9;
+            padding: 20px;
+            border-radius: 12px;
             width: 100%;
-            text-align: left;
+            max-width: 500px;
+            margin-top: 15px;
         }
 
-        .summary-line {
-            margin-bottom: 12px;
-            padding-bottom: 10px;
-            border-bottom: 1px dashed #cbd5e1;
-            font-size: 14px;
-            line-height: 1.5;
+        .money-bar {
+            display: flex;
+            height: 25px;
+            border-radius: 9999px;
+            overflow: hidden;
+            margin: 15px 0;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
         }
-        .summary-line:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .bar-75 { background: #10b981; width: 75%; text-align: center; color: white; font-size: 11px; line-height: 25px; font-weight: 700; }
+        .bar-25 { background: #3b82f6; width: 25%; text-align: center; color: white; font-size: 11px; line-height: 25px; font-weight: 700; }
 
-        /* FOOTER & NAVIGARE */
-        .presentation-footer {
-            background-color: #f8fafc;
+        /* CONTROALE JOS */
+        .footer-controls {
+            background: #f8fafc;
             border-top: 1px solid #e2e8f0;
-            padding: 10px 30px;
+            padding: 15px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 10;
-            width: 100%;
         }
 
-        .btn-nav {
-            background: #ffffff;
-            border: 1px solid #cbd5e1;
-            color: #334155;
-            width: 34px;
-            height: 34px;
-            border-radius: 50%;
+        .btn-slide {
+            background: #0f172a;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 12px;
-        }
-
-        .btn-nav:hover:not(:disabled) {
-            background-color: #d97706;
-            color: #ffffff;
-            border-color: #d97706;
-        }
-
-        .btn-nav:disabled { opacity: 0.3; cursor: not-allowed; }
-
-        .quiz-lock-notice {
-            font-size: 13px;
-            color: #ef4444;
-            font-weight: 600;
-            display: none;
-            align-items: center;
-            gap: 6px;
-        }
-        .quiz-lock-notice.visible { display: flex; }
-
-        .btn-quiz-next {
-            background: #cbd5e1;
-            color: #64748b;
-            border: none;
-            padding: 10px 24px;
-            border-radius: 6px;
-            font-weight: 600;
-            cursor: not-allowed;
+            gap: 8px;
             transition: all 0.2s;
         }
-        .btn-quiz-next.enabled {
-            background: #d97706;
-            color: white;
-            cursor: pointer;
-        }
+        .btn-slide:hover:not(:disabled) { background: #d97706; }
+        .btn-slide:disabled { opacity: 0.3; cursor: not-allowed; }
 
-        /* STICKY BAR WHATSAPP */
-        .sticky-closing-bar {
-            position: fixed; bottom: 0; left: 0; width: 100%;
-            background-color: #0f172a; border-top: 2px solid #d97706;
-            padding: 15px 30px; display: none; justify-content: space-between;
-            align-items: center; z-index: 100; box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
-        }
-        .sticky-closing-bar.visible { display: flex; }
-        .closing-text { color: #ffffff; font-size: 14px; font-weight: 600; }
-        .btn-whatsapp-close {
-            background-color: #25d366; color: white; text-decoration: none;
-            padding: 10px 20px; border-radius: 6px; font-weight: 700; font-size: 13px;
-            text-transform: uppercase; display: flex; align-items: center; gap: 8px;
-        }
+        .dots-nav { display: flex; gap: 8px; }
+        .dot { width: 10px; height: 10px; background: #cbd5e1; border-radius: 50%; transition: all 0.2s; }
+        .dot.active { background: #d97706; transform: scale(1.3); }
 
         @media (max-width: 768px) {
-            .presentation-deck { height: auto; max-height: none; }
-            .slide { position: relative; display: none; height: auto; padding: 20px; }
+            .presentation-container { height: auto; max-height: none; }
+            .slide { position: relative; display: none; height: auto; padding: 25px; }
             .slide.active { display: flex; }
-            .grid-2, .sticky-closing-bar { flex-direction: column; gap: 12px; text-align: center; }
+            .grid-3 { grid-template-columns: 1fr; gap: 10px; }
+            .footer-controls { padding: 15px; }
         }
     </style>
 </head>
 <body>
 
-    <div class="presentation-deck">
-        
-        <div class="slides-container">
+    <div class="presentation-container">
+        <div class="slides-wrapper">
 
-            <div class="slide active" id="s1">
-                <div class="slide-header">
-                    <span class="logo-consultant"><i class="fa-solid fa-briefcase"></i> DAKAMIGOS MARKT / Idei de Business</span>
-                    <span class="client-tag">Plan Strategic</span>
-                </div>
-                <div class="slide-body">
-                    <div style="text-align: center; width: 100%; max-width: 750px;">
-                        <i class="fa-solid fa-lightbulb" style="font-size: 55px; color: #d97706; margin-bottom: 15px;"></i>
-                        <h1 style="font-size: 24px; color: #0f172a; margin-bottom: 10px;">Crearea Contextului de Afaceri pentru Proiect</h1>
-                        <p style="color: #475569; font-size: 15px; line-height: 1.6;">
-                            Pentru a lua punctaj maxim la comisia AFIR, dosarul nu trebuie să fie doar o listă goală de acte. 
-                            Evaluatorii vor să vadă o strategie clară de dezvoltare. Treci prin următorul pas ca să ne configurăm ideile!
-                        </p>
+            <!-- SLIDE 1: COPERTA -->
+            <div class="slide active" id="slide1">
+                <i class="fa-solid fa-gift icon-large"></i>
+                <h1 class="slide-title">Proiectul tău de 44.000€: Cadoul de la Uniunea Europeană</h1>
+                <p class="slide-text">
+                    Nenea, Uniunea Europeană oferă bani gratuiti pentru stuparii harnici. Nu este un împrumut, nu trebuie să dai banii înapoi și nu pui nimic din buzunarul tău[span_0](start_span)[span_0](end_span)!
+                </p>
+                <div class="accent-box">💰 Finanțare: 100% GRATIS (0% Cofinanțare)[span_1](start_span)[span_1](end_span)</div>
+            </div>
+
+            <!-- SLIDE 2: DE CE TU? -->
+            <div class="slide" id="slide2">
+                <i class="fa-solid fa-trophy icon-large" style="color: #eab308;"></i>
+                <h1 class="slide-title">De ce te-ai calificat din prima?</h1>
+                <p class="slide-text">
+                    Pentru că ai muncit deja și ai strâns regulamentar cele 100 de familii de albine în acte! Acest lucru te plasează exact în categoria favorită a finanțării:
+                </p>
+                <div class="grid-3">
+                    <div class="mini-card">
+                        <i class="fa-solid fa-check-to-slot"></i>
+                        <h3>Prag trecut</h3>
+                        <p>Ai 4.200 SO în acte, minimul cerut e 4.000 SO.[span_2](start_span)[span_2](end_span)</p>
+                    </div>
+                    <div class="mini-card">
+                        <i class="fa-solid fa-tree"></i>
+                        <h3>Locație ideală</h3>
+                        <p>Stupina ta este înregistrată la țară.</p>
+                    </div>
+                    <div class="mini-card">
+                        <i class="fa-solid fa-file-signature"></i>
+                        <h3>Formă legală</h3>
+                        <p>Ești gata organizat legal (PFA/FIRMĂ).</p>
                     </div>
                 </div>
             </div>
 
-            <div class="slide" id="s2">
-                <div class="slide-header">
-                    <span class="logo-consultant"><i class="fa-solid fa-list-check"></i> Întrebări Strategice</span>
-                    <span class="client-tag">Ghidul Solicitantului</span>
-                </div>
-                <div class="slide-body">
-                    <div id="quizBlock" class="quiz-container">
-                        
-                        <div class="quiz-step active" id="qStep1">
-                            <p class="quiz-question">1. Ce utilaje sau dotări vă lipsesc cel mai mult în stupină și doriți să le cumpărăm prin proiect?</p>
-                            <div class="custom-input-wrapper">
-                                <textarea id="txtUtilaje" class="custom-textarea" placeholder="Ex: Centrifugă electrică radială, linie de descăpăcit, 100 de lăzi noi verticale, macara apicolă etc..." oninput="checkStepValidation()"></textarea>
-                            </div>
-                        </div>
-
-                        <div class="quiz-step" id="qStep2">
-                            <p class="quiz-question">2. Cum se realizează valorificarea și vânzarea producției de miere în prezent?</p>
-                            <div class="quiz-options">
-                                <label class="quiz-option"><input type="radio" name="q2" value="En-gros, vrac la butoi către procesatori" onchange="checkStepValidation()"> Doar en-gros, vrac la butoi către procesatori mari</label>
-                                <label class="quiz-option"><input type="radio" name="q2" value="La borcan, direct către clienți / piețe locale" onchange="checkStepValidation()"> La borcan, ambalat individual către clienți și piețe locale</label>
-                                <label class="quiz-option"><input type="radio" name="q2" value="Sistem mixt + Vrem brand propriu de etichetare" onchange="checkStepValidation()"> Sistem mixt + Vrem dezvoltarea unui brand și etichetare prin proiect</label>
-                            </div>
-                        </div>
-
-                        <div class="quiz-step" id="qStep3">
-                            <p class="quiz-question">3. Care este modul principal de exploatare al stupinei?</p>
-                            <div class="quiz-options">
-                                <label class="quiz-option"><input type="radio" name="q3" value="Stupărit pastoral intens (salcâm, tei, floare)" onchange="checkStepValidation()"> Stupărit pastoral intens (deplasări cu camion/pavilion)</label>
-                                <label class="quiz-option"><input type="radio" name="q3" value="Staționar exclusiv (vetre fixe securizate)" onchange="checkStepValidation()"> Staționar exclusiv (doar producție pe vetre fixe)</label>
-                            </div>
-                        </div>
-
-                        <div class="quiz-step" id="qStep4">
-                            <p class="quiz-question">4. Plănuiți diversificarea producției cu produse apicole secundare?</p>
-                            <div class="quiz-options">
-                                <label class="quiz-option"><input type="radio" name="q4" value="Da, colectare polen, propolis și lăptișor" onchange="checkStepValidation()"> Da (colectare polen, propolis, lăptișor de matcă — aduce punctaj)</label>
-                                <label class="quiz-option"><input type="radio" name="q4" value="Nu, rămânem strictly axați pe producția de miere" onchange="checkStepValidation()"> Nu, rămânem axați strict pe producția clasică de miere marfă</label>
-                            </div>
-                        </div>
-
-                        <div style="margin-top: 25px; display: flex; justify-content: flex-end;">
-                            <button id="quizNextBtn" class="btn-quiz-next" disabled>Următorul pas</button>
-                        </div>
+            <!-- SLIDE 3: CE CUMPĂRĂM? -->
+            <div class="slide" id="slide3">
+                <i class="fa-solid fa-truck-pickup icon-large" style="color: #3b82f6;"></i>
+                <h1 class="slide-title">Ce cumpărăm cu cei 44.000 de euro?</h1>
+                <p class="slide-text">
+                    Aplicația ta a calculat pilonii perfecți. Banii europeni vor merge direct pe tehnologia grea care îți salvează spatele și îți crește producția:
+                </p>
+                <div class="grid-3">
+                    <div class="mini-card">
+                        <i class="fa-solid fa-truck-ramp-box"></i>
+                        <h3>Macara / Stivuitor</h3>
+                        <p>Să muți remorca și lăzile în pastoral fără efort fizic.</p>
                     </div>
-
-                    <div id="quizSuccessBlock" style="display: none; text-align: center; width: 100%;">
-                        <div style="font-size: 45px; color: #10b981; margin-bottom: 10px;"><i class="fa-solid fa-circle-check"></i></div>
-                        <h2>Context Schițat cu Succes!</h2>
-                        <p style="color: #64748b; margin-bottom: 15px; font-size: 14px;">Informațiile au fost structurate sub formă de piloni de investiție. Trecem mai departe să vedem cum arată rezumatul tehnic.</p>
-                        <button onclick="startPresentation()" style="background: #d97706; color: white; border: none; padding: 12px 25px; border-radius: 6px; font-weight: 600; cursor: pointer;">Afișează Rezumat Plan de Afaceri</button>
+                    <div class="mini-card">
+                        <i class="fa-solid fa-arrow-rotate-right"></i>
+                        <h3>Linie automată</h3>
+                        <p>Centrifugi și descăpăcitoare electrice profesionale.</p>
+                    </div>
+                    <div class="mini-card">
+                        <i class="fa-solid fa-tower-cell"></i>
+                        <h3>Cântare cu SIM</h3>
+                        <p>Să vezi pe telefon exact când și unde curge mierea.</p>
                     </div>
                 </div>
             </div>
 
-            <div class="slide" id="s3">
-                <div class="slide-header">
-                    <span class="logo-consultant"><i class="fa-solid fa-file-invoice"></i> Structură Piloni</span>
-                    <span class="client-tag">Fișă de Lucru</span>
-                </div>
-                <div class="slide-body" style="flex-direction: column; justify-content: flex-start; gap: 15px; width: 100%;">
-                    <h2 style="font-size: 18px; color: #0f172a; text-align: center;">Direcții Strategice stabilite pentru Dosar</h2>
-                    
-                    <div class="summary-card">
-                        <div class="summary-line">
-                            <strong>1. Obiectiv Principal Achiziții (Utilaje țintite):</strong><br>
-                            <span id="lblUtilaje" style="color: #475569;">--</span>
-                        </div>
-                        <div class="summary-line">
-                            <strong>2. Piața de Desfacere (Strategie comercializare):</strong><br>
-                            <span id="lblVanzare" style="color: #475569;">--</span>
-                        </div>
-                        <div class="summary-line">
-                            <strong>3. Management Stupină (Tip Exploatare):</strong><br>
-                            <span id="lblMod" style="color: #475569;">--</span>
-                        </div>
-                        <div class="summary-line">
-                            <strong>4. Valoare Adăugată (Diversificare):</strong><br>
-                            <span id="lblDiversificare" style="color: #475569;">--</span>
-                        </div>
+            <!-- SLIDE 4: ENERGIE VERDE (NOU) -->
+            <div class="slide" id="slide4">
+                <i class="fa-solid fa-solar-panel icon-large" style="color: #10b981;"></i>
+                <h1 class="slide-title">🔋 Secretul Punctajului: Energie Verde!</h1>
+                <p class="slide-text">
+                    Ca să fim siguri că dosarul tău trece în fața tuturor la Arad, prindem în proiect și un **sistem inteligent de panouri fotovoltaice cu acumulatori**.
+                </p>
+                <div class="grid-3">
+                    <div class="mini-card" style="border: 1px solid #a7f3d0; background: #f0fdf4;">
+                        <i class="fa-solid fa-bolt" style="color: #10b981;"></i>
+                        <h3>Curent la vânătoare</h3>
+                        <p>Ai energie gratis în pastoral pentru rulotă, frigider și centrifugă.</p>
+                    </div>
+                    <div class="mini-card" style="border: 1px solid #a7f3d0; background: #f0fdf4;">
+                        <i class="fa-solid fa-leaf" style="color: #10b981;"></i>
+                        <h3>Punctaj maxim</h3>
+                        <p>Europa iubește „energia verde”. Evaluatorii ne dau note uriașe!</p>
+                    </div>
+                    <div class="mini-card" style="border: 1px solid #a7f3d0; background: #f0fdf4;">
+                        <i class="fa-solid fa-coins" style="color: #10b981;"></i>
+                        <h3>Facturi ZERO</h3>
+                        <p>Lumina pentru camera de extracție devine complet gratuită.</p>
                     </div>
                 </div>
             </div>
 
-            <div class="slide" id="s4">
-                <div class="slide-header">
-                    <span class="logo-consultant"><i class="fa-solid fa-graduation-cap"></i> Evaluare Tehnică</span>
-                    <span class="client-tag">Puncte Cheie AFIR</span>
-                </div>
-                <div class="slide-body">
-                    <div class="grid-2" style="width: 100%;">
-                        <div class="column-left">
-                            <h2 class="slide-title">De ce contează aceste date?</h2>
-                            <p style="margin-bottom: 10px; font-size: 14px; line-height: 1.5;">Planul de afaceri primește note mari dacă:</p>
-                            <ul class="custom-list">
-                                <li><i class="fa-solid fa-check"></i><div><b>Demonstrăm comercializarea:</b> Vânzarea directă sau brandul propriu arată o profitabilitate mai mare decât simplul vrac.</div></li>
-                                <li><i class="fa-solid fa-check"></i><div><b>Justificăm tehnologia:</b> Utilajele cerute (ex: centrifugă automată) trebuie să se pupe exact cu volumul de producție estimat de familii.</div></li>
-                            </ul>
-                        </div>
-                        <div class="column-right" style="text-align: center;">
-                            <i class="fa-solid fa-award" style="font-size: 60px; color: #d97706;"></i>
-                            <p style="font-size: 11px; color: #64748b; margin-top: 5px;">Un context bine scris elimină complet cererile de clarificări de la minister.</p>
-                        </div>
+            <!-- SLIDE 5: CUM VIN BANII? -->
+            <div class="slide" id="slide5">
+                <i class="fa-solid fa-hand-holding-dollar icon-large" style="color: #22c55e;"></i>
+                <h1 class="slide-title">Cum vin banii în cont? (Planul în doi pași)</h1>
+                <p class="slide-text">
+                    Cel mai mare avantaj al acestui ghid este că primești grosul banilor înainte să cumperi utilajele, direct ca avans[span_3](start_span)[span_3](end_span)!
+                </p>
+                
+                <div class="calc-container">
+                    <div style="display:flex; justify-content:space-between; font-weight:700; font-size:14px;">
+                        <span style="color:#10b981;">Pasul 1: Avans (75%)[span_4](start_span)[span_4](end_span)</span>
+                        <span style="color:#3b82f6;">Pasul 2: Final (25%)[span_5](start_span)[span_5](end_span)</span>
+                    </div>
+                    <div class="money-bar">
+                        <div class="bar-75">33.000 €[span_6](start_span)[span_6](end_span)</div>
+                        <div class="bar-25">11.000 €[span_7](start_span)[span_7](end_span)</div>
+                    </div>
+                    <div style="text-align:left; font-size:13px; color:#475569;">
+                        • <b>33.000 €</b> vin imediat după aprobare. Cu ei cumperi utilajele și panourile[span_8](start_span)[span_8](end_span)!<br>
+                        • <b>11.000 €</b> vin la final, după ce dăm drumul la brandul tău de miere.[span_9](start_span)[span_9](end_span)
                     </div>
                 </div>
             </div>
 
         </div>
 
-        <div class="presentation-footer">
-            <div id="lockNotice" class="quiz-lock-notice" style="display: flex;">
-                <i class="fa-solid fa-lock"></i> Completați chestionarul de pe slide-ul 2 pentru a debloca schița Planului
+        <!-- BARA DE CONTROL PPTX -->
+        <div class="footer-controls">
+            <button class="btn-slide" id="prevBtn" disabled><i class="fa-solid fa-arrow-left"></i> Înapoi</button>
+            
+            <div class="dots-nav">
+                <div class="dot active"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
             </div>
             
-            <div class="nav-buttons" id="navBlock" style="display: flex; gap: 10px; align-items: center;">
-                <button class="btn-nav" id="prevBtn" disabled><i class="fa-solid fa-chevron-left"></i></button>
-                <div style="font-size: 13px; font-weight: 600; min-width: 50px; text-align: center;" id="counter">1 / 4</div>
-                <button class="btn-nav" id="nextBtn"><i class="fa-solid fa-chevron-right"></i></button>
-            </div>
-            
-            <div style="font-size: 11px; color: #64748b; font-weight: 600;">DAKAMIGOS MARKT SRL © 2026</div>
+            <button class="btn-slide" id="nextBtn">Înainte <i class="fa-solid fa-arrow-right"></i></button>
         </div>
-
     </div>
 
-    <div class="sticky-closing-bar" id="closingBar">
-        <div class="closing-text">
-            <i class="fa-solid fa-circle-check" style="color: #10b981; margin-right: 6px;"></i> 
-            Context strategic generat
-        </div>
-        <a id="waLink" href="#" class="btn-whatsapp-close" target="_blank">
-            <i class="fa-brands fa-whatsapp" style="font-size: 16px;"></i> Trimite pilonii pe WhatsApp
-        </a>
-    </div>
-
-    <script>
-        let currentQuizStep = 1;
-        const totalQuizSteps = 4;
-        let quizDone = false; 
-        
-        let contextProiect = { utilaje: '', vanzare: '', modExploatare: '', diversificare: '' };
-
-        const quizNextBtn = document.getElementById('quizNextBtn');
-        const quizBlock = document.getElementById('quizBlock');
-        const quizSuccessBlock = document.getElementById('quizSuccessBlock');
-        
-        function checkStepValidation() {
-            if (currentQuizStep === 1) {
-                const textVal = document.getElementById('txtUtilaje').value.trim();
-                if (textVal.length >= 5) {
-                    quizNextBtn.disabled = false;
-                    quizNextBtn.classList.add('enabled');
-                } else {
-                    quizNextBtn.disabled = true;
-                    quizNextBtn.classList.remove('enabled');
-                }
-            } else {
-                const currentInputs = document.querySelectorAll(`#qStep${currentQuizStep} input[type="radio"]`);
-                let isChecked = false;
-                currentInputs.forEach(input => { if (input.checked) isChecked = true; });
-                
-                if (isChecked) {
-                    quizNextBtn.disabled = false;
-                    quizNextBtn.classList.add('enabled');
-                } else {
-                    quizNextBtn.disabled = true;
-                    quizNextBtn.classList.remove('enabled');
-                }
-            }
-        }
-
-        quizNextBtn.addEventListener('click', () => {
-            if (quizNextBtn.disabled) return;
-
-            // Salvare date text & opțiuni selectate
-            if (currentQuizStep === 1) contextProiect.utilaje = document.getElementById('txtUtilaje').value.trim();
-            if (currentQuizStep === 2) contextProiect.vanzare = document.querySelector('input[name="q2"]:checked').value;
-            if (currentQuizStep === 3) contextProiect.modExploatare = document.querySelector('input[name="q3"]:checked').value;
-            if (currentQuizStep === 4) contextProiect.diversificare = document.querySelector('input[name="q4"]:checked').value;
-
-            if (currentQuizStep < totalQuizSteps) {
-                document.getElementById(`qStep${currentQuizStep}`).classList.remove('active');
-                currentQuizStep++;
-                document.getElementById(`` + `qStep${currentQuizStep}`).classList.add('active');
-                checkStepValidation();
-                
-                if (currentQuizStep === totalQuizSteps) {
-                    quizNextBtn.innerText = "Finalizează contextul";
-                }
-            } else {
-                quizBlock.style.display = 'none';
-                quizSuccessBlock.style.display = 'block';
-                asambleazaRezumatPlan();
-            }
-        });
-
-        function asambleazaRezumatPlan() {
-            document.getElementById('lblUtilaje').innerText = contextProiect.utilaje;
-            document.getElementById('lblVanzare').innerText = contextProiect.vanzare;
-            document.getElementById('lblMod').innerText = contextProiect.modExploatare;
-            document.getElementById('lblDiversificare').innerText = contextProiect.diversificare;
-
-            // Setare link WhatsApp către 0749229686
-            const telConsultant = "40749229686";
-            const textWhatsApp = `Am definitivat obiectivele de business pentru Planul de Afaceri apicol. Iată ideile mele:\n\n` +
-                                 `• Utilaje vizate în proiect: ${contextProiect.utilaje}\n` +
-                                 `• Strategie vânzare miere: ${contextProiect.vanzare}\n` +
-                                 `• Mod de lucru în stupină: ${contextProiect.modExploatare}\n` +
-                                 `• Plan diversificare secundară: ${contextProiect.diversificare}\n\n` +
-                                 `Aștept să corelăm aceste date cu lădițele și calculul SO pentru dosarul final!`;
-            
-            document.getElementById('waLink').href = "https://api.whatsapp.com/send?phone=" + telConsultant + "&text=" + encodeURIComponent(textWhatsApp);
-        }
-
+    <script {nonce}>
         let currentSlide = 1;
-        const totalSlides = 4;
+        const totalSlides = 5;
 
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
-        const counter = document.getElementById('counter');
-        const lockNotice = document.getElementById('lockNotice');
-        const closingBar = document.getElementById('closingBar');
-
-        function startPresentation() {
-            quizDone = true;
-            quizSuccessBlock.style.display = 'none';
-            lockNotice.style.display = 'none'; 
-            closingBar.classList.add('visible'); 
-            changeSlide(1); 
-        }
+        const dots = document.querySelectorAll('.dot');
 
         prevBtn.addEventListener('click', () => changeSlide(-1));
         nextBtn.addEventListener('click', () => changeSlide(1));
 
         function changeSlide(direction) {
-            let nextActive = currentSlide + direction;
+            document.getElementById(`slide${currentSlide}`).classList.remove('active');
+            dots[currentSlide - 1].classList.remove('active');
             
-            if (nextActive >= 1 && nextActive <= totalSlides) {
-                if (currentSlide === 2 && direction === 1 && !quizDone) {
-                    lockNotice.style.display = 'flex';
-                    return;
-                }
+            currentSlide += direction;
+            
+            document.getElementById(`slide${currentSlide}`).classList.add('active');
+            dots[currentSlide - 1].classList.add('active');
 
-                lockNotice.style.display = 'none';
-                document.getElementById(`s${currentSlide}`).classList.remove('active');
-                document.getElementById(`s${nextActive}`).classList.add('active');
-                currentSlide = nextActive;
-
-                counter.innerText = `${currentSlide} / ${totalSlides}`;
-                prevBtn.disabled = currentSlide === 1;
-                
-                if (currentSlide === 2 && !quizDone) {
-                    nextBtn.disabled = true;
-                } else {
-                    nextBtn.disabled = currentSlide === totalSlides;
-                }
+            prevBtn.disabled = currentSlide === 1;
+            
+            if (currentSlide === totalSlides) {
+                nextBtn.innerHTML = 'Am înțeles! <i class="fa-solid fa-circle-check"></i>';
+            } else {
+                nextBtn.innerHTML = 'Înainte <i class="fa-solid fa-arrow-right"></i>';
             }
         }
     </script>
