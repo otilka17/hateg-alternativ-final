@@ -369,16 +369,16 @@
                         <div class="quiz-step active" id="qStep1">
                             <p class="quiz-question">1. Unde se află vatra stupinei și viitorul sediu?</p>
                             <div class="quiz-options">
-                                <label class="quiz-option"><input type="radio" name="q1" value="La tara (Rural)" onclick="checkStepValidation()"> La țară (Sat / Comună — Criteriu de bază)</label>
-                                <label class="quiz-option"><input type="radio" name="q1" value="La oras (Urban)" onclick="checkStepValidation()"> La oraș (Restricționat pe axe rurale)</label>
+                                <label class="quiz-option"><input type="radio" name="q1" value="La tara (Rural)" onchange="checkStepValidation()"> La țară (Sat / Comună — Criteriu de bază)</label>
+                                <label class="quiz-option"><input type="radio" name="q1" value="La oras (Urban)" onchange="checkStepValidation()"> La oraș (Restricționat pe axe rurale)</label>
                             </div>
                         </div>
 
                         <div class="quiz-step" id="qStep2">
                             <p class="quiz-question">2. Sunt familiile de albine înregistrate oficial la DSV / Registrul Agricol?</p>
                             <div class="quiz-options">
-                                <label class="quiz-option"><input type="radio" name="q2" value="Are acte DSV" onclick="checkStepValidation()"> Da, am număr de stupină și documente în regulă</label>
-                                <label class="quiz-option"><input type="radio" name="q2" value="Fara acte" onclick="checkStepValidation()"> Nu sunt înregistrate în acest moment</label>
+                                <label class="quiz-option"><input type="radio" name="q2" value="Are acte DSV" onchange="checkStepValidation()"> Da, am număr de stupină și documente în regulă</label>
+                                <label class="quiz-option"><input type="radio" name="q2" value="Fara acte" onchange="checkStepValidation()"> Nu sunt înregistrate în acest moment</label>
                             </div>
                         </div>
 
@@ -392,8 +392,8 @@
                         <div class="quiz-step" id="qStep4">
                             <p class="quiz-question">4. Dețineți o formă juridică autorizată în agricultură?</p>
                             <div class="quiz-options">
-                                <label class="quiz-option"><input type="radio" name="q4" value="PFA / II / SRL" onclick="checkStepValidation()"> Da, sunt organizat ca PFA / ÎI / SRL</label>
-                                <label class="quiz-option"><input type="radio" name="q4" value="Persoana Fizica" onclick="checkStepValidation()"> Nu, sunt Persoană Fizică (dispus să mă autorizez)</label>
+                                <label class="quiz-option"><input type="radio" name="q4" value="PFA / II / SRL" onchange="checkStepValidation()"> Da, sunt organizat ca PFA / ÎI / SRL</label>
+                                <label class="quiz-option"><input type="radio" name="q4" value="Persoana Fizica" onchange="checkStepValidation()"> Nu, sunt Persoană Fizică (dispus să mă autorizez)</label>
                             </div>
                         </div>
 
@@ -527,7 +527,7 @@
         quizNextBtn.addEventListener('click', () => {
             if (quizNextBtn.disabled) return;
 
-            // Salvare date
+            // Salvare date tehnice
             if (currentQuizStep === 1) dateProiect.locatie = document.querySelector('input[name="q1"]:checked').value;
             if (currentQuizStep === 2) dateProiect.acte = document.querySelector('input[name="q2"]:checked').value;
             if (currentQuizStep === 3) {
@@ -578,13 +578,14 @@
                     verdictText = "Eligibil direct pe Ferme Mici (linii de grant nerambursabil total).";
                     desc.innerText = "Felicitări! Numărul de stupi generează coeficientul perfect pentru măsura de ferme mici. Fondurile pot acoperi 100% utilaje de descăpăcit, centrifuge electrice sau cutii noi.";
                 } else {
-                    titlu.innerText = "Potențial Maxim: Instalare Tânăr Fermier / Modernizări Mari";
+                    titlu.innerText = "Potențial Maxim: Instalare Tânăr Fermier / Modernizări Mași";
                     verdictText = "Eligibil pentru linii mari (până la 70.000€ primă fixă).";
                     desc.innerText = "Exploatația deține o dimensiune comercială solidă. Se califică pentru sprijin de instalare de valori mari sau proiecte complexe mecanizate.";
                 }
             }
 
-            const telConsultant = "40749229696";
+            // REPARAT: Configurare exactă număr telefon (0749229686) în format internațional string valid
+            const telConsultant = "40749229686";
             const textWhatsApp = `Bună ziua! Am completat simulatorul de analiză apicolă. Iată datele mele:\n\n` +
                                  `• Locație stupină: ${dateProiect.locatie}\n` +
                                  `• Înregistrare DSV: ${dateProiect.acte}\n` +
