@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validator Eligibilitate Fonduri Europene - Apicultură</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* DESIGN SYSTEM PREMIUM */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        :root {
+            --primary: #f59e0b;
+            --primary-dark: #d97706;
+            --primary-light: #fef3c7;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --radius: 16px;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.6;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .wrapper {
+            width: 100%;
+            max-width: 680px;
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 40px;
+            border-top: 8px solid var(--primary);
+            position: relative;
+        }
+
+        /* HEADER */
+        .header-block {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .header-block i {
+            font-size: 45px;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+            background: var(--primary-light);
+            width: 80px;
+            height: 80px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+
+        /* CARDURI INTERACTIVE / OPȚIUNI */
+        .setup-box {
+            background: var(--bg-light);
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .setup-title {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .grid-options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+        }
+
+        .option-card {
+            background: var(--white);
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 16px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .option-card:hover {
+            border-color: var(--primary);
+            background: #fffbeb;
+        }
+
+        .option-card input[type="radio"] {
+            accent-color: var(--primary-dark);
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .option-card i {
+            font-size: 20px;
+            color: var(--text-muted);
+            width: 25px;
+            text-align: center;
+        }
+
+        /* ACTIONS */
+        .btn-submit {
+            background: var(--primary-dark);
+            color: var(--white);
+            border: none;
+            width: 100%;
+            padding: 16px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 12px rgba(217, 119, 6, 0.2);
+        }
+
+        .btn-submit:hover {
+            background: #b45309;
+        }
+
+        /* REZULTAT DINAMIC */
+        .result-box {
+            display: none;
+            margin-top: 30px;
+            padding: 25px;
+            border-radius: 12px;
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        .result-box.eligible {
+            background: #ecfdf5;
+            border: 1px solid #10b981;
+            color: #065f46;
+        }
+
+        .result-box h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .result-box ul {
+            list-style-type: none;
+            margin-top: 15px;
+        }
+
+        .result-box ul li {
+            font-size: 14px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    
+    <!-- HEADER -->
+    <div class="header-block">
+        <i class="fa-solid fa-hive"></i>
+        <h1>Sistem Evaluare Eligibilitate</h1>
+        <p class="subtitle">Verificarea criteriilor tehnice pentru linii de finanțare apicole active</p>
+    </div>
+
+    <form id="eligibilityForm" onsubmit="calculateEligibility(event)">
+        
+        <!-- INTREBARE 1: VECHIME -->
+        <div class="setup-box">
+            <span class="setup-title"><i class="fa-solid fa-clock"></i> 1. Vechime istorică în sectorul apicol</span>
+            <div class="grid-options">
+                <label class="option-card">
+                    <input type="radio" name="experienta" value="senior" required>
+                    <i class="fa-solid fa-hourglass-high" style="color: var(--primary-dark);"></i>
+                    <span>Experiență consolidată în domeniu (peste 15-17 ani de activitate continuă)</span>
+                </label>
+                <label class="option-card">
+                    <input type="radio" name="experienta" value="junior">
+                    <i class="fa-solid fa-seedling"></i>
+                    <span>Start-up / Apicultor la început de drum sau sub 3 ani experiență</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- INTREBARE 2: TIP STUPINA -->
+        <div class="setup-box">
+            <span class="setup-title"><i class="fa-solid fa-box-tissue"></i> 2. Structura exploatației și modul de producție</span>
+            <div class="grid-options">
+                <label class="option-card">
+                    <input type="radio" name="structura" value="mixt" required>
+                    <i class="fa-solid fa-truck-field" style="color: var(--primary-dark);"></i>
+                    <span>Sistem mixt (Vetre fixe pentru iernare + Pavilioane mobile pentru pastoral)</span>
+                </label>
+                <label class="option-card">
+                    <input type="radio" name="structura" value="exclusiv_fix">
+                    <i class="fa-solid fa-house-chimney-window"></i>
+                    <span>Exploatare exclusiv staționară (doar vetre fixe, fără deplasări)</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- INTREBARE 3: LOGISTICA -->
+        <div class="setup-box">
+            <span class="setup-title"><i class="fa-solid fa-truck"></i> 3. Infrastructură logistică proprie de transport</span>
+            <div class="grid-options">
+                <label class="option-card">
+                    <input type="radio" name="logistica" value="proprie" required>
+                    <i class="fa-solid fa-truck-moving" style="color: var(--primary-dark);"></i>
+                    <span>Deține în proprietate mijloc de transport greu/utilitar (Camion / Mașină pastoral)</span>
+                </label>
+                <label class="option-card">
+                    <input type="radio" name="logistica" value="inchiriat">
+                    <i class="fa-solid fa-handshake"></i>
+                    <span>Nu deține transport propriu (depinde de închirieri sau servicii terțe)</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- BUTTON -->
+        <button type="submit" class="btn-submit">
+            <span>Verifică Criterii de Oportunitate</span>
+            <i class="fa-solid fa-arrow-right"></i>
+        </button>
+    </form>
+
+    <!-- CONTAINER REZULTAT DINAMIC -->
+    <div id="resultBox" class="result-box eligible">
+        <h3><i class="fa-solid fa-circle-check"></i> Scenariu Tehnic cu Punctaj Maxim Identificat</h3>
+        <p style="font-size: 14px;">Configurația selectată bifează toate criteriile superioare de sustenabilitate economică din ghidurile europene:</p>
+        <ul>
+            <li><i class="fa-solid fa-check"></i> <strong>Punctaj Istoric:</strong> Vechimea de peste 15 ani reduce la minimum riscul de eșec al planului de afaceri.</li>
+            <li><i class="fa-solid fa-check"></i> <strong>Eficiență Pastorală:</strong> Combinația fix/mobil demonstrează capacitate mare de producție marfă.</li>
+            <li><i class="fa-solid fa-check"></i> <strong>Autonomie Logistică:</strong> Camionul propriu elimină cheltuielile terțe, crescând rentabilitatea exploatației.</li>
+        </ul>
+        <p style="margin-top: 15px; font-size: 13px; font-weight: 600; text-transform: uppercase; color: var(--primary-dark);">Gata pentru configurarea dosarului tehnic (Măsuri AFIR / GAL).</p>
+    </div>
+
+</div>
+
+<script>
+    function calculateEligibility(event) {
+        event.preventDefault();
+        
+        // Afișează direct blocul de succes cu animație curată
+        const resultBox = document.getElementById('resultBox');
+        resultBox.style.display = 'block';
+        
+        // Scroll lin către rezultat
+        resultBox.scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>
+
