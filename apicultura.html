@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Strategie Finanțare Apicultură - Analiză Directă</title>
+    <title>Configurator Plan de Afaceri Apicol - DAKAMIGOS</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
@@ -133,29 +133,30 @@
             padding: 5px 0;
         }
 
-        /* INPUT STUPI STILIZAT */
-        .stupi-input-wrapper {
-            margin: 15px 0;
+        /* TEXTAREA STUPI STILIZAT */
+        .custom-input-wrapper {
+            margin: 10px 0;
             text-align: left;
             width: 100%;
         }
-        .stupi-box {
+        .custom-textarea {
             width: 100%;
+            height: 90px;
             padding: 12px;
             border: 2px solid #cbd5e1;
             border-radius: 8px;
-            font-size: 16px;
+            font-size: 15px;
+            font-family: inherit;
             font-weight: 600;
             outline: none;
+            resize: none;
         }
-        .stupi-box:focus {
-            border-color: #d97706;
-        }
+        .custom-textarea:focus { border-color: #d97706; }
 
         /* CHESTIONAR INTERACTIV */
         .quiz-container {
             width: 100%;
-            max-width: 700px;
+            max-width: 750px;
             background: #f8fafc;
             border: 1px solid #e2e8f0;
             border-radius: 12px;
@@ -227,27 +228,23 @@
             flex-shrink: 0;
         }
 
-        .stats-container {
-            display: flex;
-            justify-content: space-around;
-            width: 100%;
-            gap: 20px;
-        }
-
-        .stat-box {
-            text-align: center;
+        .summary-card {
             background: #f8fafc;
-            padding: 20px;
+            border: 1px solid #e2e8f0;
             border-radius: 12px;
-            border: 1px dashed #cbd5e1;
-            flex: 1;
+            padding: 20px;
+            width: 100%;
+            text-align: left;
         }
 
-        .stat-value {
-            font-size: 26px;
-            font-weight: 700;
-            color: #d97706;
+        .summary-line {
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #cbd5e1;
+            font-size: 14px;
+            line-height: 1.5;
         }
+        .summary-line:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
 
         /* FOOTER & NAVIGARE */
         .presentation-footer {
@@ -340,16 +337,16 @@
 
             <div class="slide active" id="s1">
                 <div class="slide-header">
-                    <span class="logo-consultant"><i class="fa-solid fa-briefcase"></i> DAKAMIGOS MARKT / Analize Directe</span>
-                    <span class="client-tag">Evaluare Stupină</span>
+                    <span class="logo-consultant"><i class="fa-solid fa-briefcase"></i> DAKAMIGOS MARKT / Idei de Business</span>
+                    <span class="client-tag">Plan Strategic</span>
                 </div>
                 <div class="slide-body">
                     <div style="text-align: center; width: 100%; max-width: 750px;">
-                        <i class="fa-solid fa-hive" style="font-size: 55px; color: #d97706; margin-bottom: 15px;"></i>
-                        <h1 style="font-size: 26px; color: #0f172a; margin-bottom: 10px;">Planul Tău de Finanțare Apicolă</h1>
+                        <i class="fa-solid fa-lightbulb" style="font-size: 55px; color: #d97706; margin-bottom: 15px;"></i>
+                        <h1 style="font-size: 24px; color: #0f172a; margin-bottom: 10px;">Crearea Contextului de Afaceri pentru Proiect</h1>
                         <p style="color: #475569; font-size: 15px; line-height: 1.6;">
-                            Hai să verificăm eligibilitatea pentru fonduri europene simplu și rapid. 
-                            Parcurge pașii tehnici din următorul ecran pentru a calcula automat încadrarea oficială din ghidurile AFIR!
+                            Pentru a lua punctaj maxim la comisia AFIR, dosarul nu trebuie să fie doar o listă goală de acte. 
+                            Evaluatorii vor să vadă o strategie clară de dezvoltare. Treci prin următorul pas ca să ne configurăm ideile!
                         </p>
                     </div>
                 </div>
@@ -357,43 +354,41 @@
 
             <div class="slide" id="s2">
                 <div class="slide-header">
-                    <span class="logo-consultant"><i class="fa-solid fa-calculator"></i> Validare Criterii</span>
-                    <span class="client-tag">Ghid Solicitant</span>
+                    <span class="logo-consultant"><i class="fa-solid fa-list-check"></i> Întrebări Strategice</span>
+                    <span class="client-tag">Ghidul Solicitantului</span>
                 </div>
                 <div class="slide-body">
                     <div id="quizBlock" class="quiz-container">
-                        <div style="text-align: center; margin-bottom: 20px;">
-                            <h2 style="font-size: 18px; color: #0f172a;">Întrebări Verificare</h2>
-                        </div>
-
+                        
                         <div class="quiz-step active" id="qStep1">
-                            <p class="quiz-question">1. Unde se află vatra stupinei și viitorul sediu?</p>
-                            <div class="quiz-options">
-                                <label class="quiz-option"><input type="radio" name="q1" value="La tara (Rural)" onchange="checkStepValidation()"> La țară (Sat / Comună — Criteriu de bază)</label>
-                                <label class="quiz-option"><input type="radio" name="q1" value="La oras (Urban)" onchange="checkStepValidation()"> La oraș (Restricționat pe axe rurale)</label>
+                            <p class="quiz-question">1. Ce utilaje sau dotări vă lipsesc cel mai mult în stupină și doriți să le cumpărăm prin proiect?</p>
+                            <div class="custom-input-wrapper">
+                                <textarea id="txtUtilaje" class="custom-textarea" placeholder="Ex: Centrifugă electrică radială, linie de descăpăcit, 100 de lăzi noi verticale, macara apicolă etc..." oninput="checkStepValidation()"></textarea>
                             </div>
                         </div>
 
                         <div class="quiz-step" id="qStep2">
-                            <p class="quiz-question">2. Sunt familiile de albine înregistrate oficial la DSV / Registrul Agricol?</p>
+                            <p class="quiz-question">2. Cum se realizează valorificarea și vânzarea producției de miere în prezent?</p>
                             <div class="quiz-options">
-                                <label class="quiz-option"><input type="radio" name="q2" value="Are acte DSV" onchange="checkStepValidation()"> Da, am număr de stupină și documente în regulă</label>
-                                <label class="quiz-option"><input type="radio" name="q2" value="Fara acte" onchange="checkStepValidation()"> Nu sunt înregistrate în acest moment</label>
+                                <label class="quiz-option"><input type="radio" name="q2" value="En-gros, vrac la butoi către procesatori" onchange="checkStepValidation()"> Doar en-gros, vrac la butoi către procesatori mari</label>
+                                <label class="quiz-option"><input type="radio" name="q2" value="La borcan, direct către clienți / piețe locale" onchange="checkStepValidation()"> La borcan, ambalat individual către clienți și piețe locale</label>
+                                <label class="quiz-option"><input type="radio" name="q2" value="Sistem mixt + Vrem brand propriu de etichetare" onchange="checkStepValidation()"> Sistem mixt + Vrem dezvoltarea unui brand și etichetare prin proiect</label>
                             </div>
                         </div>
 
                         <div class="quiz-step" id="qStep3">
-                            <p class="quiz-question">3. Introduceți numărul de familii de albine deținute în acte:</p>
-                            <div class="stupi-input-wrapper">
-                                <input type="number" id="stupiCount" class="stupi-box" placeholder="Ex: 80" oninput="checkStepValidation()">
+                            <p class="quiz-question">3. Care este modul principal de exploatare al stupinei?</p>
+                            <div class="quiz-options">
+                                <label class="quiz-option"><input type="radio" name="q3" value="Stupărit pastoral intens (salcâm, tei, floare)" onchange="checkStepValidation()"> Stupărit pastoral intens (deplasări cu camion/pavilion)</label>
+                                <label class="quiz-option"><input type="radio" name="q3" value="Staționar exclusiv (vetre fixe securizate)" onchange="checkStepValidation()"> Staționar exclusiv (doar producție pe vetre fixe)</label>
                             </div>
                         </div>
 
                         <div class="quiz-step" id="qStep4">
-                            <p class="quiz-question">4. Dețineți o formă juridică autorizată în agricultură?</p>
+                            <p class="quiz-question">4. Plănuiți diversificarea producției cu produse apicole secundare?</p>
                             <div class="quiz-options">
-                                <label class="quiz-option"><input type="radio" name="q4" value="PFA / II / SRL" onchange="checkStepValidation()"> Da, sunt organizat ca PFA / ÎI / SRL</label>
-                                <label class="quiz-option"><input type="radio" name="q4" value="Persoana Fizica" onchange="checkStepValidation()"> Nu, sunt Persoană Fizică (dispus să mă autorizez)</label>
+                                <label class="quiz-option"><input type="radio" name="q4" value="Da, colectare polen, propolis și lăptișor" onchange="checkStepValidation()"> Da (colectare polen, propolis, lăptișor de matcă — aduce punctaj)</label>
+                                <label class="quiz-option"><input type="radio" name="q4" value="Nu, rămânem strictly axați pe producția de miere" onchange="checkStepValidation()"> Nu, rămânem axați strict pe producția clasică de miere marfă</label>
                             </div>
                         </div>
 
@@ -403,58 +398,61 @@
                     </div>
 
                     <div id="quizSuccessBlock" style="display: none; text-align: center; width: 100%;">
-                        <div style="font-size: 45px; color: #10b981; margin-bottom: 10px;"><i class="fa-solid fa-square-check"></i></div>
-                        <h2>Calificare Calculată!</h2>
-                        <p style="color: #64748b; margin-bottom: 15px; font-size: 14px;">Datele au fost procesate în spate. Mergi mai departe în prezentare ca să vezi încadrarea.</p>
-                        <button onclick="startPresentation()" style="background: #d97706; color: white; border: none; padding: 12px 25px; border-radius: 6px; font-weight: 600; cursor: pointer;">Deschide Diagnoza de Finanțare</button>
+                        <div style="font-size: 45px; color: #10b981; margin-bottom: 10px;"><i class="fa-solid fa-circle-check"></i></div>
+                        <h2>Context Schițat cu Succes!</h2>
+                        <p style="color: #64748b; margin-bottom: 15px; font-size: 14px;">Informațiile au fost structurate sub formă de piloni de investiție. Trecem mai departe să vedem cum arată rezumatul tehnic.</p>
+                        <button onclick="startPresentation()" style="background: #d97706; color: white; border: none; padding: 12px 25px; border-radius: 6px; font-weight: 600; cursor: pointer;">Afișează Rezumat Plan de Afaceri</button>
                     </div>
                 </div>
             </div>
 
             <div class="slide" id="s3">
                 <div class="slide-header">
-                    <span class="logo-consultant"><i class="fa-solid fa-chart-bar"></i> Rezultat Coeficient</span>
-                    <span class="client-tag">Diagnoză Live</span>
+                    <span class="logo-consultant"><i class="fa-solid fa-file-invoice"></i> Structură Piloni</span>
+                    <span class="client-tag">Fișă de Lucru</span>
                 </div>
                 <div class="slide-body" style="flex-direction: column; justify-content: flex-start; gap: 15px; width: 100%;">
-                    <h2 style="font-size: 18px; color: #0f172a; text-align: center;" id="txtVerdictTitlu">Încadrare Măsuri Europene</h2>
+                    <h2 style="font-size: 18px; color: #0f172a; text-align: center;">Direcții Strategice stabilite pentru Dosar</h2>
                     
-                    <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 20px; border-radius: 12px; width: 100%;">
-                        <div class="stats-container" style="margin-bottom: 15px;">
-                            <div class="stat-box" style="background: white;">
-                                <div style="font-size: 11px; color: #64748b;">Stupi Declarați</div>
-                                <div id="lblStupi" class="stat-value">0</div>
-                            </div>
-                            <div class="stat-box" style="background: white;">
-                                <div style="font-size: 11px; color: #64748b;">Dimensiune Calculată (SO)</div>
-                                <div id="lblSO" class="stat-value" style="color: #b45309;">0 €</div>
-                            </div>
+                    <div class="summary-card">
+                        <div class="summary-line">
+                            <strong>1. Obiectiv Principal Achiziții (Utilaje țintite):</strong><br>
+                            <span id="lblUtilaje" style="color: #475569;">--</span>
                         </div>
-                        <p id="descVerdictDetaliat" style="font-size: 14px; color: #475569; text-align: center; line-height: 1.5;">
-                            Vă rugăm să finalizați chestionarul de pe Slide-ul 2 pentru a genera diagnoza automată.
-                        </p>
+                        <div class="summary-line">
+                            <strong>2. Piața de Desfacere (Strategie comercializare):</strong><br>
+                            <span id="lblVanzare" style="color: #475569;">--</span>
+                        </div>
+                        <div class="summary-line">
+                            <strong>3. Management Stupină (Tip Exploatare):</strong><br>
+                            <span id="lblMod" style="color: #475569;">--</span>
+                        </div>
+                        <div class="summary-line">
+                            <strong>4. Valoare Adăugată (Diversificare):</strong><br>
+                            <span id="lblDiversificare" style="color: #475569;">--</span>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="slide" id="s4">
                 <div class="slide-header">
-                    <span class="logo-consultant"><i class="fa-solid fa-euro-sign"></i> Ghidul Pe Scurt</span>
-                    <span class="client-tag">Alocări Standard</span>
+                    <span class="logo-consultant"><i class="fa-solid fa-graduation-cap"></i> Evaluare Tehnică</span>
+                    <span class="client-tag">Puncte Cheie AFIR</span>
                 </div>
                 <div class="slide-body">
                     <div class="grid-2" style="width: 100%;">
                         <div class="column-left">
-                            <h2 class="slide-title">Cum se împart tranșele?</h2>
-                            <p style="margin-bottom: 10px; font-size: 14px;">Banii europeni se acordă strategic în funcție de linia aprobată:</p>
+                            <h2 class="slide-title">De ce contează aceste date?</h2>
+                            <p style="margin-bottom: 10px; font-size: 14px; line-height: 1.5;">Planul de afaceri primește note mari dacă:</p>
                             <ul class="custom-list">
-                                <li><i class="fa-solid fa-angle-right"></i><div><b>Ferme Mici (15.000€ - 44.000€):</b> Finanțare de până la 100% nerambursabilă, axată pe lăzi și centrifuge.</div></li>
-                                <li><i class="fa-solid fa-angle-right"></i><div><b>Tânăr Fermier (70.000€):</b> Acordați ca primă fixă în două tranșe (75% avans și 25% la finalizarea obiectivelor).</div></li>
+                                <li><i class="fa-solid fa-check"></i><div><b>Demonstrăm comercializarea:</b> Vânzarea directă sau brandul propriu arată o profitabilitate mai mare decât simplul vrac.</div></li>
+                                <li><i class="fa-solid fa-check"></i><div><b>Justificăm tehnologia:</b> Utilajele cerute (ex: centrifugă automată) trebuie să se pupe exact cu volumul de producție estimat de familii.</div></li>
                             </ul>
                         </div>
                         <div class="column-right" style="text-align: center;">
-                            <i class="fa-solid fa-jar-open" style="font-size: 60px; color: #d97706;"></i>
-                            <p style="font-size: 11px; color: #64748b; margin-top: 5px;">Planul de afaceri impune menținerea numărului de stupi și comercializarea producției.</p>
+                            <i class="fa-solid fa-award" style="font-size: 60px; color: #d97706;"></i>
+                            <p style="font-size: 11px; color: #64748b; margin-top: 5px;">Un context bine scris elimină complet cererile de clarificări de la minister.</p>
                         </div>
                     </div>
                 </div>
@@ -464,7 +462,7 @@
 
         <div class="presentation-footer">
             <div id="lockNotice" class="quiz-lock-notice" style="display: flex;">
-                <i class="fa-solid fa-lock"></i> Finalizați chestionarul de pe slide-ul 2 pentru a debloca restul analizei
+                <i class="fa-solid fa-lock"></i> Completați chestionarul de pe slide-ul 2 pentru a debloca schița Planului
             </div>
             
             <div class="nav-buttons" id="navBlock" style="display: flex; gap: 10px; align-items: center;">
@@ -481,10 +479,10 @@
     <div class="sticky-closing-bar" id="closingBar">
         <div class="closing-text">
             <i class="fa-solid fa-circle-check" style="color: #10b981; margin-right: 6px;"></i> 
-            Configurație eligibilitate calculată
+            Context strategic generat
         </div>
         <a id="waLink" href="#" class="btn-whatsapp-close" target="_blank">
-            <i class="fa-brands fa-whatsapp" style="font-size: 16px;"></i> Trimite rezultatul pe WhatsApp
+            <i class="fa-brands fa-whatsapp" style="font-size: 16px;"></i> Trimite pilonii pe WhatsApp
         </a>
     </div>
 
@@ -493,16 +491,16 @@
         const totalQuizSteps = 4;
         let quizDone = false; 
         
-        let dateProiect = { locatie: '', acte: '', stupi: 0, so: 0, forma: '' };
+        let contextProiect = { utilaje: '', vanzare: '', modExploatare: '', diversificare: '' };
 
         const quizNextBtn = document.getElementById('quizNextBtn');
         const quizBlock = document.getElementById('quizBlock');
         const quizSuccessBlock = document.getElementById('quizSuccessBlock');
         
         function checkStepValidation() {
-            if (currentQuizStep === 3) {
-                const val = parseInt(document.getElementById('stupiCount').value);
-                if (!isNaN(val) && val >= 0) {
+            if (currentQuizStep === 1) {
+                const textVal = document.getElementById('txtUtilaje').value.trim();
+                if (textVal.length >= 5) {
                     quizNextBtn.disabled = false;
                     quizNextBtn.classList.add('enabled');
                 } else {
@@ -527,72 +525,42 @@
         quizNextBtn.addEventListener('click', () => {
             if (quizNextBtn.disabled) return;
 
-            // Salvare date tehnice
-            if (currentQuizStep === 1) dateProiect.locatie = document.querySelector('input[name="q1"]:checked').value;
-            if (currentQuizStep === 2) dateProiect.acte = document.querySelector('input[name="q2"]:checked').value;
-            if (currentQuizStep === 3) {
-                dateProiect.stupi = parseInt(document.getElementById('stupiCount').value);
-                dateProiect.so = Math.round(dateProiect.stupi * 42); 
-            }
-            if (currentQuizStep === 4) dateProiect.forma = document.querySelector('input[name="q4"]:checked').value;
+            // Salvare date text & opțiuni selectate
+            if (currentQuizStep === 1) contextProiect.utilaje = document.getElementById('txtUtilaje').value.trim();
+            if (currentQuizStep === 2) contextProiect.vanzare = document.querySelector('input[name="q2"]:checked').value;
+            if (currentQuizStep === 3) contextProiect.modExploatare = document.querySelector('input[name="q3"]:checked').value;
+            if (currentQuizStep === 4) contextProiect.diversificare = document.querySelector('input[name="q4"]:checked').value;
 
             if (currentQuizStep < totalQuizSteps) {
                 document.getElementById(`qStep${currentQuizStep}`).classList.remove('active');
                 currentQuizStep++;
-                document.getElementById(`qStep${currentQuizStep}`).classList.add('active');
+                document.getElementById(`` + `qStep${currentQuizStep}`).classList.add('active');
                 checkStepValidation();
                 
                 if (currentQuizStep === totalQuizSteps) {
-                    quizNextBtn.innerText = "Finalizează verificarea";
+                    quizNextBtn.innerText = "Finalizează contextul";
                 }
             } else {
                 quizBlock.style.display = 'none';
                 quizSuccessBlock.style.display = 'block';
-                calculeazaDiagnozaMăsuri();
+                asambleazaRezumatPlan();
             }
         });
 
-        function calculeazaDiagnozaMăsuri() {
-            document.getElementById('lblStupi').innerText = dateProiect.stupi + " familii";
-            document.getElementById('lblSO').innerText = dateProiect.so + " € SO";
+        function asambleazaRezumatPlan() {
+            document.getElementById('lblUtilaje').innerText = contextProiect.utilaje;
+            document.getElementById('lblVanzare').innerText = contextProiect.vanzare;
+            document.getElementById('lblMod').innerText = contextProiect.modExploatare;
+            document.getElementById('lblDiversificare').innerText = contextProiect.diversificare;
 
-            const titlu = document.getElementById('txtVerdictTitlu');
-            const desc = document.getElementById('descVerdictDetaliat');
-            let verdictText = "";
-
-            if (dateProiect.locatie.includes('Oraș')) {
-                titlu.innerText = "Barieră de Mediu: Locație Urbană";
-                verdictText = "Neadecvat linii rurale.";
-                desc.innerText = "Fondurile structurale AFIR impun ca vatra și sediul să fie în spațiul rural. La oraș eligibilitatea este blocată pe axele clasice.";
-            } else if (dateProiect.acte.includes('Fara')) {
-                titlu.innerText = "Barieră Documente: Lipsă Înregistrare";
-                verdictText = "Neeligibil (stupii nu sunt în acte).";
-                desc.innerText = "Înainte de depunerea proiectului, toate familiile trebuie declarate oficial la DSV / Registrul Agricol pentru a genera punctajul SO minim obligatoriu.";
-            } else {
-                if (dateProiect.so < 4000) {
-                    titlu.innerText = "Dimensiune Economică sub Pragul Minim";
-                    verdictText = "Eligibil condiționat (necesită extindere stoc material biologic).";
-                    desc.innerText = "Dimensiunea calculată este sub 4.000 SO (pragul minim de fermă mică). Va fi necesară achiziția suplimentară de familii pe cont propriu pentru a deschide axa de finanțare.";
-                } else if (dateProiect.so >= 4000 && dateProiect.so <= 11999) {
-                    titlu.innerText = "Încadrare Optimă: Dezvoltare Ferme Mici";
-                    verdictText = "Eligibil direct pe Ferme Mici (linii de grant nerambursabil total).";
-                    desc.innerText = "Felicitări! Numărul de stupi generează coeficientul perfect pentru măsura de ferme mici. Fondurile pot acoperi 100% utilaje de descăpăcit, centrifuge electrice sau cutii noi.";
-                } else {
-                    titlu.innerText = "Potențial Maxim: Instalare Tânăr Fermier / Modernizări Mași";
-                    verdictText = "Eligibil pentru linii mari (până la 70.000€ primă fixă).";
-                    desc.innerText = "Exploatația deține o dimensiune comercială solidă. Se califică pentru sprijin de instalare de valori mari sau proiecte complexe mecanizate.";
-                }
-            }
-
-            // REPARAT: Configurare exactă număr telefon (0749229686) în format internațional string valid
+            // Setare link WhatsApp către 0749229686
             const telConsultant = "40749229686";
-            const textWhatsApp = `Bună ziua! Am completat simulatorul de analiză apicolă. Iată datele mele:\n\n` +
-                                 `• Locație stupină: ${dateProiect.locatie}\n` +
-                                 `• Înregistrare DSV: ${dateProiect.acte}\n` +
-                                 `• Număr stupi introduși: ${dateProiect.stupi} familii\n` +
-                                 `• Valoare SO rezultată: ${dateProiect.so} EUR\n` +
-                                 `• Formă de organizare: ${dateProiect.forma}\n\n` +
-                                 `*Verdict preliminar:* ${verdictText}`;
+            const textWhatsApp = `Am definitivat obiectivele de business pentru Planul de Afaceri apicol. Iată ideile mele:\n\n` +
+                                 `• Utilaje vizate în proiect: ${contextProiect.utilaje}\n` +
+                                 `• Strategie vânzare miere: ${contextProiect.vanzare}\n` +
+                                 `• Mod de lucru în stupină: ${contextProiect.modExploatare}\n` +
+                                 `• Plan diversificare secundară: ${contextProiect.diversificare}\n\n` +
+                                 `Aștept să corelăm aceste date cu lădițele și calculul SO pentru dosarul final!`;
             
             document.getElementById('waLink').href = "https://api.whatsapp.com/send?phone=" + telConsultant + "&text=" + encodeURIComponent(textWhatsApp);
         }
