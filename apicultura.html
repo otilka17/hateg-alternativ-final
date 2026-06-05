@@ -137,6 +137,7 @@
         .stupi-input-wrapper {
             margin: 15px 0;
             text-align: left;
+            width: 100%;
         }
         .stupi-box {
             width: 100%;
@@ -257,6 +258,7 @@
             justify-content: space-between;
             align-items: center;
             z-index: 10;
+            width: 100%;
         }
 
         .btn-nav {
@@ -384,7 +386,7 @@
                             </div>
                         </div>
 
-                        <!-- Q3: Numar Stupi (Calculator SO incorporat) -->
+                        <!-- Q3: Numar Stupi -->
                         <div class="quiz-step" id="qStep3">
                             <p class="quiz-question">3. Introduceți numărul de familii de albine deținute în acte:</p>
                             <div class="stupi-input-wrapper">
@@ -449,7 +451,7 @@
                     <span class="client-tag">Alocări Standard</span>
                 </div>
                 <div class="slide-body">
-                    <div class="grid-2">
+                    <div class="grid-2" style="width: 100%;">
                         <div class="column-left">
                             <h2 class="slide-title">Cum se împart tranșele?</h2>
                             <p style="margin-bottom: 10px; font-size: 14px;">Banii europeni se acordă strategic în funcție de linia aprobată:</p>
@@ -540,7 +542,7 @@
             if (currentQuizStep === 2) dateProiect.acte = document.querySelector('input[name="q2"]:checked').value;
             if (currentQuizStep === 3) {
                 dateProiect.stupi = parseInt(document.getElementById('stupiCount').value);
-                dateProiect.so = Math.round(dateProiect.stupi * 42); // Coeficient standard SO mediu apicol
+                dateProiect.so = Math.round(dateProiect.stupi * 42); 
             }
             if (currentQuizStep === 4) dateProiect.forma = document.querySelector('input[name="q4"]:checked').value;
 
@@ -592,7 +594,6 @@
                 }
             }
 
-            // Configurare URL pentru WhatsApp către 0749229696
             const telConsultant = "40749229696";
             const textWhatsApp = `Bună ziua! Am completat simulatorul de analiză apicolă. Iată datele mele:\n\n` +
                                  `• Locație stupină: ${dateProiect.locatie}\n` +
@@ -649,18 +650,6 @@
                 }
             }
         }
-    </style>
-</head>
-<body>
-
-    <div class="presentation-deck">
-        
-        <div class="slides-container">
-            <!-- Paginile se regăsesc în structura de mai sus -->
-        </div>
-
-        <!-- FOOTER INTEGRAT -->
-    </div>
-
+    </script>
 </body>
 </html>
