@@ -3,373 +3,664 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simularea Ta de Finanțare Apicolă</title>
+    <title>Strategie Finanțare Apicultură - Analiză Directă</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
+        /* DESIGN SYSTEM & RESET */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
-        :root {
-            --primary: #f59e0b;
-            --primary-dark: #d97706;
-            --primary-light: #fef3c7;
-            --text-dark: #1e293b;
-            --text-muted: #64748b;
-            --bg-light: #f8fafc;
-            --white: #ffffff;
-            --radius: 16px;
-        }
-
         body {
-            background-color: var(--bg-light);
-            color: var(--text-dark);
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            line-height: 1.5;
-            padding: 30px 15px;
+            background-color: #0f172a;
+            color: #334155;
+            font-family: 'Open Sans', sans-serif;
+            overflow-x: hidden;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            padding: 10px;
+            padding-bottom: 120px;
         }
 
-        .quiz-card {
-            width: 100%;
-            max-width: 600px;
-            background: var(--white);
-            border-radius: var(--radius);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
-            padding: 35px;
-            border-top: 6px solid var(--primary);
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: #d97706; /* Ton auriu/miere apicol */
         }
 
-        /* PROGRESS BAR */
-        .progress-container {
+        .presentation-deck {
             width: 100%;
-            height: 6px;
-            background: #e2e8f0;
-            border-radius: 10px;
-            margin-bottom: 30px;
+            max-width: 1080px;
+            height: 85vh;
+            min-height: 560px;
+            max-height: 680px;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .slides-container {
+            flex-grow: 1;
+            position: relative;
             overflow: hidden;
         }
 
-        .progress-bar {
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
             height: 100%;
-            width: 25%;
-            background: var(--primary-dark);
-            transition: width 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            transform: translateX(20px);
+            padding: 35px 45px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 1;
         }
 
-        /* STEPS MANAGEMENT */
-        .step {
-            display: none;
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(0);
+            z-index: 2;
         }
 
-        .step.active {
-            display: block;
-            animation: slideIn 0.3s ease forwards;
+        /* HEADER SLIDE */
+        .slide-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
         }
 
-        h2 {
-            font-size: 20px;
+        .slide-header .logo-consultant {
+            font-size: 13px;
             font-weight: 700;
-            margin-bottom: 20px;
-            color: var(--text-dark);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #d97706;
         }
 
-        /* OPTIONS & INPUTS */
-        .options-list {
+        .slide-header .client-tag {
+            font-size: 11px;
+            background: #fffbeb;
+            color: #b45309;
+            padding: 3px 10px;
+            border-radius: 9999px;
+            font-weight: 600;
+            border: 1px solid #fde68a;
+        }
+
+        .slide-title {
+            font-size: 24px;
+            color: #0f172a;
+            position: relative;
+            padding-left: 12px;
+            margin-bottom: 10px;
+        }
+
+        .slide-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 15%;
+            height: 70%;
+            width: 4px;
+            background-color: #d97706;
+            border-radius: 2px;
+        }
+
+        .slide-body {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-y: auto;
+            padding: 5px 0;
+        }
+
+        /* INPUT STUPI STILIZAT */
+        .stupi-input-wrapper {
+            margin: 15px 0;
+            text-align: left;
+        }
+        .stupi-box {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            outline: none;
+        }
+        .stupi-box:focus {
+            border-color: #d97706;
+        }
+
+        /* CHESTIONAR INTERACTIV */
+        .quiz-container {
+            width: 100%;
+            max-width: 700px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 25px;
+        }
+
+        .quiz-step { display: none; }
+        .quiz-step.active { display: block; }
+
+        .quiz-question {
+            font-size: 16px;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 15px;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .quiz-option {
+            background: white;
+            border: 1px solid #cbd5e1;
+            padding: 12px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quiz-option:hover {
+            border-color: #d97706;
+            background: #fffbeb;
+        }
+
+        /* LAYOUTS & GRIDS */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 30px;
+            width: 100%;
+            align-items: center;
+        }
+
+        .custom-list {
+            list-style: none;
             display: flex;
             flex-direction: column;
             gap: 12px;
         }
 
-        .btn-option {
-            background: var(--white);
-            border: 2px solid #e2e8f0;
-            padding: 16px;
-            border-radius: 12px;
-            cursor: pointer;
-            text-align: left;
-            font-size: 15px;
-            font-weight: 500;
-            transition: all 0.2s;
-            color: var(--text-dark);
-        }
-
-        .btn-option:hover {
-            border-color: var(--primary);
-            background: #fffbeb;
-        }
-
-        .input-group {
-            margin-top: 10px;
-        }
-
-        .input-box {
-            width: 100%;
-            padding: 16px;
-            border: 2px solid #e2e8f0;
-            border-radius: 12px;
-            font-size: 16px;
-            font-family: inherit;
-            font-weight: 600;
-            margin-bottom: 15px;
-            outline: none;
-        }
-
-        .input-box:focus {
-            border-color: var(--primary-dark);
-        }
-
-        .btn-next {
-            background: var(--text-dark);
-            color: var(--white);
-            border: none;
-            padding: 14px 28px;
-            border-radius: 10px;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn-next:hover {
-            background: #0f172a;
-        }
-
-        /* REZULTAT */
-        .result-box {
-            display: none;
-            animation: fadeIn 0.5s ease forwards;
-        }
-
-        .status-badge {
-            display: inline-block;
-            padding: 6px 16px;
-            border-radius: 50px;
-            font-size: 13px;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-
-        .status-badge.success { background: #d1fae5; color: #065f46; }
-        .status-badge.warning { background: #fee2e2; color: #991b1b; }
-
-        .result-title { font-size: 22px; font-weight: 700; margin-bottom: 15px; }
-        
-        .summary-card {
-            background: var(--bg-light);
-            border: 1px solid #e2e8f0;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-
-        .summary-line {
+        .custom-list li {
             display: flex;
-            justify-content: space-between;
-            padding: 8px 0;
-            border-bottom: 1px dashed #e2e8f0;
+            gap: 12px;
+            align-items: flex-start;
             font-size: 14px;
         }
-        .summary-line:last-child { border-bottom: none; }
 
-        .explanation { font-size: 14px; color: var(--text-muted); margin-bottom: 20px; }
-
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        .custom-list li i {
+            color: #d97706;
+            background: #fffbeb;
+            padding: 6px;
+            border-radius: 6px;
+            flex-shrink: 0;
         }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            gap: 20px;
+        }
+
+        .stat-box {
+            text-align: center;
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px dashed #cbd5e1;
+            flex: 1;
+        }
+
+        .stat-value {
+            font-size: 26px;
+            font-weight: 700;
+            color: #d97706;
+        }
+
+        /* FOOTER & NAVIGARE */
+        .presentation-footer {
+            background-color: #f8fafc;
+            border-top: 1px solid #e2e8f0;
+            padding: 10px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .btn-nav {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            color: #334155;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .btn-nav:hover:not(:disabled) {
+            background-color: #d97706;
+            color: #ffffff;
+            border-color: #d97706;
+        }
+
+        .btn-nav:disabled { opacity: 0.3; cursor: not-allowed; }
+
+        .quiz-lock-notice {
+            font-size: 13px;
+            color: #ef4444;
+            font-weight: 600;
+            display: none;
+            align-items: center;
+            gap: 6px;
+        }
+        .quiz-lock-notice.visible { display: flex; }
+
+        .btn-quiz-next {
+            background: #cbd5e1;
+            color: #64748b;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: not-allowed;
+            transition: all 0.2s;
+        }
+        .btn-quiz-next.enabled {
+            background: #d97706;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* STICKY BAR WHATSAPP */
+        .sticky-closing-bar {
+            position: fixed; bottom: 0; left: 0; width: 100%;
+            background-color: #0f172a; border-top: 2px solid #d97706;
+            padding: 15px 30px; display: none; justify-content: space-between;
+            align-items: center; z-index: 100; box-shadow: 0 -10px 30px rgba(0,0,0,0.5);
+        }
+        .sticky-closing-bar.visible { display: flex; }
+        .closing-text { color: #ffffff; font-size: 14px; font-weight: 600; }
+        .btn-whatsapp-close {
+            background-color: #25d366; color: white; text-decoration: none;
+            padding: 10px 20px; border-radius: 6px; font-weight: 700; font-size: 13px;
+            text-transform: uppercase; display: flex; align-items: center; gap: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .presentation-deck { height: auto; max-height: none; }
+            .slide { position: relative; display: none; height: auto; padding: 20px; }
+            .slide.active { display: flex; }
+            .grid-2, .sticky-closing-bar { flex-direction: column; gap: 12px; text-align: center; }
+        }
     </style>
 </head>
 <body>
 
-<div class="quiz-card">
-    
-    <!-- Bara de progres de sus -->
-    <div class="progress-container" id="progressNav">
-        <div class="progress-bar" id="progressBar"></div>
-    </div>
-
-    <!-- PASUL 1: LOCALIZARE -->
-    <div class="step active" id="step1">
-        <h2>Unde aveți vatra stupinei și sediul?</h2>
-        <div class="options-list">
-            <button class="btn-option" onclick="nextStep(2, 'rural')"><i class="fa-solid fa-tree" style="color: #10b981; margin-right: 10px;"></i> La țară (Sat / Comună)</button>
-            <button class="btn-option" onclick="nextStep(2, 'urban')"><i class="fa-solid fa-city" style="color: #ef4444; margin-right: 10px;"></i> La oraș (Municipiu / Urban)</button>
-        </div>
-    </div>
-
-    <!-- PASUL 2: INREGISTRARE DSV -->
-    <div class="step" id="step2">
-        <h2>Sunt stupii înregistrați la DSV / Registrul Agricol?</h2>
-        <div class="options-list">
-            <button class="btn-option" onclick="nextStep(3, 'da')"><i class="fa-solid fa-file-circle-check" style="color: #10b981; margin-right: 10px;"></i> Da, am documente și număr de stupină oficial</button>
-            <button class="btn-option" onclick="nextStep(3, 'nu')"><i class="fa-solid fa-file-circle-xmark" style="color: #ef4444; margin-right: 10px;"></i> Nu, îi am doar în curte, fără acte în momentul ăsta</button>
-        </div>
-    </div>
-
-    <!-- PASUL 3: NUMAR STUPI (CALCULATOR INTELIGENT) -->
-    <div class="step" id="step3">
-        <h2>Câte familii de albine (stupi) aveți în total în acte?</h2>
-        <div class="input-group">
-            <input type="number" id="stupiCount" class="input-box" placeholder="Ex: 80" min="0">
-            <button class="btn-next" onclick="processStupiStep()">
-                <span>Continuă</span>
-                <i class="fa-solid fa-arrow-right"></i>
-            </button>
-        </div>
-        <p style="font-size: 12px; color: var(--text-muted); margin-top: 10px;">*Introdu numărul exact. Sistemul va calcula automat dimensiunea economică din ghidurile AFIR.</p>
-    </div>
-
-    <!-- PASUL 4: FORMA JURIDICA -->
-    <div class="step" id="step4">
-        <h2>Aveți firmă sau sunteți autorizat în agricultură?</h2>
-        <div class="options-list">
-            <button class="btn-option" onclick="calculateFinal('autorizat')"><i class="fa-solid fa-building" style="color: var(--primary-dark); margin-right: 10px;"></i> Am deja PFA / ÎI / SRL cu activitate apicolă</button>
-            <button class="btn-option" onclick="calculateFinal('fizica')"><i class="fa-solid fa-user" style="color: var(--primary-dark); margin-right: 10px;"></i> Sunt Persoană Fizică (dar sunt dispus să mă autorizez)</button>
-        </div>
-    </div>
-
-    <!-- BLOC REZULTAT FINAL -->
-    <div class="result-box" id="resultBlock">
-        <div id="statusBadge" class="status-badge">Se încarcă...</div>
-        <div class="result-title" id="resultTitle">Analiză Finanțare</div>
+    <div class="presentation-deck">
         
-        <div class="summary-card">
-            <div class="summary-line">
-                <span>Locație proiect:</span>
-                <strong id="resLoc">Mod rural</strong>
+        <div class="slides-container">
+
+            <!-- SLIDE 1: INTRODUCERE -->
+            <div class="slide active" id="s1">
+                <div class="slide-header">
+                    <span class="logo-consultant"><i class="fa-solid fa-briefcase"></i> DAKAMIGOS MARKT / Analize Directe</span>
+                    <span class="client-tag">Evaluare Stupină</span>
+                </div>
+                <div class="slide-body">
+                    <div style="text-align: center; width: 100%; max-width: 750px;">
+                        <i class="fa-solid fa-hive" style="font-size: 55px; color: #d97706; margin-bottom: 15px;"></i>
+                        <h1 style="font-size: 26px; color: #0f172a; margin-bottom: 10px;">Planul Tău de Finanțare Apicolă</h1>
+                        <p style="color: #475569; font-size: 15px; line-height: 1.6;">
+                            Hai să verificăm eligibilitatea pentru fonduri europene simplu și rapid. 
+                            Parcurge pașii tehnici din următorul ecran pentru a calcula automat încadrarea oficială din ghidurile AFIR!
+                        </p>
+                    </div>
+                </div>
             </div>
-            <div class="summary-line">
-                <span>Stupi înregistrați:</span>
-                <strong id="resStupi">0 familii</strong>
+
+            <!-- SLIDE 2: MINI-CHESTIONARUL INTERACTIV DE CALIFICARE -->
+            <div class="slide" id="s2">
+                <div class="slide-header">
+                    <span class="logo-consultant"><i class="fa-solid fa-calculator"></i> Validare Criterii</span>
+                    <span class="client-tag">Ghid Solicitant</span>
+                </div>
+                <div class="slide-body">
+                    <div id="quizBlock" class="quiz-container">
+                        <div style="text-align: center; margin-bottom: 20px;">
+                            <h2 style="font-size: 18px; color: #0f172a;">Întrebări Verificare</h2>
+                        </div>
+
+                        <!-- Q1: Localizare -->
+                        <div class="quiz-step active" id="qStep1">
+                            <p class="quiz-question">1. Unde se află vatra stupinei și viitorul sediu?</p>
+                            <div class="quiz-options">
+                                <label class="quiz-option"><input type="radio" name="q1" value="La tara (Rural)" onclick="checkStepValidation()"> La țară (Sat / Comună — Criteriu de bază)</label>
+                                <label class="quiz-option"><input type="radio" name="q1" value="La oras (Urban)" onclick="checkStepValidation()"> La oraș (Restricționat pe axe rurale)</label>
+                            </div>
+                        </div>
+
+                        <!-- Q2: Acte DSV -->
+                        <div class="quiz-step" id="qStep2">
+                            <p class="quiz-question">2. Sunt familiile de albine înregistrate oficial la DSV / Registrul Agricol?</p>
+                            <div class="quiz-options">
+                                <label class="quiz-option"><input type="radio" name="q2" value="Are acte DSV" onclick="checkStepValidation()"> Da, am număr de stupină și documente în regulă</label>
+                                <label class="quiz-option"><input type="radio" name="q2" value="Fara acte" onclick="checkStepValidation()"> Nu sunt înregistrate în acest moment</label>
+                            </div>
+                        </div>
+
+                        <!-- Q3: Numar Stupi (Calculator SO incorporat) -->
+                        <div class="quiz-step" id="qStep3">
+                            <p class="quiz-question">3. Introduceți numărul de familii de albine deținute în acte:</p>
+                            <div class="stupi-input-wrapper">
+                                <input type="number" id="stupiCount" class="stupi-box" placeholder="Ex: 80" oninput="checkStepValidation()">
+                            </div>
+                        </div>
+
+                        <!-- Q4: Forma Juridica -->
+                        <div class="quiz-step" id="qStep4">
+                            <p class="quiz-question">4. Dețineți o formă juridică autorizată în agricultură?</p>
+                            <div class="quiz-options">
+                                <label class="quiz-option"><input type="radio" name="q4" value="PFA / II / SRL" onclick="checkStepValidation()"> Da, sunt organizat ca PFA / ÎI / SRL</label>
+                                <label class="quiz-option"><input type="radio" name="q4" value="Persoana Fizica" onclick="checkStepValidation()"> Nu, sunt Persoană Fizică (dispus să mă autorizez)</label>
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 25px; display: flex; justify-content: flex-end;">
+                            <button id="quizNextBtn" class="btn-quiz-next" disabled>Următorul pas</button>
+                        </div>
+                    </div>
+
+                    <div id="quizSuccessBlock" style="display: none; text-align: center; width: 100%;">
+                        <div style="font-size: 45px; color: #10b981; margin-bottom: 10px;"><i class="fa-solid fa-square-check"></i></div>
+                        <h2>Calificare Calculată!</h2>
+                        <p style="color: #64748b; margin-bottom: 15px; font-size: 14px;">Datele au fost procesate în spate. Mergi mai departe în prezentare ca să vezi încadrarea.</p>
+                        <button onclick="startPresentation()" style="background: #d97706; color: white; border: none; padding: 12px 25px; border-radius: 6px; font-weight: 600; cursor: pointer;">Deschide Diagnoza de Finanțare</button>
+                    </div>
+                </div>
             </div>
-            <div class="summary-line">
-                <span>Calcul Dimensiune (SO) în spate:</span>
-                <strong id="resSO" style="color: var(--primary-dark);">0 SO</strong>
+
+            <!-- SLIDE 3: REZULTAT DISPOZITIV DINAMIC -->
+            <div class="slide" id="s3">
+                <div class="slide-header">
+                    <span class="logo-consultant"><i class="fa-solid fa-chart-bar"></i> Rezultat Coeficient</span>
+                    <span class="client-tag">Diagnoză Live</span>
+                </div>
+                <div class="slide-body" style="flex-direction: column; justify-content: flex-start; gap: 15px; width: 100%;">
+                    <h2 style="font-size: 18px; color: #0f172a; text-align: center;" id="txtVerdictTitlu">Încadrare Măsuri Europene</h2>
+                    
+                    <div style="background: #f8fafc; border: 1px solid #e2e8f0; padding: 20px; border-radius: 12px; width: 100%;">
+                        <div class="stats-container" style="margin-bottom: 15px;">
+                            <div class="stat-box" style="background: white;">
+                                <div style="font-size: 11px; color: #64748b;">Stupi Declarați</div>
+                                <div id="lblStupi" class="stat-value">0</div>
+                            </div>
+                            <div class="stat-box" style="background: white;">
+                                <div style="font-size: 11px; color: #64748b;">Dimensiune Calculată (SO)</div>
+                                <div id="lblSO" class="stat-value" style="color: #b45309;">0 €</div>
+                            </div>
+                        </div>
+                        <p id="descVerdictDetaliat" style="font-size: 14px; color: #475569; text-align: center; line-height: 1.5;">
+                            Vă rugăm să finalizați chestionarul de pe Slide-ul 2 pentru a genera diagnoza automată.
+                        </p>
+                    </div>
+                </div>
             </div>
+
+            <!-- SLIDE 4: OPȚIUNI DE COFINANȚARE ȘI REGULI -->
+            <div class="slide" id="s4">
+                <div class="slide-header">
+                    <span class="logo-consultant"><i class="fa-solid fa-euro-sign"></i> Ghidul Pe Scurt</span>
+                    <span class="client-tag">Alocări Standard</span>
+                </div>
+                <div class="slide-body">
+                    <div class="grid-2">
+                        <div class="column-left">
+                            <h2 class="slide-title">Cum se împart tranșele?</h2>
+                            <p style="margin-bottom: 10px; font-size: 14px;">Banii europeni se acordă strategic în funcție de linia aprobată:</p>
+                            <ul class="custom-list">
+                                <li><i class="fa-solid fa-angle-right"></i><div><b>Ferme Mici (15.000€ - 44.000€):</b> Finanțare de până la 100% nerambursabilă, axată pe lăzi și centrifuge.</div></li>
+                                <li><i class="fa-solid fa-angle-right"></i><div><b>Tânăr Fermier (70.000€):</b> Acordați ca primă fixă în două tranșe (75% avans și 25% la finalizarea obiectivelor).</div></li>
+                            </ul>
+                        </div>
+                        <div class="column-right" style="text-align: center;">
+                            <i class="fa-solid fa-jar-open" style="font-size: 60px; color: #d97706;"></i>
+                            <p style="font-size: 11px; color: #64748b; margin-top: 5px;">Planul de afaceri impune menținerea numărului de stupi și comercializarea producției.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
-        <p class="explanation" id="resExplanation">Text dinamic...</p>
-        
-        <button class="btn-option" style="width: 100%; text-align: center; background: var(--primary-light); border-color: var(--primary); font-weight: 700;" onclick="window.location.reload()">
-            <i class="fa-solid fa-rotate-left"></i> Reia simularea de la început
-        </button>
+        <!-- FOOTER NAVIGARE -->
+        <div class="presentation-footer">
+            <div id="lockNotice" class="quiz-lock-notice" style="display: flex;">
+                <i class="fa-solid fa-lock"></i> Finalizați chestionarul de pe slide-ul 2 pentru a debloca restul analizei
+            </div>
+            
+            <div class="nav-buttons" id="navBlock" style="display: flex; gap: 10px; align-items: center;">
+                <button class="btn-nav" id="prevBtn" disabled><i class="fa-solid fa-chevron-left"></i></button>
+                <div style="font-size: 13px; font-weight: 600; min-width: 50px; text-align: center;" id="counter">1 / 4</div>
+                <button class="btn-nav" id="nextBtn"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+            
+            <div style="font-size: 11px; color: #64748b; font-weight: 600;">DAKAMIGOS MARKT SRL © 2026</div>
+        </div>
+
     </div>
 
-</div>
+    <!-- CLOSING BAR WHATSAPP AUTOMAT -->
+    <div class="sticky-closing-bar" id="closingBar">
+        <div class="closing-text">
+            <i class="fa-solid fa-circle-check" style="color: #10b981; margin-right: 6px;"></i> 
+            Configurație eligibilitate calculată
+        </div>
+        <a id="waLink" href="#" class="btn-whatsapp-close" target="_blank">
+            <i class="fa-brands fa-whatsapp" style="font-size: 16px;"></i> Trimite rezultatul pe WhatsApp
+        </a>
+    </div>
 
-<script>
-    // Salvăm răspunsurile clientului ca să calculăm logic la final
-    let dateProiect = {
-        locatie: '',
-        acte: '',
-        stupi: 0,
-        so: 0,
-        formaJuridica: ''
-    };
-
-    function nextStep(currentStep, value) {
-        // Mapăm răspunsurile primite pe pași
-        if(currentStep === 2) dateProiect.locatie = value;
-        if(currentStep === 3) dateProiect.acte = value;
-
-        // Schimbăm vizibilitatea ecranelor
-        document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
-        document.getElementById('step' + currentStep).classList.add('active');
-
-        // Actualizăm bara de progres de sus
-        let progresPct = (currentStep === 2) ? 50 : (currentStep === 3) ? 75 : 100;
-        document.getElementById('progressBar').style.width = progresPct + '%';
-    }
-
-    function processStupiStep() {
-        const nrStupi = parseInt(document.getElementById('stupiCount').value);
-        if (isNaN(nrStupi) || nrStupi < 0) {
-            alert('Te rog introdu un număr valid de stupi.');
-            return;
-        }
+    <script>
+        let currentQuizStep = 1;
+        const totalQuizSteps = 4;
+        let quizDone = false; 
         
-        dateProiect.stupi = nrStupi;
-        // Calcul tehnic real conform regulilor europene: un stup produce o valoare medie calculată în jur de 30 - 45 de euro Standard Output (SO) în grilele oficiale
-        dateProiect.so = Math.round(nrStupi * 42); 
+        let dateProiect = { locatie: '', acte: '', stupi: 0, so: 0, forma: '' };
 
-        // Trecem la pasul 4
-        document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
-        document.getElementById('step4').classList.add('active');
-        document.getElementById('progressBar').style.width = '95%';
-    }
-
-    function calculateFinal(forma) {
-        dateProiect.formaJuridica = forma;
-
-        // Ascundem bara de progres și ultimul pas ca să lăsăm loc ecranului final
-        document.getElementById('progressNav').style.display = 'none';
-        document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+        const quizNextBtn = document.getElementById('quizNextBtn');
+        const quizBlock = document.getElementById('quizBlock');
+        const quizSuccessBlock = document.getElementById('quizSuccessBlock');
         
-        const resultBlock = document.getElementById('resultBlock');
-        resultBlock.style.display = 'block';
-
-        // Completăm datele calculate în tabelul gri
-        document.getElementById('resLoc').innerText = dateProiect.locatie === 'rural' ? 'Eligibil (Mediul Rural)' : 'Restricționat (Mediul Urban)';
-        document.getElementById('resStupi').innerText = dateProiect.stupi + ' familii de albine';
-        document.getElementById('resSO').innerText = dateProiect.so + ' € (Standard Output)';
-
-        // LOGICA DE CALIFICARE PE LIMBA PRODUCĂTORULUI
-        const badge = document.getElementById('statusBadge');
-        const title = document.getElementById('resultTitle');
-        const explanation = document.getElementById('resExplanation');
-
-        // Caz de respingere directă (Urbis sau Fără acte deloc)
-        if (dateProiect.locatie === 'urban') {
-            badge.className = "status-badge warning";
-            badge.innerText = "Barieră de Mediu";
-            title.innerText = "Fondurile de Dezvoltare Rurală nu se aplică la oraș";
-            explanation.innerText = "Majoritatea liniilor europene (AFIR) cer ca stupina și sediul să fie înregistrate într-o comună sau sat. Pentru stupinele din oraș, finanțările sunt limitate doar dacă aveți o procesare mare sau prin asociații naționale.";
-            return;
+        function checkStepValidation() {
+            if (currentQuizStep === 3) {
+                const val = parseInt(document.getElementById('stupiCount').value);
+                if (!isNaN(val) && val >= 0) {
+                    quizNextBtn.disabled = false;
+                    quizNextBtn.classList.add('enabled');
+                } else {
+                    quizNextBtn.disabled = true;
+                    quizNextBtn.classList.remove('enabled');
+                }
+            } else {
+                const currentInputs = document.querySelectorAll(`#qStep${currentQuizStep} input[type="radio"]`);
+                let isChecked = false;
+                currentInputs.forEach(input => { if (input.checked) isChecked = true; });
+                
+                if (isChecked) {
+                    quizNextBtn.disabled = false;
+                    quizNextBtn.classList.add('enabled');
+                } else {
+                    quizNextBtn.disabled = true;
+                    quizNextBtn.classList.remove('enabled');
+                }
+            }
         }
 
-        if (dateProiect.acte === 'nu') {
-            badge.className = "status-badge warning";
-            badge.innerText = "Necesită Înregistrare Urgentă";
-            title.innerText = "Stupii trebuie prinși în acte";
-            explanation.innerText = "Pentru a cere bani europeni, numărul de stupi trebuie să fie extras oficial din Registrul Agricol și din actele DSV. Primul pas înainte de orice proiect este depunerea actelor la medicul veterinar.";
-            return;
+        quizNextBtn.addEventListener('click', () => {
+            if (quizNextBtn.disabled) return;
+
+            // Salvare date
+            if (currentQuizStep === 1) dateProiect.locatie = document.querySelector('input[name="q1"]:checked').value;
+            if (currentQuizStep === 2) dateProiect.acte = document.querySelector('input[name="q2"]:checked').value;
+            if (currentQuizStep === 3) {
+                dateProiect.stupi = parseInt(document.getElementById('stupiCount').value);
+                dateProiect.so = Math.round(dateProiect.stupi * 42); // Coeficient standard SO mediu apicol
+            }
+            if (currentQuizStep === 4) dateProiect.forma = document.querySelector('input[name="q4"]:checked').value;
+
+            if (currentQuizStep < totalQuizSteps) {
+                document.getElementById(`qStep${currentQuizStep}`).classList.remove('active');
+                currentQuizStep++;
+                document.getElementById(`qStep${currentQuizStep}`).classList.add('active');
+                checkStepValidation();
+                
+                if (currentQuizStep === totalQuizSteps) {
+                    quizNextBtn.innerText = "Finalizează verificarea";
+                }
+            } else {
+                quizBlock.style.display = 'none';
+                quizSuccessBlock.style.display = 'block';
+                calculeazaDiagnozaMăsuri();
+            }
+        });
+
+        function calculeazaDiagnozaMăsuri() {
+            document.getElementById('lblStupi').innerText = dateProiect.stupi + " familii";
+            document.getElementById('lblSO').innerText = dateProiect.so + " € SO";
+
+            const titlu = document.getElementById('txtVerdictTitlu');
+            const desc = document.getElementById('descVerdictDetaliat');
+            let verdictText = "";
+
+            if (dateProiect.locatie.includes('Oraș')) {
+                titlu.innerText = "Barieră de Mediu: Locație Urbană";
+                verdictText = "Neadecvat linii rurale.";
+                desc.innerText = "Fondurile structurale AFIR impun ca vatra și sediul să fie în spațiul rural. La oraș eligibilitatea este blocată pe axele clasice.";
+            } else if (dateProiect.acte.includes('Fara')) {
+                titlu.innerText = "Barieră Documente: Lipsă Înregistrare";
+                verdictText = "Neeligibil (stupii nu sunt în acte).";
+                desc.innerText = "Înainte de depunerea proiectului, toate familiile trebuie declarate oficial la DSV / Registrul Agricol pentru a genera punctajul SO minim obligatoriu.";
+            } else {
+                if (dateProiect.so < 4000) {
+                    titlu.innerText = "Dimensiune Economică sub Pragul Minim";
+                    verdictText = "Eligibil condiționat (necesită extindere stoc material biologic).";
+                    desc.innerText = "Dimensiunea calculată este sub 4.000 SO (pragul minim de fermă mică). Va fi necesară achiziția suplimentară de familii pe cont propriu pentru a deschide axa de finanțare.";
+                } else if (dateProiect.so >= 4000 && dateProiect.so <= 11999) {
+                    titlu.innerText = "Încadrare Optimă: Dezvoltare Ferme Mici";
+                    verdictText = "Eligibil direct pe Ferme Mici (linii de grant nerambursabil total).";
+                    desc.innerText = "Felicitări! Numărul de stupi generează coeficientul perfect pentru măsura de ferme mici. Fondurile pot acoperi 100% utilaje de descăpăcit, centrifuge electrice sau cutii noi.";
+                } else {
+                    titlu.innerText = "Potențial Maxim: Instalare Tânăr Fermier / Modernizări Mari";
+                    verdictText = "Eligibil pentru linii mari (până la 70.000€ primă fixă).";
+                    desc.innerText = "Exploatația deține o dimensiune comercială solidă. Se califică pentru sprijin de instalare de valori mari sau proiecte complexe mecanizate.";
+                }
+            }
+
+            // Configurare URL pentru WhatsApp către 0749229696
+            const telConsultant = "40749229696";
+            const textWhatsApp = `Bună ziua! Am completat simulatorul de analiză apicolă. Iată datele mele:\n\n` +
+                                 `• Locație stupină: ${dateProiect.locatie}\n` +
+                                 `• Înregistrare DSV: ${dateProiect.acte}\n` +
+                                 `• Număr stupi introduși: ${dateProiect.stupi} familii\n` +
+                                 `• Valoare SO rezultată: ${dateProiect.so} EUR\n` +
+                                 `• Formă de organizare: ${dateProiect.forma}\n\n` +
+                                 `*Verdict preliminar:* ${verdictText}`;
+            
+            document.getElementById('waLink').href = "https://api.whatsapp.com/send?phone=" + telConsultant + "&text=" + encodeURIComponent(textWhatsApp);
         }
 
-        // Cazuri bazate pe numărul de stupi / Valoare SO generată automat
-        if (dateProiect.so < 4000) {
-            badge.className = "status-badge warning";
-            badge.innerText = "Dimensiune Prea Mică";
-            title.innerText = "Aveți sub pragul minim cerut de ghiduri";
-            explanation.innerText = "Pentru fondurile de modernizare, ghidul cere o dimensiune economică minimă de 4.000 SO (adică în jur de minimum 90-100 de stupi înregistrați). Soluția: pentru a deveni eligibil, trebuie achiziționate restul de familii de albine pe cont propriu până la pragul minim.";
-        } 
-        else if (dateProiect.so >= 4000 && dateProiect.so <= 11999) {
-            badge.className = "status-badge success";
-            badge.innerText = "Eligibilitate Validă (Ferme Mici)";
-            title.innerText = "Sunteți perfect încadrat pentru Linia de Ferme Mici";
-            explanation.innerText = "Felicitări! Numărul de stupi generează o dimensiune economică optimă. Sunteți eligibil pentru măsura destinată fermelor mici, unde puteți accesa fonduri nerambursabile (valori între 15.000€ și 44.000€) cu finanțare de până la 100% pentru achiziție de utilaje de extracție, lăzi noi sau sisteme de transport.";
-        } 
-        else if (dateProiect.so >= 12000 && dateProiect.so <= 50000) {
-            badge.className = "status-badge success";
-            badge.innerText = "Eligibilitate Maximă (Instalare / Dezvoltare)";
-            title.innerText = "Sunteți în zona de punctaj ridicat";
-            explanation.innerText = "Numărul de stupi este excelent! Vă încadrați la pragul superior de finanțare. Dacă aveți sub 40 de ani, puteți accesa linia de Instalare Tânăr Fermier (până la 70.000€ complet nerambursabili), iar dacă depășiți vârsta, aveți acces la liniile mari de modernizare unde puteți deconta remorci apicole mari, pavilioane și linii industriale de îmbuteliere.";
-        } 
-        else {
-            badge.className = "status-badge success";
-            badge.innerText = "Exploatație Mare comercială";
-            title.innerText = "Fermă Apicolă Consolidată";
-            explanation.innerText = "Depășiți pragul fermelor mici. Vă calificați direct pe proiectele mari de investiții cu cofinanțare, perfect pentru construirea unei fabrici de procesare a mierii sau achiziția de flote logistice mari.";
+        let currentSlide = 1;
+        const totalSlides = 4;
+
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const counter = document.getElementById('counter');
+        const lockNotice = document.getElementById('lockNotice');
+        const closingBar = document.getElementById('closingBar');
+
+        function startPresentation() {
+            quizDone = true;
+            quizSuccessBlock.style.display = 'none';
+            lockNotice.style.display = 'none'; 
+            closingBar.classList.add('visible'); 
+            changeSlide(1); 
         }
-    }
-</script>
+
+        prevBtn.addEventListener('click', () => changeSlide(-1));
+        nextBtn.addEventListener('click', () => changeSlide(1));
+
+        function changeSlide(direction) {
+            let nextActive = currentSlide + direction;
+            
+            if (nextActive >= 1 && nextActive <= totalSlides) {
+                if (currentSlide === 2 && direction === 1 && !quizDone) {
+                    lockNotice.style.display = 'flex';
+                    return;
+                }
+
+                lockNotice.style.display = 'none';
+                document.getElementById(`s${currentSlide}`).classList.remove('active');
+                document.getElementById(`s${nextActive}`).classList.add('active');
+                currentSlide = nextActive;
+
+                counter.innerText = `${currentSlide} / ${totalSlides}`;
+                prevBtn.disabled = currentSlide === 1;
+                
+                if (currentSlide === 2 && !quizDone) {
+                    nextBtn.disabled = true;
+                } else {
+                    nextBtn.disabled = currentSlide === totalSlides;
+                }
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="presentation-deck">
+        
+        <div class="slides-container">
+            <!-- Paginile se regăsesc în structura de mai sus -->
+        </div>
+
+        <!-- FOOTER INTEGRAT -->
+    </div>
 
 </body>
 </html>
