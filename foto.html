@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Analiză Complexă Eligibilitate - DAKAMIGOS</title>
+    <style>
+        :root { --gold: #d97706; --dark: #0f172a; }
+        body { font-family: 'Montserrat', sans-serif; background: var(--dark); color: #f8fafc; display: flex; justify-content: center; padding: 20px; }
+        .box { width: 100%; max-width: 600px; background: white; color: var(--dark); padding: 30px; border-radius: 16px; }
+        .q-section { margin-bottom: 25px; display: none; }
+        .q-section.active { display: block; }
+        .opt { display: block; padding: 12px; border: 1px solid #cbd5e1; margin: 8px 0; border-radius: 8px; cursor: pointer; }
+        .opt:hover { background: #fffbeb; border-color: var(--gold); }
+        .btn { background: var(--gold); color: white; border: none; padding: 12px 20px; border-radius: 6px; cursor: pointer; width: 100%; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2 style="color:var(--gold)">Diagnostic Avansat Proiect</h2>
+        <form id="masterForm">
+            <div class="q-section active">
+                <p><strong>1. Care este statutul actual al SRL-ului?</strong></p>
+                <label class="opt"><input type="radio" name="p1" value="SRL Nou"> Nou înființat (sau dispusă înființarea acum)</label>
+                <label class="opt"><input type="radio" name="p1" value="SRL Vechi"> SRL existent (vârstă > 1 an)</label>
+                <label class="opt"><input type="radio" name="q1" value="PFA"> PFA / Persoană Fizică</label>
+            </div>
+
+            <div class="q-section">
+                <p><strong>2. Statutul locației din Murguța (Comuna Dobârceni):</strong></p>
+                <label class="opt"><input type="radio" name="p2" value="Proprietate"> Proprietate (Intabulat, liber de sarcini)</label>
+                <label class="opt"><input type="radio" name="p2" value="Inchiriere"> Închiriere / Comodat (pe minim 5-10 ani)</label>
+            </div>
+
+            <div class="q-section">
+                <p><strong>3. Capacitate de cofinanțare și angajare:</strong></p>
+                <label class="opt"><input type="radio" name="p3" value="Maxim"> Pot angaja 2 persoane și am resurse de cofinanțare</label>
+                <label class="opt"><input type="radio" name="p3" value="Minim"> Prefer o structură simplificată (solo/micro)</label>
+            </div>
+
+            <div class="q-section">
+                <p><strong>4. Ce vizezi prin acest proiect?</strong></p>
+                <label class="opt"><input type="radio" name="p4" value="Investitie Mare"> Maximizare grant (Dotare studio foto profesional)</label>
+                <label class="opt"><input type="radio" name="p4" value="Investitie Mica"> Doar achiziție de aparatură (buget redus)</label>
+            </div>
+
+            <button type="button" class="btn" onclick="nextQ()">Următoarea întrebare »</button>
+        </form>
+    </div>
+
+    <script>
+        let idx = 0;
+        let sections = document.querySelectorAll('.q-section');
+        function nextQ() {
+            sections[idx].classList.remove('active');
+            idx++;
+            if(idx < sections.length) {
+                sections[idx].classList.add('active');
+            } else {
+                window.location.href = "https://wa.me/40749229686?text=Am terminat diagnoza complexa. Astept incadrarea pe linii de finantare.";
+            }
+        }
+    </script>
+</body>
+</html>
