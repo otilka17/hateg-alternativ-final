@@ -3,272 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dakamigos - Pitch Deck Interactiv Premium</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Masterplan · Metanoia · Hațeg Alternativ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap');
+        :root { --v1:#1e3d1a; --v2:#2d5a27; --c1:#faf5ec; --c2:#f2e8d0; --t1:#c4622d; --e1:#1e1108; }
+        body { font-family: 'Karla', sans-serif; background: var(--c1); color: var(--e1); margin: 0; padding: 20px; }
         
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background: radial-gradient(circle at top right, #1e1b4b, #020617 40%);
-        }
-        .step-card { 
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
-            background: rgba(15, 23, 42, 0.6);
-        }
-        .step-card:hover { 
-            transform: translateY(-2px); 
-            background: rgba(30, 41, 59, 0.7);
-            border-color: rgba(197, 160, 89, 0.4);
-        }
-        .slide-content { 
-            max-height: 0; 
-            opacity: 0; 
-            transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease; 
-            overflow: hidden;
-        }
-        .slide-content.open { 
-            max-height: 1200px; 
-            opacity: 1; 
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255,255,255,0.08);
-        }
-        .chevron { transition: transform 0.4s ease; }
-        .rotate { transform: rotate(180deg); text-color: #c5a059; }
-        .gradient-text {
-            background: linear-gradient(to right, #f3e8ff, #c5a059);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        /* Header stil Metanoia */
+        header { text-align: center; padding: 40px 0; border-bottom: 2px solid var(--v1); margin-bottom: 40px; }
+        h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--e1); }
+        .tag { font-family: 'Playfair Display', serif; color: var(--t1); font-style: italic; }
+
+        /* Slide-uri stilizate */
+        .slide-container { max-width: 800px; margin: 0 auto; }
+        .slide-item { background: white; border: 2px solid var(--c2); margin-bottom: 10px; cursor: pointer; }
+        .slide-header { padding: 20px; display: flex; justify-content: space-between; align-items: center; font-weight: 700; text-transform: uppercase; font-size: 0.9rem; }
+        .slide-content { padding: 0 20px; max-height: 0; overflow: hidden; transition: all 0.3s ease; }
+        .slide-content.open { padding: 20px; max-height: 500px; border-top: 1px solid var(--c2); }
+        
+        .active-btn { color: var(--v2); }
     </style>
 </head>
-<body class="text-slate-100 min-h-screen p-4 md:p-12 lg:p-16">
-    <div class="max-w-5xl mx-auto">
-        
-        <header class="mb-16 text-center border-b border-white/5 pb-10 relative">
-            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-40 bg-purple-500/10 blur-3xl rounded-full"></div>
-            <span class="bg-[#c5a059]/10 text-[#c5a059] border border-[#c5a059]/20 text-[10px] font-bold tracking-[0.2em] px-3 py-1 rounded-full uppercase">FoodTech Ecosystem</span>
-            <h1 class="text-5xl md:text-7xl font-black tracking-tighter uppercase mt-4 mb-2 bg-gradient-to-r from-white via-[#e2cb99] to-[#c5a059] bg-clip-text text-transparent">Dakamigos</h1>
-            <p class="text-xs tracking-[0.4em] uppercase text-slate-400 font-light">Strategic Pitch Deck • 2:40 Min</p>
-        </header>
+<body>
 
-        <div class="space-y-5">
-            
-            <div class="step-card p-6 md:p-8 rounded-3xl border border-white/5 shadow-2xl backdrop-blur-xl" onclick="toggleSlide('s1')">
-                <div class="flex justify-between items-center cursor-pointer">
-                    <div class="flex items-center gap-4">
-                        <span class="font-mono text-xs text-[#c5a059] bg-[#c5a059]/10 w-8 h-8 rounded-lg flex items-center justify-center font-bold">01</span>
-                        <h2 class="text-xl md:text-2xl font-bold tracking-tight text-white hover:text-[#e2cb99] transition-colors">Problema: Capcana Cateringului Tradițional</h2>
-                    </div>
-                    <span id="c1" class="chevron text-slate-500 bg-white/5 w-8 h-8 rounded-full flex items-center justify-center text-xs border border-white/5">▼</span>
-                </div>
-                
-                <div id="s1" class="slide-content">
-                    <div class="grid md:grid-cols-12 gap-8 items-center">
-                        <div class="md:col-span-7 space-y-4">
-                            <p class="text-slate-300 leading-relaxed text-sm md:text-base">
-                                Horeca tradițională e blocată în procese manuale lente și este proiectată exclusiv pentru clienți statici. Pe DN 68 în Totești ne trec prin fața porții mii de mașini zilnic și peste <span class="text-[#e2cb99] font-bold">1,6 milioane de turiști anual</span>. 
-                            </p>
-                            <p class="text-slate-400 text-sm leading-relaxed border-l-2 border-[#c5a059]/40 pl-4 bg-white/[0.01] py-2 rounded-r-lg">
-                                Aceștia sunt <b>„Oamenii Exteriorului”</b>: sunt pe fugă, dar vor calitate. Astăzi pierd câte 20 de minute la cozi în benzinării pentru o cafea mediocră și un sandviș congelat, refuzând să cumpere mâncare caldă de drum lung de frică să nu o verse în mașină.
-                            </p>
-                        </div>
-                        <div class="md:col-span-5">
-                            <div class="rounded-2xl overflow-hidden border border-white/10 shadow-lg group relative h-48 md:h-56">
-                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent z-10"></div>
-                                <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=1000" alt="Problem" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                                <span class="absolute bottom-3 left-3 z-20 text-[10px] font-mono bg-red-500/20 text-red-400 border border-red-500/30 px-2 py-0.5 rounded-full uppercase">DN 68 Bottleneck</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<header>
+    <div style="font-size: 0.7rem; letter-spacing: 4px; text-transform: uppercase; color: var(--v2);">Dakamigos Pitch Accelerator</div>
+    <h1>Masterplan Proiecție Investiții</h1>
+    <div class="tag">— Metanoia —</div>
+</header>
 
-            <div class="step-card p-6 md:p-8 rounded-3xl border border-white/5 shadow-2xl backdrop-blur-xl" onclick="toggleSlide('s2')">
-                <div class="flex justify-between items-center cursor-pointer">
-                    <div class="flex items-center gap-4">
-                        <span class="font-mono text-xs text-[#c5a059] bg-[#c5a059]/10 w-8 h-8 rounded-lg flex items-center justify-center font-bold">02</span>
-                        <h2 class="text-xl md:text-2xl font-bold tracking-tight text-white hover:text-[#e2cb99] transition-colors">Soluția: Premium Fast-Slow</h2>
-                    </div>
-                    <span id="c2" class="chevron text-slate-500 bg-white/5 w-8 h-8 rounded-full flex items-center justify-center text-xs border border-white/5">▼</span>
-                </div>
-                
-                <div id="s2" class="slide-content">
-                    <div class="grid md:grid-cols-12 gap-8 items-center">
-                        <div class="md:col-span-7 space-y-4">
-                            <p class="text-slate-300 leading-relaxed text-sm md:text-base">
-                                Gătim lent (Slow Cooking) cu ingrediente locale curate, dar servim absolut instantaneu. Clientul trimite o precomandă prin platforma web cu 10 minute înainte să ajungă în Totești. 
-                            </p>
-                            <p class="text-slate-400 text-sm leading-relaxed border-l-2 border-purple-500/40 pl-4 bg-white/[0.01] py-2 rounded-r-lg">
-                                Când oprește mașina în parcare, îi întindem pe geam o cafea de specialitate sau un desert fin stratificat, ambele <b>capsate la doză pe loc (Aluminiu/PET)</b>. Timp de așteptare la locație: <span class="text-purple-400 font-bold">zero secunde</span>. Pachetul este 100% etanș, steril și spill-proof.
-                            </p>
-                        </div>
-                        <div class="md:col-span-5">
-                            <div class="rounded-2xl overflow-hidden border border-white/10 shadow-lg group relative h-48 md:h-56">
-                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent z-10"></div>
-                                <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=1000" alt="Solution" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                                <span class="absolute bottom-3 left-3 z-20 text-[10px] font-mono bg-purple-500/20 text-purple-400 border border-purple-500/30 px-2 py-0.5 rounded-full uppercase">100% Spill-Proof</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="step-card p-6 md:p-8 rounded-3xl border border-white/5 shadow-2xl backdrop-blur-xl" onclick="toggleSlide('s3')">
-                <div class="flex justify-between items-center cursor-pointer">
-                    <div class="flex items-center gap-4">
-                        <span class="font-mono text-xs text-[#c5a059] bg-[#c5a059]/10 w-8 h-8 rounded-lg flex items-center justify-center font-bold">03</span>
-                        <h2 class="text-xl md:text-2xl font-bold tracking-tight text-white hover:text-[#e2cb99] transition-colors">Model: Tehnologie în Farfurie (Automate This)</h2>
-                    </div>
-                    <span id="c3" class="chevron text-slate-500 bg-white/5 w-8 h-8 rounded-full flex items-center justify-center text-xs border border-white/5">▼</span>
-                </div>
-                
-                <div id="s3" class="slide-content">
-                    <div class="space-y-6">
-                        <p class="text-slate-300 leading-relaxed text-sm md:text-base">
-                            Am mapat modelul predictibil de flux de la gigantul fast-food pe mâncarea noastră tradițională premium. Conceptul nostru structural este clar: <b>Automate this.</b> Scenariile complexe din platforma <b>Make</b> preiau datele din formular, notifică bucătăria și emit facturile fără nicio secundă de muncă manuală.
-                        </p>
-                        <div class="p-4 bg-orange-500/5 rounded-2xl border border-orange-500/20 text-sm text-slate-300">
-                            <i class="fa-solid fa-bolt text-orange-400 mr-2"></i><b>Inovația Hibrid Cash:</b> Pentru clienții care plătesc cash pe drumul național, Make calculează restul automat în avans. Bucătarul pregătește plicul cu restul pe masă lângă doza capsată în timp ce mașina e în tranzit. Schimbul la geam durează fix <b>5 secunde</b>.
-                        </div>
-                        <div class="pt-4">
-                            <p class="text-xs text-slate-400 uppercase tracking-widest font-mono mb-3 text-center">Diagramă de Arhitectură Digitală</p>
-                            <img src="Code_Generated_Image.jpg" alt="Dakamigos Hybrid Flow Chart" class="rounded-2xl border-2 border-orange-500/30 mx-auto w-full md:w-5/6 shadow-2xl">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="step-card p-6 md:p-8 rounded-3xl border border-white/5 shadow-2xl backdrop-blur-xl" onclick="toggleSlide('s4')">
-                <div class="flex justify-between items-center cursor-pointer">
-                    <div class="flex items-center gap-4">
-                        <span class="font-mono text-xs text-[#c5a059] bg-[#c5a059]/10 w-8 h-8 rounded-lg flex items-center justify-center font-bold">04</span>
-                        <h2 class="text-xl md:text-2xl font-bold tracking-tight text-white hover:text-[#e2cb99] transition-colors">Tracțiune: Validare Regională & Stoc</h2>
-                    </div>
-                    <span id="c4" class="chevron text-slate-500 bg-white/5 w-8 h-8 rounded-full flex items-center justify-center text-xs border border-white/5">▼</span>
-                </div>
-                
-                <div id="s4" class="slide-content">
-                    <div class="grid md:grid-cols-12 gap-8 items-center">
-                        <div class="md:col-span-7 space-y-4">
-                            <p class="text-slate-300 leading-relaxed text-sm md:text-base">
-                                Nu testăm o simplă teorie. Operăm profitabil în locația noastră fizică proprie din localitatea Totești încă din <span class="text-[#e2cb99] font-bold">anul 2017</span>. Cunoaștem perfect sezonalitatea, rutele comerciale și dorințele clienților noștri.
-                            </p>
-                            <p class="text-slate-400 text-sm leading-relaxed border-l-2 border-emerald-500/40 pl-4 bg-white/[0.01] py-2 rounded-r-lg">
-                                Upgrade-ul logistic constă în introducerea <b>autoclavei industriale</b>. Aceasta ne permite să sterilizăm profesional zacusca și rețetele tradiționale la 121°C. Obținem produse gourmet de raft cu valabilitate lungă, perfecte pentru a fi cumpărate ca stoc de siguranță sau suvenir în portbagaj, eliminând complet risipa din bucătărie.
-                            </p>
-                        </div>
-                        <div class="md:col-span-5">
-                            <div class="rounded-2xl overflow-hidden border border-white/10 shadow-lg group relative h-48 md:h-56">
-                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent z-10"></div>
-                                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=1000" alt="Traction" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                                <span class="absolute bottom-3 left-3 z-20 text-[10px] font-mono bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded-full uppercase">Active Since 2017</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="step-card p-6 md:p-8 rounded-3xl border border-white/5 shadow-2xl backdrop-blur-xl" onclick="toggleSlide('s5')">
-                <div class="flex justify-between items-center cursor-pointer">
-                    <div class="flex items-center gap-4">
-                        <span class="font-mono text-xs text-[#c5a059] bg-[#c5a059]/10 w-8 h-8 rounded-lg flex items-center justify-center font-bold">05</span>
-                        <h2 class="text-xl md:text-2xl font-bold tracking-tight text-white hover:text-[#e2cb99] transition-colors">Echipa: Tradiție de Familie & Core Tech</h2>
-                    </div>
-                    <span id="c5" class="chevron text-slate-500 bg-white/5 w-8 h-8 rounded-full flex items-center justify-center text-xs border border-white/5">▼</span>
-                </div>
-                
-                <div id="s5" class="slide-content">
-                    <div class="grid md:grid-cols-12 gap-8 items-center">
-                        <div class="md:col-span-7 space-y-4">
-                            <p class="text-slate-300 leading-relaxed text-sm md:text-base">
-                                Suntem o echipă administrativă sudată, o afacere de familie agilă care deține spațiul de producție și terenul. Acest lucru elimină complet riscul numărul unu din Horeca: presiunea chiriilor lunare și evacuarea.
-                            </p>
-                            <p class="text-slate-400 text-sm leading-relaxed border-l-2 border-blue-500/40 pl-4 bg-white/[0.01] py-2 rounded-r-lg">
-                                Imbinăm perfect tradiția culinară locală cu experiența tehnică avansată în **software testing, management de lead-uri și arhitecturi de automatizări cloud**. Această fuziune unică ne dă capacitatea să rulăm volume mari de producție cu o structură de personal extrem de suplă și eficientă.
-                            </p>
-                        </div>
-                        <div class="md:col-span-5">
-                            <div class="rounded-2xl overflow-hidden border border-white/10 shadow-lg group relative h-48 md:h-56">
-                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent z-10"></div>
-                                <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1000" alt="Team" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-                                <span class="absolute bottom-3 left-3 z-20 text-[10px] font-mono bg-blue-500/20 text-blue-400 border border-blue-500/30 px-2 py-0.5 rounded-full uppercase">0% Rent Risk</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="step-card p-6 md:p-8 rounded-3xl border border-white/5 shadow-2xl backdrop-blur-xl" onclick="toggleSlide('s6')">
-                <div class="flex justify-between items-center cursor-pointer">
-                    <div class="flex items-center gap-4">
-                        <span class="font-mono text-xs text-[#c5a059] bg-[#c5a059]/10 w-8 h-8 rounded-lg flex items-center justify-center font-bold">06</span>
-                        <h2 class="text-xl md:text-2xl font-bold tracking-tight text-white hover:text-[#e2cb99] transition-colors">Solicitare: Multiplicare & Scalare Regională</h2>
-                    </div>
-                    <span id="c6" class="chevron text-slate-500 bg-white/5 w-8 h-8 rounded-full flex items-center justify-center text-xs border border-white/5">▼</span>
-                </div>
-                
-                <div id="s6" class="slide-content">
-                    <div class="space-y-6">
-                        <div class="grid md:grid-cols-2 gap-6 text-sm">
-                            <div class="p-5 bg-white/[0.02] border border-white/5 rounded-2xl space-y-2">
-                                <h4 class="font-bold text-[#e2cb99] uppercase tracking-wider text-xs font-mono">Alocare Buget 50.000 €</h4>
-                                <ul class="space-y-1 text-slate-300 font-mono text-xs">
-                                    <li>• 60% Utilaje (Autoclavă industrială + Linie Gătire)</li>
-                                    <li>• 30% FoodTech Integration (Make & Hardware capsare)</li>
-                                    <li>• 10% Marketing B2B Regional</li>
-                                </ul>
-                            </div>
-                            <div class="p-5 bg-white/[0.02] border border-white/5 rounded-2xl space-y-2">
-                                <h4 class="font-bold text-emerald-400 uppercase tracking-wider text-xs font-mono">Performanță Financiară</h4>
-                                <ul class="space-y-1 text-slate-300 text-xs">
-                                    <li>• Cost producție: 4-6 lei | Vânzare: 14-22 lei</li>
-                                    <li>• <b>Marjă Brută Elementară: peste 70%</b></li>
-                                    <li>• Amortizare completă: <b>sub 12 luni</b></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <p class="text-slate-300 leading-relaxed text-sm">
-                            În paralel cu această rundă, <b>avem deja depus și în fază de evaluare avansată un proiect de finanțare europeană</b> special conceput pentru extinderea infrastructurii noastre. Bugetul solicitat de la voi va funcționa ca o pârghie imediată de execuție, permițându-ne să trecem de la faza DN 68 direct la cucerirea hub-ului de corporații din <b>ISHO Timișoara</b>.
-                        </p>
-
-                        <div class="pt-4">
-                            <p class="text-xs text-slate-400 uppercase tracking-widest font-mono mb-3 text-center">Plan de Proiecție și Multiplicare a Investiției</p>
-                            <img src="Gemini_Generated_Image_l5af7l5af7l5af7l.png" alt="Scaling Growth Bar Chart" class="rounded-2xl border border-white/10 mx-auto w-full md:w-5/6 shadow-2xl">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+<div class="slide-container">
+    <div class="slide-item" onclick="toggleSlide('s1')">
+        <div class="slide-header">
+            1. Analiza Scalării <span id="cs1">▼</span>
+        </div>
+        <div id="s1" class="slide-content">
+            Aici detaliem cum fondurile atrase prin AFIR se multiplică în infrastructura SOul meal. 
+            Focus pe eficiență și ROI (Return on Investment).
         </div>
     </div>
+    
+    <div class="slide-item" onclick="toggleSlide('s2')">
+        <div class="slide-header">
+            2. Fluxuri de Numerar <span id="cs2">▼</span>
+        </div>
+        <div id="s2" class="slide-content">
+            Automatizare prin Make, Google Sheets și optimizarea stocurilor. 
+            Date clare pentru investitori.
+        </div>
+    </div>
+</div>
 
-    <footer class="max-w-5xl mx-auto border-t border-white/5 mt-16 py-6 text-center text-slate-600 text-[10px] tracking-[0.3em] uppercase font-mono">
-        Dakamigos Pitch Accelerator Engine © 2026 • Live Presentation File
-    </footer>
+<script>
+    function toggleSlide(id) {
+        const slide = document.getElementById(id);
+        const isOpen = slide.classList.contains('open');
+        
+        document.querySelectorAll('.slide-content').forEach(s => s.classList.remove('open'));
+        if (!isOpen) slide.classList.add('open');
+    }
+</script>
 
-    <script>
-        function toggleSlide(id) {
-            const currentSlide = document.getElementById(id);
-            const currentChevron = document.getElementById('c' + id.slice(1));
-            const isOpen = currentSlide.classList.contains('open');
-
-            // Închide toate slide-urile deschise pentru a menține interfața curată
-            document.querySelectorAll('.slide-content').forEach(slide => {
-                slide.classList.remove('open');
-                const chevId = 'c' + slide.id.slice(1);
-                document.getElementById(chevId).classList.remove('rotate');
-            });
-
-            // Deschide slide-ul selectat doar dacă nu era deja deschis
-            if (!isOpen) {
-                currentSlide.classList.add('open');
-                currentChevron.classList.add('rotate');
-            }
-        }
-    </script>
 </body>
 </html>
