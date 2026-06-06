@@ -2,62 +2,73 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <title>Analiză Complexă Eligibilitate - DAKAMIGOS</title>
+    <title>Analiză Eligibilitate Fonduri - Studio Foto</title>
     <style>
-        :root { --gold: #d97706; --dark: #0f172a; }
-        body { font-family: 'Montserrat', sans-serif; background: var(--dark); color: #f8fafc; display: flex; justify-content: center; padding: 20px; }
-        .box { width: 100%; max-width: 600px; background: white; color: var(--dark); padding: 30px; border-radius: 16px; }
-        .q-section { margin-bottom: 25px; display: none; }
-        .q-section.active { display: block; }
-        .opt { display: block; padding: 12px; border: 1px solid #cbd5e1; margin: 8px 0; border-radius: 8px; cursor: pointer; }
-        .opt:hover { background: #fffbeb; border-color: var(--gold); }
-        .btn { background: var(--gold); color: white; border: none; padding: 12px 20px; border-radius: 6px; cursor: pointer; width: 100%; font-weight: bold; }
+        body { font-family: 'Segoe UI', sans-serif; background: #f8fafc; padding: 20px; }
+        .card { max-width: 600px; margin: auto; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.08); }
+        h2 { color: #0f766e; margin-top: 0; }
+        .q-box { margin: 20px 0; padding: 15px; border-bottom: 1px solid #e2e8f0; }
+        label { display: block; margin: 8px 0; cursor: pointer; }
+        button { width: 100%; background: #0f766e; color: white; padding: 15px; border: none; border-radius: 10px; font-weight: 700; cursor: pointer; }
     </style>
 </head>
 <body>
-    <div class="box">
-        <h2 style="color:var(--gold)">Diagnostic Avansat Proiect</h2>
-        <form id="masterForm">
-            <div class="q-section active">
-                <p><strong>1. Care este statutul actual al SRL-ului?</strong></p>
-                <label class="opt"><input type="radio" name="p1" value="SRL Nou"> Nou înființat (sau dispusă înființarea acum)</label>
-                <label class="opt"><input type="radio" name="p1" value="SRL Vechi"> SRL existent (vârstă > 1 an)</label>
-                <label class="opt"><input type="radio" name="q1" value="PFA"> PFA / Persoană Fizică</label>
+    <div class="card">
+        <h2>Evaluare Complexă Proiect</h2>
+        <p>Diana, te rugăm să răspunzi la toate întrebările pentru a identifica linia optimă de finanțare.</p>
+        
+        <form id="evalForm">
+            <div class="q-box">1. Sunteți de acord cu înființarea unui SRL nou (punctaj maxim)?<br>
+                <label><input type="radio" name="q1" value="DA"> DA</label>
+                <label><input type="radio" name="q1" value="NU"> NU</label>
+            </div>
+            <div class="q-box">2. Locația (Murguța) este proprietate personală?<br>
+                <label><input type="radio" name="q2" value="DA"> DA</label>
+                <label><input type="radio" name="q2" value="NU"> NU</label>
+            </div>
+            <div class="q-box">3. Aveți deja experiență în domeniul foto/video?<br>
+                <label><input type="radio" name="q3" value="DA"> DA</label>
+                <label><input type="radio" name="q3" value="NU"> NU</label>
+            </div>
+            <div class="q-box">4. Doriți să creați minimum un loc de muncă full-time?<br>
+                <label><input type="radio" name="q4" value="DA"> DA</label>
+                <label><input type="radio" name="q4" value="NU"> NU</label>
+            </div>
+            <div class="q-box">5. Bugetul total vizat depășește 50.000 EUR?<br>
+                <label><input type="radio" name="q5" value="DA"> DA</label>
+                <label><input type="radio" name="q5" value="NU"> NU</label>
+            </div>
+            <div class="q-box">6. Aveți nevoie de renovări structurale la clădire?<br>
+                <label><input type="radio" name="q6" value="DA"> DA</label>
+                <label><input type="radio" name="q6" value="NU"> NU</label>
+            </div>
+            <div class="q-box">7. Viziunea principală este Digitalizarea sau Hub Rural?<br>
+                <label><input type="radio" name="q7" value="DIGITAL"> Digitalizare</label>
+                <label><input type="radio" name="q7" value="RURAL"> Hub Rural</label>
             </div>
 
-            <div class="q-section">
-                <p><strong>2. Statutul locației din Murguța (Comuna Dobârceni):</strong></p>
-                <label class="opt"><input type="radio" name="p2" value="Proprietate"> Proprietate (Intabulat, liber de sarcini)</label>
-                <label class="opt"><input type="radio" name="p2" value="Inchiriere"> Închiriere / Comodat (pe minim 5-10 ani)</label>
-            </div>
-
-            <div class="q-section">
-                <p><strong>3. Capacitate de cofinanțare și angajare:</strong></p>
-                <label class="opt"><input type="radio" name="p3" value="Maxim"> Pot angaja 2 persoane și am resurse de cofinanțare</label>
-                <label class="opt"><input type="radio" name="p3" value="Minim"> Prefer o structură simplificată (solo/micro)</label>
-            </div>
-
-            <div class="q-section">
-                <p><strong>4. Ce vizezi prin acest proiect?</strong></p>
-                <label class="opt"><input type="radio" name="p4" value="Investitie Mare"> Maximizare grant (Dotare studio foto profesional)</label>
-                <label class="opt"><input type="radio" name="p4" value="Investitie Mica"> Doar achiziție de aparatură (buget redus)</label>
-            </div>
-
-            <button type="button" class="btn" onclick="nextQ()">Următoarea întrebare »</button>
+            <button type="button" onclick="analizeaza()">Trimite Analiza către Consultant</button>
         </form>
     </div>
 
     <script>
-        let idx = 0;
-        let sections = document.querySelectorAll('.q-section');
-        function nextQ() {
-            sections[idx].classList.remove('active');
-            idx++;
-            if(idx < sections.length) {
-                sections[idx].classList.add('active');
-            } else {
-                window.location.href = "https://wa.me/40749229686?text=Am terminat diagnoza complexa. Astept incadrarea pe linii de finantare.";
+        function analizeaza() {
+            let res = {};
+            for(let i=1; i<=7; i++) {
+                let val = document.querySelector(`input[name="q${i}"]:checked`)?.value;
+                if(!val) { alert(`Te rugăm să răspunzi la întrebarea ${i}`); return; }
+                res[`q${i}`] = val;
             }
+            
+            let linie = (res.q7 === 'RURAL') ? "Fonduri Dezvoltare Rurală (PNS)" : "Start-up Nation (Digitalizare)";
+            
+            let mesaj = `ANALIZĂ ELIGIBILITATE: HODAN DIANA\n\n` +
+                        `1. SRL Nou: ${res.q1}\n2. Spațiu: ${res.q2}\n3. Exp: ${res.q3}\n` +
+                        `4. Job: ${res.q4}\n5. Buget Mare: ${res.q5}\n6. Renovare: ${res.q6}\n` +
+                        `7. Opțiune: ${res.q7}\n\n` +
+                        `LINIE RECOMANDATĂ: ${linie}`;
+            
+            window.location.href = `https://wa.me/40749229686?text=${encodeURIComponent(mesaj)}`;
         }
     </script>
 </body>
