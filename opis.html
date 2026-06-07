@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opis Interactiv Start-Up Nation</title>
+    <script src="https://jsdelivr.net"></script>
+    <style>
+        .checked-row { background-color: #f3f4f6; text-decoration: line-through; color: #9ca3af; }
+    </style>
+</head>
+<body class="bg-gray-50 p-4 md:p-8 min-h-screen">
+    <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-md overflow-hidden border border-gray-100">
+        <div class="p-6 bg-blue-900 text-white">
+            <h2 class="text-xl font-bold">📂 Opis Documente Dosar</h2>
+            <p class="text-blue-200 text-xs mt-1">Bifează documentele finalizate.</p>
+        </div>
+        <div class="p-6 overflow-x-auto">
+            <table class="w-full text-left border-collapse text-sm">
+                <thead>
+                    <tr class="border-b border-gray-200 bg-gray-50 text-gray-500 text-xs uppercase">
+                        <th class="p-3 w-16 text-center">Gata</th>
+                        <th class="p-3 w-12 text-center">Nr.</th>
+                        <th class="p-3">Denumire Document</th>
+                        <th class="p-3">Etapă</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-100">
+                    <tr class="hover:bg-gray-50" id="r1">
+                        <td class="p-3 text-center"><input type="checkbox" onclick="toggleRow('r1')" class="w-4 h-4"></td>
+                        <td class="p-3 text-center text-gray-400">1</td>
+                        <td class="p-3 font-semibold">Certificat de Absolvire Curs</td>
+                        <td class="p-3"><span class="px-2 py-0.5 text-xs bg-amber-100 text-amber-800 rounded-full font-bold">Înscriere</span></td>
+                    </tr>
+                    <tr class="hover:bg-gray-50" id="r2">
+                        <td class="p-3 text-center"><input type="checkbox" onclick="toggleRow('r2')" class="w-4 h-4"></td>
+                        <td class="p-3 text-center text-gray-400">2</td>
+                        <td class="p-3 font-semibold">Plan de Afaceri online</td>
+                        <td class="p-3"><span class="px-2 py-0.5 text-xs bg-amber-100 text-amber-800 rounded-full font-bold">Înscriere</span></td>
+                    </tr>
+                    <tr class="hover:bg-gray-50" id="r3">
+                        <td class="p-3 text-center"><input type="checkbox" onclick="toggleRow('r3')" class="w-4 h-4"></td>
+                        <td class="p-3 text-center text-gray-400">3</td>
+                        <td class="p-3 font-semibold">Act Constitutiv firmă</td>
+                        <td class="p-3"><span class="px-2 py-0.5 text-xs bg-amber-100 text-amber-800 rounded-full font-bold">Înscriere</span></td>
+                    </tr>
+                    <tr class="hover:bg-gray-50" id="r4">
+                        <td class="p-3 text-center"><input type="checkbox" onclick="toggleRow('r4')" class="w-4 h-4"></td>
+                        <td class="p-3 text-center text-gray-400">4</td>
+                        <td class="p-3 font-semibold">Certificat Constatator ONRC</td>
+                        <td class="p-3"><span class="px-2 py-0.5 text-xs bg-amber-100 text-amber-800 rounded-full font-bold">Înscriere</span></td>
+                    </tr>
+                    <tr class="hover:bg-gray-50" id="r5">
+                        <td class="p-3 text-center"><input type="checkbox" onclick="toggleRow('r5')" class="w-4 h-4"></td>
+                        <td class="p-3 text-center text-gray-400">5</td>
+                        <td class="p-3 font-semibold">Facturi Fiscale Furnizori</td>
+                        <td class="p-3"><span class="px-2 py-0.5 text-xs bg-emerald-100 text-emerald-800 rounded-full font-bold">Decont</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        function toggleRow(id) { document.getElementById(id).classList.toggle('checked-row'); }
+    </script>
+</body>
+</html>
