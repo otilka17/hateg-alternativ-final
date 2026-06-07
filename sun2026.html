@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SUN 2026 — Sistem Finanțare</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0b0e;
+    --surface: #111318;
+    --surface2: #181c24;
+    --border: rgba(255,255,255,0.07);
+    --border-active: rgba(99,179,237,0.4);
+    --text: #e8ecf4;
+    --muted: #5a6478;
+    --accent: #4f9cf9;
+    --accent-dim: rgba(79,156,249,0.12);
+    --green: #34d399;
+    --green-dim: rgba(52,211,153,0.12);
+    --red: #f87171;
+    --red-dim: rgba(248,113,113,0.1);
+    --amber: #fbbf24;
+    --amber-dim: rgba(251,191,36,0.1);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  /* Subtle grid background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .app {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 24px 80px;
+  }
+
+  /* ── Header ── */
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logo {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+
+  .logo-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    letter-spacing: -0.3px;
+    color: var(--text);
+  }
+
+  .logo-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .header-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--muted);
+    transition: background 0.4s;
+  }
+  .dot.ok { background: var(--green); box-shadow: 0 0 8px var(--green); }
+
+  /* ── Score banner ── */
+  .score-banner {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr auto;
+    gap: 2px;
+    margin-bottom: 32px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .score-cell {
+    background: var(--surface);
+    padding: 20px 24px;
+    transition: background 0.3s;
+  }
+
+  .score-cell:last-child {
+    background: var(--surface2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 36px;
+    min-width: 160px;
+  }
+
+  .score-label {
+    font-size: 10px;
+    font-family: 'DM Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .score-value {
+    font-family: 'DM Serif Display', serif;
+    font-size: 36px;
+    color: var(--text);
+    line-height: 1;
+    transition: color 0.3s;
+  }
+
+  .score-sub {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 4px;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .total-score {
+    font-family: 'DM Serif Display', serif;
+    font-size: 56px;
+    line-height: 1;
+    transition: color 0.4s;
+    color: var(--text);
+  }
+
+  .eligibility-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-top: 10px;
+    background: var(--red-dim);
+    color: var(--red);
+    border: 1px solid rgba(248,113,113,0.2);
+    transition: all 0.4s;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .eligibility-badge.ok {
+    background: var(--green-dim);
+    color: var(--green);
+    border-color: rgba(52,211,153,0.2);
+  }
+
+  /* ── Main grid ── */
+  .main-grid {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 24px;
+    align-items: start;
+  }
+
+  /* ── Panel ── */
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .panel-header {
+    padding: 18px 22px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .panel-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+  }
+
+  .panel-count {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+  }
+
+  .panel-body {
+    padding: 8px 0;
+  }
+
+  /* ── Document list ── */
+  .doc-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 22px;
+    cursor: pointer;
+    transition: background 0.15s;
+    border-left: 2px solid transparent;
+  }
+
+  .doc-item:hover { background: rgba(255,255,255,0.03); }
+
+  .doc-item.checked {
+    border-left-color: var(--accent);
+    background: var(--accent-dim);
+  }
+
+  .checkbox {
+    width: 18px;
+    height: 18px;
+    border: 1.5px solid var(--border);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.2s;
+    background: var(--surface2);
+  }
+
+  .doc-item.checked .checkbox {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+
+  .checkmark {
+    opacity: 0;
+    transition: opacity 0.15s;
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1;
+  }
+
+  .doc-item.checked .checkmark { opacity: 1; }
+
+  .doc-text {
+    flex: 1;
+    font-size: 13px;
+    color: var(--text);
+    transition: color 0.2s;
+  }
+
+  .doc-item.checked .doc-text { color: var(--text); }
+
+  .doc-req {
+    font-size: 10px;
+    font-family: 'DM Mono', monospace;
+    color: var(--muted);
+    background: var(--surface2);
+    padding: 2px 7px;
+    border-radius: 4px;
+  }
+
+  .doc-req.must { color: var(--red); }
+
+  /* ── Progress bar ── */
+  .doc-progress {
+    padding: 16px 22px 8px;
+    border-top: 1px solid var(--border);
+  }
+
+  .progress-track {
+    height: 3px;
+    background: var(--surface2);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-top: 8px;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 2px;
+    transition: width 0.4s cubic-bezier(0.4,0,0.2,1);
+  }
+
+  /* ── Right column ── */
+  .right-col { display: flex; flex-direction: column; gap: 20px; }
+
+  /* ── Criteria ── */
+  .criteria-grid { display: flex; flex-direction: column; gap: 2px; padding: 8px 0; }
+
+  .criterion {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 22px;
+    cursor: pointer;
+    transition: background 0.15s;
+    border-left: 2px solid transparent;
+  }
+
+  .criterion:hover { background: rgba(255,255,255,0.025); }
+
+  .criterion.active {
+    border-left-color: var(--accent);
+    background: var(--accent-dim);
+  }
+
+  .criterion-name { font-size: 13px; color: var(--text); }
+  .criterion-sub {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 2px;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .criterion-select {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-family: 'DM Mono', monospace;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s;
+    appearance: none;
+    -webkit-appearance: none;
+    padding-right: 28px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%235a6478' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+  }
+
+  .criterion-select:focus { border-color: var(--accent); }
+
+  .criterion-pts {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: var(--accent);
+    min-width: 50px;
+    text-align: right;
+    transition: color 0.3s;
+  }
+
+  /* ── Equipment ── */
+  .equip-list { padding: 8px 16px 16px; }
+
+  .equip-item {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 10px;
+    border-radius: 10px;
+    transition: background 0.15s;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .equip-item:last-of-type { border-bottom: none; }
+  .equip-item:hover { background: rgba(255,255,255,0.025); }
+
+  .equip-name { font-size: 13px; color: var(--text); }
+  .equip-cat {
+    font-size: 10px;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    margin-top: 2px;
+  }
+
+  .equip-price {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: var(--text);
+    white-space: nowrap;
+  }
+
+  .equip-del {
+    background: none;
+    border: none;
+    color: var(--muted);
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 6px;
+    font-size: 16px;
+    line-height: 1;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+  }
+
+  .equip-del:hover { color: var(--red); background: var(--red-dim); }
+
+  /* ── Add equipment form ── */
+  .add-form {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    gap: 8px;
+    padding: 12px 16px;
+    border-top: 1px solid var(--border);
+    background: var(--surface2);
+  }
+
+  .add-form input {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 8px 12px;
+    border-radius: 9px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .add-form input:focus { border-color: var(--accent); }
+  .add-form input::placeholder { color: var(--muted); }
+
+  .add-form input.price-input {
+    width: 130px;
+    font-family: 'DM Mono', monospace;
+  }
+
+  .btn-add {
+    background: var(--accent);
+    border: none;
+    color: #fff;
+    padding: 8px 18px;
+    border-radius: 9px;
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    white-space: nowrap;
+    transition: opacity 0.2s, transform 0.1s;
+  }
+
+  .btn-add:hover { opacity: 0.88; transform: translateY(-1px); }
+  .btn-add:active { transform: translateY(0); }
+
+  /* ── Budget summary ── */
+  .budget-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 22px;
+    border-top: 1px solid var(--border);
+  }
+
+  .budget-label { font-size: 12px; color: var(--muted); font-family: 'DM Mono', monospace; }
+
+  .budget-value {
+    font-family: 'DM Serif Display', serif;
+    font-size: 24px;
+    color: var(--text);
+    transition: color 0.3s;
+  }
+
+  /* ── Threshold indicator ── */
+  .threshold-bar {
+    padding: 16px 22px 20px;
+    border-top: 1px solid var(--border);
+  }
+
+  .threshold-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    font-family: 'DM Mono', monospace;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .threshold-track {
+    height: 6px;
+    background: var(--surface2);
+    border-radius: 4px;
+    position: relative;
+    overflow: visible;
+  }
+
+  .threshold-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.5s cubic-bezier(0.4,0,0.2,1), background 0.4s;
+    background: var(--red);
+  }
+
+  .threshold-fill.ok { background: var(--green); }
+
+  .threshold-marker {
+    position: absolute;
+    top: -4px;
+    width: 2px;
+    height: 14px;
+    background: var(--amber);
+    border-radius: 2px;
+    left: 60%; /* 60/100 */
+  }
+
+  .threshold-marker::after {
+    content: 'Min. 60p';
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 9px;
+    font-family: 'DM Mono', monospace;
+    color: var(--amber);
+    white-space: nowrap;
+  }
+
+  /* ── Animations ── */
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .panel, .score-banner { animation: fadeIn 0.4s ease both; }
+  .score-banner { animation-delay: 0.05s; }
+  .main-grid > * { animation: fadeIn 0.5s ease both; }
+  .main-grid > *:last-child { animation-delay: 0.08s; }
+
+  @keyframes pop {
+    0%   { transform: scale(1); }
+    40%  { transform: scale(1.08); }
+    100% { transform: scale(1); }
+  }
+
+  .pop { animation: pop 0.25s ease; }
+
+  /* ── Empty state ── */
+  .empty-equip {
+    text-align: center;
+    padding: 28px;
+    color: var(--muted);
+    font-size: 12px;
+    font-family: 'DM Mono', monospace;
+  }
+
+  /* ── Toast ── */
+  .toast {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 20px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s, transform 0.3s;
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  .toast.show { opacity: 1; transform: translateY(0); }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+  @media (max-width: 860px) {
+    .main-grid { grid-template-columns: 1fr; }
+    .score-banner { grid-template-columns: 1fr 1fr; }
+    .score-banner > *:last-child { grid-column: span 2; }
+  }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <span class="logo-name">SUN 2026</span>
+      <span class="logo-tag">Sistem Finanțare Europeană</span>
+    </div>
+    <div class="header-status">
+      <div class="dot" id="status-dot"></div>
+      <span id="status-text">Completează dosarul</span>
+    </div>
+  </header>
+
+  <!-- Score Banner -->
+  <div class="score-banner">
+    <div class="score-cell">
+      <div class="score-label">Documente</div>
+      <div class="score-value" id="doc-count">0/0</div>
+      <div class="score-sub">bifate</div>
+    </div>
+    <div class="score-cell">
+      <div class="score-label">Echipamente</div>
+      <div class="score-value" id="equip-count">0</div>
+      <div class="score-sub">articole adăugate</div>
+    </div>
+    <div class="score-cell">
+      <div class="score-label">Buget Total</div>
+      <div class="score-value" id="budget-display">0</div>
+      <div class="score-sub">LEI</div>
+    </div>
+    <div class="score-cell">
+      <div class="score-label">Punctaj Total</div>
+      <div class="total-score" id="total-score">0</div>
+      <div class="eligibility-badge" id="eligibility-badge">
+        <svg width="8" height="8" viewBox="0 0 8 8" fill="currentColor"><circle cx="4" cy="4" r="4"/></svg>
+        Ne-eligibil
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Grid -->
+  <div class="main-grid">
+
+    <!-- Left: Documents -->
+    <div>
+      <div class="panel">
+        <div class="panel-header">
+          <span class="panel-title">Opis Documente</span>
+          <span class="panel-count" id="opis-counter">0 / 0</span>
+        </div>
+        <div class="panel-body" id="doc-list"></div>
+        <div class="doc-progress">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span style="font-size:11px;color:var(--muted);font-family:'DM Mono',monospace;">Progres dosar</span>
+            <span style="font-size:11px;font-family:'DM Mono',monospace;color:var(--accent)" id="progress-pct">0%</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right column -->
+    <div class="right-col">
+
+      <!-- Criteria -->
+      <div class="panel">
+        <div class="panel-header">
+          <span class="panel-title">Criterii de Punctaj</span>
+          <span class="panel-count" id="max-score">0 pct. max</span>
+        </div>
+        <div class="criteria-grid" id="criteria-list"></div>
+
+        <!-- Threshold bar -->
+        <div class="threshold-bar">
+          <div class="threshold-labels">
+            <span>0 pct.</span>
+            <span>100 pct.</span>
+          </div>
+          <div class="threshold-track">
+            <div class="threshold-fill" id="threshold-fill" style="width:0%"></div>
+            <div class="threshold-marker"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Equipment -->
+      <div class="panel">
+        <div class="panel-header">
+          <span class="panel-title">Buget Echipamente</span>
+          <span class="panel-count" id="equip-header-count">0 articole</span>
+        </div>
+        <div id="equip-list" style="max-height:260px;overflow-y:auto;">
+          <div class="equip-list" id="equip-inner"></div>
+        </div>
+        <div class="add-form">
+          <input type="text" id="equip-name-input" placeholder="Denumire echipament…" />
+          <input type="number" id="equip-price-input" class="price-input" placeholder="Preț (LEI)" min="0" />
+          <button class="btn-add" onclick="addEquip()">+ Adaugă</button>
+        </div>
+        <div class="budget-row">
+          <span class="budget-label">Total buget</span>
+          <span class="budget-value" id="budget-total">0 LEI</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ── Data ──────────────────────────────────────────────────────────────────────
+
+const DOCS = [
+  { id: 'd1', label: 'Act Constitutiv / Statut', required: true },
+  { id: 'd2', label: 'Certificat Înregistrare ONRC', required: true },
+  { id: 'd3', label: 'Dovadă Sediu Social', required: true },
+  { id: 'd4', label: 'Certificat Constatator', required: true },
+  { id: 'd5', label: 'Plan de Afaceri', required: true },
+  { id: 'd6', label: 'Proiecții Financiare (3 ani)', required: false },
+  { id: 'd7', label: 'CV-urile Asociaților / Administratori', required: false },
+  { id: 'd8', label: 'Cazier Judiciar', required: false },
+  { id: 'd9', label: 'Declarație Ajutor de Minimis', required: false },
+  { id: 'd10', label: 'Acord Partener (dacă e cazul)', required: false },
+];
+
+const CRITERIA = [
+  {
+    id: 'c1', label: 'Cod CAEN Eligibil',
+    sub: 'Domeniu de activitate finanțabil',
+    options: [
+      { label: '40 pct — Domeniu prioritar (industrie creativă)', value: 40 },
+      { label: '30 pct — Domeniu eligibil standard', value: 30 },
+      { label: '0 pct — Domeniu neeligibil', value: 0 },
+    ]
+  },
+  {
+    id: 'c2', label: 'Angajare NEETs',
+    sub: 'Tineri 16–29 ani angajați prin proiect',
+    options: [
+      { label: '25 pct — 3+ angajați NEETs', value: 25 },
+      { label: '15 pct — 1–2 angajați NEETs', value: 15 },
+      { label: '0 pct — Nicio angajare NEET', value: 0 },
+    ]
+  },
+  {
+    id: 'c3', label: 'Inovație & Digitalizare',
+    sub: 'Componenta de inovare a proiectului',
+    options: [
+      { label: '20 pct — Soluție inovatoare digitală', value: 20 },
+      { label: '10 pct — Element de digitalizare parțial', value: 10 },
+      { label: '0 pct — Fără componentă inovatoare', value: 0 },
+    ]
+  },
+  {
+    id: 'c4', label: 'Sustenabilitate',
+    sub: 'Viabilitate pe termen lung (≥3 ani)',
+    options: [
+      { label: '15 pct — Plan detaliat + garanții', value: 15 },
+      { label: '8 pct — Plan sumar', value: 8 },
+      { label: '0 pct — Fără plan de sustenabilitate', value: 0 },
+    ]
+  },
+];
+
+// State
+let docState = {};  // id -> bool
+let criteriaState = {}; // id -> value
+let equipList = [
+  { id: 'e1', name: 'Aparat Foto Mirrorless Sony A7 IV', cat: 'Foto/Video', price: 16000 },
+  { id: 'e2', name: 'Cameră Video Profesională Blackmagic', cat: 'Foto/Video', price: 14000 },
+  { id: 'e3', name: 'Stație Editare Mac Studio', cat: 'IT', price: 12000 },
+];
+
+// Init state
+DOCS.forEach(d => docState[d.id] = false);
+CRITERIA.forEach(c => criteriaState[c.id] = c.options[0].value);
+
+// ── Render ────────────────────────────────────────────────────────────────────
+
+function renderDocs() {
+  const list = document.getElementById('doc-list');
+  list.innerHTML = DOCS.map(d => `
+    <div class="doc-item ${docState[d.id] ? 'checked' : ''}" onclick="toggleDoc('${d.id}')">
+      <div class="checkbox"><span class="checkmark">✓</span></div>
+      <span class="doc-text">${d.label}</span>
+      <span class="doc-req ${d.required ? 'must' : ''}">${d.required ? 'Obligatoriu' : 'Opțional'}</span>
+    </div>
+  `).join('');
+}
+
+function renderCriteria() {
+  const list = document.getElementById('criteria-list');
+  list.innerHTML = CRITERIA.map(c => `
+    <div class="criterion ${criteriaState[c.id] > 0 ? 'active' : ''}">
+      <div>
+        <div class="criterion-name">${c.label}</div>
+        <div class="criterion-sub">${c.sub}</div>
+      </div>
+      <select class="criterion-select" onchange="updateCriterion('${c.id}', this.value)">
+        ${c.options.map(o => `<option value="${o.value}" ${criteriaState[c.id] === o.value ? 'selected' : ''}>${o.label}</option>`).join('')}
+      </select>
+      <div class="criterion-pts" id="pts-${c.id}">${criteriaState[c.id]}</div>
+    </div>
+  `).join('');
+}
+
+function renderEquip() {
+  const inner = document.getElementById('equip-inner');
+  if (equipList.length === 0) {
+    inner.innerHTML = '<div class="empty-equip">Niciun echipament adăugat încă.</div>';
+    return;
+  }
+  inner.innerHTML = `<div style="padding:0 6px;">` + equipList.map(e => `
+    <div class="equip-item">
+      <div>
+        <div class="equip-name">${e.name}</div>
+        <div class="equip-cat">${e.cat || 'Echipament'}</div>
+      </div>
+      <div class="equip-price">${e.price.toLocaleString('ro-RO')} LEI</div>
+      <button class="equip-del" onclick="removeEquip('${e.id}')" title="Șterge">✕</button>
+    </div>
+  `).join('') + `</div>`;
+}
+
+// ── Logic ─────────────────────────────────────────────────────────────────────
+
+function toggleDoc(id) {
+  docState[id] = !docState[id];
+  renderDocs();
+  updateAll();
+}
+
+function updateCriterion(id, val) {
+  criteriaState[id] = parseInt(val);
+  renderCriteria();
+  updateAll();
+}
+
+function addEquip() {
+  const nameEl = document.getElementById('equip-name-input');
+  const priceEl = document.getElementById('equip-price-input');
+  const name = nameEl.value.trim();
+  const price = parseFloat(priceEl.value);
+
+  if (!name) { showToast('⚠️ Introduceți denumirea echipamentului.'); return; }
+  if (!price || price <= 0) { showToast('⚠️ Introduceți un preț valid.'); return; }
+
+  const id = 'e' + Date.now();
+  equipList.push({ id, name, price, cat: 'Echipament' });
+  nameEl.value = '';
+  priceEl.value = '';
+  renderEquip();
+  updateAll();
+  showToast('✓ Echipament adăugat');
+}
+
+function removeEquip(id) {
+  equipList = equipList.filter(e => e.id !== id);
+  renderEquip();
+  updateAll();
+  showToast('Echipament eliminat');
+}
+
+function updateAll() {
+  const checkedDocs = Object.values(docState).filter(Boolean).length;
+  const totalDocs = DOCS.length;
+  const pct = Math.round((checkedDocs / totalDocs) * 100);
+
+  document.getElementById('doc-count').textContent = `${checkedDocs}/${totalDocs}`;
+  document.getElementById('opis-counter').textContent = `${checkedDocs} / ${totalDocs}`;
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-pct').textContent = pct + '%';
+
+  // Score
+  const totalScore = Object.values(criteriaState).reduce((a, b) => a + b, 0);
+  const maxScore = CRITERIA.reduce((a, c) => a + c.options[0].value, 0);
+  const isEligible = totalScore >= 60;
+
+  const scoreEl = document.getElementById('total-score');
+  scoreEl.textContent = totalScore;
+  scoreEl.style.color = isEligible ? 'var(--green)' : (totalScore >= 40 ? 'var(--amber)' : 'var(--text)');
+
+  const badge = document.getElementById('eligibility-badge');
+  badge.innerHTML = `<svg width="8" height="8" viewBox="0 0 8 8" fill="currentColor"><circle cx="4" cy="4" r="4"/></svg> ${isEligible ? 'Eligibil' : 'Ne-eligibil'}`;
+  badge.className = 'eligibility-badge' + (isEligible ? ' ok' : '');
+
+  document.getElementById('max-score').textContent = maxScore + ' pct. max';
+
+  const fillPct = Math.min((totalScore / 100) * 100, 100);
+  const fill = document.getElementById('threshold-fill');
+  fill.style.width = fillPct + '%';
+  fill.className = 'threshold-fill' + (isEligible ? ' ok' : '');
+
+  // Budget
+  const budget = equipList.reduce((s, e) => s + e.price, 0);
+  document.getElementById('budget-display').textContent = budget.toLocaleString('ro-RO');
+  document.getElementById('budget-total').textContent = budget.toLocaleString('ro-RO') + ' LEI';
+  document.getElementById('equip-count').textContent = equipList.length;
+  document.getElementById('equip-header-count').textContent = equipList.length + ' articole';
+
+  // Dot
+  const dot = document.getElementById('status-dot');
+  const statusText = document.getElementById('status-text');
+  if (isEligible && pct === 100) {
+    dot.className = 'dot ok';
+    statusText.textContent = 'Dosar complet & Eligibil';
+  } else if (isEligible) {
+    dot.className = 'dot ok';
+    statusText.textContent = 'Eligibil — completează documentele';
+  } else {
+    dot.className = 'dot';
+    statusText.textContent = 'Completează dosarul';
+  }
+}
+
+// ── Toast ─────────────────────────────────────────────────────────────────────
+
+let toastTimeout;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimeout);
+  toastTimeout = setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+// ── Enter key for add form ────────────────────────────────────────────────────
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderDocs();
+  renderCriteria();
+  renderEquip();
+  updateAll();
+
+  document.getElementById('equip-price-input').addEventListener('keydown', e => {
+    if (e.key === 'Enter') addEquip();
+  });
+  document.getElementById('equip-name-input').addEventListener('keydown', e => {
+    if (e.key === 'Enter') document.getElementById('equip-price-input').focus();
+  });
+});
+</script>
+</body>
+</html>
