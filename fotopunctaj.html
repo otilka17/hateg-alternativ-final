@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulator Punctaj Start-Up Nation 2026 - Studio Foto </title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+        h3 {
+            color: #7f8c8d;
+            text-align: center;
+            margin-top: 0;
+            font-weight: 400;
+        }
+        .info-box {
+            background-color: #e8f4f8;
+            border-left: 5px solid #3498db;
+            padding: 15px;
+            margin-bottom: 25px;
+            border-radius: 4px;
+        }
+        .section {
+            border-bottom: 1px solid #eee;
+            padding: 20px 0;
+        }
+        .section:last-child {
+            border-bottom: none;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+            color: #34495e;
+            font-size: 1.1em;
+        }
+        select, input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #bdc3c7;
+            border-radius: 4px;
+            font-size: 1em;
+            background-color: #fafafa;
+        }
+        .hint {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            margin-top: 5px;
+            font-style: italic;
+        }
+        .score-sticky {
+            position: -webkit-sticky;
+            position: sticky;
+            bottom: 20px;
+            background: #2ce3b4;
+            background: linear-gradient(135deg, #1abc9c, #2ecc71);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 1.4em;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            margin-top: 30px;
+        }
+        .financial-details {
+            margin-top: 10px;
+            font-size: 0.75em;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px;
+            border-radius: 4px;
+            font-weight: normal;
+        }
+        .bonus-badge {
+            display: inline-block;
+            background-color: #e67e22;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Simulator Start-Up Nation 2026</h1>
+    <h3>Studio Foto Rural - Jud. Bacău</h3>
+    
+    <div class="info-box">
+        <strong>Context Proiect:</strong> Regiunea Nord-Est (Bacău) și amplasarea în mediul rural oferă din start un avantaj masiv la departajare. Selectați opțiunile de mai jos pentru a vedea dacă atingeți pragul critic de 100 de puncte.
+    </div>
+
+    <!-- Criteriul A: Cofinantare -->
+    <div class="section">
+        <label for="cofinantare">A. Ce procent de cofinanțare (aport propriu) vă asumați?</label>
+        <select id="cofinantare" onchange="calcul Punctaj()">
+            <option value="0">Sub 10% (0 puncte)</option>
+            <option value="10">Între 10% și 19.99% (10 puncte)</option>
+            <option value="20" selected>Peste 20% (20 puncte) - RECOMANDAT</option>
+        </select>
+        <div class="hint">Pentru a fi sigură de succes, recomandarea este de minimum 20%.</div>
+    </div>
+
+    <!-- Criteriul B: Profitabilitate -->
+    <div class="section">
+        <label for="profit">B. Vă asumați ca firma să fie profitabilă în primul an?</label>
+        <select id="profit" onchange="calcul Punctaj()">
+            <option value="0">Nu / Nu sunt sigură (0 puncte)</option>
+            <option value="20" selected>Da, profit net ≥ 1 leu (20 puncte)</option>
+        </select>
+        <div class="hint">Indicator obligatoriu pentru a lua punctaj maxim pe sustenabilitate economică.</div>
+    </div>
+
+    <!-- Criteriul C: Cursuri -->
+    <div class="section">
+        <label for="curs">C. Dețineți sau veți absolvi cursul de competențe antreprenoriale?</label>
+        <select id="curs" onchange="calcul Punctaj()">
+            <option value="0">Nu (0 puncte)</option>
+            <option value="20" selected>Da, diplomă recunoscută de minister (20 puncte)</option>
+        </select>
+        <div class="hint">Cursul trebuie finalizat obligatoriu până la momentul depunerii dosarului.</div>
+    </div>
+
+    <!-- Criteriul D: Componenta Verde -->
+    <div class="section">
+        <label for="verde">D. Includeți echipamente verzi (ex: Panouri fotovoltaice)?</label>
+        <select id="verde" onchange="calcul Punctaj()">
+            <option value="0">Nu (0 puncte)</option>
+            <option value="20" selected>Da, panouri fotovoltaice / pompe căldură sau echipamente clasa A (20 puncte)</option>
+        </select>
+        <div class="hint">Deoarece aveți spațiu propriu în Bacău, montarea de panouri este o soluție ideală.</div>
+    </div>
+
+    <!-- Criteriul E: Digitalizare -->
+    <div class="section">
+        <label for="digitalizare">E. Alocați peste 60% din buget pe echipamente IT și tehnologice?</label>
+        <select id="digitalizare" onchange="calcul Punctaj()">
+            <option value="0">Nu (0 puncte)</option>
+            <option value="20" selected>Da, tehnică de calcul și aparatură foto digitală profesională (20 puncte)</option>
+        </select>
+        <div class="hint">Studiourile foto bifează nativ acest criteriu prin aparate mirrorless și stații de editare.</div>
+    </div>
+
+    <!-- Locuri de munca si Locatie fixe (Avantajele ei) -->
+    <div class="section" style="background: #fafafa; padding: 15px; border-radius: 6px;">
+        <label>Avantaje NATIVE asigurate deja:</label>
+        <p>📍 <strong>Locație:</strong> Rural, Județul Bacău <span class="bonus-badge">Prioritate Maximă</span></p>
+        <p>👥 <strong>Locuri de muncă:</strong> 2 asumate <span class="bonus-badge">Grant Maxim 250.000 lei</span></p>
+        <div class="hint">Angajarea a cel puțin unui tânăr NEET (sub 30 ani, fără job/școală) din localitate va asigura câștigarea oricărei partajări la punctaj egal!</div>
+    </div>
+
+    <!-- Afisare Scris / Rezultat -->
+    <div class="score-sticky">
+        Scor Total Proiect: <span id="totalScore">100</span> / 100 Puncte
+        <div class="financial-details" id="finante">
+            La un grant de 250.000 lei, contribuția dvs. proprie estimată (20%) este de: 50.000 lei.
+        </div>
+    </div>
+</div>
+
+<script>
+    function calcul Punctaj() {
+        let cofinantare = parseInt(document.getElementById('cofinantare').value);
+        let profit = parseInt(document.getElementById('profit').value);
+        let curs = parseInt(document.getElementById('curs').value);
+        let verde = parseInt(document.getElementById('verde').value);
+        let digitalizare = parseInt(document.getElementById('digitalizare').value);
+        
+        let total = cofinantare + profit + curs + verde + digitalizare;
+        document.getElementById('totalScore').innerText = total;
+
+        // Calcul finante estimativ
+        let finanteText = "";
+        if (cofinantare === 20) {
+            finanteText = "La un grant de 250.000 lei, contribuția dvs. proprie estimată (20%) este de: 50.000 lei.";
+        } else if (cofinantare === 10) {
+            finanteText = "La un grant de 250.000 lei, contribuția dvs. proprie estimată (10%) este de: 25.000 lei.";
+        } else {
+            finanteText = "Atenție! Fără cofinanțare de minim 10% proiectul poate fi respins sau penalizat masiv.";
+        }
+        document.getElementById('finante').innerText = finanteText;
+    }
+    
+    // Executa la deschidere
+    calcul Punctaj();
+</script>
+
+</body>
+</html>
