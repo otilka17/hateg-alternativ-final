@@ -2,93 +2,70 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Analiză Eligibilitate DR-30 Premium</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --gold: #d97706;
-            --bg-deep: #020617;
-            --card-bg: rgba(30, 41, 59, 0.6);
-            --text: #f1f5f9;
-        }
-        body { background-color: var(--bg-deep); color: var(--text); font-family: 'Plus Jakarta Sans', sans-serif; display: flex; justify-content: center; padding: 40px 20px; }
-        .container { width: 100%; max-width: 700px; background: var(--card-bg); backdrop-filter: blur(20px); padding: 50px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.1); }
-        h1 { color: #fbbf24; font-size: 2rem; margin-bottom: 10px; }
-        .desc { opacity: 0.7; margin-bottom: 40px; }
-        .q-box { margin-bottom: 25px; padding: 25px; background: rgba(0,0,0,0.2); border-radius: 16px; border: 1px solid rgba(255,255,255,0.05); }
-        .calc-box { border: 2px solid var(--gold); }
-        label { display: block; margin: 10px 0; padding: 12px; border: 1px solid #334155; border-radius: 8px; cursor: pointer; transition: 0.3s; }
-        label:hover { border-color: var(--gold); background: rgba(217, 119, 6, 0.15); }
-        input[type="text"], input[type="number"], select { width: 100%; padding: 15px; margin-top: 8px; border-radius: 10px; border: 1px solid #334155; background: #0f172a; color: white; }
-        .so-result { font-size: 1.5rem; font-weight: 800; color: #fbbf24; text-align: center; margin: 20px 0; }
-        button { width: 100%; padding: 20px; background: #25D366; color: white; border: none; border-radius: 14px; font-weight: 800; cursor: pointer; font-size: 1.1rem; }
-        button:hover { background: #128C7E; transform: translateY(-2px); }
-    </style>
+    <title>Motor DR-30 Enterprise</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-slate-950 text-slate-100 p-8">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
+        
+        <section class="bg-slate-900 p-8 rounded-3xl border border-slate-700">
+            <h1 class="text-2xl font-black text-amber-500 mb-6">MOTOR ANALIZĂ DR-30</h1>
+            <div class="space-y-4">
+                <input type="text" id="nume" placeholder="Nume Solicitant" class="w-full bg-slate-950 p-4 rounded-xl border border-slate-700">
+                <input type="number" id="vaci" oninput="calc()" placeholder="Nr. Vaci (1200 SO)" class="w-full bg-slate-950 p-4 rounded-xl border border-slate-700">
+                <input type="number" id="ovine" oninput="calc()" placeholder="Nr. Ovine (50 SO)" class="w-full bg-slate-950 p-4 rounded-xl border border-slate-700">
+                <div class="p-6 bg-slate-950 rounded-2xl text-center border border-slate-800">
+                    <div id="soResult" class="text-4xl font-black text-amber-500">0 €</div>
+                    <div class="text-[10px] uppercase font-bold text-slate-500 mt-2">Standard Output (SO)</div>
+                </div>
+                <button onclick="saveAnalysis()" class="w-full bg-blue-600 p-4 rounded-xl font-bold hover:bg-blue-500 transition">SALVEAZĂ ANALIZA</button>
+            </div>
+        </section>
 
-<div class="container">
-    <h1>Analiză Avansată DR-30</h1>
-    <p class="desc">Verifică eligibilitatea fermei tale conform Ghidului Solicitantului.</p>
+        <section class="bg-slate-900 p-8 rounded-3xl border border-slate-700">
+            <h2 class="text-emerald-500 font-black mb-6 uppercase text-[10px]">Istoric Analize (LocalStorage)</h2>
+            <div id="istoric" class="space-y-3">
+                </div>
+            <button onclick="clearHistory()" class="mt-6 w-full text-slate-500 text-[10px] uppercase font-bold underline">Șterge Istoric</button>
+        </section>
+    </div>
 
-    <form id="dr30Form">
-        <div class="q-box">
-            <label>Nume complet:</label>
-            <input type="text" id="nume" placeholder="Nume și Prenume">
-        </div>
+    <script>
+        function calc() {
+            const v = document.getElementById('vaci').value * 1200;
+            const o = document.getElementById('ovine').value * 50;
+            const total = v + o;
+            document.getElementById('soResult').innerText = total.toLocaleString() + " €";
+            return total;
+        }
 
-        <div class="q-box">1. Vârsta la depunere:
-            <label><input type="radio" name="q1" value="18-40"> Între 18 și 40 de ani</label>
-            <label><input type="radio" name="q1" value="Peste 40"> Peste 40 de ani</label>
-        </div>
+        function saveAnalysis() {
+            const nume = document.getElementById('nume').value;
+            const total = calc();
+            if(!nume) return alert("Introdu numele!");
 
-        <div class="q-box">2. Competențe profesionale agricole:
-            <label><input type="radio" name="q2" value="DA"> Dețin studii sau atestat</label>
-            <label><input type="radio" name="q2" value="NU"> Nu dețin</label>
-        </div>
+            const data = JSON.parse(localStorage.getItem('dr30_data') || "[]");
+            data.push({nume, total, data: new Date().toLocaleTimeString()});
+            localStorage.setItem('dr30_data', JSON.stringify(data));
+            renderHistory();
+        }
 
-        <div class="q-box calc-box">
-            <h3>Calculator SO (Standard Output)</h3>
-            <label>Nr. Vaci (adult): <input type="number" id="vaci" oninput="calc()" value="0"></label>
-            <label>Nr. Ovine/Caprine: <input type="number" id="ovine" oninput="calc()" value="0"></label>
-            <div class="so-result" id="soResult">SO Total: 0 €</div>
-        </div>
+        function renderHistory() {
+            const istoricDiv = document.getElementById('istoric');
+            istoricDiv.innerHTML = "";
+            const data = JSON.parse(localStorage.getItem('dr30_data') || "[]");
+            data.forEach((item, i) => {
+                istoricDiv.innerHTML += `
+                    <div class="flex justify-between p-4 bg-slate-950 rounded-xl border border-slate-800">
+                        <div><div class="font-bold">${item.nume}</div><div class="text-[10px] text-slate-500">${item.data}</div></div>
+                        <div class="font-black text-amber-500">${item.total.toLocaleString()} €</div>
+                    </div>
+                `;
+            });
+        }
 
-        <div class="q-box">4. Înregistrat în RNE (ANSVSA):
-            <label><input type="radio" name="q4" value="DA"> DA</label>
-            <label><input type="radio" name="q4" value="NU"> NU</label>
-        </div>
-
-        <button type="button" onclick="trimiteWhatsApp()">Trimite analiza pe WhatsApp</button>
-    </form>
-</div>
-
-<script>
-    function calc() {
-        const v = document.getElementById('vaci').value * 1200;
-        const o = document.getElementById('ovine').value * 50;
-        const total = v + o;
-        document.getElementById('soResult').innerText = "SO Total: " + total.toLocaleString() + " €";
-        return total;
-    }
-
-    function trimiteWhatsApp() {
-        const nume = document.getElementById('nume').value;
-        const so = calc();
-        const q1 = document.querySelector('input[name="q1"]:checked')?.value || "Nespecificat";
-        const q2 = document.querySelector('input[name="q2"]:checked')?.value || "Nespecificat";
-        const q4 = document.querySelector('input[name="q4"]:checked')?.value || "Nespecificat";
-
-        const msg = `*SOLICITARE EVALUARE DR-30*%0A%0A` +
-                    `Nume: ${nume}%0A` +
-                    `Vârstă eligibilă: ${q1}%0A` +
-                    `Competențe: ${q2}%0A` +
-                    `SO Total: ${so.toLocaleString()} €%0A` +
-                    `RNE: ${q4}`;
-
-        window.open(`https://wa.me/407XXXXXXXXX?text=${msg}`, '_blank');
-    }
-</script>
+        function clearHistory() { localStorage.removeItem('dr30_data'); renderHistory(); }
+        window.onload = renderHistory;
+    </script>
 </body>
 </html>
