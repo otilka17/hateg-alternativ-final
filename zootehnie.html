@@ -2,84 +2,86 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <title>EVALUARE FERMĂ - DR-30</title>
+    <title>Sistem Expert DR-30 (Pro-Consultant)</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-slate-950 text-slate-100 p-4">
-    <div class="max-w-md mx-auto bg-slate-900 p-6 rounded-3xl border border-slate-700">
-        <h1 class="text-xl font-black text-amber-500 mb-6 text-center">FIȘĂ EVALUARE FERMĂ</h1>
+<body class="bg-slate-950 text-slate-100 p-6">
+    <div class="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
         
-        <div id="step1" class="space-y-4">
-            <input type="text" id="nume" placeholder="Nume Fermier" class="w-full bg-slate-950 p-4 rounded-xl border border-slate-700">
-            <select id="varsta" class="w-full bg-slate-950 p-4 rounded-xl border border-slate-700">
-                <option value="18-40 ani">Vârstă: 18-40 ani</option>
-                <option value="Peste 40 ani">Vârstă: Peste 40 ani</option>
-            </select>
-            <button onclick="nextStep(2)" class="w-full bg-blue-600 p-4 rounded-xl font-bold">Continuă</button>
-        </div>
-
-        <div id="step2" class="space-y-3 hidden">
-            <label class="block text-[10px] uppercase font-bold text-slate-500">Sursă apă?</label>
-            <select id="apa" class="w-full bg-slate-950 p-3 rounded-lg border border-slate-700">
-                <option value="Da">Da</option>
-                <option value="Nu">Nu</option>
-            </select>
-            <label class="block text-[10px] uppercase font-bold text-slate-500">Teren furaje?</label>
-            <select id="furaje" class="w-full bg-slate-950 p-3 rounded-lg border border-slate-700">
-                <option value="Da">Da, propriu/arendă</option>
-                <option value="Nu">Nu</option>
-            </select>
-            <label class="block text-[10px] uppercase font-bold text-slate-500">Certificare BIO/Atestat?</label>
-            <select id="bio" class="w-full bg-slate-950 p-3 rounded-lg border border-slate-700">
-                <option value="Da">Da</option>
-                <option value="Nu">Nu</option>
-            </select>
-            <button onclick="nextStep(3)" class="w-full bg-blue-600 p-4 rounded-xl font-bold mt-2">Continuă</button>
-        </div>
-
-        <div id="step3" class="space-y-3 hidden">
-            <input type="number" id="vaci" oninput="calculSO()" placeholder="Nr. Vaci" class="w-full bg-slate-950 p-3 rounded-lg border border-slate-700">
-            <input type="number" id="ovine" oninput="calculSO()" placeholder="Nr. Ovine" class="w-full bg-slate-950 p-3 rounded-lg border border-slate-700">
-            <input type="text" id="utilaje" placeholder="Utilaje vizate" class="w-full bg-slate-950 p-3 rounded-lg border border-slate-700">
-            <select id="livrare" class="w-full bg-slate-950 p-3 rounded-lg border border-slate-700">
-                <option value="Lactate">Lactate</option>
-                <option value="Miere/Alte">Miere / Carne / Altele</option>
-            </select>
+        <div class="lg:col-span-2 bg-slate-900 p-6 rounded-3xl border border-slate-700">
+            <h1 class="text-xl font-black text-amber-500 mb-6">DIAGNOSTIC FERMĂ DR-30</h1>
             
-            <div class="text-center p-4 bg-slate-950 rounded-xl border border-amber-900 mt-4">
-                <div id="so-total" class="text-3xl font-black text-amber-500">0 €</div>
+            <div class="space-y-4">
+                <input type="text" id="nume" placeholder="Nume Fermier" class="w-full bg-slate-950 p-4 rounded-xl border border-slate-700">
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <input type="number" id="vaci" oninput="runEngine()" placeholder="Nr. Vaci" class="bg-slate-950 p-4 rounded-xl border border-slate-700">
+                    <input type="number" id="ovine" oninput="runEngine()" placeholder="Nr. Ovine" class="bg-slate-950 p-4 rounded-xl border border-slate-700">
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <select id="taran" onchange="runEngine()" class="bg-slate-950 p-4 rounded-xl border border-slate-700">
+                        <option value="20">Tânăr Fermier (+20p)</option>
+                        <option value="0">Fără bonificație vârstă</option>
+                    </select>
+                    <select id="bio" onchange="runEngine()" class="bg-slate-950 p-4 rounded-xl border border-slate-700">
+                        <option value="15">Certificare BIO (+15p)</option>
+                        <option value="0">Producție convențională</option>
+                    </select>
+                </div>
+
+                <textarea id="note" placeholder="Observații despre utilaje/investiții vizate..." class="w-full bg-slate-950 p-4 rounded-xl border border-slate-700 h-24"></textarea>
             </div>
-            <button onclick="trimiteWhatsApp()" class="w-full bg-green-600 p-4 rounded-xl font-bold">TRIMITE PE WHATSAPP</button>
+        </div>
+
+        <div class="bg-slate-900 p-6 rounded-3xl border border-slate-700 flex flex-col justify-between">
+            <div>
+                <h2 class="text-slate-400 font-bold text-xs uppercase mb-4">Metrici Performanță</h2>
+                <div class="space-y-4">
+                    <div class="p-4 bg-slate-950 rounded-2xl border border-slate-800">
+                        <div id="so-total" class="text-3xl font-black text-amber-500">0 €</div>
+                        <div class="text-[9px] text-slate-500 uppercase font-bold">SO (Standard Output)</div>
+                    </div>
+                    <div class="p-4 bg-slate-950 rounded-2xl border border-slate-800">
+                        <div id="puncte-total" class="text-3xl font-black text-emerald-500">0 p</div>
+                        <div class="text-[9px] text-slate-500 uppercase font-bold">Punctaj Selectare AFIR</div>
+                    </div>
+                </div>
+            </div>
+            
+            <button onclick="trimiteWhatsApp()" class="mt-6 w-full bg-green-600 p-4 rounded-xl font-bold hover:bg-green-500 transition">TRIMITE ANALIZĂ COMPLETĂ</button>
         </div>
     </div>
 
     <script>
-        function nextStep(s) {
-            document.getElementById('step1').classList.add('hidden');
-            document.getElementById('step2').classList.add('hidden');
-            document.getElementById('step3').classList.add('hidden');
-            document.getElementById('step' + s).classList.remove('hidden');
-        }
-
-        function calculSO() {
+        function runEngine() {
             const v = document.getElementById('vaci').value * 1200;
             const o = document.getElementById('ovine').value * 50;
-            document.getElementById('so-total').innerText = (v + o).toLocaleString() + " €";
-            return v + o;
+            const taran = parseInt(document.getElementById('taran').value);
+            const bio = parseInt(document.getElementById('bio').value);
+            
+            const totalSO = v + o;
+            const totalPuncte = taran + bio + (totalSO > 12000 ? 10 : 0);
+            
+            document.getElementById('so-total').innerText = totalSO.toLocaleString() + " €";
+            document.getElementById('puncte-total').innerText = totalPuncte + " p";
+            return { totalSO, totalPuncte };
         }
 
         function trimiteWhatsApp() {
+            const res = runEngine();
             const nume = document.getElementById('nume').value;
-            const msg = `*FIȘĂ EVALUARE FERMĂ — DR30*%0A%0A` +
-                        `Fermier: ${nume}%0A` +
-                        `Vârstă: ${document.getElementById('varsta').value}%0A` +
-                        `Apă: ${document.getElementById('apa').value}%0A` +
-                        `Furaje: ${document.getElementById('furaje').value}%0A` +
-                        `Certificat: ${document.getElementById('bio').value}%0A` +
-                        `Utilaje: ${document.getElementById('utilaje').value}%0A` +
-                        `Producție: ${document.getElementById('livrare').value}%0A` +
-                        `SO Total: ${calculSO().toLocaleString()} €%0A` +
-                        `Status: ${calculSO() >= 12000 ? 'ELIGIBIL' : 'SUB PRAG'}`;
+            const note = document.getElementById('note').value;
+            const status = res.totalSO >= 12000 ? '✅ ELIGIBIL' : '❌ SUB PRAG';
+            
+            const msg = `*EVALUARE COMPLEXĂ DR-30*%0A%0A` +
+                        `*Fermier:* ${nume}%0A` +
+                        `*SO:* ${res.totalSO.toLocaleString()} € (${status})%0A` +
+                        `*Punctaj AFIR:* ${res.totalPuncte} puncte%0A` +
+                        `*Note:* ${note}%0A%0A` +
+                        `---%0A` +
+                        `Aceasta este fișa tehnică de calificare. Analizează dacă investim în suplimentarea efectivului pentru a crește SO-ul.`;
+            
             window.open(`https://wa.me/40749229686?text=${msg}`, '_blank');
         }
     </script>
