@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>EVALUARE STUDIO FOTO - GAL</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-950 text-slate-100 p-4">
+    <div class="max-w-md mx-auto bg-slate-900 p-6 rounded-3xl border border-slate-700">
+        <h1 class="text-xl font-black text-amber-500 mb-6 text-center">CALIFICARE STUDIO FOTO</h1>
+        
+        <div id="step1" class="space-y-4">
+            <label class="block text-xs font-bold text-slate-500 uppercase">Spațiu în zona GAL?</label>
+            <select id="locatie" class="w-full bg-slate-950 p-4 rounded-xl border border-slate-700">
+                <option value="Da">Da, sediu/spațiu în teritoriul GAL</option>
+                <option value="Nu">Nu, este în afara zonei</option>
+            </select>
+            <button onclick="nextStep(2)" class="w-full bg-blue-600 p-4 rounded-xl font-bold">Continuă</button>
+        </div>
+
+        <div id="step2" class="space-y-4 hidden">
+            <label class="block text-xs font-bold text-slate-500">Angajezi pe cineva din comunitate?</label>
+            <select id="angajat" class="w-full bg-slate-950 p-4 rounded-xl border border-slate-700">
+                <option value="Da">Da, normă întreagă</option>
+                <option value="Nu">Nu</option>
+            </select>
+            <label class="block text-xs font-bold text-slate-500">Ajutăm producătorii locali cu promovare?</label>
+            <select id="impact" class="w-full bg-slate-950 p-4 rounded-xl border border-slate-700">
+                <option value="Da">Da, prin fotografie de produs</option>
+                <option value="Nu">Nu</option>
+            </select>
+            <button onclick="nextStep(3)" class="w-full bg-blue-600 p-4 rounded-xl font-bold">Continuă</button>
+        </div>
+
+        <div id="step3" class="space-y-4 hidden">
+            <input type="text" id="nume" placeholder="Nume Client" class="w-full bg-slate-950 p-4 rounded-xl border border-slate-700">
+            <input type="text" id="buget" placeholder="Buget total estimat" class="w-full bg-slate-950 p-4 rounded-xl border border-slate-700">
+            
+            <div class="p-4 bg-slate-950 rounded-xl border border-amber-900 text-center text-sm italic text-amber-500">
+                Verifică dacă răspunsurile sunt „DA” înainte de a trimite.
+            </div>
+            <button onclick="trimite()" class="w-full bg-green-600 p-4 rounded-xl font-bold">TRIMITE ANALIZA PE WHATSAPP</button>
+        </div>
+    </div>
+
+    <script>
+        function nextStep(s) {
+            document.getElementById('step1').classList.add('hidden');
+            document.getElementById('step2').classList.add('hidden');
+            document.getElementById('step3').classList.add('hidden');
+            document.getElementById('step' + s).classList.remove('hidden');
+        }
+
+        function trimite() {
+            const msg = `*EVALUARE STUDIO FOTO - GAL*%0A%0A` +
+                        `Client: ${document.getElementById('nume').value}%0A` +
+                        `Locație GAL: ${document.getElementById('locatie').value}%0A` +
+                        `Angajat local: ${document.getElementById('angajat').value}%0A` +
+                        `Impact promovare: ${document.getElementById('impact').value}%0A` +
+                        `Buget: ${document.getElementById('buget').value}%0A%0A` +
+                        `---%0A` +
+                        `Proiect pregătit pentru evaluare.`;
+            window.open(`https://wa.me/40749229686?text=${msg}`, '_blank');
+        }
+    </script>
+</body>
+</html>
