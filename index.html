@@ -1088,53 +1088,59 @@ footer {
   <h2 class="s-title">Alege planul<br><em>care ți se potrivește.</em></h2>
   <p class="s-lead">Macronutrienți calculați precis pentru planul tău caloric. Schimbi sau oprești oricând.</p>
   <div class="plans-grid">
+
     <div class="pc">
-      <div class="pc-tag">☕ Simplu</div>
-      <div class="pc-name">CaféRoad</div>
-      <p class="pc-desc">Cafea de specialitate + o gustare tradițională. Perfect pentru oprirea rapidă pe drum.</p>
-      <div class="pc-price">79</div>
+      <div class="pc-tag">💼 Office</div>
+      <div class="pc-name">Abonament Office</div>
+      <p class="pc-desc">Pentru angajatul care face drumul zilnic. Prânz + gustare + cafea Nespresso gata la ridicat — fără coadă, fără pierdere de timp.</p>
+      <div class="pc-price">149</div>
       <div class="pc-period">RON / săptămână · L–V</div>
       <ul class="pc-ul">
-        <li>2 doze capsule Nespresso / zi</li>
-        <li>1 gustare tradițională vacuum</li>
-        <li>Macronutrienți afișați</li>
-        <li>Ridicare DN 68 · 5 secunde</li>
+        <li>🍽️ Prânz complet vacuum / zi</li>
+        <li>🥙 1 gustare rapidă / zi</li>
+        <li>☕ 2 doze Nespresso / zi</li>
+        <li>🍮 Desert la doză vineri</li>
+        <li>⚡ Ridicare în 5 secunde · DN 68</li>
       </ul>
       <button class="pc-btn pc-btn-out" onclick="document.getElementById('precomanda').scrollIntoView({behavior:'smooth'})">Comandă →</button>
     </div>
 
     <div class="pc pc-hot">
       <div class="pc-hot-badge">⭐ Cel mai ales</div>
-      <div class="pc-tag">🍲 Complet</div>
-      <div class="pc-name">TradiBox 1500</div>
-      <p class="pc-desc">Meniu tradițional complet 1500 kcal/zi cu macronutrienți, 3 doze capsule și desert la doză inclus.</p>
-      <div class="pc-price">179</div>
-      <div class="pc-period">RON / săptămână · L–D</div>
+      <div class="pc-tag">👨‍👩‍👧‍👦 Family</div>
+      <div class="pc-name">Abonament Family</div>
+      <p class="pc-desc">Meniu complet pentru toată familia în mașină. Mic dejun, prânz, gustări și desert pentru 2 adulți + 1 copil, gata de ridicat.</p>
+      <div class="pc-price">299</div>
+      <div class="pc-period">RON / săptămână · L–V</div>
       <ul class="pc-ul">
-        <li>3 mese + 2 gustări / zi</li>
-        <li>Toate vacuum sau capsate</li>
-        <li>3 doze Nespresso / zi</li>
-        <li>Desert la doză inclus</li>
-        <li>1500 kcal · macro complete</li>
+        <li>🥐 Mic dejun × 3 persoane / zi</li>
+        <li>🍲 Prânz × 3 persoane / zi</li>
+        <li>🥙 Gustare × 3 persoane / zi</li>
+        <li>☕ 4 doze Nespresso / zi</li>
+        <li>🍮 Desert la doză zilnic × 3</li>
+        <li>🎁 Meniu copil adaptat inclus</li>
       </ul>
       <button class="pc-btn pc-btn-fill" onclick="document.getElementById('precomanda').scrollIntoView({behavior:'smooth'})">Comandă Acum →</button>
     </div>
 
     <div class="pc">
-      <div class="pc-tag">🏋️ Sport</div>
-      <div class="pc-name">MacroBox 2500</div>
-      <p class="pc-desc">Plan de 2000–2500 kcal cu proteină ridicată, potrivit pentru sporturi de anduranță sau muncă fizică.</p>
-      <div class="pc-price">249</div>
+      <div class="pc-tag">🏢 Business</div>
+      <div class="pc-name">Abonament Business</div>
+      <p class="pc-desc">Pentru echipe și șoferi profesioniști. Meniu complet, macro calculați, capsule premium și ridicare prioritară la geam.</p>
+      <div class="pc-price">499</div>
       <div class="pc-period">RON / săptămână · L–D</div>
       <ul class="pc-ul">
-        <li>5 mese / zi · 2000–2500 kcal</li>
-        <li>Proteină 140g+ / zi</li>
-        <li>5 doze capsule specialty</li>
-        <li>Desert artizanal zilnic</li>
-        <li>Plan nutrițional personalizat</li>
+        <li>🍳 Mic dejun + prânz + cină / zi</li>
+        <li>🥙 2 gustări / zi</li>
+        <li>☕ 5 doze Nespresso specialty / zi</li>
+        <li>🍮 Desert premium la doză zilnic</li>
+        <li>📊 Raport macronutrienți săptămânal</li>
+        <li>🚗 Prioritate ridicare · fără așteptare</li>
+        <li>📞 Linie dedicată comenzi rapide</li>
       </ul>
       <button class="pc-btn pc-btn-out" onclick="document.getElementById('precomanda').scrollIntoView({behavior:'smooth'})">Comandă →</button>
     </div>
+
   </div>
   <p style="margin-top:28px;text-align:center;font-size:.76rem;color:var(--tx4)">
     *Economisești în medie <strong style="color:var(--v2)">10 ore / săptămână</strong> față de cumpărăturile și gătitul propriu.
@@ -1254,51 +1260,204 @@ footer {
 <button class="fab" onclick="document.getElementById('precomanda').scrollIntoView({behavior:'smooth'})">🍲 Precomandă Acum</button>
 
 <script>
-// Week tabs
-document.querySelectorAll('#wTabs .tab').forEach(function(t){
-  t.addEventListener('click',function(){
-    document.querySelectorAll('#wTabs .tab').forEach(function(x){x.classList.remove('w-on')});
-    t.classList.add('w-on');
-  });
-});
-// Day tabs
-document.querySelectorAll('#dTabs .tab').forEach(function(t){
-  t.addEventListener('click',function(){
-    document.querySelectorAll('#dTabs .tab').forEach(function(x){x.classList.remove('d-on')});
-    t.classList.add('d-on');
-  });
-});
-// Kcal
-document.querySelectorAll('.kp').forEach(function(b){
-  b.addEventListener('click',function(){
-    document.querySelectorAll('.kp').forEach(function(x){x.classList.remove('on')});
-    b.classList.add('on');
-  });
-});
-// Form
-var WH = 'https://hook.eu2.make.com/ADAUGA_WEBHOOK_REAL_AICI';
-document.getElementById('fBtn').addEventListener('click',function(){
-  var n=document.getElementById('fN').value.trim();
-  var m=document.getElementById('fM').value.trim();
-  var t=document.getElementById('fT').value.trim();
-  var p=document.getElementById('fP').value;
-  var e=document.getElementById('fE').value;
-  var o=document.getElementById('fO').value.trim();
-  var err=document.getElementById('fErr');
-  err.style.display='none';
-  if(!n||!m||!t||!p){err.style.display='block';return;}
-  var btn=document.getElementById('fBtn');
-  btn.disabled=true; btn.textContent='⏳ Se trimite...';
-  var data={nume:n,masina:m,telefon:t,produs:p,eta:e,obs:o,data:new Date().toLocaleString('ro-RO'),sursa:'Metanoia Site'};
-  fetch(WH,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
-  .then(function(){done()}).catch(function(){done()});
-  function done(){
-    document.getElementById('pForm').style.display='none';
-    document.getElementById('fOk').style.display='block';
-    var msg='Buna ziua! Precomanda:\nNume: '+n+'\nMasina: '+m+'\nProdus: '+p+'\nETA: '+e+' minute'+(o?'\nObs: '+o:'');
-    setTimeout(function(){window.open('https://wa.me/40749229686?text='+encodeURIComponent(msg),'_blank');},700);
+// ═══════════════════════════════════════════
+// DATE MENIU — [zi][kcal] → array de feluri
+// ═══════════════════════════════════════════
+var MENIU = {
+  0: { // Luni
+    1000: [
+      { bg:'linear-gradient(135deg,#3d2800,#7a5010)', ico:'🥐', ora:'☀️ Mic Dejun', spill:'Proaspăt', tip:'Mic Dejun', nume:'Croissant cu Șuncă & Brânză', desc:'Croissant crocant, șuncă presată, brânză topită. Cald, gata în 2 minute.', kcal:320, prot:'14g', carb:'34g', gras:'14g', cafea:'Volluto · Int. 4', cafea_sub:'Blând, perfectă cu croissantul', dots:3 },
+      { bg:'linear-gradient(135deg,#2a1500,#5a2a00)', ico:'🍲', ora:'🍽️ Prânz', spill:'Vacuum', tip:'Fel Principal', nume:'Ciorbă de Burtă cu Smântână', desc:'Ciorbă autentică de burtă de vită, smântână, usturoi și oțet. Gătită dimineața.', kcal:420, prot:'28g', carb:'18g', gras:'26g', cafea:'Ristretto · Int. 10', cafea_sub:'Intens, curăță după ciorba grasă', dots:5 },
+      { bg:'linear-gradient(135deg,#2e1000,#5a2200)', ico:'🍮', ora:'🍮 Desert la Doză', spill:'Capsată + Doză', tip:'Desert', nume:'Papanași cu Dulceață de Afine', desc:'Papanași prăjiți, smântână bătută, dulceață de afine. Capsați cu doza Kazaar.', kcal:340, prot:'9g', carb:'48g', gras:'12g', cafea:'Kazaar · Int. 12', cafea_sub:'Maxim intens, perfect cu dulceața', dots:5 },
+    ],
+    1500: [
+      { bg:'linear-gradient(135deg,#3d2800,#7a5010)', ico:'🥐', ora:'☀️ Mic Dejun', spill:'Proaspăt', tip:'Mic Dejun', nume:'Croissant cu Șuncă & Brânză', desc:'Croissant crocant, șuncă presată, brânză topită. Cald, gata în 2 minute.', kcal:320, prot:'14g', carb:'34g', gras:'14g', cafea:'Volluto · Int. 4', cafea_sub:'Blând, perfectă cu croissantul', dots:3 },
+      { bg:'linear-gradient(135deg,#1e3d1a,#2d6025)', ico:'🥗', ora:'🌿 Gustare · 10:30', spill:'Proaspăt', tip:'Gustare', nume:'Salată de Fasole cu Cârnați Afumați', desc:'Fasole boabe, cârnați afumați de casă, ceapă roșie, cimbru. Sățios și rapid.', kcal:280, prot:'16g', carb:'30g', gras:'10g', cafea:'Capriccio · Int. 5', cafea_sub:'Acid fin, completează fasolea', dots:3 },
+      { bg:'linear-gradient(135deg,#2a1500,#5a2a00)', ico:'🍲', ora:'🍽️ Prânz', spill:'Vacuum', tip:'Fel Principal', nume:'Ciorbă de Burtă cu Smântână', desc:'Ciorbă autentică de burtă de vită, smântână, usturoi și oțet. Gătită dimineața.', kcal:420, prot:'28g', carb:'18g', gras:'26g', cafea:'Ristretto · Int. 10', cafea_sub:'Intens, curăță după ciorba grasă', dots:5 },
+      { bg:'linear-gradient(135deg,#3a2800,#6a4a10)', ico:'🥙', ora:'🥙 Gustare · 16:30', spill:'Proaspăt', tip:'Gustare Rapidă', nume:'Wrap cu Pui Grătar & Salată', desc:'Tortilla, piept de pui grătar, salată verde, roșii, sos de iaurt cu usturoi.', kcal:380, prot:'28g', carb:'36g', gras:'12g', cafea:'Livanto · Int. 6', cafea_sub:'Caramel, completează puiul', dots:3 },
+      { bg:'linear-gradient(135deg,#1a2e10,#2a5018)', ico:'🥩', ora:'🌙 Cină', spill:'Vacuum', tip:'Cina de Drum', nume:'Sarmale cu Smântână & Mămăligă', desc:'Sarmale de porc în foi de varză, smântână de fermă, mămăligă. Gătite 4 ore.', kcal:580, prot:'32g', carb:'42g', gras:'26g', cafea:'Indriya · Int. 10', cafea_sub:'Condimentat, amplifică sarmalele', dots:5 },
+      { bg:'linear-gradient(135deg,#2e1000,#5a2200)', ico:'🍮', ora:'🍮 Desert la Doză', spill:'Capsată + Doză', tip:'Desert', nume:'Papanași cu Dulceață de Afine', desc:'Papanași prăjiți, smântână bătută, dulceață de afine. Capsați cu doza Kazaar.', kcal:340, prot:'9g', carb:'48g', gras:'12g', cafea:'Kazaar · Int. 12', cafea_sub:'Maxim intens, perfect cu dulceața', dots:5 },
+    ],
+    2000: [
+      { bg:'linear-gradient(135deg,#3d2800,#7a5010)', ico:'🍳', ora:'☀️ Mic Dejun', spill:'Proaspăt', tip:'Mic Dejun Consistent', nume:'Omletă cu Cârnați & Cartofi Prăjiți', desc:'Omletă din 3 ouă de curte, cârnați afumați, cartofi aurii la tigaie. Clasic de drum.', kcal:520, prot:'28g', carb:'38g', gras:'28g', cafea:'Roma · Int. 8', cafea_sub:'Corp bun, dimineața consistentă', dots:4 },
+      { bg:'linear-gradient(135deg,#1e3d1a,#2d6025)', ico:'🥪', ora:'🌿 Gustare · 10:30', spill:'Proaspăt', tip:'Gustare', nume:'Sendviș cu Șuncă Presată & Muștar', desc:'Pâine de casă, șuncă presată, brânză galbenă, muștar de Dijon, roșii.', kcal:340, prot:'18g', carb:'32g', gras:'14g', cafea:'Capriccio · Int. 5', cafea_sub:'Ușor acid, completează sendvișul', dots:3 },
+      { bg:'linear-gradient(135deg,#2a1500,#5a2a00)', ico:'🥩', ora:'🍽️ Prânz', spill:'Vacuum', tip:'Fel Principal', nume:'Friptură de Porc cu Cartofi Natur', desc:'Cotlet de porc din fermă locală, cartofi natur cu unt și mărar, mujdei de usturoi.', kcal:620, prot:'40g', carb:'44g', gras:'24g', cafea:'Indriya · Int. 10', cafea_sub:'Condimentat, potrivit cu carnea de porc', dots:5 },
+      { bg:'linear-gradient(135deg,#3a2800,#6a4a10)', ico:'🥙', ora:'🥙 Gustare · 16:30', spill:'Proaspăt', tip:'Gustare Rapidă', nume:'Wrap cu Pui Grătar & Salată', desc:'Tortilla, piept de pui grătar, salată verde, roșii, sos de iaurt cu usturoi.', kcal:380, prot:'28g', carb:'36g', gras:'12g', cafea:'Livanto · Int. 6', cafea_sub:'Caramel, completează puiul', dots:3 },
+      { bg:'linear-gradient(135deg,#1a2e10,#2a5018)', ico:'🍲', ora:'🌙 Cină', spill:'Vacuum', tip:'Cina de Drum', nume:'Tocăniță de Vită cu Mămăligă', desc:'Vită din fermă locală, ceapă, ardei, roșii, paprikă. Gătit 3 ore lent. Mămăligă fierbinte.', kcal:640, prot:'44g', carb:'48g', gras:'22g', cafea:'Ristretto · Int. 9', cafea_sub:'Corp bun, după tocăniță', dots:4 },
+      { bg:'linear-gradient(135deg,#2e1000,#5a2200)', ico:'🍰', ora:'🍮 Desert la Doză', spill:'Capsată + Doză', tip:'Desert', nume:'Prăjitură cu Vișine & Frișcă', desc:'Blat pufos de casă, vișine din livadă proprie, frișcă naturală. Capsată cu Volluto.', kcal:380, prot:'7g', carb:'52g', gras:'16g', cafea:'Volluto · Int. 4', cafea_sub:'Blând, lasă vișinele în față', dots:3 },
+    ],
+    2500: [
+      { bg:'linear-gradient(135deg,#3d2800,#7a5010)', ico:'🍳', ora:'☀️ Mic Dejun', spill:'Proaspăt', tip:'Mic Dejun Sport', nume:'Platou Complet: Ouă + Cârnați + Brânză + Pâine', desc:'3 ouă ochiuri de curte, 2 cârnați afumați, brânză galbenă, pâine de casă, roșii, castraveți.', kcal:660, prot:'40g', carb:'40g', gras:'34g', cafea:'Roma · Int. 8', cafea_sub:'Corp echilibrat, dimineata sport', dots:4 },
+      { bg:'linear-gradient(135deg,#1e3d1a,#2d6025)', ico:'🥪', ora:'🌿 Gustare · 10:30', spill:'Proaspăt', tip:'Gustare Proteică', nume:'Sendviș Dublu cu Friptură & Brânză', desc:'Pâine neagră de casă, friptură rece de porc, brânză galbenă, roșii, castraveți murați.', kcal:420, prot:'28g', carb:'36g', gras:'18g', cafea:'Capriccio · Int. 5', cafea_sub:'Acid fin, completează friptura', dots:3 },
+      { bg:'linear-gradient(135deg,#2a1500,#5a2a00)', ico:'🥩', ora:'🍽️ Prânz', spill:'Vacuum', tip:'Prânz Sport', nume:'Grătar Mixt cu Orez & Salată', desc:'Cotlet de porc, cârnați de casă, mici din vită, orez cu unt, salată de varză cu morcov.', kcal:760, prot:'58g', carb:'54g', gras:'30g', cafea:'Indriya · Int. 10', cafea_sub:'Maxim intens, perfect cu grătarul', dots:5 },
+      { bg:'linear-gradient(135deg,#3a2800,#6a4a10)', ico:'🥙', ora:'🥙 Gustare · 16:30', spill:'Proaspăt', tip:'Gustare Sport', nume:'Wrap XXL cu Pui & Ou & Avocado', desc:'Tortilla mare, pui grătar, ou fiert, avocado, salată verde, sos de iaurt. Macro complet.', kcal:480, prot:'36g', carb:'38g', gras:'18g', cafea:'Livanto · Int. 6', cafea_sub:'Caramel, completează puiul', dots:3 },
+      { bg:'linear-gradient(135deg,#1a2e10,#2a5018)', ico:'🍲', ora:'🌙 Cină', spill:'Vacuum', tip:'Cina Sport', nume:'Sarmale + Friptură de Porc + Mămăligă', desc:'2 sarmale mari, cotlet de porc grătar, mămăligă cu brânză, smântână. Maxim sățios.', kcal:820, prot:'56g', carb:'58g', gras:'36g', cafea:'Ristretto · Int. 10', cafea_sub:'Intens, perfect după cina grea', dots:5 },
+      { bg:'linear-gradient(135deg,#2e1000,#5a2200)', ico:'🎂', ora:'🍮 Desert la Doză', spill:'Capsată + Doză', tip:'Desert Sport', nume:'Tort de Casă cu Nucă & Cremă de Unt', desc:'Tort cu nucă și cremă de unt de casă, glazură de ciocolată. Capsată cu Kazaar.', kcal:460, prot:'10g', carb:'54g', gras:'22g', cafea:'Kazaar · Int. 12', cafea_sub:'Maxim intens, taie crema de nut', dots:5 },
+    ]
+  },
+  1: { // Marți
+    1000: [
+      { bg:'linear-gradient(135deg,#2a1800,#5a3a10)', ico:'🥐', ora:'☀️ Mic Dejun', spill:'Proaspăt', tip:'Mic Dejun', nume:'Gogoașă cu Gem & Espresso', desc:'Gogoașă pufoasă de casă, gem de căpșuni, zahăr pudră. Clasic de drum.', kcal:300, prot:'6g', carb:'50g', gras:'8g', cafea:'Volluto · Int. 4', cafea_sub:'Blând, perfect cu gogoașa dulce', dots:3 },
+      { bg:'linear-gradient(135deg,#1e2a10,#3a5020)', ico:'🍲', ora:'🍽️ Prânz', spill:'Vacuum', tip:'Fel Principal', nume:'Tocăniță de Pui cu Mămăligă', desc:'Pui de fermă, ceapă, ardei, roșii, smântână. Gătit 2 ore. Mămăligă moale cu unt.', kcal:460, prot:'34g', carb:'40g', gras:'16g', cafea:'Capriccio · Int. 5', cafea_sub:'Ușor acid, completează tocănița', dots:3 },
+      { bg:'linear-gradient(135deg,#2e1000,#5a2200)', ico:'🍰', ora:'🍮 Desert la Doză', spill:'Capsată + Doză', tip:'Desert', nume:'Prăjitură cu Mere & Nucă', desc:'Blat pufos cu mere și nucă, scorțișoară, zahăr brun. Capsată cu Livanto.', kcal:320, prot:'6g', carb:'48g', gras:'12g', cafea:'Livanto · Int. 6', cafea_sub:'Caramel, perfect cu merele coapte', dots:4 },
+    ],
+    1500: [
+      { bg:'linear-gradient(135deg,#2a1800,#5a3a10)', ico:'🥐', ora:'☀️ Mic Dejun', spill:'Proaspăt', tip:'Mic Dejun', nume:'Gogoașă cu Gem & Espresso', desc:'Gogoașă pufoasă de casă, gem de căpșuni, zahăr pudră. Clasic de drum.', kcal:300, prot:'6g', carb:'50g', gras:'8g', cafea:'Volluto · Int. 4', cafea_sub:'Blând, perfect cu gogoașa', dots:3 },
+      { bg:'linear-gradient(135deg,#1e3d1a,#2d6025)', ico:'🥪', ora:'🌿 Gustare · 10:30', spill:'Proaspăt', tip:'Gustare', nume:'Sendviș cu Pastramă & Roșii', desc:'Pâine neagră, pastramă de vită afumată, roșii, castraveți, muștar. Rapid și bun.', kcal:300, prot:'20g', carb:'28g', gras:'10g', cafea:'Capriccio · Int. 5', cafea_sub:'Acid fin, completează pastrama', dots:3 },
+      { bg:'linear-gradient(135deg,#1e2a10,#3a5020)', ico:'🍲', ora:'🍽️ Prânz', spill:'Vacuum', tip:'Fel Principal', nume:'Tocăniță de Pui cu Mămăligă', desc:'Pui de fermă, ceapă, ardei, roșii, smântână. Gătit 2 ore. Mămăligă moale cu unt.', kcal:460, prot:'34g', carb:'40g', gras:'16g', cafea:'Capriccio · Int. 5', cafea_sub:'Ușor acid, completează tocănița', dots:3 },
+      { bg:'linear-gradient(135deg,#3a2800,#6a4a10)', ico:'🥙', ora:'🥙 Gustare · 16:30', spill:'Proaspăt', tip:'Gustare Rapidă', nume:'Wrap cu Ton & Salată', desc:'Tortilla, ton în ulei, salată verde, roșii cherry, castraveți, sos de lămâie.', kcal:320, prot:'22g', carb:'32g', gras:'10g', cafea:'Livanto · Int. 6', cafea_sub:'Caramel ușor, completează tonul', dots:3 },
+      { bg:'linear-gradient(135deg,#1a2e10,#2a5018)', ico:'🍲', ora:'🌙 Cină', spill:'Vacuum', tip:'Cina de Drum', nume:'Fasole cu Cârnați Afumați', desc:'Fasole boabe cu cârnați afumați de casă, ceapă, usturoi, boia de ardei. Clasic românesc.', kcal:520, prot:'28g', carb:'54g', gras:'18g', cafea:'Fortissio Lungo · Int. 8', cafea_sub:'Puternic, taie grăsimea cârnăciorilor', dots:4 },
+      { bg:'linear-gradient(135deg,#2e1000,#5a2200)', ico:'🍰', ora:'🍮 Desert la Doză', spill:'Capsată + Doză', tip:'Desert', nume:'Prăjitură cu Mere & Nucă', desc:'Blat pufos cu mere și nucă, scorțișoară, zahăr brun. Capsată cu Livanto.', kcal:320, prot:'6g', carb:'48g', gras:'12g', cafea:'Livanto · Int. 6', cafea_sub:'Caramel, perfect cu merele', dots:4 },
+    ],
+    2000: [
+      { bg:'linear-gradient(135deg,#2a1800,#5a3a10)', ico:'🍳', ora:'☀️ Mic Dejun', spill:'Proaspăt', tip:'Mic Dejun Consistent', nume:'Pâine de Casă cu Cârnați & Ouă Ochiuri', desc:'Pâine neagră de casă, 2 ouă ochiuri pe unt, cârnați afumați, roșii proaspete.', kcal:500, prot:'26g', carb:'36g', gras:'26g', cafea:'Roma · Int. 8', cafea_sub:'Corp bun, dimineata consistentă', dots:4 },
+      { bg:'linear-gradient(135deg,#1e3d1a,#2d6025)', ico:'🥪', ora:'🌿 Gustare · 10:30', spill:'Proaspăt', tip:'Gustare', nume:'Sendviș cu Pastramă & Roșii', desc:'Pâine neagră, pastramă de vită afumată, roșii, castraveți, muștar.', kcal:300, prot:'20g', carb:'28g', gras:'10g', cafea:'Capriccio · Int. 5', cafea_sub:'Acid fin, completează pastrama', dots:3 },
+      { bg:'linear-gradient(135deg,#1e2a10,#3a5020)', ico:'🥩', ora:'🍽️ Prânz', spill:'Vacuum', tip:'Fel Principal', nume:'Mici cu Muștar & Cartofi Prăjiți', desc:'Mici din carne de vită și porc, muștar de Dijon, cartofi aurii la tigaie. Clasicul drumului.', kcal:620, prot:'38g', carb:'44g', gras:'28g', cafea:'Indriya · Int. 10', cafea_sub:'Intens, perfect cu micii', dots:5 },
+      { bg:'linear-gradient(135deg,#3a2800,#6a4a10)', ico:'🥙', ora:'🥙 Gustare · 16:30', spill:'Proaspăt', tip:'Gustare Rapidă', nume:'Wrap cu Ton & Salată', desc:'Tortilla, ton în ulei, salată verde, roșii cherry, castraveți, sos de lămâie.', kcal:320, prot:'22g', carb:'32g', gras:'10g', cafea:'Livanto · Int. 6', cafea_sub:'Caramel ușor, completează tonul', dots:3 },
+      { bg:'linear-gradient(135deg,#1a2e10,#2a5018)', ico:'🍲', ora:'🌙 Cină', spill:'Vacuum', tip:'Cina de Drum', nume:'Gulaș de Vită cu Mămăligă', desc:'Vită din fermă, ceapă, paprikă, roșii, ardei. Gătit 3 ore lent. Mămăligă fierbinte.', kcal:580, prot:'40g', carb:'46g', gras:'18g', cafea:'Ristretto · Int. 9', cafea_sub:'Corp bun, curăță după gulaș', dots:4 },
+      { bg:'linear-gradient(135deg,#2e1000,#5a2200)', ico:'🍫', ora:'🍮 Desert la Doză', spill:'Capsată + Doză', tip:'Desert', nume:'Mousse de Ciocolată & Frișcă', desc:'Mousse de ciocolată neagră 70%, frișcă bătută, ouă de curte. Capsată cu Kazaar.', kcal:360, prot:'7g', carb:'30g', gras:'24g', cafea:'Kazaar · Int. 12', cafea_sub:'Maxim intens, amplifică ciocolata', dots:5 },
+    ],
+    2500: [
+      { bg:'linear-gradient(135deg,#2a1800,#5a3a10)', ico:'🍳', ora:'☀️ Mic Dejun', spill:'Proaspăt', tip:'Mic Dejun Sport', nume:'Platou Complet: Ouă + Cârnați + Brânză + Pâine', desc:'3 ouă ochiuri, 2 cârnați afumați, brânză galbenă, pâine de casă, roșii, castraveți murați.', kcal:660, prot:'40g', carb:'40g', gras:'34g', cafea:'Roma · Int. 8', cafea_sub:'Corp echilibrat, dimineata sport', dots:4 },
+      { bg:'linear-gradient(135deg,#1e3d1a,#2d6025)', ico:'🥪', ora:'🌿 Gustare · 10:30', spill:'Proaspăt', tip:'Gustare Proteică', nume:'Sendviș Dublu cu Pastramă & Brânză', desc:'2 felii pâine neagră, pastramă dublă, brânză galbenă, muștar, roșii, salată verde.', kcal:440, prot:'30g', carb:'32g', gras:'18g', cafea:'Capriccio · Int. 5', cafea_sub:'Acid fin, completează pastrama', dots:3 },
+      { bg:'linear-gradient(135deg,#1e2a10,#3a5020)', ico:'🥩', ora:'🍽️ Prânz', spill:'Vacuum', tip:'Prânz Sport', nume:'Platou Grătar: Mici + Cotlet + Cârnați', desc:'3 mici, cotlet de porc grătar, cârnați de casă, salată de varză, muștar, pâine.', kcal:820, prot:'60g', carb:'44g', gras:'42g', cafea:'Indriya · Int. 10', cafea_sub:'Maxim intens, perfect cu grătarul', dots:5 },
+      { bg:'linear-gradient(135deg,#3a2800,#6a4a10)', ico:'🥙', ora:'🥙 Gustare · 16:30', spill:'Proaspăt', tip:'Gustare Sport', nume:'Wrap XXL cu Pui & Ou Fiert', desc:'Tortilla mare, pui grătar, ou fiert, avocado, salată, sos de iaurt. 36g proteină.', kcal:480, prot:'36g', carb:'38g', gras:'18g', cafea:'Livanto · Int. 6', cafea_sub:'Caramel, completează puiul', dots:3 },
+      { bg:'linear-gradient(135deg,#1a2e10,#2a5018)', ico:'🍲', ora:'🌙 Cină', spill:'Vacuum', tip:'Cina Sport', nume:'Ciolan de Porc cu Varză Murată & Mămăligă', desc:'Ciolan de porc fiert lent cu varză murată, chimen, mujdei de usturoi, mămăligă.', kcal:860, prot:'56g', carb:'52g', gras:'40g', cafea:'Ristretto · Int. 10', cafea_sub:'Intens, curăță după ciolanul gras', dots:5 },
+      { bg:'linear-gradient(135deg,#2e1000,#5a2200)', ico:'🎂', ora:'🍮 Desert la Doză', spill:'Capsată + Doză', tip:'Desert Sport', nume:'Tort cu Nucă & Cremă de Unt', desc:'Tort cu foi de nucă și cremă de unt, glazură de cacao. Capsată cu Kazaar.', kcal:460, prot:'10g', carb:'52g', gras:'24g', cafea:'Kazaar · Int. 12', cafea_sub:'Maxim intens, taie crema de nut', dots:5 },
+    ]
+  },
+  2: { // Miercuri
+    1000: [
+      { bg:'linear-gradient(135deg,#1a3028,#2a5040)', ico:'🥪', ora:'☀️ Mic Dejun', spill:'Proaspăt', tip:'Mic Dejun', nume:'Toast cu Brânză Topită & Roșii', desc:'Toast crocant, brânză topită, roșii proaspete, oregano, ulei de măsline.', kcal:280, prot:'12g', carb:'32g', gras:'10g', cafea:'Volluto · Int. 4', cafea_sub:'Blând, perfectă cu toastul', dots:3 },
+      { bg:'linear-gradient(135deg,#2a1500,#5a2a00)', ico:'🍲', ora:'🍽️ Prânz', spill:'Vacuum', tip:'Fel Principal', nume:'Ciorbă Rădăuțeană cu Smântână', desc:'Ciorbă de pui cu smântână și usturoi, în stil Rădăuți. Servită fierbinte, vacuum sigilată.', kcal:380, prot:'24g', carb:'22g', gras:'20g', cafea:'Capriccio · Int. 5', cafea_sub:'Acid fin, completează ciorba cremoasă', dots:3 },
+      { bg:'linear-gradient(135deg,#2e1000,#5a2200)', ico:'🍩', ora:'🍮 Desert la Doză', spill:'Capsată + Doză', tip:'Desert', nume:'Gogoși Tradiționale cu Gem de Caise', desc:'Gogoși pufoas de casă, zahăr pudră cu vanilie, gem de caise. Capsate cu Livanto.', kcal:340, prot:'7g', carb:'56g', gras:'10g', cafea:'Livanto · Int. 6', cafea_sub:'Caramel blând, perfect cu zahărul pudră', dots:4 },
+    ],
+    1500: [
+      { bg:'linear-gradient(135deg,#1a3028,#2a5040)', ico:'🥪', ora:'☀️ Mic Dejun', spill:'Proaspăt', tip:'Mic Dejun', nume:'Toast cu Brânză Topită & Roșii', desc:'Toast crocant, brânză topită, roșii proaspete, oregano, ulei de măsline.', kcal:280, prot:'12g', carb:'32g', gras:'10g', cafea:'Volluto · Int. 4', cafea_sub:'Blând, perfectă cu toastul', dots:3 },
+      { bg:'linear-gradient(135deg,#1e3d1a,#2d6025)', ico:'🥙', ora:'🌿 Gustare · 10:30', spill:'Proaspăt', tip:'Gustare', nume:'Wrap cu Brânză & Legume Coapte', desc:'Tortilla, brânză de vacă, ardei copt, dovlecel, ceapă caramelizată, sos de iaurt.', kcal:300, prot:'14g', carb:'34g', gras:'10g', cafea:'Capriccio · Int. 5', cafea_sub:'Acid fin, completează legumele', dots:3 },
+      { bg:'linear-gradient(135deg,#2a1500,#5a2a00)', ico:'🍲', ora:'🍽️ Prânz', spill:'Vacuum', tip:'Fel Principal', nume:'Ciorbă Rădăuțeană cu Smântână', desc:'Ciorbă de pui cu smântână și usturoi, în stil Rădăuți. Servită fierbinte, vacuum sigilată.', kcal:380, prot:'24g', carb:'22g', gras:'20g', cafea:'Capriccio · Int. 5', cafea_sub:'Acid fin, completează ciorba cremoasă', dots:3 },
+      { bg:'linear-gradient(135deg,#3a2800,#6a4a10)', ico:'🥪', ora:'🥙 Gustare · 16:30', spill:'Proaspăt', tip:'Gustare Rapidă', nume:'Sendviș Club cu Pui & Bacon', desc:'Pâine toast, pui grătar, bacon crocant, roșii, salată verde, maioneză.', kcal:380, prot:'26g', carb:'30g', gras:'16g', cafea:'Livanto · Int. 6', cafea_sub:'Caramel, completează baconul', dots:3 },
+      { bg:'linear-gradient(135deg,#1a2e10,#2a5018)', ico:'🍝', ora:'🌙 Cină', spill:'Vacuum', tip:'Cina de Drum', nume:'Paste Bolognese cu Parmezan', desc:'Paste tagliatelle, sos bolognese din carne de vită locală, roșii, vin roșu, parmezan ras.', kcal:540, prot:'32g', carb:'58g', gras:'16g', cafea:'Ristretto · Int. 9', cafea_sub:'Corp bun, completează pastele', dots:4 },
+      { bg:'linear-gradient(135deg,#2e1000,#5a2200)', ico:'🍩', ora:'🍮 Desert la Doză', spill:'Capsată + Doză', tip:'Desert', nume:'Gogoși Tradiționale cu Gem de Caise', desc:'Gogoși pufoas de casă, zahăr pudră cu vanilie, gem de caise. Capsate cu Livanto.', kcal:340, prot:'7g', carb:'56g', gras:'10g', cafea:'Livanto · Int. 6', cafea_sub:'Caramel blând, perfect cu gogoșile', dots:4 },
+    ],
+    2000: [
+      { bg:'linear-gradient(135deg,#1a3028,#2a5040)', ico:'🍳', ora:'☀️ Mic Dejun', spill:'Proaspăt', tip:'Mic Dejun Consistent', nume:'Mic Dejun Englezesc Complet', desc:'Ouă scramble, cârnați, bacon, roșii la tigaie, fasole boabe, toast. Clasic internațional.', kcal:560, prot:'30g', carb:'40g', gras:'28g', cafea:'Roma · Int. 8', cafea_sub:'Corp bun, dimineata consistentă', dots:4 },
+      { bg:'linear-gradient(135deg,#1e3d1a,#2d6025)', ico:'🥙', ora:'🌿 Gustare · 10:30', spill:'Proaspăt', tip:'Gustare', nume:'Wrap cu Brânză & Legume Coapte', desc:'Tortilla, brânză de vacă, ardei copt, dovlecel, ceapă caramelizată, sos de iaurt.', kcal:300, prot:'14g', carb:'34g', gras:'10g', cafea:'Capriccio · Int. 5', cafea_sub:'Acid fin, completează legumele', dots:3 },
+      { bg:'linear-gradient(135deg,#2a1500,#5a2a00)', ico:'🥩', ora:'🍽️ Prânz', spill:'Vacuum', tip:'Fel Principal', nume:'Friptură de Vită cu Legume la Grătar', desc:'Mușchi de vită din fermă locală, ardei grași, dovlecel, ceapă roșie, sos de roșii.', kcal:580, prot:'46g', carb:'28g', gras:'28g', cafea:'Indriya · Int. 10', cafea_sub:'Intens, amplifică vita', dots:5 },
+      { bg:'linear-gradient(135deg,#3a2800,#6a4a10)', ico:'🥪', ora:'🥙 Gustare · 16:30', spill:'Proaspăt', tip:'Gustare Rapidă', nume:'Sendviș Club cu Pui & Bacon', desc:'Pâine toast, pui grătar, bacon crocant, roșii, salată verde, maioneză.', kcal:380, prot:'26g', carb:'30g', gras:'16g', cafea:'Livanto · Int. 6', cafea_sub:'Caramel, completează baconul', dots:3 },
+      { bg:'linear-gradient(135deg,#1a2e10,#2a5018)', ico:'🍝', ora:'🌙 Cină', spill:'Vacuum', tip:'Cina de Drum', nume:'Paste Carbonara cu Guanciale', desc:'Paste spaghetti, guanciale afumat, ouă de curte, parmezan, piper negru. Cremă autentică.', kcal:640, prot:'30g', carb:'56g', gras:'32g', cafea:'Ristretto · Int. 9', cafea_sub:'Corp bun, completează carbonara', dots:4 },
+      { bg:'linear-gradient(135deg,#2e1000,#5a2200)', ico:'🍫', ora:'🍮 Desert la Doză', spill:'Capsată + Doză', tip:'Desert', nume:'Brownie cu Nucă & Caramel', desc:'Brownie cald de ciocolată neagră, nucă tocată, sos de caramel. Capsată cu Kazaar.', kcal:400, prot:'8g', carb:'46g', gras:'20g', cafea:'Kazaar · Int. 12', cafea_sub:'Maxim intens, amplifică ciocolata', dots:5 },
+    ],
+    2500: [
+      { bg:'linear-gradient(135deg,#1a3028,#2a5040)', ico:'🍳', ora:'☀️ Mic Dejun', spill:'Proaspăt', tip:'Mic Dejun Sport', nume:'Platou XXL cu Extra Ouă & Bacon', desc:'4 ouă ochiuri, bacon, cârnați afumați, brânză galbenă, pâine de casă, roșii, castraveți.', kcal:700, prot:'44g', carb:'38g', gras:'40g', cafea:'Roma · Int. 8', cafea_sub:'Corp echilibrat, dimineata sport', dots:4 },
+      { bg:'linear-gradient(135deg,#1e3d1a,#2d6025)', ico:'🥙', ora:'🌿 Gustare · 10:30', spill:'Proaspăt', tip:'Gustare Proteică', nume:'Wrap Dublu cu Pui & Brânză', desc:'2 tortilla, pui grătar dublu, brânză galbenă, salată verde, roșii, sos de iaurt. 40g proteină.', kcal:520, prot:'40g', carb:'44g', gras:'18g', cafea:'Capriccio · Int. 5', cafea_sub:'Acid fin, completează puiul', dots:3 },
+      { bg:'linear-gradient(135deg,#2a1500,#5a2a00)', ico:'🥩', ora:'🍽️ Prânz', spill:'Vacuum', tip:'Prânz Sport', nume:'Grătar Mixt + Paste', desc:'Cotlet de porc, mici, cârnați, paste cu unt și parmezan, salată de roșii. Total drum.', kcal:860, prot:'58g', carb:'64g', gras:'38g', cafea:'Indriya · Int. 10', cafea_sub:'Maxim intens, perfect cu grătarul', dots:5 },
+      { bg:'linear-gradient(135deg,#3a2800,#6a4a10)', ico:'🥪', ora:'🥙 Gustare · 16:30', spill:'Proaspăt', tip:'Gustare Sport', nume:'Sendviș Triplu cu Pui, Bacon & Ou', desc:'3 felii pâine toast, pui grătar, bacon, ou fiert, brânză, roșii. Maxim sațios.', kcal:480, prot:'34g', carb:'36g', gras:'22g', cafea:'Livanto · Int. 6', cafea_sub:'Caramel, completează combinatia', dots:3 },
+      { bg:'linear-gradient(135deg,#1a2e10,#2a5018)', ico:'🍲', ora:'🌙 Cină', spill:'Vacuum', tip:'Cina Sport', nume:'Friptură Dublă de Porc + Sarmale + Mămăligă', desc:'2 cotlete de porc grătar, 2 sarmale mari, mămăligă cu brânză, smântână.', kcal:920, prot:'62g', carb:'56g', gras:'46g', cafea:'Ristretto · Int. 10', cafea_sub:'Intens, curăță după cina grea', dots:5 },
+      { bg:'linear-gradient(135deg,#2e1000,#5a2200)', ico:'🎂', ora:'🍮 Desert la Doză', spill:'Capsată + Doză', tip:'Desert Sport', nume:'Brownie XXL + Tort cu Nucă', desc:'Brownie dublu cu nucă și caramel, tort cu cremă de unt. Capsate cu Kazaar.', kcal:520, prot:'12g', carb:'60g', gras:'26g', cafea:'Kazaar · Int. 12', cafea_sub:'Maxim intens, taie dulceața', dots:5 },
+    ]
+  },
+  3: { // Joi
+    1000: [
+      { bg:'linear-gradient(135deg,#2a1a08,#5a380a)', ico:'🥞', ora:'☀️ Mic Dejun', spill:'Proaspăt', tip:'Mic Dejun', nume:'Clătite cu Smântână & Gem de Vișine', desc:'2 clătite subțiri de casă, smântână grasă, gem de vișine. Dulce și reconfortant.', kcal:310, prot:'8g', carb:'44g', gras:'10g', cafea:'Volluto · Int. 4', cafea_sub:'Blând, perfectă cu clătitele dulci', dots:3 },
+      { bg:'linear-gradient(135deg,#1e2a18,#304a28)', ico:'🍲', ora:'🍽️ Prânz', spill:'Vacuum', tip:'Fel Principal', nume:'Ciorbă de Perișoare cu Leuștean', desc:'Perișoare de porc și vită, orez, leuștean proaspăt, borș de casă. Tradițional și sățios.', kcal:400, prot:'26g', carb:'34g', gras:'16g', cafea:'Ristretto · Int. 9', cafea_sub:'Corp bun, curăță după ciorbă', dots:4 },
+      { bg:'linear-gradient(135deg,#2e1000,#5a2200)', ico:'🍰', ora:'🍮 Desert la Doză', spill:'Capsată + Doză', tip:'Desert', nume:'Ruladă cu Gem de Caise', desc:'Ruladă de casă cu gem de caise din livadă proprie, frișcă naturală. Capsată cu Volluto.', kcal:330, prot:'6g', carb:'52g', gras:'12g', cafea:'Volluto · Int. 4', cafea_sub:'Blând, lasă caisele în față', dots:3 },
+    ],
+    1500: [
+      { bg:'linear-gradient(135deg,#2a1a08,#5a380a)', ico:'🥞', ora:'☀️ Mic Dejun', spill:'Proaspăt', tip:'Mic Dejun', nume:'Clătite cu Smântână & Gem de Vișine', desc:'2 clătite subțiri de casă, smântână grasă, gem de vișine.', kcal:310, prot:'8g', carb:'44g', gras:'10g', cafea:'Volluto · Int. 4', cafea_sub:'Blând, perfectă cu clătitele', dots:3 },
+      { bg:'linear-gradient(135deg,#1e3d1a,#2d6025)', ico:'🥗', ora:'🌿 Gustare · 10:30', spill:'Proaspăt', tip:'Gustare', nume:'Salată Grecească cu Brânză Feta', desc:'Roșii, castraveți, măsline negre, ceapă roșie, brânză feta, ulei de măsline, oregano.', kcal:260, prot:'10g', carb:'14g', gras:'18g', cafea:'Capriccio · Int. 5', cafea_sub:'Acid fin, completează salata', dots:3 },
+      { bg:'linear-gradient(135deg,#1e2a18,#304a28)', ico:'🍲', ora:'🍽️ Prânz', spill:'Vacuum', tip:'Fel Principal', nume:'Ciorbă de Perișoare cu Leuștean', desc:'Perișoare de porc și vită, orez, leuștean proaspăt, borș de casă.', kcal:400, prot:'26g', carb:'34g', gras:'16g', cafea:'Ristretto · Int. 9', cafea_sub:'Corp bun, curăță după ciorbă', dots:4 },
+      { bg:'linear-gradient(135deg,#3a2800,#6a4a10)', ico:'🥪', ora:'🥙 Gustare · 16:30', spill:'Proaspăt', tip:'Gustare Rapidă', nume:'Sendviș cu Brânză & Muștar de Dijon', desc:'Pâine de casă, brânză galbenă, muștar de Dijon, roșii, castraveți. Simplu și bun.', kcal:290, prot:'14g', carb:'30g', gras:'12g', cafea:'Livanto · Int. 6', cafea_sub:'Caramel ușor, completează brânza', dots:3 },
+      { bg:'linear-gradient(135deg,#1a2e10,#2a5018)', ico:'🥩', ora:'🌙 Cină', spill:'Vacuum', tip:'Cina de Drum', nume:'Pui la Grătar cu Cartofi Prăjiți', desc:'Piept de pui marinat în ierburi, grătar cu lemn de fag, cartofi aurii la tigaie, mujdei.', kcal:500, prot:'40g', carb:'42g', gras:'16g', cafea:'Indriya · Int. 10', cafea_sub:'Condimentat, amplifică puiul grătar', dots:5 },
+      { bg:'linear-gradient(135deg,#2e1000,#5a2200)', ico:'🍰', ora:'🍮 Desert la Doză', spill:'Capsată + Doză', tip:'Desert', nume:'Ruladă cu Gem de Caise', desc:'Ruladă de casă cu gem de caise din livadă proprie, frișcă naturală. Capsată cu Volluto.', kcal:330, prot:'6g', carb:'52g', gras:'12g', cafea:'Volluto · Int. 4', cafea_sub:'Blând, lasă caisele în față', dots:3 },
+    ],
+    2000: [
+      { bg:'linear-gradient(135deg,#2a1a08,#5a380a)', ico:'🍳', ora:'☀️ Mic Dejun', spill:'Proaspăt', tip:'Mic Dejun Consistent', nume:'Tochitura cu Ouă & Mămăligă', desc:'Carne de porc amestecată, cârnați afumați, 2 ouă ochiuri, mămăligă, brânză rasă.', kcal:580, prot:'34g', carb:'42g', gras:'30g', cafea:'Roma · Int. 8', cafea_sub:'Corp bun, dimineata tradițională', dots:4 },
+      { bg:'linear-gradient(135deg,#1e3d1a,#2d6025)', ico:'🥗', ora:'🌿 Gustare · 10:30', spill:'Proaspăt', tip:'Gustare', nume:'Salată Grecească cu Brânză Feta', desc:'Roșii, castraveți, măsline negre, ceapă roșie, brânză feta, ulei de măsline, oregano.', kcal:260, prot:'10g', carb:'14g', gras:'18g', cafea:'Capriccio · Int. 5', cafea_sub:'Acid fin, completează salata', dots:3 },
+      { bg:'linear-gradient(135deg,#1e2a18,#304a28)', ico:'🥩', ora:'🍽️ Prânz', spill:'Vacuum', tip:'Fel Principal', nume:'Cotlet de Porc cu Varză Murată', desc:'Cotlet de porc din fermă locală, varză murată cu chimen, mujdei de usturoi, mămăligă.', kcal:620, prot:'42g', carb:'38g', gras:'28g', cafea:'Indriya · Int. 10', cafea_sub:'Condimentat, perfect cu varza murată', dots:5 },
+      { bg:'linear-gradient(135deg,#3a2800,#6a4a10)', ico:'🥪', ora:'🥙 Gustare · 16:30', spill:'Proaspăt', tip:'Gustare Rapidă', nume:'Sendviș cu Brânză & Muștar de Dijon', desc:'Pâine de casă, brânză galbenă, muștar de Dijon, roșii, castraveți.', kcal:290, prot:'14g', carb:'30g', gras:'12g', cafea:'Livanto · Int. 6', cafea_sub:'Caramel ușor, completează brânza', dots:3 },
+      { bg:'linear-gradient(135deg,#1a2e10,#2a5018)', ico:'🍲', ora:'🌙 Cină', spill:'Vacuum', tip:'Cina de Drum', nume:'Fasole cu Ciolan & Pâine de Casă', desc:'Fasole boabe cu ciolan afumat, ceapă, boia dulce, roșii. Pâine de casă cu maia.', kcal:620, prot:'40g', carb:'56g', gras:'22g', cafea:'Fortissio · Int. 8', cafea_sub:'Puternic, taie grăsimea ciolanului', dots:4 },
+      { bg:'linear-gradient(135deg,#2e1000,#5a2200)', ico:'🍰', ora:'🍮 Desert la Doză', spill:'Capsată + Doză', tip:'Desert', nume:'Cheesecake cu Fructe de Pădure', desc:'Cheesecake cremos cu afine și zmeură, biscuiți digestivi. Capsată cu Ristretto.', kcal:380, prot:'8g', carb:'46g', gras:'18g', cafea:'Ristretto · Int. 9', cafea_sub:'Corp bun, completează cheesecake-ul', dots:4 },
+    ],
+    2500: [
+      { bg:'linear-gradient(135deg,#2a1a08,#5a380a)', ico:'🍳', ora:'☀️ Mic Dejun', spill:'Proaspăt', tip:'Mic Dejun Sport', nume:'Tochitura XXL + 3 Ouă + Mămăligă Mare', desc:'Carne de porc, cârnați afumați, 3 ouă ochiuri, mămăligă mare, brânză rasă, smântână.', kcal:720, prot:'46g', carb:'50g', gras:'38g', cafea:'Roma · Int. 8', cafea_sub:'Corp echilibrat, dimineata sport', dots:4 },
+      { bg:'linear-gradient(135deg,#1e3d1a,#2d6025)', ico:'🥗', ora:'🌿 Gustare · 10:30', spill:'Proaspăt', tip:'Gustare Proteică', nume:'Salată Cesar cu Pui Grătar & Parmezan', desc:'Salată verde, piept de pui grătar, parmezan ras, crutoane, sos cesar. Clasic și proteic.', kcal:380, prot:'28g', carb:'24g', gras:'18g', cafea:'Capriccio · Int. 5', cafea_sub:'Ușor acid, completează salata cesar', dots:3 },
+      { bg:'linear-gradient(135deg,#1e2a18,#304a28)', ico:'🥩', ora:'🍽️ Prânz', spill:'Vacuum', tip:'Prânz Sport', nume:'Platou: Friptură de Porc + Ciolan + Mămăligă', desc:'Cotlet de porc grătar, ciolan fiert cu varză, mămăligă cu brânză. Total sățios.', kcal:860, prot:'62g', carb:'54g', gras:'42g', cafea:'Indriya · Int. 10', cafea_sub:'Maxim intens, perfect cu carnea grasă', dots:5 },
+      { bg:'linear-gradient(135deg,#3a2800,#6a4a10)', ico:'🥪', ora:'🥙 Gustare · 16:30', spill:'Proaspăt', tip:'Gustare Sport', nume:'Sendviș Triplu Proteic', desc:'3 felii pâine, pui grătar dublu, brânză, ou fiert, muștar, roșii. 40g proteină.', kcal:480, prot:'40g', carb:'34g', gras:'20g', cafea:'Livanto · Int. 6', cafea_sub:'Caramel, completează combinatia', dots:3 },
+      { bg:'linear-gradient(135deg,#1a2e10,#2a5018)', ico:'🍲', ora:'🌙 Cină', spill:'Vacuum', tip:'Cina Sport', nume:'Fasole + Cârnați + Cotlet + Mămăligă', desc:'Fasole cu cârnați afumați, cotlet de porc grătar, varză murată, mămăligă, pâine.', kcal:920, prot:'60g', carb:'64g', gras:'44g', cafea:'Ristretto · Int. 10', cafea_sub:'Intens, curăță după cina grea', dots:5 },
+      { bg:'linear-gradient(135deg,#2e1000,#5a2200)', ico:'🎂', ora:'🍮 Desert la Doză', spill:'Capsată + Doză', tip:'Desert Sport', nume:'Cheesecake Dublu + Brownie', desc:'Cheesecake cu fructe + brownie cu nucă. Capsate împreună cu Kazaar. Dublu răsfăț.', kcal:520, prot:'12g', carb:'60g', gras:'26g', cafea:'Kazaar · Int. 12', cafea_sub:'Maxim intens, taie dulceața', dots:5 },
+    ]
+  },
+  4: { // Vineri
+    1000: [
+      { bg:'linear-gradient(135deg,#1a2830,#2a4050)', ico:'🥐', ora:'☀️ Mic Dejun', spill:'Proaspăt', tip:'Mic Dejun', nume:'Croissant cu Unt & Gem de Căpșuni', desc:'Croissant crocant de casă, unt de fermă, gem artizanal de căpșuni. Perfect cu espresso.', kcal:290, prot:'6g', carb:'44g', gras:'10g', cafea:'Volluto · Int. 4', cafea_sub:'Blând, perfectă cu croissantul', dots:3 },
+      { bg:'linear-gradient(135deg,#2a1500,#5a2a00)', ico:'🐟', ora:'🍽️ Prânz', spill:'Vacuum', tip:'Tradiție de Vineri', nume:'Crap Pane cu Mămăligă & Mujdei', desc:'Crap de lac local, panat în pesmet de casă, mămăligă, mujdei de usturoi. Tradiție de vineri.', kcal:440, prot:'32g', carb:'38g', gras:'16g', cafea:'Capriccio · Int. 5', cafea_sub:'Acid fin, completează peștele', dots:3 },
+      { bg:'linear-gradient(135deg,#2e1000,#5a2200)', ico:'🎂', ora:'🍮 Desert la Doză', spill:'Capsată + Doză', tip:'Desert de Weekend', nume:'Tort cu Frișcă & Căpșuni', desc:'Tort de casă cu frișcă naturală și căpșuni. Capsată cu Volluto. Bun start de weekend.', kcal:360, prot:'7g', carb:'50g', gras:'16g', cafea:'Volluto · Int. 4', cafea_sub:'Blând, lasă căpșunile în față', dots:3 },
+    ],
+    1500: [
+      { bg:'linear-gradient(135deg,#1a2830,#2a4050)', ico:'🥐', ora:'☀️ Mic Dejun', spill:'Proaspăt', tip:'Mic Dejun', nume:'Croissant cu Unt & Gem de Căpșuni', desc:'Croissant crocant de casă, unt de fermă, gem artizanal de căpșuni.', kcal:290, prot:'6g', carb:'44g', gras:'10g', cafea:'Volluto · Int. 4', cafea_sub:'Blând, perfectă cu croissantul', dots:3 },
+      { bg:'linear-gradient(135deg,#1e3d1a,#2d6025)', ico:'🥗', ora:'🌿 Gustare · 10:30', spill:'Proaspăt', tip:'Gustare', nume:'Salată Cesar cu Pui Grătar', desc:'Salată verde, pui grătar, parmezan ras, crutoane, sos cesar. Ușor și sățios.', kcal:280, prot:'22g', carb:'18g', gras:'14g', cafea:'Capriccio · Int. 5', cafea_sub:'Acid fin, completează salata', dots:3 },
+      { bg:'linear-gradient(135deg,#2a1500,#5a2a00)', ico:'🐟', ora:'🍽️ Prânz', spill:'Vacuum', tip:'Tradiție de Vineri', nume:'Crap Pane cu Mămăligă & Mujdei', desc:'Crap de lac local, panat în pesmet de casă, mămăligă, mujdei de usturoi.', kcal:440, prot:'32g', carb:'38g', gras:'16g', cafea:'Capriccio · Int. 5', cafea_sub:'Acid fin, completează peștele', dots:3 },
+      { bg:'linear-gradient(135deg,#3a2800,#6a4a10)', ico:'🥪', ora:'🥙 Gustare · 16:30', spill:'Proaspăt', tip:'Gustare de Seară', nume:'Sendviș cu Somon Afumat & Cremă de Brânză', desc:'Pâine toast, cremă de brânză, somon afumat, castraveți, capere, lămâie. Rafinat.', kcal:320, prot:'18g', carb:'26g', gras:'16g', cafea:'Livanto · Int. 6', cafea_sub:'Caramel blând, completează somonul', dots:4 },
+      { bg:'linear-gradient(135deg,#1a2e10,#2a5018)', ico:'🥩', ora:'🌙 Cină', spill:'Vacuum', tip:'Cina de Weekend', nume:'Mici cu Muștar & Cartofi Prăjiți', desc:'Mici din vită și porc, muștar, cartofi prăjiți, salată de varză. Vineri clasic românesc.', kcal:620, prot:'38g', carb:'52g', gras:'26g', cafea:'Ristretto · Int. 9', cafea_sub:'Corp bun, completează micii', dots:4 },
+      { bg:'linear-gradient(135deg,#2e1000,#5a2200)', ico:'🎂', ora:'🍮 Desert la Doză', spill:'Capsată + Doză', tip:'Desert de Weekend', nume:'Tort cu Frișcă & Căpșuni', desc:'Tort de casă cu frișcă naturală și căpșuni. Capsată cu Volluto.', kcal:360, prot:'7g', carb:'50g', gras:'16g', cafea:'Volluto · Int. 4', cafea_sub:'Blând, lasă căpșunile în față', dots:3 },
+    ],
+    2000: [
+      { bg:'linear-gradient(135deg,#1a2830,#2a4050)', ico:'🍳', ora:'☀️ Mic Dejun', spill:'Proaspăt', tip:'Mic Dejun de Vineri', nume:'Omletă cu Bacon, Brânză & Ciuperci', desc:'3 ouă de curte, bacon crocant, brânză topită, ciuperci sautéed. Puternic și sățios.', kcal:540, prot:'32g', carb:'14g', gras:'38g', cafea:'Roma · Int. 8', cafea_sub:'Corp bun, diminineata de vineri', dots:4 },
+      { bg:'linear-gradient(135deg,#1e3d1a,#2d6025)', ico:'🥗', ora:'🌿 Gustare · 10:30', spill:'Proaspăt', tip:'Gustare', nume:'Salată Cesar cu Pui Grătar', desc:'Salată verde, pui grătar, parmezan ras, crutoane, sos cesar.', kcal:280, prot:'22g', carb:'18g', gras:'14g', cafea:'Capriccio · Int. 5', cafea_sub:'Acid fin, completează salata', dots:3 },
+      { bg:'linear-gradient(135deg,#2a1500,#5a2a00)', ico:'🐟', ora:'🍽️ Prânz', spill:'Vacuum', tip:'Tradiție de Vineri', nume:'Plachie de Crap cu Legume & Mămăligă', desc:'Crap de lac, roșii, ardei, usturoi, vin alb, mămăligă. Rețetă autentică românească.', kcal:560, prot:'38g', carb:'44g', gras:'18g', cafea:'Indriya · Int. 10', cafea_sub:'Condimentat, perfect cu peștele', dots:5 },
+      { bg:'linear-gradient(135deg,#3a2800,#6a4a10)', ico:'🥪', ora:'🥙 Gustare · 16:30', spill:'Proaspăt', tip:'Gustare', nume:'Sendviș cu Somon Afumat & Cremă de Brânză', desc:'Pâine toast, cremă de brânză, somon afumat, castraveți, capere, lămâie.', kcal:320, prot:'18g', carb:'26g', gras:'16g', cafea:'Livanto · Int. 6', cafea_sub:'Caramel blând, completează somonul', dots:4 },
+      { bg:'linear-gradient(135deg,#1a2e10,#2a5018)', ico:'🥩', ora:'🌙 Cină', spill:'Vacuum', tip:'Cina de Weekend', nume:'Platou Grătar Complet de Vineri', desc:'Cotlet de porc, mici, cârnați, salată de roșii și ceapă, muștar, pâine de casă.', kcal:720, prot:'50g', carb:'42g', gras:'36g', cafea:'Ristretto · Int. 10', cafea_sub:'Intens, perfect cu grătarul de vineri', dots:5 },
+      { bg:'linear-gradient(135deg,#2e1000,#5a2200)', ico:'🎂', ora:'🍮 Desert la Doză', spill:'Capsată + Doză', tip:'Desert de Weekend', nume:'Tort Special de Vineri cu Frișcă', desc:'Tort special de vineri — frișcă, căpșuni, ciocolată neagră. Capsată cu Kazaar.', kcal:420, prot:'8g', carb:'54g', gras:'20g', cafea:'Kazaar · Int. 12', cafea_sub:'Maxim intens, amplifica tortul', dots:5 },
+    ],
+    2500: [
+      { bg:'linear-gradient(135deg,#1a2830,#2a4050)', ico:'🍳', ora:'☀️ Mic Dejun', spill:'Proaspăt', tip:'Mic Dejun Sport Vineri', nume:'Platou Festiv: 4 Ouă + Bacon + Cârnați', desc:'4 ouă ochiuri, bacon, cârnați afumați, brânză, roșii la tigaie, pâine de casă.', kcal:740, prot:'48g', carb:'36g', gras:'46g', cafea:'Roma · Int. 8', cafea_sub:'Corp echilibrat, dimineata sport', dots:4 },
+      { bg:'linear-gradient(135deg,#1e3d1a,#2d6025)', ico:'🥗', ora:'🌿 Gustare · 10:30', spill:'Proaspăt', tip:'Gustare Proteică', nume:'Salată cu Somon Grătar & Avocado', desc:'Salată verde, somon grătar, avocado, roșii cherry, sos de lămâie. Omega-3 maxim.', kcal:420, prot:'30g', carb:'16g', gras:'26g', cafea:'Capriccio · Int. 5', cafea_sub:'Acid fin, completează somonul', dots:3 },
+      { bg:'linear-gradient(135deg,#2a1500,#5a2a00)', ico:'🥩', ora:'🍽️ Prânz', spill:'Vacuum', tip:'Prânz Sport Vineri', nume:'Grătar Festiv: Mici + Cotlet + Cârnați + Crap', desc:'3 mici, cotlet de porc, cârnați de casă, crap pane, mămăligă, salată. Total festiv.', kcal:900, prot:'64g', carb:'54g', gras:'44g', cafea:'Indriya · Int. 10', cafea_sub:'Maxim intens, perfect cu platoul', dots:5 },
+      { bg:'linear-gradient(135deg,#3a2800,#6a4a10)', ico:'🥙', ora:'🥙 Gustare · 16:30', spill:'Proaspăt', tip:'Gustare Sport', nume:'Wrap Dublu cu Somon & Avocado', desc:'2 tortilla, somon afumat, avocado, salată verde, sos de iaurt cu lime. 36g proteină.', kcal:500, prot:'36g', carb:'40g', gras:'22g', cafea:'Livanto · Int. 6', cafea_sub:'Caramel, completează somonul', dots:4 },
+      { bg:'linear-gradient(135deg,#1a2e10,#2a5018)', ico:'🍲', ora:'🌙 Cină', spill:'Vacuum', tip:'Cina de Weekend', nume:'Platou Festiv: Friptură + Sarmale + Mici', desc:'Cotlet de vită, 2 sarmale, 3 mici, cartofi, salată de varză, mujdei, pâine.', kcal:980, prot:'68g', carb:'62g', gras:'50g', cafea:'Ristretto · Int. 10', cafea_sub:'Intens, curăță după festin', dots:5 },
+      { bg:'linear-gradient(135deg,#2e1000,#5a2200)', ico:'🎂', ora:'🍮 Desert la Doză', spill:'Capsată + Doză', tip:'Desert Festiv', nume:'Tort + Gogoși + Brownie la Pachet', desc:'Tort cu frișcă + 2 gogoși + brownie cu nucă. Festin de desert de vineri. Capsate cu Kazaar.', kcal:560, prot:'12g', carb:'68g', gras:'26g', cafea:'Kazaar · Int. 12', cafea_sub:'Maxim intens, taie dulceața festinului', dots:5 },
+    ]
   }
-});
-</script>
-</body>
-</html>
+};
+
+// ═══════════════════════════════════════════
+// STATE + RENDER
+// ═══════════════════════════════════════════
+var currentDay = 0;
+var currentKcal = 1500;
+var kcalMap = [1000, 1500, 2000, 2500];
+
+function makeDots(n) {
+  var html = '<div class="ps-dots">';
+  for (var i = 0; i < 5; i++) {
+    html += '<div class="dot" style="background:' + (i < n ? 'var(--t3)' : 'rgba(255,255,255,.15)') + '"></div>';
+  }
+  return html + '</div>';
+}
+
+function renderMenu() {
+  var grid = document.querySelector('.menu-grid');
+  if (!grid) return;
+  var items = (MENIU[currentDay] || {})[currentKcal] || [];
+  if (!items.length) {
+    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--tx3)">Meniu în pregătire.</div>';
+    return;
+  }
+  grid.innerHTML = items.map(function(m) {
+    var isDesert = m.ora.indexOf('Desert') !== -1;
+    return '<div class="mc">' +
+      '<div class="mc-top" style="background:' + m.bg + '">' +
+        m.ico +
+        '<div class="mc-lbl">' +
+          '<span class="mc-lbl-txt">' + m.ora + '</span>' +
+          '<span class="mc-spill">' + m.spill + '</span>' +
+        '</div>' +
+      '</div>' +
+      '<div class="mc-body">' +
+        '<div class="mc-type">' + m.tip + '</div>' +
+        '<div class="mc-name">' + m.nume + '</div>' +
+        '<p class="mc-desc">' + m.desc + '</p>' +
+        '<div class="macro-block">' +
+          '<div class="macro-cell m-kcal"><div class="macro-val">' + m.kcal + '</div><div class="macro-lbl">kcal</div></div>' +
+          '<div class="macro-cell m-prot"><div class="macro-val">' + m.prot + '</div><div class="macro
