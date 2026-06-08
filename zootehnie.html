@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Apiculture Suite | DAKAMIGOS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --gold: #d97706;
+            --dark: #0f172a;
+            --bg: #020617;
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background: radial-gradient(circle at top right, #1e293b, #020617);
+            font-family: 'Inter', sans-serif;
+            color: #f1f5f9;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .presentation-deck {
+            width: 100%;
+            max-width: 900px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 40px 60px rgba(0,0,0,0.5);
+            position: relative;
+        }
+
+        .slide { display: none; animation: fadeIn 0.6s ease; }
+        .slide.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        h1 { font-size: 2.5rem; background: linear-gradient(to right, #fbbf24, #d97706); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px; }
+        
+        .quiz-option {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 15px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 10px;
+            display: flex; align-items: center; gap: 15px;
+        }
+
+        .quiz-option:hover { background: var(--gold); color: white; }
+
+        .btn-main {
+            background: var(--gold);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .btn-main:hover { transform: scale(1.05); }
+
+        .stat-card {
+            background: rgba(217, 119, 6, 0.1);
+            padding: 20px;
+            border-radius: 16px;
+            border: 1px solid var(--gold);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="presentation-deck">
+        <div class="slide active" id="s1">
+            <h1>Planul Tău de Finanțare</h1>
+            <p>Evaluare profesională pentru fonduri europene apicole.</p>
+            <button class="btn-main" onclick="nextSlide(2)" style="margin-top: 30px;">Începe Analiza</button>
+        </div>
+
+        <div class="slide" id="s2">
+            <h2>Date Tehnice</h2>
+            <div id="quizContent">
+                <p>1. Locația vetrei?</p>
+                <div class="quiz-option" onclick="selectOpt('Rural')">Rural</div>
+                <div class="quiz-option" onclick="selectOpt('Urban')">Urban</div>
+            </div>
+        </div>
+
+        </div>
+
+    <script>
+        function nextSlide(n) {
+            document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
+            document.getElementById('s' + n).classList.add('active');
+        }
+    </script>
+</body>
+</html>
