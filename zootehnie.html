@@ -3,108 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Apiculture Suite | DAKAMIGOS</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Analiză Eligibilitate DR-30 Premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --gold: #d97706;
-            --dark: #0f172a;
-            --bg: #020617;
-            --glass: rgba(255, 255, 255, 0.05);
+            --bg-deep: #020617;
+            --card-bg: rgba(30, 41, 59, 0.6);
+            --text: #f1f5f9;
         }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            background: radial-gradient(circle at top right, #1e293b, #020617);
-            font-family: 'Inter', sans-serif;
-            color: #f1f5f9;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .presentation-deck {
-            width: 100%;
-            max-width: 900px;
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            padding: 40px;
-            box-shadow: 0 40px 60px rgba(0,0,0,0.5);
-            position: relative;
-        }
-
-        .slide { display: none; animation: fadeIn 0.6s ease; }
-        .slide.active { display: block; }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        h1 { font-size: 2.5rem; background: linear-gradient(to right, #fbbf24, #d97706); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 20px; }
-        
-        .quiz-option {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 15px 20px;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin-bottom: 10px;
-            display: flex; align-items: center; gap: 15px;
-        }
-
-        .quiz-option:hover { background: var(--gold); color: white; }
-
-        .btn-main {
-            background: var(--gold);
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-
-        .btn-main:hover { transform: scale(1.05); }
-
-        .stat-card {
-            background: rgba(217, 119, 6, 0.1);
-            padding: 20px;
-            border-radius: 16px;
-            border: 1px solid var(--gold);
-            text-align: center;
-        }
+        body { background-color: var(--bg-deep); color: var(--text); font-family: 'Plus Jakarta Sans', sans-serif; display: flex; justify-content: center; padding: 40px 20px; }
+        .container { width: 100%; max-width: 700px; background: var(--card-bg); backdrop-filter: blur(20px); padding: 50px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.1); }
+        h1 { color: #fbbf24; font-size: 2rem; margin-bottom: 10px; }
+        .desc { opacity: 0.7; margin-bottom: 40px; }
+        .q-box { margin-bottom: 25px; padding: 25px; background: rgba(0,0,0,0.2); border-radius: 16px; border: 1px solid rgba(255,255,255,0.05); }
+        .calc-box { border: 2px solid var(--gold); }
+        label { display: block; margin: 10px 0; padding: 12px; border: 1px solid #334155; border-radius: 8px; cursor: pointer; transition: 0.3s; }
+        label:hover { border-color: var(--gold); background: rgba(217, 119, 6, 0.15); }
+        input[type="text"], input[type="number"], select { width: 100%; padding: 15px; margin-top: 8px; border-radius: 10px; border: 1px solid #334155; background: #0f172a; color: white; }
+        .so-result { font-size: 1.5rem; font-weight: 800; color: #fbbf24; text-align: center; margin: 20px 0; }
+        button { width: 100%; padding: 20px; background: #25D366; color: white; border: none; border-radius: 14px; font-weight: 800; cursor: pointer; font-size: 1.1rem; }
+        button:hover { background: #128C7E; transform: translateY(-2px); }
     </style>
 </head>
 <body>
 
-    <div class="presentation-deck">
-        <div class="slide active" id="s1">
-            <h1>Planul Tău de Finanțare</h1>
-            <p>Evaluare profesională pentru fonduri europene apicole.</p>
-            <button class="btn-main" onclick="nextSlide(2)" style="margin-top: 30px;">Începe Analiza</button>
+<div class="container">
+    <h1>Analiză Avansată DR-30</h1>
+    <p class="desc">Verifică eligibilitatea fermei tale conform Ghidului Solicitantului.</p>
+
+    <form id="dr30Form">
+        <div class="q-box">
+            <label>Nume complet:</label>
+            <input type="text" id="nume" placeholder="Nume și Prenume">
         </div>
 
-        <div class="slide" id="s2">
-            <h2>Date Tehnice</h2>
-            <div id="quizContent">
-                <p>1. Locația vetrei?</p>
-                <div class="quiz-option" onclick="selectOpt('Rural')">Rural</div>
-                <div class="quiz-option" onclick="selectOpt('Urban')">Urban</div>
-            </div>
+        <div class="q-box">1. Vârsta la depunere:
+            <label><input type="radio" name="q1" value="18-40"> Între 18 și 40 de ani</label>
+            <label><input type="radio" name="q1" value="Peste 40"> Peste 40 de ani</label>
         </div>
 
+        <div class="q-box">2. Competențe profesionale agricole:
+            <label><input type="radio" name="q2" value="DA"> Dețin studii sau atestat</label>
+            <label><input type="radio" name="q2" value="NU"> Nu dețin</label>
         </div>
 
-    <script>
-        function nextSlide(n) {
-            document.querySelectorAll('.slide').forEach(s => s.classList.remove('active'));
-            document.getElementById('s' + n).classList.add('active');
-        }
-    </script>
+        <div class="q-box calc-box">
+            <h3>Calculator SO (Standard Output)</h3>
+            <label>Nr. Vaci (adult): <input type="number" id="vaci" oninput="calc()" value="0"></label>
+            <label>Nr. Ovine/Caprine: <input type="number" id="ovine" oninput="calc()" value="0"></label>
+            <div class="so-result" id="soResult">SO Total: 0 €</div>
+        </div>
+
+        <div class="q-box">4. Înregistrat în RNE (ANSVSA):
+            <label><input type="radio" name="q4" value="DA"> DA</label>
+            <label><input type="radio" name="q4" value="NU"> NU</label>
+        </div>
+
+        <button type="button" onclick="trimiteWhatsApp()">Trimite analiza pe WhatsApp</button>
+    </form>
+</div>
+
+<script>
+    function calc() {
+        const v = document.getElementById('vaci').value * 1200;
+        const o = document.getElementById('ovine').value * 50;
+        const total = v + o;
+        document.getElementById('soResult').innerText = "SO Total: " + total.toLocaleString() + " €";
+        return total;
+    }
+
+    function trimiteWhatsApp() {
+        const nume = document.getElementById('nume').value;
+        const so = calc();
+        const q1 = document.querySelector('input[name="q1"]:checked')?.value || "Nespecificat";
+        const q2 = document.querySelector('input[name="q2"]:checked')?.value || "Nespecificat";
+        const q4 = document.querySelector('input[name="q4"]:checked')?.value || "Nespecificat";
+
+        const msg = `*SOLICITARE EVALUARE DR-30*%0A%0A` +
+                    `Nume: ${nume}%0A` +
+                    `Vârstă eligibilă: ${q1}%0A` +
+                    `Competențe: ${q2}%0A` +
+                    `SO Total: ${so.toLocaleString()} €%0A` +
+                    `RNE: ${q4}`;
+
+        window.open(`https://wa.me/407XXXXXXXXX?text=${msg}`, '_blank');
+    }
+</script>
 </body>
 </html>
