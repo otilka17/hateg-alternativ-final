@@ -2,77 +2,81 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <title>EVALUARE DR-30 ZOOTEHNIE</title>
+    <title>CHESTIONAR DR-30 ZOOTEHNIE</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-slate-950 text-slate-100 p-6">
-    <div class="max-w-2xl mx-auto bg-slate-900 p-8 rounded-2xl border border-slate-700 shadow-2xl">
-        <h1 class="text-2xl font-black text-amber-500 mb-6 border-b border-slate-700 pb-4">ANALIZĂ ELIGIBILITATE DR-30</h1>
+<body class="bg-slate-950 text-slate-100 p-4">
+    <div class="max-w-md mx-auto bg-slate-900 p-6 rounded-3xl border border-slate-700">
+        <h1 class="text-xl font-black text-amber-500 mb-6 text-center">EVALUARE DR-30</h1>
         
-        <div class="space-y-6">
-            <div class="grid grid-cols-1 gap-4">
-                <input type="text" id="nume" placeholder="Nume Fermier" class="w-full bg-slate-950 p-4 rounded-xl border border-slate-700">
-            </div>
+        <div id="step1" class="space-y-4">
+            <input type="text" id="nume" placeholder="Nume Fermier" class="w-full bg-slate-950 p-4 rounded-xl border border-slate-700">
+            <select id="varsta" class="w-full bg-slate-950 p-4 rounded-xl border border-slate-700">
+                <option value="18-40 ani">Vârstă: 18-40 ani</option>
+                <option value="Peste 40 ani">Vârstă: Peste 40 ani</option>
+            </select>
+            <button onclick="nextStep(2)" class="w-full bg-blue-600 p-4 rounded-xl font-bold">Continuă</button>
+        </div>
 
-            <div class="grid grid-cols-2 gap-4">
-                <div class="bg-slate-950 p-4 rounded-xl border border-slate-700">
-                    <label class="block text-[10px] uppercase font-bold text-slate-500 mb-2">Nr. Vaci (1200 SO)</label>
-                    <input type="number" id="vaci" oninput="calcul()" value="0" class="w-full bg-transparent text-xl font-bold">
-                </div>
-                <div class="bg-slate-950 p-4 rounded-xl border border-slate-700">
-                    <label class="block text-[10px] uppercase font-bold text-slate-500 mb-2">Nr. Ovine (50 SO)</label>
-                    <input type="number" id="ovine" oninput="calcul()" value="0" class="w-full bg-transparent text-xl font-bold">
-                </div>
-            </div>
+        <div id="step2" class="space-y-4 hidden">
+            <label class="block text-xs font-bold text-slate-500">Studii agricole?</label>
+            <select id="studii" class="w-full bg-slate-950 p-4 rounded-xl border border-slate-700">
+                <option value="Da">Da</option>
+                <option value="Nu">Nu</option>
+            </select>
+            <label class="block text-xs font-bold text-slate-500">Zonă montană?</label>
+            <select id="montan" onchange="actualizeazaPunctaj()" class="w-full bg-slate-950 p-4 rounded-xl border border-slate-700">
+                <option value="15">Da (+15p)</option>
+                <option value="0">Nu</option>
+            </select>
+            <button onclick="nextStep(3)" class="w-full bg-blue-600 p-4 rounded-xl font-bold">Continuă</button>
+        </div>
 
-            <div class="grid grid-cols-2 gap-4">
-                <select id="taran" onchange="calcul()" class="w-full bg-slate-950 p-4 rounded-xl border border-slate-700 text-sm">
-                    <option value="20">Tânăr Fermier (+20p)</option>
-                    <option value="0">Nu sunt tânăr fermier</option>
-                </select>
-                <select id="montan" onchange="calcul()" class="w-full bg-slate-950 p-4 rounded-xl border border-slate-700 text-sm">
-                    <option value="15">Zonă Montană (+15p)</option>
-                    <option value="0">Zonă de câmpie</option>
-                </select>
+        <div id="step3" class="space-y-4 hidden">
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-700">
+                <label class="text-xs font-bold text-slate-500">Nr. Vaci (1200 SO/cap)</label>
+                <input type="number" id="vaci" oninput="calculSO()" value="0" class="w-full bg-transparent text-xl font-bold mt-1">
             </div>
-
-            <div class="bg-amber-500/10 p-6 rounded-xl border border-amber-500/50 text-center">
-                <div id="so-total" class="text-5xl font-black text-amber-500">0 €</div>
-                <div class="text-xs uppercase tracking-widest text-amber-500/70 mt-2">Valoare SO Totală</div>
-                <div id="puncte-total" class="text-xl font-bold text-emerald-400 mt-4">0 Puncte</div>
+            <div class="bg-slate-950 p-4 rounded-xl border border-slate-700">
+                <label class="text-xs font-bold text-slate-500">Nr. Ovine (50 SO/cap)</label>
+                <input type="number" id="ovine" oninput="calculSO()" value="0" class="w-full bg-transparent text-xl font-bold mt-1">
             </div>
-
-            <button onclick="trimiteWhatsApp()" class="w-full bg-green-600 p-4 rounded-xl font-black text-white hover:bg-green-500 transition">TRIMITE RAPORT WHATSAPP</button>
+            <div class="text-center p-4 bg-slate-950 rounded-xl border border-amber-900">
+                <div id="so-total" class="text-3xl font-black text-amber-500">0 €</div>
+                <div class="text-[10px] uppercase text-slate-500">Total Standard Output</div>
+            </div>
+            <button onclick="trimiteWhatsApp()" class="w-full bg-green-600 p-4 rounded-xl font-bold">TRIMITE RAPORT WHATSAPP</button>
         </div>
     </div>
 
     <script>
-        function calcul() {
+        function nextStep(s) {
+            document.getElementById('step1').classList.add('hidden');
+            document.getElementById('step2').classList.add('hidden');
+            document.getElementById('step3').classList.add('hidden');
+            document.getElementById('step' + s).classList.remove('hidden');
+        }
+
+        function calculSO() {
             const v = document.getElementById('vaci').value * 1200;
             const o = document.getElementById('ovine').value * 50;
-            const taran = parseInt(document.getElementById('taran').value);
-            const montan = parseInt(document.getElementById('montan').value);
-            
-            const totalSO = v + o;
-            const totalPuncte = taran + montan;
-            
-            document.getElementById('so-total').innerText = totalSO.toLocaleString() + " €";
-            document.getElementById('puncte-total').innerText = totalPuncte + " Puncte";
-            return { totalSO, totalPuncte };
+            const total = v + o;
+            document.getElementById('so-total').innerText = total.toLocaleString() + " €";
+            return total;
         }
 
         function trimiteWhatsApp() {
             const nume = document.getElementById('nume').value;
-            const res = calcul();
-            const status = res.totalSO >= 12000 ? '✅ ELIGIBIL' : '❌ SUB PRAG';
-            
+            const so = calculSO();
             const msg = `*RAPORT ANALIZĂ ZOOTEHNIE DR-30*%0A%0A` +
-                        `*Fermier:* ${nume}%0A` +
-                        `*SO Total:* ${res.totalSO.toLocaleString()} €%0A` +
-                        `*Punctaj:* ${res.totalPuncte} puncte%0A` +
-                        `*Status:* ${status}%0A%0A` +
+                        `Fermier: ${nume}%0A` +
+                        `Vârstă: ${document.getElementById('varsta').value}%0A` +
+                        `Studii: ${document.getElementById('studii').value}%0A` +
+                        `Zonă Montană: ${document.getElementById('montan').value == 15 ? 'DA' : 'NU'}%0A` +
+                        `SO Total: ${so.toLocaleString()} €%0A` +
+                        `Status: ${so >= 12000 ? 'ELIGIBIL' : 'SUB PRAG'}%0A%0A` +
                         `---%0A` +
-                        `Hai că am scos cifrele astea pentru fermă! 🚜 Oare trecem la Pasul 2 de consultanță?`;
+                        `Analiză golașă - pregătit pentru Pasul 2! 🚜`;
             
             window.open(`https://wa.me/40749229686?text=${msg}`, '_blank');
         }
