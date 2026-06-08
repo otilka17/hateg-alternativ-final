@@ -2,12 +2,12 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <title>CHESTIONAR DR-30 ZOOTEHNIE</title>
+    <title>EVALUARE FERMĂ - DR-30</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-slate-950 text-slate-100 p-4">
     <div class="max-w-md mx-auto bg-slate-900 p-6 rounded-3xl border border-slate-700">
-        <h1 class="text-xl font-black text-amber-500 mb-6 text-center">EVALUARE DR-30</h1>
+        <h1 class="text-xl font-black text-amber-500 mb-6 text-center">FIȘĂ EVALUARE FERMĂ</h1>
         
         <div id="step1" class="space-y-4">
             <input type="text" id="nume" placeholder="Nume Fermier" class="w-full bg-slate-950 p-4 rounded-xl border border-slate-700">
@@ -18,34 +18,38 @@
             <button onclick="nextStep(2)" class="w-full bg-blue-600 p-4 rounded-xl font-bold">Continuă</button>
         </div>
 
-        <div id="step2" class="space-y-4 hidden">
-            <label class="block text-xs font-bold text-slate-500">Studii agricole?</label>
-            <select id="studii" class="w-full bg-slate-950 p-4 rounded-xl border border-slate-700">
+        <div id="step2" class="space-y-3 hidden">
+            <label class="block text-[10px] uppercase font-bold text-slate-500">Sursă apă?</label>
+            <select id="apa" class="w-full bg-slate-950 p-3 rounded-lg border border-slate-700">
                 <option value="Da">Da</option>
                 <option value="Nu">Nu</option>
             </select>
-            <label class="block text-xs font-bold text-slate-500">Zonă montană?</label>
-            <select id="montan" onchange="actualizeazaPunctaj()" class="w-full bg-slate-950 p-4 rounded-xl border border-slate-700">
-                <option value="15">Da (+15p)</option>
-                <option value="0">Nu</option>
+            <label class="block text-[10px] uppercase font-bold text-slate-500">Teren furaje?</label>
+            <select id="furaje" class="w-full bg-slate-950 p-3 rounded-lg border border-slate-700">
+                <option value="Da">Da, propriu/arendă</option>
+                <option value="Nu">Nu</option>
             </select>
-            <button onclick="nextStep(3)" class="w-full bg-blue-600 p-4 rounded-xl font-bold">Continuă</button>
+            <label class="block text-[10px] uppercase font-bold text-slate-500">Certificare BIO/Atestat?</label>
+            <select id="bio" class="w-full bg-slate-950 p-3 rounded-lg border border-slate-700">
+                <option value="Da">Da</option>
+                <option value="Nu">Nu</option>
+            </select>
+            <button onclick="nextStep(3)" class="w-full bg-blue-600 p-4 rounded-xl font-bold mt-2">Continuă</button>
         </div>
 
-        <div id="step3" class="space-y-4 hidden">
-            <div class="bg-slate-950 p-4 rounded-xl border border-slate-700">
-                <label class="text-xs font-bold text-slate-500">Nr. Vaci (1200 SO/cap)</label>
-                <input type="number" id="vaci" oninput="calculSO()" value="0" class="w-full bg-transparent text-xl font-bold mt-1">
-            </div>
-            <div class="bg-slate-950 p-4 rounded-xl border border-slate-700">
-                <label class="text-xs font-bold text-slate-500">Nr. Ovine (50 SO/cap)</label>
-                <input type="number" id="ovine" oninput="calculSO()" value="0" class="w-full bg-transparent text-xl font-bold mt-1">
-            </div>
-            <div class="text-center p-4 bg-slate-950 rounded-xl border border-amber-900">
+        <div id="step3" class="space-y-3 hidden">
+            <input type="number" id="vaci" oninput="calculSO()" placeholder="Nr. Vaci" class="w-full bg-slate-950 p-3 rounded-lg border border-slate-700">
+            <input type="number" id="ovine" oninput="calculSO()" placeholder="Nr. Ovine" class="w-full bg-slate-950 p-3 rounded-lg border border-slate-700">
+            <input type="text" id="utilaje" placeholder="Utilaje vizate" class="w-full bg-slate-950 p-3 rounded-lg border border-slate-700">
+            <select id="livrare" class="w-full bg-slate-950 p-3 rounded-lg border border-slate-700">
+                <option value="Lactate">Lactate</option>
+                <option value="Miere/Alte">Miere / Carne / Altele</option>
+            </select>
+            
+            <div class="text-center p-4 bg-slate-950 rounded-xl border border-amber-900 mt-4">
                 <div id="so-total" class="text-3xl font-black text-amber-500">0 €</div>
-                <div class="text-[10px] uppercase text-slate-500">Total Standard Output</div>
             </div>
-            <button onclick="trimiteWhatsApp()" class="w-full bg-green-600 p-4 rounded-xl font-bold">TRIMITE RAPORT WHATSAPP</button>
+            <button onclick="trimiteWhatsApp()" class="w-full bg-green-600 p-4 rounded-xl font-bold">TRIMITE PE WHATSAPP</button>
         </div>
     </div>
 
@@ -60,24 +64,22 @@
         function calculSO() {
             const v = document.getElementById('vaci').value * 1200;
             const o = document.getElementById('ovine').value * 50;
-            const total = v + o;
-            document.getElementById('so-total').innerText = total.toLocaleString() + " €";
-            return total;
+            document.getElementById('so-total').innerText = (v + o).toLocaleString() + " €";
+            return v + o;
         }
 
         function trimiteWhatsApp() {
             const nume = document.getElementById('nume').value;
-            const so = calculSO();
-            const msg = `*RAPORT ANALIZĂ ZOOTEHNIE DR-30*%0A%0A` +
+            const msg = `*FIȘĂ EVALUARE FERMĂ — DR30*%0A%0A` +
                         `Fermier: ${nume}%0A` +
                         `Vârstă: ${document.getElementById('varsta').value}%0A` +
-                        `Studii: ${document.getElementById('studii').value}%0A` +
-                        `Zonă Montană: ${document.getElementById('montan').value == 15 ? 'DA' : 'NU'}%0A` +
-                        `SO Total: ${so.toLocaleString()} €%0A` +
-                        `Status: ${so >= 12000 ? 'ELIGIBIL' : 'SUB PRAG'}%0A%0A` +
-                        `---%0A` +
-                        `Analiză golașă - pregătit pentru Pasul 2! 🚜`;
-            
+                        `Apă: ${document.getElementById('apa').value}%0A` +
+                        `Furaje: ${document.getElementById('furaje').value}%0A` +
+                        `Certificat: ${document.getElementById('bio').value}%0A` +
+                        `Utilaje: ${document.getElementById('utilaje').value}%0A` +
+                        `Producție: ${document.getElementById('livrare').value}%0A` +
+                        `SO Total: ${calculSO().toLocaleString()} €%0A` +
+                        `Status: ${calculSO() >= 12000 ? 'ELIGIBIL' : 'SUB PRAG'}`;
             window.open(`https://wa.me/40749229686?text=${msg}`, '_blank');
         }
     </script>
