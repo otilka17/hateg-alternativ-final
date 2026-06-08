@@ -2,70 +2,80 @@
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <title>Motor DR-30 Enterprise</title>
+    <title>EVALUARE DR-30 ZOOTEHNIE</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-slate-950 text-slate-100 p-8">
-    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8">
+<body class="bg-slate-950 text-slate-100 p-6">
+    <div class="max-w-2xl mx-auto bg-slate-900 p-8 rounded-2xl border border-slate-700 shadow-2xl">
+        <h1 class="text-2xl font-black text-amber-500 mb-6 border-b border-slate-700 pb-4">ANALIZĂ ELIGIBILITATE DR-30</h1>
         
-        <section class="bg-slate-900 p-8 rounded-3xl border border-slate-700">
-            <h1 class="text-2xl font-black text-amber-500 mb-6">MOTOR ANALIZĂ DR-30</h1>
-            <div class="space-y-4">
-                <input type="text" id="nume" placeholder="Nume Solicitant" class="w-full bg-slate-950 p-4 rounded-xl border border-slate-700">
-                <input type="number" id="vaci" oninput="calc()" placeholder="Nr. Vaci (1200 SO)" class="w-full bg-slate-950 p-4 rounded-xl border border-slate-700">
-                <input type="number" id="ovine" oninput="calc()" placeholder="Nr. Ovine (50 SO)" class="w-full bg-slate-950 p-4 rounded-xl border border-slate-700">
-                <div class="p-6 bg-slate-950 rounded-2xl text-center border border-slate-800">
-                    <div id="soResult" class="text-4xl font-black text-amber-500">0 €</div>
-                    <div class="text-[10px] uppercase font-bold text-slate-500 mt-2">Standard Output (SO)</div>
-                </div>
-                <button onclick="saveAnalysis()" class="w-full bg-blue-600 p-4 rounded-xl font-bold hover:bg-blue-500 transition">SALVEAZĂ ANALIZA</button>
+        <div class="space-y-6">
+            <div class="grid grid-cols-1 gap-4">
+                <input type="text" id="nume" placeholder="Nume Fermier" class="w-full bg-slate-950 p-4 rounded-xl border border-slate-700">
             </div>
-        </section>
 
-        <section class="bg-slate-900 p-8 rounded-3xl border border-slate-700">
-            <h2 class="text-emerald-500 font-black mb-6 uppercase text-[10px]">Istoric Analize (LocalStorage)</h2>
-            <div id="istoric" class="space-y-3">
+            <div class="grid grid-cols-2 gap-4">
+                <div class="bg-slate-950 p-4 rounded-xl border border-slate-700">
+                    <label class="block text-[10px] uppercase font-bold text-slate-500 mb-2">Nr. Vaci (1200 SO)</label>
+                    <input type="number" id="vaci" oninput="calcul()" value="0" class="w-full bg-transparent text-xl font-bold">
                 </div>
-            <button onclick="clearHistory()" class="mt-6 w-full text-slate-500 text-[10px] uppercase font-bold underline">Șterge Istoric</button>
-        </section>
+                <div class="bg-slate-950 p-4 rounded-xl border border-slate-700">
+                    <label class="block text-[10px] uppercase font-bold text-slate-500 mb-2">Nr. Ovine (50 SO)</label>
+                    <input type="number" id="ovine" oninput="calcul()" value="0" class="w-full bg-transparent text-xl font-bold">
+                </div>
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+                <select id="taran" onchange="calcul()" class="w-full bg-slate-950 p-4 rounded-xl border border-slate-700 text-sm">
+                    <option value="20">Tânăr Fermier (+20p)</option>
+                    <option value="0">Nu sunt tânăr fermier</option>
+                </select>
+                <select id="montan" onchange="calcul()" class="w-full bg-slate-950 p-4 rounded-xl border border-slate-700 text-sm">
+                    <option value="15">Zonă Montană (+15p)</option>
+                    <option value="0">Zonă de câmpie</option>
+                </select>
+            </div>
+
+            <div class="bg-amber-500/10 p-6 rounded-xl border border-amber-500/50 text-center">
+                <div id="so-total" class="text-5xl font-black text-amber-500">0 €</div>
+                <div class="text-xs uppercase tracking-widest text-amber-500/70 mt-2">Valoare SO Totală</div>
+                <div id="puncte-total" class="text-xl font-bold text-emerald-400 mt-4">0 Puncte</div>
+            </div>
+
+            <button onclick="trimiteWhatsApp()" class="w-full bg-green-600 p-4 rounded-xl font-black text-white hover:bg-green-500 transition">TRIMITE RAPORT WHATSAPP</button>
+        </div>
     </div>
 
     <script>
-        function calc() {
+        function calcul() {
             const v = document.getElementById('vaci').value * 1200;
             const o = document.getElementById('ovine').value * 50;
-            const total = v + o;
-            document.getElementById('soResult').innerText = total.toLocaleString() + " €";
-            return total;
+            const taran = parseInt(document.getElementById('taran').value);
+            const montan = parseInt(document.getElementById('montan').value);
+            
+            const totalSO = v + o;
+            const totalPuncte = taran + montan;
+            
+            document.getElementById('so-total').innerText = totalSO.toLocaleString() + " €";
+            document.getElementById('puncte-total').innerText = totalPuncte + " Puncte";
+            return { totalSO, totalPuncte };
         }
 
-        function saveAnalysis() {
+        function trimiteWhatsApp() {
             const nume = document.getElementById('nume').value;
-            const total = calc();
-            if(!nume) return alert("Introdu numele!");
-
-            const data = JSON.parse(localStorage.getItem('dr30_data') || "[]");
-            data.push({nume, total, data: new Date().toLocaleTimeString()});
-            localStorage.setItem('dr30_data', JSON.stringify(data));
-            renderHistory();
+            const res = calcul();
+            const status = res.totalSO >= 12000 ? '✅ ELIGIBIL' : '❌ SUB PRAG';
+            
+            const msg = `*RAPORT ANALIZĂ ZOOTEHNIE DR-30*%0A%0A` +
+                        `*Fermier:* ${nume}%0A` +
+                        `*SO Total:* ${res.totalSO.toLocaleString()} €%0A` +
+                        `*Punctaj:* ${res.totalPuncte} puncte%0A` +
+                        `*Status:* ${status}%0A%0A` +
+                        `---%0A` +
+                        `Hai că am scos cifrele astea pentru fermă! 🚜 Oare trecem la Pasul 2 de consultanță?`;
+            
+            window.open(`https://wa.me/40749229686?text=${msg}`, '_blank');
         }
-
-        function renderHistory() {
-            const istoricDiv = document.getElementById('istoric');
-            istoricDiv.innerHTML = "";
-            const data = JSON.parse(localStorage.getItem('dr30_data') || "[]");
-            data.forEach((item, i) => {
-                istoricDiv.innerHTML += `
-                    <div class="flex justify-between p-4 bg-slate-950 rounded-xl border border-slate-800">
-                        <div><div class="font-bold">${item.nume}</div><div class="text-[10px] text-slate-500">${item.data}</div></div>
-                        <div class="font-black text-amber-500">${item.total.toLocaleString()} €</div>
-                    </div>
-                `;
-            });
-        }
-
-        function clearHistory() { localStorage.removeItem('dr30_data'); renderHistory(); }
-        window.onload = renderHistory;
     </script>
 </body>
 </html>
