@@ -103,6 +103,7 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opac
 
 /* PILONI — SOUL MEAL */
 .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px;}
+.pillars-4{grid-template-columns:repeat(4,1fr);}
 .pillar{background:#fff;border:2px solid var(--c3);padding:40px 30px;text-align:center;transition:all .25s;position:relative;overflow:hidden;}
 .pillar::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--accent,var(--v2));transform:scaleX(0);transform-origin:left;transition:transform .3s;}
 .pillar:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(30,61,26,.12);border-color:var(--accent,var(--v3));}
@@ -162,10 +163,11 @@ footer{background:var(--e1);padding:56px 5% 24px;}
 
 @media(max-width:900px){
   .nav-links{display:none}
+  .pillars-4{grid-template-columns:repeat(2,1fr)}
   .nav-cta{display:none}
   .nav-burger{display:flex}
   .story{grid-template-columns:1fr;gap:36px}
-  .pillars{grid-template-columns:1fr}
+  .pillars:not(.pillars-4){grid-template-columns:1fr}
   .gallery{grid-template-columns:repeat(2,1fr);grid-auto-rows:160px}
   .gal-big{grid-column:span 2;grid-row:span 1;font-size:4rem}
   .promise{grid-template-columns:repeat(2,1fr)}
@@ -174,6 +176,7 @@ footer{background:var(--e1);padding:56px 5% 24px;}
 }
 @media(max-width:480px){
   .ft-grid{grid-template-columns:1fr}
+  .pillars-4{grid-template-columns:1fr}
   .gallery{grid-template-columns:1fr;grid-auto-rows:180px}
   .gal-big,.gal-wide{grid-column:span 1}
 }
@@ -233,7 +236,6 @@ footer{background:var(--e1);padding:56px 5% 24px;}
   <div class="hero-img"></div>
   <div class="hero-overlay"></div>
   <div class="hero-inner">
-    <svg class="hero-logo"><use href="#L"/></svg>
     <div class="hero-badge"><div class="hero-badge-dot"></div>DN 68 · Totești · Hațeg</div>
     <h1>Soul Meal.</h1>
     <p class="hero-tag">Mâncare, cafea și băuturi artizanale.</p>
@@ -337,7 +339,7 @@ footer{background:var(--e1);padding:56px 5% 24px;}
     <h2 class="s-title" style="text-align:center">Producători locali<br><em>din Țara Hațegului.</em></h2>
     <p class="s-lead" style="margin:14px auto 0;text-align:center">Nu cumpărăm en-gros din supermarket. Lucrăm cu fermele și gospodăriile din jurul Retezatului — carne, lactate, legume și miere, toate cu nume și poveste.</p>
   </div>
-  <div class="pillars" style="grid-template-columns:repeat(4,1fr)">
+  <div class="pillars pillars-4">
     <div class="pillar pillar-1" style="padding:32px 22px">
       <div class="pillar-ico" style="width:68px;height:68px;font-size:1.9rem">🐄</div>
       <div class="pillar-name" style="font-size:1.15rem">Ferme de Familie</div>
@@ -450,7 +452,7 @@ footer{background:var(--e1);padding:56px 5% 24px;}
     <h2 class="s-title" style="text-align:center">Mai mult decât<br><em>o masă la drum.</em></h2>
     <p class="s-lead" style="margin:14px auto 0;text-align:center">Descoperă tot ce înseamnă Metanoia — de la planul nostru de viitor până la comunitatea care crește în jurul mesei.</p>
   </div>
-  <div class="pillars" style="grid-template-columns:repeat(4,1fr)">
+  <div class="pillars pillars-4">
     <a href="meniu.html" class="pillar pillar-1" style="text-decoration:none;padding:34px 24px;display:block">
       <div class="pillar-ico" style="width:72px;height:72px;font-size:2rem">🍲</div>
       <div class="pillar-name" style="font-size:1.25rem">Meniu & Abonamente</div>
