@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact · Metanoia · Hațeg Alternativ</title>
+<meta name="description" content="Contactează Metanoia · SOul Meal — băcănie-butic pe DN 68, Totești, Țara Hațegului. Rezervări și comenzi pe WhatsApp.">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Serif+4:ital,wght@0,400;1,400&family=Karla:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -70,6 +71,14 @@ body{font-family:'Karla',sans-serif;background:var(--c1);color:var(--tx1);overfl
 .c-wa-btn{display:inline-block;margin-top:20px;background:var(--t1);color:#fff;text-decoration:none;text-align:center;padding:14px;font-size:.78rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;transition:background .2s;}
 .c-wa-btn:hover{background:var(--t2);}
 
+/* DATE FIRMA */
+.c-firm{grid-column:1/-1;background:#fff;border:2px solid var(--c3);padding:26px 30px;}
+.c-firm-tag{font-size:.62rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--t1);margin-bottom:16px;}
+.c-firm-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.c-firm-item{display:flex;flex-direction:column;gap:3px;}
+.c-firm-item span{font-size:.64rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--tx3);}
+.c-firm-item strong{font-size:.92rem;color:var(--tx1);font-weight:700;}
+
 /* FOOTER */
 .ft{background:var(--e1);padding:54px 5% 22px;}
 .ft-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:40px;padding-bottom:34px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:22px;}
@@ -87,9 +96,10 @@ body{font-family:'Karla',sans-serif;background:var(--c1);color:var(--tx1);overfl
   .nav-links,.nav-cta{display:none;}
   .nav-burger{display:flex;}
   .c-wrap{grid-template-columns:1fr;}
+  .c-firm-grid{grid-template-columns:repeat(2,1fr);}
   .ft-grid{grid-template-columns:1fr 1fr;}
 }
-@media(max-width:480px){.ft-grid{grid-template-columns:1fr;}}
+@media(max-width:480px){.ft-grid{grid-template-columns:1fr;}.c-firm-grid{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
@@ -142,17 +152,15 @@ body{font-family:'Karla',sans-serif;background:var(--c1);color:var(--tx1);overfl
 
   <!-- PROFIL + POZA -->
   <div class="c-profile">
-    <!-- POZA TA: adaugă fișierul pe GitHub cu numele eu.jpg.
-         Dacă imaginea lipsește, se ascunde și apare placeholder-ul de mai jos. -->
-    <img class="c-photo" src="eu.jpg" alt="Fondator Metanoia"
+    <img class="c-photo" src="eu.jpg" alt="Otilia Salașan — fondator Metanoia"
          onerror="this.style.display='none';document.getElementById('photoPh').style.display='flex';">
     <div class="c-photo-ph" id="photoPh" style="display:none">
       <span>📸</span>
       <small>Adaugă eu.jpg pe GitHub</small>
     </div>
     <div class="c-profile-body">
-      <div class="c-profile-name">Metanoia</div>
-      <div class="c-profile-role">Fondator · Hațeg Alternativ</div>
+      <div class="c-profile-name">Otilia Salașan</div>
+      <div class="c-profile-role">Fondator · Metanoia · SOul Meal</div>
       <p class="c-profile-bio">„Cred că mâncarea bună e un act de grijă. La Metanoia gătesc cu timp, cu ingrediente locale din Țara Hațegului, pentru oamenii care merită mai mult decât un popas oarecare."</p>
     </div>
   </div>
@@ -184,6 +192,17 @@ body{font-family:'Karla',sans-serif;background:var(--c1);color:var(--tx1);overfl
     <a class="c-wa-btn" href="https://wa.me/40749229686">📱 Scrie-ne pe WhatsApp</a>
   </div>
 
+  <!-- DATE FIRMĂ -->
+  <div class="c-firm">
+    <div class="c-firm-tag">Date Fiscale</div>
+    <div class="c-firm-grid">
+      <div class="c-firm-item"><span>Firmă</span><strong>DAKAMIGOS MARKT SRL</strong></div>
+      <div class="c-firm-item"><span>CUI</span><strong>38324829</strong></div>
+      <div class="c-firm-item"><span>Reg. Comerțului</span><strong>J20/1477/09.10.2017</strong></div>
+      <div class="c-firm-item"><span>Punct de lucru</span><strong>Totești nr. 31, jud. Hunedoara</strong></div>
+    </div>
+  </div>
+
 </div>
 
 <!-- FOOTER -->
@@ -197,7 +216,7 @@ body{font-family:'Karla',sans-serif;background:var(--c1);color:var(--tx1);overfl
       </svg>
       <div class="ft-brand">Metanoia</div>
       <div class="ft-sub">Hațeg Alternativ · DN 68</div>
-      <p class="ft-tag">Soul Meal — mâncare tradițională, cafea de specialitate și băuturi artizanale.</p>
+      <p class="ft-tag">SOul Meal — mâncare tradițională, cafea de specialitate și băuturi artizanale.</p>
     </div>
     <div class="ft-col">
       <h4>Navigare</h4>
@@ -214,13 +233,13 @@ body{font-family:'Karla',sans-serif;background:var(--c1);color:var(--tx1);overfl
         <li><a href="meniu.html#abonamente">Abonamente</a></li>
         <li><a href="rezervare.html">Rezervare</a></li>
         <li><a href="meniu.html#precomanda">Precomandă</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="https://wa.me/40749229686">WhatsApp</a></li>
       </ul>
     </div>
     <div class="ft-col">
       <h4>Legal</h4>
       <ul>
-        <li><a href="https://wa.me/40749229686">WhatsApp</a></li>
+        <li><a href="contact.html">Contact</a></li>
         <li><a href="termeni-si-conditii.html">Termeni & Condiții</a></li>
         <li><a href="confidentialitate.html">Confidențialitate</a></li>
         <li><a href="politica-cookies.html">Politica Cookies</a></li>
@@ -229,7 +248,7 @@ body{font-family:'Karla',sans-serif;background:var(--c1);color:var(--tx1);overfl
   </div>
   <div class="ft-bottom">
     <span>© 2026 Metanoia · Hațeg Alternativ · Toate drepturile rezervate.</span>
-    <span>Soul Meal · Gătit lent. Sigilat ermetic. Ridicat în 5 secunde.</span>
+    <span>SOul Meal · Gătit lent. Sigilat ermetic. Ridicat în 5 secunde.</span>
   </div>
 </footer>
 
