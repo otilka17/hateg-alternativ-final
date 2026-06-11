@@ -1,2 +1,2 @@
 # Hațeg Alternativ
-Site static de prezentare pentru pensiune, experiențe locale și punct gastronomic.
+Site static de prezentare pentru bacanie
