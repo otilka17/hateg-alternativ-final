@@ -1,10 +1,198 @@
-<!doctype html>
+```html
+<!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Metanoia | Rezervare</title>
-  <link href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Cinzel:wght@400;900&family=Inter:wght@300;400;700&display=swap)" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Fonturi premium din proiectul tău -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;900&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary: #3c5a7a;
+      --primary-light: #4a6c8f;
+      --accent: #e07840;
+      --accent-hover: #c9632d;
+      --bg: #faf5ec;
+      --card-bg: #ffffff;
+      --text: #141a24;
+      --text-muted: #5f6c80;
+      --border: #e8d5b0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .wrap {
+      width: 100%;
+      max-width: 480px;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .brand {
+      font-family: 'Cinzel', serif;
+      font-weight: 900;
+      text-decoration: none;
+      color: var(--primary);
+      letter-spacing: 2px;
+      transition: opacity 0.2s;
+    }
+
+    .brand:hover {
+      opacity: 0.8;
+    }
+
+    .nav a {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      text-decoration: none;
+      color: var(--text-muted);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: color 0.2s;
+    }
+
+    .nav a:hover {
+      color: var(--primary);
+    }
+
+    .section h2.brand {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: var(--primary);
+      text-transform: uppercase;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 8px 30px rgba(74, 108, 143, 0.06);
+    }
+
+    .small {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin: 6px 0;
+      line-height: 1.5;
+    }
+
+    .small b {
+      color: var(--primary);
+    }
+
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 18px 0;
+    }
+
+    .input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1.5px solid var(--border);
+      background: var(--bg);
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .input::placeholder {
+      color: #a0aec0;
+    }
+
+    .input:focus {
+      border-color: var(--primary-light);
+      box-shadow: 0 0 0 3px rgba(74, 108, 143, 0.1);
+    }
+
+    .btn.cta {
+      width: 100%;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 14px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .btn.cta:hover {
+      background: var(--accent-hover);
+    }
+
+    .btn.cta:active {
+      transform: scale(0.98);
+    }
+
+    .btn.cta:disabled {
+      background: #cbd5e0;
+      cursor: not-allowed;
+    }
+
+    footer {
+      margin-top: 30px;
+      text-align: center;
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+    }
+
+    /* Sistem de mesaje personalizat */
+    #msg {
+      font-size: 13px;
+      line-height: 1.5;
+      margin-top: 15px;
+      padding: 12px;
+      border-radius: 8px;
+      display: none;
+    }
+
+    #msg.success {
+      display: block;
+      background-color: #f0fdf4;
+      color: #166534;
+      border: 1px solid #bbf7d0;
+    }
+
+    #msg.error {
+      display: block;
+      background-color: #fef2f2;
+      color: #991b1b;
+      border: 1px solid #fecaca;
+    }
+  </style>
 </head>
 <body>
   <div class="wrap">
@@ -14,23 +202,26 @@
     </header>
 
     <section class="section">
-      <h2 class="brand" style="font-size:22px">Rezervare</h2>
+      <h2 class="brand">Rezervare</h2>
       <div class="card">
         <p class="small">Plan selectat: <b id="plan">—</b></p>
         <p class="small">Total estimat: <b id="total">—</b> RON</p>
         <div class="divider"></div>
-        <form onsubmit="return trimite()">
+        
+        <form id="reservationForm" onsubmit="return trimite(event)">
           <input class="input" id="nume" placeholder="Nume" required>
           <div style="height:10px"></div>
           <input class="input" id="tel" placeholder="Telefon" required>
           <div style="height:10px"></div>
           <input class="input" id="email" type="email" placeholder="Email (opțional)">
           <div style="height:10px"></div>
-          <textarea class="input" id="obs" placeholder="Observații" rows="4"></textarea>
+          <textarea class="input" id="obs" placeholder="Observații / Preferințe de servire" rows="4"></textarea>
           <div style="height:14px"></div>
-          <button class="btn cta">Trimite rezervarea</button>
+          
+          <button type="submit" id="submitBtn" class="btn cta">Trimite rezervarea</button>
         </form>
-        <p id="msg" class="small" style="margin-top:10px"></p>
+        
+        <div id="msg"></div>
       </div>
     </section>
 
@@ -38,16 +229,83 @@
   </div>
 
   <script>
+    // Configurare webhook primit de la tine
+    const MAKE_WEBHOOK_URL = "https://hook.eu1.make.com/wwdii8stmyqdul6rnok4p44k2tvtohjt";
+
     // Citește parametrii din URL
     const sp = new URLSearchParams(location.search);
-    document.getElementById('plan').textContent = sp.get('plan') || '—';
-    document.getElementById('total').textContent = sp.get('total') || '—';
+    const planSelectat = sp.get('plan') || '—';
+    const totalEstimat = sp.get('total') || '—';
 
-    function trimite(){
-      // Pentru demo, doar afișăm mesaj. Integrarea reală ar trimite spre un email/webhook.
-      document.getElementById('msg').textContent = 'Rezervarea a fost trimisă. Te contactăm pentru confirmare.';
-      return false; // prevenim reload
+    document.getElementById('plan').textContent = planSelectat;
+    document.getElementById('total').textContent = totalEstimat;
+
+    async function trimite(event) {
+      event.preventDefault(); // Prevenim reload-ul paginii
+      
+      const submitBtn = document.getElementById('submitBtn');
+      const msgBox = document.getElementById('msg');
+      
+      const nume = document.getElementById('nume').value.trim();
+      const tel = document.getElementById('tel').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const obs = document.getElementById('obs').value.trim();
+
+      // Schimbăm starea butonului
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Se trimite...';
+      msgBox.className = '';
+      msgBox.style.display = 'none';
+
+      // Generare dată curentă în formatul local românesc (Europe/Bucharest) pentru Col A
+      const acum = new Date();
+      const dataCurentaStr = acum.toLocaleString('ro-RO', { timeZone: 'Europe/Bucharest' });
+
+      // Organizăm datele conform structurii cerute de Google Sheet-ul tău din imagine
+      const payload = {
+        data: dataCurentaStr,                       // Coloana A: Data
+        autor: nume,                                // Coloana B: Autor
+        sandwich: planSelectat !== '—' ? planSelectat : '-', // Coloana C: sandwich (luat din planul curent)
+        bautura: sp.get('bautura') || '-',         // Coloana D: băutură (dacă există în URL)
+        specialitate_cafea: sp.get('cafea') || '-', // Coloana E: specialităţi/cafea (dacă există în URL)
+        desert: sp.get('desert') || '-',            // Coloana F: desert (dacă există în URL)
+        mesaj: obs || '-',                          // Coloana G: mesaj / Observații
+        data_ora_servire: sp.get('servire') || 'Cât mai curând', // Coloana H: data/ora servire
+        tel: tel,                                   // Coloana I: Nr tel
+        email: email || '-',                        // Info suplimentar
+        total: totalEstimat                         // Info suplimentar
+      };
+
+      try {
+        const response = await fetch(MAKE_WEBHOOK_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (response.ok) {
+          msgBox.className = 'success';
+          msgBox.textContent = '✓ Rezervarea ta a fost trimisă cu succes! Te contactăm în curând pentru confirmare.';
+          submitBtn.textContent = 'Trimis cu succes!';
+          
+          // Resetăm formularul după succes
+          document.getElementById('reservationForm').reset();
+        } else {
+          throw new Error('Eroare răspuns server.');
+        }
+      } catch (error) {
+        msgBox.className = 'error';
+        msgBox.textContent = 'A apărut o eroare la trimitere. Te rugăm să reîncerci sau să ne contactezi telefonic.';
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Trimite rezervarea';
+      }
+
+      return false;
     }
   </script>
 </body>
 </html>
+
+```
