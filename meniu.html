@@ -183,6 +183,37 @@ footer{background:var(--e1);padding:54px 5% 24px;}
 
 @keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
+/* ===== CONFIGURATOR SANDWICH ===== */
+.cfg-wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:44px;align-items:start;}
+.cfg-stage{position:sticky;top:90px;background:var(--c1);border:2px solid var(--c3);padding:30px 20px 24px;}
+.cfg-plate{min-height:280px;display:flex;flex-direction:column-reverse;align-items:center;justify-content:flex-start;gap:0;position:relative;padding:20px 0;}
+.layer{width:74%;max-width:300px;border-radius:40px/26px;margin-top:-10px;box-shadow:0 3px 8px rgba(20,37,58,.12);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;color:rgba(255,255,255,.92);text-shadow:0 1px 2px rgba(0,0,0,.3);letter-spacing:.5px;transition:all .35s cubic-bezier(.34,1.56,.64,1);animation:dropIn .4s cubic-bezier(.34,1.56,.64,1);text-align:center;line-height:1.1;}
+@keyframes dropIn{from{opacity:0;transform:translateY(-24px) scale(.85)}to{opacity:1;transform:translateY(0) scale(1)}}
+.layer-bun-top{height:46px;border-radius:50% 50% 18px 18px;margin-top:-12px;z-index:5;}
+.layer-bun-bot{height:30px;border-radius:14px 14px 40px 40px;}
+.layer-empty{width:74%;max-width:300px;height:130px;border:2px dashed var(--c3);border-radius:20px;display:flex;align-items:center;justify-content:center;color:var(--tx4);font-style:italic;font-family:'Source Serif 4',serif;font-size:.86rem;text-align:center;padding:0 20px;}
+.cfg-hint{text-align:center;font-size:.72rem;color:var(--tx3);margin-top:10px;font-style:italic;font-family:'Source Serif 4',serif;}
+.cfg-controls{display:flex;flex-direction:column;gap:20px;}
+.cfg-g{}
+.cfg-glabel{font-size:.64rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--v3);margin-bottom:9px;display:flex;align-items:center;gap:7px;}
+.cfg-glabel span{color:var(--tx4);font-weight:600;letter-spacing:.5px;text-transform:none;}
+.cfg-opts{display:flex;flex-wrap:wrap;gap:7px;}
+.cfg-chip{padding:9px 15px;border:2px solid var(--c3);background:#fff;color:var(--tx2);font-family:'Karla',sans-serif;font-size:.79rem;font-weight:600;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:6px;}
+.cfg-chip:hover{border-color:var(--v3);}
+.cfg-chip.sel{background:var(--v2);color:#fff;border-color:var(--v2);}
+.cfg-chip .px{font-size:.68rem;opacity:.7;}
+.cfg-chip.sel .px{opacity:.85;}
+.cfg-foot{margin-top:8px;background:var(--e1);padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px;}
+.cfg-total{color:#fff;font-size:.84rem;}
+.cfg-total b{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--v4);margin-left:6px;}
+.cfg-add{background:var(--t1);color:#fff;border:none;padding:13px 26px;font-family:'Karla',sans-serif;font-size:.78rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all .2s;}
+.cfg-add:hover{background:var(--t2);}
+.cfg-add:disabled{opacity:.4;cursor:not-allowed;}
+@media(max-width:820px){
+  .cfg-wrap{grid-template-columns:1fr;gap:24px;}
+  .cfg-stage{position:relative;top:0;order:-1;}
+}
+
 @media(max-width:900px){
   .nav-links{display:none;} .nav-cta{display:none;} .nav-burger{display:flex;}
   .combo{grid-template-columns:1fr;}
@@ -293,6 +324,26 @@ footer{background:var(--e1);padding:54px 5% 24px;}
   <div class="menu-grid" id="grid-sand"></div>
 </section>
 
+<!-- CONFIGURATOR -->
+<section class="sec sec-cream" id="configurator">
+  <div class="sec-head"><div class="s-tag">Fă-ți sandwich-ul</div>
+  <h2 class="s-title">Construiește-l <em>cum vrei tu.</em></h2>
+  <p class="s-lead">Alege pâinea și ingredientele — sandwich-ul se formează aici, strat cu strat. Îl facem pe loc, exact așa.</p></div>
+  <div class="cfg-wrap">
+    <div class="cfg-controls" id="cfgControls"></div>
+    <div class="cfg-stage">
+      <div class="cfg-plate" id="cfgPlate">
+        <div class="layer-empty">Alege o pâine ca să începi 🥖</div>
+      </div>
+      <div class="cfg-hint" id="cfgHint">Sandwich-ul tău, în direct</div>
+      <div class="cfg-foot">
+        <div class="cfg-total">Total<b id="cfgTotal">0 lei</b></div>
+        <button class="cfg-add" id="cfgAdd" onclick="addConfig()" disabled>Adaugă în coș →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- DULCE -->
 <section class="sec sec-cream" id="dulce">
   <div class="sec-head"><div class="s-tag">Dulce la doză</div>
@@ -343,6 +394,7 @@ footer{background:var(--e1);padding:54px 5% 24px;}
       <li><a href="#cafea">Cafea & Specialități</a></li>
       <li><a href="#limonade">Limonadă & Fresh</a></li>
       <li><a href="#sandwich">Sandwich-uri & Bowl</a></li>
+      <li><a href="#configurator">Fă-ți sandwich-ul</a></li>
       <li><a href="#borcane">Borcanele Metanoia</a></li>
     </ul></div>
     <div class="ft-col"><h4>Comandă</h4><ul>
@@ -587,6 +639,121 @@ document.getElementById("grid-combo").innerHTML=COMBO.map(c=>`
 document.getElementById("grid-jars").innerHTML=JARS.map(j=>`
   <div class="jar"><div class="jar-ico">${j.ico}</div>
     <div class="jar-name">${j.n}</div><p class="jar-desc">${j.d}</p></div>`).join("");
+
+/* ===== CONFIGURATOR SANDWICH ===== */
+const CFG={
+  paine:{label:"Pâinea",sub:"alege una",req:true,multi:false,opts:[
+    {n:"Pâine de casă",p:0,col:"#c98a4a"},
+    {n:"Ciabatta",p:2,col:"#d6a85f"},
+    {n:"Chiflă",p:0,col:"#caa05a"},
+  ]},
+  proteina:{label:"Proteina",sub:"una sau mai multe",multi:true,opts:[
+    {n:"Pui la grătar",p:7,col:"#d9a06a"},
+    {n:"Ton",p:6,col:"#e0b48a"},
+    {n:"Prosciutto",p:9,col:"#c06a72"},
+    {n:"Șuncă de casă",p:6,col:"#e08a90"},
+    {n:"Ou ochi",p:3,col:"#f2c84b"},
+    {n:"Ou fiert",p:3,col:"#f4d97a"},
+  ]},
+  branza:{label:"Brânză",sub:"opțional",multi:true,opts:[
+    {n:"Feta",p:4,col:"#f3efe4"},
+    {n:"Ricotta",p:4,col:"#f6f2e8"},
+    {n:"Cașcaval",p:4,col:"#f0d98a"},
+    {n:"Cremă de brânză",p:3,col:"#f7f3e6"},
+  ]},
+  legume:{label:"Legume & verdeață",sub:"cât vrei",multi:true,opts:[
+    {n:"Spanac",p:2,col:"#3f7d3a"},
+    {n:"Rucola",p:2,col:"#4e8a3e"},
+    {n:"Roșii cherry",p:2,col:"#d23b34"},
+    {n:"Roșii uscate",p:3,col:"#a83228"},
+    {n:"Castraveți",p:2,col:"#7bb04a"},
+    {n:"Dovlecel",p:2,col:"#8ab86a"},
+    {n:"Ceapă verde",p:1,col:"#6fa04a"},
+    {n:"Ardei copt",p:2,col:"#d2552d"},
+  ]},
+  sos:{label:"Sos",sub:"opțional",multi:true,opts:[
+    {n:"Hummus",p:3,col:"#d8c08a"},
+    {n:"Tzatziki",p:3,col:"#eef0e8"},
+    {n:"Maioneză de casă",p:2,col:"#f5ecc8"},
+    {n:"Muștar de Dijon",p:2,col:"#d9b03a"},
+  ]},
+};
+const CFG_BAZA=14;
+let cfgSel={paine:null,proteina:[],branza:[],legume:[],sos:[],mod:"Cald"};
+
+function cfgPrice(){
+  let t=CFG_BAZA;
+  if(cfgSel.paine!==null) t+=CFG.paine.opts[cfgSel.paine].p;
+  ["proteina","branza","legume","sos"].forEach(cat=>{cfgSel[cat].forEach(i=>t+=CFG[cat].opts[i].p);});
+  return t;
+}
+function cfgRenderControls(){
+  let html="";
+  for(const cat in CFG){
+    const g=CFG[cat];
+    html+=`<div class="cfg-g"><div class="cfg-glabel">${g.label} <span>· ${g.sub}</span></div><div class="cfg-opts">`;
+    g.opts.forEach((o,i)=>{
+      const sel = g.multi ? cfgSel[cat].includes(i) : cfgSel[cat]===i;
+      html+=`<button class="cfg-chip ${sel?'sel':''}" onclick="cfgPick('${cat}',${i})">${o.n}${o.p?`<span class="px">+${o.p}</span>`:''}</button>`;
+    });
+    html+=`</div></div>`;
+  }
+  html+=`<div class="cfg-g"><div class="cfg-glabel">Cum îl vrei</div><div class="cfg-opts">
+    ${["Cald","Rece"].map(m=>`<button class="cfg-chip ${cfgSel.mod===m?'sel':''}" onclick="cfgSetMod('${m}')">${m==='Cald'?'🔥 Cald la maker':'❄️ Rece'}</button>`).join("")}
+  </div></div>`;
+  document.getElementById("cfgControls").innerHTML=html;
+}
+function cfgPick(cat,i){
+  if(CFG[cat].multi){
+    const idx=cfgSel[cat].indexOf(i);
+    if(idx>=0)cfgSel[cat].splice(idx,1); else cfgSel[cat].push(i);
+  } else { cfgSel[cat]= cfgSel[cat]===i ? null : i; }
+  cfgRenderControls(); cfgRenderPlate();
+}
+function cfgSetMod(m){cfgSel.mod=m;cfgRenderControls();}
+function shade(hex){
+  const c=hex.replace('#',''); if(c.length<6)return hex;
+  const r=Math.max(0,parseInt(c.substr(0,2),16)-30);
+  const g=Math.max(0,parseInt(c.substr(2,2),16)-30);
+  const b=Math.max(0,parseInt(c.substr(4,2),16)-30);
+  return `rgb(${r},${g},${b})`;
+}
+function cfgRenderPlate(){
+  const plate=document.getElementById("cfgPlate");
+  if(cfgSel.paine===null){
+    plate.innerHTML=`<div class="layer-empty">Alege o pâine ca să începi 🥖</div>`;
+    document.getElementById("cfgTotal").textContent="0 lei";
+    document.getElementById("cfgAdd").disabled=true;
+    document.getElementById("cfgHint").textContent="Sandwich-ul tău, în direct";
+    return;
+  }
+  const paine=CFG.paine.opts[cfgSel.paine];
+  let layers=`<div class="layer layer-bun-bot" style="background:linear-gradient(${paine.col},#a87838)">${paine.n}</div>`;
+  ["legume","proteina","branza","sos"].forEach(cat=>{
+    cfgSel[cat].forEach(i=>{
+      const o=CFG[cat].opts[i];
+      const txtcol = ['#f3efe4','#f6f2e8','#f7f3e6','#eef0e8','#f5ecc8','#f4d97a'].includes(o.col)?'#5f6c80':'rgba(255,255,255,.92)';
+      layers+=`<div class="layer" style="background:linear-gradient(135deg,${o.col},${shade(o.col)});height:24px;color:${txtcol};text-shadow:none">${o.n}</div>`;
+    });
+  });
+  layers+=`<div class="layer layer-bun-top" style="background:linear-gradient(${paine.col},#b88040)"></div>`;
+  plate.innerHTML=layers;
+  document.getElementById("cfgTotal").textContent=cfgPrice()+" lei";
+  document.getElementById("cfgAdd").disabled=false;
+  const nr=cfgSel.proteina.length+cfgSel.branza.length+cfgSel.legume.length+cfgSel.sos.length;
+  document.getElementById("cfgHint").textContent= nr? `${nr} ingrediente · ${cfgSel.mod.toLowerCase()}` : "Adaugă ingrediente 👇";
+}
+function addConfig(){
+  if(cfgSel.paine===null)return;
+  const parts=[CFG.paine.opts[cfgSel.paine].n];
+  ["proteina","branza","legume","sos"].forEach(cat=>{cfgSel[cat].forEach(i=>parts.push(CFG[cat].opts[i].n.toLowerCase()));});
+  parts.push(cfgSel.mod.toLowerCase());
+  addCart("Sandwich-ul tău ("+parts.join(", ")+")",cfgPrice());
+  cfgSel={paine:null,proteina:[],branza:[],legume:[],sos:[],mod:"Cald"};
+  cfgRenderControls(); cfgRenderPlate();
+  document.getElementById("cfgHint").textContent="✓ Adăugat! Construiește altul 🥪";
+}
+cfgRenderControls(); cfgRenderPlate();
 
 renderCos();
 </script>
