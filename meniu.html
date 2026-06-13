@@ -3,1461 +3,592 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Metanoia · Mâncare Tradițională To-Go · DN 68</title>
+<title>Meniu · Metanoia · SOul Meal — Băcănie-butic · DN 68 Hațeg</title>
+<meta name="description" content="Meniul SOul Meal: cafea Nespresso & specialități barista, limonade și fresh-uri, sandwich-uri făcute pe loc, bowl, dulce la doză și borcanele Metanoia. Băcănie-butic pe DN 68, Totești · Hațeg.">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Karla:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* ═══════════════════════════
-   TOKENS PSIHOLOGICE
-═══════════════════════════ */
-:root {
-  /* Verzi — natură, sănătate, pădure Retezat */
-  --v1: #1e3d1a;   /* verde pădure profund */
-  --v2: #2d5a27;   /* verde activ */
-  --v3: #4a7c3f;   /* verde mediu */
-  --v4: #7aaa6a;   /* verde clar */
-  --v5: #d4edcc;   /* verde palid */
+:root{
+  --v1:#14253a; --v2:#2e4e7e; --v3:#4a74ac; --v4:#8fb4de; --v5:#dce9f7;
+  --c1:#faf5ec; --c2:#f2e8d0; --c3:#e8d5b0;
+  --t1:#c4622d; --t2:#e07840; --t3:#f5a06a; --t4:#fde8d8;
+  --e1:#0f1a2b; --e2:#16243c; --e3:#5c3517; --e4:#a0622a;
+  --tx1:#141a24; --tx2:#2c3648; --tx3:#5f6c80; --tx4:rgba(20,26,36,.4);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Karla',sans-serif;background:var(--c1);color:var(--tx1);overflow-x:hidden;}
+::-webkit-scrollbar{width:3px;} ::-webkit-scrollbar-track{background:var(--c2);} ::-webkit-scrollbar-thumb{background:var(--v2);}
+body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.03;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px;}
 
-  /* Crem & cald — tradiție, acasă, confort */
-  --c1: #faf5ec;   /* crem bază */
-  --c2: #f2e8d0;   /* crem cald */
-  --c3: #e8d5b0;   /* crem bronz */
+/* NAV */
+.nav{position:fixed;top:0;width:100%;z-index:999;background:rgba(250,245,236,.97);backdrop-filter:blur(12px);
+  border-bottom:2px solid var(--v2);display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:68px;}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo{width:42px;height:42px;}
+.nav-name{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:900;color:var(--v1);letter-spacing:2px;text-transform:uppercase;line-height:1;}
+.nav-sub{font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--tx3);font-weight:500;margin-top:2px;}
+.nav-links{display:flex;gap:24px;list-style:none;}
+.nav-links a{font-size:.75rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--tx2);text-decoration:none;transition:color .2s;padding-bottom:2px;border-bottom:2px solid transparent;}
+.nav-links a:hover,.nav-links a.active{color:var(--v2);border-bottom-color:var(--v2);}
+.nav-cta{background:var(--v2);color:#fff;border:none;padding:10px 22px;font-family:'Karla',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all .2s;text-decoration:none;}
+.nav-cta:hover{background:var(--v1);}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px;}
+.nav-burger span{width:26px;height:2px;background:var(--v1);transition:.3s;}
+.mob-menu{position:fixed;inset:0;z-index:9998;background:var(--v1);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;transform:translateX(100%);transition:transform .4s ease;}
+.mob-menu.open{transform:translateX(0);}
+.mob-menu a{font-family:'Playfair Display',serif;font-size:1.7rem;color:#fff;text-decoration:none;padding:12px 0;letter-spacing:2px;}
+.mob-close{position:absolute;top:20px;right:6%;font-size:2.2rem;color:#fff;background:none;border:none;cursor:pointer;}
 
-  /* Teracotă & ambra — apetit, pământ, tradiție */
-  --t1: #c4622d;   /* teracotă principal */
-  --t2: #e07840;   /* teracotă deschis */
-  --t3: #f5a06a;   /* somon cald */
-  --t4: #fde8d8;   /* teracotă palid */
+/* HERO */
+.m-hero{padding:118px 5% 60px;text-align:center;background:linear-gradient(160deg,var(--v1),#3c5a7a);position:relative;overflow:hidden;}
+.m-hero::before{content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 60% 70% at 78% 22%,rgba(143,180,228,.16),transparent 60%),radial-gradient(ellipse 50% 50% at 12% 88%,rgba(196,98,45,.14),transparent 55%);}
+.m-hero-in{position:relative;z-index:2;}
+.m-hero .s-tag{justify-content:center;color:var(--v4);}
+.m-hero .s-tag::before{background:var(--t2);}
+.m-hero h1{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(2.4rem,5vw,4rem);color:#fff;line-height:1.05;margin-bottom:14px;}
+.m-hero h1 em{font-style:italic;color:var(--t3);}
+.m-hero p{color:rgba(255,255,255,.7);max-width:600px;margin:0 auto;font-size:1rem;line-height:1.75;}
 
-  /* Espresso — cafea, premium */
-  --e1: #1e1108;   /* espresso adânc */
-  --e2: #2e1a0a;   /* maro cald */
-  --e3: #5c3517;   /* maro mediu */
-  --e4: #a0622a;   /* ambră */
+/* TICKER */
+.ticker{background:var(--t1);padding:11px 0;overflow:hidden;white-space:nowrap;}
+.ticker-track{display:inline-flex;gap:48px;animation:slide 26s linear infinite;}
+.ti{font-size:.64rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#fff;}
+.ts{color:rgba(255,255,255,.35);}
 
-  /* Texte */
-  --tx1: #1a1208;
-  --tx2: #3d2e1a;
-  --tx3: #7a6048;
-  --tx4: rgba(26,18,8,.4);
+/* SECTION */
+.sec{padding:80px 5%;position:relative;overflow:hidden;}
+.sec-cream{background:var(--c1);} .sec-warm{background:var(--c2);} .sec-green{background:var(--v1);}
+.s-tag{font-size:.65rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--v3);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.s-tag::before{content:'';width:24px;height:2px;background:var(--t1);}
+.s-tag.center{justify-content:center;}
+.sec-green .s-tag{color:var(--v4);} .sec-green .s-tag::before{background:var(--t2);}
+.s-title{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(1.8rem,3.4vw,2.8rem);line-height:1.1;}
+.s-title em{font-style:italic;color:var(--t1);}
+.sec-green .s-title{color:#fff;} .sec-green .s-title em{color:var(--t3);}
+.s-lead{font-family:'Source Serif 4',serif;font-style:italic;font-size:1rem;color:var(--tx3);max-width:560px;line-height:1.75;margin-top:12px;}
+.sec-green .s-lead{color:rgba(255,255,255,.5);}
+.sec-head{margin-bottom:10px;}
 
-  --radius: 0px;
-}
+/* MENIU CARDS */
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px;margin-top:44px;}
+.mc{background:#fff;border:2px solid var(--c3);overflow:hidden;transition:all .22s;display:flex;flex-direction:column;}
+.mc:hover{border-color:var(--v3);transform:translateY(-4px);box-shadow:0 14px 34px rgba(20,37,58,.1);}
+.mc-top{height:128px;display:flex;align-items:center;justify-content:center;font-size:3.4rem;position:relative;}
+.mc-lbl{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(15,26,43,.86),transparent);padding:16px 14px 9px;display:flex;align-items:center;justify-content:space-between;}
+.mc-lbl-txt{font-size:.58rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#fff;}
+.mc-pill{background:var(--t1);color:#fff;font-size:.5rem;font-weight:700;letter-spacing:1px;padding:3px 8px;text-transform:uppercase;white-space:nowrap;}
+.mc-body{padding:16px 18px 18px;flex:1;display:flex;flex-direction:column;}
+.mc-type{font-size:.6rem;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--v3);margin-bottom:6px;}
+.mc-name{font-family:'Playfair Display',serif;font-size:1.12rem;font-weight:700;color:var(--tx1);margin-bottom:7px;line-height:1.2;}
+.mc-desc{font-family:'Source Serif 4',serif;font-style:italic;font-size:.86rem;color:var(--tx3);line-height:1.55;flex:1;margin-bottom:14px;}
+.mc-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.mc-price{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:900;color:var(--t1);}
+.mc-price small{font-size:.62rem;font-weight:600;color:var(--tx3);letter-spacing:1px;}
+.mc-add{background:var(--v2);color:#fff;border:none;padding:9px 16px;font-family:'Karla',sans-serif;font-size:.66rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all .2s;white-space:nowrap;}
+.mc-add:hover{background:var(--v1);}
+.mc-add.added{background:#2e7d4f;}
+.mc-tba{font-size:.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--tx4);}
 
-*,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior:smooth; }
-body {
-  font-family:'Karla',sans-serif;
-  background:var(--c1);
-  color:var(--tx1);
-  overflow-x:hidden;
-}
-::-webkit-scrollbar { width:3px; }
-::-webkit-scrollbar-track { background:var(--c2); }
-::-webkit-scrollbar-thumb { background:var(--v2); }
+/* BORCANE list */
+.jars{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:44px;}
+.jar{background:rgba(255,255,255,.05);border:2px solid rgba(255,255,255,.1);padding:22px 20px;transition:all .22s;}
+.jar:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.25);transform:translateY(-3px);}
+.jar-ico{font-size:2rem;margin-bottom:10px;}
+.jar-name{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:6px;}
+.jar-desc{font-size:.84rem;color:rgba(255,255,255,.5);line-height:1.55;}
 
-/* texture overlay */
-body::after {
-  content:''; position:fixed; inset:0; z-index:0; pointer-events:none;
-  opacity:.03;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-size:200px;
-}
+/* PACHETE */
+.combo{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:44px;}
+.cb{background:#fff;border:2px solid var(--c3);padding:28px;transition:all .22s;position:relative;overflow:hidden;}
+.cb::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--t1);transform:scaleX(0);transform-origin:left;transition:transform .3s;}
+.cb:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(20,37,58,.1);border-color:var(--v3);}
+.cb:hover::before{transform:scaleX(1);}
+.cb-ico{font-size:2.2rem;margin-bottom:12px;}
+.cb-name{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--tx1);margin-bottom:8px;}
+.cb-desc{font-size:.9rem;color:var(--tx3);line-height:1.6;margin-bottom:18px;}
+.cb-foot{display:flex;align-items:center;justify-content:space-between;}
+.cb-price{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:var(--t1);}
+.cb-price small{font-size:.66rem;font-weight:600;color:var(--tx3);}
 
-/* ═══ NAV ═══ */
-.nav {
-  position:fixed; top:0; width:100%; z-index:999;
-  background:rgba(250,245,236,.97);
-  backdrop-filter:blur(12px);
-  border-bottom:2px solid var(--v2);
-  display:flex; align-items:center; justify-content:space-between;
-  padding:0 5%; height:68px;
-}
-.nav-brand {
-  display:flex; align-items:center; gap:10px;
-  text-decoration:none;
-}
-.nav-logo { width:42px; height:42px; }
-.nav-name {
-  font-family:'Playfair Display',serif;
-  font-size:1.1rem; font-weight:900;
-  color:var(--v1); letter-spacing:2px; text-transform:uppercase;
-}
-.nav-sub {
-  font-size:.58rem; letter-spacing:2px; text-transform:uppercase;
-  color:var(--tx3); font-weight:500; margin-top:1px;
-}
-.nav-links { display:flex; gap:24px; list-style:none; }
-.nav-links a {
-  font-size:.75rem; font-weight:600; letter-spacing:1px;
-  text-transform:uppercase; color:var(--tx2); text-decoration:none;
-  transition:color .2s; padding-bottom:2px;
-  border-bottom:2px solid transparent;
-}
-.nav-links a:hover { color:var(--v2); border-bottom-color:var(--v2); }
-.nav-cta {
-  background:var(--v2); color:#fff;
-  border:none; padding:10px 22px;
-  font-family:'Karla',sans-serif;
-  font-size:.78rem; font-weight:700; letter-spacing:1.5px; text-transform:uppercase;
-  cursor:pointer; transition:all .2s;
-}
-.nav-cta:hover { background:var(--v1); }
+/* COS BAR */
+.cosbar{position:fixed;bottom:0;left:0;right:0;z-index:600;background:var(--e1);color:#fff;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 5%;
+  transform:translateY(110%);transition:transform .3s ease;box-shadow:0 -6px 24px rgba(0,0,0,.25);}
+.cosbar.show{transform:translateY(0);}
+.cosbar-info{display:flex;align-items:center;gap:14px;font-size:.9rem;}
+.cosbar-count{background:var(--t1);color:#fff;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.9rem;flex-shrink:0;}
+.cosbar-total{font-family:'Playfair Display',serif;font-weight:700;font-size:1.05rem;color:var(--v4);}
+.cosbar-btns{display:flex;gap:10px;align-items:center;}
+.cosbar-clear{background:none;border:none;color:rgba(255,255,255,.5);font-size:.74rem;cursor:pointer;text-decoration:underline;}
+.cosbar-go{background:var(--t1);color:#fff;border:none;padding:12px 26px;font-family:'Karla',sans-serif;font-size:.76rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:all .2s;}
+.cosbar-go:hover{background:var(--t2);}
 
-/* ═══ HERO ═══ */
-.hero {
-  min-height:100svh;
-  background: linear-gradient(160deg, var(--v1) 0%, #2d4a20 55%, var(--e2) 100%);
-  display:grid; grid-template-columns:1fr 1fr;
-  align-items:center; gap:48px;
-  padding:100px 5% 60px;
-  position:relative; overflow:hidden;
-}
-/* pattern organic */
-.hero::before {
-  content:'';
-  position:absolute; inset:0; pointer-events:none;
-  background:
-    radial-gradient(ellipse 60% 70% at 80% 30%, rgba(122,170,106,.15), transparent 60%),
-    radial-gradient(ellipse 40% 50% at 10% 80%, rgba(196,98,45,.12), transparent 55%),
-    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.02'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-}
-.hero-left { position:relative; z-index:2; }
-.hero-badge {
-  display:inline-flex; align-items:center; gap:9px;
-  background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.2);
-  padding:7px 18px; margin-bottom:28px;
-  font-size:.68rem; font-weight:700; letter-spacing:2.5px;
-  text-transform:uppercase; color:rgba(255,255,255,.85);
-  animation:fadeUp .7s ease both;
-}
-.hero-badge-dot {
-  width:7px; height:7px; border-radius:50%;
-  background:var(--t2); animation:blink 2s infinite;
-}
-.hero h1 {
-  font-family:'Playfair Display',serif; font-weight:900;
-  font-size:clamp(2.4rem,5vw,5rem);
-  line-height:1.05; color:#fff; margin-bottom:16px;
-  animation:fadeUp .7s .1s ease both;
-}
-.hero h1 em {
-  font-style:italic; color:var(--t3);
-  display:block;
-}
-.hero-desc {
-  font-family:'Source Serif 4',serif; font-style:italic;
-  font-size:clamp(.95rem,1.4vw,1.15rem);
-  color:rgba(255,255,255,.6); line-height:1.75;
-  max-width:460px; margin-bottom:44px;
-  animation:fadeUp .7s .2s ease both;
-}
-.hero-btns {
-  display:flex; gap:12px; flex-wrap:wrap;
-  animation:fadeUp .7s .3s ease both;
-}
-.btn-terra {
-  background:var(--t1); color:#fff; border:none;
-  padding:14px 32px;
-  font-family:'Karla',sans-serif; font-size:.82rem;
-  font-weight:700; letter-spacing:1.5px; text-transform:uppercase;
-  cursor:pointer; transition:all .22s;
-}
-.btn-terra:hover { background:var(--t2); transform:translateY(-2px); box-shadow:0 8px 24px rgba(196,98,45,.4); }
-.btn-outline-w {
-  background:transparent; color:#fff;
-  border:2px solid rgba(255,255,255,.3); padding:14px 32px;
-  font-family:'Karla',sans-serif; font-size:.82rem;
-  font-weight:500; letter-spacing:1.5px; text-transform:uppercase;
-  cursor:pointer; transition:all .22s;
-}
-.btn-outline-w:hover { border-color:#fff; background:rgba(255,255,255,.07); }
+/* INFO STRIP */
+.info{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:8px;}
+.inf{text-align:center;padding:28px 16px;border-right:1px solid rgba(255,255,255,.08);}
+.inf:last-child{border-right:none;}
+.inf-ico{font-size:1.8rem;margin-bottom:8px;}
+.inf-n{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--t3);}
+.inf-l{font-size:.66rem;letter-spacing:1px;color:rgba(255,255,255,.45);margin-top:4px;line-height:1.4;}
 
-/* hero cards */
-.hero-right {
-  position:relative; z-index:2;
-  display:flex; flex-direction:column; gap:12px;
-  animation:fadeUp .7s .15s ease both;
-}
-.hc {
-  background:rgba(255,255,255,.08);
-  border:1px solid rgba(255,255,255,.12);
-  padding:14px 18px;
-  display:flex; align-items:center; gap:14px;
-  backdrop-filter:blur(8px);
-  transition:all .2s;
-}
-.hc:hover { background:rgba(255,255,255,.13); transform:translateX(4px); }
-.hc-ico {
-  width:46px; height:46px; border-radius:8px;
-  background:rgba(255,255,255,.1);
-  display:flex; align-items:center; justify-content:center;
-  font-size:1.4rem; flex-shrink:0;
-}
-.hc-name { font-weight:700; color:#fff; font-size:.88rem; }
-.hc-sub { font-size:.72rem; color:rgba(255,255,255,.45); margin-top:2px; }
-.hc-kcal {
-  margin-left:auto;
-  background:rgba(196,98,45,.3); color:var(--t3);
-  font-size:.72rem; font-weight:700; padding:4px 10px; white-space:nowrap;
-}
-/* hero stats */
-.hero-stats {
-  position:absolute; bottom:40px; right:5%;
-  display:flex; gap:32px; z-index:2;
-  animation:fadeUp .7s .4s ease both;
-}
-.hs { text-align:right; }
-.hs-n {
-  font-family:'Playfair Display',serif; font-size:2.2rem; font-weight:900;
-  color:var(--t3); line-height:1;
-}
-.hs-l { font-size:.58rem; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.3); margin-top:3px; }
+/* FOOTER */
+footer{background:var(--e1);padding:54px 5% 24px;}
+.ft-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;padding-bottom:34px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:24px;}
+.ft-logo{width:52px;height:52px;margin-bottom:12px;}
+.ft-brand{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:900;color:var(--t3);letter-spacing:2px;text-transform:uppercase;}
+.ft-sub{font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-top:2px;}
+.ft-tag{font-family:'Source Serif 4',serif;font-style:italic;font-size:.88rem;color:rgba(255,255,255,.35);max-width:230px;line-height:1.65;margin-top:10px;}
+.ft-col h4{font-size:.6rem;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:12px;}
+.ft-col ul{list-style:none;} .ft-col li{margin-bottom:8px;}
+.ft-col a{color:rgba(255,255,255,.25);font-size:.82rem;text-decoration:none;transition:color .2s;}
+.ft-col a:hover{color:var(--t3);}
+.ft-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:.72rem;color:rgba(255,255,255,.15);}
 
-/* ═══ TICKER ═══ */
-.ticker {
-  background:var(--t1); padding:11px 0;
-  overflow:hidden; white-space:nowrap;
-}
-.ticker-track { display:inline-flex; gap:52px; animation:slide 22s linear infinite; }
-.ti { font-size:.65rem; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#fff; }
-.ts { color:rgba(255,255,255,.35); }
+/* ===== MODAL PERSONALIZARE SANDWICH ===== */
+.sand-build{background:var(--v2)!important;}
+.sand-build:hover{background:var(--v1)!important;}
+.smodal{position:fixed;inset:0;z-index:9999;background:rgba(15,26,43,.7);backdrop-filter:blur(4px);display:none;align-items:flex-end;justify-content:center;}
+.smodal.open{display:flex;}
+@media(min-width:700px){.smodal{align-items:center;}}
+.sm-card{background:var(--c1);width:100%;max-width:620px;max-height:92vh;overflow-y:auto;animation:smUp .3s ease;}
+@keyframes smUp{from{transform:translateY(40px);opacity:0}to{transform:translateY(0);opacity:1}}
+.sm-hero{position:relative;height:120px;display:flex;align-items:center;justify-content:center;font-size:3.2rem;}
+.sm-close{position:absolute;top:12px;right:14px;width:34px;height:34px;border-radius:50%;background:rgba(0,0,0,.3);color:#fff;border:none;font-size:1.3rem;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.sm-body{padding:22px 24px 26px;}
+.sm-name{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:var(--tx1);margin-bottom:3px;}
+.sm-base{font-size:.78rem;color:var(--tx3);margin-bottom:20px;}
+.sm-group{margin-bottom:22px;}
+.sm-glabel{font-size:.64rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--v3);margin-bottom:10px;display:block;}
+.sm-opts{display:flex;flex-wrap:wrap;gap:8px;}
+.sm-opt{padding:9px 16px;border:2px solid var(--c3);background:#fff;color:var(--tx2);font-family:'Karla',sans-serif;font-size:.8rem;font-weight:600;cursor:pointer;transition:all .15s;}
+.sm-opt:hover{border-color:var(--v3);}
+.sm-opt.sel{background:var(--v2);color:#fff;border-color:var(--v2);}
+.sm-ing{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;border:2px solid var(--c3);background:#fff;margin-bottom:7px;cursor:pointer;transition:all .15s;}
+.sm-ing.off{opacity:.5;background:var(--c2);}
+.sm-ing-name{font-size:.88rem;font-weight:600;color:var(--tx1);display:flex;align-items:center;gap:9px;}
+.sm-ing.off .sm-ing-name{text-decoration:line-through;color:var(--tx3);}
+.sm-ing-tog{font-size:.64rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--t1);}
+.sm-ing.off .sm-ing-tog{color:var(--tx3);}
+.sm-extra{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;border:2px solid var(--c3);background:#fff;margin-bottom:7px;cursor:pointer;transition:all .15s;}
+.sm-extra.sel{border-color:var(--t1);background:var(--t4);}
+.sm-extra-name{font-size:.88rem;font-weight:600;color:var(--tx1);}
+.sm-extra-p{font-size:.78rem;font-weight:700;color:var(--t1);}
+.sm-foot{position:sticky;bottom:0;background:var(--e1);padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:14px;}
+.sm-total{color:#fff;font-size:.82rem;}
+.sm-total b{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--v4);margin-left:6px;}
+.sm-addbtn{background:var(--t1);color:#fff;border:none;padding:13px 26px;font-family:'Karla',sans-serif;font-size:.78rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all .2s;}
+.sm-addbtn:hover{background:var(--t2);}
 
-/* ═══ SECTION COMMONS ═══ */
-.sec { padding:88px 5%; position:relative; overflow:hidden; }
-.sec-cream { background:var(--c1); }
-.sec-warm  { background:var(--c2); }
-.sec-green { background:var(--v1); }
-.sec-green-light { background:var(--v2); }
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-.s-tag {
-  font-size:.65rem; font-weight:700; letter-spacing:3px;
-  text-transform:uppercase; color:var(--v3); margin-bottom:10px;
-  display:flex; align-items:center; gap:8px;
-}
-.s-tag::before { content:''; width:24px; height:2px; background:var(--t1); }
-.sec-green .s-tag, .sec-green-light .s-tag { color:var(--v4); }
-.sec-green .s-tag::before, .sec-green-light .s-tag::before { background:var(--t2); }
-
-.s-title {
-  font-family:'Playfair Display',serif; font-weight:900;
-  font-size:clamp(2rem,3.8vw,3.2rem); line-height:1.1;
-}
-.s-title em { font-style:italic; color:var(--t1); }
-.sec-green .s-title, .sec-green-light .s-title { color:#fff; }
-.sec-green .s-title em, .sec-green-light .s-title em { color:var(--t3); }
-.s-lead {
-  font-family:'Source Serif 4',serif; font-style:italic;
-  font-size:.98rem; color:var(--tx3); max-width:520px;
-  line-height:1.75; margin-top:12px;
-}
-.sec-green .s-lead, .sec-green-light .s-lead { color:rgba(255,255,255,.5); }
-
-/* ═══ TABS ═══ */
-.tab-row {
-  display:flex; gap:4px; overflow-x:auto; scrollbar-width:none;
-  padding-bottom:4px; margin-bottom:6px;
-}
-.tab-row::-webkit-scrollbar { display:none; }
-.tab {
-  padding:9px 20px; cursor:pointer;
-  font-size:.72rem; font-weight:700; letter-spacing:1px;
-  text-transform:uppercase; white-space:nowrap;
-  border:2px solid var(--c3); background:transparent;
-  color:var(--tx3); transition:all .15s; font-family:'Karla',sans-serif;
-}
-.tab.w-on { background:var(--e1); color:var(--c2); border-color:var(--e1); }
-.tab.d-on { background:var(--v2); color:#fff; border-color:var(--v2); }
-.tab:hover:not(.w-on):not(.d-on) { background:var(--c2); border-color:var(--v3); }
-
-/* kcal pills */
-.kcal-row { display:flex; align-items:center; gap:8px; margin:16px 0 32px; flex-wrap:wrap; }
-.kcal-lbl { font-size:.7rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--tx3); }
-.kp {
-  padding:6px 16px; cursor:pointer;
-  font-size:.72rem; font-weight:700; letter-spacing:1px; text-transform:uppercase;
-  border:2px solid var(--c3); background:transparent; color:var(--tx3);
-  transition:all .15s; font-family:'Karla',sans-serif;
-}
-.kp.on { background:var(--t1); color:#fff; border-color:var(--t1); }
-.kp:hover:not(.on) { border-color:var(--t1); color:var(--t1); }
-
-/* ═══ MENIU GRID ═══ */
-.menu-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(290px,1fr)); gap:20px; }
-.mc {
-  background:#fff;
-  border:2px solid var(--c3);
-  overflow:hidden;
-  transition:all .22s;
-  display:flex; flex-direction:column;
-}
-.mc:hover { border-color:var(--v3); transform:translateY(-4px); box-shadow:0 12px 32px rgba(30,61,26,.1); }
-.mc-top {
-  height:180px; display:flex; align-items:center; justify-content:center;
-  font-size:4rem; position:relative;
-}
-.mc-lbl {
-  position:absolute; bottom:0; left:0; right:0;
-  background:linear-gradient(to top, rgba(30,61,26,.85), transparent);
-  padding:18px 16px 10px;
-  display:flex; align-items:center; justify-content:space-between;
-}
-.mc-lbl-txt {
-  font-size:.6rem; font-weight:800; letter-spacing:2px;
-  text-transform:uppercase; color:#fff;
-}
-.mc-spill {
-  background:var(--t1); color:#fff;
-  font-size:.52rem; font-weight:700; letter-spacing:1px;
-  padding:3px 8px; text-transform:uppercase;
-}
-.mc-body { padding:18px 20px 22px; flex:1; display:flex; flex-direction:column; }
-.mc-type {
-  font-size:.62rem; font-weight:800; letter-spacing:2.5px;
-  text-transform:uppercase; color:var(--v3); margin-bottom:6px;
-}
-.mc-name {
-  font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700;
-  color:var(--tx1); margin-bottom:8px; line-height:1.2;
-}
-.mc-desc {
-  font-family:'Source Serif 4',serif; font-style:italic;
-  font-size:.88rem; color:var(--tx3); line-height:1.6;
-  flex:1; margin-bottom:16px;
-}
-/* MACROS BLOCK */
-.macro-block {
-  display:grid; grid-template-columns:repeat(4,1fr);
-  gap:1px; margin-bottom:16px;
-  background:var(--c3);
-  border:2px solid var(--c3);
-}
-.macro-cell {
-  background:var(--c1);
-  padding:8px 6px; text-align:center;
-}
-.macro-val { font-size:.82rem; font-weight:700; color:var(--tx1); line-height:1; }
-.macro-lbl { font-size:.56rem; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--tx4); margin-top:2px; }
-.macro-cell.m-kcal .macro-val { color:var(--t1); }
-.macro-cell.m-prot .macro-val { color:var(--v2); }
-.macro-cell.m-carb .macro-val { color:var(--e3); }
-.macro-cell.m-fat  .macro-val { color:var(--e4); }
-
-/* capsulă pairing */
-.pair-strip {
-  background:var(--e1);
-  padding:11px 14px;
-  display:flex; align-items:center; gap:12px;
-}
-.ps-ico { font-size:1.3rem; }
-.ps-info { flex:1; }
-.ps-name { font-size:.75rem; font-weight:700; color:var(--t3); }
-.ps-sub { font-size:.66rem; color:rgba(255,255,255,.35); margin-top:1px; }
-.ps-dots { display:flex; gap:3px; }
-.dot { width:6px; height:6px; border-radius:50%; }
-
-/* ═══ DESERTURI ═══ */
-.des-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr)); gap:16px; margin-top:48px; }
-.dc {
-  background:rgba(255,255,255,.06);
-  border:2px solid rgba(255,255,255,.1);
-  overflow:hidden; transition:all .22s; cursor:pointer;
-}
-.dc:hover { background:rgba(255,255,255,.1); border-color:rgba(255,255,255,.3); transform:translateY(-4px); }
-.dc-top { height:160px; display:flex; align-items:center; justify-content:center; font-size:3.8rem; position:relative; }
-.dc-badge {
-  position:absolute; top:12px; left:12px;
-  font-size:.58rem; font-weight:800; letter-spacing:1.5px;
-  padding:4px 10px; text-transform:uppercase;
-}
-.badge-v { background:var(--v2); color:#fff; }
-.badge-t { background:var(--t1); color:#fff; }
-.dc-body { padding:14px 16px 18px; }
-.dc-dose { display:flex; align-items:center; gap:8px; margin-bottom:8px; }
-.dc-dose-lbl { font-size:.6rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--t3); }
-.dc-name {
-  font-family:'Playfair Display',serif; font-size:1rem; font-weight:700;
-  color:#fff; margin-bottom:6px;
-}
-.dc-desc { font-family:'Source Serif 4',serif; font-style:italic; font-size:.85rem; color:rgba(255,255,255,.45); line-height:1.55; margin-bottom:12px; }
-.dc-foot { display:flex; justify-content:space-between; align-items:center; }
-.dc-macros { display:flex; gap:6px; }
-.dc-chip { font-size:.68rem; font-weight:700; padding:3px 9px; }
-.dc-chip-k { background:rgba(196,98,45,.2); color:var(--t3); }
-.dc-chip-g { background:rgba(255,255,255,.07); color:rgba(255,255,255,.4); }
-.dc-price { font-family:'Playfair Display',serif; font-size:1.05rem; font-weight:700; color:var(--t3); }
-
-/* ═══ BĂUTURI ═══ */
-.baut-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:16px; margin-top:48px; }
-.bc {
-  background:#fff; border:2px solid var(--c3);
-  padding:24px 20px; text-align:center;
-  transition:all .22s;
-}
-.bc:hover { border-color:var(--v3); transform:translateY(-3px); box-shadow:0 8px 24px rgba(30,61,26,.1); }
-.bc-icon { font-size:2.6rem; margin-bottom:12px; }
-.bc-title { font-family:'Playfair Display',serif; font-size:1rem; font-weight:700; color:var(--tx1); margin-bottom:6px; }
-.bc-desc { font-size:.82rem; color:var(--tx3); line-height:1.55; margin-bottom:14px; }
-.bc-tag {
-  display:inline-block;
-  background:var(--v5); color:var(--v1);
-  font-size:.6rem; font-weight:700; letter-spacing:1.5px;
-  padding:4px 12px; text-transform:uppercase;
-}
-
-/* ═══ CUM FUNCȚIONEAZĂ ═══ */
-.how-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:0; margin-top:56px; position:relative; }
-.how-grid::before {
-  content:'';
-  position:absolute; top:40px; left:10%; right:10%; height:2px;
-  background:linear-gradient(to right, transparent, var(--v4) 20%, var(--v4) 80%, transparent);
-  opacity:.4;
-}
-.hstep { text-align:center; padding:0 10px; position:relative; z-index:1; }
-.hstep-ico {
-  width:80px; height:80px; margin:0 auto 18px;
-  background:var(--v1);
-  display:flex; align-items:center; justify-content:center;
-  font-size:1.8rem; position:relative; transition:all .22s;
-  border:2px solid rgba(255,255,255,.15);
-}
-.hstep:hover .hstep-ico { background:var(--v2); transform:scale(1.06) rotate(-3deg); }
-.hstep-n {
-  position:absolute; top:-10px; right:-10px;
-  background:var(--t1); color:#fff;
-  width:22px; height:22px;
-  font-size:.62rem; font-weight:800;
-  display:flex; align-items:center; justify-content:center;
-}
-.hstep h3 {
-  font-size:.7rem; font-weight:800; letter-spacing:1.5px;
-  text-transform:uppercase; color:#fff; margin-bottom:7px;
-}
-.hstep p { font-size:.8rem; color:rgba(255,255,255,.5); line-height:1.6; max-width:150px; margin:0 auto; }
-.hstep-hl { color:var(--t3); font-weight:700; }
-
-/* ═══ ABONAMENTE ═══ */
-.plans-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:52px; }
-.pc {
-  background:#fff; border:2px solid var(--c3);
-  padding:34px 28px; position:relative; transition:all .22s;
-}
-.pc:hover:not(.pc-hot) { border-color:var(--v3); }
-.pc-hot {
-  background:var(--v1); border-color:var(--v1);
-}
-.pc-hot-badge {
-  position:absolute; top:-13px; left:50%; transform:translateX(-50%);
-  background:var(--t1); color:#fff;
-  font-size:.58rem; font-weight:800; letter-spacing:1.5px;
-  padding:4px 16px; text-transform:uppercase; white-space:nowrap;
-}
-.pc-tag { font-size:.62rem; font-weight:800; letter-spacing:2.5px; text-transform:uppercase; margin-bottom:10px; }
-.pc:not(.pc-hot) .pc-tag { color:var(--v3); }
-.pc-hot .pc-tag { color:var(--v4); }
-.pc-name { font-family:'Playfair Display',serif; font-size:1.8rem; font-weight:900; margin-bottom:10px; }
-.pc:not(.pc-hot) .pc-name { color:var(--tx1); }
-.pc-hot .pc-name { color:#fff; }
-.pc-desc { font-family:'Source Serif 4',serif; font-style:italic; font-size:.9rem; line-height:1.65; margin-bottom:24px; }
-.pc:not(.pc-hot) .pc-desc { color:var(--tx3); }
-.pc-hot .pc-desc { color:rgba(255,255,255,.5); }
-.pc-price { font-family:'Playfair Display',serif; font-size:2.8rem; font-weight:900; line-height:1; }
-.pc:not(.pc-hot) .pc-price { color:var(--t1); }
-.pc-hot .pc-price { color:var(--t3); }
-.pc-period { font-size:.75rem; margin-bottom:24px; }
-.pc:not(.pc-hot) .pc-period { color:var(--tx4); }
-.pc-hot .pc-period { color:rgba(255,255,255,.35); }
-.pc-ul { list-style:none; margin-bottom:28px; }
-.pc-ul li { padding:8px 0; border-bottom:1px solid; font-size:.84rem; display:flex; gap:10px; align-items:flex-start; }
-.pc:not(.pc-hot) .pc-ul li { border-color:var(--c3); color:var(--tx3); }
-.pc-hot .pc-ul li { border-color:rgba(255,255,255,.08); color:rgba(255,255,255,.6); }
-.pc-ul li::before { content:'✓'; font-weight:900; flex-shrink:0; }
-.pc:not(.pc-hot) .pc-ul li::before { color:var(--v3); }
-.pc-hot .pc-ul li::before { color:var(--t3); }
-.pc-btn {
-  width:100%; padding:13px;
-  font-family:'Karla',sans-serif; font-size:.76rem;
-  font-weight:800; letter-spacing:2px; text-transform:uppercase;
-  cursor:pointer; border:none; transition:all .2s;
-}
-.pc-btn-out { background:transparent; color:var(--v2); border:2px solid var(--v2); }
-.pc-btn-out:hover { background:var(--v2); color:#fff; }
-.pc-btn-fill { background:var(--t1); color:#fff; }
-.pc-btn-fill:hover { background:var(--t2); }
-
-/* ═══ PRECOMANDĂ ═══ */
-.prec-wrap {
-  display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start;
-}
-.prec-steps { display:flex; flex-direction:column; gap:0; margin-top:32px; }
-.pstep {
-  display:flex; gap:16px; padding:18px 0;
-  border-bottom:1px solid var(--c3);
-}
-.pstep:last-child { border-bottom:none; }
-.pstep-n {
-  width:32px; height:32px; flex-shrink:0;
-  background:var(--v2); color:#fff;
-  font-size:.72rem; font-weight:800;
-  display:flex; align-items:center; justify-content:center;
-  margin-top:2px;
-}
-.pstep-title { font-size:.8rem; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:var(--tx1); margin-bottom:4px; }
-.pstep-desc { font-size:.84rem; color:var(--tx3); line-height:1.6; }
-.pstep-hl { color:var(--v2); font-weight:700; }
-
-/* form */
-.prec-form { display:flex; flex-direction:column; gap:14px; }
-.fl { font-size:.65rem; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:var(--tx3); margin-bottom:5px; display:block; }
-.fi {
-  width:100%;
-  background:var(--c1); border:2px solid var(--c3);
-  padding:12px 16px; color:var(--tx1);
-  font-family:'Karla',sans-serif; font-size:.9rem;
-  outline:none; transition:border-color .2s; -webkit-appearance:none;
-}
-.fi:focus { border-color:var(--v2); background:#fff; }
-.fi::placeholder { color:var(--tx4); }
-.frow { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
-.fsub {
-  background:var(--v2); color:#fff; border:none;
-  padding:16px; width:100%; margin-top:4px;
-  font-family:'Karla',sans-serif; font-size:.8rem;
-  font-weight:800; letter-spacing:2px; text-transform:uppercase;
-  cursor:pointer; transition:all .2s;
-}
-.fsub:hover { background:var(--v1); }
-.fsub:disabled { opacity:.5; cursor:not-allowed; }
-.fnote { font-size:.74rem; color:var(--tx3); text-align:center; margin-top:6px; line-height:1.5; }
-.ferr {
-  display:none; padding:12px;
-  background:rgba(196,98,45,.08); border:1px solid rgba(196,98,45,.3);
-  font-size:.8rem; color:var(--t1);
-}
-.fok {
-  display:none; padding:24px;
-  background:var(--v5); border:2px solid var(--v3);
-  text-align:center;
-}
-.fok-title { font-family:'Playfair Display',serif; font-size:1.3rem; font-weight:700; color:var(--v1); margin-bottom:6px; }
-.fok-sub { font-size:.85rem; color:var(--tx3); }
-
-/* ═══ FOOTER ═══ */
-footer {
-  background:var(--e1);
-  padding:56px 5% 24px;
-}
-.ft-grid { display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:40px; padding-bottom:36px; border-bottom:1px solid rgba(255,255,255,.08); margin-bottom:24px; }
-.ft-logo { width:52px; height:52px; margin-bottom:12px; }
-.ft-brand { font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:900; color:var(--t3); letter-spacing:2px; text-transform:uppercase; }
-.ft-sub { font-size:.58rem; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.25); margin-top:2px; }
-.ft-tagline { font-family:'Source Serif 4',serif; font-style:italic; font-size:.88rem; color:rgba(255,255,255,.35); max-width:200px; line-height:1.65; margin-top:10px; }
-.ft-col h4 { font-size:.6rem; font-weight:800; letter-spacing:2.5px; text-transform:uppercase; color:rgba(255,255,255,.3); margin-bottom:12px; }
-.ft-col ul { list-style:none; }
-.ft-col li { margin-bottom:8px; }
-.ft-col a { color:rgba(255,255,255,.25); font-size:.82rem; text-decoration:none; transition:color .2s; }
-.ft-col a:hover { color:var(--t3); }
-.ft-bottom { display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:.72rem; color:rgba(255,255,255,.15); }
-
-/* ═══ FAB ═══ */
-.fab {
-  position:fixed; bottom:24px; right:24px; z-index:500;
-  background:var(--v2); color:#fff; border:none;
-  padding:14px 24px;
-  font-family:'Karla',sans-serif; font-size:.72rem; font-weight:800;
-  letter-spacing:1.5px; text-transform:uppercase;
-  cursor:pointer; box-shadow:0 6px 24px rgba(45,90,39,.4);
-  display:flex; align-items:center; gap:8px; transition:all .2s;
-}
-.fab:hover { background:var(--v1); transform:translateY(-3px); box-shadow:0 10px 32px rgba(45,90,39,.5); }
-
-/* ═══ KEYFRAMES ═══ */
-@keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
-@keyframes slide  { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-@keyframes blink  { 0%,100%{opacity:1} 50%{opacity:.3} }
-
-/* ═══ RESPONSIVE ═══ */
 @media(max-width:900px){
-  .hero{grid-template-columns:1fr}
-  .hero-right,.hero-stats{display:none}
-  .how-grid{grid-template-columns:repeat(2,1fr);gap:28px}
-  .how-grid::before{display:none}
-  .plans-grid{grid-template-columns:1fr}
-  .prec-wrap{grid-template-columns:1fr}
-  .ft-grid{grid-template-columns:1fr 1fr}
-  .nav-links{display:none}
-  .macro-block{grid-template-columns:repeat(2,1fr)}
+  .nav-links{display:none;} .nav-cta{display:none;} .nav-burger{display:flex;}
+  .combo{grid-template-columns:1fr;}
+  .info{grid-template-columns:repeat(2,1fr);} .inf:nth-child(2){border-right:none;}
+  .ft-grid{grid-template-columns:1fr 1fr;}
 }
-@media(max-width:480px){
-  .ft-grid{grid-template-columns:1fr}
-  .frow{grid-template-columns:1fr}
-}
+@media(max-width:480px){ .ft-grid{grid-template-columns:1fr;} .info{grid-template-columns:1fr;} .inf{border-right:none;border-bottom:1px solid rgba(255,255,255,.08);} }
 </style>
 </head>
 <body>
 
-<!-- LOGO SVG def -->
 <svg width="0" height="0" style="position:absolute">
   <defs>
+    <linearGradient id="LG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#c2daf2"/><stop offset="0.55" stop-color="#8fb8e4"/><stop offset="1" stop-color="#6d9cce"/>
+    </linearGradient>
     <symbol id="L" viewBox="0 0 500 500">
-      <circle cx="250" cy="250" r="235" stroke="#c5a059" fill="none" stroke-width="1.5" opacity="0.6"/>
-      <circle cx="250" cy="250" r="215" stroke="#c5a059" fill="none" stroke-width="3"/>
-      <circle cx="250" cy="145" r="45" stroke="#c5a059" fill="none" stroke-width="3"/>
-      <polygon points="250,145 170,310 330,310" fill="#c5a059"/>
-      <text x="257" y="380" fill="#c5a059" font-family="Cinzel,serif" font-size="40" font-weight="600" letter-spacing="14" text-anchor="middle">METANOIA</text>
-      <text x="253" y="420" fill="#c5a059" font-family="Inter,sans-serif" font-size="14" font-weight="600" letter-spacing="7" text-anchor="middle">HAȚEG ALTERNATIV</text>
-      <circle cx="250" cy="450" r="4" fill="#c5a059"/>
+      <circle cx="250" cy="250" r="215" fill="none" stroke="url(#LG)" stroke-width="9"/>
+      <circle cx="250" cy="250" r="190" fill="none" stroke="url(#LG)" stroke-width="3" opacity="0.75"/>
+      <polygon points="168,190 252,292 84,292" fill="#7ba6d4"/>
+      <polygon points="332,196 416,292 248,292" fill="#7ba6d4"/>
+      <polygon points="250,138 352,292 148,292" fill="url(#LG)"/>
+      <path d="M250,138 L278,180 L262,172 L250,186 L238,172 L222,180 Z" fill="#ffffff"/>
+      <text x="250" y="352" fill="#6d9cce" font-family="'Playfair Display',Georgia,serif" font-size="40" font-weight="600" letter-spacing="10" text-anchor="middle">METANOIA</text>
+      <text x="250" y="386" fill="#8fb8e4" font-family="Karla,Arial,sans-serif" font-size="15" font-weight="600" letter-spacing="7" text-anchor="middle">HAȚEG ALTERNATIV</text>
+      <circle cx="250" cy="408" r="4" fill="#8fb8e4"/>
     </symbol>
   </defs>
 </svg>
 
-<!-- ═════ NAV ═════ -->
+<!-- NAV -->
 <nav class="nav">
-  <a class="nav-brand" href="#">
+  <a class="nav-brand" href="index.html">
     <svg class="nav-logo"><use href="#L"/></svg>
-    <div>
-      <div class="nav-name">Metanoia</div>
-      <div class="nav-sub">Hațeg Alternativ · DN 68</div>
-    </div>
+    <div><div class="nav-name">Metanoia</div><div class="nav-sub">Hațeg Alternativ · DN 68</div></div>
   </a>
   <ul class="nav-links">
-    <li><a href="#meniu">Meniu</a></li>
-    <li><a href="#deserturi">Deserturi</a></li>
-    <li><a href="#bauturi">Băuturi</a></li>
-    <li><a href="#how">Cum funcționează</a></li>
-    <li><a href="#abonamente">Abonamente</a></li>
-    <li><a href="#precomanda">Precomandă</a></li>
+    <li><a href="index.html">Acasă</a></li>
+    <li><a href="meniu.html" class="active">Meniu</a></li>
+    <li><a href="masterplan.html">Masterplan</a></li>
+    <li><a href="forum.html">Forum</a></li>
+    <li><a href="contact.html">Contact</a></li>
   </ul>
-  <button class="nav-cta" onclick="document.getElementById('precomanda').scrollIntoView({behavior:'smooth'})">Precomandă Acum →</button>
+  <a class="nav-cta" href="rezervare.html">Comandă →</a>
+  <button class="nav-burger" onclick="document.getElementById('mobMenu').classList.add('open')" aria-label="Meniu"><span></span><span></span><span></span></button>
 </nav>
-
-<!-- ═════ HERO ═════ -->
-<section class="hero">
-  <div class="hero-left">
-    <div class="hero-badge"><div class="hero-badge-dot"></div>DN 68 · Totești · Vacuum & Spill-Proof</div>
-    <h1>Mâncare de<br>bunica.<br><em>La drum.</em></h1>
-    <p class="hero-desc">Preparate tradiționale gătite slow, ambalate în vacuum, cu macronutrienți afișați și o doză Nespresso paired perfect. Precomandă — ridici în 5 secunde fără să cobori din mașină.</p>
-    <div class="hero-btns">
-      <button class="btn-terra" onclick="document.getElementById('meniu').scrollIntoView({behavior:'smooth'})">Vezi Meniul Săptămânii →</button>
-      <button class="btn-outline-w" onclick="document.getElementById('how').scrollIntoView({behavior:'smooth'})">Cum funcționează</button>
-    </div>
-  </div>
-  <div class="hero-right">
-    <div class="hc">
-      <div class="hc-ico">🍲</div>
-      <div>
-        <div class="hc-name">Ciorbă de Burtă cu Smântână</div>
-        <div class="hc-sub">Prânz · 380 gr · Vacuum · paired Ristretto</div>
-      </div>
-      <div class="hc-kcal">420 kcal</div>
-    </div>
-    <div class="hc">
-      <div class="hc-ico">🥩</div>
-      <div>
-        <div class="hc-name">Sarmale Tradiționale</div>
-        <div class="hc-sub">Cină · 450 gr · Vacuum · paired Indriya</div>
-      </div>
-      <div class="hc-kcal">580 kcal</div>
-    </div>
-    <div class="hc">
-      <div class="hc-ico">🍮</div>
-      <div>
-        <div class="hc-name">Papanași cu Dulceață + Kazaar</div>
-        <div class="hc-sub">Desert la doză · 180 gr · paired Kazaar</div>
-      </div>
-      <div class="hc-kcal">340 kcal</div>
-    </div>
-    <div class="hc" style="border-color:rgba(255,255,255,.25)">
-      <div class="hc-ico">📦</div>
-      <div>
-        <div class="hc-name">Box Complet 1500 kcal</div>
-        <div class="hc-sub">3 mese + 2 gustări + 3 doze / zi</div>
-      </div>
-      <div class="hc-kcal" style="background:rgba(196,98,45,.4)">Bestseller</div>
-    </div>
-  </div>
-  <div class="hero-stats">
-    <div class="hs"><div class="hs-n">100%</div><div class="hs-l">Vacuum Seal</div></div>
-    <div class="hs"><div class="hs-n">5s</div><div class="hs-l">Schimb geam</div></div>
-    <div class="hs"><div class="hs-n">Macro</div><div class="hs-l">Afișate precis</div></div>
-  </div>
-</section>
-
-<!-- ═════ TICKER ═════ -->
-<div class="ticker">
-  <div class="ticker-track">
-    <span class="ti">MÂNCARE TRADIȚIONALĂ</span><span class="ts">✦</span>
-    <span class="ti">AMBALAJ VACUUM</span><span class="ts">✦</span>
-    <span class="ti">MACRONUTRIENȚI AFIȘAȚI</span><span class="ts">✦</span>
-    <span class="ti">DESERT LA DOZĂ NESPRESSO</span><span class="ts">✦</span>
-    <span class="ti">PRECOMANDĂ ONLINE</span><span class="ts">✦</span>
-    <span class="ti">DN 68 · TOTEȘTI · HAȚEG</span><span class="ts">✦</span>
-    <span class="ti">RIDICI ÎN 5 SECUNDE</span><span class="ts">✦</span>
-    <span class="ti">MÂNCARE TRADIȚIONALĂ</span><span class="ts">✦</span>
-    <span class="ti">AMBALAJ VACUUM</span><span class="ts">✦</span>
-    <span class="ti">MACRONUTRIENȚI AFIȘAȚI</span><span class="ts">✦</span>
-    <span class="ti">DESERT LA DOZĂ NESPRESSO</span><span class="ts">✦</span>
-    <span class="ti">PRECOMANDĂ ONLINE</span><span class="ts">✦</span>
-    <span class="ti">DN 68 · TOTEȘTI · HAȚEG</span><span class="ts">✦</span>
-    <span class="ti">RIDICI ÎN 5 SECUNDE</span><span class="ts">✦</span>
-  </div>
+<div class="mob-menu" id="mobMenu">
+  <button class="mob-close" onclick="document.getElementById('mobMenu').classList.remove('open')" aria-label="Închide">×</button>
+  <a href="index.html">Acasă</a><a href="meniu.html">Meniu</a><a href="masterplan.html">Masterplan</a>
+  <a href="forum.html">Forum</a><a href="contact.html">Contact</a>
 </div>
 
-<!-- ═════ MENIU ═════ -->
-<section class="sec sec-cream" id="meniu">
-  <div class="s-tag">Meniu Săptămânal</div>
-  <h2 class="s-title">Gătit azi.<br><em>Ridicat mâine.</em></h2>
-  <p class="s-lead">Ingrediente locale Retezat & Hațeg. Rețete tradiționale autentice. Ambalat în vacuum la 121°C — valabilitate 5 zile la rece, proaspăt ca din oală.</p>
-
-  <div class="tab-row" id="wTabs" style="margin-top:36px">
-    <button class="tab w-on">25–31 MAI</button>
-    <button class="tab">01–07 IUN</button>
-    <button class="tab">08–14 IUN</button>
-    <button class="tab">15–21 IUN</button>
-  </div>
-  <div class="tab-row" id="dTabs">
-    <button class="tab d-on">Luni</button>
-    <button class="tab">Marți</button>
-    <button class="tab">Miercuri</button>
-    <button class="tab">Joi</button>
-    <button class="tab">Vineri</button>
-  </div>
-  <div class="kcal-row">
-    <span class="kcal-lbl">Plan:</span>
-    <button class="kp">1000 kcal</button>
-    <button class="kp on">1500 kcal</button>
-    <button class="kp">2000 kcal</button>
-    <button class="kp">2500 kcal</button>
-  </div>
-
-  <div class="menu-grid">
-
-    <!-- MIC DEJUN -->
-    <div class="mc">
-      <div class="mc-top" style="background:linear-gradient(135deg,#3d2800,#7a5010)">
-        🥛
-        <div class="mc-lbl">
-          <span class="mc-lbl-txt">☀️ Mic Dejun · 07:00</span>
-          <span class="mc-spill">Vacuum</span>
-        </div>
-      </div>
-      <div class="mc-body">
-        <div class="mc-type">Mic Dejun Tradițional</div>
-        <div class="mc-name">Mămăligă cu Brânză de Burduf & Smântână</div>
-        <p class="mc-desc">Mămăligă fierbinte, brânză de burduf din Retezat, smântână grasă de fermă. Ambalat vacuum — reîncălzești în 4 minute.</p>
-        <div class="macro-block">
-          <div class="macro-cell m-kcal"><div class="macro-val">410</div><div class="macro-lbl">kcal</div></div>
-          <div class="macro-cell m-prot"><div class="macro-val">18g</div><div class="macro-lbl">prot</div></div>
-          <div class="macro-cell m-carb"><div class="macro-val">52g</div><div class="macro-lbl">carb</div></div>
-          <div class="macro-cell m-fat"><div class="macro-val">14g</div><div class="macro-lbl">grăs</div></div>
-        </div>
-        <div class="pair-strip">
-          <div class="ps-ico">☕</div>
-          <div class="ps-info">
-            <div class="ps-name">Volluto Smooth · Int. 4</div>
-            <div class="ps-sub">Blând, completează laptele din brânză</div>
-          </div>
-          <div class="ps-dots">
-            <div class="dot" style="background:var(--t3)"></div>
-            <div class="dot" style="background:var(--t3)"></div>
-            <div class="dot" style="background:var(--t3)"></div>
-            <div class="dot" style="background:rgba(255,255,255,.15)"></div>
-            <div class="dot" style="background:rgba(255,255,255,.15)"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- GUSTARE -->
-    <div class="mc">
-      <div class="mc-top" style="background:linear-gradient(135deg,#1e3d1a,#2d6025)">
-        🥗
-        <div class="mc-lbl">
-          <span class="mc-lbl-txt">🌿 Gustare · 10:30</span>
-          <span class="mc-spill">Vacuum</span>
-        </div>
-      </div>
-      <div class="mc-body">
-        <div class="mc-type">Gustare Sănătoasă</div>
-        <div class="mc-name">Salată de Fasole cu Ceapă & Cimbru</div>
-        <p class="mc-desc">Fasole boabe din grădina proprie, ceapă roșie, cimbru de munte, ulei de floarea soarelui presat la rece.</p>
-        <div class="macro-block">
-          <div class="macro-cell m-kcal"><div class="macro-val">220</div><div class="macro-lbl">kcal</div></div>
-          <div class="macro-cell m-prot"><div class="macro-val">11g</div><div class="macro-lbl">prot</div></div>
-          <div class="macro-cell m-carb"><div class="macro-val">32g</div><div class="macro-lbl">carb</div></div>
-          <div class="macro-cell m-fat"><div class="macro-val">6g</div><div class="macro-lbl">grăs</div></div>
-        </div>
-        <div class="pair-strip">
-          <div class="ps-ico">☕</div>
-          <div class="ps-info">
-            <div class="ps-name">Capriccio Lungo · Int. 5</div>
-            <div class="ps-sub">Aciditate medie, echilibrează fasolea</div>
-          </div>
-          <div class="ps-dots">
-            <div class="dot" style="background:var(--t3)"></div>
-            <div class="dot" style="background:var(--t3)"></div>
-            <div class="dot" style="background:var(--t3)"></div>
-            <div class="dot" style="background:rgba(255,255,255,.15)"></div>
-            <div class="dot" style="background:rgba(255,255,255,.15)"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- PRÂNZ -->
-    <div class="mc">
-      <div class="mc-top" style="background:linear-gradient(135deg,#2a1500,#5a2a00)">
-        🍲
-        <div class="mc-lbl">
-          <span class="mc-lbl-txt">🍽️ Prânz · 13:00</span>
-          <span class="mc-spill">Vacuum</span>
-        </div>
-      </div>
-      <div class="mc-body">
-        <div class="mc-type">Prânz Principal</div>
-        <div class="mc-name">Ciorbă de Burtă Autentică cu Smântână</div>
-        <p class="mc-desc">Rețeta bunicii — burtă de vită de la fermă locală, smântână groasă, usturoi, oțet de mere. Gătit 4 ore. Vacuum la 121°C.</p>
-        <div class="macro-block">
-          <div class="macro-cell m-kcal"><div class="macro-val">420</div><div class="macro-lbl">kcal</div></div>
-          <div class="macro-cell m-prot"><div class="macro-val">28g</div><div class="macro-lbl">prot</div></div>
-          <div class="macro-cell m-carb"><div class="macro-val">18g</div><div class="macro-lbl">carb</div></div>
-          <div class="macro-cell m-fat"><div class="macro-val">26g</div><div class="macro-lbl">grăs</div></div>
-        </div>
-        <div class="pair-strip">
-          <div class="ps-ico">☕</div>
-          <div class="ps-info">
-            <div class="ps-name">Ristretto Intenso · Int. 10</div>
-            <div class="ps-sub">Corp puternic, curăță palatul după ciorba grasă</div>
-          </div>
-          <div class="ps-dots">
-            <div class="dot" style="background:var(--t3)"></div>
-            <div class="dot" style="background:var(--t3)"></div>
-            <div class="dot" style="background:var(--t3)"></div>
-            <div class="dot" style="background:var(--t3)"></div>
-            <div class="dot" style="background:var(--t3)"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- GUSTARE 2 -->
-    <div class="mc">
-      <div class="mc-top" style="background:linear-gradient(135deg,#3a2800,#6a4a10)">
-        🍎
-        <div class="mc-lbl">
-          <span class="mc-lbl-txt">🍏 Gustare · 16:30</span>
-          <span class="mc-spill">Capsată</span>
-        </div>
-      </div>
-      <div class="mc-body">
-        <div class="mc-type">Gustare Dulce</div>
-        <div class="mc-name">Budincă de Mei cu Mere Coapte</div>
-        <p class="mc-desc">Mei organic cu lapte de capră local, mere coapte cu scorțișoară, miere de tei de la stupinele din Retezat.</p>
-        <div class="macro-block">
-          <div class="macro-cell m-kcal"><div class="macro-val">190</div><div class="macro-lbl">kcal</div></div>
-          <div class="macro-cell m-prot"><div class="macro-val">7g</div><div class="macro-lbl">prot</div></div>
-          <div class="macro-cell m-carb"><div class="macro-val">34g</div><div class="macro-lbl">carb</div></div>
-          <div class="macro-cell m-fat"><div class="macro-val">4g</div><div class="macro-lbl">grăs</div></div>
-        </div>
-        <div class="pair-strip">
-          <div class="ps-ico">☕</div>
-          <div class="ps-info">
-            <div class="ps-name">Livanto Mellow · Int. 6</div>
-            <div class="ps-sub">Caramel rotund, armonios cu scorțișoara</div>
-          </div>
-          <div class="ps-dots">
-            <div class="dot" style="background:var(--t3)"></div>
-            <div class="dot" style="background:var(--t3)"></div>
-            <div class="dot" style="background:var(--t3)"></div>
-            <div class="dot" style="background:var(--t3)"></div>
-            <div class="dot" style="background:rgba(255,255,255,.15)"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CINA -->
-    <div class="mc">
-      <div class="mc-top" style="background:linear-gradient(135deg,#1a2e10,#2a5018)">
-        🥩
-        <div class="mc-lbl">
-          <span class="mc-lbl-txt">🌙 Cină · 19:00</span>
-          <span class="mc-spill">Vacuum</span>
-        </div>
-      </div>
-      <div class="mc-body">
-        <div class="mc-type">Cina Tradițională</div>
-        <div class="mc-name">Sarmale în Foi de Viță cu Smântână</div>
-        <p class="mc-desc">Carne de porc și orez, foi de viță murată, smântână de fermă. Gătit 5 ore în oală sub presiune. Vacuum sigilat.</p>
-        <div class="macro-block">
-          <div class="macro-cell m-kcal"><div class="macro-val">580</div><div class="macro-lbl">kcal</div></div>
-          <div class="macro-cell m-prot"><div class="macro-val">32g</div><div class="macro-lbl">prot</div></div>
-          <div class="macro-cell m-carb"><div class="macro-val">40g</div><div class="macro-lbl">carb</div></div>
-          <div class="macro-cell m-fat"><div class="macro-val">28g</div><div class="macro-lbl">grăs</div></div>
-        </div>
-        <div class="pair-strip">
-          <div class="ps-ico">☕</div>
-          <div class="ps-info">
-            <div class="ps-name">Indriya Lungo · Int. 10</div>
-            <div class="ps-sub">Condimentat, amplifică carnea de porc</div>
-          </div>
-          <div class="ps-dots">
-            <div class="dot" style="background:var(--t3)"></div>
-            <div class="dot" style="background:var(--t3)"></div>
-            <div class="dot" style="background:var(--t3)"></div>
-            <div class="dot" style="background:var(--t3)"></div>
-            <div class="dot" style="background:var(--t3)"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- DESERT ZI -->
-    <div class="mc">
-      <div class="mc-top" style="background:linear-gradient(135deg,#2e1000,#5a2200)">
-        🍮
-        <div class="mc-lbl">
-          <span class="mc-lbl-txt">🍮 Desert la Doză</span>
-          <span class="mc-spill">Capsată + Doză</span>
-        </div>
-      </div>
-      <div class="mc-body">
-        <div class="mc-type">Desert Tradițional</div>
-        <div class="mc-name">Papanași cu Smântână & Dulceață de Afine</div>
-        <p class="mc-desc">Papanași prăjiți, smântână bătută, dulceață de afine din Retezat. Capsate cu doza Kazaar — ridici una, ai tot.</p>
-        <div class="macro-block">
-          <div class="macro-cell m-kcal"><div class="macro-val">340</div><div class="macro-lbl">kcal</div></div>
-          <div class="macro-cell m-prot"><div class="macro-val">9g</div><div class="macro-lbl">prot</div></div>
-          <div class="macro-cell m-carb"><div class="macro-val">48g</div><div class="macro-lbl">carb</div></div>
-          <div class="macro-cell m-fat"><div class="macro-val">12g</div><div class="macro-lbl">grăs</div></div>
-        </div>
-        <div class="pair-strip" style="border:1px solid rgba(196,98,45,.4)">
-          <div class="ps-ico">🟫</div>
-          <div class="ps-info">
-            <div class="ps-name">Kazaar · Int. MAX 12</div>
-            <div class="ps-sub">Creat special pentru dulceața de afine</div>
-          </div>
-          <div class="ps-dots">
-            <div class="dot" style="background:var(--t3)"></div>
-            <div class="dot" style="background:var(--t3)"></div>
-            <div class="dot" style="background:var(--t3)"></div>
-            <div class="dot" style="background:var(--t3)"></div>
-            <div class="dot" style="background:var(--t3)"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
+<!-- HERO -->
+<section class="m-hero">
+  <div class="m-hero-in">
+    <div class="s-tag center">Meniul SOul Meal</div>
+    <h1>Tot ce găsești<br><em>în băcănie.</em></h1>
+    <p>Cafea de specialitate și limonade făcute pe loc, sandwich-uri proaspete la sandwich-maker, dulce la doză și borcanele noastre cu rețete de-acasă. Alege, adaugă în coș și ridici de pe DN 68.</p>
   </div>
 </section>
 
-<!-- ═════ DESERTURI ═════ -->
-<section class="sec sec-green" id="deserturi">
-  <div class="s-tag">Deserturi la Doză</div>
-  <h2 class="s-title">Fiecare desert —<br><em>o doză pereche.</em></h2>
-  <p class="s-lead">Rețete tradiționale din zona Hațeg, capsate împreună cu capsula Nespresso potrivită. Ridici două, ai o experiență completă.</p>
-  <div class="des-grid">
+<!-- TICKER -->
+<div class="ticker"><div class="ticker-track">
+  <span class="ti">CAFEA NESPRESSO</span><span class="ts">✦</span>
+  <span class="ti">LIMONADĂ & FRESH</span><span class="ts">✦</span>
+  <span class="ti">SANDWICH-URI PE LOC</span><span class="ts">✦</span>
+  <span class="ti">DULCE LA DOZĂ</span><span class="ts">✦</span>
+  <span class="ti">BORCANELE METANOIA</span><span class="ts">✦</span>
+  <span class="ti">ARONIA CHARLOTTENBURG</span><span class="ts">✦</span>
+  <span class="ti">DN 68 · TOTEȘTI · HAȚEG</span><span class="ts">✦</span>
+  <span class="ti">CAFEA NESPRESSO</span><span class="ts">✦</span>
+  <span class="ti">LIMONADĂ & FRESH</span><span class="ts">✦</span>
+  <span class="ti">SANDWICH-URI PE LOC</span><span class="ts">✦</span>
+  <span class="ti">DULCE LA DOZĂ</span><span class="ts">✦</span>
+  <span class="ti">BORCANELE METANOIA</span><span class="ts">✦</span>
+  <span class="ti">DN 68 · TOTEȘTI · HAȚEG</span><span class="ts">✦</span>
+</div></div>
 
-    <div class="dc">
-      <div class="dc-top" style="background:linear-gradient(135deg,#2e1800,#5a3000)">🍮<div class="dc-badge badge-t">Bestseller</div></div>
-      <div class="dc-body">
-        <div class="dc-dose"><span class="dc-dose-lbl">☕ Kazaar · Int. 12</span><div class="ps-dots"><div class="dot" style="background:var(--t3);width:7px;height:7px"></div><div class="dot" style="background:var(--t3);width:7px;height:7px"></div><div class="dot" style="background:var(--t3);width:7px;height:7px"></div><div class="dot" style="background:var(--t3);width:7px;height:7px"></div><div class="dot" style="background:var(--t3);width:7px;height:7px"></div></div></div>
-        <div class="dc-name">Papanași cu Dulceață Afine</div>
-        <p class="dc-desc">Papanași prăjiți, smântână de fermă, dulceață afine Retezat. Kazaar taie dulceața și creează contrast perfect.</p>
-        <div class="dc-foot"><div class="dc-macros"><div class="dc-chip dc-chip-k">🔥 340 kcal</div><div class="dc-chip dc-chip-g">⚖️ 180 gr</div></div><div class="dc-price">16 lei</div></div>
-      </div>
-    </div>
-
-    <div class="dc">
-      <div class="dc-top" style="background:linear-gradient(135deg,#1e3818,#2a5a22)">🍰<div class="dc-badge badge-v">Nou</div></div>
-      <div class="dc-body">
-        <div class="dc-dose"><span class="dc-dose-lbl">☕ Cosi · Int. 4</span><div class="ps-dots"><div class="dot" style="background:var(--t3);width:7px;height:7px"></div><div class="dot" style="background:var(--t3);width:7px;height:7px"></div><div class="dot" style="background:rgba(255,255,255,.15);width:7px;height:7px"></div><div class="dot" style="background:rgba(255,255,255,.15);width:7px;height:7px"></div><div class="dot" style="background:rgba(255,255,255,.15);width:7px;height:7px"></div></div></div>
-        <div class="dc-name">Cozonac cu Nucă & Cacao</div>
-        <p class="dc-desc">Cozonac pufos cu nucă prăjită și cacao amară. Cosi blând completează dulceața aluatului fermentat natural.</p>
-        <div class="dc-foot"><div class="dc-macros"><div class="dc-chip dc-chip-k">🔥 280 kcal</div><div class="dc-chip dc-chip-g">⚖️ 120 gr</div></div><div class="dc-price">14 lei</div></div>
-      </div>
-    </div>
-
-    <div class="dc">
-      <div class="dc-top" style="background:linear-gradient(135deg,#2a1a00,#4e3000)">🍯<div class="dc-badge badge-t">Clasic</div></div>
-      <div class="dc-body">
-        <div class="dc-dose"><span class="dc-dose-lbl">☕ Livanto · Int. 6</span><div class="ps-dots"><div class="dot" style="background:var(--t3);width:7px;height:7px"></div><div class="dot" style="background:var(--t3);width:7px;height:7px"></div><div class="dot" style="background:var(--t3);width:7px;height:7px"></div><div class="dot" style="background:var(--t3);width:7px;height:7px"></div><div class="dot" style="background:rgba(255,255,255,.15);width:7px;height:7px"></div></div></div>
-        <div class="dc-name">Colțunași cu Brânză & Miere</div>
-        <p class="dc-desc">Colțunași fierți cu brânză de vaci, miere de tei, nucă pisată. Livanto caramelat completează mierea local.</p>
-        <div class="dc-foot"><div class="dc-macros"><div class="dc-chip dc-chip-k">🔥 310 kcal</div><div class="dc-chip dc-chip-g">⚖️ 200 gr</div></div><div class="dc-price">15 lei</div></div>
-      </div>
-    </div>
-
-    <div class="dc">
-      <div class="dc-top" style="background:linear-gradient(135deg,#1a1000,#3a2800)">🎂<div class="dc-badge badge-v">Sezonier</div></div>
-      <div class="dc-body">
-        <div class="dc-dose"><span class="dc-dose-lbl">☕ Ristretto · Int. 10</span><div class="ps-dots"><div class="dot" style="background:var(--t3);width:7px;height:7px"></div><div class="dot" style="background:var(--t3);width:7px;height:7px"></div><div class="dot" style="background:var(--t3);width:7px;height:7px"></div><div class="dot" style="background:var(--t3);width:7px;height:7px"></div><div class="dot" style="background:rgba(255,255,255,.15);width:7px;height:7px"></div></div></div>
-        <div class="dc-name">Prăjitură de Casă cu Vișine</div>
-        <p class="dc-desc">Blat pufos cu vișine din livada proprie, cremă de unt, glazură de ciocolată. Ristretto amplifică fructul acru.</p>
-        <div class="dc-foot"><div class="dc-macros"><div class="dc-chip dc-chip-k">🔥 350 kcal</div><div class="dc-chip dc-chip-g">⚖️ 150 gr</div></div><div class="dc-price">17 lei</div></div>
-      </div>
-    </div>
-
-  </div>
+<!-- CAFEA -->
+<section class="sec sec-cream" id="cafea">
+  <div class="sec-head"><div class="s-tag">Cafea · Nespresso</div>
+  <h2 class="s-title">Cafea <em>de specialitate.</em></h2>
+  <p class="s-lead">Clasice corecte și specialități de barista, preparate pe loc cu capsule Nespresso®.</p></div>
+  <div class="menu-grid" id="grid-cafea"></div>
 </section>
 
-<!-- ═════ BĂUTURI ═════ -->
-<section class="sec sec-warm" id="bauturi">
-  <div class="s-tag">Cafea & Băuturi Capsate</div>
-  <h2 class="s-title">La doză.<br><em>Sigilat ermetic.</em></h2>
-  <p class="s-lead">Fiecare băutură e capsată pe loc în ambalaj PET sau aluminiu — etanș, steril, fără nicio picătură în mașină.</p>
-  <div class="baut-grid">
-    <div class="bc">
-      <div class="bc-icon">☕</div>
-      <div class="bc-title">Espresso de Specialitate</div>
-      <p class="bc-desc">Single-origin, extras la presiune optimă, capsată în PET sigilat. Intensități 4–12 disponibile.</p>
-      <div class="bc-tag">Capsată la Doză</div>
-    </div>
-    <div class="bc">
-      <div class="bc-icon">🥛</div>
-      <div class="bc-title">Cappuccino Artizanal</div>
-      <p class="bc-desc">Espresso + lapte integral spumat, capsate împreună în proporție 1:2. Sigilat ermetic, spuma se reface la agitare.</p>
-      <div class="bc-tag">Spill-Proof 100%</div>
-    </div>
-    <div class="bc">
-      <div class="bc-icon">🍊</div>
-      <div class="bc-title">Fresh Portocale & Ghimbir</div>
-      <p class="bc-desc">Presat la rece în dimineața livrării. Portocale locale + ghimbir proaspăt. PET alimentar, fără oxidare.</p>
-      <div class="bc-tag">Presat la Rece</div>
-    </div>
-    <div class="bc">
-      <div class="bc-icon">🌿</div>
-      <div class="bc-title">Ceai de Plante de Munte</div>
-      <p class="bc-desc">Amestec de plante curculeților din Retezat — mentă, sunătoare, cimbrișor. Infuzat la 85°C, capsate cald.</p>
-      <div class="bc-tag">Plante Locale</div>
-    </div>
-    <div class="bc">
-      <div class="bc-icon">🍵</div>
-      <div class="bc-title">Matcha Latte</div>
-      <p class="bc-desc">Matcha ceremonial grad A + lapte de ovăz, capsate în aluminiu. 95 kcal, 0 zahăr adăugat.</p>
-      <div class="bc-tag">95 kcal</div>
-    </div>
-    <div class="bc">
-      <div class="bc-icon">🫚</div>
-      <div class="bc-title">RedBoost Artizanal</div>
-      <p class="bc-desc">Sfeclă roșie + morcov + măr + lămâie + turmeric. Presat la rece, capsate în PET de 330 ml.</p>
-      <div class="bc-tag">Boost Natural</div>
-    </div>
-  </div>
+<!-- SPECIALITATI -->
+<section class="sec sec-warm" id="specialitati">
+  <div class="sec-head"><div class="s-tag">Specialități Nespresso</div>
+  <h2 class="s-title">Rețete de <em>barista.</em></h2>
+  <p class="s-lead">Băuturi de autor, preparate pe loc — rotate sezonier.</p></div>
+  <div class="menu-grid" id="grid-spec"></div>
 </section>
 
-<!-- ═════ HOW IT WORKS ═════ -->
-<section class="sec sec-green" id="how">
-  <div style="text-align:center; position:relative; z-index:1">
-    <div class="s-tag" style="justify-content:center">Procesul Nostru</div>
-    <h2 class="s-title" style="text-align:center">Precomandă.<br><em>Ridici în 5 secunde.</em></h2>
-    <p class="s-lead" style="margin:12px auto 0;text-align:center">Platforma noastră automatizată face tot — tu dai click, noi pregătim, tu ridici fără să cobori din mașină.</p>
-  </div>
-  <div class="how-grid" style="margin-top:56px">
-    <div class="hstep">
-      <div class="hstep-ico" style="position:relative"><div class="hstep-n">1</div>📱</div>
-      <h3>Precomandă</h3>
-      <p>Trimiți comanda cu <span class="hstep-hl">10–15 minute</span> înainte să ajungi pe DN 68 Totești.</p>
-    </div>
-    <div class="hstep">
-      <div class="hstep-ico" style="position:relative"><div class="hstep-n">2</div>🤖</div>
-      <h3>Automat</h3>
-      <p>Sistemul notifică bucătăria instantaneu. <span class="hstep-hl">Zero muncă manuală.</span></p>
-    </div>
-    <div class="hstep">
-      <div class="hstep-ico" style="position:relative"><div class="hstep-n">3</div>📦</div>
-      <h3>Capsare & Vacuum</h3>
-      <p>Mâncarea e capsată vacuum. Doza Nespresso e sigilată <span class="hstep-hl">alături.</span></p>
-    </div>
-    <div class="hstep">
-      <div class="hstep-ico" style="position:relative"><div class="hstep-n">4</div>🚗</div>
-      <h3>Schimb la Geam</h3>
-      <p>Oprești. Îți întindem pachetul. <span class="hstep-hl">5 secunde.</span> Pleci.</p>
-    </div>
-    <div class="hstep">
-      <div class="hstep-ico" style="position:relative"><div class="hstep-n">5</div>🍽️</div>
-      <h3>Mănânci în Mașină</h3>
-      <p>100% etanș. <span class="hstep-hl">Nicio picătură.</span> Roadtrip-ul continuă.</p>
-    </div>
-  </div>
+<!-- LIMONADE -->
+<section class="sec sec-cream" id="limonade">
+  <div class="sec-head"><div class="s-tag">Limonadă & Fresh</div>
+  <h2 class="s-title">Răcoritoare, <em>pe loc.</em></h2>
+  <p class="s-lead">Stoarse și amestecate în fața ta, din fructe proaspete.</p></div>
+  <div class="menu-grid" id="grid-lim"></div>
 </section>
 
-<!-- ═════ ABONAMENTE ═════ -->
-<section class="sec sec-cream" id="abonamente">
-  <div class="s-tag">Abonamente Săptămânale</div>
-  <h2 class="s-title">Alege planul<br><em>care ți se potrivește.</em></h2>
-  <p class="s-lead">Macronutrienți calculați precis pentru planul tău caloric. Schimbi sau oprești oricând.</p>
-  <div class="plans-grid">
+<!-- SANDWICH -->
+<section class="sec sec-warm" id="sandwich">
+  <div class="sec-head"><div class="s-tag">Sandwich-uri & Bowl</div>
+  <h2 class="s-title">Făcute pe loc, <em>la sandwich-maker.</em></h2>
+  <p class="s-lead">Pe pâine integrală, ciabatta sau chiflă — calde, proaspete, sățioase.</p></div>
+  <div class="menu-grid" id="grid-sand"></div>
+</section>
 
-    <div class="pc">
-      <div class="pc-tag">💼 Office</div>
-      <div class="pc-name">Abonament Office</div>
-      <p class="pc-desc">Pentru angajatul care face drumul zilnic. Prânz + gustare + cafea Nespresso gata la ridicat — fără coadă, fără pierdere de timp.</p>
-      <div class="pc-price">149</div>
-      <div class="pc-period">RON / săptămână · L–V</div>
-      <ul class="pc-ul">
-        <li>🍽️ Prânz complet vacuum / zi</li>
-        <li>🥙 1 gustare rapidă / zi</li>
-        <li>☕ 2 doze Nespresso / zi</li>
-        <li>🍮 Desert la doză vineri</li>
-        <li>⚡ Ridicare în 5 secunde · DN 68</li>
-      </ul>
-      <button class="pc-btn pc-btn-out" onclick="document.getElementById('precomanda').scrollIntoView({behavior:'smooth'})">Comandă →</button>
-    </div>
+<!-- DULCE -->
+<section class="sec sec-cream" id="dulce">
+  <div class="sec-head"><div class="s-tag">Dulce la doză</div>
+  <h2 class="s-title">Sigilat, <em>de luat la drum.</em></h2>
+  <p class="s-lead">Deserturi de casă ambalate to-go, perfecte lângă o cafea.</p></div>
+  <div class="menu-grid" id="grid-dulce"></div>
+</section>
 
-    <div class="pc pc-hot">
-      <div class="pc-hot-badge">⭐ Cel mai ales</div>
-      <div class="pc-tag">👨‍👩‍👧‍👦 Family</div>
-      <div class="pc-name">Abonament Family</div>
-      <p class="pc-desc">Meniu complet pentru toată familia în mașină. Mic dejun, prânz, gustări și desert pentru 2 adulți + 1 copil, gata de ridicat.</p>
-      <div class="pc-price">299</div>
-      <div class="pc-period">RON / săptămână · L–V</div>
-      <ul class="pc-ul">
-        <li>🥐 Mic dejun × 3 persoane / zi</li>
-        <li>🍲 Prânz × 3 persoane / zi</li>
-        <li>🥙 Gustare × 3 persoane / zi</li>
-        <li>☕ 4 doze Nespresso / zi</li>
-        <li>🍮 Desert la doză zilnic × 3</li>
-        <li>🎁 Meniu copil adaptat inclus</li>
-      </ul>
-      <button class="pc-btn pc-btn-fill" onclick="document.getElementById('precomanda').scrollIntoView({behavior:'smooth'})">Comandă Acum →</button>
-    </div>
+<!-- PACHETE -->
+<section class="sec sec-warm" id="pachete">
+  <div class="sec-head"><div class="s-tag">Pachetul de drum</div>
+  <h2 class="s-title">Gata <em>împachetat.</em></h2>
+  <p class="s-lead">Combinații pentru călătorie — totul într-o pungă, gata de plecare.</p></div>
+  <div class="combo" id="grid-combo"></div>
+</section>
 
-    <div class="pc">
-      <div class="pc-tag">🏢 Business</div>
-      <div class="pc-name">Abonament Business</div>
-      <p class="pc-desc">Pentru echipe și șoferi profesioniști. Meniu complet, macro calculați, capsule premium și ridicare prioritară la geam.</p>
-      <div class="pc-price">499</div>
-      <div class="pc-period">RON / săptămână · L–D</div>
-      <ul class="pc-ul">
-        <li>🍳 Mic dejun + prânz + cină / zi</li>
-        <li>🥙 2 gustări / zi</li>
-        <li>☕ 5 doze Nespresso specialty / zi</li>
-        <li>🍮 Desert premium la doză zilnic</li>
-        <li>📊 Raport macronutrienți săptămânal</li>
-        <li>🚗 Prioritate ridicare · fără așteptare</li>
-        <li>📞 Linie dedicată comenzi rapide</li>
-      </ul>
-      <button class="pc-btn pc-btn-out" onclick="document.getElementById('precomanda').scrollIntoView({behavior:'smooth'})">Comandă →</button>
-    </div>
-
-  </div>
-  <p style="margin-top:28px;text-align:center;font-size:.76rem;color:var(--tx4)">
-    *Economisești în medie <strong style="color:var(--v2)">10 ore / săptămână</strong> față de cumpărăturile și gătitul propriu.
+<!-- BORCANE -->
+<section class="sec sec-green" id="borcane">
+  <div class="sec-head"><div class="s-tag">Borcanele Metanoia</div>
+  <h2 class="s-title">100 de ani de tradiție<br><em>în borcan.</em></h2>
+  <p class="s-lead">Făcute în casă, în Țara Hațegului, după rețetele vechi ale familiei. Întreabă la tejghea pentru disponibilitate și preț.</p></div>
+  <div class="jars" id="grid-jars"></div>
+  <p style="margin-top:34px;font-size:.72rem;color:rgba(255,255,255,.4);max-width:640px;line-height:1.7">
+    Pe lângă borcanele Metanoia, în băcănie găsești și produse <strong style="color:var(--t3)">Aronia Charlottenburg</strong> — sucuri și suplimente din superfructe, ca punct de vânzare partener.
   </p>
 </section>
 
-<!-- ═════ PRECOMANDĂ ═════ -->
-<section class="sec sec-warm" id="precomanda">
-  <div class="prec-wrap">
-    <div>
-      <div class="s-tag">Precomandă</div>
-      <h2 class="s-title">Trimiți acum.<br><em>Ridici în 5 secunde.</em></h2>
-      <p class="s-lead">Completezi formularul, noi pregătim totul. Când ajungi pe DN 68 în Totești — pachetul te așteaptă sigilat la geam.</p>
-      <div class="prec-steps">
-        <div class="pstep">
-          <div class="pstep-n">1</div>
-          <div><div class="pstep-title">Completezi formularul</div><div class="pstep-desc">Alegi produsele, trimiți numărul mașinii și cât durezi.</div></div>
-        </div>
-        <div class="pstep">
-          <div class="pstep-n">2</div>
-          <div><div class="pstep-title">Bucătăria e notificată automat</div><div class="pstep-desc"><span class="pstep-hl">Zero timp de așteptare</span> — pregătim exact când pleci.</div></div>
-        </div>
-        <div class="pstep">
-          <div class="pstep-n">3</div>
-          <div><div class="pstep-title">Oprești · 5 secunde · Pleci</div><div class="pstep-desc">Pachetul <span class="pstep-hl">100% vacuum</span> te așteaptă gata la geam.</div></div>
-        </div>
-      </div>
-    </div>
-
-    <div>
-      <div class="prec-form" id="pForm">
-        <div><label class="fl">Numele tău</label><input class="fi" id="fN" type="text" placeholder="Ion Popescu"></div>
-        <div class="frow">
-          <div><label class="fl">Nr. Mașină</label><input class="fi" id="fM" type="text" placeholder="HD 01 ABC"></div>
-          <div><label class="fl">Telefon / WA</label><input class="fi" id="fT" type="tel" placeholder="+40 7xx xxx xxx"></div>
-        </div>
-        <div>
-          <label class="fl">Ce dorești?</label>
-          <select class="fi" id="fP">
-            <option value="">— Alege —</option>
-            <option>☕ Espresso de Specialitate</option>
-            <option>🍲 Ciorbă de Burtă + Espresso</option>
-            <option>🥩 Sarmale Tradiționale + Cafea</option>
-            <option>🍮 Papanași + Doză Kazaar</option>
-            <option>🎂 Prăjitură Vișine + Doză</option>
-            <option>📦 TradiBox 1500 kcal (complet)</option>
-            <option>📦 MacroBox 2500 kcal (complet)</option>
-            <option>🍊 Fresh Portocale & Ghimbir</option>
-            <option>🌿 Ceai de Plante de Munte</option>
-          </select>
-        </div>
-        <div>
-          <label class="fl">Ajung în:</label>
-          <select class="fi" id="fE">
-            <option value="10">~10 minute</option>
-            <option value="15">~15 minute</option>
-            <option value="20">~20 minute</option>
-            <option value="30">~30 minute</option>
-          </select>
-        </div>
-        <div><label class="fl">Observații (opțional)</label><input class="fi" id="fO" type="text" placeholder="Fără ceapă, alergie etc."></div>
-        <div class="ferr" id="fErr">⚠️ Completează câmpurile obligatorii.</div>
-        <button class="fsub" id="fBtn">📱 Trimite Precomanda</button>
-        <p class="fnote">Vei fi redirecționat pe WhatsApp · <strong style="color:var(--v2)">+40 749 229 686</strong></p>
-      </div>
-      <div class="fok" id="fOk">
-        <div class="fok-title">✓ Comanda a fost trimisă!</div>
-        <p class="fok-sub">Verifică WhatsApp pentru confirmare.<br>Te așteptăm pe DN 68, Totești!</p>
-      </div>
-    </div>
+<!-- INFO STRIP -->
+<section class="sec sec-green" style="padding:0 5% 70px">
+  <div class="info">
+    <div class="inf"><div class="inf-ico">🛣️</div><div class="inf-n">DN 68</div><div class="inf-l">Totești · Țara Hațegului</div></div>
+    <div class="inf"><div class="inf-ico">☕</div><div class="inf-n">Pe loc</div><div class="inf-l">Cafea & limonadă proaspete</div></div>
+    <div class="inf"><div class="inf-ico">🫙</div><div class="inf-n">De-acasă</div><div class="inf-l">Borcane cu rețete vechi</div></div>
+    <div class="inf"><div class="inf-ico">🎒</div><div class="inf-n">To-go</div><div class="inf-l">Gata împachetat de drum</div></div>
   </div>
 </section>
 
-<!-- ═════ FOOTER ═════ -->
+<!-- FOOTER -->
 <footer>
   <div class="ft-grid">
     <div>
       <svg class="ft-logo"><use href="#L"/></svg>
       <div class="ft-brand">Metanoia</div>
       <div class="ft-sub">Hațeg Alternativ · DN 68</div>
-      <p class="ft-tagline">Mâncare tradițională vacuum to-go cu macronutrienți. Cafea specialitate. Desert la doză.</p>
+      <p class="ft-tag">SOul Meal — băcănie-butic: cafea, limonadă, sandwich-uri și bunătăți locale din Țara Hațegului.</p>
     </div>
-    <div class="ft-col">
-      <h4>Meniu</h4>
-      <ul>
-        <li><a href="#meniu">Meniu Săptămânal</a></li>
-        <li><a href="#deserturi">Deserturi la Doză</a></li>
-        <li><a href="#bauturi">Cafea & Băuturi</a></li>
-        <li><a href="#abonamente">Abonamente</a></li>
-      </ul>
-    </div>
-    <div class="ft-col">
-      <h4>Info</h4>
-      <ul>
-        <li><a href="#how">Cum funcționează</a></li>
-        <li><a href="#">Ingrediente Locale</a></li>
-        <li><a href="#">Retail Gourmet</a></li>
-        <li><a href="#">Catering B2B</a></li>
-      </ul>
-    </div>
-    <div class="ft-col">
-      <h4>Contact</h4>
-      <ul>
-        <li><a href="https://wa.me/40749229686">WhatsApp +40 749 229 686</a></li>
-        <li><a href="#">DN 68 · Totești · Hunedoara</a></li>
-        <li><a href="#">Metanoia · Hațeg Alternativ</a></li>
-        <li><a href="#">GDPR & Termeni</a></li>
-      </ul>
-    </div>
+    <div class="ft-col"><h4>Meniu</h4><ul>
+      <li><a href="#cafea">Cafea & Specialități</a></li>
+      <li><a href="#limonade">Limonadă & Fresh</a></li>
+      <li><a href="#sandwich">Sandwich-uri & Bowl</a></li>
+      <li><a href="#borcane">Borcanele Metanoia</a></li>
+    </ul></div>
+    <div class="ft-col"><h4>Comandă</h4><ul>
+      <li><a href="rezervare.html">Finalizează comanda</a></li>
+        <li><a href="https://wa.me/40749229686">WhatsApp</a></li>
+    </ul></div>
+    <div class="ft-col"><h4>Contact & Legal</h4><ul>
+      <li><a href="https://wa.me/40749229686">+40 749 229 686</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="termeni-si-conditii.html">Termeni & Condiții</a></li>
+      <li><a href="confidentialitate.html">Confidențialitate</a></li>
+    </ul></div>
   </div>
   <div class="ft-bottom">
     <span>© 2026 Metanoia · Hațeg Alternativ · Toate drepturile rezervate.</span>
-    <span>Gătit lent. Sigilat ermetic. Ridicat în 5 secunde.</span>
+    <span>Nespresso® este marcă înregistrată Nestlé. Aronia Charlottenburg® — partener.</span>
   </div>
 </footer>
 
-<button class="fab" onclick="document.getElementById('precomanda').scrollIntoView({behavior:'smooth'})">🍲 Precomandă Acum</button>
+<!-- MODAL PERSONALIZARE -->
+<div class="smodal" id="smodal" onclick="if(event.target===this)closeSand()">
+  <div class="sm-card" id="smCard"></div>
+</div>
+
+<!-- COS BAR -->
+<div class="cosbar" id="cosbar">
+  <div class="cosbar-info">
+    <div class="cosbar-count" id="cosCount">0</div>
+    <span>în coș · <span class="cosbar-total" id="cosTotal">0 lei</span></span>
+  </div>
+  <div class="cosbar-btns">
+    <button class="cosbar-clear" onclick="golesteCos()">golește</button>
+    <a class="cosbar-go" href="rezervare.html">Finalizează →</a>
+  </div>
+</div>
 
 <script>
-// ═══════════════════════════════════════════
-// DATE MENIU — [zi][kcal] → array de feluri
-// ═══════════════════════════════════════════
-var MENIU = {
-  0: { // Luni
-    1000: [
-      { bg:'linear-gradient(135deg,#3d2800,#7a5010)', ico:'🥐', ora:'☀️ Mic Dejun', spill:'Proaspăt', tip:'Mic Dejun', nume:'Croissant cu Șuncă & Brânză', desc:'Croissant crocant, șuncă presată, brânză topită. Cald, gata în 2 minute.', kcal:320, prot:'14g', carb:'34g', gras:'14g', cafea:'Volluto · Int. 4', cafea_sub:'Blând, perfectă cu croissantul', dots:3 },
-      { bg:'linear-gradient(135deg,#2a1500,#5a2a00)', ico:'🍲', ora:'🍽️ Prânz', spill:'Vacuum', tip:'Fel Principal', nume:'Ciorbă de Burtă cu Smântână', desc:'Ciorbă autentică de burtă de vită, smântână, usturoi și oțet. Gătită dimineața.', kcal:420, prot:'28g', carb:'18g', gras:'26g', cafea:'Ristretto · Int. 10', cafea_sub:'Intens, curăță după ciorba grasă', dots:5 },
-      { bg:'linear-gradient(135deg,#2e1000,#5a2200)', ico:'🍮', ora:'🍮 Desert la Doză', spill:'Capsată + Doză', tip:'Desert', nume:'Papanași cu Dulceață de Afine', desc:'Papanași prăjiți, smântână bătută, dulceață de afine. Capsați cu doza Kazaar.', kcal:340, prot:'9g', carb:'48g', gras:'12g', cafea:'Kazaar · Int. 12', cafea_sub:'Maxim intens, perfect cu dulceața', dots:5 },
-    ],
-    1500: [
-      { bg:'linear-gradient(135deg,#3d2800,#7a5010)', ico:'🥐', ora:'☀️ Mic Dejun', spill:'Proaspăt', tip:'Mic Dejun', nume:'Croissant cu Șuncă & Brânză', desc:'Croissant crocant, șuncă presată, brânză topită. Cald, gata în 2 minute.', kcal:320, prot:'14g', carb:'34g', gras:'14g', cafea:'Volluto · Int. 4', cafea_sub:'Blând, perfectă cu croissantul', dots:3 },
-      { bg:'linear-gradient(135deg,#1e3d1a,#2d6025)', ico:'🥗', ora:'🌿 Gustare · 10:30', spill:'Proaspăt', tip:'Gustare', nume:'Salată de Fasole cu Cârnați Afumați', desc:'Fasole boabe, cârnați afumați de casă, ceapă roșie, cimbru. Sățios și rapid.', kcal:280, prot:'16g', carb:'30g', gras:'10g', cafea:'Capriccio · Int. 5', cafea_sub:'Acid fin, completează fasolea', dots:3 },
-      { bg:'linear-gradient(135deg,#2a1500,#5a2a00)', ico:'🍲', ora:'🍽️ Prânz', spill:'Vacuum', tip:'Fel Principal', nume:'Ciorbă de Burtă cu Smântână', desc:'Ciorbă autentică de burtă de vită, smântână, usturoi și oțet. Gătită dimineața.', kcal:420, prot:'28g', carb:'18g', gras:'26g', cafea:'Ristretto · Int. 10', cafea_sub:'Intens, curăță după ciorba grasă', dots:5 },
-      { bg:'linear-gradient(135deg,#3a2800,#6a4a10)', ico:'🥙', ora:'🥙 Gustare · 16:30', spill:'Proaspăt', tip:'Gustare Rapidă', nume:'Wrap cu Pui Grătar & Salată', desc:'Tortilla, piept de pui grătar, salată verde, roșii, sos de iaurt cu usturoi.', kcal:380, prot:'28g', carb:'36g', gras:'12g', cafea:'Livanto · Int. 6', cafea_sub:'Caramel, completează puiul', dots:3 },
-      { bg:'linear-gradient(135deg,#1a2e10,#2a5018)', ico:'🥩', ora:'🌙 Cină', spill:'Vacuum', tip:'Cina de Drum', nume:'Sarmale cu Smântână & Mămăligă', desc:'Sarmale de porc în foi de varză, smântână de fermă, mămăligă. Gătite 4 ore.', kcal:580, prot:'32g', carb:'42g', gras:'26g', cafea:'Indriya · Int. 10', cafea_sub:'Condimentat, amplifică sarmalele', dots:5 },
-      { bg:'linear-gradient(135deg,#2e1000,#5a2200)', ico:'🍮', ora:'🍮 Desert la Doză', spill:'Capsată + Doză', tip:'Desert', nume:'Papanași cu Dulceață de Afine', desc:'Papanași prăjiți, smântână bătută, dulceață de afine. Capsați cu doza Kazaar.', kcal:340, prot:'9g', carb:'48g', gras:'12g', cafea:'Kazaar · Int. 12', cafea_sub:'Maxim intens, perfect cu dulceața', dots:5 },
-    ],
-    2000: [
-      { bg:'linear-gradient(135deg,#3d2800,#7a5010)', ico:'🍳', ora:'☀️ Mic Dejun', spill:'Proaspăt', tip:'Mic Dejun Consistent', nume:'Omletă cu Cârnați & Cartofi Prăjiți', desc:'Omletă din 3 ouă de curte, cârnați afumați, cartofi aurii la tigaie. Clasic de drum.', kcal:520, prot:'28g', carb:'38g', gras:'28g', cafea:'Roma · Int. 8', cafea_sub:'Corp bun, dimineața consistentă', dots:4 },
-      { bg:'linear-gradient(135deg,#1e3d1a,#2d6025)', ico:'🥪', ora:'🌿 Gustare · 10:30', spill:'Proaspăt', tip:'Gustare', nume:'Sendviș cu Șuncă Presată & Muștar', desc:'Pâine de casă, șuncă presată, brânză galbenă, muștar de Dijon, roșii.', kcal:340, prot:'18g', carb:'32g', gras:'14g', cafea:'Capriccio · Int. 5', cafea_sub:'Ușor acid, completează sendvișul', dots:3 },
-      { bg:'linear-gradient(135deg,#2a1500,#5a2a00)', ico:'🥩', ora:'🍽️ Prânz', spill:'Vacuum', tip:'Fel Principal', nume:'Friptură de Porc cu Cartofi Natur', desc:'Cotlet de porc din fermă locală, cartofi natur cu unt și mărar, mujdei de usturoi.', kcal:620, prot:'40g', carb:'44g', gras:'24g', cafea:'Indriya · Int. 10', cafea_sub:'Condimentat, potrivit cu carnea de porc', dots:5 },
-      { bg:'linear-gradient(135deg,#3a2800,#6a4a10)', ico:'🥙', ora:'🥙 Gustare · 16:30', spill:'Proaspăt', tip:'Gustare Rapidă', nume:'Wrap cu Pui Grătar & Salată', desc:'Tortilla, piept de pui grătar, salată verde, roșii, sos de iaurt cu usturoi.', kcal:380, prot:'28g', carb:'36g', gras:'12g', cafea:'Livanto · Int. 6', cafea_sub:'Caramel, completează puiul', dots:3 },
-      { bg:'linear-gradient(135deg,#1a2e10,#2a5018)', ico:'🍲', ora:'🌙 Cină', spill:'Vacuum', tip:'Cina de Drum', nume:'Tocăniță de Vită cu Mămăligă', desc:'Vită din fermă locală, ceapă, ardei, roșii, paprikă. Gătit 3 ore lent. Mămăligă fierbinte.', kcal:640, prot:'44g', carb:'48g', gras:'22g', cafea:'Ristretto · Int. 9', cafea_sub:'Corp bun, după tocăniță', dots:4 },
-      { bg:'linear-gradient(135deg,#2e1000,#5a2200)', ico:'🍰', ora:'🍮 Desert la Doză', spill:'Capsată + Doză', tip:'Desert', nume:'Prăjitură cu Vișine & Frișcă', desc:'Blat pufos de casă, vișine din livadă proprie, frișcă naturală. Capsată cu Volluto.', kcal:380, prot:'7g', carb:'52g', gras:'16g', cafea:'Volluto · Int. 4', cafea_sub:'Blând, lasă vișinele în față', dots:3 },
-    ],
-    2500: [
-      { bg:'linear-gradient(135deg,#3d2800,#7a5010)', ico:'🍳', ora:'☀️ Mic Dejun', spill:'Proaspăt', tip:'Mic Dejun Sport', nume:'Platou Complet: Ouă + Cârnați + Brânză + Pâine', desc:'3 ouă ochiuri de curte, 2 cârnați afumați, brânză galbenă, pâine de casă, roșii, castraveți.', kcal:660, prot:'40g', carb:'40g', gras:'34g', cafea:'Roma · Int. 8', cafea_sub:'Corp echilibrat, dimineata sport', dots:4 },
-      { bg:'linear-gradient(135deg,#1e3d1a,#2d6025)', ico:'🥪', ora:'🌿 Gustare · 10:30', spill:'Proaspăt', tip:'Gustare Proteică', nume:'Sendviș Dublu cu Friptură & Brânză', desc:'Pâine neagră de casă, friptură rece de porc, brânză galbenă, roșii, castraveți murați.', kcal:420, prot:'28g', carb:'36g', gras:'18g', cafea:'Capriccio · Int. 5', cafea_sub:'Acid fin, completează friptura', dots:3 },
-      { bg:'linear-gradient(135deg,#2a1500,#5a2a00)', ico:'🥩', ora:'🍽️ Prânz', spill:'Vacuum', tip:'Prânz Sport', nume:'Grătar Mixt cu Orez & Salată', desc:'Cotlet de porc, cârnați de casă, mici din vită, orez cu unt, salată de varză cu morcov.', kcal:760, prot:'58g', carb:'54g', gras:'30g', cafea:'Indriya · Int. 10', cafea_sub:'Maxim intens, perfect cu grătarul', dots:5 },
-      { bg:'linear-gradient(135deg,#3a2800,#6a4a10)', ico:'🥙', ora:'🥙 Gustare · 16:30', spill:'Proaspăt', tip:'Gustare Sport', nume:'Wrap XXL cu Pui & Ou & Avocado', desc:'Tortilla mare, pui grătar, ou fiert, avocado, salată verde, sos de iaurt. Macro complet.', kcal:480, prot:'36g', carb:'38g', gras:'18g', cafea:'Livanto · Int. 6', cafea_sub:'Caramel, completează puiul', dots:3 },
-      { bg:'linear-gradient(135deg,#1a2e10,#2a5018)', ico:'🍲', ora:'🌙 Cină', spill:'Vacuum', tip:'Cina Sport', nume:'Sarmale + Friptură de Porc + Mămăligă', desc:'2 sarmale mari, cotlet de porc grătar, mămăligă cu brânză, smântână. Maxim sățios.', kcal:820, prot:'56g', carb:'58g', gras:'36g', cafea:'Ristretto · Int. 10', cafea_sub:'Intens, perfect după cina grea', dots:5 },
-      { bg:'linear-gradient(135deg,#2e1000,#5a2200)', ico:'🎂', ora:'🍮 Desert la Doză', spill:'Capsată + Doză', tip:'Desert Sport', nume:'Tort de Casă cu Nucă & Cremă de Unt', desc:'Tort cu nucă și cremă de unt de casă, glazură de ciocolată. Capsată cu Kazaar.', kcal:460, prot:'10g', carb:'54g', gras:'22g', cafea:'Kazaar · Int. 12', cafea_sub:'Maxim intens, taie crema de nut', dots:5 },
-    ]
-  },
-  1: { // Marți
-    1000: [
-      { bg:'linear-gradient(135deg,#2a1800,#5a3a10)', ico:'🥐', ora:'☀️ Mic Dejun', spill:'Proaspăt', tip:'Mic Dejun', nume:'Gogoașă cu Gem & Espresso', desc:'Gogoașă pufoasă de casă, gem de căpșuni, zahăr pudră. Clasic de drum.', kcal:300, prot:'6g', carb:'50g', gras:'8g', cafea:'Volluto · Int. 4', cafea_sub:'Blând, perfect cu gogoașa dulce', dots:3 },
-      { bg:'linear-gradient(135deg,#1e2a10,#3a5020)', ico:'🍲', ora:'🍽️ Prânz', spill:'Vacuum', tip:'Fel Principal', nume:'Tocăniță de Pui cu Mămăligă', desc:'Pui de fermă, ceapă, ardei, roșii, smântână. Gătit 2 ore. Mămăligă moale cu unt.', kcal:460, prot:'34g', carb:'40g', gras:'16g', cafea:'Capriccio · Int. 5', cafea_sub:'Ușor acid, completează tocănița', dots:3 },
-      { bg:'linear-gradient(135deg,#2e1000,#5a2200)', ico:'🍰', ora:'🍮 Desert la Doză', spill:'Capsată + Doză', tip:'Desert', nume:'Prăjitură cu Mere & Nucă', desc:'Blat pufos cu mere și nucă, scorțișoară, zahăr brun. Capsată cu Livanto.', kcal:320, prot:'6g', carb:'48g', gras:'12g', cafea:'Livanto · Int. 6', cafea_sub:'Caramel, perfect cu merele coapte', dots:4 },
-    ],
-    1500: [
-      { bg:'linear-gradient(135deg,#2a1800,#5a3a10)', ico:'🥐', ora:'☀️ Mic Dejun', spill:'Proaspăt', tip:'Mic Dejun', nume:'Gogoașă cu Gem & Espresso', desc:'Gogoașă pufoasă de casă, gem de căpșuni, zahăr pudră. Clasic de drum.', kcal:300, prot:'6g', carb:'50g', gras:'8g', cafea:'Volluto · Int. 4', cafea_sub:'Blând, perfect cu gogoașa', dots:3 },
-      { bg:'linear-gradient(135deg,#1e3d1a,#2d6025)', ico:'🥪', ora:'🌿 Gustare · 10:30', spill:'Proaspăt', tip:'Gustare', nume:'Sendviș cu Pastramă & Roșii', desc:'Pâine neagră, pastramă de vită afumată, roșii, castraveți, muștar. Rapid și bun.', kcal:300, prot:'20g', carb:'28g', gras:'10g', cafea:'Capriccio · Int. 5', cafea_sub:'Acid fin, completează pastrama', dots:3 },
-      { bg:'linear-gradient(135deg,#1e2a10,#3a5020)', ico:'🍲', ora:'🍽️ Prânz', spill:'Vacuum', tip:'Fel Principal', nume:'Tocăniță de Pui cu Mămăligă', desc:'Pui de fermă, ceapă, ardei, roșii, smântână. Gătit 2 ore. Mămăligă moale cu unt.', kcal:460, prot:'34g', carb:'40g', gras:'16g', cafea:'Capriccio · Int. 5', cafea_sub:'Ușor acid, completează tocănița', dots:3 },
-      { bg:'linear-gradient(135deg,#3a2800,#6a4a10)', ico:'🥙', ora:'🥙 Gustare · 16:30', spill:'Proaspăt', tip:'Gustare Rapidă', nume:'Wrap cu Ton & Salată', desc:'Tortilla, ton în ulei, salată verde, roșii cherry, castraveți, sos de lămâie.', kcal:320, prot:'22g', carb:'32g', gras:'10g', cafea:'Livanto · Int. 6', cafea_sub:'Caramel ușor, completează tonul', dots:3 },
-      { bg:'linear-gradient(135deg,#1a2e10,#2a5018)', ico:'🍲', ora:'🌙 Cină', spill:'Vacuum', tip:'Cina de Drum', nume:'Fasole cu Cârnați Afumați', desc:'Fasole boabe cu cârnați afumați de casă, ceapă, usturoi, boia de ardei. Clasic românesc.', kcal:520, prot:'28g', carb:'54g', gras:'18g', cafea:'Fortissio Lungo · Int. 8', cafea_sub:'Puternic, taie grăsimea cârnăciorilor', dots:4 },
-      { bg:'linear-gradient(135deg,#2e1000,#5a2200)', ico:'🍰', ora:'🍮 Desert la Doză', spill:'Capsată + Doză', tip:'Desert', nume:'Prăjitură cu Mere & Nucă', desc:'Blat pufos cu mere și nucă, scorțișoară, zahăr brun. Capsată cu Livanto.', kcal:320, prot:'6g', carb:'48g', gras:'12g', cafea:'Livanto · Int. 6', cafea_sub:'Caramel, perfect cu merele', dots:4 },
-    ],
-    2000: [
-      { bg:'linear-gradient(135deg,#2a1800,#5a3a10)', ico:'🍳', ora:'☀️ Mic Dejun', spill:'Proaspăt', tip:'Mic Dejun Consistent', nume:'Pâine de Casă cu Cârnați & Ouă Ochiuri', desc:'Pâine neagră de casă, 2 ouă ochiuri pe unt, cârnați afumați, roșii proaspete.', kcal:500, prot:'26g', carb:'36g', gras:'26g', cafea:'Roma · Int. 8', cafea_sub:'Corp bun, dimineata consistentă', dots:4 },
-      { bg:'linear-gradient(135deg,#1e3d1a,#2d6025)', ico:'🥪', ora:'🌿 Gustare · 10:30', spill:'Proaspăt', tip:'Gustare', nume:'Sendviș cu Pastramă & Roșii', desc:'Pâine neagră, pastramă de vită afumată, roșii, castraveți, muștar.', kcal:300, prot:'20g', carb:'28g', gras:'10g', cafea:'Capriccio · Int. 5', cafea_sub:'Acid fin, completează pastrama', dots:3 },
-      { bg:'linear-gradient(135deg,#1e2a10,#3a5020)', ico:'🥩', ora:'🍽️ Prânz', spill:'Vacuum', tip:'Fel Principal', nume:'Mici cu Muștar & Cartofi Prăjiți', desc:'Mici din carne de vită și porc, muștar de Dijon, cartofi aurii la tigaie. Clasicul drumului.', kcal:620, prot:'38g', carb:'44g', gras:'28g', cafea:'Indriya · Int. 10', cafea_sub:'Intens, perfect cu micii', dots:5 },
-      { bg:'linear-gradient(135deg,#3a2800,#6a4a10)', ico:'🥙', ora:'🥙 Gustare · 16:30', spill:'Proaspăt', tip:'Gustare Rapidă', nume:'Wrap cu Ton & Salată', desc:'Tortilla, ton în ulei, salată verde, roșii cherry, castraveți, sos de lămâie.', kcal:320, prot:'22g', carb:'32g', gras:'10g', cafea:'Livanto · Int. 6', cafea_sub:'Caramel ușor, completează tonul', dots:3 },
-      { bg:'linear-gradient(135deg,#1a2e10,#2a5018)', ico:'🍲', ora:'🌙 Cină', spill:'Vacuum', tip:'Cina de Drum', nume:'Gulaș de Vită cu Mămăligă', desc:'Vită din fermă, ceapă, paprikă, roșii, ardei. Gătit 3 ore lent. Mămăligă fierbinte.', kcal:580, prot:'40g', carb:'46g', gras:'18g', cafea:'Ristretto · Int. 9', cafea_sub:'Corp bun, curăță după gulaș', dots:4 },
-      { bg:'linear-gradient(135deg,#2e1000,#5a2200)', ico:'🍫', ora:'🍮 Desert la Doză', spill:'Capsată + Doză', tip:'Desert', nume:'Mousse de Ciocolată & Frișcă', desc:'Mousse de ciocolată neagră 70%, frișcă bătută, ouă de curte. Capsată cu Kazaar.', kcal:360, prot:'7g', carb:'30g', gras:'24g', cafea:'Kazaar · Int. 12', cafea_sub:'Maxim intens, amplifică ciocolata', dots:5 },
-    ],
-    2500: [
-      { bg:'linear-gradient(135deg,#2a1800,#5a3a10)', ico:'🍳', ora:'☀️ Mic Dejun', spill:'Proaspăt', tip:'Mic Dejun Sport', nume:'Platou Complet: Ouă + Cârnați + Brânză + Pâine', desc:'3 ouă ochiuri, 2 cârnați afumați, brânză galbenă, pâine de casă, roșii, castraveți murați.', kcal:660, prot:'40g', carb:'40g', gras:'34g', cafea:'Roma · Int. 8', cafea_sub:'Corp echilibrat, dimineata sport', dots:4 },
-      { bg:'linear-gradient(135deg,#1e3d1a,#2d6025)', ico:'🥪', ora:'🌿 Gustare · 10:30', spill:'Proaspăt', tip:'Gustare Proteică', nume:'Sendviș Dublu cu Pastramă & Brânză', desc:'2 felii pâine neagră, pastramă dublă, brânză galbenă, muștar, roșii, salată verde.', kcal:440, prot:'30g', carb:'32g', gras:'18g', cafea:'Capriccio · Int. 5', cafea_sub:'Acid fin, completează pastrama', dots:3 },
-      { bg:'linear-gradient(135deg,#1e2a10,#3a5020)', ico:'🥩', ora:'🍽️ Prânz', spill:'Vacuum', tip:'Prânz Sport', nume:'Platou Grătar: Mici + Cotlet + Cârnați', desc:'3 mici, cotlet de porc grătar, cârnați de casă, salată de varză, muștar, pâine.', kcal:820, prot:'60g', carb:'44g', gras:'42g', cafea:'Indriya · Int. 10', cafea_sub:'Maxim intens, perfect cu grătarul', dots:5 },
-      { bg:'linear-gradient(135deg,#3a2800,#6a4a10)', ico:'🥙', ora:'🥙 Gustare · 16:30', spill:'Proaspăt', tip:'Gustare Sport', nume:'Wrap XXL cu Pui & Ou Fiert', desc:'Tortilla mare, pui grătar, ou fiert, avocado, salată, sos de iaurt. 36g proteină.', kcal:480, prot:'36g', carb:'38g', gras:'18g', cafea:'Livanto · Int. 6', cafea_sub:'Caramel, completează puiul', dots:3 },
-      { bg:'linear-gradient(135deg,#1a2e10,#2a5018)', ico:'🍲', ora:'🌙 Cină', spill:'Vacuum', tip:'Cina Sport', nume:'Ciolan de Porc cu Varză Murată & Mămăligă', desc:'Ciolan de porc fiert lent cu varză murată, chimen, mujdei de usturoi, mămăligă.', kcal:860, prot:'56g', carb:'52g', gras:'40g', cafea:'Ristretto · Int. 10', cafea_sub:'Intens, curăță după ciolanul gras', dots:5 },
-      { bg:'linear-gradient(135deg,#2e1000,#5a2200)', ico:'🎂', ora:'🍮 Desert la Doză', spill:'Capsată + Doză', tip:'Desert Sport', nume:'Tort cu Nucă & Cremă de Unt', desc:'Tort cu foi de nucă și cremă de unt, glazură de cacao. Capsată cu Kazaar.', kcal:460, prot:'10g', carb:'52g', gras:'24g', cafea:'Kazaar · Int. 12', cafea_sub:'Maxim intens, taie crema de nut', dots:5 },
-    ]
-  },
-  2: { // Miercuri
-    1000: [
-      { bg:'linear-gradient(135deg,#1a3028,#2a5040)', ico:'🥪', ora:'☀️ Mic Dejun', spill:'Proaspăt', tip:'Mic Dejun', nume:'Toast cu Brânză Topită & Roșii', desc:'Toast crocant, brânză topită, roșii proaspete, oregano, ulei de măsline.', kcal:280, prot:'12g', carb:'32g', gras:'10g', cafea:'Volluto · Int. 4', cafea_sub:'Blând, perfectă cu toastul', dots:3 },
-      { bg:'linear-gradient(135deg,#2a1500,#5a2a00)', ico:'🍲', ora:'🍽️ Prânz', spill:'Vacuum', tip:'Fel Principal', nume:'Ciorbă Rădăuțeană cu Smântână', desc:'Ciorbă de pui cu smântână și usturoi, în stil Rădăuți. Servită fierbinte, vacuum sigilată.', kcal:380, prot:'24g', carb:'22g', gras:'20g', cafea:'Capriccio · Int. 5', cafea_sub:'Acid fin, completează ciorba cremoasă', dots:3 },
-      { bg:'linear-gradient(135deg,#2e1000,#5a2200)', ico:'🍩', ora:'🍮 Desert la Doză', spill:'Capsată + Doză', tip:'Desert', nume:'Gogoși Tradiționale cu Gem de Caise', desc:'Gogoși pufoas de casă, zahăr pudră cu vanilie, gem de caise. Capsate cu Livanto.', kcal:340, prot:'7g', carb:'56g', gras:'10g', cafea:'Livanto · Int. 6', cafea_sub:'Caramel blând, perfect cu zahărul pudră', dots:4 },
-    ],
-    1500: [
-      { bg:'linear-gradient(135deg,#1a3028,#2a5040)', ico:'🥪', ora:'☀️ Mic Dejun', spill:'Proaspăt', tip:'Mic Dejun', nume:'Toast cu Brânză Topită & Roșii', desc:'Toast crocant, brânză topită, roșii proaspete, oregano, ulei de măsline.', kcal:280, prot:'12g', carb:'32g', gras:'10g', cafea:'Volluto · Int. 4', cafea_sub:'Blând, perfectă cu toastul', dots:3 },
-      { bg:'linear-gradient(135deg,#1e3d1a,#2d6025)', ico:'🥙', ora:'🌿 Gustare · 10:30', spill:'Proaspăt', tip:'Gustare', nume:'Wrap cu Brânză & Legume Coapte', desc:'Tortilla, brânză de vacă, ardei copt, dovlecel, ceapă caramelizată, sos de iaurt.', kcal:300, prot:'14g', carb:'34g', gras:'10g', cafea:'Capriccio · Int. 5', cafea_sub:'Acid fin, completează legumele', dots:3 },
-      { bg:'linear-gradient(135deg,#2a1500,#5a2a00)', ico:'🍲', ora:'🍽️ Prânz', spill:'Vacuum', tip:'Fel Principal', nume:'Ciorbă Rădăuțeană cu Smântână', desc:'Ciorbă de pui cu smântână și usturoi, în stil Rădăuți. Servită fierbinte, vacuum sigilată.', kcal:380, prot:'24g', carb:'22g', gras:'20g', cafea:'Capriccio · Int. 5', cafea_sub:'Acid fin, completează ciorba cremoasă', dots:3 },
-      { bg:'linear-gradient(135deg,#3a2800,#6a4a10)', ico:'🥪', ora:'🥙 Gustare · 16:30', spill:'Proaspăt', tip:'Gustare Rapidă', nume:'Sendviș Club cu Pui & Bacon', desc:'Pâine toast, pui grătar, bacon crocant, roșii, salată verde, maioneză.', kcal:380, prot:'26g', carb:'30g', gras:'16g', cafea:'Livanto · Int. 6', cafea_sub:'Caramel, completează baconul', dots:3 },
-      { bg:'linear-gradient(135deg,#1a2e10,#2a5018)', ico:'🍝', ora:'🌙 Cină', spill:'Vacuum', tip:'Cina de Drum', nume:'Paste Bolognese cu Parmezan', desc:'Paste tagliatelle, sos bolognese din carne de vită locală, roșii, vin roșu, parmezan ras.', kcal:540, prot:'32g', carb:'58g', gras:'16g', cafea:'Ristretto · Int. 9', cafea_sub:'Corp bun, completează pastele', dots:4 },
-      { bg:'linear-gradient(135deg,#2e1000,#5a2200)', ico:'🍩', ora:'🍮 Desert la Doză', spill:'Capsată + Doză', tip:'Desert', nume:'Gogoși Tradiționale cu Gem de Caise', desc:'Gogoși pufoas de casă, zahăr pudră cu vanilie, gem de caise. Capsate cu Livanto.', kcal:340, prot:'7g', carb:'56g', gras:'10g', cafea:'Livanto · Int. 6', cafea_sub:'Caramel blând, perfect cu gogoșile', dots:4 },
-    ],
-    2000: [
-      { bg:'linear-gradient(135deg,#1a3028,#2a5040)', ico:'🍳', ora:'☀️ Mic Dejun', spill:'Proaspăt', tip:'Mic Dejun Consistent', nume:'Mic Dejun Englezesc Complet', desc:'Ouă scramble, cârnați, bacon, roșii la tigaie, fasole boabe, toast. Clasic internațional.', kcal:560, prot:'30g', carb:'40g', gras:'28g', cafea:'Roma · Int. 8', cafea_sub:'Corp bun, dimineata consistentă', dots:4 },
-      { bg:'linear-gradient(135deg,#1e3d1a,#2d6025)', ico:'🥙', ora:'🌿 Gustare · 10:30', spill:'Proaspăt', tip:'Gustare', nume:'Wrap cu Brânză & Legume Coapte', desc:'Tortilla, brânză de vacă, ardei copt, dovlecel, ceapă caramelizată, sos de iaurt.', kcal:300, prot:'14g', carb:'34g', gras:'10g', cafea:'Capriccio · Int. 5', cafea_sub:'Acid fin, completează legumele', dots:3 },
-      { bg:'linear-gradient(135deg,#2a1500,#5a2a00)', ico:'🥩', ora:'🍽️ Prânz', spill:'Vacuum', tip:'Fel Principal', nume:'Friptură de Vită cu Legume la Grătar', desc:'Mușchi de vită din fermă locală, ardei grași, dovlecel, ceapă roșie, sos de roșii.', kcal:580, prot:'46g', carb:'28g', gras:'28g', cafea:'Indriya · Int. 10', cafea_sub:'Intens, amplifică vita', dots:5 },
-      { bg:'linear-gradient(135deg,#3a2800,#6a4a10)', ico:'🥪', ora:'🥙 Gustare · 16:30', spill:'Proaspăt', tip:'Gustare Rapidă', nume:'Sendviș Club cu Pui & Bacon', desc:'Pâine toast, pui grătar, bacon crocant, roșii, salată verde, maioneză.', kcal:380, prot:'26g', carb:'30g', gras:'16g', cafea:'Livanto · Int. 6', cafea_sub:'Caramel, completează baconul', dots:3 },
-      { bg:'linear-gradient(135deg,#1a2e10,#2a5018)', ico:'🍝', ora:'🌙 Cină', spill:'Vacuum', tip:'Cina de Drum', nume:'Paste Carbonara cu Guanciale', desc:'Paste spaghetti, guanciale afumat, ouă de curte, parmezan, piper negru. Cremă autentică.', kcal:640, prot:'30g', carb:'56g', gras:'32g', cafea:'Ristretto · Int. 9', cafea_sub:'Corp bun, completează carbonara', dots:4 },
-      { bg:'linear-gradient(135deg,#2e1000,#5a2200)', ico:'🍫', ora:'🍮 Desert la Doză', spill:'Capsată + Doză', tip:'Desert', nume:'Brownie cu Nucă & Caramel', desc:'Brownie cald de ciocolată neagră, nucă tocată, sos de caramel. Capsată cu Kazaar.', kcal:400, prot:'8g', carb:'46g', gras:'20g', cafea:'Kazaar · Int. 12', cafea_sub:'Maxim intens, amplifică ciocolata', dots:5 },
-    ],
-    2500: [
-      { bg:'linear-gradient(135deg,#1a3028,#2a5040)', ico:'🍳', ora:'☀️ Mic Dejun', spill:'Proaspăt', tip:'Mic Dejun Sport', nume:'Platou XXL cu Extra Ouă & Bacon', desc:'4 ouă ochiuri, bacon, cârnați afumați, brânză galbenă, pâine de casă, roșii, castraveți.', kcal:700, prot:'44g', carb:'38g', gras:'40g', cafea:'Roma · Int. 8', cafea_sub:'Corp echilibrat, dimineata sport', dots:4 },
-      { bg:'linear-gradient(135deg,#1e3d1a,#2d6025)', ico:'🥙', ora:'🌿 Gustare · 10:30', spill:'Proaspăt', tip:'Gustare Proteică', nume:'Wrap Dublu cu Pui & Brânză', desc:'2 tortilla, pui grătar dublu, brânză galbenă, salată verde, roșii, sos de iaurt. 40g proteină.', kcal:520, prot:'40g', carb:'44g', gras:'18g', cafea:'Capriccio · Int. 5', cafea_sub:'Acid fin, completează puiul', dots:3 },
-      { bg:'linear-gradient(135deg,#2a1500,#5a2a00)', ico:'🥩', ora:'🍽️ Prânz', spill:'Vacuum', tip:'Prânz Sport', nume:'Grătar Mixt + Paste', desc:'Cotlet de porc, mici, cârnați, paste cu unt și parmezan, salată de roșii. Total drum.', kcal:860, prot:'58g', carb:'64g', gras:'38g', cafea:'Indriya · Int. 10', cafea_sub:'Maxim intens, perfect cu grătarul', dots:5 },
-      { bg:'linear-gradient(135deg,#3a2800,#6a4a10)', ico:'🥪', ora:'🥙 Gustare · 16:30', spill:'Proaspăt', tip:'Gustare Sport', nume:'Sendviș Triplu cu Pui, Bacon & Ou', desc:'3 felii pâine toast, pui grătar, bacon, ou fiert, brânză, roșii. Maxim sațios.', kcal:480, prot:'34g', carb:'36g', gras:'22g', cafea:'Livanto · Int. 6', cafea_sub:'Caramel, completează combinatia', dots:3 },
-      { bg:'linear-gradient(135deg,#1a2e10,#2a5018)', ico:'🍲', ora:'🌙 Cină', spill:'Vacuum', tip:'Cina Sport', nume:'Friptură Dublă de Porc + Sarmale + Mămăligă', desc:'2 cotlete de porc grătar, 2 sarmale mari, mămăligă cu brânză, smântână.', kcal:920, prot:'62g', carb:'56g', gras:'46g', cafea:'Ristretto · Int. 10', cafea_sub:'Intens, curăță după cina grea', dots:5 },
-      { bg:'linear-gradient(135deg,#2e1000,#5a2200)', ico:'🎂', ora:'🍮 Desert la Doză', spill:'Capsată + Doză', tip:'Desert Sport', nume:'Brownie XXL + Tort cu Nucă', desc:'Brownie dublu cu nucă și caramel, tort cu cremă de unt. Capsate cu Kazaar.', kcal:520, prot:'12g', carb:'60g', gras:'26g', cafea:'Kazaar · Int. 12', cafea_sub:'Maxim intens, taie dulceața', dots:5 },
-    ]
-  },
-  3: { // Joi
-    1000: [
-      { bg:'linear-gradient(135deg,#2a1a08,#5a380a)', ico:'🥞', ora:'☀️ Mic Dejun', spill:'Proaspăt', tip:'Mic Dejun', nume:'Clătite cu Smântână & Gem de Vișine', desc:'2 clătite subțiri de casă, smântână grasă, gem de vișine. Dulce și reconfortant.', kcal:310, prot:'8g', carb:'44g', gras:'10g', cafea:'Volluto · Int. 4', cafea_sub:'Blând, perfectă cu clătitele dulci', dots:3 },
-      { bg:'linear-gradient(135deg,#1e2a18,#304a28)', ico:'🍲', ora:'🍽️ Prânz', spill:'Vacuum', tip:'Fel Principal', nume:'Ciorbă de Perișoare cu Leuștean', desc:'Perișoare de porc și vită, orez, leuștean proaspăt, borș de casă. Tradițional și sățios.', kcal:400, prot:'26g', carb:'34g', gras:'16g', cafea:'Ristretto · Int. 9', cafea_sub:'Corp bun, curăță după ciorbă', dots:4 },
-      { bg:'linear-gradient(135deg,#2e1000,#5a2200)', ico:'🍰', ora:'🍮 Desert la Doză', spill:'Capsată + Doză', tip:'Desert', nume:'Ruladă cu Gem de Caise', desc:'Ruladă de casă cu gem de caise din livadă proprie, frișcă naturală. Capsată cu Volluto.', kcal:330, prot:'6g', carb:'52g', gras:'12g', cafea:'Volluto · Int. 4', cafea_sub:'Blând, lasă caisele în față', dots:3 },
-    ],
-    1500: [
-      { bg:'linear-gradient(135deg,#2a1a08,#5a380a)', ico:'🥞', ora:'☀️ Mic Dejun', spill:'Proaspăt', tip:'Mic Dejun', nume:'Clătite cu Smântână & Gem de Vișine', desc:'2 clătite subțiri de casă, smântână grasă, gem de vișine.', kcal:310, prot:'8g', carb:'44g', gras:'10g', cafea:'Volluto · Int. 4', cafea_sub:'Blând, perfectă cu clătitele', dots:3 },
-      { bg:'linear-gradient(135deg,#1e3d1a,#2d6025)', ico:'🥗', ora:'🌿 Gustare · 10:30', spill:'Proaspăt', tip:'Gustare', nume:'Salată Grecească cu Brânză Feta', desc:'Roșii, castraveți, măsline negre, ceapă roșie, brânză feta, ulei de măsline, oregano.', kcal:260, prot:'10g', carb:'14g', gras:'18g', cafea:'Capriccio · Int. 5', cafea_sub:'Acid fin, completează salata', dots:3 },
-      { bg:'linear-gradient(135deg,#1e2a18,#304a28)', ico:'🍲', ora:'🍽️ Prânz', spill:'Vacuum', tip:'Fel Principal', nume:'Ciorbă de Perișoare cu Leuștean', desc:'Perișoare de porc și vită, orez, leuștean proaspăt, borș de casă.', kcal:400, prot:'26g', carb:'34g', gras:'16g', cafea:'Ristretto · Int. 9', cafea_sub:'Corp bun, curăță după ciorbă', dots:4 },
-      { bg:'linear-gradient(135deg,#3a2800,#6a4a10)', ico:'🥪', ora:'🥙 Gustare · 16:30', spill:'Proaspăt', tip:'Gustare Rapidă', nume:'Sendviș cu Brânză & Muștar de Dijon', desc:'Pâine de casă, brânză galbenă, muștar de Dijon, roșii, castraveți. Simplu și bun.', kcal:290, prot:'14g', carb:'30g', gras:'12g', cafea:'Livanto · Int. 6', cafea_sub:'Caramel ușor, completează brânza', dots:3 },
-      { bg:'linear-gradient(135deg,#1a2e10,#2a5018)', ico:'🥩', ora:'🌙 Cină', spill:'Vacuum', tip:'Cina de Drum', nume:'Pui la Grătar cu Cartofi Prăjiți', desc:'Piept de pui marinat în ierburi, grătar cu lemn de fag, cartofi aurii la tigaie, mujdei.', kcal:500, prot:'40g', carb:'42g', gras:'16g', cafea:'Indriya · Int. 10', cafea_sub:'Condimentat, amplifică puiul grătar', dots:5 },
-      { bg:'linear-gradient(135deg,#2e1000,#5a2200)', ico:'🍰', ora:'🍮 Desert la Doză', spill:'Capsată + Doză', tip:'Desert', nume:'Ruladă cu Gem de Caise', desc:'Ruladă de casă cu gem de caise din livadă proprie, frișcă naturală. Capsată cu Volluto.', kcal:330, prot:'6g', carb:'52g', gras:'12g', cafea:'Volluto · Int. 4', cafea_sub:'Blând, lasă caisele în față', dots:3 },
-    ],
-    2000: [
-      { bg:'linear-gradient(135deg,#2a1a08,#5a380a)', ico:'🍳', ora:'☀️ Mic Dejun', spill:'Proaspăt', tip:'Mic Dejun Consistent', nume:'Tochitura cu Ouă & Mămăligă', desc:'Carne de porc amestecată, cârnați afumați, 2 ouă ochiuri, mămăligă, brânză rasă.', kcal:580, prot:'34g', carb:'42g', gras:'30g', cafea:'Roma · Int. 8', cafea_sub:'Corp bun, dimineata tradițională', dots:4 },
-      { bg:'linear-gradient(135deg,#1e3d1a,#2d6025)', ico:'🥗', ora:'🌿 Gustare · 10:30', spill:'Proaspăt', tip:'Gustare', nume:'Salată Grecească cu Brânză Feta', desc:'Roșii, castraveți, măsline negre, ceapă roșie, brânză feta, ulei de măsline, oregano.', kcal:260, prot:'10g', carb:'14g', gras:'18g', cafea:'Capriccio · Int. 5', cafea_sub:'Acid fin, completează salata', dots:3 },
-      { bg:'linear-gradient(135deg,#1e2a18,#304a28)', ico:'🥩', ora:'🍽️ Prânz', spill:'Vacuum', tip:'Fel Principal', nume:'Cotlet de Porc cu Varză Murată', desc:'Cotlet de porc din fermă locală, varză murată cu chimen, mujdei de usturoi, mămăligă.', kcal:620, prot:'42g', carb:'38g', gras:'28g', cafea:'Indriya · Int. 10', cafea_sub:'Condimentat, perfect cu varza murată', dots:5 },
-      { bg:'linear-gradient(135deg,#3a2800,#6a4a10)', ico:'🥪', ora:'🥙 Gustare · 16:30', spill:'Proaspăt', tip:'Gustare Rapidă', nume:'Sendviș cu Brânză & Muștar de Dijon', desc:'Pâine de casă, brânză galbenă, muștar de Dijon, roșii, castraveți.', kcal:290, prot:'14g', carb:'30g', gras:'12g', cafea:'Livanto · Int. 6', cafea_sub:'Caramel ușor, completează brânza', dots:3 },
-      { bg:'linear-gradient(135deg,#1a2e10,#2a5018)', ico:'🍲', ora:'🌙 Cină', spill:'Vacuum', tip:'Cina de Drum', nume:'Fasole cu Ciolan & Pâine de Casă', desc:'Fasole boabe cu ciolan afumat, ceapă, boia dulce, roșii. Pâine de casă cu maia.', kcal:620, prot:'40g', carb:'56g', gras:'22g', cafea:'Fortissio · Int. 8', cafea_sub:'Puternic, taie grăsimea ciolanului', dots:4 },
-      { bg:'linear-gradient(135deg,#2e1000,#5a2200)', ico:'🍰', ora:'🍮 Desert la Doză', spill:'Capsată + Doză', tip:'Desert', nume:'Cheesecake cu Fructe de Pădure', desc:'Cheesecake cremos cu afine și zmeură, biscuiți digestivi. Capsată cu Ristretto.', kcal:380, prot:'8g', carb:'46g', gras:'18g', cafea:'Ristretto · Int. 9', cafea_sub:'Corp bun, completează cheesecake-ul', dots:4 },
-    ],
-    2500: [
-      { bg:'linear-gradient(135deg,#2a1a08,#5a380a)', ico:'🍳', ora:'☀️ Mic Dejun', spill:'Proaspăt', tip:'Mic Dejun Sport', nume:'Tochitura XXL + 3 Ouă + Mămăligă Mare', desc:'Carne de porc, cârnați afumați, 3 ouă ochiuri, mămăligă mare, brânză rasă, smântână.', kcal:720, prot:'46g', carb:'50g', gras:'38g', cafea:'Roma · Int. 8', cafea_sub:'Corp echilibrat, dimineata sport', dots:4 },
-      { bg:'linear-gradient(135deg,#1e3d1a,#2d6025)', ico:'🥗', ora:'🌿 Gustare · 10:30', spill:'Proaspăt', tip:'Gustare Proteică', nume:'Salată Cesar cu Pui Grătar & Parmezan', desc:'Salată verde, piept de pui grătar, parmezan ras, crutoane, sos cesar. Clasic și proteic.', kcal:380, prot:'28g', carb:'24g', gras:'18g', cafea:'Capriccio · Int. 5', cafea_sub:'Ușor acid, completează salata cesar', dots:3 },
-      { bg:'linear-gradient(135deg,#1e2a18,#304a28)', ico:'🥩', ora:'🍽️ Prânz', spill:'Vacuum', tip:'Prânz Sport', nume:'Platou: Friptură de Porc + Ciolan + Mămăligă', desc:'Cotlet de porc grătar, ciolan fiert cu varză, mămăligă cu brânză. Total sățios.', kcal:860, prot:'62g', carb:'54g', gras:'42g', cafea:'Indriya · Int. 10', cafea_sub:'Maxim intens, perfect cu carnea grasă', dots:5 },
-      { bg:'linear-gradient(135deg,#3a2800,#6a4a10)', ico:'🥪', ora:'🥙 Gustare · 16:30', spill:'Proaspăt', tip:'Gustare Sport', nume:'Sendviș Triplu Proteic', desc:'3 felii pâine, pui grătar dublu, brânză, ou fiert, muștar, roșii. 40g proteină.', kcal:480, prot:'40g', carb:'34g', gras:'20g', cafea:'Livanto · Int. 6', cafea_sub:'Caramel, completează combinatia', dots:3 },
-      { bg:'linear-gradient(135deg,#1a2e10,#2a5018)', ico:'🍲', ora:'🌙 Cină', spill:'Vacuum', tip:'Cina Sport', nume:'Fasole + Cârnați + Cotlet + Mămăligă', desc:'Fasole cu cârnați afumați, cotlet de porc grătar, varză murată, mămăligă, pâine.', kcal:920, prot:'60g', carb:'64g', gras:'44g', cafea:'Ristretto · Int. 10', cafea_sub:'Intens, curăță după cina grea', dots:5 },
-      { bg:'linear-gradient(135deg,#2e1000,#5a2200)', ico:'🎂', ora:'🍮 Desert la Doză', spill:'Capsată + Doză', tip:'Desert Sport', nume:'Cheesecake Dublu + Brownie', desc:'Cheesecake cu fructe + brownie cu nucă. Capsate împreună cu Kazaar. Dublu răsfăț.', kcal:520, prot:'12g', carb:'60g', gras:'26g', cafea:'Kazaar · Int. 12', cafea_sub:'Maxim intens, taie dulceața', dots:5 },
-    ]
-  },
-  4: { // Vineri
-    1000: [
-      { bg:'linear-gradient(135deg,#1a2830,#2a4050)', ico:'🥐', ora:'☀️ Mic Dejun', spill:'Proaspăt', tip:'Mic Dejun', nume:'Croissant cu Unt & Gem de Căpșuni', desc:'Croissant crocant de casă, unt de fermă, gem artizanal de căpșuni. Perfect cu espresso.', kcal:290, prot:'6g', carb:'44g', gras:'10g', cafea:'Volluto · Int. 4', cafea_sub:'Blând, perfectă cu croissantul', dots:3 },
-      { bg:'linear-gradient(135deg,#2a1500,#5a2a00)', ico:'🐟', ora:'🍽️ Prânz', spill:'Vacuum', tip:'Tradiție de Vineri', nume:'Crap Pane cu Mămăligă & Mujdei', desc:'Crap de lac local, panat în pesmet de casă, mămăligă, mujdei de usturoi. Tradiție de vineri.', kcal:440, prot:'32g', carb:'38g', gras:'16g', cafea:'Capriccio · Int. 5', cafea_sub:'Acid fin, completează peștele', dots:3 },
-      { bg:'linear-gradient(135deg,#2e1000,#5a2200)', ico:'🎂', ora:'🍮 Desert la Doză', spill:'Capsată + Doză', tip:'Desert de Weekend', nume:'Tort cu Frișcă & Căpșuni', desc:'Tort de casă cu frișcă naturală și căpșuni. Capsată cu Volluto. Bun start de weekend.', kcal:360, prot:'7g', carb:'50g', gras:'16g', cafea:'Volluto · Int. 4', cafea_sub:'Blând, lasă căpșunile în față', dots:3 },
-    ],
-    1500: [
-      { bg:'linear-gradient(135deg,#1a2830,#2a4050)', ico:'🥐', ora:'☀️ Mic Dejun', spill:'Proaspăt', tip:'Mic Dejun', nume:'Croissant cu Unt & Gem de Căpșuni', desc:'Croissant crocant de casă, unt de fermă, gem artizanal de căpșuni.', kcal:290, prot:'6g', carb:'44g', gras:'10g', cafea:'Volluto · Int. 4', cafea_sub:'Blând, perfectă cu croissantul', dots:3 },
-      { bg:'linear-gradient(135deg,#1e3d1a,#2d6025)', ico:'🥗', ora:'🌿 Gustare · 10:30', spill:'Proaspăt', tip:'Gustare', nume:'Salată Cesar cu Pui Grătar', desc:'Salată verde, pui grătar, parmezan ras, crutoane, sos cesar. Ușor și sățios.', kcal:280, prot:'22g', carb:'18g', gras:'14g', cafea:'Capriccio · Int. 5', cafea_sub:'Acid fin, completează salata', dots:3 },
-      { bg:'linear-gradient(135deg,#2a1500,#5a2a00)', ico:'🐟', ora:'🍽️ Prânz', spill:'Vacuum', tip:'Tradiție de Vineri', nume:'Crap Pane cu Mămăligă & Mujdei', desc:'Crap de lac local, panat în pesmet de casă, mămăligă, mujdei de usturoi.', kcal:440, prot:'32g', carb:'38g', gras:'16g', cafea:'Capriccio · Int. 5', cafea_sub:'Acid fin, completează peștele', dots:3 },
-      { bg:'linear-gradient(135deg,#3a2800,#6a4a10)', ico:'🥪', ora:'🥙 Gustare · 16:30', spill:'Proaspăt', tip:'Gustare de Seară', nume:'Sendviș cu Somon Afumat & Cremă de Brânză', desc:'Pâine toast, cremă de brânză, somon afumat, castraveți, capere, lămâie. Rafinat.', kcal:320, prot:'18g', carb:'26g', gras:'16g', cafea:'Livanto · Int. 6', cafea_sub:'Caramel blând, completează somonul', dots:4 },
-      { bg:'linear-gradient(135deg,#1a2e10,#2a5018)', ico:'🥩', ora:'🌙 Cină', spill:'Vacuum', tip:'Cina de Weekend', nume:'Mici cu Muștar & Cartofi Prăjiți', desc:'Mici din vită și porc, muștar, cartofi prăjiți, salată de varză. Vineri clasic românesc.', kcal:620, prot:'38g', carb:'52g', gras:'26g', cafea:'Ristretto · Int. 9', cafea_sub:'Corp bun, completează micii', dots:4 },
-      { bg:'linear-gradient(135deg,#2e1000,#5a2200)', ico:'🎂', ora:'🍮 Desert la Doză', spill:'Capsată + Doză', tip:'Desert de Weekend', nume:'Tort cu Frișcă & Căpșuni', desc:'Tort de casă cu frișcă naturală și căpșuni. Capsată cu Volluto.', kcal:360, prot:'7g', carb:'50g', gras:'16g', cafea:'Volluto · Int. 4', cafea_sub:'Blând, lasă căpșunile în față', dots:3 },
-    ],
-    2000: [
-      { bg:'linear-gradient(135deg,#1a2830,#2a4050)', ico:'🍳', ora:'☀️ Mic Dejun', spill:'Proaspăt', tip:'Mic Dejun de Vineri', nume:'Omletă cu Bacon, Brânză & Ciuperci', desc:'3 ouă de curte, bacon crocant, brânză topită, ciuperci sautéed. Puternic și sățios.', kcal:540, prot:'32g', carb:'14g', gras:'38g', cafea:'Roma · Int. 8', cafea_sub:'Corp bun, diminineata de vineri', dots:4 },
-      { bg:'linear-gradient(135deg,#1e3d1a,#2d6025)', ico:'🥗', ora:'🌿 Gustare · 10:30', spill:'Proaspăt', tip:'Gustare', nume:'Salată Cesar cu Pui Grătar', desc:'Salată verde, pui grătar, parmezan ras, crutoane, sos cesar.', kcal:280, prot:'22g', carb:'18g', gras:'14g', cafea:'Capriccio · Int. 5', cafea_sub:'Acid fin, completează salata', dots:3 },
-      { bg:'linear-gradient(135deg,#2a1500,#5a2a00)', ico:'🐟', ora:'🍽️ Prânz', spill:'Vacuum', tip:'Tradiție de Vineri', nume:'Plachie de Crap cu Legume & Mămăligă', desc:'Crap de lac, roșii, ardei, usturoi, vin alb, mămăligă. Rețetă autentică românească.', kcal:560, prot:'38g', carb:'44g', gras:'18g', cafea:'Indriya · Int. 10', cafea_sub:'Condimentat, perfect cu peștele', dots:5 },
-      { bg:'linear-gradient(135deg,#3a2800,#6a4a10)', ico:'🥪', ora:'🥙 Gustare · 16:30', spill:'Proaspăt', tip:'Gustare', nume:'Sendviș cu Somon Afumat & Cremă de Brânză', desc:'Pâine toast, cremă de brânză, somon afumat, castraveți, capere, lămâie.', kcal:320, prot:'18g', carb:'26g', gras:'16g', cafea:'Livanto · Int. 6', cafea_sub:'Caramel blând, completează somonul', dots:4 },
-      { bg:'linear-gradient(135deg,#1a2e10,#2a5018)', ico:'🥩', ora:'🌙 Cină', spill:'Vacuum', tip:'Cina de Weekend', nume:'Platou Grătar Complet de Vineri', desc:'Cotlet de porc, mici, cârnați, salată de roșii și ceapă, muștar, pâine de casă.', kcal:720, prot:'50g', carb:'42g', gras:'36g', cafea:'Ristretto · Int. 10', cafea_sub:'Intens, perfect cu grătarul de vineri', dots:5 },
-      { bg:'linear-gradient(135deg,#2e1000,#5a2200)', ico:'🎂', ora:'🍮 Desert la Doză', spill:'Capsată + Doză', tip:'Desert de Weekend', nume:'Tort Special de Vineri cu Frișcă', desc:'Tort special de vineri — frișcă, căpșuni, ciocolată neagră. Capsată cu Kazaar.', kcal:420, prot:'8g', carb:'54g', gras:'20g', cafea:'Kazaar · Int. 12', cafea_sub:'Maxim intens, amplifica tortul', dots:5 },
-    ],
-    2500: [
-      { bg:'linear-gradient(135deg,#1a2830,#2a4050)', ico:'🍳', ora:'☀️ Mic Dejun', spill:'Proaspăt', tip:'Mic Dejun Sport Vineri', nume:'Platou Festiv: 4 Ouă + Bacon + Cârnați', desc:'4 ouă ochiuri, bacon, cârnați afumați, brânză, roșii la tigaie, pâine de casă.', kcal:740, prot:'48g', carb:'36g', gras:'46g', cafea:'Roma · Int. 8', cafea_sub:'Corp echilibrat, dimineata sport', dots:4 },
-      { bg:'linear-gradient(135deg,#1e3d1a,#2d6025)', ico:'🥗', ora:'🌿 Gustare · 10:30', spill:'Proaspăt', tip:'Gustare Proteică', nume:'Salată cu Somon Grătar & Avocado', desc:'Salată verde, somon grătar, avocado, roșii cherry, sos de lămâie. Omega-3 maxim.', kcal:420, prot:'30g', carb:'16g', gras:'26g', cafea:'Capriccio · Int. 5', cafea_sub:'Acid fin, completează somonul', dots:3 },
-      { bg:'linear-gradient(135deg,#2a1500,#5a2a00)', ico:'🥩', ora:'🍽️ Prânz', spill:'Vacuum', tip:'Prânz Sport Vineri', nume:'Grătar Festiv: Mici + Cotlet + Cârnați + Crap', desc:'3 mici, cotlet de porc, cârnați de casă, crap pane, mămăligă, salată. Total festiv.', kcal:900, prot:'64g', carb:'54g', gras:'44g', cafea:'Indriya · Int. 10', cafea_sub:'Maxim intens, perfect cu platoul', dots:5 },
-      { bg:'linear-gradient(135deg,#3a2800,#6a4a10)', ico:'🥙', ora:'🥙 Gustare · 16:30', spill:'Proaspăt', tip:'Gustare Sport', nume:'Wrap Dublu cu Somon & Avocado', desc:'2 tortilla, somon afumat, avocado, salată verde, sos de iaurt cu lime. 36g proteină.', kcal:500, prot:'36g', carb:'40g', gras:'22g', cafea:'Livanto · Int. 6', cafea_sub:'Caramel, completează somonul', dots:4 },
-      { bg:'linear-gradient(135deg,#1a2e10,#2a5018)', ico:'🍲', ora:'🌙 Cină', spill:'Vacuum', tip:'Cina de Weekend', nume:'Platou Festiv: Friptură + Sarmale + Mici', desc:'Cotlet de vită, 2 sarmale, 3 mici, cartofi, salată de varză, mujdei, pâine.', kcal:980, prot:'68g', carb:'62g', gras:'50g', cafea:'Ristretto · Int. 10', cafea_sub:'Intens, curăță după festin', dots:5 },
-      { bg:'linear-gradient(135deg,#2e1000,#5a2200)', ico:'🎂', ora:'🍮 Desert la Doză', spill:'Capsată + Doză', tip:'Desert Festiv', nume:'Tort + Gogoși + Brownie la Pachet', desc:'Tort cu frișcă + 2 gogoși + brownie cu nucă. Festin de desert de vineri. Capsate cu Kazaar.', kcal:560, prot:'12g', carb:'68g', gras:'26g', cafea:'Kazaar · Int. 12', cafea_sub:'Maxim intens, taie dulceața festinului', dots:5 },
-    ]
-  }
-};
+/* ====== DATE MENIU (prețuri orientative — ajustează după costuri) ====== */
+const CAFEA=[
+  {n:"Espresso",d:"Shot intens, corp plin.",p:8,ico:"☕",bg:"linear-gradient(135deg,#2a1500,#5a2a00)"},
+  {n:"Espresso lung",d:"Espresso alungit, mai blând.",p:9,ico:"☕",bg:"linear-gradient(135deg,#2e1a0a,#5c3517)"},
+  {n:"Cappuccino",d:"Espresso, lapte cald și spumă cremoasă.",p:12,ico:"🥛",bg:"linear-gradient(135deg,#3d2800,#7a5010)"},
+  {n:"Caffè latte",d:"Mult lapte catifelat peste un shot rotund.",p:14,ico:"🥛",bg:"linear-gradient(135deg,#3a2800,#6a4a10)"},
+];
+const SPEC=[
+  {n:"Tiramisu Cappuccino",d:"Cappuccino cu note de tiramisu, pudrat cu cacao.",p:18,ico:"🍮",bg:"linear-gradient(135deg,#2e1000,#5a2200)"},
+  {n:"Dolce Truffle Cappuccino",d:"Cremos, cu aromă fină de trufă dulce.",p:17,ico:"🍫",bg:"linear-gradient(135deg,#1e1108,#3a2810)"},
+  {n:"Salted Caramel Mocha",d:"Cafea, ciocolată și caramel sărat.",p:17,ico:"🧂",bg:"linear-gradient(135deg,#2a1500,#6a4010)"},
+  {n:"Hazelnut Affogato",d:"Espresso turnat peste înghețată, cu alună.",p:16,ico:"🍨",bg:"linear-gradient(135deg,#2e1a0a,#5c3517)"},
+  {n:"Iced Rosemary Latte",d:"Latte rece cu sirop de rozmarin.",p:15,ico:"🌿",bg:"linear-gradient(135deg,#1a2e10,#2a5018)"},
+  {n:"Fizzy Iced Peach",d:"Cafea rece, acidulată, cu piersică.",p:15,ico:"🍑",bg:"linear-gradient(135deg,#3a2010,#7a4020)"},
+];
+const LIM=[
+  {n:"Limonadă clasică",d:"Lămâie proaspătă și mentă.",p:12,ico:"🍋",bg:"linear-gradient(135deg,#3a4a00,#7a8a10)"},
+  {n:"Limonadă cu aronia",d:"Cu superfructe Aronia Charlottenburg.",p:15,ico:"🫐",bg:"linear-gradient(135deg,#2a1040,#5a2080)"},
+  {n:"Limonadă fructe de pădure",d:"Afine, zmeură, coacăze.",p:14,ico:"🍓",bg:"linear-gradient(135deg,#3a0020,#7a1040)"},
+  {n:"Fresh de portocale",d:"Stors pe loc, 100% portocale.",p:14,ico:"🍊",bg:"linear-gradient(135deg,#5a2a00,#c06010)"},
+  {n:"Fresh mere & morcovi",d:"Dulce-natural, plin de vitamine.",p:13,ico:"🥕",bg:"linear-gradient(135deg,#4a2800,#a05810)"},
+];
+const SAND=[
+  {n:"Grecesc",d:"Ou ochi, feta, roșii cherry, spanac.",p:16,ico:"🥪",bg:"linear-gradient(135deg,#1e3d1a,#2d6025)",ing:["Ou ochi","Feta","Roșii cherry","Spanac"]},
+  {n:"Proteic",d:"Pui la grătar, hummus, spanac.",p:19,ico:"🥪",bg:"linear-gradient(135deg,#2a1500,#5a3000)",ing:["Pui la grătar","Hummus","Spanac"]},
+  {n:"Mediteranean",d:"Pui, tzatziki, roșii uscate.",p:19,ico:"🥪",bg:"linear-gradient(135deg,#1a2e10,#2a5018)",ing:["Pui la grătar","Tzatziki","Roșii uscate"]},
+  {n:"Energizant",d:"Ton, hummus, castraveți.",p:18,ico:"🥪",bg:"linear-gradient(135deg,#1e2a18,#304a28)",ing:["Ton","Hummus","Castraveți"]},
+  {n:"Gourmet",d:"Prosciutto, ricotta, rucola, fistic.",p:22,ico:"🥪",bg:"linear-gradient(135deg,#3a1018,#7a2030)",ing:["Prosciutto","Ricotta","Rucola","Fistic"]},
+  {n:"De vară",d:"Cremă de brânză, dovlecel, ceapă verde.",p:15,ico:"🥪",bg:"linear-gradient(135deg,#1e3a2a,#2e6048)",ing:["Cremă de brânză","Dovlecel","Ceapă verde"]},
+  {n:"Bowl-ul zilei",d:"Proteină + legume de sezon, la bol.",p:24,ico:"🥗",bg:"linear-gradient(135deg,#1a2e10,#3a6020)",ing:["Proteina zilei","Legume de sezon"],nobread:true},
+];
+const DULCE=[
+  {n:"Fursecuri de casă cu ovăz",d:"Măr-scorțișoară · ciocolată · carrot cake.",p:6,ico:"🍪",bg:"linear-gradient(135deg,#3a2800,#6a4a10)"},
+  {n:"Desert cu aronia, la pahar",d:"Cremos, cu superfructe.",p:14,ico:"🫐",bg:"linear-gradient(135deg,#2a1040,#5a2080)"},
+  {n:"Tiramisu la doză",d:"Clasic italian, sigilat to-go.",p:16,ico:"🍮",bg:"linear-gradient(135deg,#2e1000,#5a2200)"},
+];
+const COMBO=[
+  {n:"Pachetul de drum",d:"Un sandwich la alegere + o cafea + un fursec. Gata de plecare.",p:35,ico:"🎒"},
+  {n:"Pachet familie",d:"4 sandwich-uri + 2 limonade. Pentru tot echipajul din mașină.",p:79,ico:"👨‍👩‍👧"},
+];
+const JARS=[
+  {n:"Zacuscă Metanoia",d:"Rețeta veche a familiei — „100 de ani de tradiție”.",ico:"🫙"},
+  {n:"Ketchup de casă",d:"Din roșii coapte, fără conservanți.",ico:"🍅"},
+  {n:"Bulion de grădină",d:"Roșii pasate, gros și aromat.",ico:"🥫"},
+  {n:"Dulcețuri",d:"Căpșuni · afine · măceșe · piersici · prune.",ico:"🍯"},
+];
 
-// ═══════════════════════════════════════════
-// STATE + RENDER
-// ═══════════════════════════════════════════
-var currentDay = 0;
-var currentKcal = 1500;
-var kcalMap = [1000, 1500, 2000, 2500];
+/* ====== COS (localStorage cheia 'metanoia_cart') ====== */
+let cart=[];
+try{cart=JSON.parse(localStorage.getItem("metanoia_cart")||"[]");}catch(e){cart=[];}
 
-function makeDots(n) {
-  var html = '<div class="ps-dots">';
-  for (var i = 0; i < 5; i++) {
-    html += '<div class="dot" style="background:' + (i < n ? 'var(--t3)' : 'rgba(255,255,255,.15)') + '"></div>';
-  }
-  return html + '</div>';
+function saveCart(){try{localStorage.setItem("metanoia_cart",JSON.stringify(cart));}catch(e){} renderCos();}
+function addCart(nume,pret){
+  const ex=cart.find(x=>x.nume===nume);
+  if(ex){ex.cant++;} else {cart.push({nume,pret,cant:1});}
+  saveCart();
+}
+function golesteCos(){cart=[];saveCart();}
+function renderCos(){
+  const n=cart.reduce((s,x)=>s+x.cant,0);
+  const t=cart.reduce((s,x)=>s+x.pret*x.cant,0);
+  document.getElementById("cosCount").textContent=n;
+  document.getElementById("cosTotal").textContent=t+" lei";
+  document.getElementById("cosbar").classList.toggle("show",n>0);
 }
 
-function renderMenu() {
-  var grid = document.querySelector('.menu-grid');
-  if (!grid) return;
-  var items = (MENIU[currentDay] || {})[currentKcal] || [];
-  if (!items.length) {
-    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--tx3)">Meniu în pregătire.</div>';
-    return;
-  }
-  grid.innerHTML = items.map(function(m) {
-    var isDesert = m.ora.indexOf('Desert') !== -1;
-    return '<div class="mc">' +
-      '<div class="mc-top" style="background:' + m.bg + '">' +
-        m.ico +
-        '<div class="mc-lbl">' +
-          '<span class="mc-lbl-txt">' + m.ora + '</span>' +
-          '<span class="mc-spill">' + m.spill + '</span>' +
-        '</div>' +
-      '</div>' +
-      '<div class="mc-body">' +
-        '<div class="mc-type">' + m.tip + '</div>' +
-        '<div class="mc-name">' + m.nume + '</div>' +
-        '<p class="mc-desc">' + m.desc + '</p>' +
-        '<div class="macro-block">' +
-          '<div class="macro-cell m-kcal"><div class="macro-val">' + m.kcal + '</div><div class="macro-lbl">kcal</div></div>' +
-          '<div class="macro-cell m-prot"><div class="macro-val">' + m.prot + '</div><div class="macro
+/* ====== RENDER CARDS ====== */
+function card(it){
+  const pretHtml = it.p ? `<div class="mc-price">${it.p}<small> lei</small></div>
+      <button class="mc-add" onclick='addToCart(this,${JSON.stringify(it.n)},${it.p})'>+ Adaugă</button>`
+    : `<div class="mc-tba">la tejghea</div>`;
+  return `<div class="mc">
+    <div class="mc-top" style="background:${it.bg}">${it.ico}
+      <div class="mc-lbl"><span class="mc-lbl-txt">${it.lbl||""}</span>${it.pill?`<span class="mc-pill">${it.pill}</span>`:""}</div>
+    </div>
+    <div class="mc-body">
+      <div class="mc-name">${it.n}</div>
+      <p class="mc-desc">${it.d}</p>
+      <div class="mc-foot">${pretHtml}</div>
+    </div></div>`;
+}
+function addToCart(btn,nume,pret){
+  addCart(nume,pret);
+  btn.textContent="✓ Adăugat"; btn.classList.add("added");
+  setTimeout(()=>{btn.textContent="+ Adaugă";btn.classList.remove("added");},1100);
+}
+function fill(id,arr,lbl,pill){
+  document.getElementById(id).innerHTML=arr.map(x=>card({...x,lbl,pill})).join("");
+}
+fill("grid-cafea",CAFEA,"☕ Cafea","Pe loc");
+fill("grid-spec",SPEC,"✦ Specialitate","Barista");
+fill("grid-lim",LIM,"🍋 Răcoritoare","Fresh");
+fill("grid-dulce",DULCE,"🍮 Dulce","To-go");
+
+/* ===== SANDVIȘURI cu buton Personalizează ===== */
+const PAINI=["Integrală","Ciabatta","Chiflă"];
+const EXTRAS=[{n:"Extra pui la grătar",p:6},{n:"Extra ton",p:5},{n:"Extra ou",p:3},{n:"Extra cașcaval",p:4},{n:"Extra hummus",p:3}];
+document.getElementById("grid-sand").innerHTML=SAND.map((x,i)=>`
+  <div class="mc">
+    <div class="mc-top" style="background:${x.bg}">${x.ico}
+      <div class="mc-lbl"><span class="mc-lbl-txt">🥪 Pe loc</span><span class="mc-pill">Sandwich-maker</span></div>
+    </div>
+    <div class="mc-body">
+      <div class="mc-name">${x.n}</div>
+      <p class="mc-desc">${x.d}</p>
+      <div class="mc-foot">
+        <div class="mc-price">${x.p}<small> lei</small></div>
+        <button class="mc-add sand-build" onclick="openSand(${i})">✦ Personalizează</button>
+      </div>
+    </div></div>`).join("");
+
+/* ===== MODAL LOGIC ===== */
+let sandSel={};
+function openSand(i){
+  const s=SAND[i];
+  sandSel={i,paine:s.nobread?null:PAINI[0],removed:[],extras:[],mod:"Cald"};
+  renderSand();
+  document.getElementById("smodal").classList.add("open");
+  document.body.style.overflow="hidden";
+}
+function closeSand(){
+  document.getElementById("smodal").classList.remove("open");
+  document.body.style.overflow="";
+}
+function sandTotal(){
+  const s=SAND[sandSel.i];
+  return s.p + sandSel.extras.reduce((t,e)=>t+EXTRAS[e].p,0);
+}
+function renderSand(){
+  const s=SAND[sandSel.i];
+  const paineHtml = s.nobread ? "" : `
+    <div class="sm-group">
+      <span class="sm-glabel">Alege pâinea</span>
+      <div class="sm-opts">${PAINI.map(p=>`<button class="sm-opt ${sandSel.paine===p?'sel':''}" onclick="setPaine('${p}')">${p}</button>`).join("")}</div>
+    </div>`;
+  const modHtml = `
+    <div class="sm-group">
+      <span class="sm-glabel">Cum îl vrei</span>
+      <div class="sm-opts">
+        ${["Cald","Rece"].map(m=>`<button class="sm-opt ${sandSel.mod===m?'sel':''}" onclick="setMod('${m}')">${m==='Cald'?'🔥 Cald (la maker)':'❄️ Rece'}</button>`).join("")}
+      </div>
+    </div>`;
+  const ingHtml = `
+    <div class="sm-group">
+      <span class="sm-glabel">Ingrediente — atinge ca să scoți</span>
+      ${s.ing.map(ing=>{const off=sandSel.removed.includes(ing);
+        return `<div class="sm-ing ${off?'off':''}" onclick="toggleIng('${ing.replace(/'/g,"")}')">
+          <span class="sm-ing-name">${off?'✕':'✓'} ${ing}</span>
+          <span class="sm-ing-tog">${off?'Adaugă':'Fără'}</span></div>`;}).join("")}
+    </div>`;
+  const extraHtml = `
+    <div class="sm-group">
+      <span class="sm-glabel">Extra proteină / topping</span>
+      ${EXTRAS.map((e,ei)=>{const sel=sandSel.extras.includes(ei);
+        return `<div class="sm-extra ${sel?'sel':''}" onclick="toggleExtra(${ei})">
+          <span class="sm-extra-name">${sel?'✓ ':''}${e.n}</span>
+          <span class="sm-extra-p">+${e.p} lei</span></div>`;}).join("")}
+    </div>`;
+  document.getElementById("smCard").innerHTML=`
+    <div class="sm-hero" style="background:${s.bg}">${s.ico}
+      <button class="sm-close" onclick="closeSand()">×</button>
+    </div>
+    <div class="sm-body">
+      <div class="sm-name">${s.n}</div>
+      <div class="sm-base">${s.d}</div>
+      ${paineHtml}${ingHtml}${extraHtml}${modHtml}
+    </div>
+    <div class="sm-foot">
+      <div class="sm-total">Total<b>${sandTotal()} lei</b></div>
+      <button class="sm-addbtn" onclick="addSand()">Adaugă în coș →</button>
+    </div>`;
+}
+function setPaine(p){sandSel.paine=p;renderSand();}
+function setMod(m){sandSel.mod=m;renderSand();}
+function toggleIng(ing){
+  const idx=sandSel.removed.indexOf(ing);
+  if(idx>=0)sandSel.removed.splice(idx,1); else sandSel.removed.push(ing);
+  renderSand();
+}
+function toggleExtra(ei){
+  const idx=sandSel.extras.indexOf(ei);
+  if(idx>=0)sandSel.extras.splice(idx,1); else sandSel.extras.push(ei);
+  renderSand();
+}
+function addSand(){
+  const s=SAND[sandSel.i];
+  let nume=s.n;
+  const det=[];
+  if(sandSel.paine)det.push(sandSel.paine);
+  det.push(sandSel.mod);
+  if(sandSel.removed.length)det.push("fără "+sandSel.removed.join(", ").toLowerCase());
+  sandSel.extras.forEach(ei=>det.push("+"+EXTRAS[ei].n.toLowerCase()));
+  if(det.length)nume+=" ("+det.join(", ")+")";
+  addCart(nume,sandTotal());
+  closeSand();
+}
+
+document.getElementById("grid-combo").innerHTML=COMBO.map(c=>`
+  <div class="cb"><div class="cb-ico">${c.ico}</div>
+    <div class="cb-name">${c.n}</div><p class="cb-desc">${c.d}</p>
+    <div class="cb-foot"><div class="cb-price">${c.p}<small> lei</small></div>
+      <button class="mc-add" onclick='addToCart(this,${JSON.stringify(c.n)},${c.p})'>+ Adaugă</button></div>
+  </div>`).join("");
+
+document.getElementById("grid-jars").innerHTML=JARS.map(j=>`
+  <div class="jar"><div class="jar-ico">${j.ico}</div>
+    <div class="jar-name">${j.n}</div><p class="jar-desc">${j.d}</p></div>`).join("");
+
+renderCos();
+</script>
+</body>
+</html>
