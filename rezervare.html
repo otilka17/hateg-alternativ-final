@@ -78,8 +78,8 @@ textarea.fi{resize:vertical;min-height:76px;}
 .ok-title{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--v1);margin-bottom:10px;}
 .ok-title em{font-style:italic;color:var(--t1);}
 .ok-sub{font-family:'Source Serif 4',serif;font-style:italic;font-size:1rem;color:var(--tx3);line-height:1.7;max-width:360px;margin:0 auto 28px;}
-.ok-wa-note{background:var(--v5);border:2px solid var(--v4);padding:14px 18px;font-size:.88rem;color:var(--v1);line-height:1.6;margin-bottom:28px;}
-.ok-wa-note b{color:var(--v2);}
+.ok-countdown{font-size:.82rem;color:var(--tx3);margin:18px 0 22px;letter-spacing:.5px;}
+.ok-countdown span{font-weight:800;color:var(--v2);}
 .btn-meniu{display:block;background:var(--v2);color:#fff;border:none;padding:15px 32px;font-family:'Karla',sans-serif;font-size:.8rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .2s;text-decoration:none;text-align:center;margin:0 auto;width:fit-content;}
 .btn-meniu:hover{background:var(--v1);}
 .btn-nou{display:block;margin:12px auto 0;background:transparent;color:var(--v2);border:2px solid var(--v2);padding:13px 28px;font-family:'Karla',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all .2s;text-decoration:none;width:fit-content;}
@@ -162,14 +162,13 @@ footer{background:var(--e1);padding:28px 5%;text-align:center;color:rgba(255,255
     </div>
   </div>
 
-  <!-- ECRAN SUCCES (apare după trimitere) -->
+  <!-- ECRAN SUCCES -->
   <div id="wrapOk" class="ok-screen">
-    <div class="ok-ico">📱</div>
-    <h1 class="ok-title">Un pas <em>mai departe.</em></h1>
-    <p class="ok-sub">WhatsApp s-a deschis cu comanda ta pregătită. Apasă <strong>Trimite</strong> acolo și gata — ne ocupăm noi de restul.</p>
-    <div class="ok-wa-note">⚠️ Dacă WhatsApp nu s-a deschis, sună-ne direct la <b>+40 749 229 686</b></div>
-    <a class="btn-meniu" href="meniu.html">← Înapoi la meniu</a>
-    <a class="btn-nou" href="meniu.html" onclick="return confirmNou()">+ Comandă ceva nou</a>
+    <div class="ok-ico">🎉</div>
+    <h1 class="ok-title">Mesaj trimis <em>cu succes!</em></h1>
+    <p class="ok-sub">Comanda ta a ajuns la noi. Te confirmăm în cel mai scurt timp și te așteptăm pe DN 68, Totești.</p>
+    <div class="ok-countdown">Ești redirecționat în <span id="cdNum">3</span> secunde...</div>
+    <a class="btn-meniu" href="index.html">Mergi acasă acum →</a>
   </div>
 
 </div>
@@ -246,15 +245,19 @@ function trimite(){
   cart=[];
   try{localStorage.removeItem("metanoia_cart");}catch(e){}
 
-  // arată ecranul de succes
+  // arată ecranul de succes + redirect
   document.getElementById("wrapForm").style.display="none";
   document.getElementById("wrapOk").style.display="block";
   window.scrollTo({top:0,behavior:"smooth"});
-}
 
-function confirmNou(){
-  // coșul e deja gol, du-l la meniu
-  return true;
+  // countdown 3 → 2 → 1 → redirect index
+  let n=3;
+  const cd=document.getElementById("cdNum");
+  const timer=setInterval(()=>{
+    n--;
+    if(cd)cd.textContent=n;
+    if(n<=0){clearInterval(timer);window.location.href="index.html";}
+  },1000);
 }
 
 render();
