@@ -1,311 +1,193 @@
-```html
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Metanoia | Rezervare</title>
-  
-  <!-- Fonturi premium din proiectul tău -->
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;900&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
-  
-  <style>
-    :root {
-      --primary: #3c5a7a;
-      --primary-light: #4a6c8f;
-      --accent: #e07840;
-      --accent-hover: #c9632d;
-      --bg: #faf5ec;
-      --card-bg: #ffffff;
-      --text: #141a24;
-      --text-muted: #5f6c80;
-      --border: #e8d5b0;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Finalizează comanda · Metanoia · SOul Meal</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:ital,wght@0,400&family=Karla:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --v1:#14253a;--v2:#2e4e7e;--v3:#4a74ac;--v4:#8fb4de;--v5:#dce9f7;
+  --c1:#faf5ec;--c2:#f2e8d0;--c3:#e8d5b0;--t1:#c4622d;--t2:#e07840;--t3:#f5a06a;
+  --e1:#0f1a2b;--tx1:#141a24;--tx2:#2c3648;--tx3:#5f6c80;--tx4:rgba(20,26,36,.4);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Karla',sans-serif;background:var(--c1);color:var(--tx1);}
+.nav{position:fixed;top:0;width:100%;z-index:999;background:rgba(250,245,236,.97);backdrop-filter:blur(12px);border-bottom:2px solid var(--v2);display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:68px;}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo{width:42px;height:42px;}
+.nav-name{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:900;color:var(--v1);letter-spacing:2px;text-transform:uppercase;line-height:1;}
+.nav-sub{font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--tx3);font-weight:500;margin-top:2px;}
+.nav a.back{font-size:.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--v2);text-decoration:none;}
+.wrap{max-width:680px;margin:0 auto;padding:108px 5% 60px;}
+.head{text-align:center;margin-bottom:32px;}
+.head .tag{font-size:.65rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--v3);margin-bottom:8px;}
+.head h1{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,5vw,2.8rem);font-weight:900;color:var(--v1);line-height:1.1;}
+.head h1 em{font-style:italic;color:var(--t1);}
+.head p{color:var(--tx3);margin-top:10px;font-size:.95rem;}
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+.card{background:#fff;border:2px solid var(--c3);padding:26px 24px;margin-bottom:18px;}
+.card h2{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--v1);margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;}
+.cos-empty{text-align:center;padding:30px 10px;color:var(--tx3);}
+.cos-empty a{color:var(--v2);font-weight:700;text-decoration:none;}
+.ci{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--c2);}
+.ci:last-child{border-bottom:none;}
+.ci-info{flex:1;min-width:0;}
+.ci-name{font-size:.92rem;font-weight:600;color:var(--tx1);line-height:1.3;}
+.ci-unit{font-size:.74rem;color:var(--tx3);margin-top:2px;}
+.ci-qty{display:flex;align-items:center;gap:8px;flex-shrink:0;}
+.qbtn{width:28px;height:28px;border:2px solid var(--c3);background:var(--c1);color:var(--v2);font-size:1rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;border-radius:4px;}
+.qbtn:hover{border-color:var(--v3);}
+.ci-n{min-width:20px;text-align:center;font-weight:700;}
+.ci-sum{font-family:'Playfair Display',serif;font-weight:700;color:var(--t1);min-width:60px;text-align:right;flex-shrink:0;}
+.ci-del{background:none;border:none;color:var(--tx4);font-size:1.1rem;cursor:pointer;padding:0 2px;flex-shrink:0;}
+.ci-del:hover{color:var(--t1);}
+.total-row{display:flex;justify-content:space-between;align-items:center;padding-top:16px;margin-top:4px;border-top:2px solid var(--c3);}
+.total-lbl{font-size:.7rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--tx3);}
+.total-val{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:var(--v1);}
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 20px;
-    }
-
-    .wrap {
-      width: 100%;
-      max-width: 480px;
-    }
-
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 30px;
-    }
-
-    .brand {
-      font-family: 'Cinzel', serif;
-      font-weight: 900;
-      text-decoration: none;
-      color: var(--primary);
-      letter-spacing: 2px;
-      transition: opacity 0.2s;
-    }
-
-    .brand:hover {
-      opacity: 0.8;
-    }
-
-    .nav a {
-      font-family: 'Inter', sans-serif;
-      font-size: 13px;
-      text-decoration: none;
-      color: var(--text-muted);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      transition: color 0.2s;
-    }
-
-    .nav a:hover {
-      color: var(--primary);
-    }
-
-    .section h2.brand {
-      font-size: 24px;
-      margin-bottom: 20px;
-      color: var(--primary);
-      text-transform: uppercase;
-    }
-
-    .card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 30px;
-      box-shadow: 0 8px 30px rgba(74, 108, 143, 0.06);
-    }
-
-    .small {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin: 6px 0;
-      line-height: 1.5;
-    }
-
-    .small b {
-      color: var(--primary);
-    }
-
-    .divider {
-      height: 1px;
-      background: var(--border);
-      margin: 18px 0;
-    }
-
-    .input {
-      width: 100%;
-      padding: 12px 14px;
-      border: 1.5px solid var(--border);
-      background: var(--bg);
-      border-radius: 8px;
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      color: var(--text);
-      outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-
-    .input::placeholder {
-      color: #a0aec0;
-    }
-
-    .input:focus {
-      border-color: var(--primary-light);
-      box-shadow: 0 0 0 3px rgba(74, 108, 143, 0.1);
-    }
-
-    .btn.cta {
-      width: 100%;
-      background: var(--accent);
-      color: #fff;
-      border: none;
-      padding: 14px;
-      font-family: 'Inter', sans-serif;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.1s;
-    }
-
-    .btn.cta:hover {
-      background: var(--accent-hover);
-    }
-
-    .btn.cta:active {
-      transform: scale(0.98);
-    }
-
-    .btn.cta:disabled {
-      background: #cbd5e0;
-      cursor: not-allowed;
-    }
-
-    footer {
-      margin-top: 30px;
-      text-align: center;
-      font-size: 11px;
-      color: var(--text-muted);
-      letter-spacing: 1px;
-    }
-
-    /* Sistem de mesaje personalizat */
-    #msg {
-      font-size: 13px;
-      line-height: 1.5;
-      margin-top: 15px;
-      padding: 12px;
-      border-radius: 8px;
-      display: none;
-    }
-
-    #msg.success {
-      display: block;
-      background-color: #f0fdf4;
-      color: #166534;
-      border: 1px solid #bbf7d0;
-    }
-
-    #msg.error {
-      display: block;
-      background-color: #fef2f2;
-      color: #991b1b;
-      border: 1px solid #fecaca;
-    }
-  </style>
+.fl{font-size:.64rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--tx3);margin-bottom:5px;display:block;}
+.fi{width:100%;background:var(--c1);border:2px solid var(--c3);padding:12px 15px;color:var(--tx1);font-family:'Karla',sans-serif;font-size:.95rem;outline:none;transition:border-color .2s;-webkit-appearance:none;margin-bottom:14px;}
+.fi:focus{border-color:var(--v2);background:#fff;}
+.fi::placeholder{color:var(--tx4);}
+textarea.fi{resize:vertical;min-height:78px;}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.ferr{display:none;padding:11px 14px;background:rgba(196,98,45,.08);border:1px solid rgba(196,98,45,.3);font-size:.82rem;color:var(--t1);margin-bottom:14px;}
+.btn-wa{width:100%;background:#25D366;color:#fff;border:none;padding:16px;font-family:'Karla',sans-serif;font-size:.82rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:all .2s;text-decoration:none;}
+.btn-wa:hover{background:#1da851;}
+.btn-wa:disabled{opacity:.4;cursor:not-allowed;}
+.fnote{font-size:.74rem;color:var(--tx3);text-align:center;margin-top:12px;line-height:1.5;}
+.fnote b{color:var(--v2);}
+footer{background:var(--e1);padding:30px 5%;text-align:center;color:rgba(255,255,255,.3);font-size:.78rem;}
+@media(max-width:480px){.frow{grid-template-columns:1fr;}}
+</style>
 </head>
 <body>
-  <div class="wrap">
-    <header class="header">
-      <a class="brand" href="index.html">METANOIA</a>
-      <nav class="nav"><a href="meniuri.html">Meniuri</a></nav>
-    </header>
 
-    <section class="section">
-      <h2 class="brand">Rezervare</h2>
-      <div class="card">
-        <p class="small">Plan selectat: <b id="plan">—</b></p>
-        <p class="small">Total estimat: <b id="total">—</b> RON</p>
-        <div class="divider"></div>
-        
-        <form id="reservationForm" onsubmit="return trimite(event)">
-          <input class="input" id="nume" placeholder="Nume" required>
-          <div style="height:10px"></div>
-          <input class="input" id="tel" placeholder="Telefon" required>
-          <div style="height:10px"></div>
-          <input class="input" id="email" type="email" placeholder="Email (opțional)">
-          <div style="height:10px"></div>
-          <textarea class="input" id="obs" placeholder="Observații / Preferințe de servire" rows="4"></textarea>
-          <div style="height:14px"></div>
-          
-          <button type="submit" id="submitBtn" class="btn cta">Trimite rezervarea</button>
-        </form>
-        
-        <div id="msg"></div>
-      </div>
-    </section>
+<svg width="0" height="0" style="position:absolute"><defs>
+  <linearGradient id="LG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c2daf2"/><stop offset="0.55" stop-color="#8fb8e4"/><stop offset="1" stop-color="#6d9cce"/></linearGradient>
+  <symbol id="L" viewBox="0 0 500 500">
+    <circle cx="250" cy="250" r="215" fill="none" stroke="url(#LG)" stroke-width="9"/>
+    <circle cx="250" cy="250" r="190" fill="none" stroke="url(#LG)" stroke-width="3" opacity="0.75"/>
+    <polygon points="168,190 252,292 84,292" fill="#7ba6d4"/><polygon points="332,196 416,292 248,292" fill="#7ba6d4"/>
+    <polygon points="250,138 352,292 148,292" fill="url(#LG)"/>
+    <path d="M250,138 L278,180 L262,172 L250,186 L238,172 L222,180 Z" fill="#ffffff"/>
+    <text x="250" y="352" fill="#6d9cce" font-family="'Playfair Display',serif" font-size="40" font-weight="600" letter-spacing="10" text-anchor="middle">METANOIA</text>
+    <text x="250" y="386" fill="#8fb8e4" font-family="Karla,sans-serif" font-size="15" font-weight="600" letter-spacing="7" text-anchor="middle">HAȚEG ALTERNATIV</text>
+    <circle cx="250" cy="408" r="4" fill="#8fb8e4"/>
+  </symbol>
+</defs></svg>
 
-    <footer>© Metanoia.</footer>
+<nav class="nav">
+  <a class="nav-brand" href="index.html">
+    <svg class="nav-logo"><use href="#L"/></svg>
+    <div><div class="nav-name">Metanoia</div><div class="nav-sub">Hațeg Alternativ · DN 68</div></div>
+  </a>
+  <a class="back" href="meniu.html">← Înapoi la meniu</a>
+</nav>
+
+<div class="wrap">
+  <div class="head">
+    <div class="tag">Finalizează comanda</div>
+    <h1>Aproape <em>gata.</em></h1>
+    <p>Verifică ce ai în coș și lasă-ne datele — îți pregătim comanda.</p>
   </div>
 
-  <script>
-    // Configurare webhook primit de la tine
-    const MAKE_WEBHOOK_URL = "https://hook.eu1.make.com/wwdii8stmyqdul6rnok4p44k2tvtohjt";
+  <div class="card">
+    <h2>Coșul tău <span id="cosCnt" style="font-size:.8rem;font-weight:400;color:var(--tx3)"></span></h2>
+    <div id="cosList"></div>
+  </div>
 
-    // Citește parametrii din URL
-    const sp = new URLSearchParams(location.search);
-    const planSelectat = sp.get('plan') || '—';
-    const totalEstimat = sp.get('total') || '—';
+  <div class="card">
+    <h2>Datele tale</h2>
+    <div><label class="fl">Nume *</label><input class="fi" id="fN" type="text" placeholder="Numele tău"></div>
+    <div class="frow">
+      <div><label class="fl">Telefon *</label><input class="fi" id="fT" type="tel" placeholder="07xx xxx xxx"></div>
+      <div><label class="fl">Când ridici?</label><input class="fi" id="fC" type="text" placeholder="ex. azi 14:30"></div>
+    </div>
+    <div><label class="fl">Observații</label><textarea class="fi" id="fO" placeholder="Preferințe, alergii, alte detalii..."></textarea></div>
+    <div class="ferr" id="fErr">⚠️ Completează numele și telefonul.</div>
+    <button class="btn-wa" id="btnWA" onclick="trimite()">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 00-8.5 15.3L2 22l4.8-1.5A10 10 0 1012 2zm0 18a8 8 0 01-4.1-1.1l-.3-.2-2.8.9.9-2.7-.2-.3A8 8 0 1112 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.5 6.5 0 01-3.2-2.8c-.1-.2 0-.4.1-.5l.4-.5.2-.4v-.4l-.7-1.7c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3a3 3 0 00-.9 2.2c0 1.3.9 2.5 1.1 2.7.1.2 1.9 2.9 4.6 4 .6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1l-.5-.2z"/></svg>
+      Trimite comanda pe WhatsApp
+    </button>
+    <p class="fnote">Comanda se trimite pe WhatsApp la <b>+40 749 229 686</b>. Confirmăm noi disponibilitatea.</p>
+  </div>
+</div>
 
-    document.getElementById('plan').textContent = planSelectat;
-    document.getElementById('total').textContent = totalEstimat;
+<footer>© 2026 Metanoia · Hațeg Alternativ · SOul Meal · DN 68, Totești · Hațeg</footer>
 
-    async function trimite(event) {
-      event.preventDefault(); // Prevenim reload-ul paginii
-      
-      const submitBtn = document.getElementById('submitBtn');
-      const msgBox = document.getElementById('msg');
-      
-      const nume = document.getElementById('nume').value.trim();
-      const tel = document.getElementById('tel').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const obs = document.getElementById('obs').value.trim();
+<script>
+const WA="40749229686";
+const MAKE_WEBHOOK="https://hook.eu1.make.com/wwdii8stmyqdul6rnok4p44k2tvtohjt";
 
-      // Schimbăm starea butonului
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Se trimite...';
-      msgBox.className = '';
-      msgBox.style.display = 'none';
+let cart=[];
+try{cart=JSON.parse(localStorage.getItem("metanoia_cart")||"[]");}catch(e){cart=[];}
 
-      // Generare dată curentă în formatul local românesc (Europe/Bucharest) pentru Col A
-      const acum = new Date();
-      const dataCurentaStr = acum.toLocaleString('ro-RO', { timeZone: 'Europe/Bucharest' });
+function save(){try{localStorage.setItem("metanoia_cart",JSON.stringify(cart));}catch(e){} render();}
+function total(){return cart.reduce((s,x)=>s+x.pret*x.cant,0);}
+function chg(i,d){cart[i].cant+=d;if(cart[i].cant<=0)cart.splice(i,1);save();}
+function del(i){cart.splice(i,1);save();}
 
-      // Organizăm datele conform structurii cerute de Google Sheet-ul tău din imagine
-      const payload = {
-        data: dataCurentaStr,                       // Coloana A: Data
-        autor: nume,                                // Coloana B: Autor
-        sandwich: planSelectat !== '—' ? planSelectat : '-', // Coloana C: sandwich (luat din planul curent)
-        bautura: sp.get('bautura') || '-',         // Coloana D: băutură (dacă există în URL)
-        specialitate_cafea: sp.get('cafea') || '-', // Coloana E: specialităţi/cafea (dacă există în URL)
-        desert: sp.get('desert') || '-',            // Coloana F: desert (dacă există în URL)
-        mesaj: obs || '-',                          // Coloana G: mesaj / Observații
-        data_ora_servire: sp.get('servire') || 'Cât mai curând', // Coloana H: data/ora servire
-        tel: tel,                                   // Coloana I: Nr tel
-        email: email || '-',                        // Info suplimentar
-        total: totalEstimat                         // Info suplimentar
-      };
+function render(){
+  const list=document.getElementById("cosList");
+  const cnt=document.getElementById("cosCnt");
+  const n=cart.reduce((s,x)=>s+x.cant,0);
+  cnt.textContent=n?`· ${n} produse`:"";
+  if(!cart.length){
+    list.innerHTML=`<div class="cos-empty">Coșul e gol.<br><a href="meniu.html">← Înapoi la meniu</a></div>`;
+    document.getElementById("btnWA").disabled=true;
+    return;
+  }
+  document.getElementById("btnWA").disabled=false;
+  list.innerHTML=cart.map((x,i)=>`
+    <div class="ci">
+      <div class="ci-info"><div class="ci-name">${x.nume}</div><div class="ci-unit">${x.pret} lei / buc</div></div>
+      <div class="ci-qty">
+        <button class="qbtn" onclick="chg(${i},-1)">−</button>
+        <span class="ci-n">${x.cant}</span>
+        <button class="qbtn" onclick="chg(${i},1)">+</button>
+      </div>
+      <div class="ci-sum">${x.pret*x.cant} lei</div>
+      <button class="ci-del" onclick="del(${i})" title="Șterge">×</button>
+    </div>`).join("")
+    + `<div class="total-row"><span class="total-lbl">Total</span><span class="total-val">${total()} lei</span></div>`;
+}
 
-      try {
-        const response = await fetch(MAKE_WEBHOOK_URL, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(payload)
-        });
+function trimite(){
+  const nume=document.getElementById("fN").value.trim();
+  const tel=document.getElementById("fT").value.trim();
+  const cand=document.getElementById("fC").value.trim();
+  const obs=document.getElementById("fO").value.trim();
+  if(!nume||!tel||!cart.length){document.getElementById("fErr").style.display="block";return;}
+  document.getElementById("fErr").style.display="none";
 
-        if (response.ok) {
-          msgBox.className = 'success';
-          msgBox.textContent = '✓ Rezervarea ta a fost trimisă cu succes! Te contactăm în curând pentru confirmare.';
-          submitBtn.textContent = 'Trimis cu succes!';
-          
-          // Resetăm formularul după succes
-          document.getElementById('reservationForm').reset();
-        } else {
-          throw new Error('Eroare răspuns server.');
-        }
-      } catch (error) {
-        msgBox.className = 'error';
-        msgBox.textContent = 'A apărut o eroare la trimitere. Te rugăm să reîncerci sau să ne contactezi telefonic.';
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Trimite rezervarea';
-      }
+  const produse=cart.map(x=>`${x.cant}x ${x.nume}`).join(", ");
+  const t=total();
 
-      return false;
-    }
-  </script>
+  // trimite la Make (text/plain evită blocajul CORS la webhook)
+  if(MAKE_WEBHOOK){
+    try{
+      fetch(MAKE_WEBHOOK,{
+        method:"POST",
+        headers:{"Content-Type":"text/plain;charset=UTF-8"},
+        body:JSON.stringify({nume,tel,cand,obs,produse,total:t,sursa:"rezervare.html",data:new Date().toLocaleString("ro-RO")}),
+        keepalive:true
+      });
+    }catch(e){}
+  }
+
+  let msg=`Bună! Aș dori să comand de la Metanoia · SOul Meal:%0A%0A`;
+  cart.forEach(x=>{msg+=`• ${x.cant}x ${x.nume} — ${x.pret*x.cant} lei%0A`;});
+  msg+=`%0ATotal: ${t} lei%0A%0ANume: ${nume}%0ATelefon: ${tel}`;
+  if(cand)msg+=`%0ACând ridic: ${cand}`;
+  if(obs)msg+=`%0AObservații: ${obs}`;
+
+  window.open(`https://wa.me/${WA}?text=${msg}`,"_blank");
+}
+
+render();
+</script>
 </body>
 </html>
-
-```
