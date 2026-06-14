@@ -80,6 +80,10 @@ textarea.fi{resize:vertical;min-height:76px;}
 .ok-sub{font-family:'Source Serif 4',serif;font-style:italic;font-size:1rem;color:var(--tx3);line-height:1.7;max-width:360px;margin:0 auto 28px;}
 .ok-countdown{font-size:.82rem;color:var(--tx3);margin:18px 0 22px;letter-spacing:.5px;}
 .ok-countdown span{font-weight:800;color:var(--v2);}
+.btn-wa-ok{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;max-width:360px;margin:18px auto 12px;background:#25D366;color:#fff;padding:17px 28px;font-family:'Karla',sans-serif;font-size:.84rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;transition:all .2s;}
+.btn-wa-ok:hover{background:#1da851;}
+.btn-acasa{display:block;text-align:center;margin:0 auto;color:var(--v2);font-size:.8rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;text-decoration:none;padding:12px;}
+.btn-acasa:hover{text-decoration:underline;}
 .btn-meniu{display:block;background:var(--v2);color:#fff;border:none;padding:15px 32px;font-family:'Karla',sans-serif;font-size:.8rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .2s;text-decoration:none;text-align:center;margin:0 auto;width:fit-content;}
 .btn-meniu:hover{background:var(--v1);}
 .btn-nou{display:block;margin:12px auto 0;background:transparent;color:var(--v2);border:2px solid var(--v2);padding:13px 28px;font-family:'Karla',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all .2s;text-decoration:none;width:fit-content;}
@@ -166,9 +170,12 @@ footer{background:var(--e1);padding:28px 5%;text-align:center;color:rgba(255,255
   <div id="wrapOk" class="ok-screen">
     <div class="ok-ico">🎉</div>
     <h1 class="ok-title">Mesaj trimis <em>cu succes!</em></h1>
-    <p class="ok-sub">Comanda ta a ajuns la noi. Te confirmăm în cel mai scurt timp și te așteptăm pe DN 68, Totești.</p>
-    <div class="ok-countdown">Ești redirecționat în <span id="cdNum">3</span> secunde...</div>
-    <a class="btn-meniu" href="index.html">Mergi acasă acum →</a>
+    <p class="ok-sub">Comanda ta e pregătită. Apasă butonul de mai jos ca să o trimiți pe WhatsApp — durează 2 secunde.</p>
+    <a id="btnWaLink" href="#" target="_blank" class="btn-wa-ok">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 00-8.5 15.3L2 22l4.8-1.5A10 10 0 1012 2zm0 18a8 8 0 01-4.1-1.1l-.3-.2-2.8.9.9-2.7-.2-.3A8 8 0 1112 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.5 6.5 0 01-3.2-2.8c-.1-.2 0-.4.1-.5l.4-.5.2-.4v-.4l-.7-1.7c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3a3 3 0 00-.9 2.2c0 1.3.9 2.5 1.1 2.7.1.2 1.9 2.9 4.6 4 .6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1l-.5-.2z"/></svg>
+      Deschide WhatsApp și trimite
+    </a>
+    <a class="btn-acasa" href="index.html">← Mergi acasă</a>
   </div>
 
 </div>
@@ -239,25 +246,18 @@ function trimite(){
   if(cand)msg+=`%0ACând ridic: ${cand}`;
   if(obs)msg+=`%0AObservații: ${obs}`;
 
-  window.open(`https://wa.me/${WA}?text=${msg}`,"_blank");
-
   // golește coșul
   cart=[];
   try{localStorage.removeItem("metanoia_cart");}catch(e){}
 
-  // arată ecranul de succes + redirect
+  // salvează link-ul WA ca să-l punem pe buton
+  window._waLink = `https://wa.me/${WA}?text=${msg}`;
+  document.getElementById("btnWaLink").href = window._waLink;
+
+  // arată ecranul de succes (NU deschidem WA automat)
   document.getElementById("wrapForm").style.display="none";
   document.getElementById("wrapOk").style.display="block";
   window.scrollTo({top:0,behavior:"smooth"});
-
-  // countdown 3 → 2 → 1 → redirect index
-  let n=3;
-  const cd=document.getElementById("cdNum");
-  const timer=setInterval(()=>{
-    n--;
-    if(cd)cd.textContent=n;
-    if(n<=0){clearInterval(timer);window.location.href="index.html";}
-  },1000);
 }
 
 render();
