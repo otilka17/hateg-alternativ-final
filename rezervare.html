@@ -14,52 +14,85 @@
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{font-family:'Karla',sans-serif;background:var(--c1);color:var(--tx1);}
+
 .nav{position:fixed;top:0;width:100%;z-index:999;background:rgba(250,245,236,.97);backdrop-filter:blur(12px);border-bottom:2px solid var(--v2);display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:68px;}
 .nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
 .nav-logo{width:42px;height:42px;}
 .nav-name{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:900;color:var(--v1);letter-spacing:2px;text-transform:uppercase;line-height:1;}
 .nav-sub{font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--tx3);font-weight:500;margin-top:2px;}
-.nav a.back{font-size:.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--v2);text-decoration:none;}
-.wrap{max-width:680px;margin:0 auto;padding:108px 5% 60px;}
-.head{text-align:center;margin-bottom:32px;}
-.head .tag{font-size:.65rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--v3);margin-bottom:8px;}
-.head h1{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,5vw,2.8rem);font-weight:900;color:var(--v1);line-height:1.1;}
-.head h1 em{font-style:italic;color:var(--t1);}
-.head p{color:var(--tx3);margin-top:10px;font-size:.95rem;}
+.nav-back{font-size:.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--v2);text-decoration:none;display:flex;align-items:center;gap:6px;}
+.nav-back:hover{color:var(--v1);}
 
-.card{background:#fff;border:2px solid var(--c3);padding:26px 24px;margin-bottom:18px;}
-.card h2{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--v1);margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;}
-.cos-empty{text-align:center;padding:30px 10px;color:var(--tx3);}
+.wrap{max-width:640px;margin:0 auto;padding:100px 5% 60px;}
+
+/* HEAD */
+.head{text-align:center;margin-bottom:28px;}
+.head .tag{font-size:.64rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--v3);margin-bottom:8px;}
+.head h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,2.8rem);font-weight:900;color:var(--v1);line-height:1.1;}
+.head h1 em{font-style:italic;color:var(--t1);}
+.head p{color:var(--tx3);margin-top:8px;font-size:.95rem;line-height:1.65;}
+
+/* CARD */
+.card{background:#fff;border:2px solid var(--c3);padding:24px;margin-bottom:16px;}
+.card h2{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--v1);margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;gap:10px;}
+
+/* COS */
+.cos-empty{text-align:center;padding:28px 10px;color:var(--tx3);}
 .cos-empty a{color:var(--v2);font-weight:700;text-decoration:none;}
-.ci{display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--c2);}
+.ci{display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid var(--c2);}
 .ci:last-child{border-bottom:none;}
 .ci-info{flex:1;min-width:0;}
-.ci-name{font-size:.92rem;font-weight:600;color:var(--tx1);line-height:1.3;}
-.ci-unit{font-size:.74rem;color:var(--tx3);margin-top:2px;}
-.ci-qty{display:flex;align-items:center;gap:8px;flex-shrink:0;}
-.qbtn{width:28px;height:28px;border:2px solid var(--c3);background:var(--c1);color:var(--v2);font-size:1rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;border-radius:4px;}
+.ci-name{font-size:.9rem;font-weight:600;color:var(--tx1);line-height:1.3;}
+.ci-unit{font-size:.72rem;color:var(--tx3);margin-top:2px;}
+.ci-qty{display:flex;align-items:center;gap:7px;flex-shrink:0;}
+.qbtn{width:28px;height:28px;border:2px solid var(--c3);background:var(--c1);color:var(--v2);font-size:1rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;}
 .qbtn:hover{border-color:var(--v3);}
-.ci-n{min-width:20px;text-align:center;font-weight:700;}
-.ci-sum{font-family:'Playfair Display',serif;font-weight:700;color:var(--t1);min-width:60px;text-align:right;flex-shrink:0;}
-.ci-del{background:none;border:none;color:var(--tx4);font-size:1.1rem;cursor:pointer;padding:0 2px;flex-shrink:0;}
+.ci-n{min-width:18px;text-align:center;font-weight:700;font-size:.9rem;}
+.ci-sum{font-family:'Playfair Display',serif;font-weight:700;color:var(--t1);min-width:52px;text-align:right;flex-shrink:0;font-size:.95rem;}
+.ci-del{background:none;border:none;color:var(--tx4);font-size:1.1rem;cursor:pointer;flex-shrink:0;}
 .ci-del:hover{color:var(--t1);}
-.total-row{display:flex;justify-content:space-between;align-items:center;padding-top:16px;margin-top:4px;border-top:2px solid var(--c3);}
-.total-lbl{font-size:.7rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--tx3);}
-.total-val{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:var(--v1);}
+.total-row{display:flex;justify-content:space-between;align-items:center;padding-top:14px;margin-top:4px;border-top:2px solid var(--c3);}
+.total-lbl{font-size:.68rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--tx3);}
+.total-val{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:900;color:var(--v1);}
 
-.fl{font-size:.64rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--tx3);margin-bottom:5px;display:block;}
-.fi{width:100%;background:var(--c1);border:2px solid var(--c3);padding:12px 15px;color:var(--tx1);font-family:'Karla',sans-serif;font-size:.95rem;outline:none;transition:border-color .2s;-webkit-appearance:none;margin-bottom:14px;}
+/* FORM */
+.fl{font-size:.63rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--tx3);margin-bottom:5px;display:block;}
+.fi{width:100%;background:var(--c1);border:2px solid var(--c3);padding:12px 14px;color:var(--tx1);font-family:'Karla',sans-serif;font-size:.95rem;outline:none;transition:border-color .2s;-webkit-appearance:none;margin-bottom:14px;}
 .fi:focus{border-color:var(--v2);background:#fff;}
 .fi::placeholder{color:var(--tx4);}
-textarea.fi{resize:vertical;min-height:78px;}
+textarea.fi{resize:vertical;min-height:76px;}
 .frow{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
 .ferr{display:none;padding:11px 14px;background:rgba(196,98,45,.08);border:1px solid rgba(196,98,45,.3);font-size:.82rem;color:var(--t1);margin-bottom:14px;}
-.btn-wa{width:100%;background:#25D366;color:#fff;border:none;padding:16px;font-family:'Karla',sans-serif;font-size:.82rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:all .2s;text-decoration:none;}
-.btn-wa:hover{background:#1da851;}
-.btn-wa:disabled{opacity:.4;cursor:not-allowed;}
-.fnote{font-size:.74rem;color:var(--tx3);text-align:center;margin-top:12px;line-height:1.5;}
+
+/* BUTON WA */
+.btn-wa{width:100%;background:#25D366;color:#fff;border:none;padding:17px;font-family:'Karla',sans-serif;font-size:.84rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:all .2s;}
+.btn-wa:hover{background:#1da851;transform:translateY(-1px);}
+.btn-wa:disabled{opacity:.4;cursor:not-allowed;transform:none;}
+.fnote{font-size:.73rem;color:var(--tx3);text-align:center;margin-top:10px;line-height:1.5;}
 .fnote b{color:var(--v2);}
-footer{background:var(--e1);padding:30px 5%;text-align:center;color:rgba(255,255,255,.3);font-size:.78rem;}
+
+/* ECRAN SUCCES */
+.ok-screen{display:none;text-align:center;padding:40px 20px;}
+.ok-ico{font-size:4rem;margin-bottom:16px;animation:pop .5s cubic-bezier(.34,1.56,.64,1);}
+@keyframes pop{from{transform:scale(0)}to{transform:scale(1)}}
+.ok-title{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--v1);margin-bottom:10px;}
+.ok-title em{font-style:italic;color:var(--t1);}
+.ok-sub{font-family:'Source Serif 4',serif;font-style:italic;font-size:1rem;color:var(--tx3);line-height:1.7;max-width:360px;margin:0 auto 28px;}
+.ok-wa-note{background:var(--v5);border:2px solid var(--v4);padding:14px 18px;font-size:.88rem;color:var(--v1);line-height:1.6;margin-bottom:28px;}
+.ok-wa-note b{color:var(--v2);}
+.btn-meniu{display:block;background:var(--v2);color:#fff;border:none;padding:15px 32px;font-family:'Karla',sans-serif;font-size:.8rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .2s;text-decoration:none;text-align:center;margin:0 auto;width:fit-content;}
+.btn-meniu:hover{background:var(--v1);}
+.btn-nou{display:block;margin:12px auto 0;background:transparent;color:var(--v2);border:2px solid var(--v2);padding:13px 28px;font-family:'Karla',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all .2s;text-decoration:none;width:fit-content;}
+.btn-nou:hover{background:var(--v5);}
+
+footer{background:var(--e1);padding:28px 5%;text-align:center;color:rgba(255,255,255,.3);font-size:.76rem;}
+.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px;}
+.nav-burger span{width:26px;height:2px;background:var(--v1);display:block;}
+.mob-menu{position:fixed;inset:0;z-index:9998;background:var(--v1);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;transform:translateX(100%);transition:transform .4s ease;}
+.mob-menu.open{transform:translateX(0);}
+.mob-menu a{font-family:'Playfair Display',serif;font-size:1.7rem;color:#fff;text-decoration:none;padding:12px 0;letter-spacing:2px;}
+.mob-close{position:absolute;top:20px;right:6%;font-size:2.2rem;color:#fff;background:none;border:none;cursor:pointer;}
+@media(max-width:700px){.nav-back{display:none;}.nav-burger{display:flex;}}
 @media(max-width:480px){.frow{grid-template-columns:1fr;}}
 </style>
 </head>
@@ -70,7 +103,8 @@ footer{background:var(--e1);padding:30px 5%;text-align:center;color:rgba(255,255
   <symbol id="L" viewBox="0 0 500 500">
     <circle cx="250" cy="250" r="215" fill="none" stroke="url(#LG)" stroke-width="9"/>
     <circle cx="250" cy="250" r="190" fill="none" stroke="url(#LG)" stroke-width="3" opacity="0.75"/>
-    <polygon points="168,190 252,292 84,292" fill="#7ba6d4"/><polygon points="332,196 416,292 248,292" fill="#7ba6d4"/>
+    <polygon points="168,190 252,292 84,292" fill="#7ba6d4"/>
+    <polygon points="332,196 416,292 248,292" fill="#7ba6d4"/>
     <polygon points="250,138 352,292 148,292" fill="url(#LG)"/>
     <path d="M250,138 L278,180 L262,172 L250,186 L238,172 L222,180 Z" fill="#ffffff"/>
     <text x="250" y="352" fill="#6d9cce" font-family="'Playfair Display',serif" font-size="40" font-weight="600" letter-spacing="10" text-anchor="middle">METANOIA</text>
@@ -84,36 +118,60 @@ footer{background:var(--e1);padding:30px 5%;text-align:center;color:rgba(255,255
     <svg class="nav-logo"><use href="#L"/></svg>
     <div><div class="nav-name">Metanoia</div><div class="nav-sub">Hațeg Alternativ · DN 68</div></div>
   </a>
-  <a class="back" href="meniu.html">← Înapoi la meniu</a>
+  <a class="nav-back" href="meniu.html">← Meniu</a>
+  <button class="nav-burger" onclick="document.getElementById('mobMenu').classList.add('open')" aria-label="Meniu"><span></span><span></span><span></span></button>
 </nav>
+<div class="mob-menu" id="mobMenu">
+  <button class="mob-close" onclick="document.getElementById('mobMenu').classList.remove('open')">×</button>
+  <a href="index.html">Acasă</a>
+  <a href="meniu.html">Meniu</a>
+  <a href="masterplan.html">Povestea noastră</a>
+  <a href="forum.html">Comunitate</a>
+  <a href="contact.html">Contact</a>
+</div>
 
 <div class="wrap">
-  <div class="head">
-    <div class="tag">Finalizează comanda</div>
-    <h1>Aproape <em>gata.</em></h1>
-    <p>Verifică ce ai în coș și lasă-ne datele — îți pregătim comanda.</p>
-  </div>
 
-  <div class="card">
-    <h2>Coșul tău <span id="cosCnt" style="font-size:.8rem;font-weight:400;color:var(--tx3)"></span></h2>
-    <div id="cosList"></div>
-  </div>
-
-  <div class="card">
-    <h2>Datele tale</h2>
-    <div><label class="fl">Nume *</label><input class="fi" id="fN" type="text" placeholder="Numele tău"></div>
-    <div class="frow">
-      <div><label class="fl">Telefon *</label><input class="fi" id="fT" type="tel" placeholder="07xx xxx xxx"></div>
-      <div><label class="fl">Când ridici?</label><input class="fi" id="fC" type="text" placeholder="ex. azi 14:30"></div>
+  <!-- FORM (se ascunde după trimitere) -->
+  <div id="wrapForm">
+    <div class="head">
+      <div class="tag">Finalizează comanda</div>
+      <h1>Aproape <em>gata.</em></h1>
+      <p>Verifică coșul și lasă-ne datele — pregătim comanda pentru tine.</p>
     </div>
-    <div><label class="fl">Observații</label><textarea class="fi" id="fO" placeholder="Preferințe, alergii, alte detalii..."></textarea></div>
-    <div class="ferr" id="fErr">⚠️ Completează numele și telefonul.</div>
-    <button class="btn-wa" id="btnWA" onclick="trimite()">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 00-8.5 15.3L2 22l4.8-1.5A10 10 0 1012 2zm0 18a8 8 0 01-4.1-1.1l-.3-.2-2.8.9.9-2.7-.2-.3A8 8 0 1112 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.5 6.5 0 01-3.2-2.8c-.1-.2 0-.4.1-.5l.4-.5.2-.4v-.4l-.7-1.7c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3a3 3 0 00-.9 2.2c0 1.3.9 2.5 1.1 2.7.1.2 1.9 2.9 4.6 4 .6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1l-.5-.2z"/></svg>
-      Trimite comanda pe WhatsApp
-    </button>
-    <p class="fnote">Comanda se trimite pe WhatsApp la <b>+40 749 229 686</b>. Confirmăm noi disponibilitatea.</p>
+
+    <div class="card">
+      <h2>Coșul tău <span id="cosCnt" style="font-size:.8rem;font-weight:400;color:var(--tx3)"></span></h2>
+      <div id="cosList"></div>
+    </div>
+
+    <div class="card">
+      <h2>Datele tale</h2>
+      <div><label class="fl">Nume *</label><input class="fi" id="fN" type="text" placeholder="Numele tău"></div>
+      <div class="frow">
+        <div><label class="fl">Telefon *</label><input class="fi" id="fT" type="tel" placeholder="07xx xxx xxx"></div>
+        <div><label class="fl">Când ridici?</label><input class="fi" id="fC" type="text" placeholder="ex. azi 14:30"></div>
+      </div>
+      <div><label class="fl">Observații</label><textarea class="fi" id="fO" placeholder="Preferințe, alergii, alte detalii..."></textarea></div>
+      <div class="ferr" id="fErr">⚠️ Completează numele și telefonul.</div>
+      <button class="btn-wa" id="btnWA" onclick="trimite()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 00-8.5 15.3L2 22l4.8-1.5A10 10 0 1012 2zm0 18a8 8 0 01-4.1-1.1l-.3-.2-2.8.9.9-2.7-.2-.3A8 8 0 1112 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.5 6.5 0 01-3.2-2.8c-.1-.2 0-.4.1-.5l.4-.5.2-.4v-.4l-.7-1.7c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3a3 3 0 00-.9 2.2c0 1.3.9 2.5 1.1 2.7.1.2 1.9 2.9 4.6 4 .6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1l-.5-.2z"/></svg>
+        Trimite comanda pe WhatsApp
+      </button>
+      <p class="fnote">Comanda pleacă pe WhatsApp la <b>+40 749 229 686</b>. Confirmăm noi disponibilitatea.</p>
+    </div>
   </div>
+
+  <!-- ECRAN SUCCES (apare după trimitere) -->
+  <div id="wrapOk" class="ok-screen">
+    <div class="ok-ico">📱</div>
+    <h1 class="ok-title">Un pas <em>mai departe.</em></h1>
+    <p class="ok-sub">WhatsApp s-a deschis cu comanda ta pregătită. Apasă <strong>Trimite</strong> acolo și gata — ne ocupăm noi de restul.</p>
+    <div class="ok-wa-note">⚠️ Dacă WhatsApp nu s-a deschis, sună-ne direct la <b>+40 749 229 686</b></div>
+    <a class="btn-meniu" href="meniu.html">← Înapoi la meniu</a>
+    <a class="btn-nou" href="meniu.html" onclick="return confirmNou()">+ Comandă ceva nou</a>
+  </div>
+
 </div>
 
 <footer>© 2026 Metanoia · Hațeg Alternativ · SOul Meal · DN 68, Totești · Hațeg</footer>
@@ -136,14 +194,17 @@ function render(){
   const n=cart.reduce((s,x)=>s+x.cant,0);
   cnt.textContent=n?`· ${n} produse`:"";
   if(!cart.length){
-    list.innerHTML=`<div class="cos-empty">Coșul e gol.<br><a href="meniu.html">← Înapoi la meniu</a></div>`;
+    list.innerHTML=`<div class="cos-empty">Coșul e gol.<br><a href="meniu.html">← Mergi la meniu și adaugă ceva 🛒</a></div>`;
     document.getElementById("btnWA").disabled=true;
     return;
   }
   document.getElementById("btnWA").disabled=false;
   list.innerHTML=cart.map((x,i)=>`
     <div class="ci">
-      <div class="ci-info"><div class="ci-name">${x.nume}</div><div class="ci-unit">${x.pret} lei / buc</div></div>
+      <div class="ci-info">
+        <div class="ci-name">${x.nume}</div>
+        <div class="ci-unit">${x.pret} lei / buc</div>
+      </div>
       <div class="ci-qty">
         <button class="qbtn" onclick="chg(${i},-1)">−</button>
         <span class="ci-n">${x.cant}</span>
@@ -166,18 +227,13 @@ function trimite(){
   const produse=cart.map(x=>`${x.cant}x ${x.nume}`).join(", ");
   const t=total();
 
-  // trimite la Make (text/plain evită blocajul CORS la webhook)
+  // Make webhook
   if(MAKE_WEBHOOK){
-    try{
-      fetch(MAKE_WEBHOOK,{
-        method:"POST",
-        headers:{"Content-Type":"text/plain;charset=UTF-8"},
-        body:JSON.stringify({nume,tel,cand,obs,produse,total:t,sursa:"rezervare.html",data:new Date().toLocaleString("ro-RO")}),
-        keepalive:true
-      });
-    }catch(e){}
+    try{fetch(MAKE_WEBHOOK,{method:"POST",headers:{"Content-Type":"text/plain;charset=UTF-8"},
+      body:JSON.stringify({nume,tel,cand,obs,produse,total:t,sursa:"rezervare.html",data:new Date().toLocaleString("ro-RO")}),keepalive:true});}catch(e){}
   }
 
+  // WhatsApp message
   let msg=`Bună! Aș dori să comand de la Metanoia · SOul Meal:%0A%0A`;
   cart.forEach(x=>{msg+=`• ${x.cant}x ${x.nume} — ${x.pret*x.cant} lei%0A`;});
   msg+=`%0ATotal: ${t} lei%0A%0ANume: ${nume}%0ATelefon: ${tel}`;
@@ -185,6 +241,20 @@ function trimite(){
   if(obs)msg+=`%0AObservații: ${obs}`;
 
   window.open(`https://wa.me/${WA}?text=${msg}`,"_blank");
+
+  // golește coșul
+  cart=[];
+  try{localStorage.removeItem("metanoia_cart");}catch(e){}
+
+  // arată ecranul de succes
+  document.getElementById("wrapForm").style.display="none";
+  document.getElementById("wrapOk").style.display="block";
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function confirmNou(){
+  // coșul e deja gol, du-l la meniu
+  return true;
 }
 
 render();
