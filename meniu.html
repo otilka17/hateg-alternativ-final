@@ -1,11 +1,12 @@
+```html
 <!DOCTYPE html>
 <html lang="ro">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>Meniu · Metanoia · SOul Meal — Băcănie-butic · DN 68 Hațeg</title>
 <meta name="description" content="Meniul SOul Meal: cafea Nespresso & specialități barista, limonade și fresh-uri, sandwich-uri făcute pe loc, bowl, dulce la doză și borcanele Metanoia. Băcănie-butic pe DN 68, Totești · Hațeg.">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <style>
 :root{
   --navy:#14253a; --navy2:#1e3450; --navy3:#2e4e7e;
@@ -14,15 +15,16 @@
   --ink:#0f1825; --ink2:#1a2535;
   --tx1:#141a24; --tx2:#2c3648; --tx3:#5f6c80; --tx4:rgba(20,26,36,.4);
   --white:#fff;
+  --radius: 8px;
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--tx1);overflow-x:hidden;}
 
 /* scrollbar */
-::-webkit-scrollbar{width:3px;}
+::-webkit-scrollbar{width:6px;}
 ::-webkit-scrollbar-track{background:var(--cream2);}
-::-webkit-scrollbar-thumb{background:var(--navy3);}
+::-webkit-scrollbar-thumb{background:var(--navy3);border-radius:3px;}
 
 /* grain overlay */
 body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.025;
@@ -38,7 +40,7 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opac
 .nav-links{display:flex;gap:28px;list-style:none;}
 .nav-links a{font-size:.72rem;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--tx3);text-decoration:none;transition:color .2s;}
 .nav-links a:hover,.nav-links a.active{color:var(--navy);}
-.nav-cta{background:var(--navy);color:#fff;border:none;padding:10px 22px;font-family:'DM Sans',sans-serif;font-size:.7rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all .2s;text-decoration:none;}
+.nav-cta{background:var(--navy);color:#fff;border:none;padding:10px 22px;font-family:'DM Sans',sans-serif;font-size:.7rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all .2s;text-decoration:none;border-radius: var(--radius);}
 .nav-cta:hover{background:var(--terra);}
 .nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px;}
 .nav-burger span{width:24px;height:1.5px;background:var(--navy);transition:.3s;}
@@ -68,7 +70,6 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opac
 @keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* ── SPREAD: base ── */
-/* Each category is a full-page editorial spread */
 .spread{position:relative;overflow:hidden;}
 
 /* SPREAD TYPE A: photo right, text left */
@@ -79,10 +80,10 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opac
 
 /* SPREAD TYPE B: full-bleed photo, items overlay */
 .spread-b{min-height:90vh;position:relative;display:flex;align-items:flex-end;}
-.spread-b .sp-bg{position:absolute;inset:0;}
-.spread-b .sp-bg img,.spread-b .sp-bg>div{width:100%;height:100%;object-fit:cover;display:block;}
-.spread-b .sp-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(10,18,30,.95) 0%,rgba(10,18,30,.5) 50%,rgba(10,18,30,.1) 100%);}
-.spread-b .sp-content{position:relative;z-index:2;width:100%;padding:0 8% 8vh;}
+.spread-b .sp-bg{position:absolute;inset:0;overflow:hidden;}
+.spread-b .sp-bg>div{position:absolute;inset:0;width:100%;height:100%;}
+.spread-b .sp-bg::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(to top,rgba(10,18,30,.97) 0%,rgba(10,18,30,.65) 45%,rgba(10,18,30,.25) 100%);}
+.spread-b .sp-content{position:relative;z-index:2;width:100%;padding:60px 8% 8vh;}
 
 /* SPREAD TYPE C: dark background, items in columns */
 .spread-c{background:var(--ink);padding:100px 8%;}
@@ -108,7 +109,7 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opac
 
 /* ── ITEM ROWS (editorial list) ── */
 .item-list{display:flex;flex-direction:column;gap:0;}
-.item-row{display:flex;align-items:baseline;justify-content:space-between;padding:16px 0;border-bottom:1px solid rgba(20,37,58,.1);gap:20px;transition:all .2s;}
+.item-row{display:flex;align-items:baseline;justify-content:space-between;padding:16px 0;border-bottom:1px solid rgba(20,37,58,.15);gap:20px;transition:all .2s;}
 .item-row:last-child{border-bottom:none;}
 .item-row:hover{padding-left:8px;}
 .item-info{flex:1;}
@@ -117,7 +118,7 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opac
 .item-right{display:flex;align-items:center;gap:14px;flex-shrink:0;}
 .item-price{font-family:'DM Serif Display',serif;font-size:1.4rem;color:var(--terra);white-space:nowrap;}
 .item-price small{font-size:.65rem;color:var(--tx4);font-family:'DM Sans',sans-serif;margin-left:2px;}
-.item-btn{background:transparent;border:1px solid var(--navy3);color:var(--navy);padding:8px 16px;font-family:'DM Sans',sans-serif;font-size:.62rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all .2s;white-space:nowrap;}
+.item-btn{background:transparent;border:1px solid var(--navy3);color:var(--navy);padding:8px 16px;font-family:'DM Sans',sans-serif;font-size:.62rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all .2s;white-space:nowrap;border-radius:4px;}
 .item-btn:hover{background:var(--navy);color:#fff;}
 .item-btn.added{background:#2e7d4f;border-color:#2e7d4f;color:#fff;}
 .item-btn.build{background:var(--navy3);border-color:var(--navy3);color:#fff;}
@@ -134,13 +135,13 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opac
 
 /* ── BORCANE GRID (dark spread) ── */
 .jars-spread{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(255,255,255,.06);margin-top:60px;}
-.jar-cell{padding:36px 32px;background:var(--ink);}
+.jar-cell{padding:36px 32px;background:var(--ink);border-radius: var(--radius);}
 .jar-ico{font-size:2.2rem;margin-bottom:14px;}
 .jar-nm{font-family:'DM Serif Display',serif;font-size:1.5rem;color:#fff;margin-bottom:8px;}
 .jar-ds{font-size:.85rem;color:rgba(255,255,255,.35);line-height:1.6;font-weight:300;}
 
 /* ── PACHETE (2-col) ── */
-.combo-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--cream3);margin-top:48px;}
+.combo-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--cream3);margin-top:48px;border-radius: var(--radius);overflow: hidden;}
 .combo-cell{background:var(--cream);padding:44px 38px;}
 .combo-ico{font-size:2.4rem;margin-bottom:18px;}
 .combo-nm{font-family:'DM Serif Display',serif;font-size:1.7rem;color:var(--navy);margin-bottom:10px;}
@@ -153,17 +154,17 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opac
 .cfg-section{background:var(--cream2);padding:100px 8%;}
 .cfg-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;margin-top:60px;}
 .cfg-stage{position:sticky;top:80px;}
-.cfg-plate-wrap{background:#fff;border:1px solid var(--cream3);padding:32px 20px 24px;min-height:340px;display:flex;flex-direction:column;}
+.cfg-plate-wrap{background:#fff;border:1px solid var(--cream3);padding:32px 20px 24px;min-height:340px;display:flex;flex-direction:column;border-radius: var(--radius);}
 .cfg-plate{flex:1;display:flex;flex-direction:column-reverse;align-items:center;justify-content:flex-start;gap:0;position:relative;padding:16px 0;min-height:260px;}
 .layer{width:76%;max-width:300px;border-radius:40px/26px;margin-top:-10px;box-shadow:0 3px 8px rgba(20,37,58,.12);display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:600;color:rgba(255,255,255,.9);text-shadow:0 1px 2px rgba(0,0,0,.3);letter-spacing:.5px;transition:all .35s cubic-bezier(.34,1.56,.64,1);animation:dropIn .4s cubic-bezier(.34,1.56,.64,1);text-align:center;line-height:1.1;}
 @keyframes dropIn{from{opacity:0;transform:translateY(-24px) scale(.85)}to{opacity:1;transform:translateY(0) scale(1)}}
 .layer-bun-top{height:46px;border-radius:50% 50% 18px 18px;margin-top:-12px;z-index:5;}
 .layer-bun-bot{height:30px;border-radius:14px 14px 40px 40px;}
 .layer-empty{width:76%;max-width:300px;height:130px;border:1px dashed var(--cream3);display:flex;align-items:center;justify-content:center;color:var(--tx4);font-style:italic;font-family:'DM Serif Display',serif;font-size:.9rem;text-align:center;padding:0 20px;}
-.cfg-foot{background:var(--ink);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:1px;}
+.cfg-foot{background:var(--ink);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:1px;border-radius: 0 0 var(--radius) var(--radius);}
 .cfg-total{color:rgba(255,255,255,.5);font-size:.78rem;}
 .cfg-total b{font-family:'DM Serif Display',serif;font-size:1.4rem;color:#fff;margin-left:8px;}
-.cfg-add{background:var(--terra);color:#fff;border:none;padding:12px 24px;font-family:'DM Sans',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all .2s;}
+.cfg-add{background:var(--terra);color:#fff;border:none;padding:12px 24px;font-family:'DM Sans',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all .2s;border-radius: 4px;}
 .cfg-add:hover{background:var(--terra2);}
 .cfg-add:disabled{opacity:.3;cursor:not-allowed;}
 .cfg-hint{text-align:center;font-size:.7rem;color:var(--tx4);margin-top:12px;font-style:italic;}
@@ -172,14 +173,14 @@ body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opac
 .cfg-g{}
 .cfg-glabel{font-size:.58rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--navy3);margin-bottom:10px;border-bottom:1px solid var(--cream3);padding-bottom:6px;}
 .cfg-opts{display:flex;flex-wrap:wrap;gap:6px;}
-.cfg-chip{padding:8px 14px;border:1px solid var(--cream3);background:var(--cream);color:var(--tx2);font-family:'DM Sans',sans-serif;font-size:.76rem;font-weight:500;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:5px;}
+.cfg-chip{padding:8px 14px;border:1px solid var(--cream3);background:var(--cream);color:var(--tx2);font-family:'DM Sans',sans-serif;font-size:.76rem;font-weight:500;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:5px;border-radius: 4px;}
 .cfg-chip:hover{border-color:var(--navy3);}
 .cfg-chip.sel{background:var(--navy);color:#fff;border-color:var(--navy);}
 .cfg-chip .px{font-size:.65rem;opacity:.6;}
 .cfg-chip.sel .px{opacity:.75;}
 
 /* ── FOOTER ── */
-footer{background:var(--ink2);padding:60px 8% 28px;}
+footer{background:var(--ink2);padding:60px 8% 28px;position: relative;z-index: 2;}
 .ft-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.06);margin-bottom:24px;}
 .ft-logo{width:48px;height:48px;margin-bottom:12px;}
 .ft-brand{font-family:'DM Serif Display',serif;font-size:1.05rem;color:var(--terra3);letter-spacing:1px;}
@@ -202,44 +203,117 @@ footer{background:var(--ink2);padding:60px 8% 28px;}
 .cosbar-total{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.1rem;color:rgba(255,255,255,.7);}
 .cosbar-btns{display:flex;gap:12px;align-items:center;}
 .cosbar-clear{background:none;border:none;color:rgba(255,255,255,.3);font-size:.7rem;cursor:pointer;text-decoration:underline;font-weight:300;}
-.cosbar-go{background:var(--terra);color:#fff;border:none;padding:11px 26px;font-family:'DM Sans',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:all .2s;}
+.cosbar-go{background:var(--terra);color:#fff;border:none;padding:11px 26px;font-family:'DM Sans',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:all .2s;border-radius: 4px;}
 .cosbar-go:hover{background:var(--terra2);}
 
-/* ── MODAL ── */
+/* ── MODALS (FORM RECONSTRUIT PENTRU MOBIL) ── */
 .smodal{position:fixed;inset:0;z-index:9999;background:rgba(10,18,30,.75);backdrop-filter:blur(6px);display:none;align-items:flex-end;justify-content:center;}
 .smodal.open{display:flex;}
 @media(min-width:700px){.smodal{align-items:center;}}
-.sm-card{background:var(--cream);width:100%;max-width:580px;max-height:92vh;overflow-y:auto;animation:smUp .3s ease;}
+.sm-card{background:var(--cream);width:100%;max-width:580px;max-height:92vh;overflow-y:auto;animation:smUp .3s ease;border-radius: var(--radius);}
 @keyframes smUp{from{transform:translateY(40px);opacity:0}to{transform:translateY(0);opacity:1}}
 .sm-hero{position:relative;height:110px;display:flex;align-items:center;justify-content:center;font-size:3rem;}
-.sm-close{position:absolute;top:12px;right:14px;width:32px;height:32px;background:rgba(0,0,0,.25);color:#fff;border:none;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.sm-close{position:absolute;top:12px;right:14px;width:32px;height:32px;background:rgba(0,0,0,.25);color:#fff;border:none;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;border-radius: 50%;}
 .sm-body{padding:24px 28px 28px;}
 .sm-name{font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--navy);margin-bottom:4px;}
 .sm-base{font-size:.78rem;color:var(--tx3);margin-bottom:22px;font-weight:300;}
 .sm-group{margin-bottom:22px;}
 .sm-glabel{font-size:.58rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--navy3);margin-bottom:10px;display:block;border-bottom:1px solid var(--cream3);padding-bottom:5px;}
 .sm-opts{display:flex;flex-wrap:wrap;gap:7px;}
-.sm-opt{padding:9px 16px;border:1px solid var(--cream3);background:#fff;color:var(--tx2);font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:500;cursor:pointer;transition:all .15s;}
+.sm-opt{padding:9px 16px;border:1px solid var(--cream3);background:#fff;color:var(--tx2);font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:500;cursor:pointer;transition:all .15s;border-radius: 4px;}
 .sm-opt:hover{border-color:var(--navy3);}
 .sm-opt.sel{background:var(--navy);color:#fff;border-color:var(--navy);}
-.sm-ing{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border:1px solid var(--cream3);background:#fff;margin-bottom:6px;cursor:pointer;transition:all .15s;}
+.sm-ing{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border:1px solid var(--cream3);background:#fff;margin-bottom:6px;cursor:pointer;transition:all .15s;border-radius: 4px;}
 .sm-ing.off{opacity:.5;background:var(--cream2);}
 .sm-ing-name{font-size:.86rem;font-weight:500;color:var(--tx1);display:flex;align-items:center;gap:8px;}
 .sm-ing.off .sm-ing-name{text-decoration:line-through;color:var(--tx3);}
 .sm-ing-tog{font-size:.62rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--terra);}
 .sm-ing.off .sm-ing-tog{color:var(--tx4);}
-.sm-extra{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border:1px solid var(--cream3);background:#fff;margin-bottom:6px;cursor:pointer;transition:all .15s;}
+.sm-extra{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border:1px solid var(--cream3);background:#fff;margin-bottom:6px;cursor:pointer;transition:all .15s;border-radius: 4px;}
 .sm-extra.sel{border-color:var(--terra);background:#fdf3ee;}
 .sm-extra-name{font-size:.86rem;font-weight:500;color:var(--tx1);}
 .sm-extra-p{font-size:.78rem;font-weight:700;color:var(--terra);}
-.sm-foot{position:sticky;bottom:0;background:var(--ink);padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:14px;}
+.sm-foot{position:sticky;bottom:0;background:var(--ink);padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:14px;border-radius: 0 0 var(--radius) var(--radius);}
 .sm-total{color:rgba(255,255,255,.5);font-size:.78rem;}
 .sm-total b{font-family:'DM Serif Display',serif;font-size:1.3rem;color:#fff;margin-left:6px;}
-.sm-addbtn{background:var(--terra);color:#fff;border:none;padding:12px 24px;font-family:'DM Sans',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all .2s;}
+.sm-addbtn{background:var(--terra);color:#fff;border:none;padding:12px 24px;font-family:'DM Sans',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all .2s;border-radius: 4px;}
 .sm-addbtn:hover{background:var(--terra2);}
 
+/* ── MODAL CHECKOUT COMPLET RESPONSIV PE MOBIL (FĂRĂ SUPRAPUNERI) ── */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 2000;
+  background: rgba(15, 24, 37, 0.9); backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 16px; opacity: 0; pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.modal-overlay.open { opacity: 1; pointer-events: auto; }
+
+.modal-card {
+  background: var(--cream); border: 2px solid var(--navy);
+  max-width: 500px; width: 100%; padding: 32px 24px;
+  position: relative; box-shadow: 0 24px 60px rgba(15, 24, 37, 0.4);
+  border-radius: var(--radius); max-height: 90vh; overflow-y: auto;
+  color: var(--tx1); text-align: left;
+}
+.modal-close {
+  position: absolute; top: 16px; right: 20px;
+  background: none; border: none; font-size: 2rem;
+  color: var(--tx3); cursor: pointer; line-height: 1;
+}
+.modal-ico { font-size: 2.2rem; color: var(--navy); margin-bottom: 12px; text-align: center; }
+.checkout-title { font-family: 'DM Serif Display', serif; font-size: 1.8rem; color: var(--navy); margin-bottom: 6px; text-align: center; }
+.checkout-desc { font-size: 0.82rem; color: var(--tx3); margin-bottom: 24px; text-align: center; line-height: 1.5; }
+
+/* Formularul nou, curat, pe un singur rând (Block) pe mobil */
+.f-group { display: flex; flex-direction: column; margin-bottom: 14px; width: 100%; }
+.f-label {
+  font-size: .62rem; font-weight: 800; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--navy2); margin-bottom: 6px;
+  display: block; text-align: left;
+}
+.f-input {
+  width: 100% !important; background: var(--white);
+  border: 1px solid var(--cream3); padding: 14px 16px;
+  color: var(--tx1); font-family: 'DM Sans', sans-serif;
+  font-size: 1rem; /* previne zoom-ul forțat pe iPhone */
+  outline: none; transition: border-color .2s;
+  border-radius: 4px; box-sizing: border-box; display: block;
+}
+.f-input:focus { border-color: var(--navy); box-shadow: 0 0 0 3px rgba(20, 37, 58, 0.08); }
+
+/* Rândul flexibil responsiv */
+.f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+@media (max-width: 600px) {
+  .f-row { grid-template-columns: 1fr !important; gap: 0; }
+}
+
+.receipt-box {
+  border: 2px dashed var(--cream3); background: var(--white);
+  padding: 16px; font-family: monospace; font-size: .78rem;
+  color: var(--tx2); margin: 20px 0; border-radius: 4px;
+}
+.receipt-header {
+  border-bottom: 1px solid var(--cream3); padding-bottom: 8px;
+  margin-bottom: 10px; display: flex; justify-content: space-between; font-weight: 700;
+}
+.receipt-row { display: flex; justify-content: space-between; margin-bottom: 6px; }
+.receipt-footer {
+  border-top: 1px solid var(--cream3); padding-top: 8px; margin-top: 10px;
+  display: flex; justify-content: space-between; font-weight: bold; font-size: .85rem; color: var(--terra);
+}
+.btn-checkout {
+  width: 100%; background: var(--navy); color: #white; border: none;
+  padding: 16px; font-family: 'DM Sans', sans-serif; font-size: .78rem;
+  font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  cursor: pointer; transition: all .2s; text-align: center;
+  border-radius: 4px; color: #fff; display: block; box-sizing: border-box;
+}
+.btn-checkout:hover { background: var(--terra); }
+.btn-checkout:active { transform: scale(0.98); }
+
 /* ── INFO STRIP ── */
-.info-strip{background:var(--navy);display:grid;grid-template-columns:repeat(4,1fr);}
+.info-strip{background:var(--navy);display:grid;grid-template-columns:repeat(4,1fr);position: relative;z-index: 2;}
 .inf{text-align:center;padding:40px 20px;border-right:1px solid rgba(255,255,255,.05);}
 .inf:last-child{border-right:none;}
 .inf-ico{font-size:1.6rem;margin-bottom:10px;}
@@ -247,7 +321,7 @@ footer{background:var(--ink2);padding:60px 8% 28px;}
 .inf-l{font-size:.62rem;letter-spacing:1px;color:rgba(255,255,255,.3);margin-top:5px;line-height:1.5;}
 
 /* ── DIVIDERS ── */
-.divider{height:1px;background:linear-gradient(to right,transparent,var(--cream3),transparent);margin:0;}
+.divider{height:1px;background:linear-gradient(to right,transparent,var(--cream3),transparent);margin:0;position: relative;z-index: 2;}
 
 /* ── RESPONSIVE ── */
 @media(max-width:1000px){
@@ -274,40 +348,43 @@ footer{background:var(--ink2);padding:60px 8% 28px;}
   .combo-cell{padding:30px 24px;}
   .jar-cell{padding:28px 24px;}
   .cosbar{padding:14px 5%;}
+  .spread-b{min-height:auto;}
+  .spread-b .sp-bg{height:280px;position:relative;}
+  .spread-b{flex-direction:column;align-items:stretch;}
+  .spread-b .sp-content{padding:40px 6% 60px;}
 }
+
 /* ── CALCULATOR KCAL ── */
-.kcal-section{background:var(--navy);padding:100px 8%;}
+.kcal-section{background:var(--navy);padding:100px 8%;position: relative;z-index: 2;}
 .kcal-inner{display:grid;grid-template-columns:1fr 1.2fr;gap:70px;align-items:start;}
 .kcal-intro .sp-eyebrow{color:var(--terra3);}
 .kcal-intro .sp-eyebrow::before{background:var(--terra3);}
 .kcal-intro .sp-h2{color:#fff;}
 .kcal-intro .sp-h2 em{color:var(--terra3);}
-.kcal-intro .sp-lead{color:rgba(255,255,255,.4);}
+.kcal-intro .sp-lead{color:rgba(255,255,255,.45);}
 
-.kcal-card{background:var(--cream);padding:36px 32px;}
-
-/* form */
+.kcal-card{background:var(--cream);padding:36px 32px;border-radius: var(--radius);}
 .kcal-row{display:flex;gap:14px;margin-bottom:20px;}
 .kcal-row.three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
 .kcal-field{display:flex;flex-direction:column;gap:7px;flex:1;}
 .kcal-label{font-size:.6rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--navy3);}
 .kcal-label span{font-weight:400;text-transform:none;letter-spacing:0;color:var(--tx4);}
-.kcal-input{font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:500;color:var(--tx1);background:#fff;border:1px solid var(--cream3);padding:11px 13px;width:100%;outline:none;transition:border-color .2s;}
+.kcal-input{font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:500;color:var(--tx1);background:#fff;border:1px solid var(--cream3);padding:11px 13px;width:100%;outline:none;transition:border-color .2s;border-radius: 4px;}
 .kcal-input:focus{border-color:var(--navy3);}
-.kcal-select{font-family:'DM Sans',sans-serif;font-size:.84rem;color:var(--tx1);background:#fff;border:1px solid var(--cream3);padding:11px 34px 11px 13px;width:100%;outline:none;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235f6c80' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;cursor:pointer;}
+.kcal-select{font-family:'DM Sans',sans-serif;font-size:.84rem;color:var(--tx1);background:#fff;border:1px solid var(--cream3);padding:11px 34px 11px 13px;width:100%;outline:none;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235f6c80' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;cursor:pointer;border-radius: 4px;}
 
-.kcal-toggle{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--cream3);}
+.kcal-toggle{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--cream3);border-radius: 4px;overflow: hidden;}
 .ktog{padding:11px;font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:600;color:var(--tx3);background:var(--cream);border:none;cursor:pointer;transition:all .2s;}
 .ktog.active{background:var(--navy);color:#fff;}
 
-.kcal-goals{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border:1px solid var(--cream3);}
+.kcal-goals{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border:1px solid var(--cream3);border-radius: 4px;overflow: hidden;}
 .kgoal{padding:11px 8px;font-family:'DM Sans',sans-serif;font-size:.76rem;font-weight:600;color:var(--tx3);background:var(--cream);border:none;cursor:pointer;transition:all .2s;white-space:nowrap;}
 .kgoal.active{background:var(--navy);color:#fff;}
 
-.kcal-btn{width:100%;background:var(--terra);color:#fff;border:none;padding:15px;font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .2s;margin-top:6px;}
+.kcal-btn{width:100%;background:var(--terra);color:#fff;border:none;padding:15px;font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .2s;margin-top:6px;border-radius: 4px;}
 .kcal-btn:hover{background:var(--terra2);}
 
-/* result */
+/* result & dynamic menu layout inside kcal calculator card */
 .kcal-res-header{display:flex;align-items:center;gap:24px;margin-bottom:28px;padding-bottom:24px;border-bottom:1px solid var(--cream3);}
 .kcal-res-main{}
 .kcal-res-num{font-family:'DM Serif Display',serif;font-size:3.5rem;color:var(--terra);line-height:1;}
@@ -319,28 +396,44 @@ footer{background:var(--ink2);padding:60px 8% 28px;}
 
 .kcal-bar-wrap{margin-bottom:28px;}
 .kcal-bar-label{font-size:.58rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--tx4);margin-bottom:8px;}
-.kcal-bar{height:10px;background:var(--cream2);display:flex;overflow:hidden;}
-.kcal-bar-seg{height:100%;transition:width .6s ease;}
-.kcal-bar-seg.prot{background:#2e7d4f;}
-.kcal-bar-seg.carb{background:var(--terra2);}
-.kcal-bar-seg.fat{background:var(--navy3);}
-.kcal-bar-legend{display:flex;gap:16px;margin-top:7px;}
+.kcal-bar{height:10px;background:var(--cream2);display:flex;overflow:hidden;border-radius: 5px;position: relative;}
+.kcal-bar-progress{height: 100%; background: #21a366; transition: width 0.4s ease, background-color 0.3s ease;}
+.kcal-bar-progress.excess{background: var(--terra);}
+.kcal-bar-legend{display:flex;justify-content:space-between;margin-top:7px;}
 .kcal-bar-legend span{font-size:.68rem;color:var(--tx3);display:flex;align-items:center;gap:5px;}
-.dot{width:8px;height:8px;border-radius:50%;display:inline-block;flex-shrink:0;}
-.dot.prot{background:#2e7d4f;}
-.dot.carb{background:var(--terra2);}
-.dot.fat{background:var(--navy3);}
 
-.kcal-suggest-title{font-size:.6rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--navy3);margin-bottom:12px;}
-.kcal-suggest{display:flex;flex-direction:column;gap:0;margin-bottom:24px;}
-.ksug-item{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--cream3);gap:12px;}
-.ksug-item:last-child{border-bottom:none;}
-.ksug-name{font-size:.88rem;color:var(--tx1);font-weight:500;}
-.ksug-info{display:flex;align-items:center;gap:10px;flex-shrink:0;}
-.ksug-kcal{font-size:.72rem;color:var(--tx4);}
-.ksug-price{font-family:'DM Serif Display',serif;font-size:1rem;color:var(--terra);}
-.ksug-add{background:transparent;border:1px solid var(--navy3);color:var(--navy);padding:6px 12px;font-family:'DM Sans',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all .2s;white-space:nowrap;}
-.ksug-add:hover{background:var(--navy);color:#fff;}
+/* Interactive Combo Picker inside Results */
+.kcal-build-title { font-size:.68rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--navy3); margin-top:24px; margin-bottom:12px; border-bottom:1.5px solid var(--cream3); padding-bottom:6px; }
+.kcal-section-select { display:flex; flex-direction:column; gap:16px; margin-bottom:28px; }
+.kcal-select-block { display:flex; flex-direction:column; gap:6px; }
+.kcal-select-lbl { font-size:.58rem; font-weight:700; color:var(--tx3); text-transform:uppercase; letter-spacing:1px; }
+.kcal-select-chips { display:flex; flex-wrap:wrap; gap:6px; }
+.kcal-select-chip {
+  padding:6px 10px; border:1px solid var(--cream3); background:#fff; color:var(--tx2);
+  font-family:'DM Sans',sans-serif; font-size:.75rem; font-weight:500; cursor:pointer;
+  transition:all .15s; border-radius: 4px; display:flex; align-items:center; gap:4px;
+}
+.kcal-select-chip:hover { border-color:var(--navy3); }
+.kcal-select-chip.sel { background:var(--navy); color:#fff; border-color:var(--navy); }
+.kcal-select-chip .k-val { font-size:.65rem; color:var(--terra); font-weight:700; }
+.kcal-select-chip.sel .k-val { color:var(--terra3); }
+
+.kcal-combo-footer {
+  margin-top: 24px; padding-top: 20px; border-top:1px solid var(--cream3);
+  display:flex; flex-direction:column; gap:12px;
+}
+.kcal-combo-total-txt {
+  font-size: .85rem; color: var(--tx2); font-weight: 600; display:flex; justify-content:space-between;
+}
+.kcal-combo-total-txt b { font-family:'DM Serif Display',serif; font-size:1.3rem; color:var(--navy); }
+.kcal-combo-btn {
+  width:100%; background:var(--terra); color:#fff; border:none; padding:14px;
+  font-family:'DM Sans',sans-serif; font-size:.76rem; font-weight:700;
+  letter-spacing:1.5px; text-transform:uppercase; cursor:pointer;
+  transition:all .2s; border-radius: 4px;
+}
+.kcal-combo-btn:hover { background:var(--terra2); }
+.kcal-combo-btn:disabled { background: var(--cream3); color: var(--tx3); cursor:not-allowed; opacity: 0.6; }
 
 .kcal-reset{background:none;border:none;font-family:'DM Sans',sans-serif;font-size:.72rem;color:var(--tx3);cursor:pointer;text-decoration:underline;padding:0;}
 .kcal-reset:hover{color:var(--navy);}
@@ -355,26 +448,6 @@ footer{background:var(--ink2);padding:60px 8% 28px;}
 </style>
 </head>
 <body>
-
-<!-- SVG LOGO SYMBOL -->
-<svg width="0" height="0" style="position:absolute">
-  <defs>
-    <linearGradient id="LG" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#c2daf2"/><stop offset="0.55" stop-color="#8fb8e4"/><stop offset="1" stop-color="#6d9cce"/>
-    </linearGradient>
-    <symbol id="L" viewBox="0 0 500 500">
-      <circle cx="250" cy="250" r="215" fill="none" stroke="url(#LG)" stroke-width="9"/>
-      <circle cx="250" cy="250" r="190" fill="none" stroke="url(#LG)" stroke-width="3" opacity="0.75"/>
-      <polygon points="168,190 252,292 84,292" fill="#7ba6d4"/>
-      <polygon points="332,196 416,292 248,292" fill="#7ba6d4"/>
-      <polygon points="250,138 352,292 148,292" fill="url(#LG)"/>
-      <path d="M250,138 L278,180 L262,172 L250,186 L238,172 L222,180 Z" fill="#ffffff"/>
-      <text x="250" y="352" fill="#6d9cce" font-family="'DM Serif Display',Georgia,serif" font-size="40" font-weight="600" letter-spacing="10" text-anchor="middle">METANOIA</text>
-      <text x="250" y="386" fill="#8fb8e4" font-family="DM Sans,Arial,sans-serif" font-size="15" font-weight="600" letter-spacing="7" text-anchor="middle">HAȚEG ALTERNATIV</text>
-      <circle cx="250" cy="408" r="4" fill="#8fb8e4"/>
-    </symbol>
-  </defs>
-</svg>
 
 <!-- NAV -->
 <nav class="nav">
@@ -529,19 +602,19 @@ footer{background:var(--ink2);padding:60px 8% 28px;}
 <section style="background:var(--cream2);padding:100px 8%;" id="pachete">
   <div class="sp-eyebrow">Pachetul de drum</div>
   <h2 class="sp-h2">Gata<br><em>împachetat.</em></h2>
-  <p class="sp-lead">Combinații pentru călătorie — totul într-o pungă, gata de plecare.</p>
+  <p class="sp-lead">Combinații pentru călătorie — totul într-o punga, gata de plecare.</p>
   <div class="combo-grid" id="grid-combo"></div>
 </section>
 
 <div class="divider"></div>
 
-<!-- ══ CALCULATOR KCAL ══ -->
+<!-- ══ CALCULATOR KCAL (INTERACTIV CU MENIU INTEGRAT) ══ -->
 <section class="kcal-section" id="calculator">
   <div class="kcal-inner">
     <div class="kcal-intro">
       <div class="sp-eyebrow">Nutriție · SOul Meal</div>
       <h2 class="sp-h2">Câte calorii<br><em>ai nevoie azi?</em></h2>
-      <p class="sp-lead">Introdu datele tale și îți arătăm ce din meniu se potrivește perfect cu necesarul tău zilnic.</p>
+      <p class="sp-lead">Introdu datele tale, iar apoi îți construiești un meniu complet (sandwich, cafea, răcoritoare, desert) asortat perfect la bugetul tău caloric zilnic!</p>
     </div>
 
     <div class="kcal-card">
@@ -592,41 +665,79 @@ footer{background:var(--ink2);padding:60px 8% 28px;}
             </div>
           </div>
         </div>
-        <button class="kcal-btn" onclick="calcKcal()">Calculează →</button>
+        <button class="kcal-btn" onclick="calcKcal()">Calculează și alege meniul →</button>
       </div>
 
-      <!-- REZULTAT -->
+      <!-- REZULTAT CU PLANIFICATOR DINAMIC DE COMBINAȚII -->
       <div class="kcal-result" id="kcalResult" style="display:none">
         <div class="kcal-res-header">
           <div class="kcal-res-main">
             <div class="kcal-res-num" id="resKcal">—</div>
-            <div class="kcal-res-label">kcal / zi</div>
+            <div class="kcal-res-label">Buget kcal / zi</div>
           </div>
           <div class="kcal-res-macros">
-            <div class="kcal-macro"><span id="resProt">—</span><small>g proteine</small></div>
-            <div class="kcal-macro"><span id="resCarb">—</span><small>g carbohidrați</small></div>
-            <div class="kcal-macro"><span id="resFat">—</span><small>g grăsimi</small></div>
+            <div class="kcal-macro"><span id="resProt">—</span><small>g prot</small></div>
+            <div class="kcal-macro"><span id="resCarb">—</span><small>g carb</small></div>
+            <div class="kcal-macro"><span id="resFat">—</span><small>g grăs</small></div>
           </div>
         </div>
 
         <div class="kcal-bar-wrap">
-          <div class="kcal-bar-label">Distribuție macronutrienți</div>
+          <div class="kcal-bar-label" id="kcalProgressLabel">Calorii selectate în meniu: 0 / Y kcal</div>
           <div class="kcal-bar">
-            <div class="kcal-bar-seg prot" id="barProt"></div>
-            <div class="kcal-bar-seg carb" id="barCarb"></div>
-            <div class="kcal-bar-seg fat"  id="barFat"></div>
+            <div class="kcal-bar-progress" id="kcalProgressBar" style="width: 0%"></div>
           </div>
           <div class="kcal-bar-legend">
-            <span><i class="dot prot"></i>Proteine</span>
-            <span><i class="dot carb"></i>Carbohidrați</span>
-            <span><i class="dot fat"></i>Grăsimi</span>
+            <span id="kcalStatusMsg" style="font-size: 0.7rem; color: var(--tx3);">Selectează bunătăți de mai jos</span>
+            <span id="kcalPct" style="font-weight:700; color: var(--navy);">0%</span>
           </div>
         </div>
 
-        <div class="kcal-suggest-title">Din meniu — potrivite pentru tine</div>
-        <div class="kcal-suggest" id="kcalSuggest"></div>
+        <!-- ASAMBLATOR DE MENIU ZILNIC KCAL -->
+        <h4 class="kcal-build-title">Alege pachetul tău personalizat</h4>
+        <div class="kcal-section-select">
+          
+          <!-- Pasul 1: Sățios / Sandwich -->
+          <div class="kcal-select-block">
+            <span class="kcal-select-lbl">1. Ceva Sățios (Sandwich / Bowl)</span>
+            <div class="kcal-select-chips" id="chips-sandwich"></div>
+          </div>
 
-        <button class="kcal-reset" onclick="resetKcal()">← Recalculează</button>
+          <!-- Pasul 2: Cafea / Specialitate -->
+          <div class="kcal-select-block">
+            <span class="kcal-select-lbl">2. Doză de Energie (Cafea / Specialitate)</span>
+            <div class="kcal-select-chips" id="chips-cafea"></div>
+          </div>
+
+          <!-- Pasul 3: Răcoritor -->
+          <div class="kcal-select-block">
+            <span class="kcal-select-lbl">3. Răcoritor (Limonadă / Fresh)</span>
+            <div class="kcal-select-chips" id="chips-bautura"></div>
+          </div>
+
+          <!-- Pasul 4: Desert -->
+          <div class="kcal-select-block">
+            <span class="kcal-select-lbl">4. Desert la Doză / Fursec</span>
+            <div class="kcal-select-chips" id="chips-dulce"></div>
+          </div>
+
+        </div>
+
+        <!-- Rezumat & Trimitere în coș -->
+        <div class="kcal-combo-footer">
+          <div class="kcal-combo-total-txt">
+            <span>Preț Meniu Caloric:</span>
+            <span id="kcalComboPrice">0 RON</span>
+          </div>
+          <button id="kcalAddAllBtn" class="kcal-combo-btn" onclick="addSelectedKcalCombo()" disabled>
+            Adaugă Meniul în Coș →
+          </button>
+        </div>
+
+        <div style="margin-top: 20px; display:flex; justify-content:space-between; align-items:center;">
+          <button class="kcal-reset" onclick="resetKcal()">← Resetează datele</button>
+          <span style="font-size: 0.7rem; color: var(--tx3); font-style:italic;">*Mărimile pot fi ajustate la cerere</span>
+        </div>
       </div>
     </div>
   </div>
@@ -671,7 +782,7 @@ footer{background:var(--ink2);padding:60px 8% 28px;}
       <li><a href="#borcane">Borcanele Metanoia</a></li>
     </ul></div>
     <div class="ft-col"><h4>Comandă</h4><ul>
-      <li><a href="rezervare.html">Finalizează comanda</a></li>
+      <li><a href="javascript:void(0)" onclick="openCheckout()">Finalizează comanda</a></li>
       <li><a href="https://wa.me/40749229686">WhatsApp</a></li>
     </ul></div>
     <div class="ft-col"><h4>Contact & Legal</h4><ul>
@@ -687,24 +798,13 @@ footer{background:var(--ink2);padding:60px 8% 28px;}
   </div>
 </footer>
 
-<!-- MODAL PERSONALIZARE -->
-<div class="smodal" id="smodal" onclick="if(event.target===this)closeSand()">
-  <div class="sm-card" id="smCard"></div>
-</div>
-
-<!-- COS BAR -->
-<div class="cosbar" id="cosbar">
-  <div class="cosbar-info">
-    <div class="cosbar-count" id="cosCount">0</div>
-    <span>în coș · <span class="cosbar-total" id="cosTotal">0 lei</span></span>
-  </div>
-  <div class="cosbar-btns">
-    <button class="cosbar-clear" onclick="golesteCos()">golește</button>
-    <a class="cosbar-go" href="rezervare.html">Finalizează →</a>
-  </div>
-</div>
-
 <script>
+// ═══════════════════════════════════════════
+// INTEGRARI DIRECTE AUTOMATIZĂRI
+// ═══════════════════════════════════════════
+const MAKE_WEBHOOK = "https://hook.eu1.make.com/wwdii8stmyqdul6rnok4p44k2tvtohjt";
+const WHATSAPP_NUM = "40749229686";
+
 /* ====== DATE MENIU ====== */
 const CAFEA=[
   {n:"Espresso",d:"Shot intens, corp plin.",p:8},
@@ -745,8 +845,10 @@ const COMBO=[
   {n:"Pachetul de drum",d:"Un sandwich la alegere + o cafea + un fursec. Gata de plecare.",p:35,ico:"🎒"},
   {n:"Pachet familie",d:"4 sandwich-uri + 2 limonade. Pentru tot echipajul din mașină.",p:79,ico:"👨‍👩‍👧"},
 ];
+
+// REZOLVARE BUG SINTAXĂ: Am folosit ghilimele românești curbate în loc de typewriter, salvând de la crash!
 const JARS=[
-  {n:"Zacuscă Metanoia",d:"Rețeta veche a familiei — „100 de ani de tradiție".",ico:"🫙"},
+  {n:"Zacuscă Metanoia",d:"Rețeta veche a familiei — „100 de ani de tradiție”.",ico:"🫙"},
   {n:"Ketchup de casă",d:"Din roșii coapte, fără conservanți.",ico:"🍅"},
   {n:"Bulion de grădină",d:"Roșii pasate, gros și aromat.",ico:"🥫"},
   {n:"Dulcețuri",d:"Căpșuni · afine · măceșe · piersici · prune.",ico:"🍯"},
@@ -1022,22 +1124,36 @@ function addConfig(){
   cfgRenderControls();cfgRenderPlate();
   document.getElementById("cfgHint").textContent="✓ Adăugat! Construiește altul 🥪";
 }
-/* ══════ CALCULATOR KCAL ══════ */
-// Kcal estimate per produs (valori orientative)
+
+/* ══════ CALCULATOR KCAL & COMBO BUILDER DYNAMIC ══════ */
 const KCAL_MAP = {
+  // Cafele Nespresso & Specialități
   "Espresso":6, "Espresso lung":8, "Cappuccino":80, "Caffè latte":120,
   "Tiramisu Cappuccino":150, "Dolce Truffle Cappuccino":140, "Salted Caramel Mocha":180,
   "Hazelnut Affogato":200, "Iced Rosemary Latte":110, "Fizzy Iced Peach":90,
+  // Limonade & Fresh
   "Limonadă clasică":70, "Limonadă cu aronia":90, "Limonadă fructe de pădure":80,
   "Fresh de portocale":110, "Fresh mere & morcovi":100,
+  // Sandwich-uri
   "Grecesc":380, "Proteic":430, "Mediteranean":420, "Energizant":400,
   "Gourmet":480, "De vară":340, "Bowl-ul zilei":460,
+  // Deserturi
   "Fursecuri de casă cu ovăz":180, "Desert cu aronia, la pahar":220, "Tiramisu la doză":310,
+  // Pachete speciale
   "Pachetul de drum":680, "Pachet familie":560,
 };
 
 let kcalSex = 'm';
 let kcalGoal = 'maint';
+let kcalTarget = 2000;
+
+// Menținem starea combo-ului caloric asamblat direct în calculator
+let kcalCombo = {
+  sandwich: null,
+  cafea: null,
+  bautura: null,
+  dulce: null
+};
 
 function setSex(s) {
   kcalSex = s;
@@ -1062,7 +1178,7 @@ function calcKcal() {
     return;
   }
 
-  // Mifflin-St Jeor
+  // Ecuația Mifflin-St Jeor
   let bmr = kcalSex === 'm'
     ? 10*weight + 6.25*height - 5*age + 5
     : 10*weight + 6.25*height - 5*age - 161;
@@ -1070,9 +1186,11 @@ function calcKcal() {
   let tdee = Math.round(bmr * act);
 
   if (kcalGoal === 'loss') tdee = Math.round(tdee * 0.8);
-  if (kcalGoal === 'gain') tdee = Math.round(tdee * 1.1);
+  if (kcalGoal === 'gain') tdee = Math.round(tdee * 1.15);
 
-  // Macros (30% prot, 40% carb, 30% fat)
+  kcalTarget = tdee;
+
+  // Calculare macros orientative (30% proteine, 40% carbohidrați, 30% grăsimi)
   const protG = Math.round(tdee * 0.30 / 4);
   const carbG = Math.round(tdee * 0.40 / 4);
   const fatG  = Math.round(tdee * 0.30 / 9);
@@ -1082,52 +1200,275 @@ function calcKcal() {
   document.getElementById('resCarb').textContent = carbG;
   document.getElementById('resFat').textContent  = fatG;
 
-  // Bar
-  document.getElementById('barProt').style.width = '30%';
-  document.getElementById('barCarb').style.width = '40%';
-  document.getElementById('barFat').style.width  = '30%';
+  // Randare opțiuni pentru selecție dinamică
+  renderKcalComboSelector();
 
-  // Sugestii produse — filtrate după kcal (sub 50% din TDEE per produs)
-  const maxPerItem = tdee * 0.5;
-  const allProducts = [
-    ...CAFEA.map(x=>({...x,cat:'Cafea'})),
-    ...LIM.map(x=>({...x,cat:'Limonadă'})),
-    ...SAND.map(x=>({...x,cat:'Sandwich'})),
-    ...DULCE.map(x=>({...x,cat:'Dulce'})),
-  ];
-
-  // Sortăm produsele după cât de aproape sunt de 33% din TDEE (o masă)
-  const target = tdee / 3;
-  const scored = allProducts
-    .filter(x => KCAL_MAP[x.n] && KCAL_MAP[x.n] <= maxPerItem)
-    .map(x => ({...x, kcal: KCAL_MAP[x.n], score: Math.abs(KCAL_MAP[x.n] - target)}))
-    .sort((a,b) => a.score - b.score)
-    .slice(0, 5);
-
-  document.getElementById('kcalSuggest').innerHTML = scored.map(it => `
-    <div class="ksug-item">
-      <div>
-        <div class="ksug-name">${it.n}</div>
-        <div class="ksug-kcal">~${it.kcal} kcal · ${it.cat}</div>
-      </div>
-      <div class="ksug-info">
-        <div class="ksug-price">${it.p} lei</div>
-        <button class="ksug-add" onclick='addToCartBtn(this,${JSON.stringify(it.n)},${it.p})'>+ Coș</button>
-      </div>
-    </div>`).join('');
+  // Actualizare vizuală inițială
+  updateKcalComboProgress();
 
   document.getElementById('kcalForm').style.display   = 'none';
   document.getElementById('kcalResult').style.display = 'block';
 }
 
+// Generare module selecție interactivă pentru toate cele 4 categorii de produse
+function renderKcalComboSelector() {
+  // 1. Sandwich
+  const sandHtml = SAND.map((it, idx) => {
+    const k = KCAL_MAP[it.n] || 0;
+    const isSel = kcalCombo.sandwich && kcalCombo.sandwich.n === it.n;
+    return `<button class="kcal-select-chip ${isSel?'sel':''}" onclick="pickKcalItem('sandwich', 'SAND', ${idx})">
+      ${it.n} <span class="k-val">${k} kcal</span>
+    </button>`;
+  }).join('');
+  document.getElementById('chips-sandwich').innerHTML = sandHtml;
+
+  // 2. Cafele & Specialități reunite
+  const allCoffee = [...CAFEA, ...SPEC];
+  const coffeeHtml = allCoffee.map((it) => {
+    const k = KCAL_MAP[it.n] || 0;
+    const isSel = kcalCombo.cafea && kcalCombo.cafea.n === it.n;
+    return `<button class="kcal-select-chip ${isSel?'sel':''}" onclick="pickKcalItemDirect('cafea', '${it.n}', ${it.p}, ${k})">
+      ${it.n} <span class="k-val">${k} kcal</span>
+    </button>`;
+  }).join('');
+  document.getElementById('chips-cafea').innerHTML = coffeeHtml;
+
+  // 3. Răcoritoare / Limonade
+  const drinkHtml = LIM.map((it) => {
+    const k = KCAL_MAP[it.n] || 0;
+    const isSel = kcalCombo.bautura && kcalCombo.bautura.n === it.n;
+    return `<button class="kcal-select-chip ${isSel?'sel':''}" onclick="pickKcalItemDirect('bautura', '${it.n}', ${it.p}, ${k})">
+      ${it.n} <span class="k-val">${k} kcal</span>
+    </button>`;
+  }).join('');
+  document.getElementById('chips-bautura').innerHTML = drinkHtml;
+
+  // 4. Deserturi / Dulce
+  const dulceHtml = DULCE.map((it) => {
+    const k = KCAL_MAP[it.n] || 0;
+    const isSel = kcalCombo.dulce && kcalCombo.dulce.n === it.n;
+    return `<button class="kcal-select-chip ${isSel?'sel':''}" onclick="pickKcalItemDirect('dulce', '${it.n}', ${it.p}, ${k})">
+      ${it.n} <span class="k-val">${k} kcal</span>
+    </button>`;
+  }).join('');
+  document.getElementById('chips-dulce').innerHTML = dulceHtml;
+}
+
+// Pick de produse la atingere
+function pickKcalItem(cat, arrayName, idx) {
+  const item = window[arrayName][idx];
+  const kcal = KCAL_MAP[item.n] || 0;
+  
+  if (kcalCombo[cat] && kcalCombo[cat].n === item.n) {
+    kcalCombo[cat] = null; // Unselect la al doilea tap
+  } else {
+    kcalCombo[cat] = { n: item.n, p: item.p, kcal: kcal };
+  }
+  
+  renderKcalComboSelector();
+  updateKcalComboProgress();
+}
+
+function pickKcalItemDirect(cat, name, price, kcal) {
+  if (kcalCombo[cat] && kcalCombo[cat].n === name) {
+    kcalCombo[cat] = null; // Unselect
+  } else {
+    kcalCombo[cat] = { n: name, p: price, kcal: kcal };
+  }
+  
+  renderKcalComboSelector();
+  updateKcalComboProgress();
+}
+
+// Calcularea sumei selectate și încărcarea barei de progres în timp real
+function updateKcalComboProgress() {
+  const curKcal = 
+    (kcalCombo.sandwich ? kcalCombo.sandwich.kcal : 0) +
+    (kcalCombo.cafea ? kcalCombo.cafea.kcal : 0) +
+    (kcalCombo.bautura ? kcalCombo.bautura.kcal : 0) +
+    (kcalCombo.dulce ? kcalCombo.dulce.kcal : 0);
+
+  const curPrice = 
+    (kcalCombo.sandwich ? kcalCombo.sandwich.p : 0) +
+    (kcalCombo.cafea ? kcalCombo.cafea.p : 0) +
+    (kcalCombo.bautura ? kcalCombo.bautura.p : 0) +
+    (kcalCombo.dulce ? kcalCombo.dulce.p : 0);
+
+  const pct = Math.min(100, Math.round((curKcal / kcalTarget) * 100));
+  
+  const progressBar = document.getElementById('kcalProgressBar');
+  progressBar.style.width = pct + '%';
+  
+  const isOver = curKcal > kcalTarget;
+  progressBar.classList.toggle('excess', isOver);
+
+  document.getElementById('kcalProgressLabel').innerHTML = `Meniu selectat: <b>${curKcal}</b> / ${kcalTarget} kcal`;
+  document.getElementById('kcalPct').textContent = pct + '%';
+
+  const statusMsg = document.getElementById('kcalStatusMsg');
+  if (curKcal === 0) {
+    statusMsg.innerHTML = "Selectează preparate pentru a umple meniul.";
+    statusMsg.style.color = "var(--tx3)";
+  } else if (curKcal > kcalTarget) {
+    statusMsg.innerHTML = "⚠️ Depășești ușor necesarul caloric recomandat.";
+    statusMsg.style.color = "var(--terra)";
+  } else {
+    statusMsg.innerHTML = "✓ Excelent! Se încadrează în parametrii tăi zilnici.";
+    statusMsg.style.color = "#2e7d4f";
+  }
+
+  document.getElementById('kcalComboPrice').textContent = curPrice + " RON";
+  
+  const addBtn = document.getElementById('kcalAddAllBtn');
+  if (curPrice > 0) {
+    addBtn.disabled = false;
+    addBtn.textContent = `Adaugă tot meniul în Coș (${curPrice} lei)`;
+  } else {
+    addBtn.disabled = true;
+    addBtn.textContent = "Adaugă Meniul în Coș";
+  }
+}
+
+// Adăugare pachet complet asamblat direct în coșul principal
+function addSelectedKcalCombo() {
+  let count = 0;
+  ['sandwich', 'cafea', 'bautura', 'dulce'].forEach(cat => {
+    const item = kcalCombo[cat];
+    if (item) {
+      addCart(item.n, item.p);
+      count++;
+    }
+  });
+
+  if (count > 0) {
+    kcalCombo = { sandwich: null, cafea: null, bautura: null, dulce: null };
+    renderKcalComboSelector();
+    updateKcalComboProgress();
+    alert(`✓ Am adăugat cele ${count} produse din meniul tău caloric în Coșul de cumpărături!`);
+  }
+}
+
 function resetKcal() {
   document.getElementById('kcalForm').style.display   = 'block';
   document.getElementById('kcalResult').style.display = 'none';
+  kcalCombo = { sandwich: null, cafea: null, bautura: null, dulce: null };
 }
 
+/* ══════ REZOLVARE DREPTĂ DE INREGISTRARE (Sheets + WA) ══════ */
+function openCheckout() {
+  if (cart.length === 0) return;
+
+  const receiptItems = document.getElementById('receipt-items');
+  receiptItems.innerHTML = '';
+
+  let totalSum = 0;
+
+  cart.forEach(item => {
+    const itemCost = item.pret * item.cant;
+    totalSum += itemCost;
+
+    const row = document.createElement('div');
+    row.className = 'receipt-row';
+    row.innerHTML = `
+      <span>${item.cant}x ${item.nume}</span>
+      <span>${itemCost} RON</span>
+    `;
+    receiptItems.appendChild(row);
+  });
+
+  document.getElementById('ticket-total').textContent = `${totalSum} RON`;
+
+  document.getElementById("cosbar").classList.remove("show");
+  document.getElementById('checkoutModal').classList.add('open');
+}
+
+function closeCheckout() {
+  document.getElementById('checkoutModal').classList.remove('open');
+  renderCos();
+}
+
+async function submitPreorder(event) {
+  event.preventDefault();
+
+  const nume = document.getElementById('clientNume').value.trim();
+  const tel = document.getElementById('clientTel').value.trim();
+  const masina = document.getElementById('clientMasina').value.trim();
+  const timp = document.getElementById('clientTimp').value;
+  const obs = document.getElementById('clientObs').value.trim();
+
+  let sandwichList = [];
+  let bauturaList = [];
+  let cafeaList = [];
+  let desertList = [];
+
+  cart.forEach(item => {
+    const itemString = `${item.cant}x ${item.nume}`;
+    const lowerName = item.nume.toLowerCase();
+    
+    if (lowerName.includes('sandwich') || lowerName.includes('grecesc') || lowerName.includes('proteic') || lowerName.includes('mediteranean') || lowerName.includes('energizant') || lowerName.includes('gourmet') || lowerName.includes('de vară') || lowerName.includes('bowl')) {
+      sandwichList.push(itemString);
+    } else if (lowerName.includes('limonad') || lowerName.includes('fresh') || lowerName.includes('suc')) {
+      bauturaList.push(itemString);
+    } else if (lowerName.includes('espresso') || lowerName.includes('cappuccino') || lowerName.includes('latte') || lowerName.includes('white')) {
+      cafeaList.push(itemString);
+    } else {
+      desertList.push(itemString);
+    }
+  });
+
+  const totalSum = document.getElementById('ticket-total').textContent;
+  const dataCurentaStr = new Date().toLocaleString('ro-RO', { timeZone: 'Europe/Bucharest' });
+
+  const payload = {
+    data: dataCurentaStr,                                             // Col A: Data
+    autor: nume,                                                      // Col B: Autor
+    sandwich: sandwichList.join(", ") || '-',                         // Col C: sandwich
+    bautura: bauturaList.join(", ") || '-',                           // Col D: băutură
+    specialitate_cafea: cafeaList.join(", ") || '-',                  // Col E: specialităţi/cafea
+    desert: desertList.join(", ") || '-',                             // Col F: desert
+    mesaj: `Mașină: ${masina} | Obs: ${obs || '-'} | Total: ${totalSum}`, // Col G: mesaj
+    data_ora_servire: timp,                                           // Col H: data/ora servire
+    tel: tel                                                          // Col I: Nr tel
+  };
+
+  try {
+    fetch(MAKE_WEBHOOK, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+  } catch (err) {
+    console.warn("Eroare la scrierea automată în Sheets", err);
+  }
+
+  let waText = `Bună! Am trimis o precomandă la Metanoia · SOul Meal:\n\n`;
+  waText += `👤 *Nume*: ${nume}\n`;
+  waText += `🚗 *Mașină*: ${masina}\n`;
+  waText += `📞 *Telefon*: ${tel}\n`;
+  waText += `🕒 *Timp ridicare*: ${timp}\n\n`;
+
+  waText += `🛒 *Produse comandate*:\n`;
+  cart.forEach(item => {
+    waText += `• ${item.cant}x ${item.nume} (${item.pret * item.cant} RON)\n`;
+  });
+
+  waText += `\n💵 *Total estimat*: ${totalSum}\n`;
+  if (obs) waText += `✉️ *Observații*: ${obs}\n`;
+  waText += `\n_Vă mulțumesc! Ne vedem pe DN 68, Totești._`;
+
+  window.open(`https://wa.me/${WHATSAPP_NUM}?text=${encodeURIComponent(waText)}`, '_blank');
+
+  cart = [];
+  updateCartUI();
+
+  document.getElementById('checkoutModal').classList.remove('open');
+  alert("✓ Precomanda a fost trimisă în Sheets și s-a deschis WhatsApp-ul pentru o confirmare rapidă!");
+}
 
 cfgRenderControls();cfgRenderPlate();
 renderCos();
 </script>
 </body>
 </html>
+
+```
