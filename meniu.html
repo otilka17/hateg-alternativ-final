@@ -5,226 +5,281 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Meniu · Metanoia · SOul Meal — Băcănie-butic · DN 68 Hațeg</title>
 <meta name="description" content="Meniul SOul Meal: cafea Nespresso & specialități barista, limonade și fresh-uri, sandwich-uri făcute pe loc, bowl, dulce la doză și borcanele Metanoia. Băcănie-butic pe DN 68, Totești · Hațeg.">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Karla:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <style>
 :root{
-  --v1:#14253a; --v2:#2e4e7e; --v3:#4a74ac; --v4:#8fb4de; --v5:#dce9f7;
-  --c1:#faf5ec; --c2:#f2e8d0; --c3:#e8d5b0;
-  --t1:#c4622d; --t2:#e07840; --t3:#f5a06a; --t4:#fde8d8;
-  --e1:#0f1a2b; --e2:#16243c; --e3:#5c3517; --e4:#a0622a;
+  --navy:#14253a; --navy2:#1e3450; --navy3:#2e4e7e;
+  --cream:#faf5ec; --cream2:#f2e8d0; --cream3:#e8d5b0;
+  --terra:#c4622d; --terra2:#e07840; --terra3:#f5a06a;
+  --ink:#0f1825; --ink2:#1a2535;
   --tx1:#141a24; --tx2:#2c3648; --tx3:#5f6c80; --tx4:rgba(20,26,36,.4);
+  --white:#fff;
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{font-family:'Karla',sans-serif;background:var(--c1);color:var(--tx1);overflow-x:hidden;}
-::-webkit-scrollbar{width:3px;} ::-webkit-scrollbar-track{background:var(--c2);} ::-webkit-scrollbar-thumb{background:var(--v2);}
-body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.03;
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--tx1);overflow-x:hidden;}
+
+/* scrollbar */
+::-webkit-scrollbar{width:3px;}
+::-webkit-scrollbar-track{background:var(--cream2);}
+::-webkit-scrollbar-thumb{background:var(--navy3);}
+
+/* grain overlay */
+body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.025;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 300 300' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px;}
 
-/* NAV */
-.nav{position:fixed;top:0;width:100%;z-index:999;background:rgba(250,245,236,.97);backdrop-filter:blur(12px);
-  border-bottom:2px solid var(--v2);display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:68px;}
+/* ── NAV ── */
+.nav{position:fixed;top:0;width:100%;z-index:999;background:rgba(250,245,236,.96);backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(20,37,58,.1);display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:64px;}
 .nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
-.nav-logo{width:42px;height:42px;}
-.nav-name{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:900;color:var(--v1);letter-spacing:2px;text-transform:uppercase;line-height:1;}
-.nav-sub{font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--tx3);font-weight:500;margin-top:2px;}
-.nav-links{display:flex;gap:24px;list-style:none;}
-.nav-links a{font-size:.75rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--tx2);text-decoration:none;transition:color .2s;padding-bottom:2px;border-bottom:2px solid transparent;}
-.nav-links a:hover,.nav-links a.active{color:var(--v2);border-bottom-color:var(--v2);}
-.nav-cta{background:var(--v2);color:#fff;border:none;padding:10px 22px;font-family:'Karla',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all .2s;text-decoration:none;}
-.nav-cta:hover{background:var(--v1);}
+.nav-logo{width:38px;height:38px;}
+.nav-name{font-family:'DM Serif Display',serif;font-size:1.05rem;color:var(--navy);letter-spacing:1px;line-height:1;}
+.nav-sub{font-size:.55rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--tx3);font-weight:500;margin-top:2px;}
+.nav-links{display:flex;gap:28px;list-style:none;}
+.nav-links a{font-size:.72rem;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--tx3);text-decoration:none;transition:color .2s;}
+.nav-links a:hover,.nav-links a.active{color:var(--navy);}
+.nav-cta{background:var(--navy);color:#fff;border:none;padding:10px 22px;font-family:'DM Sans',sans-serif;font-size:.7rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all .2s;text-decoration:none;}
+.nav-cta:hover{background:var(--terra);}
 .nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px;}
-.nav-burger span{width:26px;height:2px;background:var(--v1);transition:.3s;}
-.mob-menu{position:fixed;inset:0;z-index:9998;background:var(--v1);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;transform:translateX(100%);transition:transform .4s ease;}
+.nav-burger span{width:24px;height:1.5px;background:var(--navy);transition:.3s;}
+.mob-menu{position:fixed;inset:0;z-index:9998;background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;transform:translateX(100%);transition:transform .4s ease;}
 .mob-menu.open{transform:translateX(0);}
-.mob-menu a{font-family:'Playfair Display',serif;font-size:1.7rem;color:#fff;text-decoration:none;padding:12px 0;letter-spacing:2px;}
-.mob-close{position:absolute;top:20px;right:6%;font-size:2.2rem;color:#fff;background:none;border:none;cursor:pointer;}
+.mob-menu a{font-family:'DM Serif Display',serif;font-size:1.8rem;color:#fff;text-decoration:none;padding:14px 0;letter-spacing:1px;}
+.mob-close{position:absolute;top:20px;right:6%;font-size:2rem;color:rgba(255,255,255,.5);background:none;border:none;cursor:pointer;}
 
-/* HERO */
-.m-hero{padding:118px 5% 60px;text-align:center;background:linear-gradient(160deg,var(--v1),#3c5a7a);position:relative;overflow:hidden;}
-.m-hero::before{content:'';position:absolute;inset:0;pointer-events:none;
-  background:radial-gradient(ellipse 60% 70% at 78% 22%,rgba(143,180,228,.16),transparent 60%),radial-gradient(ellipse 50% 50% at 12% 88%,rgba(196,98,45,.14),transparent 55%);}
-.m-hero-in{position:relative;z-index:2;}
-.m-hero .s-tag{justify-content:center;color:var(--v4);}
-.m-hero .s-tag::before{background:var(--t2);}
-.m-hero h1{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(2.4rem,5vw,4rem);color:#fff;line-height:1.05;margin-bottom:14px;}
-.m-hero h1 em{font-style:italic;color:var(--t3);}
-.m-hero p{color:rgba(255,255,255,.7);max-width:600px;margin:0 auto;font-size:1rem;line-height:1.75;}
+/* ── HERO COVER ── */
+.cover{position:relative;height:100svh;min-height:600px;overflow:hidden;display:flex;align-items:flex-end;}
+.cover-img{position:absolute;inset:0;background:linear-gradient(160deg,#0f2035 0%,#1e3a5c 45%,#2a4a6a 100%);}
+.cover-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(15,24,37,.88) 0%,rgba(15,24,37,.3) 55%,transparent 100%);}
+.cover-content{position:relative;z-index:2;padding:0 6% 8vh;width:100%;}
+.cover-eyebrow{font-size:.62rem;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--terra3);margin-bottom:18px;display:flex;align-items:center;gap:12px;}
+.cover-eyebrow::before{content:'';width:32px;height:1px;background:var(--terra3);}
+.cover-h1{font-family:'DM Serif Display',serif;font-size:clamp(3rem,7vw,6.5rem);color:#fff;line-height:.95;letter-spacing:-1px;margin-bottom:22px;}
+.cover-h1 em{font-style:italic;color:var(--terra3);}
+.cover-sub{font-size:clamp(.9rem,1.5vw,1.1rem);color:rgba(255,255,255,.5);max-width:500px;line-height:1.7;font-weight:300;}
+.cover-scroll{position:absolute;bottom:36px;right:6%;font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.3);writing-mode:vertical-rl;display:flex;align-items:center;gap:10px;}
+.cover-scroll::after{content:'';width:1px;height:50px;background:rgba(255,255,255,.2);}
 
-/* TICKER */
-.ticker{background:var(--t1);padding:11px 0;overflow:hidden;white-space:nowrap;}
-.ticker-track{display:inline-flex;gap:48px;animation:slide 26s linear infinite;}
-.ti{font-size:.64rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:#fff;}
-.ts{color:rgba(255,255,255,.35);}
-
-/* SECTION */
-.sec{padding:80px 5%;position:relative;overflow:hidden;}
-.sec-cream{background:var(--c1);} .sec-warm{background:var(--c2);} .sec-green{background:var(--v1);}
-.s-tag{font-size:.65rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--v3);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
-.s-tag::before{content:'';width:24px;height:2px;background:var(--t1);}
-.s-tag.center{justify-content:center;}
-.sec-green .s-tag{color:var(--v4);} .sec-green .s-tag::before{background:var(--t2);}
-.s-title{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(1.8rem,3.4vw,2.8rem);line-height:1.1;}
-.s-title em{font-style:italic;color:var(--t1);}
-.sec-green .s-title{color:#fff;} .sec-green .s-title em{color:var(--t3);}
-.s-lead{font-family:'Source Serif 4',serif;font-style:italic;font-size:1rem;color:var(--tx3);max-width:560px;line-height:1.75;margin-top:12px;}
-.sec-green .s-lead{color:rgba(255,255,255,.5);}
-.sec-head{margin-bottom:10px;}
-
-/* MENIU CARDS */
-.menu-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:18px;margin-top:44px;}
-.mc{background:#fff;border:2px solid var(--c3);overflow:hidden;transition:all .22s;display:flex;flex-direction:column;}
-.mc:hover{border-color:var(--v3);transform:translateY(-4px);box-shadow:0 14px 34px rgba(20,37,58,.1);}
-.mc-top{height:128px;display:flex;align-items:center;justify-content:center;font-size:3.4rem;position:relative;}
-.mc-lbl{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(to top,rgba(15,26,43,.86),transparent);padding:16px 14px 9px;display:flex;align-items:center;justify-content:space-between;}
-.mc-lbl-txt{font-size:.58rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#fff;}
-.mc-pill{background:var(--t1);color:#fff;font-size:.5rem;font-weight:700;letter-spacing:1px;padding:3px 8px;text-transform:uppercase;white-space:nowrap;}
-.mc-body{padding:16px 18px 18px;flex:1;display:flex;flex-direction:column;}
-.mc-type{font-size:.6rem;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:var(--v3);margin-bottom:6px;}
-.mc-name{font-family:'Playfair Display',serif;font-size:1.12rem;font-weight:700;color:var(--tx1);margin-bottom:7px;line-height:1.2;}
-.mc-desc{font-family:'Source Serif 4',serif;font-style:italic;font-size:.86rem;color:var(--tx3);line-height:1.55;flex:1;margin-bottom:14px;}
-.mc-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;}
-.mc-price{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:900;color:var(--t1);}
-.mc-price small{font-size:.62rem;font-weight:600;color:var(--tx3);letter-spacing:1px;}
-.mc-add{background:var(--v2);color:#fff;border:none;padding:9px 16px;font-family:'Karla',sans-serif;font-size:.66rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all .2s;white-space:nowrap;}
-.mc-add:hover{background:var(--v1);}
-.mc-add.added{background:#2e7d4f;}
-.mc-tba{font-size:.7rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--tx4);}
-
-/* BORCANE list */
-.jars{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:44px;}
-.jar{background:rgba(255,255,255,.05);border:2px solid rgba(255,255,255,.1);padding:22px 20px;transition:all .22s;}
-.jar:hover{background:rgba(255,255,255,.09);border-color:rgba(255,255,255,.25);transform:translateY(-3px);}
-.jar-ico{font-size:2rem;margin-bottom:10px;}
-.jar-name{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:#fff;margin-bottom:6px;}
-.jar-desc{font-size:.84rem;color:rgba(255,255,255,.5);line-height:1.55;}
-
-/* PACHETE */
-.combo{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:44px;}
-.cb{background:#fff;border:2px solid var(--c3);padding:28px;transition:all .22s;position:relative;overflow:hidden;}
-.cb::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--t1);transform:scaleX(0);transform-origin:left;transition:transform .3s;}
-.cb:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(20,37,58,.1);border-color:var(--v3);}
-.cb:hover::before{transform:scaleX(1);}
-.cb-ico{font-size:2.2rem;margin-bottom:12px;}
-.cb-name{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--tx1);margin-bottom:8px;}
-.cb-desc{font-size:.9rem;color:var(--tx3);line-height:1.6;margin-bottom:18px;}
-.cb-foot{display:flex;align-items:center;justify-content:space-between;}
-.cb-price{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:var(--t1);}
-.cb-price small{font-size:.66rem;font-weight:600;color:var(--tx3);}
-
-/* COS BAR */
-.cosbar{position:fixed;bottom:0;left:0;right:0;z-index:600;background:var(--e1);color:#fff;
-  display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 5%;
-  transform:translateY(110%);transition:transform .3s ease;box-shadow:0 -6px 24px rgba(0,0,0,.25);}
-.cosbar.show{transform:translateY(0);}
-.cosbar-info{display:flex;align-items:center;gap:14px;font-size:.9rem;}
-.cosbar-count{background:var(--t1);color:#fff;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.9rem;flex-shrink:0;}
-.cosbar-total{font-family:'Playfair Display',serif;font-weight:700;font-size:1.05rem;color:var(--v4);}
-.cosbar-btns{display:flex;gap:10px;align-items:center;}
-.cosbar-clear{background:none;border:none;color:rgba(255,255,255,.5);font-size:.74rem;cursor:pointer;text-decoration:underline;}
-.cosbar-go{background:var(--t1);color:#fff;border:none;padding:12px 26px;font-family:'Karla',sans-serif;font-size:.76rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:all .2s;}
-.cosbar-go:hover{background:var(--t2);}
-
-/* INFO STRIP */
-.info{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:8px;}
-.inf{text-align:center;padding:28px 16px;border-right:1px solid rgba(255,255,255,.08);}
-.inf:last-child{border-right:none;}
-.inf-ico{font-size:1.8rem;margin-bottom:8px;}
-.inf-n{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--t3);}
-.inf-l{font-size:.66rem;letter-spacing:1px;color:rgba(255,255,255,.45);margin-top:4px;line-height:1.4;}
-
-/* FOOTER */
-footer{background:var(--e1);padding:54px 5% 24px;}
-.ft-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;padding-bottom:34px;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:24px;}
-.ft-logo{width:52px;height:52px;margin-bottom:12px;}
-.ft-brand{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:900;color:var(--t3);letter-spacing:2px;text-transform:uppercase;}
-.ft-sub{font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-top:2px;}
-.ft-tag{font-family:'Source Serif 4',serif;font-style:italic;font-size:.88rem;color:rgba(255,255,255,.35);max-width:230px;line-height:1.65;margin-top:10px;}
-.ft-col h4{font-size:.6rem;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:12px;}
-.ft-col ul{list-style:none;} .ft-col li{margin-bottom:8px;}
-.ft-col a{color:rgba(255,255,255,.25);font-size:.82rem;text-decoration:none;transition:color .2s;}
-.ft-col a:hover{color:var(--t3);}
-.ft-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:.72rem;color:rgba(255,255,255,.15);}
-
-/* ===== MODAL PERSONALIZARE SANDWICH ===== */
-.sand-build{background:var(--v2)!important;}
-.sand-build:hover{background:var(--v1)!important;}
-.smodal{position:fixed;inset:0;z-index:9999;background:rgba(15,26,43,.7);backdrop-filter:blur(4px);display:none;align-items:flex-end;justify-content:center;}
-.smodal.open{display:flex;}
-@media(min-width:700px){.smodal{align-items:center;}}
-.sm-card{background:var(--c1);width:100%;max-width:620px;max-height:92vh;overflow-y:auto;animation:smUp .3s ease;}
-@keyframes smUp{from{transform:translateY(40px);opacity:0}to{transform:translateY(0);opacity:1}}
-.sm-hero{position:relative;height:120px;display:flex;align-items:center;justify-content:center;font-size:3.2rem;}
-.sm-close{position:absolute;top:12px;right:14px;width:34px;height:34px;border-radius:50%;background:rgba(0,0,0,.3);color:#fff;border:none;font-size:1.3rem;cursor:pointer;display:flex;align-items:center;justify-content:center;}
-.sm-body{padding:22px 24px 26px;}
-.sm-name{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:var(--tx1);margin-bottom:3px;}
-.sm-base{font-size:.78rem;color:var(--tx3);margin-bottom:20px;}
-.sm-group{margin-bottom:22px;}
-.sm-glabel{font-size:.64rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--v3);margin-bottom:10px;display:block;}
-.sm-opts{display:flex;flex-wrap:wrap;gap:8px;}
-.sm-opt{padding:9px 16px;border:2px solid var(--c3);background:#fff;color:var(--tx2);font-family:'Karla',sans-serif;font-size:.8rem;font-weight:600;cursor:pointer;transition:all .15s;}
-.sm-opt:hover{border-color:var(--v3);}
-.sm-opt.sel{background:var(--v2);color:#fff;border-color:var(--v2);}
-.sm-ing{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;border:2px solid var(--c3);background:#fff;margin-bottom:7px;cursor:pointer;transition:all .15s;}
-.sm-ing.off{opacity:.5;background:var(--c2);}
-.sm-ing-name{font-size:.88rem;font-weight:600;color:var(--tx1);display:flex;align-items:center;gap:9px;}
-.sm-ing.off .sm-ing-name{text-decoration:line-through;color:var(--tx3);}
-.sm-ing-tog{font-size:.64rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--t1);}
-.sm-ing.off .sm-ing-tog{color:var(--tx3);}
-.sm-extra{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;border:2px solid var(--c3);background:#fff;margin-bottom:7px;cursor:pointer;transition:all .15s;}
-.sm-extra.sel{border-color:var(--t1);background:var(--t4);}
-.sm-extra-name{font-size:.88rem;font-weight:600;color:var(--tx1);}
-.sm-extra-p{font-size:.78rem;font-weight:700;color:var(--t1);}
-.sm-foot{position:sticky;bottom:0;background:var(--e1);padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:14px;}
-.sm-total{color:#fff;font-size:.82rem;}
-.sm-total b{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--v4);margin-left:6px;}
-.sm-addbtn{background:var(--t1);color:#fff;border:none;padding:13px 26px;font-family:'Karla',sans-serif;font-size:.78rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all .2s;}
-.sm-addbtn:hover{background:var(--t2);}
-
+/* ── TICKER ── */
+.ticker{background:var(--terra);padding:10px 0;overflow:hidden;white-space:nowrap;position:relative;z-index:1;}
+.ticker-track{display:inline-flex;gap:48px;animation:slide 28s linear infinite;}
+.ti{font-size:.6rem;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:#fff;}
+.ts{color:rgba(255,255,255,.3);}
 @keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* ===== CONFIGURATOR SANDWICH ===== */
-.cfg-wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:44px;align-items:start;}
-.cfg-stage{position:sticky;top:90px;background:var(--c1);border:2px solid var(--c3);padding:30px 20px 24px;}
-.cfg-plate{min-height:280px;display:flex;flex-direction:column-reverse;align-items:center;justify-content:flex-start;gap:0;position:relative;padding:20px 0;}
-.layer{width:74%;max-width:300px;border-radius:40px/26px;margin-top:-10px;box-shadow:0 3px 8px rgba(20,37,58,.12);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;color:rgba(255,255,255,.92);text-shadow:0 1px 2px rgba(0,0,0,.3);letter-spacing:.5px;transition:all .35s cubic-bezier(.34,1.56,.64,1);animation:dropIn .4s cubic-bezier(.34,1.56,.64,1);text-align:center;line-height:1.1;}
+/* ── SPREAD: base ── */
+/* Each category is a full-page editorial spread */
+.spread{position:relative;overflow:hidden;}
+
+/* SPREAD TYPE A: photo right, text left */
+.spread-a{display:grid;grid-template-columns:1fr 1fr;min-height:88vh;}
+.spread-a .sp-text{background:var(--cream);display:flex;flex-direction:column;justify-content:center;padding:80px 6% 80px 8%;}
+.spread-a .sp-photo{position:relative;overflow:hidden;min-height:500px;}
+.spread-a .sp-photo img,.spread-a .sp-photo>div{width:100%;height:100%;position:absolute;inset:0;}
+
+/* SPREAD TYPE B: full-bleed photo, items overlay */
+.spread-b{min-height:90vh;position:relative;display:flex;align-items:flex-end;}
+.spread-b .sp-bg{position:absolute;inset:0;}
+.spread-b .sp-bg img,.spread-b .sp-bg>div{width:100%;height:100%;object-fit:cover;display:block;}
+.spread-b .sp-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(10,18,30,.95) 0%,rgba(10,18,30,.5) 50%,rgba(10,18,30,.1) 100%);}
+.spread-b .sp-content{position:relative;z-index:2;width:100%;padding:0 8% 8vh;}
+
+/* SPREAD TYPE C: dark background, items in columns */
+.spread-c{background:var(--ink);padding:100px 8%;}
+
+/* SPREAD TYPE D: cream, photo left */
+.spread-d{display:grid;grid-template-columns:1fr 1fr;min-height:88vh;}
+.spread-d .sp-photo{position:relative;overflow:hidden;min-height:500px;}
+.spread-d .sp-photo img,.spread-d .sp-photo>div{width:100%;height:100%;position:absolute;inset:0;}
+.spread-d .sp-text{background:var(--cream2);display:flex;flex-direction:column;justify-content:center;padding:80px 8% 80px 6%;}
+
+/* ── SECTION TYPOGRAPHY ── */
+.sp-eyebrow{font-size:.58rem;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--terra);margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.sp-eyebrow::before{content:'';width:24px;height:1px;background:var(--terra);}
+.sp-eyebrow.light{color:var(--terra3);}
+.sp-eyebrow.light::before{background:var(--terra3);}
+.sp-h2{font-family:'DM Serif Display',serif;font-size:clamp(2.2rem,4vw,4rem);line-height:1.0;letter-spacing:-.5px;color:var(--navy);margin-bottom:16px;}
+.sp-h2 em{font-style:italic;color:var(--terra);}
+.sp-h2.white{color:#fff;}
+.sp-h2.white em{color:var(--terra3);}
+.sp-lead{font-size:.95rem;color:var(--tx3);line-height:1.8;max-width:420px;margin-bottom:40px;font-weight:300;}
+.sp-lead.white{color:rgba(255,255,255,.45);}
+.sp-number{font-family:'DM Serif Display',serif;font-size:8rem;line-height:1;color:var(--cream3);position:absolute;top:60px;right:8%;opacity:.5;pointer-events:none;letter-spacing:-4px;}
+
+/* ── ITEM ROWS (editorial list) ── */
+.item-list{display:flex;flex-direction:column;gap:0;}
+.item-row{display:flex;align-items:baseline;justify-content:space-between;padding:16px 0;border-bottom:1px solid rgba(20,37,58,.1);gap:20px;transition:all .2s;}
+.item-row:last-child{border-bottom:none;}
+.item-row:hover{padding-left:8px;}
+.item-info{flex:1;}
+.item-name{font-family:'DM Serif Display',serif;font-size:1.25rem;color:var(--navy);line-height:1.15;margin-bottom:4px;}
+.item-desc{font-size:.8rem;color:var(--tx3);line-height:1.5;font-weight:300;}
+.item-right{display:flex;align-items:center;gap:14px;flex-shrink:0;}
+.item-price{font-family:'DM Serif Display',serif;font-size:1.4rem;color:var(--terra);white-space:nowrap;}
+.item-price small{font-size:.65rem;color:var(--tx4);font-family:'DM Sans',sans-serif;margin-left:2px;}
+.item-btn{background:transparent;border:1px solid var(--navy3);color:var(--navy);padding:8px 16px;font-family:'DM Sans',sans-serif;font-size:.62rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all .2s;white-space:nowrap;}
+.item-btn:hover{background:var(--navy);color:#fff;}
+.item-btn.added{background:#2e7d4f;border-color:#2e7d4f;color:#fff;}
+.item-btn.build{background:var(--navy3);border-color:var(--navy3);color:#fff;}
+.item-btn.build:hover{background:var(--navy);}
+
+/* white variant */
+.item-row.white{border-bottom-color:rgba(255,255,255,.08);}
+.item-row.white:hover{padding-left:8px;}
+.item-name.white{color:#fff;}
+.item-desc.white{color:rgba(255,255,255,.4);}
+.item-price.white{color:var(--terra3);}
+.item-btn.white-outline{background:transparent;border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.7);}
+.item-btn.white-outline:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.6);}
+
+/* ── BORCANE GRID (dark spread) ── */
+.jars-spread{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(255,255,255,.06);margin-top:60px;}
+.jar-cell{padding:36px 32px;background:var(--ink);}
+.jar-ico{font-size:2.2rem;margin-bottom:14px;}
+.jar-nm{font-family:'DM Serif Display',serif;font-size:1.5rem;color:#fff;margin-bottom:8px;}
+.jar-ds{font-size:.85rem;color:rgba(255,255,255,.35);line-height:1.6;font-weight:300;}
+
+/* ── PACHETE (2-col) ── */
+.combo-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--cream3);margin-top:48px;}
+.combo-cell{background:var(--cream);padding:44px 38px;}
+.combo-ico{font-size:2.4rem;margin-bottom:18px;}
+.combo-nm{font-family:'DM Serif Display',serif;font-size:1.7rem;color:var(--navy);margin-bottom:10px;}
+.combo-ds{font-size:.88rem;color:var(--tx3);line-height:1.65;margin-bottom:28px;font-weight:300;}
+.combo-foot{display:flex;align-items:center;justify-content:space-between;}
+.combo-price{font-family:'DM Serif Display',serif;font-size:2.2rem;color:var(--terra);}
+.combo-price small{font-size:.65rem;color:var(--tx4);font-family:'DM Sans',sans-serif;}
+
+/* ── CONFIGURATOR ── */
+.cfg-section{background:var(--cream2);padding:100px 8%;}
+.cfg-inner{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;margin-top:60px;}
+.cfg-stage{position:sticky;top:80px;}
+.cfg-plate-wrap{background:#fff;border:1px solid var(--cream3);padding:32px 20px 24px;min-height:340px;display:flex;flex-direction:column;}
+.cfg-plate{flex:1;display:flex;flex-direction:column-reverse;align-items:center;justify-content:flex-start;gap:0;position:relative;padding:16px 0;min-height:260px;}
+.layer{width:76%;max-width:300px;border-radius:40px/26px;margin-top:-10px;box-shadow:0 3px 8px rgba(20,37,58,.12);display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:600;color:rgba(255,255,255,.9);text-shadow:0 1px 2px rgba(0,0,0,.3);letter-spacing:.5px;transition:all .35s cubic-bezier(.34,1.56,.64,1);animation:dropIn .4s cubic-bezier(.34,1.56,.64,1);text-align:center;line-height:1.1;}
 @keyframes dropIn{from{opacity:0;transform:translateY(-24px) scale(.85)}to{opacity:1;transform:translateY(0) scale(1)}}
 .layer-bun-top{height:46px;border-radius:50% 50% 18px 18px;margin-top:-12px;z-index:5;}
 .layer-bun-bot{height:30px;border-radius:14px 14px 40px 40px;}
-.layer-empty{width:74%;max-width:300px;height:130px;border:2px dashed var(--c3);border-radius:20px;display:flex;align-items:center;justify-content:center;color:var(--tx4);font-style:italic;font-family:'Source Serif 4',serif;font-size:.86rem;text-align:center;padding:0 20px;}
-.cfg-hint{text-align:center;font-size:.72rem;color:var(--tx3);margin-top:10px;font-style:italic;font-family:'Source Serif 4',serif;}
-.cfg-controls{display:flex;flex-direction:column;gap:20px;}
-.cfg-g{}
-.cfg-glabel{font-size:.64rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--v3);margin-bottom:9px;display:flex;align-items:center;gap:7px;}
-.cfg-glabel span{color:var(--tx4);font-weight:600;letter-spacing:.5px;text-transform:none;}
-.cfg-opts{display:flex;flex-wrap:wrap;gap:7px;}
-.cfg-chip{padding:9px 15px;border:2px solid var(--c3);background:#fff;color:var(--tx2);font-family:'Karla',sans-serif;font-size:.79rem;font-weight:600;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:6px;}
-.cfg-chip:hover{border-color:var(--v3);}
-.cfg-chip.sel{background:var(--v2);color:#fff;border-color:var(--v2);}
-.cfg-chip .px{font-size:.68rem;opacity:.7;}
-.cfg-chip.sel .px{opacity:.85;}
-.cfg-foot{margin-top:8px;background:var(--e1);padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px;}
-.cfg-total{color:#fff;font-size:.84rem;}
-.cfg-total b{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--v4);margin-left:6px;}
-.cfg-add{background:var(--t1);color:#fff;border:none;padding:13px 26px;font-family:'Karla',sans-serif;font-size:.78rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all .2s;}
-.cfg-add:hover{background:var(--t2);}
-.cfg-add:disabled{opacity:.4;cursor:not-allowed;}
-@media(max-width:820px){
-  .cfg-wrap{grid-template-columns:1fr;gap:24px;}
-  .cfg-stage{position:relative;top:0;order:-1;}
-}
+.layer-empty{width:76%;max-width:300px;height:130px;border:1px dashed var(--cream3);display:flex;align-items:center;justify-content:center;color:var(--tx4);font-style:italic;font-family:'DM Serif Display',serif;font-size:.9rem;text-align:center;padding:0 20px;}
+.cfg-foot{background:var(--ink);padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:1px;}
+.cfg-total{color:rgba(255,255,255,.5);font-size:.78rem;}
+.cfg-total b{font-family:'DM Serif Display',serif;font-size:1.4rem;color:#fff;margin-left:8px;}
+.cfg-add{background:var(--terra);color:#fff;border:none;padding:12px 24px;font-family:'DM Sans',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all .2s;}
+.cfg-add:hover{background:var(--terra2);}
+.cfg-add:disabled{opacity:.3;cursor:not-allowed;}
+.cfg-hint{text-align:center;font-size:.7rem;color:var(--tx4);margin-top:12px;font-style:italic;}
 
-@media(max-width:900px){
-  .nav-links{display:none;} .nav-cta{display:none;} .nav-burger{display:flex;}
-  .combo{grid-template-columns:1fr;}
-  .info{grid-template-columns:repeat(2,1fr);} .inf:nth-child(2){border-right:none;}
+.cfg-controls{display:flex;flex-direction:column;gap:28px;}
+.cfg-g{}
+.cfg-glabel{font-size:.58rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--navy3);margin-bottom:10px;border-bottom:1px solid var(--cream3);padding-bottom:6px;}
+.cfg-opts{display:flex;flex-wrap:wrap;gap:6px;}
+.cfg-chip{padding:8px 14px;border:1px solid var(--cream3);background:var(--cream);color:var(--tx2);font-family:'DM Sans',sans-serif;font-size:.76rem;font-weight:500;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:5px;}
+.cfg-chip:hover{border-color:var(--navy3);}
+.cfg-chip.sel{background:var(--navy);color:#fff;border-color:var(--navy);}
+.cfg-chip .px{font-size:.65rem;opacity:.6;}
+.cfg-chip.sel .px{opacity:.75;}
+
+/* ── FOOTER ── */
+footer{background:var(--ink2);padding:60px 8% 28px;}
+.ft-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.06);margin-bottom:24px;}
+.ft-logo{width:48px;height:48px;margin-bottom:12px;}
+.ft-brand{font-family:'DM Serif Display',serif;font-size:1.05rem;color:var(--terra3);letter-spacing:1px;}
+.ft-sub{font-size:.55rem;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-top:3px;}
+.ft-tag{font-size:.84rem;color:rgba(255,255,255,.25);max-width:230px;line-height:1.7;margin-top:12px;font-weight:300;}
+.ft-col h4{font-size:.55rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:14px;}
+.ft-col ul{list-style:none;}
+.ft-col li{margin-bottom:9px;}
+.ft-col a{color:rgba(255,255,255,.3);font-size:.82rem;text-decoration:none;transition:color .2s;font-weight:300;}
+.ft-col a:hover{color:var(--terra3);}
+.ft-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:.68rem;color:rgba(255,255,255,.12);}
+
+/* ── COS BAR ── */
+.cosbar{position:fixed;bottom:0;left:0;right:0;z-index:600;background:var(--ink);color:#fff;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 8%;
+  transform:translateY(110%);transition:transform .3s ease;box-shadow:0 -4px 30px rgba(0,0,0,.35);}
+.cosbar.show{transform:translateY(0);}
+.cosbar-info{display:flex;align-items:center;gap:14px;font-size:.88rem;}
+.cosbar-count{background:var(--terra);color:#fff;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;flex-shrink:0;}
+.cosbar-total{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.1rem;color:rgba(255,255,255,.7);}
+.cosbar-btns{display:flex;gap:12px;align-items:center;}
+.cosbar-clear{background:none;border:none;color:rgba(255,255,255,.3);font-size:.7rem;cursor:pointer;text-decoration:underline;font-weight:300;}
+.cosbar-go{background:var(--terra);color:#fff;border:none;padding:11px 26px;font-family:'DM Sans',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;text-decoration:none;transition:all .2s;}
+.cosbar-go:hover{background:var(--terra2);}
+
+/* ── MODAL ── */
+.smodal{position:fixed;inset:0;z-index:9999;background:rgba(10,18,30,.75);backdrop-filter:blur(6px);display:none;align-items:flex-end;justify-content:center;}
+.smodal.open{display:flex;}
+@media(min-width:700px){.smodal{align-items:center;}}
+.sm-card{background:var(--cream);width:100%;max-width:580px;max-height:92vh;overflow-y:auto;animation:smUp .3s ease;}
+@keyframes smUp{from{transform:translateY(40px);opacity:0}to{transform:translateY(0);opacity:1}}
+.sm-hero{position:relative;height:110px;display:flex;align-items:center;justify-content:center;font-size:3rem;}
+.sm-close{position:absolute;top:12px;right:14px;width:32px;height:32px;background:rgba(0,0,0,.25);color:#fff;border:none;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.sm-body{padding:24px 28px 28px;}
+.sm-name{font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--navy);margin-bottom:4px;}
+.sm-base{font-size:.78rem;color:var(--tx3);margin-bottom:22px;font-weight:300;}
+.sm-group{margin-bottom:22px;}
+.sm-glabel{font-size:.58rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--navy3);margin-bottom:10px;display:block;border-bottom:1px solid var(--cream3);padding-bottom:5px;}
+.sm-opts{display:flex;flex-wrap:wrap;gap:7px;}
+.sm-opt{padding:9px 16px;border:1px solid var(--cream3);background:#fff;color:var(--tx2);font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:500;cursor:pointer;transition:all .15s;}
+.sm-opt:hover{border-color:var(--navy3);}
+.sm-opt.sel{background:var(--navy);color:#fff;border-color:var(--navy);}
+.sm-ing{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border:1px solid var(--cream3);background:#fff;margin-bottom:6px;cursor:pointer;transition:all .15s;}
+.sm-ing.off{opacity:.5;background:var(--cream2);}
+.sm-ing-name{font-size:.86rem;font-weight:500;color:var(--tx1);display:flex;align-items:center;gap:8px;}
+.sm-ing.off .sm-ing-name{text-decoration:line-through;color:var(--tx3);}
+.sm-ing-tog{font-size:.62rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--terra);}
+.sm-ing.off .sm-ing-tog{color:var(--tx4);}
+.sm-extra{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;border:1px solid var(--cream3);background:#fff;margin-bottom:6px;cursor:pointer;transition:all .15s;}
+.sm-extra.sel{border-color:var(--terra);background:#fdf3ee;}
+.sm-extra-name{font-size:.86rem;font-weight:500;color:var(--tx1);}
+.sm-extra-p{font-size:.78rem;font-weight:700;color:var(--terra);}
+.sm-foot{position:sticky;bottom:0;background:var(--ink);padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:14px;}
+.sm-total{color:rgba(255,255,255,.5);font-size:.78rem;}
+.sm-total b{font-family:'DM Serif Display',serif;font-size:1.3rem;color:#fff;margin-left:6px;}
+.sm-addbtn{background:var(--terra);color:#fff;border:none;padding:12px 24px;font-family:'DM Sans',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all .2s;}
+.sm-addbtn:hover{background:var(--terra2);}
+
+/* ── INFO STRIP ── */
+.info-strip{background:var(--navy);display:grid;grid-template-columns:repeat(4,1fr);}
+.inf{text-align:center;padding:40px 20px;border-right:1px solid rgba(255,255,255,.05);}
+.inf:last-child{border-right:none;}
+.inf-ico{font-size:1.6rem;margin-bottom:10px;}
+.inf-n{font-family:'DM Serif Display',serif;font-size:1.15rem;color:var(--terra3);}
+.inf-l{font-size:.62rem;letter-spacing:1px;color:rgba(255,255,255,.3);margin-top:5px;line-height:1.5;}
+
+/* ── DIVIDERS ── */
+.divider{height:1px;background:linear-gradient(to right,transparent,var(--cream3),transparent);margin:0;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1000px){
+  .spread-a,.spread-d{grid-template-columns:1fr;min-height:auto;}
+  .spread-a .sp-photo,.spread-d .sp-photo{height:50vw;min-height:300px;}
+  .spread-a .sp-text,.spread-d .sp-text{padding:60px 8%;}
+  .cfg-inner{grid-template-columns:1fr;gap:40px;}
+  .cfg-stage{position:relative;top:0;}
+  .jars-spread{grid-template-columns:1fr;}
+  .combo-grid{grid-template-columns:1fr;}
+  .info-strip{grid-template-columns:repeat(2,1fr);}
+  .inf:nth-child(2){border-right:none;}
   .ft-grid{grid-template-columns:1fr 1fr;}
 }
-@media(max-width:480px){ .ft-grid{grid-template-columns:1fr;} .info{grid-template-columns:1fr;} .inf{border-right:none;border-bottom:1px solid rgba(255,255,255,.08);} }
+@media(max-width:700px){
+  .nav-links,.nav-cta{display:none;}
+  .nav-burger{display:flex;}
+  .cover-h1{font-size:clamp(2.5rem,10vw,4rem);}
+  .sp-h2{font-size:clamp(1.9rem,6vw,3rem);}
+  .sp-number{display:none;}
+  .ft-grid{grid-template-columns:1fr;}
+  .info-strip{grid-template-columns:1fr;}
+  .inf{border-right:none;border-bottom:1px solid rgba(255,255,255,.05);}
+  .combo-cell{padding:30px 24px;}
+  .jar-cell{padding:28px 24px;}
+  .cosbar{padding:14px 5%;}
+}
 </style>
 </head>
 <body>
 
+<!-- SVG LOGO SYMBOL -->
 <svg width="0" height="0" style="position:absolute">
   <defs>
     <linearGradient id="LG" x1="0" y1="0" x2="1" y2="1">
@@ -237,8 +292,8 @@ footer{background:var(--e1);padding:54px 5% 24px;}
       <polygon points="332,196 416,292 248,292" fill="#7ba6d4"/>
       <polygon points="250,138 352,292 148,292" fill="url(#LG)"/>
       <path d="M250,138 L278,180 L262,172 L250,186 L238,172 L222,180 Z" fill="#ffffff"/>
-      <text x="250" y="352" fill="#6d9cce" font-family="'Playfair Display',Georgia,serif" font-size="40" font-weight="600" letter-spacing="10" text-anchor="middle">METANOIA</text>
-      <text x="250" y="386" fill="#8fb8e4" font-family="Karla,Arial,sans-serif" font-size="15" font-weight="600" letter-spacing="7" text-anchor="middle">HAȚEG ALTERNATIV</text>
+      <text x="250" y="352" fill="#6d9cce" font-family="'DM Serif Display',Georgia,serif" font-size="40" font-weight="600" letter-spacing="10" text-anchor="middle">METANOIA</text>
+      <text x="250" y="386" fill="#8fb8e4" font-family="DM Sans,Arial,sans-serif" font-size="15" font-weight="600" letter-spacing="7" text-anchor="middle">HAȚEG ALTERNATIV</text>
       <circle cx="250" cy="408" r="4" fill="#8fb8e4"/>
     </symbol>
   </defs>
@@ -253,26 +308,31 @@ footer{background:var(--e1);padding:54px 5% 24px;}
   <ul class="nav-links">
     <li><a href="index.html">Acasă</a></li>
     <li><a href="meniu.html" class="active">Meniu</a></li>
-    <li><a href="masterplan.html">Masterplan</a></li>
-    <li><a href="forum.html">Forum</a></li>
+    <li><a href="masterplan.html">Povestea noastră</a></li>
+    <li><a href="forum.html">Comunitate</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
-  <a class="nav-cta" href="rezervare.html">Comandă →</a>
+  <a class="nav-cta" href="contact.html">Comandă →</a>
   <button class="nav-burger" onclick="document.getElementById('mobMenu').classList.add('open')" aria-label="Meniu"><span></span><span></span><span></span></button>
 </nav>
 <div class="mob-menu" id="mobMenu">
   <button class="mob-close" onclick="document.getElementById('mobMenu').classList.remove('open')" aria-label="Închide">×</button>
-  <a href="index.html">Acasă</a><a href="meniu.html">Meniu</a><a href="masterplan.html">Masterplan</a>
-  <a href="forum.html">Forum</a><a href="contact.html">Contact</a>
+  <a href="index.html">Acasă</a>
+  <a href="meniu.html">Meniu</a>
+  <a href="masterplan.html">Povestea noastră</a>
+  <a href="forum.html">Comunitate</a>
+  <a href="contact.html">Contact</a>
 </div>
 
-<!-- HERO -->
-<section class="m-hero">
-  <div class="m-hero-in">
-    <div class="s-tag center">Meniul SOul Meal</div>
-    <h1>Tot ce găsești<br><em>în băcănie.</em></h1>
-    <p>Cafea de specialitate și limonade făcute pe loc, sandwich-uri proaspete la sandwich-maker, dulce la doză și borcanele noastre cu rețete de-acasă. Alege, adaugă în coș și ridici de pe DN 68.</p>
+<!-- ══ COVER ══ -->
+<section class="cover">
+  <div class="cover-img"></div>
+  <div class="cover-content">
+    <div class="cover-eyebrow">SOul Meal · DN 68 · Totești</div>
+    <h1 class="cover-h1">Tot ce găsești<br><em>în băcănie.</em></h1>
+    <p class="cover-sub">Cafea de specialitate, limonade stoarse pe loc, sandwich-uri calde la maker și borcanele noastre cu rețete de-acasă — de ridicat de pe drum.</p>
   </div>
+  <div class="cover-scroll">scroll</div>
 </section>
 
 <!-- TICKER -->
@@ -287,53 +347,80 @@ footer{background:var(--e1);padding:54px 5% 24px;}
   <span class="ti">CAFEA NESPRESSO</span><span class="ts">✦</span>
   <span class="ti">LIMONADĂ & FRESH</span><span class="ts">✦</span>
   <span class="ti">SANDWICH-URI PE LOC</span><span class="ts">✦</span>
-  <span class="ti">DULCE LA DOZĂ</span><span class="ts">✦</span>
   <span class="ti">BORCANELE METANOIA</span><span class="ts">✦</span>
   <span class="ti">DN 68 · TOTEȘTI · HAȚEG</span><span class="ts">✦</span>
 </div></div>
 
-<!-- CAFEA -->
-<section class="sec sec-cream" id="cafea">
-  <div class="sec-head"><div class="s-tag">Cafea · Nespresso</div>
-  <h2 class="s-title">Cafea <em>de specialitate.</em></h2>
-  <p class="s-lead">Clasice corecte și specialități de barista, preparate pe loc cu capsule Nespresso®.</p></div>
-  <div class="menu-grid" id="grid-cafea"></div>
+<!-- ══ CAFEA — spread A (text left / photo right) ══ -->
+<section class="spread spread-a" id="cafea">
+  <div class="sp-text">
+    <div class="sp-eyebrow">Cafea · Nespresso</div>
+    <h2 class="sp-h2">Cafea de<br><em>specialitate.</em></h2>
+    <p class="sp-lead">Clasice corecte și specialități de barista, preparate pe loc cu capsule Nespresso®.</p>
+    <div class="item-list" id="list-cafea"></div>
+  </div>
+  <div class="sp-photo">
+    <div style="width:100%;height:100%;background:linear-gradient(135deg,#2a1500 0%,#5a2e0a 40%,#8a5a28 100%);position:absolute;inset:0;"></div>
+  </div>
 </section>
 
-<!-- SPECIALITATI -->
-<section class="sec sec-warm" id="specialitati">
-  <div class="sec-head"><div class="s-tag">Specialități Nespresso</div>
-  <h2 class="s-title">Rețete de <em>barista.</em></h2>
-  <p class="s-lead">Băuturi de autor, preparate pe loc — rotate sezonier.</p></div>
-  <div class="menu-grid" id="grid-spec"></div>
+<div class="divider"></div>
+
+<!-- ══ SPECIALITATI — spread B (full-bleed dark) ══ -->
+<section class="spread spread-b" id="specialitati">
+  <div class="sp-bg">
+    <div style="width:100%;height:100%;background:linear-gradient(160deg,#0d1e30 0%,#1a3048 50%,#2e4e6a 100%);position:absolute;inset:0;"></div>
+  </div>
+  <div class="sp-content">
+    <div class="sp-eyebrow light">Specialități Nespresso</div>
+    <h2 class="sp-h2 white" style="margin-bottom:12px;">Rețete de<br><em>barista.</em></h2>
+    <p class="sp-lead white">Băuturi de autor, preparate pe loc — rotate sezonier.</p>
+    <div class="item-list" id="list-spec"></div>
+  </div>
 </section>
 
-<!-- LIMONADE -->
-<section class="sec sec-cream" id="limonade">
-  <div class="sec-head"><div class="s-tag">Limonadă & Fresh</div>
-  <h2 class="s-title">Răcoritoare, <em>pe loc.</em></h2>
-  <p class="s-lead">Stoarse și amestecate în fața ta, din fructe proaspete.</p></div>
-  <div class="menu-grid" id="grid-lim"></div>
+<div class="divider"></div>
+
+<!-- ══ LIMONADE — spread D (photo left / text right) ══ -->
+<section class="spread spread-d" id="limonade">
+  <div class="sp-photo">
+    <div style="width:100%;height:100%;background:linear-gradient(135deg,#3a5a00 0%,#5a8a10 50%,#a0c040 100%);position:absolute;inset:0;"></div>
+  </div>
+  <div class="sp-text" style="background:var(--cream);">
+    <div class="sp-eyebrow">Limonadă & Fresh</div>
+    <h2 class="sp-h2">Răcoritoare,<br><em>pe loc.</em></h2>
+    <p class="sp-lead">Stoarse și amestecate în fața ta, din fructe proaspete.</p>
+    <div class="item-list" id="list-lim"></div>
+  </div>
 </section>
 
-<!-- SANDWICH -->
-<section class="sec sec-warm" id="sandwich">
-  <div class="sec-head"><div class="s-tag">Sandwich-uri & Bowl</div>
-  <h2 class="s-title">Făcute pe loc, <em>la sandwich-maker.</em></h2>
-  <p class="s-lead">Pe pâine integrală, ciabatta sau chiflă — calde, proaspete, sățioase.</p></div>
-  <div class="menu-grid" id="grid-sand"></div>
+<div class="divider"></div>
+
+<!-- ══ SANDWICH — spread A ══ -->
+<section class="spread spread-a" id="sandwich">
+  <div class="sp-text" style="background:var(--cream2);">
+    <div class="sp-eyebrow">Sandwich-uri & Bowl</div>
+    <h2 class="sp-h2">Făcute pe loc,<br><em>la sandwich-maker.</em></h2>
+    <p class="sp-lead">Pe pâine integrală, ciabatta sau chiflă — calde, proaspete, sățioase.</p>
+    <div class="item-list" id="list-sand"></div>
+  </div>
+  <div class="sp-photo">
+    <div style="width:100%;height:100%;background:linear-gradient(135deg,#3a2200 0%,#7a4a10 50%,#c07828 100%);position:absolute;inset:0;"></div>
+  </div>
 </section>
 
-<!-- CONFIGURATOR -->
-<section class="sec sec-cream" id="configurator">
-  <div class="sec-head"><div class="s-tag">Fă-ți sandwich-ul</div>
-  <h2 class="s-title">Construiește-l <em>cum vrei tu.</em></h2>
-  <p class="s-lead">Alege pâinea și ingredientele — sandwich-ul se formează aici, strat cu strat. Îl facem pe loc, exact așa.</p></div>
-  <div class="cfg-wrap">
+<!-- ══ CONFIGURATOR ══ -->
+<section class="cfg-section" id="configurator">
+  <div class="sp-eyebrow">Fă-ți sandwich-ul</div>
+  <h2 class="sp-h2">Construiește-l<br><em>cum vrei tu.</em></h2>
+  <p class="sp-lead">Alege pâinea și ingredientele — sandwich-ul se formează live, strat cu strat.</p>
+  <div class="cfg-inner">
     <div class="cfg-controls" id="cfgControls"></div>
     <div class="cfg-stage">
-      <div class="cfg-plate" id="cfgPlate">
-        <div class="layer-empty">Alege o pâine ca să începi 🥖</div>
+      <div class="cfg-plate-wrap">
+        <div class="cfg-plate" id="cfgPlate">
+          <div class="layer-empty">Alege o pâine ca să începi 🥖</div>
+        </div>
       </div>
       <div class="cfg-hint" id="cfgHint">Sandwich-ul tău, în direct</div>
       <div class="cfg-foot">
@@ -344,42 +431,52 @@ footer{background:var(--e1);padding:54px 5% 24px;}
   </div>
 </section>
 
-<!-- DULCE -->
-<section class="sec sec-cream" id="dulce">
-  <div class="sec-head"><div class="s-tag">Dulce la doză</div>
-  <h2 class="s-title">Sigilat, <em>de luat la drum.</em></h2>
-  <p class="s-lead">Deserturi de casă ambalate to-go, perfecte lângă o cafea.</p></div>
-  <div class="menu-grid" id="grid-dulce"></div>
-</section>
+<div class="divider"></div>
 
-<!-- PACHETE -->
-<section class="sec sec-warm" id="pachete">
-  <div class="sec-head"><div class="s-tag">Pachetul de drum</div>
-  <h2 class="s-title">Gata <em>împachetat.</em></h2>
-  <p class="s-lead">Combinații pentru călătorie — totul într-o pungă, gata de plecare.</p></div>
-  <div class="combo" id="grid-combo"></div>
-</section>
-
-<!-- BORCANE -->
-<section class="sec sec-green" id="borcane">
-  <div class="sec-head"><div class="s-tag">Borcanele Metanoia</div>
-  <h2 class="s-title">100 de ani de tradiție<br><em>în borcan.</em></h2>
-  <p class="s-lead">Făcute în casă, în Țara Hațegului, după rețetele vechi ale familiei. Întreabă la tejghea pentru disponibilitate și preț.</p></div>
-  <div class="jars" id="grid-jars"></div>
-  <p style="margin-top:34px;font-size:.72rem;color:rgba(255,255,255,.4);max-width:640px;line-height:1.7">
-    Pe lângă borcanele Metanoia, în băcănie găsești și produse <strong style="color:var(--t3)">Aronia Charlottenburg</strong> — sucuri și suplimente din superfructe, ca punct de vânzare partener.
-  </p>
-</section>
-
-<!-- INFO STRIP -->
-<section class="sec sec-green" style="padding:0 5% 70px">
-  <div class="info">
-    <div class="inf"><div class="inf-ico">🛣️</div><div class="inf-n">DN 68</div><div class="inf-l">Totești · Țara Hațegului</div></div>
-    <div class="inf"><div class="inf-ico">☕</div><div class="inf-n">Pe loc</div><div class="inf-l">Cafea & limonadă proaspete</div></div>
-    <div class="inf"><div class="inf-ico">🫙</div><div class="inf-n">De-acasă</div><div class="inf-l">Borcane cu rețete vechi</div></div>
-    <div class="inf"><div class="inf-ico">🎒</div><div class="inf-n">To-go</div><div class="inf-l">Gata împachetat de drum</div></div>
+<!-- ══ DULCE — spread B ══ -->
+<section class="spread spread-b" id="dulce">
+  <div class="sp-bg">
+    <div style="width:100%;height:100%;background:linear-gradient(160deg,#1a0a05 0%,#3a1508 50%,#6a2a10 100%);position:absolute;inset:0;"></div>
+  </div>
+  <div class="sp-content">
+    <div class="sp-eyebrow light">Dulce la doză</div>
+    <h2 class="sp-h2 white">Sigilat,<br><em>de luat la drum.</em></h2>
+    <p class="sp-lead white">Deserturi de casă ambalate to-go, perfecte lângă o cafea.</p>
+    <div class="item-list" id="list-dulce"></div>
   </div>
 </section>
+
+<div class="divider"></div>
+
+<!-- ══ PACHETE ══ -->
+<section style="background:var(--cream2);padding:100px 8%;" id="pachete">
+  <div class="sp-eyebrow">Pachetul de drum</div>
+  <h2 class="sp-h2">Gata<br><em>împachetat.</em></h2>
+  <p class="sp-lead">Combinații pentru călătorie — totul într-o pungă, gata de plecare.</p>
+  <div class="combo-grid" id="grid-combo"></div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ BORCANE — spread C (dark) ══ -->
+<section class="spread-c" id="borcane">
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:30px;">
+    <div>
+      <div class="sp-eyebrow light">Borcanele Metanoia</div>
+      <h2 class="sp-h2 white">100 de ani de tradiție<br><em>în borcan.</em></h2>
+    </div>
+    <p style="font-size:.88rem;color:rgba(255,255,255,.35);max-width:360px;line-height:1.75;font-weight:300;padding-top:60px;">Făcute în casă, în Țara Hațegului, după rețetele vechi ale familiei. Întreabă la tejghea pentru disponibilitate și preț. Pe lângă borcanele noastre, găsești și produse <strong style="color:var(--terra3)">Aronia Charlottenburg</strong> — sucuri din superfructe.</p>
+  </div>
+  <div class="jars-spread" id="grid-jars"></div>
+</section>
+
+<!-- ══ INFO STRIP ══ -->
+<div class="info-strip">
+  <div class="inf"><div class="inf-ico">🛣️</div><div class="inf-n">DN 68</div><div class="inf-l">Totești · Țara Hațegului</div></div>
+  <div class="inf"><div class="inf-ico">☕</div><div class="inf-n">Pe loc</div><div class="inf-l">Cafea & limonadă proaspete</div></div>
+  <div class="inf"><div class="inf-ico">🫙</div><div class="inf-n">De-acasă</div><div class="inf-l">Borcane cu rețete vechi</div></div>
+  <div class="inf"><div class="inf-ico">🎒</div><div class="inf-n">To-go</div><div class="inf-l">Gata împachetat de drum</div></div>
+</div>
 
 <!-- FOOTER -->
 <footer>
@@ -398,8 +495,8 @@ footer{background:var(--e1);padding:54px 5% 24px;}
       <li><a href="#borcane">Borcanele Metanoia</a></li>
     </ul></div>
     <div class="ft-col"><h4>Comandă</h4><ul>
-      <li><a href="rezervare.html">Finalizează comanda</a></li>
-        <li><a href="https://wa.me/40749229686">WhatsApp</a></li>
+      <li><a href="contact.html">Finalizează comanda</a></li>
+      <li><a href="https://wa.me/40749229686">WhatsApp</a></li>
     </ul></div>
     <div class="ft-col"><h4>Contact & Legal</h4><ul>
       <li><a href="https://wa.me/40749229686">+40 749 229 686</a></li>
@@ -427,66 +524,65 @@ footer{background:var(--e1);padding:54px 5% 24px;}
   </div>
   <div class="cosbar-btns">
     <button class="cosbar-clear" onclick="golesteCos()">golește</button>
-    <a class="cosbar-go" href="rezervare.html">Finalizează →</a>
+    <a class="cosbar-go" href="contact.html">Finalizează →</a>
   </div>
 </div>
 
 <script>
-/* ====== DATE MENIU (prețuri orientative — ajustează după costuri) ====== */
+/* ====== DATE MENIU ====== */
 const CAFEA=[
-  {n:"Espresso",d:"Shot intens, corp plin.",p:8,ico:"☕",bg:"linear-gradient(135deg,#2a1500,#5a2a00)"},
-  {n:"Espresso lung",d:"Espresso alungit, mai blând.",p:9,ico:"☕",bg:"linear-gradient(135deg,#2e1a0a,#5c3517)"},
-  {n:"Cappuccino",d:"Espresso, lapte cald și spumă cremoasă.",p:12,ico:"🥛",bg:"linear-gradient(135deg,#3d2800,#7a5010)"},
-  {n:"Caffè latte",d:"Mult lapte catifelat peste un shot rotund.",p:14,ico:"🥛",bg:"linear-gradient(135deg,#3a2800,#6a4a10)"},
+  {n:"Espresso",d:"Shot intens, corp plin.",p:8},
+  {n:"Espresso lung",d:"Espresso alungit, mai blând.",p:9},
+  {n:"Cappuccino",d:"Espresso, lapte cald și spumă cremoasă.",p:12},
+  {n:"Caffè latte",d:"Mult lapte catifelat peste un shot rotund.",p:14},
 ];
 const SPEC=[
-  {n:"Tiramisu Cappuccino",d:"Cappuccino cu note de tiramisu, pudrat cu cacao.",p:18,ico:"🍮",bg:"linear-gradient(135deg,#2e1000,#5a2200)"},
-  {n:"Dolce Truffle Cappuccino",d:"Cremos, cu aromă fină de trufă dulce.",p:17,ico:"🍫",bg:"linear-gradient(135deg,#1e1108,#3a2810)"},
-  {n:"Salted Caramel Mocha",d:"Cafea, ciocolată și caramel sărat.",p:17,ico:"🧂",bg:"linear-gradient(135deg,#2a1500,#6a4010)"},
-  {n:"Hazelnut Affogato",d:"Espresso turnat peste înghețată, cu alună.",p:16,ico:"🍨",bg:"linear-gradient(135deg,#2e1a0a,#5c3517)"},
-  {n:"Iced Rosemary Latte",d:"Latte rece cu sirop de rozmarin.",p:15,ico:"🌿",bg:"linear-gradient(135deg,#1a2e10,#2a5018)"},
-  {n:"Fizzy Iced Peach",d:"Cafea rece, acidulată, cu piersică.",p:15,ico:"🍑",bg:"linear-gradient(135deg,#3a2010,#7a4020)"},
+  {n:"Tiramisu Cappuccino",d:"Cappuccino cu note de tiramisu, pudrat cu cacao.",p:18},
+  {n:"Dolce Truffle Cappuccino",d:"Cremos, cu aromă fină de trufă dulce.",p:17},
+  {n:"Salted Caramel Mocha",d:"Cafea, ciocolată și caramel sărat.",p:17},
+  {n:"Hazelnut Affogato",d:"Espresso turnat peste înghețată, cu alună.",p:16},
+  {n:"Iced Rosemary Latte",d:"Latte rece cu sirop de rozmarin.",p:15},
+  {n:"Fizzy Iced Peach",d:"Cafea rece, acidulată, cu piersică.",p:15},
 ];
 const LIM=[
-  {n:"Limonadă clasică",d:"Lămâie proaspătă și mentă.",p:12,ico:"🍋",bg:"linear-gradient(135deg,#3a4a00,#7a8a10)"},
-  {n:"Limonadă cu aronia",d:"Cu superfructe Aronia Charlottenburg.",p:15,ico:"🫐",bg:"linear-gradient(135deg,#2a1040,#5a2080)"},
-  {n:"Limonadă fructe de pădure",d:"Afine, zmeură, coacăze.",p:14,ico:"🍓",bg:"linear-gradient(135deg,#3a0020,#7a1040)"},
-  {n:"Fresh de portocale",d:"Stors pe loc, 100% portocale.",p:14,ico:"🍊",bg:"linear-gradient(135deg,#5a2a00,#c06010)"},
-  {n:"Fresh mere & morcovi",d:"Dulce-natural, plin de vitamine.",p:13,ico:"🥕",bg:"linear-gradient(135deg,#4a2800,#a05810)"},
+  {n:"Limonadă clasică",d:"Lămâie proaspătă și mentă.",p:12},
+  {n:"Limonadă cu aronia",d:"Cu superfructe Aronia Charlottenburg.",p:15},
+  {n:"Limonadă fructe de pădure",d:"Afine, zmeură, coacăze.",p:14},
+  {n:"Fresh de portocale",d:"Stors pe loc, 100% portocale.",p:14},
+  {n:"Fresh mere & morcovi",d:"Dulce-natural, plin de vitamine.",p:13},
 ];
 const SAND=[
-  {n:"Grecesc",d:"Ou ochi, feta, roșii cherry, spanac.",p:16,ico:"🥪",bg:"linear-gradient(135deg,#1e3d1a,#2d6025)",ing:["Ou ochi","Feta","Roșii cherry","Spanac"]},
-  {n:"Proteic",d:"Pui la grătar, hummus, spanac.",p:19,ico:"🥪",bg:"linear-gradient(135deg,#2a1500,#5a3000)",ing:["Pui la grătar","Hummus","Spanac"]},
-  {n:"Mediteranean",d:"Pui, tzatziki, roșii uscate.",p:19,ico:"🥪",bg:"linear-gradient(135deg,#1a2e10,#2a5018)",ing:["Pui la grătar","Tzatziki","Roșii uscate"]},
-  {n:"Energizant",d:"Ton, hummus, castraveți.",p:18,ico:"🥪",bg:"linear-gradient(135deg,#1e2a18,#304a28)",ing:["Ton","Hummus","Castraveți"]},
-  {n:"Gourmet",d:"Prosciutto, ricotta, rucola, fistic.",p:22,ico:"🥪",bg:"linear-gradient(135deg,#3a1018,#7a2030)",ing:["Prosciutto","Ricotta","Rucola","Fistic"]},
-  {n:"De vară",d:"Cremă de brânză, dovlecel, ceapă verde.",p:15,ico:"🥪",bg:"linear-gradient(135deg,#1e3a2a,#2e6048)",ing:["Cremă de brânză","Dovlecel","Ceapă verde"]},
-  {n:"Bowl-ul zilei",d:"Proteină + legume de sezon, la bol.",p:24,ico:"🥗",bg:"linear-gradient(135deg,#1a2e10,#3a6020)",ing:["Proteina zilei","Legume de sezon"],nobread:true},
+  {n:"Grecesc",d:"Ou ochi, feta, roșii cherry, spanac.",p:16,ing:["Ou ochi","Feta","Roșii cherry","Spanac"]},
+  {n:"Proteic",d:"Pui la grătar, hummus, spanac.",p:19,ing:["Pui la grătar","Hummus","Spanac"]},
+  {n:"Mediteranean",d:"Pui, tzatziki, roșii uscate.",p:19,ing:["Pui la grătar","Tzatziki","Roșii uscate"]},
+  {n:"Energizant",d:"Ton, hummus, castraveți.",p:18,ing:["Ton","Hummus","Castraveți"]},
+  {n:"Gourmet",d:"Prosciutto, ricotta, rucola, fistic.",p:22,ing:["Prosciutto","Ricotta","Rucola","Fistic"]},
+  {n:"De vară",d:"Cremă de brânză, dovlecel, ceapă verde.",p:15,ing:["Cremă de brânză","Dovlecel","Ceapă verde"]},
+  {n:"Bowl-ul zilei",d:"Proteină + legume de sezon, la bol.",p:24,ing:["Proteina zilei","Legume de sezon"],nobread:true},
 ];
 const DULCE=[
-  {n:"Fursecuri de casă cu ovăz",d:"Măr-scorțișoară · ciocolată · carrot cake.",p:6,ico:"🍪",bg:"linear-gradient(135deg,#3a2800,#6a4a10)"},
-  {n:"Desert cu aronia, la pahar",d:"Cremos, cu superfructe.",p:14,ico:"🫐",bg:"linear-gradient(135deg,#2a1040,#5a2080)"},
-  {n:"Tiramisu la doză",d:"Clasic italian, sigilat to-go.",p:16,ico:"🍮",bg:"linear-gradient(135deg,#2e1000,#5a2200)"},
+  {n:"Fursecuri de casă cu ovăz",d:"Măr-scorțișoară · ciocolată · carrot cake.",p:6},
+  {n:"Desert cu aronia, la pahar",d:"Cremos, cu superfructe.",p:14},
+  {n:"Tiramisu la doză",d:"Clasic italian, sigilat to-go.",p:16},
 ];
 const COMBO=[
   {n:"Pachetul de drum",d:"Un sandwich la alegere + o cafea + un fursec. Gata de plecare.",p:35,ico:"🎒"},
   {n:"Pachet familie",d:"4 sandwich-uri + 2 limonade. Pentru tot echipajul din mașină.",p:79,ico:"👨‍👩‍👧"},
 ];
 const JARS=[
-  {n:"Zacuscă Metanoia",d:"Rețeta veche a familiei — „100 de ani de tradiție”.",ico:"🫙"},
+  {n:"Zacuscă Metanoia",d:"Rețeta veche a familiei — „100 de ani de tradiție".",ico:"🫙"},
   {n:"Ketchup de casă",d:"Din roșii coapte, fără conservanți.",ico:"🍅"},
   {n:"Bulion de grădină",d:"Roșii pasate, gros și aromat.",ico:"🥫"},
   {n:"Dulcețuri",d:"Căpșuni · afine · măceșe · piersici · prune.",ico:"🍯"},
 ];
 
-/* ====== COS (localStorage cheia 'metanoia_cart') ====== */
+/* ====== COS ====== */
 let cart=[];
 try{cart=JSON.parse(localStorage.getItem("metanoia_cart")||"[]");}catch(e){cart=[];}
-
-function saveCart(){try{localStorage.setItem("metanoia_cart",JSON.stringify(cart));}catch(e){} renderCos();}
+function saveCart(){try{localStorage.setItem("metanoia_cart",JSON.stringify(cart));}catch(e){}renderCos();}
 function addCart(nume,pret){
   const ex=cart.find(x=>x.nume===nume);
-  if(ex){ex.cant++;} else {cart.push({nume,pret,cant:1});}
+  if(ex){ex.cant++;}else{cart.push({nume,pret,cant:1});}
   saveCart();
 }
 function golesteCos(){cart=[];saveCart();}
@@ -498,52 +594,64 @@ function renderCos(){
   document.getElementById("cosbar").classList.toggle("show",n>0);
 }
 
-/* ====== RENDER CARDS ====== */
-function card(it){
-  const pretHtml = it.p ? `<div class="mc-price">${it.p}<small> lei</small></div>
-      <button class="mc-add" onclick='addToCart(this,${JSON.stringify(it.n)},${it.p})'>+ Adaugă</button>`
-    : `<div class="mc-tba">la tejghea</div>`;
-  return `<div class="mc">
-    <div class="mc-top" style="background:${it.bg}">${it.ico}
-      <div class="mc-lbl"><span class="mc-lbl-txt">${it.lbl||""}</span>${it.pill?`<span class="mc-pill">${it.pill}</span>`:""}</div>
+/* ====== RENDER ROW (editorial) ====== */
+function itemRow(it,dark,build,buildIdx){
+  const btnHtml = build
+    ? `<button class="item-btn build" onclick="openSand(${buildIdx})">✦ Personalizează</button>`
+    : it.p
+      ? `<button class="item-btn${dark?' white-outline':''}" onclick='addToCartBtn(this,${JSON.stringify(it.n)},${it.p})'>+ Adaugă</button>`
+      : `<span style="font-size:.68rem;letter-spacing:1px;color:${dark?'rgba(255,255,255,.3)':'var(--tx4)'};text-transform:uppercase;font-weight:600;">la tejghea</span>`;
+  const priceHtml = it.p
+    ? `<div class="item-price${dark?' white':''}">${it.p}<small> lei</small></div>`
+    : '';
+  return `<div class="item-row${dark?' white':''}">
+    <div class="item-info">
+      <div class="item-name${dark?' white':''}">${it.n}</div>
+      <div class="item-desc${dark?' white':''}">${it.d}</div>
     </div>
-    <div class="mc-body">
-      <div class="mc-name">${it.n}</div>
-      <p class="mc-desc">${it.d}</p>
-      <div class="mc-foot">${pretHtml}</div>
-    </div></div>`;
+    <div class="item-right">${priceHtml}${btnHtml}</div>
+  </div>`;
 }
-function addToCart(btn,nume,pret){
+
+function addToCartBtn(btn,nume,pret){
   addCart(nume,pret);
-  btn.textContent="✓ Adăugat"; btn.classList.add("added");
+  btn.textContent="✓"; btn.classList.add("added");
   setTimeout(()=>{btn.textContent="+ Adaugă";btn.classList.remove("added");},1100);
 }
-function fill(id,arr,lbl,pill){
-  document.getElementById(id).innerHTML=arr.map(x=>card({...x,lbl,pill})).join("");
-}
-fill("grid-cafea",CAFEA,"☕ Cafea","Pe loc");
-fill("grid-spec",SPEC,"✦ Specialitate","Barista");
-fill("grid-lim",LIM,"🍋 Răcoritoare","Fresh");
-fill("grid-dulce",DULCE,"🍮 Dulce","To-go");
 
-/* ===== SANDVIȘURI cu buton Personalizează ===== */
+function fillList(id,arr,dark,sandbox){
+  document.getElementById(id).innerHTML=arr.map((it,i)=>itemRow(it,dark,sandbox,i)).join("");
+}
+
+fillList("list-cafea",CAFEA,false,false);
+fillList("list-spec",SPEC,true,false);
+fillList("list-lim",LIM,false,false);
+fillList("list-dulce",DULCE,true,false);
+fillList("list-sand",SAND,false,true);
+
+/* ══ COMBO ══ */
+document.getElementById("grid-combo").innerHTML=COMBO.map(c=>`
+  <div class="combo-cell">
+    <div class="combo-ico">${c.ico}</div>
+    <div class="combo-nm">${c.n}</div>
+    <p class="combo-ds">${c.d}</p>
+    <div class="combo-foot">
+      <div class="combo-price">${c.p}<small> lei</small></div>
+      <button class="item-btn" onclick='addToCartBtn(this,${JSON.stringify(c.n)},${c.p})'>+ Adaugă</button>
+    </div>
+  </div>`).join("");
+
+/* ══ JARS ══ */
+document.getElementById("grid-jars").innerHTML=JARS.map(j=>`
+  <div class="jar-cell">
+    <div class="jar-ico">${j.ico}</div>
+    <div class="jar-nm">${j.n}</div>
+    <p class="jar-ds">${j.d}</p>
+  </div>`).join("");
+
+/* ══════ MODAL PERSONALIZARE SANDWICH ══════ */
 const PAINI=["Integrală","Ciabatta","Chiflă"];
 const EXTRAS=[{n:"Extra pui la grătar",p:6},{n:"Extra ton",p:5},{n:"Extra ou",p:3},{n:"Extra cașcaval",p:4},{n:"Extra hummus",p:3}];
-document.getElementById("grid-sand").innerHTML=SAND.map((x,i)=>`
-  <div class="mc">
-    <div class="mc-top" style="background:${x.bg}">${x.ico}
-      <div class="mc-lbl"><span class="mc-lbl-txt">🥪 Pe loc</span><span class="mc-pill">Sandwich-maker</span></div>
-    </div>
-    <div class="mc-body">
-      <div class="mc-name">${x.n}</div>
-      <p class="mc-desc">${x.d}</p>
-      <div class="mc-foot">
-        <div class="mc-price">${x.p}<small> lei</small></div>
-        <button class="mc-add sand-build" onclick="openSand(${i})">✦ Personalizează</button>
-      </div>
-    </div></div>`).join("");
-
-/* ===== MODAL LOGIC ===== */
 let sandSel={};
 function openSand(i){
   const s=SAND[i];
@@ -557,24 +665,23 @@ function closeSand(){
   document.body.style.overflow="";
 }
 function sandTotal(){
-  const s=SAND[sandSel.i];
-  return s.p + sandSel.extras.reduce((t,e)=>t+EXTRAS[e].p,0);
+  return SAND[sandSel.i].p+sandSel.extras.reduce((t,e)=>t+EXTRAS[e].p,0);
 }
 function renderSand(){
   const s=SAND[sandSel.i];
-  const paineHtml = s.nobread ? "" : `
+  const paineHtml=s.nobread?"":`
     <div class="sm-group">
       <span class="sm-glabel">Alege pâinea</span>
       <div class="sm-opts">${PAINI.map(p=>`<button class="sm-opt ${sandSel.paine===p?'sel':''}" onclick="setPaine('${p}')">${p}</button>`).join("")}</div>
     </div>`;
-  const modHtml = `
+  const modHtml=`
     <div class="sm-group">
       <span class="sm-glabel">Cum îl vrei</span>
       <div class="sm-opts">
         ${["Cald","Rece"].map(m=>`<button class="sm-opt ${sandSel.mod===m?'sel':''}" onclick="setMod('${m}')">${m==='Cald'?'🔥 Cald (la maker)':'❄️ Rece'}</button>`).join("")}
       </div>
     </div>`;
-  const ingHtml = `
+  const ingHtml=`
     <div class="sm-group">
       <span class="sm-glabel">Ingrediente — atinge ca să scoți</span>
       ${s.ing.map(ing=>{const off=sandSel.removed.includes(ing);
@@ -582,7 +689,7 @@ function renderSand(){
           <span class="sm-ing-name">${off?'✕':'✓'} ${ing}</span>
           <span class="sm-ing-tog">${off?'Adaugă':'Fără'}</span></div>`;}).join("")}
     </div>`;
-  const extraHtml = `
+  const extraHtml=`
     <div class="sm-group">
       <span class="sm-glabel">Extra proteină / topping</span>
       ${EXTRAS.map((e,ei)=>{const sel=sandSel.extras.includes(ei);
@@ -591,7 +698,7 @@ function renderSand(){
           <span class="sm-extra-p">+${e.p} lei</span></div>`;}).join("")}
     </div>`;
   document.getElementById("smCard").innerHTML=`
-    <div class="sm-hero" style="background:${s.bg}">${s.ico}
+    <div class="sm-hero" style="background:linear-gradient(135deg,var(--navy),var(--navy2))">${s.ico||'🥪'}
       <button class="sm-close" onclick="closeSand()">×</button>
     </div>
     <div class="sm-body">
@@ -608,12 +715,12 @@ function setPaine(p){sandSel.paine=p;renderSand();}
 function setMod(m){sandSel.mod=m;renderSand();}
 function toggleIng(ing){
   const idx=sandSel.removed.indexOf(ing);
-  if(idx>=0)sandSel.removed.splice(idx,1); else sandSel.removed.push(ing);
+  if(idx>=0)sandSel.removed.splice(idx,1);else sandSel.removed.push(ing);
   renderSand();
 }
 function toggleExtra(ei){
   const idx=sandSel.extras.indexOf(ei);
-  if(idx>=0)sandSel.extras.splice(idx,1); else sandSel.extras.push(ei);
+  if(idx>=0)sandSel.extras.splice(idx,1);else sandSel.extras.push(ei);
   renderSand();
 }
 function addSand(){
@@ -629,18 +736,7 @@ function addSand(){
   closeSand();
 }
 
-document.getElementById("grid-combo").innerHTML=COMBO.map(c=>`
-  <div class="cb"><div class="cb-ico">${c.ico}</div>
-    <div class="cb-name">${c.n}</div><p class="cb-desc">${c.d}</p>
-    <div class="cb-foot"><div class="cb-price">${c.p}<small> lei</small></div>
-      <button class="mc-add" onclick='addToCart(this,${JSON.stringify(c.n)},${c.p})'>+ Adaugă</button></div>
-  </div>`).join("");
-
-document.getElementById("grid-jars").innerHTML=JARS.map(j=>`
-  <div class="jar"><div class="jar-ico">${j.ico}</div>
-    <div class="jar-name">${j.n}</div><p class="jar-desc">${j.d}</p></div>`).join("");
-
-/* ===== CONFIGURATOR SANDWICH ===== */
+/* ══════ CONFIGURATOR SANDWICH ══════ */
 const CFG={
   paine:{label:"Pâinea",sub:"alege una",req:true,multi:false,opts:[
     {n:"Pâine de casă",p:0,col:"#c98a4a"},
@@ -680,10 +776,9 @@ const CFG={
 };
 const CFG_BAZA=14;
 let cfgSel={paine:null,proteina:[],branza:[],legume:[],sos:[],mod:"Cald"};
-
 function cfgPrice(){
   let t=CFG_BAZA;
-  if(cfgSel.paine!==null) t+=CFG.paine.opts[cfgSel.paine].p;
+  if(cfgSel.paine!==null)t+=CFG.paine.opts[cfgSel.paine].p;
   ["proteina","branza","legume","sos"].forEach(cat=>{cfgSel[cat].forEach(i=>t+=CFG[cat].opts[i].p);});
   return t;
 }
@@ -691,9 +786,9 @@ function cfgRenderControls(){
   let html="";
   for(const cat in CFG){
     const g=CFG[cat];
-    html+=`<div class="cfg-g"><div class="cfg-glabel">${g.label} <span>· ${g.sub}</span></div><div class="cfg-opts">`;
+    html+=`<div class="cfg-g"><div class="cfg-glabel">${g.label} · ${g.sub}</div><div class="cfg-opts">`;
     g.opts.forEach((o,i)=>{
-      const sel = g.multi ? cfgSel[cat].includes(i) : cfgSel[cat]===i;
+      const sel=g.multi?cfgSel[cat].includes(i):cfgSel[cat]===i;
       html+=`<button class="cfg-chip ${sel?'sel':''}" onclick="cfgPick('${cat}',${i})">${o.n}${o.p?`<span class="px">+${o.p}</span>`:''}</button>`;
     });
     html+=`</div></div>`;
@@ -704,15 +799,13 @@ function cfgRenderControls(){
   document.getElementById("cfgControls").innerHTML=html;
 }
 function cfgPick(cat,i){
-  if(CFG[cat].multi){
-    const idx=cfgSel[cat].indexOf(i);
-    if(idx>=0)cfgSel[cat].splice(idx,1); else cfgSel[cat].push(i);
-  } else { cfgSel[cat]= cfgSel[cat]===i ? null : i; }
-  cfgRenderControls(); cfgRenderPlate();
+  if(CFG[cat].multi){const idx=cfgSel[cat].indexOf(i);if(idx>=0)cfgSel[cat].splice(idx,1);else cfgSel[cat].push(i);}
+  else{cfgSel[cat]=cfgSel[cat]===i?null:i;}
+  cfgRenderControls();cfgRenderPlate();
 }
 function cfgSetMod(m){cfgSel.mod=m;cfgRenderControls();}
 function shade(hex){
-  const c=hex.replace('#',''); if(c.length<6)return hex;
+  const c=hex.replace('#','');if(c.length<6)return hex;
   const r=Math.max(0,parseInt(c.substr(0,2),16)-30);
   const g=Math.max(0,parseInt(c.substr(2,2),16)-30);
   const b=Math.max(0,parseInt(c.substr(4,2),16)-30);
@@ -732,7 +825,7 @@ function cfgRenderPlate(){
   ["legume","proteina","branza","sos"].forEach(cat=>{
     cfgSel[cat].forEach(i=>{
       const o=CFG[cat].opts[i];
-      const txtcol = ['#f3efe4','#f6f2e8','#f7f3e6','#eef0e8','#f5ecc8','#f4d97a'].includes(o.col)?'#5f6c80':'rgba(255,255,255,.92)';
+      const txtcol=['#f3efe4','#f6f2e8','#f7f3e6','#eef0e8','#f5ecc8','#f4d97a'].includes(o.col)?'#5f6c80':'rgba(255,255,255,.92)';
       layers+=`<div class="layer" style="background:linear-gradient(135deg,${o.col},${shade(o.col)});height:24px;color:${txtcol};text-shadow:none">${o.n}</div>`;
     });
   });
@@ -741,7 +834,7 @@ function cfgRenderPlate(){
   document.getElementById("cfgTotal").textContent=cfgPrice()+" lei";
   document.getElementById("cfgAdd").disabled=false;
   const nr=cfgSel.proteina.length+cfgSel.branza.length+cfgSel.legume.length+cfgSel.sos.length;
-  document.getElementById("cfgHint").textContent= nr? `${nr} ingrediente · ${cfgSel.mod.toLowerCase()}` : "Adaugă ingrediente 👇";
+  document.getElementById("cfgHint").textContent=nr?`${nr} ingrediente · ${cfgSel.mod.toLowerCase()}`:"Adaugă ingrediente 👇";
 }
 function addConfig(){
   if(cfgSel.paine===null)return;
@@ -750,11 +843,10 @@ function addConfig(){
   parts.push(cfgSel.mod.toLowerCase());
   addCart("Sandwich-ul tău ("+parts.join(", ")+")",cfgPrice());
   cfgSel={paine:null,proteina:[],branza:[],legume:[],sos:[],mod:"Cald"};
-  cfgRenderControls(); cfgRenderPlate();
+  cfgRenderControls();cfgRenderPlate();
   document.getElementById("cfgHint").textContent="✓ Adăugat! Construiește altul 🥪";
 }
-cfgRenderControls(); cfgRenderPlate();
-
+cfgRenderControls();cfgRenderPlate();
 renderCos();
 </script>
 </body>
