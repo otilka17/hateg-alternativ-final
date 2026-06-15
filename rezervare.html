@@ -13,7 +13,7 @@
      Pentru producție: schimbă &currency=RON dacă PayPal România suportă RON,
      altfel lasă EUR și convertește prețurile.
      Adaugă &disable-funding=credit,card dacă vrei doar butonul PayPal. -->
-<script src="https://www.paypal.com/sdk/js?client-id=ASaZzZjepNTlqtzGfX7hnQv9ZM8STfYvhfnBuNVE0ruo_-jmMbTOjAagdLEEHT5Cu6bo0QF0IBf6Ry4p&currency=EUR&locale=ro_RO" defer></script>
+<script src="https://www.paypal.com/sdk/js?client-id=ASaZzZjepNTlqtzGfX7hnQv9ZM8STfYvhfnBuNVE0ruo_-jmMbTOjAagdLEEHT5Cu6bo0QF0IBf6Ry4p&currency=EUR&intent=capture&components=buttons&locale=ro_RO"></script>
 
 <style>
 :root{
@@ -383,6 +383,9 @@ const TRANSPORT_RON = 15;        // cost transport livrare la adresă
 /* ══════════════════════════════════════════ */
 
 let cart = [];
+function loadCart() {
+  try { const s = localStorage.getItem("metanoia_cart"); if(s) cart = JSON.parse(s); } catch(e) { cart = []; }
+}
 let deliveryMode = "pickup";
 
 /* ── INIT ── */
@@ -623,7 +626,14 @@ function initPayPal() {
     /* STEP 3: erori */
     onError: function(err) {
       console.error("PayPal error:", err);
-      document.getElementById("errMsg").textContent = "PayPal a returnat o eroare. Încearcă din nou sau contactează-ne.";
+      const msg = err && err.message ? err.message : JSON.stringify(err);
+      // Erori comune PayPal Live
+      let userMsg = "PayPal a returnat o eroare. ";
+      if(msg.includes("INSTRUMENT_DECLINED")) userMsg += "Cardul a fost refuzat — încearcă alt card sau plătește pe WhatsApp.";
+      else if(msg.includes("UNPROCESSABLE_ENTITY")) userMsg += "Contul PayPal nu e verificat complet pentru tranzacții live.";
+      else if(msg.includes("client-id")) userMsg += "Client ID invalid — verifică configurarea PayPal.";
+      else userMsg += "Încearcă din nou sau comandă pe WhatsApp.";
+      document.getElementById("errMsg").textContent = userMsg;
       showState("error");
     },
 
@@ -636,8 +646,15 @@ function initPayPal() {
 }
 
 /* ── START ── */
-window.addEventListener("DOMContentLoaded", init);
+function waitForPayPal(cb, tries=0) {
+  if(typeof paypal !== 'undefined') { cb(); return; }
+  if(tries > 30) { console.warn('PayPal SDK nu s-a încărcat'); return; }
+  setTimeout(() => waitForPayPal(cb, tries+1), 200);
+}
+window.addEventListener("DOMContentLoaded", function() {
+  loadCart();
+  waitForPayPal(init);
+});
 </script>
 </body>
 </html>
-p
