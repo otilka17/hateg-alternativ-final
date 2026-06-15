@@ -275,6 +275,83 @@ footer{background:var(--ink2);padding:60px 8% 28px;}
   .jar-cell{padding:28px 24px;}
   .cosbar{padding:14px 5%;}
 }
+/* ── CALCULATOR KCAL ── */
+.kcal-section{background:var(--navy);padding:100px 8%;}
+.kcal-inner{display:grid;grid-template-columns:1fr 1.2fr;gap:70px;align-items:start;}
+.kcal-intro .sp-eyebrow{color:var(--terra3);}
+.kcal-intro .sp-eyebrow::before{background:var(--terra3);}
+.kcal-intro .sp-h2{color:#fff;}
+.kcal-intro .sp-h2 em{color:var(--terra3);}
+.kcal-intro .sp-lead{color:rgba(255,255,255,.4);}
+
+.kcal-card{background:var(--cream);padding:36px 32px;}
+
+/* form */
+.kcal-row{display:flex;gap:14px;margin-bottom:20px;}
+.kcal-row.three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
+.kcal-field{display:flex;flex-direction:column;gap:7px;flex:1;}
+.kcal-label{font-size:.6rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--navy3);}
+.kcal-label span{font-weight:400;text-transform:none;letter-spacing:0;color:var(--tx4);}
+.kcal-input{font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:500;color:var(--tx1);background:#fff;border:1px solid var(--cream3);padding:11px 13px;width:100%;outline:none;transition:border-color .2s;}
+.kcal-input:focus{border-color:var(--navy3);}
+.kcal-select{font-family:'DM Sans',sans-serif;font-size:.84rem;color:var(--tx1);background:#fff;border:1px solid var(--cream3);padding:11px 34px 11px 13px;width:100%;outline:none;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235f6c80' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;cursor:pointer;}
+
+.kcal-toggle{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--cream3);}
+.ktog{padding:11px;font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:600;color:var(--tx3);background:var(--cream);border:none;cursor:pointer;transition:all .2s;}
+.ktog.active{background:var(--navy);color:#fff;}
+
+.kcal-goals{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border:1px solid var(--cream3);}
+.kgoal{padding:11px 8px;font-family:'DM Sans',sans-serif;font-size:.76rem;font-weight:600;color:var(--tx3);background:var(--cream);border:none;cursor:pointer;transition:all .2s;white-space:nowrap;}
+.kgoal.active{background:var(--navy);color:#fff;}
+
+.kcal-btn{width:100%;background:var(--terra);color:#fff;border:none;padding:15px;font-family:'DM Sans',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .2s;margin-top:6px;}
+.kcal-btn:hover{background:var(--terra2);}
+
+/* result */
+.kcal-res-header{display:flex;align-items:center;gap:24px;margin-bottom:28px;padding-bottom:24px;border-bottom:1px solid var(--cream3);}
+.kcal-res-main{}
+.kcal-res-num{font-family:'DM Serif Display',serif;font-size:3.5rem;color:var(--terra);line-height:1;}
+.kcal-res-label{font-size:.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--tx4);margin-top:4px;}
+.kcal-res-macros{display:flex;flex-direction:column;gap:6px;}
+.kcal-macro{display:flex;align-items:baseline;gap:6px;}
+.kcal-macro span{font-family:'DM Serif Display',serif;font-size:1.3rem;color:var(--navy);}
+.kcal-macro small{font-size:.68rem;color:var(--tx4);font-family:'DM Sans',sans-serif;}
+
+.kcal-bar-wrap{margin-bottom:28px;}
+.kcal-bar-label{font-size:.58rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--tx4);margin-bottom:8px;}
+.kcal-bar{height:10px;background:var(--cream2);display:flex;overflow:hidden;}
+.kcal-bar-seg{height:100%;transition:width .6s ease;}
+.kcal-bar-seg.prot{background:#2e7d4f;}
+.kcal-bar-seg.carb{background:var(--terra2);}
+.kcal-bar-seg.fat{background:var(--navy3);}
+.kcal-bar-legend{display:flex;gap:16px;margin-top:7px;}
+.kcal-bar-legend span{font-size:.68rem;color:var(--tx3);display:flex;align-items:center;gap:5px;}
+.dot{width:8px;height:8px;border-radius:50%;display:inline-block;flex-shrink:0;}
+.dot.prot{background:#2e7d4f;}
+.dot.carb{background:var(--terra2);}
+.dot.fat{background:var(--navy3);}
+
+.kcal-suggest-title{font-size:.6rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--navy3);margin-bottom:12px;}
+.kcal-suggest{display:flex;flex-direction:column;gap:0;margin-bottom:24px;}
+.ksug-item{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--cream3);gap:12px;}
+.ksug-item:last-child{border-bottom:none;}
+.ksug-name{font-size:.88rem;color:var(--tx1);font-weight:500;}
+.ksug-info{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.ksug-kcal{font-size:.72rem;color:var(--tx4);}
+.ksug-price{font-family:'DM Serif Display',serif;font-size:1rem;color:var(--terra);}
+.ksug-add{background:transparent;border:1px solid var(--navy3);color:var(--navy);padding:6px 12px;font-family:'DM Sans',sans-serif;font-size:.6rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all .2s;white-space:nowrap;}
+.ksug-add:hover{background:var(--navy);color:#fff;}
+
+.kcal-reset{background:none;border:none;font-family:'DM Sans',sans-serif;font-size:.72rem;color:var(--tx3);cursor:pointer;text-decoration:underline;padding:0;}
+.kcal-reset:hover{color:var(--navy);}
+
+@media(max-width:900px){
+  .kcal-inner{grid-template-columns:1fr;gap:36px;}
+  .kcal-card{padding:24px 20px;}
+}
+@media(max-width:480px){
+  .kcal-row.three{grid-template-columns:1fr 1fr;}.kcal-row.three .kcal-field:last-child{grid-column:1/-1;}
+}
 </style>
 </head>
 <body>
@@ -454,6 +531,105 @@ footer{background:var(--ink2);padding:60px 8% 28px;}
   <h2 class="sp-h2">Gata<br><em>împachetat.</em></h2>
   <p class="sp-lead">Combinații pentru călătorie — totul într-o pungă, gata de plecare.</p>
   <div class="combo-grid" id="grid-combo"></div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ CALCULATOR KCAL ══ -->
+<section class="kcal-section" id="calculator">
+  <div class="kcal-inner">
+    <div class="kcal-intro">
+      <div class="sp-eyebrow">Nutriție · SOul Meal</div>
+      <h2 class="sp-h2">Câte calorii<br><em>ai nevoie azi?</em></h2>
+      <p class="sp-lead">Introdu datele tale și îți arătăm ce din meniu se potrivește perfect cu necesarul tău zilnic.</p>
+    </div>
+
+    <div class="kcal-card">
+      <!-- FORM -->
+      <div class="kcal-form" id="kcalForm">
+        <div class="kcal-row">
+          <div class="kcal-field">
+            <label class="kcal-label">Sex</label>
+            <div class="kcal-toggle">
+              <button class="ktog active" id="togM" onclick="setSex('m')">♂ Bărbat</button>
+              <button class="ktog" id="togF" onclick="setSex('f')">♀ Femeie</button>
+            </div>
+          </div>
+        </div>
+        <div class="kcal-row three">
+          <div class="kcal-field">
+            <label class="kcal-label">Vârstă <span>ani</span></label>
+            <input class="kcal-input" type="number" id="kAge" min="10" max="99" placeholder="30">
+          </div>
+          <div class="kcal-field">
+            <label class="kcal-label">Greutate <span>kg</span></label>
+            <input class="kcal-input" type="number" id="kWeight" min="30" max="250" placeholder="70">
+          </div>
+          <div class="kcal-field">
+            <label class="kcal-label">Înălțime <span>cm</span></label>
+            <input class="kcal-input" type="number" id="kHeight" min="100" max="230" placeholder="170">
+          </div>
+        </div>
+        <div class="kcal-row">
+          <div class="kcal-field" style="flex:1">
+            <label class="kcal-label">Nivel de activitate</label>
+            <select class="kcal-select" id="kActivity">
+              <option value="1.2">Sedentar (birou, mișcare minimă)</option>
+              <option value="1.375">Ușor activ (1–3 zile/săptămână)</option>
+              <option value="1.55" selected>Moderat activ (3–5 zile/săptămână)</option>
+              <option value="1.725">Foarte activ (6–7 zile/săptămână)</option>
+              <option value="1.9">Extrem de activ (sport + muncă fizică)</option>
+            </select>
+          </div>
+        </div>
+        <div class="kcal-row">
+          <div class="kcal-field" style="flex:1">
+            <label class="kcal-label">Obiectiv</label>
+            <div class="kcal-goals">
+              <button class="kgoal" id="gLoss" onclick="setGoal('loss')">⬇ Slăbit</button>
+              <button class="kgoal active" id="gMaint" onclick="setGoal('maint')">= Menținere</button>
+              <button class="kgoal" id="gGain" onclick="setGoal('gain')">⬆ Masă</button>
+            </div>
+          </div>
+        </div>
+        <button class="kcal-btn" onclick="calcKcal()">Calculează →</button>
+      </div>
+
+      <!-- REZULTAT -->
+      <div class="kcal-result" id="kcalResult" style="display:none">
+        <div class="kcal-res-header">
+          <div class="kcal-res-main">
+            <div class="kcal-res-num" id="resKcal">—</div>
+            <div class="kcal-res-label">kcal / zi</div>
+          </div>
+          <div class="kcal-res-macros">
+            <div class="kcal-macro"><span id="resProt">—</span><small>g proteine</small></div>
+            <div class="kcal-macro"><span id="resCarb">—</span><small>g carbohidrați</small></div>
+            <div class="kcal-macro"><span id="resFat">—</span><small>g grăsimi</small></div>
+          </div>
+        </div>
+
+        <div class="kcal-bar-wrap">
+          <div class="kcal-bar-label">Distribuție macronutrienți</div>
+          <div class="kcal-bar">
+            <div class="kcal-bar-seg prot" id="barProt"></div>
+            <div class="kcal-bar-seg carb" id="barCarb"></div>
+            <div class="kcal-bar-seg fat"  id="barFat"></div>
+          </div>
+          <div class="kcal-bar-legend">
+            <span><i class="dot prot"></i>Proteine</span>
+            <span><i class="dot carb"></i>Carbohidrați</span>
+            <span><i class="dot fat"></i>Grăsimi</span>
+          </div>
+        </div>
+
+        <div class="kcal-suggest-title">Din meniu — potrivite pentru tine</div>
+        <div class="kcal-suggest" id="kcalSuggest"></div>
+
+        <button class="kcal-reset" onclick="resetKcal()">← Recalculează</button>
+      </div>
+    </div>
+  </div>
 </section>
 
 <div class="divider"></div>
@@ -846,6 +1022,110 @@ function addConfig(){
   cfgRenderControls();cfgRenderPlate();
   document.getElementById("cfgHint").textContent="✓ Adăugat! Construiește altul 🥪";
 }
+/* ══════ CALCULATOR KCAL ══════ */
+// Kcal estimate per produs (valori orientative)
+const KCAL_MAP = {
+  "Espresso":6, "Espresso lung":8, "Cappuccino":80, "Caffè latte":120,
+  "Tiramisu Cappuccino":150, "Dolce Truffle Cappuccino":140, "Salted Caramel Mocha":180,
+  "Hazelnut Affogato":200, "Iced Rosemary Latte":110, "Fizzy Iced Peach":90,
+  "Limonadă clasică":70, "Limonadă cu aronia":90, "Limonadă fructe de pădure":80,
+  "Fresh de portocale":110, "Fresh mere & morcovi":100,
+  "Grecesc":380, "Proteic":430, "Mediteranean":420, "Energizant":400,
+  "Gourmet":480, "De vară":340, "Bowl-ul zilei":460,
+  "Fursecuri de casă cu ovăz":180, "Desert cu aronia, la pahar":220, "Tiramisu la doză":310,
+  "Pachetul de drum":680, "Pachet familie":560,
+};
+
+let kcalSex = 'm';
+let kcalGoal = 'maint';
+
+function setSex(s) {
+  kcalSex = s;
+  document.getElementById('togM').classList.toggle('active', s==='m');
+  document.getElementById('togF').classList.toggle('active', s==='f');
+}
+function setGoal(g) {
+  kcalGoal = g;
+  ['loss','maint','gain'].forEach(x => document.getElementById('g'+x.charAt(0).toUpperCase()+x.slice(1)).classList.toggle('active', x===g));
+}
+
+function calcKcal() {
+  const age    = parseFloat(document.getElementById('kAge').value);
+  const weight = parseFloat(document.getElementById('kWeight').value);
+  const height = parseFloat(document.getElementById('kHeight').value);
+  const act    = parseFloat(document.getElementById('kActivity').value);
+
+  if (!age || !weight || !height || age<10 || weight<30 || height<100) {
+    document.getElementById('kAge').style.borderColor    = !age    ? 'var(--terra)' : '';
+    document.getElementById('kWeight').style.borderColor = !weight ? 'var(--terra)' : '';
+    document.getElementById('kHeight').style.borderColor = !height ? 'var(--terra)' : '';
+    return;
+  }
+
+  // Mifflin-St Jeor
+  let bmr = kcalSex === 'm'
+    ? 10*weight + 6.25*height - 5*age + 5
+    : 10*weight + 6.25*height - 5*age - 161;
+
+  let tdee = Math.round(bmr * act);
+
+  if (kcalGoal === 'loss') tdee = Math.round(tdee * 0.8);
+  if (kcalGoal === 'gain') tdee = Math.round(tdee * 1.1);
+
+  // Macros (30% prot, 40% carb, 30% fat)
+  const protG = Math.round(tdee * 0.30 / 4);
+  const carbG = Math.round(tdee * 0.40 / 4);
+  const fatG  = Math.round(tdee * 0.30 / 9);
+
+  document.getElementById('resKcal').textContent = tdee;
+  document.getElementById('resProt').textContent = protG;
+  document.getElementById('resCarb').textContent = carbG;
+  document.getElementById('resFat').textContent  = fatG;
+
+  // Bar
+  document.getElementById('barProt').style.width = '30%';
+  document.getElementById('barCarb').style.width = '40%';
+  document.getElementById('barFat').style.width  = '30%';
+
+  // Sugestii produse — filtrate după kcal (sub 50% din TDEE per produs)
+  const maxPerItem = tdee * 0.5;
+  const allProducts = [
+    ...CAFEA.map(x=>({...x,cat:'Cafea'})),
+    ...LIM.map(x=>({...x,cat:'Limonadă'})),
+    ...SAND.map(x=>({...x,cat:'Sandwich'})),
+    ...DULCE.map(x=>({...x,cat:'Dulce'})),
+  ];
+
+  // Sortăm produsele după cât de aproape sunt de 33% din TDEE (o masă)
+  const target = tdee / 3;
+  const scored = allProducts
+    .filter(x => KCAL_MAP[x.n] && KCAL_MAP[x.n] <= maxPerItem)
+    .map(x => ({...x, kcal: KCAL_MAP[x.n], score: Math.abs(KCAL_MAP[x.n] - target)}))
+    .sort((a,b) => a.score - b.score)
+    .slice(0, 5);
+
+  document.getElementById('kcalSuggest').innerHTML = scored.map(it => `
+    <div class="ksug-item">
+      <div>
+        <div class="ksug-name">${it.n}</div>
+        <div class="ksug-kcal">~${it.kcal} kcal · ${it.cat}</div>
+      </div>
+      <div class="ksug-info">
+        <div class="ksug-price">${it.p} lei</div>
+        <button class="ksug-add" onclick='addToCartBtn(this,${JSON.stringify(it.n)},${it.p})'>+ Coș</button>
+      </div>
+    </div>`).join('');
+
+  document.getElementById('kcalForm').style.display   = 'none';
+  document.getElementById('kcalResult').style.display = 'block';
+}
+
+function resetKcal() {
+  document.getElementById('kcalForm').style.display   = 'block';
+  document.getElementById('kcalResult').style.display = 'none';
+}
+
+
 cfgRenderControls();cfgRenderPlate();
 renderCos();
 </script>
