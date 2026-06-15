@@ -3,264 +3,641 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Finalizează comanda · Metanoia · SOul Meal</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Source+Serif+4:ital,wght@0,400&family=Karla:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>Comandă · SOul Meal · Metanoia · DN 68 Hațeg</title>
+<meta name="description" content="Finalizează comanda SOul Meal — plată securizată prin PayPal.">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- ══ PAYPAL SDK ══
+     Înlocuiește YOUR_CLIENT_ID cu Client ID-ul tău din:
+     https://developer.paypal.com/dashboard/applications
+     Pentru producție: schimbă &currency=RON dacă PayPal România suportă RON,
+     altfel lasă EUR și convertește prețurile.
+     Adaugă &disable-funding=credit,card dacă vrei doar butonul PayPal. -->
+<script src="https://www.paypal.com/sdk/js?client-id=ASaZzZjepNTlqtzGfX7hnQv9ZM8STfYvhfnBuNVE0ruo_-jmMbTOjAagdLEEHT5Cu6bo0QF0IBf6Ry4p&currency=EUR&locale=ro_RO" defer></script>
+
 <style>
 :root{
-  --v1:#14253a;--v2:#2e4e7e;--v3:#4a74ac;--v4:#8fb4de;--v5:#dce9f7;
-  --c1:#faf5ec;--c2:#f2e8d0;--c3:#e8d5b0;--t1:#c4622d;--t2:#e07840;--t3:#f5a06a;
-  --e1:#0f1a2b;--tx1:#141a24;--tx2:#2c3648;--tx3:#5f6c80;--tx4:rgba(20,26,36,.4);
+  --navy:#14253a; --navy2:#1e3450; --navy3:#2e4e7e;
+  --cream:#faf5ec; --cream2:#f2e8d0; --cream3:#e8d5b0;
+  --terra:#c4622d; --terra2:#e07840; --terra3:#f5a06a;
+  --ink:#0f1825; --ink2:#1a2535;
+  --green:#1e6b3a; --green2:#2a8f4f;
+  --tx1:#141a24; --tx2:#2c3648; --tx3:#5f6c80; --tx4:rgba(20,26,36,.35);
+  --err:#c0392b;
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{font-family:'Karla',sans-serif;background:var(--c1);color:var(--tx1);}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--tx1);min-height:100vh;}
 
-.nav{position:fixed;top:0;width:100%;z-index:999;background:rgba(250,245,236,.97);backdrop-filter:blur(12px);border-bottom:2px solid var(--v2);display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:68px;}
+/* ── NAV ── */
+.nav{position:fixed;top:0;width:100%;z-index:999;background:rgba(250,245,236,.97);backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(20,37,58,.1);display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:64px;}
 .nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
-.nav-logo{width:42px;height:42px;}
-.nav-name{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:900;color:var(--v1);letter-spacing:2px;text-transform:uppercase;line-height:1;}
-.nav-sub{font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--tx3);font-weight:500;margin-top:2px;}
-.nav-back{font-size:.75rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--v2);text-decoration:none;display:flex;align-items:center;gap:6px;}
-.nav-back:hover{color:var(--v1);}
+.nav-logo{width:36px;height:36px;}
+.nav-name{font-family:'DM Serif Display',serif;font-size:1rem;color:var(--navy);letter-spacing:1px;line-height:1;}
+.nav-sub{font-size:.52rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--tx3);font-weight:500;margin-top:2px;}
+.nav-back{font-size:.7rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--tx3);text-decoration:none;display:flex;align-items:center;gap:6px;transition:color .2s;}
+.nav-back:hover{color:var(--navy);}
+.nav-back::before{content:'←';}
 
-.wrap{max-width:640px;margin:0 auto;padding:100px 5% 60px;}
+/* ── LAYOUT ── */
+.page{padding:96px 5% 80px;max-width:1100px;margin:0 auto;}
+.page-title{font-family:'DM Serif Display',serif;font-size:clamp(2rem,4vw,3.2rem);color:var(--navy);line-height:1;margin-bottom:6px;}
+.page-title em{font-style:italic;color:var(--terra);}
+.page-sub{font-size:.88rem;color:var(--tx3);font-weight:300;margin-bottom:44px;}
 
-/* HEAD */
-.head{text-align:center;margin-bottom:28px;}
-.head .tag{font-size:.64rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--v3);margin-bottom:8px;}
-.head h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,2.8rem);font-weight:900;color:var(--v1);line-height:1.1;}
-.head h1 em{font-style:italic;color:var(--t1);}
-.head p{color:var(--tx3);margin-top:8px;font-size:.95rem;line-height:1.65;}
+.checkout-grid{display:grid;grid-template-columns:1fr 380px;gap:40px;align-items:start;}
 
-/* CARD */
-.card{background:#fff;border:2px solid var(--c3);padding:24px;margin-bottom:16px;}
-.card h2{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--v1);margin-bottom:16px;display:flex;align-items:center;justify-content:space-between;gap:10px;}
+/* ── CARD ── */
+.card{background:#fff;border:1px solid var(--cream3);padding:32px;}
+.card-title{font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--navy3);margin-bottom:22px;padding-bottom:10px;border-bottom:1px solid var(--cream3);}
 
-/* COS */
-.cos-empty{text-align:center;padding:28px 10px;color:var(--tx3);}
-.cos-empty a{color:var(--v2);font-weight:700;text-decoration:none;}
-.ci{display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid var(--c2);}
-.ci:last-child{border-bottom:none;}
-.ci-info{flex:1;min-width:0;}
-.ci-name{font-size:.9rem;font-weight:600;color:var(--tx1);line-height:1.3;}
-.ci-unit{font-size:.72rem;color:var(--tx3);margin-top:2px;}
-.ci-qty{display:flex;align-items:center;gap:7px;flex-shrink:0;}
-.qbtn{width:28px;height:28px;border:2px solid var(--c3);background:var(--c1);color:var(--v2);font-size:1rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;}
-.qbtn:hover{border-color:var(--v3);}
-.ci-n{min-width:18px;text-align:center;font-weight:700;font-size:.9rem;}
-.ci-sum{font-family:'Playfair Display',serif;font-weight:700;color:var(--t1);min-width:52px;text-align:right;flex-shrink:0;font-size:.95rem;}
-.ci-del{background:none;border:none;color:var(--tx4);font-size:1.1rem;cursor:pointer;flex-shrink:0;}
-.ci-del:hover{color:var(--t1);}
-.total-row{display:flex;justify-content:space-between;align-items:center;padding-top:14px;margin-top:4px;border-top:2px solid var(--c3);}
-.total-lbl{font-size:.68rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--tx3);}
-.total-val{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:900;color:var(--v1);}
+/* ── FORM ── */
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+.form-row.full{grid-template-columns:1fr;}
+.f-group{display:flex;flex-direction:column;gap:6px;}
+label{font-size:.7rem;font-weight:600;letter-spacing:.5px;color:var(--tx2);}
+label span{color:var(--terra);margin-left:2px;}
+input,select,textarea{
+  font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:400;color:var(--tx1);
+  background:#fff;border:1px solid var(--cream3);padding:12px 14px;width:100%;
+  transition:border-color .2s,box-shadow .2s;outline:none;appearance:none;-webkit-appearance:none;
+}
+input:focus,select:focus,textarea:focus{border-color:var(--navy3);box-shadow:0 0 0 3px rgba(46,78,126,.1);}
+input.err,select.err,textarea.err{border-color:var(--err);}
+.f-err{font-size:.7rem;color:var(--err);display:none;}
+.f-err.show{display:block;}
+textarea{resize:vertical;min-height:80px;}
+select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235f6c80' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;}
 
-/* FORM */
-.fl{font-size:.63rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--tx3);margin-bottom:5px;display:block;}
-.fi{width:100%;background:var(--c1);border:2px solid var(--c3);padding:12px 14px;color:var(--tx1);font-family:'Karla',sans-serif;font-size:.95rem;outline:none;transition:border-color .2s;-webkit-appearance:none;margin-bottom:14px;}
-.fi:focus{border-color:var(--v2);background:#fff;}
-.fi::placeholder{color:var(--tx4);}
-textarea.fi{resize:vertical;min-height:76px;}
-.frow{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-.ferr{display:none;padding:11px 14px;background:rgba(196,98,45,.08);border:1px solid rgba(196,98,45,.3);font-size:.82rem;color:var(--t1);margin-bottom:14px;}
+/* livrrare toggle */
+.delivery-tabs{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-bottom:24px;border:1px solid var(--cream3);}
+.dtab{padding:12px;text-align:center;font-size:.76rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:all .2s;color:var(--tx3);background:var(--cream);}
+.dtab.active{background:var(--navy);color:#fff;}
+.delivery-fields{display:none;}
+.delivery-fields.show{display:block;}
 
-/* BUTON WA */
-.btn-wa{width:100%;background:#25D366;color:#fff;border:none;padding:17px;font-family:'Karla',sans-serif;font-size:.84rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px;transition:all .2s;}
-.btn-wa:hover{background:#1da851;transform:translateY(-1px);}
-.btn-wa:disabled{opacity:.4;cursor:not-allowed;transform:none;}
-.fnote{font-size:.73rem;color:var(--tx3);text-align:center;margin-top:10px;line-height:1.5;}
-.fnote b{color:var(--v2);}
+/* ── COS SUMMARY ── */
+.cos-list{display:flex;flex-direction:column;gap:0;margin-bottom:20px;}
+.cos-item{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--cream3);}
+.cos-item:last-child{border-bottom:none;}
+.cos-item-name{font-size:.88rem;color:var(--tx1);line-height:1.35;flex:1;}
+.cos-item-qty{font-size:.72rem;color:var(--tx4);display:block;margin-top:2px;}
+.cos-item-price{font-family:'DM Serif Display',serif;font-size:1.05rem;color:var(--navy);white-space:nowrap;flex-shrink:0;}
+.cos-empty{text-align:center;padding:30px 0;font-style:italic;color:var(--tx4);font-family:'DM Serif Display',serif;}
 
-/* ECRAN SUCCES */
-.ok-screen{display:none;text-align:center;padding:40px 20px;}
-.ok-ico{font-size:4rem;margin-bottom:16px;animation:pop .5s cubic-bezier(.34,1.56,.64,1);}
-@keyframes pop{from{transform:scale(0)}to{transform:scale(1)}}
-.ok-title{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--v1);margin-bottom:10px;}
-.ok-title em{font-style:italic;color:var(--t1);}
-.ok-sub{font-family:'Source Serif 4',serif;font-style:italic;font-size:1rem;color:var(--tx3);line-height:1.7;max-width:360px;margin:0 auto 28px;}
-.ok-countdown{font-size:.82rem;color:var(--tx3);margin:18px 0 22px;letter-spacing:.5px;}
-.ok-countdown span{font-weight:800;color:var(--v2);}
-.btn-wa-ok{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;max-width:360px;margin:18px auto 12px;background:#25D366;color:#fff;padding:17px 28px;font-family:'Karla',sans-serif;font-size:.84rem;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;transition:all .2s;}
-.btn-wa-ok:hover{background:#1da851;}
-.btn-acasa{display:block;text-align:center;margin:0 auto;color:var(--v2);font-size:.8rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;text-decoration:none;padding:12px;}
-.btn-acasa:hover{text-decoration:underline;}
-.btn-meniu{display:block;background:var(--v2);color:#fff;border:none;padding:15px 32px;font-family:'Karla',sans-serif;font-size:.8rem;font-weight:800;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .2s;text-decoration:none;text-align:center;margin:0 auto;width:fit-content;}
-.btn-meniu:hover{background:var(--v1);}
-.btn-nou{display:block;margin:12px auto 0;background:transparent;color:var(--v2);border:2px solid var(--v2);padding:13px 28px;font-family:'Karla',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:all .2s;text-decoration:none;width:fit-content;}
-.btn-nou:hover{background:var(--v5);}
+.cos-subtotal{display:flex;justify-content:space-between;align-items:center;padding:12px 0;font-size:.84rem;color:var(--tx3);}
+.cos-subtotal.total{border-top:2px solid var(--navy);margin-top:4px;padding-top:16px;font-size:.92rem;font-weight:600;color:var(--tx1);}
+.cos-subtotal.total .val{font-family:'DM Serif Display',serif;font-size:1.5rem;color:var(--terra);}
 
-footer{background:var(--e1);padding:28px 5%;text-align:center;color:rgba(255,255,255,.3);font-size:.76rem;}
-.nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px;}
-.nav-burger span{width:26px;height:2px;background:var(--v1);display:block;}
-.mob-menu{position:fixed;inset:0;z-index:9998;background:var(--v1);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;transform:translateX(100%);transition:transform .4s ease;}
-.mob-menu.open{transform:translateX(0);}
-.mob-menu a{font-family:'Playfair Display',serif;font-size:1.7rem;color:#fff;text-decoration:none;padding:12px 0;letter-spacing:2px;}
-.mob-close{position:absolute;top:20px;right:6%;font-size:2.2rem;color:#fff;background:none;border:none;cursor:pointer;}
-@media(max-width:700px){.nav-back{display:none;}.nav-burger{display:flex;}}
-@media(max-width:480px){.frow{grid-template-columns:1fr;}}
+/* transport badge */
+.transport-note{font-size:.72rem;color:var(--tx4);font-style:italic;margin-bottom:16px;line-height:1.5;}
+
+/* ── PAYPAL ZONE ── */
+.pay-section{margin-top:24px;}
+.pay-label{font-size:.6rem;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--tx3);margin-bottom:14px;text-align:center;}
+#paypal-button-container{min-height:50px;}
+
+/* placeholder dacă SDK nu e încărcat */
+.paypal-placeholder{background:var(--cream2);border:2px dashed var(--cream3);padding:20px;text-align:center;color:var(--tx4);font-size:.82rem;font-style:italic;line-height:1.6;}
+
+/* ── STĂRI ── */
+.state{display:none;text-align:center;padding:60px 20px;}
+.state.show{display:block;}
+.state-ico{font-size:3.5rem;margin-bottom:16px;}
+.state-title{font-family:'DM Serif Display',serif;font-size:2rem;color:var(--navy);margin-bottom:10px;}
+.state-title.green{color:var(--green);}
+.state-msg{font-size:.92rem;color:var(--tx3);line-height:1.75;max-width:420px;margin:0 auto 28px;}
+.state-btn{display:inline-block;background:var(--navy);color:#fff;padding:13px 28px;font-family:'DM Sans',sans-serif;font-size:.74rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;transition:all .2s;}
+.state-btn:hover{background:var(--terra);}
+.state-btn.outline{background:transparent;border:2px solid var(--navy);color:var(--navy);margin-left:10px;}
+.state-btn.outline:hover{background:var(--navy);color:#fff;}
+
+/* ── SECURITATE ── */
+.security-row{display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;margin-top:20px;padding-top:16px;border-top:1px solid var(--cream3);}
+.sec-badge{display:flex;align-items:center;gap:5px;font-size:.65rem;color:var(--tx4);letter-spacing:.5px;}
+.sec-badge .ico{font-size:.9rem;}
+
+/* ── STEPS INDICATOR ── */
+.steps{display:flex;align-items:center;gap:0;margin-bottom:36px;}
+.step{display:flex;align-items:center;gap:8px;font-size:.68rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--tx4);}
+.step.active{color:var(--navy);}
+.step.done{color:var(--green);}
+.step-n{width:24px;height:24px;border-radius:50%;border:2px solid var(--cream3);display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;flex-shrink:0;}
+.step.active .step-n{background:var(--navy);border-color:var(--navy);color:#fff;}
+.step.done .step-n{background:var(--green);border-color:var(--green);color:#fff;}
+.step-sep{flex:1;height:1px;background:var(--cream3);margin:0 8px;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:860px){
+  .checkout-grid{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
+}
+@media(max-width:500px){
+  .page{padding:80px 4% 60px;}
+  .card{padding:22px 18px;}
+}
 </style>
 </head>
 <body>
 
-<svg width="0" height="0" style="position:absolute"><defs>
-  <linearGradient id="LG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#c2daf2"/><stop offset="0.55" stop-color="#8fb8e4"/><stop offset="1" stop-color="#6d9cce"/></linearGradient>
-  <symbol id="L" viewBox="0 0 500 500">
-    <circle cx="250" cy="250" r="215" fill="none" stroke="url(#LG)" stroke-width="9"/>
-    <circle cx="250" cy="250" r="190" fill="none" stroke="url(#LG)" stroke-width="3" opacity="0.75"/>
-    <polygon points="168,190 252,292 84,292" fill="#7ba6d4"/>
-    <polygon points="332,196 416,292 248,292" fill="#7ba6d4"/>
-    <polygon points="250,138 352,292 148,292" fill="url(#LG)"/>
-    <path d="M250,138 L278,180 L262,172 L250,186 L238,172 L222,180 Z" fill="#ffffff"/>
-    <text x="250" y="352" fill="#6d9cce" font-family="'Playfair Display',serif" font-size="40" font-weight="600" letter-spacing="10" text-anchor="middle">METANOIA</text>
-    <text x="250" y="386" fill="#8fb8e4" font-family="Karla,sans-serif" font-size="15" font-weight="600" letter-spacing="7" text-anchor="middle">HAȚEG ALTERNATIV</text>
-    <circle cx="250" cy="408" r="4" fill="#8fb8e4"/>
-  </symbol>
-</defs></svg>
+<!-- SVG LOGO -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <linearGradient id="LG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#c2daf2"/><stop offset="0.55" stop-color="#8fb8e4"/><stop offset="1" stop-color="#6d9cce"/>
+    </linearGradient>
+    <symbol id="L" viewBox="0 0 500 500">
+      <circle cx="250" cy="250" r="215" fill="none" stroke="url(#LG)" stroke-width="9"/>
+      <circle cx="250" cy="250" r="190" fill="none" stroke="url(#LG)" stroke-width="3" opacity="0.75"/>
+      <polygon points="168,190 252,292 84,292" fill="#7ba6d4"/>
+      <polygon points="332,196 416,292 248,292" fill="#7ba6d4"/>
+      <polygon points="250,138 352,292 148,292" fill="url(#LG)"/>
+      <path d="M250,138 L278,180 L262,172 L250,186 L238,172 L222,180 Z" fill="#ffffff"/>
+      <text x="250" y="352" fill="#6d9cce" font-family="'DM Serif Display',Georgia,serif" font-size="40" font-weight="600" letter-spacing="10" text-anchor="middle">METANOIA</text>
+      <text x="250" y="386" fill="#8fb8e4" font-family="DM Sans,Arial,sans-serif" font-size="15" font-weight="600" letter-spacing="7" text-anchor="middle">HAȚEG ALTERNATIV</text>
+      <circle cx="250" cy="408" r="4" fill="#8fb8e4"/>
+    </symbol>
+  </defs>
+</svg>
 
 <nav class="nav">
   <a class="nav-brand" href="index.html">
     <svg class="nav-logo"><use href="#L"/></svg>
-    <div><div class="nav-name">Metanoia</div><div class="nav-sub">Hațeg Alternativ · DN 68</div></div>
+    <div><div class="nav-name">Metanoia</div><div class="nav-sub">SOul Meal · DN 68</div></div>
   </a>
-  <a class="nav-back" href="meniu.html">← Meniu</a>
-  <button class="nav-burger" onclick="document.getElementById('mobMenu').classList.add('open')" aria-label="Meniu"><span></span><span></span><span></span></button>
+  <a class="nav-back" href="meniu.html">Înapoi la meniu</a>
 </nav>
-<div class="mob-menu" id="mobMenu">
-  <button class="mob-close" onclick="document.getElementById('mobMenu').classList.remove('open')">×</button>
-  <a href="index.html">Acasă</a>
-  <a href="meniu.html">Meniu</a>
-  <a href="masterplan.html">Povestea noastră</a>
-  <a href="forum.html">Comunitate</a>
-  <a href="contact.html">Contact</a>
-</div>
 
-<div class="wrap">
+<div class="page">
 
-  <!-- FORM (se ascunde după trimitere) -->
-  <div id="wrapForm">
-    <div class="head">
-      <div class="tag">Finalizează comanda</div>
-      <h1>Aproape <em>gata.</em></h1>
-      <p>Verifică coșul și lasă-ne datele — pregătim comanda pentru tine.</p>
+  <!-- ══ SUCCESS STATE ══ -->
+  <div class="state" id="stateSuccess">
+    <div class="state-ico">✅</div>
+    <div class="state-title green">Comandă confirmată!</div>
+    <p class="state-msg">Plata a fost procesată cu succes. Vei primi un email de confirmare în câteva minute. Comanda ta e în pregătire — te așteptăm pe DN 68!</p>
+    <a class="state-btn" href="meniu.html">← Înapoi la meniu</a>
+    <a class="state-btn outline" href="index.html">Acasă</a>
+  </div>
+
+  <!-- ══ ERROR STATE ══ -->
+  <div class="state" id="stateError">
+    <div class="state-ico">⚠️</div>
+    <div class="state-title">Plata nu a reușit</div>
+    <p class="state-msg" id="errMsg">A apărut o problemă cu procesarea plății. Încearcă din nou sau contactează-ne pe WhatsApp.</p>
+    <a class="state-btn" href="https://wa.me/40749229686">WhatsApp →</a>
+    <button class="state-btn outline" onclick="resetToCheckout()">Încearcă din nou</button>
+  </div>
+
+  <!-- ══ EMPTY STATE ══ -->
+  <div class="state" id="stateEmpty">
+    <div class="state-ico">🛒</div>
+    <div class="state-title">Coșul e gol</div>
+    <p class="state-msg">Nu ai niciun produs în coș. Alege ceva din meniu și revino!</p>
+    <a class="state-btn" href="meniu.html">← Înapoi la meniu</a>
+  </div>
+
+  <!-- ══ CHECKOUT STATE ══ -->
+  <div id="stateCheckout">
+    <h1 class="page-title">Finalizează<br><em>comanda.</em></h1>
+    <p class="page-sub">Completează datele și plătește securizat prin PayPal.</p>
+
+    <div class="steps">
+      <div class="step done" id="s1"><div class="step-n">✓</div><span>Coș</span></div>
+      <div class="step-sep"></div>
+      <div class="step active" id="s2"><div class="step-n">2</div><span>Date</span></div>
+      <div class="step-sep"></div>
+      <div class="step" id="s3"><div class="step-n">3</div><span>Plată</span></div>
     </div>
 
-    <div class="card">
-      <h2>Coșul tău <span id="cosCnt" style="font-size:.8rem;font-weight:400;color:var(--tx3)"></span></h2>
-      <div id="cosList"></div>
-    </div>
+    <div class="checkout-grid">
 
-    <div class="card">
-      <h2>Datele tale</h2>
-      <div><label class="fl">Nume *</label><input class="fi" id="fN" type="text" placeholder="Numele tău"></div>
-      <div class="frow">
-        <div><label class="fl">Telefon *</label><input class="fi" id="fT" type="tel" placeholder="07xx xxx xxx"></div>
-        <div><label class="fl">Când ridici?</label><input class="fi" id="fC" type="text" placeholder="ex. azi 14:30"></div>
+      <!-- STÂNGA: formular -->
+      <div style="display:flex;flex-direction:column;gap:24px;">
+
+        <!-- date personale -->
+        <div class="card">
+          <div class="card-title">Date personale</div>
+          <div class="form-row">
+            <div class="f-group">
+              <label for="fname">Prenume <span>*</span></label>
+              <input type="text" id="fname" placeholder="Otilia" autocomplete="given-name">
+              <span class="f-err" id="err-fname">Câmp obligatoriu</span>
+            </div>
+            <div class="f-group">
+              <label for="lname">Nume <span>*</span></label>
+              <input type="text" id="lname" placeholder="Salașan" autocomplete="family-name">
+              <span class="f-err" id="err-lname">Câmp obligatoriu</span>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="f-group">
+              <label for="phone">Telefon <span>*</span></label>
+              <input type="tel" id="phone" placeholder="+40 7xx xxx xxx" autocomplete="tel">
+              <span class="f-err" id="err-phone">Număr invalid</span>
+            </div>
+            <div class="f-group">
+              <label for="email">Email <span>*</span></label>
+              <input type="email" id="email" placeholder="tu@exemplu.ro" autocomplete="email">
+              <span class="f-err" id="err-email">Email invalid</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- livrare / ridicare -->
+        <div class="card">
+          <div class="card-title">Livrare</div>
+          <div class="delivery-tabs">
+            <div class="dtab active" id="tab-pickup" onclick="setDelivery('pickup')">🏪 Ridicare pe loc</div>
+            <div class="dtab" id="tab-delivery" onclick="setDelivery('delivery')">🚗 Livrare la adresă</div>
+          </div>
+
+          <!-- RIDICARE -->
+          <div class="delivery-fields show" id="fields-pickup">
+            <div class="form-row">
+              <div class="f-group">
+                <label for="pickup-date">Data ridicării <span>*</span></label>
+                <input type="date" id="pickup-date">
+                <span class="f-err" id="err-pickup-date">Selectează o dată</span>
+              </div>
+              <div class="f-group">
+                <label for="pickup-time">Ora aproximativă <span>*</span></label>
+                <select id="pickup-time">
+                  <option value="">-- alege --</option>
+                  <option>08:00 – 09:00</option>
+                  <option>09:00 – 10:00</option>
+                  <option>10:00 – 11:00</option>
+                  <option>11:00 – 12:00</option>
+                  <option>12:00 – 13:00</option>
+                  <option>13:00 – 14:00</option>
+                  <option>14:00 – 15:00</option>
+                  <option>15:00 – 16:00</option>
+                  <option>16:00 – 17:00</option>
+                  <option>17:00 – 18:00</option>
+                </select>
+                <span class="f-err" id="err-pickup-time">Selectează ora</span>
+              </div>
+            </div>
+            <p style="font-size:.75rem;color:var(--tx4);line-height:1.6;">📍 DN 68, Totești, Țara Hațegului — lângă intrarea în sat.</p>
+          </div>
+
+          <!-- LIVRARE -->
+          <div class="delivery-fields" id="fields-delivery">
+            <div class="form-row full">
+              <div class="f-group">
+                <label for="address">Adresă <span>*</span></label>
+                <input type="text" id="address" placeholder="Str. Exemplu nr. 10, Bl. A, Ap. 5" autocomplete="street-address">
+                <span class="f-err" id="err-address">Câmp obligatoriu</span>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="f-group">
+                <label for="city">Localitate <span>*</span></label>
+                <input type="text" id="city" placeholder="Hațeg" autocomplete="address-level2">
+                <span class="f-err" id="err-city">Câmp obligatoriu</span>
+              </div>
+              <div class="f-group">
+                <label for="county">Județ</label>
+                <input type="text" id="county" placeholder="Hunedoara" autocomplete="address-level1">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="f-group">
+                <label for="del-date">Data livrării <span>*</span></label>
+                <input type="date" id="del-date">
+                <span class="f-err" id="err-del-date">Selectează o dată</span>
+              </div>
+              <div class="f-group">
+                <label for="del-time">Interval orar <span>*</span></label>
+                <select id="del-time">
+                  <option value="">-- alege --</option>
+                  <option>08:00 – 12:00</option>
+                  <option>12:00 – 16:00</option>
+                  <option>16:00 – 19:00</option>
+                </select>
+                <span class="f-err" id="err-del-time">Selectează intervalul</span>
+              </div>
+            </div>
+            <p class="transport-note">🚗 Livrare disponibilă în zona Hațeg. Costul transportului se calculează și se confirmă pe WhatsApp înainte de procesarea plății.</p>
+          </div>
+        </div>
+
+        <!-- observatii -->
+        <div class="card">
+          <div class="card-title">Observații (opțional)</div>
+          <div class="form-row full">
+            <div class="f-group">
+              <label for="obs">Mențiuni speciale, alergii, preferințe</label>
+              <textarea id="obs" placeholder="Ex: fără gluten la sandwich, livrare la poartă, etc."></textarea>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /stânga -->
+
+      <!-- DREAPTA: sumar + PayPal -->
+      <div style="display:flex;flex-direction:column;gap:20px;">
+        <div class="card">
+          <div class="card-title">Comanda ta</div>
+          <div class="cos-list" id="cos-list">
+            <div class="cos-empty">Se încarcă coșul…</div>
+          </div>
+          <div class="cos-subtotal"><span>Subtotal produse</span><span class="val" id="subtotal-val">0 lei</span></div>
+          <div class="cos-subtotal" id="transport-row" style="display:none;"><span>Transport</span><span class="val" id="transport-val">la confirmare</span></div>
+          <div class="cos-subtotal total"><span>Total</span><span class="val" id="total-val">0 lei</span></div>
+
+          <div class="pay-section">
+            <div class="pay-label">Plată securizată</div>
+            <div id="paypal-button-container">
+              <div class="paypal-placeholder" id="paypal-placeholder">
+                ⚠️ Configurează <strong>YOUR_CLIENT_ID</strong> în codul sursă pentru a activa plata PayPal.<br>
+                <small style="font-size:.7rem;opacity:.7;">developer.paypal.com → Applications → Client ID</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="security-row">
+            <div class="sec-badge"><span class="ico">🔒</span> SSL securizat</div>
+            <div class="sec-badge"><span class="ico">🛡️</span> PayPal Protection</div>
+            <div class="sec-badge"><span class="ico">↩️</span> Retur posibil</div>
+          </div>
+        </div>
+
+        <p style="font-size:.7rem;color:var(--tx4);line-height:1.6;text-align:center;">
+          Prin finalizarea comenzii ești de acord cu <a href="termeni-si-conditii.html" style="color:var(--navy3);">Termenii și Condițiile</a> noastre.
+        </p>
       </div>
-      <div><label class="fl">Observații</label><textarea class="fi" id="fO" placeholder="Preferințe, alergii, alte detalii..."></textarea></div>
-      <div class="ferr" id="fErr">⚠️ Completează numele și telefonul.</div>
-      <button class="btn-wa" id="btnWA" onclick="trimite()">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 00-8.5 15.3L2 22l4.8-1.5A10 10 0 1012 2zm0 18a8 8 0 01-4.1-1.1l-.3-.2-2.8.9.9-2.7-.2-.3A8 8 0 1112 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.5 6.5 0 01-3.2-2.8c-.1-.2 0-.4.1-.5l.4-.5.2-.4v-.4l-.7-1.7c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3a3 3 0 00-.9 2.2c0 1.3.9 2.5 1.1 2.7.1.2 1.9 2.9 4.6 4 .6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1l-.5-.2z"/></svg>
-        Trimite comanda pe WhatsApp
-      </button>
-      <p class="fnote">Comanda pleacă pe WhatsApp la <b>+40 749 229 686</b>. Confirmăm noi disponibilitatea.</p>
-    </div>
-  </div>
 
-  <!-- ECRAN SUCCES -->
-  <div id="wrapOk" class="ok-screen">
-    <div class="ok-ico">🎉</div>
-    <h1 class="ok-title">Mesaj trimis <em>cu succes!</em></h1>
-    <p class="ok-sub">Comanda ta e pregătită. Apasă butonul de mai jos ca să o trimiți pe WhatsApp — durează 2 secunde.</p>
-    <a id="btnWaLink" href="#" target="_blank" class="btn-wa-ok">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 00-8.5 15.3L2 22l4.8-1.5A10 10 0 1012 2zm0 18a8 8 0 01-4.1-1.1l-.3-.2-2.8.9.9-2.7-.2-.3A8 8 0 1112 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1l-.7.9c-.1.2-.3.2-.5.1a6.5 6.5 0 01-3.2-2.8c-.1-.2 0-.4.1-.5l.4-.5.2-.4v-.4l-.7-1.7c-.2-.4-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3a3 3 0 00-.9 2.2c0 1.3.9 2.5 1.1 2.7.1.2 1.9 2.9 4.6 4 .6.3 1.1.4 1.5.5.6.2 1.2.2 1.6.1.5-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1l-.5-.2z"/></svg>
-      Deschide WhatsApp și trimite
-    </a>
-    <a class="btn-acasa" href="index.html">← Mergi acasă</a>
-  </div>
-
-</div>
-
-<footer>© 2026 Metanoia · Hațeg Alternativ · SOul Meal · DN 68, Totești · Hațeg</footer>
+    </div><!-- /grid -->
+  </div><!-- /stateCheckout -->
+</div><!-- /page -->
 
 <script>
-const WA="40749229686";
-const MAKE_WEBHOOK="https://hook.eu1.make.com/wwdii8stmyqdul6rnok4p44k2tvtohjt";
+/* ════════════════════════════════════════════
+   CONFIGURARE — schimbă valorile de mai jos
+   ════════════════════════════════════════════ */
+const MAKE_WEBHOOK_URL = "https://hook.eu1.make.com/wwdii8stmyqdul6rnok4p44k2tvtohjt";
+const CURRENCY = "EUR";           // PayPal: EUR sau USD. RON nu e suportat de toate conturile
+const RON_TO_EUR = 5.0;          // rata conversie orientativă (actualizează periodic)
+const TRANSPORT_RON = 15;        // cost transport livrare la adresă
+/* ══════════════════════════════════════════ */
 
-let cart=[];
-try{cart=JSON.parse(localStorage.getItem("metanoia_cart")||"[]");}catch(e){cart=[];}
+let cart = [];
+let deliveryMode = "pickup";
 
-function save(){try{localStorage.setItem("metanoia_cart",JSON.stringify(cart));}catch(e){} render();}
-function total(){return cart.reduce((s,x)=>s+x.pret*x.cant,0);}
-function chg(i,d){cart[i].cant+=d;if(cart[i].cant<=0)cart.splice(i,1);save();}
-function del(i){cart.splice(i,1);save();}
+/* ── INIT ── */
+function init() {
+  try { cart = JSON.parse(localStorage.getItem("metanoia_cart") || "[]"); } catch(e) { cart = []; }
 
-function render(){
-  const list=document.getElementById("cosList");
-  const cnt=document.getElementById("cosCnt");
-  const n=cart.reduce((s,x)=>s+x.cant,0);
-  cnt.textContent=n?`· ${n} produse`:"";
-  if(!cart.length){
-    list.innerHTML=`<div class="cos-empty">Coșul e gol.<br><a href="meniu.html">← Mergi la meniu și adaugă ceva 🛒</a></div>`;
-    document.getElementById("btnWA").disabled=true;
+  if (!cart.length) {
+    showState("empty"); return;
+  }
+  showState("checkout");
+  renderCart();
+  setMinDate();
+  initPayPal();
+}
+
+function showState(s) {
+  document.getElementById("stateCheckout").style.display = s === "checkout" ? "block" : "none";
+  document.getElementById("stateSuccess").style.display  = s === "success"  ? "block" : "none";
+  document.getElementById("stateError").style.display    = s === "error"    ? "block" : "none";
+  document.getElementById("stateEmpty").style.display    = s === "empty"    ? "block" : "none";
+}
+
+function resetToCheckout() { showState("checkout"); }
+
+/* ── CART RENDER ── */
+function renderCart() {
+  const list = document.getElementById("cos-list");
+  if (!cart.length) { list.innerHTML = '<div class="cos-empty">Coșul e gol.</div>'; return; }
+
+  list.innerHTML = cart.map(it => `
+    <div class="cos-item">
+      <div class="cos-item-name">${it.nume}<span class="cos-item-qty">× ${it.cant}</span></div>
+      <div class="cos-item-price">${it.pret * it.cant} lei</div>
+    </div>`).join("");
+
+  const sub = cart.reduce((s, x) => s + x.pret * x.cant, 0);
+  document.getElementById("subtotal-val").textContent = sub + " lei";
+  updateTotal();
+}
+
+function updateTotal() {
+  const sub = cart.reduce((s, x) => s + x.pret * x.cant, 0);
+  const transport = deliveryMode === "delivery" ? TRANSPORT_RON : 0;
+  const total = sub + transport;
+  document.getElementById("total-val").textContent = total + " lei";
+  const tr = document.getElementById("transport-row");
+  if (deliveryMode === "delivery") {
+    tr.style.display = "flex";
+    document.getElementById("transport-val").textContent = TRANSPORT_RON + " lei";
+  } else {
+    tr.style.display = "none";
+  }
+  return total;
+}
+
+/* ── DELIVERY TABS ── */
+function setDelivery(mode) {
+  deliveryMode = mode;
+  document.getElementById("tab-pickup").classList.toggle("active", mode === "pickup");
+  document.getElementById("tab-delivery").classList.toggle("active", mode === "delivery");
+  document.getElementById("fields-pickup").classList.toggle("show", mode === "pickup");
+  document.getElementById("fields-delivery").classList.toggle("show", mode === "delivery");
+  updateTotal();
+}
+
+/* ── MIN DATE = azi ── */
+function setMinDate() {
+  const today = new Date().toISOString().split("T")[0];
+  ["pickup-date","del-date"].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.min = today;
+  });
+}
+
+/* ── VALIDARE ── */
+function required(id, errId) {
+  const val = document.getElementById(id).value.trim();
+  const err = document.getElementById("err-" + (errId || id));
+  const ok = val.length > 0;
+  document.getElementById(id).classList.toggle("err", !ok);
+  if (err) err.classList.toggle("show", !ok);
+  return ok;
+}
+function validEmail(id) {
+  const val = document.getElementById(id).value.trim();
+  const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+  document.getElementById(id).classList.toggle("err", !ok);
+  document.getElementById("err-" + id).classList.toggle("show", !ok);
+  return ok;
+}
+function validPhone(id) {
+  const val = document.getElementById(id).value.trim().replace(/\s/g,"");
+  const ok = /^(\+4|004)?07\d{8}$/.test(val) || val.length >= 7;
+  document.getElementById(id).classList.toggle("err", !ok);
+  document.getElementById("err-" + id).classList.toggle("show", !ok);
+  return ok;
+}
+
+function validateAll() {
+  const checks = [
+    required("fname","fname"),
+    required("lname","lname"),
+    validPhone("phone"),
+    validEmail("email"),
+  ];
+  if (deliveryMode === "pickup") {
+    checks.push(required("pickup-date","pickup-date"));
+    checks.push(required("pickup-time","pickup-time"));
+  } else {
+    checks.push(required("address","address"));
+    checks.push(required("city","city"));
+    checks.push(required("del-date","del-date"));
+    checks.push(required("del-time","del-time"));
+  }
+  return checks.every(Boolean);
+}
+
+/* ── BUILD ORDER OBJECT ── */
+function buildOrder(paypalDetails) {
+  const total = updateTotal();
+  return {
+    timestamp: new Date().toISOString(),
+    client: {
+      prenume: document.getElementById("fname").value.trim(),
+      nume:    document.getElementById("lname").value.trim(),
+      telefon: document.getElementById("phone").value.trim(),
+      email:   document.getElementById("email").value.trim(),
+    },
+    livrare: deliveryMode === "pickup" ? {
+      tip:  "ridicare",
+      data: document.getElementById("pickup-date").value,
+      ora:  document.getElementById("pickup-time").value,
+    } : {
+      tip:     "livrare",
+      adresa:  document.getElementById("address").value.trim(),
+      oras:    document.getElementById("city").value.trim(),
+      judet:   document.getElementById("county").value.trim(),
+      data:    document.getElementById("del-date").value,
+      interval:document.getElementById("del-time").value,
+    },
+    observatii: document.getElementById("obs").value.trim(),
+    produse: cart,
+    total_ron: total,
+    plata: {
+      metoda: "PayPal",
+      status: paypalDetails?.status || "COMPLETED",
+      order_id: paypalDetails?.id || "N/A",
+      payer_email: paypalDetails?.payer?.email_address || "N/A",
+    }
+  };
+}
+
+/* ── MAKE WEBHOOK ── */
+async function sendToMake(order) {
+  try {
+    await fetch(MAKE_WEBHOOK_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(order),
+      mode: "no-cors"  // Make acceptă no-cors
+    });
+  } catch(e) {
+    console.warn("Make webhook error (non-critical):", e);
+  }
+}
+
+/* ── PAYPAL INIT ── */
+function initPayPal() {
+  if (typeof paypal === "undefined") {
+    // SDK not loaded (client-id not set) — placeholder rămâne vizibil
     return;
   }
-  document.getElementById("btnWA").disabled=false;
-  list.innerHTML=cart.map((x,i)=>`
-    <div class="ci">
-      <div class="ci-info">
-        <div class="ci-name">${x.nume}</div>
-        <div class="ci-unit">${x.pret} lei / buc</div>
-      </div>
-      <div class="ci-qty">
-        <button class="qbtn" onclick="chg(${i},-1)">−</button>
-        <span class="ci-n">${x.cant}</span>
-        <button class="qbtn" onclick="chg(${i},1)">+</button>
-      </div>
-      <div class="ci-sum">${x.pret*x.cant} lei</div>
-      <button class="ci-del" onclick="del(${i})" title="Șterge">×</button>
-    </div>`).join("")
-    + `<div class="total-row"><span class="total-lbl">Total</span><span class="total-val">${total()} lei</span></div>`;
+  document.getElementById("paypal-placeholder").style.display = "none";
+
+  paypal.Buttons({
+    style: {
+      layout: "vertical",
+      color:  "gold",
+      shape:  "rect",
+      label:  "pay",
+      height: 46,
+    },
+
+    /* STEP 1: creare order PayPal */
+    createOrder: function(data, actions) {
+      if (!validateAll()) {
+        return Promise.reject(new Error("Completează toate câmpurile obligatorii."));
+      }
+      document.getElementById("s3").classList.add("active");
+
+      const total = updateTotal();
+      const amountEUR = (total / RON_TO_EUR).toFixed(2);
+
+      return actions.order.create({
+        purchase_units: [{
+          description: "Comandă SOul Meal · Metanoia DN 68",
+          amount: {
+            currency_code: CURRENCY,
+            value: amountEUR,
+            breakdown: {
+              item_total: { currency_code: CURRENCY, value: amountEUR }
+            }
+          },
+          items: cart.map(it => ({
+            name: it.nume.substring(0, 127),
+            quantity: String(it.cant),
+            unit_amount: {
+              currency_code: CURRENCY,
+              value: (it.pret / RON_TO_EUR).toFixed(2)
+            }
+          }))
+        }],
+        application_context: {
+          brand_name: "SOul Meal · Metanoia",
+          locale: "ro-RO",
+          shipping_preference: "NO_SHIPPING",
+          user_action: "PAY_NOW",
+        }
+      });
+    },
+
+    /* STEP 2: plată aprobată */
+    onApprove: async function(data, actions) {
+      try {
+        const details = await actions.order.capture();
+        const order = buildOrder(details);
+        await sendToMake(order);
+        // golește coșul
+        localStorage.removeItem("metanoia_cart");
+        cart = [];
+        showState("success");
+      } catch(e) {
+        document.getElementById("errMsg").textContent = e.message || "Eroare la capturarea plății.";
+        showState("error");
+      }
+    },
+
+    /* STEP 3: erori */
+    onError: function(err) {
+      console.error("PayPal error:", err);
+      document.getElementById("errMsg").textContent = "PayPal a returnat o eroare. Încearcă din nou sau contactează-ne.";
+      showState("error");
+    },
+
+    onCancel: function() {
+      // userul a închis fereastra PayPal — nu facem nimic, rămâne pe checkout
+      document.getElementById("s3").classList.remove("active");
+    }
+
+  }).render("#paypal-button-container");
 }
 
-function trimite(){
-  const nume=document.getElementById("fN").value.trim();
-  const tel=document.getElementById("fT").value.trim();
-  const cand=document.getElementById("fC").value.trim();
-  const obs=document.getElementById("fO").value.trim();
-  if(!nume||!tel||!cart.length){document.getElementById("fErr").style.display="block";return;}
-  document.getElementById("fErr").style.display="none";
-
-  const produse=cart.map(x=>`${x.cant}x ${x.nume}`).join(", ");
-  const t=total();
-
-  // Make webhook
-  if(MAKE_WEBHOOK){
-    try{fetch(MAKE_WEBHOOK,{method:"POST",headers:{"Content-Type":"text/plain;charset=UTF-8"},
-      body:JSON.stringify({nume,tel,cand,obs,produse,total:t,sursa:"rezervare.html",data:new Date().toLocaleString("ro-RO")}),keepalive:true});}catch(e){}
-  }
-
-  // WhatsApp message
-  let msg=`Bună! Aș dori să comand de la Metanoia · SOul Meal:%0A%0A`;
-  cart.forEach(x=>{msg+=`• ${x.cant}x ${x.nume} — ${x.pret*x.cant} lei%0A`;});
-  msg+=`%0ATotal: ${t} lei%0A%0ANume: ${nume}%0ATelefon: ${tel}`;
-  if(cand)msg+=`%0ACând ridic: ${cand}`;
-  if(obs)msg+=`%0AObservații: ${obs}`;
-
-  // golește coșul
-  cart=[];
-  try{localStorage.removeItem("metanoia_cart");}catch(e){}
-
-  // salvează link-ul WA ca să-l punem pe buton
-  window._waLink = `https://wa.me/${WA}?text=${msg}`;
-  document.getElementById("btnWaLink").href = window._waLink;
-
-  // arată ecranul de succes (NU deschidem WA automat)
-  document.getElementById("wrapForm").style.display="none";
-  document.getElementById("wrapOk").style.display="block";
-  window.scrollTo({top:0,behavior:"smooth"});
-}
-
-render();
+/* ── START ── */
+window.addEventListener("DOMContentLoaded", init);
 </script>
 </body>
 </html>
+p
