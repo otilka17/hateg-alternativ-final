@@ -587,6 +587,20 @@ footer{background:var(--ink2);padding:60px 8% 28px;}
 
 <div class="divider"></div>
 
+<!-- ══ DOZĂ DE SĂNĂTATE — spread C (dark) ══ -->
+<section class="spread-c" id="sanatate">
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:30px;margin-bottom:10px;">
+    <div>
+      <div class="sp-eyebrow light">Doză de sănătate</div>
+      <h2 class="sp-h2 white">Gustări vii,<br><em>pline de bine.</em></h2>
+    </div>
+    <p style="font-size:.88rem;color:rgba(255,255,255,.35);max-width:360px;line-height:1.75;font-weight:300;padding-top:50px;">Băuturi stoarse din fructe și legume și gustări hrănitoare cu chia — preparate proaspăt, ambalate to-go.</p>
+  </div>
+  <div class="item-list" id="list-sanatate" style="margin-top:30px;"></div>
+</section>
+
+<div class="divider"></div>
+
 <!-- ══ SANDWICH — spread A ══ -->
 <section class="spread spread-a" id="sandwich">
   <div class="sp-text" style="background:var(--cream2);">
@@ -630,7 +644,7 @@ footer{background:var(--ink2);padding:60px 8% 28px;}
     <div style="width:100%;height:100%;background:linear-gradient(160deg,#1a0a05,#3a1508 50%,#6a2a10) url('https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=1200&q=70') center/cover no-repeat;position:absolute;inset:0;"></div>
   </div>
   <div class="sp-content">
-    <div class="sp-eyebrow light">Dulce la doză</div>
+    <div class="sp-eyebrow light">Metanoia dulce</div>
     <h2 class="sp-h2 white">Sigilat,<br><em>de luat la drum.</em></h2>
     <p class="sp-lead white">Deserturi de casă ambalate to-go, perfecte lângă o cafea.</p>
     <div class="item-list" id="list-dulce"></div>
@@ -682,8 +696,9 @@ footer{background:var(--ink2);padding:60px 8% 28px;}
     <div class="ft-col"><h4>Meniu</h4><ul>
       <li><a href="#cafea">Cafea & Specialități</a></li>
       <li><a href="#limonade">Limonadă & Fresh</a></li>
-      <li><a href="#sandwich">Sandwich-uri & Bowl</a></li>
-      <li><a href="#configurator">Fă-ți sandwich-ul</a></li>
+      <li><a href="#sanatate">Doză de sănătate</a></li>
+      <li><a href="#sandwich">Sandwich-uri</a></li>
+      <li><a href="#dulce">Metanoia dulce</a></li>
       <li><a href="#borcane">Borcanele Metanoia</a></li>
     </ul></div>
     <div class="ft-col"><h4>Comandă</h4><ul>
@@ -737,35 +752,38 @@ const SPEC=[
   {n:"Fizzy Iced Peach",d:"Cafea rece, acidulată, cu piersică.",p:15},
 ];
 const LIM=[
-  {n:"Limonadă clasică",d:"Lămâie proaspătă și mentă.",p:12},
+  {n:"Citronadă",d:"Lămâie proaspătă, stoarsă pe loc.",p:12},
+  {n:"Limonadă de mentă",d:"Lămâie și mentă proaspătă.",p:12},
+  {n:"Fusion (cu sirop)",d:"Limonadă cu sirop de fructe, după zi.",p:14},
   {n:"Limonadă cu aronia",d:"Cu superfructe Aronia Charlottenburg.",p:15},
-  {n:"Limonadă fructe de pădure",d:"Afine, zmeură, coacăze.",p:14},
   {n:"Fresh de portocale",d:"Stors pe loc, 100% portocale.",p:14},
-  {n:"Fresh mere & morcovi",d:"Dulce-natural, plin de vitamine.",p:13},
 ];
 const SAND=[
-  {n:"Grecesc",d:"Ou ochi, feta, roșii cherry, spanac.",p:16,ing:["Ou ochi","Feta","Roșii cherry","Spanac"]},
-  {n:"Proteic",d:"Pui la grătar, hummus, spanac.",p:19,ing:["Pui la grătar","Hummus","Spanac"]},
-  {n:"Mediteranean",d:"Pui, tzatziki, roșii uscate.",p:19,ing:["Pui la grătar","Tzatziki","Roșii uscate"]},
-  {n:"Energizant",d:"Ton, hummus, castraveți.",p:18,ing:["Ton","Hummus","Castraveți"]},
-  {n:"Gourmet",d:"Prosciutto, ricotta, rucola, fistic.",p:22,ing:["Prosciutto","Ricotta","Rucola","Fistic"]},
-  {n:"De vară",d:"Cremă de brânză, dovlecel, ceapă verde.",p:15,ing:["Cremă de brânză","Dovlecel","Ceapă verde"]},
-  {n:"Bowl-ul zilei",d:"Proteină + legume de sezon, la bol.",p:24,ing:["Proteina zilei","Legume de sezon"],nobread:true},
+  {n:"Nobil",d:"Somon afumat, legume crocante, sos fin, ciabatta caldă.",p:26,ing:["Somon afumat","Salată","Castraveți","Sos fin"]},
+  {n:"Riviera",d:"Ton, legume crocante, sos fin, ciabatta caldă.",p:22,ing:["Ton","Salată","Castraveți","Sos fin"]},
+  {n:"Acasă",d:"Piept de pui la grill, salată, sos de casă, pâine cu maia.",p:21,ing:["Pui la grill","Salată","Roșii","Sos de casă"]},
+  {n:"Rustic",d:"Jambon, cașcaval, ciabatta caldă — ca acasă.",p:19,ing:["Jambon","Cașcaval"]},
+  {n:"Bunătate",d:"Chiftea de casă, legume murate, sos, ciabatta.",p:18,ing:["Chiftea de casă","Legume murate","Sos"]},
+];
+const SANATATE=[
+  {n:"Fructe & Legume",d:"Băutură vie, stoarsă din fructe și legume — sortiment de sezon.",p:16},
+  {n:"Chia cu ovăz",d:"Gustare hrănitoare, cu semințe de chia.",p:14},
 ];
 const DULCE=[
+  {n:"Griș cu lapte",d:"Cremos, de casă, cu dulceață.",p:12},
+  {n:"Orez cu lapte",d:"Cremos, de casă, ca la mama acasă.",p:12},
+  {n:"Cheesecake",d:"Fin și catifelat, la pahar.",p:16},
+  {n:"Tiramisu",d:"Clasic italian, sigilat to-go.",p:16},
   {n:"Fursecuri de casă cu ovăz",d:"Măr-scorțișoară · ciocolată · carrot cake.",p:6},
-  {n:"Desert cu aronia, la pahar",d:"Cremos, cu superfructe.",p:14},
-  {n:"Tiramisu la doză",d:"Clasic italian, sigilat to-go.",p:16},
 ];
 const COMBO=[
   {n:"Pachetul de drum",d:"Un sandwich la alegere + o cafea + un fursec. Gata de plecare.",p:35,ico:"🎒"},
   {n:"Pachet familie",d:"4 sandwich-uri + 2 limonade. Pentru tot echipajul din mașină.",p:79,ico:"👨‍👩‍👧"},
 ];
 const JARS=[
-  {n:"Zacuscă Metanoia",d:"Rețeta veche a familiei — 100 de ani de tradiție.",ico:"🫙"},
-  {n:"Ketchup de casă",d:"Din roșii coapte, fără conservanți.",ico:"🍅"},
-  {n:"Bulion de grădină",d:"Roșii pasate, gros și aromat.",ico:"🥫"},
-  {n:"Dulcețuri",d:"Căpșuni · afine · măceșe · piersici · prune.",ico:"🍯"},
+  {n:"Zacuscă Metanoia",d:"Rețeta veche a familiei, 300g. Produs cu suflet.",ico:"🫙",p:22},
+  {n:"Dulceață de casă",d:"Din fructe de sezon, 250g — căpșuni · afine · măceșe · prune.",ico:"🍯",p:18},
+  {n:"Bulion de grădină",d:"Roșii pasate, gros și aromat, 720g.",ico:"🥫",p:16},
 ];
 
 /* ====== COS ====== */
@@ -824,6 +842,7 @@ function fillList(id,arr,dark,sandbox){
 fillList("list-cafea",CAFEA,false,false);
 fillList("list-spec",SPEC,true,false);
 fillList("list-lim",LIM,false,false);
+fillList("list-sanatate",SANATATE,true,false);
 fillList("list-dulce",DULCE,true,false);
 fillList("list-sand",SAND,false,true);
 
@@ -845,6 +864,10 @@ document.getElementById("grid-jars").innerHTML=JARS.map(j=>`
     <div class="jar-ico">${j.ico}</div>
     <div class="jar-nm">${j.n}</div>
     <p class="jar-ds">${j.d}</p>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:18px;">
+      <div class="item-price white">${j.p}<small> lei</small></div>
+      <button class="item-btn white-outline" onclick='addToCartBtn(this,${JSON.stringify(j.n)},${j.p})'>+ Adaugă</button>
+    </div>
   </div>`).join("");
 
 /* ══════ MODAL PERSONALIZARE SANDWICH ══════ */
