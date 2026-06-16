@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Metanoia · SOul Meal — Băcănie-butic · DN 68 Hațeg</title>
 <meta name="description" content="SOul Meal: băcănie-butic pe DN 68, Totești · Hațeg. Cafea Nespresso, limonadă, sandwich-uri și borcanele Metanoia.">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,9..40,300;0,9..40,400;1,9..40,300;1,9..40,400&family=Karla:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,opsz,wght@0,9..40,300;0,9..40,400;1,9..40,300;1,9..40,400&family=Karla:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --cr:#faf5ec; --cw:#fff; --nv:#14253a; --nv2:#1e3350; --te:#c4622d; --te2:#e07840;
@@ -34,28 +34,29 @@ body{font-family:'Karla',sans-serif;background:var(--cr);color:var(--tx);overflo
 .nav-burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px;}
 .nav-burger span{width:24px;height:1.5px;background:var(--tx);display:block;transition:.3s;}
 .nav-burger.w span{background:#fff;}
-.mob-menu{position:fixed;inset:0;z-index:9998;background:var(--nv);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;transform:translateX(100%);transition:transform .5s cubic-bezier(.77,0,.175,1);}
+.mob-menu{position:fixed;inset:0;z-index:9998;background:var(--nv);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;transform:translateX(100%);transition:transform .3s;}
 .mob-menu.open{transform:translateX(0);}
-.mob-menu a{font-family:'Playfair Display',serif;font-size:2.2rem;color:#fff;text-decoration:none;padding:14px 0;letter-spacing:1px;border-bottom:1px solid rgba(255,255,255,.08);width:72%;text-align:center;transition:color .2s;}
+.mob-menu a{font-family:'Playfair Display',serif;font-size:2.2rem;color:#fff;text-decoration:none;padding:14px 0;letter-spacing:1px;border-bottom:1px solid rgba(255,255,255,.08);width:72%;text-align:center;}
 .mob-menu a:hover{color:var(--te2);}
 .mob-close{position:absolute;top:22px;right:6%;font-size:1.8rem;color:rgba(255,255,255,.5);background:none;border:none;cursor:pointer;font-weight:300;}
 
 /* ── HERO ── */
 .hero{min-height:100svh;background:var(--nv);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 5% 80px;position:relative;overflow:hidden;}
-.hero-img{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2047&auto=format&fit=crop');background-size:cover;background-position:center;opacity:.22;animation:slowzoom 18s ease-out forwards;}
+.hero-img{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2047&auto=format&fit=crop');background-size:cover;background-position:center;animation:slowzoom 20s ease-out forwards;}
+.hero-img::after{content:'';position:absolute;inset:0;background:rgba(20,37,58,.55);}
 @keyframes slowzoom{from{transform:scale(1.1)}to{transform:scale(1.02)}}
 .hero-in{position:relative;z-index:2;}
 .hero-eyebrow{font-size:.6rem;letter-spacing:5px;text-transform:uppercase;color:rgba(255,255,255,.45);margin-bottom:32px;display:flex;align-items:center;justify-content:center;gap:16px;}
 .hero-eyebrow::before,.hero-eyebrow::after{content:'';width:40px;height:1px;background:rgba(255,255,255,.25);}
 .hero h1{font-family:'Playfair Display',serif;font-weight:400;font-size:clamp(4rem,10vw,9rem);color:#fff;line-height:.95;letter-spacing:-1px;margin-bottom:8px;}
 .hero h1 span{font-style:italic;color:var(--te2);}
-.hero-sub{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(1rem,1.8vw,1.35rem);color:rgba(255,255,255,.5);margin:28px auto 48px;max-width:460px;line-height:1.75;letter-spacing:.3px;}
+.hero-sub{font-family:'Source Serif 4',serif;font-style:italic;font-size:clamp(1rem,1.8vw,1.35rem);color:rgba(255,255,255,.5);margin:28px auto 48px;max-width:460px;line-height:1.75;letter-spacing:.5px;}
 .hero-links{display:flex;gap:40px;justify-content:center;align-items:center;flex-wrap:wrap;}
 .hl-pri{font-size:.68rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#fff;text-decoration:none;border-bottom:1px solid var(--te);padding-bottom:2px;transition:all .2s;}
 .hl-pri:hover{color:var(--te2);border-color:var(--te2);}
 .hl-sec{font-size:.68rem;font-weight:400;letter-spacing:2.5px;text-transform:uppercase;color:rgba(255,255,255,.4);text-decoration:none;transition:color .2s;}
 .hl-sec:hover{color:rgba(255,255,255,.8);}
-.hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);font-size:.58rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);display:flex;flex-direction:column;align-items:center;gap:10px;}
+.hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);font-size:.58rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.25);display:flex;flex-direction:column;align-items:center;gap:8px;}
 .hero-scroll::after{content:'';width:1px;height:40px;background:rgba(255,255,255,.2);}
 
 /* ── TICKER ── */
@@ -64,6 +65,25 @@ body{font-family:'Karla',sans-serif;background:var(--cr);color:var(--tx);overflo
 @keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 .ti{font-size:.58rem;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:rgba(255,255,255,.9);}
 .ts{color:rgba(255,255,255,.35);font-size:.5rem;}
+
+/* ── FEATURED SECTION — Top 3 Items ── */
+.featured{background:var(--cr);padding:80px 5%;}
+.featured-head{text-align:center;margin-bottom:60px;}
+.eyebrow{font-size:.58rem;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:var(--te);margin-bottom:20px;display:flex;align-items:center;justify-content:center;gap:12px;}
+.eyebrow::before{content:'';width:22px;height:1px;background:var(--te);}
+h2.disp{font-family:'Playfair Display',serif;font-weight:400;font-size:clamp(2.4rem,4.5vw,4.2rem);line-height:1.0;color:var(--tx);letter-spacing:-.5px;margin-bottom:24px;}
+h2.disp em{font-style:italic;color:var(--te);}
+.featured-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-bottom:50px;}
+.feat-card{background:#fff;border:1px solid var(--ln);padding:40px 32px;text-align:center;transition:all .3s;cursor:pointer;}
+.feat-card:hover{transform:translateY(-6px);box-shadow:0 12px 32px rgba(20,37,58,.12);border-color:var(--te);}
+.feat-ico{font-size:3.2rem;margin-bottom:20px;display:block;}
+.feat-name{font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--nv);margin-bottom:12px;}
+.feat-desc{font-size:.88rem;color:var(--tx3);line-height:1.6;margin-bottom:20px;}
+.feat-link{font-size:.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--te);text-decoration:none;transition:color .2s;}
+.feat-link:hover{color:var(--te2);}
+.featured-cta{text-align:center;}
+.btn-primary{display:inline-block;background:var(--nv);color:#fff;padding:16px 40px;font-size:.68rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;transition:all .2s;border:none;cursor:pointer;}
+.btn-primary:hover{background:var(--te);}
 
 /* ── SPLIT SECTIONS ── */
 .split{display:grid;grid-template-columns:1fr 1fr;min-height:68vh;}
@@ -76,21 +96,13 @@ body{font-family:'Karla',sans-serif;background:var(--cr);color:var(--tx);overflo
 .sv-te{background:var(--te);}
 .sv-nv2{background:var(--nv2);}
 
-.eyebrow{font-size:.58rem;font-weight:700;letter-spacing:3.5px;text-transform:uppercase;color:var(--te);margin-bottom:20px;display:flex;align-items:center;gap:12px;}
-.eyebrow::before{content:'';width:22px;height:1px;background:var(--te);}
-.eyebrow.w{color:rgba(255,255,255,.5);}
-.eyebrow.w::before{background:rgba(255,255,255,.3);}
-h2.disp{font-family:'Playfair Display',serif;font-weight:400;font-size:clamp(2.4rem,4.5vw,4.2rem);line-height:1.0;color:var(--tx);letter-spacing:-.5px;margin-bottom:24px;}
-h2.disp em{font-style:italic;color:var(--te);}
-h2.disp.w{color:#fff;}
-h2.disp.w em{color:var(--te2);}
 .body-txt{font-family:'Source Serif 4',serif;font-size:1.02rem;color:var(--tx2);line-height:1.85;max-width:440px;}
 .body-txt.w{color:rgba(255,255,255,.6);}
 .body-txt p{margin-bottom:16px;}
 .body-txt p:last-child{margin-bottom:0;}
 .sign{font-family:'Playfair Display',serif;font-style:italic;font-size:1.15rem;color:var(--te);margin-top:24px;}
 .btn-link{display:inline-block;margin-top:32px;font-size:.65rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--te);text-decoration:none;border-bottom:1px solid var(--te);padding-bottom:2px;transition:all .2s;}
-.btn-link:hover{color:var(--te2);}
+.btn-link:hover{color:var(--te2);border-color:var(--te2);}
 .btn-link.w{color:#fff;border-color:rgba(255,255,255,.4);}
 .btn-link.w:hover{border-color:#fff;}
 
@@ -160,6 +172,10 @@ footer{background:var(--nv);padding:64px 5% 28px;}
 @keyframes fadein{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 .fade{animation:fadein .8s ease both;}
 
+@media(max-width:1200px){
+  .featured-grid{grid-template-columns:1fr;}
+}
+
 @media(max-width:960px){
   .split{grid-template-columns:1fr;min-height:auto;}
   .split-vis{min-height:320px;}
@@ -171,8 +187,10 @@ footer{background:var(--nv);padding:64px 5% 28px;}
   .promise{grid-template-columns:repeat(2,1fr);}
   .pr:nth-child(2){border-right:none;}
   .ft-top{grid-template-columns:1fr 1fr;}
+  .featured-grid{gap:24px;}
 }
-@media(max-width:480px){
+@media(max-width:600px){
+  .featured-grid{grid-template-columns:1fr;}
   .ft-top{grid-template-columns:1fr;}
   .promise{grid-template-columns:1fr 1fr;}
   .hero h1{font-size:clamp(3.2rem,12vw,5rem);}
@@ -231,7 +249,7 @@ footer{background:var(--nv);padding:64px 5% 28px;}
     <p class="hero-sub">Băcănie-butic cu suflet — cafea de specialitate, sandwich-uri proaspete, limonade & bunătăți locale din inima Hațegului.</p>
     <div class="hero-links">
       <a class="hl-pri" href="meniu.html">Descoperă meniul</a>
-      <a class="hl-sec" href="#poveste">Povestea noastră ↓</a>
+      <a class="hl-sec" href="#featured">Top-uri ↓</a>
     </div>
   </div>
   <div class="hero-scroll">Derulează</div>
@@ -257,6 +275,37 @@ footer{background:var(--nv);padding:64px 5% 28px;}
   <span class="ti">DN 68 · Totești</span><span class="ts">✦</span>
 </div></div>
 
+<!-- ── FEATURED SECTION — Top 3 cu link direct la meniu ── -->
+<section class="featured" id="featured">
+  <div class="featured-head">
+    <div class="eyebrow">Cele mai cerute</div>
+    <h2 class="disp">Trei clasici<br><em>din meniu.</em></h2>
+  </div>
+  <div class="featured-grid">
+    <div class="feat-card">
+      <span class="feat-ico">☕</span>
+      <h3 class="feat-name">Cappuccino Nespresso</h3>
+      <p class="feat-desc">Espresso + lapte catifelat + spumă cremoasă. Clasicul perfect, pregătit pe loc.</p>
+      <a href="meniu.html#cafea" class="feat-link">Descoperă →</a>
+    </div>
+    <div class="feat-card">
+      <span class="feat-ico">🥪</span>
+      <h3 class="feat-name">Sandwich Nobil</h3>
+      <p class="feat-desc">Somon afumat, legume crocante, sos fin, ciabatta caldă. Gourmet de drum.</p>
+      <a href="meniu.html#sandwich" class="feat-link">Personalizează →</a>
+    </div>
+    <div class="feat-card">
+      <span class="feat-ico">🫙</span>
+      <h3 class="feat-name">Zacuscă Metanoia</h3>
+      <p class="feat-desc">100 de ani de tradiție în borcan. Rețeta veche a familiei, făcută cu suflet.</p>
+      <a href="meniu.html#borcane" class="feat-link">Vezi stocuri →</a>
+    </div>
+  </div>
+  <div class="featured-cta">
+    <a href="meniu.html" class="btn-primary">Meniu complet cu prețuri →</a>
+  </div>
+</section>
+
 <!-- ── 1. POVESTE — text stânga / citat dreapta ── -->
 <div class="split" id="poveste">
   <div class="split-txt">
@@ -264,13 +313,13 @@ footer{background:var(--nv);padding:64px 5% 28px;}
     <h2 class="disp">Hrană cu suflet,<br><em>din inima Hațegului.</em></h2>
     <div class="body-txt">
       <p>Am pornit dintr-o idee simplă: drumul prin Țara Hațegului merită un popas adevărat.</p>
-      <p>La băcănia noastră de pe DN 68 găsești ce-am ales noi cu mâna — borcane cu rețete vechi de 100 de ani, bunătăți locale, cafea de specialitate și sandwich-uri proaspete, gata de drum.</p>
+      <p>La băcănia noastr�� de pe DN 68 găsești ce-am ales noi cu mâna — borcane cu rețete vechi de 100 de ani, bunătăți locale, cafea de specialitate și sandwich-uri proaspete, gata de drum.</p>
       <p>Nu e supermarket. E o băcănie-butic cu suflet.</p>
       <div class="sign">— Otilia · Metanoia</div>
     </div>
     <a class="btn-link" href="masterplan.html">Citește povestea completă →</a>
   </div>
-  <div class="split-vis sv-navy" style="background-image:url('https://images.unsplash.com/photo-1498837167922-ddd27525d352?q=80&w=1470&auto=format&fit=crop');background-size:cover;background-position:center;">
+  <div class="split-vis sv-navy" style="background-image:url('https://images.unsplash.com/photo-1498837167922-ddd27525d352?q=80&w=1470&auto=format&fit=crop');background-size:cover;background-position:center">
     <div style="position:absolute;inset:0;background:rgba(20,37,58,.72)"></div>
     <div class="vis-quote" style="position:relative;z-index:1">
       <blockquote>Metanoia înseamnă schimbarea în bine — o întoarcere la ce contează cu adevărat.</blockquote>
@@ -281,11 +330,11 @@ footer{background:var(--nv);padding:64px 5% 28px;}
 
 <!-- ── 2. CAFEA & BAR — vizual stânga / text dreapta ── -->
 <div class="split">
-  <div class="split-vis sv-te" style="position:relative" style="background-image:url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1470&auto=format&fit=crop');background-size:cover;background-position:center;">
+  <div class="split-vis sv-te" style="position:relative; background-image:url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=1470&auto=format&fit=crop');background-size:cover;background-position:center">
     <div style="position:absolute;inset:0;background:rgba(196,98,45,.55)"></div>
     <div style="text-align:center;padding:48px 40px;position:relative;z-index:1;">
       <div style="font-family:'Playfair Display',serif;font-size:clamp(5rem,10vw,11rem);line-height:1;color:rgba(255,255,255,.12);margin-bottom:24px;">☕</div>
-      <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.4rem,2.5vw,2rem);color:#fff;line-height:1.4;max-width:300px;margin:0 auto">Fiecare cafea pregătită cu intenție.</div>
+      <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.4rem,2.5vw,2rem);color:#fff;line-height:1.4;max-width:300px;margin:0 auto">Fiecare cafea pregătită cu atenție. Pe loc. Pentru tine.</div>
     </div>
   </div>
   <div class="split-txt pad-r">
@@ -314,7 +363,7 @@ footer{background:var(--nv);padding:64px 5% 28px;}
     </div>
     <a class="btn-link" href="meniu.html">Comandă acum →</a>
   </div>
-  <div class="split-vis sv-nv2" style="background-image:url('https://images.unsplash.com/photo-1550507992-eb63ffee0847?q=80&w=1470&auto=format&fit=crop');background-size:cover;background-position:center;">
+  <div class="split-vis sv-nv2" style="background-image:url('https://images.unsplash.com/photo-1550507992-eb63ffee0847?q=80&w=1470&auto=format&fit=crop');background-size:cover;background-position:center">
     <div style="position:absolute;inset:0;background:rgba(20,37,58,.82)"></div>
     <div class="vis-list" style="position:relative;z-index:1">
       <div class="vi-item">
@@ -335,7 +384,7 @@ footer{background:var(--nv);padding:64px 5% 28px;}
 
 <!-- ── 4. BORCANE — vizual stânga / text dreapta ── -->
 <div class="split" style="border-top:1px solid var(--ln);">
-  <div class="split-vis" style="background-image:url('https://images.unsplash.com/photo-1506976785307-8732e854ad03?q=80&w=1470&auto=format&fit=crop');background-size:cover;background-position:center;">
+  <div class="split-vis" style="background-image:url('https://images.unsplash.com/photo-1506976785307-8732e854ad03?q=80&w=1470&auto=format&fit=crop');background-size:cover;background-position:center">
     <div style="position:absolute;inset:0;background:rgba(20,26,36,.35)"></div>
     <div style="position:relative;z-index:1;padding:48px 40px;text-align:center;">
       <div style="font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(4rem,8vw,10rem);color:rgba(255,255,255,.15);line-height:.9;letter-spacing:-3px;">100<br>ani</div>
@@ -370,18 +419,18 @@ footer{background:var(--nv);padding:64px 5% 28px;}
       <div class="il-item"><div class="il-dot"></div><div class="il-name">Aronia Charlottenburg®</div><div class="il-desc">sucuri & suplimente din superfructe</div></div>
     </div>
   </div>
-  <div class="split-vis sv-navy" style="background-image:url('https://images.unsplash.com/photo-1528825871115-3581a5387919?q=80&w=1470&auto=format&fit=crop');background-size:cover;background-position:center;">
+  <div class="split-vis sv-navy" style="background-image:url('https://images.unsplash.com/photo-1528825871115-3581a5387919?q=80&w=1470&auto=format&fit=crop');background-size:cover;background-position:center">
     <div style="position:absolute;inset:0;background:rgba(20,37,58,.65)"></div>
     <div style="text-align:center;padding:48px 40px;position:relative;z-index:1;">
       <div style="font-size:clamp(4rem,8vw,9rem);line-height:1;margin-bottom:20px;">🍇</div>
-      <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.2rem,2vw,1.6rem);color:rgba(255,255,255,.6);line-height:1.55;max-width:280px;margin:0 auto">Kilometru zero, sezon real, gust autentic.</div>
+      <div style="font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1.2rem,2vw,1.6rem);color:rgba(255,255,255,.6);line-height:1.55;max-width:280px;margin:0 auto">Kilometru zero — din Retezat, pe DN 68.</div>
     </div>
   </div>
 </div>
 
 <!-- ── 6. CUM FUNCȚIONEAZĂ — vizual stânga / pași dreapta ── -->
 <div class="split" style="border-top:1px solid var(--ln);">
-  <div class="split-vis sv-te" style="position:relative" style="background-image:url('https://images.unsplash.com/photo-1502920917128-1aa500764cbd?q=80&w=1470&auto=format&fit=crop');background-size:cover;background-position:center;">
+  <div class="split-vis sv-te" style="position:relative; background-image:url('https://images.unsplash.com/photo-1502920917128-1aa500764cbd?q=80&w=1470&auto=format&fit=crop');background-size:cover;background-position:center">
     <div style="position:absolute;inset:0;background:rgba(196,98,45,.55)"></div>
     <div style="padding:56px 48px;max-width:380px;position:relative;z-index:1;">
       <div style="font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(5rem,10vw,13rem);color:rgba(255,255,255,.08);line-height:.85;letter-spacing:-4px;">DN<br>68</div>
@@ -392,8 +441,8 @@ footer{background:var(--nv);padding:64px 5% 28px;}
     <div class="eyebrow">Cum funcționează</div>
     <h2 class="disp">Simplu<br><em>ca bună ziua.</em></h2>
     <div class="process">
-      <div class="ps"><div class="ps-n">1</div><div class="ps-body"><div class="ps-title">Oprești pe DN 68</div><div class="ps-desc">Suntem în Totești — ne vezi după firma de lemn. Sau comanzi din timp pe WhatsApp.</div></div></div>
-      <div class="ps"><div class="ps-n">2</div><div class="ps-body"><div class="ps-title">Alegi din băcănie</div><div class="ps-desc">Borcane, produse Aronia, bunătăți locale — sau un sandwich și o cafea de la tejghea.</div></div></div>
+      <div class="ps"><div class="ps-n">1</div><div class="ps-body"><div class="ps-title">Oprești pe DN 68</div><div class="ps-desc">Suntem în Totești — ne vezi după firma de lemn. Sau comandă din meniu online.</div></div></div>
+      <div class="ps"><div class="ps-n">2</div><div class="ps-body"><div class="ps-title">Alegi din băcănie</div><div class="ps-desc">Borcane, produse Aronia, bunătăți locale — sau un sandwich personalizat.</div></div></div>
       <div class="ps"><div class="ps-n">3</div><div class="ps-body"><div class="ps-title">Cafea & limonadă pe loc</div><div class="ps-desc">Îți pregătim băutura cât alegi. La pahar sau sigilată to-go.</div></div></div>
       <div class="ps"><div class="ps-n">4</div><div class="ps-body"><div class="ps-title">Pleci la drum</div><div class="ps-desc">Totul ambalat frumos. Drumul continuă, gustul rămâne.</div></div></div>
     </div>
