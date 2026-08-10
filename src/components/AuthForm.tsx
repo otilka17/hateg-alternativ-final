@@ -15,12 +15,13 @@ export default function AuthForm() {
     setSubmitting(true);
     try {
       await signIn("password", formData);
-    } catch {
+    } catch (error) {
+      const detail = error instanceof Error ? error.message : String(error);
       toast.error(
-        flow === "signIn"
-          ? "Email sau parolă greșite."
-          : "Nu am putut crea contul. Verifică datele și încearcă din nou.",
+        flow === "signIn" ? "Email sau parolă greșite." : "Nu am putut crea contul.",
+        { description: detail, duration: 15000 },
       );
+      console.error("Auth error:", error);
     } finally {
       setSubmitting(false);
     }
