@@ -36,7 +36,12 @@ self.addEventListener("fetch", (event) => {
 
   // Handle navigation requests differently
   if (event.request.mode === "navigate") {
-    event.respondWith(fetch(event.request).catch(() => caches.match("/")));
+    event.respondWith(
+      fetch(event.request).catch(async () => {
+        const cached = (await caches.match(event.request)) || (await caches.match("/"));
+        return cached || new Response("Offline", { status: 503, statusText: "Offline" });
+      }),
+    );
     return;
   }
 
@@ -52,7 +57,10 @@ self.addEventListener("fetch", (event) => {
         caches.open(CACHE_NAME).then((cache) => cache.put(event.request, responseToCache));
         return response;
       })
-      .catch(() => caches.match(event.request)),
+      .catch(async () => {
+        const cached = await caches.match(event.request);
+        return cached || new Response("Offline", { status: 503, statusText: "Offline" });
+      }),
   );
 });
 
