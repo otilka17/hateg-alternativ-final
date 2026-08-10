@@ -40,21 +40,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Detect dark mode preference and set the class before next-themes loads. This avoids a flash of unstyled content (FOUC) when the page loads. -->
+    <!-- This site's design isn't built for dark mode (many components use
+         hardcoded light-mode colors), so the theme is forced to light
+         regardless of system preference or any previously stored value. -->
     <script>
-      try {
-        let theme = localStorage.getItem("theme");
-        if (theme === "system" || !theme) {
-          let prefersDark = window.matchMedia(
-            "(prefers-color-scheme: dark)",
-          ).matches;
-          theme = prefersDark ? "dark" : "light";
-        }
-        document.documentElement.classList.add(theme);
-      } catch (e) {}
+      document.documentElement.classList.add("light");
     </script>
 
-    <script type="module" crossorigin src="/assets/index-sg3Hrz1B.js"></script>
+    <script type="module" crossorigin src="/assets/index-CtiCcBjX.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-BSRosMIj.css">
   </head>
   <body>
