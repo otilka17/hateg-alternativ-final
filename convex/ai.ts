@@ -25,6 +25,7 @@ export const generateDescription = action({
     try {
       const response = await getOpenAI().chat.completions.create({
         model: "anthropic/claude-sonnet-4.5",
+        max_tokens: 300,
         messages: [
           {
             role: "system",
@@ -56,6 +57,7 @@ export const generateBlogPost = action({
     try {
       const response = await getOpenAI().chat.completions.create({
         model: "anthropic/claude-sonnet-4.5",
+        max_tokens: 1500,
         messages: [
           {
             role: "system",
@@ -94,6 +96,7 @@ export const generateReply = action({
     try {
       const response = await getOpenAI().chat.completions.create({
         model: "anthropic/claude-sonnet-4.5",
+        max_tokens: 300,
         messages: [
           {
             role: "system",
