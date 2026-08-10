@@ -18,6 +18,10 @@ import LoyaltyPage from "./pages/loyalty/page.tsx";
 import AccountPage from "./pages/contul-meu/page.tsx";
 import DesprePage from "./pages/despre/page.tsx";
 import ParteneriPage from "./pages/parteneri/page.tsx";
+import ChestionarPage from "./pages/chestionar/page.tsx";
+import SandwichBuilderPage from "./pages/sandwich-builder/page.tsx";
+import CutiaMetanoiaPage from "./pages/cutia-metanoia/page.tsx";
+import PachetCustomPage from "./pages/pachet-custom/page.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import PageTransition from "./components/PageTransition.tsx";
 import WhatsAppFloat from "./components/WhatsAppFloat.tsx";
@@ -45,6 +49,10 @@ function AnimatedRoutes() {
         <Route path="/contul-meu" element={<PageTransition><AccountPage /></PageTransition>} />
         <Route path="/despre" element={<PageTransition><DesprePage /></PageTransition>} />
         <Route path="/parteneri" element={<PageTransition><ParteneriPage /></PageTransition>} />
+        <Route path="/chestionar" element={<PageTransition><ChestionarPage /></PageTransition>} />
+        <Route path="/sandwich-builder" element={<PageTransition><SandwichBuilderPage /></PageTransition>} />
+        <Route path="/cutia-metanoia" element={<PageTransition><CutiaMetanoiaPage /></PageTransition>} />
+        <Route path="/pachet-custom" element={<PageTransition><PachetCustomPage /></PageTransition>} />
         <Route path="/auth/callback" element={<AuthCallback />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
