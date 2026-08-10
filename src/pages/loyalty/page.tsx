@@ -8,7 +8,7 @@ import { format } from "date-fns";
 import { ro } from "date-fns/locale";
 import { toast } from "sonner";
 import Navbar from "@/components/Navbar.tsx";
-import { SignInButton } from "@/components/ui/signin.tsx";
+import AuthForm from "@/components/AuthForm.tsx";
 import { Skeleton } from "@/components/ui/skeleton.tsx";
 import AnimatedSection from "@/components/AnimatedSection.tsx";
 
@@ -343,7 +343,7 @@ export default function LoyaltyPage() {
           <p className="text-muted-foreground text-sm mb-6">
             Autentifică-te pentru a accesa programul de fidelitate și a colecta ștampile.
           </p>
-          <SignInButton />
+          <AuthForm />
         </div>
       </Unauthenticated>
 

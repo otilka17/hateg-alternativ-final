@@ -1,6 +1,7 @@
 import { query, mutation } from "./_generated/server";
 import { v } from "convex/values";
 import { ConvexError } from "convex/values";
+import { getAuthUserId } from "@convex-dev/auth/server";
 
 // Public: list approved reviews (for homepage)
 export const listApproved = query({
@@ -18,14 +19,11 @@ export const listApproved = query({
 export const listAll = query({
   args: {},
   handler: async (ctx) => {
-    const identity = await ctx.auth.getUserIdentity();
-    if (!identity) {
+    const userId = await getAuthUserId(ctx);
+    if (!userId) {
       throw new ConvexError({ message: "Trebuie să fii autentificat", code: "UNAUTHENTICATED" });
     }
-    const user = await ctx.db
-      .query("users")
-      .withIndex("by_token", (q) => q.eq("tokenIdentifier", identity.tokenIdentifier))
-      .unique();
+    const user = await ctx.db.get(userId);
     if (!user || user.role !== "admin") {
       throw new ConvexError({ message: "Acces restricționat", code: "FORBIDDEN" });
     }
@@ -62,14 +60,11 @@ export const submit = mutation({
 export const approve = mutation({
   args: { id: v.id("reviews") },
   handler: async (ctx, args) => {
-    const identity = await ctx.auth.getUserIdentity();
-    if (!identity) {
+    const userId = await getAuthUserId(ctx);
+    if (!userId) {
       throw new ConvexError({ message: "Trebuie să fii autentificat", code: "UNAUTHENTICATED" });
     }
-    const user = await ctx.db
-      .query("users")
-      .withIndex("by_token", (q) => q.eq("tokenIdentifier", identity.tokenIdentifier))
-      .unique();
+    const user = await ctx.db.get(userId);
     if (!user || user.role !== "admin") {
       throw new ConvexError({ message: "Acces restricționat", code: "FORBIDDEN" });
     }
@@ -81,14 +76,11 @@ export const approve = mutation({
 export const remove = mutation({
   args: { id: v.id("reviews") },
   handler: async (ctx, args) => {
-    const identity = await ctx.auth.getUserIdentity();
-    if (!identity) {
+    const userId = await getAuthUserId(ctx);
+    if (!userId) {
       throw new ConvexError({ message: "Trebuie să fii autentificat", code: "UNAUTHENTICATED" });
     }
-    const user = await ctx.db
-      .query("users")
-      .withIndex("by_token", (q) => q.eq("tokenIdentifier", identity.tokenIdentifier))
-      .unique();
+    const user = await ctx.db.get(userId);
     if (!user || user.role !== "admin") {
       throw new ConvexError({ message: "Acces restricționat", code: "FORBIDDEN" });
     }

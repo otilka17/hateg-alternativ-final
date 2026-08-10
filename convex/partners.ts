@@ -1,6 +1,7 @@
 import { query, mutation } from "./_generated/server";
 import { v } from "convex/values";
 import { ConvexError } from "convex/values";
+import { getAuthUserId } from "@convex-dev/auth/server";
 
 // Public: list active partners
 export const list = query({
@@ -42,8 +43,8 @@ export const listFeatured = query({
 export const listAll = query({
   args: {},
   handler: async (ctx) => {
-    const identity = await ctx.auth.getUserIdentity();
-    if (!identity) {
+    const userId = await getAuthUserId(ctx);
+    if (!userId) {
       throw new ConvexError({ message: "Nu ești autentificat", code: "UNAUTHENTICATED" });
     }
     const partners = await ctx.db.query("partners").collect();
@@ -70,8 +71,8 @@ export const create = mutation({
     featured: v.boolean(),
   },
   handler: async (ctx, args) => {
-    const identity = await ctx.auth.getUserIdentity();
-    if (!identity) {
+    const userId = await getAuthUserId(ctx);
+    if (!userId) {
       throw new ConvexError({ message: "Nu ești autentificat", code: "UNAUTHENTICATED" });
     }
     const all = await ctx.db.query("partners").collect();
@@ -103,8 +104,8 @@ export const update = mutation({
     active: v.optional(v.boolean()),
   },
   handler: async (ctx, args) => {
-    const identity = await ctx.auth.getUserIdentity();
-    if (!identity) {
+    const userId = await getAuthUserId(ctx);
+    if (!userId) {
       throw new ConvexError({ message: "Nu ești autentificat", code: "UNAUTHENTICATED" });
     }
     const { id, ...fields } = args;
@@ -130,8 +131,8 @@ export const update = mutation({
 export const remove = mutation({
   args: { id: v.id("partners") },
   handler: async (ctx, args) => {
-    const identity = await ctx.auth.getUserIdentity();
-    if (!identity) {
+    const userId = await getAuthUserId(ctx);
+    if (!userId) {
       throw new ConvexError({ message: "Nu ești autentificat", code: "UNAUTHENTICATED" });
     }
     await ctx.db.delete(args.id);
@@ -142,8 +143,8 @@ export const remove = mutation({
 export const generateUploadUrl = mutation({
   args: {},
   handler: async (ctx) => {
-    const identity = await ctx.auth.getUserIdentity();
-    if (!identity) {
+    const userId = await getAuthUserId(ctx);
+    if (!userId) {
       throw new ConvexError({ message: "Nu ești autentificat", code: "UNAUTHENTICATED" });
     }
     return await ctx.storage.generateUploadUrl();

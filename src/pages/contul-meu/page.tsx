@@ -4,6 +4,7 @@ import { Authenticated, Unauthenticated, AuthLoading } from "convex/react";
 import { useAuth } from "@/hooks/use-auth.ts";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar.tsx";
+import AuthForm from "@/components/AuthForm.tsx";
 import { Skeleton } from "@/components/ui/skeleton.tsx";
 import { User, Mail, Shield, Heart, ShoppingBag, LogIn } from "lucide-react";
 import { motion } from "motion/react";
@@ -113,8 +114,6 @@ function AccountContent() {
 }
 
 export default function AccountPage() {
-  const { signinRedirect } = useAuth();
-
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -136,12 +135,7 @@ export default function AccountPage() {
             <LogIn size={32} className="text-muted-foreground mx-auto mb-4" />
             <h2 className="font-serif text-xl text-[#14253a] mb-2">Conectează-te</h2>
             <p className="text-sm text-muted-foreground mb-6">Intră în contul tău pentru a vedea detaliile și beneficiile tale.</p>
-            <button
-              onClick={() => signinRedirect()}
-              className="cursor-pointer bg-[#14253a] hover:bg-primary text-white px-8 py-3.5 text-[11px] font-bold tracking-widest uppercase transition-colors"
-            >
-              Conectare
-            </button>
+            <AuthForm />
           </div>
         </Unauthenticated>
 

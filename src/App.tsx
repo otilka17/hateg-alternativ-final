@@ -2,7 +2,6 @@ import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { DefaultProviders } from "./components/providers/default.tsx";
 import { useServiceWorker } from "@/hooks/use-service-worker.ts";
 import { AnimatePresence } from "motion/react";
-import AuthCallback from "./pages/auth/Callback.tsx";
 import Index from "./pages/Index.tsx";
 import MenuPage from "./pages/menu/page.tsx";
 import CheckoutPage from "./pages/checkout/page.tsx";
@@ -53,7 +52,6 @@ function AnimatedRoutes() {
         <Route path="/sandwich-builder" element={<PageTransition><SandwichBuilderPage /></PageTransition>} />
         <Route path="/cutia-metanoia" element={<PageTransition><CutiaMetanoiaPage /></PageTransition>} />
         <Route path="/pachet-custom" element={<PageTransition><PachetCustomPage /></PageTransition>} />
-        <Route path="/auth/callback" element={<AuthCallback />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
       </Routes>

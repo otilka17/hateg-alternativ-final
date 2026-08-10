@@ -1,6 +1,7 @@
 import { v } from "convex/values";
 import { query, mutation, internalMutation } from "./_generated/server";
 import { ConvexError } from "convex/values";
+import { getAuthUserId } from "@convex-dev/auth/server";
 import type { Id } from "./_generated/dataModel.d.ts";
 import type { MutationCtx } from "./_generated/server.d.ts";
 
@@ -36,13 +37,10 @@ export const upsertConfig = mutation({
 export const getMyCard = query({
   args: {},
   handler: async (ctx) => {
-    const identity = await ctx.auth.getUserIdentity();
-    if (!identity) return null;
+    const userId = await getAuthUserId(ctx);
+    if (!userId) return null;
 
-    const user = await ctx.db
-      .query("users")
-      .withIndex("by_token", (q) => q.eq("tokenIdentifier", identity.tokenIdentifier))
-      .unique();
+    const user = await ctx.db.get(userId);
     if (!user) return null;
 
     const card = await ctx.db
@@ -62,13 +60,10 @@ export const getMyCard = query({
 export const getMyStamps = query({
   args: {},
   handler: async (ctx) => {
-    const identity = await ctx.auth.getUserIdentity();
-    if (!identity) return [];
+    const userId = await getAuthUserId(ctx);
+    if (!userId) return [];
 
-    const user = await ctx.db
-      .query("users")
-      .withIndex("by_token", (q) => q.eq("tokenIdentifier", identity.tokenIdentifier))
-      .unique();
+    const user = await ctx.db.get(userId);
     if (!user) return [];
 
     const stamps = await ctx.db
@@ -85,13 +80,10 @@ export const getMyStamps = query({
 export const getMyRewards = query({
   args: {},
   handler: async (ctx) => {
-    const identity = await ctx.auth.getUserIdentity();
-    if (!identity) return [];
+    const userId = await getAuthUserId(ctx);
+    if (!userId) return [];
 
-    const user = await ctx.db
-      .query("users")
-      .withIndex("by_token", (q) => q.eq("tokenIdentifier", identity.tokenIdentifier))
-      .unique();
+    const user = await ctx.db.get(userId);
     if (!user) return [];
 
     const rewards = await ctx.db
@@ -108,8 +100,8 @@ export const getMyRewards = query({
 export const redeemReward = mutation({
   args: { rewardId: v.id("loyaltyRewards") },
   handler: async (ctx, args) => {
-    const identity = await ctx.auth.getUserIdentity();
-    if (!identity) {
+    const userId = await getAuthUserId(ctx);
+    if (!userId) {
       throw new ConvexError({ message: "Trebuie să fii autentificat.", code: "UNAUTHENTICATED" });
     }
 

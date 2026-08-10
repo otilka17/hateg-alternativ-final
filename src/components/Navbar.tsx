@@ -180,31 +180,27 @@ function UserMenu() {
 }
 
 function LoginButton() {
-  const { signinRedirect } = useAuth();
   return (
-    <button
-      onClick={() => signinRedirect()}
-      className="cursor-pointer flex items-center gap-1.5 text-foreground/60 hover:text-foreground transition-colors"
+    <Link
+      to="/contul-meu"
+      className="cursor-pointer flex items-center gap-1.5 text-foreground/60 hover:text-foreground transition-colors no-underline"
       title="Conectare"
     >
       <LogIn size={18} />
       <span className="hidden sm:inline text-[11px] font-medium tracking-wide">Conectare</span>
-    </button>
+    </Link>
   );
 }
 
 function MobileLoginButton({ onClose }: { onClose: () => void }) {
-  const { signinRedirect } = useAuth();
   return (
-    <button
-      onClick={() => {
-        onClose();
-        signinRedirect();
-      }}
-      className="cursor-pointer font-serif text-2xl text-white/70 py-2.5 tracking-wide hover:text-primary transition-colors"
+    <Link
+      to="/contul-meu"
+      onClick={onClose}
+      className="font-serif text-2xl text-white/70 no-underline py-2.5 tracking-wide hover:text-primary transition-colors"
     >
       Conectare
-    </button>
+    </Link>
   );
 }
 
