@@ -4,10 +4,16 @@ import { v } from "convex/values";
 import OpenAI from "openai";
 import { action } from "./_generated/server";
 
-const openai = new OpenAI({
-  baseURL: "https://ai-gateway.hercules.app/v1",
-  apiKey: process.env.HERCULES_API_KEY,
-});
+let openai: OpenAI | null = null;
+function getOpenAI(): OpenAI {
+  if (!openai) {
+    openai = new OpenAI({
+      baseURL: "https://ai-gateway.hercules.app/v1",
+      apiKey: process.env.HERCULES_API_KEY,
+    });
+  }
+  return openai;
+}
 
 export const generateDescription = action({
   args: {
@@ -17,7 +23,7 @@ export const generateDescription = action({
   },
   handler: async (_, args): Promise<{ text: string }> => {
     try {
-      const response = await openai.chat.completions.create({
+      const response = await getOpenAI().chat.completions.create({
         model: "anthropic/claude-sonnet-4-5-20250929",
         messages: [
           {
@@ -48,7 +54,7 @@ export const generateBlogPost = action({
   },
   handler: async (_, args): Promise<{ title: string; excerpt: string; content: string }> => {
     try {
-      const response = await openai.chat.completions.create({
+      const response = await getOpenAI().chat.completions.create({
         model: "anthropic/claude-sonnet-4-5-20250929",
         messages: [
           {
@@ -86,7 +92,7 @@ export const generateReply = action({
   },
   handler: async (_, args): Promise<{ text: string }> => {
     try {
-      const response = await openai.chat.completions.create({
+      const response = await getOpenAI().chat.completions.create({
         model: "anthropic/claude-sonnet-4-5-20250929",
         messages: [
           {

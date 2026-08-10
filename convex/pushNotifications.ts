@@ -5,13 +5,19 @@ import { v } from "convex/values";
 import { internal } from "./_generated/api";
 import { action, internalAction } from "./_generated/server";
 
-const hercules = new Hercules({ apiKey: process.env.HERCULES_API_KEY!, apiVersion: "2025-12-09" });
+let hercules: Hercules | null = null;
+function getHercules(): Hercules {
+  if (!hercules) {
+    hercules = new Hercules({ apiKey: process.env.HERCULES_API_KEY!, apiVersion: "2025-12-09" });
+  }
+  return hercules;
+}
 
 export const getVapidPublicKey = action({
   args: {},
   handler: async () => {
     try {
-      const { vapidPublicKey } = await hercules.pushNotifications.enable();
+      const { vapidPublicKey } = await getHercules().pushNotifications.enable();
       return { vapidPublicKey };
     } catch (error) {
       console.error("Failed to get VAPID public key:", error);
@@ -27,7 +33,7 @@ export const subscribe = action({
     const visitorId = identity?.subject ?? crypto.randomUUID();
 
     const sub = JSON.parse(args.subscription);
-    const { secret } = await hercules.pushNotifications.subscribe({
+    const { secret } = await getHercules().pushNotifications.subscribe({
       visitorId,
       subscription: {
         endpoint: sub.endpoint,
@@ -51,7 +57,7 @@ export const identify = action({
     }
 
     const userId = identity.subject;
-    const result = await hercules.pushNotifications.identify({ secret: args.secret, userId });
+    const result = await getHercules().pushNotifications.identify({ secret: args.secret, userId });
 
     if (result.success) {
       await ctx.runMutation(internal.pushIdentities.updateIdentityVisitorId, {
@@ -67,7 +73,7 @@ export const identify = action({
 export const unsubscribe = action({
   args: { secret: v.string() },
   handler: async (ctx, args): Promise<{ success: boolean }> => {
-    await hercules.pushNotifications.unsubscribe({ secret: args.secret });
+    await getHercules().pushNotifications.unsubscribe({ secret: args.secret });
     await ctx.runMutation(internal.pushIdentities.deleteIdentity, { secret: args.secret });
     return { success: true };
   },
@@ -83,7 +89,7 @@ export const sendNotification = internalAction({
     image: v.optional(v.string()),
   },
   handler: async (_, args): Promise<unknown> => {
-    const result = await hercules.pushNotifications.send({
+    const result = await getHercules().pushNotifications.send({
       visitorIds: args.visitorIds,
       title: args.title,
       body: args.body,
