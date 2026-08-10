@@ -37,6 +37,10 @@ jobs:
 
       - name: Build
         run: pnpm run build
+        env:
+          VITE_CONVEX_URL: ${{ secrets.VITE_CONVEX_URL }}
+          VITE_HERCULES_OIDC_AUTHORITY: ${{ secrets.VITE_HERCULES_OIDC_AUTHORITY }}
+          VITE_HERCULES_OIDC_CLIENT_ID: ${{ secrets.VITE_HERCULES_OIDC_CLIENT_ID }}
 
       - name: Add SPA fallback and custom domain files
         run: |
