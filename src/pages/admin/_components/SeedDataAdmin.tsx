@@ -61,7 +61,6 @@ export default function SeedDataAdmin() {
             info: item.info,
             price: item.p,
             emoji: "",
-            image: item.img,
             tag: item.tag,
             sortOrder: i,
           })),
@@ -86,8 +85,9 @@ export default function SeedDataAdmin() {
 
       setDone(true);
       toast.success("Datele au fost importate cu succes!");
-    } catch {
-      toast.error("Eroare la importarea datelor");
+    } catch (error) {
+      const detail = error instanceof Error ? error.message : String(error);
+      toast.error("Eroare la importarea datelor", { description: detail, duration: 15000 });
     } finally {
       setSeeding(false);
     }
