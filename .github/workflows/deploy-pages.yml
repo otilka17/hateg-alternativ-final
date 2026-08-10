@@ -35,14 +35,16 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Set Convex Auth signing keys
+      - name: Set Convex environment variables
         run: |
           npx convex env set -- JWT_PRIVATE_KEY "$JWT_PRIVATE_KEY"
           npx convex env set -- JWKS "$JWKS"
+          npx convex env set -- OPENROUTER_API_KEY "$OPENROUTER_API_KEY"
         env:
           CONVEX_DEPLOY_KEY: ${{ secrets.CONVEX_DEPLOY_KEY }}
           JWT_PRIVATE_KEY: ${{ secrets.JWT_PRIVATE_KEY }}
           JWKS: ${{ secrets.JWKS }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
 
       - name: Deploy Convex backend
         run: npx convex deploy

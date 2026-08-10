@@ -8,8 +8,8 @@ let openai: OpenAI | null = null;
 function getOpenAI(): OpenAI {
   if (!openai) {
     openai = new OpenAI({
-      baseURL: "https://ai-gateway.hercules.app/v1",
-      apiKey: process.env.HERCULES_API_KEY,
+      baseURL: "https://openrouter.ai/api/v1",
+      apiKey: process.env.OPENROUTER_API_KEY,
     });
   }
   return openai;
@@ -24,7 +24,7 @@ export const generateDescription = action({
   handler: async (_, args): Promise<{ text: string }> => {
     try {
       const response = await getOpenAI().chat.completions.create({
-        model: "anthropic/claude-sonnet-4-5-20250929",
+        model: "anthropic/claude-sonnet-4.5",
         messages: [
           {
             role: "system",
@@ -55,7 +55,7 @@ export const generateBlogPost = action({
   handler: async (_, args): Promise<{ title: string; excerpt: string; content: string }> => {
     try {
       const response = await getOpenAI().chat.completions.create({
-        model: "anthropic/claude-sonnet-4-5-20250929",
+        model: "anthropic/claude-sonnet-4.5",
         messages: [
           {
             role: "system",
@@ -93,7 +93,7 @@ export const generateReply = action({
   handler: async (_, args): Promise<{ text: string }> => {
     try {
       const response = await getOpenAI().chat.completions.create({
-        model: "anthropic/claude-sonnet-4-5-20250929",
+        model: "anthropic/claude-sonnet-4.5",
         messages: [
           {
             role: "system",
