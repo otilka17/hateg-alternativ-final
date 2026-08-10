@@ -10,6 +10,7 @@
 
 import type * as ai from "../ai.js";
 import type * as blog from "../blog.js";
+import type * as box from "../box.js";
 import type * as cms from "../cms.js";
 import type * as dailySpecial from "../dailySpecial.js";
 import type * as gallery from "../gallery.js";
@@ -21,7 +22,12 @@ import type * as partners from "../partners.js";
 import type * as promoBanner from "../promoBanner.js";
 import type * as pushIdentities from "../pushIdentities.js";
 import type * as pushNotifications from "../pushNotifications.js";
+import type * as reviews from "../reviews.js";
+import type * as sandwichBuilder from "../sandwichBuilder.js";
 import type * as schedule from "../schedule.js";
+import type * as siteInfo from "../siteInfo.js";
+import type * as slides from "../slides.js";
+import type * as stats from "../stats.js";
 import type * as users from "../users.js";
 
 import type {
@@ -33,6 +39,7 @@ import type {
 declare const fullApi: ApiFromModules<{
   ai: typeof ai;
   blog: typeof blog;
+  box: typeof box;
   cms: typeof cms;
   dailySpecial: typeof dailySpecial;
   gallery: typeof gallery;
@@ -44,7 +51,12 @@ declare const fullApi: ApiFromModules<{
   promoBanner: typeof promoBanner;
   pushIdentities: typeof pushIdentities;
   pushNotifications: typeof pushNotifications;
+  reviews: typeof reviews;
+  sandwichBuilder: typeof sandwichBuilder;
   schedule: typeof schedule;
+  siteInfo: typeof siteInfo;
+  slides: typeof slides;
+  stats: typeof stats;
   users: typeof users;
 }>;
 

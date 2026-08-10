@@ -9,6 +9,47 @@ export const generateUploadUrl = mutation({
   },
 });
 
+// ─── POPULAR ITEMS (for quick-order on homepage) ───
+export const listPopularItems = query({
+  args: {},
+  handler: async (ctx) => {
+    // Get a mix of popular sandwich + borcane items (active only, max 4)
+    const sandwiches = await ctx.db
+      .query("menuItems")
+      .withIndex("by_category", (q) => q.eq("category", "sandwich"))
+      .collect();
+    const activeSandwiches = sandwiches.filter((i) => i.active).slice(0, 2);
+
+    const borcane = await ctx.db.query("borcaneItems").collect();
+    const activeBorcane = borcane.filter((i) => i.active).slice(0, 2);
+
+    const items = [
+      ...await Promise.all(
+        activeSandwiches.map(async (item) => ({
+          id: item._id,
+          name: item.name,
+          price: item.price,
+          imageUrl: item.imageId ? await ctx.storage.getUrl(item.imageId) : null,
+          badge: "Proaspăt zilnic" as const,
+          category: "sandwich" as const,
+        }))
+      ),
+      ...await Promise.all(
+        activeBorcane.map(async (item) => ({
+          id: item._id,
+          name: item.name,
+          price: item.price,
+          imageUrl: item.imageId ? await ctx.storage.getUrl(item.imageId) : null,
+          badge: "Artizanal" as const,
+          category: "borcane" as const,
+        }))
+      ),
+    ];
+
+    return items.slice(0, 4);
+  },
+});
+
 // ─── MENU ITEMS ───
 
 export const listMenuItems = query({

@@ -190,6 +190,18 @@ export default defineSchema({
     timestamp: v.string(), // ISO 8601 UTC
   }).index("by_product", ["productName"]).index("by_timestamp", ["timestamp"]),
 
+  // CMS: Homepage carousel slides
+  slides: defineTable({
+    title: v.string(),
+    subtitle: v.string(),
+    description: v.string(),
+    link: v.string(),
+    imageId: v.optional(v.id("_storage")),
+    imageUrl: v.optional(v.string()), // CDN URL for pre-existing images
+    sortOrder: v.number(),
+    active: v.boolean(),
+  }),
+
   // Partners
   partners: defineTable({
     name: v.string(),
@@ -201,4 +213,51 @@ export default defineSchema({
     sortOrder: v.number(),
     active: v.boolean(),
   }),
+
+  // Site info (address, phone, email, social links, company details)
+  siteInfo: defineTable({
+    key: v.string(), // "address", "phone", "email", "whatsapp", "instagram", "facebook", "companyName", "cui", "regCom", "mapUrl"
+    value: v.string(),
+  }).index("by_key", ["key"]),
+
+  // Customer reviews
+  reviews: defineTable({
+    name: v.string(),
+    location: v.optional(v.string()),
+    stars: v.number(), // 1-5
+    text: v.string(),
+    approved: v.boolean(), // admin must approve before showing
+  }).index("by_approved", ["approved"]),
+
+  // Sandwich builder ingredients
+  sandwichIngredients: defineTable({
+    category: v.string(), // "paine", "proteina", "legume", "sos", "extra"
+    name: v.string(),
+    price: v.number(),
+    emoji: v.string(),
+    sortOrder: v.number(),
+    active: v.boolean(),
+  }).index("by_category", ["category"]),
+
+  // Cutia Metanoia - Subscription box
+  boxSubscriptions: defineTable({
+    email: v.string(),
+    name: v.string(),
+    phone: v.optional(v.string()),
+    tier: v.string(), // "gurmand" | "colecționar"
+    status: v.union(v.literal("active"), v.literal("paused"), v.literal("cancelled")),
+    subscribedAt: v.string(), // ISO 8601 UTC
+  }).index("by_email", ["email"]).index("by_status", ["status"]),
+
+  boxConfig: defineTable({
+    month: v.string(), // "2026-07", "2026-08" etc.
+    totalSlots: v.number(), // max available (e.g. 50)
+    closesAt: v.string(), // ISO 8601 UTC - when registration closes
+    revealItems: v.array(v.object({
+      label: v.string(),
+      revealedAt: v.optional(v.string()), // ISO 8601 UTC, null if not revealed yet
+      imageId: v.optional(v.id("_storage")),
+    })),
+    active: v.boolean(),
+  }).index("by_month", ["month"]),
 });
