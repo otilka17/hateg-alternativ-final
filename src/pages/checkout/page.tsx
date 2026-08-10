@@ -126,7 +126,7 @@ export default function CheckoutPage() {
       await createOrder({
         fname: data.fname,
         lname: data.lname,
-        phone: data.phone,
+        phone: data.phone.trim().replace(/\s+/g, ""),
         email: data.email,
         mode: data.mode,
         pickupDate: data.mode === "pickup" ? data.pickupDate : undefined,
