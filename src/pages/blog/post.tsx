@@ -7,6 +7,8 @@ import Footer from "@/components/Footer.tsx";
 import { format } from "date-fns";
 import { ro } from "date-fns/locale";
 import Navbar from "@/components/Navbar.tsx";
+import BlogReactions from "@/components/BlogReactions.tsx";
+import BlogComments from "@/components/BlogComments.tsx";
 
 const CATEGORY_LABELS: Record<string, string> = {
   retete: "Rețete",
@@ -131,6 +133,14 @@ export default function BlogPostPage() {
             className="prose prose-sm md:prose-base max-w-none prose-headings:font-serif prose-headings:text-[#14253a] prose-p:text-foreground/80 prose-a:text-primary prose-img:rounded-sm"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
+
+          {/* Reactions */}
+          <div className="mt-10 pt-8 border-t border-border">
+            <BlogReactions postId={post._id} />
+          </div>
+
+          {/* Comments */}
+          <BlogComments postId={post._id} />
         </div>
       </motion.article>
 

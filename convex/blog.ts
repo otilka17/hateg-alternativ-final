@@ -1,5 +1,8 @@
-import { v } from "convex/values";
+import { ConvexError, v } from "convex/values";
 import { query, mutation } from "./_generated/server";
+import { getAuthUserId } from "@convex-dev/auth/server";
+
+const REACTION_EMOJIS = ["❤️", "👍", "😋", "🎉"] as const;
 
 // ─── PUBLIC QUERIES ───
 
@@ -137,5 +140,131 @@ export const remove = mutation({
       await ctx.storage.delete(post.coverImageId);
     }
     await ctx.db.delete(args.id);
+  },
+});
+
+// ─── COMMENTS ───
+
+export const listApprovedComments = query({
+  args: { postId: v.id("blogPosts") },
+  handler: async (ctx, args) => {
+    const comments = await ctx.db
+      .query("blogComments")
+      .withIndex("by_post", (q) => q.eq("postId", args.postId))
+      .collect();
+    return comments
+      .filter((c) => c.approved)
+      .sort((a, b) => b._creationTime - a._creationTime);
+  },
+});
+
+export const submitComment = mutation({
+  args: {
+    postId: v.id("blogPosts"),
+    name: v.string(),
+    text: v.string(),
+  },
+  handler: async (ctx, args) => {
+    if (!args.name.trim()) {
+      throw new ConvexError({ message: "Adaugă un nume", code: "BAD_REQUEST" });
+    }
+    if (args.text.trim().length < 3) {
+      throw new ConvexError({ message: "Comentariul trebuie să aibă cel puțin 3 caractere", code: "BAD_REQUEST" });
+    }
+    await ctx.db.insert("blogComments", {
+      postId: args.postId,
+      name: args.name.trim(),
+      text: args.text.trim(),
+      approved: false,
+    });
+  },
+});
+
+// Admin: list all comments (pending + approved) across all posts
+export const listAllComments = query({
+  args: {},
+  handler: async (ctx) => {
+    const userId = await getAuthUserId(ctx);
+    if (!userId) {
+      throw new ConvexError({ message: "Trebuie să fii autentificat", code: "UNAUTHENTICATED" });
+    }
+    const user = await ctx.db.get(userId);
+    if (!user || user.role !== "admin") {
+      throw new ConvexError({ message: "Acces restricționat", code: "FORBIDDEN" });
+    }
+    const comments = await ctx.db.query("blogComments").order("desc").collect();
+    return Promise.all(
+      comments.map(async (c) => {
+        const post = await ctx.db.get(c.postId);
+        return { ...c, postTitle: post?.title ?? "(articol șters)" };
+      })
+    );
+  },
+});
+
+export const approveComment = mutation({
+  args: { id: v.id("blogComments") },
+  handler: async (ctx, args) => {
+    const userId = await getAuthUserId(ctx);
+    if (!userId) {
+      throw new ConvexError({ message: "Trebuie să fii autentificat", code: "UNAUTHENTICATED" });
+    }
+    const user = await ctx.db.get(userId);
+    if (!user || user.role !== "admin") {
+      throw new ConvexError({ message: "Acces restricționat", code: "FORBIDDEN" });
+    }
+    await ctx.db.patch(args.id, { approved: true });
+  },
+});
+
+export const removeComment = mutation({
+  args: { id: v.id("blogComments") },
+  handler: async (ctx, args) => {
+    const userId = await getAuthUserId(ctx);
+    if (!userId) {
+      throw new ConvexError({ message: "Trebuie să fii autentificat", code: "UNAUTHENTICATED" });
+    }
+    const user = await ctx.db.get(userId);
+    if (!user || user.role !== "admin") {
+      throw new ConvexError({ message: "Acces restricționat", code: "FORBIDDEN" });
+    }
+    await ctx.db.delete(args.id);
+  },
+});
+
+// ─── REACTIONS ───
+
+export const getReactions = query({
+  args: { postId: v.id("blogPosts") },
+  handler: async (ctx, args) => {
+    const rows = await ctx.db
+      .query("blogReactions")
+      .withIndex("by_post_emoji", (q) => q.eq("postId", args.postId))
+      .collect();
+    const counts: Record<string, number> = {};
+    for (const emoji of REACTION_EMOJIS) counts[emoji] = 0;
+    for (const row of rows) counts[row.emoji] = row.count;
+    return counts;
+  },
+});
+
+export const addReaction = mutation({
+  args: {
+    postId: v.id("blogPosts"),
+    emoji: v.string(),
+  },
+  handler: async (ctx, args) => {
+    if (!REACTION_EMOJIS.includes(args.emoji as (typeof REACTION_EMOJIS)[number])) {
+      throw new ConvexError({ message: "Reacție invalidă", code: "BAD_REQUEST" });
+    }
+    const existing = await ctx.db
+      .query("blogReactions")
+      .withIndex("by_post_emoji", (q) => q.eq("postId", args.postId).eq("emoji", args.emoji))
+      .unique();
+    if (existing) {
+      await ctx.db.patch(existing._id, { count: existing.count + 1 });
+    } else {
+      await ctx.db.insert("blogReactions", { postId: args.postId, emoji: args.emoji, count: 1 });
+    }
   },
 });

@@ -18,6 +18,7 @@ import SeedDataAdmin from "./_components/SeedDataAdmin.tsx";
 import GalleryAdmin from "./_components/GalleryAdmin.tsx";
 import DailySpecialAdmin from "./_components/DailySpecialAdmin.tsx";
 import BlogAdmin from "./_components/BlogAdmin.tsx";
+import BlogCommentsAdmin from "./_components/BlogCommentsAdmin.tsx";
 import LoyaltyAdmin from "./_components/LoyaltyAdmin.tsx";
 import ReviewsAdmin from "./_components/ReviewsAdmin.tsx";
 import AiAdmin from "./_components/AiAdmin.tsx";
@@ -739,6 +740,9 @@ function AdminDashboard() {
             </div>
             <div className="bg-white border border-border p-6">
               <BlogAdmin />
+            </div>
+            <div className="bg-white border border-border p-6">
+              <BlogCommentsAdmin />
             </div>
             <div className="bg-white border border-border p-6">
               <PartnersAdmin />

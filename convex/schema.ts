@@ -182,6 +182,21 @@ export default defineSchema({
     sortOrder: v.number(),
   }).index("by_slug", ["slug"]).index("by_category", ["category"]).index("by_published", ["published"]),
 
+  // Blog comments (submitted by anyone, admin must approve before showing)
+  blogComments: defineTable({
+    postId: v.id("blogPosts"),
+    name: v.string(),
+    text: v.string(),
+    approved: v.boolean(),
+  }).index("by_post", ["postId"]).index("by_approved", ["approved"]),
+
+  // Blog reactions (emoji counters per post, anonymous)
+  blogReactions: defineTable({
+    postId: v.id("blogPosts"),
+    emoji: v.string(),
+    count: v.number(),
+  }).index("by_post_emoji", ["postId", "emoji"]),
+
   // Inventory / Stock management (mini ERP)
   inventory: defineTable({
     productName: v.string(), // unique product name
