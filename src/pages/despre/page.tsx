@@ -268,8 +268,8 @@ export default function DesprePage() {
               </div>
               <div className="aspect-square overflow-hidden rounded-sm">
                 <img
-                  src="https://hercules-cdn.com/file_Hfs3Jn7XUrJqsphrhGQ51MO0"
-                  alt="Produse în borcane — selecție artizanală Metanoia"
+                  src="/images/despre-bunatati-casa.png"
+                  alt="Bunătăți de casă — conserve autentice românești Metanoia"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 />
               </div>
