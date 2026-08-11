@@ -5,6 +5,7 @@ import { motion, AnimatePresence, useScroll, useTransform } from "motion/react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import Footer from "@/components/Footer.tsx";
 import Navbar from "@/components/Navbar.tsx";
+import SEO from "@/components/SEO.tsx";
 
 type GalleryImage = {
   src: string;
@@ -319,6 +320,10 @@ export default function GalleryPage() {
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] overflow-hidden">
+      <SEO
+        title="Galerie"
+        description="Poze cu produsele, băcănia și oamenii din spatele Metanoia — Țara Hațegului."
+      />
       <Navbar />
 
       <HeroSection />

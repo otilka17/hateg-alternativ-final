@@ -5,6 +5,7 @@ import { useQuery, useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api.js";
 import { ConvexError } from "convex/values";
 import Navbar from "@/components/Navbar.tsx";
+import SEO from "@/components/SEO.tsx";
 
 import AnimatedSection from "@/components/AnimatedSection.tsx";
 import DailySpecialSection from "@/components/DailySpecial.tsx";
@@ -594,6 +595,10 @@ function ReviewsSection() {
 export default function Index() {
   return (
     <div className="min-h-screen bg-[#14253a] overflow-hidden">
+      <SEO
+        title="Băcănie-butic pe DN 68, Totești"
+        description="Cafea, limonade stoarse pe loc, sandwich-uri calde și bunătăți locale din Țara Hațegului. Borcane artizanale cu rețete de familie, fără conservanți."
+      />
       <Navbar />
 
       <div className="pt-16">

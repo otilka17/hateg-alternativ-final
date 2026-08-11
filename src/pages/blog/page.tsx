@@ -8,6 +8,7 @@ import { Calendar, Tag, ArrowRight } from "lucide-react";
 import { format } from "date-fns";
 import { ro } from "date-fns/locale";
 import Navbar from "@/components/Navbar.tsx";
+import SEO from "@/components/SEO.tsx";
 import { MetanoiaLogo } from "@/components/Navbar.tsx";
 import AnimatedSection from "@/components/AnimatedSection.tsx";
 
@@ -31,6 +32,10 @@ export default function BlogPage() {
 
   return (
     <div className="min-h-screen bg-background overflow-hidden">
+      <SEO
+        title="Blog"
+        description="Rețete, povești și noutăți din Țara Hațegului, direct de la Metanoia."
+      />
       <Navbar />
 
       {/* Hero */}

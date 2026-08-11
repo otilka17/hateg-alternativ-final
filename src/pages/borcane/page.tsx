@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "motion/react";
 import { Check, Plus, ShoppingBag, Leaf } from "lucide-react";
 import Navbar from "@/components/Navbar.tsx";
+import SEO from "@/components/SEO.tsx";
 import CartBar from "@/pages/menu/_components/CartBar.tsx";
 import { BORCANE } from "@/lib/borcane-data.ts";
 import { useCartStore } from "@/lib/cart-store.ts";
@@ -67,6 +68,10 @@ function BorcanCard({ item, index }: { item: (typeof BORCANE)[number]; index: nu
 export default function BorcanePage() {
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
+      <SEO
+        title="Borcane artizanale"
+        description="Dulcețuri, zacuscă și conserve de casă, cu rețete de familie, fără conservanți — din Țara Hațegului."
+      />
       <Navbar />
 
       {/* Hero */}

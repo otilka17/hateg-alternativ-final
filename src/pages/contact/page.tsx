@@ -2,6 +2,7 @@ import { useState } from "react";
 import { MapPin, Clock, Phone, Mail, Send, MessageCircle, Leaf, Heart, Hand, Sparkles } from "lucide-react";
 import { motion } from "motion/react";
 import Navbar from "@/components/Navbar.tsx";
+import SEO from "@/components/SEO.tsx";
 import AnimatedSection from "@/components/AnimatedSection.tsx";
 import Footer from "@/components/Footer.tsx";
 import { ScheduleDisplay } from "@/components/ScheduleStatus.tsx";
@@ -46,6 +47,10 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-background overflow-hidden">
+      <SEO
+        title="Contact"
+        description="Găsește-ne pe DN 68, Totești, Țara Hațegului — telefon, WhatsApp și program de funcționare."
+      />
       <Navbar />
 
       {/* Hero */}

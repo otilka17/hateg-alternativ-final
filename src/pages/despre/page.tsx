@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 import { Heart, Leaf, HandHeart, Mountain, ArrowRight } from "lucide-react";
 import Navbar from "@/components/Navbar.tsx";
+import SEO from "@/components/SEO.tsx";
 import AnimatedSection from "@/components/AnimatedSection.tsx";
 import Footer from "@/components/Footer.tsx";
 
@@ -58,6 +59,10 @@ const VALUES = [
 export default function DesprePage() {
   return (
     <div className="min-h-screen bg-background overflow-hidden">
+      <SEO
+        title="Despre noi"
+        description="Povestea Metanoia — o băcănie-butic de pe DN 68, Totești, cu produse artizanale din Țara Hațegului."
+      />
       <Navbar />
 
       {/* Hero */}

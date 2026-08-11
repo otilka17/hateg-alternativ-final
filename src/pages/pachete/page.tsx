@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "motion/react";
 import { Check, Plus, Sparkles } from "lucide-react";
 import Navbar from "@/components/Navbar.tsx";
+import SEO from "@/components/SEO.tsx";
 import CartBar from "@/pages/menu/_components/CartBar.tsx";
 import { PACHETE } from "@/lib/pachete-data.ts";
 import { useCartStore } from "@/lib/cart-store.ts";
@@ -79,6 +80,10 @@ function PachetCard({ item, index }: { item: (typeof PACHETE)[number]; index: nu
 export default function PachetePage() {
   return (
     <div className="min-h-screen bg-background overflow-x-hidden">
+      <SEO
+        title="Pachete"
+        description="Combinații atent gândite la prețuri accesibile — pachete pentru drum, pentru birou sau pentru cadou, cu produse Metanoia."
+      />
       <Navbar />
 
       {/* Hero */}

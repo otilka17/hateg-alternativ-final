@@ -3,6 +3,7 @@ import { api } from "@/convex/_generated/api.js";
 import { motion } from "motion/react";
 import { ExternalLink, Handshake } from "lucide-react";
 import Navbar from "@/components/Navbar.tsx";
+import SEO from "@/components/SEO.tsx";
 import Footer from "@/components/Footer.tsx";
 import AnimatedSection from "@/components/AnimatedSection.tsx";
 import { Skeleton } from "@/components/ui/skeleton.tsx";
@@ -13,6 +14,10 @@ export default function ParteneriPage() {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Parteneri"
+        description="Colaborăm cu producători locali și pensiuni din Țara Hațegului — descoperă rețeaua Metanoia."
+      />
       <Navbar />
 
       {/* Hero */}

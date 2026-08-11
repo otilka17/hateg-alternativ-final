@@ -3,6 +3,7 @@ import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api.js";
 import { motion, AnimatePresence } from "motion/react";
 import Navbar from "@/components/Navbar.tsx";
+import SEO from "@/components/SEO.tsx";
 import CartBar from "./_components/CartBar.tsx";
 import { useCartStore } from "@/lib/cart-store.ts";
 import { CAFEA, SPEC, LIM, SANATATE, SAND, DULCE, COMBO, JARS } from "@/lib/menu-data.ts";
@@ -212,6 +213,10 @@ export default function MenuPage() {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Meniu"
+        description="Cafea, sandwich-uri calde, limonade și dulciuri artizanale — comandă online de la Metanoia, băcănia-butic de pe DN 68, Totești."
+      />
       <Navbar />
 
       {/* Header */}

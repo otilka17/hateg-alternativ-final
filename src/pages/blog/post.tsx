@@ -7,6 +7,7 @@ import Footer from "@/components/Footer.tsx";
 import { format } from "date-fns";
 import { ro } from "date-fns/locale";
 import Navbar from "@/components/Navbar.tsx";
+import SEO from "@/components/SEO.tsx";
 import BlogReactions from "@/components/BlogReactions.tsx";
 import BlogComments from "@/components/BlogComments.tsx";
 
@@ -68,6 +69,7 @@ export default function BlogPostPage() {
 
   return (
     <div className="min-h-screen bg-background overflow-hidden">
+      <SEO title={post.title} description={post.excerpt} />
       <Navbar />
 
       {/* Hero with cover image */}
