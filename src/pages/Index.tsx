@@ -872,7 +872,7 @@ export default function Index() {
       </section>
 
       <section className="bg-background">
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-0">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-0">
           {[
             { src: "https://hercules-cdn.com/file_WnaeRwIubzxYpKL3WQcFIN0G", alt: "Produse Metanoia" },
             { src: "https://hercules-cdn.com/file_A79DOuLmMcqM86aIAjVbAEPt", alt: "Sandwich-uri Metanoia" },
