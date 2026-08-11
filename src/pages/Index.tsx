@@ -788,8 +788,8 @@ export default function Index() {
       <section className="bg-background">
         <div className="w-full aspect-[21/9] md:aspect-[3/1] overflow-hidden">
           <img
-            src="https://hercules-cdn.com/file_tBLLPNSpQajxxH32qOumrhFz"
-            alt="Borcanele Metanoia"
+            src="/images/despre-bunatati-casa.png"
+            alt="Bunătăți de casă — conserve autentice românești Metanoia"
             className="w-full h-full object-cover"
           />
         </div>
