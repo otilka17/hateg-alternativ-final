@@ -191,13 +191,9 @@ function HeroSlider() {
   return (
     <section className="relative w-full h-[70vh] sm:h-[80vh] overflow-hidden bg-[#14253a]">
       <div className="absolute top-6 sm:top-10 left-0 right-0 z-20 px-[5%] sm:px-[8%] text-center">
-        <div className="inline-flex items-center gap-2.5 text-white">
-          <span className="w-6 h-px bg-[#f5a06a]" />
-          <span className="text-[10px] sm:text-xs font-semibold tracking-[4px] uppercase">
-            Metanoia <span className="text-[#f5a06a]">·</span> Băcănie-butic pe DN 68
-          </span>
-          <span className="w-6 h-px bg-[#f5a06a]" />
-        </div>
+        <h1 className="font-serif text-2xl sm:text-4xl text-white leading-tight">
+          Metanoia <em className="text-[#f5a06a] italic">— Soul Meal</em>
+        </h1>
       </div>
 
       <AnimatePresence mode="wait" initial={false}>
