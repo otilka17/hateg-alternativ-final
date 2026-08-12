@@ -1,8 +1,7 @@
 "use node";
 
-import { v } from "convex/values";
 import { internal } from "./_generated/api";
-import { internalAction, internalMutation } from "./_generated/server";
+import { internalAction } from "./_generated/server";
 
 const RAW_BASE =
   "https://raw.githubusercontent.com/otilka17/hateg-alternativ-final/claude/verifica-repo-ul-vbs9d5/public/images/borcane";
@@ -23,20 +22,7 @@ export const patchBorcaneImages = internalAction({
       }
       const blob = await res.blob();
       const storageId = await ctx.storage.store(blob);
-      await ctx.runMutation(internal.seedImages.setBorcaneImage, { name, storageId });
-    }
-  },
-});
-
-export const setBorcaneImage = internalMutation({
-  args: { name: v.string(), storageId: v.id("_storage") },
-  handler: async (ctx, args) => {
-    const item = await ctx.db
-      .query("borcaneItems")
-      .filter((q) => q.eq(q.field("name"), args.name))
-      .first();
-    if (item) {
-      await ctx.db.patch(item._id, { imageId: args.storageId });
+      await ctx.runMutation(internal.seedImagesMutations.setBorcaneImage, { name, storageId });
     }
   },
 });
