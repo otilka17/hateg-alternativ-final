@@ -13,3 +13,17 @@ export const setBorcaneImage = internalMutation({
     }
   },
 });
+
+export const clearBorcaneImage = internalMutation({
+  args: { name: v.string() },
+  handler: async (ctx, args) => {
+    const item = await ctx.db
+      .query("borcaneItems")
+      .filter((q) => q.eq(q.field("name"), args.name))
+      .first();
+    if (item?.imageId) {
+      await ctx.storage.delete(item.imageId);
+      await ctx.db.patch(item._id, { imageId: undefined });
+    }
+  },
+});

@@ -1,0 +1,34 @@
+name: Clear Zacusca Image (one-off)
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - claude/verifica-repo-ul-vbs9d5
+    paths:
+      - ".github/workflows/clear-zacusca-image.yml"
+
+jobs:
+  clear:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: claude/verifica-repo-ul-vbs9d5
+
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: Deploy Convex backend (ensures the mutation exists)
+        run: npx convex deploy
+        env:
+          CONVEX_DEPLOY_KEY: ${{ secrets.CONVEX_DEPLOY_KEY }}
+
+      - name: Clear the Zacusca image
+        run: npx convex run seedImagesMutations:clearBorcaneImage '{"name":"Zacuscă Metanoia"}'
+        env:
+          CONVEX_DEPLOY_KEY: ${{ secrets.CONVEX_DEPLOY_KEY }}
