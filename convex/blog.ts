@@ -241,10 +241,10 @@ export const getReactions = query({
       .query("blogReactions")
       .withIndex("by_post_emoji", (q) => q.eq("postId", args.postId))
       .collect();
-    const counts: Record<string, number> = {};
-    for (const emoji of REACTION_EMOJIS) counts[emoji] = 0;
-    for (const row of rows) counts[row.emoji] = row.count;
-    return counts;
+    return REACTION_EMOJIS.map((emoji) => ({
+      emoji,
+      count: rows.find((row) => row.emoji === emoji)?.count ?? 0,
+    }));
   },
 });
 

@@ -6,7 +6,8 @@ import { useState } from "react";
 const REACTION_EMOJIS = ["❤️", "👍", "😋", "🎉"] as const;
 
 export default function BlogReactions({ postId }: { postId: Id<"blogPosts"> }) {
-  const counts = useQuery(api.blog.getReactions, { postId });
+  const reactions = useQuery(api.blog.getReactions, { postId });
+  const getCount = (emoji: string) => reactions?.find((r) => r.emoji === emoji)?.count ?? 0;
   const addReaction = useMutation(api.blog.addReaction);
   const [justReacted, setJustReacted] = useState<string | null>(null);
 
@@ -27,7 +28,7 @@ export default function BlogReactions({ postId }: { postId: Id<"blogPosts"> }) {
           }`}
         >
           <span>{emoji}</span>
-          <span className="text-xs text-muted-foreground font-medium">{counts?.[emoji] ?? 0}</span>
+          <span className="text-xs text-muted-foreground font-medium">{getCount(emoji)}</span>
         </button>
       ))}
     </div>
