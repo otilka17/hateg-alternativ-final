@@ -40,7 +40,7 @@ const PRODUCT_IMAGES = [
 
 const SLIDER_SLIDES = [
   {
-    src: "/images/hero/hero-1.webp",
+    src: "/images/hero/hero-1.webp?v=2",
     alt: "Sandwich cu prosciutto Metanoia",
     title: "Sandwich-uri premium",
     subtitle: "Ingrediente locale",
@@ -48,7 +48,7 @@ const SLIDER_SLIDES = [
     link: "/meniu",
   },
   {
-    src: "/images/hero/hero-2.webp",
+    src: "/images/hero/hero-2.webp?v=2",
     alt: "Cafea Metanoia",
     title: "Cafea & Băuturi",
     subtitle: "Proaspăt preparate",
@@ -56,7 +56,7 @@ const SLIDER_SLIDES = [
     link: "/meniu",
   },
   {
-    src: "/images/hero/hero-3.webp",
+    src: "/images/hero/hero-3.webp?v=2",
     alt: "Limonadă naturală Metanoia",
     title: "Limonade naturale",
     subtitle: "Stoarse pe loc",
@@ -64,7 +64,7 @@ const SLIDER_SLIDES = [
     link: "/meniu",
   },
   {
-    src: "/images/hero/hero-4.webp",
+    src: "/images/hero/hero-4.webp?v=2",
     alt: "Sandwich Acasă ambalat Metanoia",
     title: "Sandwich Acasă",
     subtitle: "Gata de drum",
@@ -72,7 +72,7 @@ const SLIDER_SLIDES = [
     link: "/meniu",
   },
   {
-    src: "/images/hero/hero-5.webp",
+    src: "/images/hero/hero-5.webp?v=2",
     alt: "Sandwich cu pesto Metanoia",
     title: "Gusturi autentice",
     subtitle: "Făcute cu suflet",
@@ -80,7 +80,7 @@ const SLIDER_SLIDES = [
     link: "/meniu",
   },
   {
-    src: "/images/hero/hero-6.webp",
+    src: "/images/hero/hero-6.webp?v=2",
     alt: "Produse Metanoia",
     title: "Produse artizanale",
     subtitle: "Din Țara Hațegului",
@@ -88,7 +88,7 @@ const SLIDER_SLIDES = [
     link: "/borcane",
   },
   {
-    src: "/images/hero/hero-7.webp",
+    src: "/images/hero/hero-7.webp?v=2",
     alt: "Preparate Metanoia",
     title: "Proaspăt zilnic",
     subtitle: "De la noi",
@@ -96,7 +96,7 @@ const SLIDER_SLIDES = [
     link: "/meniu",
   },
   {
-    src: "/images/hero/hero-8.webp",
+    src: "/images/hero/hero-8.webp?v=2",
     alt: "Produse fresh Metanoia",
     title: "Fresh & Natural",
     subtitle: "Fără conservanți",
@@ -104,7 +104,7 @@ const SLIDER_SLIDES = [
     link: "/meniu",
   },
   {
-    src: "/images/hero/hero-9.webp",
+    src: "/images/hero/hero-9.webp?v=2",
     alt: "Băcănia Metanoia",
     title: "Băcănia-butic",
     subtitle: "DN 68 · Totești",
@@ -112,7 +112,7 @@ const SLIDER_SLIDES = [
     link: "/despre",
   },
   {
-    src: "/images/hero/hero-10.webp",
+    src: "/images/hero/hero-10.webp?v=2",
     alt: "Produse locale Metanoia",
     title: "Locale & autentice",
     subtitle: "De la producători",
@@ -120,7 +120,7 @@ const SLIDER_SLIDES = [
     link: "/parteneri",
   },
   {
-    src: "/images/hero/hero-11.webp",
+    src: "/images/hero/hero-11.webp?v=2",
     alt: "Oferte Metanoia",
     title: "Pachete speciale",
     subtitle: "Pentru fiecare gust",
@@ -128,7 +128,7 @@ const SLIDER_SLIDES = [
     link: "/pachete",
   },
   {
-    src: "/images/hero/hero-12.webp",
+    src: "/images/hero/hero-12.webp?v=2",
     alt: "Preparate calde Metanoia",
     title: "Cald & delicios",
     subtitle: "Făcut la comandă",
@@ -136,7 +136,7 @@ const SLIDER_SLIDES = [
     link: "/meniu",
   },
   {
-    src: "/images/hero/hero-13.webp",
+    src: "/images/hero/hero-13.webp?v=2",
     alt: "Mâncare Metanoia",
     title: "Cu suflet",
     subtitle: "Pentru tine",
@@ -144,7 +144,7 @@ const SLIDER_SLIDES = [
     link: "/meniu",
   },
   {
-    src: "/images/hero/hero-14.webp",
+    src: "/images/hero/hero-14.webp?v=2",
     alt: "Sortiment Metanoia",
     title: "Descoperă Metanoia",
     subtitle: "Soul Meal",
