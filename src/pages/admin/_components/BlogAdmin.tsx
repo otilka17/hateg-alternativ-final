@@ -56,6 +56,7 @@ function PostEditor({
   const [coverImageId, setCoverImageId] = useState<Id<"_storage"> | null>(
     post?.coverImageId ?? null
   );
+  const [clearCoverImage, setClearCoverImage] = useState(false);
   const [saving, setSaving] = useState(false);
   const [autoSlug, setAutoSlug] = useState(!post);
 
@@ -96,6 +97,7 @@ function PostEditor({
           category,
           published,
           ...(coverImageId ? { coverImageId } : {}),
+          ...(clearCoverImage ? { clearCoverImage: true } : {}),
         });
         toast.success("Articol actualizat!");
       } else {
@@ -221,7 +223,8 @@ function PostEditor({
           Imagine copertă
         </label>
         <ImageUploader
-          onUploaded={(id) => setCoverImageId(id)}
+          onUploaded={(id) => { setCoverImageId(id); setClearCoverImage(false); }}
+          onRemove={() => { setCoverImageId(null); setClearCoverImage(true); }}
           currentImageUrl={post?.coverImageUrl ?? undefined}
         />
       </div>

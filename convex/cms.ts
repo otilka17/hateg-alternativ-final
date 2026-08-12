@@ -103,14 +103,20 @@ export const updateMenuItem = mutation({
     price: v.optional(v.number()),
     category: v.optional(v.string()),
     imageId: v.optional(v.id("_storage")),
+    clearImage: v.optional(v.boolean()),
     sortOrder: v.optional(v.number()),
     active: v.optional(v.boolean()),
   },
   handler: async (ctx, args) => {
-    const { id, ...updates } = args;
-    const filtered = Object.fromEntries(
+    const { id, clearImage, ...updates } = args;
+    const filtered: Record<string, unknown> = Object.fromEntries(
       Object.entries(updates).filter(([, val]) => val !== undefined)
     );
+    if (clearImage) {
+      const item = await ctx.db.get(id);
+      if (item?.imageId) await ctx.storage.delete(item.imageId);
+      filtered.imageId = undefined;
+    }
     await ctx.db.patch(id, filtered);
   },
 });
@@ -170,14 +176,20 @@ export const updateBorcanItem = mutation({
     emoji: v.optional(v.string()),
     tag: v.optional(v.string()),
     imageId: v.optional(v.id("_storage")),
+    clearImage: v.optional(v.boolean()),
     sortOrder: v.optional(v.number()),
     active: v.optional(v.boolean()),
   },
   handler: async (ctx, args) => {
-    const { id, ...updates } = args;
-    const filtered = Object.fromEntries(
+    const { id, clearImage, ...updates } = args;
+    const filtered: Record<string, unknown> = Object.fromEntries(
       Object.entries(updates).filter(([, val]) => val !== undefined)
     );
+    if (clearImage) {
+      const item = await ctx.db.get(id);
+      if (item?.imageId) await ctx.storage.delete(item.imageId);
+      filtered.imageId = undefined;
+    }
     await ctx.db.patch(id, filtered);
   },
 });
@@ -239,14 +251,20 @@ export const updatePachetItem = mutation({
     tag: v.optional(v.string()),
     saves: v.optional(v.number()),
     imageId: v.optional(v.id("_storage")),
+    clearImage: v.optional(v.boolean()),
     sortOrder: v.optional(v.number()),
     active: v.optional(v.boolean()),
   },
   handler: async (ctx, args) => {
-    const { id, ...updates } = args;
-    const filtered = Object.fromEntries(
+    const { id, clearImage, ...updates } = args;
+    const filtered: Record<string, unknown> = Object.fromEntries(
       Object.entries(updates).filter(([, val]) => val !== undefined)
     );
+    if (clearImage) {
+      const item = await ctx.db.get(id);
+      if (item?.imageId) await ctx.storage.delete(item.imageId);
+      filtered.imageId = undefined;
+    }
     await ctx.db.patch(id, filtered);
   },
 });

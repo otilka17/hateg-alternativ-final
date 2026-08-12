@@ -119,7 +119,7 @@ function PachetForm({
 }: {
   item?: PachetDoc;
   sortOrder: number;
-  onSave: (data: { name: string; description: string; includes: string[]; price: number; emoji: string; tag?: string; saves?: number; sortOrder: number; imageId?: Id<"_storage"> }) => Promise<void>;
+  onSave: (data: { name: string; description: string; includes: string[]; price: number; emoji: string; tag?: string; saves?: number; sortOrder: number; imageId?: Id<"_storage">; clearImage?: boolean }) => Promise<void>;
   onCancel: () => void;
 }) {
   const [name, setName] = useState(item?.name ?? "");
@@ -130,6 +130,7 @@ function PachetForm({
   const [tag, setTag] = useState(item?.tag ?? "");
   const [saves, setSaves] = useState(item?.saves ? String(item.saves) : "");
   const [imageId, setImageId] = useState<Id<"_storage"> | undefined>(item?.imageId);
+  const [clearImage, setClearImage] = useState(false);
   const [saving, setSaving] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -146,6 +147,7 @@ function PachetForm({
       ...(tag ? { tag } : {}),
       ...(saves ? { saves: Number(saves) } : {}),
       ...(imageId ? { imageId } : {}),
+      ...(clearImage ? { clearImage: true } : {}),
     });
     setSaving(false);
   };
@@ -163,7 +165,11 @@ function PachetForm({
         <input value={tag} onChange={(e) => setTag(e.target.value)} placeholder="Tag (opțional)" className="px-3 py-2 text-sm border border-foreground/15 bg-white focus:outline-none focus:ring-1 focus:ring-primary" />
         <input value={saves} onChange={(e) => setSaves(e.target.value)} placeholder="Economie (lei)" type="number" min="0" className="px-3 py-2 text-sm border border-foreground/15 bg-white focus:outline-none focus:ring-1 focus:ring-primary" />
       </div>
-      <ImageUploader currentImageUrl={item?.imageUrl} onUploaded={setImageId} />
+      <ImageUploader
+        currentImageUrl={item?.imageUrl}
+        onUploaded={(id) => { setImageId(id); setClearImage(false); }}
+        onRemove={() => { setImageId(undefined); setClearImage(true); }}
+      />
       <div className="flex gap-2">
         <button type="submit" disabled={saving} className="cursor-pointer flex items-center gap-1.5 text-[10px] font-semibold tracking-widest uppercase px-4 py-2.5 bg-primary text-white hover:bg-primary/90 transition-colors disabled:opacity-50">
           <Save size={12} /> {saving ? "Se salvează..." : "Salvează"}

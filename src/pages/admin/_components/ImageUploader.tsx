@@ -8,14 +8,16 @@ import { toast } from "sonner";
 type Props = {
   currentImageUrl?: string | null;
   onUploaded: (storageId: Id<"_storage">) => void;
+  onRemove?: () => void;
   className?: string;
 };
 
-export default function ImageUploader({ currentImageUrl, onUploaded, className = "" }: Props) {
+export default function ImageUploader({ currentImageUrl, onUploaded, onRemove, className = "" }: Props) {
   const generateUploadUrl = useMutation(api.cms.generateUploadUrl);
   const fileRef = useRef<HTMLInputElement>(null);
   const [uploading, setUploading] = useState(false);
   const [preview, setPreview] = useState<string | null>(null);
+  const [removed, setRemoved] = useState(false);
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -36,6 +38,7 @@ export default function ImageUploader({ currentImageUrl, onUploaded, className =
         body: file,
       });
       const { storageId } = await result.json();
+      setRemoved(false);
       onUploaded(storageId as Id<"_storage">);
       toast.success("Imagine încărcată!");
     } catch {
@@ -46,7 +49,14 @@ export default function ImageUploader({ currentImageUrl, onUploaded, className =
     }
   };
 
-  const displayUrl = preview || currentImageUrl;
+  const handleRemove = () => {
+    setPreview(null);
+    setRemoved(true);
+    if (fileRef.current) fileRef.current.value = "";
+    onRemove?.();
+  };
+
+  const displayUrl = preview || (removed ? null : currentImageUrl);
 
   return (
     <div className={`relative ${className}`}>
@@ -59,11 +69,9 @@ export default function ImageUploader({ currentImageUrl, onUploaded, className =
           />
           <button
             type="button"
-            onClick={() => {
-              setPreview(null);
-              if (fileRef.current) fileRef.current.value = "";
-            }}
+            onClick={handleRemove}
             className="cursor-pointer absolute top-1 right-1 w-6 h-6 bg-black/60 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+            aria-label="Șterge imaginea"
           >
             <X size={12} />
           </button>

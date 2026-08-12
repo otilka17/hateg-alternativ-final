@@ -111,14 +111,20 @@ export const update = mutation({
     content: v.optional(v.string()),
     category: v.optional(v.string()),
     coverImageId: v.optional(v.id("_storage")),
+    clearCoverImage: v.optional(v.boolean()),
     published: v.optional(v.boolean()),
     sortOrder: v.optional(v.number()),
   },
   handler: async (ctx, args) => {
-    const { id, ...updates } = args;
-    const filtered = Object.fromEntries(
+    const { id, clearCoverImage, ...updates } = args;
+    const filtered: Record<string, unknown> = Object.fromEntries(
       Object.entries(updates).filter(([, val]) => val !== undefined)
     );
+    if (clearCoverImage) {
+      const post = await ctx.db.get(id);
+      if (post?.coverImageId) await ctx.storage.delete(post.coverImageId);
+      filtered.coverImageId = undefined;
+    }
 
     // If being published for the first time, set publishedAt
     if (updates.published === true) {

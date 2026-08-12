@@ -219,13 +219,14 @@ function EditMenuItemForm({
   onCancel,
 }: {
   item: MenuItemDoc;
-  onSave: (data: { name?: string; description?: string; price?: number; imageId?: Id<"_storage">; active?: boolean }) => Promise<void>;
+  onSave: (data: { name?: string; description?: string; price?: number; imageId?: Id<"_storage">; clearImage?: boolean; active?: boolean }) => Promise<void>;
   onCancel: () => void;
 }) {
   const [name, setName] = useState(item.name);
   const [description, setDescription] = useState(item.description);
   const [price, setPrice] = useState(String(item.price));
   const [imageId, setImageId] = useState<Id<"_storage"> | undefined>(item.imageId);
+  const [clearImage, setClearImage] = useState(false);
   const [active, setActive] = useState(item.active);
   const [saving, setSaving] = useState(false);
 
@@ -238,6 +239,7 @@ function EditMenuItemForm({
       price: Number(price),
       active,
       ...(imageId ? { imageId } : {}),
+      ...(clearImage ? { clearImage: true } : {}),
     });
     setSaving(false);
   };
@@ -267,7 +269,11 @@ function EditMenuItemForm({
         rows={2}
         className="w-full px-3 py-2 text-sm border border-foreground/15 bg-white focus:outline-none focus:ring-1 focus:ring-primary resize-none"
       />
-      <ImageUploader currentImageUrl={item.imageUrl} onUploaded={setImageId} />
+      <ImageUploader
+        currentImageUrl={item.imageUrl}
+        onUploaded={(id) => { setImageId(id); setClearImage(false); }}
+        onRemove={() => { setImageId(undefined); setClearImage(true); }}
+      />
       <label className="flex items-center gap-2 cursor-pointer">
         <input type="checkbox" checked={active} onChange={(e) => setActive(e.target.checked)} className="accent-primary" />
         <span className="text-xs text-muted-foreground">Activ (vizibil pe site)</span>
