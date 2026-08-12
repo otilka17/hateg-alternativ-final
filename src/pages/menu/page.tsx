@@ -24,6 +24,16 @@ const CATEGORIES = [
 
 type CategoryId = (typeof CATEGORIES)[number]["id"];
 
+// Real Metanoia photos, shown as a category banner (not tied to one specific dish)
+const CATEGORY_BANNER: Partial<Record<CategoryId, string>> = {
+  cafea: "/images/hero/hero-2.webp?v=2",
+  specialitati: "/images/hero/hero-2.webp?v=2",
+  limonada: "/images/hero/hero-3.webp?v=2",
+  sandwich: "/images/hero/hero-1.webp?v=2",
+  pachete: "/images/hero/hero-11.webp?v=2",
+  borcane: "https://hercules-cdn.com/file_1fJpF0WGTq3AtLLFF1Jvu85N",
+};
+
 // Unified item shape for display
 type DisplayItem = {
   id: string;
@@ -257,6 +267,17 @@ export default function MenuPage() {
 
       {/* Products grid */}
       <main className="max-w-2xl mx-auto px-4 sm:px-6 py-6 pb-28">
+        {/* Category banner photo */}
+        {CATEGORY_BANNER[activeCategory] && (
+          <div className="aspect-[16/7] overflow-hidden mb-5 -mx-4 sm:mx-0">
+            <img
+              src={CATEGORY_BANNER[activeCategory]}
+              alt={CATEGORIES.find((c) => c.id === activeCategory)?.label ?? ""}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        )}
+
         {/* Preorder notice */}
         <div className="bg-amber-50 border border-amber-300 p-3 mb-5 flex items-center gap-3">
           <span className="text-lg leading-none shrink-0">📅</span>

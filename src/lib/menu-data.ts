@@ -57,7 +57,7 @@ export const SANATATE: MenuItem[] = [
 export const SAND: MenuItem[] = [
   { n: "Nobil", d: "Somon afumat, legume crocante, sos fin, ciabatta caldă.", p: 26, kcal: 420, ing: ["Somon afumat", "Salată", "Castraveți", "Sos fin"] },
   { n: "Pădurenesc", d: "Piept de pui la grill, ciuperci, rucola, sos de muștar, ciabatta caldă.", p: 22, kcal: 370, ing: ["Pui la grill", "Ciuperci", "Rucola", "Sos de muștar"] },
-  { n: "Acasă", d: "Piept de pui la grill, salată, sos de casă, pâine cu maia.", p: 21, kcal: 360, ing: ["Pui la grill", "Salată", "Roșii", "Sos de casă"] },
+  { n: "Acasă", d: "Piept de pui la grill, salată, sos de casă, pâine cu maia.", p: 21, kcal: 360, ing: ["Pui la grill", "Salată", "Roșii", "Sos de casă"], img: "/images/hero/hero-4.webp?v=2" },
   { n: "Rustic", d: "Jambon, cașcaval, ciabatta caldă — ca acasă.", p: 19, kcal: 340, ing: ["Jambon", "Cașcaval"] },
   { n: "Bunătate", d: "Chiftea de casă, legume murate, sos, ciabatta.", p: 18, kcal: 310, ing: ["Chiftea de casă", "Legume murate", "Sos"] },
 ];
@@ -79,7 +79,7 @@ export const COMBO: ComboItem[] = [
 ];
 
 export const JARS: JarItem[] = [
-  { n: "Zacuscă Metanoia", d: "Rețeta veche a familiei, 300g. Produs cu suflet.", ico: "🫙", p: 22 },
+  { n: "Zacuscă Metanoia", d: "Rețeta veche a familiei, 300g. Produs cu suflet.", ico: "🫙", p: 22, img: "https://hercules-cdn.com/file_1fJpF0WGTq3AtLLFF1Jvu85N" },
   { n: "Dulceață de casă", d: "Din fructe de sezon, 250g — căpșuni · afine · măceșe · prune.", ico: "🍯", p: 18 },
   { n: "Bulion de grădină", d: "Roșii pasate, gros și aromat, 720g.", ico: "🥫", p: 16 },
 ];
