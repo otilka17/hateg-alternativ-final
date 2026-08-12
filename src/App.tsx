@@ -26,6 +26,7 @@ import PageTransition from "./components/PageTransition.tsx";
 import WhatsAppFloat from "./components/WhatsAppFloat.tsx";
 import PromoBanner from "./components/PromoBanner.tsx";
 import CookieConsent from "./components/CookieConsent.tsx";
+import ErrorBoundary from "./components/ErrorBoundary.tsx";
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -66,7 +67,9 @@ export default function App() {
     <DefaultProviders>
       <BrowserRouter>
         <PromoBanner />
-        <AnimatedRoutes />
+        <ErrorBoundary>
+          <AnimatedRoutes />
+        </ErrorBoundary>
         <WhatsAppFloat />
         <CookieConsent />
       </BrowserRouter>
