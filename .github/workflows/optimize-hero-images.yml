@@ -1,0 +1,58 @@
+name: Optimize Hero Images (one-off)
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - claude/verifica-repo-ul-vbs9d5
+    paths:
+      - ".github/workflows/optimize-hero-images.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  optimize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: claude/verifica-repo-ul-vbs9d5
+
+      - name: Install ImageMagick
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq imagemagick webp
+
+      - name: Download and convert hero images to WebP (auto-orient)
+        run: |
+          set -e
+          mkdir -p public/images/hero
+          declare -A IMAGES=(
+            ["hero-1"]="https://hercules-cdn.com/file_QtVLGmn6x3V7mbWMpeyUeEI2"
+            ["hero-2"]="https://hercules-cdn.com/file_tzT5hdiFb5pgKDIWlOOws4Za"
+            ["hero-3"]="https://hercules-cdn.com/file_kEmZGA5rVGkrXglgIcO5U2JZ"
+            ["hero-4"]="https://hercules-cdn.com/file_IjNauiX7cBbfOGfbtiGekIu0"
+            ["hero-5"]="https://hercules-cdn.com/file_Pk0u5mkNZXJujxLAvI5NJ4e5"
+            ["hero-6"]="https://hercules-cdn.com/file_xMXNcTXJFV4viJkywOZB5xNy"
+            ["hero-7"]="https://hercules-cdn.com/file_bqMnWMbDtN82klRRmgJAtVvm"
+            ["hero-8"]="https://hercules-cdn.com/file_FobY1wYu0YU0fwsAHu5fqtk9"
+            ["hero-9"]="https://hercules-cdn.com/file_xvfn5XAeqg0RaI1ldi9Bl6SQ"
+            ["hero-10"]="https://hercules-cdn.com/file_4zpztVaTqacQYPsD0dLjIFvN"
+            ["hero-11"]="https://hercules-cdn.com/file_stvs9Uao01ISnQekiAOkCM72"
+            ["hero-12"]="https://hercules-cdn.com/file_iLwpfI6fRxjAhAudf0fOIPnk"
+            ["hero-13"]="https://hercules-cdn.com/file_duu7t1ZOpEd2mgVEQU6AI3Xk"
+            ["hero-14"]="https://hercules-cdn.com/file_TiGA3y1yorgFBhNZqANTJeHB"
+          )
+          for name in "${!IMAGES[@]}"; do
+            url="${IMAGES[$name]}"
+            echo "Downloading $name from $url"
+            curl -sL --fail "$url" -o "/tmp/$name.orig"
+            convert "/tmp/$name.orig" -auto-orient -resize "1600x1600>" -quality 78 "public/images/hero/$name.webp"
+            ls -la "public/images/hero/$name.webp"
+          done
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/images/hero
+          git diff --cached --quiet && echo "No changes" || git commit -m "Fix hero image orientation (auto-orient before WebP conversion)"
+          git push origin HEAD:claude/verifica-repo-ul-vbs9d5
