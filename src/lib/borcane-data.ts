@@ -13,7 +13,7 @@ export const BORCANE: BorcanItem[] = [
     d: "Rețeta veche a familiei — vinete, ardei copți, roșii pasate, ceapă și ulei de floarea-soarelui, gătită lent la foc mic. Gustul copilăriei în borcan.",
     info: "300g · vegetal · fără conservanți",
     p: 22,
-    img: "https://hercules-cdn.com/file_1fJpF0WGTq3AtLLFF1Jvu85N",
+    img: "/images/borcane/zacusca.webp",
     tag: "Best seller",
   },
   {
@@ -49,7 +49,7 @@ export const BORCANE: BorcanItem[] = [
     d: "Roșii pasate din grădina proprie, îngroșate lent. Gros, aromat, fără amidon, fără E-uri. Baza oricărui sos adevărat.",
     info: "720g · roșii 100%",
     p: 16,
-    img: "https://hercules-cdn.com/file_PJ3pxsXIytK7EdwkSmCUKpPE",
+    img: "/images/borcane/bulion.webp",
   },
   {
     n: "Miere de salcâm",

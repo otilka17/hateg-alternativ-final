@@ -79,9 +79,9 @@ export const COMBO: ComboItem[] = [
 ];
 
 export const JARS: JarItem[] = [
-  { n: "Zacuscă Metanoia", d: "Rețeta veche a familiei, 300g. Produs cu suflet.", ico: "🫙", p: 22, img: "https://hercules-cdn.com/file_1fJpF0WGTq3AtLLFF1Jvu85N" },
+  { n: "Zacuscă Metanoia", d: "Rețeta veche a familiei, 300g. Produs cu suflet.", ico: "🫙", p: 22, img: "/images/borcane/zacusca.webp" },
   { n: "Dulceață de casă", d: "Din fructe de sezon, 250g — căpșuni · afine · măceșe · prune.", ico: "🍯", p: 18 },
-  { n: "Bulion de grădină", d: "Roșii pasate, gros și aromat, 720g.", ico: "🥫", p: 16 },
+  { n: "Bulion de grădină", d: "Roșii pasate, gros și aromat, 720g.", ico: "🥫", p: 16, img: "/images/borcane/bulion.webp" },
 ];
 
 export type CartItem = {

@@ -31,7 +31,7 @@ const CATEGORY_BANNER: Partial<Record<CategoryId, string>> = {
   limonada: "/images/hero/hero-3.webp?v=2",
   sandwich: "/images/hero/hero-1.webp?v=2",
   pachete: "/images/hero/hero-11.webp?v=2",
-  borcane: "https://hercules-cdn.com/file_1fJpF0WGTq3AtLLFF1Jvu85N",
+  borcane: "/images/borcane/pickles.webp",
 };
 
 // Unified item shape for display
