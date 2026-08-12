@@ -40,7 +40,7 @@ const PRODUCT_IMAGES = [
 
 const SLIDER_SLIDES = [
   {
-    src: "https://hercules-cdn.com/file_QtVLGmn6x3V7mbWMpeyUeEI2",
+    src: "/images/hero/hero-1.webp",
     alt: "Sandwich cu prosciutto Metanoia",
     title: "Sandwich-uri premium",
     subtitle: "Ingrediente locale",
@@ -48,7 +48,7 @@ const SLIDER_SLIDES = [
     link: "/meniu",
   },
   {
-    src: "https://hercules-cdn.com/file_tzT5hdiFb5pgKDIWlOOws4Za",
+    src: "/images/hero/hero-2.webp",
     alt: "Cafea Metanoia",
     title: "Cafea & Băuturi",
     subtitle: "Proaspăt preparate",
@@ -56,7 +56,7 @@ const SLIDER_SLIDES = [
     link: "/meniu",
   },
   {
-    src: "https://hercules-cdn.com/file_kEmZGA5rVGkrXglgIcO5U2JZ",
+    src: "/images/hero/hero-3.webp",
     alt: "Limonadă naturală Metanoia",
     title: "Limonade naturale",
     subtitle: "Stoarse pe loc",
@@ -64,7 +64,7 @@ const SLIDER_SLIDES = [
     link: "/meniu",
   },
   {
-    src: "https://hercules-cdn.com/file_IjNauiX7cBbfOGfbtiGekIu0",
+    src: "/images/hero/hero-4.webp",
     alt: "Sandwich Acasă ambalat Metanoia",
     title: "Sandwich Acasă",
     subtitle: "Gata de drum",
@@ -72,7 +72,7 @@ const SLIDER_SLIDES = [
     link: "/meniu",
   },
   {
-    src: "https://hercules-cdn.com/file_Pk0u5mkNZXJujxLAvI5NJ4e5",
+    src: "/images/hero/hero-5.webp",
     alt: "Sandwich cu pesto Metanoia",
     title: "Gusturi autentice",
     subtitle: "Făcute cu suflet",
@@ -80,7 +80,7 @@ const SLIDER_SLIDES = [
     link: "/meniu",
   },
   {
-    src: "https://hercules-cdn.com/file_xMXNcTXJFV4viJkywOZB5xNy",
+    src: "/images/hero/hero-6.webp",
     alt: "Produse Metanoia",
     title: "Produse artizanale",
     subtitle: "Din Țara Hațegului",
@@ -88,7 +88,7 @@ const SLIDER_SLIDES = [
     link: "/borcane",
   },
   {
-    src: "https://hercules-cdn.com/file_bqMnWMbDtN82klRRmgJAtVvm",
+    src: "/images/hero/hero-7.webp",
     alt: "Preparate Metanoia",
     title: "Proaspăt zilnic",
     subtitle: "De la noi",
@@ -96,7 +96,7 @@ const SLIDER_SLIDES = [
     link: "/meniu",
   },
   {
-    src: "https://hercules-cdn.com/file_FobY1wYu0YU0fwsAHu5fqtk9",
+    src: "/images/hero/hero-8.webp",
     alt: "Produse fresh Metanoia",
     title: "Fresh & Natural",
     subtitle: "Fără conservanți",
@@ -104,7 +104,7 @@ const SLIDER_SLIDES = [
     link: "/meniu",
   },
   {
-    src: "https://hercules-cdn.com/file_xvfn5XAeqg0RaI1ldi9Bl6SQ",
+    src: "/images/hero/hero-9.webp",
     alt: "Băcănia Metanoia",
     title: "Băcănia-butic",
     subtitle: "DN 68 · Totești",
@@ -112,7 +112,7 @@ const SLIDER_SLIDES = [
     link: "/despre",
   },
   {
-    src: "https://hercules-cdn.com/file_4zpztVaTqacQYPsD0dLjIFvN",
+    src: "/images/hero/hero-10.webp",
     alt: "Produse locale Metanoia",
     title: "Locale & autentice",
     subtitle: "De la producători",
@@ -120,7 +120,7 @@ const SLIDER_SLIDES = [
     link: "/parteneri",
   },
   {
-    src: "https://hercules-cdn.com/file_stvs9Uao01ISnQekiAOkCM72",
+    src: "/images/hero/hero-11.webp",
     alt: "Oferte Metanoia",
     title: "Pachete speciale",
     subtitle: "Pentru fiecare gust",
@@ -128,7 +128,7 @@ const SLIDER_SLIDES = [
     link: "/pachete",
   },
   {
-    src: "https://hercules-cdn.com/file_iLwpfI6fRxjAhAudf0fOIPnk",
+    src: "/images/hero/hero-12.webp",
     alt: "Preparate calde Metanoia",
     title: "Cald & delicios",
     subtitle: "Făcut la comandă",
@@ -136,7 +136,7 @@ const SLIDER_SLIDES = [
     link: "/meniu",
   },
   {
-    src: "https://hercules-cdn.com/file_duu7t1ZOpEd2mgVEQU6AI3Xk",
+    src: "/images/hero/hero-13.webp",
     alt: "Mâncare Metanoia",
     title: "Cu suflet",
     subtitle: "Pentru tine",
@@ -144,7 +144,7 @@ const SLIDER_SLIDES = [
     link: "/meniu",
   },
   {
-    src: "https://hercules-cdn.com/file_TiGA3y1yorgFBhNZqANTJeHB",
+    src: "/images/hero/hero-14.webp",
     alt: "Sortiment Metanoia",
     title: "Descoperă Metanoia",
     subtitle: "Soul Meal",
@@ -209,6 +209,8 @@ function HeroSlider() {
             src={slide.src}
             alt={slide.alt}
             className="w-full h-full object-cover"
+            loading="eager"
+            fetchPriority="high"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#14253a]/80 via-[#14253a]/30 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-r from-[#14253a]/60 to-transparent" />
@@ -604,6 +606,7 @@ export default function Index() {
       <SEO
         title="Băcănie-butic pe DN 68, Totești"
         description="Cafea, limonade stoarse pe loc, sandwich-uri calde și bunătăți locale din Țara Hațegului. Borcane artizanale cu rețete de familie, fără conservanți."
+        preloadImage={SLIDER_SLIDES[0].src}
       />
       <Navbar />
 
