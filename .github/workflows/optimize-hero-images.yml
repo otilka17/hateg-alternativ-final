@@ -1,6 +1,11 @@
 name: Optimize Hero Images (one-off)
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - claude/verifica-repo-ul-vbs9d5
+    paths:
+      - ".github/workflows/optimize-hero-images.yml"
 
 permissions:
   contents: write
