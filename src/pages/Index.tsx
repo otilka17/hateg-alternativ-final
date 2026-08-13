@@ -158,9 +158,11 @@ function HeroSlider() {
   const [current, setCurrent] = useState(0);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
-  const slides = dbSlides && dbSlides.length > 0
-    ? dbSlides.map((s) => ({
-        src: s.resolvedImageUrl ?? "",
+  const validDbSlides = dbSlides?.filter((s) => s.resolvedImageUrl);
+
+  const slides = validDbSlides && validDbSlides.length > 0
+    ? validDbSlides.map((s) => ({
+        src: s.resolvedImageUrl!,
         alt: s.title,
         title: s.title,
         subtitle: s.subtitle,
